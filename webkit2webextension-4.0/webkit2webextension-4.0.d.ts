@@ -984,7 +984,7 @@ export namespace WebKit2WebExtension {
 
         static ['new'](action: Gtk.Action): ContextMenuItem;
 
-        static new_from_gaction(action: Gio.Action, label: string, target?: GLib.Variant | null): ContextMenuItem;
+        static new_from_gaction(action: Gio.Action, label: string, target: GLib.Variant | null): ContextMenuItem;
 
         static new_from_stock_action(action: ContextMenuAction): ContextMenuItem;
 
@@ -1054,7 +1054,7 @@ export namespace WebKit2WebExtension {
          * submenu of `item` is removed.
          * @param submenu a {@link WebKit2WebExtension.ContextMenu}
          */
-        set_submenu(submenu?: ContextMenu | null): void;
+        set_submenu(submenu: ContextMenu | null): void;
     }
 
     namespace DOMAttr {
@@ -1141,6 +1141,7 @@ export namespace WebKit2WebExtension {
         get prefix(): string;
         /**
          * @read-only
+         * @default false
          */
         get specified(): boolean;
         get value(): string;
@@ -1217,34 +1218,28 @@ export namespace WebKit2WebExtension {
          */
         set_value(value: string): void;
         /**
+         * Version of `webkit_dom_event_target_add_event_listener()` using a closure
+         * instead of a callbacks for easier binding in other languages.
          * @param event_name A `gchar`
-         * @param handler A {@link GObject.Callback}
+         * @param handler A {@link GObject.Closure}
          * @param use_capture A `gboolean`
          * @returns a `gboolean`
          */
-        add_event_listener(event_name: string, handler: GObject.Callback, use_capture: boolean): boolean;
-        /**
-         * @param args
-         */
-        // Conflicted with WebKit2WebExtension.DOMEventTarget.add_event_listener
-        add_event_listener(...args: never[]): any;
+        add_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
         /**
          * @param event A {@link WebKit2WebExtension.DOMEvent}
          * @returns a `gboolean`
          */
         dispatch_event(event: DOMEvent): boolean;
         /**
+         * Version of `webkit_dom_event_target_remove_event_listener()` using a closure
+         * instead of a callbacks for easier binding in other languages.
          * @param event_name A `gchar`
-         * @param handler A {@link GObject.Callback}
+         * @param handler A {@link GObject.Closure}
          * @param use_capture A `gboolean`
          * @returns a `gboolean`
          */
-        remove_event_listener(event_name: string, handler: any | null, use_capture: boolean): boolean;
-        /**
-         * @param args
-         */
-        // Conflicted with WebKit2WebExtension.DOMEventTarget.remove_event_listener
-        remove_event_listener(...args: never[]): any;
+        remove_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
         /**
          * @param event_name
          * @param handler
@@ -1311,38 +1306,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1350,15 +1326,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1525,7 +1495,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1739,6 +1709,7 @@ export namespace WebKit2WebExtension {
 
         /**
          * @read-only
+         * @default 0
          */
         get size(): number;
 
@@ -1901,38 +1872,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1940,15 +1892,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -2120,7 +2066,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * @param args
          */
@@ -2368,6 +2314,7 @@ export namespace WebKit2WebExtension {
         get parentStyleSheet(): DOMCSSStyleSheet;
         /**
          * @read-only
+         * @default 0
          */
         get type(): number;
 
@@ -2455,6 +2402,7 @@ export namespace WebKit2WebExtension {
 
         /**
          * @read-only
+         * @default 0
          */
         get length(): number;
 
@@ -2541,6 +2489,7 @@ export namespace WebKit2WebExtension {
         set cssText(val: string);
         /**
          * @read-only
+         * @default 0
          */
         get length(): number;
         /**
@@ -2812,10 +2761,12 @@ export namespace WebKit2WebExtension {
         set cssText(val: string);
         /**
          * @read-only
+         * @default 0
          */
         get css_value_type(): number;
         /**
          * @read-only
+         * @default 0
          */
         get cssValueType(): number;
 
@@ -2912,6 +2863,7 @@ export namespace WebKit2WebExtension {
         set data(val: string);
         /**
          * @read-only
+         * @default 0
          */
         get length(): number;
 
@@ -2997,34 +2949,28 @@ export namespace WebKit2WebExtension {
          */
         substring_data(offset: bigint | number, length: bigint | number): string;
         /**
+         * Version of `webkit_dom_event_target_add_event_listener()` using a closure
+         * instead of a callbacks for easier binding in other languages.
          * @param event_name A `gchar`
-         * @param handler A {@link GObject.Callback}
+         * @param handler A {@link GObject.Closure}
          * @param use_capture A `gboolean`
          * @returns a `gboolean`
          */
-        add_event_listener(event_name: string, handler: GObject.Callback, use_capture: boolean): boolean;
-        /**
-         * @param args
-         */
-        // Conflicted with WebKit2WebExtension.DOMEventTarget.add_event_listener
-        add_event_listener(...args: never[]): any;
+        add_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
         /**
          * @param event A {@link WebKit2WebExtension.DOMEvent}
          * @returns a `gboolean`
          */
         dispatch_event(event: DOMEvent): boolean;
         /**
+         * Version of `webkit_dom_event_target_remove_event_listener()` using a closure
+         * instead of a callbacks for easier binding in other languages.
          * @param event_name A `gchar`
-         * @param handler A {@link GObject.Callback}
+         * @param handler A {@link GObject.Closure}
          * @param use_capture A `gboolean`
          * @returns a `gboolean`
          */
-        remove_event_listener(event_name: string, handler: any | null, use_capture: boolean): boolean;
-        /**
-         * @param args
-         */
-        // Conflicted with WebKit2WebExtension.DOMEventTarget.remove_event_listener
-        remove_event_listener(...args: never[]): any;
+        remove_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
         /**
          * @param event_name
          * @param handler
@@ -3091,38 +3037,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -3130,15 +3057,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -3508,26 +3429,32 @@ export namespace WebKit2WebExtension {
 
         /**
          * @read-only
+         * @default 0
          */
         get bottom(): number;
         /**
          * @read-only
+         * @default 0
          */
         get height(): number;
         /**
          * @read-only
+         * @default 0
          */
         get left(): number;
         /**
          * @read-only
+         * @default 0
          */
         get right(): number;
         /**
          * @read-only
+         * @default 0
          */
         get top(): number;
         /**
          * @read-only
+         * @default 0
          */
         get width(): number;
 
@@ -3625,6 +3552,7 @@ export namespace WebKit2WebExtension {
 
         /**
          * @read-only
+         * @default 0
          */
         get length(): number;
 
@@ -3793,38 +3721,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -3832,15 +3741,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -4012,7 +3915,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * @param args
          */
@@ -4279,7 +4182,7 @@ export namespace WebKit2WebExtension {
         create_document(
             namespaceURI: string | null,
             qualifiedName: string,
-            doctype?: DOMDocumentType | null,
+            doctype: DOMDocumentType | null,
         ): DOMDocument;
         /**
          * @param qualifiedName A `gchar`
@@ -4363,10 +4266,12 @@ export namespace WebKit2WebExtension {
         get anchorNode(): DOMNode;
         /**
          * @read-only
+         * @default 0
          */
         get anchor_offset(): number;
         /**
          * @read-only
+         * @default 0
          */
         get anchorOffset(): number;
         /**
@@ -4379,10 +4284,12 @@ export namespace WebKit2WebExtension {
         get baseNode(): DOMNode;
         /**
          * @read-only
+         * @default 0
          */
         get base_offset(): number;
         /**
          * @read-only
+         * @default 0
          */
         get baseOffset(): number;
         /**
@@ -4395,10 +4302,12 @@ export namespace WebKit2WebExtension {
         get extentNode(): DOMNode;
         /**
          * @read-only
+         * @default 0
          */
         get extent_offset(): number;
         /**
          * @read-only
+         * @default 0
          */
         get extentOffset(): number;
         /**
@@ -4411,26 +4320,32 @@ export namespace WebKit2WebExtension {
         get focusNode(): DOMNode;
         /**
          * @read-only
+         * @default 0
          */
         get focus_offset(): number;
         /**
          * @read-only
+         * @default 0
          */
         get focusOffset(): number;
         /**
          * @read-only
+         * @default false
          */
         get is_collapsed(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get isCollapsed(): boolean;
         /**
          * @read-only
+         * @default 0
          */
         get range_count(): number;
         /**
          * @read-only
+         * @default 0
          */
         get rangeCount(): number;
         /**
@@ -4605,6 +4520,7 @@ export namespace WebKit2WebExtension {
 
         /**
          * @read-only
+         * @default 0
          */
         get length(): number;
         get value(): string;
@@ -4779,6 +4695,7 @@ export namespace WebKit2WebExtension {
 
         /**
          * @read-only
+         * @default false
          */
         get closed(): boolean;
         get default_status(): string;
@@ -4787,10 +4704,12 @@ export namespace WebKit2WebExtension {
         set defaultStatus(val: string);
         /**
          * @read-only
+         * @default 0
          */
         get device_pixel_ratio(): number;
         /**
          * @read-only
+         * @default 0
          */
         get devicePixelRatio(): number;
         /**
@@ -4811,32 +4730,39 @@ export namespace WebKit2WebExtension {
         get frames(): DOMDOMWindow;
         /**
          * @read-only
+         * @default 0
          */
         get inner_height(): number;
         /**
          * @read-only
+         * @default 0
          */
         get innerHeight(): number;
         /**
          * @read-only
+         * @default 0
          */
         get inner_width(): number;
         /**
          * @read-only
+         * @default 0
          */
         get innerWidth(): number;
         /**
          * @read-only
+         * @default 0
          */
         get length(): number;
         get name(): string;
         set name(val: string);
         /**
          * @read-only
+         * @default false
          */
         get offscreen_buffering(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get offscreenBuffering(): boolean;
         /**
@@ -4845,38 +4771,47 @@ export namespace WebKit2WebExtension {
         get opener(): DOMDOMWindow;
         /**
          * @read-only
+         * @default 0
          */
         get orientation(): number;
         /**
          * @read-only
+         * @default 0
          */
         get outer_height(): number;
         /**
          * @read-only
+         * @default 0
          */
         get outerHeight(): number;
         /**
          * @read-only
+         * @default 0
          */
         get outer_width(): number;
         /**
          * @read-only
+         * @default 0
          */
         get outerWidth(): number;
         /**
          * @read-only
+         * @default 0
          */
         get page_x_offset(): number;
         /**
          * @read-only
+         * @default 0
          */
         get pageXOffset(): number;
         /**
          * @read-only
+         * @default 0
          */
         get page_y_offset(): number;
         /**
          * @read-only
+         * @default 0
          */
         get pageYOffset(): number;
         /**
@@ -4885,50 +4820,62 @@ export namespace WebKit2WebExtension {
         get parent(): DOMDOMWindow;
         /**
          * @read-only
+         * @default 0
          */
         get screen_left(): number;
         /**
          * @read-only
+         * @default 0
          */
         get screenLeft(): number;
         /**
          * @read-only
+         * @default 0
          */
         get screen_top(): number;
         /**
          * @read-only
+         * @default 0
          */
         get screenTop(): number;
         /**
          * @read-only
+         * @default 0
          */
         get screen_x(): number;
         /**
          * @read-only
+         * @default 0
          */
         get screenX(): number;
         /**
          * @read-only
+         * @default 0
          */
         get screen_y(): number;
         /**
          * @read-only
+         * @default 0
          */
         get screenY(): number;
         /**
          * @read-only
+         * @default 0
          */
         get scroll_x(): number;
         /**
          * @read-only
+         * @default 0
          */
         get scrollX(): number;
         /**
          * @read-only
+         * @default 0
          */
         get scroll_y(): number;
         /**
          * @read-only
+         * @default 0
          */
         get scrollY(): number;
         /**
@@ -5025,7 +4972,7 @@ export namespace WebKit2WebExtension {
          * @param pseudoElement A `gchar`
          * @returns A {@link WebKit2WebExtension.DOMCSSStyleDeclaration}
          */
-        get_computed_style(element: DOMElement, pseudoElement?: string | null): DOMCSSStyleDeclaration;
+        get_computed_style(element: DOMElement, pseudoElement: string | null): DOMCSSStyleDeclaration;
         /**
          * @returns A `gchar`
          */
@@ -5195,34 +5142,28 @@ export namespace WebKit2WebExtension {
          */
         webkit_message_handlers_post_message(handler: string, message: string): boolean;
         /**
+         * Version of `webkit_dom_event_target_add_event_listener()` using a closure
+         * instead of a callbacks for easier binding in other languages.
          * @param event_name A `gchar`
-         * @param handler A {@link GObject.Callback}
+         * @param handler A {@link GObject.Closure}
          * @param use_capture A `gboolean`
          * @returns a `gboolean`
          */
-        add_event_listener(event_name: string, handler: GObject.Callback, use_capture: boolean): boolean;
-        /**
-         * @param args
-         */
-        // Conflicted with WebKit2WebExtension.DOMEventTarget.add_event_listener
-        add_event_listener(...args: never[]): any;
+        add_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
         /**
          * @param event A {@link WebKit2WebExtension.DOMEvent}
          * @returns a `gboolean`
          */
         dispatch_event(event: DOMEvent): boolean;
         /**
+         * Version of `webkit_dom_event_target_remove_event_listener()` using a closure
+         * instead of a callbacks for easier binding in other languages.
          * @param event_name A `gchar`
-         * @param handler A {@link GObject.Callback}
+         * @param handler A {@link GObject.Closure}
          * @param use_capture A `gboolean`
          * @returns a `gboolean`
          */
-        remove_event_listener(event_name: string, handler: any | null, use_capture: boolean): boolean;
-        /**
-         * @param args
-         */
-        // Conflicted with WebKit2WebExtension.DOMEventTarget.remove_event_listener
-        remove_event_listener(...args: never[]): any;
+        remove_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
         /**
          * @param event_name
          * @param handler
@@ -5289,38 +5230,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -5328,15 +5250,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -5503,7 +5419,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -5889,10 +5805,12 @@ export namespace WebKit2WebExtension {
         set charset(val: string);
         /**
          * @read-only
+         * @default 0
          */
         get child_element_count(): number;
         /**
          * @read-only
+         * @default 0
          */
         get childElementCount(): number;
         /**
@@ -5981,6 +5899,7 @@ export namespace WebKit2WebExtension {
         get head(): DOMHTMLHeadElement;
         /**
          * @read-only
+         * @default false
          */
         get hidden(): boolean;
         /**
@@ -6103,10 +6022,12 @@ export namespace WebKit2WebExtension {
         get webkitCurrentFullScreenElement(): DOMElement;
         /**
          * @read-only
+         * @default false
          */
         get webkit_full_screen_keyboard_input_allowed(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get webkitFullScreenKeyboardInputAllowed(): boolean;
         /**
@@ -6119,18 +6040,22 @@ export namespace WebKit2WebExtension {
         get webkitFullscreenElement(): DOMElement;
         /**
          * @read-only
+         * @default false
          */
         get webkit_fullscreen_enabled(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get webkitFullscreenEnabled(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get webkit_is_full_screen(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get webkitIsFullScreen(): boolean;
         /**
@@ -6141,8 +6066,14 @@ export namespace WebKit2WebExtension {
          * @read-only
          */
         get xmlEncoding(): string;
+        /**
+         * @default false
+         */
         get xml_standalone(): boolean;
         set xml_standalone(val: boolean);
+        /**
+         * @default false
+         */
         get xmlStandalone(): boolean;
         set xmlStandalone(val: boolean);
         get xml_version(): string;
@@ -6244,7 +6175,7 @@ export namespace WebKit2WebExtension {
          * @param name A `gchar`
          * @returns A {@link WebKit2WebExtension.DOMEntityReference}
          */
-        create_entity_reference(name?: string | null): DOMEntityReference;
+        create_entity_reference(name: string | null): DOMEntityReference;
         /**
          * @param eventType A `gchar`
          * @returns A {@link WebKit2WebExtension.DOMEvent}
@@ -6321,7 +6252,7 @@ export namespace WebKit2WebExtension {
             contextNode: DOMNode,
             resolver: DOMXPathNSResolver | null,
             type: number,
-            inResult?: DOMXPathResult | null,
+            inResult: DOMXPathResult | null,
         ): DOMXPathResult;
         /**
          * @param command A `gchar`
@@ -6506,7 +6437,7 @@ export namespace WebKit2WebExtension {
          * @param pseudoElement A `gchar`
          * @returns A {@link WebKit2WebExtension.DOMCSSStyleDeclaration}
          */
-        get_override_style(element: DOMElement, pseudoElement?: string | null): DOMCSSStyleDeclaration;
+        get_override_style(element: DOMElement, pseudoElement: string | null): DOMCSSStyleDeclaration;
         /**
          * @returns A {@link WebKit2WebExtension.DOMHTMLCollection}
          */
@@ -6678,34 +6609,28 @@ export namespace WebKit2WebExtension {
         webkit_cancel_fullscreen(): void;
         webkit_exit_fullscreen(): void;
         /**
+         * Version of `webkit_dom_event_target_add_event_listener()` using a closure
+         * instead of a callbacks for easier binding in other languages.
          * @param event_name A `gchar`
-         * @param handler A {@link GObject.Callback}
+         * @param handler A {@link GObject.Closure}
          * @param use_capture A `gboolean`
          * @returns a `gboolean`
          */
-        add_event_listener(event_name: string, handler: GObject.Callback, use_capture: boolean): boolean;
-        /**
-         * @param args
-         */
-        // Conflicted with WebKit2WebExtension.DOMEventTarget.add_event_listener
-        add_event_listener(...args: never[]): any;
+        add_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
         /**
          * @param event A {@link WebKit2WebExtension.DOMEvent}
          * @returns a `gboolean`
          */
         dispatch_event(event: DOMEvent): boolean;
         /**
+         * Version of `webkit_dom_event_target_remove_event_listener()` using a closure
+         * instead of a callbacks for easier binding in other languages.
          * @param event_name A `gchar`
-         * @param handler A {@link GObject.Callback}
+         * @param handler A {@link GObject.Closure}
          * @param use_capture A `gboolean`
          * @returns a `gboolean`
          */
-        remove_event_listener(event_name: string, handler: any | null, use_capture: boolean): boolean;
-        /**
-         * @param args
-         */
-        // Conflicted with WebKit2WebExtension.DOMEventTarget.remove_event_listener
-        remove_event_listener(...args: never[]): any;
+        remove_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
         /**
          * @param event_name
          * @param handler
@@ -6772,38 +6697,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -6811,15 +6717,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -6986,7 +6886,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -7222,10 +7122,12 @@ export namespace WebKit2WebExtension {
 
         /**
          * @read-only
+         * @default 0
          */
         get child_element_count(): number;
         /**
          * @read-only
+         * @default 0
          */
         get childElementCount(): number;
         /**
@@ -7321,34 +7223,28 @@ export namespace WebKit2WebExtension {
          */
         query_selector_all(selectors: string): DOMNodeList;
         /**
+         * Version of `webkit_dom_event_target_add_event_listener()` using a closure
+         * instead of a callbacks for easier binding in other languages.
          * @param event_name A `gchar`
-         * @param handler A {@link GObject.Callback}
+         * @param handler A {@link GObject.Closure}
          * @param use_capture A `gboolean`
          * @returns a `gboolean`
          */
-        add_event_listener(event_name: string, handler: GObject.Callback, use_capture: boolean): boolean;
-        /**
-         * @param args
-         */
-        // Conflicted with WebKit2WebExtension.DOMEventTarget.add_event_listener
-        add_event_listener(...args: never[]): any;
+        add_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
         /**
          * @param event A {@link WebKit2WebExtension.DOMEvent}
          * @returns a `gboolean`
          */
         dispatch_event(event: DOMEvent): boolean;
         /**
+         * Version of `webkit_dom_event_target_remove_event_listener()` using a closure
+         * instead of a callbacks for easier binding in other languages.
          * @param event_name A `gchar`
-         * @param handler A {@link GObject.Callback}
+         * @param handler A {@link GObject.Closure}
          * @param use_capture A `gboolean`
          * @returns a `gboolean`
          */
-        remove_event_listener(event_name: string, handler: any | null, use_capture: boolean): boolean;
-        /**
-         * @param args
-         */
-        // Conflicted with WebKit2WebExtension.DOMEventTarget.remove_event_listener
-        remove_event_listener(...args: never[]): any;
+        remove_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
         /**
          * @param event_name
          * @param handler
@@ -7415,38 +7311,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -7454,15 +7331,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -7629,7 +7500,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -7967,34 +7838,28 @@ export namespace WebKit2WebExtension {
          */
         get_system_id(): string;
         /**
+         * Version of `webkit_dom_event_target_add_event_listener()` using a closure
+         * instead of a callbacks for easier binding in other languages.
          * @param event_name A `gchar`
-         * @param handler A {@link GObject.Callback}
+         * @param handler A {@link GObject.Closure}
          * @param use_capture A `gboolean`
          * @returns a `gboolean`
          */
-        add_event_listener(event_name: string, handler: GObject.Callback, use_capture: boolean): boolean;
-        /**
-         * @param args
-         */
-        // Conflicted with WebKit2WebExtension.DOMEventTarget.add_event_listener
-        add_event_listener(...args: never[]): any;
+        add_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
         /**
          * @param event A {@link WebKit2WebExtension.DOMEvent}
          * @returns a `gboolean`
          */
         dispatch_event(event: DOMEvent): boolean;
         /**
+         * Version of `webkit_dom_event_target_remove_event_listener()` using a closure
+         * instead of a callbacks for easier binding in other languages.
          * @param event_name A `gchar`
-         * @param handler A {@link GObject.Callback}
+         * @param handler A {@link GObject.Closure}
          * @param use_capture A `gboolean`
          * @returns a `gboolean`
          */
-        remove_event_listener(event_name: string, handler: any | null, use_capture: boolean): boolean;
-        /**
-         * @param args
-         */
-        // Conflicted with WebKit2WebExtension.DOMEventTarget.remove_event_listener
-        remove_event_listener(...args: never[]): any;
+        remove_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
         /**
          * @param event_name
          * @param handler
@@ -8061,38 +7926,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -8100,15 +7946,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -8275,7 +8115,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -8592,10 +8432,12 @@ export namespace WebKit2WebExtension {
         get attributes(): DOMNamedNodeMap;
         /**
          * @read-only
+         * @default 0
          */
         get child_element_count(): number;
         /**
          * @read-only
+         * @default 0
          */
         get childElementCount(): number;
         /**
@@ -8616,34 +8458,42 @@ export namespace WebKit2WebExtension {
         set className(val: string);
         /**
          * @read-only
+         * @default 0
          */
         get client_height(): number;
         /**
          * @read-only
+         * @default 0
          */
         get clientHeight(): number;
         /**
          * @read-only
+         * @default 0
          */
         get client_left(): number;
         /**
          * @read-only
+         * @default 0
          */
         get clientLeft(): number;
         /**
          * @read-only
+         * @default 0
          */
         get client_top(): number;
         /**
          * @read-only
+         * @default 0
          */
         get clientTop(): number;
         /**
          * @read-only
+         * @default 0
          */
         get client_width(): number;
         /**
          * @read-only
+         * @default 0
          */
         get clientWidth(): number;
         /**
@@ -8694,18 +8544,22 @@ export namespace WebKit2WebExtension {
         get nextElementSibling(): DOMElement;
         /**
          * @read-only
+         * @default 0
          */
         get offset_height(): number;
         /**
          * @read-only
+         * @default 0
          */
         get offsetHeight(): number;
         /**
          * @read-only
+         * @default 0
          */
         get offset_left(): number;
         /**
          * @read-only
+         * @default 0
          */
         get offsetLeft(): number;
         /**
@@ -8718,18 +8572,22 @@ export namespace WebKit2WebExtension {
         get offsetParent(): DOMElement;
         /**
          * @read-only
+         * @default 0
          */
         get offset_top(): number;
         /**
          * @read-only
+         * @default 0
          */
         get offsetTop(): number;
         /**
          * @read-only
+         * @default 0
          */
         get offset_width(): number;
         /**
          * @read-only
+         * @default 0
          */
         get offsetWidth(): number;
         get outer_html(): string;
@@ -8750,26 +8608,42 @@ export namespace WebKit2WebExtension {
         get previousElementSibling(): DOMElement;
         /**
          * @read-only
+         * @default 0
          */
         get scroll_height(): number;
         /**
          * @read-only
+         * @default 0
          */
         get scrollHeight(): number;
+        /**
+         * @default 0
+         */
         get scroll_left(): number;
         set scroll_left(val: bigint | number);
+        /**
+         * @default 0
+         */
         get scrollLeft(): number;
         set scrollLeft(val: bigint | number);
+        /**
+         * @default 0
+         */
         get scroll_top(): number;
         set scroll_top(val: bigint | number);
+        /**
+         * @default 0
+         */
         get scrollTop(): number;
         set scrollTop(val: bigint | number);
         /**
          * @read-only
+         * @default 0
          */
         get scroll_width(): number;
         /**
          * @read-only
+         * @default 0
          */
         get scrollWidth(): number;
         /**
@@ -9182,34 +9056,28 @@ export namespace WebKit2WebExtension {
         webkit_matches_selector(selectors: string): boolean;
         webkit_request_fullscreen(): void;
         /**
+         * Version of `webkit_dom_event_target_add_event_listener()` using a closure
+         * instead of a callbacks for easier binding in other languages.
          * @param event_name A `gchar`
-         * @param handler A {@link GObject.Callback}
+         * @param handler A {@link GObject.Closure}
          * @param use_capture A `gboolean`
          * @returns a `gboolean`
          */
-        add_event_listener(event_name: string, handler: GObject.Callback, use_capture: boolean): boolean;
-        /**
-         * @param args
-         */
-        // Conflicted with WebKit2WebExtension.DOMEventTarget.add_event_listener
-        add_event_listener(...args: never[]): any;
+        add_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
         /**
          * @param event A {@link WebKit2WebExtension.DOMEvent}
          * @returns a `gboolean`
          */
         dispatch_event(event: DOMEvent): boolean;
         /**
+         * Version of `webkit_dom_event_target_remove_event_listener()` using a closure
+         * instead of a callbacks for easier binding in other languages.
          * @param event_name A `gchar`
-         * @param handler A {@link GObject.Callback}
+         * @param handler A {@link GObject.Closure}
          * @param use_capture A `gboolean`
          * @returns a `gboolean`
          */
-        remove_event_listener(event_name: string, handler: any | null, use_capture: boolean): boolean;
-        /**
-         * @param args
-         */
-        // Conflicted with WebKit2WebExtension.DOMEventTarget.remove_event_listener
-        remove_event_listener(...args: never[]): any;
+        remove_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
         /**
          * @param event_name
          * @param handler
@@ -9276,38 +9144,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -9315,15 +9164,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -9490,7 +9333,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -9746,34 +9589,28 @@ export namespace WebKit2WebExtension {
         ): void;
         emit(signal: string, ...args: any[]): void;
         /**
+         * Version of `webkit_dom_event_target_add_event_listener()` using a closure
+         * instead of a callbacks for easier binding in other languages.
          * @param event_name A `gchar`
-         * @param handler A {@link GObject.Callback}
+         * @param handler A {@link GObject.Closure}
          * @param use_capture A `gboolean`
          * @returns a `gboolean`
          */
-        add_event_listener(event_name: string, handler: GObject.Callback, use_capture: boolean): boolean;
-        /**
-         * @param args
-         */
-        // Conflicted with WebKit2WebExtension.DOMEventTarget.add_event_listener
-        add_event_listener(...args: never[]): any;
+        add_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
         /**
          * @param event A {@link WebKit2WebExtension.DOMEvent}
          * @returns a `gboolean`
          */
         dispatch_event(event: DOMEvent): boolean;
         /**
+         * Version of `webkit_dom_event_target_remove_event_listener()` using a closure
+         * instead of a callbacks for easier binding in other languages.
          * @param event_name A `gchar`
-         * @param handler A {@link GObject.Callback}
+         * @param handler A {@link GObject.Closure}
          * @param use_capture A `gboolean`
          * @returns a `gboolean`
          */
-        remove_event_listener(event_name: string, handler: any | null, use_capture: boolean): boolean;
-        /**
-         * @param args
-         */
-        // Conflicted with WebKit2WebExtension.DOMEventTarget.remove_event_listener
-        remove_event_listener(...args: never[]): any;
+        remove_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
         /**
          * @param event_name
          * @param handler
@@ -9840,38 +9677,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -9879,15 +9697,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -10054,7 +9866,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -10292,14 +10104,22 @@ export namespace WebKit2WebExtension {
 
         /**
          * @read-only
+         * @default false
          */
         get bubbles(): boolean;
+        /**
+         * @default false
+         */
         get cancel_bubble(): boolean;
         set cancel_bubble(val: boolean);
+        /**
+         * @default false
+         */
         get cancelBubble(): boolean;
         set cancelBubble(val: boolean);
         /**
          * @read-only
+         * @default false
          */
         get cancelable(): boolean;
         /**
@@ -10312,14 +10132,22 @@ export namespace WebKit2WebExtension {
         get currentTarget(): DOMEventTarget;
         /**
          * @read-only
+         * @default 0
          */
         get event_phase(): number;
         /**
          * @read-only
+         * @default 0
          */
         get eventPhase(): number;
+        /**
+         * @default false
+         */
         get return_value(): boolean;
         set return_value(val: boolean);
+        /**
+         * @default false
+         */
         get returnValue(): boolean;
         set returnValue(val: boolean);
         /**
@@ -10336,10 +10164,12 @@ export namespace WebKit2WebExtension {
         get target(): DOMEventTarget;
         /**
          * @read-only
+         * @default 0
          */
         get time_stamp(): number;
         /**
          * @read-only
+         * @default 0
          */
         get timeStamp(): number;
         /**
@@ -10539,6 +10369,7 @@ export namespace WebKit2WebExtension {
 
         /**
          * @read-only
+         * @default 0
          */
         get length(): number;
 
@@ -10973,38 +10804,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -11012,15 +10824,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -11187,7 +10993,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -11492,12 +11298,18 @@ export namespace WebKit2WebExtension {
         set codeBase(val: string);
         get height(): string;
         set height(val: string);
+        /**
+         * @default 0
+         */
         get hspace(): number;
         set hspace(val: bigint | number);
         get name(): string;
         set name(val: string);
         get object(): string;
         set object(val: string);
+        /**
+         * @default 0
+         */
         get vspace(): number;
         set vspace(val: bigint | number);
         get width(): string;
@@ -11678,38 +11490,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -11717,15 +11510,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -11892,7 +11679,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -12199,8 +11986,14 @@ export namespace WebKit2WebExtension {
         set hostname(val: string);
         get href(): string;
         set href(val: string);
+        /**
+         * @default false
+         */
         get no_href(): boolean;
         set no_href(val: boolean);
+        /**
+         * @default false
+         */
         get noHref(): boolean;
         set noHref(val: boolean);
         get pathname(): string;
@@ -12405,38 +12198,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -12444,15 +12218,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -12619,7 +12387,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -12985,38 +12753,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -13024,15 +12773,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -13199,7 +12942,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -13577,38 +13320,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -13616,15 +13340,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -13791,7 +13509,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -14173,38 +13891,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -14212,15 +13911,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -14387,7 +14080,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -14822,38 +14515,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -14861,15 +14535,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -15036,7 +14704,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -15319,8 +14987,14 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @default false
+         */
         get autofocus(): boolean;
         set autofocus(val: boolean);
+        /**
+         * @default false
+         */
         get disabled(): boolean;
         set disabled(val: boolean);
         /**
@@ -15335,10 +15009,12 @@ export namespace WebKit2WebExtension {
         set value(val: string);
         /**
          * @read-only
+         * @default false
          */
         get will_validate(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get willValidate(): boolean;
 
@@ -15477,38 +15153,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -15516,15 +15173,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -15691,7 +15342,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -15963,8 +15614,14 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @default 0
+         */
         get height(): number;
         set height(val: bigint | number);
+        /**
+         * @default 0
+         */
         get width(): number;
         set width(val: bigint | number);
 
@@ -16071,38 +15728,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -16110,15 +15748,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -16285,7 +15917,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -16499,6 +16131,7 @@ export namespace WebKit2WebExtension {
 
         /**
          * @read-only
+         * @default 0
          */
         get length(): number;
 
@@ -16636,6 +16269,9 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @default false
+         */
         get compact(): boolean;
         set compact(val: boolean);
 
@@ -16734,38 +16370,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -16773,15 +16390,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -16948,7 +16559,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -17218,6 +16829,9 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @default false
+         */
         get compact(): boolean;
         set compact(val: boolean);
 
@@ -17316,38 +16930,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -17355,15 +16950,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -17530,7 +17119,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -17896,38 +17485,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -17935,15 +17505,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -18110,7 +17674,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -18420,6 +17984,7 @@ export namespace WebKit2WebExtension {
         set fgColor(val: string);
         /**
          * @read-only
+         * @default 0
          */
         get height(): number;
         get link_color(): string;
@@ -18432,6 +17997,7 @@ export namespace WebKit2WebExtension {
         set vlinkColor(val: string);
         /**
          * @read-only
+         * @default 0
          */
         get width(): number;
 
@@ -18604,38 +18170,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -18643,15 +18190,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -18818,7 +18359,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -19116,8 +18657,14 @@ export namespace WebKit2WebExtension {
         set contentEditable(val: string);
         get dir(): string;
         set dir(val: string);
+        /**
+         * @default false
+         */
         get draggable(): boolean;
         set draggable(val: boolean);
+        /**
+         * @default false
+         */
         get hidden(): boolean;
         set hidden(val: boolean);
         get inner_text(): string;
@@ -19126,10 +18673,12 @@ export namespace WebKit2WebExtension {
         set innerText(val: string);
         /**
          * @read-only
+         * @default false
          */
         get is_content_editable(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get isContentEditable(): boolean;
         get lang(): string;
@@ -19138,14 +18687,26 @@ export namespace WebKit2WebExtension {
         set outer_text(val: string);
         get outerText(): string;
         set outerText(val: string);
+        /**
+         * @default false
+         */
         get spellcheck(): boolean;
         set spellcheck(val: boolean);
+        /**
+         * @default 0
+         */
         get tab_index(): number;
         set tab_index(val: bigint | number);
+        /**
+         * @default 0
+         */
         get tabIndex(): number;
         set tabIndex(val: bigint | number);
         get title(): string;
         set title(val: string);
+        /**
+         * @default false
+         */
         get translate(): boolean;
         set translate(val: boolean);
         get webkitdropzone(): string;
@@ -19365,38 +18926,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -19404,15 +18946,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -19579,7 +19115,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -19861,6 +19397,9 @@ export namespace WebKit2WebExtension {
 
         get align(): string;
         set align(val: string);
+        /**
+         * @default 0
+         */
         get height(): number;
         set height(val: bigint | number);
         get name(): string;
@@ -19869,6 +19408,9 @@ export namespace WebKit2WebExtension {
         set src(val: string);
         get type(): string;
         set type(val: string);
+        /**
+         * @default 0
+         */
         get width(): number;
         set width(val: bigint | number);
 
@@ -20007,38 +19549,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -20046,15 +19569,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -20221,7 +19738,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -20587,38 +20104,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -20626,15 +20124,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -20801,7 +20293,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -21191,38 +20683,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -21230,15 +20703,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -21405,7 +20872,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -21708,6 +21175,7 @@ export namespace WebKit2WebExtension {
         set enctype(val: string);
         /**
          * @read-only
+         * @default 0
          */
         get length(): number;
         get method(): string;
@@ -21868,38 +21336,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -21907,15 +21356,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -22082,7 +21525,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -22403,6 +21846,7 @@ export namespace WebKit2WebExtension {
         set frameBorder(val: string);
         /**
          * @read-only
+         * @default 0
          */
         get height(): number;
         get long_desc(): string;
@@ -22419,8 +21863,14 @@ export namespace WebKit2WebExtension {
         set marginWidth(val: string);
         get name(): string;
         set name(val: string);
+        /**
+         * @default false
+         */
         get no_resize(): boolean;
         set no_resize(val: boolean);
+        /**
+         * @default false
+         */
         get noResize(): boolean;
         set noResize(val: boolean);
         get scrolling(): string;
@@ -22429,6 +21879,7 @@ export namespace WebKit2WebExtension {
         set src(val: string);
         /**
          * @read-only
+         * @default 0
          */
         get width(): number;
 
@@ -22593,38 +22044,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -22632,15 +22064,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -22807,7 +22233,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -23187,38 +22613,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -23226,15 +22633,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -23401,7 +22802,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -23680,8 +23081,14 @@ export namespace WebKit2WebExtension {
 
         get align(): string;
         set align(val: string);
+        /**
+         * @default false
+         */
         get no_shade(): boolean;
         set no_shade(val: boolean);
+        /**
+         * @default false
+         */
         get noShade(): boolean;
         set noShade(val: boolean);
         get size(): string;
@@ -23806,38 +23213,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -23845,15 +23233,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -24020,7 +23402,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -24386,38 +23768,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -24425,15 +23788,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -24600,7 +23957,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -24968,38 +24325,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -25007,15 +24345,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -25182,7 +24514,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -25548,38 +24880,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -25587,15 +24900,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -25762,7 +25069,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -26280,38 +25587,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -26319,15 +25607,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -26494,7 +25776,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -26811,14 +26093,27 @@ export namespace WebKit2WebExtension {
         set border(val: string);
         /**
          * @read-only
+         * @default false
          */
         get complete(): boolean;
+        /**
+         * @default 0
+         */
         get height(): number;
         set height(val: bigint | number);
+        /**
+         * @default 0
+         */
         get hspace(): number;
         set hspace(val: bigint | number);
+        /**
+         * @default false
+         */
         get is_map(): boolean;
         set is_map(val: boolean);
+        /**
+         * @default false
+         */
         get isMap(): boolean;
         set isMap(val: boolean);
         get long_desc(): string;
@@ -26831,18 +26126,22 @@ export namespace WebKit2WebExtension {
         set name(val: string);
         /**
          * @read-only
+         * @default 0
          */
         get natural_height(): number;
         /**
          * @read-only
+         * @default 0
          */
         get naturalHeight(): number;
         /**
          * @read-only
+         * @default 0
          */
         get natural_width(): number;
         /**
          * @read-only
+         * @default 0
          */
         get naturalWidth(): number;
         get src(): string;
@@ -26851,16 +26150,24 @@ export namespace WebKit2WebExtension {
         set use_map(val: string);
         get useMap(): string;
         set useMap(val: string);
+        /**
+         * @default 0
+         */
         get vspace(): number;
         set vspace(val: bigint | number);
+        /**
+         * @default 0
+         */
         get width(): number;
         set width(val: bigint | number);
         /**
          * @read-only
+         * @default 0
          */
         get x(): number;
         /**
          * @read-only
+         * @default 0
          */
         get y(): number;
 
@@ -27075,38 +26382,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -27114,15 +26402,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -27289,7 +26571,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -27617,20 +26899,35 @@ export namespace WebKit2WebExtension {
         set align(val: string);
         get alt(): string;
         set alt(val: string);
+        /**
+         * @default false
+         */
         get autofocus(): boolean;
         set autofocus(val: boolean);
         get capture(): string;
         set capture(val: string);
+        /**
+         * @default false
+         */
         get checked(): boolean;
         set checked(val: boolean);
+        /**
+         * @default false
+         */
         get default_checked(): boolean;
         set default_checked(val: boolean);
+        /**
+         * @default false
+         */
         get defaultChecked(): boolean;
         set defaultChecked(val: boolean);
         get default_value(): string;
         set default_value(val: string);
         get defaultValue(): string;
         set defaultValue(val: string);
+        /**
+         * @default false
+         */
         get disabled(): boolean;
         set disabled(val: boolean);
         /**
@@ -27641,22 +26938,46 @@ export namespace WebKit2WebExtension {
          * @read-only
          */
         get form(): DOMHTMLFormElement;
+        /**
+         * @default 0
+         */
         get height(): number;
         set height(val: bigint | number);
+        /**
+         * @default false
+         */
         get indeterminate(): boolean;
         set indeterminate(val: boolean);
+        /**
+         * @default 0
+         */
         get max_length(): number;
         set max_length(val: bigint | number);
+        /**
+         * @default 0
+         */
         get maxLength(): number;
         set maxLength(val: bigint | number);
+        /**
+         * @default false
+         */
         get multiple(): boolean;
         set multiple(val: boolean);
         get name(): string;
         set name(val: string);
+        /**
+         * @default false
+         */
         get read_only(): boolean;
         set read_only(val: boolean);
+        /**
+         * @default false
+         */
         get readOnly(): boolean;
         set readOnly(val: boolean);
+        /**
+         * @default 0
+         */
         get size(): number;
         set size(val: bigint | number);
         get src(): string;
@@ -27669,14 +26990,19 @@ export namespace WebKit2WebExtension {
         set useMap(val: string);
         get value(): string;
         set value(val: string);
+        /**
+         * @default 0
+         */
         get width(): number;
         set width(val: bigint | number);
         /**
          * @read-only
+         * @default false
          */
         get will_validate(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get willValidate(): boolean;
 
@@ -27972,38 +27298,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -28011,15 +27318,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -28186,7 +27487,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -28460,6 +27761,9 @@ export namespace WebKit2WebExtension {
 
         get type(): string;
         set type(val: string);
+        /**
+         * @default 0
+         */
         get value(): number;
         set value(val: bigint | number);
 
@@ -28564,38 +27868,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -28603,15 +27888,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -28778,7 +28057,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -29159,38 +28438,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -29198,15 +28458,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -29373,7 +28627,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -29751,38 +29005,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -29790,15 +29025,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -29965,7 +29194,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -30257,6 +29486,9 @@ export namespace WebKit2WebExtension {
 
         get charset(): string;
         set charset(val: string);
+        /**
+         * @default false
+         */
         get disabled(): boolean;
         set disabled(val: boolean);
         get href(): string;
@@ -30451,38 +29683,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -30490,15 +29703,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -30665,7 +29872,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -31041,38 +30248,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -31080,15 +30268,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -31255,7 +30437,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -31609,38 +30791,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -31648,15 +30811,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -31823,7 +30980,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -32093,6 +31250,9 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @default false
+         */
         get compact(): boolean;
         set compact(val: boolean);
 
@@ -32189,38 +31349,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -32228,15 +31369,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -32403,7 +31538,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -32808,38 +31943,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -32847,15 +31963,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -33022,7 +32132,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -33403,38 +32513,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -33442,15 +32533,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -33617,7 +32702,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -33891,8 +32976,14 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @default false
+         */
         get compact(): boolean;
         set compact(val: boolean);
+        /**
+         * @default 0
+         */
         get start(): number;
         set start(val: bigint | number);
         get type(): string;
@@ -34009,38 +33100,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -34048,15 +33120,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -34223,7 +33289,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -34557,6 +33623,9 @@ export namespace WebKit2WebExtension {
         get contentDocument(): DOMDocument;
         get data(): string;
         set data(val: string);
+        /**
+         * @default false
+         */
         get declare(): boolean;
         set declare(val: boolean);
         /**
@@ -34565,6 +33634,9 @@ export namespace WebKit2WebExtension {
         get form(): DOMHTMLFormElement;
         get height(): string;
         set height(val: string);
+        /**
+         * @default 0
+         */
         get hspace(): number;
         set hspace(val: bigint | number);
         get name(): string;
@@ -34577,6 +33649,9 @@ export namespace WebKit2WebExtension {
         set use_map(val: string);
         get useMap(): string;
         set useMap(val: string);
+        /**
+         * @default 0
+         */
         get vspace(): number;
         set vspace(val: bigint | number);
         get width(): string;
@@ -34810,38 +33885,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -34849,15 +33905,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -35275,6 +34325,9 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @default false
+         */
         get disabled(): boolean;
         set disabled(val: boolean);
         get label(): string;
@@ -35383,38 +34436,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -35422,15 +34456,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -35597,7 +34625,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -35882,10 +34910,19 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @default false
+         */
         get default_selected(): boolean;
         set default_selected(val: boolean);
+        /**
+         * @default false
+         */
         get defaultSelected(): boolean;
         set defaultSelected(val: boolean);
+        /**
+         * @default false
+         */
         get disabled(): boolean;
         set disabled(val: boolean);
         /**
@@ -35894,10 +34931,14 @@ export namespace WebKit2WebExtension {
         get form(): DOMHTMLFormElement;
         /**
          * @read-only
+         * @default 0
          */
         get index(): number;
         get label(): string;
         set label(val: string);
+        /**
+         * @default false
+         */
         get selected(): boolean;
         set selected(val: boolean);
         /**
@@ -36046,38 +35087,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -36085,15 +35107,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -36260,7 +35276,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -36477,10 +35493,17 @@ export namespace WebKit2WebExtension {
 
         /**
          * @read-only
+         * @default 0
          */
         get length(): number;
+        /**
+         * @default 0
+         */
         get selected_index(): number;
         set selected_index(val: bigint | number);
+        /**
+         * @default 0
+         */
         get selectedIndex(): number;
         set selectedIndex(val: bigint | number);
 
@@ -36721,38 +35744,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -36760,15 +35764,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -36935,7 +35933,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -37342,38 +36340,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -37381,15 +36360,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -37556,7 +36529,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -37828,8 +36801,14 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @default 0
+         */
         get width(): number;
         set width(val: bigint | number);
+        /**
+         * @default false
+         */
         get wrap(): boolean;
         set wrap(val: boolean);
 
@@ -37934,38 +36913,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -37973,15 +36933,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -38148,7 +37102,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -38516,38 +37470,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -38555,15 +37490,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -38730,7 +37659,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -39015,6 +37944,9 @@ export namespace WebKit2WebExtension {
 
         get charset(): string;
         set charset(val: string);
+        /**
+         * @default false
+         */
         get defer(): boolean;
         set defer(val: boolean);
         get event(): string;
@@ -39173,38 +38105,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -39212,15 +38125,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -39387,7 +38294,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -39681,16 +38588,28 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @default false
+         */
         get autofocus(): boolean;
         set autofocus(val: boolean);
+        /**
+         * @default false
+         */
         get disabled(): boolean;
         set disabled(val: boolean);
         /**
          * @read-only
          */
         get form(): DOMHTMLFormElement;
+        /**
+         * @default 0
+         */
         get length(): number;
         set length(val: bigint | number);
+        /**
+         * @default false
+         */
         get multiple(): boolean;
         set multiple(val: boolean);
         get name(): string;
@@ -39699,10 +38618,19 @@ export namespace WebKit2WebExtension {
          * @read-only
          */
         get options(): DOMHTMLOptionsCollection;
+        /**
+         * @default 0
+         */
         get selected_index(): number;
         set selected_index(val: bigint | number);
+        /**
+         * @default 0
+         */
         get selectedIndex(): number;
         set selectedIndex(val: bigint | number);
+        /**
+         * @default 0
+         */
         get size(): number;
         set size(val: bigint | number);
         /**
@@ -39713,10 +38641,12 @@ export namespace WebKit2WebExtension {
         set value(val: string);
         /**
          * @read-only
+         * @default false
          */
         get will_validate(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get willValidate(): boolean;
 
@@ -39911,38 +38841,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -39950,15 +38861,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -40125,7 +39030,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -40401,6 +39306,9 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @default false
+         */
         get disabled(): boolean;
         set disabled(val: boolean);
         get media(): string;
@@ -40527,38 +39435,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -40566,15 +39455,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -40741,7 +39624,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -41109,38 +39992,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -41148,15 +40012,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -41323,7 +40181,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -41640,10 +40498,12 @@ export namespace WebKit2WebExtension {
         set bgColor(val: string);
         /**
          * @read-only
+         * @default 0
          */
         get cell_index(): number;
         /**
          * @read-only
+         * @default 0
          */
         get cellIndex(): number;
         get ch(): string;
@@ -41652,20 +40512,38 @@ export namespace WebKit2WebExtension {
         set ch_off(val: string);
         get chOff(): string;
         set chOff(val: string);
+        /**
+         * @default 0
+         */
         get col_span(): number;
         set col_span(val: bigint | number);
+        /**
+         * @default 0
+         */
         get colSpan(): number;
         set colSpan(val: bigint | number);
         get headers(): string;
         set headers(val: string);
         get height(): string;
         set height(val: string);
+        /**
+         * @default false
+         */
         get no_wrap(): boolean;
         set no_wrap(val: boolean);
+        /**
+         * @default false
+         */
         get noWrap(): boolean;
         set noWrap(val: boolean);
+        /**
+         * @default 0
+         */
         get row_span(): number;
         set row_span(val: bigint | number);
+        /**
+         * @default 0
+         */
         get rowSpan(): number;
         set rowSpan(val: bigint | number);
         get scope(): string;
@@ -41880,38 +40758,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -41919,15 +40778,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -42094,7 +40947,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -42384,6 +41237,9 @@ export namespace WebKit2WebExtension {
         set ch_off(val: string);
         get chOff(): string;
         set chOff(val: string);
+        /**
+         * @default 0
+         */
         get span(): number;
         set span(val: bigint | number);
         get v_align(): string;
@@ -42528,38 +41384,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -42567,15 +41404,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -42742,7 +41573,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -43304,38 +42135,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -43343,15 +42155,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -43518,7 +42324,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -43825,18 +42631,22 @@ export namespace WebKit2WebExtension {
         set chOff(val: string);
         /**
          * @read-only
+         * @default 0
          */
         get row_index(): number;
         /**
          * @read-only
+         * @default 0
          */
         get rowIndex(): number;
         /**
          * @read-only
+         * @default 0
          */
         get section_row_index(): number;
         /**
          * @read-only
+         * @default 0
          */
         get sectionRowIndex(): number;
         get v_align(): string;
@@ -43992,38 +42802,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -44031,15 +42822,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -44206,7 +42991,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -44635,38 +43420,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -44674,15 +43440,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -44849,7 +43609,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -45148,14 +43908,23 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @default false
+         */
         get autofocus(): boolean;
         set autofocus(val: boolean);
+        /**
+         * @default 0
+         */
         get cols(): number;
         set cols(val: bigint | number);
         get default_value(): string;
         set default_value(val: string);
         get defaultValue(): string;
         set defaultValue(val: string);
+        /**
+         * @default false
+         */
         get disabled(): boolean;
         set disabled(val: boolean);
         /**
@@ -45164,18 +43933,39 @@ export namespace WebKit2WebExtension {
         get form(): DOMHTMLFormElement;
         get name(): string;
         set name(val: string);
+        /**
+         * @default false
+         */
         get read_only(): boolean;
         set read_only(val: boolean);
+        /**
+         * @default false
+         */
         get readOnly(): boolean;
         set readOnly(val: boolean);
+        /**
+         * @default 0
+         */
         get rows(): number;
         set rows(val: bigint | number);
+        /**
+         * @default 0
+         */
         get selection_end(): number;
         set selection_end(val: bigint | number);
+        /**
+         * @default 0
+         */
         get selectionEnd(): number;
         set selectionEnd(val: bigint | number);
+        /**
+         * @default 0
+         */
         get selection_start(): number;
         set selection_start(val: bigint | number);
+        /**
+         * @default 0
+         */
         get selectionStart(): number;
         set selectionStart(val: bigint | number);
         /**
@@ -45186,10 +43976,12 @@ export namespace WebKit2WebExtension {
         set value(val: string);
         /**
          * @read-only
+         * @default false
          */
         get will_validate(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get willValidate(): boolean;
 
@@ -45383,38 +44175,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -45422,15 +44195,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -45597,7 +44364,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -45965,38 +44732,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -46004,15 +44752,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -46179,7 +44921,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -46451,6 +45193,9 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @default false
+         */
         get compact(): boolean;
         set compact(val: boolean);
         get type(): string;
@@ -46559,38 +45304,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -46598,15 +45324,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -46773,7 +45493,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -47024,26 +45744,32 @@ export namespace WebKit2WebExtension {
 
         /**
          * @read-only
+         * @default false
          */
         get alt_graph_key(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get altGraphKey(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get alt_key(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get altKey(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get ctrl_key(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get ctrlKey(): boolean;
         /**
@@ -47056,26 +45782,32 @@ export namespace WebKit2WebExtension {
         get keyIdentifier(): string;
         /**
          * @read-only
+         * @default 0
          */
         get key_location(): number;
         /**
          * @read-only
+         * @default 0
          */
         get keyLocation(): number;
         /**
          * @read-only
+         * @default false
          */
         get meta_key(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get metaKey(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get shift_key(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get shiftKey(): boolean;
 
@@ -47205,6 +45937,7 @@ export namespace WebKit2WebExtension {
 
         /**
          * @read-only
+         * @default 0
          */
         get length(): number;
         get media_text(): string;
@@ -47362,38 +46095,47 @@ export namespace WebKit2WebExtension {
 
         /**
          * @read-only
+         * @default false
          */
         get alt_key(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get altKey(): boolean;
         /**
          * @read-only
+         * @default 0
          */
         get button(): number;
         /**
          * @read-only
+         * @default 0
          */
         get client_x(): number;
         /**
          * @read-only
+         * @default 0
          */
         get clientX(): number;
         /**
          * @read-only
+         * @default 0
          */
         get client_y(): number;
         /**
          * @read-only
+         * @default 0
          */
         get clientY(): number;
         /**
          * @read-only
+         * @default false
          */
         get ctrl_key(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get ctrlKey(): boolean;
         /**
@@ -47406,26 +46148,32 @@ export namespace WebKit2WebExtension {
         get fromElement(): DOMNode;
         /**
          * @read-only
+         * @default false
          */
         get meta_key(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get metaKey(): boolean;
         /**
          * @read-only
+         * @default 0
          */
         get offset_x(): number;
         /**
          * @read-only
+         * @default 0
          */
         get offsetX(): number;
         /**
          * @read-only
+         * @default 0
          */
         get offset_y(): number;
         /**
          * @read-only
+         * @default 0
          */
         get offsetY(): number;
         /**
@@ -47438,26 +46186,32 @@ export namespace WebKit2WebExtension {
         get relatedTarget(): DOMEventTarget;
         /**
          * @read-only
+         * @default 0
          */
         get screen_x(): number;
         /**
          * @read-only
+         * @default 0
          */
         get screenX(): number;
         /**
          * @read-only
+         * @default 0
          */
         get screen_y(): number;
         /**
          * @read-only
+         * @default 0
          */
         get screenY(): number;
         /**
          * @read-only
+         * @default false
          */
         get shift_key(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get shiftKey(): boolean;
         /**
@@ -47470,10 +46224,12 @@ export namespace WebKit2WebExtension {
         get toElement(): DOMNode;
         /**
          * @read-only
+         * @default 0
          */
         get x(): number;
         /**
          * @read-only
+         * @default 0
          */
         get y(): number;
 
@@ -47639,6 +46395,7 @@ export namespace WebKit2WebExtension {
 
         /**
          * @read-only
+         * @default 0
          */
         get length(): number;
 
@@ -47832,10 +46589,12 @@ export namespace WebKit2WebExtension {
         get nodeName(): string;
         /**
          * @read-only
+         * @default 0
          */
         get node_type(): number;
         /**
          * @read-only
+         * @default 0
          */
         get nodeType(): number;
         get node_value(): string;
@@ -48023,7 +46782,7 @@ export namespace WebKit2WebExtension {
          * @param refChild A {@link WebKit2WebExtension.DOMNode}
          * @returns A {@link WebKit2WebExtension.DOMNode}
          */
-        insert_before(newChild: DOMNode, refChild?: DOMNode | null): DOMNode;
+        insert_before(newChild: DOMNode, refChild: DOMNode | null): DOMNode;
         /**
          * @param namespaceURI A `gchar`
          * @returns A `gboolean`
@@ -48080,34 +46839,28 @@ export namespace WebKit2WebExtension {
          */
         set_text_content(value: string): void;
         /**
+         * Version of `webkit_dom_event_target_add_event_listener()` using a closure
+         * instead of a callbacks for easier binding in other languages.
          * @param event_name A `gchar`
-         * @param handler A {@link GObject.Callback}
+         * @param handler A {@link GObject.Closure}
          * @param use_capture A `gboolean`
          * @returns a `gboolean`
          */
-        add_event_listener(event_name: string, handler: GObject.Callback, use_capture: boolean): boolean;
-        /**
-         * @param args
-         */
-        // Conflicted with WebKit2WebExtension.DOMEventTarget.add_event_listener
-        add_event_listener(...args: never[]): any;
+        add_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
         /**
          * @param event A {@link WebKit2WebExtension.DOMEvent}
          * @returns a `gboolean`
          */
         dispatch_event(event: DOMEvent): boolean;
         /**
+         * Version of `webkit_dom_event_target_remove_event_listener()` using a closure
+         * instead of a callbacks for easier binding in other languages.
          * @param event_name A `gchar`
-         * @param handler A {@link GObject.Callback}
+         * @param handler A {@link GObject.Closure}
          * @param use_capture A `gboolean`
          * @returns a `gboolean`
          */
-        remove_event_listener(event_name: string, handler: any | null, use_capture: boolean): boolean;
-        /**
-         * @param args
-         */
-        // Conflicted with WebKit2WebExtension.DOMEventTarget.remove_event_listener
-        remove_event_listener(...args: never[]): any;
+        remove_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
         /**
          * @param event_name
          * @param handler
@@ -48174,38 +46927,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -48213,15 +46947,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -48388,7 +47116,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -48617,10 +47345,12 @@ export namespace WebKit2WebExtension {
         get filter(): DOMNodeFilter;
         /**
          * @read-only
+         * @default false
          */
         get pointer_before_reference_node(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get pointerBeforeReferenceNode(): boolean;
         /**
@@ -48637,10 +47367,12 @@ export namespace WebKit2WebExtension {
         get root(): DOMNode;
         /**
          * @read-only
+         * @default 0
          */
         get what_to_show(): number;
         /**
          * @read-only
+         * @default 0
          */
         get whatToShow(): number;
 
@@ -48742,6 +47474,7 @@ export namespace WebKit2WebExtension {
 
         /**
          * @read-only
+         * @default 0
          */
         get length(): number;
 
@@ -49009,38 +47742,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -49048,15 +47762,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -49228,7 +47936,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * @param args
          */
@@ -49464,6 +48172,7 @@ export namespace WebKit2WebExtension {
 
         /**
          * @read-only
+         * @default false
          */
         get collapsed(): boolean;
         /**
@@ -49484,10 +48193,12 @@ export namespace WebKit2WebExtension {
         get endContainer(): DOMNode;
         /**
          * @read-only
+         * @default 0
          */
         get end_offset(): number;
         /**
          * @read-only
+         * @default 0
          */
         get endOffset(): number;
         /**
@@ -49500,10 +48211,12 @@ export namespace WebKit2WebExtension {
         get startContainer(): DOMNode;
         /**
          * @read-only
+         * @default 0
          */
         get start_offset(): number;
         /**
          * @read-only
+         * @default 0
          */
         get startOffset(): number;
         /**
@@ -49716,6 +48429,9 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @default false
+         */
         get disabled(): boolean;
         set disabled(val: boolean);
         /**
@@ -49847,6 +48563,7 @@ export namespace WebKit2WebExtension {
 
         /**
          * @read-only
+         * @default 0
          */
         get length(): number;
 
@@ -50045,38 +48762,19 @@ export namespace WebKit2WebExtension {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -50084,15 +48782,9 @@ export namespace WebKit2WebExtension {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -50264,7 +48956,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * @param args
          */
@@ -50507,10 +49199,12 @@ export namespace WebKit2WebExtension {
         get root(): DOMNode;
         /**
          * @read-only
+         * @default 0
          */
         get what_to_show(): number;
         /**
          * @read-only
+         * @default 0
          */
         get whatToShow(): number;
 
@@ -50661,54 +49355,67 @@ export namespace WebKit2WebExtension {
 
         /**
          * @read-only
+         * @default 0
          */
         get char_code(): number;
         /**
          * @read-only
+         * @default 0
          */
         get charCode(): number;
         /**
          * @read-only
+         * @default 0
          */
         get detail(): number;
         /**
          * @read-only
+         * @default 0
          */
         get key_code(): number;
         /**
          * @read-only
+         * @default 0
          */
         get keyCode(): number;
         /**
          * @read-only
+         * @default 0
          */
         get layer_x(): number;
         /**
          * @read-only
+         * @default 0
          */
         get layerX(): number;
         /**
          * @read-only
+         * @default 0
          */
         get layer_y(): number;
         /**
          * @read-only
+         * @default 0
          */
         get layerY(): number;
         /**
          * @read-only
+         * @default 0
          */
         get page_x(): number;
         /**
          * @read-only
+         * @default 0
          */
         get pageX(): number;
         /**
          * @read-only
+         * @default 0
          */
         get page_y(): number;
         /**
          * @read-only
+         * @default 0
          */
         get pageY(): number;
         /**
@@ -50867,26 +49574,32 @@ export namespace WebKit2WebExtension {
 
         /**
          * @read-only
+         * @default 0
          */
         get wheel_delta(): number;
         /**
          * @read-only
+         * @default 0
          */
         get wheelDelta(): number;
         /**
          * @read-only
+         * @default 0
          */
         get wheel_delta_x(): number;
         /**
          * @read-only
+         * @default 0
          */
         get wheelDeltaX(): number;
         /**
          * @read-only
+         * @default 0
          */
         get wheel_delta_y(): number;
         /**
          * @read-only
+         * @default 0
          */
         get wheelDeltaY(): number;
 
@@ -51075,34 +49788,42 @@ export namespace WebKit2WebExtension {
 
         /**
          * @read-only
+         * @default false
          */
         get boolean_value(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get booleanValue(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get invalid_iterator_state(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get invalidIteratorState(): boolean;
         /**
          * @read-only
+         * @default 0
          */
         get number_value(): number;
         /**
          * @read-only
+         * @default 0
          */
         get numberValue(): number;
         /**
          * @read-only
+         * @default 0
          */
         get result_type(): number;
         /**
          * @read-only
+         * @default 0
          */
         get resultType(): number;
         /**
@@ -51115,10 +49836,12 @@ export namespace WebKit2WebExtension {
         get singleNodeValue(): DOMNode;
         /**
          * @read-only
+         * @default 0
          */
         get snapshot_length(): number;
         /**
          * @read-only
+         * @default 0
          */
         get snapshotLength(): number;
         /**
@@ -51371,66 +50094,77 @@ export namespace WebKit2WebExtension {
          * Bitmask of {@link WebKit2WebExtension.HitTestResultContext} flags representing
          * the context of the {@link WebKit2WebExtension.HitTestResult}.
          * @construct-only
+         * @default 0
          */
         get context(): number;
         /**
          * The URI of the image if flag {@link WebKit2WebExtension.HitTestResultContext.IMAGE}
          * is present in {@link WebKit2WebExtension.HitTestResult.context}
          * @construct-only
+         * @default null
          */
         get image_uri(): string;
         /**
          * The URI of the image if flag {@link WebKit2WebExtension.HitTestResultContext.IMAGE}
          * is present in {@link WebKit2WebExtension.HitTestResult.context}
          * @construct-only
+         * @default null
          */
         get imageUri(): string;
         /**
          * The label of the link if flag {@link WebKit2WebExtension.HitTestResultContext.LINK}
          * is present in {@link WebKit2WebExtension.HitTestResult.context}
          * @construct-only
+         * @default null
          */
         get link_label(): string;
         /**
          * The label of the link if flag {@link WebKit2WebExtension.HitTestResultContext.LINK}
          * is present in {@link WebKit2WebExtension.HitTestResult.context}
          * @construct-only
+         * @default null
          */
         get linkLabel(): string;
         /**
          * The title of the link if flag {@link WebKit2WebExtension.HitTestResultContext.LINK}
          * is present in {@link WebKit2WebExtension.HitTestResult.context}
          * @construct-only
+         * @default null
          */
         get link_title(): string;
         /**
          * The title of the link if flag {@link WebKit2WebExtension.HitTestResultContext.LINK}
          * is present in {@link WebKit2WebExtension.HitTestResult.context}
          * @construct-only
+         * @default null
          */
         get linkTitle(): string;
         /**
          * The URI of the link if flag {@link WebKit2WebExtension.HitTestResultContext.LINK}
          * is present in {@link WebKit2WebExtension.HitTestResult.context}
          * @construct-only
+         * @default null
          */
         get link_uri(): string;
         /**
          * The URI of the link if flag {@link WebKit2WebExtension.HitTestResultContext.LINK}
          * is present in {@link WebKit2WebExtension.HitTestResult.context}
          * @construct-only
+         * @default null
          */
         get linkUri(): string;
         /**
          * The URI of the media if flag {@link WebKit2WebExtension.HitTestResultContext.MEDIA}
          * is present in {@link WebKit2WebExtension.HitTestResult.context}
          * @construct-only
+         * @default null
          */
         get media_uri(): string;
         /**
          * The URI of the media if flag {@link WebKit2WebExtension.HitTestResultContext.MEDIA}
          * is present in {@link WebKit2WebExtension.HitTestResult.context}
          * @construct-only
+         * @default null
          */
         get mediaUri(): string;
 
@@ -51654,6 +50388,7 @@ export namespace WebKit2WebExtension {
 
         /**
          * The URI to which the request will be made.
+         * @default about:blank
          */
         get uri(): string;
         set uri(val: string);
@@ -51764,11 +50499,13 @@ export namespace WebKit2WebExtension {
         /**
          * The expected content length of the response.
          * @read-only
+         * @default 0
          */
         get content_length(): number;
         /**
          * The expected content length of the response.
          * @read-only
+         * @default 0
          */
         get contentLength(): number;
         /**
@@ -51786,36 +50523,43 @@ export namespace WebKit2WebExtension {
         /**
          * The MIME type of the response.
          * @read-only
+         * @default null
          */
         get mime_type(): string;
         /**
          * The MIME type of the response.
          * @read-only
+         * @default null
          */
         get mimeType(): string;
         /**
          * The status code of the response as returned by the server.
          * @read-only
+         * @default 0
          */
         get status_code(): number;
         /**
          * The status code of the response as returned by the server.
          * @read-only
+         * @default 0
          */
         get statusCode(): number;
         /**
          * The suggested filename for the URI response.
          * @read-only
+         * @default null
          */
         get suggested_filename(): string;
         /**
          * The suggested filename for the URI response.
          * @read-only
+         * @default null
          */
         get suggestedFilename(): string;
         /**
          * The URI for which the response was made.
          * @read-only
+         * @default null
          */
         get uri(): string;
 
@@ -51911,10 +50655,10 @@ export namespace WebKit2WebExtension {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
-            fd_list: Gio.UnixFDList;
-            fdList: Gio.UnixFDList;
+            fd_list: Gio.UnixFDList | null;
+            fdList: Gio.UnixFDList | null;
             name: string;
-            parameters: GLib.Variant;
+            parameters: GLib.Variant | null;
         }
     }
 
@@ -51940,17 +50684,18 @@ export namespace WebKit2WebExtension {
          * @since 2.28
          * @construct-only
          */
-        get fd_list(): Gio.UnixFDList;
+        get fd_list(): Gio.UnixFDList | null;
         /**
          * The UNIX file descriptors of the user message.
          * @since 2.28
          * @construct-only
          */
-        get fdList(): Gio.UnixFDList;
+        get fdList(): Gio.UnixFDList | null;
         /**
          * The name of the user message.
          * @since 2.28
          * @construct-only
+         * @default null
          */
         get name(): string;
         /**
@@ -51960,7 +50705,7 @@ export namespace WebKit2WebExtension {
          * @since 2.28
          * @construct-only
          */
-        get parameters(): GLib.Variant;
+        get parameters(): GLib.Variant | null;
 
         /**
          * Compile-time signal type information.
@@ -51977,12 +50722,12 @@ export namespace WebKit2WebExtension {
 
         _init(...args: any[]): void;
 
-        static ['new'](name: string, parameters?: GLib.Variant | null): UserMessage;
+        static ['new'](name: string, parameters: GLib.Variant | null): UserMessage;
 
         static new_with_fd_list(
             name: string,
-            parameters?: GLib.Variant | null,
-            fd_list?: Gio.UnixFDList | null,
+            parameters: GLib.Variant | null,
+            fd_list: Gio.UnixFDList | null,
         ): UserMessage;
 
         // Signals
@@ -52276,7 +51021,7 @@ export namespace WebKit2WebExtension {
          */
         send_message_to_context(
             message: UserMessage,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<UserMessage>;
         /**
          * Send `message` to the `WebKitWebContext` corresponding to `extension`. If `message` is floating, it's consumed.
@@ -52305,7 +51050,7 @@ export namespace WebKit2WebExtension {
          */
         send_message_to_context(
             message: UserMessage,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<UserMessage> | void;
         /**
@@ -52518,7 +51263,7 @@ export namespace WebKit2WebExtension {
          * @param world a {@link WebKit2WebExtension.ScriptWorld}, or `null` to use the default
          * @returns a {@link JavaScriptCore.Value} for the DOM node, or `null`
          */
-        get_js_node(world?: ScriptWorld | null): JavaScriptCore.Value | null;
+        get_js_node(world: ScriptWorld | null): JavaScriptCore.Value | null;
         /**
          * Get the {@link WebKit2WebExtension.DOMNode} in the coordinates of the Hit Test.
          * @returns a {@link WebKit2WebExtension.DOMNode}
@@ -52690,6 +51435,7 @@ export namespace WebKit2WebExtension {
         /**
          * The current active URI of the {@link WebKit2WebExtension.WebPage}.
          * @read-only
+         * @default null
          */
         get uri(): string;
 
@@ -52746,7 +51492,7 @@ export namespace WebKit2WebExtension {
          * @param world a {@link WebKit2WebExtension.ScriptWorld}
          * @returns a {@link WebKit2WebExtension.WebFormManager}
          */
-        get_form_manager(world?: ScriptWorld | null): WebFormManager;
+        get_form_manager(world: ScriptWorld | null): WebFormManager;
         /**
          * Get the identifier of the {@link WebKit2WebExtension.WebPage}
          * @returns the identifier of `web_page`
@@ -52776,7 +51522,7 @@ export namespace WebKit2WebExtension {
          */
         send_message_to_view(
             message: UserMessage,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<UserMessage>;
         /**
          * Send `message` to the `WebKitWebView` corresponding to `web_page`. If `message` is floating, it's consumed.
@@ -52805,7 +51551,7 @@ export namespace WebKit2WebExtension {
          */
         send_message_to_view(
             message: UserMessage,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<UserMessage> | void;
         /**
@@ -53453,13 +52199,6 @@ export namespace WebKit2WebExtension {
         // Methods
 
         /**
-         * @param event_name A `gchar`
-         * @param handler A {@link GObject.Callback}
-         * @param use_capture A `gboolean`
-         * @returns a `gboolean`
-         */
-        add_event_listener(event_name: string, handler: GObject.Callback, use_capture: boolean): boolean;
-        /**
          * Version of `webkit_dom_event_target_add_event_listener()` using a closure
          * instead of a callbacks for easier binding in other languages.
          * @param event_name A `gchar`
@@ -53473,13 +52212,6 @@ export namespace WebKit2WebExtension {
          * @returns a `gboolean`
          */
         dispatch_event(event: DOMEvent): boolean;
-        /**
-         * @param event_name A `gchar`
-         * @param handler A {@link GObject.Callback}
-         * @param use_capture A `gboolean`
-         * @returns a `gboolean`
-         */
-        remove_event_listener(event_name: string, handler: any | null, use_capture: boolean): boolean;
         /**
          * Version of `webkit_dom_event_target_remove_event_listener()` using a closure
          * instead of a callbacks for easier binding in other languages.

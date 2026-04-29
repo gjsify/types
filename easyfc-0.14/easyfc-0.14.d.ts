@@ -202,7 +202,7 @@ export namespace Easyfc {
      * @param alias_name the alias name to obtain the fonts pettern list for.
      * @returns a {@link GLib.List} contains {@link fontconfig.Pattern}, otherwise `null`.
      */
-    function font_get_pattern_list(language?: string | null, alias_name?: string | null): fontconfig.Pattern[];
+    function font_get_pattern_list(language: string | null, alias_name: string | null): fontconfig.Pattern[];
     /**
      * Checks if `alias_name` is one of sans-serif, serif, monospace, cursive, fantasy,
      * emoji or math.
@@ -217,7 +217,7 @@ export namespace Easyfc {
      * @returns a {@link GLib.List} contains the font family name.          if no valid families, `null` then.
      * @deprecated since 0.7: Use `ezfc_font_get_list()`.
      */
-    function get_fonts_list(language?: string | null, alias_name?: string | null): string[];
+    function get_fonts_list(language: string | null, alias_name: string | null): string[];
     /**
      * Obtains {@link fontconfig.Pattern} list being assigned to `alias_name` for `language`.
      * @param language the language name fontconfig can deal with.
@@ -225,7 +225,7 @@ export namespace Easyfc {
      * @returns a {@link GLib.List} contains {@link fontconfig.Pattern}, otherwise `null`.
      * @deprecated since 0.7: Use `ezfc_font_get_pattern_list()`.
      */
-    function get_fonts_pattern_list(language?: string | null, alias_name?: string | null): fontconfig.Pattern[];
+    function get_fonts_pattern_list(language: string | null, alias_name: string | null): fontconfig.Pattern[];
     /**
      * Initialize the library.
      */
@@ -347,7 +347,7 @@ export namespace Easyfc {
          * @param language a language name referenced to the alias
          * @returns a {@link GLib.List} contains {@link Easyfc.Alias} or `null`.
          */
-        get_aliases(language?: string | null): Alias[];
+        get_aliases(language: string | null): Alias[];
         /**
          * Obtains the list of {@link Easyfc.Font} in `config`.
          * @returns a {@link GLib.List} contains {@link Easyfc.Font} or `null`.
@@ -403,7 +403,7 @@ export namespace Easyfc {
          * @param language a language name to remove `alias_name` from.
          * @returns `true` if it's successfully removed, otherwise `false`.
          */
-        remove_aliases(language?: string | null): boolean;
+        remove_aliases(language: string | null): boolean;
         /**
          * Remove a {@link Easyfc.Font} instance corresponding to `family`.
          * @param family a family name to be removed.
@@ -456,7 +456,7 @@ export namespace Easyfc {
          * make the change in the filename for output.
          * @param name additional configuration name.
          */
-        set_name(name?: string | null): void;
+        set_name(name: string | null): void;
         /**
          * Set `priority` to `config` instance.
          * @param priority a priority number that is used for a filename. it has to be            within 3 digits. so the maximum value is 999.
@@ -505,7 +505,7 @@ export namespace Easyfc {
          * @param language the language name fontconfig can deal with.
          * @param alias_name the alias name to obtain the fonts pettern list for.
          */
-        static get_pattern_list(language?: string | null, alias_name?: string | null): fontconfig.Pattern[];
+        static get_pattern_list(language: string | null, alias_name: string | null): fontconfig.Pattern[];
         /**
          * Checks if `alias_name` is one of sans-serif, serif, monospace, cursive, fantasy,
          * emoji or math.

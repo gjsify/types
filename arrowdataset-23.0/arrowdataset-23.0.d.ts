@@ -276,7 +276,7 @@ export namespace ArrowDataset {
          * @param options A {@link ArrowDataset.FinishOptions}.
          * @returns A newly created {@link ArrowDataset.Dataset} on success, `null` on error.
          */
-        finish(options?: FinishOptions | null): Dataset | null;
+        finish(options: FinishOptions | null): Dataset | null;
     }
 
     namespace DirectoryPartitioning {
@@ -313,8 +313,8 @@ export namespace ArrowDataset {
 
         static ['new'](
             schema: Arrow.Schema,
-            dictionaries?: Arrow.Array[] | null,
-            options?: KeyValuePartitioningOptions | null,
+            dictionaries: Arrow.Array[] | null,
+            options: KeyValuePartitioningOptions | null,
         ): DirectoryPartitioning;
 
         // Signals
@@ -583,12 +583,14 @@ export namespace ArrowDataset {
         /**
          * Partition base directory used by {@link ArrowDataset.FileSystemDataset}.
          * @since 6.0.0
+         * @default null
          */
         get partition_base_dir(): string;
         set partition_base_dir(val: string);
         /**
          * Partition base directory used by {@link ArrowDataset.FileSystemDataset}.
          * @since 6.0.0
+         * @default null
          */
         get partitionBaseDir(): string;
         set partitionBaseDir(val: string);
@@ -650,7 +652,7 @@ export namespace ArrowDataset {
          * @param options A {@link ArrowDataset.FinishOptions}.
          * @returns A newly created {@link ArrowDataset.FileSystemDataset} on success, `null` on error.
          */
-        finish(options?: FinishOptions | null): FileSystemDataset | null;
+        finish(options: FinishOptions | null): FileSystemDataset | null;
         /**
          * @param file_system A {@link Arrow.FileSystem}.
          * @returns `true` on success, `false` otherwise.
@@ -699,14 +701,21 @@ export namespace ArrowDataset {
 
         // Properties
 
+        /**
+         * @default null
+         */
         get base_dir(): string;
         set base_dir(val: string);
+        /**
+         * @default null
+         */
         get baseDir(): string;
         set baseDir(val: string);
         /**
          * Template string used to generate fragment base names. {i} will be
          * replaced by an auto incremented integer.
          * @since 6.0.0
+         * @default null
          */
         get base_name_template(): string;
         set base_name_template(val: string);
@@ -714,6 +723,7 @@ export namespace ArrowDataset {
          * Template string used to generate fragment base names. {i} will be
          * replaced by an auto incremented integer.
          * @since 6.0.0
+         * @default null
          */
         get baseNameTemplate(): string;
         set baseNameTemplate(val: string);
@@ -728,12 +738,14 @@ export namespace ArrowDataset {
         /**
          * Maximum number of partitions any batch may be written into.
          * @since 6.0.0
+         * @default 1024
          */
         get max_partitions(): number;
         set max_partitions(val: number);
         /**
          * Maximum number of partitions any batch may be written into.
          * @since 6.0.0
+         * @default 1024
          */
         get maxPartitions(): number;
         set maxPartitions(val: number);
@@ -970,12 +982,14 @@ export namespace ArrowDataset {
         /**
          * The number of fragments to be used to inspect schema.
          * @since 11.0.0
+         * @default 1
          */
         get inspect_n_fragments(): number;
         set inspect_n_fragments(val: number);
         /**
          * The number of fragments to be used to inspect schema.
          * @since 11.0.0
+         * @default 1
          */
         get inspectNFragments(): number;
         set inspectNFragments(val: number);
@@ -988,12 +1002,14 @@ export namespace ArrowDataset {
         /**
          * Whether validate fragments against the given schema or not.
          * @since 11.0.0
+         * @default false
          */
         get validate_fragments(): boolean;
         set validate_fragments(val: boolean);
         /**
          * Whether validate fragments against the given schema or not.
          * @since 11.0.0
+         * @default false
          */
         get validateFragments(): boolean;
         set validateFragments(val: boolean);
@@ -1134,8 +1150,8 @@ export namespace ArrowDataset {
 
         static ['new'](
             schema: Arrow.Schema,
-            dictionaries?: Arrow.Array[] | null,
-            options?: HivePartitioningOptions | null,
+            dictionaries: Arrow.Array[] | null,
+            options: HivePartitioningOptions | null,
         ): HivePartitioning;
 
         // Signals
@@ -1194,6 +1210,7 @@ export namespace ArrowDataset {
          * The fallback string for null. This is used only by
          * {@link ArrowDataset.HivePartitioning}.
          * @since 11.0.0
+         * @default __HIVE_DEFAULT_PARTITION__
          */
         get null_fallback(): string;
         set null_fallback(val: string);
@@ -1201,6 +1218,7 @@ export namespace ArrowDataset {
          * The fallback string for null. This is used only by
          * {@link ArrowDataset.HivePartitioning}.
          * @since 11.0.0
+         * @default __HIVE_DEFAULT_PARTITION__
          */
         get nullFallback(): string;
         set nullFallback(val: string);
@@ -1440,6 +1458,7 @@ export namespace ArrowDataset {
          * After splitting a path into components, decode the path
          * components before parsing according to this scheme.
          * @since 11.0.0
+         * @default ArrowDataset.SegmentEncoding.URI
          */
         get segment_encoding(): SegmentEncoding;
         set segment_encoding(val: SegmentEncoding);
@@ -1447,6 +1466,7 @@ export namespace ArrowDataset {
          * After splitting a path into components, decode the path
          * components before parsing according to this scheme.
          * @since 11.0.0
+         * @default ArrowDataset.SegmentEncoding.URI
          */
         get segmentEncoding(): SegmentEncoding;
         set segmentEncoding(val: SegmentEncoding);
@@ -1656,6 +1676,7 @@ export namespace ArrowDataset {
          * finished Partitioning will include dictionaries of all unique
          * inspected values for each field.
          * @since 11.0.0
+         * @default false
          */
         get infer_dictionary(): boolean;
         set infer_dictionary(val: boolean);
@@ -1666,6 +1687,7 @@ export namespace ArrowDataset {
          * finished Partitioning will include dictionaries of all unique
          * inspected values for each field.
          * @since 11.0.0
+         * @default false
          */
         get inferDictionary(): boolean;
         set inferDictionary(val: boolean);
@@ -1681,6 +1703,7 @@ export namespace ArrowDataset {
          * After splitting a path into components, decode the path
          * components before parsing according to this scheme.
          * @since 11.0.0
+         * @default ArrowDataset.SegmentEncoding.URI
          */
         get segment_encoding(): SegmentEncoding;
         set segment_encoding(val: SegmentEncoding);
@@ -1688,6 +1711,7 @@ export namespace ArrowDataset {
          * After splitting a path into components, decode the path
          * components before parsing according to this scheme.
          * @since 11.0.0
+         * @default ArrowDataset.SegmentEncoding.URI
          */
         get segmentEncoding(): SegmentEncoding;
         set segmentEncoding(val: SegmentEncoding);

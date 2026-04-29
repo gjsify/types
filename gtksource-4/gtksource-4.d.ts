@@ -706,13 +706,13 @@ export namespace GtkSource {
             highlightSyntax: boolean;
             implicit_trailing_newline: boolean;
             implicitTrailingNewline: boolean;
-            language: Language;
+            language: Language | null;
             max_undo_levels: number;
             maxUndoLevels: number;
-            style_scheme: StyleScheme;
-            styleScheme: StyleScheme;
-            undo_manager: UndoManager;
-            undoManager: UndoManager;
+            style_scheme: StyleScheme | null;
+            styleScheme: StyleScheme | null;
+            undo_manager: UndoManager | null;
+            undoManager: UndoManager | null;
         }
     }
 
@@ -726,37 +726,45 @@ export namespace GtkSource {
 
         /**
          * @read-only
+         * @default false
          */
         get can_redo(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get canRedo(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get can_undo(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get canUndo(): boolean;
         /**
          * Whether to highlight matching brackets in the buffer.
+         * @default true
          */
         get highlight_matching_brackets(): boolean;
         set highlight_matching_brackets(val: boolean);
         /**
          * Whether to highlight matching brackets in the buffer.
+         * @default true
          */
         get highlightMatchingBrackets(): boolean;
         set highlightMatchingBrackets(val: boolean);
         /**
          * Whether to highlight syntax in the buffer.
+         * @default true
          */
         get highlight_syntax(): boolean;
         set highlight_syntax(val: boolean);
         /**
          * Whether to highlight syntax in the buffer.
+         * @default true
          */
         get highlightSyntax(): boolean;
         set highlightSyntax(val: boolean);
@@ -764,6 +772,7 @@ export namespace GtkSource {
          * Whether the buffer has an implicit trailing newline. See
          * `gtk_source_buffer_set_implicit_trailing_newline()`.
          * @since 3.14
+         * @default true
          */
         get implicit_trailing_newline(): boolean;
         set implicit_trailing_newline(val: boolean);
@@ -771,20 +780,23 @@ export namespace GtkSource {
          * Whether the buffer has an implicit trailing newline. See
          * `gtk_source_buffer_set_implicit_trailing_newline()`.
          * @since 3.14
+         * @default true
          */
         get implicitTrailingNewline(): boolean;
         set implicitTrailingNewline(val: boolean);
-        get language(): Language;
-        set language(val: Language);
+        get language(): Language | null;
+        set language(val: Language | null);
         /**
          * Number of undo levels for the buffer. -1 means no limit. This property
          * will only affect the default undo manager.
+         * @default -1
          */
         get max_undo_levels(): number;
         set max_undo_levels(val: number);
         /**
          * Number of undo levels for the buffer. -1 means no limit. This property
          * will only affect the default undo manager.
+         * @default -1
          */
         get maxUndoLevels(): number;
         set maxUndoLevels(val: number);
@@ -793,19 +805,19 @@ export namespace GtkSource {
          * foreground, background, cursor color, current line color, and matching
          * brackets style.
          */
-        get style_scheme(): StyleScheme;
-        set style_scheme(val: StyleScheme);
+        get style_scheme(): StyleScheme | null;
+        set style_scheme(val: StyleScheme | null);
         /**
          * Style scheme. It contains styles for syntax highlighting, optionally
          * foreground, background, cursor color, current line color, and matching
          * brackets style.
          */
-        get styleScheme(): StyleScheme;
-        set styleScheme(val: StyleScheme);
-        get undo_manager(): UndoManager;
-        set undo_manager(val: UndoManager);
-        get undoManager(): UndoManager;
-        set undoManager(val: UndoManager);
+        get styleScheme(): StyleScheme | null;
+        set styleScheme(val: StyleScheme | null);
+        get undo_manager(): UndoManager | null;
+        set undo_manager(val: UndoManager | null);
+        get undoManager(): UndoManager | null;
+        set undoManager(val: UndoManager | null);
 
         /**
          * Compile-time signal type information.
@@ -822,7 +834,7 @@ export namespace GtkSource {
 
         _init(...args: any[]): void;
 
-        static ['new'](table?: Gtk.TextTagTable | null): Buffer;
+        static ['new'](table: Gtk.TextTagTable | null): Buffer;
 
         static new_with_language(language: Language): Buffer;
 
@@ -883,7 +895,7 @@ export namespace GtkSource {
          * @param category category to search for, or `null`
          * @returns whether `iter` was moved.
          */
-        backward_iter_to_source_mark(iter: Gtk.TextIter, category?: string | null): [boolean, Gtk.TextIter];
+        backward_iter_to_source_mark(iter: Gtk.TextIter, category: string | null): [boolean, Gtk.TextIter];
         /**
          * Marks the beginning of a not undoable action on the buffer,
          * disabling the undo manager.  Typically you would call this function
@@ -950,7 +962,7 @@ export namespace GtkSource {
          * @param category category to search for, or `null`
          * @returns whether `iter` was moved.
          */
-        forward_iter_to_source_mark(iter: Gtk.TextIter, category?: string | null): [boolean, Gtk.TextIter];
+        forward_iter_to_source_mark(iter: Gtk.TextIter, category: string | null): [boolean, Gtk.TextIter];
         /**
          * Get all defined context classes at `iter`.
          *
@@ -994,7 +1006,7 @@ export namespace GtkSource {
          * @param category category to search for, or `null`
          * @returns a newly allocated {@link GLib.SList}.
          */
-        get_source_marks_at_iter(iter: Gtk.TextIter, category?: string | null): Mark[];
+        get_source_marks_at_iter(iter: Gtk.TextIter, category: string | null): Mark[];
         /**
          * Returns the list of marks of the given category at `line`.
          * If `category` is `null`, all marks at `line` are returned.
@@ -1002,7 +1014,7 @@ export namespace GtkSource {
          * @param category category to search for, or `null`
          * @returns a newly allocated {@link GLib.SList}.
          */
-        get_source_marks_at_line(line: number, category?: string | null): Mark[];
+        get_source_marks_at_line(line: number, category: string | null): Mark[];
         /**
          * Returns the {@link GtkSource.StyleScheme} associated with the buffer,
          * see `gtk_source_buffer_set_style_scheme()`.
@@ -1072,7 +1084,7 @@ export namespace GtkSource {
          * @param end a {@link Gtk.TextIter}.
          * @param category category to search for, or `null`.
          */
-        remove_source_marks(start: Gtk.TextIter, end: Gtk.TextIter, category?: string | null): void;
+        remove_source_marks(start: Gtk.TextIter, end: Gtk.TextIter, category: string | null): void;
         /**
          * Controls the bracket match highlighting function in the buffer.  If
          * activated, when you position your cursor over a bracket character
@@ -1123,7 +1135,7 @@ export namespace GtkSource {
          * The buffer holds a reference to `language`.
          * @param language a {@link GtkSource.Language} to set, or `null`.
          */
-        set_language(language?: Language | null): void;
+        set_language(language: Language | null): void;
         /**
          * Sets the number of undo levels for user actions the buffer will
          * track.  If the number of user actions exceeds the limit set by this
@@ -1151,13 +1163,13 @@ export namespace GtkSource {
          * The buffer holds a reference to `scheme`.
          * @param scheme a {@link GtkSource.StyleScheme} or `null`.
          */
-        set_style_scheme(scheme?: StyleScheme | null): void;
+        set_style_scheme(scheme: StyleScheme | null): void;
         /**
          * Set the buffer undo manager. If `manager` is `null` the default undo manager
          * will be set.
          * @param manager A {@link GtkSource.UndoManager} or `null`.
          */
-        set_undo_manager(manager?: UndoManager | null): void;
+        set_undo_manager(manager: UndoManager | null): void;
         /**
          * Sort the lines of text between the specified iterators.
          * @param start a {@link Gtk.TextIter}.
@@ -1292,7 +1304,7 @@ export namespace GtkSource {
             showHeaders: boolean;
             show_icons: boolean;
             showIcons: boolean;
-            view: View;
+            view: View | null;
         }
     }
 
@@ -1308,18 +1320,21 @@ export namespace GtkSource {
          * Number of keyboard accelerators to show for the first proposals. For
          * example, to activate the first proposal, the user can press
          * <keycombo><keycap>Alt</keycap><keycap>1</keycap></keycombo>.
+         * @default 5
          */
         get accelerators(): number;
         set accelerators(val: number);
         /**
          * Determines the popup delay (in milliseconds) at which the completion
          * will be shown for interactive completion.
+         * @default 250
          */
         get auto_complete_delay(): number;
         set auto_complete_delay(val: number);
         /**
          * Determines the popup delay (in milliseconds) at which the completion
          * will be shown for interactive completion.
+         * @default 250
          */
         get autoCompleteDelay(): number;
         set autoCompleteDelay(val: number);
@@ -1331,6 +1346,7 @@ export namespace GtkSource {
          * forward.
          *
          * See also the {@link GtkSource.Completion.SignalSignatures.move_cursor | GtkSource.Completion::move-cursor} signal.
+         * @default 5
          */
         get proposal_page_size(): number;
         set proposal_page_size(val: number);
@@ -1342,6 +1358,7 @@ export namespace GtkSource {
          * forward.
          *
          * See also the {@link GtkSource.Completion.SignalSignatures.move_cursor | GtkSource.Completion::move-cursor} signal.
+         * @default 5
          */
         get proposalPageSize(): number;
         set proposalPageSize(val: number);
@@ -1349,6 +1366,7 @@ export namespace GtkSource {
          * The scroll page size of the provider pages in the completion window.
          *
          * See the {@link GtkSource.Completion.SignalSignatures.move_page | GtkSource.Completion::move-page} signal.
+         * @default 5
          */
         get provider_page_size(): number;
         set provider_page_size(val: number);
@@ -1356,6 +1374,7 @@ export namespace GtkSource {
          * The scroll page size of the provider pages in the completion window.
          *
          * See the {@link GtkSource.Completion.SignalSignatures.move_page | GtkSource.Completion::move-page} signal.
+         * @default 5
          */
         get providerPageSize(): number;
         set providerPageSize(val: number);
@@ -1363,6 +1382,7 @@ export namespace GtkSource {
          * Determines whether the visibility of the info window should be
          * saved when the completion is hidden, and restored when the completion
          * is shown again.
+         * @default false
          */
         get remember_info_visibility(): boolean;
         set remember_info_visibility(val: boolean);
@@ -1370,42 +1390,49 @@ export namespace GtkSource {
          * Determines whether the visibility of the info window should be
          * saved when the completion is hidden, and restored when the completion
          * is shown again.
+         * @default false
          */
         get rememberInfoVisibility(): boolean;
         set rememberInfoVisibility(val: boolean);
         /**
          * Determines whether the first proposal should be selected when the
          * completion is first shown.
+         * @default true
          */
         get select_on_show(): boolean;
         set select_on_show(val: boolean);
         /**
          * Determines whether the first proposal should be selected when the
          * completion is first shown.
+         * @default true
          */
         get selectOnShow(): boolean;
         set selectOnShow(val: boolean);
         /**
          * Determines whether provider headers should be shown in the proposal
          * list. It can be useful to disable when there is only one provider.
+         * @default true
          */
         get show_headers(): boolean;
         set show_headers(val: boolean);
         /**
          * Determines whether provider headers should be shown in the proposal
          * list. It can be useful to disable when there is only one provider.
+         * @default true
          */
         get showHeaders(): boolean;
         set showHeaders(val: boolean);
         /**
          * Determines whether provider and proposal icons should be shown in
          * the completion popup.
+         * @default true
          */
         get show_icons(): boolean;
         set show_icons(val: boolean);
         /**
          * Determines whether provider and proposal icons should be shown in
          * the completion popup.
+         * @default true
          */
         get showIcons(): boolean;
         set showIcons(val: boolean);
@@ -1413,7 +1440,7 @@ export namespace GtkSource {
          * The {@link GtkSource.View} bound to the completion object.
          * @construct-only
          */
-        get view(): View;
+        get view(): View | null;
 
         /**
          * Compile-time signal type information.
@@ -1518,7 +1545,7 @@ export namespace GtkSource {
          * @param position a {@link Gtk.TextIter}, or `null`.
          * @returns a new {@link GtkSource.CompletionContext}. The reference being returned is a 'floating' reference, so if you invoke `gtk_source_completion_start()` with this context you don't need to unref it.
          */
-        create_context(position?: Gtk.TextIter | null): CompletionContext;
+        create_context(position: Gtk.TextIter | null): CompletionContext;
         /**
          * The info widget is the window where the completion displays optional extra
          * information of the proposal.
@@ -1575,7 +1602,7 @@ export namespace GtkSource {
          * @param child child to add
          * @param type kind of child or `null`
          */
-        add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
+        add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
         /**
          * Constructs a child of `buildable` with the name `name`.
          *
@@ -1594,7 +1621,7 @@ export namespace GtkSource {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: any | null): void;
+        custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: any | null): void;
         /**
          * This is called at the end of each custom element handled by
          * the buildable.
@@ -1603,7 +1630,7 @@ export namespace GtkSource {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: any | null): void;
+        custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: any | null): void;
         /**
          * This is called for each unknown element under `<child>`.
          * @param builder a {@link Gtk.Builder} used to construct this object
@@ -1661,7 +1688,7 @@ export namespace GtkSource {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
         /**
          * Constructs a child of `buildable` with the name `name`.
          *
@@ -1685,7 +1712,7 @@ export namespace GtkSource {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * This is called at the end of each custom element handled by
@@ -1700,7 +1727,7 @@ export namespace GtkSource {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * This is called for each unknown element under `<child>`.
@@ -1801,38 +1828,19 @@ export namespace GtkSource {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1840,15 +1848,9 @@ export namespace GtkSource {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -2015,7 +2017,7 @@ export namespace GtkSource {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -2241,6 +2243,7 @@ export namespace GtkSource {
 
         /**
          * The completion activation
+         * @default GtkSource.CompletionActivation.USER_REQUESTED
          */
         get activation(): CompletionActivation;
         set activation(val: CompletionActivation);
@@ -2468,7 +2471,7 @@ export namespace GtkSource {
          * @param view a {@link Gtk.TextView} on which the info window should be positioned.
          * @param iter a {@link Gtk.TextIter}.
          */
-        move_to_iter(view: Gtk.TextView, iter?: Gtk.TextIter | null): void;
+        move_to_iter(view: Gtk.TextView, iter: Gtk.TextIter | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -2516,38 +2519,19 @@ export namespace GtkSource {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -2555,15 +2539,9 @@ export namespace GtkSource {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -2730,7 +2708,7 @@ export namespace GtkSource {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -2968,32 +2946,38 @@ export namespace GtkSource {
         /**
          * The icon name for the icon to be shown for this proposal.
          * @since 3.18
+         * @default null
          */
         get icon_name(): string;
         set icon_name(val: string);
         /**
          * The icon name for the icon to be shown for this proposal.
          * @since 3.18
+         * @default null
          */
         get iconName(): string;
         set iconName(val: string);
         /**
          * Optional extra information to be shown for this proposal.
+         * @default null
          */
         get info(): string;
         set info(val: string);
         /**
          * Label to be shown for this proposal.
+         * @default null
          */
         get label(): string;
         set label(val: string);
         /**
          * Label with markup to be shown for this proposal.
+         * @default null
          */
         get markup(): string;
         set markup(val: string);
         /**
          * Proposal text.
+         * @default null
          */
         get text(): string;
         set text(val: string);
@@ -3041,31 +3025,31 @@ export namespace GtkSource {
         /**
          * @param gicon the {@link Gio.Icon}, or `null`.
          */
-        set_gicon(gicon?: Gio.Icon | null): void;
+        set_gicon(gicon: Gio.Icon | null): void;
         /**
          * @param icon the {@link GdkPixbuf.Pixbuf}, or `null`.
          */
-        set_icon(icon?: GdkPixbuf.Pixbuf | null): void;
+        set_icon(icon: GdkPixbuf.Pixbuf | null): void;
         /**
          * @param icon_name the icon name, or `null`.
          */
-        set_icon_name(icon_name?: string | null): void;
+        set_icon_name(icon_name: string | null): void;
         /**
          * @param info the info, or `null`.
          */
-        set_info(info?: string | null): void;
+        set_info(info: string | null): void;
         /**
          * @param label the label, or `null`.
          */
-        set_label(label?: string | null): void;
+        set_label(label: string | null): void;
         /**
          * @param markup the markup, or `null`.
          */
-        set_markup(markup?: string | null): void;
+        set_markup(markup: string | null): void;
         /**
          * @param text the text, or `null`.
          */
-        set_text(text?: string | null): void;
+        set_text(text: string | null): void;
         /**
          * Emits the "changed" signal on `proposal`. This should be called by
          * implementations whenever the name, icon or info of the proposal has
@@ -3252,38 +3236,19 @@ export namespace GtkSource {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -3291,15 +3256,9 @@ export namespace GtkSource {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -3466,7 +3425,7 @@ export namespace GtkSource {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -3698,29 +3657,60 @@ export namespace GtkSource {
         /**
          * The type of activation.
          * @since 3.10
+         * @default GtkSource.CompletionActivation.INTERACTIVE | GtkSource.CompletionActivation.USER_REQUESTED
          */
         get activation(): CompletionActivation;
         set activation(val: CompletionActivation);
         get icon(): GdkPixbuf.Pixbuf;
         set icon(val: GdkPixbuf.Pixbuf);
+        /**
+         * @default 50
+         */
         get interactive_delay(): number;
         set interactive_delay(val: number);
+        /**
+         * @default 50
+         */
         get interactiveDelay(): number;
         set interactiveDelay(val: number);
+        /**
+         * @default 2
+         */
         get minimum_word_size(): number;
         set minimum_word_size(val: number);
+        /**
+         * @default 2
+         */
         get minimumWordSize(): number;
         set minimumWordSize(val: number);
+        /**
+         * @default null
+         */
         get name(): string;
         set name(val: string);
+        /**
+         * @default 0
+         */
         get priority(): number;
         set priority(val: number);
+        /**
+         * @default 300
+         */
         get proposals_batch_size(): number;
         set proposals_batch_size(val: number);
+        /**
+         * @default 300
+         */
         get proposalsBatchSize(): number;
         set proposalsBatchSize(val: number);
+        /**
+         * @default 50
+         */
         get scan_batch_size(): number;
         set scan_batch_size(val: number);
+        /**
+         * @default 50
+         */
         get scanBatchSize(): number;
         set scanBatchSize(val: number);
 
@@ -3739,7 +3729,7 @@ export namespace GtkSource {
 
         _init(...args: any[]): void;
 
-        static ['new'](name?: string | null, icon?: GdkPixbuf.Pixbuf | null): CompletionWords;
+        static ['new'](name: string | null, icon: GdkPixbuf.Pixbuf | null): CompletionWords;
 
         // Signals
 
@@ -4065,38 +4055,19 @@ export namespace GtkSource {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -4104,15 +4075,9 @@ export namespace GtkSource {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -4279,7 +4244,7 @@ export namespace GtkSource {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -4505,12 +4470,14 @@ export namespace GtkSource {
          * The compression type.
          * @since 3.14
          * @read-only
+         * @default GtkSource.CompressionType.NONE
          */
         get compression_type(): CompressionType;
         /**
          * The compression type.
          * @since 3.14
          * @read-only
+         * @default GtkSource.CompressionType.NONE
          */
         get compressionType(): CompressionType;
         /**
@@ -4530,12 +4497,14 @@ export namespace GtkSource {
          * The line ending type.
          * @since 3.14
          * @read-only
+         * @default GtkSource.NewlineType.LF
          */
         get newline_type(): NewlineType;
         /**
          * The line ending type.
          * @since 3.14
          * @read-only
+         * @default GtkSource.NewlineType.LF
          */
         get newlineType(): NewlineType;
         /**
@@ -4543,6 +4512,7 @@ export namespace GtkSource {
          * not updated automatically (there is no file monitors).
          * @since 3.18
          * @read-only
+         * @default false
          */
         get read_only(): boolean;
         /**
@@ -4550,6 +4520,7 @@ export namespace GtkSource {
          * not updated automatically (there is no file monitors).
          * @since 3.18
          * @read-only
+         * @default false
          */
         get readOnly(): boolean;
 
@@ -4660,7 +4631,7 @@ export namespace GtkSource {
          * Sets the location.
          * @param location the new {@link Gio.File}, or `null`.
          */
-        set_location(location?: Gio.File | null): void;
+        set_location(location: Gio.File | null): void;
     }
 
     namespace FileLoader {
@@ -4677,9 +4648,9 @@ export namespace GtkSource {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             buffer: Buffer;
             file: File;
-            input_stream: Gio.InputStream;
-            inputStream: Gio.InputStream;
-            location: Gio.File;
+            input_stream: Gio.InputStream | null;
+            inputStream: Gio.InputStream | null;
+            location: Gio.File | null;
         }
     }
 
@@ -4711,14 +4682,14 @@ export namespace GtkSource {
          * @since 3.14
          * @construct-only
          */
-        get input_stream(): Gio.InputStream;
+        get input_stream(): Gio.InputStream | null;
         /**
          * The {@link Gio.InputStream} to load. Useful for reading stdin. If this property
          * is set, the {@link GtkSource.FileLoader.location} property is ignored.
          * @since 3.14
          * @construct-only
          */
-        get inputStream(): Gio.InputStream;
+        get inputStream(): Gio.InputStream | null;
         /**
          * The {@link Gio.File} to load. If the {@link GtkSource.FileLoader.input_stream} is
          * `null`, by default the location is taken from the {@link GtkSource.File} at
@@ -4726,7 +4697,7 @@ export namespace GtkSource {
          * @since 3.14
          * @construct-only
          */
-        get location(): Gio.File;
+        get location(): Gio.File | null;
 
         /**
          * Compile-time signal type information.
@@ -4809,9 +4780,9 @@ export namespace GtkSource {
          */
         load_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            progress_callback?: Gio.FileProgressCallback | null,
-            progress_callback_notify?: GLib.DestroyNotify | null,
+            cancellable: Gio.Cancellable | null,
+            progress_callback: Gio.FileProgressCallback | null,
+            progress_callback_notify: GLib.DestroyNotify | null,
         ): globalThis.Promise<boolean>;
         /**
          * Loads asynchronously the file or input stream contents into the
@@ -4842,9 +4813,9 @@ export namespace GtkSource {
          */
         load_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            progress_callback?: Gio.FileProgressCallback | null,
-            progress_callback_notify?: GLib.DestroyNotify | null,
+            cancellable: Gio.Cancellable | null,
+            progress_callback: Gio.FileProgressCallback | null,
+            progress_callback_notify: GLib.DestroyNotify | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -4919,12 +4890,14 @@ export namespace GtkSource {
         /**
          * The compression type.
          * @since 3.14
+         * @default GtkSource.CompressionType.NONE
          */
         get compression_type(): CompressionType;
         set compression_type(val: CompressionType);
         /**
          * The compression type.
          * @since 3.14
+         * @default GtkSource.CompressionType.NONE
          */
         get compressionType(): CompressionType;
         set compressionType(val: CompressionType);
@@ -4944,6 +4917,7 @@ export namespace GtkSource {
         /**
          * File saving flags.
          * @since 3.14
+         * @default GtkSource.FileSaverFlags.NONE
          */
         get flags(): FileSaverFlags;
         set flags(val: FileSaverFlags);
@@ -4957,12 +4931,14 @@ export namespace GtkSource {
         /**
          * The newline type.
          * @since 3.14
+         * @default GtkSource.NewlineType.LF
          */
         get newline_type(): NewlineType;
         set newline_type(val: NewlineType);
         /**
          * The newline type.
          * @since 3.14
+         * @default GtkSource.NewlineType.LF
          */
         get newlineType(): NewlineType;
         set newlineType(val: NewlineType);
@@ -5051,9 +5027,9 @@ export namespace GtkSource {
          */
         save_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            progress_callback?: Gio.FileProgressCallback | null,
-            progress_callback_notify?: GLib.DestroyNotify | null,
+            cancellable: Gio.Cancellable | null,
+            progress_callback: Gio.FileProgressCallback | null,
+            progress_callback_notify: GLib.DestroyNotify | null,
         ): globalThis.Promise<boolean>;
         /**
          * Saves asynchronously the buffer into the file. See the {@link Gio.AsyncResult}
@@ -5082,9 +5058,9 @@ export namespace GtkSource {
          */
         save_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            progress_callback?: Gio.FileProgressCallback | null,
-            progress_callback_notify?: GLib.DestroyNotify | null,
+            cancellable: Gio.Cancellable | null,
+            progress_callback: Gio.FileProgressCallback | null,
+            progress_callback_notify: GLib.DestroyNotify | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -5111,7 +5087,7 @@ export namespace GtkSource {
          * By default the encoding is taken from the {@link GtkSource.File}.
          * @param encoding the new encoding, or `null` for UTF-8.
          */
-        set_encoding(encoding?: Encoding | null): void;
+        set_encoding(encoding: Encoding | null): void;
         /**
          * @param flags the new flags.
          */
@@ -5156,11 +5132,13 @@ export namespace GtkSource {
         /**
          * The text window type on which the window is placed.
          * @construct-only
+         * @default Gtk.TextWindowType.PRIVATE
          */
         get window_type(): Gtk.TextWindowType;
         /**
          * The text window type on which the window is placed.
          * @construct-only
+         * @default Gtk.TextWindowType.PRIVATE
          */
         get windowType(): Gtk.TextWindowType;
 
@@ -5339,6 +5317,7 @@ export namespace GtkSource {
          * that in the case a cell spans multiple lines (due to text wrapping)
          * the alignment should work on either the full cell, the first line
          * or the last line.
+         * @default GtkSource.GutterRendererAlignmentMode.CELL
          */
         get alignment_mode(): GutterRendererAlignmentMode;
         set alignment_mode(val: GutterRendererAlignmentMode);
@@ -5347,6 +5326,7 @@ export namespace GtkSource {
          * that in the case a cell spans multiple lines (due to text wrapping)
          * the alignment should work on either the full cell, the first line
          * or the last line.
+         * @default GtkSource.GutterRendererAlignmentMode.CELL
          */
         get alignmentMode(): GutterRendererAlignmentMode;
         set alignmentMode(val: GutterRendererAlignmentMode);
@@ -5354,10 +5334,19 @@ export namespace GtkSource {
         set background_rgba(val: Gdk.RGBA);
         get backgroundRgba(): Gdk.RGBA;
         set backgroundRgba(val: Gdk.RGBA);
+        /**
+         * @default false
+         */
         get background_set(): boolean;
         set background_set(val: boolean);
+        /**
+         * @default false
+         */
         get backgroundSet(): boolean;
         set backgroundSet(val: boolean);
+        /**
+         * @default 0
+         */
         get size(): number;
         set size(val: number);
         /**
@@ -5367,6 +5356,7 @@ export namespace GtkSource {
         get view(): Gtk.TextView;
         /**
          * The visibility of the renderer.
+         * @default true
          */
         get visible(): boolean;
         set visible(val: boolean);
@@ -5374,23 +5364,27 @@ export namespace GtkSource {
          * The window type of the view on which the renderer is placed (left,
          * or right).
          * @read-only
+         * @default Gtk.TextWindowType.PRIVATE
          */
         get window_type(): Gtk.TextWindowType;
         /**
          * The window type of the view on which the renderer is placed (left,
          * or right).
          * @read-only
+         * @default Gtk.TextWindowType.PRIVATE
          */
         get windowType(): Gtk.TextWindowType;
         /**
          * The horizontal alignment of the renderer. Set to 0 for a left
          * alignment. 1 for a right alignment. And 0.5 for centering the cells.
          * A value lower than 0 doesn't modify the alignment.
+         * @default 0
          */
         get xalign(): number;
         set xalign(val: number);
         /**
          * The left and right padding of the renderer.
+         * @default 0
          */
         get xpad(): number;
         set xpad(val: number);
@@ -5398,11 +5392,13 @@ export namespace GtkSource {
          * The vertical alignment of the renderer. Set to 0 for a top
          * alignment. 1 for a bottom alignment. And 0.5 for centering the cells.
          * A value lower than 0 doesn't modify the alignment.
+         * @default 0
          */
         get yalign(): number;
         set yalign(val: number);
         /**
          * The top and bottom padding of the renderer.
+         * @default 0
          */
         get ypad(): number;
         set ypad(val: number);
@@ -5477,13 +5473,13 @@ export namespace GtkSource {
          * @param old_buffer the old {@link Gtk.TextBuffer}.
          * @virtual
          */
-        vfunc_change_buffer(old_buffer?: Gtk.TextBuffer | null): void;
+        vfunc_change_buffer(old_buffer: Gtk.TextBuffer | null): void;
         /**
          * This is called when the text view changes for `renderer`.
          * @param old_view the old {@link Gtk.TextView}.
          * @virtual
          */
-        vfunc_change_view(old_view?: Gtk.TextView | null): void;
+        vfunc_change_view(old_view: Gtk.TextView | null): void;
         /**
          * Main renderering method. Implementations should implement this method to draw
          * onto the cairo context. The `background_area` indicates the total area of the
@@ -5728,7 +5724,7 @@ export namespace GtkSource {
          * renderer will not have a background color.
          * @param color a {@link Gdk.RGBA} or `null`
          */
-        set_background(color?: Gdk.RGBA | null): void;
+        set_background(color: Gdk.RGBA | null): void;
         /**
          * Set the padding of the gutter renderer. Both `xpad` and `ypad` can be
          * -1, which means the values will not be changed (this allows changing only
@@ -5791,8 +5787,14 @@ export namespace GtkSource {
 
         get gicon(): Gio.Icon;
         set gicon(val: Gio.Icon);
+        /**
+         * @default null
+         */
         get icon_name(): string;
         set icon_name(val: string);
+        /**
+         * @default null
+         */
         get iconName(): string;
         set iconName(val: string);
         get pixbuf(): GdkPixbuf.Pixbuf;
@@ -5854,15 +5856,15 @@ export namespace GtkSource {
         /**
          * @param icon the icon, or `null`.
          */
-        set_gicon(icon?: Gio.Icon | null): void;
+        set_gicon(icon: Gio.Icon | null): void;
         /**
          * @param icon_name the icon name, or `null`.
          */
-        set_icon_name(icon_name?: string | null): void;
+        set_icon_name(icon_name: string | null): void;
         /**
          * @param pixbuf the pixbuf, or `null`.
          */
-        set_pixbuf(pixbuf?: GdkPixbuf.Pixbuf | null): void;
+        set_pixbuf(pixbuf: GdkPixbuf.Pixbuf | null): void;
     }
 
     namespace GutterRendererText {
@@ -5899,8 +5901,14 @@ export namespace GtkSource {
 
         // Properties
 
+        /**
+         * @default null
+         */
         get markup(): string;
         set markup(val: string);
+        /**
+         * @default null
+         */
         get text(): string;
         set text(val: string);
 
@@ -5997,18 +6005,22 @@ export namespace GtkSource {
 
         /**
          * @read-only
+         * @default false
          */
         get hidden(): boolean;
         /**
          * @read-only
+         * @default null
          */
         get id(): string;
         /**
          * @read-only
+         * @default null
          */
         get name(): string;
         /**
          * @read-only
+         * @default null
          */
         get section(): string;
 
@@ -6128,8 +6140,8 @@ export namespace GtkSource {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            language_ids: string[];
-            languageIds: string[];
+            language_ids: string[] | null;
+            languageIds: string[] | null;
             search_path: string[];
             searchPath: string[];
         }
@@ -6146,11 +6158,11 @@ export namespace GtkSource {
         /**
          * @read-only
          */
-        get language_ids(): string[];
+        get language_ids(): string[] | null;
         /**
          * @read-only
          */
-        get languageIds(): string[];
+        get languageIds(): string[] | null;
         get search_path(): string[];
         set search_path(val: string[]);
         get searchPath(): string[];
@@ -6257,7 +6269,7 @@ export namespace GtkSource {
          * @param content_type a content type (as in GIO API), or `null`.
          * @returns a {@link GtkSource.Language}, or `null` if there is no suitable language for given `filename` and/or `content_type`. Return value is owned by `lm` and should not be freed.
          */
-        guess_language(filename?: string | null, content_type?: string | null): Language | null;
+        guess_language(filename: string | null, content_type: string | null): Language | null;
         /**
          * Sets the list of directories where the `lm` looks for
          * language files.
@@ -6273,7 +6285,7 @@ export namespace GtkSource {
          * </note>
          * @param dirs a `null`-terminated array of strings or `null`.
          */
-        set_search_path(dirs?: string[] | null): void;
+        set_search_path(dirs: string[] | null): void;
     }
 
     namespace Map {
@@ -6371,7 +6383,7 @@ export namespace GtkSource {
                 Gtk.Scrollable.ConstructorProps {
             font_desc: Pango.FontDescription;
             fontDesc: Pango.FontDescription;
-            view: View;
+            view: View | null;
         }
     }
 
@@ -6387,8 +6399,8 @@ export namespace GtkSource {
         set font_desc(val: Pango.FontDescription);
         get fontDesc(): Pango.FontDescription;
         set fontDesc(val: Pango.FontDescription);
-        get view(): View;
-        set view(val: View);
+        get view(): View | null;
+        set view(val: View | null);
 
         /**
          * Compile-time signal type information.
@@ -6487,38 +6499,19 @@ export namespace GtkSource {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -6526,15 +6519,9 @@ export namespace GtkSource {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -6701,7 +6688,7 @@ export namespace GtkSource {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -6918,6 +6905,7 @@ export namespace GtkSource {
          * The category of the {@link GtkSource.Mark}, classifies the mark and controls
          * which pixbuf is used and with which priority it is drawn.
          * @construct-only
+         * @default null
          */
         get category(): string;
 
@@ -6977,7 +6965,7 @@ export namespace GtkSource {
          * @param category a string specifying the mark category, or `null`.
          * @returns the next {@link GtkSource.Mark}, or `null`.
          */
-        next(category?: string | null): Mark | null;
+        next(category: string | null): Mark | null;
         /**
          * Returns the previous {@link GtkSource.Mark} in the buffer or `null` if the mark
          * was not added to a buffer. If there is no previous mark, `null` is returned.
@@ -6986,7 +6974,7 @@ export namespace GtkSource {
          * @param category a string specifying the mark category, or `null`.
          * @returns the previous {@link GtkSource.Mark}, or `null`.
          */
-        prev(category?: string | null): Mark | null;
+        prev(category: string | null): Mark | null;
     }
 
     namespace MarkAttributes {
@@ -7043,11 +7031,13 @@ export namespace GtkSource {
         set gicon(val: Gio.Icon);
         /**
          * An icon name that may be a base of a rendered icon.
+         * @default null
          */
         get icon_name(): string;
         set icon_name(val: string);
         /**
          * An icon name that may be a base of a rendered icon.
+         * @default null
          */
         get iconName(): string;
         set iconName(val: string);
@@ -7232,6 +7222,7 @@ export namespace GtkSource {
          * The value of this property cannot be changed anymore after the first
          * call to the `gtk_source_print_compositor_paginate()` function.
          * @since 2.2
+         * @default null
          */
         get body_font_name(): string;
         set body_font_name(val: string);
@@ -7245,6 +7236,7 @@ export namespace GtkSource {
          * The value of this property cannot be changed anymore after the first
          * call to the `gtk_source_print_compositor_paginate()` function.
          * @since 2.2
+         * @default null
          */
         get bodyFontName(): string;
         set bodyFontName(val: string);
@@ -7265,6 +7257,7 @@ export namespace GtkSource {
          * The value of this property cannot be changed anymore after the first
          * call to the `gtk_source_print_compositor_paginate()` function.
          * @since 2.2
+         * @default null
          */
         get footer_font_name(): string;
         set footer_font_name(val: string);
@@ -7279,6 +7272,7 @@ export namespace GtkSource {
          * The value of this property cannot be changed anymore after the first
          * call to the `gtk_source_print_compositor_paginate()` function.
          * @since 2.2
+         * @default null
          */
         get footerFontName(): string;
         set footerFontName(val: string);
@@ -7293,6 +7287,7 @@ export namespace GtkSource {
          * The value of this property cannot be changed anymore after the first
          * call to the `gtk_source_print_compositor_paginate()` function.
          * @since 2.2
+         * @default null
          */
         get header_font_name(): string;
         set header_font_name(val: string);
@@ -7307,6 +7302,7 @@ export namespace GtkSource {
          * The value of this property cannot be changed anymore after the first
          * call to the `gtk_source_print_compositor_paginate()` function.
          * @since 2.2
+         * @default null
          */
         get headerFontName(): string;
         set headerFontName(val: string);
@@ -7316,6 +7312,7 @@ export namespace GtkSource {
          * The value of this property cannot be changed anymore after the first
          * call to the `gtk_source_print_compositor_paginate()` function.
          * @since 2.2
+         * @default true
          */
         get highlight_syntax(): boolean;
         set highlight_syntax(val: boolean);
@@ -7325,6 +7322,7 @@ export namespace GtkSource {
          * The value of this property cannot be changed anymore after the first
          * call to the `gtk_source_print_compositor_paginate()` function.
          * @since 2.2
+         * @default true
          */
         get highlightSyntax(): boolean;
         set highlightSyntax(val: boolean);
@@ -7339,6 +7337,7 @@ export namespace GtkSource {
          * The value of this property cannot be changed anymore after the first
          * call to the `gtk_source_print_compositor_paginate()` function.
          * @since 2.2
+         * @default null
          */
         get line_numbers_font_name(): string;
         set line_numbers_font_name(val: string);
@@ -7353,6 +7352,7 @@ export namespace GtkSource {
          * The value of this property cannot be changed anymore after the first
          * call to the `gtk_source_print_compositor_paginate()` function.
          * @since 2.2
+         * @default null
          */
         get lineNumbersFontName(): string;
         set lineNumbersFontName(val: string);
@@ -7361,6 +7361,7 @@ export namespace GtkSource {
          * document has not been completely paginated.
          * @since 2.2
          * @read-only
+         * @default -1
          */
         get n_pages(): number;
         /**
@@ -7368,6 +7369,7 @@ export namespace GtkSource {
          * document has not been completely paginated.
          * @since 2.2
          * @read-only
+         * @default -1
          */
         get nPages(): number;
         /**
@@ -7380,6 +7382,7 @@ export namespace GtkSource {
          * The value of this property cannot be changed anymore after the first
          * call to the `gtk_source_print_compositor_paginate()` function.
          * @since 2.2
+         * @default false
          */
         get print_footer(): boolean;
         set print_footer(val: boolean);
@@ -7393,6 +7396,7 @@ export namespace GtkSource {
          * The value of this property cannot be changed anymore after the first
          * call to the `gtk_source_print_compositor_paginate()` function.
          * @since 2.2
+         * @default false
          */
         get printFooter(): boolean;
         set printFooter(val: boolean);
@@ -7406,6 +7410,7 @@ export namespace GtkSource {
          * The value of this property cannot be changed anymore after the first
          * call to the `gtk_source_print_compositor_paginate()` function.
          * @since 2.2
+         * @default false
          */
         get print_header(): boolean;
         set print_header(val: boolean);
@@ -7419,6 +7424,7 @@ export namespace GtkSource {
          * The value of this property cannot be changed anymore after the first
          * call to the `gtk_source_print_compositor_paginate()` function.
          * @since 2.2
+         * @default false
          */
         get printHeader(): boolean;
         set printHeader(val: boolean);
@@ -7430,6 +7436,7 @@ export namespace GtkSource {
          * The value of this property cannot be changed anymore after the first
          * call to the `gtk_source_print_compositor_paginate()` function.
          * @since 2.2
+         * @default 1
          */
         get print_line_numbers(): number;
         set print_line_numbers(val: number);
@@ -7441,6 +7448,7 @@ export namespace GtkSource {
          * The value of this property cannot be changed anymore after the first
          * call to the `gtk_source_print_compositor_paginate()` function.
          * @since 2.2
+         * @default 1
          */
         get printLineNumbers(): number;
         set printLineNumbers(val: number);
@@ -7450,6 +7458,7 @@ export namespace GtkSource {
          * The value of this property cannot be changed anymore after the first
          * call to the `gtk_source_print_compositor_paginate()` function.
          * @since 2.2
+         * @default 8
          */
         get tab_width(): number;
         set tab_width(val: number);
@@ -7459,6 +7468,7 @@ export namespace GtkSource {
          * The value of this property cannot be changed anymore after the first
          * call to the `gtk_source_print_compositor_paginate()` function.
          * @since 2.2
+         * @default 8
          */
         get tabWidth(): number;
         set tabWidth(val: number);
@@ -7468,6 +7478,7 @@ export namespace GtkSource {
          * The value of this property cannot be changed anymore after the first
          * call to the `gtk_source_print_compositor_paginate()` function.
          * @since 2.2
+         * @default Gtk.WrapMode.NONE
          */
         get wrap_mode(): Gtk.WrapMode;
         set wrap_mode(val: Gtk.WrapMode);
@@ -7477,6 +7488,7 @@ export namespace GtkSource {
          * The value of this property cannot be changed anymore after the first
          * call to the `gtk_source_print_compositor_paginate()` function.
          * @since 2.2
+         * @default Gtk.WrapMode.NONE
          */
         get wrapMode(): Gtk.WrapMode;
         set wrapMode(val: Gtk.WrapMode);
@@ -7755,7 +7767,7 @@ export namespace GtkSource {
          * `gtk_source_print_compositor_paginate()` function.
          * @param font_name the name of the font for the footer text, or `null`.
          */
-        set_footer_font_name(font_name?: string | null): void;
+        set_footer_font_name(font_name: string | null): void;
         /**
          * See `gtk_source_print_compositor_set_header_format()` for more information
          * about the parameters.
@@ -7764,12 +7776,7 @@ export namespace GtkSource {
          * @param center a format string to print on the center of the footer.
          * @param right a format string to print on the right of the footer.
          */
-        set_footer_format(
-            separator: boolean,
-            left?: string | null,
-            center?: string | null,
-            right?: string | null,
-        ): void;
+        set_footer_format(separator: boolean, left: string | null, center: string | null, right: string | null): void;
         /**
          * Sets the font for printing the page header. If
          * `null` is supplied, the default font (i.e. the one being used for the
@@ -7784,7 +7791,7 @@ export namespace GtkSource {
          * `gtk_source_print_compositor_paginate()` function.
          * @param font_name the name of the font for header text, or `null`.
          */
-        set_header_font_name(font_name?: string | null): void;
+        set_header_font_name(font_name: string | null): void;
         /**
          * Sets strftime like header format strings, to be printed on the
          * left, center and right of the top of each page.  The strings may
@@ -7812,12 +7819,7 @@ export namespace GtkSource {
          * @param center a format string to print on the center of the header.
          * @param right a format string to print on the right of the header.
          */
-        set_header_format(
-            separator: boolean,
-            left?: string | null,
-            center?: string | null,
-            right?: string | null,
-        ): void;
+        set_header_format(separator: boolean, left: string | null, center: string | null, right: string | null): void;
         /**
          * Sets whether the printed text will be highlighted according to the
          * buffer rules.  Both color and font style are applied.
@@ -7847,7 +7849,7 @@ export namespace GtkSource {
          * `gtk_source_print_compositor_paginate()` function.
          * @param font_name the name of the font for line numbers, or `null`.
          */
-        set_line_numbers_font_name(font_name?: string | null): void;
+        set_line_numbers_font_name(font_name: string | null): void;
         /**
          * Sets whether you want to print a footer in each page.  The
          * footer consists of three pieces of text and an optional line
@@ -7927,7 +7929,7 @@ export namespace GtkSource {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            buffer: Gtk.TextBuffer;
+            buffer: Gtk.TextBuffer | null;
         }
     }
 
@@ -7945,7 +7947,7 @@ export namespace GtkSource {
          * @since 3.22
          * @construct-only
          */
-        get buffer(): Gtk.TextBuffer;
+        get buffer(): Gtk.TextBuffer | null;
 
         /**
          * Compile-time signal type information.
@@ -7991,7 +7993,7 @@ export namespace GtkSource {
          * Adds `region_to_add` to `region`. `region_to_add` is not modified.
          * @param region_to_add the {@link GtkSource.Region} to add to `region`, or `null`.
          */
-        add_region(region_to_add?: Region | null): void;
+        add_region(region_to_add: Region | null): void;
         /**
          * Adds the subregion delimited by `_start` and `_end` to `region`.
          * @param _start the start of the subregion.
@@ -8018,7 +8020,7 @@ export namespace GtkSource {
          * @param region2 a {@link GtkSource.Region}, or `null`.
          * @returns the intersection as a {@link GtkSource.Region}   object.
          */
-        intersect_region(region2?: Region | null): Region | null;
+        intersect_region(region2: Region | null): Region | null;
         /**
          * Returns the intersection between `region` and the subregion delimited by
          * `_start` and `_end`. `region` is not modified.
@@ -8037,7 +8039,7 @@ export namespace GtkSource {
          * modified.
          * @param region_to_subtract the {@link GtkSource.Region} to subtract from   `region`, or `null`.
          */
-        subtract_region(region_to_subtract?: Region | null): void;
+        subtract_region(region_to_subtract: Region | null): void;
         /**
          * Subtracts the subregion delimited by `_start` and `_end` from `region`.
          * @param _start the start of the subregion.
@@ -8074,8 +8076,8 @@ export namespace GtkSource {
             matchStyle: Style;
             occurrences_count: number;
             occurrencesCount: number;
-            regex_error: any;
-            regexError: any;
+            regex_error: any | null;
+            regexError: any | null;
             settings: SearchSettings;
         }
     }
@@ -8097,6 +8099,7 @@ export namespace GtkSource {
         /**
          * Highlight the search occurrences.
          * @since 3.10
+         * @default true
          */
         get highlight(): boolean;
         set highlight(val: boolean);
@@ -8118,6 +8121,7 @@ export namespace GtkSource {
          * is -1.
          * @since 3.10
          * @read-only
+         * @default 0
          */
         get occurrences_count(): number;
         /**
@@ -8126,6 +8130,7 @@ export namespace GtkSource {
          * is -1.
          * @since 3.10
          * @read-only
+         * @default 0
          */
         get occurrencesCount(): number;
         /**
@@ -8137,7 +8142,7 @@ export namespace GtkSource {
          * @since 3.10
          * @read-only
          */
-        get regex_error(): any;
+        get regex_error(): any | null;
         /**
          * If the regex search pattern doesn't follow all the rules, this
          * {@link GLib.Error} property will be set. If the pattern is valid, the value is
@@ -8147,7 +8152,7 @@ export namespace GtkSource {
          * @since 3.10
          * @read-only
          */
-        get regexError(): any;
+        get regexError(): any | null;
         /**
          * The {@link GtkSource.SearchSettings} associated to the search context.
          *
@@ -8172,7 +8177,7 @@ export namespace GtkSource {
 
         _init(...args: any[]): void;
 
-        static ['new'](buffer: Buffer, settings?: SearchSettings | null): SearchContext;
+        static ['new'](buffer: Buffer, settings: SearchSettings | null): SearchContext;
 
         // Signals
 
@@ -8228,7 +8233,7 @@ export namespace GtkSource {
          */
         backward_async(
             iter: Gtk.TextIter,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<[Gtk.TextIter | null, Gtk.TextIter | null, boolean]>;
         /**
          * The asynchronous version of `gtk_source_search_context_backward()`.
@@ -8267,7 +8272,7 @@ export namespace GtkSource {
          */
         backward_async(
             iter: Gtk.TextIter,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[Gtk.TextIter | null, Gtk.TextIter | null, boolean]> | void;
         /**
@@ -8311,7 +8316,7 @@ export namespace GtkSource {
          */
         forward_async(
             iter: Gtk.TextIter,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<[Gtk.TextIter | null, Gtk.TextIter | null, boolean]>;
         /**
          * The asynchronous version of `gtk_source_search_context_forward()`.
@@ -8350,7 +8355,7 @@ export namespace GtkSource {
          */
         forward_async(
             iter: Gtk.TextIter,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[Gtk.TextIter | null, Gtk.TextIter | null, boolean]> | void;
         /**
@@ -8446,7 +8451,7 @@ export namespace GtkSource {
          * `gtk_source_search_context_set_highlight()`.
          * @param match_style a {@link GtkSource.Style}, or `null`.
          */
-        set_match_style(match_style?: Style | null): void;
+        set_match_style(match_style: Style | null): void;
     }
 
     namespace SearchSettings {
@@ -8468,8 +8473,8 @@ export namespace GtkSource {
             caseSensitive: boolean;
             regex_enabled: boolean;
             regexEnabled: boolean;
-            search_text: string;
-            searchText: string;
+            search_text: string | null;
+            searchText: string | null;
             wrap_around: boolean;
             wrapAround: boolean;
         }
@@ -8487,6 +8492,7 @@ export namespace GtkSource {
          * If `true`, a search match must start and end a word. The match can
          * span multiple words.
          * @since 3.10
+         * @default false
          */
         get at_word_boundaries(): boolean;
         set at_word_boundaries(val: boolean);
@@ -8494,18 +8500,21 @@ export namespace GtkSource {
          * If `true`, a search match must start and end a word. The match can
          * span multiple words.
          * @since 3.10
+         * @default false
          */
         get atWordBoundaries(): boolean;
         set atWordBoundaries(val: boolean);
         /**
          * Whether the search is case sensitive.
          * @since 3.10
+         * @default false
          */
         get case_sensitive(): boolean;
         set case_sensitive(val: boolean);
         /**
          * Whether the search is case sensitive.
          * @since 3.10
+         * @default false
          */
         get caseSensitive(): boolean;
         set caseSensitive(val: boolean);
@@ -8513,6 +8522,7 @@ export namespace GtkSource {
          * Search by regular expressions with
          * {@link GtkSource.SearchSettings.search_text} as the pattern.
          * @since 3.10
+         * @default false
          */
         get regex_enabled(): boolean;
         set regex_enabled(val: boolean);
@@ -8520,6 +8530,7 @@ export namespace GtkSource {
          * Search by regular expressions with
          * {@link GtkSource.SearchSettings.search_text} as the pattern.
          * @since 3.10
+         * @default false
          */
         get regexEnabled(): boolean;
         set regexEnabled(val: boolean);
@@ -8528,22 +8539,25 @@ export namespace GtkSource {
          * expression search is enabled, {@link GtkSource.SearchSettings.search_text} is
          * the pattern.
          * @since 3.10
+         * @default null
          */
-        get search_text(): string;
-        set search_text(val: string);
+        get search_text(): string | null;
+        set search_text(val: string | null);
         /**
          * A search string, or `null` if the search is disabled. If the regular
          * expression search is enabled, {@link GtkSource.SearchSettings.search_text} is
          * the pattern.
          * @since 3.10
+         * @default null
          */
-        get searchText(): string;
-        set searchText(val: string);
+        get searchText(): string | null;
+        set searchText(val: string | null);
         /**
          * For a forward search, continue at the beginning of the buffer if no
          * search occurrence is found. For a backward search, continue at the
          * end of the buffer.
          * @since 3.10
+         * @default false
          */
         get wrap_around(): boolean;
         set wrap_around(val: boolean);
@@ -8552,6 +8566,7 @@ export namespace GtkSource {
          * search occurrence is found. For a backward search, continue at the
          * end of the buffer.
          * @since 3.10
+         * @default false
          */
         get wrapAround(): boolean;
         set wrapAround(val: boolean);
@@ -8653,7 +8668,7 @@ export namespace GtkSource {
          * this function.
          * @param search_text the nul-terminated text to search, or `null` to disable the search.
          */
-        set_search_text(search_text?: string | null): void;
+        set_search_text(search_text: string | null): void;
         /**
          * Enables or disables the wrap around search. If `wrap_around` is `true`, the
          * forward search continues at the beginning of the buffer if no search
@@ -8691,12 +8706,14 @@ export namespace GtkSource {
         /**
          * Whether the {@link GtkSource.SpaceDrawer.matrix} property is enabled.
          * @since 3.24
+         * @default false
          */
         get enable_matrix(): boolean;
         set enable_matrix(val: boolean);
         /**
          * Whether the {@link GtkSource.SpaceDrawer.matrix} property is enabled.
          * @since 3.24
+         * @default false
          */
         get enableMatrix(): boolean;
         set enableMatrix(val: boolean);
@@ -8815,7 +8832,7 @@ export namespace GtkSource {
          * convenient to use.
          * @param matrix the new matrix value, or `null`.
          */
-        set_matrix(matrix?: GLib.Variant | null): void;
+        set_matrix(matrix: GLib.Variant | null): void;
         /**
          * Modifies the {@link GtkSource.SpaceDrawer.matrix} property at the specified
          * `locations`.
@@ -8894,122 +8911,152 @@ export namespace GtkSource {
 
         /**
          * @construct-only
+         * @default null
          */
         get background(): string;
         /**
          * @construct-only
+         * @default false
          */
         get background_set(): boolean;
         /**
          * @construct-only
+         * @default false
          */
         get backgroundSet(): boolean;
         /**
          * @construct-only
+         * @default false
          */
         get bold(): boolean;
         /**
          * @construct-only
+         * @default false
          */
         get bold_set(): boolean;
         /**
          * @construct-only
+         * @default false
          */
         get boldSet(): boolean;
         /**
          * @construct-only
+         * @default null
          */
         get foreground(): string;
         /**
          * @construct-only
+         * @default false
          */
         get foreground_set(): boolean;
         /**
          * @construct-only
+         * @default false
          */
         get foregroundSet(): boolean;
         /**
          * @construct-only
+         * @default false
          */
         get italic(): boolean;
         /**
          * @construct-only
+         * @default false
          */
         get italic_set(): boolean;
         /**
          * @construct-only
+         * @default false
          */
         get italicSet(): boolean;
         /**
          * @construct-only
+         * @default null
          */
         get line_background(): string;
         /**
          * @construct-only
+         * @default null
          */
         get lineBackground(): string;
         /**
          * @construct-only
+         * @default false
          */
         get line_background_set(): boolean;
         /**
          * @construct-only
+         * @default false
          */
         get lineBackgroundSet(): boolean;
         /**
          * @construct-only
+         * @default Pango.Underline.NONE
          */
         get pango_underline(): Pango.Underline;
         /**
          * @construct-only
+         * @default Pango.Underline.NONE
          */
         get pangoUnderline(): Pango.Underline;
         /**
          * @construct-only
+         * @default null
          */
         get scale(): string;
         /**
          * @construct-only
+         * @default false
          */
         get scale_set(): boolean;
         /**
          * @construct-only
+         * @default false
          */
         get scaleSet(): boolean;
         /**
          * @construct-only
+         * @default false
          */
         get strikethrough(): boolean;
         /**
          * @construct-only
+         * @default false
          */
         get strikethrough_set(): boolean;
         /**
          * @construct-only
+         * @default false
          */
         get strikethroughSet(): boolean;
         /**
          * @construct-only
+         * @default null
          */
         get underline_color(): string;
         /**
          * @construct-only
+         * @default null
          */
         get underlineColor(): string;
         /**
          * @construct-only
+         * @default false
          */
         get underline_color_set(): boolean;
         /**
          * @construct-only
+         * @default false
          */
         get underlineColorSet(): boolean;
         /**
          * @construct-only
+         * @default false
          */
         get underline_set(): boolean;
         /**
          * @construct-only
+         * @default false
          */
         get underlineSet(): boolean;
 
@@ -9082,8 +9129,8 @@ export namespace GtkSource {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            description: string;
-            filename: string;
+            description: string | null;
+            filename: string | null;
             id: string;
             name: string;
         }
@@ -9100,22 +9147,26 @@ export namespace GtkSource {
         /**
          * Style scheme description, a translatable string to present to the user.
          * @read-only
+         * @default null
          */
-        get description(): string;
+        get description(): string | null;
         /**
          * Style scheme filename or `null`.
          * @read-only
+         * @default null
          */
-        get filename(): string;
+        get filename(): string | null;
         /**
          * Style scheme id, a unique string used to identify the style scheme
          * in {@link GtkSource.StyleSchemeManager}.
          * @construct-only
+         * @default null
          */
         get id(): string;
         /**
          * Style scheme name, a translatable string to present to the user.
          * @read-only
+         * @default null
          */
         get name(): string;
 
@@ -9309,12 +9360,18 @@ export namespace GtkSource {
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from Gtk.Actionable */
-        get action_name(): string;
-        set action_name(val: string);
-        /** @category Inherited from Gtk.Actionable */
-        get actionName(): string;
-        set actionName(val: string);
+        /**
+         * @default null
+         * @category Inherited from Gtk.Actionable
+         */
+        get action_name(): string | null;
+        set action_name(val: string | null);
+        /**
+         * @default null
+         * @category Inherited from Gtk.Actionable
+         */
+        get actionName(): string | null;
+        set actionName(val: string | null);
         /** @category Inherited from Gtk.Actionable */
         get action_target(): GLib.Variant;
         set action_target(val: GLib.Variant);
@@ -9358,6 +9415,7 @@ export namespace GtkSource {
          * > widget when it changes.
          * @since 2.16
          * @deprecated since 3.10
+         * @default true
          * @category Inherited from Gtk.Activatable
          */
         get use_action_appearance(): boolean;
@@ -9375,6 +9433,7 @@ export namespace GtkSource {
          * > widget when it changes.
          * @since 2.16
          * @deprecated since 3.10
+         * @default true
          * @category Inherited from Gtk.Activatable
          */
         get useActionAppearance(): boolean;
@@ -9397,31 +9456,51 @@ export namespace GtkSource {
          */
         get styleScheme(): StyleScheme;
         set styleScheme(val: StyleScheme);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get app_paintable(): boolean;
         set app_paintable(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get appPaintable(): boolean;
         set appPaintable(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get can_default(): boolean;
         set can_default(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get canDefault(): boolean;
         set canDefault(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get can_focus(): boolean;
         set can_focus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get canFocus(): boolean;
         set canFocus(val: boolean);
         /**
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get composite_child(): boolean;
         /**
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get compositeChild(): boolean;
@@ -9429,6 +9508,7 @@ export namespace GtkSource {
          * Whether the widget is double buffered.
          * @since 2.18
          * @deprecated since 3.14: Widgets should not use this property.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get double_buffered(): boolean;
@@ -9437,16 +9517,21 @@ export namespace GtkSource {
          * Whether the widget is double buffered.
          * @since 2.18
          * @deprecated since 3.14: Widgets should not use this property.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get doubleBuffered(): boolean;
         set doubleBuffered(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default Gdk.EventMask.STRUCTURE_MASK
+         * @category Inherited from Gtk.Widget
+         */
         get events(): Gdk.EventMask;
         set events(val: Gdk.EventMask);
         /**
          * Whether to expand in both directions. Setting this sets both {@link Gtk.Widget.hexpand} and {@link Gtk.Widget.vexpand}
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get expand(): boolean;
@@ -9459,6 +9544,7 @@ export namespace GtkSource {
          * Before 3.20, several widgets (GtkButton, GtkFileChooserButton,
          * GtkComboBox) implemented this property individually.
          * @since 3.20
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get focus_on_click(): boolean;
@@ -9471,6 +9557,7 @@ export namespace GtkSource {
          * Before 3.20, several widgets (GtkButton, GtkFileChooserButton,
          * GtkComboBox) implemented this property individually.
          * @since 3.20
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get focusOnClick(): boolean;
@@ -9478,20 +9565,33 @@ export namespace GtkSource {
         /**
          * How to distribute horizontal space if widget gets extra space, see {@link Gtk.Align}
          * @since 3.0
+         * @default Gtk.Align.FILL
          * @category Inherited from Gtk.Widget
          */
         get halign(): Gtk.Align;
         set halign(val: Gtk.Align);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get has_default(): boolean;
         set has_default(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get hasDefault(): boolean;
         set hasDefault(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get has_focus(): boolean;
         set has_focus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get hasFocus(): boolean;
         set hasFocus(val: boolean);
         /**
@@ -9505,6 +9605,7 @@ export namespace GtkSource {
          * and motion-notify events.  This cannot and will not be undone when the
          * property is set to `false` again.
          * @since 2.12
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get has_tooltip(): boolean;
@@ -9520,19 +9621,27 @@ export namespace GtkSource {
          * and motion-notify events.  This cannot and will not be undone when the
          * property is set to `false` again.
          * @since 2.12
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hasTooltip(): boolean;
         set hasTooltip(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default -1
+         * @category Inherited from Gtk.Widget
+         */
         get height_request(): number;
         set height_request(val: number);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default -1
+         * @category Inherited from Gtk.Widget
+         */
         get heightRequest(): number;
         set heightRequest(val: number);
         /**
          * Whether to expand horizontally. See `gtk_widget_set_hexpand()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpand(): boolean;
@@ -9540,6 +9649,7 @@ export namespace GtkSource {
         /**
          * Whether to use the {@link Gtk.Widget.hexpand} property. See `gtk_widget_get_hexpand_set()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpand_set(): boolean;
@@ -9547,20 +9657,28 @@ export namespace GtkSource {
         /**
          * Whether to use the {@link Gtk.Widget.hexpand} property. See `gtk_widget_get_hexpand_set()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpandSet(): boolean;
         set hexpandSet(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get is_focus(): boolean;
         set is_focus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get isFocus(): boolean;
         set isFocus(val: boolean);
         /**
          * Sets all four sides' margin at once. If read, returns max
          * margin on any side.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin(): number;
@@ -9572,6 +9690,7 @@ export namespace GtkSource {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_bottom(): number;
@@ -9583,6 +9702,7 @@ export namespace GtkSource {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginBottom(): number;
@@ -9595,6 +9715,7 @@ export namespace GtkSource {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.12
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_end(): number;
@@ -9607,6 +9728,7 @@ export namespace GtkSource {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.12
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginEnd(): number;
@@ -9619,6 +9741,7 @@ export namespace GtkSource {
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
          * @deprecated since 3.12: Use {@link Gtk.Widget.margin_start} instead.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_left(): number;
@@ -9631,6 +9754,7 @@ export namespace GtkSource {
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
          * @deprecated since 3.12: Use {@link Gtk.Widget.margin_start} instead.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginLeft(): number;
@@ -9643,6 +9767,7 @@ export namespace GtkSource {
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
          * @deprecated since 3.12: Use {@link Gtk.Widget.margin_end} instead.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_right(): number;
@@ -9655,6 +9780,7 @@ export namespace GtkSource {
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
          * @deprecated since 3.12: Use {@link Gtk.Widget.margin_end} instead.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginRight(): number;
@@ -9667,6 +9793,7 @@ export namespace GtkSource {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.12
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_start(): number;
@@ -9679,6 +9806,7 @@ export namespace GtkSource {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.12
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginStart(): number;
@@ -9690,6 +9818,7 @@ export namespace GtkSource {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_top(): number;
@@ -9701,17 +9830,27 @@ export namespace GtkSource {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginTop(): number;
         set marginTop(val: number);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default null
+         * @category Inherited from Gtk.Widget
+         */
         get name(): string;
         set name(val: string);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get no_show_all(): boolean;
         set no_show_all(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get noShowAll(): boolean;
         set noShowAll(val: boolean);
         /**
@@ -9720,17 +9859,24 @@ export namespace GtkSource {
          *
          * Before 3.8 this was only available in GtkWindow
          * @since 3.8
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get opacity(): number;
         set opacity(val: number);
         /** @category Inherited from Gtk.Widget */
-        get parent(): Gtk.Container;
-        set parent(val: Gtk.Container);
-        /** @category Inherited from Gtk.Widget */
+        get parent(): Gtk.Container | null;
+        set parent(val: Gtk.Container | null);
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get receives_default(): boolean;
         set receives_default(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get receivesDefault(): boolean;
         set receivesDefault(val: boolean);
         /**
@@ -9738,6 +9884,7 @@ export namespace GtkSource {
          * more details about widget scaling.
          * @since 3.10
          * @read-only
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -9746,10 +9893,14 @@ export namespace GtkSource {
          * more details about widget scaling.
          * @since 3.10
          * @read-only
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default true
+         * @category Inherited from Gtk.Widget
+         */
         get sensitive(): boolean;
         set sensitive(val: boolean);
         /**
@@ -9772,10 +9923,11 @@ export namespace GtkSource {
          * Note that if both {@link Gtk.Widget.tooltip_text} and {@link Gtk.Widget.tooltip_markup}
          * are set, the last one wins.
          * @since 2.12
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltip_markup(): string;
-        set tooltip_markup(val: string);
+        get tooltip_markup(): string | null;
+        set tooltip_markup(val: string | null);
         /**
          * Sets the text of tooltip to be the given string, which is marked up
          * with the [Pango text markup language][PangoMarkupFormat].
@@ -9789,10 +9941,11 @@ export namespace GtkSource {
          * Note that if both {@link Gtk.Widget.tooltip_text} and {@link Gtk.Widget.tooltip_markup}
          * are set, the last one wins.
          * @since 2.12
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltipMarkup(): string;
-        set tooltipMarkup(val: string);
+        get tooltipMarkup(): string | null;
+        set tooltipMarkup(val: string | null);
         /**
          * Sets the text of tooltip to be the given string.
          *
@@ -9806,10 +9959,11 @@ export namespace GtkSource {
          * Note that if both {@link Gtk.Widget.tooltip_text} and {@link Gtk.Widget.tooltip_markup}
          * are set, the last one wins.
          * @since 2.12
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltip_text(): string;
-        set tooltip_text(val: string);
+        get tooltip_text(): string | null;
+        set tooltip_text(val: string | null);
         /**
          * Sets the text of tooltip to be the given string.
          *
@@ -9823,13 +9977,15 @@ export namespace GtkSource {
          * Note that if both {@link Gtk.Widget.tooltip_text} and {@link Gtk.Widget.tooltip_markup}
          * are set, the last one wins.
          * @since 2.12
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltipText(): string;
-        set tooltipText(val: string);
+        get tooltipText(): string | null;
+        set tooltipText(val: string | null);
         /**
          * How to distribute vertical space if widget gets extra space, see {@link Gtk.Align}
          * @since 3.0
+         * @default Gtk.Align.FILL
          * @category Inherited from Gtk.Widget
          */
         get valign(): Gtk.Align;
@@ -9837,6 +9993,7 @@ export namespace GtkSource {
         /**
          * Whether to expand vertically. See `gtk_widget_set_vexpand()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpand(): boolean;
@@ -9844,6 +10001,7 @@ export namespace GtkSource {
         /**
          * Whether to use the {@link Gtk.Widget.vexpand} property. See `gtk_widget_get_vexpand_set()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpand_set(): boolean;
@@ -9851,17 +10009,27 @@ export namespace GtkSource {
         /**
          * Whether to use the {@link Gtk.Widget.vexpand} property. See `gtk_widget_get_vexpand_set()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpandSet(): boolean;
         set vexpandSet(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get visible(): boolean;
         set visible(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default -1
+         * @category Inherited from Gtk.Widget
+         */
         get width_request(): number;
         set width_request(val: number);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default -1
+         * @category Inherited from Gtk.Widget
+         */
         get widthRequest(): number;
         set widthRequest(val: number);
         /**
@@ -9870,7 +10038,7 @@ export namespace GtkSource {
          * @read-only
          * @category Inherited from Gtk.Widget
          */
-        get window(): Gdk.Window;
+        get window(): Gdk.Window | null;
         /**
          * Gets the action name for `actionable`.
          *
@@ -9899,7 +10067,7 @@ export namespace GtkSource {
          * associated with the window.
          * @param action_name an action name, or `null`
          */
-        set_action_name(action_name?: string | null): void;
+        set_action_name(action_name: string | null): void;
         /**
          * Sets the target value of an actionable widget.
          *
@@ -9922,7 +10090,7 @@ export namespace GtkSource {
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
          */
-        set_action_target_value(target_value?: GLib.Variant | null): void;
+        set_action_target_value(target_value: GLib.Variant | null): void;
         /**
          * Sets the action-name and associated string target value of an
          * actionable widget.
@@ -9967,7 +10135,7 @@ export namespace GtkSource {
          * @param action_name an action name, or `null`
          * @virtual
          */
-        vfunc_set_action_name(action_name?: string | null): void;
+        vfunc_set_action_name(action_name: string | null): void;
         /**
          * Sets the target value of an actionable widget.
          *
@@ -9991,7 +10159,7 @@ export namespace GtkSource {
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
          * @virtual
          */
-        vfunc_set_action_target_value(target_value?: GLib.Variant | null): void;
+        vfunc_set_action_target_value(target_value: GLib.Variant | null): void;
         /**
          * This is a utility function for {@link Gtk.Activatable} implementors.
          *
@@ -10049,7 +10217,7 @@ export namespace GtkSource {
          * {@link Gtk.Activatable.use_action_appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
          */
-        sync_action_properties(action?: Gtk.Action | null): void;
+        sync_action_properties(action: Gtk.Action | null): void;
         /**
          * This is called to update the activatable completely, this is called
          * internally when the {@link Gtk.Activatable.related_action} property is set
@@ -10058,7 +10226,7 @@ export namespace GtkSource {
          * @param action the related {@link Gtk.Action} or `null`
          * @virtual
          */
-        vfunc_sync_action_properties(action?: Gtk.Action | null): void;
+        vfunc_sync_action_properties(action: Gtk.Action | null): void;
         /**
          * Called to update the activatable when its related action’s properties change.
          * You must check the {@link Gtk.Activatable.use_action_appearance} property only apply action
@@ -10136,38 +10304,19 @@ export namespace GtkSource {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -10175,15 +10324,9 @@ export namespace GtkSource {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -10350,7 +10493,7 @@ export namespace GtkSource {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -10709,7 +10852,7 @@ export namespace GtkSource {
          * @param text text to set on the layout (can be `null`)
          * @returns the new {@link Pango.Layout}
          */
-        create_pango_layout(text?: string | null): Pango.Layout;
+        create_pango_layout(text: string | null): Pango.Layout;
         /**
          * Destroys a widget.
          *
@@ -10778,7 +10921,7 @@ export namespace GtkSource {
             targets: Gtk.TargetList,
             actions: Gdk.DragAction,
             button: number,
-            event?: Gdk.Event | null,
+            event: Gdk.Event | null,
         ): Gdk.DragContext;
         /**
          * Initiates a drag on the source side. The function only needs to be used
@@ -10869,7 +11012,7 @@ export namespace GtkSource {
          * @param target_list list of droppable targets, or `null` to use    gtk_drag_dest_get_target_list (`widget`).
          * @returns first target that the source offers     and the dest can accept, or `GDK_NONE`
          */
-        drag_dest_find_target(context: Gdk.DragContext, target_list?: Gtk.TargetList | null): Gdk.Atom;
+        drag_dest_find_target(context: Gdk.DragContext, target_list: Gtk.TargetList | null): Gdk.Atom;
         /**
          * Returns the list of targets this widget can accept from
          * drag-and-drop.
@@ -10942,7 +11085,7 @@ export namespace GtkSource {
          * `gtk_drag_dest_set()`.
          * @param target_list list of droppable targets, or `null` for none
          */
-        drag_dest_set_target_list(target_list?: Gtk.TargetList | null): void;
+        drag_dest_set_target_list(target_list: Gtk.TargetList | null): void;
         /**
          * Tells the widget to emit {@link Gtk.Widget.SignalSignatures.drag_motion | Gtk.Widget::drag-motion} and
          * {@link Gtk.Widget.SignalSignatures.drag_leave | Gtk.Widget::drag-leave} events regardless of the targets and the
@@ -11052,7 +11195,7 @@ export namespace GtkSource {
          * `gtk_drag_source_set()`.
          * @param target_list list of draggable targets, or `null` for none
          */
-        drag_source_set_target_list(target_list?: Gtk.TargetList | null): void;
+        drag_source_set_target_list(target_list: Gtk.TargetList | null): void;
         /**
          * Undoes the effects of `gtk_drag_source_set()`.
          */
@@ -12010,7 +12153,7 @@ export namespace GtkSource {
          * `gdk_window_input_shape_combine_region()` for more information.
          * @param region shape to be added, or `null` to remove an existing shape
          */
-        input_shape_combine_region(region?: cairo.Region | null): void;
+        input_shape_combine_region(region: cairo.Region | null): void;
         /**
          * Inserts `group` into `widget`. Children of `widget` that implement
          * {@link Gtk.Actionable} can then be associated with actions in `group` by
@@ -12022,7 +12165,7 @@ export namespace GtkSource {
          * @param name the prefix for actions in `group`
          * @param group a {@link Gio.ActionGroup}, or `null`
          */
-        insert_action_group(name: string, group?: Gio.ActionGroup | null): void;
+        insert_action_group(name: string, group: Gio.ActionGroup | null): void;
         /**
          * Computes the intersection of a `widget`’s area and `area`, storing
          * the intersection in `intersection`, and returns `true` if there was
@@ -12173,7 +12316,7 @@ export namespace GtkSource {
          * @param state the state for which to set the base color
          * @param color the color to assign (does not need to     be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_base()`.
          */
-        modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_base(state: Gtk.StateType, color: Gdk.Color | null): void;
         /**
          * Sets the background color for a widget in a particular state.
          *
@@ -12192,7 +12335,7 @@ export namespace GtkSource {
          * @param state the state for which to set the background color
          * @param color the color to assign (does not need     to be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_bg()`.
          */
-        modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_bg(state: Gtk.StateType, color: Gdk.Color | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the {@link Gtk.Widget}
          * cursor-color and secondary-cursor-color
@@ -12203,7 +12346,7 @@ export namespace GtkSource {
          * @param primary the color to use for primary cursor (does not     need to be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_cursor()`.
          * @param secondary the color to use for secondary cursor (does     not need to be allocated), or `null` to undo the effect of     previous calls to of `gtk_widget_modify_cursor()`.
          */
-        modify_cursor(primary?: Gdk.Color | null, secondary?: Gdk.Color | null): void;
+        modify_cursor(primary: Gdk.Color | null, secondary: Gdk.Color | null): void;
         /**
          * Sets the foreground color for a widget in a particular state.
          *
@@ -12212,7 +12355,7 @@ export namespace GtkSource {
          * @param state the state for which to set the foreground color
          * @param color the color to assign (does not need to be allocated),     or `null` to undo the effect of previous calls to     of `gtk_widget_modify_fg()`.
          */
-        modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_fg(state: Gtk.StateType, color: Gdk.Color | null): void;
         /**
          * Sets the font to use for a widget.
          *
@@ -12220,7 +12363,7 @@ export namespace GtkSource {
          * See also `gtk_widget_modify_style()`.
          * @param font_desc the font description to use, or `null`     to undo the effect of previous calls to `gtk_widget_modify_font()`
          */
-        modify_font(font_desc?: Pango.FontDescription | null): void;
+        modify_font(font_desc: Pango.FontDescription | null): void;
         /**
          * Modifies style values on the widget.
          *
@@ -12254,7 +12397,7 @@ export namespace GtkSource {
          * @param state the state for which to set the text color
          * @param color the color to assign (does not need to     be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_text()`.
          */
-        modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_text(state: Gtk.StateType, color: Gdk.Color | null): void;
         /**
          * Sets the background color to use for a widget.
          *
@@ -12263,7 +12406,7 @@ export namespace GtkSource {
          * @param state the state for which to set the background color
          * @param color the color to assign, or `null` to undo the effect     of previous calls to `gtk_widget_override_background_color()`
          */
-        override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_background_color(state: Gtk.StateFlags, color: Gdk.RGBA | null): void;
         /**
          * Sets the color to use for a widget.
          *
@@ -12293,7 +12436,7 @@ export namespace GtkSource {
          * @param state the state for which to set the color
          * @param color the color to assign, or `null` to undo the effect     of previous calls to `gtk_widget_override_color()`
          */
-        override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_color(state: Gtk.StateFlags, color: Gdk.RGBA | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the
          * cursor-color and secondary-cursor-color
@@ -12305,13 +12448,13 @@ export namespace GtkSource {
          * @param cursor the color to use for primary cursor (does not need to be     allocated), or `null` to undo the effect of previous calls to     of `gtk_widget_override_cursor()`.
          * @param secondary_cursor the color to use for secondary cursor (does not     need to be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_override_cursor()`.
          */
-        override_cursor(cursor?: Gdk.RGBA | null, secondary_cursor?: Gdk.RGBA | null): void;
+        override_cursor(cursor: Gdk.RGBA | null, secondary_cursor: Gdk.RGBA | null): void;
         /**
          * Sets the font to use for a widget. All other style values are
          * left untouched. See `gtk_widget_override_color()`.
          * @param font_desc the font description to use, or `null` to undo     the effect of previous calls to `gtk_widget_override_font()`
          */
-        override_font(font_desc?: Pango.FontDescription | null): void;
+        override_font(font_desc: Pango.FontDescription | null): void;
         /**
          * Sets a symbolic color for a widget.
          *
@@ -12321,7 +12464,7 @@ export namespace GtkSource {
          * @param name the name of the symbolic color to modify
          * @param color the color to assign (does not need     to be allocated), or `null` to undo the effect of previous     calls to `gtk_widget_override_symbolic_color()`
          */
-        override_symbolic_color(name: string, color?: Gdk.RGBA | null): void;
+        override_symbolic_color(name: string, color: Gdk.RGBA | null): void;
         /**
          * Obtains the full path to `widget`. The path is simply the name of a
          * widget and all its parents in the container hierarchy, separated by
@@ -12492,7 +12635,7 @@ export namespace GtkSource {
          * @param detail render detail to pass to theme engine
          * @returns a new pixbuf, or `null` if the     stock ID wasn’t known
          */
-        render_icon(stock_id: string, size: number, detail?: string | null): GdkPixbuf.Pixbuf | null;
+        render_icon(stock_id: string, size: number, detail: string | null): GdkPixbuf.Pixbuf | null;
         /**
          * A convenience function that uses the theme engine and style
          * settings for `widget` to look up `stock_id` and render it to
@@ -12599,7 +12742,7 @@ export namespace GtkSource {
          * @param accel_path path used to look up the accelerator
          * @param accel_group a {@link Gtk.AccelGroup}.
          */
-        set_accel_path(accel_path?: string | null, accel_group?: Gtk.AccelGroup | null): void;
+        set_accel_path(accel_path: string | null, accel_group: Gtk.AccelGroup | null): void;
         /**
          * Sets the widget’s allocation.  This should not be used
          * directly, but from within a widget’s size_allocate method.
@@ -12783,13 +12926,13 @@ export namespace GtkSource {
          * will inherit the font map from its parent.
          * @param font_map a {@link Pango.FontMap}, or `null` to unset any previously     set font map
          */
-        set_font_map(font_map?: Pango.FontMap | null): void;
+        set_font_map(font_map: Pango.FontMap | null): void;
         /**
          * Sets the {@link cairo.FontOptions} used for Pango rendering in this widget.
          * When not set, the default font options for the {@link Gdk.Screen} will be used.
          * @param options a {@link cairo.FontOptions}, or `null` to unset any   previously set default font options.
          */
-        set_font_options(options?: cairo.FontOptions | null): void;
+        set_font_options(options: cairo.FontOptions | null): void;
         /**
          * Sets the horizontal alignment of `widget`.
          * See the {@link Gtk.Widget.halign} property.
@@ -13082,7 +13225,7 @@ export namespace GtkSource {
          * GTK 3, this function does nothing, the passed in style is ignored.
          * @param style a {@link Gtk.Style}, or `null` to remove the effect     of a previous call to `gtk_widget_set_style()` and go back to     the default style
          */
-        set_style(style?: Gtk.Style | null): void;
+        set_style(style: Gtk.Style | null): void;
         /**
          * Enables or disables multiple pointer awareness. If this setting is `true`,
          * `widget` will start receiving multiple, per device enter/leave events. Note
@@ -13102,7 +13245,7 @@ export namespace GtkSource {
          * `gtk_tooltip_set_markup()`.
          * @param markup the contents of the tooltip for `widget`, or `null`
          */
-        set_tooltip_markup(markup?: string | null): void;
+        set_tooltip_markup(markup: string | null): void;
         /**
          * Sets `text` as the contents of the tooltip. This function will take
          * care of setting {@link Gtk.Widget.has_tooltip} to `true` and of the default
@@ -13111,7 +13254,7 @@ export namespace GtkSource {
          * See also the {@link Gtk.Widget.tooltip_text} property and `gtk_tooltip_set_text()`.
          * @param text the contents of the tooltip for `widget`
          */
-        set_tooltip_text(text?: string | null): void;
+        set_tooltip_text(text: string | null): void;
         /**
          * Replaces the default window used for displaying
          * tooltips with `custom_window`. GTK+ will take care of showing and
@@ -13120,7 +13263,7 @@ export namespace GtkSource {
          * tooltip window will be used.
          * @param custom_window a {@link Gtk.Window}, or `null`
          */
-        set_tooltip_window(custom_window?: Gtk.Window | null): void;
+        set_tooltip_window(custom_window: Gtk.Window | null): void;
         /**
          * Sets the vertical alignment of `widget`.
          * See the {@link Gtk.Widget.valign} property.
@@ -13164,7 +13307,7 @@ export namespace GtkSource {
          * so you should call this function before `widget` is realized.
          * @param visual visual to be used or `null` to unset a previous one
          */
-        set_visual(visual?: Gdk.Visual | null): void;
+        set_visual(visual: Gdk.Visual | null): void;
         /**
          * Sets a widget’s window. This function should only be used in a
          * widget’s {@link Gtk.Widget.SignalSignatures.realize | Gtk.Widget::realize} implementation. The %window passed is
@@ -13186,7 +13329,7 @@ export namespace GtkSource {
          * for more information.
          * @param region shape to be added, or `null` to remove an existing shape
          */
-        shape_combine_region(region?: cairo.Region | null): void;
+        shape_combine_region(region: cairo.Region | null): void;
         /**
          * Flags a widget to be displayed. Any widget that isn’t shown will
          * not appear on the screen. If you want to show all the widgets in a
@@ -14307,38 +14450,19 @@ export namespace GtkSource {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -14346,15 +14470,9 @@ export namespace GtkSource {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -14521,7 +14639,7 @@ export namespace GtkSource {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -14721,8 +14839,8 @@ export namespace GtkSource {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            scheme_ids: string[];
-            schemeIds: string[];
+            scheme_ids: string[] | null;
+            schemeIds: string[] | null;
             search_path: string[];
             searchPath: string[];
         }
@@ -14739,11 +14857,11 @@ export namespace GtkSource {
         /**
          * @read-only
          */
-        get scheme_ids(): string[];
+        get scheme_ids(): string[] | null;
         /**
          * @read-only
          */
-        get schemeIds(): string[];
+        get schemeIds(): string[] | null;
         get search_path(): string[];
         set search_path(val: string[]);
         get searchPath(): string[];
@@ -14839,7 +14957,7 @@ export namespace GtkSource {
          * If `path` is `null`, the search path is reset to default.
          * @param path a `null`-terminated array of strings or `null`.
          */
-        set_search_path(path?: string[] | null): void;
+        set_search_path(path: string[] | null): void;
     }
 
     namespace Tag {
@@ -14949,6 +15067,7 @@ export namespace GtkSource {
          * Setting this property also changes {@link GtkSource.Tag.draw_spaces_set} to
          * `true`.
          * @since 3.20
+         * @default false
          */
         get draw_spaces(): boolean;
         set draw_spaces(val: boolean);
@@ -14960,6 +15079,7 @@ export namespace GtkSource {
          * Setting this property also changes {@link GtkSource.Tag.draw_spaces_set} to
          * `true`.
          * @since 3.20
+         * @default false
          */
         get drawSpaces(): boolean;
         set drawSpaces(val: boolean);
@@ -14967,6 +15087,7 @@ export namespace GtkSource {
          * Whether the {@link GtkSource.Tag.draw_spaces} property is set and must be
          * taken into account.
          * @since 3.20
+         * @default false
          */
         get draw_spaces_set(): boolean;
         set draw_spaces_set(val: boolean);
@@ -14974,6 +15095,7 @@ export namespace GtkSource {
          * Whether the {@link GtkSource.Tag.draw_spaces} property is set and must be
          * taken into account.
          * @since 3.20
+         * @default false
          */
         get drawSpacesSet(): boolean;
         set drawSpacesSet(val: boolean);
@@ -14993,7 +15115,7 @@ export namespace GtkSource {
 
         _init(...args: any[]): void;
 
-        static ['new'](name?: string | null): Tag;
+        static ['new'](name: string | null): Tag;
 
         // Signals
 
@@ -15252,19 +15374,27 @@ export namespace GtkSource {
 
         // Properties
 
+        /**
+         * @default false
+         */
         get auto_indent(): boolean;
         set auto_indent(val: boolean);
+        /**
+         * @default false
+         */
         get autoIndent(): boolean;
         set autoIndent(val: boolean);
         /**
          * Draw a specific background pattern on the view.
          * @since 3.16
+         * @default GtkSource.BackgroundPatternType.NONE
          */
         get background_pattern(): BackgroundPatternType;
         set background_pattern(val: BackgroundPatternType);
         /**
          * Draw a specific background pattern on the view.
          * @since 3.16
+         * @default GtkSource.BackgroundPatternType.NONE
          */
         get backgroundPattern(): BackgroundPatternType;
         set backgroundPattern(val: BackgroundPatternType);
@@ -15273,89 +15403,121 @@ export namespace GtkSource {
          * @read-only
          */
         get completion(): Completion;
+        /**
+         * @default false
+         */
         get highlight_current_line(): boolean;
         set highlight_current_line(val: boolean);
+        /**
+         * @default false
+         */
         get highlightCurrentLine(): boolean;
         set highlightCurrentLine(val: boolean);
+        /**
+         * @default true
+         */
         get indent_on_tab(): boolean;
         set indent_on_tab(val: boolean);
+        /**
+         * @default true
+         */
         get indentOnTab(): boolean;
         set indentOnTab(val: boolean);
         /**
          * Width of an indentation step expressed in number of spaces.
+         * @default -1
          */
         get indent_width(): number;
         set indent_width(val: number);
         /**
          * Width of an indentation step expressed in number of spaces.
+         * @default -1
          */
         get indentWidth(): number;
         set indentWidth(val: number);
+        /**
+         * @default false
+         */
         get insert_spaces_instead_of_tabs(): boolean;
         set insert_spaces_instead_of_tabs(val: boolean);
+        /**
+         * @default false
+         */
         get insertSpacesInsteadOfTabs(): boolean;
         set insertSpacesInsteadOfTabs(val: boolean);
         /**
          * Position of the right margin.
+         * @default 80
          */
         get right_margin_position(): number;
         set right_margin_position(val: number);
         /**
          * Position of the right margin.
+         * @default 80
          */
         get rightMarginPosition(): number;
         set rightMarginPosition(val: number);
         /**
          * Whether to display line mark pixbufs
+         * @default false
          */
         get show_line_marks(): boolean;
         set show_line_marks(val: boolean);
         /**
          * Whether to display line mark pixbufs
+         * @default false
          */
         get showLineMarks(): boolean;
         set showLineMarks(val: boolean);
         /**
          * Whether to display line numbers
+         * @default false
          */
         get show_line_numbers(): boolean;
         set show_line_numbers(val: boolean);
         /**
          * Whether to display line numbers
+         * @default false
          */
         get showLineNumbers(): boolean;
         set showLineNumbers(val: boolean);
         /**
          * Whether to display the right margin.
+         * @default false
          */
         get show_right_margin(): boolean;
         set show_right_margin(val: boolean);
         /**
          * Whether to display the right margin.
+         * @default false
          */
         get showRightMargin(): boolean;
         set showRightMargin(val: boolean);
         /**
          * Whether smart Backspace should be used.
          * @since 3.18
+         * @default false
          */
         get smart_backspace(): boolean;
         set smart_backspace(val: boolean);
         /**
          * Whether smart Backspace should be used.
          * @since 3.18
+         * @default false
          */
         get smartBackspace(): boolean;
         set smartBackspace(val: boolean);
         /**
          * Set the behavior of the HOME and END keys.
          * @since 2.0
+         * @default GtkSource.SmartHomeEndType.DISABLED
          */
         get smart_home_end(): SmartHomeEndType;
         set smart_home_end(val: SmartHomeEndType);
         /**
          * Set the behavior of the HOME and END keys.
          * @since 2.0
+         * @default GtkSource.SmartHomeEndType.DISABLED
          */
         get smartHomeEnd(): SmartHomeEndType;
         set smartHomeEnd(val: SmartHomeEndType);
@@ -15373,11 +15535,13 @@ export namespace GtkSource {
         get spaceDrawer(): SpaceDrawer;
         /**
          * Width of a tab character expressed in number of spaces.
+         * @default 8
          */
         get tab_width(): number;
         set tab_width(val: number);
         /**
          * Width of a tab character expressed in number of spaces.
+         * @default 8
          */
         get tabWidth(): number;
         set tabWidth(val: number);
@@ -15699,6 +15863,7 @@ export namespace GtkSource {
          * Determines whether horizontal scrolling should start once the scrollable
          * widget is allocated less than its minimum width or less than its natural width.
          * @since 3.0
+         * @default Gtk.ScrollablePolicy.MINIMUM
          * @category Inherited from Gtk.Scrollable
          */
         get hscroll_policy(): Gtk.ScrollablePolicy;
@@ -15707,6 +15872,7 @@ export namespace GtkSource {
          * Determines whether horizontal scrolling should start once the scrollable
          * widget is allocated less than its minimum width or less than its natural width.
          * @since 3.0
+         * @default Gtk.ScrollablePolicy.MINIMUM
          * @category Inherited from Gtk.Scrollable
          */
         get hscrollPolicy(): Gtk.ScrollablePolicy;
@@ -15723,6 +15889,7 @@ export namespace GtkSource {
          * Determines whether vertical scrolling should start once the scrollable
          * widget is allocated less than its minimum height or less than its natural height.
          * @since 3.0
+         * @default Gtk.ScrollablePolicy.MINIMUM
          * @category Inherited from Gtk.Scrollable
          */
         get vscroll_policy(): Gtk.ScrollablePolicy;
@@ -15731,6 +15898,7 @@ export namespace GtkSource {
          * Determines whether vertical scrolling should start once the scrollable
          * widget is allocated less than its minimum height or less than its natural height.
          * @since 3.0
+         * @default Gtk.ScrollablePolicy.MINIMUM
          * @category Inherited from Gtk.Scrollable
          */
         get vscrollPolicy(): Gtk.ScrollablePolicy;
@@ -15768,7 +15936,7 @@ export namespace GtkSource {
          * Sets the horizontal adjustment of the {@link Gtk.Scrollable}.
          * @param hadjustment a {@link Gtk.Adjustment}
          */
-        set_hadjustment(hadjustment?: Gtk.Adjustment | null): void;
+        set_hadjustment(hadjustment: Gtk.Adjustment | null): void;
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
          * horizontal scrolling should start below the minimum width or
@@ -15780,7 +15948,7 @@ export namespace GtkSource {
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
          */
-        set_vadjustment(vadjustment?: Gtk.Adjustment | null): void;
+        set_vadjustment(vadjustment: Gtk.Adjustment | null): void;
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
          * vertical scrolling should start below the minimum height or
@@ -15844,38 +16012,19 @@ export namespace GtkSource {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -15883,15 +16032,9 @@ export namespace GtkSource {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -16058,7 +16201,7 @@ export namespace GtkSource {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set

@@ -125,7 +125,7 @@ export namespace GnomeDesktop {
      * @returns the country name. Caller takes ownership.
      * @since 3.8
      */
-    function get_country_from_code(code: string, translation?: string | null): string;
+    function get_country_from_code(code: string, translation: string | null): string;
     /**
      * Gets the country description for `locale`. If `translation` is
      * provided the returned string is translated accordingly.
@@ -134,7 +134,7 @@ export namespace GnomeDesktop {
      * @returns the country description. Caller takes ownership.
      * @since 3.8
      */
-    function get_country_from_locale(locale: string, translation?: string | null): string;
+    function get_country_from_locale(locale: string, translation: string | null): string;
     /**
      * Gets the default input source's type and identifier for a given
      * locale.
@@ -151,7 +151,7 @@ export namespace GnomeDesktop {
      * @returns the language name. Caller takes ownership.
      * @since 3.8
      */
-    function get_language_from_code(code: string, translation?: string | null): string;
+    function get_language_from_code(code: string, translation: string | null): string;
     /**
      * Gets the language description for `locale`. If `translation` is
      * provided the returned string is translated accordingly.
@@ -160,7 +160,7 @@ export namespace GnomeDesktop {
      * @returns the language description. Caller takes ownership.
      * @since 3.8
      */
-    function get_language_from_locale(locale: string, translation?: string | null): string;
+    function get_language_from_locale(locale: string, translation: string | null): string;
     /**
      * Returns an integer with the major version of GNOME. Useful for
      * dynamic languages like Javascript or Python (static languages like
@@ -179,7 +179,7 @@ export namespace GnomeDesktop {
      * @returns the translated modifier string. Caller takes ownership.
      * @since 3.34
      */
-    function get_translated_modifier(modifier: string, translation?: string | null): string;
+    function get_translated_modifier(modifier: string, translation: string | null): string;
     /**
      * Returns `true` if there are translations for language `code`.
      * @param code an ISO 639 code string
@@ -239,9 +239,9 @@ export namespace GnomeDesktop {
     function start_systemd_scope(
         name: string,
         pid: number,
-        description?: string | null,
-        connection?: Gio.DBusConnection | null,
-        cancellable?: Gio.Cancellable | null,
+        description: string | null,
+        connection: Gio.DBusConnection | null,
+        cancellable: Gio.Cancellable | null,
     ): globalThis.Promise<boolean>;
     /**
      * If the current process is running inside a user systemd instance, then move
@@ -308,10 +308,10 @@ export namespace GnomeDesktop {
     function start_systemd_scope(
         name: string,
         pid: number,
-        description?: string | null,
-        connection?: Gio.DBusConnection | null,
-        cancellable?: Gio.Cancellable | null,
-        callback?: Gio.AsyncReadyCallback<string> | null,
+        description: string | null,
+        connection: Gio.DBusConnection | null,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<string> | null,
     ): globalThis.Promise<boolean> | void;
     /**
      * Finish an asynchronous operation to create a transient scope that was
@@ -539,12 +539,14 @@ export namespace GnomeDesktop {
          * When a crossfade is running, this is height of the fading
          * surface.
          * @construct-only
+         * @default 0
          */
         get height(): number;
         /**
          * When a crossfade is running, this is width of the fading
          * surface.
          * @construct-only
+         * @default 0
          */
         get width(): number;
 
@@ -676,26 +678,32 @@ export namespace GnomeDesktop {
         get file(): Gio.File;
         /**
          * @read-only
+         * @default false
          */
         get has_multiple_sizes(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get hasMultipleSizes(): boolean;
         /**
          * @read-only
+         * @default 0
          */
         get start_time(): number;
         /**
          * @read-only
+         * @default 0
          */
         get startTime(): number;
         /**
          * @read-only
+         * @default 0
          */
         get total_duration(): number;
         /**
          * @read-only
+         * @default 0
          */
         get totalDuration(): number;
 
@@ -790,7 +798,7 @@ export namespace GnomeDesktop {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback the callback
          */
-        load_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        load_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
     }
 
     namespace DesktopThumbnailFactory {
@@ -871,7 +879,7 @@ export namespace GnomeDesktop {
          * @param cancellable a GCancellable object, or NULL
          * @returns TRUE if everything went fine; FALSE if there was an error.
          */
-        create_failed_thumbnail(uri: string, mtime: bigint | number, cancellable?: Gio.Cancellable | null): boolean;
+        create_failed_thumbnail(uri: string, mtime: bigint | number, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Asynchronous version of `gnome_desktop_thumbnail_factory_create_failed_thumbnail()`
          *
@@ -883,7 +891,7 @@ export namespace GnomeDesktop {
         create_failed_thumbnail_async(
             uri: string,
             original_mtime: bigint | number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronous version of `gnome_desktop_thumbnail_factory_create_failed_thumbnail()`
@@ -912,7 +920,7 @@ export namespace GnomeDesktop {
         create_failed_thumbnail_async(
             uri: string,
             original_mtime: bigint | number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -930,7 +938,7 @@ export namespace GnomeDesktop {
          * @param cancellable a {@link Gio.Cancellable} object or NULL
          * @returns thumbnail pixbuf if thumbnailing succeeded, `null` otherwise and error will be set
          */
-        generate_thumbnail(uri: string, mime_type: string, cancellable?: Gio.Cancellable | null): GdkPixbuf.Pixbuf;
+        generate_thumbnail(uri: string, mime_type: string, cancellable: Gio.Cancellable | null): GdkPixbuf.Pixbuf;
         /**
          * Asynchronous version of `gnome_desktop_thumbnail_factory_generate_thumbnail()`
          *
@@ -942,7 +950,7 @@ export namespace GnomeDesktop {
         generate_thumbnail_async(
             uri: string,
             mime_type: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<GdkPixbuf.Pixbuf>;
         /**
          * Asynchronous version of `gnome_desktop_thumbnail_factory_generate_thumbnail()`
@@ -971,7 +979,7 @@ export namespace GnomeDesktop {
         generate_thumbnail_async(
             uri: string,
             mime_type: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GdkPixbuf.Pixbuf> | void;
         /**
@@ -1014,7 +1022,7 @@ export namespace GnomeDesktop {
             thumbnail: GdkPixbuf.Pixbuf,
             uri: string,
             original_mtime: bigint | number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Asynchronous version of `gnome_desktop_thumbnail_factory_save_thumbnail()`
@@ -1029,7 +1037,7 @@ export namespace GnomeDesktop {
             thumbnail: GdkPixbuf.Pixbuf,
             uri: string,
             original_mtime: bigint | number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronous version of `gnome_desktop_thumbnail_factory_save_thumbnail()`
@@ -1062,7 +1070,7 @@ export namespace GnomeDesktop {
             thumbnail: GdkPixbuf.Pixbuf,
             uri: string,
             original_mtime: bigint | number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1132,12 +1140,12 @@ export namespace GnomeDesktop {
          * @param callback The callback to call when the user has     accumulated `interval_msec` milliseconds of idle time.
          * @returns a watch id Adds a watch for a specific idle time. The callback will be called when the user has accumulated `interval_msec` milliseconds of idle time. This function will return an ID that can either be passed to `gnome_idle_monitor_remove_watch()`, or can be used to tell idle time watches apart if you have more than one. Also note that this function will only care about positive transitions (user's idle time exceeding a certain time). If you want to know about when the user has become active, use `gnome_idle_monitor_add_user_active_watch()`.
          */
-        add_idle_watch(interval_msec: bigint | number, callback?: IdleMonitorWatchFunc | null): number;
+        add_idle_watch(interval_msec: bigint | number, callback: IdleMonitorWatchFunc | null): number;
         /**
          * @param callback The callback to call when the user is     active again.
          * @returns a watch id Add a one-time watch to know when the user is active again. Note that this watch is one-time and will de-activate after the function is called, for efficiency purposes. It's most convenient to call this when an idle watch, as added by `gnome_idle_monitor_add_idle_watch()`, has triggered.
          */
-        add_user_active_watch(callback?: IdleMonitorWatchFunc | null): number;
+        add_user_active_watch(callback: IdleMonitorWatchFunc | null): number;
         /**
          * @returns The current idle time, in milliseconds
          */
@@ -1191,7 +1199,7 @@ export namespace GnomeDesktop {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -1234,7 +1242,7 @@ export namespace GnomeDesktop {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -1282,38 +1290,19 @@ export namespace GnomeDesktop {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1321,15 +1310,9 @@ export namespace GnomeDesktop {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1496,7 +1479,7 @@ export namespace GnomeDesktop {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -2041,8 +2024,14 @@ export namespace GnomeDesktop {
 
         // Properties
 
+        /**
+         * @default GnomeDesktop.RRDpmsModeType.UNKNOWN
+         */
         get dpms_mode(): RRDpmsModeType;
         set dpms_mode(val: RRDpmsModeType);
+        /**
+         * @default GnomeDesktop.RRDpmsModeType.UNKNOWN
+         */
         get dpmsMode(): RRDpmsModeType;
         set dpmsMode(val: RRDpmsModeType);
         /**
@@ -2103,7 +2092,7 @@ export namespace GnomeDesktop {
          * @param screen
          * @param callback
          */
-        static new_async(screen: Gdk.Screen, callback?: Gio.AsyncReadyCallback<RRScreen> | null): void;
+        static new_async(screen: Gdk.Screen, callback: Gio.AsyncReadyCallback<RRScreen> | null): void;
 
         // Virtual methods
 
@@ -2211,7 +2200,7 @@ export namespace GnomeDesktop {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -2301,7 +2290,7 @@ export namespace GnomeDesktop {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2362,8 +2351,8 @@ export namespace GnomeDesktop {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -2414,7 +2403,7 @@ export namespace GnomeDesktop {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -2457,7 +2446,7 @@ export namespace GnomeDesktop {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -2505,38 +2494,19 @@ export namespace GnomeDesktop {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -2544,15 +2514,9 @@ export namespace GnomeDesktop {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -2719,7 +2683,7 @@ export namespace GnomeDesktop {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -2941,12 +2905,14 @@ export namespace GnomeDesktop {
         /**
          * A formatted string representing the current clock display.
          * @read-only
+         * @default null
          */
         get clock(): string;
         /**
          * If `true`, the formatted clock will always have seconds precision and the
          * 'clock' property will always be updated every second, irrespective of
          * system configuration.
+         * @default false
          */
         get force_seconds(): boolean;
         set force_seconds(val: boolean);
@@ -2954,18 +2920,21 @@ export namespace GnomeDesktop {
          * If `true`, the formatted clock will always have seconds precision and the
          * 'clock' property will always be updated every second, irrespective of
          * system configuration.
+         * @default false
          */
         get forceSeconds(): boolean;
         set forceSeconds(val: boolean);
         /**
          * If `true`, the formatted clock will never include a date or the
          * day of the week, irrespective of configuration.
+         * @default false
          */
         get time_only(): boolean;
         set time_only(val: boolean);
         /**
          * If `true`, the formatted clock will never include a date or the
          * day of the week, irrespective of configuration.
+         * @default false
          */
         get timeOnly(): boolean;
         set timeOnly(val: boolean);

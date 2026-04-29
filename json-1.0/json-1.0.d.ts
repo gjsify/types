@@ -255,7 +255,7 @@ export namespace Json {
      * @returns a node with the serialized boxed type
      * @since 0.10
      */
-    function boxed_serialize(gboxed_type: GObject.GType, boxed?: any | null): Node | null;
+    function boxed_serialize(gboxed_type: GObject.GType, boxed: any | null): Node | null;
     /**
      * Deserializes a JSON data stream and creates an instance of the given
      * type.
@@ -367,7 +367,7 @@ export namespace Json {
      * @returns A newly created {@link GLib.Variant}
      * @since 0.14
      */
-    function gvariant_deserialize(json_node: Node, signature?: string | null): GLib.Variant | null;
+    function gvariant_deserialize(json_node: Node, signature: string | null): GLib.Variant | null;
     /**
      * Converts a JSON string to a {@link GLib.Variant} value.
      *
@@ -389,7 +389,7 @@ export namespace Json {
     function gvariant_deserialize_data(
         json: string,
         length: bigint | number,
-        signature?: string | null,
+        signature: string | null,
     ): GLib.Variant | null;
     /**
      * Converts `variant` to a JSON tree.
@@ -476,7 +476,7 @@ export namespace Json {
      * @gir-type Callback
      */
     interface BoxedSerializeFunc {
-        (boxed?: any | null): Node;
+        (boxed: any | null): Node;
     }
     /**
      * @gir-type Callback
@@ -548,6 +548,7 @@ export namespace Json {
          * of traversing it to make it immutable later.
          * @since 1.2
          * @construct-only
+         * @default false
          */
         get immutable(): boolean;
 
@@ -748,7 +749,7 @@ export namespace Json {
             indent_char: number;
             indentChar: number;
             pretty: boolean;
-            root: Node;
+            root: Node | null;
         }
     }
 
@@ -765,18 +766,21 @@ export namespace Json {
 
         /**
          * Number of spaces to be used to indent when pretty printing.
+         * @default 2
          */
         get indent(): number;
         set indent(val: number);
         /**
          * The character that should be used when indenting in pretty print.
          * @since 0.6
+         * @default 32
          */
         get indent_char(): number;
         set indent_char(val: number);
         /**
          * The character that should be used when indenting in pretty print.
          * @since 0.6
+         * @default 32
          */
         get indentChar(): number;
         set indentChar(val: number);
@@ -786,6 +790,7 @@ export namespace Json {
          *
          * The indentation level can be controlled by using the
          * {@link Json.Generator.indent} property.
+         * @default false
          */
         get pretty(): boolean;
         set pretty(val: boolean);
@@ -794,8 +799,8 @@ export namespace Json {
          * stream.
          * @since 0.4
          */
-        get root(): Node;
-        set root(val: Node);
+        get root(): Node | null;
+        set root(val: Node | null);
 
         /**
          * Compile-time signal type information.
@@ -893,7 +898,7 @@ export namespace Json {
          * The ownership of the passed `node` is transferred to the generator object.
          * @param node the root node
          */
-        take_root(node?: Node | null): void;
+        take_root(node: Node | null): void;
         /**
          * Generates a JSON data stream from `generator` and returns it as a
          * buffer.
@@ -922,7 +927,7 @@ export namespace Json {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns whether the write operation was successful
          */
-        to_stream(stream: Gio.OutputStream, cancellable?: Gio.Cancellable | null): boolean;
+        to_stream(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null): boolean;
     }
 
     namespace Parser {
@@ -1062,12 +1067,14 @@ export namespace Json {
          * of traversing it to make it immutable later.
          * @since 1.2
          * @construct-only
+         * @default false
          */
         get immutable(): boolean;
         /**
          * Whether the parser should be strictly conforming to the
          * JSON format, or allow custom extensions like comments.
          * @since 1.10
+         * @default false
          */
         get strict(): boolean;
         set strict(val: boolean);
@@ -1263,7 +1270,7 @@ export namespace Json {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `TRUE` if the data stream was successfully read and   parsed, and `FALSE` otherwise
          */
-        load_from_stream(stream: Gio.InputStream, cancellable?: Gio.Cancellable | null): boolean;
+        load_from_stream(stream: Gio.InputStream, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously reads the contents of a stream.
          *
@@ -1278,7 +1285,7 @@ export namespace Json {
          */
         load_from_stream_async(
             stream: Gio.InputStream,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously reads the contents of a stream.
@@ -1313,7 +1320,7 @@ export namespace Json {
          */
         load_from_stream_async(
             stream: Gio.InputStream,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1680,7 +1687,7 @@ export namespace Json {
 
         _init(...args: any[]): void;
 
-        static ['new'](node?: Node | null): Reader;
+        static ['new'](node: Node | null): Reader;
 
         // Signals
 
@@ -1930,7 +1937,7 @@ export namespace Json {
          * The reader will take a copy of the node.
          * @param root the root node
          */
-        set_root(root?: Node | null): void;
+        set_root(root: Node | null): void;
     }
 
     /**
@@ -1973,7 +1980,7 @@ export namespace Json {
          * See also: {@link Json.Array.add_element}, {@link Json.Node.take_array}
          * @param value the array to add
          */
-        add_array_element(value?: Array | null): void;
+        add_array_element(value: Array | null): void;
         /**
          * Conveniently adds the given boolean value into an array.
          *
@@ -2014,7 +2021,7 @@ export namespace Json {
          * See also: {@link Json.Array.add_element}, {@link Json.Node.take_object}
          * @param value the object to add
          */
-        add_object_element(value?: Object | null): void;
+        add_object_element(value: Object | null): void;
         /**
          * Conveniently adds the given string value into an array.
          *
@@ -2411,7 +2418,7 @@ export namespace Json {
          * @param array the JSON array to initialize `node` with, or `NULL`
          * @returns the initialized node
          */
-        init_array(array?: Array | null): Node;
+        init_array(array: Array | null): Node;
         /**
          * Initializes `node` to `JSON_NODE_VALUE` and sets `value` into it.
          *
@@ -2457,7 +2464,7 @@ export namespace Json {
          * @param object the JSON object to initialize `node` with, or `NULL`
          * @returns the initialized node
          */
-        init_object(object?: Object | null): Node;
+        init_object(object: Object | null): Node;
         /**
          * Initializes `node` to `JSON_NODE_VALUE` and sets `value` into it.
          *
@@ -2466,7 +2473,7 @@ export namespace Json {
          * @param value a string value
          * @returns the initialized node
          */
-        init_string(value?: string | null): Node;
+        init_string(value: string | null): Node;
         /**
          * Check whether the given `node` has been marked as immutable by calling
          * {@link Json.Node.seal} on it.
@@ -2544,7 +2551,7 @@ export namespace Json {
          * an object node.
          * @param object a JSON object
          */
-        set_object(object?: Object | null): void;
+        set_object(object: Object | null): void;
         /**
          * Sets the parent node for the given `node`.
          *
@@ -2553,7 +2560,7 @@ export namespace Json {
          * The `node` may be immutable.
          * @param parent the parent node
          */
-        set_parent(parent?: Node | null): void;
+        set_parent(parent: Node | null): void;
         /**
          * Sets `value` as the string content of the `node`, replacing any existing
          * content.

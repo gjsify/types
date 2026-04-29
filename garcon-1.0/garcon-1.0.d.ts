@@ -165,8 +165,8 @@ export namespace Garcon {
         return_value: GObject.Value | any,
         n_param_values: number,
         param_values: GObject.Value | any,
-        invocation_hint?: any | null,
-        marshal_data?: any | null,
+        invocation_hint: any | null,
+        marshal_data: any | null,
     ): void;
     /**
      * Sets (or unsets) the desktop environment for which menus will generated.
@@ -204,7 +204,7 @@ export namespace Garcon {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, MenuElement.ConstructorProps {
-            directory: MenuDirectory;
+            directory: MenuDirectory | null;
             file: Gio.File;
         }
     }
@@ -220,8 +220,8 @@ export namespace Garcon {
         /**
          * The directory entry associated with this menu.
          */
-        get directory(): MenuDirectory;
-        set directory(val: MenuDirectory);
+        get directory(): MenuDirectory | null;
+        set directory(val: MenuDirectory | null);
         /**
          * The {@link Gio.File} from which the %GarconMenu was loaded.
          * @construct-only
@@ -351,7 +351,7 @@ export namespace Garcon {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` if the menu was loaded successfully or          `false` if there was an error or the process was          cancelled.
          */
-        load(cancellable?: Gio.Cancellable | null): boolean;
+        load(cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param b
          */
@@ -438,38 +438,19 @@ export namespace Garcon {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -477,15 +458,9 @@ export namespace Garcon {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -652,7 +627,7 @@ export namespace Garcon {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -875,6 +850,7 @@ export namespace Garcon {
 
         /**
          * Directory description (comment).
+         * @default null
          */
         get comment(): string;
         set comment(val: string);
@@ -884,26 +860,31 @@ export namespace Garcon {
         get file(): Gio.File;
         /**
          * Icon associated with this directory.
+         * @default null
          */
         get icon_name(): string;
         set icon_name(val: string);
         /**
          * Icon associated with this directory.
+         * @default null
          */
         get iconName(): string;
         set iconName(val: string);
         /**
          * Name of the directory.
+         * @default null
          */
         get name(): string;
         set name(val: string);
         /**
          * Whether this menu item is hidden in menus.
+         * @default false
          */
         get no_display(): boolean;
         set no_display(val: boolean);
         /**
          * Whether this menu item is hidden in menus.
+         * @default false
          */
         get noDisplay(): boolean;
         set noDisplay(val: boolean);
@@ -1087,22 +1068,26 @@ export namespace Garcon {
 
         /**
          * Command to be executed when the menu item is clicked.
+         * @default null
          */
         get command(): string;
         set command(val: string);
         /**
          * Comment/description for the application. To be displayed e.g. in tooltips of
          * GtkMenuItems.
+         * @default null
          */
         get comment(): string;
         set comment(val: string);
         /**
          * The desktop-file id of this application.
+         * @default null
          */
         get desktop_id(): string;
         set desktop_id(val: string);
         /**
          * The desktop-file id of this application.
+         * @default null
          */
         get desktopId(): string;
         set desktopId(val: string);
@@ -1113,11 +1098,13 @@ export namespace Garcon {
         get file(): Gio.File;
         /**
          * GenericName of the application (will be displayed in menus etc.).
+         * @default null
          */
         get generic_name(): string;
         set generic_name(val: string);
         /**
          * GenericName of the application (will be displayed in menus etc.).
+         * @default null
          */
         get genericName(): string;
         set genericName(val: string);
@@ -1125,63 +1112,80 @@ export namespace Garcon {
          * It means the user deleted (at his level) something that was present
          * (at an upper level, e.g. in the system dirs). It's strictly equivalent
          * to the .desktop file not existing at all, as far as that user is concerned.
+         * @default false
          */
         get hidden(): boolean;
         set hidden(val: boolean);
         /**
          * Name of the icon to be displayed for this menu item.
+         * @default null
          */
         get icon_name(): string;
         set icon_name(val: string);
         /**
          * Name of the icon to be displayed for this menu item.
+         * @default null
          */
         get iconName(): string;
         set iconName(val: string);
         /**
          * Name of the application (will be displayed in menus etc.).
+         * @default null
          */
         get name(): string;
         set name(val: string);
         /**
          * Whether this menu item is hidden in menus.
+         * @default false
          */
         get no_display(): boolean;
         set no_display(val: boolean);
         /**
          * Whether this menu item is hidden in menus.
+         * @default false
          */
         get noDisplay(): boolean;
         set noDisplay(val: boolean);
         /**
          * Working directory the application should be started in.
+         * @default null
          */
         get path(): string;
         set path(val: string);
         /**
          * If true, the application prefers to be run on a more powerful discrete GPU
          * if available.
+         * @default false
          */
         get prefers_non_default_gpu(): boolean;
         set prefers_non_default_gpu(val: boolean);
         /**
          * If true, the application prefers to be run on a more powerful discrete GPU
          * if available.
+         * @default false
          */
         get prefersNonDefaultGpu(): boolean;
         set prefersNonDefaultGpu(val: boolean);
         /**
          * Whether this application requires a terinal to be started in.
+         * @default false
          */
         get requires_terminal(): boolean;
         set requires_terminal(val: boolean);
         /**
          * Whether this application requires a terinal to be started in.
+         * @default false
          */
         get requiresTerminal(): boolean;
         set requiresTerminal(val: boolean);
+        /**
+         * @default false
+         */
         get supports_startup_notification(): boolean;
         set supports_startup_notification(val: boolean);
+        /**
+         * @default false
+         */
         get supportsStartupNotification(): boolean;
         set supportsStartupNotification(val: boolean);
         /**
@@ -1190,6 +1194,7 @@ export namespace Garcon {
          * is looked up in the $PATH environment variable. If the file is not
          * present or if it is not executable, the entry may be ignored (not be
          * used in menus, for example).
+         * @default null
          */
         get try_exec(): string;
         set try_exec(val: string);
@@ -1199,6 +1204,7 @@ export namespace Garcon {
          * is looked up in the $PATH environment variable. If the file is not
          * present or if it is not executable, the entry may be ignored (not be
          * used in menus, for example).
+         * @default null
          */
         get tryExec(): string;
         set tryExec(val: string);
@@ -1465,38 +1471,19 @@ export namespace Garcon {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1504,15 +1491,9 @@ export namespace Garcon {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1669,7 +1650,7 @@ export namespace Garcon {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1877,21 +1858,25 @@ export namespace Garcon {
 
         /**
          * Command to be executed when the application action is clicked.
+         * @default null
          */
         get command(): string;
         set command(val: string);
         /**
          * Name of the custom icon associated with this action.
+         * @default null
          */
         get icon_name(): string;
         set icon_name(val: string);
         /**
          * Name of the custom icon associated with this action.
+         * @default null
          */
         get iconName(): string;
         set iconName(val: string);
         /**
          * Name of the application action (will be displayed in menus etc.).
+         * @default null
          */
         get name(): string;
         set name(val: string);
@@ -2196,7 +2181,7 @@ export namespace Garcon {
          * @param merge_dirs list of menu directories to merge
          * @param cancellable
          */
-        run(merge_files: string[], merge_dirs: string[], cancellable?: Gio.Cancellable | null): boolean;
+        run(merge_files: string[], merge_dirs: string[], cancellable: Gio.Cancellable | null): boolean;
         get_file(): Gio.File;
         /**
          * @virtual
@@ -2249,38 +2234,19 @@ export namespace Garcon {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -2288,15 +2254,9 @@ export namespace Garcon {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -2463,7 +2423,7 @@ export namespace Garcon {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -2675,8 +2635,14 @@ export namespace Garcon {
 
         // Properties
 
+        /**
+         * @default Garcon.MenuNodeType.MENU
+         */
         get node_type(): MenuNodeType;
         set node_type(val: MenuNodeType);
+        /**
+         * @default Garcon.MenuNodeType.MENU
+         */
         get nodeType(): MenuNodeType;
         set nodeType(val: MenuNodeType);
 
@@ -2797,7 +2763,7 @@ export namespace Garcon {
          * @param data
          * @returns a {@link Garcon.MenuNode}
          */
-        copy(data?: any | null): MenuNode;
+        copy(data: any | null): MenuNode;
         get_merge_file_filename(): string;
         get_merge_file_type(): MenuMergeFileType;
         get_node_type(): MenuNodeType;
@@ -2885,7 +2851,7 @@ export namespace Garcon {
         /**
          * @param cancellable
          */
-        run(cancellable?: Gio.Cancellable | null): boolean;
+        run(cancellable: Gio.Cancellable | null): boolean;
         get_file(): Gio.File;
         /**
          * @virtual
@@ -2938,38 +2904,19 @@ export namespace Garcon {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -2977,15 +2924,9 @@ export namespace Garcon {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -3152,7 +3093,7 @@ export namespace Garcon {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -3480,38 +3421,19 @@ export namespace Garcon {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -3519,15 +3441,9 @@ export namespace Garcon {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -3694,7 +3610,7 @@ export namespace Garcon {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set

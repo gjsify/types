@@ -583,7 +583,7 @@ export namespace Libxfce4windowing {
             class_id: string;
             classId: string;
             gicon: Gio.Icon;
-            instances: ApplicationInstance[];
+            instances: ApplicationInstance[] | null;
             name: string;
             windows: Window[];
         }
@@ -618,10 +618,11 @@ export namespace Libxfce4windowing {
          * The list of {@link Libxfce4windowing.ApplicationInstance} belonging to the application.
          * @read-only
          */
-        get instances(): ApplicationInstance[];
+        get instances(): ApplicationInstance[] | null;
         /**
          * The application name.
          * @read-only
+         * @default null
          */
         get name(): string;
         /**
@@ -762,13 +763,13 @@ export namespace Libxfce4windowing {
             isPrimary: boolean;
             logical_geometry: Gdk.Rectangle;
             logicalGeometry: Gdk.Rectangle;
-            make: string;
-            model: string;
+            make: string | null;
+            model: string | null;
             physical_geometry: Gdk.Rectangle;
             physicalGeometry: Gdk.Rectangle;
             refresh: number;
             scale: number;
-            serial: string;
+            serial: string | null;
             subpixel: MonitorSubpixel;
             transform: MonitorTransform;
             width_mm: number;
@@ -789,24 +790,28 @@ export namespace Libxfce4windowing {
          * Physical/virtual connector name.
          * @since 4.19.4
          * @read-only
+         * @default null
          */
         get connector(): string;
         /**
          * Human-readable description.
          * @since 4.19.4
          * @read-only
+         * @default null
          */
         get description(): string;
         /**
          * UI fractional scaling factor.
          * @since 4.19.4
          * @read-only
+         * @default 1
          */
         get fractional_scale(): number;
         /**
          * UI fractional scaling factor.
          * @since 4.19.4
          * @read-only
+         * @default 1
          */
         get fractionalScale(): number;
         /**
@@ -827,30 +832,35 @@ export namespace Libxfce4windowing {
          * Physical height of the monitor in millimeters.
          * @since 4.19.4
          * @read-only
+         * @default 0
          */
         get height_mm(): number;
         /**
          * Physical height of the monitor in millimeters.
          * @since 4.19.4
          * @read-only
+         * @default 0
          */
         get heightMm(): number;
         /**
          * Opaque, hopefully-unique monitor identifier.
          * @since 4.19.4
          * @read-only
+         * @default null
          */
         get identifier(): string;
         /**
          * Whether or not this monitor is the primary monitor.
          * @since 4.19.4
          * @read-only
+         * @default false
          */
         get is_primary(): boolean;
         /**
          * Whether or not this monitor is the primary monitor.
          * @since 4.19.4
          * @read-only
+         * @default false
          */
         get isPrimary(): boolean;
         /**
@@ -869,14 +879,16 @@ export namespace Libxfce4windowing {
          * Manufacturer name.
          * @since 4.19.4
          * @read-only
+         * @default null
          */
-        get make(): string;
+        get make(): string | null;
         /**
          * Product model name.
          * @since 4.19.4
          * @read-only
+         * @default null
          */
-        get model(): string;
+        get model(): string | null;
         /**
          * Coordinates and size of the monitor in physical device pixels.
          * @since 4.19.4
@@ -893,40 +905,47 @@ export namespace Libxfce4windowing {
          * Current refresh rate, in millihertz.
          * @since 4.19.4
          * @read-only
+         * @default 60000
          */
         get refresh(): number;
         /**
          * UI scaling factor.
          * @since 4.19.4
          * @read-only
+         * @default 1
          */
         get scale(): number;
         /**
          * Product serial number.
          * @since 4.19.4
          * @read-only
+         * @default null
          */
-        get serial(): string;
+        get serial(): string | null;
         /**
          * Hardware subpixel layout.
          * @since 4.19.4
          * @read-only
+         * @default Libxfce4windowing.MonitorSubpixel.UNKNOWN
          */
         get subpixel(): MonitorSubpixel;
         /**
          * @read-only
+         * @default Libxfce4windowing.MonitorTransform.NORMAL
          */
         get transform(): MonitorTransform;
         /**
          * Physical width of the monitor in millimeters.
          * @since 4.19.4
          * @read-only
+         * @default 0
          */
         get width_mm(): number;
         /**
          * Physical width of the monitor in millimeters.
          * @since 4.19.4
          * @read-only
+         * @default 0
          */
         get widthMm(): number;
         /**
@@ -1169,8 +1188,8 @@ export namespace Libxfce4windowing {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            active_window: Window;
-            activeWindow: Window;
+            active_window: Window | null;
+            activeWindow: Window | null;
             gdk_screen: Gdk.Screen;
             gdkScreen: Gdk.Screen;
             show_desktop: boolean;
@@ -1192,12 +1211,12 @@ export namespace Libxfce4windowing {
          * The currently-active window.
          * @read-only
          */
-        get active_window(): Window;
+        get active_window(): Window | null;
         /**
          * The currently-active window.
          * @read-only
          */
-        get activeWindow(): Window;
+        get activeWindow(): Window | null;
         /**
          * The {@link Gdk.Screen} instance used to construct this {@link Libxfce4windowing.Screen}.
          * @construct-only
@@ -1210,11 +1229,13 @@ export namespace Libxfce4windowing {
         get gdkScreen(): Gdk.Screen;
         /**
          * Whether or not to show the desktop.
+         * @default false
          */
         get show_desktop(): boolean;
         set show_desktop(val: boolean);
         /**
          * Whether or not to show the desktop.
+         * @default false
          */
         get showDesktop(): boolean;
         set showDesktop(val: boolean);
@@ -1365,6 +1386,7 @@ export namespace Libxfce4windowing {
         /**
          * The seat's identifier.
          * @construct-only
+         * @default null
          */
         get name(): string;
 
@@ -1490,12 +1512,12 @@ export namespace Libxfce4windowing {
             class_ids: string[];
             classIds: string[];
             gicon: Gio.Icon;
-            monitors: Monitor[];
-            name: string;
+            monitors: Monitor[] | null;
+            name: string | null;
             screen: Screen;
             state: WindowState;
             type: WindowType;
-            workspace: Workspace;
+            workspace: Workspace | null;
         }
     }
 
@@ -1515,6 +1537,7 @@ export namespace Libxfce4windowing {
         /**
          * The window's capabilities bitfield.
          * @read-only
+         * @default Libxfce4windowing.WindowCapabilities.NONE
          */
         get capabilities(): WindowCapabilities;
         /**
@@ -1538,12 +1561,12 @@ export namespace Libxfce4windowing {
          * The list of {@link Libxfce4windowing.Monitor}<!-- -->s (if any) that the window is displayed on.
          * @read-only
          */
-        get monitors(): Monitor[];
+        get monitors(): Monitor[] | null;
         /**
          * The window's name or title.
          * @read-only
          */
-        get name(): string;
+        get name(): string | null;
         /**
          * The {@link Libxfce4windowing.Screen} instances that owns this window.
          * @construct-only
@@ -1552,17 +1575,19 @@ export namespace Libxfce4windowing {
         /**
          * The window's state bitfield.
          * @read-only
+         * @default Libxfce4windowing.WindowState.NONE
          */
         get state(): WindowState;
         /**
          * The window's type or function.
          * @read-only
+         * @default Libxfce4windowing.WindowType.NORMAL
          */
         get type(): WindowType;
         /**
          * @read-only
          */
-        get workspace(): Workspace;
+        get workspace(): Workspace | null;
 
         /**
          * Compile-time signal type information.
@@ -1873,6 +1898,7 @@ export namespace Libxfce4windowing {
 
         /**
          * The {@link Libxfce4windowing.WorkspaceCapabilities} bitfield for this workspace.
+         * @default Libxfce4windowing.WorkspaceCapabilities.NONE
          */
         get capabilities(): WorkspaceCapabilities;
         set capabilities(val: WorkspaceCapabilities);
@@ -1889,21 +1915,25 @@ export namespace Libxfce4windowing {
         /**
          * The y-coordinate of the workspace on a 2D grid.
          * @read-only
+         * @default -1
          */
         get layout_column(): number;
         /**
          * The y-coordinate of the workspace on a 2D grid.
          * @read-only
+         * @default -1
          */
         get layoutColumn(): number;
         /**
          * The x-coordinate of the workspace on a 2D grid.
          * @read-only
+         * @default -1
          */
         get layout_row(): number;
         /**
          * The x-coordinate of the workspace on a 2D grid.
          * @read-only
+         * @default -1
          */
         get layoutRow(): number;
         /**
@@ -1914,10 +1944,12 @@ export namespace Libxfce4windowing {
         /**
          * The ordinal number of this workspace.
          * @construct-only
+         * @default 0
          */
         get number(): number;
         /**
          * The {@link Libxfce4windowing.WorkspaceState} bitfield for this workspace.
+         * @default Libxfce4windowing.WorkspaceState.NONE
          */
         get state(): WorkspaceState;
         set state(val: WorkspaceState);
@@ -2030,9 +2062,9 @@ export namespace Libxfce4windowing {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            active_workspace: Workspace;
-            activeWorkspace: Workspace;
-            monitors: Monitor[];
+            active_workspace: Workspace | null;
+            activeWorkspace: Workspace | null;
+            monitors: Monitor[] | null;
             screen: Screen;
             workspace_manager: WorkspaceManager;
             workspaceManager: WorkspaceManager;
@@ -2054,17 +2086,17 @@ export namespace Libxfce4windowing {
          * The active {@link Libxfce4windowing.Workspace} on this {@link Libxfce4windowing.WorkspaceGroup}, or `null`.
          * @read-only
          */
-        get active_workspace(): Workspace;
+        get active_workspace(): Workspace | null;
         /**
          * The active {@link Libxfce4windowing.Workspace} on this {@link Libxfce4windowing.WorkspaceGroup}, or `null`.
          * @read-only
          */
-        get activeWorkspace(): Workspace;
+        get activeWorkspace(): Workspace | null;
         /**
          * The list of {@link Libxfce4windowing.Monitor} this {@link Libxfce4windowing.WorkspaceGroup} is displayed on.
          * @read-only
          */
-        get monitors(): Monitor[];
+        get monitors(): Monitor[] | null;
         /**
          * The {@link Libxfce4windowing.Screen} that owns this {@link Libxfce4windowing.WorkspaceGroup}.
          * @construct-only

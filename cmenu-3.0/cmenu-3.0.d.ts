@@ -199,7 +199,7 @@ export namespace CMenu {
          * @param desktop_env a string specifying a desktop name
          * @returns `true` if the `info` should be shown in `desktop_env` according to the `OnlyShowIn` and `NotShowIn` keys, `false` otherwise.
          */
-        get_show_in(desktop_env?: string | null): boolean;
+        get_show_in(desktop_env: string | null): boolean;
         /**
          * Retrieves the StartupWMClass field from `info`. This represents the
          * WM_CLASS property of the main window of the application, if launched
@@ -244,7 +244,7 @@ export namespace CMenu {
          * @param action_name the name of the action as from   `g_desktop_app_info_list_actions()`
          * @param launch_context a {@link Gio.AppLaunchContext}
          */
-        launch_action(action_name: string, launch_context?: Gio.AppLaunchContext | null): void;
+        launch_action(action_name: string, launch_context: Gio.AppLaunchContext | null): void;
         /**
          * Returns the list of "additional application actions" supported on the
          * desktop file, as per the desktop file specification.
@@ -385,7 +385,7 @@ export namespace CMenu {
          * @param context the launch context
          * @returns `TRUE` on successful launch, `FALSE` otherwise.
          */
-        launch(files?: Gio.File[] | null, context?: Gio.AppLaunchContext | null): boolean;
+        launch(files: Gio.File[] | null, context: Gio.AppLaunchContext | null): boolean;
         /**
          * Launches the application. This passes the `uris` to the launched application
          * as arguments, using the optional `context` to get information
@@ -403,7 +403,7 @@ export namespace CMenu {
          * @param context the launch context
          * @returns `TRUE` on successful launch, `FALSE` otherwise.
          */
-        launch_uris(uris?: string[] | null, context?: Gio.AppLaunchContext | null): boolean;
+        launch_uris(uris: string[] | null, context: Gio.AppLaunchContext | null): boolean;
         /**
          * Async version of {@link Gio.AppInfo.launch_uris}.
          *
@@ -416,9 +416,9 @@ export namespace CMenu {
          * @param cancellable a {@link Gio.Cancellable}
          */
         launch_uris_async(
-            uris?: string[] | null,
-            context?: Gio.AppLaunchContext | null,
-            cancellable?: Gio.Cancellable | null,
+            uris: string[] | null,
+            context: Gio.AppLaunchContext | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Async version of {@link Gio.AppInfo.launch_uris}.
@@ -451,9 +451,9 @@ export namespace CMenu {
          * @param callback a {@link Gio.AsyncReadyCallback} to call   when the request is done
          */
         launch_uris_async(
-            uris?: string[] | null,
-            context?: Gio.AppLaunchContext | null,
-            cancellable?: Gio.Cancellable | null,
+            uris: string[] | null,
+            context: Gio.AppLaunchContext | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -636,7 +636,7 @@ export namespace CMenu {
          * @param context the launch context
          * @virtual
          */
-        vfunc_launch(files?: Gio.File[] | null, context?: Gio.AppLaunchContext | null): boolean;
+        vfunc_launch(files: Gio.File[] | null, context: Gio.AppLaunchContext | null): boolean;
         /**
          * Launches the application. This passes the `uris` to the launched application
          * as arguments, using the optional `context` to get information
@@ -654,7 +654,7 @@ export namespace CMenu {
          * @param context the launch context
          * @virtual
          */
-        vfunc_launch_uris(uris?: string[] | null, context?: Gio.AppLaunchContext | null): boolean;
+        vfunc_launch_uris(uris: string[] | null, context: Gio.AppLaunchContext | null): boolean;
         /**
          * Async version of {@link Gio.AppInfo.launch_uris}.
          *
@@ -669,10 +669,10 @@ export namespace CMenu {
          * @virtual
          */
         vfunc_launch_uris_async(
-            uris?: string[] | null,
-            context?: Gio.AppLaunchContext | null,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            uris: string[] | null,
+            context: Gio.AppLaunchContext | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes a {@link Gio.AppInfo.launch_uris_async} operation.
@@ -770,38 +770,19 @@ export namespace CMenu {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -809,15 +790,9 @@ export namespace CMenu {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -984,7 +959,7 @@ export namespace CMenu {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1209,6 +1184,7 @@ export namespace CMenu {
         /**
          * Flags controlling the content of the menu.
          * @construct-only
+         * @default CMenu.TreeFlags.NONE
          */
         get flags(): TreeFlags;
         /**
@@ -1216,6 +1192,7 @@ export namespace CMenu {
          * will be looked up in $XDG_CONFIG_DIRS/menus/. See the Desktop Menu
          * specification.
          * @construct-only
+         * @default applications.menu
          */
         get menu_basename(): string;
         /**
@@ -1223,18 +1200,21 @@ export namespace CMenu {
          * will be looked up in $XDG_CONFIG_DIRS/menus/. See the Desktop Menu
          * specification.
          * @construct-only
+         * @default applications.menu
          */
         get menuBasename(): string;
         /**
          * The full path of the menu file. If set, GMenuTree:menu-basename will get
          * ignored.
          * @construct-only
+         * @default null
          */
         get menu_path(): string;
         /**
          * The full path of the menu file. If set, GMenuTree:menu-basename will get
          * ignored.
          * @construct-only
+         * @default null
          */
         get menuPath(): string;
 
@@ -1283,11 +1263,11 @@ export namespace CMenu {
         /**
          * @param item a `GMenuTreeItem`
          */
-        static item_ref(item?: any | null): any | null;
+        static item_ref(item: any | null): any | null;
         /**
          * @param item
          */
-        static item_unref(item?: any | null): void;
+        static item_unref(item: any | null): void;
 
         // Methods
 

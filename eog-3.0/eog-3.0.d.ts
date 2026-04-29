@@ -371,8 +371,8 @@ export namespace Eog {
         return_value: GObject.Value | any,
         n_param_values: number,
         param_values: GObject.Value | any,
-        invocation_hint?: any | null,
-        marshal_data?: any | null,
+        invocation_hint: any | null,
+        marshal_data: any | null,
     ): void;
     /**
      * Adds a frame to `thumbnail`
@@ -631,38 +631,19 @@ export namespace Eog {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -670,15 +651,9 @@ export namespace Eog {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -845,7 +820,7 @@ export namespace Eog {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1064,6 +1039,7 @@ export namespace Eog {
         get pixbuf(): GdkPixbuf.Pixbuf;
         /**
          * @construct-only
+         * @default null
          */
         get uri(): string;
 
@@ -1307,38 +1283,19 @@ export namespace Eog {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1346,15 +1303,9 @@ export namespace Eog {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1521,7 +1472,7 @@ export namespace Eog {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1863,13 +1814,17 @@ export namespace Eog {
         // Methods
 
         get_format(): GdkPixbuf.PixbufFormat;
-        /** @category Inherited from Gtk.FileChooser */
+        /**
+         * @default Gtk.FileChooserAction.OPEN
+         * @category Inherited from Gtk.FileChooser
+         */
         get action(): Gtk.FileChooserAction;
         set action(val: Gtk.FileChooserAction);
         /**
          * Whether a file chooser not in {@link Gtk.FileChooserAction.OPEN} mode
          * will offer the user to create new folders.
          * @since 2.18
+         * @default true
          * @category Inherited from Gtk.FileChooser
          */
         get create_folders(): boolean;
@@ -1878,6 +1833,7 @@ export namespace Eog {
          * Whether a file chooser not in {@link Gtk.FileChooserAction.OPEN} mode
          * will offer the user to create new folders.
          * @since 2.18
+         * @default true
          * @category Inherited from Gtk.FileChooser
          */
         get createFolders(): boolean;
@@ -1887,6 +1843,7 @@ export namespace Eog {
          * will present an overwrite confirmation dialog if the user
          * selects a file name that already exists.
          * @since 2.8
+         * @default false
          * @category Inherited from Gtk.FileChooser
          */
         get do_overwrite_confirmation(): boolean;
@@ -1896,53 +1853,84 @@ export namespace Eog {
          * will present an overwrite confirmation dialog if the user
          * selects a file name that already exists.
          * @since 2.8
+         * @default false
          * @category Inherited from Gtk.FileChooser
          */
         get doOverwriteConfirmation(): boolean;
         set doOverwriteConfirmation(val: boolean);
         /** @category Inherited from Gtk.FileChooser */
-        get extra_widget(): Gtk.Widget;
-        set extra_widget(val: Gtk.Widget);
+        get extra_widget(): Gtk.Widget | null;
+        set extra_widget(val: Gtk.Widget | null);
         /** @category Inherited from Gtk.FileChooser */
-        get extraWidget(): Gtk.Widget;
-        set extraWidget(val: Gtk.Widget);
+        get extraWidget(): Gtk.Widget | null;
+        set extraWidget(val: Gtk.Widget | null);
         /** @category Inherited from Gtk.FileChooser */
-        get filter(): Gtk.FileFilter;
-        set filter(val: Gtk.FileFilter);
-        /** @category Inherited from Gtk.FileChooser */
+        get filter(): Gtk.FileFilter | null;
+        set filter(val: Gtk.FileFilter | null);
+        /**
+         * @default true
+         * @category Inherited from Gtk.FileChooser
+         */
         get local_only(): boolean;
         set local_only(val: boolean);
-        /** @category Inherited from Gtk.FileChooser */
+        /**
+         * @default true
+         * @category Inherited from Gtk.FileChooser
+         */
         get localOnly(): boolean;
         set localOnly(val: boolean);
         /** @category Inherited from Gtk.FileChooser */
-        get preview_widget(): Gtk.Widget;
-        set preview_widget(val: Gtk.Widget);
+        get preview_widget(): Gtk.Widget | null;
+        set preview_widget(val: Gtk.Widget | null);
         /** @category Inherited from Gtk.FileChooser */
-        get previewWidget(): Gtk.Widget;
-        set previewWidget(val: Gtk.Widget);
-        /** @category Inherited from Gtk.FileChooser */
+        get previewWidget(): Gtk.Widget | null;
+        set previewWidget(val: Gtk.Widget | null);
+        /**
+         * @default true
+         * @category Inherited from Gtk.FileChooser
+         */
         get preview_widget_active(): boolean;
         set preview_widget_active(val: boolean);
-        /** @category Inherited from Gtk.FileChooser */
+        /**
+         * @default true
+         * @category Inherited from Gtk.FileChooser
+         */
         get previewWidgetActive(): boolean;
         set previewWidgetActive(val: boolean);
-        /** @category Inherited from Gtk.FileChooser */
+        /**
+         * @default false
+         * @category Inherited from Gtk.FileChooser
+         */
         get select_multiple(): boolean;
         set select_multiple(val: boolean);
-        /** @category Inherited from Gtk.FileChooser */
+        /**
+         * @default false
+         * @category Inherited from Gtk.FileChooser
+         */
         get selectMultiple(): boolean;
         set selectMultiple(val: boolean);
-        /** @category Inherited from Gtk.FileChooser */
+        /**
+         * @default false
+         * @category Inherited from Gtk.FileChooser
+         */
         get show_hidden(): boolean;
         set show_hidden(val: boolean);
-        /** @category Inherited from Gtk.FileChooser */
+        /**
+         * @default false
+         * @category Inherited from Gtk.FileChooser
+         */
         get showHidden(): boolean;
         set showHidden(val: boolean);
-        /** @category Inherited from Gtk.FileChooser */
+        /**
+         * @default true
+         * @category Inherited from Gtk.FileChooser
+         */
         get use_preview_label(): boolean;
         set use_preview_label(val: boolean);
-        /** @category Inherited from Gtk.FileChooser */
+        /**
+         * @default true
+         * @category Inherited from Gtk.FileChooser
+         */
         get usePreviewLabel(): boolean;
         set usePreviewLabel(val: boolean);
         /**
@@ -1958,7 +1946,7 @@ export namespace Eog {
          * @param options ids for the options of the choice, or `null` for a boolean choice
          * @param option_labels user-visible labels for the options, must be the same length as `options`
          */
-        add_choice(id: string, label: string, options?: string[] | null, option_labels?: string[] | null): void;
+        add_choice(id: string, label: string, options: string[] | null, option_labels: string[] | null): void;
         /**
          * Adds `filter` to the list of filters that the user can select between.
          * When a filter is selected, only files that are passed by that
@@ -2594,38 +2582,19 @@ export namespace Eog {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -2633,15 +2602,9 @@ export namespace Eog {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -2808,7 +2771,7 @@ export namespace Eog {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -3997,7 +3960,7 @@ export namespace Eog {
          * @param child child to add
          * @param type kind of child or `null`
          */
-        add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
+        add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
         /**
          * Constructs a child of `buildable` with the name `name`.
          *
@@ -4016,7 +3979,7 @@ export namespace Eog {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: any | null): void;
+        custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: any | null): void;
         /**
          * This is called at the end of each custom element handled by
          * the buildable.
@@ -4025,7 +3988,7 @@ export namespace Eog {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: any | null): void;
+        custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: any | null): void;
         /**
          * This is called for each unknown element under `<child>`.
          * @param builder a {@link Gtk.Builder} used to construct this object
@@ -4083,7 +4046,7 @@ export namespace Eog {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
         /**
          * Constructs a child of `buildable` with the name `name`.
          *
@@ -4107,7 +4070,7 @@ export namespace Eog {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * This is called at the end of each custom element handled by
@@ -4122,7 +4085,7 @@ export namespace Eog {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * This is called for each unknown element under `<child>`.
@@ -4284,7 +4247,7 @@ export namespace Eog {
          * @param root A {@link Gtk.TreePath} or `null`.
          * @returns A new {@link Gtk.TreeModel}.
          */
-        filter_new(root?: Gtk.TreePath | null): Gtk.TreeModel;
+        filter_new(root: Gtk.TreePath | null): Gtk.TreeModel;
         /**
          * Calls func on each node in model in a depth-first fashion.
          *
@@ -4373,7 +4336,7 @@ export namespace Eog {
          * @param parent the {@link Gtk.TreeIter}-struct, or `null`
          * @returns `true`, if `iter` has been set to the first child
          */
-        iter_children(parent?: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
+        iter_children(parent: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
         /**
          * Returns `true` if `iter` has children, `false` otherwise.
          * @param iter the {@link Gtk.TreeIter}-struct to test for children
@@ -4388,7 +4351,7 @@ export namespace Eog {
          * @param iter the {@link Gtk.TreeIter}-struct, or `null`
          * @returns the number of children of `iter`
          */
-        iter_n_children(iter?: Gtk.TreeIter | null): number;
+        iter_n_children(iter: Gtk.TreeIter | null): number;
         /**
          * Sets `iter` to point to the node following it at the current level.
          *
@@ -4566,7 +4529,7 @@ export namespace Eog {
          * @param parent the {@link Gtk.TreeIter}-struct, or `null`
          * @virtual
          */
-        vfunc_iter_children(parent?: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
+        vfunc_iter_children(parent: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
         /**
          * Returns `true` if `iter` has children, `false` otherwise.
          * @param iter the {@link Gtk.TreeIter}-struct to test for children
@@ -4581,7 +4544,7 @@ export namespace Eog {
          * @param iter the {@link Gtk.TreeIter}-struct, or `null`
          * @virtual
          */
-        vfunc_iter_n_children(iter?: Gtk.TreeIter | null): number;
+        vfunc_iter_n_children(iter: Gtk.TreeIter | null): number;
         /**
          * Sets `iter` to point to the node following it at the current level.
          *
@@ -4726,7 +4689,7 @@ export namespace Eog {
          * @param sort_func The comparison function
          * @param destroy Destroy notifier of `user_data`, or `null`
          */
-        set_default_sort_func(sort_func: Gtk.TreeIterCompareFunc, destroy?: GLib.DestroyNotify | null): void;
+        set_default_sort_func(sort_func: Gtk.TreeIterCompareFunc, destroy: GLib.DestroyNotify | null): void;
         /**
          * Sets the current sort column to be `sort_column_id`. The `sortable` will
          * resort itself to reflect this change, after emitting a
@@ -4752,7 +4715,7 @@ export namespace Eog {
         set_sort_func(
             sort_column_id: number,
             sort_func: Gtk.TreeIterCompareFunc,
-            destroy?: GLib.DestroyNotify | null,
+            destroy: GLib.DestroyNotify | null,
         ): void;
         /**
          * Emits a {@link Gtk.TreeSortable.SignalSignatures.sort_column_changed | Gtk.TreeSortable::sort-column-changed} signal on `sortable`.
@@ -4787,7 +4750,7 @@ export namespace Eog {
          * @param destroy Destroy notifier of `user_data`, or `null`
          * @virtual
          */
-        vfunc_set_default_sort_func(sort_func: Gtk.TreeIterCompareFunc, destroy?: GLib.DestroyNotify | null): void;
+        vfunc_set_default_sort_func(sort_func: Gtk.TreeIterCompareFunc, destroy: GLib.DestroyNotify | null): void;
         /**
          * Sets the current sort column to be `sort_column_id`. The `sortable` will
          * resort itself to reflect this change, after emitting a
@@ -4815,7 +4778,7 @@ export namespace Eog {
         vfunc_set_sort_func(
             sort_column_id: number,
             sort_func: Gtk.TreeIterCompareFunc,
-            destroy?: GLib.DestroyNotify | null,
+            destroy: GLib.DestroyNotify | null,
         ): void;
         /**
          * Emits a {@link Gtk.TreeSortable.SignalSignatures.sort_column_changed | Gtk.TreeSortable::sort-column-changed} signal on `sortable`.
@@ -4869,38 +4832,19 @@ export namespace Eog {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -4908,15 +4852,9 @@ export namespace Eog {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -5083,7 +5021,7 @@ export namespace Eog {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -5383,18 +5321,22 @@ export namespace Eog {
 
         /**
          * @construct-only
+         * @default null
          */
         get next_action(): string;
         /**
          * @construct-only
+         * @default null
          */
         get nextAction(): string;
         /**
          * @construct-only
+         * @default null
          */
         get prev_action(): string;
         /**
          * @construct-only
+         * @default null
          */
         get prevAction(): string;
         /**
@@ -5506,38 +5448,19 @@ export namespace Eog {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -5545,15 +5468,9 @@ export namespace Eog {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -5720,7 +5637,7 @@ export namespace Eog {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -6032,24 +5949,28 @@ export namespace Eog {
         /**
          * If `true` the displayed image will be filtered in a second pass
          * while being zoomed in.
+         * @default true
          */
         get antialiasing_in(): boolean;
         set antialiasing_in(val: boolean);
         /**
          * If `true` the displayed image will be filtered in a second pass
          * while being zoomed in.
+         * @default true
          */
         get antialiasingIn(): boolean;
         set antialiasingIn(val: boolean);
         /**
          * If `true` the displayed image will be filtered in a second pass
          * while being zoomed out.
+         * @default true
          */
         get antialiasing_out(): boolean;
         set antialiasing_out(val: boolean);
         /**
          * If `true` the displayed image will be filtered in a second pass
          * while being zoomed out.
+         * @default true
          */
         get antialiasingOut(): boolean;
         set antialiasingOut(val: boolean);
@@ -6075,12 +5996,14 @@ export namespace Eog {
         /**
          * If `true` the scrollwheel will zoom the view, otherwise it will be
          * used for scrolling a zoomed image.
+         * @default true
          */
         get scrollwheel_zoom(): boolean;
         set scrollwheel_zoom(val: boolean);
         /**
          * If `true` the scrollwheel will zoom the view, otherwise it will be
          * used for scrolling a zoomed image.
+         * @default true
          */
         get scrollwheelZoom(): boolean;
         set scrollwheelZoom(val: boolean);
@@ -6098,31 +6021,47 @@ export namespace Eog {
         set transparencyColor(val: Gdk.RGBA);
         /**
          * Determines how to fill the shown image's transparent areas.
+         * @default Eog.TransparencyStyle.CHECKED
          */
         get transparency_style(): TransparencyStyle;
         set transparency_style(val: TransparencyStyle);
         /**
          * Determines how to fill the shown image's transparent areas.
+         * @default Eog.TransparencyStyle.CHECKED
          */
         get transparencyStyle(): TransparencyStyle;
         set transparencyStyle(val: TransparencyStyle);
+        /**
+         * @default false
+         */
         get use_background_color(): boolean;
         set use_background_color(val: boolean);
+        /**
+         * @default false
+         */
         get useBackgroundColor(): boolean;
         set useBackgroundColor(val: boolean);
+        /**
+         * @default Eog.ZoomMode.SHRINK_TO_FIT
+         */
         get zoom_mode(): ZoomMode;
         set zoom_mode(val: ZoomMode);
+        /**
+         * @default Eog.ZoomMode.SHRINK_TO_FIT
+         */
         get zoomMode(): ZoomMode;
         set zoomMode(val: ZoomMode);
         /**
          * The current zoom factor is multiplied with this value + 1.0 when
          * scrolling with the scrollwheel to determine the next zoom factor.
+         * @default 0.05
          */
         get zoom_multiplier(): number;
         set zoom_multiplier(val: number);
         /**
          * The current zoom factor is multiplied with this value + 1.0 when
          * scrolling with the scrollwheel to determine the next zoom factor.
+         * @default 0.05
          */
         get zoomMultiplier(): number;
         set zoomMultiplier(val: number);
@@ -6290,6 +6229,7 @@ export namespace Eog {
          * Determines whether horizontal scrolling should start once the scrollable
          * widget is allocated less than its minimum width or less than its natural width.
          * @since 3.0
+         * @default Gtk.ScrollablePolicy.MINIMUM
          * @category Inherited from Gtk.Scrollable
          */
         get hscroll_policy(): Gtk.ScrollablePolicy;
@@ -6298,6 +6238,7 @@ export namespace Eog {
          * Determines whether horizontal scrolling should start once the scrollable
          * widget is allocated less than its minimum width or less than its natural width.
          * @since 3.0
+         * @default Gtk.ScrollablePolicy.MINIMUM
          * @category Inherited from Gtk.Scrollable
          */
         get hscrollPolicy(): Gtk.ScrollablePolicy;
@@ -6314,6 +6255,7 @@ export namespace Eog {
          * Determines whether vertical scrolling should start once the scrollable
          * widget is allocated less than its minimum height or less than its natural height.
          * @since 3.0
+         * @default Gtk.ScrollablePolicy.MINIMUM
          * @category Inherited from Gtk.Scrollable
          */
         get vscroll_policy(): Gtk.ScrollablePolicy;
@@ -6322,6 +6264,7 @@ export namespace Eog {
          * Determines whether vertical scrolling should start once the scrollable
          * widget is allocated less than its minimum height or less than its natural height.
          * @since 3.0
+         * @default Gtk.ScrollablePolicy.MINIMUM
          * @category Inherited from Gtk.Scrollable
          */
         get vscrollPolicy(): Gtk.ScrollablePolicy;
@@ -6359,7 +6302,7 @@ export namespace Eog {
          * Sets the horizontal adjustment of the {@link Gtk.Scrollable}.
          * @param hadjustment a {@link Gtk.Adjustment}
          */
-        set_hadjustment(hadjustment?: Gtk.Adjustment | null): void;
+        set_hadjustment(hadjustment: Gtk.Adjustment | null): void;
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
          * horizontal scrolling should start below the minimum width or
@@ -6371,7 +6314,7 @@ export namespace Eog {
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
          */
-        set_vadjustment(vadjustment?: Gtk.Adjustment | null): void;
+        set_vadjustment(vadjustment: Gtk.Adjustment | null): void;
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
          * vertical scrolling should start below the minimum height or
@@ -6435,38 +6378,19 @@ export namespace Eog {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -6474,15 +6398,9 @@ export namespace Eog {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -6649,7 +6567,7 @@ export namespace Eog {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -7007,6 +6925,7 @@ export namespace Eog {
         /**
          * The orientation of the orientable.
          * @since 2.16
+         * @default Gtk.Orientation.HORIZONTAL
          * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
@@ -7068,38 +6987,19 @@ export namespace Eog {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -7107,15 +7007,9 @@ export namespace Eog {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -7282,7 +7176,7 @@ export namespace Eog {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -7634,38 +7528,19 @@ export namespace Eog {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -7673,15 +7548,9 @@ export namespace Eog {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -7848,7 +7717,7 @@ export namespace Eog {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -8115,10 +7984,19 @@ export namespace Eog {
 
         // Properties
 
+        /**
+         * @default 0
+         */
         get mode(): number;
         set mode(val: number);
+        /**
+         * @default true
+         */
         get show_buttons(): boolean;
         set show_buttons(val: boolean);
+        /**
+         * @default true
+         */
         get showButtons(): boolean;
         set showButtons(val: boolean);
         /**
@@ -8197,6 +8075,7 @@ export namespace Eog {
         /**
          * The orientation of the orientable.
          * @since 2.16
+         * @default Gtk.Orientation.HORIZONTAL
          * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
@@ -8258,38 +8137,19 @@ export namespace Eog {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -8297,15 +8157,9 @@ export namespace Eog {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -8472,7 +8326,7 @@ export namespace Eog {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -8856,6 +8710,7 @@ export namespace Eog {
         /**
          * The orientation of the orientable.
          * @since 2.16
+         * @default Gtk.Orientation.HORIZONTAL
          * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
@@ -8872,6 +8727,7 @@ export namespace Eog {
          * Determines whether horizontal scrolling should start once the scrollable
          * widget is allocated less than its minimum width or less than its natural width.
          * @since 3.0
+         * @default Gtk.ScrollablePolicy.MINIMUM
          * @category Inherited from Gtk.Scrollable
          */
         get hscroll_policy(): Gtk.ScrollablePolicy;
@@ -8880,6 +8736,7 @@ export namespace Eog {
          * Determines whether horizontal scrolling should start once the scrollable
          * widget is allocated less than its minimum width or less than its natural width.
          * @since 3.0
+         * @default Gtk.ScrollablePolicy.MINIMUM
          * @category Inherited from Gtk.Scrollable
          */
         get hscrollPolicy(): Gtk.ScrollablePolicy;
@@ -8896,6 +8753,7 @@ export namespace Eog {
          * Determines whether vertical scrolling should start once the scrollable
          * widget is allocated less than its minimum height or less than its natural height.
          * @since 3.0
+         * @default Gtk.ScrollablePolicy.MINIMUM
          * @category Inherited from Gtk.Scrollable
          */
         get vscroll_policy(): Gtk.ScrollablePolicy;
@@ -8904,6 +8762,7 @@ export namespace Eog {
          * Determines whether vertical scrolling should start once the scrollable
          * widget is allocated less than its minimum height or less than its natural height.
          * @since 3.0
+         * @default Gtk.ScrollablePolicy.MINIMUM
          * @category Inherited from Gtk.Scrollable
          */
         get vscrollPolicy(): Gtk.ScrollablePolicy;
@@ -8983,7 +8842,7 @@ export namespace Eog {
          * @param cell a {@link Gtk.CellRenderer}
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
          */
-        set_cell_data_func(cell: Gtk.CellRenderer, func?: Gtk.CellLayoutDataFunc | null): void;
+        set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
         /**
          * Adds an attribute mapping to the list in `cell_layout`.
          *
@@ -9066,7 +8925,7 @@ export namespace Eog {
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
          * @virtual
          */
-        vfunc_set_cell_data_func(cell: Gtk.CellRenderer, func?: Gtk.CellLayoutDataFunc | null): void;
+        vfunc_set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
@@ -9110,7 +8969,7 @@ export namespace Eog {
          * Sets the horizontal adjustment of the {@link Gtk.Scrollable}.
          * @param hadjustment a {@link Gtk.Adjustment}
          */
-        set_hadjustment(hadjustment?: Gtk.Adjustment | null): void;
+        set_hadjustment(hadjustment: Gtk.Adjustment | null): void;
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
          * horizontal scrolling should start below the minimum width or
@@ -9122,7 +8981,7 @@ export namespace Eog {
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
          */
-        set_vadjustment(vadjustment?: Gtk.Adjustment | null): void;
+        set_vadjustment(vadjustment: Gtk.Adjustment | null): void;
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
          * vertical scrolling should start below the minimum height or
@@ -9186,38 +9045,19 @@ export namespace Eog {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -9225,15 +9065,9 @@ export namespace Eog {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -9400,7 +9234,7 @@ export namespace Eog {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -9711,28 +9545,54 @@ export namespace Eog {
 
         // Properties
 
+        /**
+         * @default false
+         */
         get convert_spaces(): boolean;
         set convert_spaces(val: boolean);
+        /**
+         * @default false
+         */
         get convertSpaces(): boolean;
         set convertSpaces(val: boolean);
+        /**
+         * @default 1
+         */
         get counter_n_digits(): number;
         set counter_n_digits(val: number);
+        /**
+         * @default 1
+         */
         get counterNDigits(): number;
         set counterNDigits(val: number);
+        /**
+         * @default 1
+         */
         get counter_start(): number;
         set counter_start(val: bigint | number);
+        /**
+         * @default 1
+         */
         get counterStart(): number;
         set counterStart(val: bigint | number);
         /**
          * @write-only
+         * @default 1
          */
         set n_images(val: number);
         /**
          * @write-only
+         * @default 1
          */
         set nImages(val: number);
+        /**
+         * @default 95
+         */
         get space_character(): number;
         set space_character(val: number);
+        /**
+         * @default 95
+         */
         get spaceCharacter(): number;
         set spaceCharacter(val: number);
 
@@ -9934,24 +9794,28 @@ export namespace Eog {
         /**
          * Determines the position of the image gallery in the window
          * relative to the image.
+         * @default Eog.WindowGalleryPos.BOTTOM
          */
         get gallery_position(): WindowGalleryPos;
         set gallery_position(val: WindowGalleryPos);
         /**
          * Determines the position of the image gallery in the window
          * relative to the image.
+         * @default Eog.WindowGalleryPos.BOTTOM
          */
         get galleryPosition(): WindowGalleryPos;
         set galleryPosition(val: WindowGalleryPos);
         /**
          * If `true` the gallery will be resizable by the user otherwise it will be
          * in single column/row mode.
+         * @default false
          */
         get gallery_resizable(): boolean;
         set gallery_resizable(val: boolean);
         /**
          * If `true` the gallery will be resizable by the user otherwise it will be
          * in single column/row mode.
+         * @default false
          */
         get galleryResizable(): boolean;
         set galleryResizable(val: boolean);
@@ -9959,12 +9823,14 @@ export namespace Eog {
          * A bitwise OR of {@link Eog.StartupFlags} elements, indicating how the window
          * should behave upon creation.
          * @construct-only
+         * @default 0
          */
         get startup_flags(): StartupFlags;
         /**
          * A bitwise OR of {@link Eog.StartupFlags} elements, indicating how the window
          * should behave upon creation.
          * @construct-only
+         * @default 0
          */
         get startupFlags(): StartupFlags;
 
@@ -10160,7 +10026,7 @@ export namespace Eog {
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
-        activate_action(action_name: string, parameter?: GLib.Variant | null): void;
+        activate_action(action_name: string, parameter: GLib.Variant | null): void;
         /**
          * Request for the state of the named action within `action_group` to be
          * changed to `value`.
@@ -10388,7 +10254,7 @@ export namespace Eog {
          * @param parameter parameters to the activation
          * @virtual
          */
-        vfunc_activate_action(action_name: string, parameter?: GLib.Variant | null): void;
+        vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
         /**
          * Request for the state of the named action within `action_group` to be
          * changed to `value`.
@@ -10676,38 +10542,19 @@ export namespace Eog {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -10715,15 +10562,9 @@ export namespace Eog {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -10890,7 +10731,7 @@ export namespace Eog {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set

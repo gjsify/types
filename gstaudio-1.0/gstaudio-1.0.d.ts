@@ -1416,7 +1416,7 @@ export namespace GstAudio {
         buffer: Gst.Buffer,
         info: AudioInfo,
         samples: bigint | number,
-        offsets?: (bigint | number) | null,
+        offsets: (bigint | number) | null,
     ): AudioMeta;
     /**
      * Find the {@link GstAudio.AudioDownmixMeta} on `buffer` for the given destination
@@ -1773,12 +1773,24 @@ export namespace GstAudio {
 
         // Properties
 
+        /**
+         * @default 40000000
+         */
         get alignment_threshold(): number;
         set alignment_threshold(val: bigint | number);
+        /**
+         * @default 40000000
+         */
         get alignmentThreshold(): number;
         set alignmentThreshold(val: bigint | number);
+        /**
+         * @default 1000000000
+         */
         get discont_wait(): number;
         set discont_wait(val: bigint | number);
+        /**
+         * @default 1000000000
+         */
         get discontWait(): number;
         set discontWait(val: bigint | number);
         /**
@@ -1788,6 +1800,7 @@ export namespace GstAudio {
          * live sources with a non-zero latency, you should set it to a non-zero value.
          * @since 1.22
          * @construct-only
+         * @default false
          */
         get force_live(): boolean;
         /**
@@ -1797,6 +1810,7 @@ export namespace GstAudio {
          * live sources with a non-zero latency, you should set it to a non-zero value.
          * @since 1.22
          * @construct-only
+         * @default false
          */
         get forceLive(): boolean;
         /**
@@ -1809,6 +1823,7 @@ export namespace GstAudio {
          * data flow, for example the user may decide to connect it later,
          * but wants to configure it already.
          * @since 1.20
+         * @default false
          */
         get ignore_inactive_pads(): boolean;
         set ignore_inactive_pads(val: boolean);
@@ -1822,22 +1837,31 @@ export namespace GstAudio {
          * data flow, for example the user may decide to connect it later,
          * but wants to configure it already.
          * @since 1.20
+         * @default false
          */
         get ignoreInactivePads(): boolean;
         set ignoreInactivePads(val: boolean);
+        /**
+         * @default 10000000
+         */
         get output_buffer_duration(): number;
         set output_buffer_duration(val: bigint | number);
+        /**
+         * @default 10000000
+         */
         get outputBufferDuration(): number;
         set outputBufferDuration(val: bigint | number);
         /**
          * Output block size in nanoseconds, expressed as a fraction.
          * @since 1.18
+         * @default 1/100
          */
         get output_buffer_duration_fraction(): Gst.Fraction;
         set output_buffer_duration_fraction(val: Gst.Fraction);
         /**
          * Output block size in nanoseconds, expressed as a fraction.
          * @since 1.18
+         * @default 1/100
          */
         get outputBufferDurationFraction(): Gst.Fraction;
         set outputBufferDurationFraction(val: Gst.Fraction);
@@ -2024,12 +2048,14 @@ export namespace GstAudio {
         /**
          * Emit QoS messages when dropping buffers.
          * @since 1.20
+         * @default false
          */
         get qos_messages(): boolean;
         set qos_messages(val: boolean);
         /**
          * Emit QoS messages when dropping buffers.
          * @since 1.20
+         * @default false
          */
         get qosMessages(): boolean;
         set qosMessages(val: boolean);
@@ -2146,52 +2172,92 @@ export namespace GstAudio {
 
         // Properties
 
+        /**
+         * @default 40000000
+         */
         get alignment_threshold(): number;
         set alignment_threshold(val: bigint | number);
+        /**
+         * @default 40000000
+         */
         get alignmentThreshold(): number;
         set alignmentThreshold(val: bigint | number);
+        /**
+         * @default 200000
+         */
         get buffer_time(): number;
         set buffer_time(val: bigint | number);
+        /**
+         * @default 200000
+         */
         get bufferTime(): number;
         set bufferTime(val: bigint | number);
+        /**
+         * @default false
+         */
         // This accessor conflicts with a property or field in a parent class or interface.
         can_activate_pull: boolean | any;
+        /**
+         * @default false
+         */
         get canActivatePull(): boolean;
         set canActivatePull(val: boolean);
         /**
          * A window of time in nanoseconds to wait before creating a discontinuity as
          * a result of breaching the drift-tolerance.
+         * @default 1000000000
          */
         get discont_wait(): number;
         set discont_wait(val: bigint | number);
         /**
          * A window of time in nanoseconds to wait before creating a discontinuity as
          * a result of breaching the drift-tolerance.
+         * @default 1000000000
          */
         get discontWait(): number;
         set discontWait(val: bigint | number);
         /**
          * Controls the amount of time in microseconds that clocks are allowed
          * to drift before resynchronisation happens.
+         * @default 40000
          */
         get drift_tolerance(): number;
         set drift_tolerance(val: bigint | number);
         /**
          * Controls the amount of time in microseconds that clocks are allowed
          * to drift before resynchronisation happens.
+         * @default 40000
          */
         get driftTolerance(): number;
         set driftTolerance(val: bigint | number);
+        /**
+         * @default 10000
+         */
         get latency_time(): number;
         set latency_time(val: bigint | number);
+        /**
+         * @default 10000
+         */
         get latencyTime(): number;
         set latencyTime(val: bigint | number);
+        /**
+         * @default true
+         */
         // This accessor conflicts with a field or function name in a parent class or interface.
         provide_clock: boolean | any;
+        /**
+         * @default true
+         */
         get provideClock(): boolean;
         set provideClock(val: boolean);
+        /**
+         * @default GstAudio.AudioBaseSinkSlaveMethod.SKEW
+         */
         get slave_method(): AudioBaseSinkSlaveMethod;
         set slave_method(val: AudioBaseSinkSlaveMethod);
+        /**
+         * @default GstAudio.AudioBaseSinkSlaveMethod.SKEW
+         */
         get slaveMethod(): AudioBaseSinkSlaveMethod;
         set slaveMethod(val: AudioBaseSinkSlaveMethod);
 
@@ -2389,37 +2455,65 @@ export namespace GstAudio {
         /**
          * Actual configured size of audio buffer in microseconds.
          * @read-only
+         * @default -1
          */
         get actual_buffer_time(): number;
         /**
          * Actual configured size of audio buffer in microseconds.
          * @read-only
+         * @default -1
          */
         get actualBufferTime(): number;
         /**
          * Actual configured audio latency in microseconds.
          * @read-only
+         * @default -1
          */
         get actual_latency_time(): number;
         /**
          * Actual configured audio latency in microseconds.
          * @read-only
+         * @default -1
          */
         get actualLatencyTime(): number;
+        /**
+         * @default 200000
+         */
         get buffer_time(): number;
         set buffer_time(val: bigint | number);
+        /**
+         * @default 200000
+         */
         get bufferTime(): number;
         set bufferTime(val: bigint | number);
+        /**
+         * @default 10000
+         */
         get latency_time(): number;
         set latency_time(val: bigint | number);
+        /**
+         * @default 10000
+         */
         get latencyTime(): number;
         set latencyTime(val: bigint | number);
+        /**
+         * @default true
+         */
         // This accessor conflicts with a field or function name in a parent class or interface.
         provide_clock: boolean | any;
+        /**
+         * @default true
+         */
         get provideClock(): boolean;
         set provideClock(val: boolean);
+        /**
+         * @default GstAudio.AudioBaseSrcSlaveMethod.SKEW
+         */
         get slave_method(): AudioBaseSrcSlaveMethod;
         set slave_method(val: AudioBaseSrcSlaveMethod);
+        /**
+         * @default GstAudio.AudioBaseSrcSlaveMethod.SKEW
+         */
         get slaveMethod(): AudioBaseSrcSlaveMethod;
         set slaveMethod(val: AudioBaseSrcSlaveMethod);
 
@@ -2585,10 +2679,19 @@ export namespace GstAudio {
 
         // Properties
 
+        /**
+         * @default null
+         */
         get device(): string;
         set device(val: string);
+        /**
+         * @default GstAudio.AudioCdSrcMode.NORMAL
+         */
         get mode(): AudioCdSrcMode;
         set mode(val: AudioCdSrcMode);
+        /**
+         * @default 1
+         */
         get track(): number;
         set track(val: number);
 
@@ -2740,38 +2843,19 @@ export namespace GstAudio {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -2779,15 +2863,9 @@ export namespace GstAudio {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -2959,7 +3037,7 @@ export namespace GstAudio {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -3377,6 +3455,7 @@ export namespace GstAudio {
          * Maximum number of tolerated consecutive decode errors. See
          * `gst_audio_decoder_set_max_errors()` for more details.
          * @since 1.18
+         * @default -1
          */
         get max_errors(): number;
         set max_errors(val: number);
@@ -3384,15 +3463,28 @@ export namespace GstAudio {
          * Maximum number of tolerated consecutive decode errors. See
          * `gst_audio_decoder_set_max_errors()` for more details.
          * @since 1.18
+         * @default -1
          */
         get maxErrors(): number;
         set maxErrors(val: number);
+        /**
+         * @default 0
+         */
         get min_latency(): number;
         set min_latency(val: bigint | number);
+        /**
+         * @default 0
+         */
         get minLatency(): number;
         set minLatency(val: bigint | number);
+        /**
+         * @default false
+         */
         get plc(): boolean;
         set plc(val: boolean);
+        /**
+         * @default 0
+         */
         get tolerance(): number;
         set tolerance(val: bigint | number);
 
@@ -3573,7 +3665,7 @@ export namespace GstAudio {
          * @param buf decoded data
          * @returns a {@link Gst.FlowReturn} that should be escalated to caller (of caller)
          */
-        finish_subframe(buf?: Gst.Buffer | null): Gst.FlowReturn;
+        finish_subframe(buf: Gst.Buffer | null): Gst.FlowReturn;
         /**
          * Lets {@link GstAudio.AudioDecoder} sub-classes to know the memory `allocator`
          * used by the base class and its `params`.
@@ -3661,7 +3753,7 @@ export namespace GstAudio {
          * @param filter filter caps
          * @returns a {@link Gst.Caps} owned by caller
          */
-        proxy_getcaps(caps?: Gst.Caps | null, filter?: Gst.Caps | null): Gst.Caps;
+        proxy_getcaps(caps: Gst.Caps | null, filter: Gst.Caps | null): Gst.Caps;
         /**
          * Sets a caps in allocation query which are different from the set
          * pad's caps. Use this function before calling
@@ -3669,7 +3761,7 @@ export namespace GstAudio {
          * query will use the caps from the pad.
          * @param allocation_caps a {@link Gst.Caps} or `null`
          */
-        set_allocation_caps(allocation_caps?: Gst.Caps | null): void;
+        set_allocation_caps(allocation_caps: Gst.Caps | null): void;
         /**
          * Configures decoder drain handling.  If drainable, subclass might
          * be handed a NULL buffer to have it return any leftover decoded data.
@@ -3891,22 +3983,39 @@ export namespace GstAudio {
 
         // Properties
 
+        /**
+         * @default false
+         */
         get hard_resync(): boolean;
         set hard_resync(val: boolean);
+        /**
+         * @default false
+         */
         get hardResync(): boolean;
         set hardResync(val: boolean);
         /**
          * @read-only
+         * @default false
          */
         get mark_granule(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get markGranule(): boolean;
+        /**
+         * @default false
+         */
         get perfect_timestamp(): boolean;
         set perfect_timestamp(val: boolean);
+        /**
+         * @default false
+         */
         get perfectTimestamp(): boolean;
         set perfectTimestamp(val: boolean);
+        /**
+         * @default 40000000
+         */
         get tolerance(): number;
         set tolerance(val: bigint | number);
 
@@ -4150,7 +4259,7 @@ export namespace GstAudio {
          * @param filter filter caps
          * @returns a {@link Gst.Caps} owned by caller
          */
-        proxy_getcaps(caps?: Gst.Caps | null, filter?: Gst.Caps | null): Gst.Caps;
+        proxy_getcaps(caps: Gst.Caps | null, filter: Gst.Caps | null): Gst.Caps;
         /**
          * Sets a caps in allocation query which are different from the set
          * pad's caps. Use this function before calling
@@ -4158,7 +4267,7 @@ export namespace GstAudio {
          * query will use the caps from the pad.
          * @param allocation_caps a {@link Gst.Caps} or `null`
          */
-        set_allocation_caps(allocation_caps?: Gst.Caps | null): void;
+        set_allocation_caps(allocation_caps: Gst.Caps | null): void;
         /**
          * Configures encoder drain handling.  If drainable, subclass might
          * be handed a NULL buffer to have it return any leftover encoded data.
@@ -4323,7 +4432,7 @@ export namespace GstAudio {
          * @param value new value
          * @returns `true` for success, `false` if e.g. there is no preset with that `name`
          */
-        set_meta(name: string, tag: string, value?: string | null): boolean;
+        set_meta(name: string, tag: string, value: string | null): boolean;
         /**
          * Delete the given preset.
          * @param name preset name to remove
@@ -4378,7 +4487,7 @@ export namespace GstAudio {
          * @param value new value
          * @virtual
          */
-        vfunc_set_meta(name: string, tag: string, value?: string | null): boolean;
+        vfunc_set_meta(name: string, tag: string, value: string | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -4426,38 +4535,19 @@ export namespace GstAudio {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -4465,15 +4555,9 @@ export namespace GstAudio {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -4645,7 +4729,7 @@ export namespace GstAudio {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -5312,7 +5396,7 @@ export namespace GstAudio {
          * MT safe.
          * @param cb the callback to set
          */
-        set_callback(cb?: AudioRingBufferCallback | null): void;
+        set_callback(cb: AudioRingBufferCallback | null): void;
         /**
          * Tell the ringbuffer about the device's channel positions. This must
          * be called in when the ringbuffer is acquired.
@@ -5921,13 +6005,13 @@ export namespace GstAudio {
 
         // Constructors
 
-        constructor(flags: AudioConverterFlags, in_info: AudioInfo, out_info: AudioInfo, config?: Gst.Structure | null);
+        constructor(flags: AudioConverterFlags, in_info: AudioInfo, out_info: AudioInfo, config: Gst.Structure | null);
 
         static ['new'](
             flags: AudioConverterFlags,
             in_info: AudioInfo,
             out_info: AudioInfo,
-            config?: Gst.Structure | null,
+            config: Gst.Structure | null,
         ): AudioConverter;
 
         // Methods
@@ -6038,7 +6122,7 @@ export namespace GstAudio {
          * @param config a {@link Gst.Structure} or `null`
          * @returns `true` when the new parameters could be set
          */
-        update_config(in_rate: number, out_rate: number, config?: Gst.Structure | null): boolean;
+        update_config(in_rate: number, out_rate: number, config: Gst.Structure | null): boolean;
     }
 
     /**
@@ -6210,7 +6294,7 @@ export namespace GstAudio {
          * @param channels the number of channels
          * @param position the channel positions
          */
-        set_format(format: AudioFormat, rate: number, channels: number, position?: AudioChannelPosition[] | null): void;
+        set_format(format: AudioFormat, rate: number, channels: number, position: AudioChannelPosition[] | null): void;
         /**
          * Convert the values of `info` into a {@link Gst.Caps}.
          * @returns the new {@link Gst.Caps} containing the          info of `info`.
@@ -6598,8 +6682,14 @@ export namespace GstAudio {
     interface StreamVolume extends GObject.Object {
         // Properties
 
+        /**
+         * @default false
+         */
         get mute(): boolean;
         set mute(val: boolean);
+        /**
+         * @default 1
+         */
         get volume(): number;
         set volume(val: number);
 

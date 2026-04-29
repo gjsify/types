@@ -286,50 +286,60 @@ export namespace GnomeBluetooth {
         /**
          * The D-Bus path of the default Bluetooth adapter or `null`.
          * @read-only
+         * @default null
          */
         get default_adapter(): string;
         /**
          * The D-Bus path of the default Bluetooth adapter or `null`.
          * @read-only
+         * @default null
          */
         get defaultAdapter(): string;
         /**
          * The address of the default Bluetooth adapter or `null`.
          * @read-only
+         * @default null
          */
         get default_adapter_address(): string;
         /**
          * The address of the default Bluetooth adapter or `null`.
          * @read-only
+         * @default null
          */
         get defaultAdapterAddress(): string;
         /**
          * The name of the default Bluetooth adapter or `null`.
          * @read-only
+         * @default null
          */
         get default_adapter_name(): string;
         /**
          * The name of the default Bluetooth adapter or `null`.
          * @read-only
+         * @default null
          */
         get defaultAdapterName(): string;
         /**
          * `true` if the default Bluetooth adapter is powered.
+         * @default false
          */
         get default_adapter_powered(): boolean;
         set default_adapter_powered(val: boolean);
         /**
          * `true` if the default Bluetooth adapter is powered.
+         * @default false
          */
         get defaultAdapterPowered(): boolean;
         set defaultAdapterPowered(val: boolean);
         /**
          * `true` if the default Bluetooth adapter is in setup mode (discoverable, and discovering).
+         * @default false
          */
         get default_adapter_setup_mode(): boolean;
         set default_adapter_setup_mode(val: boolean);
         /**
          * `true` if the default Bluetooth adapter is in setup mode (discoverable, and discovering).
+         * @default false
          */
         get defaultAdapterSetupMode(): boolean;
         set defaultAdapterSetupMode(val: boolean);
@@ -337,22 +347,26 @@ export namespace GnomeBluetooth {
          * The {@link GnomeBluetooth.AdapterState} of the default Bluetooth adapter. More precise than
          * {@link GnomeBluetooth.Client.default_adapter_powered}.
          * @read-only
+         * @default GnomeBluetooth.AdapterState.ABSENT
          */
         get default_adapter_state(): AdapterState;
         /**
          * The {@link GnomeBluetooth.AdapterState} of the default Bluetooth adapter. More precise than
          * {@link GnomeBluetooth.Client.default_adapter_powered}.
          * @read-only
+         * @default GnomeBluetooth.AdapterState.ABSENT
          */
         get defaultAdapterState(): AdapterState;
         /**
          * The number of detected Bluetooth adapters.
          * @read-only
+         * @default 0
          */
         get num_adapters(): number;
         /**
          * The number of detected Bluetooth adapters.
          * @read-only
+         * @default 0
          */
         get numAdapters(): number;
 
@@ -415,7 +429,7 @@ export namespace GnomeBluetooth {
         connect_service(
             path: string,
             connect: boolean,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * This will start the process of connecting to one of the known-connectable
@@ -460,7 +474,7 @@ export namespace GnomeBluetooth {
         connect_service(
             path: string,
             connect: boolean,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -537,42 +551,91 @@ export namespace GnomeBluetooth {
 
         // Properties
 
+        /**
+         * @default null
+         */
         get address(): string;
         set address(val: string);
+        /**
+         * @default null
+         */
         get alias(): string;
         set alias(val: string);
+        /**
+         * @default 0
+         */
         get battery_level(): number;
         set battery_level(val: number);
+        /**
+         * @default 0
+         */
         get batteryLevel(): number;
         set batteryLevel(val: number);
+        /**
+         * @default 0
+         */
         get battery_percentage(): number;
         set battery_percentage(val: number);
+        /**
+         * @default 0
+         */
         get batteryPercentage(): number;
         set batteryPercentage(val: number);
+        /**
+         * @default GnomeBluetooth.BatteryType.NONE
+         */
         get battery_type(): BatteryType;
         set battery_type(val: BatteryType);
+        /**
+         * @default GnomeBluetooth.BatteryType.NONE
+         */
         get batteryType(): BatteryType;
         set batteryType(val: BatteryType);
         /**
          * @read-only
+         * @default false
          */
         get connectable(): boolean;
+        /**
+         * @default false
+         */
         get connected(): boolean;
         set connected(val: boolean);
+        /**
+         * @default null
+         */
         get icon(): string;
         set icon(val: string);
+        /**
+         * @default false
+         */
         get legacy_pairing(): boolean;
         set legacy_pairing(val: boolean);
+        /**
+         * @default false
+         */
         get legacyPairing(): boolean;
         set legacyPairing(val: boolean);
+        /**
+         * @default null
+         */
         get name(): string;
         set name(val: string);
+        /**
+         * @default false
+         */
         get paired(): boolean;
         set paired(val: boolean);
         get proxy(): Gio.DBusProxy;
         set proxy(val: Gio.DBusProxy);
+        /**
+         * @default false
+         */
         get trusted(): boolean;
         set trusted(val: boolean);
+        /**
+         * @default GnomeBluetooth.Type.ANY
+         */
         get type(): Type;
         set type(val: Type);
         get uuids(): string[];

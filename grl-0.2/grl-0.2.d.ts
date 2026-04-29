@@ -354,7 +354,7 @@ export namespace Grl {
      * @param argv list of arguments
      * @since 0.1.6
      */
-    function init(argv?: string[] | null): string[] | null;
+    function init(argv: string[] | null): string[] | null;
     /**
      * Returns a {@link GLib.OptionGroup} with Grilo's argument specifications.
      *
@@ -412,8 +412,8 @@ export namespace Grl {
         return_value: GObject.Value | any,
         n_param_values: number,
         param_values: GObject.Value | any,
-        invocation_hint?: any | null,
-        marshal_data?: any | null,
+        invocation_hint: any | null,
+        marshal_data: any | null,
     ): void;
     /**
      * Retrieves the description associated with the key
@@ -519,7 +519,7 @@ export namespace Grl {
      * @param operation_id the identifier of a running operation
      * @param user_data the data to attach
      */
-    function operation_set_data(operation_id: number, user_data?: any | null): void;
+    function operation_set_data(operation_id: number, user_data: any | null): void;
     /**
      * Attach a pointer to the specific operation.
      *
@@ -531,8 +531,8 @@ export namespace Grl {
      */
     function operation_set_data_full(
         operation_id: number,
-        user_data?: any | null,
-        destroy_func?: GLib.DestroyNotify | null,
+        user_data: any | null,
+        destroy_func: GLib.DestroyNotify | null,
     ): void;
     /**
      * @param operation_id
@@ -598,31 +598,31 @@ export namespace Grl {
      * @gir-type Callback
      */
     interface OperationCancelCb {
-        (data?: any | null): void;
+        (data: any | null): void;
     }
     /**
      * @gir-type Callback
      */
     interface SourceRemoveCb {
-        (source: Source, media: Media, error?: GLib.Error | null): void;
+        (source: Source, media: Media, error: GLib.Error | null): void;
     }
     /**
      * @gir-type Callback
      */
     interface SourceResolveCb {
-        (source: Source, operation_id: number, media: Media, error?: GLib.Error | null): void;
+        (source: Source, operation_id: number, media: Media, error: GLib.Error | null): void;
     }
     /**
      * @gir-type Callback
      */
     interface SourceResultCb {
-        (source: Source, operation_id: number, media: Media | null, remaining: number, error?: GLib.Error | null): void;
+        (source: Source, operation_id: number, media: Media | null, remaining: number, error: GLib.Error | null): void;
     }
     /**
      * @gir-type Callback
      */
     interface SourceStoreCb {
-        (source: Source, media: Media, failed_keys: KeyID[], error?: GLib.Error | null): void;
+        (source: Source, media: Media, failed_keys: KeyID[], error: GLib.Error | null): void;
     }
     /**
      * @gir-type Flags
@@ -928,7 +928,7 @@ export namespace Grl {
 
         _init(...args: any[]): void;
 
-        static ['new'](plugin: string, source?: string | null): Config;
+        static ['new'](plugin: string, source: string | null): Config;
 
         // Signals
 
@@ -981,7 +981,7 @@ export namespace Grl {
          * @param size place for size of value
          * @returns `param` value
          */
-        get_binary(param: string, size?: (bigint | number) | null): number;
+        get_binary(param: string, size: (bigint | number) | null): number;
         /**
          * @param param a boolean type parameter
          * @returns `param` value
@@ -1181,7 +1181,7 @@ export namespace Grl {
          * @param key key to append
          * @param boxed the new value
          */
-        add_boxed(key: KeyID, boxed?: any | null): void;
+        add_boxed(key: KeyID, boxed: any | null): void;
         /**
          * Appends a new float value for `key` in `data`.
          * @param key key to append
@@ -1380,7 +1380,7 @@ export namespace Grl {
          * @param key key to change or add
          * @param boxed the new value
          */
-        set_boxed(key: KeyID, boxed?: any | null): void;
+        set_boxed(key: KeyID, boxed: any | null): void;
         /**
          * Sets the first float value associated with `key` in `data`. If `key` already has
          * a first value old value is replaced by the new one.
@@ -2636,7 +2636,7 @@ export namespace Grl {
 
         _init(...args: any[]): void;
 
-        static ['new'](caps?: Caps | null): OperationOptions;
+        static ['new'](caps: Caps | null): OperationOptions;
 
         // Signals
 
@@ -2757,8 +2757,8 @@ export namespace Grl {
          */
         set_key_range_filter_value(
             key: KeyID,
-            min_value?: GObject.Value | null,
-            max_value?: GObject.Value | null,
+            min_value: GObject.Value | null,
+            max_value: GObject.Value | null,
         ): boolean;
         /**
          * Set the resolution flags for an operation. Will only succeed if `flags` obey
@@ -2930,7 +2930,7 @@ export namespace Grl {
         /**
          * @param load_function
          */
-        set_load_func(load_function?: any | null): void;
+        set_load_func(load_function: any | null): void;
         /**
          * @param module
          */
@@ -2942,11 +2942,11 @@ export namespace Grl {
         /**
          * @param register_keys_function
          */
-        set_register_keys_func(register_keys_function?: any | null): void;
+        set_register_keys_func(register_keys_function: any | null): void;
         /**
          * @param unload_function
          */
-        set_unload_func(unload_function?: any | null): void;
+        set_unload_func(unload_function: any | null): void;
         unload(): void;
     }
 
@@ -3400,7 +3400,7 @@ export namespace Grl {
          * @param key key to change or add
          * @param boxed the new value
          */
-        set_boxed(key: KeyID, boxed?: any | null): void;
+        set_boxed(key: KeyID, boxed: any | null): void;
         /**
          * Sets the value associated with `key` into `relkeys`. `key` must have been
          * registered as a float-type key. Old value is replaced by the new one.

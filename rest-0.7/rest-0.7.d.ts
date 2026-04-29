@@ -270,19 +270,19 @@ export namespace Rest {
      * @gir-type Callback
      */
     interface OAuthProxyAuthCallback<A = GObject.Object> {
-        (proxy: OAuthProxy, error: GLib.Error, weak_object: A, userdata?: any | null): void;
+        (proxy: OAuthProxy, error: GLib.Error, weak_object: A, userdata: any | null): void;
     }
     /**
      * @gir-type Callback
      */
     interface ProxyCallAsyncCallback<A = GObject.Object> {
-        (call: ProxyCall, error: GLib.Error, weak_object: A, userdata?: any | null): void;
+        (call: ProxyCall, error: GLib.Error, weak_object: A, userdata: any | null): void;
     }
     /**
      * @gir-type Callback
      */
     interface ProxyCallContinuousCallback<A = GObject.Object> {
-        (call: ProxyCall, buf: string, len: number, error: GLib.Error, weak_object: A, userdata?: any | null): void;
+        (call: ProxyCall, buf: string, len: number, error: GLib.Error, weak_object: A, userdata: any | null): void;
     }
     /**
      * @gir-type Callback
@@ -294,7 +294,7 @@ export namespace Rest {
             uploaded: number,
             error: GLib.Error,
             weak_object: A,
-            userdata?: any | null,
+            userdata: any | null,
         ): void;
     }
     namespace OAuth2Proxy {
@@ -334,24 +334,34 @@ export namespace Rest {
 
         // Properties
 
+        /**
+         * @default null
+         */
         get access_token(): string;
         set access_token(val: string);
+        /**
+         * @default null
+         */
         get accessToken(): string;
         set accessToken(val: string);
         /**
          * @construct-only
+         * @default null
          */
         get auth_endpoint(): string;
         /**
          * @construct-only
+         * @default null
          */
         get authEndpoint(): string;
         /**
          * @construct-only
+         * @default null
          */
         get client_id(): string;
         /**
          * @construct-only
+         * @default null
          */
         get clientId(): string;
 
@@ -563,32 +573,57 @@ export namespace Rest {
 
         /**
          * @construct-only
+         * @default null
          */
         get consumer_key(): string;
         /**
          * @construct-only
+         * @default null
          */
         get consumerKey(): string;
         /**
          * @construct-only
+         * @default null
          */
         get consumer_secret(): string;
         /**
          * @construct-only
+         * @default null
          */
         get consumerSecret(): string;
+        /**
+         * @default null
+         */
         get signature_host(): string;
         set signature_host(val: string);
+        /**
+         * @default null
+         */
         get signatureHost(): string;
         set signatureHost(val: string);
+        /**
+         * @default Rest.OAuthSignatureMethod.HMAC_SHA1
+         */
         get signature_method(): OAuthSignatureMethod;
         set signature_method(val: OAuthSignatureMethod);
+        /**
+         * @default Rest.OAuthSignatureMethod.HMAC_SHA1
+         */
         get signatureMethod(): OAuthSignatureMethod;
         set signatureMethod(val: OAuthSignatureMethod);
+        /**
+         * @default null
+         */
         get token(): string;
         set token(val: string);
+        /**
+         * @default null
+         */
         get token_secret(): string;
         set token_secret(val: string);
+        /**
+         * @default null
+         */
         get tokenSecret(): string;
         set tokenSecret(val: string);
 
@@ -911,36 +946,74 @@ export namespace Rest {
 
         // Properties
 
+        /**
+         * @default false
+         */
         get binding_required(): boolean;
         set binding_required(val: boolean);
+        /**
+         * @default false
+         */
         get bindingRequired(): boolean;
         set bindingRequired(val: boolean);
         /**
          * @construct-only
+         * @default false
          */
         get disable_cookies(): boolean;
         /**
          * @construct-only
+         * @default false
          */
         get disableCookies(): boolean;
+        /**
+         * @default null
+         */
         get password(): string;
         set password(val: string);
+        /**
+         * @default null
+         */
         get ssl_ca_file(): string;
         set ssl_ca_file(val: string);
+        /**
+         * @default null
+         */
         get sslCaFile(): string;
         set sslCaFile(val: string);
+        /**
+         * @default true
+         */
         get ssl_strict(): boolean;
         set ssl_strict(val: boolean);
+        /**
+         * @default true
+         */
         get sslStrict(): boolean;
         set sslStrict(val: boolean);
+        /**
+         * @default null
+         */
         get url_format(): string;
         set url_format(val: string);
+        /**
+         * @default null
+         */
         get urlFormat(): string;
         set urlFormat(val: string);
+        /**
+         * @default null
+         */
         get user_agent(): string;
         set user_agent(val: string);
+        /**
+         * @default null
+         */
         get userAgent(): string;
         set userAgent(val: string);
+        /**
+         * @default null
+         */
         get username(): string;
         set username(val: string);
 
@@ -1251,7 +1324,7 @@ export namespace Rest {
          * A GIO-style version of `rest_proxy_call_async()`.
          * @param cancellable an optional {@link Gio.Cancellable} that can be used to   cancel the call, or `null`
          */
-        invoke_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        invoke_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * A GIO-style version of `rest_proxy_call_async()`.
          * @param cancellable an optional {@link Gio.Cancellable} that can be used to   cancel the call, or `null`
@@ -1264,7 +1337,7 @@ export namespace Rest {
          * @param callback callback to call when the async call is finished
          */
         invoke_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1456,9 +1529,9 @@ export namespace Rest {
             name: string,
             data: Uint8Array | string,
             content_type: string,
-            filename?: string | null,
-            owner?: any | null,
-            owner_dnotify?: GLib.DestroyNotify | null,
+            filename: string | null,
+            owner: any | null,
+            owner_dnotify: GLib.DestroyNotify | null,
         ): Param;
 
         // Methods

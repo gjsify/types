@@ -214,6 +214,7 @@ export namespace Mks {
         /**
          * The device name.
          * @read-only
+         * @default null
          */
         get name(): string;
 
@@ -329,8 +330,14 @@ export namespace Mks {
 
         // Properties
 
+        /**
+         * @default true
+         */
         get auto_resize(): boolean;
         set auto_resize(val: boolean);
+        /**
+         * @default true
+         */
         get autoResize(): boolean;
         set autoResize(val: boolean);
         get screen(): Screen;
@@ -422,6 +429,7 @@ export namespace Mks {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
@@ -430,6 +438,7 @@ export namespace Mks {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
@@ -533,7 +542,7 @@ export namespace Mks {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent?: Gtk.Accessible | null, next_sibling?: Gtk.Accessible | null): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
         /**
          * Updates the next accessible sibling.
          *
@@ -541,7 +550,7 @@ export namespace Mks {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling?: Gtk.Accessible | null): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
         /**
          * Informs ATs that the platform state has changed.
          *
@@ -652,7 +661,7 @@ export namespace Mks {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -666,7 +675,7 @@ export namespace Mks {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called at the end of each custom element handled by
@@ -681,7 +690,7 @@ export namespace Mks {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called for each unknown element under `<child>`.
@@ -785,38 +794,19 @@ export namespace Mks {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -824,15 +814,9 @@ export namespace Mks {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -999,7 +983,7 @@ export namespace Mks {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1215,6 +1199,7 @@ export namespace Mks {
         /**
          * Active keyboard modifiers.
          * @read-only
+         * @default Mks.KeyboardModifier.NONE
          */
         get modifiers(): KeyboardModifier;
 
@@ -1274,7 +1259,7 @@ export namespace Mks {
          * @param keycode the hardware keycode
          * @param cancellable a {@link Gio.Cancellable}
          */
-        press(keycode: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        press(keycode: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Presses `keycode`.
          * @param keycode the hardware keycode
@@ -1294,7 +1279,7 @@ export namespace Mks {
          */
         press(
             keycode: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1309,13 +1294,13 @@ export namespace Mks {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` if the operation was acknowledged by the QEMU instance;   otherwise `false` and `error` is set.
          */
-        press_sync(keycode: number, cancellable?: Gio.Cancellable | null): boolean;
+        press_sync(keycode: number, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Releases `keycode`.
          * @param keycode the hardware keycode
          * @param cancellable a {@link Gio.Cancellable}
          */
-        release(keycode: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        release(keycode: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Releases `keycode`.
          * @param keycode the hardware keycode
@@ -1335,7 +1320,7 @@ export namespace Mks {
          */
         release(
             keycode: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1350,7 +1335,7 @@ export namespace Mks {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` if the operation was acknowledged by the QEMU instance;   otherwise `false` and `error` is set.
          */
-        release_sync(keycode: number, cancellable?: Gio.Cancellable | null): boolean;
+        release_sync(keycode: number, cancellable: Gio.Cancellable | null): boolean;
     }
 
     namespace Mouse {
@@ -1380,11 +1365,13 @@ export namespace Mks {
         /**
          * Whether the mouse is using absolute movements.
          * @read-only
+         * @default false
          */
         get is_absolute(): boolean;
         /**
          * Whether the mouse is using absolute movements.
          * @read-only
+         * @default false
          */
         get isAbsolute(): boolean;
 
@@ -1436,7 +1423,7 @@ export namespace Mks {
          * @param delta_y the y coordinate delta
          * @param cancellable a {@link Gio.Cancellable}
          */
-        move_by(delta_x: number, delta_y: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        move_by(delta_x: number, delta_y: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Moves the mouse by delta_x and delta_y.
          * @param delta_x the x coordinate delta
@@ -1460,7 +1447,7 @@ export namespace Mks {
         move_by(
             delta_x: number,
             delta_y: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1476,14 +1463,14 @@ export namespace Mks {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` if the operation was acknowledged by the QEMU instance;   otherwise `false` and `error` is set.
          */
-        move_by_sync(delta_x: number, delta_y: number, cancellable?: Gio.Cancellable | null): boolean;
+        move_by_sync(delta_x: number, delta_y: number, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Moves to the absolute position at coordinates (x,y).
          * @param x the x coordinate
          * @param y the y coordinate
          * @param cancellable a {@link Gio.Cancellable}
          */
-        move_to(x: number, y: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        move_to(x: number, y: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Moves to the absolute position at coordinates (x,y).
          * @param x the x coordinate
@@ -1507,7 +1494,7 @@ export namespace Mks {
         move_to(
             x: number,
             y: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1523,13 +1510,13 @@ export namespace Mks {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` if the operation was acknowledged by the QEMU instance;   otherwise `false` and `error` is set.
          */
-        move_to_sync(x: number, y: number, cancellable?: Gio.Cancellable | null): boolean;
+        move_to_sync(x: number, y: number, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Presses a mouse button.
          * @param button the {@link Mks.MouseButton} that was pressed
          * @param cancellable a {@link Gio.Cancellable}
          */
-        press(button: MouseButton, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        press(button: MouseButton, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Presses a mouse button.
          * @param button the {@link Mks.MouseButton} that was pressed
@@ -1549,7 +1536,7 @@ export namespace Mks {
          */
         press(
             button: MouseButton,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1564,13 +1551,13 @@ export namespace Mks {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` if the operation was acknowledged by the QEMU instance;   otherwise `false` and `error` is set.
          */
-        press_sync(button: MouseButton, cancellable?: Gio.Cancellable | null): boolean;
+        press_sync(button: MouseButton, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Releases a mouse button.
          * @param button the {@link Mks.MouseButton} that was released
          * @param cancellable a {@link Gio.Cancellable}
          */
-        release(button: MouseButton, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        release(button: MouseButton, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Releases a mouse button.
          * @param button the {@link Mks.MouseButton} that was released
@@ -1590,7 +1577,7 @@ export namespace Mks {
          */
         release(
             button: MouseButton,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1605,7 +1592,7 @@ export namespace Mks {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` if the operation was acknowledged by the QEMU instance;   otherwise `false` and `error` is set.
          */
-        release_sync(button: MouseButton, cancellable?: Gio.Cancellable | null): boolean;
+        release_sync(button: MouseButton, cancellable: Gio.Cancellable | null): boolean;
     }
 
     namespace Screen {
@@ -1645,14 +1632,17 @@ export namespace Mks {
 
         /**
          * @read-only
+         * @default null
          */
         get device_address(): string;
         /**
          * @read-only
+         * @default null
          */
         get deviceAddress(): string;
         /**
          * @read-only
+         * @default 0
          */
         get height(): number;
         /**
@@ -1661,6 +1651,7 @@ export namespace Mks {
         get keyboard(): Keyboard;
         /**
          * @read-only
+         * @default Mks.ScreenKind.TEXT
          */
         get kind(): ScreenKind;
         /**
@@ -1669,10 +1660,12 @@ export namespace Mks {
         get mouse(): Mouse;
         /**
          * @read-only
+         * @default 0
          */
         get number(): number;
         /**
          * @read-only
+         * @default 0
          */
         get width(): number;
 
@@ -1724,7 +1717,7 @@ export namespace Mks {
          * using `mks_screen_attach_finish()` from `callback`.
          * @param cancellable a {@link Gio.Cancellable}
          */
-        attach(cancellable?: Gio.Cancellable | null): globalThis.Promise<Gdk.Paintable>;
+        attach(cancellable: Gio.Cancellable | null): globalThis.Promise<Gdk.Paintable>;
         /**
          * Asynchronously creates a {@link Gdk.Paintable} that is updated with the
          * contents of the screen.
@@ -1749,7 +1742,7 @@ export namespace Mks {
          * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
         attach(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Gdk.Paintable> | void;
         /**
@@ -1769,12 +1762,12 @@ export namespace Mks {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns a {@link Gdk.Paintable} if successful; otherwise `null`   and `error` is set.
          */
-        attach_sync(cancellable?: Gio.Cancellable | null): Gdk.Paintable;
+        attach_sync(cancellable: Gio.Cancellable | null): Gdk.Paintable;
         /**
          * @param attributes
          * @param cancellable
          */
-        configure(attributes: ScreenAttributes, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        configure(attributes: ScreenAttributes, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * @param attributes
          * @param cancellable
@@ -1792,7 +1785,7 @@ export namespace Mks {
          */
         configure(
             attributes: ScreenAttributes,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1809,7 +1802,7 @@ export namespace Mks {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` if the operation completed successfully; otherwise `false`   and `error` is set.
          */
-        configure_sync(attributes: ScreenAttributes, cancellable?: Gio.Cancellable | null): boolean;
+        configure_sync(attributes: ScreenAttributes, cancellable: Gio.Cancellable | null): boolean;
         get_device_address(): string;
         /**
          * Gets the "height" property.
@@ -1861,7 +1854,7 @@ export namespace Mks {
 
         interface ConstructorProps
             extends GObject.Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
-            connection: Gio.DBusConnection;
+            connection: Gio.DBusConnection | null;
             devices: Gio.ListModel;
             name: string;
             uuid: string;
@@ -1904,7 +1897,7 @@ export namespace Mks {
          * The {@link Gio.DBusConnection} that is used to communicate with QEMU.
          * @construct-only
          */
-        get connection(): Gio.DBusConnection;
+        get connection(): Gio.DBusConnection | null;
         /**
          * A {@link Gio.ListModel} of devices that have been
          * discovered on the {@link Gio.DBusConnection} to QEMU.
@@ -1914,11 +1907,13 @@ export namespace Mks {
         /**
          * The VM name as specified by the QEMU instance.
          * @read-only
+         * @default null
          */
         get name(): string;
         /**
          * The VM unique identifier specified by the QEMU instance.
          * @read-only
+         * @default null
          */
         get uuid(): string;
 
@@ -1939,7 +1934,7 @@ export namespace Mks {
 
         static new_for_connection_finish(result: Gio.AsyncResult): Session;
 
-        static new_for_connection_sync(connection: Gio.DBusConnection, cancellable?: Gio.Cancellable | null): Session;
+        static new_for_connection_sync(connection: Gio.DBusConnection, cancellable: Gio.Cancellable | null): Session;
 
         // Signals
 
@@ -1985,8 +1980,8 @@ export namespace Mks {
         static new_for_connection(
             connection: Gio.DBusConnection,
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<Session> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<Session> | null,
         ): void;
 
         // Methods
@@ -2054,7 +2049,7 @@ export namespace Mks {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -2144,7 +2139,7 @@ export namespace Mks {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2205,8 +2200,8 @@ export namespace Mks {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -2257,7 +2252,7 @@ export namespace Mks {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -2300,7 +2295,7 @@ export namespace Mks {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -2348,38 +2343,19 @@ export namespace Mks {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -2387,15 +2363,9 @@ export namespace Mks {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -2562,7 +2532,7 @@ export namespace Mks {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -2779,11 +2749,13 @@ export namespace Mks {
         /**
          * The maximum number of slots.
          * @read-only
+         * @default 0
          */
         get max_slots(): number;
         /**
          * The maximum number of slots.
          * @read-only
+         * @default 0
          */
         get maxSlots(): number;
 
@@ -2842,7 +2814,7 @@ export namespace Mks {
             num_slot: bigint | number,
             x: number,
             y: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Send a touch event.
@@ -2875,7 +2847,7 @@ export namespace Mks {
             num_slot: bigint | number,
             x: number,
             y: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2898,7 +2870,7 @@ export namespace Mks {
             num_slot: bigint | number,
             x: number,
             y: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
     }
 

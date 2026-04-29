@@ -311,7 +311,7 @@ export namespace Tepl {
      * @returns whether the directories are correctly created. `false` is returned on error.
      * @since 4.6
      */
-    function utils_create_parent_directories(file: Gio.File, cancellable?: Gio.Cancellable | null): boolean;
+    function utils_create_parent_directories(file: Gio.File, cancellable: Gio.Cancellable | null): boolean;
     /**
      * Parse and break an uri apart in its individual components like the uri
      * scheme, user info, host, port and path. The return value pointer can be
@@ -973,7 +973,7 @@ export namespace Tepl {
          * @read-only
          * @category Inherited from Tepl.TabGroup
          */
-        get active_buffer(): Buffer;
+        get active_buffer(): Buffer | null;
         /**
          * The {@link Tepl.Buffer} of the active tab.
          * @since 3.0
@@ -986,8 +986,8 @@ export namespace Tepl {
          * @since 3.0
          * @category Inherited from Tepl.TabGroup
          */
-        get active_tab(): Tab;
-        set active_tab(val: Tab);
+        get active_tab(): Tab | null;
+        set active_tab(val: Tab | null);
         /**
          * The {@link Tepl.Tab} currently shown.
          * @since 3.0
@@ -1001,7 +1001,7 @@ export namespace Tepl {
          * @read-only
          * @category Inherited from Tepl.TabGroup
          */
-        get active_view(): View;
+        get active_view(): View | null;
         /**
          * The {@link Tepl.View} of the active tab.
          * @since 3.0
@@ -1126,38 +1126,19 @@ export namespace Tepl {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1165,15 +1146,9 @@ export namespace Tepl {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1340,7 +1315,7 @@ export namespace Tepl {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1954,7 +1929,7 @@ export namespace Tepl {
          * Sets the location.
          * @param location the new {@link Gio.File}, or `null`.
          */
-        set_location(location?: Gio.File | null): void;
+        set_location(location: Gio.File | null): void;
     }
 
     namespace FileLoader {
@@ -1970,11 +1945,11 @@ export namespace Tepl {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            buffer: Buffer;
+            buffer: Buffer | null;
             chunk_size: bigint | number;
             chunkSize: bigint | number;
-            file: File;
-            location: Gio.File;
+            file: File | null;
+            location: Gio.File | null;
             max_size: bigint | number;
             maxSize: bigint | number;
         }
@@ -1994,7 +1969,7 @@ export namespace Tepl {
          * @since 1.0
          * @construct-only
          */
-        get buffer(): Buffer;
+        get buffer(): Buffer | null;
         /**
          * The chunk size, in bytes. The content is loaded chunk by chunk. It
          * permits to avoid allocating a too big contiguous memory area, as well
@@ -2023,14 +1998,14 @@ export namespace Tepl {
          * @since 1.0
          * @construct-only
          */
-        get file(): File;
+        get file(): File | null;
         /**
          * The {@link Gio.File} to load. By default the location is taken from the
          * {@link Tepl.File} at construction time.
          * @since 1.0
          * @construct-only
          */
-        get location(): Gio.File;
+        get location(): Gio.File | null;
         /**
          * The maximum content size, in bytes. Keep in mind that all the
          * content is loaded in memory, and when loaded into a {@link Gtk.TextBuffer}
@@ -2131,9 +2106,9 @@ export namespace Tepl {
          */
         load_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            progress_callback?: Gio.FileProgressCallback | null,
-            progress_callback_notify?: GLib.DestroyNotify | null,
+            cancellable: Gio.Cancellable | null,
+            progress_callback: Gio.FileProgressCallback | null,
+            progress_callback_notify: GLib.DestroyNotify | null,
         ): globalThis.Promise<boolean>;
         /**
          * Loads asynchronously the file content into the {@link Tepl.Buffer}.
@@ -2164,9 +2139,9 @@ export namespace Tepl {
          */
         load_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            progress_callback?: Gio.FileProgressCallback | null,
-            progress_callback_notify?: GLib.DestroyNotify | null,
+            cancellable: Gio.Cancellable | null,
+            progress_callback: Gio.FileProgressCallback | null,
+            progress_callback_notify: GLib.DestroyNotify | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2277,7 +2252,7 @@ export namespace Tepl {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns whether the metadata was loaded successfully.
          */
-        load(cancellable?: Gio.Cancellable | null): boolean;
+        load(cancellable: Gio.Cancellable | null): boolean;
         /**
          * The asynchronous version of `tepl_file_metadata_load()`.
          *
@@ -2289,7 +2264,7 @@ export namespace Tepl {
          * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        load_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        load_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * The asynchronous version of `tepl_file_metadata_load()`.
          *
@@ -2321,7 +2296,7 @@ export namespace Tepl {
          */
         load_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2340,7 +2315,7 @@ export namespace Tepl {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns whether the metadata was saved successfully.
          */
-        save(cancellable?: Gio.Cancellable | null): boolean;
+        save(cancellable: Gio.Cancellable | null): boolean;
         /**
          * The asynchronous version of `tepl_file_metadata_save()`.
          *
@@ -2351,7 +2326,7 @@ export namespace Tepl {
          * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        save_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        save_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * The asynchronous version of `tepl_file_metadata_save()`.
          *
@@ -2381,7 +2356,7 @@ export namespace Tepl {
          */
         save_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2399,7 +2374,7 @@ export namespace Tepl {
          * @param key the name of the metadata.
          * @param value the value of the metadata, or `null` to unset.
          */
-        set(key: string, value?: string | null): void;
+        set(key: string, value: string | null): void;
         /**
          * @param args
          */
@@ -2584,9 +2559,9 @@ export namespace Tepl {
          */
         save_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            progress_callback?: Gio.FileProgressCallback | null,
-            progress_callback_notify?: GLib.DestroyNotify | null,
+            cancellable: Gio.Cancellable | null,
+            progress_callback: Gio.FileProgressCallback | null,
+            progress_callback_notify: GLib.DestroyNotify | null,
         ): globalThis.Promise<boolean>;
         /**
          * Saves asynchronously the buffer into the file. See the {@link Gio.AsyncResult}
@@ -2615,9 +2590,9 @@ export namespace Tepl {
          */
         save_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            progress_callback?: Gio.FileProgressCallback | null,
-            progress_callback_notify?: GLib.DestroyNotify | null,
+            cancellable: Gio.Cancellable | null,
+            progress_callback: Gio.FileProgressCallback | null,
+            progress_callback_notify: GLib.DestroyNotify | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2644,7 +2619,7 @@ export namespace Tepl {
          * By default the encoding is taken from the {@link Tepl.File}.
          * @param encoding the new encoding, or `null` for UTF-8.
          */
-        set_encoding(encoding?: Encoding | null): void;
+        set_encoding(encoding: Encoding | null): void;
         /**
          * @param flags the new flags.
          */
@@ -2667,7 +2642,7 @@ export namespace Tepl {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            buffer: Gtk.TextBuffer;
+            buffer: Gtk.TextBuffer | null;
             folded: boolean;
         }
     }
@@ -2686,7 +2661,7 @@ export namespace Tepl {
          * @since 1.0
          * @construct-only
          */
-        get buffer(): Gtk.TextBuffer;
+        get buffer(): Gtk.TextBuffer | null;
         /**
          * Whether the {@link Tepl.FoldRegion} is folded or not.
          * @since 1.0
@@ -2925,7 +2900,7 @@ export namespace Tepl {
 
         static ['new'](): InfoBar;
 
-        static new_simple(msg_type: Gtk.MessageType, primary_msg: string, secondary_msg?: string | null): InfoBar;
+        static new_simple(msg_type: Gtk.MessageType, primary_msg: string, secondary_msg: string | null): InfoBar;
 
         // Signals
 
@@ -3055,38 +3030,19 @@ export namespace Tepl {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -3094,15 +3050,9 @@ export namespace Tepl {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -3269,7 +3219,7 @@ export namespace Tepl {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -3555,7 +3505,7 @@ export namespace Tepl {
          * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        load_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        load_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Loads asynchronously the content of the store file. You need to call
          * `tepl_metadata_store_set_store_file()` before.
@@ -3591,7 +3541,7 @@ export namespace Tepl {
          */
         load_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -3616,7 +3566,7 @@ export namespace Tepl {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns whether the metadata was saved successfully.
          */
-        save(cancellable?: Gio.Cancellable | null): boolean;
+        save(cancellable: Gio.Cancellable | null): boolean;
         /**
          * If you don't call this function, a default internal value is used that should
          * fit most applications' needs.
@@ -3638,7 +3588,7 @@ export namespace Tepl {
          * @param location a {@link Gio.File}.
          * @param metadata a {@link Gio.FileInfo} containing the metadata, or `null` to remove the metadata for `location`.
          */
-        set_metadata_for_location(location: Gio.File, metadata?: Gio.FileInfo | null): void;
+        set_metadata_for_location(location: Gio.File, metadata: Gio.FileInfo | null): void;
         /**
          * The `store_file` must be different for each process. It is advised for your
          * application to rely on {@link Gio.Application} process uniqueness.
@@ -3770,7 +3720,7 @@ export namespace Tepl {
          * @read-only
          * @category Inherited from Tepl.TabGroup
          */
-        get active_buffer(): Buffer;
+        get active_buffer(): Buffer | null;
         /**
          * The {@link Tepl.Buffer} of the active tab.
          * @since 3.0
@@ -3783,8 +3733,8 @@ export namespace Tepl {
          * @since 3.0
          * @category Inherited from Tepl.TabGroup
          */
-        get active_tab(): Tab;
-        set active_tab(val: Tab);
+        get active_tab(): Tab | null;
+        set active_tab(val: Tab | null);
         /**
          * The {@link Tepl.Tab} currently shown.
          * @since 3.0
@@ -3798,7 +3748,7 @@ export namespace Tepl {
          * @read-only
          * @category Inherited from Tepl.TabGroup
          */
-        get active_view(): View;
+        get active_view(): View | null;
         /**
          * The {@link Tepl.View} of the active tab.
          * @since 3.0
@@ -3923,38 +3873,19 @@ export namespace Tepl {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -3962,15 +3893,9 @@ export namespace Tepl {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -4137,7 +4062,7 @@ export namespace Tepl {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -4593,6 +4518,7 @@ export namespace Tepl {
         /**
          * The orientation of the orientable.
          * @since 2.16
+         * @default Gtk.Orientation.HORIZONTAL
          * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
@@ -4603,7 +4529,7 @@ export namespace Tepl {
          * @read-only
          * @category Inherited from Tepl.TabGroup
          */
-        get active_buffer(): Buffer;
+        get active_buffer(): Buffer | null;
         /**
          * The {@link Tepl.Buffer} of the active tab.
          * @since 3.0
@@ -4616,8 +4542,8 @@ export namespace Tepl {
          * @since 3.0
          * @category Inherited from Tepl.TabGroup
          */
-        get active_tab(): Tab;
-        set active_tab(val: Tab);
+        get active_tab(): Tab | null;
+        set active_tab(val: Tab | null);
         /**
          * The {@link Tepl.Tab} currently shown.
          * @since 3.0
@@ -4631,7 +4557,7 @@ export namespace Tepl {
          * @read-only
          * @category Inherited from Tepl.TabGroup
          */
-        get active_view(): View;
+        get active_view(): View | null;
         /**
          * The {@link Tepl.View} of the active tab.
          * @since 3.0
@@ -4766,38 +4692,19 @@ export namespace Tepl {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -4805,15 +4712,9 @@ export namespace Tepl {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -4980,7 +4881,7 @@ export namespace Tepl {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -5232,7 +5133,7 @@ export namespace Tepl {
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
-            tab: Tab;
+            tab: Tab | null;
         }
     }
 
@@ -5250,7 +5151,7 @@ export namespace Tepl {
          * @since 3.0
          * @construct-only
          */
-        get tab(): Tab;
+        get tab(): Tab | null;
 
         /**
          * Compile-time signal type information.
@@ -5315,6 +5216,7 @@ export namespace Tepl {
         /**
          * The orientation of the orientable.
          * @since 2.16
+         * @default Gtk.Orientation.HORIZONTAL
          * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
@@ -5376,38 +5278,19 @@ export namespace Tepl {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -5415,15 +5298,9 @@ export namespace Tepl {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -5590,7 +5467,7 @@ export namespace Tepl {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -6016,38 +5893,19 @@ export namespace Tepl {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -6055,15 +5913,9 @@ export namespace Tepl {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -6230,7 +6082,7 @@ export namespace Tepl {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -6506,7 +6358,7 @@ export namespace Tepl {
          * @param enc2 a {@link Tepl.Encoding}, or `null`.
          * @returns whether `enc1` and `enc2` are equal.
          */
-        equals(enc2?: Encoding | null): boolean;
+        equals(enc2: Encoding | null): boolean;
         free(): void;
         /**
          * Gets the character set of the {@link Tepl.Encoding}, such as "UTF-8" or "ISO-8859-1".
@@ -6663,11 +6515,11 @@ export namespace Tepl {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            active_buffer: Buffer;
+            active_buffer: Buffer | null;
             activeBuffer: Buffer;
-            active_tab: Tab;
+            active_tab: Tab | null;
             activeTab: Tab;
-            active_view: View;
+            active_view: View | null;
             activeView: View;
         }
     }
@@ -6687,7 +6539,7 @@ export namespace Tepl {
          * @since 3.0
          * @read-only
          */
-        get active_buffer(): Buffer;
+        get active_buffer(): Buffer | null;
         /**
          * The {@link Tepl.Buffer} of the active tab.
          * @since 3.0
@@ -6698,8 +6550,8 @@ export namespace Tepl {
          * The {@link Tepl.Tab} currently shown.
          * @since 3.0
          */
-        get active_tab(): Tab;
-        set active_tab(val: Tab);
+        get active_tab(): Tab | null;
+        set active_tab(val: Tab | null);
         /**
          * The {@link Tepl.Tab} currently shown.
          * @since 3.0
@@ -6711,7 +6563,7 @@ export namespace Tepl {
          * @since 3.0
          * @read-only
          */
-        get active_view(): View;
+        get active_view(): View | null;
         /**
          * The {@link Tepl.View} of the active tab.
          * @since 3.0

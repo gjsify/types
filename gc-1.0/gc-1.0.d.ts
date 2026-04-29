@@ -152,6 +152,7 @@ export namespace Gc {
         set criteria(val: SearchCriteria);
         /**
          * @construct-only
+         * @default Gc.SearchFlag.NONE
          */
         set flags(val: SearchFlag);
 
@@ -200,7 +201,7 @@ export namespace Gc {
          * @param max_matches
          * @param cancellable
          */
-        search(max_matches: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<SearchResult>;
+        search(max_matches: number, cancellable: Gio.Cancellable | null): globalThis.Promise<SearchResult>;
         /**
          * @param max_matches
          * @param cancellable
@@ -218,7 +219,7 @@ export namespace Gc {
          */
         search(
             max_matches: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<SearchResult> | void;
         /**

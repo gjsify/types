@@ -2203,13 +2203,13 @@ export namespace Soup {
      * @param v2 another ASCII string
      * @returns `true` if they are equal (modulo case)
      */
-    function str_case_equal(v1?: any | null, v2?: any | null): boolean;
+    function str_case_equal(v1: any | null, v2: any | null): boolean;
     /**
      * Hashes `key` in a case-insensitive manner.
      * @param key ASCII string to hash
      * @returns the hash code.
      */
-    function str_case_hash(key?: any | null): number;
+    function str_case_hash(key: any | null): number;
     /**
      * Looks whether the `domain` passed as argument is a public domain
      * suffix (.org, .com, .co.uk, etc) or not.
@@ -2260,7 +2260,7 @@ export namespace Soup {
      * @param escape_extra additional reserved characters to escape (or `null`)
      * @returns the encoded URI part
      */
-    function uri_encode(part: string, escape_extra?: string | null): string;
+    function uri_encode(part: string, escape_extra: string | null): string;
     /**
      * %<!-- -->-decodes any "unreserved" characters (or characters in
      * `unescape_extra`) in `part`, and %<!-- -->-encodes any non-ASCII
@@ -2283,7 +2283,7 @@ export namespace Soup {
      * @param unescape_extra reserved characters to unescape (or `null`)
      * @returns the normalized URI part
      */
-    function uri_normalize(part: string, unescape_extra?: string | null): string;
+    function uri_normalize(part: string, unescape_extra: string | null): string;
     /**
      * Creates a new %GValueArray. (This is just a wrapper around
      * `g_value_array_new()`, for naming consistency purposes.)
@@ -2327,11 +2327,7 @@ export namespace Soup {
      * @param protocols list of   protocols to offer
      * @since 2.50
      */
-    function websocket_client_prepare_handshake(
-        msg: Message,
-        origin?: string | null,
-        protocols?: string[] | null,
-    ): void;
+    function websocket_client_prepare_handshake(msg: Message, origin: string | null, protocols: string[] | null): void;
     /**
      * Adds the necessary headers to `msg` to request a WebSocket
      * handshake including supported WebSocket extensions.
@@ -2349,9 +2345,9 @@ export namespace Soup {
      */
     function websocket_client_prepare_handshake_with_extensions(
         msg: Message,
-        origin?: string | null,
-        protocols?: string[] | null,
-        supported_extensions?: GObject.TypeClass[] | null,
+        origin: string | null,
+        protocols: string[] | null,
+        supported_extensions: GObject.TypeClass[] | null,
     ): void;
     /**
      * Looks at the response status code and headers in `msg` and
@@ -2390,7 +2386,7 @@ export namespace Soup {
      */
     function websocket_client_verify_handshake_with_extensions(
         msg: Message,
-        supported_extensions?: GObject.TypeClass[] | null,
+        supported_extensions: GObject.TypeClass[] | null,
     ): [boolean, WebsocketExtension[] | null];
     function websocket_error_get_quark(): GLib.Quark;
     /**
@@ -2420,11 +2416,7 @@ export namespace Soup {
      * @returns `true` if `msg` contained a valid WebSocket handshake,   `false` and an error if not.
      * @since 2.50
      */
-    function websocket_server_check_handshake(
-        msg: Message,
-        origin?: string | null,
-        protocols?: string[] | null,
-    ): boolean;
+    function websocket_server_check_handshake(msg: Message, origin: string | null, protocols: string[] | null): boolean;
     /**
      * Examines the method and request headers in `msg` and determines
      * whether `msg` contains a valid handshake request.
@@ -2452,9 +2444,9 @@ export namespace Soup {
      */
     function websocket_server_check_handshake_with_extensions(
         msg: Message,
-        origin?: string | null,
-        protocols?: string[] | null,
-        supported_extensions?: GObject.TypeClass[] | null,
+        origin: string | null,
+        protocols: string[] | null,
+        supported_extensions: GObject.TypeClass[] | null,
     ): boolean;
     /**
      * Examines the method and request headers in `msg` and (assuming `msg`
@@ -2483,8 +2475,8 @@ export namespace Soup {
      */
     function websocket_server_process_handshake(
         msg: Message,
-        expected_origin?: string | null,
-        protocols?: string[] | null,
+        expected_origin: string | null,
+        protocols: string[] | null,
     ): boolean;
     /**
      * Examines the method and request headers in `msg` and (assuming `msg`
@@ -2511,9 +2503,9 @@ export namespace Soup {
      */
     function websocket_server_process_handshake_with_extensions(
         msg: Message,
-        expected_origin?: string | null,
-        protocols?: string[] | null,
-        supported_extensions?: GObject.TypeClass[] | null,
+        expected_origin: string | null,
+        protocols: string[] | null,
+        supported_extensions: GObject.TypeClass[] | null,
     ): [boolean, WebsocketExtension[] | null];
     /**
      * This creates an XML-RPC methodCall and returns it as a string.
@@ -2680,7 +2672,7 @@ export namespace Soup {
      * @returns a new (non-floating) {@link GLib.Variant}, or `null`
      * @since 2.52
      */
-    function xmlrpc_parse_response(method_response: string, length: number, signature?: string | null): GLib.Variant;
+    function xmlrpc_parse_response(method_response: string, length: number, signature: string | null): GLib.Variant;
     /**
      * Get the {@link Soup.Date} from special {@link GLib.Variant} created by
      * `soup_xmlrpc_variant_new_datetime()` or by parsing a &lt;dateTime.iso8601&gt;
@@ -2988,11 +2980,11 @@ export namespace Soup {
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.SocketConnectable.ConstructorProps {
             family: AddressFamily;
-            name: string;
-            physical: string;
+            name: string | null;
+            physical: string | null;
             port: number;
             protocol: string;
-            sockaddr: any;
+            sockaddr: any | null;
         }
     }
 
@@ -3006,28 +2998,33 @@ export namespace Soup {
 
         /**
          * @construct-only
+         * @default Soup.AddressFamily.INVALID
          */
         get family(): AddressFamily;
         /**
          * @construct-only
+         * @default null
          */
-        get name(): string;
+        get name(): string | null;
         /**
          * @read-only
+         * @default null
          */
-        get physical(): string;
+        get physical(): string | null;
         /**
          * @construct-only
+         * @default -1
          */
         get port(): number;
         /**
          * @construct-only
+         * @default null
          */
         get protocol(): string;
         /**
          * @construct-only
          */
-        get sockaddr(): any;
+        get sockaddr(): any | null;
 
         /**
          * Compile-time signal type information.
@@ -3217,7 +3214,7 @@ export namespace Soup {
          * @param cancellable a {@link Gio.Cancellable} object, or `null`
          * @returns {@link Soup.Status.OK}, {@link Soup.Status.CANT_RESOLVE}, or {@link Soup.Status.CANCELLED}.
          */
-        resolve_sync(cancellable?: Gio.Cancellable | null): number;
+        resolve_sync(cancellable: Gio.Cancellable | null): number;
         /**
          * Creates a {@link Gio.SocketAddressEnumerator} for `connectable`.
          * @returns a new {@link Gio.SocketAddressEnumerator}.
@@ -3319,38 +3316,19 @@ export namespace Soup {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -3358,15 +3336,9 @@ export namespace Soup {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -3533,7 +3505,7 @@ export namespace Soup {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -3759,28 +3731,44 @@ export namespace Soup {
 
         // Properties
 
+        /**
+         * @default null
+         */
         get host(): string;
         set host(val: string);
         /**
          * @read-only
+         * @default false
          */
         get is_authenticated(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get isAuthenticated(): boolean;
+        /**
+         * @default false
+         */
         get is_for_proxy(): boolean;
         set is_for_proxy(val: boolean);
+        /**
+         * @default false
+         */
         get isForProxy(): boolean;
         set isForProxy(val: boolean);
+        /**
+         * @default null
+         */
         get realm(): string;
         set realm(val: string);
         /**
          * @read-only
+         * @default null
          */
         get scheme_name(): string;
         /**
          * @read-only
+         * @default null
          */
         get schemeName(): string;
 
@@ -4130,10 +4118,12 @@ export namespace Soup {
 
         /**
          * @write-only
+         * @default null
          */
         set add_path(val: string);
         /**
          * @write-only
+         * @default null
          */
         set addPath(val: string);
         /**
@@ -4161,18 +4151,22 @@ export namespace Soup {
         set genericAuthData(val: any);
         /**
          * @construct-only
+         * @default false
          */
         get proxy(): boolean;
         /**
          * @construct-only
+         * @default null
          */
         get realm(): string;
         /**
          * @write-only
+         * @default null
          */
         set remove_path(val: string);
         /**
          * @write-only
+         * @default null
          */
         set removePath(val: string);
 
@@ -4802,38 +4796,19 @@ export namespace Soup {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -4841,15 +4816,9 @@ export namespace Soup {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -5016,7 +4985,7 @@ export namespace Soup {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -5359,18 +5328,22 @@ export namespace Soup {
 
         /**
          * @construct-only
+         * @default null
          */
         get cache_dir(): string;
         /**
          * @construct-only
+         * @default null
          */
         get cacheDir(): string;
         /**
          * @construct-only
+         * @default Soup.CacheType.SINGLE_USER
          */
         get cache_type(): CacheType;
         /**
          * @construct-only
+         * @default Soup.CacheType.SINGLE_USER
          */
         get cacheType(): CacheType;
 
@@ -5593,38 +5566,19 @@ export namespace Soup {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -5632,15 +5586,9 @@ export namespace Soup {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -5807,7 +5755,7 @@ export namespace Soup {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -6182,38 +6130,19 @@ export namespace Soup {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -6221,15 +6150,9 @@ export namespace Soup {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -6396,7 +6319,7 @@ export namespace Soup {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -6809,38 +6732,19 @@ export namespace Soup {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -6848,15 +6752,9 @@ export namespace Soup {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -7023,7 +6921,7 @@ export namespace Soup {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -7253,21 +7151,25 @@ export namespace Soup {
         /**
          * The policy the jar should follow to accept or reject cookies
          * @since 2.30
+         * @default Soup.CookieJarAcceptPolicy.ALWAYS
          */
         get accept_policy(): CookieJarAcceptPolicy;
         set accept_policy(val: CookieJarAcceptPolicy);
         /**
          * The policy the jar should follow to accept or reject cookies
          * @since 2.30
+         * @default Soup.CookieJarAcceptPolicy.ALWAYS
          */
         get acceptPolicy(): CookieJarAcceptPolicy;
         set acceptPolicy(val: CookieJarAcceptPolicy);
         /**
          * @construct-only
+         * @default false
          */
         get read_only(): boolean;
         /**
          * @construct-only
+         * @default false
          */
         get readOnly(): boolean;
 
@@ -7357,7 +7259,7 @@ export namespace Soup {
          * @param uri the URI setting the cookie
          * @param first_party the URI for the main document
          */
-        add_cookie_full(cookie: Cookie, uri?: URI | null, first_party?: URI | null): void;
+        add_cookie_full(cookie: Cookie, uri: URI | null, first_party: URI | null): void;
         /**
          * Adds `cookie` to `jar`, emitting the 'changed' signal if we are modifying
          * an existing cookie or adding a valid new cookie ('valid' means
@@ -7619,38 +7521,19 @@ export namespace Soup {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -7658,15 +7541,9 @@ export namespace Soup {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -7833,7 +7710,7 @@ export namespace Soup {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -8048,6 +7925,7 @@ export namespace Soup {
 
         /**
          * @construct-only
+         * @default null
          */
         get filename(): string;
 
@@ -8226,38 +8104,19 @@ export namespace Soup {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -8265,15 +8124,9 @@ export namespace Soup {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -8440,7 +8293,7 @@ export namespace Soup {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -8655,6 +8508,7 @@ export namespace Soup {
 
         /**
          * @construct-only
+         * @default null
          */
         get filename(): string;
 
@@ -8833,38 +8687,19 @@ export namespace Soup {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -8872,15 +8707,9 @@ export namespace Soup {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -9047,7 +8876,7 @@ export namespace Soup {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -9519,38 +9348,19 @@ export namespace Soup {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -9558,15 +9368,9 @@ export namespace Soup {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -9733,7 +9537,7 @@ export namespace Soup {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -9947,6 +9751,7 @@ export namespace Soup {
         /**
          * The filename of the SQLite database where HSTS policies are stored.
          * @construct-only
+         * @default null
          */
         get filename(): string;
 
@@ -10125,38 +9930,19 @@ export namespace Soup {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -10164,15 +9950,9 @@ export namespace Soup {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -10339,7 +10119,7 @@ export namespace Soup {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -10556,6 +10336,7 @@ export namespace Soup {
         /**
          * The level of logging output
          * @since 2.56
+         * @default Soup.LoggerLogLevel.MINIMAL
          */
         get level(): LoggerLogLevel;
         set level(val: LoggerLogLevel);
@@ -10564,6 +10345,7 @@ export namespace Soup {
          * the maximum number of bytes of the body that will be logged.
          * (-1 means "no limit".)
          * @since 2.56
+         * @default -1
          */
         get max_body_size(): number;
         set max_body_size(val: number);
@@ -10572,6 +10354,7 @@ export namespace Soup {
          * the maximum number of bytes of the body that will be logged.
          * (-1 means "no limit".)
          * @since 2.56
+         * @default -1
          */
         get maxBodySize(): number;
         set maxBodySize(val: number);
@@ -10782,38 +10565,19 @@ export namespace Soup {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -10821,15 +10585,9 @@ export namespace Soup {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -10996,7 +10754,7 @@ export namespace Soup {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -11494,30 +11252,53 @@ export namespace Soup {
          */
         get firstParty(): URI;
         set firstParty(val: URI);
+        /**
+         * @default 0
+         */
         get flags(): MessageFlags;
         set flags(val: MessageFlags);
+        /**
+         * @default Soup.HTTPVersion.HTTP_1_1
+         */
         get http_version(): HTTPVersion;
         set http_version(val: HTTPVersion);
+        /**
+         * @default Soup.HTTPVersion.HTTP_1_1
+         */
         get httpVersion(): HTTPVersion;
         set httpVersion(val: HTTPVersion);
         /**
          * Set when the message is navigating between top level domains.
          * @since 2.70
+         * @default false
          */
         get is_top_level_navigation(): boolean;
         set is_top_level_navigation(val: boolean);
         /**
          * Set when the message is navigating between top level domains.
          * @since 2.70
+         * @default false
          */
         get isTopLevelNavigation(): boolean;
         set isTopLevelNavigation(val: boolean);
+        /**
+         * @default GET
+         */
         get method(): string;
         set method(val: string);
+        /**
+         * @default Soup.MessagePriority.NORMAL
+         */
         get priority(): MessagePriority;
         set priority(val: MessagePriority);
+        /**
+         * @default null
+         */
         get reason_phrase(): string;
         set reason_phrase(val: string);
+        /**
+         * @default null
+         */
         get reasonPhrase(): string;
         set reasonPhrase(val: string);
         /**
@@ -11578,18 +11359,26 @@ export namespace Soup {
         get responseHeaders(): MessageHeaders;
         /**
          * @construct-only
+         * @default false
          */
         get server_side(): boolean;
         /**
          * @construct-only
+         * @default false
          */
         get serverSide(): boolean;
         get site_for_cookies(): URI;
         set site_for_cookies(val: URI);
         get siteForCookies(): URI;
         set siteForCookies(val: URI);
+        /**
+         * @default 0
+         */
         get status_code(): number;
         set status_code(val: number);
+        /**
+         * @default 0
+         */
         get statusCode(): number;
         set statusCode(val: number);
         /**
@@ -11607,12 +11396,14 @@ export namespace Soup {
         /**
          * The verification errors on {@link Soup.Message.tls_certificate}
          * @since 2.34
+         * @default Gio.TlsCertificateFlags.NO_FLAGS
          */
         get tls_errors(): Gio.TlsCertificateFlags;
         set tls_errors(val: Gio.TlsCertificateFlags);
         /**
          * The verification errors on {@link Soup.Message.tls_certificate}
          * @since 2.34
+         * @default Gio.TlsCertificateFlags.NO_FLAGS
          */
         get tlsErrors(): Gio.TlsCertificateFlags;
         set tlsErrors(val: Gio.TlsCertificateFlags);
@@ -11903,7 +11694,7 @@ export namespace Soup {
          * @param req_use a {@link Soup.MemoryUse} describing how to handle `req_body`
          * @param req_body a data buffer containing the body of the message request.
          */
-        set_request(content_type: string | null, req_use: MemoryUse, req_body?: Uint8Array | null): void;
+        set_request(content_type: string | null, req_use: MemoryUse, req_body: Uint8Array | null): void;
         /**
          * Convenience function to set the response body of a {@link Soup.Message}. If
          * `content_type` is `null`, the response body must be empty as well.
@@ -11911,7 +11702,7 @@ export namespace Soup {
          * @param resp_use a {@link Soup.MemoryUse} describing how to handle `resp_body`
          * @param resp_body a data buffer containing the body of the message response.
          */
-        set_response(content_type: string | null, resp_use: MemoryUse, resp_body?: Uint8Array | null): void;
+        set_response(content_type: string | null, resp_use: MemoryUse, resp_body: Uint8Array | null): void;
         /**
          * Sets `site_for_cookies` as the policy URL for same-site cookies for `msg`.
          *
@@ -11923,7 +11714,7 @@ export namespace Soup {
          * for more information.
          * @param site_for_cookies the {@link Soup.URI} for the `msg`'s site for cookies
          */
-        set_site_for_cookies(site_for_cookies?: URI | null): void;
+        set_site_for_cookies(site_for_cookies: URI | null): void;
         /**
          * Sets `msg`'s status code to `status_code`. If `status_code` is a
          * known value, it will also set `msg`'s reason_phrase.
@@ -12053,7 +11844,7 @@ export namespace Soup {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a new {@link Gio.InputStream}, or `null` if there are no more parts
          */
-        next_part(cancellable?: Gio.Cancellable | null): Gio.InputStream | null;
+        next_part(cancellable: Gio.Cancellable | null): Gio.InputStream | null;
         /**
          * Obtains a {@link Gio.InputStream} for the next request. See
          * `soup_multipart_input_stream_next_part()` for details on the
@@ -12063,7 +11854,7 @@ export namespace Soup {
          */
         next_part_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<Gio.InputStream | null>;
         /**
          * Obtains a {@link Gio.InputStream} for the next request. See
@@ -12088,7 +11879,7 @@ export namespace Soup {
          */
         next_part_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Gio.InputStream | null> | void;
         /**
@@ -12123,7 +11914,7 @@ export namespace Soup {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns a new {@link GLib.Source}
          */
-        create_source(cancellable?: Gio.Cancellable | null): GLib.Source;
+        create_source(cancellable: Gio.Cancellable | null): GLib.Source;
         /**
          * Checks if `stream` can be read.
          *
@@ -12157,7 +11948,7 @@ export namespace Soup {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns the number of bytes read, or -1 on error (including   {@link Gio.IOErrorEnum.WOULD_BLOCK}).
          */
-        read_nonblocking(cancellable?: Gio.Cancellable | null): [number, Uint8Array];
+        read_nonblocking(cancellable: Gio.Cancellable | null): [number, Uint8Array];
         /**
          * Checks if `stream` is actually pollable. Some classes may implement
          * {@link Gio.PollableInputStream} but have only certain instances of that class
@@ -12184,7 +11975,7 @@ export namespace Soup {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @virtual
          */
-        vfunc_create_source(cancellable?: Gio.Cancellable | null): GLib.Source;
+        vfunc_create_source(cancellable: Gio.Cancellable | null): GLib.Source;
         /**
          * Checks if `stream` can be read.
          *
@@ -12249,7 +12040,7 @@ export namespace Soup {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` on success, `false` on failure
          */
-        close(cancellable?: Gio.Cancellable | null): boolean;
+        close(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Requests an asynchronous closes of the stream, releasing resources related to it.
          * When the operation is finished `callback` will be called.
@@ -12264,7 +12055,7 @@ export namespace Soup {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional cancellable object
          */
-        close_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        close_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Requests an asynchronous closes of the stream, releasing resources related to it.
          * When the operation is finished `callback` will be called.
@@ -12302,7 +12093,7 @@ export namespace Soup {
          */
         close_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -12346,7 +12137,7 @@ export namespace Soup {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns Number of bytes read, or -1 on error, or 0 on end of file.
          */
-        read(cancellable?: Gio.Cancellable | null): [number, Uint8Array];
+        read(cancellable: Gio.Cancellable | null): [number, Uint8Array];
         /**
          * Tries to read `count` bytes from the stream into the buffer starting at
          * `buffer`. Will block during this read.
@@ -12370,7 +12161,7 @@ export namespace Soup {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` on success, `false` if there was an error
          */
-        read_all(cancellable?: Gio.Cancellable | null): [boolean, Uint8Array, number];
+        read_all(cancellable: Gio.Cancellable | null): [boolean, Uint8Array, number];
         /**
          * Request an asynchronous read of `count` bytes from the stream into the
          * buffer starting at `buffer`.
@@ -12387,7 +12178,7 @@ export namespace Soup {
          */
         read_all_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [globalThis.Promise<number>, Uint8Array];
         /**
          * Request an asynchronous read of `count` bytes from the stream into the
@@ -12426,7 +12217,7 @@ export namespace Soup {
          */
         read_all_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): [globalThis.Promise<number> | void, Uint8Array];
         /**
@@ -12470,7 +12261,7 @@ export namespace Soup {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        read_async(io_priority: number, cancellable?: Gio.Cancellable | null): [globalThis.Promise<number>, Uint8Array];
+        read_async(io_priority: number, cancellable: Gio.Cancellable | null): [globalThis.Promise<number>, Uint8Array];
         /**
          * Request an asynchronous read of `count` bytes from the stream into the buffer
          * starting at `buffer`. When the operation is finished `callback` will be called.
@@ -12534,7 +12325,7 @@ export namespace Soup {
          */
         read_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): [globalThis.Promise<number> | void, Uint8Array];
         /**
@@ -12565,7 +12356,7 @@ export namespace Soup {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns a new {@link GLib.Bytes}, or `null` on error
          */
-        read_bytes(count: bigint | number, cancellable?: Gio.Cancellable | null): GLib.Bytes;
+        read_bytes(count: bigint | number, cancellable: Gio.Cancellable | null): GLib.Bytes;
         /**
          * Request an asynchronous read of `count` bytes from the stream into a
          * new {@link GLib.Bytes}. When the operation is finished `callback` will be
@@ -12594,7 +12385,7 @@ export namespace Soup {
         read_bytes_async(
             count: bigint | number,
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<GLib.Bytes>;
         /**
          * Request an asynchronous read of `count` bytes from the stream into a
@@ -12657,7 +12448,7 @@ export namespace Soup {
         read_bytes_async(
             count: bigint | number,
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GLib.Bytes> | void;
         /**
@@ -12698,7 +12489,7 @@ export namespace Soup {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns Number of bytes skipped, or -1 on error
          */
-        skip(count: bigint | number, cancellable?: Gio.Cancellable | null): number;
+        skip(count: bigint | number, cancellable: Gio.Cancellable | null): number;
         /**
          * Request an asynchronous skip of `count` bytes from the stream.
          * When the operation is finished `callback` will be called.
@@ -12730,7 +12521,7 @@ export namespace Soup {
         skip_async(
             count: bigint | number,
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<number>;
         /**
          * Request an asynchronous skip of `count` bytes from the stream.
@@ -12799,7 +12590,7 @@ export namespace Soup {
         skip_async(
             count: bigint | number,
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<number> | void;
         /**
@@ -12826,8 +12617,8 @@ export namespace Soup {
          */
         vfunc_close_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes closing a stream asynchronously, started from `g_input_stream_close_async()`.
@@ -12839,7 +12630,7 @@ export namespace Soup {
          * @param cancellable
          * @virtual
          */
-        vfunc_close_fn(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_close_fn(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Request an asynchronous read of `count` bytes from the stream into the buffer
          * starting at `buffer`. When the operation is finished `callback` will be called.
@@ -12871,8 +12662,8 @@ export namespace Soup {
          */
         vfunc_read_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): Uint8Array | null;
         /**
          * Finishes an asynchronous stream read operation.
@@ -12886,7 +12677,7 @@ export namespace Soup {
          * @param cancellable
          * @virtual
          */
-        vfunc_read_fn(buffer: any | null, count: number, cancellable?: Gio.Cancellable | null): bigint | number;
+        vfunc_read_fn(buffer: any | null, count: number, cancellable: Gio.Cancellable | null): bigint | number;
         /**
          * Tries to skip `count` bytes from the stream. Will block during the operation.
          *
@@ -12906,7 +12697,7 @@ export namespace Soup {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_skip(count: number, cancellable?: Gio.Cancellable | null): bigint | number;
+        vfunc_skip(count: number, cancellable: Gio.Cancellable | null): bigint | number;
         /**
          * Request an asynchronous skip of `count` bytes from the stream.
          * When the operation is finished `callback` will be called.
@@ -12940,8 +12731,8 @@ export namespace Soup {
         vfunc_skip_async(
             count: number,
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes a stream skip operation.
@@ -13253,38 +13044,19 @@ export namespace Soup {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -13292,15 +13064,9 @@ export namespace Soup {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -13467,7 +13233,7 @@ export namespace Soup {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -13764,7 +13530,7 @@ export namespace Soup {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @virtual
          */
-        vfunc_send(cancellable?: Gio.Cancellable | null): Gio.InputStream;
+        vfunc_send(cancellable: Gio.Cancellable | null): Gio.InputStream;
         /**
          * Begins an asynchronously request for the URI pointed to by
          * `request`.
@@ -13775,7 +13541,7 @@ export namespace Soup {
          * @param callback a {@link Gio.AsyncReadyCallback}
          * @virtual
          */
-        vfunc_send_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_send_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Gets the result of a `soup_request_send_async()`.
          * @param result the {@link Gio.AsyncResult}
@@ -13821,7 +13587,7 @@ export namespace Soup {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns a {@link Gio.InputStream} that can be used to   read from the URI pointed to by `request`.
          */
-        send(cancellable?: Gio.Cancellable | null): Gio.InputStream;
+        send(cancellable: Gio.Cancellable | null): Gio.InputStream;
         /**
          * Begins an asynchronously request for the URI pointed to by
          * `request`.
@@ -13830,7 +13596,7 @@ export namespace Soup {
          * a {@link Soup.SessionSync}.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        send_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>;
+        send_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>;
         /**
          * Begins an asynchronously request for the URI pointed to by
          * `request`.
@@ -13851,7 +13617,7 @@ export namespace Soup {
          * @param callback a {@link Gio.AsyncReadyCallback}
          */
         send_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Gio.InputStream> | void;
         /**
@@ -13902,7 +13668,7 @@ export namespace Soup {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -13945,7 +13711,7 @@ export namespace Soup {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -13993,38 +13759,19 @@ export namespace Soup {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -14032,15 +13779,9 @@ export namespace Soup {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -14207,7 +13948,7 @@ export namespace Soup {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -14492,7 +14233,7 @@ export namespace Soup {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -14535,7 +14276,7 @@ export namespace Soup {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -14583,38 +14324,19 @@ export namespace Soup {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -14622,15 +14344,9 @@ export namespace Soup {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -14797,7 +14513,7 @@ export namespace Soup {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -15090,7 +14806,7 @@ export namespace Soup {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -15133,7 +14849,7 @@ export namespace Soup {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -15181,38 +14897,19 @@ export namespace Soup {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -15220,15 +14917,9 @@ export namespace Soup {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -15395,7 +15086,7 @@ export namespace Soup {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -15688,7 +15379,7 @@ export namespace Soup {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -15731,7 +15422,7 @@ export namespace Soup {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -15779,38 +15470,19 @@ export namespace Soup {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -15818,15 +15490,9 @@ export namespace Soup {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -15993,7 +15659,7 @@ export namespace Soup {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -16381,38 +16047,19 @@ export namespace Soup {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -16420,15 +16067,9 @@ export namespace Soup {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -16595,7 +16236,7 @@ export namespace Soup {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -16854,8 +16495,8 @@ export namespace Soup {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            async_context: any;
-            asyncContext: any;
+            async_context: any | null;
+            asyncContext: any | null;
             http_aliases: string[];
             httpAliases: string[];
             https_aliases: string[];
@@ -16891,7 +16532,7 @@ export namespace Soup {
          * @deprecated The new API uses the thread-default {@link GLib.MainContext} rather than having an explicitly-specified one.
          * @construct-only
          */
-        get async_context(): any;
+        get async_context(): any | null;
         /**
          * The server's {@link GLib.MainContext}, if you are using the old API.
          * Servers created using `soup_server_listen()` will listen on
@@ -16900,7 +16541,7 @@ export namespace Soup {
          * @deprecated The new API uses the thread-default {@link GLib.MainContext} rather than having an explicitly-specified one.
          * @construct-only
          */
-        get asyncContext(): any;
+        get asyncContext(): any | null;
         /**
          * A `null`-terminated array of URI schemes that should be
          * considered to be aliases for "http". Eg, if this included
@@ -16978,14 +16619,17 @@ export namespace Soup {
          * `soup_server_listen()`, etc.)
          * @deprecated `SoupServers` can listen on multiple interfaces at once now. Use `soup_server_listen()`, etc, to listen on a port, and `soup_server_get_uris()` to see what ports are being listened on.
          * @construct-only
+         * @default 0
          */
         get port(): number;
         /**
          * @construct-only
+         * @default false
          */
         get raw_paths(): boolean;
         /**
          * @construct-only
+         * @default false
          */
         get rawPaths(): boolean;
         /**
@@ -17013,6 +16657,7 @@ export namespace Soup {
          * {@link Soup.Server} will append its own product token (eg,
          * "<literal>libsoup/2.3.2</literal>") to the end of the
          * header for you.
+         * @default null
          */
         get server_header(): string;
         set server_header(val: string);
@@ -17041,6 +16686,7 @@ export namespace Soup {
          * {@link Soup.Server} will append its own product token (eg,
          * "<literal>libsoup/2.3.2</literal>") to the end of the
          * header for you.
+         * @default null
          */
         get serverHeader(): string;
         set serverHeader(val: string);
@@ -17055,6 +16701,7 @@ export namespace Soup {
          * constructor is illegal).
          * @deprecated use {@link Soup.Server.tls_certificate} or `soup_server_set_ssl_certificate()`.
          * @construct-only
+         * @default null
          */
         get ssl_cert_file(): string;
         /**
@@ -17068,6 +16715,7 @@ export namespace Soup {
          * constructor is illegal).
          * @deprecated use {@link Soup.Server.tls_certificate} or `soup_server_set_ssl_certificate()`.
          * @construct-only
+         * @default null
          */
         get sslCertFile(): string;
         /**
@@ -17076,6 +16724,7 @@ export namespace Soup {
          * is used.
          * @deprecated use {@link Soup.Server.tls_certificate} or `soup_server_set_ssl_certificate()`.
          * @construct-only
+         * @default null
          */
         get ssl_key_file(): string;
         /**
@@ -17084,6 +16733,7 @@ export namespace Soup {
          * is used.
          * @deprecated use {@link Soup.Server.tls_certificate} or `soup_server_set_ssl_certificate()`.
          * @construct-only
+         * @default null
          */
         get sslKeyFile(): string;
         /**
@@ -17183,8 +16833,8 @@ export namespace Soup {
          */
         accept_iostream(
             stream: Gio.IOStream,
-            local_addr?: Gio.SocketAddress | null,
-            remote_addr?: Gio.SocketAddress | null,
+            local_addr: Gio.SocketAddress | null,
+            remote_addr: Gio.SocketAddress | null,
         ): boolean;
         /**
          * Adds an authentication domain to `server`. Each auth domain will
@@ -17672,8 +17322,8 @@ export namespace Soup {
             acceptLanguage: string;
             accept_language_auto: boolean;
             acceptLanguageAuto: boolean;
-            async_context: any;
-            asyncContext: any;
+            async_context: any | null;
+            asyncContext: any | null;
             http_aliases: string[];
             httpAliases: string[];
             https_aliases: string[];
@@ -17725,6 +17375,7 @@ export namespace Soup {
          * Setting this will disable
          * {@link Soup.Session.accept_language_auto}.
          * @since 2.30
+         * @default null
          */
         get accept_language(): string;
         set accept_language(val: string);
@@ -17735,6 +17386,7 @@ export namespace Soup {
          * Setting this will disable
          * {@link Soup.Session.accept_language_auto}.
          * @since 2.30
+         * @default null
          */
         get acceptLanguage(): string;
         set acceptLanguage(val: string);
@@ -17746,6 +17398,7 @@ export namespace Soup {
          * Setting this will override any previous value of
          * {@link Soup.Session.accept_language}.
          * @since 2.30
+         * @default false
          */
         get accept_language_auto(): boolean;
         set accept_language_auto(val: boolean);
@@ -17757,6 +17410,7 @@ export namespace Soup {
          * Setting this will override any previous value of
          * {@link Soup.Session.accept_language}.
          * @since 2.30
+         * @default false
          */
         get acceptLanguageAuto(): boolean;
         set acceptLanguageAuto(val: boolean);
@@ -17776,7 +17430,7 @@ export namespace Soup {
          * will also be used for asynchronous HTTP I/O.
          * @construct-only
          */
-        get async_context(): any;
+        get async_context(): any | null;
         /**
          * The {@link GLib.MainContext} that miscellaneous session-related
          * asynchronous callbacks are invoked on. (Eg, setting
@@ -17793,7 +17447,7 @@ export namespace Soup {
          * will also be used for asynchronous HTTP I/O.
          * @construct-only
          */
-        get asyncContext(): any;
+        get asyncContext(): any | null;
         /**
          * A `null`-terminated array of URI schemes that should be
          * considered to be aliases for "http". Eg, if this included
@@ -17871,6 +17525,7 @@ export namespace Soup {
          * {@link Soup.SessionSync}, the default value is 0 (meaning idle
          * connections will never time out).
          * @since 2.24
+         * @default 60
          */
         get idle_timeout(): number;
         set idle_timeout(val: number);
@@ -17889,6 +17544,7 @@ export namespace Soup {
          * {@link Soup.SessionSync}, the default value is 0 (meaning idle
          * connections will never time out).
          * @since 2.24
+         * @default 60
          */
         get idleTimeout(): number;
         set idleTimeout(val: number);
@@ -17912,12 +17568,24 @@ export namespace Soup {
          * @construct-only
          */
         get localAddress(): Address;
+        /**
+         * @default 10
+         */
         get max_conns(): number;
         set max_conns(val: number);
+        /**
+         * @default 10
+         */
         get maxConns(): number;
         set maxConns(val: number);
+        /**
+         * @default 2
+         */
         get max_conns_per_host(): number;
         set max_conns_per_host(val: number);
+        /**
+         * @default 2
+         */
         get maxConnsPerHost(): number;
         set maxConnsPerHost(val: number);
         /**
@@ -18002,6 +17670,7 @@ export namespace Soup {
          * though it had read in a empty CA file, meaning that all SSL
          * certificates will be considered invalid.
          * @deprecated use {@link Soup.Session.ssl_use_system_ca_file}, or else {@link Soup.Session.tls_database} with a {@link Gio.TlsFileDatabase} (which allows you to do explicit error handling).
+         * @default null
          */
         get ssl_ca_file(): string;
         set ssl_ca_file(val: string);
@@ -18013,6 +17682,7 @@ export namespace Soup {
          * though it had read in a empty CA file, meaning that all SSL
          * certificates will be considered invalid.
          * @deprecated use {@link Soup.Session.ssl_use_system_ca_file}, or else {@link Soup.Session.tls_database} with a {@link Gio.TlsFileDatabase} (which allows you to do explicit error handling).
+         * @default null
          */
         get sslCaFile(): string;
         set sslCaFile(val: string);
@@ -18040,6 +17710,7 @@ export namespace Soup {
          * no CA file or TLS database, then all certificates are always
          * accepted, and this property has no effect.
          * @since 2.30
+         * @default true
          */
         get ssl_strict(): boolean;
         set ssl_strict(val: boolean);
@@ -18067,6 +17738,7 @@ export namespace Soup {
          * no CA file or TLS database, then all certificates are always
          * accepted, and this property has no effect.
          * @since 2.30
+         * @default true
          */
         get sslStrict(): boolean;
         set sslStrict(val: boolean);
@@ -18087,6 +17759,7 @@ export namespace Soup {
          * {@link Soup.SessionSync}, on libsoup older than 2.74.0, the default value
          * is `false`, for backward compatibility.
          * @since 2.38
+         * @default true
          */
         get ssl_use_system_ca_file(): boolean;
         set ssl_use_system_ca_file(val: boolean);
@@ -18107,6 +17780,7 @@ export namespace Soup {
          * {@link Soup.SessionSync}, on libsoup older than 2.74.0, the default value
          * is `false`, for backward compatibility.
          * @since 2.38
+         * @default true
          */
         get sslUseSystemCaFile(): boolean;
         set sslUseSystemCaFile(val: boolean);
@@ -18129,6 +17803,7 @@ export namespace Soup {
          * Not to be confused with {@link Soup.Session.idle_timeout} (which is
          * the length of time that idle persistent connections will be
          * kept open).
+         * @default 0
          */
         get timeout(): number;
         set timeout(val: number);
@@ -18195,12 +17870,14 @@ export namespace Soup {
         /**
          * Whether or not to use NTLM authentication.
          * @deprecated use `soup_session_add_feature_by_type()` with #SOUP_TYPE_AUTH_NTLM.
+         * @default false
          */
         get use_ntlm(): boolean;
         set use_ntlm(val: boolean);
         /**
          * Whether or not to use NTLM authentication.
          * @deprecated use `soup_session_add_feature_by_type()` with #SOUP_TYPE_AUTH_NTLM.
+         * @default false
          */
         get useNtlm(): boolean;
         set useNtlm(val: boolean);
@@ -18211,6 +17888,7 @@ export namespace Soup {
          * they are started, rather than always occurring in
          * {@link Soup.Session.async_context}.
          * @since 2.38
+         * @default false
          */
         get use_thread_context(): boolean;
         set use_thread_context(val: boolean);
@@ -18221,6 +17899,7 @@ export namespace Soup {
          * they are started, rather than always occurring in
          * {@link Soup.Session.async_context}.
          * @since 2.38
+         * @default false
          */
         get useThreadContext(): boolean;
         set useThreadContext(val: boolean);
@@ -18248,6 +17927,7 @@ export namespace Soup {
          * whitespace, {@link Soup.Session} will append its own product token
          * (eg, "<literal>libsoup/2.3.2</literal>") to the end of the
          * header for you.
+         * @default null
          */
         get user_agent(): string;
         set user_agent(val: string);
@@ -18275,6 +17955,7 @@ export namespace Soup {
          * whitespace, {@link Soup.Session} will append its own product token
          * (eg, "<literal>libsoup/2.3.2</literal>") to the end of the
          * header for you.
+         * @default null
          */
         get userAgent(): string;
         set userAgent(val: string);
@@ -18394,7 +18075,7 @@ export namespace Soup {
          * @param callback a {@link Soup.SessionCallback} which will be called after the message completes or when an unrecoverable error occurs.
          * @virtual
          */
-        vfunc_queue_message(msg: Message, callback?: SessionCallback | null): void;
+        vfunc_queue_message(msg: Message, callback: SessionCallback | null): void;
         /**
          * @param msg
          * @param socket
@@ -18481,8 +18162,8 @@ export namespace Soup {
          */
         connect_async(
             uri: URI,
-            cancellable?: Gio.Cancellable | null,
-            progress_callback?: SessionConnectProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
+            progress_callback: SessionConnectProgressCallback | null,
         ): globalThis.Promise<Gio.IOStream>;
         /**
          * Start a connection to `uri`. The operation can be monitored by providing a `progress_callback`
@@ -18512,8 +18193,8 @@ export namespace Soup {
          */
         connect_async(
             uri: URI,
-            cancellable?: Gio.Cancellable | null,
-            progress_callback?: SessionConnectProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
+            progress_callback: SessionConnectProgressCallback | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Gio.IOStream> | void;
         /**
@@ -18592,7 +18273,7 @@ export namespace Soup {
          * @param cancellable a {@link Gio.Cancellable} object, or `null`
          * @param callback callback to call with the     result, or `null`
          */
-        prefetch_dns(hostname: string, cancellable?: Gio.Cancellable | null, callback?: AddressCallback | null): void;
+        prefetch_dns(hostname: string, cancellable: Gio.Cancellable | null, callback: AddressCallback | null): void;
         /**
          * Tells `session` that `uri` may be requested shortly, and so the
          * session can try to prepare (resolving the domain name, obtaining
@@ -18625,7 +18306,7 @@ export namespace Soup {
          * @param msg the message to queue
          * @param callback a {@link Soup.SessionCallback} which will be called after the message completes or when an unrecoverable error occurs.
          */
-        queue_message(msg: Message, callback?: SessionCallback | null): void;
+        queue_message(msg: Message, callback: SessionCallback | null): void;
         /**
          * Updates `msg`'s URI according to its status code and "Location"
          * header, and requeues it on `session`. Use this when you have set
@@ -18714,7 +18395,7 @@ export namespace Soup {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a {@link Gio.InputStream} for reading the   response body, or `null` on error.
          */
-        send(msg: Message, cancellable?: Gio.Cancellable | null): Gio.InputStream;
+        send(msg: Message, cancellable: Gio.Cancellable | null): Gio.InputStream;
         /**
          * Asynchronously sends `msg` and waits for the beginning of a
          * response. When `callback` is called, then either `msg` has been sent,
@@ -18735,7 +18416,7 @@ export namespace Soup {
          * @param msg a {@link Soup.Message}
          * @param cancellable a {@link Gio.Cancellable}
          */
-        send_async(msg: Message, cancellable?: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>;
+        send_async(msg: Message, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>;
         /**
          * Asynchronously sends `msg` and waits for the beginning of a
          * response. When `callback` is called, then either `msg` has been sent,
@@ -18785,7 +18466,7 @@ export namespace Soup {
          */
         send_async(
             msg: Message,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Gio.InputStream> | void;
         /**
@@ -18869,9 +18550,9 @@ export namespace Soup {
          */
         websocket_connect_async(
             msg: Message,
-            origin?: string | null,
-            protocols?: string[] | null,
-            cancellable?: Gio.Cancellable | null,
+            origin: string | null,
+            protocols: string[] | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<WebsocketConnection>;
         /**
          * Asynchronously creates a {@link Soup.WebsocketConnection} to communicate
@@ -18932,9 +18613,9 @@ export namespace Soup {
          */
         websocket_connect_async(
             msg: Message,
-            origin?: string | null,
-            protocols?: string[] | null,
-            cancellable?: Gio.Cancellable | null,
+            origin: string | null,
+            protocols: string[] | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<WebsocketConnection> | void;
         /**
@@ -19222,6 +18903,7 @@ export namespace Soup {
         get asyncContext(): any;
         /**
          * @construct-only
+         * @default -1
          */
         get fd(): number;
         /**
@@ -19232,8 +18914,14 @@ export namespace Soup {
          * @construct-only
          */
         set iostream(val: Gio.IOStream);
+        /**
+         * @default false
+         */
         get ipv6_only(): boolean;
         set ipv6_only(val: boolean);
+        /**
+         * @default false
+         */
         get ipv6Only(): boolean;
         set ipv6Only(val: boolean);
         /**
@@ -19245,6 +18933,7 @@ export namespace Soup {
          * setting {@link Soup.Socket.fd}, it will only be set for listening
          * sockets.
          * @read-only
+         * @default false
          */
         get is_server(): boolean;
         /**
@@ -19256,6 +18945,7 @@ export namespace Soup {
          * setting {@link Soup.Socket.fd}, it will only be set for listening
          * sockets.
          * @read-only
+         * @default false
          */
         get isServer(): boolean;
         /**
@@ -19287,6 +18977,7 @@ export namespace Soup {
          * blocking and non-blocking sockets; blocking sockets will
          * simply never return {@link Soup.SocketIOStatus.WOULD_BLOCK}, and so the
          * code that handles that case just won't get used for them.
+         * @default true
          */
         get non_blocking(): boolean;
         set non_blocking(val: boolean);
@@ -19311,6 +19002,7 @@ export namespace Soup {
          * blocking and non-blocking sockets; blocking sockets will
          * simply never return {@link Soup.SocketIOStatus.WOULD_BLOCK}, and so the
          * code that handles that case just won't get used for them.
+         * @default true
          */
         get nonBlocking(): boolean;
         set nonBlocking(val: boolean);
@@ -19328,20 +19020,27 @@ export namespace Soup {
         set sslCreds(val: any);
         /**
          * @construct-only
+         * @default false
          */
         get ssl_fallback(): boolean;
         /**
          * @construct-only
+         * @default false
          */
         get sslFallback(): boolean;
         /**
          * @construct-only
+         * @default true
          */
         get ssl_strict(): boolean;
         /**
          * @construct-only
+         * @default true
          */
         get sslStrict(): boolean;
+        /**
+         * @default 0
+         */
         get timeout(): number;
         set timeout(val: number);
         /**
@@ -19354,30 +19053,36 @@ export namespace Soup {
         get tlsCertificate(): Gio.TlsCertificate;
         /**
          * @read-only
+         * @default Gio.TlsCertificateFlags.NO_FLAGS
          */
         get tls_errors(): Gio.TlsCertificateFlags;
         /**
          * @read-only
+         * @default Gio.TlsCertificateFlags.NO_FLAGS
          */
         get tlsErrors(): Gio.TlsCertificateFlags;
         /**
          * @read-only
+         * @default false
          */
         get trusted_certificate(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get trustedCertificate(): boolean;
         /**
          * Use `g_main_context_get_thread_default()`.
          * @since 2.38
          * @construct-only
+         * @default false
          */
         get use_thread_context(): boolean;
         /**
          * Use `g_main_context_get_thread_default()`.
          * @since 2.38
          * @construct-only
+         * @default false
          */
         get useThreadContext(): boolean;
 
@@ -19460,7 +19165,7 @@ export namespace Soup {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns a success or failure code.
          */
-        connect_sync(cancellable?: Gio.Cancellable | null): number;
+        connect_sync(cancellable: Gio.Cancellable | null): number;
         /**
          * Disconnects `sock`. Any further read or write attempts on it will
          * fail.
@@ -19523,7 +19228,7 @@ export namespace Soup {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns a {@link Soup.SocketIOStatus}, as described above (or {@link Soup.SocketIOStatus.EOF} if the socket is no longer connected, or {@link Soup.SocketIOStatus.ERROR} on any other error, in which case `error` will also be set).
          */
-        read(buffer: Uint8Array | string, cancellable?: Gio.Cancellable | null): [SocketIOStatus, number];
+        read(buffer: Uint8Array | string, cancellable: Gio.Cancellable | null): [SocketIOStatus, number];
         /**
          * Like `soup_socket_read()`, but reads no further than the first
          * occurrence of `boundary`. (If the boundary is found, it will be
@@ -19547,7 +19252,7 @@ export namespace Soup {
             buffer: Uint8Array | string,
             boundary: any | null,
             boundary_len: bigint | number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [SocketIOStatus, number, boolean];
         /**
          * Starts using SSL on `socket`, expecting to find a host named
@@ -19556,13 +19261,13 @@ export namespace Soup {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns success or failure
          */
-        start_proxy_ssl(ssl_host: string, cancellable?: Gio.Cancellable | null): boolean;
+        start_proxy_ssl(ssl_host: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Starts using SSL on `socket`.
          * @param cancellable a {@link Gio.Cancellable}
          * @returns success or failure
          */
-        start_ssl(cancellable?: Gio.Cancellable | null): boolean;
+        start_ssl(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Attempts to write `len` bytes from `buffer` to `sock`. If some data is
          * successfully written, the return status will be {@link Soup.SocketIOStatus.OK},
@@ -19580,7 +19285,7 @@ export namespace Soup {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns a {@link Soup.SocketIOStatus}, as described above (or {@link Soup.SocketIOStatus.EOF} or {@link Soup.SocketIOStatus.ERROR}. `error` will be set if the return value is {@link Soup.SocketIOStatus.ERROR}.)
          */
-        write(buffer: Uint8Array | string, cancellable?: Gio.Cancellable | null): [SocketIOStatus, number];
+        write(buffer: Uint8Array | string, cancellable: Gio.Cancellable | null): [SocketIOStatus, number];
         /**
          * Initializes the object implementing the interface.
          *
@@ -19623,7 +19328,7 @@ export namespace Soup {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -19666,7 +19371,7 @@ export namespace Soup {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -19714,38 +19419,19 @@ export namespace Soup {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -19753,15 +19439,9 @@ export namespace Soup {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -19928,7 +19608,7 @@ export namespace Soup {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -20190,8 +19870,8 @@ export namespace Soup {
             keepaliveInterval: number;
             max_incoming_payload_size: bigint | number;
             maxIncomingPayloadSize: bigint | number;
-            origin: string;
-            protocol: string;
+            origin: string | null;
+            protocol: string | null;
             state: WebsocketState;
             uri: URI;
         }
@@ -20211,12 +19891,14 @@ export namespace Soup {
          * The type of connection (client/server).
          * @since 2.50
          * @construct-only
+         * @default Soup.WebsocketConnectionType.UNKNOWN
          */
         get connection_type(): WebsocketConnectionType;
         /**
          * The type of connection (client/server).
          * @since 2.50
          * @construct-only
+         * @default Soup.WebsocketConnectionType.UNKNOWN
          */
         get connectionType(): WebsocketConnectionType;
         /**
@@ -20248,6 +19930,7 @@ export namespace Soup {
          * serve as a keepalive message. If set to 0 the keepalive message is
          * disabled.
          * @since 2.58
+         * @default 0
          */
         get keepalive_interval(): number;
         set keepalive_interval(val: number);
@@ -20256,6 +19939,7 @@ export namespace Soup {
          * serve as a keepalive message. If set to 0 the keepalive message is
          * disabled.
          * @since 2.58
+         * @default 0
          */
         get keepaliveInterval(): number;
         set keepaliveInterval(val: number);
@@ -20263,6 +19947,7 @@ export namespace Soup {
          * The maximum payload size for incoming packets the protocol expects
          * or 0 to not limit it.
          * @since 2.56
+         * @default 131072
          */
         get max_incoming_payload_size(): number;
         set max_incoming_payload_size(val: bigint | number);
@@ -20270,6 +19955,7 @@ export namespace Soup {
          * The maximum payload size for incoming packets the protocol expects
          * or 0 to not limit it.
          * @since 2.56
+         * @default 131072
          */
         get maxIncomingPayloadSize(): number;
         set maxIncomingPayloadSize(val: bigint | number);
@@ -20277,19 +19963,22 @@ export namespace Soup {
          * The client's Origin.
          * @since 2.50
          * @construct-only
+         * @default null
          */
-        get origin(): string;
+        get origin(): string | null;
         /**
          * The chosen protocol, or `null` if a protocol was not agreed
          * upon.
          * @since 2.50
          * @construct-only
+         * @default null
          */
-        get protocol(): string;
+        get protocol(): string | null;
         /**
          * The current state of the WebSocket.
          * @since 2.50
          * @read-only
+         * @default Soup.WebsocketState.OPEN
          */
         get state(): WebsocketState;
         /**
@@ -20321,8 +20010,8 @@ export namespace Soup {
             stream: Gio.IOStream,
             uri: URI,
             type: WebsocketConnectionType,
-            origin?: string | null,
-            protocol?: string | null,
+            origin: string | null,
+            protocol: string | null,
         ): WebsocketConnection;
 
         static new_with_extensions(
@@ -20405,7 +20094,7 @@ export namespace Soup {
          * @param code close code
          * @param data close data
          */
-        close(code: number, data?: string | null): void;
+        close(code: number, data: string | null): void;
         /**
          * Get the close code received from the WebSocket peer.
          *
@@ -20480,7 +20169,7 @@ export namespace Soup {
          * is run.
          * @param data the message contents
          */
-        send_binary(data?: Uint8Array | null): void;
+        send_binary(data: Uint8Array | null): void;
         /**
          * Send a message of the given `type` to the peer. Note that this method,
          * allows to send text messages containing `null` characters.
@@ -20574,7 +20263,7 @@ export namespace Soup {
          * @param params the parameters, or `null`
          * @virtual
          */
-        vfunc_configure(connection_type: WebsocketConnectionType, params?: GLib.HashTable<any, any> | null): boolean;
+        vfunc_configure(connection_type: WebsocketConnectionType, params: GLib.HashTable<any, any> | null): boolean;
         /**
          * Get the parameters strings to be included in the request header. If the extension
          * doesn't include any parameter in the request, this function returns `null`.
@@ -20618,7 +20307,7 @@ export namespace Soup {
          * @param params the parameters, or `null`
          * @returns `true` if extension could be configured with the given parameters, or `false` otherwise
          */
-        configure(connection_type: WebsocketConnectionType, params?: GLib.HashTable<any, any> | null): boolean;
+        configure(connection_type: WebsocketConnectionType, params: GLib.HashTable<any, any> | null): boolean;
         /**
          * Get the parameters strings to be included in the request header. If the extension
          * doesn't include any parameter in the request, this function returns `null`.
@@ -20896,38 +20585,19 @@ export namespace Soup {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -20935,15 +20605,9 @@ export namespace Soup {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -21110,7 +20774,7 @@ export namespace Soup {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -21351,14 +21015,12 @@ export namespace Soup {
 
         constructor(use: MemoryUse, data: Uint8Array | string);
 
-        static ['new'](use: MemoryUse, data: Uint8Array | string): Buffer;
-
         static ['new'](data: Uint8Array | string): Buffer;
 
         static new_with_owner(
             data: Uint8Array | string,
-            owner?: any | null,
-            owner_dnotify?: GLib.DestroyNotify | null,
+            owner: any | null,
+            owner_dnotify: GLib.DestroyNotify | null,
         ): Buffer;
 
         // Methods
@@ -22060,12 +21722,6 @@ export namespace Soup {
         // Methods
 
         /**
-         * Appends `length` bytes from `data` to `body` according to `use`.
-         * @param use how to use `data`
-         * @param data data to append
-         */
-        append(use: MemoryUse, data: Uint8Array | string): void;
-        /**
          * Appends the data from `buffer` to `body`. ({@link Soup.MessageBody} uses
          * `SoupBuffers` internally, so this is normally a constant-time
          * operation that doesn't actually require copying the data in
@@ -22434,7 +22090,7 @@ export namespace Soup {
          * @param disposition the disposition-type
          * @param params additional parameters, or `null`
          */
-        set_content_disposition(disposition: string, params?: GLib.HashTable<string, string> | null): void;
+        set_content_disposition(disposition: string, params: GLib.HashTable<string, string> | null): void;
         /**
          * Sets the message body length that `hdrs` will declare, and sets
          * `hdrs`'s encoding to {@link Soup.Encoding.CONTENT_LENGTH}.
@@ -22471,7 +22127,7 @@ export namespace Soup {
          * @param content_type the MIME type
          * @param params additional parameters, or `null`
          */
-        set_content_type(content_type: string, params?: GLib.HashTable<string, string> | null): void;
+        set_content_type(content_type: string, params: GLib.HashTable<string, string> | null): void;
         /**
          * Sets the message body encoding that `hdrs` will declare. In particular,
          * you should use this if you are going to send a request or response in
@@ -22848,7 +22504,7 @@ export namespace Soup {
             }>,
         );
 
-        static ['new'](uri_string?: string | null): URI;
+        static ['new'](uri_string: string | null): URI;
 
         static new_with_base(base: URI, uri_string: string): URI;
 
@@ -22870,7 +22526,7 @@ export namespace Soup {
          * @param part a URI part
          * @param escape_extra additional reserved characters to escape (or `null`)
          */
-        static encode(part: string, escape_extra?: string | null): string;
+        static encode(part: string, escape_extra: string | null): string;
         /**
          * %<!-- -->-decodes any "unreserved" characters (or characters in
          * `unescape_extra`) in `part`, and %<!-- -->-encodes any non-ASCII
@@ -22892,7 +22548,7 @@ export namespace Soup {
          * @param part a URI part
          * @param unescape_extra reserved characters to unescape (or `null`)
          */
-        static normalize(part: string, unescape_extra?: string | null): string;
+        static normalize(part: string, unescape_extra: string | null): string;
 
         // Methods
 
@@ -22971,7 +22627,7 @@ export namespace Soup {
          * Sets `uri`'s fragment to `fragment`.
          * @param fragment the fragment
          */
-        set_fragment(fragment?: string | null): void;
+        set_fragment(fragment: string | null): void;
         /**
          * Sets `uri`'s host to `host`.
          *
@@ -22982,12 +22638,12 @@ export namespace Soup {
          * http and https URIs should not have a `null` `host`.
          * @param host the hostname or IP address, or `null`
          */
-        set_host(host?: string | null): void;
+        set_host(host: string | null): void;
         /**
          * Sets `uri`'s password to `password`.
          * @param password the password, or `null`
          */
-        set_password(password?: string | null): void;
+        set_password(password: string | null): void;
         /**
          * Sets `uri`'s path to `path`.
          * @param path the non-`null` path
@@ -23003,7 +22659,7 @@ export namespace Soup {
          * Sets `uri`'s query to `query`.
          * @param query the query
          */
-        set_query(query?: string | null): void;
+        set_query(query: string | null): void;
         /**
          * Sets `uri`'s query to the result of encoding `form` according to the
          * HTML form rules. See `soup_form_encode_hash()` for more information.
@@ -23020,7 +22676,7 @@ export namespace Soup {
          * Sets `uri`'s user to `user`.
          * @param user the username, or `null`
          */
-        set_user(user?: string | null): void;
+        set_user(user: string | null): void;
         /**
          * Returns a string representing `uri`.
          *
@@ -23106,7 +22762,7 @@ export namespace Soup {
          * @param signature A valid {@link GLib.Variant} type string, or `null`
          * @returns a new (non-floating) {@link GLib.Variant}, or `null`
          */
-        parse(signature?: string | null): GLib.Variant;
+        parse(signature: string | null): GLib.Variant;
     }
 
     namespace PasswordManager {
@@ -23140,7 +22796,7 @@ export namespace Soup {
              * @param cancellable
              * @virtual
              */
-            vfunc_get_passwords_sync(msg: Message, auth: Auth, cancellable?: Gio.Cancellable | null): void;
+            vfunc_get_passwords_sync(msg: Message, auth: Auth, cancellable: Gio.Cancellable | null): void;
         }
 
         // Constructor properties interface
@@ -23179,7 +22835,7 @@ export namespace Soup {
          * @param auth
          * @param cancellable
          */
-        get_passwords_sync(msg: Message, auth: Auth, cancellable?: Gio.Cancellable | null): void;
+        get_passwords_sync(msg: Message, auth: Auth, cancellable: Gio.Cancellable | null): void;
     }
 
     export const PasswordManager: PasswordManagerNamespace & {

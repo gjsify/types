@@ -102,7 +102,7 @@ export namespace GstController {
      * @gir-type Callback
      */
     interface DirectControlBindingConvertValue {
-        (self: DirectControlBinding, src_value: number, dest_value?: any | null): void;
+        (self: DirectControlBinding, src_value: number, dest_value: any | null): void;
     }
     namespace ARGBControlBinding {
         // Signal signatures
@@ -239,6 +239,7 @@ export namespace GstController {
 
         /**
          * @construct-only
+         * @default false
          */
         get absolute(): boolean;
         get control_source(): Gst.ControlSource;
@@ -320,6 +321,9 @@ export namespace GstController {
 
         // Properties
 
+        /**
+         * @default GstController.InterpolationMode.NONE
+         */
         get mode(): InterpolationMode;
         set mode(val: InterpolationMode);
 
@@ -405,6 +409,7 @@ export namespace GstController {
 
         /**
          * Specifies the amplitude for the waveform of this {@link GstController.LFOControlSource}.
+         * @default 1
          */
         get amplitude(): number;
         set amplitude(val: number);
@@ -412,11 +417,13 @@ export namespace GstController {
          * Specifies the frequency that should be used for the waveform
          * of this {@link GstController.LFOControlSource}. It should be large enough
          * so that the period is longer than one nanosecond.
+         * @default 1
          */
         get frequency(): number;
         set frequency(val: number);
         /**
          * Specifies the value offset for the waveform of this {@link GstController.LFOControlSource}.
+         * @default 1
          */
         get offset(): number;
         set offset(val: number);
@@ -426,11 +433,13 @@ export namespace GstController {
          *
          * To get a n nanosecond shift to the left use
          * "(GST_SECOND / frequency) - n".
+         * @default 0
          */
         get timeshift(): number;
         set timeshift(val: bigint | number);
         /**
          * Specifies the waveform that should be used for this {@link GstController.LFOControlSource}.
+         * @default GstController.LFOWaveform.SINE
          */
         get waveform(): LFOWaveform;
         set waveform(val: LFOWaveform);
@@ -713,6 +722,9 @@ export namespace GstController {
 
         // Properties
 
+        /**
+         * @default 0
+         */
         get tolerance(): number;
         set tolerance(val: bigint | number);
 

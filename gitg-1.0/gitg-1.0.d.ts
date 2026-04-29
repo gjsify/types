@@ -379,7 +379,7 @@ export namespace Gitg {
          * @param func
          * @param _callback_
          */
-        static thread(func: Async.ThreadFunc, _callback_?: Gio.AsyncReadyCallback<Async> | null): void;
+        static thread(func: Async.ThreadFunc, _callback_: Gio.AsyncReadyCallback<Async> | null): void;
         /**
          * @param _res_
          */
@@ -388,7 +388,7 @@ export namespace Gitg {
          * @param func
          * @param _callback_
          */
-        static thread_try(func: Async.ThreadFunc, _callback_?: Gio.AsyncReadyCallback<Async> | null): void;
+        static thread_try(func: Async.ThreadFunc, _callback_: Gio.AsyncReadyCallback<Async> | null): void;
         /**
          * @param _res_
          */
@@ -629,7 +629,7 @@ export namespace Gitg {
         load(
             email: string,
             size: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<GdkPixbuf.Pixbuf | null>;
         /**
          * @param email
@@ -652,7 +652,7 @@ export namespace Gitg {
         load(
             email: string,
             size: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GdkPixbuf.Pixbuf | null> | void;
         /**
@@ -727,8 +727,8 @@ export namespace Gitg {
         get dParsedName(): ParsedRefName;
         set dParsedName(val: ParsedRefName);
         /** @category Inherited from Gitg.Ref */
-        get d_pushes(): Ref[];
-        set d_pushes(val: Ref[]);
+        get d_pushes(): Ref[] | null;
+        set d_pushes(val: Ref[] | null);
         /** @category Inherited from Gitg.Ref */
         get dPushes(): Ref[];
         set dPushes(val: Ref[]);
@@ -753,7 +753,7 @@ export namespace Gitg {
         /**
          * @param value
          */
-        set_d_pushes(value?: Ref[] | null): void;
+        set_d_pushes(value: Ref[] | null): void;
         get_state(): RefState;
         /**
          * @param value
@@ -787,7 +787,7 @@ export namespace Gitg {
          * @param value
          * @virtual
          */
-        vfunc_set_d_pushes(value?: Ref[] | null): void;
+        vfunc_set_d_pushes(value: Ref[] | null): void;
         /**
          * @virtual
          */
@@ -944,7 +944,7 @@ export namespace Gitg {
          * @param log_message The one line long message to be appended to the reflog.
          * @returns the newly created {@link Ggit.Ref} or `null`.
          */
-        set_symbolic_target(target: string, log_message?: string | null): Ggit.Ref | null;
+        set_symbolic_target(target: string, log_message: string | null): Ggit.Ref | null;
         /**
          * Create a new reference with the same name as the given reference but a
          * different OID target. The reference must be a direct reference, otherwise
@@ -955,7 +955,7 @@ export namespace Gitg {
          * @param log_message The one line long message to be appended to the reflog.
          * @returns the newly created {@link Ggit.Ref} or `null`.
          */
-        set_target(oid: Ggit.OId, log_message?: string | null): Ggit.Ref | null;
+        set_target(oid: Ggit.OId, log_message: string | null): Ggit.Ref | null;
         /**
          * Get a string representation of the ref.
          * @returns a string representation of the ref or `null`.
@@ -1057,8 +1057,8 @@ export namespace Gitg {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.CellRendererText.ConstructorProps {
-            commit: Commit;
-            next_commit: Commit;
+            commit: Commit | null;
+            next_commit: Commit | null;
             nextCommit: Commit;
             lane_width: number;
             laneWidth: number;
@@ -1076,10 +1076,10 @@ export namespace Gitg {
 
         // Properties
 
-        get commit(): Commit;
-        set commit(val: Commit);
-        get next_commit(): Commit;
-        set next_commit(val: Commit);
+        get commit(): Commit | null;
+        set commit(val: Commit | null);
+        get next_commit(): Commit | null;
+        set next_commit(val: Commit | null);
         get nextCommit(): Commit;
         set nextCommit(val: Commit);
         get lane_width(): number;
@@ -1143,12 +1143,12 @@ export namespace Gitg {
         /**
          * @param value
          */
-        set_commit(value?: Commit | null): void;
+        set_commit(value: Commit | null): void;
         get_next_commit(): Commit | null;
         /**
          * @param value
          */
-        set_next_commit(value?: Commit | null): void;
+        set_next_commit(value: Commit | null): void;
         get_lane_width(): number;
         /**
          * @param value
@@ -1435,38 +1435,19 @@ export namespace Gitg {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1474,15 +1455,9 @@ export namespace Gitg {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1649,7 +1624,7 @@ export namespace Gitg {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1909,7 +1884,7 @@ export namespace Gitg {
 
         _init(...args: any[]): void;
 
-        static ['new'](repository?: Repository | null): CommitModel;
+        static ['new'](repository: Repository | null): CommitModel;
 
         // Signals
 
@@ -1987,7 +1962,7 @@ export namespace Gitg {
          * @param root A {@link Gtk.TreePath} or `null`.
          * @returns A new {@link Gtk.TreeModel}.
          */
-        filter_new(root?: Gtk.TreePath | null): Gtk.TreeModel;
+        filter_new(root: Gtk.TreePath | null): Gtk.TreeModel;
         /**
          * Calls func on each node in model in a depth-first fashion.
          *
@@ -2076,7 +2051,7 @@ export namespace Gitg {
          * @param parent the {@link Gtk.TreeIter}-struct, or `null`
          * @returns `true`, if `iter` has been set to the first child
          */
-        iter_children(parent?: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
+        iter_children(parent: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
         /**
          * Returns `true` if `iter` has children, `false` otherwise.
          * @param iter the {@link Gtk.TreeIter}-struct to test for children
@@ -2091,7 +2066,7 @@ export namespace Gitg {
          * @param iter the {@link Gtk.TreeIter}-struct, or `null`
          * @returns the number of children of `iter`
          */
-        iter_n_children(iter?: Gtk.TreeIter | null): number;
+        iter_n_children(iter: Gtk.TreeIter | null): number;
         /**
          * Sets `iter` to point to the node following it at the current level.
          *
@@ -2269,7 +2244,7 @@ export namespace Gitg {
          * @param parent the {@link Gtk.TreeIter}-struct, or `null`
          * @virtual
          */
-        vfunc_iter_children(parent?: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
+        vfunc_iter_children(parent: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
         /**
          * Returns `true` if `iter` has children, `false` otherwise.
          * @param iter the {@link Gtk.TreeIter}-struct to test for children
@@ -2284,7 +2259,7 @@ export namespace Gitg {
          * @param iter the {@link Gtk.TreeIter}-struct, or `null`
          * @virtual
          */
-        vfunc_iter_n_children(iter?: Gtk.TreeIter | null): number;
+        vfunc_iter_n_children(iter: Gtk.TreeIter | null): number;
         /**
          * Sets `iter` to point to the node following it at the current level.
          *
@@ -2448,38 +2423,19 @@ export namespace Gitg {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -2487,15 +2443,9 @@ export namespace Gitg {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -2662,7 +2612,7 @@ export namespace Gitg {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -3188,7 +3138,7 @@ export namespace Gitg {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -3231,7 +3181,7 @@ export namespace Gitg {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -3279,38 +3229,19 @@ export namespace Gitg {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -3318,15 +3249,9 @@ export namespace Gitg {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -3493,7 +3418,7 @@ export namespace Gitg {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -3860,7 +3785,7 @@ export namespace Gitg {
         interface ConstructorProps extends Gtk.Toolbar.ConstructorProps {
             context_lines: number;
             contextLines: number;
-            view: DiffView;
+            view: DiffView | null;
         }
     }
 
@@ -3876,8 +3801,8 @@ export namespace Gitg {
         set context_lines(val: number);
         get contextLines(): number;
         set contextLines(val: number);
-        get view(): DiffView;
-        set view(val: DiffView);
+        get view(): DiffView | null;
+        set view(val: DiffView | null);
 
         /**
          * Compile-time signal type information.
@@ -3894,7 +3819,7 @@ export namespace Gitg {
 
         _init(...args: any[]): void;
 
-        static ['new'](view?: DiffView | null): DiffViewOptions;
+        static ['new'](view: DiffView | null): DiffViewOptions;
         // Conflicted with Gtk.Toolbar.new
 
         static ['new'](...args: never[]): any;
@@ -3931,7 +3856,7 @@ export namespace Gitg {
         /**
          * @param value
          */
-        set_view(value?: DiffView | null): void;
+        set_view(value: DiffView | null): void;
     }
 
     namespace DiffView {
@@ -4014,8 +3939,8 @@ export namespace Gitg {
             options: Ggit.DiffOptions;
             has_selection: boolean;
             hasSelection: boolean;
-            diff: Ggit.Diff;
-            commit: Commit;
+            diff: Ggit.Diff | null;
+            commit: Commit | null;
             wrap_lines: boolean;
             wrapLines: boolean;
             staged: boolean;
@@ -4031,7 +3956,7 @@ export namespace Gitg {
             handle_selection: boolean;
             handleSelection: boolean;
             highlight: boolean;
-            repository: Repository;
+            repository: Repository | null;
             new_is_workdir: boolean;
             newIsWorkdir: boolean;
             ignore_whitespace: boolean;
@@ -4059,10 +3984,10 @@ export namespace Gitg {
         set has_selection(val: boolean);
         get hasSelection(): boolean;
         set hasSelection(val: boolean);
-        get diff(): Ggit.Diff;
-        set diff(val: Ggit.Diff);
-        get commit(): Commit;
-        set commit(val: Commit);
+        get diff(): Ggit.Diff | null;
+        set diff(val: Ggit.Diff | null);
+        get commit(): Commit | null;
+        set commit(val: Commit | null);
         get wrap_lines(): boolean;
         set wrap_lines(val: boolean);
         get wrapLines(): boolean;
@@ -4093,8 +4018,8 @@ export namespace Gitg {
         set handleSelection(val: boolean);
         get highlight(): boolean;
         set highlight(val: boolean);
-        get repository(): Repository;
-        set repository(val: Repository);
+        get repository(): Repository | null;
+        set repository(val: Repository | null);
         get new_is_workdir(): boolean;
         set new_is_workdir(val: boolean);
         get newIsWorkdir(): boolean;
@@ -4188,12 +4113,12 @@ export namespace Gitg {
         /**
          * @param value
          */
-        set_diff(value?: Ggit.Diff | null): void;
+        set_diff(value: Ggit.Diff | null): void;
         get_commit(): Commit | null;
         /**
          * @param value
          */
-        set_commit(value?: Commit | null): void;
+        set_commit(value: Commit | null): void;
         get_wrap_lines(): boolean;
         /**
          * @param value
@@ -4243,7 +4168,7 @@ export namespace Gitg {
         /**
          * @param value
          */
-        set_repository(value?: Repository | null): void;
+        set_repository(value: Repository | null): void;
         get_new_is_workdir(): boolean;
         /**
          * @param value
@@ -4385,7 +4310,7 @@ export namespace Gitg {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             environment: Gee.HashMap;
             name: string;
-            working_directory: Gio.File;
+            working_directory: Gio.File | null;
             workingDirectory: Gio.File;
             output: string[];
         }
@@ -4403,8 +4328,8 @@ export namespace Gitg {
         set environment(val: Gee.HashMap);
         get name(): string;
         set name(val: string);
-        get working_directory(): Gio.File;
-        set working_directory(val: Gio.File);
+        get working_directory(): Gio.File | null;
+        set working_directory(val: Gio.File | null);
         get workingDirectory(): Gio.File;
         set workingDirectory(val: Gio.File);
         /**
@@ -4499,7 +4424,7 @@ export namespace Gitg {
         /**
          * @param value
          */
-        set_working_directory(value?: Gio.File | null): void;
+        set_working_directory(value: Gio.File | null): void;
         get_output(): string[];
     }
 
@@ -4694,7 +4619,7 @@ export namespace Gitg {
          * @param reserved
          * @param roots
          */
-        reset(reserved?: Ggit.OId[] | null, roots?: Gee.HashSet | null): void;
+        reset(reserved: Ggit.OId[] | null, roots: Gee.HashSet | null): void;
         /**
          * @param next
          * @param save_miss
@@ -4765,7 +4690,7 @@ export namespace Gitg {
 
         static ['new'](): Lane;
 
-        static with_color(color?: Color | null): Lane;
+        static with_color(color: Color | null): Lane;
 
         // Signals
 
@@ -4972,8 +4897,8 @@ export namespace Gitg {
         get dParsedName(): ParsedRefName;
         set dParsedName(val: ParsedRefName);
         /** @category Inherited from Gitg.Ref */
-        get d_pushes(): Ref[];
-        set d_pushes(val: Ref[]);
+        get d_pushes(): Ref[] | null;
+        set d_pushes(val: Ref[] | null);
         /** @category Inherited from Gitg.Ref */
         get dPushes(): Ref[];
         set dPushes(val: Ref[]);
@@ -4998,7 +4923,7 @@ export namespace Gitg {
         /**
          * @param value
          */
-        set_d_pushes(value?: Ref[] | null): void;
+        set_d_pushes(value: Ref[] | null): void;
         get_state(): RefState;
         /**
          * @param value
@@ -5032,7 +4957,7 @@ export namespace Gitg {
          * @param value
          * @virtual
          */
-        vfunc_set_d_pushes(value?: Ref[] | null): void;
+        vfunc_set_d_pushes(value: Ref[] | null): void;
         /**
          * @virtual
          */
@@ -5179,7 +5104,7 @@ export namespace Gitg {
          * @param log_message The one line long message to be appended to the reflog.
          * @returns the newly created {@link Ggit.Ref} or `null`.
          */
-        set_symbolic_target(target: string, log_message?: string | null): Ggit.Ref | null;
+        set_symbolic_target(target: string, log_message: string | null): Ggit.Ref | null;
         /**
          * Create a new reference with the same name as the given reference but a
          * different OID target. The reference must be a direct reference, otherwise
@@ -5190,7 +5115,7 @@ export namespace Gitg {
          * @param log_message The one line long message to be appended to the reflog.
          * @returns the newly created {@link Ggit.Ref} or `null`.
          */
-        set_target(oid: Ggit.OId, log_message?: string | null): Ggit.Ref | null;
+        set_target(oid: Ggit.OId, log_message: string | null): Ggit.Ref | null;
         /**
          * Get a string representation of the ref.
          * @returns a string representation of the ref or `null`.
@@ -5215,11 +5140,11 @@ export namespace Gitg {
             rtype: RefType;
             name: string;
             shortname: string;
-            remote_name: string;
+            remote_name: string | null;
             remoteName: string;
-            remote_branch: string;
+            remote_branch: string | null;
             remoteBranch: string;
-            prefix: string;
+            prefix: string | null;
         }
     }
 
@@ -5244,7 +5169,7 @@ export namespace Gitg {
         /**
          * @read-only
          */
-        get remote_name(): string;
+        get remote_name(): string | null;
         /**
          * @read-only
          */
@@ -5252,7 +5177,7 @@ export namespace Gitg {
         /**
          * @read-only
          */
-        get remote_branch(): string;
+        get remote_branch(): string | null;
         /**
          * @read-only
          */
@@ -5260,7 +5185,7 @@ export namespace Gitg {
         /**
          * @read-only
          */
-        get prefix(): string;
+        get prefix(): string | null;
 
         /**
          * Compile-time signal type information.
@@ -5331,11 +5256,11 @@ export namespace Gitg {
             transfer_progress: number;
             transferProgress: number;
             state: RemoteState;
-            fetch_specs: string[];
+            fetch_specs: string[] | null;
             fetchSpecs: string[];
-            push_specs: string[];
+            push_specs: string[] | null;
             pushSpecs: string[];
-            credentials_provider: CredentialsProvider;
+            credentials_provider: CredentialsProvider | null;
             credentialsProvider: CredentialsProvider;
         }
     }
@@ -5358,16 +5283,16 @@ export namespace Gitg {
         get transferProgress(): number;
         get state(): RemoteState;
         set state(val: RemoteState);
-        get fetch_specs(): string[];
-        set fetch_specs(val: string[]);
+        get fetch_specs(): string[] | null;
+        set fetch_specs(val: string[] | null);
         get fetchSpecs(): string[];
         set fetchSpecs(val: string[]);
-        get push_specs(): string[];
-        set push_specs(val: string[]);
+        get push_specs(): string[] | null;
+        set push_specs(val: string[] | null);
         get pushSpecs(): string[];
         set pushSpecs(val: string[]);
-        get credentials_provider(): CredentialsProvider;
-        set credentials_provider(val: CredentialsProvider);
+        get credentials_provider(): CredentialsProvider | null;
+        set credentials_provider(val: CredentialsProvider | null);
         get credentialsProvider(): CredentialsProvider;
         set credentialsProvider(val: CredentialsProvider);
 
@@ -5409,7 +5334,7 @@ export namespace Gitg {
          * @param direction
          * @param callbacks
          */
-        connect(direction: Ggit.Direction, callbacks?: Ggit.RemoteCallbacks | null): globalThis.Promise<void>;
+        connect(direction: Ggit.Direction, callbacks: Ggit.RemoteCallbacks | null): globalThis.Promise<void>;
         /**
          * @param direction
          * @param callbacks
@@ -5427,7 +5352,7 @@ export namespace Gitg {
          */
         connect(
             direction: Ggit.Direction,
-            callbacks?: Ggit.RemoteCallbacks | null,
+            callbacks: Ggit.RemoteCallbacks | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -5460,7 +5385,7 @@ export namespace Gitg {
         /**
          * @param callbacks
          */
-        download(callbacks?: Ggit.RemoteCallbacks | null): globalThis.Promise<void>;
+        download(callbacks: Ggit.RemoteCallbacks | null): globalThis.Promise<void>;
         /**
          * @param callbacks
          * @param _callback_
@@ -5471,7 +5396,7 @@ export namespace Gitg {
          * @param _callback_
          */
         download(
-            callbacks?: Ggit.RemoteCallbacks | null,
+            callbacks: Ggit.RemoteCallbacks | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -5487,7 +5412,7 @@ export namespace Gitg {
          * @param branch
          * @param callbacks
          */
-        push(branch: string, callbacks?: Ggit.RemoteCallbacks | null): globalThis.Promise<void>;
+        push(branch: string, callbacks: Ggit.RemoteCallbacks | null): globalThis.Promise<void>;
         /**
          * @param branch
          * @param callbacks
@@ -5505,7 +5430,7 @@ export namespace Gitg {
          */
         push(
             branch: string,
-            callbacks?: Ggit.RemoteCallbacks | null,
+            callbacks: Ggit.RemoteCallbacks | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -5521,7 +5446,7 @@ export namespace Gitg {
          * @param message
          * @param callbacks
          */
-        fetch(message?: string | null, callbacks?: Ggit.RemoteCallbacks | null): globalThis.Promise<void>;
+        fetch(message: string | null, callbacks: Ggit.RemoteCallbacks | null): globalThis.Promise<void>;
         /**
          * @param message
          * @param callbacks
@@ -5538,8 +5463,8 @@ export namespace Gitg {
          * @param _callback_
          */
         fetch(
-            message?: string | null,
-            callbacks?: Ggit.RemoteCallbacks | null,
+            message: string | null,
+            callbacks: Ggit.RemoteCallbacks | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -5552,17 +5477,17 @@ export namespace Gitg {
         /**
          * @param value
          */
-        set_fetch_specs(value?: string[] | null): void;
+        set_fetch_specs(value: string[] | null): void;
         get_push_specs(): string[] | null;
         /**
          * @param value
          */
-        set_push_specs(value?: string[] | null): void;
+        set_push_specs(value: string[] | null): void;
         get_credentials_provider(): CredentialsProvider | null;
         /**
          * @param value
          */
-        set_credentials_provider(value?: CredentialsProvider | null): void;
+        set_credentials_provider(value: CredentialsProvider | null): void;
     }
 
     namespace RepositoryListBox {
@@ -5632,7 +5557,7 @@ export namespace Gitg {
             mode: SelectionMode;
             bookmarks_from_recent_files: boolean;
             bookmarksFromRecentFiles: boolean;
-            location: Gio.File;
+            location: Gio.File | null;
             has_selection: boolean;
             hasSelection: boolean;
         }
@@ -5652,8 +5577,8 @@ export namespace Gitg {
         set bookmarks_from_recent_files(val: boolean);
         get bookmarksFromRecentFiles(): boolean;
         set bookmarksFromRecentFiles(val: boolean);
-        get location(): Gio.File;
-        set location(val: Gio.File);
+        get location(): Gio.File | null;
+        set location(val: Gio.File | null);
         /**
          * @read-only
          */
@@ -5708,7 +5633,7 @@ export namespace Gitg {
          * @param row
          * @param repository
          */
-        end_cloning(row: RepositoryListBoxRow, repository?: Repository | null): void;
+        end_cloning(row: RepositoryListBoxRow, repository: Repository | null): void;
         /**
          * @param location
          */
@@ -5717,12 +5642,12 @@ export namespace Gitg {
          * @param repository
          * @param visited
          */
-        add_repository(repository: Repository, visited?: GLib.DateTime | null): RepositoryListBoxRow | null;
+        add_repository(repository: Repository, visited: GLib.DateTime | null): RepositoryListBoxRow | null;
         get_selection(): RepositoryListBoxRow[];
         /**
          * @param text
          */
-        filter_text(text?: string | null): void;
+        filter_text(text: string | null): void;
         get_mode(): SelectionMode;
         /**
          * @param value
@@ -5737,7 +5662,7 @@ export namespace Gitg {
         /**
          * @param value
          */
-        set_location(value?: Gio.File | null): void;
+        set_location(value: Gio.File | null): void;
         get_has_selection(): boolean;
     }
 
@@ -5817,15 +5742,15 @@ export namespace Gitg {
         interface ConstructorProps extends Gtk.ListBoxRow.ConstructorProps {
             mode: SelectionMode;
             selected: boolean;
-            repository: Repository;
+            repository: Repository | null;
             can_remove: boolean;
             canRemove: boolean;
             time: GLib.DateTime;
             fraction: number;
-            repository_name: string;
+            repository_name: string | null;
             repositoryName: string;
-            dirname: string;
-            branch_name: string;
+            dirname: string | null;
+            branch_name: string | null;
             branchName: string;
             loading: boolean;
         }
@@ -5843,8 +5768,8 @@ export namespace Gitg {
         set mode(val: SelectionMode);
         get selected(): boolean;
         set selected(val: boolean);
-        get repository(): Repository;
-        set repository(val: Repository);
+        get repository(): Repository | null;
+        set repository(val: Repository | null);
         get can_remove(): boolean;
         set can_remove(val: boolean);
         get canRemove(): boolean;
@@ -5855,14 +5780,14 @@ export namespace Gitg {
          * @write-only
          */
         set fraction(val: number);
-        get repository_name(): string;
-        set repository_name(val: string);
+        get repository_name(): string | null;
+        set repository_name(val: string | null);
         get repositoryName(): string;
         set repositoryName(val: string);
-        get dirname(): string;
-        set dirname(val: string);
-        get branch_name(): string;
-        set branch_name(val: string);
+        get dirname(): string | null;
+        set dirname(val: string | null);
+        get branch_name(): string | null;
+        set branch_name(val: string | null);
         get branchName(): string;
         set branchName(val: string);
         get loading(): boolean;
@@ -5927,7 +5852,7 @@ export namespace Gitg {
         /**
          * @param value
          */
-        set_repository(value?: Repository | null): void;
+        set_repository(value: Repository | null): void;
         get_can_remove(): boolean;
         /**
          * @param value
@@ -5946,17 +5871,17 @@ export namespace Gitg {
         /**
          * @param value
          */
-        set_repository_name(value?: string | null): void;
+        set_repository_name(value: string | null): void;
         get_dirname(): string | null;
         /**
          * @param value
          */
-        set_dirname(value?: string | null): void;
+        set_dirname(value: string | null): void;
         get_branch_name(): string | null;
         /**
          * @param value
          */
-        set_branch_name(value?: string | null): void;
+        set_branch_name(value: string | null): void;
         get_loading(): boolean;
         /**
          * @param value
@@ -5982,7 +5907,7 @@ export namespace Gitg {
         // Constructor properties interface
 
         interface ConstructorProps extends Ggit.Repository.ConstructorProps {
-            name: string;
+            name: string | null;
             stage: Stage;
         }
     }
@@ -5998,7 +5923,7 @@ export namespace Gitg {
         /**
          * @read-only
          */
-        get name(): string;
+        get name(): string | null;
         /**
          * @read-only
          */
@@ -6019,7 +5944,7 @@ export namespace Gitg {
 
         _init(...args: any[]): void;
 
-        static ['new'](location: Gio.File, workdir?: Gio.File | null): Repository;
+        static ['new'](location: Gio.File, workdir: Gio.File | null): Repository;
 
         // Signals
 
@@ -6355,7 +6280,7 @@ export namespace Gitg {
          * @read-only
          * @category Inherited from Gitg.SidebarItem
          */
-        get icon_name(): string;
+        get icon_name(): string | null;
         /**
          * @read-only
          * @category Inherited from Gitg.SidebarItem
@@ -6427,38 +6352,19 @@ export namespace Gitg {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -6466,15 +6372,9 @@ export namespace Gitg {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -6641,7 +6541,7 @@ export namespace Gitg {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -6981,7 +6881,7 @@ export namespace Gitg {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.TreeView.ConstructorProps {
-            model: SidebarStore;
+            model: SidebarStore | any;
         }
     }
 
@@ -6993,8 +6893,10 @@ export namespace Gitg {
 
         // Properties
 
-        get model(): SidebarStore;
-        set model(val: SidebarStore);
+        // This accessor conflicts with another accessor's type in a parent class or interface.
+        get model(): SidebarStore | any;
+        // This accessor conflicts with another accessor's type in a parent class or interface.
+        set model(val: SidebarStore | any);
 
         /**
          * Compile-time signal type information.
@@ -7088,9 +6990,19 @@ export namespace Gitg {
         is_selected(item: SidebarItem): boolean;
         get_model(): SidebarStore;
         /**
+         * @param args
+         */
+        // Conflicted with Gtk.TreeView.get_model
+        get_model(...args: never[]): any;
+        /**
          * @param value
          */
         set_model(value: SidebarStore): void;
+        /**
+         * @param args
+         */
+        // Conflicted with Gtk.TreeView.set_model
+        set_model(...args: never[]): any;
     }
 
     namespace StageStatusFile {
@@ -7204,7 +7116,7 @@ export namespace Gitg {
          * @read-only
          * @category Inherited from Gitg.StageStatusItem
          */
-        get icon_name(): string;
+        get icon_name(): string | null;
         /**
          * @read-only
          * @category Inherited from Gitg.StageStatusItem
@@ -7282,38 +7194,19 @@ export namespace Gitg {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -7321,15 +7214,9 @@ export namespace Gitg {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -7496,7 +7383,7 @@ export namespace Gitg {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -7818,7 +7705,7 @@ export namespace Gitg {
          * @read-only
          * @category Inherited from Gitg.StageStatusItem
          */
-        get icon_name(): string;
+        get icon_name(): string | null;
         /**
          * @read-only
          * @category Inherited from Gitg.StageStatusItem
@@ -7896,38 +7783,19 @@ export namespace Gitg {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -7935,15 +7803,9 @@ export namespace Gitg {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -8110,7 +7972,7 @@ export namespace Gitg {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -8510,7 +8372,7 @@ export namespace Gitg {
         /**
          * @param options
          */
-        file_status(options?: Ggit.StatusOptions | null): StageStatusEnumerator;
+        file_status(options: Ggit.StatusOptions | null): StageStatusEnumerator;
         /**
          * @param author
          */
@@ -8934,8 +8796,8 @@ export namespace Gitg {
          * @param defopts
          */
         diff_index_all(
-            files?: StageStatusItem[] | null,
-            defopts?: Ggit.DiffOptions | null,
+            files: StageStatusItem[] | null,
+            defopts: Ggit.DiffOptions | null,
         ): globalThis.Promise<Ggit.Diff | null>;
         /**
          * @param files
@@ -8953,8 +8815,8 @@ export namespace Gitg {
          * @param _callback_
          */
         diff_index_all(
-            files?: StageStatusItem[] | null,
-            defopts?: Ggit.DiffOptions | null,
+            files: StageStatusItem[] | null,
+            defopts: Ggit.DiffOptions | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Ggit.Diff | null> | void;
         /**
@@ -8965,7 +8827,7 @@ export namespace Gitg {
          * @param f
          * @param defopts
          */
-        diff_index(f: StageStatusItem, defopts?: Ggit.DiffOptions | null): globalThis.Promise<Ggit.Diff | null>;
+        diff_index(f: StageStatusItem, defopts: Ggit.DiffOptions | null): globalThis.Promise<Ggit.Diff | null>;
         /**
          * @param f
          * @param defopts
@@ -8983,7 +8845,7 @@ export namespace Gitg {
          */
         diff_index(
             f: StageStatusItem,
-            defopts?: Ggit.DiffOptions | null,
+            defopts: Ggit.DiffOptions | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Ggit.Diff | null> | void;
         /**
@@ -8996,7 +8858,7 @@ export namespace Gitg {
          */
         diff_workdir_all(
             files: StageStatusItem[],
-            defopts?: Ggit.DiffOptions | null,
+            defopts: Ggit.DiffOptions | null,
         ): globalThis.Promise<Ggit.Diff | null>;
         /**
          * @param files
@@ -9015,7 +8877,7 @@ export namespace Gitg {
          */
         diff_workdir_all(
             files: StageStatusItem[],
-            defopts?: Ggit.DiffOptions | null,
+            defopts: Ggit.DiffOptions | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Ggit.Diff | null> | void;
         /**
@@ -9026,7 +8888,7 @@ export namespace Gitg {
          * @param f
          * @param defopts
          */
-        diff_workdir(f: StageStatusItem, defopts?: Ggit.DiffOptions | null): globalThis.Promise<Ggit.Diff | null>;
+        diff_workdir(f: StageStatusItem, defopts: Ggit.DiffOptions | null): globalThis.Promise<Ggit.Diff | null>;
         /**
          * @param f
          * @param defopts
@@ -9044,7 +8906,7 @@ export namespace Gitg {
          */
         diff_workdir(
             f: StageStatusItem,
-            defopts?: Ggit.DiffOptions | null,
+            defopts: Ggit.DiffOptions | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Ggit.Diff | null> | void;
         /**
@@ -9115,7 +8977,7 @@ export namespace Gitg {
         static get_textconv_content_from_raw(
             repository: Repository,
             file: Ggit.DiffFile,
-            raw_content?: Uint8Array | null,
+            raw_content: Uint8Array | null,
         ): Uint8Array;
     }
 
@@ -9327,7 +9189,7 @@ export namespace Gitg {
          * @param mapped
          * @param lifetime
          */
-        update(mapped: WhenMapped.OnMapped, lifetime?: GObject.Object | null): void;
+        update(mapped: WhenMapped.OnMapped, lifetime: GObject.Object | null): void;
     }
 
     /**
@@ -9885,7 +9747,7 @@ export namespace Gitg {
              * @param value
              * @virtual
              */
-            vfunc_set_d_pushes(value?: Ref[] | null): void;
+            vfunc_set_d_pushes(value: Ref[] | null): void;
             /**
              * @virtual
              */
@@ -9911,7 +9773,7 @@ export namespace Gitg {
         interface ConstructorProps extends Ggit.Ref.ConstructorProps {
             d_parsed_name: ParsedRefName;
             dParsedName: ParsedRefName;
-            d_pushes: Ref[];
+            d_pushes: Ref[] | null;
             dPushes: Ref[];
             state: RefState;
             working: boolean;
@@ -9932,8 +9794,8 @@ export namespace Gitg {
         set d_parsed_name(val: ParsedRefName);
         get dParsedName(): ParsedRefName;
         set dParsedName(val: ParsedRefName);
-        get d_pushes(): Ref[];
-        set d_pushes(val: Ref[]);
+        get d_pushes(): Ref[] | null;
+        set d_pushes(val: Ref[] | null);
         get dPushes(): Ref[];
         set dPushes(val: Ref[]);
         get state(): RefState;
@@ -9958,7 +9820,7 @@ export namespace Gitg {
         /**
          * @param value
          */
-        set_d_pushes(value?: Ref[] | null): void;
+        set_d_pushes(value: Ref[] | null): void;
         get_state(): RefState;
         /**
          * @param value
@@ -10052,7 +9914,7 @@ export namespace Gitg {
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             text: string;
-            icon_name: string;
+            icon_name: string | null;
             iconName: string;
         }
     }
@@ -10074,7 +9936,7 @@ export namespace Gitg {
         /**
          * @read-only
          */
-        get icon_name(): string;
+        get icon_name(): string | null;
         /**
          * @read-only
          */
@@ -10134,7 +9996,7 @@ export namespace Gitg {
             isUnstaged: boolean;
             is_untracked: boolean;
             isUntracked: boolean;
-            icon_name: string;
+            icon_name: string | null;
             iconName: string;
         }
     }
@@ -10180,7 +10042,7 @@ export namespace Gitg {
         /**
          * @read-only
          */
-        get icon_name(): string;
+        get icon_name(): string | null;
         /**
          * @read-only
          */

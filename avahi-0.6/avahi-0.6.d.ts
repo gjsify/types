@@ -203,10 +203,12 @@ export namespace Avahi {
 
         /**
          * @construct-only
+         * @default Avahi.ClientFlags.GA_CLIENT_FLAG_NO_FLAGS
          */
         get flags(): ClientFlags;
         /**
          * @read-only
+         * @default Avahi.ClientState.GA_CLIENT_STATE_NOT_STARTED
          */
         get state(): ClientState;
 
@@ -293,6 +295,7 @@ export namespace Avahi {
 
         /**
          * @read-only
+         * @default Avahi.EntryGroupState.GA_ENTRY_GROUP_STATE_UNCOMMITED
          */
         get state(): EntryGroupState;
 
@@ -456,16 +459,34 @@ export namespace Avahi {
 
         // Properties
 
+        /**
+         * @default 0
+         */
         get class(): number;
         set class(val: number);
+        /**
+         * @default Avahi.LookupFlags.GA_LOOKUP_NO_FLAGS
+         */
         get flags(): LookupFlags;
         set flags(val: LookupFlags);
+        /**
+         * @default -1
+         */
         get interface(): number;
         set interface(val: number);
+        /**
+         * @default null
+         */
         get name(): string;
         set name(val: string);
+        /**
+         * @default Avahi.Protocol.GA_PROTOCOL_UNSPEC
+         */
         get protocol(): Protocol;
         set protocol(val: Protocol);
+        /**
+         * @default 0
+         */
         get type(): number;
         set type(val: number);
 
@@ -592,14 +613,29 @@ export namespace Avahi {
 
         // Properties
 
+        /**
+         * @default null
+         */
         get domain(): string;
         set domain(val: string);
+        /**
+         * @default Avahi.LookupFlags.GA_LOOKUP_NO_FLAGS
+         */
         get flags(): LookupFlags;
         set flags(val: LookupFlags);
+        /**
+         * @default -1
+         */
         get interface(): number;
         set interface(val: number);
+        /**
+         * @default Avahi.Protocol.GA_PROTOCOL_UNSPEC
+         */
         get protocol(): Protocol;
         set protocol(val: Protocol);
+        /**
+         * @default null
+         */
         get type(): string;
         set type(val: string);
 
@@ -711,18 +747,39 @@ export namespace Avahi {
 
         // Properties
 
+        /**
+         * @default Avahi.Protocol.GA_PROTOCOL_UNSPEC
+         */
         get aprotocol(): Protocol;
         set aprotocol(val: Protocol);
+        /**
+         * @default null
+         */
         get domain(): string;
         set domain(val: string);
+        /**
+         * @default Avahi.LookupFlags.GA_LOOKUP_NO_FLAGS
+         */
         get flags(): LookupFlags;
         set flags(val: LookupFlags);
+        /**
+         * @default -1
+         */
         get interface(): number;
         set interface(val: number);
+        /**
+         * @default null
+         */
         get name(): string;
         set name(val: string);
+        /**
+         * @default Avahi.Protocol.GA_PROTOCOL_UNSPEC
+         */
         get protocol(): Protocol;
         set protocol(val: Protocol);
+        /**
+         * @default null
+         */
         get type(): string;
         set type(val: string);
 

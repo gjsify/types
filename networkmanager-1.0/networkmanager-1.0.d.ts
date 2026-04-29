@@ -3125,7 +3125,7 @@ export namespace NetworkManager {
      * @param buffer buffer to store the result into
      * @returns `buffer`, or `null` if `asc` couldn't be parsed
      */
-    function utils_hwaddr_aton(asc: string, type: number, buffer?: any | null): number;
+    function utils_hwaddr_aton(asc: string, type: number, buffer: any | null): number;
     /**
      * Parses `asc` and converts it to binary form in `buffer`.
      * Bytes in `asc` can be sepatared by colons (:), or hyphens (-), but not mixed.
@@ -6353,7 +6353,7 @@ export namespace NetworkManager {
          * @param detail unused at this time; must be `null`
          * @returns `true` if the permission was unique and was successfully added to the list, `false` if `ptype` or `pitem` was invalid or it the permission was already present in the list
          */
-        add_permission(ptype: string, pitem: string, detail?: string | null): boolean;
+        add_permission(ptype: string, pitem: string, detail: string | null): boolean;
         /**
          * Adds a new secondary connection UUID to the setting.
          * @param sec_uuid the secondary connection UUID to add
@@ -6464,7 +6464,7 @@ export namespace NetworkManager {
          * @param detail unused at this time; must be `null`
          * @returns `true` if the permission was found and removed; `false` if it was not.
          */
-        remove_permission_by_value(ptype: string, pitem: string, detail?: string | null): boolean;
+        remove_permission_by_value(ptype: string, pitem: string, detail: string | null): boolean;
         /**
          * Removes the secondary coonnection UUID at index `idx`.
          * @param idx index number of the secondary connection UUID
@@ -7811,7 +7811,7 @@ export namespace NetworkManager {
          * @param dns the IPv6 address of the DNS server to add
          * @returns `true` if the DNS server was added; `false` if the server was already known
          */
-        add_dns(dns?: any | null): boolean;
+        add_dns(dns: any | null): boolean;
         /**
          * Adds a new DNS search domain to the setting.
          * @param dns_search the search domain to add
@@ -7944,7 +7944,7 @@ export namespace NetworkManager {
          * @param dns the IPv6 address of the DNS server to remove
          * @returns `true` if the DNS server was found and removed; `false` if it was not.
          */
-        remove_dns_by_value(dns?: any | null): boolean;
+        remove_dns_by_value(dns: any | null): boolean;
         /**
          * Removes the DNS search domain at index `i`.
          * @param i index number of the DNS search domain
@@ -10641,12 +10641,12 @@ export namespace NetworkManager {
          * Sets the IPv6 address property of this object.
          * @param addr the IPv6 address
          */
-        set_address(addr?: any | null): void;
+        set_address(addr: any | null): void;
         /**
          * Sets the IPv6 default gateway property of this address object.
          * @param gateway the IPv6 default gateway
          */
-        set_gateway(gateway?: any | null): void;
+        set_gateway(gateway: any | null): void;
         /**
          * Sets the IPv6 address prefix.
          * @param prefix the address prefix, a number between 0 and 128 inclusive
@@ -10713,7 +10713,7 @@ export namespace NetworkManager {
          * Sets the IPv6 destination address property of this route object.
          * @param dest the destination address
          */
-        set_dest(dest?: any | null): void;
+        set_dest(dest: any | null): void;
         /**
          * Sets the route metric property of this route object; lower values indicate
          * "better" or more preferred routes.
@@ -10724,7 +10724,7 @@ export namespace NetworkManager {
          * Sets the IPv6 address of the next hop of this route.
          * @param next_hop the IPv6 address of the next hop
          */
-        set_next_hop(next_hop?: any | null): void;
+        set_next_hop(next_hop: any | null): void;
         /**
          * Sets the IPv6 prefix of this route.
          * @param prefix the prefix, a number between 1 and 128 inclusive

@@ -229,19 +229,19 @@ export namespace Xkl {
          * language bindings, in C you can manipulate the member directly.
          * @param description Description (max. 192        characters); can be NULL.
          */
-        set_description(description?: string | null): void;
+        set_description(description: string | null): void;
         /**
          * Change the `name` field of a XklConfigItem. This is mostly useful for
          * language bindings, in C you can manipulate the member directly.
          * @param name Name (max. 32 characters); can be NULL.
          */
-        set_name(name?: string | null): void;
+        set_name(name: string | null): void;
         /**
          * Change the `short_description` field of a XklConfigItem. This is mostly useful for
          * language bindings, in C you can manipulate the member directly.
          * @param short_description Short Description (max. 10        characters); can be NULL.
          */
-        set_short_description(short_description?: string | null): void;
+        set_short_description(short_description: string | null): void;
     }
 
     namespace ConfigRec {

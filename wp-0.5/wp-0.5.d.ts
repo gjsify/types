@@ -219,11 +219,7 @@ export namespace Wp {
      * @returns a new iterator iterating over strings which are absolute & canonicalized paths to the files found
      * @since 0.5.0
      */
-    function base_dirs_new_files_iterator(
-        flags: BaseDirsFlags,
-        subdir?: string | null,
-        suffix?: string | null,
-    ): Iterator;
+    function base_dirs_new_files_iterator(flags: BaseDirsFlags, subdir: string | null, suffix: string | null): Iterator;
     function domain_library_quark(): GLib.Quark;
     /**
      * Gets the WirePlumber library API version.
@@ -294,7 +290,7 @@ export namespace Wp {
         log_level: GLib.LogLevelFlags,
         fields: GLib.LogField,
         n_fields: bigint | number,
-        user_data?: any | null,
+        user_data: any | null,
     ): GLib.LogWriterOutput;
     /**
      * Gets the process information of a given PID.
@@ -312,7 +308,7 @@ export namespace Wp {
      * @param values an array of spa_type_info that contains the values of the table
      * @returns the new table
      */
-    function spa_dynamic_id_table_register(name: string, values?: any | null): SpaIdTable;
+    function spa_dynamic_id_table_register(name: string, values: any | null): SpaIdTable;
     /**
      * Deinitializes the spa type registry.
      *
@@ -339,7 +335,7 @@ export namespace Wp {
      * @param values an array of spa_type_info that contains the values of the type, used only for Object types
      * @returns the new type
      */
-    function spa_dynamic_type_register(name: string, parent: SpaType, values?: any | null): SpaType;
+    function spa_dynamic_type_register(name: string, parent: SpaType, values: any | null): SpaType;
     /**
      * Finds a value in an SPA Id table.
      * @param table the id table
@@ -450,13 +446,13 @@ export namespace Wp {
      * @gir-type Callback
      */
     interface IteratorFoldFunc {
-        (item: unknown, ret: unknown, data?: any | null): boolean;
+        (item: unknown, ret: unknown, data: any | null): boolean;
     }
     /**
      * @gir-type Callback
      */
     interface IteratorForeachFunc {
-        (item: unknown, data?: any | null): void;
+        (item: unknown, data: any | null): void;
     }
     /**
      * @gir-type Callback
@@ -866,22 +862,22 @@ export namespace Wp {
          * @read-only
          * @category Inherited from Wp.PipewireObject
          */
-        get native_info(): any;
+        get native_info(): any | null;
         /**
          * @read-only
          * @category Inherited from Wp.PipewireObject
          */
-        get nativeInfo(): any;
+        get nativeInfo(): any | null;
         /**
          * @read-only
          * @category Inherited from Wp.PipewireObject
          */
-        get param_info(): GLib.Variant;
+        get param_info(): GLib.Variant | null;
         /**
          * @read-only
          * @category Inherited from Wp.PipewireObject
          */
-        get paramInfo(): GLib.Variant;
+        get paramInfo(): GLib.Variant | null;
         /**
          * @read-only
          * @category Inherited from Wp.PipewireObject
@@ -889,11 +885,13 @@ export namespace Wp {
         get properties(): Properties;
         /**
          * @read-only
+         * @default 0
          * @category Inherited from Wp.Proxy
          */
         get bound_id(): number;
         /**
          * @read-only
+         * @default 0
          * @category Inherited from Wp.Proxy
          */
         get boundId(): number;
@@ -901,12 +899,12 @@ export namespace Wp {
          * @read-only
          * @category Inherited from Wp.Proxy
          */
-        get pw_proxy(): any;
+        get pw_proxy(): any | null;
         /**
          * @read-only
          * @category Inherited from Wp.Proxy
          */
-        get pwProxy(): any;
+        get pwProxy(): any | null;
         /**
          * Enumerate object parameters.
          *
@@ -917,9 +915,9 @@ export namespace Wp {
          * @param cancellable a cancellable for the async operation
          */
         enum_params(
-            id?: string | null,
-            filter?: SpaPod | null,
-            cancellable?: Gio.Cancellable | null,
+            id: string | null,
+            filter: SpaPod | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<Iterator | null>;
         /**
          * Enumerate object parameters.
@@ -948,9 +946,9 @@ export namespace Wp {
          * @param callback a callback to call with the result
          */
         enum_params(
-            id?: string | null,
-            filter?: SpaPod | null,
-            cancellable?: Gio.Cancellable | null,
+            id: string | null,
+            filter: SpaPod | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Iterator | null> | void;
         /**
@@ -969,7 +967,7 @@ export namespace Wp {
          * @param filter a param filter or NULL
          * @returns an iterator to iterate over cached parameters, or NULL if parameters for this `id` are not cached; the items in the iterator are WpSpaPod
          */
-        enum_params_sync(id: string, filter?: SpaPod | null): Iterator | null;
+        enum_params_sync(id: string, filter: SpaPod | null): Iterator | null;
         /**
          * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
          *
@@ -1044,10 +1042,10 @@ export namespace Wp {
          * @virtual
          */
         vfunc_enum_params(
-            id?: string | null,
-            filter?: SpaPod | null,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            id: string | null,
+            filter: SpaPod | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes an asynchronous parameter enumeration operation.
@@ -1065,7 +1063,7 @@ export namespace Wp {
          * @param filter a param filter or NULL
          * @virtual
          */
-        vfunc_enum_params_sync(id: string, filter?: SpaPod | null): Iterator | null;
+        vfunc_enum_params_sync(id: string, filter: SpaPod | null): Iterator | null;
         /**
          * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
          *
@@ -1130,7 +1128,7 @@ export namespace Wp {
          * This can be called only if there is no pw_proxy already set. Takes ownership of `proxy`.
          * @param proxy
          */
-        set_pw_proxy(proxy?: any | null): void;
+        set_pw_proxy(proxy: any | null): void;
         /**
          * @param id
          * @virtual
@@ -1147,7 +1145,7 @@ export namespace Wp {
          * @param proxy
          * @virtual
          */
-        vfunc_pw_proxy_created(proxy?: any | null): void;
+        vfunc_pw_proxy_created(proxy: any | null): void;
         /**
          * @virtual
          */
@@ -1180,6 +1178,7 @@ export namespace Wp {
 
         /**
          * @construct-only
+         * @default null
          */
         get name(): string;
         /**
@@ -1202,9 +1201,9 @@ export namespace Wp {
 
         _init(...args: any[]): void;
 
-        static ['new'](name: string, properties?: Properties | null): Conf;
+        static ['new'](name: string, properties: Properties | null): Conf;
 
-        static new_open(name: string, properties?: Properties | null): Conf;
+        static new_open(name: string, properties: Properties | null): Conf;
 
         // Signals
 
@@ -1258,7 +1257,7 @@ export namespace Wp {
          * Parses standard pw_context sections from `conf`.
          * @param context the associated pw_context
          */
-        parse_pw_context_sections(context?: any | null): void;
+        parse_pw_context_sections(context: any | null): void;
         /**
          * Updates the given properties with the values of a specific section from the configuration.
          * @param section the section name
@@ -1295,14 +1294,14 @@ export namespace Wp {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
-            conf: Conf;
-            g_main_context: GLib.MainContext;
-            gMainContext: GLib.MainContext;
+            conf: Conf | null;
+            g_main_context: GLib.MainContext | null;
+            gMainContext: GLib.MainContext | null;
             properties: Properties;
-            pw_context: any;
-            pwContext: any;
-            pw_core: any;
-            pwCore: any;
+            pw_context: any | null;
+            pwContext: any | null;
+            pw_core: any | null;
+            pwCore: any | null;
         }
     }
 
@@ -1329,15 +1328,15 @@ export namespace Wp {
         /**
          * @construct-only
          */
-        get conf(): Conf;
+        get conf(): Conf | null;
         /**
          * @construct-only
          */
-        get g_main_context(): GLib.MainContext;
+        get g_main_context(): GLib.MainContext | null;
         /**
          * @construct-only
          */
-        get gMainContext(): GLib.MainContext;
+        get gMainContext(): GLib.MainContext | null;
         /**
          * @construct-only
          */
@@ -1345,19 +1344,19 @@ export namespace Wp {
         /**
          * @construct-only
          */
-        get pw_context(): any;
+        get pw_context(): any | null;
         /**
          * @construct-only
          */
-        get pwContext(): any;
+        get pwContext(): any | null;
         /**
          * @read-only
          */
-        get pw_core(): any;
+        get pw_core(): any | null;
         /**
          * @read-only
          */
-        get pwCore(): any;
+        get pwCore(): any | null;
 
         /**
          * Compile-time signal type information.
@@ -1374,7 +1373,7 @@ export namespace Wp {
 
         _init(...args: any[]): void;
 
-        static ['new'](context?: GLib.MainContext | null, conf?: Conf | null, properties?: Properties | null): Core;
+        static ['new'](context: GLib.MainContext | null, conf: Conf | null, properties: Properties | null): Core;
 
         // Signals
 
@@ -1519,7 +1518,7 @@ export namespace Wp {
          * @param _function the function to call
          * @param destroy a function to destroy `data`
          */
-        idle_add(_function: GLib.SourceFunc, destroy?: GLib.DestroyNotify | null): GLib.Source | null;
+        idle_add(_function: GLib.SourceFunc, destroy: GLib.DestroyNotify | null): GLib.Source | null;
         /**
          * Adds an idle callback to be called in the same GMainContext as the one used by this core.
          *
@@ -1557,9 +1556,9 @@ export namespace Wp {
         load_component(
             component: string | null,
             type: string,
-            args?: SpaJson | null,
-            provides?: string | null,
-            cancellable?: Gio.Cancellable | null,
+            args: SpaJson | null,
+            provides: string | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Loads the specified `component` on `self`.
@@ -1600,9 +1599,9 @@ export namespace Wp {
         load_component(
             component: string | null,
             type: string,
-            args?: SpaJson | null,
-            provides?: string | null,
-            cancellable?: Gio.Cancellable | null,
+            args: SpaJson | null,
+            provides: string | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1633,7 +1632,7 @@ export namespace Wp {
          * @param cancellable a GCancellable to cancel the operation
          * @returns TRUE if the sync operation was started, FALSE if an error occurred before returning from this function
          */
-        sync(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        sync(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asks the PipeWire server to call the `callback` via an event.
          *
@@ -1656,7 +1655,7 @@ export namespace Wp {
          * @returns TRUE if the sync operation was started, FALSE if an error occurred before returning from this function
          */
         sync(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1695,7 +1694,7 @@ export namespace Wp {
         timeout_add(
             timeout_ms: number,
             _function: GLib.SourceFunc,
-            destroy?: GLib.DestroyNotify | null,
+            destroy: GLib.DestroyNotify | null,
         ): GLib.Source | null;
         /**
          * Adds a timeout callback to be called at regular intervals in the same GMainContext as the one used by this core.
@@ -1761,7 +1760,7 @@ export namespace Wp {
 
         _init(...args: any[]): void;
 
-        static new_from_factory(core: Core, factory_name: string, properties?: Properties | null): Device;
+        static new_from_factory(core: Core, factory_name: string, properties: Properties | null): Device;
 
         // Signals
 
@@ -1787,22 +1786,22 @@ export namespace Wp {
          * @read-only
          * @category Inherited from Wp.PipewireObject
          */
-        get native_info(): any;
+        get native_info(): any | null;
         /**
          * @read-only
          * @category Inherited from Wp.PipewireObject
          */
-        get nativeInfo(): any;
+        get nativeInfo(): any | null;
         /**
          * @read-only
          * @category Inherited from Wp.PipewireObject
          */
-        get param_info(): GLib.Variant;
+        get param_info(): GLib.Variant | null;
         /**
          * @read-only
          * @category Inherited from Wp.PipewireObject
          */
-        get paramInfo(): GLib.Variant;
+        get paramInfo(): GLib.Variant | null;
         /**
          * @read-only
          * @category Inherited from Wp.PipewireObject
@@ -1810,11 +1809,13 @@ export namespace Wp {
         get properties(): Properties;
         /**
          * @read-only
+         * @default 0
          * @category Inherited from Wp.Proxy
          */
         get bound_id(): number;
         /**
          * @read-only
+         * @default 0
          * @category Inherited from Wp.Proxy
          */
         get boundId(): number;
@@ -1822,12 +1823,12 @@ export namespace Wp {
          * @read-only
          * @category Inherited from Wp.Proxy
          */
-        get pw_proxy(): any;
+        get pw_proxy(): any | null;
         /**
          * @read-only
          * @category Inherited from Wp.Proxy
          */
-        get pwProxy(): any;
+        get pwProxy(): any | null;
         /**
          * Enumerate object parameters.
          *
@@ -1838,9 +1839,9 @@ export namespace Wp {
          * @param cancellable a cancellable for the async operation
          */
         enum_params(
-            id?: string | null,
-            filter?: SpaPod | null,
-            cancellable?: Gio.Cancellable | null,
+            id: string | null,
+            filter: SpaPod | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<Iterator | null>;
         /**
          * Enumerate object parameters.
@@ -1869,9 +1870,9 @@ export namespace Wp {
          * @param callback a callback to call with the result
          */
         enum_params(
-            id?: string | null,
-            filter?: SpaPod | null,
-            cancellable?: Gio.Cancellable | null,
+            id: string | null,
+            filter: SpaPod | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Iterator | null> | void;
         /**
@@ -1890,7 +1891,7 @@ export namespace Wp {
          * @param filter a param filter or NULL
          * @returns an iterator to iterate over cached parameters, or NULL if parameters for this `id` are not cached; the items in the iterator are WpSpaPod
          */
-        enum_params_sync(id: string, filter?: SpaPod | null): Iterator | null;
+        enum_params_sync(id: string, filter: SpaPod | null): Iterator | null;
         /**
          * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
          *
@@ -1965,10 +1966,10 @@ export namespace Wp {
          * @virtual
          */
         vfunc_enum_params(
-            id?: string | null,
-            filter?: SpaPod | null,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            id: string | null,
+            filter: SpaPod | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes an asynchronous parameter enumeration operation.
@@ -1986,7 +1987,7 @@ export namespace Wp {
          * @param filter a param filter or NULL
          * @virtual
          */
-        vfunc_enum_params_sync(id: string, filter?: SpaPod | null): Iterator | null;
+        vfunc_enum_params_sync(id: string, filter: SpaPod | null): Iterator | null;
         /**
          * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
          *
@@ -2051,7 +2052,7 @@ export namespace Wp {
          * This can be called only if there is no pw_proxy already set. Takes ownership of `proxy`.
          * @param proxy
          */
-        set_pw_proxy(proxy?: any | null): void;
+        set_pw_proxy(proxy: any | null): void;
         /**
          * @param id
          * @virtual
@@ -2068,7 +2069,7 @@ export namespace Wp {
          * @param proxy
          * @virtual
          */
-        vfunc_pw_proxy_created(proxy?: any | null): void;
+        vfunc_pw_proxy_created(proxy: any | null): void;
         /**
          * @virtual
          */
@@ -2180,7 +2181,7 @@ export namespace Wp {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            dispatcher: EventDispatcher;
+            dispatcher: EventDispatcher | null;
             name: string;
             runs_after_hooks: string[];
             runsAfterHooks: string[];
@@ -2201,7 +2202,7 @@ export namespace Wp {
         /**
          * @read-only
          */
-        get dispatcher(): EventDispatcher;
+        get dispatcher(): EventDispatcher | null;
         /**
          * @construct-only
          */
@@ -2281,8 +2282,8 @@ export namespace Wp {
          */
         vfunc_run(
             event: Event,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Checks if the hook should be executed for a given event.
@@ -2325,7 +2326,7 @@ export namespace Wp {
          * @param cancellable a GCancellable to cancel the async operation
          * @param callback a callback to fire after execution of the hook has completed
          */
-        run(event: Event, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        run(event: Event, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Checks if the hook should be executed for a given event.
          * @param event the event
@@ -2404,22 +2405,22 @@ export namespace Wp {
          * @read-only
          * @category Inherited from Wp.PipewireObject
          */
-        get native_info(): any;
+        get native_info(): any | null;
         /**
          * @read-only
          * @category Inherited from Wp.PipewireObject
          */
-        get nativeInfo(): any;
+        get nativeInfo(): any | null;
         /**
          * @read-only
          * @category Inherited from Wp.PipewireObject
          */
-        get param_info(): GLib.Variant;
+        get param_info(): GLib.Variant | null;
         /**
          * @read-only
          * @category Inherited from Wp.PipewireObject
          */
-        get paramInfo(): GLib.Variant;
+        get paramInfo(): GLib.Variant | null;
         /**
          * @read-only
          * @category Inherited from Wp.PipewireObject
@@ -2427,11 +2428,13 @@ export namespace Wp {
         get properties(): Properties;
         /**
          * @read-only
+         * @default 0
          * @category Inherited from Wp.Proxy
          */
         get bound_id(): number;
         /**
          * @read-only
+         * @default 0
          * @category Inherited from Wp.Proxy
          */
         get boundId(): number;
@@ -2439,12 +2442,12 @@ export namespace Wp {
          * @read-only
          * @category Inherited from Wp.Proxy
          */
-        get pw_proxy(): any;
+        get pw_proxy(): any | null;
         /**
          * @read-only
          * @category Inherited from Wp.Proxy
          */
-        get pwProxy(): any;
+        get pwProxy(): any | null;
         /**
          * Enumerate object parameters.
          *
@@ -2455,9 +2458,9 @@ export namespace Wp {
          * @param cancellable a cancellable for the async operation
          */
         enum_params(
-            id?: string | null,
-            filter?: SpaPod | null,
-            cancellable?: Gio.Cancellable | null,
+            id: string | null,
+            filter: SpaPod | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<Iterator | null>;
         /**
          * Enumerate object parameters.
@@ -2486,9 +2489,9 @@ export namespace Wp {
          * @param callback a callback to call with the result
          */
         enum_params(
-            id?: string | null,
-            filter?: SpaPod | null,
-            cancellable?: Gio.Cancellable | null,
+            id: string | null,
+            filter: SpaPod | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Iterator | null> | void;
         /**
@@ -2507,7 +2510,7 @@ export namespace Wp {
          * @param filter a param filter or NULL
          * @returns an iterator to iterate over cached parameters, or NULL if parameters for this `id` are not cached; the items in the iterator are WpSpaPod
          */
-        enum_params_sync(id: string, filter?: SpaPod | null): Iterator | null;
+        enum_params_sync(id: string, filter: SpaPod | null): Iterator | null;
         /**
          * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
          *
@@ -2582,10 +2585,10 @@ export namespace Wp {
          * @virtual
          */
         vfunc_enum_params(
-            id?: string | null,
-            filter?: SpaPod | null,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            id: string | null,
+            filter: SpaPod | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes an asynchronous parameter enumeration operation.
@@ -2603,7 +2606,7 @@ export namespace Wp {
          * @param filter a param filter or NULL
          * @virtual
          */
-        vfunc_enum_params_sync(id: string, filter?: SpaPod | null): Iterator | null;
+        vfunc_enum_params_sync(id: string, filter: SpaPod | null): Iterator | null;
         /**
          * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
          *
@@ -2668,7 +2671,7 @@ export namespace Wp {
          * This can be called only if there is no pw_proxy already set. Takes ownership of `proxy`.
          * @param proxy
          */
-        set_pw_proxy(proxy?: any | null): void;
+        set_pw_proxy(proxy: any | null): void;
         /**
          * @param id
          * @virtual
@@ -2685,7 +2688,7 @@ export namespace Wp {
          * @param proxy
          * @virtual
          */
-        vfunc_pw_proxy_created(proxy?: any | null): void;
+        vfunc_pw_proxy_created(proxy: any | null): void;
         /**
          * @virtual
          */
@@ -2771,7 +2774,7 @@ export namespace Wp {
          * @param source_tag an application-defined tag
          * @returns `TRUE` if `res` has the indicated `source_tag`, `FALSE` if   not.
          */
-        is_tagged(source_tag?: any | null): boolean;
+        is_tagged(source_tag: any | null): boolean;
         /**
          * If `res` is a {@link Gio.SimpleAsyncResult}, this is equivalent to
          * {@link Gio.SimpleAsyncResult.propagate_error}. Otherwise it returns
@@ -2802,7 +2805,7 @@ export namespace Wp {
          * @param source_tag an application-defined tag
          * @virtual
          */
-        vfunc_is_tagged(source_tag?: any | null): boolean;
+        vfunc_is_tagged(source_tag: any | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -2850,38 +2853,19 @@ export namespace Wp {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -2889,15 +2873,9 @@ export namespace Wp {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -3069,7 +3047,7 @@ export namespace Wp {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * @param args
          */
@@ -3316,6 +3294,7 @@ export namespace Wp {
         get globalProperties(): Properties;
         /**
          * @read-only
+         * @default 0
          */
         get permissions(): number;
 
@@ -3446,7 +3425,7 @@ export namespace Wp {
 
         static ['new'](core: Core): ImplMetadata;
 
-        static new_full(core: Core, name?: string | null, properties?: Properties | null): ImplMetadata;
+        static new_full(core: Core, name: string | null, properties: Properties | null): ImplMetadata;
 
         // Signals
 
@@ -3504,6 +3483,7 @@ export namespace Wp {
 
         /**
          * @construct-only
+         * @default null
          */
         get arguments(): string;
         /**
@@ -3512,6 +3492,7 @@ export namespace Wp {
         get core(): any;
         /**
          * @construct-only
+         * @default null
          */
         get name(): string;
         get properties(): Properties;
@@ -3573,8 +3554,8 @@ export namespace Wp {
         static load(
             core: Core,
             name: string,
-            _arguments?: string | null,
-            properties?: Properties | null,
+            _arguments: string | null,
+            properties: Properties | null,
         ): ImplModule | null;
     }
 
@@ -3634,9 +3615,9 @@ export namespace Wp {
 
         _init(...args: any[]): void;
 
-        static new_from_pw_factory(core: Core, factory_name: string, properties?: Properties | null): ImplNode;
+        static new_from_pw_factory(core: Core, factory_name: string, properties: Properties | null): ImplNode;
 
-        static new_wrap(core: Core, node?: any | null): ImplNode;
+        static new_wrap(core: Core, node: any | null): ImplNode;
 
         // Signals
 
@@ -3662,22 +3643,22 @@ export namespace Wp {
          * @read-only
          * @category Inherited from Wp.PipewireObject
          */
-        get native_info(): any;
+        get native_info(): any | null;
         /**
          * @read-only
          * @category Inherited from Wp.PipewireObject
          */
-        get nativeInfo(): any;
+        get nativeInfo(): any | null;
         /**
          * @read-only
          * @category Inherited from Wp.PipewireObject
          */
-        get param_info(): GLib.Variant;
+        get param_info(): GLib.Variant | null;
         /**
          * @read-only
          * @category Inherited from Wp.PipewireObject
          */
-        get paramInfo(): GLib.Variant;
+        get paramInfo(): GLib.Variant | null;
         /**
          * @read-only
          * @category Inherited from Wp.PipewireObject
@@ -3685,11 +3666,13 @@ export namespace Wp {
         get properties(): Properties;
         /**
          * @read-only
+         * @default 0
          * @category Inherited from Wp.Proxy
          */
         get bound_id(): number;
         /**
          * @read-only
+         * @default 0
          * @category Inherited from Wp.Proxy
          */
         get boundId(): number;
@@ -3697,12 +3680,12 @@ export namespace Wp {
          * @read-only
          * @category Inherited from Wp.Proxy
          */
-        get pw_proxy(): any;
+        get pw_proxy(): any | null;
         /**
          * @read-only
          * @category Inherited from Wp.Proxy
          */
-        get pwProxy(): any;
+        get pwProxy(): any | null;
         /**
          * Enumerate object parameters.
          *
@@ -3713,9 +3696,9 @@ export namespace Wp {
          * @param cancellable a cancellable for the async operation
          */
         enum_params(
-            id?: string | null,
-            filter?: SpaPod | null,
-            cancellable?: Gio.Cancellable | null,
+            id: string | null,
+            filter: SpaPod | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<Iterator | null>;
         /**
          * Enumerate object parameters.
@@ -3744,9 +3727,9 @@ export namespace Wp {
          * @param callback a callback to call with the result
          */
         enum_params(
-            id?: string | null,
-            filter?: SpaPod | null,
-            cancellable?: Gio.Cancellable | null,
+            id: string | null,
+            filter: SpaPod | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Iterator | null> | void;
         /**
@@ -3765,7 +3748,7 @@ export namespace Wp {
          * @param filter a param filter or NULL
          * @returns an iterator to iterate over cached parameters, or NULL if parameters for this `id` are not cached; the items in the iterator are WpSpaPod
          */
-        enum_params_sync(id: string, filter?: SpaPod | null): Iterator | null;
+        enum_params_sync(id: string, filter: SpaPod | null): Iterator | null;
         /**
          * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
          *
@@ -3840,10 +3823,10 @@ export namespace Wp {
          * @virtual
          */
         vfunc_enum_params(
-            id?: string | null,
-            filter?: SpaPod | null,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            id: string | null,
+            filter: SpaPod | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes an asynchronous parameter enumeration operation.
@@ -3861,7 +3844,7 @@ export namespace Wp {
          * @param filter a param filter or NULL
          * @virtual
          */
-        vfunc_enum_params_sync(id: string, filter?: SpaPod | null): Iterator | null;
+        vfunc_enum_params_sync(id: string, filter: SpaPod | null): Iterator | null;
         /**
          * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
          *
@@ -3926,7 +3909,7 @@ export namespace Wp {
          * This can be called only if there is no pw_proxy already set. Takes ownership of `proxy`.
          * @param proxy
          */
-        set_pw_proxy(proxy?: any | null): void;
+        set_pw_proxy(proxy: any | null): void;
         /**
          * @param id
          * @virtual
@@ -3943,7 +3926,7 @@ export namespace Wp {
          * @param proxy
          * @virtual
          */
-        vfunc_pw_proxy_created(proxy?: any | null): void;
+        vfunc_pw_proxy_created(proxy: any | null): void;
         /**
          * @virtual
          */
@@ -4057,6 +4040,7 @@ export namespace Wp {
 
         /**
          * @read-only
+         * @default Wp.LinkState.INIT
          */
         get state(): LinkState;
 
@@ -4075,7 +4059,7 @@ export namespace Wp {
 
         _init(...args: any[]): void;
 
-        static new_from_factory(core: Core, factory_name: string, properties?: Properties | null): Link;
+        static new_from_factory(core: Core, factory_name: string, properties: Properties | null): Link;
 
         // Signals
 
@@ -4116,22 +4100,22 @@ export namespace Wp {
          * @read-only
          * @category Inherited from Wp.PipewireObject
          */
-        get native_info(): any;
+        get native_info(): any | null;
         /**
          * @read-only
          * @category Inherited from Wp.PipewireObject
          */
-        get nativeInfo(): any;
+        get nativeInfo(): any | null;
         /**
          * @read-only
          * @category Inherited from Wp.PipewireObject
          */
-        get param_info(): GLib.Variant;
+        get param_info(): GLib.Variant | null;
         /**
          * @read-only
          * @category Inherited from Wp.PipewireObject
          */
-        get paramInfo(): GLib.Variant;
+        get paramInfo(): GLib.Variant | null;
         /**
          * @read-only
          * @category Inherited from Wp.PipewireObject
@@ -4139,11 +4123,13 @@ export namespace Wp {
         get properties(): Properties;
         /**
          * @read-only
+         * @default 0
          * @category Inherited from Wp.Proxy
          */
         get bound_id(): number;
         /**
          * @read-only
+         * @default 0
          * @category Inherited from Wp.Proxy
          */
         get boundId(): number;
@@ -4151,12 +4137,12 @@ export namespace Wp {
          * @read-only
          * @category Inherited from Wp.Proxy
          */
-        get pw_proxy(): any;
+        get pw_proxy(): any | null;
         /**
          * @read-only
          * @category Inherited from Wp.Proxy
          */
-        get pwProxy(): any;
+        get pwProxy(): any | null;
         /**
          * Enumerate object parameters.
          *
@@ -4167,9 +4153,9 @@ export namespace Wp {
          * @param cancellable a cancellable for the async operation
          */
         enum_params(
-            id?: string | null,
-            filter?: SpaPod | null,
-            cancellable?: Gio.Cancellable | null,
+            id: string | null,
+            filter: SpaPod | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<Iterator | null>;
         /**
          * Enumerate object parameters.
@@ -4198,9 +4184,9 @@ export namespace Wp {
          * @param callback a callback to call with the result
          */
         enum_params(
-            id?: string | null,
-            filter?: SpaPod | null,
-            cancellable?: Gio.Cancellable | null,
+            id: string | null,
+            filter: SpaPod | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Iterator | null> | void;
         /**
@@ -4219,7 +4205,7 @@ export namespace Wp {
          * @param filter a param filter or NULL
          * @returns an iterator to iterate over cached parameters, or NULL if parameters for this `id` are not cached; the items in the iterator are WpSpaPod
          */
-        enum_params_sync(id: string, filter?: SpaPod | null): Iterator | null;
+        enum_params_sync(id: string, filter: SpaPod | null): Iterator | null;
         /**
          * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
          *
@@ -4294,10 +4280,10 @@ export namespace Wp {
          * @virtual
          */
         vfunc_enum_params(
-            id?: string | null,
-            filter?: SpaPod | null,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            id: string | null,
+            filter: SpaPod | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes an asynchronous parameter enumeration operation.
@@ -4315,7 +4301,7 @@ export namespace Wp {
          * @param filter a param filter or NULL
          * @virtual
          */
-        vfunc_enum_params_sync(id: string, filter?: SpaPod | null): Iterator | null;
+        vfunc_enum_params_sync(id: string, filter: SpaPod | null): Iterator | null;
         /**
          * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
          *
@@ -4380,7 +4366,7 @@ export namespace Wp {
          * This can be called only if there is no pw_proxy already set. Takes ownership of `proxy`.
          * @param proxy
          */
-        set_pw_proxy(proxy?: any | null): void;
+        set_pw_proxy(proxy: any | null): void;
         /**
          * @param id
          * @virtual
@@ -4397,7 +4383,7 @@ export namespace Wp {
          * @param proxy
          * @virtual
          */
-        vfunc_pw_proxy_created(proxy?: any | null): void;
+        vfunc_pw_proxy_created(proxy: any | null): void;
         /**
          * @virtual
          */
@@ -4502,7 +4488,7 @@ export namespace Wp {
          * @param type the type of the value; NULL is synonymous to "string"
          * @param value the value to set, or NULL to unset the given `key`
          */
-        set(subject: number, key?: string | null, type?: string | null, value?: string | null): void;
+        set(subject: number, key: string | null, type: string | null, value: string | null): void;
         /**
          * @param args
          */
@@ -4569,38 +4555,47 @@ export namespace Wp {
 
         /**
          * @read-only
+         * @default 0
          */
         get max_input_ports(): number;
         /**
          * @read-only
+         * @default 0
          */
         get maxInputPorts(): number;
         /**
          * @read-only
+         * @default 0
          */
         get max_output_ports(): number;
         /**
          * @read-only
+         * @default 0
          */
         get maxOutputPorts(): number;
         /**
          * @read-only
+         * @default 0
          */
         get n_input_ports(): number;
         /**
          * @read-only
+         * @default 0
          */
         get nInputPorts(): number;
         /**
          * @read-only
+         * @default 0
          */
         get n_output_ports(): number;
         /**
          * @read-only
+         * @default 0
          */
         get nOutputPorts(): number;
         /**
          * @read-only
+         * @default Wp.NodeState.CREATING
          */
         get state(): NodeState;
 
@@ -4619,7 +4614,7 @@ export namespace Wp {
 
         _init(...args: any[]): void;
 
-        static new_from_factory(core: Core, factory_name: string, properties?: Properties | null): Node;
+        static new_from_factory(core: Core, factory_name: string, properties: Properties | null): Node;
 
         // Signals
 
@@ -4712,22 +4707,22 @@ export namespace Wp {
          * @read-only
          * @category Inherited from Wp.PipewireObject
          */
-        get native_info(): any;
+        get native_info(): any | null;
         /**
          * @read-only
          * @category Inherited from Wp.PipewireObject
          */
-        get nativeInfo(): any;
+        get nativeInfo(): any | null;
         /**
          * @read-only
          * @category Inherited from Wp.PipewireObject
          */
-        get param_info(): GLib.Variant;
+        get param_info(): GLib.Variant | null;
         /**
          * @read-only
          * @category Inherited from Wp.PipewireObject
          */
-        get paramInfo(): GLib.Variant;
+        get paramInfo(): GLib.Variant | null;
         /**
          * @read-only
          * @category Inherited from Wp.PipewireObject
@@ -4735,11 +4730,13 @@ export namespace Wp {
         get properties(): Properties;
         /**
          * @read-only
+         * @default 0
          * @category Inherited from Wp.Proxy
          */
         get bound_id(): number;
         /**
          * @read-only
+         * @default 0
          * @category Inherited from Wp.Proxy
          */
         get boundId(): number;
@@ -4747,12 +4744,12 @@ export namespace Wp {
          * @read-only
          * @category Inherited from Wp.Proxy
          */
-        get pw_proxy(): any;
+        get pw_proxy(): any | null;
         /**
          * @read-only
          * @category Inherited from Wp.Proxy
          */
-        get pwProxy(): any;
+        get pwProxy(): any | null;
         /**
          * Enumerate object parameters.
          *
@@ -4763,9 +4760,9 @@ export namespace Wp {
          * @param cancellable a cancellable for the async operation
          */
         enum_params(
-            id?: string | null,
-            filter?: SpaPod | null,
-            cancellable?: Gio.Cancellable | null,
+            id: string | null,
+            filter: SpaPod | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<Iterator | null>;
         /**
          * Enumerate object parameters.
@@ -4794,9 +4791,9 @@ export namespace Wp {
          * @param callback a callback to call with the result
          */
         enum_params(
-            id?: string | null,
-            filter?: SpaPod | null,
-            cancellable?: Gio.Cancellable | null,
+            id: string | null,
+            filter: SpaPod | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Iterator | null> | void;
         /**
@@ -4815,7 +4812,7 @@ export namespace Wp {
          * @param filter a param filter or NULL
          * @returns an iterator to iterate over cached parameters, or NULL if parameters for this `id` are not cached; the items in the iterator are WpSpaPod
          */
-        enum_params_sync(id: string, filter?: SpaPod | null): Iterator | null;
+        enum_params_sync(id: string, filter: SpaPod | null): Iterator | null;
         /**
          * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
          *
@@ -4890,10 +4887,10 @@ export namespace Wp {
          * @virtual
          */
         vfunc_enum_params(
-            id?: string | null,
-            filter?: SpaPod | null,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            id: string | null,
+            filter: SpaPod | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes an asynchronous parameter enumeration operation.
@@ -4911,7 +4908,7 @@ export namespace Wp {
          * @param filter a param filter or NULL
          * @virtual
          */
-        vfunc_enum_params_sync(id: string, filter?: SpaPod | null): Iterator | null;
+        vfunc_enum_params_sync(id: string, filter: SpaPod | null): Iterator | null;
         /**
          * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
          *
@@ -4976,7 +4973,7 @@ export namespace Wp {
          * This can be called only if there is no pw_proxy already set. Takes ownership of `proxy`.
          * @param proxy
          */
-        set_pw_proxy(proxy?: any | null): void;
+        set_pw_proxy(proxy: any | null): void;
         /**
          * @param id
          * @virtual
@@ -4993,7 +4990,7 @@ export namespace Wp {
          * @param proxy
          * @virtual
          */
-        vfunc_pw_proxy_created(proxy?: any | null): void;
+        vfunc_pw_proxy_created(proxy: any | null): void;
         /**
          * @virtual
          */
@@ -5032,10 +5029,12 @@ export namespace Wp {
 
         /**
          * @read-only
+         * @default 0
          */
         get active_features(): number;
         /**
          * @read-only
+         * @default 0
          */
         get activeFeatures(): number;
         /**
@@ -5044,14 +5043,17 @@ export namespace Wp {
         get core(): Core;
         /**
          * @read-only
+         * @default 0
          */
         get id(): number;
         /**
          * @read-only
+         * @default 0
          */
         get supported_features(): number;
         /**
          * @read-only
+         * @default 0
          */
         get supportedFeatures(): number;
 
@@ -5145,7 +5147,7 @@ export namespace Wp {
          * @param features the features to enable
          * @param cancellable a cancellable for the async operation
          */
-        activate(features: ObjectFeatures, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        activate(features: ObjectFeatures, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Callback version of `wp_object_activate_closure()`.
          * @param features the features to enable
@@ -5165,7 +5167,7 @@ export namespace Wp {
          */
         activate(
             features: ObjectFeatures,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -5410,6 +5412,7 @@ export namespace Wp {
 
         /**
          * @construct-only
+         * @default null
          */
         get name(): string;
 
@@ -5559,22 +5562,22 @@ export namespace Wp {
          * @read-only
          * @category Inherited from Wp.PipewireObject
          */
-        get native_info(): any;
+        get native_info(): any | null;
         /**
          * @read-only
          * @category Inherited from Wp.PipewireObject
          */
-        get nativeInfo(): any;
+        get nativeInfo(): any | null;
         /**
          * @read-only
          * @category Inherited from Wp.PipewireObject
          */
-        get param_info(): GLib.Variant;
+        get param_info(): GLib.Variant | null;
         /**
          * @read-only
          * @category Inherited from Wp.PipewireObject
          */
-        get paramInfo(): GLib.Variant;
+        get paramInfo(): GLib.Variant | null;
         /**
          * @read-only
          * @category Inherited from Wp.PipewireObject
@@ -5582,11 +5585,13 @@ export namespace Wp {
         get properties(): Properties;
         /**
          * @read-only
+         * @default 0
          * @category Inherited from Wp.Proxy
          */
         get bound_id(): number;
         /**
          * @read-only
+         * @default 0
          * @category Inherited from Wp.Proxy
          */
         get boundId(): number;
@@ -5594,12 +5599,12 @@ export namespace Wp {
          * @read-only
          * @category Inherited from Wp.Proxy
          */
-        get pw_proxy(): any;
+        get pw_proxy(): any | null;
         /**
          * @read-only
          * @category Inherited from Wp.Proxy
          */
-        get pwProxy(): any;
+        get pwProxy(): any | null;
         /**
          * Enumerate object parameters.
          *
@@ -5610,9 +5615,9 @@ export namespace Wp {
          * @param cancellable a cancellable for the async operation
          */
         enum_params(
-            id?: string | null,
-            filter?: SpaPod | null,
-            cancellable?: Gio.Cancellable | null,
+            id: string | null,
+            filter: SpaPod | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<Iterator | null>;
         /**
          * Enumerate object parameters.
@@ -5641,9 +5646,9 @@ export namespace Wp {
          * @param callback a callback to call with the result
          */
         enum_params(
-            id?: string | null,
-            filter?: SpaPod | null,
-            cancellable?: Gio.Cancellable | null,
+            id: string | null,
+            filter: SpaPod | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Iterator | null> | void;
         /**
@@ -5662,7 +5667,7 @@ export namespace Wp {
          * @param filter a param filter or NULL
          * @returns an iterator to iterate over cached parameters, or NULL if parameters for this `id` are not cached; the items in the iterator are WpSpaPod
          */
-        enum_params_sync(id: string, filter?: SpaPod | null): Iterator | null;
+        enum_params_sync(id: string, filter: SpaPod | null): Iterator | null;
         /**
          * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
          *
@@ -5737,10 +5742,10 @@ export namespace Wp {
          * @virtual
          */
         vfunc_enum_params(
-            id?: string | null,
-            filter?: SpaPod | null,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            id: string | null,
+            filter: SpaPod | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes an asynchronous parameter enumeration operation.
@@ -5758,7 +5763,7 @@ export namespace Wp {
          * @param filter a param filter or NULL
          * @virtual
          */
-        vfunc_enum_params_sync(id: string, filter?: SpaPod | null): Iterator | null;
+        vfunc_enum_params_sync(id: string, filter: SpaPod | null): Iterator | null;
         /**
          * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
          *
@@ -5823,7 +5828,7 @@ export namespace Wp {
          * This can be called only if there is no pw_proxy already set. Takes ownership of `proxy`.
          * @param proxy
          */
-        set_pw_proxy(proxy?: any | null): void;
+        set_pw_proxy(proxy: any | null): void;
         /**
          * @param id
          * @virtual
@@ -5840,7 +5845,7 @@ export namespace Wp {
          * @param proxy
          * @virtual
          */
-        vfunc_pw_proxy_created(proxy?: any | null): void;
+        vfunc_pw_proxy_created(proxy: any | null): void;
         /**
          * @virtual
          */
@@ -5883,8 +5888,8 @@ export namespace Wp {
         interface ConstructorProps extends Object.ConstructorProps {
             bound_id: number;
             boundId: number;
-            pw_proxy: any;
-            pwProxy: any;
+            pw_proxy: any | null;
+            pwProxy: any | null;
         }
     }
 
@@ -5900,20 +5905,22 @@ export namespace Wp {
 
         /**
          * @read-only
+         * @default 0
          */
         get bound_id(): number;
         /**
          * @read-only
+         * @default 0
          */
         get boundId(): number;
         /**
          * @read-only
          */
-        get pw_proxy(): any;
+        get pw_proxy(): any | null;
         /**
          * @read-only
          */
-        get pwProxy(): any;
+        get pwProxy(): any | null;
 
         /**
          * Compile-time signal type information.
@@ -5969,7 +5976,7 @@ export namespace Wp {
          * @param proxy
          * @virtual
          */
-        vfunc_pw_proxy_created(proxy?: any | null): void;
+        vfunc_pw_proxy_created(proxy: any | null): void;
         /**
          * @virtual
          */
@@ -6003,7 +6010,7 @@ export namespace Wp {
          * This can be called only if there is no pw_proxy already set. Takes ownership of `proxy`.
          * @param proxy
          */
-        set_pw_proxy(proxy?: any | null): void;
+        set_pw_proxy(proxy: any | null): void;
     }
 
     namespace SessionItem {
@@ -6228,10 +6235,12 @@ export namespace Wp {
 
         /**
          * @construct-only
+         * @default null
          */
         get metadata_name(): string;
         /**
          * @construct-only
+         * @default null
          */
         get metadataName(): string;
 
@@ -6250,7 +6259,7 @@ export namespace Wp {
 
         _init(...args: any[]): void;
 
-        static ['new'](core: Core, metadata_name?: string | null): Settings;
+        static ['new'](core: Core, metadata_name: string | null): Settings;
 
         // Signals
 
@@ -6280,7 +6289,7 @@ export namespace Wp {
          * @param core the WpCore
          * @param metadata_name the name of the metadata object that the settings object is associated with; NULL returns the first settings object that is found
          */
-        static find(core: Core, metadata_name?: string | null): Settings | null;
+        static find(core: Core, metadata_name: string | null): Settings | null;
 
         // Methods
 
@@ -6362,7 +6371,7 @@ export namespace Wp {
          * @param closure a GAsyncReadyCallback wrapped in a GClosure
          * @returns the subscription ID (always greater than 0 for success)
          */
-        subscribe_closure(pattern: string, closure?: GObject.Closure | null): number;
+        subscribe_closure(pattern: string, closure: GObject.Closure | null): number;
         /**
          * Unsubscribes callback for a given subscription_id.
          * @param subscription_id identifies the callback
@@ -6623,9 +6632,9 @@ export namespace Wp {
 
         _init(...args: any[]): void;
 
-        static new_from_spa_factory(core: Core, factory_name: string, properties?: Properties | null): SpaDevice;
+        static new_from_spa_factory(core: Core, factory_name: string, properties: Properties | null): SpaDevice;
 
-        static new_wrap(core: Core, spa_device_handle?: any | null, properties?: Properties | null): SpaDevice;
+        static new_wrap(core: Core, spa_device_handle: any | null, properties: Properties | null): SpaDevice;
 
         // Signals
 
@@ -6680,7 +6689,7 @@ export namespace Wp {
          * @param id the (device-internal) id of the object
          * @param object the object to store or NULL to remove the managed object associated with `id`
          */
-        store_managed_object(id: number, object?: GObject.Object | null): void;
+        store_managed_object(id: number, object: GObject.Object | null): void;
     }
 
     namespace SpaType {
@@ -6795,8 +6804,12 @@ export namespace Wp {
 
         /**
          * @construct-only
+         * @default null
          */
         get name(): string;
+        /**
+         * @default 1000
+         */
         get timeout(): number;
         set timeout(val: number);
 
@@ -6906,6 +6919,7 @@ export namespace Wp {
 
         /**
          * @read-only
+         * @default false
          */
         get completed(): boolean;
 
@@ -6926,16 +6940,16 @@ export namespace Wp {
 
         static ['new'](
             type: GObject.GType,
-            source_object?: GObject.Object | null,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback | null,
+            source_object: GObject.Object | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback | null,
         ): Transition;
 
         static new_closure(
             type: GObject.GType,
-            source_object?: GObject.Object | null,
-            cancellable?: Gio.Cancellable | null,
-            closure?: GObject.Closure | null,
+            source_object: GObject.Object | null,
+            cancellable: Gio.Cancellable | null,
+            closure: GObject.Closure | null,
         ): Transition;
 
         // Signals
@@ -7035,7 +7049,7 @@ export namespace Wp {
          * @param tag a tag
          * @returns TRUE if `self` has the indicated `tag` , FALSE if not.
          */
-        is_tagged(tag?: any | null): boolean;
+        is_tagged(tag: any | null): boolean;
         /**
          * Completes the transition with an error.
          *
@@ -7050,7 +7064,7 @@ export namespace Wp {
          * @param data transition-specific user data
          * @param data_destroy GDestroyNotify for `data`
          */
-        set_data(data?: any | null, data_destroy?: GLib.DestroyNotify | null): void;
+        set_data(data: any | null, data_destroy: GLib.DestroyNotify | null): void;
         /**
          * @param args
          */
@@ -7063,7 +7077,7 @@ export namespace Wp {
          * You can use this to tag a transition's return value with a particular pointer (usually a pointer to the function doing the tagging) and then later check it using `wp_transition_get_source_tag()` (or `g_async_result_is_tagged()`) in the transition's "finish" function, to figure out if the response came from a particular place.
          * @param tag an opaque pointer indicating the source of this transition
          */
-        set_source_tag(tag?: any | null): void;
+        set_source_tag(tag: any | null): void;
         /**
          * Gets the user data from a {@link Gio.AsyncResult}.
          * @returns the user data for `res`.
@@ -7099,7 +7113,7 @@ export namespace Wp {
          * @param source_tag an application-defined tag
          * @virtual
          */
-        vfunc_is_tagged(source_tag?: any | null): boolean;
+        vfunc_is_tagged(source_tag: any | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -7147,38 +7161,19 @@ export namespace Wp {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -7186,15 +7181,9 @@ export namespace Wp {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -7568,7 +7557,7 @@ export namespace Wp {
             priority: number,
             properties: Properties | null,
             source: GObject.Object,
-            subject?: GObject.Object | null,
+            subject: GObject.Object | null,
         );
 
         static ['new'](
@@ -7576,7 +7565,7 @@ export namespace Wp {
             priority: number,
             properties: Properties | null,
             source: GObject.Object,
-            subject?: GObject.Object | null,
+            subject: GObject.Object | null,
         ): Event;
 
         // Methods
@@ -7637,7 +7626,7 @@ export namespace Wp {
          * @param key the key to associate `data` with
          * @param data the data element, or `null` to remove any previous data associated with this `key`
          */
-        set_data(key: string, data?: GObject.Value | null): void;
+        set_data(key: string, data: GObject.Value | null): void;
         /**
          * Stops processing of this event; any further hooks will not be executed from this moment onwards and the event will be discarded from the stack.
          */
@@ -7900,7 +7889,7 @@ export namespace Wp {
          * @param verb the operation that is performed to check the constraint
          * @param value the value to check for
          */
-        add_constraint(type: ConstraintType, subject: string, verb: ConstraintVerb, value?: GLib.Variant | null): void;
+        add_constraint(type: ConstraintType, subject: string, verb: ConstraintVerb, value: GLib.Variant | null): void;
         /**
          * Finds all the defined constraint values for a subject in `self`.
          *
@@ -7919,7 +7908,7 @@ export namespace Wp {
          * @param object the target object to check for a match
          * @returns TRUE if the object matches, FALSE otherwise
          */
-        matches(object?: any | null): boolean;
+        matches(object: any | null): boolean;
         /**
          * A low-level version of `wp_object_interest_matches()`.
          *
@@ -7938,9 +7927,9 @@ export namespace Wp {
         matches_full(
             flags: InterestMatchFlags,
             object_type: GObject.GType,
-            object?: GObject.Object | null,
-            pw_props?: Properties | null,
-            pw_global_props?: Properties | null,
+            object: GObject.Object | null,
+            pw_props: Properties | null,
+            pw_global_props: Properties | null,
         ): InterestMatch;
         /**
          * Increases the reference count of an object interest.
@@ -8038,9 +8027,9 @@ export namespace Wp {
 
         constructor(properties?: Partial<{}>);
 
-        static new_copy(props?: any | null): Properties;
+        static new_copy(props: any | null): Properties;
 
-        static new_copy_dict(dict?: any | null): Properties;
+        static new_copy_dict(dict: any | null): Properties;
 
         static new_empty(): Properties;
 
@@ -8048,11 +8037,11 @@ export namespace Wp {
 
         static new_string(str: string): Properties;
 
-        static new_take(props?: any | null): Properties;
+        static new_take(props: any | null): Properties;
 
-        static new_wrap(props?: any | null): Properties;
+        static new_wrap(props: any | null): Properties;
 
-        static new_wrap_dict(dict?: any | null): Properties;
+        static new_wrap_dict(dict: any | null): Properties;
 
         // Methods
 
@@ -8073,7 +8062,7 @@ export namespace Wp {
          * @param dict a spa_dict that contains properties to add
          * @returns the number of properties that were changed
          */
-        add_from_dict(dict?: any | null): number;
+        add_from_dict(dict: any | null): number;
         /**
          * The same as `wp_properties_add_keys()`, using a NULL-terminated array for specifying the keys to add.
          * @param props a properties set that contains properties to add
@@ -8139,7 +8128,7 @@ export namespace Wp {
          * @param value a property value
          * @returns 1 if the property was changed. 0 if nothing was changed because the property already existed with the same value or because the key to remove did not exist.
          */
-        set(key: string, value?: string | null): number;
+        set(key: string, value: string | null): number;
         /**
          * Sorts the keys in alphabetical order.
          */
@@ -8178,7 +8167,7 @@ export namespace Wp {
          * @param dict a spa_dict that contains properties to update
          * @returns the number of properties that were changed
          */
-        update_from_dict(dict?: any | null): number;
+        update_from_dict(dict: any | null): number;
         /**
          * Updates (adds new or modifies existing) properties in `self`, using the given `json` as a source.
          *
@@ -8377,7 +8366,7 @@ export namespace Wp {
 
         static new_string(value: string): SpaJson;
 
-        static new_wrap(json?: any | null): SpaJson;
+        static new_wrap(json: any | null): SpaJson;
 
         static new_wrap_string(json_str: string): SpaJson;
 
@@ -8668,15 +8657,15 @@ export namespace Wp {
 
         static new_none(): SpaPod;
 
-        static new_pointer(type_name: string, value?: any | null): SpaPod;
+        static new_pointer(type_name: string, value: any | null): SpaPod;
 
         static new_rectangle(width: number, height: number): SpaPod;
 
         static new_string(value: string): SpaPod;
 
-        static new_wrap(pod?: any | null): SpaPod;
+        static new_wrap(pod: any | null): SpaPod;
 
-        static new_wrap_const(pod?: any | null): SpaPod;
+        static new_wrap_const(pod: any | null): SpaPod;
 
         // Methods
 
@@ -8979,7 +8968,7 @@ export namespace Wp {
          * @param value the pointer value
          * @returns TRUE if the value could be set, FALSE othewrise.
          */
-        set_pointer(type_name: string, value?: any | null): boolean;
+        set_pointer(type_name: string, value: any | null): boolean;
         /**
          * Sets the width and height values of a rectangle in the spa pod object.
          * @param width the width value of the rectangle
@@ -9082,7 +9071,7 @@ export namespace Wp {
          * @param type_name the type name that the pointer points to
          * @param value the pointer value
          */
-        add_pointer(type_name: string, value?: any | null): void;
+        add_pointer(type_name: string, value: any | null): void;
         /**
          * Adds a property into the builder.
          * @param key the name of the property
@@ -9246,8 +9235,8 @@ export namespace Wp {
                 component: string,
                 type: string,
                 args: SpaJson,
-                cancellable?: Gio.Cancellable | null,
-                callback?: Gio.AsyncReadyCallback<this> | null,
+                cancellable: Gio.Cancellable | null,
+                callback: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * @param type
@@ -9300,10 +9289,10 @@ export namespace Wp {
              * @virtual
              */
             vfunc_enum_params(
-                id?: string | null,
-                filter?: SpaPod | null,
-                cancellable?: Gio.Cancellable | null,
-                callback?: Gio.AsyncReadyCallback<this> | null,
+                id: string | null,
+                filter: SpaPod | null,
+                cancellable: Gio.Cancellable | null,
+                callback: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * Finishes an asynchronous parameter enumeration operation.
@@ -9321,7 +9310,7 @@ export namespace Wp {
              * @param filter a param filter or NULL
              * @virtual
              */
-            vfunc_enum_params_sync(id: string, filter?: SpaPod | null): Iterator | null;
+            vfunc_enum_params_sync(id: string, filter: SpaPod | null): Iterator | null;
             /**
              * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
              *
@@ -9365,10 +9354,10 @@ export namespace Wp {
         // Constructor properties interface
 
         interface ConstructorProps extends Proxy.ConstructorProps {
-            native_info: any;
-            nativeInfo: any;
-            param_info: GLib.Variant;
-            paramInfo: GLib.Variant;
+            native_info: any | null;
+            nativeInfo: any | null;
+            param_info: GLib.Variant | null;
+            paramInfo: GLib.Variant | null;
             properties: Properties;
         }
     }
@@ -9388,19 +9377,19 @@ export namespace Wp {
         /**
          * @read-only
          */
-        get native_info(): any;
+        get native_info(): any | null;
         /**
          * @read-only
          */
-        get nativeInfo(): any;
+        get nativeInfo(): any | null;
         /**
          * @read-only
          */
-        get param_info(): GLib.Variant;
+        get param_info(): GLib.Variant | null;
         /**
          * @read-only
          */
-        get paramInfo(): GLib.Variant;
+        get paramInfo(): GLib.Variant | null;
         /**
          * @read-only
          */
@@ -9418,9 +9407,9 @@ export namespace Wp {
          * @param cancellable a cancellable for the async operation
          */
         enum_params(
-            id?: string | null,
-            filter?: SpaPod | null,
-            cancellable?: Gio.Cancellable | null,
+            id: string | null,
+            filter: SpaPod | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<Iterator | null>;
         /**
          * Enumerate object parameters.
@@ -9449,9 +9438,9 @@ export namespace Wp {
          * @param callback a callback to call with the result
          */
         enum_params(
-            id?: string | null,
-            filter?: SpaPod | null,
-            cancellable?: Gio.Cancellable | null,
+            id: string | null,
+            filter: SpaPod | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Iterator | null> | void;
         /**
@@ -9470,7 +9459,7 @@ export namespace Wp {
          * @param filter a param filter or NULL
          * @returns an iterator to iterate over cached parameters, or NULL if parameters for this `id` are not cached; the items in the iterator are WpSpaPod
          */
-        enum_params_sync(id: string, filter?: SpaPod | null): Iterator | null;
+        enum_params_sync(id: string, filter: SpaPod | null): Iterator | null;
         /**
          * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
          *
@@ -9558,7 +9547,7 @@ export namespace Wp {
              * @param callback the callback to call when the operation is done
              * @virtual
              */
-            vfunc_acquire(acquisitor: SiLink, item: SiLinkable, callback?: Gio.AsyncReadyCallback<this> | null): void;
+            vfunc_acquire(acquisitor: SiLink, item: SiLinkable, callback: Gio.AsyncReadyCallback<this> | null): void;
             /**
              * Finishes the operation started by `wp_si_acquisition_acquire()`. This is meant to be called in the callback that was passed to that method.
              * @param res the async result
@@ -9674,9 +9663,9 @@ export namespace Wp {
              * @virtual
              */
             vfunc_set_ports_format(
-                format?: SpaPod | null,
-                mode?: string | null,
-                callback?: Gio.AsyncReadyCallback<this> | null,
+                format: SpaPod | null,
+                mode: string | null,
+                callback: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * Finishes the operation started by `wp_si_adapter_set_format()`. This is meant to be called in the callback that was passed to that method.
@@ -9720,7 +9709,7 @@ export namespace Wp {
          * @param format the format to be set
          * @param mode the mode
          */
-        set_ports_format(format?: SpaPod | null, mode?: string | null): globalThis.Promise<boolean>;
+        set_ports_format(format: SpaPod | null, mode: string | null): globalThis.Promise<boolean>;
         /**
          * Sets the format and configures the adapter session item ports using the given format.
          *
@@ -9745,8 +9734,8 @@ export namespace Wp {
          * @param callback the callback to call when the operation is done
          */
         set_ports_format(
-            format?: SpaPod | null,
-            mode?: string | null,
+            format: SpaPod | null,
+            mode: string | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -9871,7 +9860,7 @@ export namespace Wp {
              * @param context an optional context for the ports
              * @virtual
              */
-            vfunc_get_ports(context?: string | null): GLib.Variant;
+            vfunc_get_ports(context: string | null): GLib.Variant;
         }
 
         // Constructor properties interface
@@ -9915,7 +9904,7 @@ export namespace Wp {
          * @param context an optional context for the ports
          * @returns a GVariant containing information about the ports of this item
          */
-        get_ports(context?: string | null): GLib.Variant;
+        get_ports(context: string | null): GLib.Variant;
     }
 
     export const SiLinkable: SiLinkableNamespace & {

@@ -270,12 +270,14 @@ export namespace GstMse {
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-mediasource-duration)
          * @since 1.24
+         * @default 18446744073709551615
          */
         get duration(): number;
         set duration(val: bigint | number);
         /**
          * The position of the player consuming from the Media Source
          * @since 1.24
+         * @default 18446744073709551615
          */
         get position(): number;
         set position(val: bigint | number);
@@ -285,6 +287,7 @@ export namespace GstMse {
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-mediasource-readystate)
          * @since 1.24
          * @read-only
+         * @default GstMse.MediaSourceReadyState.CLOSED
          */
         get ready_state(): MediaSourceReadyState;
         /**
@@ -293,6 +296,7 @@ export namespace GstMse {
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-mediasource-readystate)
          * @since 1.24
          * @read-only
+         * @default GstMse.MediaSourceReadyState.CLOSED
          */
         get readyState(): MediaSourceReadyState;
         /**
@@ -537,6 +541,7 @@ export namespace GstMse {
          *
          * [Specification](https://html.spec.whatwg.org/multipage/media.html#dom-media-duration)
          * @since 1.24
+         * @default 18446744073709551615
          */
         get duration(): number;
         set duration(val: bigint | number);
@@ -544,36 +549,42 @@ export namespace GstMse {
          * The number of audio tracks in the Media Source
          * @since 1.24
          * @read-only
+         * @default 0
          */
         get n_audio(): number;
         /**
          * The number of audio tracks in the Media Source
          * @since 1.24
          * @read-only
+         * @default 0
          */
         get nAudio(): number;
         /**
          * The number of text tracks in the Media Source
          * @since 1.24
          * @read-only
+         * @default 0
          */
         get n_text(): number;
         /**
          * The number of text tracks in the Media Source
          * @since 1.24
          * @read-only
+         * @default 0
          */
         get nText(): number;
         /**
          * The number of video tracks in the Media Source
          * @since 1.24
          * @read-only
+         * @default 0
          */
         get n_video(): number;
         /**
          * The number of video tracks in the Media Source
          * @since 1.24
          * @read-only
+         * @default 0
          */
         get nVideo(): number;
         /**
@@ -582,6 +593,7 @@ export namespace GstMse {
          * [Specification](https://html.spec.whatwg.org/multipage/media.html#current-playback-position)
          * @since 1.24
          * @read-only
+         * @default 0
          */
         get position(): number;
         /**
@@ -593,6 +605,7 @@ export namespace GstMse {
          * [Specification](https://html.spec.whatwg.org/multipage/media.html#ready-states)
          * @since 1.24
          * @read-only
+         * @default GstMse.MseSrcReadyState.NOTHING
          */
         get ready_state(): MseSrcReadyState;
         /**
@@ -604,6 +617,7 @@ export namespace GstMse {
          * [Specification](https://html.spec.whatwg.org/multipage/media.html#ready-states)
          * @since 1.24
          * @read-only
+         * @default GstMse.MseSrcReadyState.NOTHING
          */
         get readyState(): MseSrcReadyState;
 
@@ -761,38 +775,19 @@ export namespace GstMse {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -800,15 +795,9 @@ export namespace GstMse {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -980,7 +969,7 @@ export namespace GstMse {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1356,6 +1345,7 @@ export namespace GstMse {
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebuffer-mode)
          * @since 1.24
+         * @default GstMse.SourceBufferAppendMode.SEGMENTS
          */
         get append_mode(): SourceBufferAppendMode;
         set append_mode(val: SourceBufferAppendMode);
@@ -1370,6 +1360,7 @@ export namespace GstMse {
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebuffer-mode)
          * @since 1.24
+         * @default GstMse.SourceBufferAppendMode.SEGMENTS
          */
         get appendMode(): SourceBufferAppendMode;
         set appendMode(val: SourceBufferAppendMode);
@@ -1380,6 +1371,7 @@ export namespace GstMse {
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebuffer-appendwindowend)
          * @since 1.24
          * @read-only
+         * @default 18446744073709551615
          */
         get append_window_end(): number;
         /**
@@ -1389,6 +1381,7 @@ export namespace GstMse {
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebuffer-appendwindowend)
          * @since 1.24
          * @read-only
+         * @default 18446744073709551615
          */
         get appendWindowEnd(): number;
         /**
@@ -1398,6 +1391,7 @@ export namespace GstMse {
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebuffer-appendwindowstart)
          * @since 1.24
          * @read-only
+         * @default 0
          */
         get append_window_start(): number;
         /**
@@ -1407,6 +1401,7 @@ export namespace GstMse {
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebuffer-appendwindowstart)
          * @since 1.24
          * @read-only
+         * @default 0
          */
         get appendWindowStart(): number;
         /**
@@ -1421,12 +1416,14 @@ export namespace GstMse {
         /**
          * The MIME content-type of the data stream
          * @since 1.24
+         * @default null
          */
         get content_type(): string;
         set content_type(val: string);
         /**
          * The MIME content-type of the data stream
          * @since 1.24
+         * @default null
          */
         get contentType(): string;
         set contentType(val: string);
@@ -1436,6 +1433,7 @@ export namespace GstMse {
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebuffer-timestampoffset)
          * @since 1.24
+         * @default 0
          */
         get timestamp_offset(): number;
         set timestamp_offset(val: bigint | number);
@@ -1445,6 +1443,7 @@ export namespace GstMse {
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebuffer-timestampoffset)
          * @since 1.24
+         * @default 0
          */
         get timestampOffset(): number;
         set timestampOffset(val: bigint | number);
@@ -1455,6 +1454,7 @@ export namespace GstMse {
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebuffer-updating)
          * @since 1.24
          * @read-only
+         * @default false
          */
         get updating(): boolean;
 
@@ -1674,6 +1674,7 @@ export namespace GstMse {
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebufferlist-length)
          * @since 1.24
          * @read-only
+         * @default 0
          */
         get length(): number;
 

@@ -1932,7 +1932,7 @@ export namespace PackageKitGlib {
      * @returns `true` for success, else `false` and `error` set
      * @since 0.9.6
      */
-    function offline_cancel(cancellable?: Gio.Cancellable | null): boolean;
+    function offline_cancel(cancellable: Gio.Cancellable | null): boolean;
     /**
      * Cancels the offline operation that has been scheduled. If there is no
      * scheduled offline operation then this method returns with success.
@@ -1941,7 +1941,7 @@ export namespace PackageKitGlib {
      * @returns `true` for success, else `false` and `error` set
      * @since 1.2.5
      */
-    function offline_cancel_with_flags(flags: OfflineFlags, cancellable?: Gio.Cancellable | null): boolean;
+    function offline_cancel_with_flags(flags: OfflineFlags, cancellable: Gio.Cancellable | null): boolean;
     /**
      * Clears the last offline operation report, which may be success or failure.
      * If the report does not exist then this method returns success.
@@ -1951,7 +1951,7 @@ export namespace PackageKitGlib {
      * @returns `true` for success, else `false` and `error` set
      * @since 0.9.6
      */
-    function offline_clear_results(cancellable?: Gio.Cancellable | null): boolean;
+    function offline_clear_results(cancellable: Gio.Cancellable | null): boolean;
     /**
      * Clears the last offline operation report, which may be success or failure.
      * If the report does not exist then this method returns success.
@@ -1960,7 +1960,7 @@ export namespace PackageKitGlib {
      * @returns `true` for success, else `false` and `error` set
      * @since 1.2.5
      */
-    function offline_clear_results_with_flags(flags: OfflineFlags, cancellable?: Gio.Cancellable | null): boolean;
+    function offline_clear_results_with_flags(flags: OfflineFlags, cancellable: Gio.Cancellable | null): boolean;
     /**
      * An error quark for {@link PackageKitGlib.OfflineError}.
      * @returns an error quark.
@@ -1981,7 +1981,7 @@ export namespace PackageKitGlib {
      * @returns A {@link Gio.FileMonitor}, or `null`
      * @since 0.9.6
      */
-    function offline_get_action_monitor(cancellable?: Gio.Cancellable | null): Gio.FileMonitor;
+    function offline_get_action_monitor(cancellable: Gio.Cancellable | null): Gio.FileMonitor;
     /**
      * Gets the package-ids in the prepared transaction.
      * @returns array of package-ids, or `null`
@@ -1994,7 +1994,7 @@ export namespace PackageKitGlib {
      * @returns A {@link Gio.FileMonitor}, or `null`
      * @since 0.9.6
      */
-    function offline_get_prepared_monitor(cancellable?: Gio.Cancellable | null): Gio.FileMonitor;
+    function offline_get_prepared_monitor(cancellable: Gio.Cancellable | null): Gio.FileMonitor;
     /**
      * Gets a package sack of the packages in the prepared transaction.
      * @returns A new {@link PackageKitGlib.PackageSack}, or `null`
@@ -2012,7 +2012,7 @@ export namespace PackageKitGlib {
      * @returns A {@link Gio.FileMonitor}, or `null`
      * @since 1.0.12
      */
-    function offline_get_prepared_upgrade_monitor(cancellable?: Gio.Cancellable | null): Gio.FileMonitor;
+    function offline_get_prepared_upgrade_monitor(cancellable: Gio.Cancellable | null): Gio.FileMonitor;
     /**
      * Gets the name of the prepared system upgrade in the prepared transaction.
      * @returns the name, or `null` if unset, free with `g_free()`
@@ -2047,7 +2047,7 @@ export namespace PackageKitGlib {
      * @returns `true` for success, else `false` and `error` set
      * @since 0.9.6
      */
-    function offline_trigger(action: OfflineAction, cancellable?: Gio.Cancellable | null): boolean;
+    function offline_trigger(action: OfflineAction, cancellable: Gio.Cancellable | null): boolean;
     /**
      * Triggers the offline system upgrade so that the next reboot will perform the
      * pending transaction.
@@ -2058,7 +2058,7 @@ export namespace PackageKitGlib {
      * @returns `true` for success, else `false` and `error` set
      * @since 1.0.12
      */
-    function offline_trigger_upgrade(action: OfflineAction, cancellable?: Gio.Cancellable | null): boolean;
+    function offline_trigger_upgrade(action: OfflineAction, cancellable: Gio.Cancellable | null): boolean;
     /**
      * Triggers the offline system upgrade so that the next reboot will perform the
      * pending transaction.
@@ -2071,7 +2071,7 @@ export namespace PackageKitGlib {
     function offline_trigger_upgrade_with_flags(
         action: OfflineAction,
         flags: OfflineFlags,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): boolean;
     /**
      * Triggers the offline update so that the next reboot will perform the
@@ -2085,7 +2085,7 @@ export namespace PackageKitGlib {
     function offline_trigger_with_flags(
         action: OfflineAction,
         flags: OfflineFlags,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): boolean;
     function polkit_agent_close(): void;
     function polkit_agent_open(): number;
@@ -2285,11 +2285,11 @@ export namespace PackageKitGlib {
         interface ConstructorProps extends Source.ConstructorProps {
             cat_id: string;
             catId: string;
-            icon: string;
-            name: string;
-            parent_id: string;
-            parentId: string;
-            summary: string;
+            icon: string | null;
+            name: string | null;
+            parent_id: string | null;
+            parentId: string | null;
+            summary: string | null;
         }
     }
 
@@ -2303,39 +2303,46 @@ export namespace PackageKitGlib {
 
         /**
          * @since 0.5.4
+         * @default null
          */
         get cat_id(): string;
         set cat_id(val: string);
         /**
          * @since 0.5.4
+         * @default null
          */
         get catId(): string;
         set catId(val: string);
         /**
          * @since 0.5.4
+         * @default null
          */
-        get icon(): string;
-        set icon(val: string);
+        get icon(): string | null;
+        set icon(val: string | null);
         /**
          * @since 0.5.4
+         * @default null
          */
-        get name(): string;
-        set name(val: string);
+        get name(): string | null;
+        set name(val: string | null);
         /**
          * @since 0.5.4
+         * @default null
          */
-        get parent_id(): string;
-        set parent_id(val: string);
+        get parent_id(): string | null;
+        set parent_id(val: string | null);
         /**
          * @since 0.5.4
+         * @default null
          */
-        get parentId(): string;
-        set parentId(val: string);
+        get parentId(): string | null;
+        set parentId(val: string | null);
         /**
          * @since 0.5.4
+         * @default null
          */
-        get summary(): string;
-        set summary(val: string);
+        get summary(): string | null;
+        set summary(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -2464,6 +2471,7 @@ export namespace PackageKitGlib {
 
         /**
          * @since 0.5.3
+         * @default false
          */
         get background(): boolean;
         set background(val: boolean);
@@ -2471,6 +2479,7 @@ export namespace PackageKitGlib {
          * The cache age in seconds, where `G_MAXUINT` means cache
          * "never expires"
          * @since 0.6.10
+         * @default 4294967295
          */
         get cache_age(): number;
         set cache_age(val: number);
@@ -2478,16 +2487,19 @@ export namespace PackageKitGlib {
          * The cache age in seconds, where `G_MAXUINT` means cache
          * "never expires"
          * @since 0.6.10
+         * @default 4294967295
          */
         get cacheAge(): number;
         set cacheAge(val: number);
         /**
          * @since 1.2.7
+         * @default false
          */
         get details_with_deps_size(): boolean;
         set details_with_deps_size(val: boolean);
         /**
          * @since 1.2.7
+         * @default false
          */
         get detailsWithDepsSize(): boolean;
         set detailsWithDepsSize(val: boolean);
@@ -2495,15 +2507,18 @@ export namespace PackageKitGlib {
          * Whether there are transactions in progress on this client or not
          * @since 0.5.4
          * @read-only
+         * @default true
          */
         get idle(): boolean;
         /**
          * @since 0.5.4
+         * @default true
          */
         get interactive(): boolean;
         set interactive(val: boolean);
         /**
          * @since 0.5.3
+         * @default null
          */
         get locale(): string;
         set locale(val: string);
@@ -2585,7 +2600,7 @@ export namespace PackageKitGlib {
             eula_id: string,
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Adopt a transaction.
@@ -2613,7 +2628,7 @@ export namespace PackageKitGlib {
             transaction_id: string,
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Get the packages that depend this one, i.e. child.parent.
@@ -2649,7 +2664,7 @@ export namespace PackageKitGlib {
             recursive: boolean,
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Downloads package files to a specified location.
@@ -2681,7 +2696,7 @@ export namespace PackageKitGlib {
             directory: string,
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Gets the result from the asynchronous function.
@@ -2718,7 +2733,7 @@ export namespace PackageKitGlib {
         get_categories_async(
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Get details of a package, so more information can be obtained for GUI
@@ -2748,7 +2763,7 @@ export namespace PackageKitGlib {
             package_ids: string[],
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Get details of a local package, so more information can be obtained for GUI
@@ -2778,7 +2793,7 @@ export namespace PackageKitGlib {
             files: string[],
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Gets the client details-with-deps-size value.
@@ -2806,7 +2821,7 @@ export namespace PackageKitGlib {
         get_distro_upgrades_async(
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Get the file list (i.e. a list of files installed) for the specified package.
@@ -2834,7 +2849,7 @@ export namespace PackageKitGlib {
             package_ids: string[],
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Get file list of a local package, so more information can be obtained for GUI
@@ -2864,7 +2879,7 @@ export namespace PackageKitGlib {
             files: string[],
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Gets if the transaction client idle value.
@@ -2907,7 +2922,7 @@ export namespace PackageKitGlib {
             number: number,
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Get the list of packages from the backend
@@ -2935,7 +2950,7 @@ export namespace PackageKitGlib {
             filters: Bitfield,
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Get the progress of a transaction.
@@ -2946,13 +2961,13 @@ export namespace PackageKitGlib {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        get_progress(transaction_id: string, cancellable?: Gio.Cancellable | null): Progress;
+        get_progress(transaction_id: string, cancellable: Gio.Cancellable | null): Progress;
         /**
          * Find the current state of a transaction.
          * @param transaction_id a transaction ID such as "/21_ebcbdaae_data"
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        get_progress_async(transaction_id: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<Progress>;
+        get_progress_async(transaction_id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Progress>;
         /**
          * Find the current state of a transaction.
          * @param transaction_id a transaction ID such as "/21_ebcbdaae_data"
@@ -2972,7 +2987,7 @@ export namespace PackageKitGlib {
          */
         get_progress_async(
             transaction_id: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback_ready?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Progress> | void;
         /**
@@ -3007,7 +3022,7 @@ export namespace PackageKitGlib {
             filters: Bitfield,
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Get details about the specific update, for instance any CVE urls and
@@ -3037,7 +3052,7 @@ export namespace PackageKitGlib {
             package_ids: string[],
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Get a list of all the packages that can be updated for all repositories.
@@ -3065,7 +3080,7 @@ export namespace PackageKitGlib {
             filters: Bitfield,
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Install a file locally, and get the deps from the repositories.
@@ -3099,7 +3114,7 @@ export namespace PackageKitGlib {
             files: string[],
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Install a package of the newest and most correct version.
@@ -3131,7 +3146,7 @@ export namespace PackageKitGlib {
             package_ids: string[],
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Install a software repository signature of the newest and most correct version.
@@ -3167,7 +3182,7 @@ export namespace PackageKitGlib {
             package_id: string,
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Refresh the cache, i.e. download new metadata from a remote URL so that
@@ -3201,7 +3216,7 @@ export namespace PackageKitGlib {
             force: boolean,
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Remove a package (optionally with dependancies) from the system.
@@ -3245,7 +3260,7 @@ export namespace PackageKitGlib {
             autoremove: boolean,
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * This transaction will try to recover from a broken package management system:
@@ -3283,7 +3298,7 @@ export namespace PackageKitGlib {
             transaction_flags: Bitfield,
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Enable or disable the repository.
@@ -3315,7 +3330,7 @@ export namespace PackageKitGlib {
             enabled: boolean,
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Removes a repo and optionally the packages installed from it.
@@ -3351,7 +3366,7 @@ export namespace PackageKitGlib {
             autoremove: boolean,
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * We may want to set a repository parameter.
@@ -3389,7 +3404,7 @@ export namespace PackageKitGlib {
             value: string,
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Get the packages that require this one, i.e. parent.child.
@@ -3425,7 +3440,7 @@ export namespace PackageKitGlib {
             recursive: boolean,
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Resolve a package name into a `package_id`. This can return installed and
@@ -3461,7 +3476,7 @@ export namespace PackageKitGlib {
             packages: string[],
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Search all detailed summary information to try and find a keyword.
@@ -3497,7 +3512,7 @@ export namespace PackageKitGlib {
             values: string[],
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Search for packages that provide a specific file.
@@ -3529,7 +3544,7 @@ export namespace PackageKitGlib {
             values: string[],
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Return all packages in a specific group.
@@ -3561,7 +3576,7 @@ export namespace PackageKitGlib {
             values: string[],
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Search all the locally installed files and remote repositories for a package
@@ -3595,7 +3610,7 @@ export namespace PackageKitGlib {
             values: string[],
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Sets the background value for the client. A background transaction
@@ -3657,7 +3672,7 @@ export namespace PackageKitGlib {
             package_ids: string[],
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * This transaction will upgrade the distro to the next version, which may
@@ -3701,7 +3716,7 @@ export namespace PackageKitGlib {
             upgrade_kind: UpgradeKindEnum,
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * This should return packages that provide the supplied attributes.
@@ -3737,7 +3752,7 @@ export namespace PackageKitGlib {
             values: string[],
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
     }
 
@@ -3924,61 +3939,73 @@ export namespace PackageKitGlib {
 
         /**
          * @since 0.5.2
+         * @default null
          */
         get backend_author(): string;
         set backend_author(val: string);
         /**
          * @since 0.5.2
+         * @default null
          */
         get backendAuthor(): string;
         set backendAuthor(val: string);
         /**
          * @since 0.5.2
+         * @default null
          */
         get backend_description(): string;
         set backend_description(val: string);
         /**
          * @since 0.5.2
+         * @default null
          */
         get backendDescription(): string;
         set backendDescription(val: string);
         /**
          * @since 0.5.2
+         * @default null
          */
         get backend_name(): string;
         set backend_name(val: string);
         /**
          * @since 0.5.2
+         * @default null
          */
         get backendName(): string;
         set backendName(val: string);
         /**
          * @since 0.5.3
+         * @default false
          */
         get connected(): boolean;
         set connected(val: boolean);
         /**
          * @since 0.5.5
+         * @default null
          */
         get distro_id(): string;
         set distro_id(val: string);
         /**
          * @since 0.5.5
+         * @default null
          */
         get distroId(): string;
         set distroId(val: string);
         /**
          * @since 0.5.2
+         * @default 0
          */
         get filters(): number;
         set filters(val: bigint | number);
         /**
          * @since 0.5.2
+         * @default 0
          */
         get groups(): number;
         set groups(val: bigint | number);
         /**
          * @since 0.5.3
+         * @default false
          */
         get locked(): boolean;
         set locked(val: boolean);
@@ -3994,52 +4021,62 @@ export namespace PackageKitGlib {
         set mimeTypes(val: string[]);
         /**
          * @since 0.5.3
+         * @default PackageKitGlib.NetworkEnum.LAST
          */
         get network_state(): NetworkEnum;
         set network_state(val: NetworkEnum);
         /**
          * @since 0.5.3
+         * @default PackageKitGlib.NetworkEnum.LAST
          */
         get networkState(): NetworkEnum;
         set networkState(val: NetworkEnum);
         /**
          * @since 0.8.8
+         * @default 0
          */
         get provides(): number;
         set provides(val: bigint | number);
         /**
          * @since 0.5.2
+         * @default 0
          */
         get roles(): number;
         set roles(val: bigint | number);
         /**
          * @since 0.5.2
          * @read-only
+         * @default 0
          */
         get version_major(): number;
         /**
          * @since 0.5.2
          * @read-only
+         * @default 0
          */
         get versionMajor(): number;
         /**
          * @since 0.5.2
          * @read-only
+         * @default 0
          */
         get version_micro(): number;
         /**
          * @since 0.5.2
          * @read-only
+         * @default 0
          */
         get versionMicro(): number;
         /**
          * @since 0.5.2
          * @read-only
+         * @default 0
          */
         get version_minor(): number;
         /**
          * @since 0.5.2
          * @read-only
+         * @default 0
          */
         get versionMinor(): number;
 
@@ -4127,7 +4164,7 @@ export namespace PackageKitGlib {
          * @param action_id The action ID, for instance "org.freedesktop.PackageKit.install-untrusted"
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        can_authorize_async(action_id: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<AuthorizeEnum>;
+        can_authorize_async(action_id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<AuthorizeEnum>;
         /**
          * We may want to know before we run a method if we are going to be denied,
          * accepted or challenged for authentication.
@@ -4149,7 +4186,7 @@ export namespace PackageKitGlib {
          */
         can_authorize_async(
             action_id: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<AuthorizeEnum> | void;
         /**
@@ -4162,7 +4199,7 @@ export namespace PackageKitGlib {
          * Gets the debugging state from the daemon.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        get_daemon_state_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<string | null>;
+        get_daemon_state_async(cancellable: Gio.Cancellable | null): globalThis.Promise<string | null>;
         /**
          * Gets the debugging state from the daemon.
          * @param cancellable a {@link Gio.Cancellable} or `null`
@@ -4178,7 +4215,7 @@ export namespace PackageKitGlib {
          * @param callback the function to run on completion
          */
         get_daemon_state_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string | null> | void;
         /**
@@ -4194,12 +4231,12 @@ export namespace PackageKitGlib {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` if the properties were set correctly
          */
-        get_properties(cancellable?: Gio.Cancellable | null): boolean;
+        get_properties(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Gets global properties from the daemon.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        get_properties_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        get_properties_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Gets global properties from the daemon.
          * @param cancellable a {@link Gio.Cancellable} or `null`
@@ -4212,7 +4249,7 @@ export namespace PackageKitGlib {
          * @param callback the function to run on completion
          */
         get_properties_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -4225,7 +4262,7 @@ export namespace PackageKitGlib {
          * Gets a transacton ID from the daemon.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        get_tid_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<string | null>;
+        get_tid_async(cancellable: Gio.Cancellable | null): globalThis.Promise<string | null>;
         /**
          * Gets a transacton ID from the daemon.
          * @param cancellable a {@link Gio.Cancellable} or `null`
@@ -4238,7 +4275,7 @@ export namespace PackageKitGlib {
          * @param callback the function to run on completion
          */
         get_tid_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string | null> | void;
         /**
@@ -4253,7 +4290,7 @@ export namespace PackageKitGlib {
          * @param role the role enum, e.g. {@link PackageKitGlib.RoleEnum.GET_UPDATES}
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        get_time_since_action_async(role: RoleEnum, cancellable?: Gio.Cancellable | null): globalThis.Promise<number>;
+        get_time_since_action_async(role: RoleEnum, cancellable: Gio.Cancellable | null): globalThis.Promise<number>;
         /**
          * We may want to know how long it has been since we refreshed the cache or
          * retrieved the update list.
@@ -4275,7 +4312,7 @@ export namespace PackageKitGlib {
          */
         get_time_since_action_async(
             role: RoleEnum,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<number> | void;
         /**
@@ -4291,12 +4328,12 @@ export namespace PackageKitGlib {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns The list of transaction id's, or `null`, free with `g_strfreev()`
          */
-        get_transaction_list(cancellable?: Gio.Cancellable | null): string[];
+        get_transaction_list(cancellable: Gio.Cancellable | null): string[];
         /**
          * Gets the transactions currently running in the daemon.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        get_transaction_list_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<string[]>;
+        get_transaction_list_async(cancellable: Gio.Cancellable | null): globalThis.Promise<string[]>;
         /**
          * Gets the transactions currently running in the daemon.
          * @param cancellable a {@link Gio.Cancellable} or `null`
@@ -4312,7 +4349,7 @@ export namespace PackageKitGlib {
          * @param callback the function to run on completion
          */
         get_transaction_list_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string[]> | void;
         /**
@@ -4330,7 +4367,7 @@ export namespace PackageKitGlib {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` if the proxy was set correctly NOTE: This is just provided for backwards compatibility. Clients should really be using `pk_control_set_proxy2()`.
          */
-        set_proxy(proxy_http: string, proxy_ftp: string, cancellable?: Gio.Cancellable | null): boolean;
+        set_proxy(proxy_http: string, proxy_ftp: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Sets the network proxy to use in the daemon.
          * Warning: this function is synchronous, and may block. Do not use it in GUI
@@ -4351,7 +4388,7 @@ export namespace PackageKitGlib {
             proxy_socks: string,
             no_proxy: string,
             pac: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Set a proxy on the PK daemon
@@ -4371,8 +4408,8 @@ export namespace PackageKitGlib {
             proxy_socks: string,
             no_proxy: string,
             pac: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Set a proxy on the PK daemon
@@ -4386,7 +4423,7 @@ export namespace PackageKitGlib {
         set_proxy_async(
             proxy_http: string,
             proxy_ftp: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Set a proxy on the PK daemon
@@ -4417,7 +4454,7 @@ export namespace PackageKitGlib {
         set_proxy_async(
             proxy_http: string,
             proxy_ftp: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -4433,12 +4470,12 @@ export namespace PackageKitGlib {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` if the suggestion was sent
          */
-        suggest_daemon_quit(cancellable?: Gio.Cancellable | null): boolean;
+        suggest_daemon_quit(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Suggests to the daemon that it should quit as soon as possible.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        suggest_daemon_quit_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        suggest_daemon_quit_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Suggests to the daemon that it should quit as soon as possible.
          * @param cancellable a {@link Gio.Cancellable} or `null`
@@ -4454,7 +4491,7 @@ export namespace PackageKitGlib {
          * @param callback the function to run on completion
          */
         suggest_daemon_quit_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -4589,51 +4626,61 @@ export namespace PackageKitGlib {
 
         /**
          * @since 0.5.4
+         * @default null
          */
         get description(): string;
         set description(val: string);
         /**
          * @since 1.2.4
+         * @default 18446744073709551615
          */
         get download_size(): number;
         set download_size(val: bigint | number);
         /**
          * @since 1.2.4
+         * @default 18446744073709551615
          */
         get downloadSize(): number;
         set downloadSize(val: bigint | number);
         /**
          * @since 0.5.4
+         * @default PackageKitGlib.GroupEnum.UNKNOWN
          */
         get group(): GroupEnum;
         set group(val: GroupEnum);
         /**
          * @since 0.5.4
+         * @default null
          */
         get license(): string;
         set license(val: string);
         /**
          * @since 0.5.4
+         * @default null
          */
         get package_id(): string;
         set package_id(val: string);
         /**
          * @since 0.5.4
+         * @default null
          */
         get packageId(): string;
         set packageId(val: string);
         /**
          * @since 0.5.4
+         * @default 0
          */
         get size(): number;
         set size(val: bigint | number);
         /**
          * @since 0.9.1
+         * @default null
          */
         get summary(): string;
         set summary(val: string);
         /**
          * @since 0.5.4
+         * @default null
          */
         get url(): string;
         set url(val: string);
@@ -4750,16 +4797,19 @@ export namespace PackageKitGlib {
 
         /**
          * @since 0.5.4
+         * @default null
          */
         get name(): string;
         set name(val: string);
         /**
          * @since 0.5.4
+         * @default PackageKitGlib.DistroUpgradeEnum.UNKNOWN
          */
         get state(): DistroUpgradeEnum;
         set state(val: DistroUpgradeEnum);
         /**
          * @since 0.5.4
+         * @default null
          */
         get summary(): string;
         set summary(val: string);
@@ -4849,11 +4899,13 @@ export namespace PackageKitGlib {
 
         /**
          * @since 0.5.5
+         * @default PackageKitGlib.ErrorEnum.UNKNOWN
          */
         get code(): ErrorEnum;
         set code(val: ErrorEnum);
         /**
          * @since 0.5.5
+         * @default null
          */
         get details(): string;
         set details(val: string);
@@ -4946,48 +4998,56 @@ export namespace PackageKitGlib {
         /**
          * ID for this EULA.
          * @since 0.5.4
+         * @default null
          */
         get eula_id(): string;
         set eula_id(val: string);
         /**
          * ID for this EULA.
          * @since 0.5.4
+         * @default null
          */
         get eulaId(): string;
         set eulaId(val: string);
         /**
          * The text of the license agreement.
          * @since 0.5.4
+         * @default null
          */
         get license_agreement(): string;
         set license_agreement(val: string);
         /**
          * The text of the license agreement.
          * @since 0.5.4
+         * @default null
          */
         get licenseAgreement(): string;
         set licenseAgreement(val: string);
         /**
          * PackageID this EULA is for.
          * @since 0.5.4
+         * @default null
          */
         get package_id(): string;
         set package_id(val: string);
         /**
          * PackageID this EULA is for.
          * @since 0.5.4
+         * @default null
          */
         get packageId(): string;
         set packageId(val: string);
         /**
          * Vendor this EULA is from.
          * @since 0.5.4
+         * @default null
          */
         get vendor_name(): string;
         set vendor_name(val: string);
         /**
          * Vendor this EULA is from.
          * @since 0.5.4
+         * @default null
          */
         get vendorName(): string;
         set vendorName(val: string);
@@ -5087,11 +5147,13 @@ export namespace PackageKitGlib {
         set files(val: string[]);
         /**
          * @since 0.5.4
+         * @default null
          */
         get package_id(): string;
         set package_id(val: string);
         /**
          * @since 0.5.4
+         * @default null
          */
         get packageId(): string;
         set packageId(val: string);
@@ -5178,21 +5240,25 @@ export namespace PackageKitGlib {
 
         /**
          * @since 0.8.1
+         * @default null
          */
         get package_id(): string;
         set package_id(val: string);
         /**
          * @since 0.8.1
+         * @default null
          */
         get packageId(): string;
         set packageId(val: string);
         /**
          * @since 0.8.1
+         * @default 0
          */
         get percentage(): number;
         set percentage(val: number);
         /**
          * @since 0.8.2
+         * @default 0
          */
         get status(): number;
         set status(val: number);
@@ -5286,31 +5352,37 @@ export namespace PackageKitGlib {
 
         /**
          * @since 0.5.4
+         * @default null
          */
         get media_id(): string;
         set media_id(val: string);
         /**
          * @since 0.5.4
+         * @default null
          */
         get mediaId(): string;
         set mediaId(val: string);
         /**
          * @since 0.5.4
+         * @default null
          */
         get media_text(): string;
         set media_text(val: string);
         /**
          * @since 0.5.4
+         * @default null
          */
         get mediaText(): string;
         set mediaText(val: string);
         /**
          * @since 0.5.4
+         * @default PackageKitGlib.MediaTypeEnum.UNKNOWN
          */
         get media_type(): MediaTypeEnum;
         set media_type(val: MediaTypeEnum);
         /**
          * @since 0.5.4
+         * @default PackageKitGlib.MediaTypeEnum.UNKNOWN
          */
         get mediaType(): MediaTypeEnum;
         set mediaType(val: MediaTypeEnum);
@@ -5399,7 +5471,7 @@ export namespace PackageKitGlib {
             package_id: string;
             packageId: string;
             size: bigint | number;
-            summary: string;
+            summary: string | null;
             update_bugzilla_urls: string[];
             updateBugzillaUrls: string[];
             update_changelog: string;
@@ -5438,44 +5510,52 @@ export namespace PackageKitGlib {
 
         /**
          * @since 0.5.4
+         * @default null
          */
         get description(): string;
         set description(val: string);
         /**
          * @since 0.5.4
+         * @default PackageKitGlib.GroupEnum.UNKNOWN
          */
         get group(): GroupEnum;
         set group(val: GroupEnum);
         /**
          * @since 0.5.4
+         * @default PackageKitGlib.InfoEnum.UNKNOWN
          */
         get info(): InfoEnum;
         set info(val: InfoEnum);
         /**
          * @since 0.5.4
+         * @default null
          */
         get license(): string;
         set license(val: string);
         /**
          * @since 0.5.4
          * @read-only
+         * @default null
          */
         get package_id(): string;
         /**
          * @since 0.5.4
          * @read-only
+         * @default null
          */
         get packageId(): string;
         /**
          * @since 0.5.4
+         * @default 0
          */
         get size(): number;
         set size(val: bigint | number);
         /**
          * @since 0.5.4
+         * @default null
          */
-        get summary(): string;
-        set summary(val: string);
+        get summary(): string | null;
+        set summary(val: string | null);
         /**
          * @since 0.8.1
          */
@@ -5488,11 +5568,13 @@ export namespace PackageKitGlib {
         set updateBugzillaUrls(val: string[]);
         /**
          * @since 0.5.4
+         * @default null
          */
         get update_changelog(): string;
         set update_changelog(val: string);
         /**
          * @since 0.5.4
+         * @default null
          */
         get updateChangelog(): string;
         set updateChangelog(val: string);
@@ -5508,31 +5590,37 @@ export namespace PackageKitGlib {
         set updateCveUrls(val: string[]);
         /**
          * @since 0.5.4
+         * @default null
          */
         get update_issued(): string;
         set update_issued(val: string);
         /**
          * @since 0.5.4
+         * @default null
          */
         get updateIssued(): string;
         set updateIssued(val: string);
         /**
          * @since 0.5.4
+         * @default null
          */
         get update_obsoletes(): string;
         set update_obsoletes(val: string);
         /**
          * @since 0.5.4
+         * @default null
          */
         get updateObsoletes(): string;
         set updateObsoletes(val: string);
         /**
          * @since 0.5.4
+         * @default PackageKitGlib.RestartEnum.UNKNOWN
          */
         get update_restart(): RestartEnum;
         set update_restart(val: RestartEnum);
         /**
          * @since 0.5.4
+         * @default PackageKitGlib.RestartEnum.UNKNOWN
          */
         get updateRestart(): RestartEnum;
         set updateRestart(val: RestartEnum);
@@ -5542,6 +5630,7 @@ export namespace PackageKitGlib {
          * {@link PackageKitGlib.InfoEnum.BUGFIX}, {@link PackageKitGlib.InfoEnum.IMPORTANT},
          * {@link PackageKitGlib.InfoEnum.SECURITY} or {@link PackageKitGlib.InfoEnum.CRITICAL}.
          * @since 1.2.4
+         * @default PackageKitGlib.InfoEnum.UNKNOWN
          */
         get update_severity(): InfoEnum;
         set update_severity(val: InfoEnum);
@@ -5551,46 +5640,55 @@ export namespace PackageKitGlib {
          * {@link PackageKitGlib.InfoEnum.BUGFIX}, {@link PackageKitGlib.InfoEnum.IMPORTANT},
          * {@link PackageKitGlib.InfoEnum.SECURITY} or {@link PackageKitGlib.InfoEnum.CRITICAL}.
          * @since 1.2.4
+         * @default PackageKitGlib.InfoEnum.UNKNOWN
          */
         get updateSeverity(): InfoEnum;
         set updateSeverity(val: InfoEnum);
         /**
          * @since 0.5.4
+         * @default PackageKitGlib.UpdateStateEnum.UNKNOWN
          */
         get update_state(): UpdateStateEnum;
         set update_state(val: UpdateStateEnum);
         /**
          * @since 0.5.4
+         * @default PackageKitGlib.UpdateStateEnum.UNKNOWN
          */
         get updateState(): UpdateStateEnum;
         set updateState(val: UpdateStateEnum);
         /**
          * @since 0.5.4
+         * @default null
          */
         get update_text(): string;
         set update_text(val: string);
         /**
          * @since 0.5.4
+         * @default null
          */
         get updateText(): string;
         set updateText(val: string);
         /**
          * @since 0.5.4
+         * @default null
          */
         get update_updated(): string;
         set update_updated(val: string);
         /**
          * @since 0.5.4
+         * @default null
          */
         get updateUpdated(): string;
         set updateUpdated(val: string);
         /**
          * @since 0.5.4
+         * @default null
          */
         get update_updates(): string;
         set update_updates(val: string);
         /**
          * @since 0.5.4
+         * @default null
          */
         get updateUpdates(): string;
         set updateUpdates(val: string);
@@ -5606,6 +5704,7 @@ export namespace PackageKitGlib {
         set updateVendorUrls(val: string[]);
         /**
          * @since 0.5.4
+         * @default null
          */
         get url(): string;
         set url(val: string);
@@ -5961,7 +6060,7 @@ export namespace PackageKitGlib {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` if the properties were set correctly
          */
-        get_details(cancellable?: Gio.Cancellable | null): boolean;
+        get_details(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Merges in details about packages.
          * @param cancellable a {@link Gio.Cancellable} or `null`
@@ -5971,7 +6070,7 @@ export namespace PackageKitGlib {
         get_details_async(
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Returns all the Package IDs in the sack
@@ -5995,7 +6094,7 @@ export namespace PackageKitGlib {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` if the properties were set correctly
          */
-        get_update_detail(cancellable?: Gio.Cancellable | null): boolean;
+        get_update_detail(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Merges in update details about packages.
          * @param cancellable a {@link Gio.Cancellable} or `null`
@@ -6005,7 +6104,7 @@ export namespace PackageKitGlib {
         get_update_detail_async(
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Gets the result from the asynchronous function.
@@ -6040,7 +6139,7 @@ export namespace PackageKitGlib {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` if the properties were set correctly
          */
-        resolve(cancellable?: Gio.Cancellable | null): boolean;
+        resolve(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Merges in details about packages using resolve.
          * @param cancellable a {@link Gio.Cancellable} or `null`
@@ -6050,7 +6149,7 @@ export namespace PackageKitGlib {
         resolve_async(
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Sorts the package sack
@@ -6128,48 +6227,56 @@ export namespace PackageKitGlib {
         /**
          * `true` if this transaction can be cancelled.
          * @since 0.5.2
+         * @default false
          */
         get allow_cancel(): boolean;
         set allow_cancel(val: boolean);
         /**
          * `true` if this transaction can be cancelled.
          * @since 0.5.2
+         * @default false
          */
         get allowCancel(): boolean;
         set allowCancel(val: boolean);
         /**
          * `true` if the transaction caller is still connected.
          * @since 0.5.2
+         * @default false
          */
         get caller_active(): boolean;
         set caller_active(val: boolean);
         /**
          * `true` if the transaction caller is still connected.
          * @since 0.5.2
+         * @default false
          */
         get callerActive(): boolean;
         set callerActive(val: boolean);
         /**
          * Number of bytes remaining to download.
          * @since 0.8.0
+         * @default 0
          */
         get download_size_remaining(): number;
         set download_size_remaining(val: bigint | number);
         /**
          * Number of bytes remaining to download.
          * @since 0.8.0
+         * @default 0
          */
         get downloadSizeRemaining(): number;
         set downloadSizeRemaining(val: bigint | number);
         /**
          * Amount of time the transaction has taken in seconds.
          * @since 0.5.2
+         * @default 0
          */
         get elapsed_time(): number;
         set elapsed_time(val: number);
         /**
          * Amount of time the transaction has taken in seconds.
          * @since 0.5.2
+         * @default 0
          */
         get elapsedTime(): number;
         set elapsedTime(val: number);
@@ -6195,6 +6302,7 @@ export namespace PackageKitGlib {
          * Full package ID this transaction is acting on.
          * e.g. 'gnome-power-manager;0.1.2;i386;fedora'
          * @since 0.5.2
+         * @default null
          */
         get package_id(): string;
         set package_id(val: string);
@@ -6202,78 +6310,91 @@ export namespace PackageKitGlib {
          * Full package ID this transaction is acting on.
          * e.g. 'gnome-power-manager;0.1.2;i386;fedora'
          * @since 0.5.2
+         * @default null
          */
         get packageId(): string;
         set packageId(val: string);
         /**
          * Percentage complete of this transaction.
          * @since 0.5.2
+         * @default -1
          */
         get percentage(): number;
         set percentage(val: number);
         /**
          * Amount of time the transaction will take to complete in seconds or 0 if unknown.
          * @since 0.5.2
+         * @default 0
          */
         get remaining_time(): number;
         set remaining_time(val: number);
         /**
          * Amount of time the transaction will take to complete in seconds or 0 if unknown.
          * @since 0.5.2
+         * @default 0
          */
         get remainingTime(): number;
         set remainingTime(val: number);
         /**
          * Role of this transaction.
          * @since 0.5.2
+         * @default 0
          */
         get role(): number;
         set role(val: number);
         /**
          * The D-Bus name of the client that started this transaction.
          * @since 1.2.6
+         * @default null
          */
         get sender(): string;
         set sender(val: string);
         /**
          * Transaction speed in bits per second or 0 if unknown.
          * @since 0.5.2
+         * @default 0
          */
         get speed(): number;
         set speed(val: number);
         /**
          * Status of this transaction.
          * @since 0.5.2
+         * @default 0
          */
         get status(): number;
         set status(val: number);
         /**
          * A {@link PackageKitGlib.Bitfield} containing {@link PackageKitGlib.TransactionFlagEnum} associated with this transaction.
          * @since 0.8.8
+         * @default 0
          */
         get transaction_flags(): number;
         set transaction_flags(val: bigint | number);
         /**
          * A {@link PackageKitGlib.Bitfield} containing {@link PackageKitGlib.TransactionFlagEnum} associated with this transaction.
          * @since 0.8.8
+         * @default 0
          */
         get transactionFlags(): number;
         set transactionFlags(val: bigint | number);
         /**
          * ID used by this transaction.
          * @since 0.5.2
+         * @default null
          */
         get transaction_id(): string;
         set transaction_id(val: string);
         /**
          * ID used by this transaction.
          * @since 0.5.2
+         * @default null
          */
         get transactionId(): string;
         set transactionId(val: string);
         /**
          * The UID that started this transaction.
          * @since 0.5.2
+         * @default 0
          */
         get uid(): number;
         set uid(val: number);
@@ -6526,21 +6647,25 @@ export namespace PackageKitGlib {
 
         /**
          * @since 0.5.4
+         * @default null
          */
         get description(): string;
         set description(val: string);
         /**
          * @since 0.5.4
+         * @default false
          */
         get enabled(): boolean;
         set enabled(val: boolean);
         /**
          * @since 0.5.4
+         * @default null
          */
         get repo_id(): string;
         set repo_id(val: string);
         /**
          * @since 0.5.4
+         * @default null
          */
         get repoId(): string;
         set repoId(val: string);
@@ -6648,76 +6773,91 @@ export namespace PackageKitGlib {
 
         /**
          * @since 0.5.4
+         * @default null
          */
         get key_fingerprint(): string;
         set key_fingerprint(val: string);
         /**
          * @since 0.5.4
+         * @default null
          */
         get keyFingerprint(): string;
         set keyFingerprint(val: string);
         /**
          * @since 0.5.4
+         * @default null
          */
         get key_id(): string;
         set key_id(val: string);
         /**
          * @since 0.5.4
+         * @default null
          */
         get keyId(): string;
         set keyId(val: string);
         /**
          * @since 0.5.4
+         * @default null
          */
         get key_timestamp(): string;
         set key_timestamp(val: string);
         /**
          * @since 0.5.4
+         * @default null
          */
         get keyTimestamp(): string;
         set keyTimestamp(val: string);
         /**
          * @since 0.5.4
+         * @default null
          */
         get key_url(): string;
         set key_url(val: string);
         /**
          * @since 0.5.4
+         * @default null
          */
         get keyUrl(): string;
         set keyUrl(val: string);
         /**
          * @since 0.5.4
+         * @default null
          */
         get key_userid(): string;
         set key_userid(val: string);
         /**
          * @since 0.5.4
+         * @default null
          */
         get keyUserid(): string;
         set keyUserid(val: string);
         /**
          * @since 0.5.4
+         * @default null
          */
         get package_id(): string;
         set package_id(val: string);
         /**
          * @since 0.5.4
+         * @default null
          */
         get packageId(): string;
         set packageId(val: string);
         /**
          * @since 0.5.4
+         * @default null
          */
         get repository_name(): string;
         set repository_name(val: string);
         /**
          * @since 0.5.4
+         * @default null
          */
         get repositoryName(): string;
         set repositoryName(val: string);
         /**
          * @since 0.5.4
+         * @default PackageKitGlib.SigTypeEnum.UNKNOWN
          */
         get type(): SigTypeEnum;
         set type(val: SigTypeEnum);
@@ -6791,16 +6931,19 @@ export namespace PackageKitGlib {
 
         /**
          * @since 0.5.4
+         * @default null
          */
         get package_id(): string;
         set package_id(val: string);
         /**
          * @since 0.5.4
+         * @default null
          */
         get packageId(): string;
         set packageId(val: string);
         /**
          * @since 0.5.4
+         * @default PackageKitGlib.RestartEnum.UNKNOWN
          */
         get restart(): RestartEnum;
         set restart(val: RestartEnum);
@@ -6874,6 +7017,7 @@ export namespace PackageKitGlib {
 
         /**
          * @since 0.5.3
+         * @default 0
          */
         get inputs(): number;
         set inputs(val: number);
@@ -6885,18 +7029,21 @@ export namespace PackageKitGlib {
         /**
          * The {@link PackageKitGlib.RoleEnum} or {@link PackageKitGlib.RoleEnum.UNKNOWN} if not set
          * @since 0.5.2
+         * @default PackageKitGlib.RoleEnum.UNKNOWN
          */
         get role(): RoleEnum;
         set role(val: RoleEnum);
         /**
          * A {@link PackageKitGlib.Bitfield} containing {@link PackageKitGlib.TransactionFlagEnum} for this result.
          * @since 0.8.1
+         * @default 0
          */
         get transaction_flags(): number;
         set transaction_flags(val: bigint | number);
         /**
          * A {@link PackageKitGlib.Bitfield} containing {@link PackageKitGlib.TransactionFlagEnum} for this result.
          * @since 0.8.1
+         * @default 0
          */
         get transactionFlags(): number;
         set transactionFlags(val: bigint | number);
@@ -7156,16 +7303,19 @@ export namespace PackageKitGlib {
 
         /**
          * @since 0.6.0
+         * @default PackageKitGlib.RoleEnum.UNKNOWN
          */
         get role(): RoleEnum;
         set role(val: RoleEnum);
         /**
          * @since 0.6.0
+         * @default null
          */
         get transaction_id(): string;
         set transaction_id(val: string);
         /**
          * @since 0.6.0
+         * @default null
          */
         get transactionId(): string;
         set transactionId(val: string);
@@ -7251,54 +7401,63 @@ export namespace PackageKitGlib {
         /**
          * `true` if package downgrades are allowed.
          * @since 1.0.2
+         * @default false
          */
         get allow_downgrade(): boolean;
         set allow_downgrade(val: boolean);
         /**
          * `true` if package downgrades are allowed.
          * @since 1.0.2
+         * @default false
          */
         get allowDowngrade(): boolean;
         set allowDowngrade(val: boolean);
         /**
          * `true` if package reinstallation shall be allowed during transaction.
          * @since 1.0.2
+         * @default false
          */
         get allow_reinstall(): boolean;
         set allow_reinstall(val: boolean);
         /**
          * `true` if package reinstallation shall be allowed during transaction.
          * @since 1.0.2
+         * @default false
          */
         get allowReinstall(): boolean;
         set allowReinstall(val: boolean);
         /**
          * `true` if we are just preparing the transaction for later.
          * @since 0.8.1
+         * @default false
          */
         get only_download(): boolean;
         set only_download(val: boolean);
         /**
          * `true` if we are just preparing the transaction for later.
          * @since 0.8.1
+         * @default false
          */
         get onlyDownload(): boolean;
         set onlyDownload(val: boolean);
         /**
          * `true` if only authenticated packages should be allowed in the transaction.
          * @since 0.9.5
+         * @default true
          */
         get only_trusted(): boolean;
         set only_trusted(val: boolean);
         /**
          * `true` if only authenticated packages should be allowed in the transaction.
          * @since 0.9.5
+         * @default true
          */
         get onlyTrusted(): boolean;
         set onlyTrusted(val: boolean);
         /**
          * `true` if we are simulating.
          * @since 0.5.2
+         * @default true
          */
         get simulate(): boolean;
         set simulate(val: boolean);
@@ -7397,7 +7556,7 @@ export namespace PackageKitGlib {
             recursive: boolean,
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Get the list of dependent packages.
@@ -7428,7 +7587,7 @@ export namespace PackageKitGlib {
             directory: string,
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Downloads packages
@@ -7469,7 +7628,7 @@ export namespace PackageKitGlib {
         get_categories_async(
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Get the categories available.
@@ -7489,7 +7648,7 @@ export namespace PackageKitGlib {
             package_ids: string[],
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Gets details about packages.
@@ -7514,7 +7673,7 @@ export namespace PackageKitGlib {
             package_ids: string[],
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Get the files in a package.
@@ -7549,7 +7708,7 @@ export namespace PackageKitGlib {
             filters: Bitfield,
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Gets the list of packages.
@@ -7574,7 +7733,7 @@ export namespace PackageKitGlib {
             filters: Bitfield,
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Get the list of available repositories.
@@ -7604,7 +7763,7 @@ export namespace PackageKitGlib {
             package_ids: string[],
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Gets details about updates.
@@ -7629,7 +7788,7 @@ export namespace PackageKitGlib {
             filters: Bitfield,
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Gets the update lists.
@@ -7655,7 +7814,7 @@ export namespace PackageKitGlib {
             files: string[],
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param args
@@ -7689,7 +7848,7 @@ export namespace PackageKitGlib {
             package_ids: string[],
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param args
@@ -7722,7 +7881,7 @@ export namespace PackageKitGlib {
             force: boolean,
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Refresh the package cache.
@@ -7753,7 +7912,7 @@ export namespace PackageKitGlib {
             autoremove: boolean,
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param args
@@ -7790,7 +7949,7 @@ export namespace PackageKitGlib {
         repair_system_async(
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param args
@@ -7821,7 +7980,7 @@ export namespace PackageKitGlib {
             enabled: boolean,
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Enable or disable a specific repo.
@@ -7852,7 +8011,7 @@ export namespace PackageKitGlib {
             recursive: boolean,
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Get the packages this package requires.
@@ -7883,7 +8042,7 @@ export namespace PackageKitGlib {
             packages: string[],
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Resolves a package name to a package-id.
@@ -7912,7 +8071,7 @@ export namespace PackageKitGlib {
             values: string[],
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Searches for some package details.
@@ -7941,7 +8100,7 @@ export namespace PackageKitGlib {
             values: string[],
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Searches for specific files.
@@ -7970,7 +8129,7 @@ export namespace PackageKitGlib {
             values: string[],
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Searches the group lists.
@@ -7999,7 +8158,7 @@ export namespace PackageKitGlib {
             values: string[],
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Searches for a package name.
@@ -8053,7 +8212,7 @@ export namespace PackageKitGlib {
             package_ids: string[],
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param args
@@ -8092,7 +8251,7 @@ export namespace PackageKitGlib {
             upgrade_kind: UpgradeKindEnum,
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param args
@@ -8142,7 +8301,7 @@ export namespace PackageKitGlib {
             values: string[],
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
-            callback_ready?: Gio.AsyncReadyCallback<this> | null,
+            callback_ready: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Find the package that provides some resource.
@@ -8286,41 +8445,49 @@ export namespace PackageKitGlib {
 
         /**
          * @since 0.5.4
+         * @default null
          */
         get cmdline(): string;
         set cmdline(val: string);
         /**
          * @since 0.5.4
+         * @default null
          */
         get data(): string;
         set data(val: string);
         /**
          * @since 0.5.4
+         * @default 0
          */
         get duration(): number;
         set duration(val: number);
         /**
          * @since 0.5.4
+         * @default PackageKitGlib.RoleEnum.UNKNOWN
          */
         get role(): RoleEnum;
         set role(val: RoleEnum);
         /**
          * @since 0.5.4
+         * @default false
          */
         get succeeded(): boolean;
         set succeeded(val: boolean);
         /**
          * @since 0.5.4
+         * @default null
          */
         get tid(): string;
         set tid(val: string);
         /**
          * @since 0.5.4
+         * @default null
          */
         get timespec(): string;
         set timespec(val: string);
         /**
          * @since 0.5.4
+         * @default 4294967295
          */
         get uid(): number;
         set uid(val: number);
@@ -8484,6 +8651,7 @@ export namespace PackageKitGlib {
         set bugzillaUrls(val: string[]);
         /**
          * @since 0.5.4
+         * @default null
          */
         get changelog(): string;
         set changelog(val: string);
@@ -8499,6 +8667,7 @@ export namespace PackageKitGlib {
         set cveUrls(val: string[]);
         /**
          * @since 0.5.4
+         * @default null
          */
         get issued(): string;
         set issued(val: string);
@@ -8509,36 +8678,43 @@ export namespace PackageKitGlib {
         set obsoletes(val: string[]);
         /**
          * @since 0.5.4
+         * @default null
          */
         get package_id(): string;
         set package_id(val: string);
         /**
          * @since 0.5.4
+         * @default null
          */
         get packageId(): string;
         set packageId(val: string);
         /**
          * @since 0.5.4
+         * @default PackageKitGlib.RestartEnum.UNKNOWN
          */
         get restart(): RestartEnum;
         set restart(val: RestartEnum);
         /**
          * @since 0.5.4
+         * @default PackageKitGlib.UpdateStateEnum.UNKNOWN
          */
         get state(): UpdateStateEnum;
         set state(val: UpdateStateEnum);
         /**
          * @since 0.5.4
+         * @default null
          */
         get update_text(): string;
         set update_text(val: string);
         /**
          * @since 0.5.4
+         * @default null
          */
         get updateText(): string;
         set updateText(val: string);
         /**
          * @since 0.5.4
+         * @default null
          */
         get updated(): string;
         set updated(val: string);

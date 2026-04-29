@@ -27,7 +27,7 @@ export namespace Keybinder {
      * @returns `true` if the accelerator could be grabbed
      * @since 0.3.0
      */
-    function bind(keystring: string, handler: Handler, notify?: GLib.DestroyNotify | null): boolean;
+    function bind(keystring: string, handler: Handler, notify: GLib.DestroyNotify | null): boolean;
     /**
      * @returns the current event timestamp
      */

@@ -183,7 +183,7 @@ export namespace Gtef {
     function action_map_add_action_entries_check_dups(
         action_map: Gio.ActionMap,
         entries: Gio.ActionEntry[],
-        user_data?: any | null,
+        user_data: any | null,
     ): void;
     /**
      * Gets a list of all encodings known by {@link Gtef.Encoding}.
@@ -247,7 +247,7 @@ export namespace Gtef {
      * @param long_description the long description, or `null` to unset it.
      * @since 2.0
      */
-    function menu_item_set_long_description(menu_item: Gtk.MenuItem, long_description?: string | null): void;
+    function menu_item_set_long_description(menu_item: Gtk.MenuItem, long_description: string | null): void;
     /**
      * This function initializes the metadata manager.
      *
@@ -426,7 +426,7 @@ export namespace Gtef {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            application: Gtk.Application;
+            application: Gtk.Application | null;
         }
     }
 
@@ -444,7 +444,7 @@ export namespace Gtef {
          * @since 2.0
          * @construct-only
          */
-        get application(): Gtk.Application;
+        get application(): Gtk.Application | null;
 
         /**
          * Compile-time signal type information.
@@ -461,7 +461,7 @@ export namespace Gtef {
 
         _init(...args: any[]): void;
 
-        static ['new'](application?: Gtk.Application | null): ActionInfoStore;
+        static ['new'](application: Gtk.Application | null): ActionInfoStore;
 
         // Signals
 
@@ -504,7 +504,7 @@ export namespace Gtef {
          * @param entries a pointer to the first item in an array of {@link Gtef.ActionInfoEntry} structs.
          * @param translation_domain a gettext domain, or `null`.
          */
-        add_entries(entries: ActionInfoEntry[], translation_domain?: string | null): void;
+        add_entries(entries: ActionInfoEntry[], translation_domain: string | null): void;
         /**
          * Checks that all {@link Gtef.ActionInfo}'s of `store` have been used by
          * `gtef_action_info_store_create_menu_item()`. If not, a warning is printed and
@@ -656,7 +656,7 @@ export namespace Gtef {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             application_window: Gtk.ApplicationWindow;
             applicationWindow: Gtk.ApplicationWindow;
-            statusbar: Gtk.Statusbar;
+            statusbar: Gtk.Statusbar | null;
         }
     }
 
@@ -684,8 +684,8 @@ export namespace Gtef {
          * The {@link Gtk.Statusbar}. `null` by default.
          * @since 2.0
          */
-        get statusbar(): Gtk.Statusbar;
-        set statusbar(val: Gtk.Statusbar);
+        get statusbar(): Gtk.Statusbar | null;
+        set statusbar(val: Gtk.Statusbar | null);
 
         /**
          * Compile-time signal type information.
@@ -788,7 +788,7 @@ export namespace Gtef {
          * Sets the {@link Gtef.ApplicationWindow.statusbar} property.
          * @param statusbar a {@link Gtk.Statusbar}, or `null`.
          */
-        set_statusbar(statusbar?: Gtk.Statusbar | null): void;
+        set_statusbar(statusbar: Gtk.Statusbar | null): void;
     }
 
     namespace Buffer {
@@ -1187,7 +1187,7 @@ export namespace Gtef {
          * Sets the location.
          * @param location the new {@link Gio.File}, or `null`.
          */
-        set_location(location?: Gio.File | null): void;
+        set_location(location: Gio.File | null): void;
     }
 
     namespace FileLoader {
@@ -1203,11 +1203,11 @@ export namespace Gtef {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            buffer: Buffer;
+            buffer: Buffer | null;
             chunk_size: bigint | number;
             chunkSize: bigint | number;
-            file: File;
-            location: Gio.File;
+            file: File | null;
+            location: Gio.File | null;
             max_size: bigint | number;
             maxSize: bigint | number;
         }
@@ -1227,7 +1227,7 @@ export namespace Gtef {
          * @since 1.0
          * @construct-only
          */
-        get buffer(): Buffer;
+        get buffer(): Buffer | null;
         /**
          * The chunk size, in bytes. The content is loaded chunk by chunk. It
          * permits to avoid allocating a too big contiguous memory area, as well
@@ -1256,14 +1256,14 @@ export namespace Gtef {
          * @since 1.0
          * @construct-only
          */
-        get file(): File;
+        get file(): File | null;
         /**
          * The {@link Gio.File} to load. By default the location is taken from the
          * {@link Gtef.File} at construction time.
          * @since 1.0
          * @construct-only
          */
-        get location(): Gio.File;
+        get location(): Gio.File | null;
         /**
          * The maximum content size, in bytes. Keep in mind that all the
          * content is loaded in memory, and when loaded into a {@link Gtk.TextBuffer}
@@ -1364,9 +1364,9 @@ export namespace Gtef {
          */
         load_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            progress_callback?: Gio.FileProgressCallback | null,
-            progress_callback_notify?: GLib.DestroyNotify | null,
+            cancellable: Gio.Cancellable | null,
+            progress_callback: Gio.FileProgressCallback | null,
+            progress_callback_notify: GLib.DestroyNotify | null,
         ): globalThis.Promise<boolean>;
         /**
          * Loads asynchronously the file content into the {@link Gtef.Buffer}.
@@ -1397,9 +1397,9 @@ export namespace Gtef {
          */
         load_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            progress_callback?: Gio.FileProgressCallback | null,
-            progress_callback_notify?: GLib.DestroyNotify | null,
+            cancellable: Gio.Cancellable | null,
+            progress_callback: Gio.FileProgressCallback | null,
+            progress_callback_notify: GLib.DestroyNotify | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1510,7 +1510,7 @@ export namespace Gtef {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns whether the metadata was loaded successfully.
          */
-        load(cancellable?: Gio.Cancellable | null): boolean;
+        load(cancellable: Gio.Cancellable | null): boolean;
         /**
          * The asynchronous version of `gtef_file_metadata_load()`.
          *
@@ -1522,7 +1522,7 @@ export namespace Gtef {
          * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        load_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        load_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * The asynchronous version of `gtef_file_metadata_load()`.
          *
@@ -1554,7 +1554,7 @@ export namespace Gtef {
          */
         load_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1573,7 +1573,7 @@ export namespace Gtef {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns whether the metadata was saved successfully.
          */
-        save(cancellable?: Gio.Cancellable | null): boolean;
+        save(cancellable: Gio.Cancellable | null): boolean;
         /**
          * The asynchronous version of `gtef_file_metadata_save()`.
          *
@@ -1584,7 +1584,7 @@ export namespace Gtef {
          * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        save_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        save_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * The asynchronous version of `gtef_file_metadata_save()`.
          *
@@ -1614,7 +1614,7 @@ export namespace Gtef {
          */
         save_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1632,7 +1632,7 @@ export namespace Gtef {
          * @param key the name of the metadata.
          * @param value the value of the metadata, or `null` to unset.
          */
-        set(key: string, value?: string | null): void;
+        set(key: string, value: string | null): void;
         /**
          * @param args
          */
@@ -1817,9 +1817,9 @@ export namespace Gtef {
          */
         save_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            progress_callback?: Gio.FileProgressCallback | null,
-            progress_callback_notify?: GLib.DestroyNotify | null,
+            cancellable: Gio.Cancellable | null,
+            progress_callback: Gio.FileProgressCallback | null,
+            progress_callback_notify: GLib.DestroyNotify | null,
         ): globalThis.Promise<boolean>;
         /**
          * Saves asynchronously the buffer into the file. See the {@link Gio.AsyncResult}
@@ -1848,9 +1848,9 @@ export namespace Gtef {
          */
         save_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            progress_callback?: Gio.FileProgressCallback | null,
-            progress_callback_notify?: GLib.DestroyNotify | null,
+            cancellable: Gio.Cancellable | null,
+            progress_callback: Gio.FileProgressCallback | null,
+            progress_callback_notify: GLib.DestroyNotify | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1877,7 +1877,7 @@ export namespace Gtef {
          * By default the encoding is taken from the {@link Gtef.File}.
          * @param encoding the new encoding, or `null` for UTF-8.
          */
-        set_encoding(encoding?: Encoding | null): void;
+        set_encoding(encoding: Encoding | null): void;
         /**
          * @param flags the new flags.
          */
@@ -1900,7 +1900,7 @@ export namespace Gtef {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            buffer: Gtk.TextBuffer;
+            buffer: Gtk.TextBuffer | null;
             folded: boolean;
         }
     }
@@ -1919,7 +1919,7 @@ export namespace Gtef {
          * @since 1.0
          * @construct-only
          */
-        get buffer(): Gtk.TextBuffer;
+        get buffer(): Gtk.TextBuffer | null;
         /**
          * Whether the {@link Gtef.FoldRegion} is folded or not.
          * @since 1.0
@@ -2158,7 +2158,7 @@ export namespace Gtef {
 
         static ['new'](): InfoBar;
 
-        static new_simple(msg_type: Gtk.MessageType, primary_msg: string, secondary_msg?: string | null): InfoBar;
+        static new_simple(msg_type: Gtk.MessageType, primary_msg: string, secondary_msg: string | null): InfoBar;
 
         // Signals
 
@@ -2274,38 +2274,19 @@ export namespace Gtef {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -2313,15 +2294,9 @@ export namespace Gtef {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -2488,7 +2463,7 @@ export namespace Gtef {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -2921,6 +2896,7 @@ export namespace Gtef {
         /**
          * The orientation of the orientable.
          * @since 2.16
+         * @default Gtk.Orientation.HORIZONTAL
          * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
@@ -2982,38 +2958,19 @@ export namespace Gtef {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -3021,15 +2978,9 @@ export namespace Gtef {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -3196,7 +3147,7 @@ export namespace Gtef {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -3623,38 +3574,19 @@ export namespace Gtef {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -3662,15 +3594,9 @@ export namespace Gtef {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -3837,7 +3763,7 @@ export namespace Gtef {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -4039,7 +3965,7 @@ export namespace Gtef {
 
         static ['new'](): ActionInfo;
 
-        static new_from_entry(info_entry: ActionInfoEntry, translation_domain?: string | null): ActionInfo;
+        static new_from_entry(info_entry: ActionInfoEntry, translation_domain: string | null): ActionInfo;
 
         // Methods
 
@@ -4091,15 +4017,15 @@ export namespace Gtef {
         /**
          * @param icon_name the icon name, or `null`.
          */
-        set_icon_name(icon_name?: string | null): void;
+        set_icon_name(icon_name: string | null): void;
         /**
          * @param label the label (i.e. a short description), or `null`.
          */
-        set_label(label?: string | null): void;
+        set_label(label: string | null): void;
         /**
          * @param tooltip the tooltip (i.e. a long description), or `null`.
          */
-        set_tooltip(tooltip?: string | null): void;
+        set_tooltip(tooltip: string | null): void;
         /**
          * Decrements the reference count of `info` by one. If the reference count drops
          * to 0, `info` is freed.
@@ -4231,7 +4157,7 @@ export namespace Gtef {
          * @param enc2 a {@link Gtef.Encoding}, or `null`.
          * @returns whether `enc1` and `enc2` are equals.
          */
-        equals(enc2?: Encoding | null): boolean;
+        equals(enc2: Encoding | null): boolean;
         free(): void;
         /**
          * Gets the character set of the {@link Gtef.Encoding}, such as "UTF-8" or "ISO-8859-1".

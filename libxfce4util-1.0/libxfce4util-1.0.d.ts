@@ -119,7 +119,7 @@ export namespace Libxfce4util {
      * @returns Checksum of the `file`. If file read fails, returns `null`. Free with `g_free()`.
      * @since 4.17
      */
-    function g_file_create_checksum(file: Gio.File, cancellable?: Gio.Cancellable | null): string | null;
+    function g_file_create_checksum(file: Gio.File, cancellable: Gio.Cancellable | null): string | null;
     /**
      * Compares the checksum stored in safety flag
      * with the actual file. If it matches, it
@@ -132,7 +132,7 @@ export namespace Libxfce4util {
      * @returns `true` if safety flag is verified or not supported. `false` otherwise.
      * @since 4.17
      */
-    function g_file_is_trusted(file: Gio.File, cancellable?: Gio.Cancellable | null): boolean;
+    function g_file_is_trusted(file: Gio.File, cancellable: Gio.Cancellable | null): boolean;
     /**
      * Checks if GVFS-metadata is available for
      * the `file` provided.
@@ -161,7 +161,7 @@ export namespace Libxfce4util {
      * @returns `true` on success, `false` on error.
      * @since 4.17
      */
-    function g_file_set_trusted(file: Gio.File, is_trusted: boolean, cancellable?: Gio.Cancellable | null): boolean;
+    function g_file_set_trusted(file: Gio.File, is_trusted: boolean, cancellable: Gio.Cancellable | null): boolean;
     /**
      * Quotes a string `unquoted` and appends to an existing
      * {@link GLib.String} `string`. The shell will interpret the quoted string

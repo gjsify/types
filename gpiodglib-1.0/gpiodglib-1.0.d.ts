@@ -318,6 +318,7 @@ export namespace Gpiodglib {
         /**
          * Path that was used to open this GPIO chip.
          * @construct-only
+         * @default null
          */
         get path(): string;
 
@@ -458,7 +459,7 @@ export namespace Gpiodglib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -501,7 +502,7 @@ export namespace Gpiodglib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -549,38 +550,19 @@ export namespace Gpiodglib {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -588,15 +570,9 @@ export namespace Gpiodglib {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -763,7 +739,7 @@ export namespace Gpiodglib {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -983,21 +959,25 @@ export namespace Gpiodglib {
         /**
          * Label of this GPIO chip device.
          * @read-only
+         * @default null
          */
         get label(): string;
         /**
          * Name of this GPIO chip device.
          * @read-only
+         * @default null
          */
         get name(): string;
         /**
          * Number of GPIO lines exposed by this chip.
          * @read-only
+         * @default 1
          */
         get num_lines(): number;
         /**
          * Number of GPIO lines exposed by this chip.
          * @read-only
+         * @default 1
          */
         get numLines(): number;
 
@@ -1097,51 +1077,61 @@ export namespace Gpiodglib {
         /**
          * Type of the edge event.
          * @read-only
+         * @default Gpiodglib.EdgeEventType.RISING_EDGE
          */
         get event_type(): EdgeEventType;
         /**
          * Type of the edge event.
          * @read-only
+         * @default Gpiodglib.EdgeEventType.RISING_EDGE
          */
         get eventType(): EdgeEventType;
         /**
          * Global sequence number of this event.
          * @read-only
+         * @default 0
          */
         get global_seqno(): number;
         /**
          * Global sequence number of this event.
          * @read-only
+         * @default 0
          */
         get globalSeqno(): number;
         /**
          * Offset of the line on which this event was registered.
          * @read-only
+         * @default 0
          */
         get line_offset(): number;
         /**
          * Offset of the line on which this event was registered.
          * @read-only
+         * @default 0
          */
         get lineOffset(): number;
         /**
          * Event sequence number specific to the line.
          * @read-only
+         * @default 0
          */
         get line_seqno(): number;
         /**
          * Event sequence number specific to the line.
          * @read-only
+         * @default 0
          */
         get lineSeqno(): number;
         /**
          * Timestamp of the edge event expressed in nanoseconds.
          * @read-only
+         * @default 0
          */
         get timestamp_ns(): number;
         /**
          * Timestamp of the edge event expressed in nanoseconds.
          * @read-only
+         * @default 0
          */
         get timestampNs(): number;
 
@@ -1249,6 +1239,7 @@ export namespace Gpiodglib {
          * `GPIODGLIB_INFO_EVENT_LINE_RELEASED` or
          * `GPIODGLIB_INFO_EVENT_LINE_CONFIG_CHANGED`.
          * @read-only
+         * @default Gpiodglib.InfoEventType.REQUESTED
          */
         get event_type(): InfoEventType;
         /**
@@ -1256,6 +1247,7 @@ export namespace Gpiodglib {
          * `GPIODGLIB_INFO_EVENT_LINE_RELEASED` or
          * `GPIODGLIB_INFO_EVENT_LINE_CONFIG_CHANGED`.
          * @read-only
+         * @default Gpiodglib.InfoEventType.REQUESTED
          */
         get eventType(): InfoEventType;
         /**
@@ -1271,11 +1263,13 @@ export namespace Gpiodglib {
         /**
          * Timestamp (in nanoseconds).
          * @read-only
+         * @default 0
          */
         get timestamp_ns(): number;
         /**
          * Timestamp (in nanoseconds).
          * @read-only
+         * @default 0
          */
         get timestampNs(): number;
 
@@ -1497,82 +1491,98 @@ export namespace Gpiodglib {
         /**
          * Indicates whether the signal of the line is inverted.
          * @read-only
+         * @default false
          */
         get active_low(): boolean;
         /**
          * Indicates whether the signal of the line is inverted.
          * @read-only
+         * @default false
          */
         get activeLow(): boolean;
         /**
          * Bias setting of the GPIO line.
          * @read-only
+         * @default Gpiodglib.LineBias.UNKNOWN
          */
         get bias(): LineBias;
         /**
          * Name of the consumer of the GPIO line, if requested.
          * @read-only
+         * @default null
          */
         get consumer(): string;
         /**
          * Debounce period of the line (expressed in microseconds).
          * @read-only
+         * @default 0
          */
         get debounce_period_us(): number;
         /**
          * Debounce period of the line (expressed in microseconds).
          * @read-only
+         * @default 0
          */
         get debouncePeriodUs(): number;
         /**
          * Indicates whether the line is debounced (by hardware or by the
          * kernel software debouncer).
          * @read-only
+         * @default false
          */
         get debounced(): boolean;
         /**
          * Direction of the GPIO line.
          * @read-only
+         * @default Gpiodglib.LineDirection.INPUT
          */
         get direction(): LineDirection;
         /**
          * Drive setting of the GPIO line.
          * @read-only
+         * @default Gpiodglib.LineDrive.PUSH_PULL
          */
         get drive(): LineDrive;
         /**
          * Edge detection setting of the GPIO line.
          * @read-only
+         * @default Gpiodglib.LineEdge.NONE
          */
         get edge_detection(): LineEdge;
         /**
          * Edge detection setting of the GPIO line.
          * @read-only
+         * @default Gpiodglib.LineEdge.NONE
          */
         get edgeDetection(): LineEdge;
         /**
          * Event clock used to timestamp the edge events of the line.
          * @read-only
+         * @default Gpiodglib.LineClock.MONOTONIC
          */
         get event_clock(): LineClock;
         /**
          * Event clock used to timestamp the edge events of the line.
          * @read-only
+         * @default Gpiodglib.LineClock.MONOTONIC
          */
         get eventClock(): LineClock;
         /**
          * Name of the GPIO line, if named.
          * @read-only
+         * @default null
          */
         get name(): string;
         /**
          * Offset of the GPIO line.
          * @read-only
+         * @default 0
          */
         get offset(): number;
         /**
          * Indicates whether the GPIO line is requested for exclusive usage.
          * @read-only
+         * @default false
          */
         get used(): boolean;
 
@@ -1721,11 +1731,13 @@ export namespace Gpiodglib {
         /**
          * Name of the GPIO chip this request was made on.
          * @read-only
+         * @default null
          */
         get chip_name(): string;
         /**
          * Name of the GPIO chip this request was made on.
          * @read-only
+         * @default null
          */
         get chipName(): string;
         /**
@@ -1892,66 +1904,79 @@ export namespace Gpiodglib {
 
         /**
          * Line active-low settings.
+         * @default false
          */
         get active_low(): boolean;
         set active_low(val: boolean);
         /**
          * Line active-low settings.
+         * @default false
          */
         get activeLow(): boolean;
         set activeLow(val: boolean);
         /**
          * Line bias setting.
+         * @default Gpiodglib.LineBias.AS_IS
          */
         get bias(): LineBias;
         set bias(val: LineBias);
         /**
          * Line debounce period (expressed in microseconds).
+         * @default 0
          */
         get debounce_period_us(): number;
         set debounce_period_us(val: bigint | number);
         /**
          * Line debounce period (expressed in microseconds).
+         * @default 0
          */
         get debouncePeriodUs(): number;
         set debouncePeriodUs(val: bigint | number);
         /**
          * Line direction setting.
+         * @default Gpiodglib.LineDirection.AS_IS
          */
         get direction(): LineDirection;
         set direction(val: LineDirection);
         /**
          * Line drive setting.
+         * @default Gpiodglib.LineDrive.PUSH_PULL
          */
         get drive(): LineDrive;
         set drive(val: LineDrive);
         /**
          * Line edge detection setting.
+         * @default Gpiodglib.LineEdge.NONE
          */
         get edge_detection(): LineEdge;
         set edge_detection(val: LineEdge);
         /**
          * Line edge detection setting.
+         * @default Gpiodglib.LineEdge.NONE
          */
         get edgeDetection(): LineEdge;
         set edgeDetection(val: LineEdge);
         /**
          * Clock used to timestamp edge events.
+         * @default Gpiodglib.LineClock.MONOTONIC
          */
         get event_clock(): LineClock;
         set event_clock(val: LineClock);
         /**
          * Clock used to timestamp edge events.
+         * @default Gpiodglib.LineClock.MONOTONIC
          */
         get eventClock(): LineClock;
         set eventClock(val: LineClock);
         /**
          * Line output value.
+         * @default Gpiodglib.LineValue.INACTIVE
          */
         get output_value(): LineValue;
         set output_value(val: LineValue);
         /**
          * Line output value.
+         * @default Gpiodglib.LineValue.INACTIVE
          */
         get outputValue(): LineValue;
         set outputValue(val: LineValue);
@@ -2108,16 +2133,19 @@ export namespace Gpiodglib {
 
         /**
          * Name of the request consumer.
+         * @default null
          */
         get consumer(): string;
         set consumer(val: string);
         /**
          * Size of the kernel event buffer size of the request.
+         * @default 64
          */
         get event_buffer_size(): number;
         set event_buffer_size(val: number);
         /**
          * Size of the kernel event buffer size of the request.
+         * @default 64
          */
         get eventBufferSize(): number;
         set eventBufferSize(val: number);

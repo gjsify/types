@@ -399,6 +399,7 @@ export namespace GUPnP {
          * sends Accept-Language and no language-specific pages to serve
          * exist. The property defaults to 'en'.
          * @since 0.18.0
+         * @default en
          */
         get default_language(): string;
         set default_language(val: string);
@@ -407,6 +408,7 @@ export namespace GUPnP {
          * sends Accept-Language and no language-specific pages to serve
          * exist. The property defaults to 'en'.
          * @since 0.18.0
+         * @default en
          */
         get defaultLanguage(): string;
         set defaultLanguage(val: string);
@@ -425,6 +427,7 @@ export namespace GUPnP {
          * which subscriptions are renewed. Set to '0' if subscriptions
          * are never to time out.
          * @construct-only
+         * @default 1800
          */
         get subscription_timeout(): number;
         /**
@@ -432,6 +435,7 @@ export namespace GUPnP {
          * which subscriptions are renewed. Set to '0' if subscriptions
          * are never to time out.
          * @construct-only
+         * @default 1800
          */
         get subscriptionTimeout(): number;
 
@@ -498,7 +502,7 @@ export namespace GUPnP {
             use_acl: boolean,
             path: string,
             callback: Soup.ServerCallback,
-            destroy?: GLib.DestroyNotify | null,
+            destroy: GLib.DestroyNotify | null,
         ): void;
         /**
          * Access the {@link GUPnP.Acl} associated with this client. If there isn't any,
@@ -566,7 +570,7 @@ export namespace GUPnP {
          * `acl` is `null`, the current access control list will be removed.
          * @param acl The new access control list or `null` to remove the current list.
          */
-        set_acl(acl?: Acl | null): void;
+        set_acl(acl: Acl | null): void;
         /**
          * Set the default language for the Content-Language header to `language`.
          *
@@ -631,7 +635,7 @@ export namespace GUPnP {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -674,7 +678,7 @@ export namespace GUPnP {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -722,38 +726,19 @@ export namespace GUPnP {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -761,15 +746,9 @@ export namespace GUPnP {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -936,7 +915,7 @@ export namespace GUPnP {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1137,7 +1116,7 @@ export namespace GUPnP {
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             enabled: boolean;
-            entries: string[];
+            entries: string[] | null;
         }
     }
 
@@ -1191,6 +1170,7 @@ export namespace GUPnP {
         /**
          * Whether this context filter is active or not.
          * @since 1.4.0
+         * @default false
          */
         get enabled(): boolean;
         set enabled(val: boolean);
@@ -1199,7 +1179,7 @@ export namespace GUPnP {
          * @since 1.4.0
          * @construct-only
          */
-        get entries(): string[];
+        get entries(): string[] | null;
 
         /**
          * Compile-time signal type information.
@@ -1367,12 +1347,14 @@ export namespace GUPnP {
          * {@link Gio.SocketFamily.IPV6} for IPv6 contexts
          * @since 1.2.0
          * @construct-only
+         * @default Gio.SocketFamily.INVALID
          */
         get family(): Gio.SocketFamily;
         /**
          * Port the contexts listen on, or 0 if you don't care what
          * port is used by {@link GUPnP.Context} objects created by this object.
          * @construct-only
+         * @default 0
          */
         get port(): number;
         /**
@@ -1380,6 +1362,7 @@ export namespace GUPnP {
          * for using the default UDA version.
          * @since 1.2.0
          * @construct-only
+         * @default GSSDP.UDAVersion.VERSION_UNSPECIFIED
          */
         get uda_version(): GSSDP.UDAVersion;
         /**
@@ -1387,6 +1370,7 @@ export namespace GUPnP {
          * for using the default UDA version.
          * @since 1.2.0
          * @construct-only
+         * @default GSSDP.UDAVersion.VERSION_UNSPECIFIED
          */
         get udaVersion(): GSSDP.UDAVersion;
 
@@ -1844,11 +1828,13 @@ export namespace GUPnP {
         /**
          * The device type, e.g. `urn:schemas-upnp-org:device:InternetGatewayDevice:1`
          * @construct-only
+         * @default null
          */
         get device_type(): string;
         /**
          * The device type, e.g. `urn:schemas-upnp-org:device:InternetGatewayDevice:1`
          * @construct-only
+         * @default null
          */
         get deviceType(): string;
         /**
@@ -1863,6 +1849,7 @@ export namespace GUPnP {
         set element(val: any);
         /**
          * The location of the device description file.
+         * @default null
          */
         get location(): string;
         set location(val: string);
@@ -1879,6 +1866,7 @@ export namespace GUPnP {
         /**
          * The UDN of this device.
          * @construct-only
+         * @default null
          */
         get udn(): string;
         /**
@@ -1980,7 +1968,7 @@ export namespace GUPnP {
             requested_width: number,
             requested_height: number,
             prefer_bigger: boolean,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<[GLib.Bytes, string, number, number, number]>;
         /**
          * Download the device icon matching the request parameters. For details on
@@ -2019,7 +2007,7 @@ export namespace GUPnP {
             requested_width: number,
             requested_height: number,
             prefer_bigger: boolean,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[GLib.Bytes, string, number, number, number]> | void;
         /**
@@ -2398,17 +2386,20 @@ export namespace GUPnP {
 
         /**
          * TRUE if this device is available.
+         * @default false
          */
         get available(): boolean;
         set available(val: boolean);
         /**
          * The path to a folder where description documents are provided.
          * @construct-only
+         * @default null
          */
         get description_dir(): string;
         /**
          * The path to a folder where description documents are provided.
          * @construct-only
+         * @default null
          */
         get descriptionDir(): string;
         /**
@@ -2416,6 +2407,7 @@ export namespace GUPnP {
          * absolute path or path relative to GUPnPRootDevice:description-dir.
          * @since 0.13.0
          * @construct-only
+         * @default null
          */
         get description_path(): string;
         /**
@@ -2423,6 +2415,7 @@ export namespace GUPnP {
          * absolute path or path relative to GUPnPRootDevice:description-dir.
          * @since 0.13.0
          * @construct-only
+         * @default null
          */
         get descriptionPath(): string;
 
@@ -2548,7 +2541,7 @@ export namespace GUPnP {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -2591,7 +2584,7 @@ export namespace GUPnP {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -2639,38 +2632,19 @@ export namespace GUPnP {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -2678,15 +2652,9 @@ export namespace GUPnP {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -2853,7 +2821,7 @@ export namespace GUPnP {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -3418,21 +3386,25 @@ export namespace GUPnP {
         /**
          * The location of the device description file.
          * @construct-only
+         * @default null
          */
         get location(): string;
         /**
          * The service type.
          * @construct-only
+         * @default null
          */
         get service_type(): string;
         /**
          * The service type.
          * @construct-only
+         * @default null
          */
         get serviceType(): string;
         /**
          * The UDN of the containing device.
          * @construct-only
+         * @default null
          */
         get udn(): string;
         /**
@@ -3545,7 +3517,7 @@ export namespace GUPnP {
          * error code {@link Gio.IOErrorEnum.CANCELLED}.
          * @param cancellable a {@link Gio.Cancellable} that can be used to cancel the call.
          */
-        introspect_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<ServiceIntrospection | null>;
+        introspect_async(cancellable: Gio.Cancellable | null): globalThis.Promise<ServiceIntrospection | null>;
         /**
          * Note that introspection object is created from the information in service
          * description document (SCPD) provided by the service so it can not be created
@@ -3568,7 +3540,7 @@ export namespace GUPnP {
          * @param callback callback to be called when introspection object is ready.
          */
         introspect_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<ServiceIntrospection | null> | void;
         /**
@@ -3739,7 +3711,7 @@ export namespace GUPnP {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -3782,7 +3754,7 @@ export namespace GUPnP {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -3830,38 +3802,19 @@ export namespace GUPnP {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -3869,15 +3822,9 @@ export namespace GUPnP {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -4044,7 +3991,7 @@ export namespace GUPnP {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -4275,6 +4222,7 @@ export namespace GUPnP {
 
         /**
          * Whether we are subscribed to this service.
+         * @default false
          */
         get subscribed(): boolean;
         set subscribed(val: boolean);
@@ -4338,7 +4286,7 @@ export namespace GUPnP {
             variable: string,
             type: GObject.GType,
             callback: ServiceProxyNotifyCallback,
-            notify?: GLib.DestroyNotify | null,
+            notify: GLib.DestroyNotify | null,
         ): boolean;
         /**
          * Get a notification for anything that happens on the peer.
@@ -4349,14 +4297,14 @@ export namespace GUPnP {
          * @param notify A {@link GLib.DestroyNotify} for `user_data`
          * @returns `true` on success.
          */
-        add_raw_notify(callback: ServiceProxyNotifyCallback, notify?: GLib.DestroyNotify | null): boolean;
+        add_raw_notify(callback: ServiceProxyNotifyCallback, notify: GLib.DestroyNotify | null): boolean;
         /**
          * Synchronously call the `action` on the remote UPnP service.
          * @param action An action
          * @param cancellable A {@link Gio.Cancellable} which can be used to cancel the current action call
          * @returns `null` on error, `action` if successful.
          */
-        call_action(action: ServiceProxyAction, cancellable?: Gio.Cancellable | null): ServiceProxyAction | null;
+        call_action(action: ServiceProxyAction, cancellable: Gio.Cancellable | null): ServiceProxyAction | null;
         /**
          * Start a call on the remote UPnP service using the pre-configured `action`.
          * Use `gupnp_service_proxy_call_action_finish()` in the `callback` to finalize
@@ -4369,7 +4317,7 @@ export namespace GUPnP {
          */
         call_action_async(
             action: ServiceProxyAction,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<ServiceProxyAction | null>;
         /**
          * Start a call on the remote UPnP service using the pre-configured `action`.
@@ -4400,7 +4348,7 @@ export namespace GUPnP {
          */
         call_action_async(
             action: ServiceProxyAction,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<ServiceProxyAction | null> | void;
         /**
@@ -4486,6 +4434,7 @@ export namespace GUPnP {
         set doc(val: any);
         /**
          * @construct-only
+         * @default null
          */
         set path(val: string);
 
@@ -4577,7 +4526,7 @@ export namespace GUPnP {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -4620,7 +4569,7 @@ export namespace GUPnP {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -4668,38 +4617,19 @@ export namespace GUPnP {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -4707,15 +4637,9 @@ export namespace GUPnP {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -4882,7 +4806,7 @@ export namespace GUPnP {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -5421,7 +5345,7 @@ export namespace GUPnP {
                 service: any | null,
                 path: string,
                 address: string,
-                agent?: string | null,
+                agent: string | null,
             ): boolean;
             /**
              * Check asynchronously whether an IP address is allowed to access
@@ -5449,9 +5373,9 @@ export namespace GUPnP {
                 service: any | null,
                 path: string,
                 address: string,
-                agent?: string | null,
-                cancellable?: Gio.Cancellable | null,
-                callback?: Gio.AsyncReadyCallback<this> | null,
+                agent: string | null,
+                cancellable: Gio.Cancellable | null,
+                callback: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * Get the result of {@link GUPnP.Acl.is_allowed_async}.
@@ -5498,7 +5422,7 @@ export namespace GUPnP {
             service: any | null,
             path: string,
             address: string,
-            agent?: string | null,
+            agent: string | null,
         ): boolean;
         /**
          * Check asynchronously whether an IP address is allowed to access
@@ -5524,8 +5448,8 @@ export namespace GUPnP {
             service: any | null,
             path: string,
             address: string,
-            agent?: string | null,
-            cancellable?: Gio.Cancellable | null,
+            agent: string | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Check asynchronously whether an IP address is allowed to access
@@ -5581,8 +5505,8 @@ export namespace GUPnP {
             service: any | null,
             path: string,
             address: string,
-            agent?: string | null,
-            cancellable?: Gio.Cancellable | null,
+            agent: string | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**

@@ -615,10 +615,19 @@ export namespace XreaderDocument {
          */
         get color(): any;
         set color(val: any);
+        /**
+         * @default null
+         */
         get contents(): string;
         set contents(val: string);
+        /**
+         * @default null
+         */
         get modified(): string;
         set modified(val: string);
+        /**
+         * @default null
+         */
         get name(): string;
         set name(val: string);
         /**
@@ -863,28 +872,52 @@ export namespace XreaderDocument {
          * @param attachment
          */
         set_attachment(attachment: Attachment): boolean;
-        /** @category Inherited from XreaderDocument.AnnotationMarkup */
+        /**
+         * @default false
+         * @category Inherited from XreaderDocument.AnnotationMarkup
+         */
         // This accessor conflicts with a field or function name in a parent class or interface.
         can_have_popup: boolean | any;
-        /** @category Inherited from XreaderDocument.AnnotationMarkup */
+        /**
+         * @default false
+         * @category Inherited from XreaderDocument.AnnotationMarkup
+         */
         get canHavePopup(): boolean;
         set canHavePopup(val: boolean);
-        /** @category Inherited from XreaderDocument.AnnotationMarkup */
+        /**
+         * @default true
+         * @category Inherited from XreaderDocument.AnnotationMarkup
+         */
         // This accessor conflicts with a field or function name in a parent class or interface.
         has_popup: boolean | any;
-        /** @category Inherited from XreaderDocument.AnnotationMarkup */
+        /**
+         * @default true
+         * @category Inherited from XreaderDocument.AnnotationMarkup
+         */
         get hasPopup(): boolean;
         set hasPopup(val: boolean);
-        /** @category Inherited from XreaderDocument.AnnotationMarkup */
+        /**
+         * @default null
+         * @category Inherited from XreaderDocument.AnnotationMarkup
+         */
         get label(): string;
         set label(val: string);
-        /** @category Inherited from XreaderDocument.AnnotationMarkup */
+        /**
+         * @default 1
+         * @category Inherited from XreaderDocument.AnnotationMarkup
+         */
         get opacity(): number;
         set opacity(val: number);
-        /** @category Inherited from XreaderDocument.AnnotationMarkup */
+        /**
+         * @default false
+         * @category Inherited from XreaderDocument.AnnotationMarkup
+         */
         get popup_is_open(): boolean;
         set popup_is_open(val: boolean);
-        /** @category Inherited from XreaderDocument.AnnotationMarkup */
+        /**
+         * @default false
+         * @category Inherited from XreaderDocument.AnnotationMarkup
+         */
         get popupIsOpen(): boolean;
         set popupIsOpen(val: boolean);
         /** @category Inherited from XreaderDocument.AnnotationMarkup */
@@ -905,13 +938,22 @@ export namespace XreaderDocument {
          */
         get color(): any;
         set color(val: any);
-        /** @category Inherited from XreaderDocument.Annotation */
+        /**
+         * @default null
+         * @category Inherited from XreaderDocument.Annotation
+         */
         get contents(): string;
         set contents(val: string);
-        /** @category Inherited from XreaderDocument.Annotation */
+        /**
+         * @default null
+         * @category Inherited from XreaderDocument.Annotation
+         */
         get modified(): string;
         set modified(val: string);
-        /** @category Inherited from XreaderDocument.Annotation */
+        /**
+         * @default null
+         * @category Inherited from XreaderDocument.Annotation
+         */
         get name(): string;
         set name(val: string);
         /**
@@ -1096,10 +1138,19 @@ export namespace XreaderDocument {
 
         // Properties
 
+        /**
+         * @default XreaderDocument.AnnotationTextIcon.NOTE
+         */
         get icon(): AnnotationTextIcon;
         set icon(val: AnnotationTextIcon);
+        /**
+         * @default false
+         */
         get is_open(): boolean;
         set is_open(val: boolean);
+        /**
+         * @default false
+         */
         get isOpen(): boolean;
         set isOpen(val: boolean);
 
@@ -1153,28 +1204,52 @@ export namespace XreaderDocument {
          * @param is_open
          */
         set_is_open(is_open: boolean): boolean;
-        /** @category Inherited from XreaderDocument.AnnotationMarkup */
+        /**
+         * @default false
+         * @category Inherited from XreaderDocument.AnnotationMarkup
+         */
         // This accessor conflicts with a field or function name in a parent class or interface.
         can_have_popup: boolean | any;
-        /** @category Inherited from XreaderDocument.AnnotationMarkup */
+        /**
+         * @default false
+         * @category Inherited from XreaderDocument.AnnotationMarkup
+         */
         get canHavePopup(): boolean;
         set canHavePopup(val: boolean);
-        /** @category Inherited from XreaderDocument.AnnotationMarkup */
+        /**
+         * @default true
+         * @category Inherited from XreaderDocument.AnnotationMarkup
+         */
         // This accessor conflicts with a field or function name in a parent class or interface.
         has_popup: boolean | any;
-        /** @category Inherited from XreaderDocument.AnnotationMarkup */
+        /**
+         * @default true
+         * @category Inherited from XreaderDocument.AnnotationMarkup
+         */
         get hasPopup(): boolean;
         set hasPopup(val: boolean);
-        /** @category Inherited from XreaderDocument.AnnotationMarkup */
+        /**
+         * @default null
+         * @category Inherited from XreaderDocument.AnnotationMarkup
+         */
         get label(): string;
         set label(val: string);
-        /** @category Inherited from XreaderDocument.AnnotationMarkup */
+        /**
+         * @default 1
+         * @category Inherited from XreaderDocument.AnnotationMarkup
+         */
         get opacity(): number;
         set opacity(val: number);
-        /** @category Inherited from XreaderDocument.AnnotationMarkup */
+        /**
+         * @default false
+         * @category Inherited from XreaderDocument.AnnotationMarkup
+         */
         get popup_is_open(): boolean;
         set popup_is_open(val: boolean);
-        /** @category Inherited from XreaderDocument.AnnotationMarkup */
+        /**
+         * @default false
+         * @category Inherited from XreaderDocument.AnnotationMarkup
+         */
         get popupIsOpen(): boolean;
         set popupIsOpen(val: boolean);
         /** @category Inherited from XreaderDocument.AnnotationMarkup */
@@ -1195,13 +1270,22 @@ export namespace XreaderDocument {
          */
         get color(): any;
         set color(val: any);
-        /** @category Inherited from XreaderDocument.Annotation */
+        /**
+         * @default null
+         * @category Inherited from XreaderDocument.Annotation
+         */
         get contents(): string;
         set contents(val: string);
-        /** @category Inherited from XreaderDocument.Annotation */
+        /**
+         * @default null
+         * @category Inherited from XreaderDocument.Annotation
+         */
         get modified(): string;
         set modified(val: string);
-        /** @category Inherited from XreaderDocument.Annotation */
+        /**
+         * @default null
+         * @category Inherited from XreaderDocument.Annotation
+         */
         get name(): string;
         set name(val: string);
         /**
@@ -1383,6 +1467,9 @@ export namespace XreaderDocument {
 
         // Properties
 
+        /**
+         * @default XreaderDocument.AnnotationTextMarkupType.HIGHLIGHT
+         */
         get type(): AnnotationTextMarkupType;
         set type(val: AnnotationTextMarkupType);
 
@@ -1439,28 +1526,52 @@ export namespace XreaderDocument {
          * @param markup_type
          */
         set_markup_type(markup_type: AnnotationTextMarkupType): boolean;
-        /** @category Inherited from XreaderDocument.AnnotationMarkup */
+        /**
+         * @default false
+         * @category Inherited from XreaderDocument.AnnotationMarkup
+         */
         // This accessor conflicts with a field or function name in a parent class or interface.
         can_have_popup: boolean | any;
-        /** @category Inherited from XreaderDocument.AnnotationMarkup */
+        /**
+         * @default false
+         * @category Inherited from XreaderDocument.AnnotationMarkup
+         */
         get canHavePopup(): boolean;
         set canHavePopup(val: boolean);
-        /** @category Inherited from XreaderDocument.AnnotationMarkup */
+        /**
+         * @default true
+         * @category Inherited from XreaderDocument.AnnotationMarkup
+         */
         // This accessor conflicts with a field or function name in a parent class or interface.
         has_popup: boolean | any;
-        /** @category Inherited from XreaderDocument.AnnotationMarkup */
+        /**
+         * @default true
+         * @category Inherited from XreaderDocument.AnnotationMarkup
+         */
         get hasPopup(): boolean;
         set hasPopup(val: boolean);
-        /** @category Inherited from XreaderDocument.AnnotationMarkup */
+        /**
+         * @default null
+         * @category Inherited from XreaderDocument.AnnotationMarkup
+         */
         get label(): string;
         set label(val: string);
-        /** @category Inherited from XreaderDocument.AnnotationMarkup */
+        /**
+         * @default 1
+         * @category Inherited from XreaderDocument.AnnotationMarkup
+         */
         get opacity(): number;
         set opacity(val: number);
-        /** @category Inherited from XreaderDocument.AnnotationMarkup */
+        /**
+         * @default false
+         * @category Inherited from XreaderDocument.AnnotationMarkup
+         */
         get popup_is_open(): boolean;
         set popup_is_open(val: boolean);
-        /** @category Inherited from XreaderDocument.AnnotationMarkup */
+        /**
+         * @default false
+         * @category Inherited from XreaderDocument.AnnotationMarkup
+         */
         get popupIsOpen(): boolean;
         set popupIsOpen(val: boolean);
         /** @category Inherited from XreaderDocument.AnnotationMarkup */
@@ -1481,13 +1592,22 @@ export namespace XreaderDocument {
          */
         get color(): any;
         set color(val: any);
-        /** @category Inherited from XreaderDocument.Annotation */
+        /**
+         * @default null
+         * @category Inherited from XreaderDocument.Annotation
+         */
         get contents(): string;
         set contents(val: string);
-        /** @category Inherited from XreaderDocument.Annotation */
+        /**
+         * @default null
+         * @category Inherited from XreaderDocument.Annotation
+         */
         get modified(): string;
         set modified(val: string);
-        /** @category Inherited from XreaderDocument.Annotation */
+        /**
+         * @default null
+         * @category Inherited from XreaderDocument.Annotation
+         */
         get name(): string;
         set name(val: string);
         /**
@@ -1676,6 +1796,7 @@ export namespace XreaderDocument {
         set data(val: any);
         /**
          * @construct-only
+         * @default null
          */
         set description(val: string);
         /**
@@ -1684,10 +1805,12 @@ export namespace XreaderDocument {
         set mtime(val: GObject.GType);
         /**
          * @construct-only
+         * @default null
          */
         set name(val: string);
         /**
          * @construct-only
+         * @default 0
          */
         set size(val: number);
 
@@ -1716,7 +1839,7 @@ export namespace XreaderDocument {
             mtime: GLib.DateTime,
             ctime: GLib.DateTime,
             size: bigint | number,
-            data?: any | null,
+            data: any | null,
         ): Attachment;
 
         // Signals
@@ -2531,6 +2654,7 @@ export namespace XreaderDocument {
         get action(): LinkAction;
         /**
          * @construct-only
+         * @default null
          */
         get title(): string;
 
@@ -2623,6 +2747,7 @@ export namespace XreaderDocument {
         get dest(): LinkDest;
         /**
          * @construct-only
+         * @default null
          */
         get filename(): string;
         /**
@@ -2635,10 +2760,12 @@ export namespace XreaderDocument {
         get hideList(): any;
         /**
          * @construct-only
+         * @default null
          */
         get name(): string;
         /**
          * @construct-only
+         * @default null
          */
         get params(): string;
         /**
@@ -2659,10 +2786,12 @@ export namespace XreaderDocument {
         get toggleList(): any;
         /**
          * @construct-only
+         * @default XreaderDocument.LinkActionType.GOTO_DEST
          */
         get type(): LinkActionType;
         /**
          * @construct-only
+         * @default null
          */
         get uri(): string;
 
@@ -2767,46 +2896,57 @@ export namespace XreaderDocument {
 
         /**
          * @construct-only
+         * @default 0
          */
         get bottom(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get change(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get left(): number;
         /**
          * @construct-only
+         * @default null
          */
         get named(): string;
         /**
          * @construct-only
+         * @default 0
          */
         get page(): number;
         /**
          * @construct-only
+         * @default null
          */
         get page_label(): string;
         /**
          * @construct-only
+         * @default null
          */
         get pageLabel(): string;
         /**
          * @construct-only
+         * @default 0
          */
         get right(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get top(): number;
         /**
          * @construct-only
+         * @default XreaderDocument.LinkDestType.UNKNOWN
          */
         get type(): LinkDestType;
         /**
          * @construct-only
+         * @default 0
          */
         get zoom(): number;
 
@@ -3067,18 +3207,39 @@ export namespace XreaderDocument {
 
         // Properties
 
+        /**
+         * @default XreaderDocument.TransitionEffectAlignment.HORIZONTAL
+         */
         get alignment(): TransitionEffectAlignment;
         set alignment(val: TransitionEffectAlignment);
+        /**
+         * @default 0
+         */
         get angle(): number;
         set angle(val: number);
+        /**
+         * @default XreaderDocument.TransitionEffectDirection.INWARD
+         */
         get direction(): TransitionEffectDirection;
         set direction(val: TransitionEffectDirection);
+        /**
+         * @default 0
+         */
         get duration(): number;
         set duration(val: number);
+        /**
+         * @default false
+         */
         get rectangular(): boolean;
         set rectangular(val: boolean);
+        /**
+         * @default 1
+         */
         get scale(): number;
         set scale(val: number);
+        /**
+         * @default XreaderDocument.TransitionEffectType.REPLACE
+         */
         get type(): TransitionEffectType;
         set type(val: TransitionEffectType);
 
@@ -3591,20 +3752,44 @@ export namespace XreaderDocument {
     interface AnnotationMarkup extends Annotation {
         // Properties
 
+        /**
+         * @default false
+         */
         get can_have_popup(): boolean;
         set can_have_popup(val: boolean);
+        /**
+         * @default false
+         */
         get canHavePopup(): boolean;
         set canHavePopup(val: boolean);
+        /**
+         * @default true
+         */
         get has_popup(): boolean;
         set has_popup(val: boolean);
+        /**
+         * @default true
+         */
         get hasPopup(): boolean;
         set hasPopup(val: boolean);
+        /**
+         * @default null
+         */
         get label(): string;
         set label(val: string);
+        /**
+         * @default 1
+         */
         get opacity(): number;
         set opacity(val: number);
+        /**
+         * @default false
+         */
         get popup_is_open(): boolean;
         set popup_is_open(val: boolean);
+        /**
+         * @default false
+         */
         get popupIsOpen(): boolean;
         set popupIsOpen(val: boolean);
         get rectangle(): Rectangle;

@@ -213,24 +213,29 @@ export namespace GstTranscoder {
 
         /**
          * See #encodebin:avoid-reencoding
+         * @default false
          */
         get avoid_reencoding(): boolean;
         set avoid_reencoding(val: boolean);
         /**
          * See #encodebin:avoid-reencoding
+         * @default false
          */
         get avoidReencoding(): boolean;
         set avoidReencoding(val: boolean);
         /**
          * @construct-only
+         * @default null
          */
         get dest_uri(): string;
         /**
          * @construct-only
+         * @default null
          */
         get destUri(): string;
         /**
          * @read-only
+         * @default 18446744073709551615
          */
         get duration(): number;
         /**
@@ -239,10 +244,17 @@ export namespace GstTranscoder {
         get pipeline(): Gst.Element;
         /**
          * @read-only
+         * @default 18446744073709551615
          */
         get position(): number;
+        /**
+         * @default 100
+         */
         get position_update_interval(): number;
         set position_update_interval(val: number);
+        /**
+         * @default 100
+         */
         get positionUpdateInterval(): number;
         set positionUpdateInterval(val: number);
         /**
@@ -251,10 +263,12 @@ export namespace GstTranscoder {
         get profile(): GstPbutils.EncodingProfile;
         /**
          * @construct-only
+         * @default null
          */
         get src_uri(): string;
         /**
          * @construct-only
+         * @default null
          */
         get srcUri(): string;
 
@@ -358,7 +372,7 @@ export namespace GstTranscoder {
          * @param context A {@link GLib.MainContext} on which the main-loop will process                       transcoder bus messages on. Can be NULL (thread-default                       context will be used then).
          * @returns The {@link GstTranscoder.TranscoderSignalAdapter} to connect signal handlers to.
          */
-        get_signal_adapter(context?: GLib.MainContext | null): TranscoderSignalAdapter | null;
+        get_signal_adapter(context: GLib.MainContext | null): TranscoderSignalAdapter | null;
         /**
          * Gets the URI of the currently-transcoding stream.
          * @returns a string containing the URI of the source stream. `g_free()` after usage.
@@ -441,7 +455,7 @@ export namespace GstTranscoder {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            transcoder: Transcoder;
+            transcoder: Transcoder | null;
         }
     }
 
@@ -460,7 +474,7 @@ export namespace GstTranscoder {
          * @since 1.20
          * @read-only
          */
-        get transcoder(): Transcoder;
+        get transcoder(): Transcoder | null;
 
         /**
          * Compile-time signal type information.

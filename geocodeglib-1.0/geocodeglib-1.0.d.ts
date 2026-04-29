@@ -448,8 +448,8 @@ export namespace GeocodeGlib {
             answer_count: number;
             answerCount: number;
             bounded: boolean;
-            search_area: BoundingBox;
-            searchArea: BoundingBox;
+            search_area: BoundingBox | null;
+            searchArea: BoundingBox | null;
         }
     }
 
@@ -485,15 +485,15 @@ export namespace GeocodeGlib {
          * If {@link GeocodeGlib.Forward.bounded} property is set to `TRUE` only results from
          * this area is returned.
          */
-        get search_area(): BoundingBox;
-        set search_area(val: BoundingBox);
+        get search_area(): BoundingBox | null;
+        set search_area(val: BoundingBox | null);
         /**
          * The bounding box that limits the search area.
          * If {@link GeocodeGlib.Forward.bounded} property is set to `TRUE` only results from
          * this area is returned.
          */
-        get searchArea(): BoundingBox;
-        set searchArea(val: BoundingBox);
+        get searchArea(): BoundingBox | null;
+        set searchArea(val: BoundingBox | null);
 
         /**
          * Compile-time signal type information.
@@ -570,7 +570,7 @@ export namespace GeocodeGlib {
          * `geocode_forward_search_finish()` to get the result of the operation.
          * @param cancellable optional {@link Gio.Cancellable} forward, `null` to ignore.
          */
-        search_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<Place[]>;
+        search_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Place[]>;
         /**
          * Asynchronously performs a forward geocoding
          * query using a web service. Use `geocode_forward_search()` to do the same
@@ -593,7 +593,7 @@ export namespace GeocodeGlib {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         search_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Place[]> | void;
         /**
@@ -613,7 +613,7 @@ export namespace GeocodeGlib {
          * If none is given, the default GNOME Nominatim server is used.
          * @param backend a {@link GeocodeGlib.Backend}, or `null` to use the    default one.
          */
-        set_backend(backend?: Backend | null): void;
+        set_backend(backend: Backend | null): void;
         /**
          * Set the {@link GeocodeGlib.Forward.bounded} property that regulates whether the
          * {@link GeocodeGlib.Forward.search_area} property acts restricting or not.
@@ -915,8 +915,8 @@ export namespace GeocodeGlib {
          */
         add_forward_result(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
-            results?: Place[] | null,
-            error?: GLib.Error | null,
+            results: Place[] | null,
+            error: GLib.Error | null,
         ): void;
         /**
          * Add a query and corresponding result (or error) to the mock backend, meaning
@@ -935,8 +935,8 @@ export namespace GeocodeGlib {
          */
         add_reverse_result(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
-            results?: Place[] | null,
-            error?: GLib.Error | null,
+            results: Place[] | null,
+            error: GLib.Error | null,
         ): void;
         /**
          * Clear the set of stored results in the mock backend which have been added
@@ -977,7 +977,7 @@ export namespace GeocodeGlib {
          */
         forward_search(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): Place[];
         /**
          * Asynchronously performs a forward geocoding query using the `backend`. Use
@@ -995,7 +995,7 @@ export namespace GeocodeGlib {
          */
         forward_search_async(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<Place[]>;
         /**
          * Asynchronously performs a forward geocoding query using the `backend`. Use
@@ -1034,7 +1034,7 @@ export namespace GeocodeGlib {
          */
         forward_search_async(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Place[]> | void;
         /**
@@ -1061,7 +1061,7 @@ export namespace GeocodeGlib {
          */
         reverse_resolve(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): Place[];
         /**
          * Asynchronously gets the result of a reverse geocoding query using the
@@ -1087,7 +1087,7 @@ export namespace GeocodeGlib {
          */
         reverse_resolve_async(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<Place[]>;
         /**
          * Asynchronously gets the result of a reverse geocoding query using the
@@ -1142,7 +1142,7 @@ export namespace GeocodeGlib {
          */
         reverse_resolve_async(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Place[]> | void;
         /**
@@ -1166,7 +1166,7 @@ export namespace GeocodeGlib {
          */
         vfunc_forward_search(
             params: GLib.HashTable<string, GObject.Value>,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): Place[];
         /**
          * Asynchronously performs a forward geocoding query using the `backend`. Use
@@ -1186,8 +1186,8 @@ export namespace GeocodeGlib {
          */
         vfunc_forward_search_async(
             params: GLib.HashTable<string, GObject.Value>,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes a forward geocoding operation. See
@@ -1213,7 +1213,7 @@ export namespace GeocodeGlib {
          */
         vfunc_reverse_resolve(
             params: GLib.HashTable<string, GObject.Value>,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): Place[];
         /**
          * Asynchronously gets the result of a reverse geocoding query using the
@@ -1241,8 +1241,8 @@ export namespace GeocodeGlib {
          */
         vfunc_reverse_resolve_async(
             params: GLib.HashTable<string, GObject.Value>,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes a reverse geocoding operation. See `geocode_backend_reverse_resolve_async()`.
@@ -1297,38 +1297,19 @@ export namespace GeocodeGlib {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1336,15 +1317,9 @@ export namespace GeocodeGlib {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1511,7 +1486,7 @@ export namespace GeocodeGlib {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1849,7 +1824,7 @@ export namespace GeocodeGlib {
          * @param cancellable
          * @virtual
          */
-        vfunc_query(uri: string, cancellable?: Gio.Cancellable | null): string;
+        vfunc_query(uri: string, cancellable: Gio.Cancellable | null): string;
         /**
          * @param uri
          * @param cancellable
@@ -1858,8 +1833,8 @@ export namespace GeocodeGlib {
          */
         vfunc_query_async(
             uri: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param res
@@ -1881,7 +1856,7 @@ export namespace GeocodeGlib {
          */
         forward_search(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): Place[];
         /**
          * Asynchronously performs a forward geocoding query using the `backend`. Use
@@ -1899,7 +1874,7 @@ export namespace GeocodeGlib {
          */
         forward_search_async(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<Place[]>;
         /**
          * Asynchronously performs a forward geocoding query using the `backend`. Use
@@ -1938,7 +1913,7 @@ export namespace GeocodeGlib {
          */
         forward_search_async(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Place[]> | void;
         /**
@@ -1965,7 +1940,7 @@ export namespace GeocodeGlib {
          */
         reverse_resolve(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): Place[];
         /**
          * Asynchronously gets the result of a reverse geocoding query using the
@@ -1991,7 +1966,7 @@ export namespace GeocodeGlib {
          */
         reverse_resolve_async(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<Place[]>;
         /**
          * Asynchronously gets the result of a reverse geocoding query using the
@@ -2046,7 +2021,7 @@ export namespace GeocodeGlib {
          */
         reverse_resolve_async(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Place[]> | void;
         /**
@@ -2070,7 +2045,7 @@ export namespace GeocodeGlib {
          */
         vfunc_forward_search(
             params: GLib.HashTable<string, GObject.Value>,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): Place[];
         /**
          * Asynchronously performs a forward geocoding query using the `backend`. Use
@@ -2090,8 +2065,8 @@ export namespace GeocodeGlib {
          */
         vfunc_forward_search_async(
             params: GLib.HashTable<string, GObject.Value>,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes a forward geocoding operation. See
@@ -2117,7 +2092,7 @@ export namespace GeocodeGlib {
          */
         vfunc_reverse_resolve(
             params: GLib.HashTable<string, GObject.Value>,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): Place[];
         /**
          * Asynchronously gets the result of a reverse geocoding query using the
@@ -2145,8 +2120,8 @@ export namespace GeocodeGlib {
          */
         vfunc_reverse_resolve_async(
             params: GLib.HashTable<string, GObject.Value>,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes a reverse geocoding operation. See `geocode_backend_reverse_resolve_async()`.
@@ -2201,38 +2176,19 @@ export namespace GeocodeGlib {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -2240,15 +2196,9 @@ export namespace GeocodeGlib {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -2415,7 +2365,7 @@ export namespace GeocodeGlib {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -3110,7 +3060,7 @@ export namespace GeocodeGlib {
          * `geocode_reverse_resolve_finish()` to get the result of the operation.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        resolve_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<Place>;
+        resolve_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Place>;
         /**
          * Asynchronously gets the result of a reverse geocoding
          * query using a web service. Use `geocode_reverse_resolve()` to do the same
@@ -3133,7 +3083,7 @@ export namespace GeocodeGlib {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         resolve_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Place> | void;
         /**
@@ -3148,7 +3098,7 @@ export namespace GeocodeGlib {
          * If none is given, the default GNOME Nominatim server is used.
          * @param backend a {@link GeocodeGlib.Backend}, or `null` to use the default one.
          */
-        set_backend(backend?: Backend | null): void;
+        set_backend(backend: Backend | null): void;
     }
 
     /**
@@ -3262,7 +3212,7 @@ export namespace GeocodeGlib {
              */
             vfunc_forward_search(
                 params: GLib.HashTable<string, GObject.Value>,
-                cancellable?: Gio.Cancellable | null,
+                cancellable: Gio.Cancellable | null,
             ): Place[];
             /**
              * Asynchronously performs a forward geocoding query using the `backend`. Use
@@ -3282,8 +3232,8 @@ export namespace GeocodeGlib {
              */
             vfunc_forward_search_async(
                 params: GLib.HashTable<string, GObject.Value>,
-                cancellable?: Gio.Cancellable | null,
-                callback?: Gio.AsyncReadyCallback<this> | null,
+                cancellable: Gio.Cancellable | null,
+                callback: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * Finishes a forward geocoding operation. See
@@ -3309,7 +3259,7 @@ export namespace GeocodeGlib {
              */
             vfunc_reverse_resolve(
                 params: GLib.HashTable<string, GObject.Value>,
-                cancellable?: Gio.Cancellable | null,
+                cancellable: Gio.Cancellable | null,
             ): Place[];
             /**
              * Asynchronously gets the result of a reverse geocoding query using the
@@ -3337,8 +3287,8 @@ export namespace GeocodeGlib {
              */
             vfunc_reverse_resolve_async(
                 params: GLib.HashTable<string, GObject.Value>,
-                cancellable?: Gio.Cancellable | null,
-                callback?: Gio.AsyncReadyCallback<this> | null,
+                cancellable: Gio.Cancellable | null,
+                callback: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * Finishes a reverse geocoding operation. See `geocode_backend_reverse_resolve_async()`.
@@ -3381,7 +3331,7 @@ export namespace GeocodeGlib {
          */
         forward_search(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): Place[];
         /**
          * Asynchronously performs a forward geocoding query using the `backend`. Use
@@ -3399,7 +3349,7 @@ export namespace GeocodeGlib {
          */
         forward_search_async(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<Place[]>;
         /**
          * Asynchronously performs a forward geocoding query using the `backend`. Use
@@ -3438,7 +3388,7 @@ export namespace GeocodeGlib {
          */
         forward_search_async(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Place[]> | void;
         /**
@@ -3465,7 +3415,7 @@ export namespace GeocodeGlib {
          */
         reverse_resolve(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): Place[];
         /**
          * Asynchronously gets the result of a reverse geocoding query using the
@@ -3491,7 +3441,7 @@ export namespace GeocodeGlib {
          */
         reverse_resolve_async(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<Place[]>;
         /**
          * Asynchronously gets the result of a reverse geocoding query using the
@@ -3546,7 +3496,7 @@ export namespace GeocodeGlib {
          */
         reverse_resolve_async(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Place[]> | void;
         /**

@@ -1713,9 +1713,9 @@ export namespace Grss {
 
         // Constructors
 
-        constructor(name: string, email?: string | null, uri?: string | null);
+        constructor(name: string, email: string | null, uri: string | null);
 
-        static ['new'](name: string, email?: string | null, uri?: string | null): Person;
+        static ['new'](name: string, email: string | null, uri: string | null): Person;
 
         // Methods
 

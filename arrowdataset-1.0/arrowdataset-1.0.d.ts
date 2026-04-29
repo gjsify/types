@@ -287,8 +287,8 @@ export namespace ArrowDataset {
 
         static ['new'](
             schema: Arrow.Schema,
-            dictionaries?: Arrow.Array[] | null,
-            options?: PartitioningOptions | null,
+            dictionaries: Arrow.Array[] | null,
+            options: PartitioningOptions | null,
         ): DirectoryPartitioning;
         // Conflicted with ArrowDataset.Partitioning.new
 

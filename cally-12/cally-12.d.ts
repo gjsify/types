@@ -655,38 +655,19 @@ export namespace Cally {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -694,15 +675,9 @@ export namespace Cally {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -869,7 +844,7 @@ export namespace Cally {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1625,38 +1600,19 @@ export namespace Cally {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1664,15 +1620,9 @@ export namespace Cally {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1839,7 +1789,7 @@ export namespace Cally {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -2197,56 +2147,86 @@ export namespace Cally {
         emit(signal: string, ...args: any[]): void;
         /**
          * @read-only
+         * @default 0
          * @category Inherited from Atk.Object
          */
         get accessible_component_layer(): number;
         /**
          * @read-only
+         * @default 0
          * @category Inherited from Atk.Object
          */
         get accessibleComponentLayer(): number;
         /**
          * @read-only
+         * @default -2147483648
          * @category Inherited from Atk.Object
          */
         get accessible_component_mdi_zorder(): number;
         /**
          * @read-only
+         * @default -2147483648
          * @category Inherited from Atk.Object
          */
         get accessibleComponentMdiZorder(): number;
-        /** @category Inherited from Atk.Object */
+        /**
+         * @default null
+         * @category Inherited from Atk.Object
+         */
         get accessible_description(): string;
         set accessible_description(val: string);
-        /** @category Inherited from Atk.Object */
+        /**
+         * @default null
+         * @category Inherited from Atk.Object
+         */
         get accessibleDescription(): string;
         set accessibleDescription(val: string);
-        /** @category Inherited from Atk.Object */
+        /**
+         * @default null
+         * @category Inherited from Atk.Object
+         */
         get accessible_help_text(): string;
         set accessible_help_text(val: string);
-        /** @category Inherited from Atk.Object */
+        /**
+         * @default null
+         * @category Inherited from Atk.Object
+         */
         get accessibleHelpText(): string;
         set accessibleHelpText(val: string);
         /**
          * @read-only
+         * @default 0
          * @category Inherited from Atk.Object
          */
         get accessible_hypertext_nlinks(): number;
         /**
          * @read-only
+         * @default 0
          * @category Inherited from Atk.Object
          */
         get accessibleHypertextNlinks(): number;
-        /** @category Inherited from Atk.Object */
+        /**
+         * @default null
+         * @category Inherited from Atk.Object
+         */
         get accessible_id(): string;
         set accessible_id(val: string);
-        /** @category Inherited from Atk.Object */
+        /**
+         * @default null
+         * @category Inherited from Atk.Object
+         */
         get accessibleId(): string;
         set accessibleId(val: string);
-        /** @category Inherited from Atk.Object */
+        /**
+         * @default null
+         * @category Inherited from Atk.Object
+         */
         get accessible_name(): string;
         set accessible_name(val: string);
-        /** @category Inherited from Atk.Object */
+        /**
+         * @default null
+         * @category Inherited from Atk.Object
+         */
         get accessibleName(): string;
         set accessibleName(val: string);
         /** @category Inherited from Atk.Object */
@@ -2255,15 +2235,22 @@ export namespace Cally {
         /** @category Inherited from Atk.Object */
         get accessibleParent(): Atk.Object;
         set accessibleParent(val: Atk.Object);
-        /** @category Inherited from Atk.Object */
+        /**
+         * @default Atk.Role.UNKNOWN
+         * @category Inherited from Atk.Object
+         */
         get accessible_role(): Atk.Role;
         set accessible_role(val: Atk.Role);
-        /** @category Inherited from Atk.Object */
+        /**
+         * @default Atk.Role.UNKNOWN
+         * @category Inherited from Atk.Object
+         */
         get accessibleRole(): Atk.Role;
         set accessibleRole(val: Atk.Role);
         /**
          * Table caption.
          * @deprecated Since 1.3. Use table-caption-object instead.
+         * @default null
          * @category Inherited from Atk.Object
          */
         get accessible_table_caption(): string;
@@ -2271,6 +2258,7 @@ export namespace Cally {
         /**
          * Table caption.
          * @deprecated Since 1.3. Use table-caption-object instead.
+         * @default null
          * @category Inherited from Atk.Object
          */
         get accessibleTableCaption(): string;
@@ -2284,6 +2272,7 @@ export namespace Cally {
         /**
          * Accessible table column description.
          * @deprecated Since 2.12. Use `atk_table_get_column_description()` and `atk_table_set_column_description()` instead.
+         * @default null
          * @category Inherited from Atk.Object
          */
         get accessible_table_column_description(): string;
@@ -2291,6 +2280,7 @@ export namespace Cally {
         /**
          * Accessible table column description.
          * @deprecated Since 2.12. Use `atk_table_get_column_description()` and `atk_table_set_column_description()` instead.
+         * @default null
          * @category Inherited from Atk.Object
          */
         get accessibleTableColumnDescription(): string;
@@ -2312,6 +2302,7 @@ export namespace Cally {
         /**
          * Accessible table row description.
          * @deprecated Since 2.12. Use `atk_table_get_row_description()` and `atk_table_set_row_description()` instead.
+         * @default null
          * @category Inherited from Atk.Object
          */
         get accessible_table_row_description(): string;
@@ -2319,6 +2310,7 @@ export namespace Cally {
         /**
          * Accessible table row description.
          * @deprecated Since 2.12. Use `atk_table_get_row_description()` and `atk_table_set_row_description()` instead.
+         * @default null
          * @category Inherited from Atk.Object
          */
         get accessibleTableRowDescription(): string;
@@ -2346,6 +2338,7 @@ export namespace Cally {
         /**
          * Numeric value of this object, in case being and AtkValue.
          * @deprecated Since 2.12. Use `atk_value_get_value_and_text()` to get the value, and value-changed signal to be notified on their value changes.
+         * @default 0
          * @category Inherited from Atk.Object
          */
         get accessible_value(): number;
@@ -2353,6 +2346,7 @@ export namespace Cally {
         /**
          * Numeric value of this object, in case being and AtkValue.
          * @deprecated Since 2.12. Use `atk_value_get_value_and_text()` to get the value, and value-changed signal to be notified on their value changes.
+         * @default 0
          * @category Inherited from Atk.Object
          */
         get accessibleValue(): number;
@@ -2846,38 +2840,19 @@ export namespace Cally {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -2885,15 +2860,9 @@ export namespace Cally {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -3060,7 +3029,7 @@ export namespace Cally {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -3314,7 +3283,7 @@ export namespace Cally {
          * to create an instance of a subclass of {@link Atk.Object}
          * @param data a `gpointer` which identifies the object for which the AtkObject was created.
          */
-        initialize(data?: any | null): void;
+        initialize(data: any | null): void;
         /**
          * Emits a state-change signal for the specified state.
          *
@@ -3406,13 +3375,13 @@ export namespace Cally {
          * @param child
          * @virtual
          */
-        vfunc_active_descendant_changed(child?: any | null): void;
+        vfunc_active_descendant_changed(child: any | null): void;
         /**
          * @param change_index
          * @param changed_child
          * @virtual
          */
-        vfunc_children_changed(change_index: number, changed_child?: any | null): void;
+        vfunc_children_changed(change_index: number, changed_child: any | null): void;
         /**
          * The signal handler which is executed when there is a
          *   focus event for an object. This virtual function is deprecated
@@ -3471,7 +3440,7 @@ export namespace Cally {
          * @param data a `gpointer` which identifies the object for which the AtkObject was created.
          * @virtual
          */
-        vfunc_initialize(data?: any | null): void;
+        vfunc_initialize(data: any | null): void;
         /**
          * @param values
          * @virtual
@@ -4714,38 +4683,19 @@ export namespace Cally {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -4753,15 +4703,9 @@ export namespace Cally {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -4928,7 +4872,7 @@ export namespace Cally {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set

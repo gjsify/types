@@ -2289,7 +2289,7 @@ export namespace GIRepository {
          * @param version Required version, may be `NULL` for latest
          * @returns `TRUE` if namespace-version is loaded, `FALSE` otherwise
          */
-        is_registered(namespace_: string, version?: string | null): boolean;
+        is_registered(namespace_: string, version: string | null): boolean;
         /**
          * Load the given `typelib` into the repository.
          * @param typelib the typelib to load

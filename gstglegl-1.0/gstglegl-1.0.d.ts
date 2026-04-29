@@ -175,7 +175,7 @@ export namespace GstGLEGL {
      * @gir-type Callback
      */
     interface EGLImageDestroyNotify {
-        (image: EGLImage, data?: any | null): void;
+        (image: EGLImage, data: any | null): void;
     }
     namespace GLDisplayEGL {
         // Signal signatures
@@ -214,7 +214,7 @@ export namespace GstGLEGL {
 
         static ['new'](): GLDisplayEGL;
 
-        static new_with_egl_display(display?: any | null): GLDisplayEGL;
+        static new_with_egl_display(display: any | null): GLDisplayEGL;
 
         // Signals
 
@@ -302,7 +302,7 @@ export namespace GstGLEGL {
 
         static ['new'](...args: never[]): any;
 
-        static new_with_egl_device(device?: any | null): GLDisplayEGLDevice;
+        static new_with_egl_device(device: any | null): GLDisplayEGLDevice;
 
         // Signals
 

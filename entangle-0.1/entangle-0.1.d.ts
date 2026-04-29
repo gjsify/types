@@ -104,7 +104,7 @@ export namespace Entangle {
      * @param metadata the exiv2 metadata for the pixbuf
      * @returns the rotated pixbuf
      */
-    function pixbuf_auto_rotate(src: GdkPixbuf.Pixbuf, metadata?: GExiv2.Metadata | null): GdkPixbuf.Pixbuf;
+    function pixbuf_auto_rotate(src: GdkPixbuf.Pixbuf, metadata: GExiv2.Metadata | null): GdkPixbuf.Pixbuf;
     /**
      * If `slot` is ENTANGLE_PIXBUF_IMAGE_SLOT_MASTER then the primary
      * image data is loaded.
@@ -127,7 +127,7 @@ export namespace Entangle {
         image: Image,
         slot: PixbufImageSlot,
         applyOrientation: boolean,
-        metadata?: GExiv2.Metadata | null,
+        metadata: GExiv2.Metadata | null,
     ): GdkPixbuf.Pixbuf;
     namespace Application {
         // Signal signatures
@@ -299,38 +299,19 @@ export namespace Entangle {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -338,15 +319,9 @@ export namespace Entangle {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -513,7 +488,7 @@ export namespace Entangle {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -790,60 +765,74 @@ export namespace Entangle {
 
         /**
          * @read-only
+         * @default null
          */
         get driver(): string;
         /**
          * @construct-only
+         * @default false
          */
         get has_capture(): boolean;
         /**
          * @construct-only
+         * @default false
          */
         get hasCapture(): boolean;
         /**
          * @construct-only
+         * @default false
          */
         get has_preview(): boolean;
         /**
          * @construct-only
+         * @default false
          */
         get hasPreview(): boolean;
         /**
          * @construct-only
+         * @default false
          */
         get has_settings(): boolean;
         /**
          * @construct-only
+         * @default false
          */
         get hasSettings(): boolean;
         /**
          * @construct-only
+         * @default false
          */
         get has_viewfinder(): boolean;
         /**
          * @construct-only
+         * @default false
          */
         get hasViewfinder(): boolean;
         /**
          * @read-only
+         * @default null
          */
         get manual(): string;
         /**
          * @construct-only
+         * @default null
          */
         get model(): string;
         /**
          * @construct-only
+         * @default null
          */
         get port(): string;
         get progress(): Progress;
         set progress(val: Progress);
         /**
          * @construct-only
+         * @default null
          */
         get serial(): string;
         /**
          * @read-only
+         * @default null
          */
         get summary(): string;
 
@@ -915,7 +904,7 @@ export namespace Entangle {
          * can be used to check the status
          * @param cancellable optional GCancellable object, NULL to ignore.
          */
-        autofocus_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        autofocus_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Trigger the autofocus mechanism on the camera, waiting
          * until focus is achieved or fails.
@@ -942,7 +931,7 @@ export namespace Entangle {
          * @param callback a GAsyncReadyCallback to call when the request is satisfied.
          */
         autofocus_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -979,7 +968,7 @@ export namespace Entangle {
          * can be used to check the status
          * @param cancellable optional GCancellable object, NULL to ignore.
          */
-        capture_image_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<CameraFile>;
+        capture_image_async(cancellable: Gio.Cancellable | null): globalThis.Promise<CameraFile>;
         /**
          * Trigger the camera shutter and download the first resulting
          * image. If the camera is shooting in multiple formats (eg JPEG
@@ -1012,7 +1001,7 @@ export namespace Entangle {
          * @param callback a GAsyncReadyCallback to call when the request is satisfied.
          */
         capture_image_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<CameraFile> | void;
         /**
@@ -1039,7 +1028,7 @@ export namespace Entangle {
          * can be used to check the status
          * @param cancellable optional GCancellable object, NULL to ignore.
          */
-        close_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        close_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Close from the camera, enabling it to be used by
          * other applications.
@@ -1062,7 +1051,7 @@ export namespace Entangle {
          * @param callback a GAsyncReadyCallback to call when the request is satisfied.
          */
         close_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1093,7 +1082,7 @@ export namespace Entangle {
          * @param file the file to delete
          * @param cancellable optional GCancellable object, NULL to ignore.
          */
-        delete_file_async(file: CameraFile, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        delete_file_async(file: CameraFile, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Delete `file` from the camera capture target.
          *
@@ -1125,7 +1114,7 @@ export namespace Entangle {
          */
         delete_file_async(
             file: CameraFile,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1158,7 +1147,7 @@ export namespace Entangle {
          * @param file the file whose contents to download
          * @param cancellable optional GCancellable object, NULL to ignore.
          */
-        download_file_async(file: CameraFile, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        download_file_async(file: CameraFile, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Download the data associated with `file` and set the data
          * on `file`.
@@ -1192,7 +1181,7 @@ export namespace Entangle {
          */
         download_file_async(
             file: CameraFile,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1293,7 +1282,7 @@ export namespace Entangle {
          * can be used to check the status
          * @param cancellable optional GCancellable object, NULL to ignore.
          */
-        load_controls_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        load_controls_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Loads the configuration controls from the camera.
          *
@@ -1318,7 +1307,7 @@ export namespace Entangle {
          * @param callback a GAsyncReadyCallback to call when the request is satisfied.
          */
         load_controls_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1353,7 +1342,7 @@ export namespace Entangle {
          */
         manualfocus_async(
             step: CameraManualFocusStep,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Trigger the focus mechanism on the camera, to move
@@ -1388,7 +1377,7 @@ export namespace Entangle {
          */
         manualfocus_async(
             step: CameraManualFocusStep,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1401,7 +1390,7 @@ export namespace Entangle {
         /**
          * @param cancellable
          */
-        mount_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        mount_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * @param cancellable
          * @param callback
@@ -1412,7 +1401,7 @@ export namespace Entangle {
          * @param callback
          */
         mount_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1438,7 +1427,7 @@ export namespace Entangle {
          * can be used to check the status
          * @param cancellable optional GCancellable object, NULL to ignore.
          */
-        open_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        open_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Attempt to open to and initialize the camera. This
          * may fail if the camera is in use by another application,
@@ -1463,7 +1452,7 @@ export namespace Entangle {
          * @param callback a GAsyncReadyCallback to call when the request is satisfied.
          */
         open_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1496,7 +1485,7 @@ export namespace Entangle {
          * can be used to check the status
          * @param cancellable optional GCancellable object, NULL to ignore.
          */
-        preview_image_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<CameraFile>;
+        preview_image_async(cancellable: Gio.Cancellable | null): globalThis.Promise<CameraFile>;
         /**
          * Enable "live view", if not already enabled, and capture a
          * low resolution preview image. The "live view" mode will
@@ -1525,7 +1514,7 @@ export namespace Entangle {
          * @param callback a GAsyncReadyCallback to call when the request is satisfied.
          */
         preview_image_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<CameraFile> | void;
         /**
@@ -1562,10 +1551,7 @@ export namespace Entangle {
          * @param waitms the number of milliseconds to wait
          * @param cancellable optional GCancellable object, NULL to ignore.
          */
-        process_events_async(
-            waitms: bigint | number,
-            cancellable?: Gio.Cancellable | null,
-        ): globalThis.Promise<boolean>;
+        process_events_async(waitms: bigint | number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Wait upto `waitms` milliseconds for events to arrive from
          * the camera. Signals will be emitted for any interesting
@@ -1603,7 +1589,7 @@ export namespace Entangle {
          */
         process_events_async(
             waitms: bigint | number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1632,7 +1618,7 @@ export namespace Entangle {
          * can be used to check the status
          * @param cancellable optional GCancellable object, NULL to ignore.
          */
-        save_controls_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        save_controls_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Saves the configuration controls to the camera.
          *
@@ -1657,7 +1643,7 @@ export namespace Entangle {
          * @param callback a GAsyncReadyCallback to call when the request is satisfied.
          */
         save_controls_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1692,7 +1678,7 @@ export namespace Entangle {
          */
         set_capture_target_async(
             target: CameraCaptureTarget,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Set the destination for storing captured images
@@ -1727,7 +1713,7 @@ export namespace Entangle {
          */
         set_capture_target_async(
             target: CameraCaptureTarget,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1757,7 +1743,7 @@ export namespace Entangle {
          * @param epochsecs new time in seconds since the epoch
          * @param cancellable optional GCancellable object, NULL to ignore.
          */
-        set_clock_async(epochsecs: bigint | number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        set_clock_async(epochsecs: bigint | number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Update the camera clock to be `epochsecs` seconds since
          * the epoch.
@@ -1791,7 +1777,7 @@ export namespace Entangle {
          */
         set_clock_async(
             epochsecs: bigint | number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1806,7 +1792,7 @@ export namespace Entangle {
          * notifications
          * @param prog the progress instance
          */
-        set_progress(prog?: Progress | null): void;
+        set_progress(prog: Progress | null): void;
         /**
          * If `enabled` is TRUE, the view finder will be activated
          * allowing preview images to be captured. If `enabled` is
@@ -1832,7 +1818,7 @@ export namespace Entangle {
          * @param enabled TRUE to turn on the view finder
          * @param cancellable optional GCancellable object, NULL to ignore.
          */
-        set_viewfinder_async(enabled: boolean, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        set_viewfinder_async(enabled: boolean, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * If `enabled` is TRUE, the view finder will be activated
          * allowing preview images to be captured. If `enabled` is
@@ -1868,7 +1854,7 @@ export namespace Entangle {
          */
         set_viewfinder_async(
             enabled: boolean,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1887,7 +1873,7 @@ export namespace Entangle {
          * can be used to check the status
          * @param cancellable optional GCancellable object, NULL to ignore.
          */
-        unmount_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        unmount_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Unmount the camera virtual filesystem, allowing it to be
          * opened.
@@ -1910,7 +1896,7 @@ export namespace Entangle {
          * @param callback a GAsyncReadyCallback to call when the request is satisfied.
          */
         unmount_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1960,8 +1946,14 @@ export namespace Entangle {
 
         get camera(): Camera;
         set camera(val: Camera);
+        /**
+         * @default true
+         */
         get delete_file(): boolean;
         set delete_file(val: boolean);
+        /**
+         * @default true
+         */
         get deleteFile(): boolean;
         set deleteFile(val: boolean);
         get session(): Session;
@@ -2010,7 +2002,7 @@ export namespace Entangle {
         /**
          * @param cancel
          */
-        capture_async(cancel?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        capture_async(cancel: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * @param cancel
          * @param callback
@@ -2021,7 +2013,7 @@ export namespace Entangle {
          * @param callback
          */
         capture_async(
-            cancel?: Gio.Cancellable | null,
+            cancel: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2043,7 +2035,7 @@ export namespace Entangle {
          * @param cancel
          * @param confirm
          */
-        preview_async(cancel?: Gio.Cancellable | null, confirm?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        preview_async(cancel: Gio.Cancellable | null, confirm: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * @param cancel
          * @param confirm
@@ -2060,8 +2052,8 @@ export namespace Entangle {
          * @param callback
          */
         preview_async(
-            cancel?: Gio.Cancellable | null,
-            confirm?: Gio.Cancellable | null,
+            cancel: Gio.Cancellable | null,
+            confirm: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2113,12 +2105,17 @@ export namespace Entangle {
         set data(val: Uint8Array | string);
         /**
          * @construct-only
+         * @default null
          */
         get folder(): string;
+        /**
+         * @default null
+         */
         get mimetype(): string;
         set mimetype(val: string);
         /**
          * @construct-only
+         * @default null
          */
         get name(): string;
 
@@ -2210,7 +2207,7 @@ export namespace Entangle {
          * caller will affect this object
          * @param data the new data
          */
-        set_data(data?: Uint8Array | null): void;
+        set_data(data: Uint8Array | null): void;
         /**
          * @param args
          */
@@ -2222,7 +2219,7 @@ export namespace Entangle {
          * NULL for `mimetype` will clear the mime type information.
          * @param mimetype the new mime type
          */
-        set_mimetype(mimetype?: string | null): void;
+        set_mimetype(mimetype: string | null): void;
     }
 
     namespace CameraList {
@@ -2261,6 +2258,7 @@ export namespace Entangle {
 
         /**
          * @construct-only
+         * @default false
          */
         get active(): boolean;
         /**
@@ -2628,7 +2626,7 @@ export namespace Entangle {
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
-        activate_action(action_name: string, parameter?: GLib.Variant | null): void;
+        activate_action(action_name: string, parameter: GLib.Variant | null): void;
         /**
          * Request for the state of the named action within `action_group` to be
          * changed to `value`.
@@ -2856,7 +2854,7 @@ export namespace Entangle {
          * @param parameter parameters to the activation
          * @virtual
          */
-        vfunc_activate_action(action_name: string, parameter?: GLib.Variant | null): void;
+        vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
         /**
          * Request for the state of the named action within `action_group` to be
          * changed to `value`.
@@ -3144,38 +3142,19 @@ export namespace Entangle {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -3183,15 +3162,9 @@ export namespace Entangle {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -3358,7 +3331,7 @@ export namespace Entangle {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -3750,38 +3723,19 @@ export namespace Entangle {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -3789,15 +3743,9 @@ export namespace Entangle {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -3964,7 +3912,7 @@ export namespace Entangle {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -4231,7 +4179,7 @@ export namespace Entangle {
          * Set the camera to display cameras for
          * @param camera the camera to display cameras for, or NULL
          */
-        set_camera(camera?: Camera | null): void;
+        set_camera(camera: Camera | null): void;
         /**
          * @param controls the list of controls
          */
@@ -4391,7 +4339,7 @@ export namespace Entangle {
          * Set the camera list for the widget
          * @param list the list of cameras
          */
-        set_camera_list(list?: CameraList | null): void;
+        set_camera_list(list: CameraList | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -4439,38 +4387,19 @@ export namespace Entangle {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -4478,15 +4407,9 @@ export namespace Entangle {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -4653,7 +4576,7 @@ export namespace Entangle {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -4872,6 +4795,7 @@ export namespace Entangle {
         get data(): Uint8Array;
         /**
          * @construct-only
+         * @default null
          */
         get filename(): string;
 
@@ -5067,26 +4991,32 @@ export namespace Entangle {
 
         /**
          * @construct-only
+         * @default false
          */
         get dirty(): boolean;
         /**
          * @construct-only
+         * @default 0
          */
         get id(): number;
         /**
          * @construct-only
+         * @default null
          */
         get info(): string;
         /**
          * @construct-only
+         * @default null
          */
         get label(): string;
         /**
          * @construct-only
+         * @default null
          */
         get path(): string;
         /**
          * @construct-only
+         * @default false
          */
         get readonly(): boolean;
 
@@ -5234,6 +5164,9 @@ export namespace Entangle {
 
         // Properties
 
+        /**
+         * @default null
+         */
         get value(): string;
         set value(val: string);
 
@@ -5316,6 +5249,9 @@ export namespace Entangle {
 
         // Properties
 
+        /**
+         * @default 0
+         */
         get value(): number;
         set value(val: number);
 
@@ -5539,10 +5475,12 @@ export namespace Entangle {
         get cameraPrefs(): CameraPreferences;
         /**
          * @read-only
+         * @default false
          */
         get has_controls(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get hasControls(): boolean;
 
@@ -5642,38 +5580,19 @@ export namespace Entangle {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -5681,15 +5600,9 @@ export namespace Entangle {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -5856,7 +5769,7 @@ export namespace Entangle {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -6084,28 +5997,37 @@ export namespace Entangle {
 
         /**
          * @construct-only
+         * @default 0
          */
         get range_max(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get rangeMax(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get range_min(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get rangeMin(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get range_step(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get rangeStep(): number;
+        /**
+         * @default 0
+         */
         get value(): number;
         set value(val: number);
 
@@ -6193,6 +6115,9 @@ export namespace Entangle {
 
         // Properties
 
+        /**
+         * @default null
+         */
         get value(): string;
         set value(val: string);
 
@@ -6262,6 +6187,9 @@ export namespace Entangle {
 
         // Properties
 
+        /**
+         * @default false
+         */
         get value(): boolean;
         set value(val: boolean);
 
@@ -6571,38 +6499,19 @@ export namespace Entangle {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -6610,15 +6519,9 @@ export namespace Entangle {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -6785,7 +6688,7 @@ export namespace Entangle {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -7144,38 +7047,86 @@ export namespace Entangle {
 
         // Properties
 
+        /**
+         * @default 1.69
+         */
         get aspect_ratio(): number;
         set aspect_ratio(val: number);
+        /**
+         * @default 1.69
+         */
         get aspectRatio(): number;
         set aspectRatio(val: number);
+        /**
+         * @default true
+         */
         get autoscale(): boolean;
         set autoscale(val: boolean);
+        /**
+         * @default true
+         */
         get flip_horizontally(): boolean;
         set flip_horizontally(val: boolean);
+        /**
+         * @default true
+         */
         get flipHorizontally(): boolean;
         set flipHorizontally(val: boolean);
+        /**
+         * @default true
+         */
         get flip_vertically(): boolean;
         set flip_vertically(val: boolean);
+        /**
+         * @default true
+         */
         get flipVertically(): boolean;
         set flipVertically(val: boolean);
+        /**
+         * @default false
+         */
         get focus_point(): boolean;
         set focus_point(val: boolean);
+        /**
+         * @default false
+         */
         get focusPoint(): boolean;
         set focusPoint(val: boolean);
         get image(): Image;
         set image(val: Image);
+        /**
+         * @default false
+         */
         get mask_enabled(): boolean;
         set mask_enabled(val: boolean);
+        /**
+         * @default false
+         */
         get maskEnabled(): boolean;
         set maskEnabled(val: boolean);
+        /**
+         * @default 0.5
+         */
         get mask_opacity(): number;
         set mask_opacity(val: number);
+        /**
+         * @default 0.5
+         */
         get maskOpacity(): number;
         set maskOpacity(val: number);
+        /**
+         * @default true
+         */
         get overexposure_highlighting(): boolean;
         set overexposure_highlighting(val: boolean);
+        /**
+         * @default true
+         */
         get overexposureHighlighting(): boolean;
         set overexposureHighlighting(val: boolean);
+        /**
+         * @default 0
+         */
         get scale(): number;
         set scale(val: number);
 
@@ -7276,7 +7227,7 @@ export namespace Entangle {
          * shortcut for setting an image list of length 1.
          * @param image the image to display, or NULL
          */
-        set_image(image?: Image | null): void;
+        set_image(image: Image | null): void;
         /**
          * Set the list of images to be displayed. If multiple images
          * are provided they are overlayed with opacity
@@ -7303,7 +7254,7 @@ export namespace Entangle {
          * Set a message to render over the top of the image
          * @param msg the message to display, or NULL
          */
-        set_text_overlay(msg?: string | null): void;
+        set_text_overlay(msg: string | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -7351,38 +7302,19 @@ export namespace Entangle {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -7390,15 +7322,9 @@ export namespace Entangle {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -7565,7 +7491,7 @@ export namespace Entangle {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -7876,7 +7802,7 @@ export namespace Entangle {
          * Set the image to display the histogram for
          * @param image the image to display histogram for, or NULL
          */
-        set_image(image?: Image | null): void;
+        set_image(image: Image | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -7924,38 +7850,19 @@ export namespace Entangle {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -7963,15 +7870,9 @@ export namespace Entangle {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -8138,7 +8039,7 @@ export namespace Entangle {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -8355,10 +8256,12 @@ export namespace Entangle {
 
         /**
          * @construct-only
+         * @default false
          */
         get embedded_preview(): boolean;
         /**
          * @construct-only
+         * @default false
          */
         get embeddedPreview(): boolean;
 
@@ -8442,6 +8345,7 @@ export namespace Entangle {
 
         /**
          * @construct-only
+         * @default null
          */
         get filename(): string;
         get metadata(): GExiv2.Metadata;
@@ -8678,7 +8582,7 @@ export namespace Entangle {
          * Set the media to be displayed by the popup
          * @param media the media to display, or NULL
          */
-        set_media(media?: Media | null): void;
+        set_media(media: Media | null): void;
         /**
          * @param parent
          * @param x
@@ -8741,38 +8645,19 @@ export namespace Entangle {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -8780,15 +8665,9 @@ export namespace Entangle {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -8955,7 +8834,7 @@ export namespace Entangle {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -9269,10 +9148,11 @@ export namespace Entangle {
          * Set the media to display status information for
          * @param media the media to display status for, or NULL
          */
-        set_media(media?: Media | null): void;
+        set_media(media: Media | null): void;
         /**
          * The orientation of the orientable.
          * @since 2.16
+         * @default Gtk.Orientation.HORIZONTAL
          * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
@@ -9334,38 +9214,19 @@ export namespace Entangle {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -9373,15 +9234,9 @@ export namespace Entangle {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -9548,7 +9403,7 @@ export namespace Entangle {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -9769,8 +9624,8 @@ export namespace Entangle {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            colour_transform: ColourProfileTransform;
-            colourTransform: ColourProfileTransform;
+            colour_transform: ColourProfileTransform | null;
+            colourTransform: ColourProfileTransform | null;
             with_metadata: boolean;
             withMetadata: boolean;
             workers: number;
@@ -9785,20 +9640,23 @@ export namespace Entangle {
 
         // Properties
 
-        get colour_transform(): ColourProfileTransform;
-        set colour_transform(val: ColourProfileTransform);
-        get colourTransform(): ColourProfileTransform;
-        set colourTransform(val: ColourProfileTransform);
+        get colour_transform(): ColourProfileTransform | null;
+        set colour_transform(val: ColourProfileTransform | null);
+        get colourTransform(): ColourProfileTransform | null;
+        set colourTransform(val: ColourProfileTransform | null);
         /**
          * @construct-only
+         * @default false
          */
         get with_metadata(): boolean;
         /**
          * @construct-only
+         * @default false
          */
         get withMetadata(): boolean;
         /**
          * @construct-only
+         * @default 1
          */
         get workers(): number;
 
@@ -10011,36 +9869,84 @@ export namespace Entangle {
 
         // Properties
 
+        /**
+         * @default false
+         */
         get capture_continuous_preview(): boolean;
         set capture_continuous_preview(val: boolean);
+        /**
+         * @default false
+         */
         get captureContinuousPreview(): boolean;
         set captureContinuousPreview(val: boolean);
+        /**
+         * @default true
+         */
         get capture_delete_file(): boolean;
         set capture_delete_file(val: boolean);
+        /**
+         * @default true
+         */
         get captureDeleteFile(): boolean;
         set captureDeleteFile(val: boolean);
+        /**
+         * @default false
+         */
         get capture_electronic_shutter(): boolean;
         set capture_electronic_shutter(val: boolean);
+        /**
+         * @default false
+         */
         get captureElectronicShutter(): boolean;
         set captureElectronicShutter(val: boolean);
+        /**
+         * @default null
+         */
         get capture_filename_pattern(): string;
         set capture_filename_pattern(val: string);
+        /**
+         * @default null
+         */
         get captureFilenamePattern(): string;
         set captureFilenamePattern(val: string);
+        /**
+         * @default null
+         */
         get capture_last_session(): string;
         set capture_last_session(val: string);
+        /**
+         * @default null
+         */
         get captureLastSession(): string;
         set captureLastSession(val: string);
+        /**
+         * @default false
+         */
         get capture_sync_clock(): boolean;
         set capture_sync_clock(val: boolean);
+        /**
+         * @default false
+         */
         get captureSyncClock(): boolean;
         set captureSyncClock(val: boolean);
+        /**
+         * @default true
+         */
         get cms_detect_system_profile(): boolean;
         set cms_detect_system_profile(val: boolean);
+        /**
+         * @default true
+         */
         get cmsDetectSystemProfile(): boolean;
         set cmsDetectSystemProfile(val: boolean);
+        /**
+         * @default false
+         */
         get cms_enabled(): boolean;
         set cms_enabled(val: boolean);
+        /**
+         * @default false
+         */
         get cmsEnabled(): boolean;
         set cmsEnabled(val: boolean);
         get cms_monitor_profile(): ColourProfile;
@@ -10051,68 +9957,164 @@ export namespace Entangle {
         set cms_rgb_profile(val: ColourProfile);
         get cmsRgbProfile(): ColourProfile;
         set cmsRgbProfile(val: ColourProfile);
+        /**
+         * @default 1.33
+         */
         get img_aspect_ratio(): string;
         set img_aspect_ratio(val: string);
+        /**
+         * @default 1.33
+         */
         get imgAspectRatio(): string;
         set imgAspectRatio(val: string);
+        /**
+         * @default #000000
+         */
         get img_background(): string;
         set img_background(val: string);
+        /**
+         * @default #000000
+         */
         get imgBackground(): string;
         set imgBackground(val: string);
+        /**
+         * @default false
+         */
         get img_embedded_preview(): boolean;
         set img_embedded_preview(val: boolean);
+        /**
+         * @default false
+         */
         get imgEmbeddedPreview(): boolean;
         set imgEmbeddedPreview(val: boolean);
+        /**
+         * @default true
+         */
         get img_flip_horizontally(): boolean;
         set img_flip_horizontally(val: boolean);
+        /**
+         * @default true
+         */
         get imgFlipHorizontally(): boolean;
         set imgFlipHorizontally(val: boolean);
+        /**
+         * @default true
+         */
         get img_flip_vertically(): boolean;
         set img_flip_vertically(val: boolean);
+        /**
+         * @default true
+         */
         get imgFlipVertically(): boolean;
         set imgFlipVertically(val: boolean);
+        /**
+         * @default false
+         */
         get img_focus_point(): boolean;
         set img_focus_point(val: boolean);
+        /**
+         * @default false
+         */
         get imgFocusPoint(): boolean;
         set imgFocusPoint(val: boolean);
+        /**
+         * @default 4
+         */
         get img_grid_lines(): number;
         set img_grid_lines(val: number);
+        /**
+         * @default 4
+         */
         get imgGridLines(): number;
         set imgGridLines(val: number);
+        /**
+         * @default `FFFFFF`
+         */
         get img_highlight(): string;
         set img_highlight(val: string);
+        /**
+         * @default `FFFFFF`
+         */
         get imgHighlight(): string;
         set imgHighlight(val: string);
+        /**
+         * @default false
+         */
         get img_mask_enabled(): boolean;
         set img_mask_enabled(val: boolean);
+        /**
+         * @default false
+         */
         get imgMaskEnabled(): boolean;
         set imgMaskEnabled(val: boolean);
+        /**
+         * @default 90
+         */
         get img_mask_opacity(): number;
         set img_mask_opacity(val: number);
+        /**
+         * @default 90
+         */
         get imgMaskOpacity(): number;
         set imgMaskOpacity(val: number);
+        /**
+         * @default 3
+         */
         get img_onion_layers(): number;
         set img_onion_layers(val: number);
+        /**
+         * @default 3
+         */
         get imgOnionLayers(): number;
         set imgOnionLayers(val: number);
+        /**
+         * @default false
+         */
         get img_onion_skin(): boolean;
         set img_onion_skin(val: boolean);
+        /**
+         * @default false
+         */
         get imgOnionSkin(): boolean;
         set imgOnionSkin(val: boolean);
+        /**
+         * @default true
+         */
         get img_overexposure_highlighting(): boolean;
         set img_overexposure_highlighting(val: boolean);
+        /**
+         * @default true
+         */
         get imgOverexposureHighlighting(): boolean;
         set imgOverexposureHighlighting(val: boolean);
+        /**
+         * @default true
+         */
         get interface_auto_connect(): boolean;
         set interface_auto_connect(val: boolean);
+        /**
+         * @default true
+         */
         get interfaceAutoConnect(): boolean;
         set interfaceAutoConnect(val: boolean);
+        /**
+         * @default false
+         */
         get interface_histogram_linear(): boolean;
         set interface_histogram_linear(val: boolean);
+        /**
+         * @default false
+         */
         get interfaceHistogramLinear(): boolean;
         set interfaceHistogramLinear(val: boolean);
+        /**
+         * @default false
+         */
         get interface_screen_blank(): boolean;
         set interface_screen_blank(val: boolean);
+        /**
+         * @default false
+         */
         get interfaceScreenBlank(): boolean;
         set interfaceScreenBlank(val: boolean);
 
@@ -10281,7 +10283,7 @@ export namespace Entangle {
          * the monitor profile is disabled.
          * @param prof the new monitor profile
          */
-        cms_set_monitor_profile(prof?: ColourProfile | null): void;
+        cms_set_monitor_profile(prof: ColourProfile | null): void;
         /**
          * Set the rendering intent for displaying images
          * @param intent the new rendering intent
@@ -10291,7 +10293,7 @@ export namespace Entangle {
          * Set the colour profile that represents the RGB working space
          * @param prof the new rgb profile
          */
-        cms_set_rgb_profile(prof?: ColourProfile | null): void;
+        cms_set_rgb_profile(prof: ColourProfile | null): void;
         /**
          * Get the aspect ratio for any mask to apply to the image
          * @returns the aspect ratio for the mask
@@ -10667,38 +10669,19 @@ export namespace Entangle {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -10706,15 +10689,9 @@ export namespace Entangle {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -10881,7 +10858,7 @@ export namespace Entangle {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -11092,6 +11069,9 @@ export namespace Entangle {
 
         // Properties
 
+        /**
+         * @default Untitled script
+         */
         get title(): string;
         set title(val: string);
 
@@ -11141,8 +11121,8 @@ export namespace Entangle {
          */
         vfunc_execute_async(
             automata: CameraAutomata,
-            cancel?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancel: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param result a GAsyncResult
@@ -11161,7 +11141,7 @@ export namespace Entangle {
          * @param automata the camera automata
          * @param cancel cancellation handler
          */
-        execute_async(automata: CameraAutomata, cancel?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        execute_async(automata: CameraAutomata, cancel: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * @param automata the camera automata
          * @param cancel cancellation handler
@@ -11179,7 +11159,7 @@ export namespace Entangle {
          */
         execute_async(
             automata: CameraAutomata,
-            cancel?: Gio.Cancellable | null,
+            cancel: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -11323,6 +11303,7 @@ export namespace Entangle {
         /**
          * The orientation of the orientable.
          * @since 2.16
+         * @default Gtk.Orientation.HORIZONTAL
          * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
@@ -11384,38 +11365,19 @@ export namespace Entangle {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -11423,15 +11385,9 @@ export namespace Entangle {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -11598,7 +11554,7 @@ export namespace Entangle {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -11916,14 +11872,17 @@ export namespace Entangle {
 
         /**
          * @construct-only
+         * @default null
          */
         get directory(): string;
         /**
          * @construct-only
+         * @default null
          */
         get filename_pattern(): string;
         /**
          * @construct-only
+         * @default null
          */
         get filenamePattern(): string;
 
@@ -12191,6 +12150,7 @@ export namespace Entangle {
          * Determines whether horizontal scrolling should start once the scrollable
          * widget is allocated less than its minimum width or less than its natural width.
          * @since 3.0
+         * @default Gtk.ScrollablePolicy.MINIMUM
          * @category Inherited from Gtk.Scrollable
          */
         get hscroll_policy(): Gtk.ScrollablePolicy;
@@ -12199,6 +12159,7 @@ export namespace Entangle {
          * Determines whether horizontal scrolling should start once the scrollable
          * widget is allocated less than its minimum width or less than its natural width.
          * @since 3.0
+         * @default Gtk.ScrollablePolicy.MINIMUM
          * @category Inherited from Gtk.Scrollable
          */
         get hscrollPolicy(): Gtk.ScrollablePolicy;
@@ -12215,6 +12176,7 @@ export namespace Entangle {
          * Determines whether vertical scrolling should start once the scrollable
          * widget is allocated less than its minimum height or less than its natural height.
          * @since 3.0
+         * @default Gtk.ScrollablePolicy.MINIMUM
          * @category Inherited from Gtk.Scrollable
          */
         get vscroll_policy(): Gtk.ScrollablePolicy;
@@ -12223,6 +12185,7 @@ export namespace Entangle {
          * Determines whether vertical scrolling should start once the scrollable
          * widget is allocated less than its minimum height or less than its natural height.
          * @since 3.0
+         * @default Gtk.ScrollablePolicy.MINIMUM
          * @category Inherited from Gtk.Scrollable
          */
         get vscrollPolicy(): Gtk.ScrollablePolicy;
@@ -12260,7 +12223,7 @@ export namespace Entangle {
          * Sets the horizontal adjustment of the {@link Gtk.Scrollable}.
          * @param hadjustment a {@link Gtk.Adjustment}
          */
-        set_hadjustment(hadjustment?: Gtk.Adjustment | null): void;
+        set_hadjustment(hadjustment: Gtk.Adjustment | null): void;
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
          * horizontal scrolling should start below the minimum width or
@@ -12272,7 +12235,7 @@ export namespace Entangle {
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
          */
-        set_vadjustment(vadjustment?: Gtk.Adjustment | null): void;
+        set_vadjustment(vadjustment: Gtk.Adjustment | null): void;
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
          * vertical scrolling should start below the minimum height or
@@ -12336,38 +12299,19 @@ export namespace Entangle {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -12375,15 +12319,9 @@ export namespace Entangle {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -12550,7 +12488,7 @@ export namespace Entangle {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -12768,10 +12706,12 @@ export namespace Entangle {
 
         /**
          * @construct-only
+         * @default 128
          */
         get height(): number;
         /**
          * @construct-only
+         * @default 128
          */
         get width(): number;
 

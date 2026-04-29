@@ -126,7 +126,7 @@ export namespace Liferea {
      * Save given authentication info of a given subscription into password store (if available).
      * @param subscription
      */
-    function auth_info_store(subscription?: any | null): void;
+    function auth_info_store(subscription: any | null): void;
     function download_show(): void;
     /**
      * @param url
@@ -189,7 +189,7 @@ export namespace Liferea {
     function on_action_launch_item_in_browser(
         action: Gio.SimpleAction,
         parameter: GLib.Variant,
-        user_data?: any | null,
+        user_data: any | null,
     ): void;
     /**
      * @param action
@@ -199,7 +199,7 @@ export namespace Liferea {
     function on_action_launch_item_in_external_browser(
         action: Gio.SimpleAction,
         parameter: GLib.Variant,
-        user_data?: any | null,
+        user_data: any | null,
     ): void;
     /**
      * @param action
@@ -209,14 +209,14 @@ export namespace Liferea {
     function on_action_launch_item_in_tab(
         action: Gio.SimpleAction,
         parameter: GLib.Variant,
-        user_data?: any | null,
+        user_data: any | null,
     ): void;
     /**
      * @param action
      * @param parameter
      * @param user_data
      */
-    function on_remove_items_activate(action: Gio.SimpleAction, parameter: GLib.Variant, user_data?: any | null): void;
+    function on_remove_items_activate(action: Gio.SimpleAction, parameter: GLib.Variant, user_data: any | null): void;
     /**
      * @returns the name of the currently configured social bookmarking site.
      */
@@ -292,7 +292,7 @@ export namespace Liferea {
      * @gir-type Callback
      */
     interface itemActionFunc {
-        (item: itemPtr, userdata?: any | null): void;
+        (item: itemPtr, userdata: any | null): void;
     }
     /**
      * @gir-type Callback
@@ -481,38 +481,19 @@ export namespace Liferea {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -520,15 +501,9 @@ export namespace Liferea {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -695,7 +670,7 @@ export namespace Liferea {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -927,8 +902,14 @@ export namespace Liferea {
 
         // Properties
 
+        /**
+         * @default false
+         */
         get hidden_urlbar(): boolean;
         set hidden_urlbar(val: boolean);
+        /**
+         * @default false
+         */
         get hiddenUrlbar(): boolean;
         set hiddenUrlbar(val: boolean);
         /**
@@ -1994,7 +1975,7 @@ export namespace Liferea {
          * @param params 0 if func should be called without user_data, 1 if func should be called with user_data
          * @param user_data specifies the second argument that func should be passed
          */
-        foreach_child_full(func: any | null, params: number, user_data?: any | null): void;
+        foreach_child_full(func: any | null, params: number, user_data: any | null): void;
         /**
          * Returns the base URL for the given node.
          * If it is a mixed item set NULL will be returned.
@@ -2069,7 +2050,7 @@ export namespace Liferea {
          * Attaches a data structure to the given node.
          * @param data the structure
          */
-        set_data(data?: any | null): void;
+        set_data(data: any | null): void;
         /**
          * @param args
          */
@@ -2101,7 +2082,7 @@ export namespace Liferea {
          * Attaches the subscription to the given node.
          * @param subscription the subscription
          */
-        set_subscription(subscription?: any | null): void;
+        set_subscription(subscription: any | null): void;
         /**
          * Sets the node's title for the feed list.
          * @param title the title
@@ -2130,7 +2111,7 @@ export namespace Liferea {
          * to mass-update subscriptions.
          * @param user_data update flags
          */
-        update_subscription(user_data?: any | null): void;
+        update_subscription(user_data: any | null): void;
     }
 
     namespace Shell {

@@ -6350,10 +6350,12 @@ export namespace Mbim {
 
         /**
          * @read-only
+         * @default 0
          */
         get device_consecutive_timeouts(): number;
         /**
          * @read-only
+         * @default 0
          */
         get deviceConsecutiveTimeouts(): number;
         /**
@@ -6364,12 +6366,24 @@ export namespace Mbim {
          * @construct-only
          */
         get deviceFile(): Gio.File;
+        /**
+         * @default false
+         */
         get device_in_session(): boolean;
         set device_in_session(val: boolean);
+        /**
+         * @default false
+         */
         get deviceInSession(): boolean;
         set deviceInSession(val: boolean);
+        /**
+         * @default 1
+         */
         get device_transaction_id(): number;
         set device_transaction_id(val: number);
+        /**
+         * @default 1
+         */
         get deviceTransactionId(): number;
         set deviceTransactionId(val: number);
 
@@ -6426,8 +6440,8 @@ export namespace Mbim {
          */
         static ['new'](
             file: Gio.File,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<Device> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<Device> | null,
         ): void;
 
         // Methods
@@ -6458,7 +6472,7 @@ export namespace Mbim {
             session_id: number,
             base_ifname: string,
             ifname_prefix: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<string>;
         /**
          * Asynchronously creates a new virtual network device node on top of
@@ -6517,7 +6531,7 @@ export namespace Mbim {
             session_id: number,
             base_ifname: string,
             ifname_prefix: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
         /**
@@ -6548,7 +6562,7 @@ export namespace Mbim {
          * @param timeout maximum time, in seconds, to wait for the device to be closed.
          * @param cancellable optional {@link Gio.Cancellable} object, `NULL` to ignore.
          */
-        close(timeout: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        close(timeout: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously closes a {@link Mbim.Device} for I/O.
          *
@@ -6574,7 +6588,7 @@ export namespace Mbim {
          */
         close(
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -6597,7 +6611,7 @@ export namespace Mbim {
          * @param timeout maximum time, in seconds, to wait for the response.
          * @param cancellable a {@link Gio.Cancellable}, or `null`.
          */
-        command(message: Message, timeout: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<Message>;
+        command(message: Message, timeout: number, cancellable: Gio.Cancellable | null): globalThis.Promise<Message>;
         /**
          * Asynchronously sends a {@link Mbim.Message} to the device.
          *
@@ -6627,7 +6641,7 @@ export namespace Mbim {
         command(
             message: Message,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Message> | void;
         /**
@@ -6655,7 +6669,7 @@ export namespace Mbim {
          * @param base_ifname the interface where all links are available.
          * @param cancellable a {@link Gio.Cancellable}, or `null`.
          */
-        delete_all_links(base_ifname: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        delete_all_links(base_ifname: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously deletes all virtual network interfaces that have been previously
          * created with `mbim_device_add_link()` in `base_ifname`.
@@ -6697,7 +6711,7 @@ export namespace Mbim {
          */
         delete_all_links(
             base_ifname: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -6718,7 +6732,7 @@ export namespace Mbim {
          * @param ifname the name of the link to remove.
          * @param cancellable a {@link Gio.Cancellable}, or `null`.
          */
-        delete_link(ifname: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        delete_link(ifname: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously deletes a virtual network interface that has been previously
          * created with `mbim_device_add_link()`.
@@ -6752,7 +6766,7 @@ export namespace Mbim {
          */
         delete_link(
             ifname: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -6819,7 +6833,7 @@ export namespace Mbim {
          * @param timeout maximum time, in seconds, to wait for the device to be opened.
          * @param cancellable optional {@link Gio.Cancellable} object, `NULL` to ignore.
          */
-        open(timeout: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        open(timeout: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously opens a {@link Mbim.Device} for I/O.
          *
@@ -6841,7 +6855,7 @@ export namespace Mbim {
          */
         open(
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -6865,7 +6879,7 @@ export namespace Mbim {
         open_full(
             flags: DeviceOpenFlags,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously opens a {@link Mbim.Device} for I/O.
@@ -6902,7 +6916,7 @@ export namespace Mbim {
         open_full(
             flags: DeviceOpenFlags,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -6968,7 +6982,7 @@ export namespace Mbim {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -7058,7 +7072,7 @@ export namespace Mbim {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -7119,8 +7133,8 @@ export namespace Mbim {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -7176,38 +7190,19 @@ export namespace Mbim {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -7215,15 +7210,9 @@ export namespace Mbim {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -7390,7 +7379,7 @@ export namespace Mbim {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -7612,18 +7601,22 @@ export namespace Mbim {
 
         /**
          * @read-only
+         * @default 0
          */
         get mbim_proxy_n_clients(): number;
         /**
          * @read-only
+         * @default 0
          */
         get mbimProxyNClients(): number;
         /**
          * @read-only
+         * @default 0
          */
         get mbim_proxy_n_devices(): number;
         /**
          * @read-only
+         * @default 0
          */
         get mbimProxyNDevices(): number;
 

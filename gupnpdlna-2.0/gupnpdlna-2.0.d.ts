@@ -261,6 +261,7 @@ export namespace GUPnPDLNA {
         /**
          * URI of file which metadata this object stores.
          * @construct-only
+         * @default null
          */
         get uri(): string;
         /**
@@ -465,7 +466,7 @@ export namespace GUPnPDLNA {
          * @param info A {@link GUPnPDLNA.Information} about discovered URI.
          * @param error A {@link GLib.Error}.
          */
-        emit_done(info: Information, error?: GLib.Error | null): void;
+        emit_done(info: Information, error: GLib.Error | null): void;
         /**
          * Queues `uri` for metadata discovery. When discovery is completed,
          * the ::done signal is emitted on `extractor`.
@@ -541,6 +542,7 @@ export namespace GUPnPDLNA {
         /**
          * Whether the DLNA profile is not a part of DLNA specification.
          * @construct-only
+         * @default false
          */
         get extended(): boolean;
         /**
@@ -554,11 +556,13 @@ export namespace GUPnPDLNA {
         /**
          * MIME type of the DLNA profile.
          * @construct-only
+         * @default null
          */
         get mime(): string;
         /**
          * Name of the DLNA profile.
          * @construct-only
+         * @default null
          */
         get name(): string;
         /**
@@ -677,24 +681,28 @@ export namespace GUPnPDLNA {
          * Whether profile matching should be done also against DLNA
          * profiles not being a part of DLNA specification.
          * @construct-only
+         * @default false
          */
         get extended_mode(): boolean;
         /**
          * Whether profile matching should be done also against DLNA
          * profiles not being a part of DLNA specification.
          * @construct-only
+         * @default false
          */
         get extendedMode(): boolean;
         /**
          * Whether profile matching should not be strictly compliant
          * with the DLNA specification.
          * @construct-only
+         * @default false
          */
         get relaxed_mode(): boolean;
         /**
          * Whether profile matching should not be strictly compliant
          * with the DLNA specification.
          * @construct-only
+         * @default false
          */
         get relaxedMode(): boolean;
 

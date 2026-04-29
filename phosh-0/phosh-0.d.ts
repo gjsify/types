@@ -140,7 +140,7 @@ export namespace Phosh {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): DBusScreenshotProxy;
         // Conflicted with Gio.DBusProxy.new_for_bus_sync
 
@@ -151,7 +151,7 @@ export namespace Phosh {
             flags: Gio.DBusProxyFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): DBusScreenshotProxy;
         // Conflicted with Gio.DBusProxy.new_sync
 
@@ -201,8 +201,8 @@ export namespace Phosh {
             flags: Gio.DBusProxyFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<DBusScreenshotProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<DBusScreenshotProxy> | null,
         ): void;
         /**
          * @param args
@@ -228,8 +228,8 @@ export namespace Phosh {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<DBusScreenshotProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<DBusScreenshotProxy> | null,
         ): void;
         /**
          * @param args
@@ -276,7 +276,7 @@ export namespace Phosh {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -366,7 +366,7 @@ export namespace Phosh {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -432,8 +432,8 @@ export namespace Phosh {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -459,7 +459,7 @@ export namespace Phosh {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -478,7 +478,7 @@ export namespace Phosh {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Initializes the object implementing the interface.
          *
@@ -521,7 +521,7 @@ export namespace Phosh {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -564,7 +564,7 @@ export namespace Phosh {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.FlashArea">FlashArea()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -582,7 +582,7 @@ export namespace Phosh {
             arg_y: number,
             arg_width: number,
             arg_height: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.FlashArea">FlashArea()</link> D-Bus method on `proxy`.
@@ -623,7 +623,7 @@ export namespace Phosh {
             arg_y: number,
             arg_width: number,
             arg_height: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -648,7 +648,7 @@ export namespace Phosh {
             arg_y: number,
             arg_width: number,
             arg_height: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.PickColor">PickColor()</link> D-Bus method on `proxy`.
@@ -658,7 +658,7 @@ export namespace Phosh {
          * See `phosh_dbus_screenshot_call_pick_color_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_pick_color(cancellable?: Gio.Cancellable | null): globalThis.Promise<GLib.Variant | null>;
+        call_pick_color(cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.Variant | null>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.PickColor">PickColor()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -679,7 +679,7 @@ export namespace Phosh {
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_pick_color(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GLib.Variant | null> | void;
         /**
@@ -695,7 +695,7 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_pick_color_sync(cancellable?: Gio.Cancellable | null): [boolean, GLib.Variant | null];
+        call_pick_color_sync(cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.Screenshot">Screenshot()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -711,7 +711,7 @@ export namespace Phosh {
             arg_include_cursor: boolean,
             arg_flash: boolean,
             arg_filename: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<[boolean, string]>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.Screenshot">Screenshot()</link> D-Bus method on `proxy`.
@@ -748,7 +748,7 @@ export namespace Phosh {
             arg_include_cursor: boolean,
             arg_flash: boolean,
             arg_filename: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[boolean, string]> | void;
         /**
@@ -772,7 +772,7 @@ export namespace Phosh {
             arg_height: number,
             arg_flash: boolean,
             arg_filename: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<[boolean, string]>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.ScreenshotArea">ScreenshotArea()</link> D-Bus method on `proxy`.
@@ -821,7 +821,7 @@ export namespace Phosh {
             arg_height: number,
             arg_flash: boolean,
             arg_filename: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[boolean, string]> | void;
         /**
@@ -850,7 +850,7 @@ export namespace Phosh {
             arg_height: number,
             arg_flash: boolean,
             arg_filename: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, boolean, string];
         /**
          * Finishes an operation started with `phosh_dbus_screenshot_call_screenshot()`.
@@ -872,7 +872,7 @@ export namespace Phosh {
             arg_include_cursor: boolean,
             arg_flash: boolean,
             arg_filename: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, boolean, string];
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.ScreenshotWindow">ScreenshotWindow()</link> D-Bus method on `proxy`.
@@ -891,7 +891,7 @@ export namespace Phosh {
             arg_include_cursor: boolean,
             arg_flash: boolean,
             arg_filename: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<[boolean, string]>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.ScreenshotWindow">ScreenshotWindow()</link> D-Bus method on `proxy`.
@@ -932,7 +932,7 @@ export namespace Phosh {
             arg_include_cursor: boolean,
             arg_flash: boolean,
             arg_filename: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[boolean, string]> | void;
         /**
@@ -957,7 +957,7 @@ export namespace Phosh {
             arg_include_cursor: boolean,
             arg_flash: boolean,
             arg_filename: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, boolean, string];
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.SelectArea">SelectArea()</link> D-Bus method on `proxy`.
@@ -967,7 +967,7 @@ export namespace Phosh {
          * See `phosh_dbus_screenshot_call_select_area_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_select_area(cancellable?: Gio.Cancellable | null): globalThis.Promise<[number, number, number, number]>;
+        call_select_area(cancellable: Gio.Cancellable | null): globalThis.Promise<[number, number, number, number]>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.SelectArea">SelectArea()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -988,7 +988,7 @@ export namespace Phosh {
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_select_area(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[number, number, number, number]> | void;
         /**
@@ -1004,7 +1004,7 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_select_area_sync(cancellable?: Gio.Cancellable | null): [boolean, number, number, number, number];
+        call_select_area_sync(cancellable: Gio.Cancellable | null): [boolean, number, number, number, number];
         /**
          * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.FlashArea">FlashArea()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
          *
@@ -1189,38 +1189,19 @@ export namespace Phosh {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1228,15 +1209,9 @@ export namespace Phosh {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1403,7 +1378,7 @@ export namespace Phosh {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1671,7 +1646,7 @@ export namespace Phosh {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -1690,7 +1665,7 @@ export namespace Phosh {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.FlashArea">FlashArea()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -1708,7 +1683,7 @@ export namespace Phosh {
             arg_y: number,
             arg_width: number,
             arg_height: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.FlashArea">FlashArea()</link> D-Bus method on `proxy`.
@@ -1749,7 +1724,7 @@ export namespace Phosh {
             arg_y: number,
             arg_width: number,
             arg_height: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1774,7 +1749,7 @@ export namespace Phosh {
             arg_y: number,
             arg_width: number,
             arg_height: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.PickColor">PickColor()</link> D-Bus method on `proxy`.
@@ -1784,7 +1759,7 @@ export namespace Phosh {
          * See `phosh_dbus_screenshot_call_pick_color_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_pick_color(cancellable?: Gio.Cancellable | null): globalThis.Promise<GLib.Variant | null>;
+        call_pick_color(cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.Variant | null>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.PickColor">PickColor()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -1805,7 +1780,7 @@ export namespace Phosh {
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_pick_color(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GLib.Variant | null> | void;
         /**
@@ -1821,7 +1796,7 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_pick_color_sync(cancellable?: Gio.Cancellable | null): [boolean, GLib.Variant | null];
+        call_pick_color_sync(cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.Screenshot">Screenshot()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -1837,7 +1812,7 @@ export namespace Phosh {
             arg_include_cursor: boolean,
             arg_flash: boolean,
             arg_filename: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<[boolean, string]>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.Screenshot">Screenshot()</link> D-Bus method on `proxy`.
@@ -1874,7 +1849,7 @@ export namespace Phosh {
             arg_include_cursor: boolean,
             arg_flash: boolean,
             arg_filename: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[boolean, string]> | void;
         /**
@@ -1898,7 +1873,7 @@ export namespace Phosh {
             arg_height: number,
             arg_flash: boolean,
             arg_filename: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<[boolean, string]>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.ScreenshotArea">ScreenshotArea()</link> D-Bus method on `proxy`.
@@ -1947,7 +1922,7 @@ export namespace Phosh {
             arg_height: number,
             arg_flash: boolean,
             arg_filename: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[boolean, string]> | void;
         /**
@@ -1976,7 +1951,7 @@ export namespace Phosh {
             arg_height: number,
             arg_flash: boolean,
             arg_filename: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, boolean, string];
         /**
          * Finishes an operation started with `phosh_dbus_screenshot_call_screenshot()`.
@@ -1998,7 +1973,7 @@ export namespace Phosh {
             arg_include_cursor: boolean,
             arg_flash: boolean,
             arg_filename: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, boolean, string];
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.ScreenshotWindow">ScreenshotWindow()</link> D-Bus method on `proxy`.
@@ -2017,7 +1992,7 @@ export namespace Phosh {
             arg_include_cursor: boolean,
             arg_flash: boolean,
             arg_filename: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<[boolean, string]>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.ScreenshotWindow">ScreenshotWindow()</link> D-Bus method on `proxy`.
@@ -2058,7 +2033,7 @@ export namespace Phosh {
             arg_include_cursor: boolean,
             arg_flash: boolean,
             arg_filename: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[boolean, string]> | void;
         /**
@@ -2083,7 +2058,7 @@ export namespace Phosh {
             arg_include_cursor: boolean,
             arg_flash: boolean,
             arg_filename: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, boolean, string];
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.SelectArea">SelectArea()</link> D-Bus method on `proxy`.
@@ -2093,7 +2068,7 @@ export namespace Phosh {
          * See `phosh_dbus_screenshot_call_select_area_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_select_area(cancellable?: Gio.Cancellable | null): globalThis.Promise<[number, number, number, number]>;
+        call_select_area(cancellable: Gio.Cancellable | null): globalThis.Promise<[number, number, number, number]>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.SelectArea">SelectArea()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -2114,7 +2089,7 @@ export namespace Phosh {
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_select_area(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[number, number, number, number]> | void;
         /**
@@ -2130,7 +2105,7 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_select_area_sync(cancellable?: Gio.Cancellable | null): [boolean, number, number, number, number];
+        call_select_area_sync(cancellable: Gio.Cancellable | null): [boolean, number, number, number, number];
         /**
          * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.FlashArea">FlashArea()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
          *
@@ -2315,38 +2290,19 @@ export namespace Phosh {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -2354,15 +2310,9 @@ export namespace Phosh {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -2529,7 +2479,7 @@ export namespace Phosh {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -2862,58 +2812,110 @@ export namespace Phosh {
 
         // Properties
 
+        /**
+         * @default 0
+         */
         get anchor(): number;
         set anchor(val: number);
         /**
          * @read-only
+         * @default 0
          */
         get configured_height(): number;
         /**
          * @read-only
+         * @default 0
          */
         get configuredHeight(): number;
         /**
          * @read-only
+         * @default 0
          */
         get configured_width(): number;
         /**
          * @read-only
+         * @default 0
          */
         get configuredWidth(): number;
+        /**
+         * @default 0
+         */
         get exclusive_zone(): number;
         set exclusive_zone(val: number);
+        /**
+         * @default 0
+         */
         get exclusiveZone(): number;
         set exclusiveZone(val: number);
+        /**
+         * @default 0
+         */
         get height(): number;
         set height(val: number);
+        /**
+         * @default false
+         */
         get kbd_interactivity(): boolean;
         set kbd_interactivity(val: boolean);
+        /**
+         * @default false
+         */
         get kbdInteractivity(): boolean;
         set kbdInteractivity(val: boolean);
+        /**
+         * @default 0
+         */
         get layer(): number;
         set layer(val: number);
         get layer_shell(): any;
         set layer_shell(val: any);
         get layerShell(): any;
         set layerShell(val: any);
+        /**
+         * @default 0
+         */
         get margin_bottom(): number;
         set margin_bottom(val: number);
+        /**
+         * @default 0
+         */
         get marginBottom(): number;
         set marginBottom(val: number);
+        /**
+         * @default 0
+         */
         get margin_left(): number;
         set margin_left(val: number);
+        /**
+         * @default 0
+         */
         get marginLeft(): number;
         set marginLeft(val: number);
+        /**
+         * @default 0
+         */
         get margin_right(): number;
         set margin_right(val: number);
+        /**
+         * @default 0
+         */
         get marginRight(): number;
         set marginRight(val: number);
+        /**
+         * @default 0
+         */
         get margin_top(): number;
         set margin_top(val: number);
+        /**
+         * @default 0
+         */
         get marginTop(): number;
         set marginTop(val: number);
         get namespace(): string;
         set namespace(val: string);
+        /**
+         * @default 0
+         */
         get width(): number;
         set width(val: number);
         get wl_output(): any;
@@ -3011,38 +3013,19 @@ export namespace Phosh {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -3050,15 +3033,9 @@ export namespace Phosh {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -3225,7 +3202,7 @@ export namespace Phosh {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -3557,15 +3534,18 @@ export namespace Phosh {
         /**
          * The currently active carousel page
          * @read-only
+         * @default Phosh.LockscreenPage.UNLOCK
          */
         get page(): LockscreenPage;
         /**
          * Require entering PIN or password to unlock. If false, unlock by swiping up.
+         * @default false
          */
         get require_unlock(): boolean;
         set require_unlock(val: boolean);
         /**
          * Require entering PIN or password to unlock. If false, unlock by swiping up.
+         * @default false
          */
         get requireUnlock(): boolean;
         set requireUnlock(val: boolean);
@@ -3709,38 +3689,19 @@ export namespace Phosh {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -3748,15 +3709,9 @@ export namespace Phosh {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -3923,7 +3878,7 @@ export namespace Phosh {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -4147,6 +4102,7 @@ export namespace Phosh {
 
         /**
          * Whether the screen is locked
+         * @default false
          */
         get locked(): boolean;
         set locked(val: boolean);
@@ -4358,46 +4314,55 @@ export namespace Phosh {
 
         /**
          * The active state of the child.
+         * @default false
          */
         get active(): boolean;
         set active(val: boolean);
         /**
          * If the child can display its status.
+         * @default false
          */
         get can_show_status(): boolean;
         set can_show_status(val: boolean);
         /**
          * If the child can display its status.
+         * @default false
          */
         get canShowStatus(): boolean;
         set canShowStatus(val: boolean);
         /**
          * Action name to trigger on long-press.
+         * @default null
          */
         get long_press_action_name(): string;
         set long_press_action_name(val: string);
         /**
          * Action name to trigger on long-press.
+         * @default null
          */
         get longPressActionName(): string;
         set longPressActionName(val: string);
         /**
          * Action target for `long-press-action-name`.
+         * @default null
          */
         get long_press_action_target(): string;
         set long_press_action_target(val: string);
         /**
          * Action target for `long-press-action-name`.
+         * @default null
          */
         get longPressActionTarget(): string;
         set longPressActionTarget(val: string);
         /**
          * If the child is displaying its status.
+         * @default false
          */
         get showing_status(): boolean;
         set showing_status(val: boolean);
         /**
          * If the child is displaying its status.
+         * @default false
          */
         get showingStatus(): boolean;
         set showingStatus(val: boolean);
@@ -4513,6 +4478,7 @@ export namespace Phosh {
         /**
          * The orientation of the orientable.
          * @since 2.16
+         * @default Gtk.Orientation.HORIZONTAL
          * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
@@ -4574,38 +4540,19 @@ export namespace Phosh {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -4613,15 +4560,9 @@ export namespace Phosh {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -4788,7 +4729,7 @@ export namespace Phosh {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -5075,7 +5016,7 @@ export namespace Phosh {
             arg_y: number,
             arg_width: number,
             arg_height: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.FlashArea">FlashArea()</link> D-Bus method on `proxy`.
@@ -5116,7 +5057,7 @@ export namespace Phosh {
             arg_y: number,
             arg_width: number,
             arg_height: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -5141,7 +5082,7 @@ export namespace Phosh {
             arg_y: number,
             arg_width: number,
             arg_height: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.PickColor">PickColor()</link> D-Bus method on `proxy`.
@@ -5151,7 +5092,7 @@ export namespace Phosh {
          * See `phosh_dbus_screenshot_call_pick_color_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_pick_color(cancellable?: Gio.Cancellable | null): globalThis.Promise<GLib.Variant | null>;
+        call_pick_color(cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.Variant | null>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.PickColor">PickColor()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -5172,7 +5113,7 @@ export namespace Phosh {
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_pick_color(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GLib.Variant | null> | void;
         /**
@@ -5188,7 +5129,7 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_pick_color_sync(cancellable?: Gio.Cancellable | null): [boolean, GLib.Variant | null];
+        call_pick_color_sync(cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.Screenshot">Screenshot()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -5204,7 +5145,7 @@ export namespace Phosh {
             arg_include_cursor: boolean,
             arg_flash: boolean,
             arg_filename: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<[boolean, string]>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.Screenshot">Screenshot()</link> D-Bus method on `proxy`.
@@ -5241,7 +5182,7 @@ export namespace Phosh {
             arg_include_cursor: boolean,
             arg_flash: boolean,
             arg_filename: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[boolean, string]> | void;
         /**
@@ -5265,7 +5206,7 @@ export namespace Phosh {
             arg_height: number,
             arg_flash: boolean,
             arg_filename: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<[boolean, string]>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.ScreenshotArea">ScreenshotArea()</link> D-Bus method on `proxy`.
@@ -5314,7 +5255,7 @@ export namespace Phosh {
             arg_height: number,
             arg_flash: boolean,
             arg_filename: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[boolean, string]> | void;
         /**
@@ -5343,7 +5284,7 @@ export namespace Phosh {
             arg_height: number,
             arg_flash: boolean,
             arg_filename: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, boolean, string];
         /**
          * Finishes an operation started with `phosh_dbus_screenshot_call_screenshot()`.
@@ -5365,7 +5306,7 @@ export namespace Phosh {
             arg_include_cursor: boolean,
             arg_flash: boolean,
             arg_filename: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, boolean, string];
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.ScreenshotWindow">ScreenshotWindow()</link> D-Bus method on `proxy`.
@@ -5384,7 +5325,7 @@ export namespace Phosh {
             arg_include_cursor: boolean,
             arg_flash: boolean,
             arg_filename: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<[boolean, string]>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.ScreenshotWindow">ScreenshotWindow()</link> D-Bus method on `proxy`.
@@ -5425,7 +5366,7 @@ export namespace Phosh {
             arg_include_cursor: boolean,
             arg_flash: boolean,
             arg_filename: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[boolean, string]> | void;
         /**
@@ -5450,7 +5391,7 @@ export namespace Phosh {
             arg_include_cursor: boolean,
             arg_flash: boolean,
             arg_filename: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, boolean, string];
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.SelectArea">SelectArea()</link> D-Bus method on `proxy`.
@@ -5460,7 +5401,7 @@ export namespace Phosh {
          * See `phosh_dbus_screenshot_call_select_area_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_select_area(cancellable?: Gio.Cancellable | null): globalThis.Promise<[number, number, number, number]>;
+        call_select_area(cancellable: Gio.Cancellable | null): globalThis.Promise<[number, number, number, number]>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.SelectArea">SelectArea()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -5481,7 +5422,7 @@ export namespace Phosh {
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_select_area(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[number, number, number, number]> | void;
         /**
@@ -5497,7 +5438,7 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_select_area_sync(cancellable?: Gio.Cancellable | null): [boolean, number, number, number, number];
+        call_select_area_sync(cancellable: Gio.Cancellable | null): [boolean, number, number, number, number];
         /**
          * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.FlashArea">FlashArea()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
          *
@@ -5682,38 +5623,19 @@ export namespace Phosh {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -5721,15 +5643,9 @@ export namespace Phosh {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -5896,7 +5812,7 @@ export namespace Phosh {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -6133,12 +6049,14 @@ export namespace Phosh {
         /**
          * Whether the device is currently docked. This mirrors the property
          * from `PhoshDockedManager` for easier access.
+         * @default false
          */
         get docked(): boolean;
         set docked(val: boolean);
         /**
          * Whether the screen is currently locked. This mirrors the property
          * from {@link Phosh.LockscreenManager} for easier access.
+         * @default false
          */
         get locked(): boolean;
         set locked(val: boolean);
@@ -6154,11 +6072,13 @@ export namespace Phosh {
         set logDomains(val: string[]);
         /**
          * Whether to display the `PhoshHome` (overview and home bar)
+         * @default true
          */
         get overview_visible(): boolean;
         set overview_visible(val: boolean);
         /**
          * Whether to display the `PhoshHome` (overview and home bar)
+         * @default true
          */
         get overviewVisible(): boolean;
         set overviewVisible(val: boolean);
@@ -6312,7 +6232,7 @@ export namespace Phosh {
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
-        activate_action(action_name: string, parameter?: GLib.Variant | null): void;
+        activate_action(action_name: string, parameter: GLib.Variant | null): void;
         /**
          * Request for the state of the named action within `action_group` to be
          * changed to `value`.
@@ -6540,7 +6460,7 @@ export namespace Phosh {
          * @param parameter parameters to the activation
          * @virtual
          */
-        vfunc_activate_action(action_name: string, parameter?: GLib.Variant | null): void;
+        vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
         /**
          * Request for the state of the named action within `action_group` to be
          * changed to `value`.
@@ -6828,38 +6748,19 @@ export namespace Phosh {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -6867,15 +6768,9 @@ export namespace Phosh {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -7042,7 +6937,7 @@ export namespace Phosh {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -7288,8 +7183,8 @@ export namespace Phosh {
 
         interface ConstructorProps
             extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-            extra_widget: Gtk.Widget;
-            extraWidget: Gtk.Widget;
+            extra_widget: Gtk.Widget | null;
+            extraWidget: Gtk.Widget | null;
             icon_name: string;
             iconName: string;
             icon_size: Gtk.IconSize;
@@ -7320,48 +7215,55 @@ export namespace Phosh {
          * used in PhoshTopPanel. When used in {@link QuickSetting} this
          * is not needed.
          */
-        get extra_widget(): Gtk.Widget;
-        set extra_widget(val: Gtk.Widget);
+        get extra_widget(): Gtk.Widget | null;
+        set extra_widget(val: Gtk.Widget | null);
         /**
          * An extra widget to display. This is used for extra information when
          * used in PhoshTopPanel. When used in {@link QuickSetting} this
          * is not needed.
          */
-        get extraWidget(): Gtk.Widget;
-        set extraWidget(val: Gtk.Widget);
+        get extraWidget(): Gtk.Widget | null;
+        set extraWidget(val: Gtk.Widget | null);
         /**
          * The name of the icon to display in the widget
+         * @default null
          */
         get icon_name(): string;
         set icon_name(val: string);
         /**
          * The name of the icon to display in the widget
+         * @default null
          */
         get iconName(): string;
         set iconName(val: string);
         /**
          * The size of the icon to display in the widget
+         * @default Gtk.IconSize.LARGE_TOOLBAR
          */
         get icon_size(): Gtk.IconSize;
         set icon_size(val: Gtk.IconSize);
         /**
          * The size of the icon to display in the widget
+         * @default Gtk.IconSize.LARGE_TOOLBAR
          */
         get iconSize(): Gtk.IconSize;
         set iconSize(val: Gtk.IconSize);
         /**
          * Textual information to display. Think of it as the {@link StatusIcon}'s
          * label.
+         * @default null
          */
         get info(): string;
         set info(val: string);
         /**
          * The size of the icon to display in the widget
+         * @default 24
          */
         get pixel_size(): number;
         set pixel_size(val: number);
         /**
          * The size of the icon to display in the widget
+         * @default 24
          */
         get pixelSize(): number;
         set pixelSize(val: number);
@@ -7495,38 +7397,19 @@ export namespace Phosh {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -7534,15 +7417,9 @@ export namespace Phosh {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -7709,7 +7586,7 @@ export namespace Phosh {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -7995,6 +7872,7 @@ export namespace Phosh {
         set header(val: Gtk.Widget);
         /**
          * The status page title
+         * @default null
          */
         get title(): string;
         set title(val: string);
@@ -8123,38 +8001,19 @@ export namespace Phosh {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -8162,15 +8021,9 @@ export namespace Phosh {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -8337,7 +8190,7 @@ export namespace Phosh {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -8554,14 +8407,17 @@ export namespace Phosh {
 
         /**
          * @read-only
+         * @default null
          */
         get date_time(): string;
         /**
          * @read-only
+         * @default null
          */
         get dateTime(): string;
         /**
          * @read-only
+         * @default null
          */
         get time(): string;
 
@@ -8853,7 +8709,7 @@ export namespace Phosh {
             arg_y: number,
             arg_width: number,
             arg_height: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.FlashArea">FlashArea()</link> D-Bus method on `proxy`.
@@ -8894,7 +8750,7 @@ export namespace Phosh {
             arg_y: number,
             arg_width: number,
             arg_height: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -8919,7 +8775,7 @@ export namespace Phosh {
             arg_y: number,
             arg_width: number,
             arg_height: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.PickColor">PickColor()</link> D-Bus method on `proxy`.
@@ -8929,7 +8785,7 @@ export namespace Phosh {
          * See `phosh_dbus_screenshot_call_pick_color_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_pick_color(cancellable?: Gio.Cancellable | null): globalThis.Promise<GLib.Variant | null>;
+        call_pick_color(cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.Variant | null>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.PickColor">PickColor()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -8950,7 +8806,7 @@ export namespace Phosh {
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_pick_color(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GLib.Variant | null> | void;
         /**
@@ -8966,7 +8822,7 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_pick_color_sync(cancellable?: Gio.Cancellable | null): [boolean, GLib.Variant | null];
+        call_pick_color_sync(cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.Screenshot">Screenshot()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -8982,7 +8838,7 @@ export namespace Phosh {
             arg_include_cursor: boolean,
             arg_flash: boolean,
             arg_filename: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<[boolean, string]>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.Screenshot">Screenshot()</link> D-Bus method on `proxy`.
@@ -9019,7 +8875,7 @@ export namespace Phosh {
             arg_include_cursor: boolean,
             arg_flash: boolean,
             arg_filename: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[boolean, string]> | void;
         /**
@@ -9043,7 +8899,7 @@ export namespace Phosh {
             arg_height: number,
             arg_flash: boolean,
             arg_filename: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<[boolean, string]>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.ScreenshotArea">ScreenshotArea()</link> D-Bus method on `proxy`.
@@ -9092,7 +8948,7 @@ export namespace Phosh {
             arg_height: number,
             arg_flash: boolean,
             arg_filename: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[boolean, string]> | void;
         /**
@@ -9121,7 +8977,7 @@ export namespace Phosh {
             arg_height: number,
             arg_flash: boolean,
             arg_filename: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, boolean, string];
         /**
          * Finishes an operation started with `phosh_dbus_screenshot_call_screenshot()`.
@@ -9143,7 +8999,7 @@ export namespace Phosh {
             arg_include_cursor: boolean,
             arg_flash: boolean,
             arg_filename: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, boolean, string];
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.ScreenshotWindow">ScreenshotWindow()</link> D-Bus method on `proxy`.
@@ -9162,7 +9018,7 @@ export namespace Phosh {
             arg_include_cursor: boolean,
             arg_flash: boolean,
             arg_filename: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<[boolean, string]>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.ScreenshotWindow">ScreenshotWindow()</link> D-Bus method on `proxy`.
@@ -9203,7 +9059,7 @@ export namespace Phosh {
             arg_include_cursor: boolean,
             arg_flash: boolean,
             arg_filename: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[boolean, string]> | void;
         /**
@@ -9228,7 +9084,7 @@ export namespace Phosh {
             arg_include_cursor: boolean,
             arg_flash: boolean,
             arg_filename: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, boolean, string];
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.SelectArea">SelectArea()</link> D-Bus method on `proxy`.
@@ -9238,7 +9094,7 @@ export namespace Phosh {
          * See `phosh_dbus_screenshot_call_select_area_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_select_area(cancellable?: Gio.Cancellable | null): globalThis.Promise<[number, number, number, number]>;
+        call_select_area(cancellable: Gio.Cancellable | null): globalThis.Promise<[number, number, number, number]>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.SelectArea">SelectArea()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -9259,7 +9115,7 @@ export namespace Phosh {
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_select_area(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[number, number, number, number]> | void;
         /**
@@ -9275,7 +9131,7 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_select_area_sync(cancellable?: Gio.Cancellable | null): [boolean, number, number, number, number];
+        call_select_area_sync(cancellable: Gio.Cancellable | null): [boolean, number, number, number, number];
         /**
          * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.FlashArea">FlashArea()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
          *

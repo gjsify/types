@@ -171,7 +171,7 @@ export namespace GPlugin {
      * @gir-type Callback
      */
     interface ManagerForeachFunc {
-        (id: string, plugins: Plugin[], data?: any | null): void;
+        (id: string, plugins: Plugin[], data: any | null): void;
     }
     /**
      * @gir-type Flags
@@ -342,38 +342,19 @@ export namespace GPlugin {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -381,15 +362,9 @@ export namespace GPlugin {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -556,7 +531,7 @@ export namespace GPlugin {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -772,6 +747,7 @@ export namespace GPlugin {
          * The identifier of the loader.
          * @since 0.34
          * @construct-only
+         * @default null
          */
         get id(): string;
 
@@ -1245,6 +1221,7 @@ export namespace GPlugin {
          * The application here uses the third and fourth bytes, but could use
          * the second as well.
          * @construct-only
+         * @default 0
          */
         get abi_version(): number;
         /**
@@ -1266,6 +1243,7 @@ export namespace GPlugin {
          * The application here uses the third and fourth bytes, but could use
          * the second as well.
          * @construct-only
+         * @default 0
          */
         get abiVersion(): number;
         /**
@@ -1285,6 +1263,7 @@ export namespace GPlugin {
          * Defaults to `false`.
          * @since 0.39
          * @construct-only
+         * @default false
          */
         get auto_load(): boolean;
         /**
@@ -1296,6 +1275,7 @@ export namespace GPlugin {
          * Defaults to `false`.
          * @since 0.39
          * @construct-only
+         * @default false
          */
         get autoLoad(): boolean;
         /**
@@ -1303,6 +1283,7 @@ export namespace GPlugin {
          *
          * Note: This should only be used by the native plugin loader.
          * @construct-only
+         * @default false
          */
         get bind_global(): boolean;
         /**
@@ -1310,6 +1291,7 @@ export namespace GPlugin {
          *
          * Note: This should only be used by the native plugin loader.
          * @construct-only
+         * @default false
          */
         get bindGlobal(): boolean;
         /**
@@ -1320,6 +1302,7 @@ export namespace GPlugin {
          * set of categories that plugin authors should use, and put all plugins
          * that don't match this category into an "Other" category.
          * @construct-only
+         * @default null
          */
         get category(): string;
         /**
@@ -1331,6 +1314,7 @@ export namespace GPlugin {
          * The full description of the plugin that will be used in a "more
          * information" section in a user interface.
          * @construct-only
+         * @default null
          */
         get description(): string;
         /**
@@ -1339,18 +1323,21 @@ export namespace GPlugin {
          * This is an opaque token and may change in the future.
          * @since 0.44
          * @read-only
+         * @default null
          */
         get discriminator(): string;
         /**
          * A XDG icon name for the plugin.  The actual use of this is determined by
          * the application/library using GPlugin.
          * @construct-only
+         * @default null
          */
         get icon_name(): string;
         /**
          * A XDG icon name for the plugin.  The actual use of this is determined by
          * the application/library using GPlugin.
          * @construct-only
+         * @default null
          */
         get iconName(): string;
         /**
@@ -1362,6 +1349,7 @@ export namespace GPlugin {
          * For example, the Python3 loader in GPlugin has an id of
          * "gplugin/python3-loader".
          * @construct-only
+         * @default null
          */
         get id(): string;
         /**
@@ -1369,6 +1357,7 @@ export namespace GPlugin {
          *
          * Defaults to `false`.
          * @construct-only
+         * @default false
          */
         get internal(): boolean;
         /**
@@ -1382,6 +1371,7 @@ export namespace GPlugin {
          * (|). In the odd case that you have multiple licenses that are used at
          * the same time, they should be separated by an ampersand (&).
          * @construct-only
+         * @default null
          */
         get license_id(): string;
         /**
@@ -1395,30 +1385,35 @@ export namespace GPlugin {
          * (|). In the odd case that you have multiple licenses that are used at
          * the same time, they should be separated by an ampersand (&).
          * @construct-only
+         * @default null
          */
         get licenseId(): string;
         /**
          * The text of the license for this plugin.  This should only be used when
          * the plugin is licensed under a license that is not listed at spdx.org.
          * @construct-only
+         * @default null
          */
         get license_text(): string;
         /**
          * The text of the license for this plugin.  This should only be used when
          * the plugin is licensed under a license that is not listed at spdx.org.
          * @construct-only
+         * @default null
          */
         get licenseText(): string;
         /**
          * The url to the text of the license.  This should primarily only be used
          * for licenses not listed at spdx.org.
          * @construct-only
+         * @default null
          */
         get license_url(): string;
         /**
          * The url to the text of the license.  This should primarily only be used
          * for licenses not listed at spdx.org.
          * @construct-only
+         * @default null
          */
         get licenseUrl(): string;
         /**
@@ -1430,6 +1425,7 @@ export namespace GPlugin {
          * Defaults to `false`.
          * @deprecated since 0.39.0: Use {@link GPlugin.PluginInfo.auto_load} instead.
          * @construct-only
+         * @default false
          */
         get load_on_query(): boolean;
         /**
@@ -1441,11 +1437,13 @@ export namespace GPlugin {
          * Defaults to `false`.
          * @deprecated since 0.39.0: Use {@link GPlugin.PluginInfo.auto_load} instead.
          * @construct-only
+         * @default false
          */
         get loadOnQuery(): boolean;
         /**
          * The display name of the plugin.  This should be a translated string.
          * @construct-only
+         * @default null
          */
         get name(): string;
         /**
@@ -1455,6 +1453,7 @@ export namespace GPlugin {
          * priority, the first one found will be used.
          * @since 0.32
          * @construct-only
+         * @default 0
          */
         get priority(): number;
         /**
@@ -1474,18 +1473,21 @@ export namespace GPlugin {
          * The ID of the {@link Gio.Settings} schema for the plugin.
          * @since 0.39
          * @construct-only
+         * @default null
          */
         get settings_schema(): string;
         /**
          * The ID of the {@link Gio.Settings} schema for the plugin.
          * @since 0.39
          * @construct-only
+         * @default null
          */
         get settingsSchema(): string;
         /**
          * A short description of the plugin that can be listed with the name in a
          * user interface.
          * @construct-only
+         * @default null
          */
         get summary(): string;
         /**
@@ -1493,16 +1495,19 @@ export namespace GPlugin {
          * {@link GPlugin.PluginInfo.get_unloadable} for more information.
          * @since 0.35
          * @construct-only
+         * @default true
          */
         get unloadable(): boolean;
         /**
          * The version of the plugin.  Preferably a semantic version.
          * @construct-only
+         * @default null
          */
         get version(): string;
         /**
          * The url of the plugin that can be represented in a user interface.
          * @construct-only
+         * @default null
          */
         get website(): string;
 
@@ -1755,6 +1760,7 @@ export namespace GPlugin {
          *
          * See {@link GPlugin.Plugin.get_desired_state} for more information.
          * @since 0.38
+         * @default GPlugin.PluginState.UNKNOWN
          */
         get desired_state(): PluginState;
         set desired_state(val: PluginState);
@@ -1765,6 +1771,7 @@ export namespace GPlugin {
          *
          * See {@link GPlugin.Plugin.get_desired_state} for more information.
          * @since 0.38
+         * @default GPlugin.PluginState.UNKNOWN
          */
         get desiredState(): PluginState;
         set desiredState(val: PluginState);
@@ -1776,6 +1783,7 @@ export namespace GPlugin {
         /**
          * The absolute path to the plugin on disk.
          * @construct-only
+         * @default null
          */
         get filename(): string;
         /**
@@ -1790,6 +1798,7 @@ export namespace GPlugin {
         get loader(): Loader;
         /**
          * The plugin state that this plugin is in.
+         * @default GPlugin.PluginState.UNKNOWN
          */
         get state(): PluginState;
         set state(val: PluginState);

@@ -48,7 +48,7 @@ export namespace Gdm {
     /**
      * @param cancellable
      */
-    function goto_login_session_sync(cancellable?: Gio.Cancellable | null): boolean;
+    function goto_login_session_sync(cancellable: Gio.Cancellable | null): boolean;
     function greeter_interface_info(): Gio.DBusInterfaceInfo;
     /**
      * @param klass
@@ -173,8 +173,8 @@ export namespace Gdm {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<ChooserProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<ChooserProxy> | null,
         ): void;
         /**
          * @param args
@@ -194,8 +194,8 @@ export namespace Gdm {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<ChooserProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<ChooserProxy> | null,
         ): void;
         /**
          * @param args
@@ -205,7 +205,7 @@ export namespace Gdm {
         /**
          * @param cancellable
          */
-        call_disconnect(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_disconnect(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * @param cancellable
          * @param callback
@@ -216,7 +216,7 @@ export namespace Gdm {
          * @param callback
          */
         call_disconnect(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -226,12 +226,12 @@ export namespace Gdm {
         /**
          * @param cancellable
          */
-        call_disconnect_sync(cancellable?: Gio.Cancellable | null): boolean;
+        call_disconnect_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param arg_hostname
          * @param cancellable
          */
-        call_select_hostname(arg_hostname: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_select_hostname(arg_hostname: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * @param arg_hostname
          * @param cancellable
@@ -249,7 +249,7 @@ export namespace Gdm {
          */
         call_select_hostname(
             arg_hostname: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -260,7 +260,7 @@ export namespace Gdm {
          * @param arg_hostname
          * @param cancellable
          */
-        call_select_hostname_sync(arg_hostname: string, cancellable?: Gio.Cancellable | null): boolean;
+        call_select_hostname_sync(arg_hostname: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param invocation
          */
@@ -320,7 +320,7 @@ export namespace Gdm {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -410,7 +410,7 @@ export namespace Gdm {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -476,8 +476,8 @@ export namespace Gdm {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -503,7 +503,7 @@ export namespace Gdm {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -522,7 +522,7 @@ export namespace Gdm {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Initializes the object implementing the interface.
          *
@@ -565,7 +565,7 @@ export namespace Gdm {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -608,7 +608,7 @@ export namespace Gdm {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -656,38 +656,19 @@ export namespace Gdm {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -695,15 +676,9 @@ export namespace Gdm {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -870,7 +845,7 @@ export namespace Gdm {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1119,7 +1094,7 @@ export namespace Gdm {
         /**
          * @param cancellable
          */
-        call_disconnect(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_disconnect(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * @param cancellable
          * @param callback
@@ -1130,7 +1105,7 @@ export namespace Gdm {
          * @param callback
          */
         call_disconnect(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1140,12 +1115,12 @@ export namespace Gdm {
         /**
          * @param cancellable
          */
-        call_disconnect_sync(cancellable?: Gio.Cancellable | null): boolean;
+        call_disconnect_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param arg_hostname
          * @param cancellable
          */
-        call_select_hostname(arg_hostname: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_select_hostname(arg_hostname: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * @param arg_hostname
          * @param cancellable
@@ -1163,7 +1138,7 @@ export namespace Gdm {
          */
         call_select_hostname(
             arg_hostname: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1174,7 +1149,7 @@ export namespace Gdm {
          * @param arg_hostname
          * @param cancellable
          */
-        call_select_hostname_sync(arg_hostname: string, cancellable?: Gio.Cancellable | null): boolean;
+        call_select_hostname_sync(arg_hostname: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param invocation
          */
@@ -1211,7 +1186,7 @@ export namespace Gdm {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -1230,7 +1205,7 @@ export namespace Gdm {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -1278,38 +1253,19 @@ export namespace Gdm {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1317,15 +1273,9 @@ export namespace Gdm {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1492,7 +1442,7 @@ export namespace Gdm {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1746,7 +1696,7 @@ export namespace Gdm {
          * verify a user's local account.
          * @param cancellable a {@link Gio.Cancellable}
          */
-        get_chooser(cancellable?: Gio.Cancellable | null): globalThis.Promise<Chooser>;
+        get_chooser(cancellable: Gio.Cancellable | null): globalThis.Promise<Chooser>;
         /**
          * Gets a {@link Gdm.Chooser} object that can be used to
          * verify a user's local account.
@@ -1761,7 +1711,7 @@ export namespace Gdm {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         get_chooser(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Chooser> | void;
         /**
@@ -1778,13 +1728,13 @@ export namespace Gdm {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns {@link Gdm.Chooser} or `null` if caller is not a chooser
          */
-        get_chooser_sync(cancellable?: Gio.Cancellable | null): Chooser;
+        get_chooser_sync(cancellable: Gio.Cancellable | null): Chooser;
         /**
          * Gets a {@link Gdm.Greeter} object that can be used to
          * verify a user's local account.
          * @param cancellable a {@link Gio.Cancellable}
          */
-        get_greeter(cancellable?: Gio.Cancellable | null): globalThis.Promise<Greeter>;
+        get_greeter(cancellable: Gio.Cancellable | null): globalThis.Promise<Greeter>;
         /**
          * Gets a {@link Gdm.Greeter} object that can be used to
          * verify a user's local account.
@@ -1799,7 +1749,7 @@ export namespace Gdm {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         get_greeter(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Greeter> | void;
         /**
@@ -1817,13 +1767,13 @@ export namespace Gdm {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns {@link Gdm.Greeter} or `null` if caller is not a greeter
          */
-        get_greeter_sync(cancellable?: Gio.Cancellable | null): Greeter;
+        get_greeter_sync(cancellable: Gio.Cancellable | null): Greeter;
         /**
          * Gets a {@link Gdm.RemoteGreeter} object that can be used to
          * verify a user's local account.
          * @param cancellable a {@link Gio.Cancellable}
          */
-        get_remote_greeter(cancellable?: Gio.Cancellable | null): globalThis.Promise<RemoteGreeter>;
+        get_remote_greeter(cancellable: Gio.Cancellable | null): globalThis.Promise<RemoteGreeter>;
         /**
          * Gets a {@link Gdm.RemoteGreeter} object that can be used to
          * verify a user's local account.
@@ -1838,7 +1788,7 @@ export namespace Gdm {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         get_remote_greeter(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<RemoteGreeter> | void;
         /**
@@ -1855,13 +1805,13 @@ export namespace Gdm {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns {@link Gdm.RemoteGreeter} or `null` if caller is not remote
          */
-        get_remote_greeter_sync(cancellable?: Gio.Cancellable | null): RemoteGreeter;
+        get_remote_greeter_sync(cancellable: Gio.Cancellable | null): RemoteGreeter;
         /**
          * Gets a {@link Gdm.UserVerifier} object that can be used to
          * verify a user's local account.
          * @param cancellable a {@link Gio.Cancellable}
          */
-        get_user_verifier(cancellable?: Gio.Cancellable | null): globalThis.Promise<UserVerifier>;
+        get_user_verifier(cancellable: Gio.Cancellable | null): globalThis.Promise<UserVerifier>;
         /**
          * Gets a {@link Gdm.UserVerifier} object that can be used to
          * verify a user's local account.
@@ -1876,7 +1826,7 @@ export namespace Gdm {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         get_user_verifier(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<UserVerifier> | void;
         /**
@@ -1898,7 +1848,7 @@ export namespace Gdm {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns {@link Gdm.UserVerifier} or `null` if not connected
          */
-        get_user_verifier_sync(cancellable?: Gio.Cancellable | null): UserVerifier;
+        get_user_verifier_sync(cancellable: Gio.Cancellable | null): UserVerifier;
         /**
          * Gets a {@link Gdm.UserVerifier} object that can be used to
          * reauthenticate an already logged in user.
@@ -1907,7 +1857,7 @@ export namespace Gdm {
          */
         open_reauthentication_channel(
             username: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<UserVerifier>;
         /**
          * Gets a {@link Gdm.UserVerifier} object that can be used to
@@ -1930,7 +1880,7 @@ export namespace Gdm {
          */
         open_reauthentication_channel(
             username: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<UserVerifier> | void;
         /**
@@ -1948,7 +1898,7 @@ export namespace Gdm {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns {@link Gdm.UserVerifier} or `null` if `username` is not already logged in.
          */
-        open_reauthentication_channel_sync(username: string, cancellable?: Gio.Cancellable | null): UserVerifier;
+        open_reauthentication_channel_sync(username: string, cancellable: Gio.Cancellable | null): UserVerifier;
         /**
          * Enables GDM's pam extensions.  Currently, only
          * org.gnome.DisplayManager.UserVerifier.ChoiceList is supported.
@@ -2042,8 +1992,8 @@ export namespace Gdm {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<GreeterProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<GreeterProxy> | null,
         ): void;
         /**
          * @param args
@@ -2063,8 +2013,8 @@ export namespace Gdm {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<GreeterProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<GreeterProxy> | null,
         ): void;
         /**
          * @param args
@@ -2075,7 +2025,7 @@ export namespace Gdm {
          * @param arg_username
          * @param cancellable
          */
-        call_begin_auto_login(arg_username: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_begin_auto_login(arg_username: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * @param arg_username
          * @param cancellable
@@ -2093,7 +2043,7 @@ export namespace Gdm {
          */
         call_begin_auto_login(
             arg_username: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2104,11 +2054,11 @@ export namespace Gdm {
          * @param arg_username
          * @param cancellable
          */
-        call_begin_auto_login_sync(arg_username: string, cancellable?: Gio.Cancellable | null): boolean;
+        call_begin_auto_login_sync(arg_username: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param cancellable
          */
-        call_get_timed_login_details(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_get_timed_login_details(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * @param cancellable
          * @param callback
@@ -2122,7 +2072,7 @@ export namespace Gdm {
          * @param callback
          */
         call_get_timed_login_details(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2147,13 +2097,13 @@ export namespace Gdm {
             out_enabled: boolean,
             out_username: string,
             out_delay: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * @param arg_session
          * @param cancellable
          */
-        call_select_session(arg_session: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_select_session(arg_session: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * @param arg_session
          * @param cancellable
@@ -2171,7 +2121,7 @@ export namespace Gdm {
          */
         call_select_session(
             arg_session: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2182,12 +2132,12 @@ export namespace Gdm {
          * @param arg_session
          * @param cancellable
          */
-        call_select_session_sync(arg_session: string, cancellable?: Gio.Cancellable | null): boolean;
+        call_select_session_sync(arg_session: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param arg_username
          * @param cancellable
          */
-        call_select_user(arg_username: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_select_user(arg_username: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * @param arg_username
          * @param cancellable
@@ -2205,7 +2155,7 @@ export namespace Gdm {
          */
         call_select_user(
             arg_username: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2216,7 +2166,7 @@ export namespace Gdm {
          * @param arg_username
          * @param cancellable
          */
-        call_select_user_sync(arg_username: string, cancellable?: Gio.Cancellable | null): boolean;
+        call_select_user_sync(arg_username: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param arg_service_name
          * @param arg_should_start_session
@@ -2225,7 +2175,7 @@ export namespace Gdm {
         call_start_session_when_ready(
             arg_service_name: string,
             arg_should_start_session: boolean,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * @param arg_service_name
@@ -2248,7 +2198,7 @@ export namespace Gdm {
         call_start_session_when_ready(
             arg_service_name: string,
             arg_should_start_session: boolean,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2263,7 +2213,7 @@ export namespace Gdm {
         call_start_session_when_ready_sync(
             arg_service_name: string,
             arg_should_start_session: boolean,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * @param invocation
@@ -2423,7 +2373,7 @@ export namespace Gdm {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -2513,7 +2463,7 @@ export namespace Gdm {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2579,8 +2529,8 @@ export namespace Gdm {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -2606,7 +2556,7 @@ export namespace Gdm {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -2625,7 +2575,7 @@ export namespace Gdm {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Initializes the object implementing the interface.
          *
@@ -2668,7 +2618,7 @@ export namespace Gdm {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -2711,7 +2661,7 @@ export namespace Gdm {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -2759,38 +2709,19 @@ export namespace Gdm {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -2798,15 +2729,9 @@ export namespace Gdm {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -2973,7 +2898,7 @@ export namespace Gdm {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -3223,7 +3148,7 @@ export namespace Gdm {
          * @param arg_username
          * @param cancellable
          */
-        call_begin_auto_login(arg_username: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_begin_auto_login(arg_username: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * @param arg_username
          * @param cancellable
@@ -3241,7 +3166,7 @@ export namespace Gdm {
          */
         call_begin_auto_login(
             arg_username: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -3252,11 +3177,11 @@ export namespace Gdm {
          * @param arg_username
          * @param cancellable
          */
-        call_begin_auto_login_sync(arg_username: string, cancellable?: Gio.Cancellable | null): boolean;
+        call_begin_auto_login_sync(arg_username: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param cancellable
          */
-        call_get_timed_login_details(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_get_timed_login_details(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * @param cancellable
          * @param callback
@@ -3270,7 +3195,7 @@ export namespace Gdm {
          * @param callback
          */
         call_get_timed_login_details(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -3295,13 +3220,13 @@ export namespace Gdm {
             out_enabled: boolean,
             out_username: string,
             out_delay: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * @param arg_session
          * @param cancellable
          */
-        call_select_session(arg_session: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_select_session(arg_session: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * @param arg_session
          * @param cancellable
@@ -3319,7 +3244,7 @@ export namespace Gdm {
          */
         call_select_session(
             arg_session: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -3330,12 +3255,12 @@ export namespace Gdm {
          * @param arg_session
          * @param cancellable
          */
-        call_select_session_sync(arg_session: string, cancellable?: Gio.Cancellable | null): boolean;
+        call_select_session_sync(arg_session: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param arg_username
          * @param cancellable
          */
-        call_select_user(arg_username: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_select_user(arg_username: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * @param arg_username
          * @param cancellable
@@ -3353,7 +3278,7 @@ export namespace Gdm {
          */
         call_select_user(
             arg_username: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -3364,7 +3289,7 @@ export namespace Gdm {
          * @param arg_username
          * @param cancellable
          */
-        call_select_user_sync(arg_username: string, cancellable?: Gio.Cancellable | null): boolean;
+        call_select_user_sync(arg_username: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param arg_service_name
          * @param arg_should_start_session
@@ -3373,7 +3298,7 @@ export namespace Gdm {
         call_start_session_when_ready(
             arg_service_name: string,
             arg_should_start_session: boolean,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * @param arg_service_name
@@ -3396,7 +3321,7 @@ export namespace Gdm {
         call_start_session_when_ready(
             arg_service_name: string,
             arg_should_start_session: boolean,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -3411,7 +3336,7 @@ export namespace Gdm {
         call_start_session_when_ready_sync(
             arg_service_name: string,
             arg_should_start_session: boolean,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * @param invocation
@@ -3548,7 +3473,7 @@ export namespace Gdm {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -3567,7 +3492,7 @@ export namespace Gdm {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -3615,38 +3540,19 @@ export namespace Gdm {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -3654,15 +3560,9 @@ export namespace Gdm {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -3829,7 +3729,7 @@ export namespace Gdm {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -4105,8 +4005,8 @@ export namespace Gdm {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<ManagerProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<ManagerProxy> | null,
         ): void;
         /**
          * @param args
@@ -4126,15 +4026,18 @@ export namespace Gdm {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<ManagerProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<ManagerProxy> | null,
         ): void;
         /**
          * @param args
          */
         // Conflicted with Gio.DBusProxy.new_for_bus
         static new_for_bus(...args: never[]): any;
-        /** @category Inherited from Gdm.Manager */
+        /**
+         * @default null
+         * @category Inherited from Gdm.Manager
+         */
         get version(): string;
         set version(val: string);
         /**
@@ -4143,7 +4046,7 @@ export namespace Gdm {
          */
         call_open_reauthentication_channel(
             arg_username: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * @param arg_username
@@ -4162,7 +4065,7 @@ export namespace Gdm {
          */
         call_open_reauthentication_channel(
             arg_username: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -4178,12 +4081,12 @@ export namespace Gdm {
         call_open_reauthentication_channel_sync(
             arg_username: string,
             out_address: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * @param cancellable
          */
-        call_open_session(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_open_session(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * @param cancellable
          * @param callback
@@ -4194,7 +4097,7 @@ export namespace Gdm {
          * @param callback
          */
         call_open_session(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -4206,14 +4109,14 @@ export namespace Gdm {
          * @param out_address
          * @param cancellable
          */
-        call_open_session_sync(out_address: string, cancellable?: Gio.Cancellable | null): boolean;
+        call_open_session_sync(out_address: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param arg_details
          * @param cancellable
          */
         call_register_display(
             arg_details: GLib.Variant,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * @param arg_details
@@ -4232,7 +4135,7 @@ export namespace Gdm {
          */
         call_register_display(
             arg_details: GLib.Variant,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -4243,14 +4146,14 @@ export namespace Gdm {
          * @param arg_details
          * @param cancellable
          */
-        call_register_display_sync(arg_details: GLib.Variant, cancellable?: Gio.Cancellable | null): boolean;
+        call_register_display_sync(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param arg_details
          * @param cancellable
          */
         call_register_session(
             arg_details: GLib.Variant,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * @param arg_details
@@ -4269,7 +4172,7 @@ export namespace Gdm {
          */
         call_register_session(
             arg_details: GLib.Variant,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -4280,7 +4183,7 @@ export namespace Gdm {
          * @param arg_details
          * @param cancellable
          */
-        call_register_session_sync(arg_details: GLib.Variant, cancellable?: Gio.Cancellable | null): boolean;
+        call_register_session_sync(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param invocation
          * @param address
@@ -4372,7 +4275,7 @@ export namespace Gdm {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -4462,7 +4365,7 @@ export namespace Gdm {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -4528,8 +4431,8 @@ export namespace Gdm {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -4555,7 +4458,7 @@ export namespace Gdm {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -4574,7 +4477,7 @@ export namespace Gdm {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Initializes the object implementing the interface.
          *
@@ -4617,7 +4520,7 @@ export namespace Gdm {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -4660,7 +4563,7 @@ export namespace Gdm {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -4708,38 +4611,19 @@ export namespace Gdm {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -4747,15 +4631,9 @@ export namespace Gdm {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -4922,7 +4800,7 @@ export namespace Gdm {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -5169,7 +5047,10 @@ export namespace Gdm {
             ...args: GObject.GjsParameters<ManagerSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from Gdm.Manager */
+        /**
+         * @default null
+         * @category Inherited from Gdm.Manager
+         */
         get version(): string;
         set version(val: string);
         /**
@@ -5178,7 +5059,7 @@ export namespace Gdm {
          */
         call_open_reauthentication_channel(
             arg_username: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * @param arg_username
@@ -5197,7 +5078,7 @@ export namespace Gdm {
          */
         call_open_reauthentication_channel(
             arg_username: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -5213,12 +5094,12 @@ export namespace Gdm {
         call_open_reauthentication_channel_sync(
             arg_username: string,
             out_address: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * @param cancellable
          */
-        call_open_session(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_open_session(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * @param cancellable
          * @param callback
@@ -5229,7 +5110,7 @@ export namespace Gdm {
          * @param callback
          */
         call_open_session(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -5241,14 +5122,14 @@ export namespace Gdm {
          * @param out_address
          * @param cancellable
          */
-        call_open_session_sync(out_address: string, cancellable?: Gio.Cancellable | null): boolean;
+        call_open_session_sync(out_address: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param arg_details
          * @param cancellable
          */
         call_register_display(
             arg_details: GLib.Variant,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * @param arg_details
@@ -5267,7 +5148,7 @@ export namespace Gdm {
          */
         call_register_display(
             arg_details: GLib.Variant,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -5278,14 +5159,14 @@ export namespace Gdm {
          * @param arg_details
          * @param cancellable
          */
-        call_register_display_sync(arg_details: GLib.Variant, cancellable?: Gio.Cancellable | null): boolean;
+        call_register_display_sync(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param arg_details
          * @param cancellable
          */
         call_register_session(
             arg_details: GLib.Variant,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * @param arg_details
@@ -5304,7 +5185,7 @@ export namespace Gdm {
          */
         call_register_session(
             arg_details: GLib.Variant,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -5315,7 +5196,7 @@ export namespace Gdm {
          * @param arg_details
          * @param cancellable
          */
-        call_register_session_sync(arg_details: GLib.Variant, cancellable?: Gio.Cancellable | null): boolean;
+        call_register_session_sync(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param invocation
          * @param address
@@ -5384,7 +5265,7 @@ export namespace Gdm {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -5403,7 +5284,7 @@ export namespace Gdm {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -5451,38 +5332,19 @@ export namespace Gdm {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -5490,15 +5352,9 @@ export namespace Gdm {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -5665,7 +5521,7 @@ export namespace Gdm {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -5940,8 +5796,8 @@ export namespace Gdm {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<RemoteGreeterProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<RemoteGreeterProxy> | null,
         ): void;
         /**
          * @param args
@@ -5961,8 +5817,8 @@ export namespace Gdm {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<RemoteGreeterProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<RemoteGreeterProxy> | null,
         ): void;
         /**
          * @param args
@@ -5972,7 +5828,7 @@ export namespace Gdm {
         /**
          * @param cancellable
          */
-        call_disconnect(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_disconnect(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * @param cancellable
          * @param callback
@@ -5983,7 +5839,7 @@ export namespace Gdm {
          * @param callback
          */
         call_disconnect(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -5993,7 +5849,7 @@ export namespace Gdm {
         /**
          * @param cancellable
          */
-        call_disconnect_sync(cancellable?: Gio.Cancellable | null): boolean;
+        call_disconnect_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param invocation
          */
@@ -6043,7 +5899,7 @@ export namespace Gdm {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -6133,7 +5989,7 @@ export namespace Gdm {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -6199,8 +6055,8 @@ export namespace Gdm {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -6226,7 +6082,7 @@ export namespace Gdm {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -6245,7 +6101,7 @@ export namespace Gdm {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Initializes the object implementing the interface.
          *
@@ -6288,7 +6144,7 @@ export namespace Gdm {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -6331,7 +6187,7 @@ export namespace Gdm {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -6379,38 +6235,19 @@ export namespace Gdm {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -6418,15 +6255,9 @@ export namespace Gdm {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -6593,7 +6424,7 @@ export namespace Gdm {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -6844,7 +6675,7 @@ export namespace Gdm {
         /**
          * @param cancellable
          */
-        call_disconnect(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_disconnect(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * @param cancellable
          * @param callback
@@ -6855,7 +6686,7 @@ export namespace Gdm {
          * @param callback
          */
         call_disconnect(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -6865,7 +6696,7 @@ export namespace Gdm {
         /**
          * @param cancellable
          */
-        call_disconnect_sync(cancellable?: Gio.Cancellable | null): boolean;
+        call_disconnect_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param invocation
          */
@@ -6892,7 +6723,7 @@ export namespace Gdm {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -6911,7 +6742,7 @@ export namespace Gdm {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -6959,38 +6790,19 @@ export namespace Gdm {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -6998,15 +6810,9 @@ export namespace Gdm {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -7173,7 +6979,7 @@ export namespace Gdm {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -7454,8 +7260,8 @@ export namespace Gdm {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<UserVerifierChoiceListProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<UserVerifierChoiceListProxy> | null,
         ): void;
         /**
          * @param args
@@ -7475,8 +7281,8 @@ export namespace Gdm {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<UserVerifierChoiceListProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<UserVerifierChoiceListProxy> | null,
         ): void;
         /**
          * @param args
@@ -7491,7 +7297,7 @@ export namespace Gdm {
         call_select_choice(
             arg_service_name: string,
             arg_choice: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * @param arg_service_name
@@ -7514,7 +7320,7 @@ export namespace Gdm {
         call_select_choice(
             arg_service_name: string,
             arg_choice: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -7529,7 +7335,7 @@ export namespace Gdm {
         call_select_choice_sync(
             arg_service_name: string,
             arg_choice: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * @param invocation
@@ -7599,7 +7405,7 @@ export namespace Gdm {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -7689,7 +7495,7 @@ export namespace Gdm {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -7755,8 +7561,8 @@ export namespace Gdm {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -7782,7 +7588,7 @@ export namespace Gdm {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -7801,7 +7607,7 @@ export namespace Gdm {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Initializes the object implementing the interface.
          *
@@ -7844,7 +7650,7 @@ export namespace Gdm {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -7887,7 +7693,7 @@ export namespace Gdm {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -7935,38 +7741,19 @@ export namespace Gdm {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -7974,15 +7761,9 @@ export namespace Gdm {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -8149,7 +7930,7 @@ export namespace Gdm {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -8408,7 +8189,7 @@ export namespace Gdm {
         call_select_choice(
             arg_service_name: string,
             arg_choice: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * @param arg_service_name
@@ -8431,7 +8212,7 @@ export namespace Gdm {
         call_select_choice(
             arg_service_name: string,
             arg_choice: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -8446,7 +8227,7 @@ export namespace Gdm {
         call_select_choice_sync(
             arg_service_name: string,
             arg_choice: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * @param invocation
@@ -8493,7 +8274,7 @@ export namespace Gdm {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -8512,7 +8293,7 @@ export namespace Gdm {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -8560,38 +8341,19 @@ export namespace Gdm {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -8599,15 +8361,9 @@ export namespace Gdm {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -8774,7 +8530,7 @@ export namespace Gdm {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -9049,8 +8805,8 @@ export namespace Gdm {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<UserVerifierProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<UserVerifierProxy> | null,
         ): void;
         /**
          * @param args
@@ -9070,8 +8826,8 @@ export namespace Gdm {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<UserVerifierProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<UserVerifierProxy> | null,
         ): void;
         /**
          * @param args
@@ -9086,7 +8842,7 @@ export namespace Gdm {
         call_answer_query(
             arg_service_name: string,
             arg_answer: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * @param arg_service_name
@@ -9109,7 +8865,7 @@ export namespace Gdm {
         call_answer_query(
             arg_service_name: string,
             arg_answer: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -9124,7 +8880,7 @@ export namespace Gdm {
         call_answer_query_sync(
             arg_service_name: string,
             arg_answer: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * @param arg_service_name
@@ -9132,7 +8888,7 @@ export namespace Gdm {
          */
         call_begin_verification(
             arg_service_name: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * @param arg_service_name
@@ -9151,7 +8907,7 @@ export namespace Gdm {
          */
         call_begin_verification(
             arg_service_name: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -9166,7 +8922,7 @@ export namespace Gdm {
         call_begin_verification_for_user(
             arg_service_name: string,
             arg_username: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * @param arg_service_name
@@ -9189,7 +8945,7 @@ export namespace Gdm {
         call_begin_verification_for_user(
             arg_service_name: string,
             arg_username: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -9204,17 +8960,17 @@ export namespace Gdm {
         call_begin_verification_for_user_sync(
             arg_service_name: string,
             arg_username: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * @param arg_service_name
          * @param cancellable
          */
-        call_begin_verification_sync(arg_service_name: string, cancellable?: Gio.Cancellable | null): boolean;
+        call_begin_verification_sync(arg_service_name: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param cancellable
          */
-        call_cancel(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_cancel(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * @param cancellable
          * @param callback
@@ -9225,7 +8981,7 @@ export namespace Gdm {
          * @param callback
          */
         call_cancel(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -9235,14 +8991,14 @@ export namespace Gdm {
         /**
          * @param cancellable
          */
-        call_cancel_sync(cancellable?: Gio.Cancellable | null): boolean;
+        call_cancel_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param arg_extensions
          * @param cancellable
          */
         call_enable_extensions(
             arg_extensions: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * @param arg_extensions
@@ -9261,7 +9017,7 @@ export namespace Gdm {
          */
         call_enable_extensions(
             arg_extensions: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -9272,7 +9028,7 @@ export namespace Gdm {
          * @param arg_extensions
          * @param cancellable
          */
-        call_enable_extensions_sync(arg_extensions: string, cancellable?: Gio.Cancellable | null): boolean;
+        call_enable_extensions_sync(arg_extensions: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param invocation
          */
@@ -9477,7 +9233,7 @@ export namespace Gdm {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -9567,7 +9323,7 @@ export namespace Gdm {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -9633,8 +9389,8 @@ export namespace Gdm {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -9660,7 +9416,7 @@ export namespace Gdm {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -9679,7 +9435,7 @@ export namespace Gdm {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Initializes the object implementing the interface.
          *
@@ -9722,7 +9478,7 @@ export namespace Gdm {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -9765,7 +9521,7 @@ export namespace Gdm {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -9813,38 +9569,19 @@ export namespace Gdm {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -9852,15 +9589,9 @@ export namespace Gdm {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -10027,7 +9758,7 @@ export namespace Gdm {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -10283,7 +10014,7 @@ export namespace Gdm {
         call_answer_query(
             arg_service_name: string,
             arg_answer: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * @param arg_service_name
@@ -10306,7 +10037,7 @@ export namespace Gdm {
         call_answer_query(
             arg_service_name: string,
             arg_answer: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -10321,7 +10052,7 @@ export namespace Gdm {
         call_answer_query_sync(
             arg_service_name: string,
             arg_answer: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * @param arg_service_name
@@ -10329,7 +10060,7 @@ export namespace Gdm {
          */
         call_begin_verification(
             arg_service_name: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * @param arg_service_name
@@ -10348,7 +10079,7 @@ export namespace Gdm {
          */
         call_begin_verification(
             arg_service_name: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -10363,7 +10094,7 @@ export namespace Gdm {
         call_begin_verification_for_user(
             arg_service_name: string,
             arg_username: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * @param arg_service_name
@@ -10386,7 +10117,7 @@ export namespace Gdm {
         call_begin_verification_for_user(
             arg_service_name: string,
             arg_username: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -10401,17 +10132,17 @@ export namespace Gdm {
         call_begin_verification_for_user_sync(
             arg_service_name: string,
             arg_username: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * @param arg_service_name
          * @param cancellable
          */
-        call_begin_verification_sync(arg_service_name: string, cancellable?: Gio.Cancellable | null): boolean;
+        call_begin_verification_sync(arg_service_name: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param cancellable
          */
-        call_cancel(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_cancel(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * @param cancellable
          * @param callback
@@ -10422,7 +10153,7 @@ export namespace Gdm {
          * @param callback
          */
         call_cancel(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -10432,14 +10163,14 @@ export namespace Gdm {
         /**
          * @param cancellable
          */
-        call_cancel_sync(cancellable?: Gio.Cancellable | null): boolean;
+        call_cancel_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param arg_extensions
          * @param cancellable
          */
         call_enable_extensions(
             arg_extensions: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * @param arg_extensions
@@ -10458,7 +10189,7 @@ export namespace Gdm {
          */
         call_enable_extensions(
             arg_extensions: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -10469,7 +10200,7 @@ export namespace Gdm {
          * @param arg_extensions
          * @param cancellable
          */
-        call_enable_extensions_sync(arg_extensions: string, cancellable?: Gio.Cancellable | null): boolean;
+        call_enable_extensions_sync(arg_extensions: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param invocation
          */
@@ -10651,7 +10382,7 @@ export namespace Gdm {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -10670,7 +10401,7 @@ export namespace Gdm {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -10718,38 +10449,19 @@ export namespace Gdm {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -10757,15 +10469,9 @@ export namespace Gdm {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -10932,7 +10638,7 @@ export namespace Gdm {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -11207,8 +10913,8 @@ export namespace Gdm {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<WorkerManagerProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<WorkerManagerProxy> | null,
         ): void;
         /**
          * @param args
@@ -11228,8 +10934,8 @@ export namespace Gdm {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<WorkerManagerProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<WorkerManagerProxy> | null,
         ): void;
         /**
          * @param args
@@ -11246,7 +10952,7 @@ export namespace Gdm {
             arg_service_name: string,
             arg_prompt_message: string,
             arg_query: GLib.Variant,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * @param arg_service_name
@@ -11273,7 +10979,7 @@ export namespace Gdm {
             arg_service_name: string,
             arg_prompt_message: string,
             arg_query: GLib.Variant,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -11293,12 +10999,12 @@ export namespace Gdm {
             arg_prompt_message: string,
             arg_query: GLib.Variant,
             out_answer: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * @param cancellable
          */
-        call_hello(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_hello(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * @param cancellable
          * @param callback
@@ -11309,7 +11015,7 @@ export namespace Gdm {
          * @param callback
          */
         call_hello(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -11319,7 +11025,7 @@ export namespace Gdm {
         /**
          * @param cancellable
          */
-        call_hello_sync(cancellable?: Gio.Cancellable | null): boolean;
+        call_hello_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param arg_service_name
          * @param arg_info
@@ -11328,7 +11034,7 @@ export namespace Gdm {
         call_info(
             arg_service_name: string,
             arg_info: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * @param arg_service_name
@@ -11351,7 +11057,7 @@ export namespace Gdm {
         call_info(
             arg_service_name: string,
             arg_info: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -11366,7 +11072,7 @@ export namespace Gdm {
         call_info_query(
             arg_service_name: string,
             arg_query: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * @param arg_service_name
@@ -11389,7 +11095,7 @@ export namespace Gdm {
         call_info_query(
             arg_service_name: string,
             arg_query: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -11407,14 +11113,14 @@ export namespace Gdm {
             arg_service_name: string,
             arg_query: string,
             out_answer: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * @param arg_service_name
          * @param arg_info
          * @param cancellable
          */
-        call_info_sync(arg_service_name: string, arg_info: string, cancellable?: Gio.Cancellable | null): boolean;
+        call_info_sync(arg_service_name: string, arg_info: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param arg_service_name
          * @param arg_problem
@@ -11423,7 +11129,7 @@ export namespace Gdm {
         call_problem(
             arg_service_name: string,
             arg_problem: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * @param arg_service_name
@@ -11446,7 +11152,7 @@ export namespace Gdm {
         call_problem(
             arg_service_name: string,
             arg_problem: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -11458,7 +11164,7 @@ export namespace Gdm {
          * @param arg_problem
          * @param cancellable
          */
-        call_problem_sync(arg_service_name: string, arg_problem: string, cancellable?: Gio.Cancellable | null): boolean;
+        call_problem_sync(arg_service_name: string, arg_problem: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param arg_service_name
          * @param arg_query
@@ -11467,7 +11173,7 @@ export namespace Gdm {
         call_secret_info_query(
             arg_service_name: string,
             arg_query: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * @param arg_service_name
@@ -11490,7 +11196,7 @@ export namespace Gdm {
         call_secret_info_query(
             arg_service_name: string,
             arg_query: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -11508,7 +11214,7 @@ export namespace Gdm {
             arg_service_name: string,
             arg_query: string,
             out_answer: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * @param invocation
@@ -11635,7 +11341,7 @@ export namespace Gdm {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -11725,7 +11431,7 @@ export namespace Gdm {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -11791,8 +11497,8 @@ export namespace Gdm {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -11818,7 +11524,7 @@ export namespace Gdm {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -11837,7 +11543,7 @@ export namespace Gdm {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Initializes the object implementing the interface.
          *
@@ -11880,7 +11586,7 @@ export namespace Gdm {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -11923,7 +11629,7 @@ export namespace Gdm {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -11971,38 +11677,19 @@ export namespace Gdm {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -12010,15 +11697,9 @@ export namespace Gdm {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -12185,7 +11866,7 @@ export namespace Gdm {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -12443,7 +12124,7 @@ export namespace Gdm {
             arg_service_name: string,
             arg_prompt_message: string,
             arg_query: GLib.Variant,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * @param arg_service_name
@@ -12470,7 +12151,7 @@ export namespace Gdm {
             arg_service_name: string,
             arg_prompt_message: string,
             arg_query: GLib.Variant,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -12490,12 +12171,12 @@ export namespace Gdm {
             arg_prompt_message: string,
             arg_query: GLib.Variant,
             out_answer: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * @param cancellable
          */
-        call_hello(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_hello(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * @param cancellable
          * @param callback
@@ -12506,7 +12187,7 @@ export namespace Gdm {
          * @param callback
          */
         call_hello(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -12516,7 +12197,7 @@ export namespace Gdm {
         /**
          * @param cancellable
          */
-        call_hello_sync(cancellable?: Gio.Cancellable | null): boolean;
+        call_hello_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param arg_service_name
          * @param arg_info
@@ -12525,7 +12206,7 @@ export namespace Gdm {
         call_info(
             arg_service_name: string,
             arg_info: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * @param arg_service_name
@@ -12548,7 +12229,7 @@ export namespace Gdm {
         call_info(
             arg_service_name: string,
             arg_info: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -12563,7 +12244,7 @@ export namespace Gdm {
         call_info_query(
             arg_service_name: string,
             arg_query: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * @param arg_service_name
@@ -12586,7 +12267,7 @@ export namespace Gdm {
         call_info_query(
             arg_service_name: string,
             arg_query: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -12604,14 +12285,14 @@ export namespace Gdm {
             arg_service_name: string,
             arg_query: string,
             out_answer: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * @param arg_service_name
          * @param arg_info
          * @param cancellable
          */
-        call_info_sync(arg_service_name: string, arg_info: string, cancellable?: Gio.Cancellable | null): boolean;
+        call_info_sync(arg_service_name: string, arg_info: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param arg_service_name
          * @param arg_problem
@@ -12620,7 +12301,7 @@ export namespace Gdm {
         call_problem(
             arg_service_name: string,
             arg_problem: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * @param arg_service_name
@@ -12643,7 +12324,7 @@ export namespace Gdm {
         call_problem(
             arg_service_name: string,
             arg_problem: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -12655,7 +12336,7 @@ export namespace Gdm {
          * @param arg_problem
          * @param cancellable
          */
-        call_problem_sync(arg_service_name: string, arg_problem: string, cancellable?: Gio.Cancellable | null): boolean;
+        call_problem_sync(arg_service_name: string, arg_problem: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param arg_service_name
          * @param arg_query
@@ -12664,7 +12345,7 @@ export namespace Gdm {
         call_secret_info_query(
             arg_service_name: string,
             arg_query: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * @param arg_service_name
@@ -12687,7 +12368,7 @@ export namespace Gdm {
         call_secret_info_query(
             arg_service_name: string,
             arg_query: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -12705,7 +12386,7 @@ export namespace Gdm {
             arg_service_name: string,
             arg_query: string,
             out_answer: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * @param invocation
@@ -12809,7 +12490,7 @@ export namespace Gdm {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -12828,7 +12509,7 @@ export namespace Gdm {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -12876,38 +12557,19 @@ export namespace Gdm {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -12915,15 +12577,9 @@ export namespace Gdm {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -13090,7 +12746,7 @@ export namespace Gdm {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -13512,7 +13168,7 @@ export namespace Gdm {
         /**
          * @param cancellable
          */
-        call_disconnect(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_disconnect(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * @param cancellable
          * @param callback
@@ -13523,7 +13179,7 @@ export namespace Gdm {
          * @param callback
          */
         call_disconnect(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -13533,12 +13189,12 @@ export namespace Gdm {
         /**
          * @param cancellable
          */
-        call_disconnect_sync(cancellable?: Gio.Cancellable | null): boolean;
+        call_disconnect_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param arg_hostname
          * @param cancellable
          */
-        call_select_hostname(arg_hostname: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_select_hostname(arg_hostname: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * @param arg_hostname
          * @param cancellable
@@ -13556,7 +13212,7 @@ export namespace Gdm {
          */
         call_select_hostname(
             arg_hostname: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -13567,7 +13223,7 @@ export namespace Gdm {
          * @param arg_hostname
          * @param cancellable
          */
-        call_select_hostname_sync(arg_hostname: string, cancellable?: Gio.Cancellable | null): boolean;
+        call_select_hostname_sync(arg_hostname: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param invocation
          */
@@ -13683,7 +13339,7 @@ export namespace Gdm {
          * @param arg_username
          * @param cancellable
          */
-        call_begin_auto_login(arg_username: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_begin_auto_login(arg_username: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * @param arg_username
          * @param cancellable
@@ -13701,7 +13357,7 @@ export namespace Gdm {
          */
         call_begin_auto_login(
             arg_username: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -13712,11 +13368,11 @@ export namespace Gdm {
          * @param arg_username
          * @param cancellable
          */
-        call_begin_auto_login_sync(arg_username: string, cancellable?: Gio.Cancellable | null): boolean;
+        call_begin_auto_login_sync(arg_username: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param cancellable
          */
-        call_get_timed_login_details(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_get_timed_login_details(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * @param cancellable
          * @param callback
@@ -13730,7 +13386,7 @@ export namespace Gdm {
          * @param callback
          */
         call_get_timed_login_details(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -13755,13 +13411,13 @@ export namespace Gdm {
             out_enabled: boolean,
             out_username: string,
             out_delay: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * @param arg_session
          * @param cancellable
          */
-        call_select_session(arg_session: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_select_session(arg_session: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * @param arg_session
          * @param cancellable
@@ -13779,7 +13435,7 @@ export namespace Gdm {
          */
         call_select_session(
             arg_session: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -13790,12 +13446,12 @@ export namespace Gdm {
          * @param arg_session
          * @param cancellable
          */
-        call_select_session_sync(arg_session: string, cancellable?: Gio.Cancellable | null): boolean;
+        call_select_session_sync(arg_session: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param arg_username
          * @param cancellable
          */
-        call_select_user(arg_username: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_select_user(arg_username: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * @param arg_username
          * @param cancellable
@@ -13813,7 +13469,7 @@ export namespace Gdm {
          */
         call_select_user(
             arg_username: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -13824,7 +13480,7 @@ export namespace Gdm {
          * @param arg_username
          * @param cancellable
          */
-        call_select_user_sync(arg_username: string, cancellable?: Gio.Cancellable | null): boolean;
+        call_select_user_sync(arg_username: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param arg_service_name
          * @param arg_should_start_session
@@ -13833,7 +13489,7 @@ export namespace Gdm {
         call_start_session_when_ready(
             arg_service_name: string,
             arg_should_start_session: boolean,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * @param arg_service_name
@@ -13856,7 +13512,7 @@ export namespace Gdm {
         call_start_session_when_ready(
             arg_service_name: string,
             arg_should_start_session: boolean,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -13871,7 +13527,7 @@ export namespace Gdm {
         call_start_session_when_ready_sync(
             arg_service_name: string,
             arg_should_start_session: boolean,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * @param invocation
@@ -13996,6 +13652,9 @@ export namespace Gdm {
     interface Manager extends GObject.Object, Manager.Interface {
         // Properties
 
+        /**
+         * @default null
+         */
         get version(): string;
         set version(val: string);
 
@@ -14007,7 +13666,7 @@ export namespace Gdm {
          */
         call_open_reauthentication_channel(
             arg_username: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * @param arg_username
@@ -14026,7 +13685,7 @@ export namespace Gdm {
          */
         call_open_reauthentication_channel(
             arg_username: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -14042,12 +13701,12 @@ export namespace Gdm {
         call_open_reauthentication_channel_sync(
             arg_username: string,
             out_address: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * @param cancellable
          */
-        call_open_session(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_open_session(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * @param cancellable
          * @param callback
@@ -14058,7 +13717,7 @@ export namespace Gdm {
          * @param callback
          */
         call_open_session(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -14070,14 +13729,14 @@ export namespace Gdm {
          * @param out_address
          * @param cancellable
          */
-        call_open_session_sync(out_address: string, cancellable?: Gio.Cancellable | null): boolean;
+        call_open_session_sync(out_address: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param arg_details
          * @param cancellable
          */
         call_register_display(
             arg_details: GLib.Variant,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * @param arg_details
@@ -14096,7 +13755,7 @@ export namespace Gdm {
          */
         call_register_display(
             arg_details: GLib.Variant,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -14107,14 +13766,14 @@ export namespace Gdm {
          * @param arg_details
          * @param cancellable
          */
-        call_register_display_sync(arg_details: GLib.Variant, cancellable?: Gio.Cancellable | null): boolean;
+        call_register_display_sync(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param arg_details
          * @param cancellable
          */
         call_register_session(
             arg_details: GLib.Variant,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * @param arg_details
@@ -14133,7 +13792,7 @@ export namespace Gdm {
          */
         call_register_session(
             arg_details: GLib.Variant,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -14144,7 +13803,7 @@ export namespace Gdm {
          * @param arg_details
          * @param cancellable
          */
-        call_register_session_sync(arg_details: GLib.Variant, cancellable?: Gio.Cancellable | null): boolean;
+        call_register_session_sync(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param invocation
          * @param address
@@ -14215,7 +13874,7 @@ export namespace Gdm {
         /**
          * @param cancellable
          */
-        call_disconnect(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_disconnect(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * @param cancellable
          * @param callback
@@ -14226,7 +13885,7 @@ export namespace Gdm {
          * @param callback
          */
         call_disconnect(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -14236,7 +13895,7 @@ export namespace Gdm {
         /**
          * @param cancellable
          */
-        call_disconnect_sync(cancellable?: Gio.Cancellable | null): boolean;
+        call_disconnect_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param invocation
          */
@@ -14385,7 +14044,7 @@ export namespace Gdm {
         call_answer_query(
             arg_service_name: string,
             arg_answer: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * @param arg_service_name
@@ -14408,7 +14067,7 @@ export namespace Gdm {
         call_answer_query(
             arg_service_name: string,
             arg_answer: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -14423,7 +14082,7 @@ export namespace Gdm {
         call_answer_query_sync(
             arg_service_name: string,
             arg_answer: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * @param arg_service_name
@@ -14431,7 +14090,7 @@ export namespace Gdm {
          */
         call_begin_verification(
             arg_service_name: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * @param arg_service_name
@@ -14450,7 +14109,7 @@ export namespace Gdm {
          */
         call_begin_verification(
             arg_service_name: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -14465,7 +14124,7 @@ export namespace Gdm {
         call_begin_verification_for_user(
             arg_service_name: string,
             arg_username: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * @param arg_service_name
@@ -14488,7 +14147,7 @@ export namespace Gdm {
         call_begin_verification_for_user(
             arg_service_name: string,
             arg_username: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -14503,17 +14162,17 @@ export namespace Gdm {
         call_begin_verification_for_user_sync(
             arg_service_name: string,
             arg_username: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * @param arg_service_name
          * @param cancellable
          */
-        call_begin_verification_sync(arg_service_name: string, cancellable?: Gio.Cancellable | null): boolean;
+        call_begin_verification_sync(arg_service_name: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param cancellable
          */
-        call_cancel(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_cancel(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * @param cancellable
          * @param callback
@@ -14524,7 +14183,7 @@ export namespace Gdm {
          * @param callback
          */
         call_cancel(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -14534,14 +14193,14 @@ export namespace Gdm {
         /**
          * @param cancellable
          */
-        call_cancel_sync(cancellable?: Gio.Cancellable | null): boolean;
+        call_cancel_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param arg_extensions
          * @param cancellable
          */
         call_enable_extensions(
             arg_extensions: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * @param arg_extensions
@@ -14560,7 +14219,7 @@ export namespace Gdm {
          */
         call_enable_extensions(
             arg_extensions: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -14571,7 +14230,7 @@ export namespace Gdm {
          * @param arg_extensions
          * @param cancellable
          */
-        call_enable_extensions_sync(arg_extensions: string, cancellable?: Gio.Cancellable | null): boolean;
+        call_enable_extensions_sync(arg_extensions: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param invocation
          */
@@ -14702,7 +14361,7 @@ export namespace Gdm {
         call_select_choice(
             arg_service_name: string,
             arg_choice: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * @param arg_service_name
@@ -14725,7 +14384,7 @@ export namespace Gdm {
         call_select_choice(
             arg_service_name: string,
             arg_choice: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -14740,7 +14399,7 @@ export namespace Gdm {
         call_select_choice_sync(
             arg_service_name: string,
             arg_choice: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * @param invocation
@@ -14862,7 +14521,7 @@ export namespace Gdm {
             arg_service_name: string,
             arg_prompt_message: string,
             arg_query: GLib.Variant,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * @param arg_service_name
@@ -14889,7 +14548,7 @@ export namespace Gdm {
             arg_service_name: string,
             arg_prompt_message: string,
             arg_query: GLib.Variant,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -14909,12 +14568,12 @@ export namespace Gdm {
             arg_prompt_message: string,
             arg_query: GLib.Variant,
             out_answer: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * @param cancellable
          */
-        call_hello(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_hello(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * @param cancellable
          * @param callback
@@ -14925,7 +14584,7 @@ export namespace Gdm {
          * @param callback
          */
         call_hello(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -14935,7 +14594,7 @@ export namespace Gdm {
         /**
          * @param cancellable
          */
-        call_hello_sync(cancellable?: Gio.Cancellable | null): boolean;
+        call_hello_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param arg_service_name
          * @param arg_info
@@ -14944,7 +14603,7 @@ export namespace Gdm {
         call_info(
             arg_service_name: string,
             arg_info: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * @param arg_service_name
@@ -14967,7 +14626,7 @@ export namespace Gdm {
         call_info(
             arg_service_name: string,
             arg_info: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -14982,7 +14641,7 @@ export namespace Gdm {
         call_info_query(
             arg_service_name: string,
             arg_query: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * @param arg_service_name
@@ -15005,7 +14664,7 @@ export namespace Gdm {
         call_info_query(
             arg_service_name: string,
             arg_query: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -15023,14 +14682,14 @@ export namespace Gdm {
             arg_service_name: string,
             arg_query: string,
             out_answer: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * @param arg_service_name
          * @param arg_info
          * @param cancellable
          */
-        call_info_sync(arg_service_name: string, arg_info: string, cancellable?: Gio.Cancellable | null): boolean;
+        call_info_sync(arg_service_name: string, arg_info: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param arg_service_name
          * @param arg_problem
@@ -15039,7 +14698,7 @@ export namespace Gdm {
         call_problem(
             arg_service_name: string,
             arg_problem: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * @param arg_service_name
@@ -15062,7 +14721,7 @@ export namespace Gdm {
         call_problem(
             arg_service_name: string,
             arg_problem: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -15074,7 +14733,7 @@ export namespace Gdm {
          * @param arg_problem
          * @param cancellable
          */
-        call_problem_sync(arg_service_name: string, arg_problem: string, cancellable?: Gio.Cancellable | null): boolean;
+        call_problem_sync(arg_service_name: string, arg_problem: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param arg_service_name
          * @param arg_query
@@ -15083,7 +14742,7 @@ export namespace Gdm {
         call_secret_info_query(
             arg_service_name: string,
             arg_query: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * @param arg_service_name
@@ -15106,7 +14765,7 @@ export namespace Gdm {
         call_secret_info_query(
             arg_service_name: string,
             arg_query: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -15124,7 +14783,7 @@ export namespace Gdm {
             arg_service_name: string,
             arg_query: string,
             out_answer: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * @param invocation

@@ -3104,7 +3104,7 @@ export namespace TelepathyGLib {
     function dbus_properties_mixin_emit_properties_changed(
         object: GObject.Object,
         interface_name: string,
-        properties?: string | null,
+        properties: string | null,
     ): void;
     /**
      * Initialize `value` with the type of the property `property_name` on
@@ -3141,7 +3141,7 @@ export namespace TelepathyGLib {
         iface: GLib.Quark,
         name: GLib.Quark,
         value: GObject.Value | any,
-        getter_data?: any | null,
+        getter_data: any | null,
     ): void;
     /**
      * Declare that the DBus.Properties interface represented by `g_iface`
@@ -3149,7 +3149,7 @@ export namespace TelepathyGLib {
      * @param g_iface a pointer to a `TpSvcDBusPropertiesClass` structure
      * @param iface_data ignored
      */
-    function dbus_properties_mixin_iface_init(g_iface?: any | null, iface_data?: any | null): void;
+    function dbus_properties_mixin_iface_init(g_iface: any | null, iface_data: any | null): void;
     /**
      * Sets a property to the value specified by `value`, as if by
      * calling the D-Bus method org.freedesktop.DBus.Properties.Set.
@@ -3184,7 +3184,7 @@ export namespace TelepathyGLib {
         iface: GLib.Quark,
         name: GLib.Quark,
         value: GObject.Value | any,
-        setter_data?: any | null,
+        setter_data: any | null,
     ): boolean;
     /**
      * Open the given file for writing and duplicate its file descriptor to
@@ -3254,7 +3254,7 @@ export namespace TelepathyGLib {
         log_domain: string,
         log_level: GLib.LogLevelFlags,
         message: string,
-        ignored?: any | null,
+        ignored: any | null,
     ): void;
     /**
      * <!-- -->
@@ -3299,7 +3299,7 @@ export namespace TelepathyGLib {
      * @param context User data to be passed to the normalization callback
      * @returns the handle corresponding to the given string, or 0 if it is invalid.
      */
-    function handle_ensure(self: HandleRepoIface, id: string, context?: any | null): Handle;
+    function handle_ensure(self: HandleRepoIface, id: string, context: any | null): Handle;
     /**
      * If the given handle type is valid, return `true`. If not, set `error`
      * and return `false`.
@@ -3435,7 +3435,7 @@ export namespace TelepathyGLib {
     function list_connection_managers(
         bus_daemon: DBusDaemon,
         callback: ConnectionManagerListCb,
-        weak_object?: GObject.Object | null,
+        weak_object: GObject.Object | null,
     ): void;
     /**
      * List the available (running or installed) connection managers,
@@ -3444,7 +3444,7 @@ export namespace TelepathyGLib {
      * @param dbus_daemon a {@link TelepathyGLib.DBusDaemon}, or `null` to use  `tp_dbus_daemon_dup()`
      * @since 0.17.6
      */
-    function list_connection_managers_async(dbus_daemon?: DBusDaemon | null): globalThis.Promise<ConnectionManager[]>;
+    function list_connection_managers_async(dbus_daemon: DBusDaemon | null): globalThis.Promise<ConnectionManager[]>;
     /**
      * List the available (running or installed) connection managers,
      * asynchronously, and wait for their `TP_CONNECTION_MANAGER_FEATURE_CORE`
@@ -3466,8 +3466,8 @@ export namespace TelepathyGLib {
      * @since 0.17.6
      */
     function list_connection_managers_async(
-        dbus_daemon?: DBusDaemon | null,
-        callback?: Gio.AsyncReadyCallback<DBusDaemon | null> | null,
+        dbus_daemon: DBusDaemon | null,
+        callback: Gio.AsyncReadyCallback<DBusDaemon | null> | null,
     ): globalThis.Promise<ConnectionManager[]> | void;
     /**
      * Finish listing the available connection managers.
@@ -3494,7 +3494,7 @@ export namespace TelepathyGLib {
     function list_connection_names(
         bus_daemon: DBusDaemon,
         callback: ConnectionNameListCb,
-        weak_object?: GObject.Object | null,
+        weak_object: GObject.Object | null,
     ): void;
     /**
      * Create a new {@link Gio.SimpleAsyncResult} with no operation result, and call
@@ -3512,9 +3512,9 @@ export namespace TelepathyGLib {
      * @since 0.11.9
      */
     function simple_async_report_success_in_idle(
-        source?: GObject.Object | null,
-        callback?: Gio.AsyncReadyCallback<GObject.Object | null> | null,
-        source_tag?: any | null,
+        source: GObject.Object | null,
+        callback: Gio.AsyncReadyCallback<GObject.Object | null> | null,
+        source_tag: any | null,
     ): void;
     /**
      * Declare that `g_interface` implements the given D-Bus interface, with the
@@ -3743,13 +3743,13 @@ export namespace TelepathyGLib {
      * @gir-type Callback
      */
     interface DBusPropertiesMixinGetter<A = GObject.Object> {
-        (object: A, iface: GLib.Quark, name: GLib.Quark, value: unknown, getter_data?: any | null): void;
+        (object: A, iface: GLib.Quark, name: GLib.Quark, value: unknown, getter_data: any | null): void;
     }
     /**
      * @gir-type Callback
      */
     interface DBusPropertiesMixinSetter<A = GObject.Object> {
-        (object: A, iface: GLib.Quark, name: GLib.Quark, value: unknown, setter_data?: any | null): boolean;
+        (object: A, iface: GLib.Quark, name: GLib.Quark, value: unknown, setter_data: any | null): boolean;
     }
     /**
      * @gir-type Callback
@@ -3773,7 +3773,7 @@ export namespace TelepathyGLib {
      * @gir-type Callback
      */
     interface IntFunc {
-        (i: number, userdata?: any | null): void;
+        (i: number, userdata: any | null): void;
     }
     /**
      * @gir-type Callback
@@ -3797,7 +3797,7 @@ export namespace TelepathyGLib {
      * @gir-type Callback
      */
     interface ProxyPrepareAsync {
-        (proxy: Proxy, feature: ProxyFeature, callback?: Gio.AsyncReadyCallback<Proxy> | null): void;
+        (proxy: Proxy, feature: ProxyFeature, callback: Gio.AsyncReadyCallback<Proxy> | null): void;
     }
     /**
      * @gir-type Callback
@@ -4650,6 +4650,7 @@ export namespace TelepathyGLib {
          * {@link TelepathyGLib.ConnectionPresenceType.UNSET}.
          * @since 0.13.8
          * @read-only
+         * @default 0
          */
         get automatic_presence_type(): number;
         /**
@@ -4671,6 +4672,7 @@ export namespace TelepathyGLib {
          * {@link TelepathyGLib.ConnectionPresenceType.UNSET}.
          * @since 0.13.8
          * @read-only
+         * @default 0
          */
         get automaticPresenceType(): number;
         /**
@@ -4688,6 +4690,7 @@ export namespace TelepathyGLib {
          * `null`.
          * @since 0.13.8
          * @read-only
+         * @default null
          */
         get automatic_status(): string;
         /**
@@ -4705,6 +4708,7 @@ export namespace TelepathyGLib {
          * `null`.
          * @since 0.13.8
          * @read-only
+         * @default null
          */
         get automaticStatus(): string;
         /**
@@ -4722,6 +4726,7 @@ export namespace TelepathyGLib {
          * `null`.
          * @since 0.13.8
          * @read-only
+         * @default null
          */
         get automatic_status_message(): string;
         /**
@@ -4739,6 +4744,7 @@ export namespace TelepathyGLib {
          * `null`.
          * @since 0.13.8
          * @read-only
+         * @default null
          */
         get automaticStatusMessage(): string;
         /**
@@ -4757,6 +4763,7 @@ export namespace TelepathyGLib {
          * `false`.
          * @since 0.11.6
          * @read-only
+         * @default false
          */
         get changing_presence(): boolean;
         /**
@@ -4775,18 +4782,21 @@ export namespace TelepathyGLib {
          * `false`.
          * @since 0.11.6
          * @read-only
+         * @default false
          */
         get changingPresence(): boolean;
         /**
          * The account's connection manager name.
          * @since 0.19.3
          * @read-only
+         * @default null
          */
         get cm_name(): string;
         /**
          * The account's connection manager name.
          * @since 0.19.3
          * @read-only
+         * @default null
          */
         get cmName(): string;
         /**
@@ -4802,6 +4812,7 @@ export namespace TelepathyGLib {
          * `false`.
          * @since 0.9.0
          * @read-only
+         * @default false
          */
         get connect_automatically(): boolean;
         /**
@@ -4817,6 +4828,7 @@ export namespace TelepathyGLib {
          * `false`.
          * @since 0.9.0
          * @read-only
+         * @default false
          */
         get connectAutomatically(): boolean;
         /**
@@ -4852,6 +4864,7 @@ export namespace TelepathyGLib {
          * `null`.
          * @since 0.11.7
          * @read-only
+         * @default null
          */
         get connection_error(): string;
         /**
@@ -4869,6 +4882,7 @@ export namespace TelepathyGLib {
          * `null`.
          * @since 0.11.7
          * @read-only
+         * @default null
          */
         get connectionError(): string;
         /**
@@ -4922,6 +4936,7 @@ export namespace TelepathyGLib {
          * @since 0.9.0
          * @deprecated Use {@link TelepathyGLib.Account.cm_name} instead.
          * @read-only
+         * @default null
          */
         get connection_manager(): string;
         /**
@@ -4929,6 +4944,7 @@ export namespace TelepathyGLib {
          * @since 0.9.0
          * @deprecated Use {@link TelepathyGLib.Account.cm_name} instead.
          * @read-only
+         * @default null
          */
         get connectionManager(): string;
         /**
@@ -4944,6 +4960,7 @@ export namespace TelepathyGLib {
          * {@link TelepathyGLib.ConnectionStatus.DISCONNECTED}.
          * @since 0.9.0
          * @read-only
+         * @default 2
          */
         get connection_status(): number;
         /**
@@ -4959,6 +4976,7 @@ export namespace TelepathyGLib {
          * {@link TelepathyGLib.ConnectionStatus.DISCONNECTED}.
          * @since 0.9.0
          * @read-only
+         * @default 2
          */
         get connectionStatus(): number;
         /**
@@ -4974,6 +4992,7 @@ export namespace TelepathyGLib {
          * {@link TelepathyGLib.ConnectionStatusReason.NONE_SPECIFIED}.
          * @since 0.9.0
          * @read-only
+         * @default 0
          */
         get connection_status_reason(): number;
         /**
@@ -4989,6 +5008,7 @@ export namespace TelepathyGLib {
          * {@link TelepathyGLib.ConnectionStatusReason.NONE_SPECIFIED}.
          * @since 0.9.0
          * @read-only
+         * @default 0
          */
         get connectionStatusReason(): number;
         /**
@@ -5006,6 +5026,7 @@ export namespace TelepathyGLib {
          * {@link TelepathyGLib.ConnectionPresenceType.UNSET}.
          * @since 0.9.0
          * @read-only
+         * @default 0
          */
         get current_presence_type(): number;
         /**
@@ -5023,6 +5044,7 @@ export namespace TelepathyGLib {
          * {@link TelepathyGLib.ConnectionPresenceType.UNSET}.
          * @since 0.9.0
          * @read-only
+         * @default 0
          */
         get currentPresenceType(): number;
         /**
@@ -5039,6 +5061,7 @@ export namespace TelepathyGLib {
          * `null`.
          * @since 0.9.0
          * @read-only
+         * @default null
          */
         get current_status(): string;
         /**
@@ -5055,6 +5078,7 @@ export namespace TelepathyGLib {
          * `null`.
          * @since 0.9.0
          * @read-only
+         * @default null
          */
         get currentStatus(): string;
         /**
@@ -5071,6 +5095,7 @@ export namespace TelepathyGLib {
          * `null`.
          * @since 0.9.0
          * @read-only
+         * @default null
          */
         get current_status_message(): string;
         /**
@@ -5087,6 +5112,7 @@ export namespace TelepathyGLib {
          * `null`.
          * @since 0.9.0
          * @read-only
+         * @default null
          */
         get currentStatusMessage(): string;
         /**
@@ -5101,6 +5127,7 @@ export namespace TelepathyGLib {
          * `null`.
          * @since 0.9.0
          * @read-only
+         * @default null
          */
         get display_name(): string;
         /**
@@ -5115,6 +5142,7 @@ export namespace TelepathyGLib {
          * `null`.
          * @since 0.9.0
          * @read-only
+         * @default null
          */
         get displayName(): string;
         /**
@@ -5128,6 +5156,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` has finished; until then, the value is FALSE.
          * @since 0.9.0
          * @read-only
+         * @default false
          */
         get enabled(): boolean;
         /**
@@ -5142,6 +5171,7 @@ export namespace TelepathyGLib {
          * `false`.
          * @since 0.9.0
          * @read-only
+         * @default false
          */
         get has_been_online(): boolean;
         /**
@@ -5156,6 +5186,7 @@ export namespace TelepathyGLib {
          * `false`.
          * @since 0.9.0
          * @read-only
+         * @default false
          */
         get hasBeenOnline(): boolean;
         /**
@@ -5171,6 +5202,7 @@ export namespace TelepathyGLib {
          * `null`.
          * @since 0.9.0
          * @read-only
+         * @default null
          */
         get icon_name(): string;
         /**
@@ -5186,6 +5218,7 @@ export namespace TelepathyGLib {
          * `null`.
          * @since 0.9.0
          * @read-only
+         * @default null
          */
         get iconName(): string;
         /**
@@ -5200,6 +5233,7 @@ export namespace TelepathyGLib {
          * `null`.
          * @since 0.9.0
          * @read-only
+         * @default null
          */
         get nickname(): string;
         /**
@@ -5216,6 +5250,7 @@ export namespace TelepathyGLib {
          * `null`.
          * @since 0.13.8
          * @read-only
+         * @default null
          */
         get normalized_name(): string;
         /**
@@ -5232,6 +5267,7 @@ export namespace TelepathyGLib {
          * `null`.
          * @since 0.13.8
          * @read-only
+         * @default null
          */
         get normalizedName(): string;
         /**
@@ -5241,6 +5277,7 @@ export namespace TelepathyGLib {
          * @since 0.9.0
          * @deprecated Use {@link TelepathyGLib.Account.protocol_name} instead.
          * @read-only
+         * @default null
          */
         get protocol(): string;
         /**
@@ -5249,6 +5286,7 @@ export namespace TelepathyGLib {
          * Telepathy D-Bus Interface Specification.
          * @since 0.19.3
          * @read-only
+         * @default null
          */
         get protocol_name(): string;
         /**
@@ -5257,6 +5295,7 @@ export namespace TelepathyGLib {
          * Telepathy D-Bus Interface Specification.
          * @since 0.19.3
          * @read-only
+         * @default null
          */
         get protocolName(): string;
         /**
@@ -5274,6 +5313,7 @@ export namespace TelepathyGLib {
          * `null`.
          * @since 0.9.0
          * @read-only
+         * @default 0
          */
         get requested_presence_type(): number;
         /**
@@ -5291,6 +5331,7 @@ export namespace TelepathyGLib {
          * `null`.
          * @since 0.9.0
          * @read-only
+         * @default 0
          */
         get requestedPresenceType(): number;
         /**
@@ -5308,6 +5349,7 @@ export namespace TelepathyGLib {
          * `null`.
          * @since 0.9.0
          * @read-only
+         * @default null
          */
         get requested_status(): string;
         /**
@@ -5325,6 +5367,7 @@ export namespace TelepathyGLib {
          * `null`.
          * @since 0.9.0
          * @read-only
+         * @default null
          */
         get requestedStatus(): string;
         /**
@@ -5342,6 +5385,7 @@ export namespace TelepathyGLib {
          * `null`.
          * @since 0.9.0
          * @read-only
+         * @default null
          */
         get requested_status_message(): string;
         /**
@@ -5359,6 +5403,7 @@ export namespace TelepathyGLib {
          * `null`.
          * @since 0.9.0
          * @read-only
+         * @default null
          */
         get requestedStatusMessage(): string;
         /**
@@ -5379,6 +5424,7 @@ export namespace TelepathyGLib {
          * `tp_account_set_service_async()`.
          * @since 0.11.9
          * @read-only
+         * @default null
          */
         get service(): string;
         /**
@@ -5462,6 +5508,7 @@ export namespace TelepathyGLib {
          * the value is `null`.
          * @since 0.13.2
          * @read-only
+         * @default null
          */
         get storage_provider(): string;
         /**
@@ -5477,6 +5524,7 @@ export namespace TelepathyGLib {
          * the value is `null`.
          * @since 0.13.2
          * @read-only
+         * @default null
          */
         get storageProvider(): string;
         /**
@@ -5493,6 +5541,7 @@ export namespace TelepathyGLib {
          * the value is 0.
          * @since 0.13.2
          * @read-only
+         * @default 0
          */
         get storage_restrictions(): number;
         /**
@@ -5509,6 +5558,7 @@ export namespace TelepathyGLib {
          * the value is 0.
          * @since 0.13.2
          * @read-only
+         * @default 0
          */
         get storageRestrictions(): number;
         /**
@@ -5571,6 +5621,7 @@ export namespace TelepathyGLib {
          * `false`.
          * @since 0.9.0
          * @read-only
+         * @default false
          */
         get valid(): boolean;
 
@@ -6168,7 +6219,7 @@ export namespace TelepathyGLib {
          * @param avatar a new avatar to set; can be `null`  only if `len` equals 0
          * @param mime_type the MIME type of the new avatar; can be `null`  only if `len` equals 0
          */
-        set_avatar_async(avatar?: Uint8Array | null, mime_type?: string | null): globalThis.Promise<boolean>;
+        set_avatar_async(avatar: Uint8Array | null, mime_type: string | null): globalThis.Promise<boolean>;
         /**
          * Requests an asynchronous change of the Avatar parameter on `self`. When
          * the operation is finished, `callback` will be called. You can then call
@@ -6195,8 +6246,8 @@ export namespace TelepathyGLib {
          * @param callback a callback to call when the request is satisfied
          */
         set_avatar_async(
-            avatar?: Uint8Array | null,
-            mime_type?: string | null,
+            avatar: Uint8Array | null,
+            mime_type: string | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -6812,6 +6863,7 @@ export namespace TelepathyGLib {
          * window to the foreground.
          * @since 0.11.12
          * @construct-only
+         * @default 0
          */
         get user_action_time(): number;
         /**
@@ -6840,6 +6892,7 @@ export namespace TelepathyGLib {
          * window to the foreground.
          * @since 0.11.12
          * @construct-only
+         * @default 0
          */
         get userActionTime(): number;
 
@@ -6938,7 +6991,7 @@ export namespace TelepathyGLib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          */
         create_and_handle_channel_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<[Channel | null, HandleChannelsContext | null]>;
         /**
          * Asynchronously calls CreateChannel on the ChannelDispatcher to create a
@@ -6979,7 +7032,7 @@ export namespace TelepathyGLib {
          * @param callback a callback to call when the request is satisfied
          */
         create_and_handle_channel_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[Channel | null, HandleChannelsContext | null]> | void;
         /**
@@ -7013,7 +7066,7 @@ export namespace TelepathyGLib {
          */
         create_and_observe_channel_async(
             preferred_handler: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<Channel>;
         /**
          * Asynchronously calls CreateChannel on the ChannelDispatcher to create a
@@ -7056,7 +7109,7 @@ export namespace TelepathyGLib {
          */
         create_and_observe_channel_async(
             preferred_handler: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Channel> | void;
         /**
@@ -7079,7 +7132,7 @@ export namespace TelepathyGLib {
          */
         create_channel_async(
             preferred_handler: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously calls CreateChannel on the ChannelDispatcher to create a
@@ -7112,7 +7165,7 @@ export namespace TelepathyGLib {
          */
         create_channel_async(
             preferred_handler: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -7150,7 +7203,7 @@ export namespace TelepathyGLib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          */
         ensure_and_handle_channel_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<[Channel | null, HandleChannelsContext | null]>;
         /**
          * Asynchronously calls EnsureChannel on the ChannelDispatcher to create a
@@ -7201,7 +7254,7 @@ export namespace TelepathyGLib {
          * @param callback a callback to call when the request is satisfied
          */
         ensure_and_handle_channel_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[Channel | null, HandleChannelsContext | null]> | void;
         /**
@@ -7246,7 +7299,7 @@ export namespace TelepathyGLib {
          */
         ensure_and_observe_channel_async(
             preferred_handler: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<Channel>;
         /**
          * Asynchronously calls EnsureChannel on the ChannelDispatcher to create a
@@ -7303,7 +7356,7 @@ export namespace TelepathyGLib {
          */
         ensure_and_observe_channel_async(
             preferred_handler: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Channel> | void;
         /**
@@ -7335,7 +7388,7 @@ export namespace TelepathyGLib {
          */
         ensure_channel_async(
             preferred_handler: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously calls EnsureChannel on the ChannelDispatcher to create a
@@ -7386,7 +7439,7 @@ export namespace TelepathyGLib {
          */
         ensure_channel_async(
             preferred_handler: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -8147,6 +8200,7 @@ export namespace TelepathyGLib {
          * be copied to their "requested" counterparts.
          * @since 0.19.1
          * @read-only
+         * @default 0
          */
         get automatic_presence_type(): number;
         /**
@@ -8160,6 +8214,7 @@ export namespace TelepathyGLib {
          * be copied to their "requested" counterparts.
          * @since 0.19.1
          * @read-only
+         * @default 0
          */
         get automaticPresenceType(): number;
         /**
@@ -8168,6 +8223,7 @@ export namespace TelepathyGLib {
          * use `tp_account_request_set_automatic_presence()`.
          * @since 0.19.1
          * @read-only
+         * @default null
          */
         get automatic_status(): string;
         /**
@@ -8176,6 +8232,7 @@ export namespace TelepathyGLib {
          * use `tp_account_request_set_automatic_presence()`.
          * @since 0.19.1
          * @read-only
+         * @default null
          */
         get automaticStatus(): string;
         /**
@@ -8184,6 +8241,7 @@ export namespace TelepathyGLib {
          * `tp_account_request_set_automatic_presence()`.
          * @since 0.19.1
          * @read-only
+         * @default null
          */
         get automatic_status_message(): string;
         /**
@@ -8192,6 +8250,7 @@ export namespace TelepathyGLib {
          * `tp_account_request_set_automatic_presence()`.
          * @since 0.19.1
          * @read-only
+         * @default null
          */
         get automaticStatusMessage(): string;
         /**
@@ -8207,6 +8266,7 @@ export namespace TelepathyGLib {
          * this property, use `tp_account_request_set_avatar()`.
          * @since 0.19.1
          * @read-only
+         * @default null
          */
         get avatar_mime_type(): string;
         /**
@@ -8214,6 +8274,7 @@ export namespace TelepathyGLib {
          * this property, use `tp_account_request_set_avatar()`.
          * @since 0.19.1
          * @read-only
+         * @default null
          */
         get avatarMimeType(): string;
         /**
@@ -8221,6 +8282,7 @@ export namespace TelepathyGLib {
          * property, use `tp_account_request_set_connect_automatically()`.
          * @since 0.19.1
          * @read-only
+         * @default false
          */
         get connect_automatically(): boolean;
         /**
@@ -8228,18 +8290,21 @@ export namespace TelepathyGLib {
          * property, use `tp_account_request_set_connect_automatically()`.
          * @since 0.19.1
          * @read-only
+         * @default false
          */
         get connectAutomatically(): boolean;
         /**
          * The account's connection manager name.
          * @since 0.19.1
          * @construct-only
+         * @default null
          */
         get connection_manager(): string;
         /**
          * The account's connection manager name.
          * @since 0.19.1
          * @construct-only
+         * @default null
          */
         get connectionManager(): string;
         /**
@@ -8247,6 +8312,7 @@ export namespace TelepathyGLib {
          * `tp_account_request_set_display_name()`.
          * @since 0.19.1
          * @construct-only
+         * @default null
          */
         get display_name(): string;
         /**
@@ -8254,6 +8320,7 @@ export namespace TelepathyGLib {
          * `tp_account_request_set_display_name()`.
          * @since 0.19.1
          * @construct-only
+         * @default null
          */
         get displayName(): string;
         /**
@@ -8261,6 +8328,7 @@ export namespace TelepathyGLib {
          * use `tp_account_request_set_enabled()`.
          * @since 0.19.1
          * @read-only
+         * @default false
          */
         get enabled(): boolean;
         /**
@@ -8268,6 +8336,7 @@ export namespace TelepathyGLib {
          * `tp_account_request_set_icon_name()`.
          * @since 0.19.1
          * @read-only
+         * @default null
          */
         get icon_name(): string;
         /**
@@ -8275,6 +8344,7 @@ export namespace TelepathyGLib {
          * `tp_account_request_set_icon_name()`.
          * @since 0.19.1
          * @read-only
+         * @default null
          */
         get iconName(): string;
         /**
@@ -8282,6 +8352,7 @@ export namespace TelepathyGLib {
          * `tp_account_request_set_nickname()`.
          * @since 0.19.1
          * @read-only
+         * @default null
          */
         get nickname(): string;
         /**
@@ -8303,6 +8374,7 @@ export namespace TelepathyGLib {
          * Telepathy D-Bus Interface Specification.
          * @since 0.19.1
          * @construct-only
+         * @default null
          */
         get protocol(): string;
         /**
@@ -8311,6 +8383,7 @@ export namespace TelepathyGLib {
          * `tp_account_request_set_requested_presence()`.
          * @since 0.19.1
          * @read-only
+         * @default 0
          */
         get requested_presence_type(): number;
         /**
@@ -8319,6 +8392,7 @@ export namespace TelepathyGLib {
          * `tp_account_request_set_requested_presence()`.
          * @since 0.19.1
          * @read-only
+         * @default 0
          */
         get requestedPresenceType(): number;
         /**
@@ -8326,6 +8400,7 @@ export namespace TelepathyGLib {
          * property use `tp_account_request_set_requested_presence()`.
          * @since 0.19.1
          * @read-only
+         * @default null
          */
         get requested_status(): string;
         /**
@@ -8333,6 +8408,7 @@ export namespace TelepathyGLib {
          * property use `tp_account_request_set_requested_presence()`.
          * @since 0.19.1
          * @read-only
+         * @default null
          */
         get requestedStatus(): string;
         /**
@@ -8340,6 +8416,7 @@ export namespace TelepathyGLib {
          * this property use `tp_account_request_set_requested_presence()`.
          * @since 0.19.1
          * @read-only
+         * @default null
          */
         get requested_status_message(): string;
         /**
@@ -8347,6 +8424,7 @@ export namespace TelepathyGLib {
          * this property use `tp_account_request_set_requested_presence()`.
          * @since 0.19.1
          * @read-only
+         * @default null
          */
         get requestedStatusMessage(): string;
         /**
@@ -8357,6 +8435,7 @@ export namespace TelepathyGLib {
          * `tp_account_request_set_service()`.
          * @since 0.19.1
          * @read-only
+         * @default null
          */
         get service(): string;
         /**
@@ -8364,6 +8443,7 @@ export namespace TelepathyGLib {
          * `tp_account_request_set_storage_provider()`.
          * @since 0.19.4
          * @read-only
+         * @default null
          */
         get storage_provider(): string;
         /**
@@ -8371,6 +8451,7 @@ export namespace TelepathyGLib {
          * `tp_account_request_set_storage_provider()`.
          * @since 0.19.4
          * @read-only
+         * @default null
          */
         get storageProvider(): string;
         /**
@@ -8504,7 +8585,7 @@ export namespace TelepathyGLib {
          * @param avatar a new avatar to set; can   be `null` only if %len equals 0
          * @param mime_type the MIME type of the new avatar; can be `null`  only if `len` equals 0
          */
-        set_avatar(avatar?: Uint8Array | null, mime_type?: string | null): void;
+        set_avatar(avatar: Uint8Array | null, mime_type: string | null): void;
         /**
          * Set the connect automatically property of the account on creation
          * to `connect_automatically` so that the account is brought online to
@@ -8760,7 +8841,7 @@ export namespace TelepathyGLib {
 
         _init(...args: any[]): void;
 
-        static ['new'](dbus?: DBusDaemon | null): AutomaticClientFactory;
+        static ['new'](dbus: DBusDaemon | null): AutomaticClientFactory;
 
         // Signals
 
@@ -8926,38 +9007,19 @@ export namespace TelepathyGLib {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -8965,15 +9027,9 @@ export namespace TelepathyGLib {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -9140,7 +9196,7 @@ export namespace TelepathyGLib {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -9670,6 +9726,7 @@ export namespace TelepathyGLib {
          * This property can't be `null`.
          * @since 0.11.5
          * @construct-only
+         * @default null
          */
         get name(): string;
         /**
@@ -9677,6 +9734,7 @@ export namespace TelepathyGLib {
          * service bus name and object path to ensure they are unique.
          * @since 0.11.5
          * @construct-only
+         * @default false
          */
         get uniquify_name(): boolean;
         /**
@@ -9684,6 +9742,7 @@ export namespace TelepathyGLib {
          * service bus name and object path to ensure they are unique.
          * @since 0.11.5
          * @construct-only
+         * @default false
          */
         get uniquifyName(): boolean;
 
@@ -10310,6 +10369,7 @@ export namespace TelepathyGLib {
          * the ConnectionManager or the AccountManager are too old.
          * @since 0.23.2
          * @construct-only
+         * @default null
          */
         get account_path_suffix(): string;
         /**
@@ -10322,6 +10382,7 @@ export namespace TelepathyGLib {
          * the ConnectionManager or the AccountManager are too old.
          * @since 0.23.2
          * @construct-only
+         * @default null
          */
         get accountPathSuffix(): string;
         /**
@@ -10330,6 +10391,7 @@ export namespace TelepathyGLib {
          * until the connection becomes disconnected.
          * @since 0.13.8
          * @read-only
+         * @default true
          */
         get has_immortal_handles(): boolean;
         /**
@@ -10338,6 +10400,7 @@ export namespace TelepathyGLib {
          * until the connection becomes disconnected.
          * @since 0.13.8
          * @read-only
+         * @default true
          */
         get hasImmortalHandles(): boolean;
 
@@ -10710,38 +10773,19 @@ export namespace TelepathyGLib {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -10749,15 +10793,9 @@ export namespace TelepathyGLib {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -10924,7 +10962,7 @@ export namespace TelepathyGLib {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -11249,54 +11287,63 @@ export namespace TelepathyGLib {
          * A {@link TelepathyGLib.CallFlags} specifying the flags of the call state.
          * @since 0.17.5
          * @read-only
+         * @default 0
          */
         get flags(): number;
         /**
          * Whether or not the streaming is done by dedicated hardware.
          * @since 0.17.5
          * @read-only
+         * @default false
          */
         get hardware_streaming(): boolean;
         /**
          * Whether or not the streaming is done by dedicated hardware.
          * @since 0.17.5
          * @read-only
+         * @default false
          */
         get hardwareStreaming(): boolean;
         /**
          * A {@link TelepathyGLib.LocalHoldState} specifying if the Call is currently held
          * @since 0.17.6
          * @read-only
+         * @default 0
          */
         get hold_state(): number;
         /**
          * A {@link TelepathyGLib.LocalHoldState} specifying if the Call is currently held
          * @since 0.17.6
          * @read-only
+         * @default 0
          */
         get holdState(): number;
         /**
          * A {@link TelepathyGLib.LocalHoldStateReason} specifying why the Call is currently held.
          * @since 0.17.6
          * @read-only
+         * @default 0
          */
         get hold_state_reason(): number;
         /**
          * A {@link TelepathyGLib.LocalHoldStateReason} specifying why the Call is currently held.
          * @since 0.17.6
          * @read-only
+         * @default 0
          */
         get holdStateReason(): number;
         /**
          * Whether or not the Call was started with audio.
          * @since 0.17.5
          * @read-only
+         * @default false
          */
         get initial_audio(): boolean;
         /**
          * Whether or not the Call was started with audio.
          * @since 0.17.5
          * @read-only
+         * @default false
          */
         get initialAudio(): boolean;
         /**
@@ -11304,6 +11351,7 @@ export namespace TelepathyGLib {
          * is the name of the intial audio content, `null` otherwise.
          * @since 0.17.5
          * @read-only
+         * @default null
          */
         get initial_audio_name(): string;
         /**
@@ -11311,18 +11359,21 @@ export namespace TelepathyGLib {
          * is the name of the intial audio content, `null` otherwise.
          * @since 0.17.5
          * @read-only
+         * @default null
          */
         get initialAudioName(): string;
         /**
          * Whether or not the Call was started with video.
          * @since 0.17.5
          * @read-only
+         * @default false
          */
         get initial_video(): boolean;
         /**
          * Whether or not the Call was started with video.
          * @since 0.17.5
          * @read-only
+         * @default false
          */
         get initialVideo(): boolean;
         /**
@@ -11330,6 +11381,7 @@ export namespace TelepathyGLib {
          * is the name of the intial video content, `null` otherwise.
          * @since 0.17.5
          * @read-only
+         * @default null
          */
         get initial_video_name(): string;
         /**
@@ -11337,24 +11389,28 @@ export namespace TelepathyGLib {
          * is the name of the intial video content, `null` otherwise.
          * @since 0.17.5
          * @read-only
+         * @default null
          */
         get initialVideoName(): string;
         /**
          * Whether or not call contents can be added or removed.
          * @since 0.17.5
          * @read-only
+         * @default false
          */
         get mutable_contents(): boolean;
         /**
          * Whether or not call contents can be added or removed.
          * @since 0.17.5
          * @read-only
+         * @default false
          */
         get mutableContents(): boolean;
         /**
          * A {@link TelepathyGLib.CallState} specifying the state of the call.
          * @since 0.17.5
          * @read-only
+         * @default 0
          */
         get state(): number;
         /**
@@ -11658,7 +11714,7 @@ export namespace TelepathyGLib {
          * @param tones a string representation of one or more DTMF events.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          */
-        send_tones_async(tones: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        send_tones_async(tones: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Send `tones` on every of `self`'s contents which have the
          * `TP_IFACE_CALL_CONTENT_INTERFACE_DTMF` interface.
@@ -11684,7 +11740,7 @@ export namespace TelepathyGLib {
          */
         send_tones_async(
             tones: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -11821,18 +11877,21 @@ export namespace TelepathyGLib {
          * The disposition of this content, from {@link TelepathyGLib.CallContentDisposition}.
          * @since 0.17.5
          * @read-only
+         * @default 0
          */
         get disposition(): number;
         /**
          * The media type of this content, from {@link TelepathyGLib.MediaStreamType}.
          * @since 0.17.5
          * @read-only
+         * @default 0
          */
         get media_type(): number;
         /**
          * The media type of this content, from {@link TelepathyGLib.MediaStreamType}.
          * @since 0.17.5
          * @read-only
+         * @default 0
          */
         get mediaType(): number;
         /**
@@ -11953,7 +12012,7 @@ export namespace TelepathyGLib {
          * @param tones a string representation of one or more DTMF events.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          */
-        send_tones_async(tones: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        send_tones_async(tones: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Send `tones` DTMF code on `self` content. `self` must have the
          * `TP_IFACE_CALL_CONTENT_INTERFACE_DTMF` interface.
@@ -11979,7 +12038,7 @@ export namespace TelepathyGLib {
          */
         send_tones_async(
             tones: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -12053,6 +12112,7 @@ export namespace TelepathyGLib {
          * stream.
          * @since 0.17.5
          * @read-only
+         * @default false
          */
         get can_request_receiving(): boolean;
         /**
@@ -12060,6 +12120,7 @@ export namespace TelepathyGLib {
          * stream.
          * @since 0.17.5
          * @read-only
+         * @default false
          */
         get canRequestReceiving(): boolean;
         /**
@@ -12078,12 +12139,14 @@ export namespace TelepathyGLib {
          * The local user's sending state, from {@link TelepathyGLib.SendingState}.
          * @since 0.17.5
          * @read-only
+         * @default 0
          */
         get local_sending_state(): number;
         /**
          * The local user's sending state, from {@link TelepathyGLib.SendingState}.
          * @since 0.17.5
          * @read-only
+         * @default 0
          */
         get localSendingState(): number;
 
@@ -12311,6 +12374,7 @@ export namespace TelepathyGLib {
          * contact, or if it's only a guess based on the capabilities of the
          * underlying connection.
          * @construct-only
+         * @default false
          */
         get contact_specific(): boolean;
         /**
@@ -12318,6 +12382,7 @@ export namespace TelepathyGLib {
          * contact, or if it's only a guess based on the capabilities of the
          * underlying connection.
          * @construct-only
+         * @default false
          */
         get contactSpecific(): boolean;
 
@@ -13970,6 +14035,7 @@ export namespace TelepathyGLib {
          * Change notification is via notify::channel-ready.
          * @deprecated since 0.17.6: use `tp_proxy_is_prepared()` with  `TP_CHANNEL_FEATURE_CORE` for checks, or `tp_proxy_prepare_async()` for  notification
          * @read-only
+         * @default false
          */
         get channel_ready(): boolean;
         /**
@@ -13988,6 +14054,7 @@ export namespace TelepathyGLib {
          * Change notification is via notify::channel-ready.
          * @deprecated since 0.17.6: use `tp_proxy_is_prepared()` with  `TP_CHANNEL_FEATURE_CORE` for checks, or `tp_proxy_prepare_async()` for  notification
          * @read-only
+         * @default false
          */
         get channelReady(): boolean;
         /**
@@ -14007,6 +14074,7 @@ export namespace TelepathyGLib {
          * TpChannel::group-flags-changed.
          * @since 0.7.12
          * @read-only
+         * @default 0
          */
         get group_flags(): number;
         /**
@@ -14020,6 +14088,7 @@ export namespace TelepathyGLib {
          * TpChannel::group-flags-changed.
          * @since 0.7.12
          * @read-only
+         * @default 0
          */
         get groupFlags(): number;
         /**
@@ -14059,6 +14128,7 @@ export namespace TelepathyGLib {
          * @since 0.7.12
          * @deprecated Use {@link TelepathyGLib.Channel.group_self_contact} instead.
          * @read-only
+         * @default 0
          */
         get group_self_handle(): number;
         /**
@@ -14072,6 +14142,7 @@ export namespace TelepathyGLib {
          * @since 0.7.12
          * @deprecated Use {@link TelepathyGLib.Channel.group_self_contact} instead.
          * @read-only
+         * @default 0
          */
         get groupSelfHandle(): number;
         /**
@@ -14158,6 +14229,7 @@ export namespace TelepathyGLib {
          * @since 0.11.15
          * @deprecated Use {@link TelepathyGLib.Channel.initiator_contact} instead.
          * @read-only
+         * @default 0
          */
         get initiator_handle(): number;
         /**
@@ -14181,6 +14253,7 @@ export namespace TelepathyGLib {
          * @since 0.11.15
          * @deprecated Use {@link TelepathyGLib.Channel.initiator_contact} instead.
          * @read-only
+         * @default 0
          */
         get initiatorHandle(): number;
         /**
@@ -14220,6 +14293,7 @@ export namespace TelepathyGLib {
          * notify::password-needed signal will be fired when this property changes.
          * @since 0.15.2
          * @read-only
+         * @default false
          */
         get password_needed(): boolean;
         /**
@@ -14233,6 +14307,7 @@ export namespace TelepathyGLib {
          * notify::password-needed signal will be fired when this property changes.
          * @since 0.15.2
          * @read-only
+         * @default false
          */
         get passwordNeeded(): boolean;
         /**
@@ -14252,6 +14327,7 @@ export namespace TelepathyGLib {
          * `false` even if the channel was actually requested.
          * @since 0.11.15
          * @read-only
+         * @default false
          */
         get requested(): boolean;
         /**
@@ -15457,7 +15533,7 @@ export namespace TelepathyGLib {
          * that they can handle a channel bundle themselves.
          * @param handler The well-known bus name (starting with #TP_CLIENT_BUS_NAME_BASE) of the channel handler that should handle the channel, or `null` if the client has no preferred channel handler
          */
-        handle_with_async(handler?: string | null): globalThis.Promise<boolean>;
+        handle_with_async(handler: string | null): globalThis.Promise<boolean>;
         /**
          * Called by an approver to accept a channel bundle and request that the
          * given handler be used to handle it.
@@ -15502,7 +15578,7 @@ export namespace TelepathyGLib {
          * @param callback a callback to call when the call returns
          */
         handle_with_async(
-            handler?: string | null,
+            handler: string | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -16255,6 +16331,7 @@ export namespace TelepathyGLib {
          * Read-only.
          * @since 0.15.3
          * @read-only
+         * @default null
          */
         get preferred_handler(): string;
         /**
@@ -16265,6 +16342,7 @@ export namespace TelepathyGLib {
          * Read-only.
          * @since 0.15.3
          * @read-only
+         * @default null
          */
         get preferredHandler(): string;
         /**
@@ -16275,6 +16353,7 @@ export namespace TelepathyGLib {
          * Read-only.
          * @since 0.15.3
          * @read-only
+         * @default 0
          */
         get user_action_time(): number;
         /**
@@ -16285,6 +16364,7 @@ export namespace TelepathyGLib {
          * Read-only.
          * @since 0.15.3
          * @read-only
+         * @default 0
          */
         get userActionTime(): number;
 
@@ -16997,6 +17077,7 @@ export namespace TelepathyGLib {
          *
          * See Also: `tp_connection_get_balance()`
          * @read-only
+         * @default 0
          */
         get balance(): number;
         /**
@@ -17007,6 +17088,7 @@ export namespace TelepathyGLib {
          *
          * See Also: `tp_connection_get_balance()`
          * @read-only
+         * @default null
          */
         get balance_currency(): string;
         /**
@@ -17017,6 +17099,7 @@ export namespace TelepathyGLib {
          *
          * See Also: `tp_connection_get_balance()`
          * @read-only
+         * @default null
          */
         get balanceCurrency(): string;
         /**
@@ -17027,6 +17110,7 @@ export namespace TelepathyGLib {
          *
          * See Also: `tp_connection_get_balance()`
          * @read-only
+         * @default 4294967295
          */
         get balance_scale(): number;
         /**
@@ -17037,6 +17121,7 @@ export namespace TelepathyGLib {
          *
          * See Also: `tp_connection_get_balance()`
          * @read-only
+         * @default 4294967295
          */
         get balanceScale(): number;
         /**
@@ -17045,6 +17130,7 @@ export namespace TelepathyGLib {
          * For this property to be valid, you must first call
          * `tp_proxy_prepare_async()` with the feature `TP_CONNECTION_FEATURE_BALANCE`.
          * @read-only
+         * @default null
          */
         get balance_uri(): string;
         /**
@@ -17053,6 +17139,7 @@ export namespace TelepathyGLib {
          * For this property to be valid, you must first call
          * `tp_proxy_prepare_async()` with the feature `TP_CONNECTION_FEATURE_BALANCE`.
          * @read-only
+         * @default null
          */
         get balanceUri(): string;
         /**
@@ -17098,6 +17185,7 @@ export namespace TelepathyGLib {
          * `TP_CONNECTION_FEATURE_CONTACT_LIST`.
          * @since 0.15.5
          * @read-only
+         * @default false
          */
         get can_change_contact_list(): boolean;
         /**
@@ -17113,6 +17201,7 @@ export namespace TelepathyGLib {
          * `TP_CONNECTION_FEATURE_CONTACT_LIST`.
          * @since 0.15.5
          * @read-only
+         * @default false
          */
         get canChangeContactList(): boolean;
         /**
@@ -17125,6 +17214,7 @@ export namespace TelepathyGLib {
          * `TP_CONNECTION_FEATURE_CONTACT_BLOCKING`.
          * @since 0.17.0
          * @read-only
+         * @default false
          */
         get can_report_abusive(): boolean;
         /**
@@ -17137,6 +17227,7 @@ export namespace TelepathyGLib {
          * `TP_CONNECTION_FEATURE_CONTACT_BLOCKING`.
          * @since 0.17.0
          * @read-only
+         * @default false
          */
         get canReportAbusive(): boolean;
         /**
@@ -17152,12 +17243,14 @@ export namespace TelepathyGLib {
          * This connection's connection manager name.
          * @since 0.19.3
          * @read-only
+         * @default null
          */
         get cm_name(): string;
         /**
          * This connection's connection manager name.
          * @since 0.19.3
          * @read-only
+         * @default null
          */
         get cmName(): string;
         /**
@@ -17165,6 +17258,7 @@ export namespace TelepathyGLib {
          * @since 0.13.16
          * @deprecated Use {@link TelepathyGLib.Connection.cm_name} instead.
          * @read-only
+         * @default null
          */
         get connection_manager_name(): string;
         /**
@@ -17172,6 +17266,7 @@ export namespace TelepathyGLib {
          * @since 0.13.16
          * @deprecated Use {@link TelepathyGLib.Connection.cm_name} instead.
          * @read-only
+         * @default null
          */
         get connectionManagerName(): string;
         /**
@@ -17187,6 +17282,7 @@ export namespace TelepathyGLib {
          * been invalidated.
          * @deprecated since 0.17.6: use `tp_proxy_is_prepared()` with  `TP_CHANNEL_FEATURE_CONNECTED` for checks, or `tp_proxy_prepare_async()` for  notification
          * @read-only
+         * @default false
          */
         get connection_ready(): boolean;
         /**
@@ -17202,6 +17298,7 @@ export namespace TelepathyGLib {
          * been invalidated.
          * @deprecated since 0.17.6: use `tp_proxy_is_prepared()` with  `TP_CHANNEL_FEATURE_CONNECTED` for checks, or `tp_proxy_prepare_async()` for  notification
          * @read-only
+         * @default false
          */
         get connectionReady(): boolean;
         /**
@@ -17248,6 +17345,7 @@ export namespace TelepathyGLib {
          * `TP_CONNECTION_FEATURE_CONTACT_LIST`.
          * @since 0.15.5
          * @read-only
+         * @default false
          */
         get contact_list_persists(): boolean;
         /**
@@ -17262,6 +17360,7 @@ export namespace TelepathyGLib {
          * `TP_CONNECTION_FEATURE_CONTACT_LIST`.
          * @since 0.15.5
          * @read-only
+         * @default false
          */
         get contactListPersists(): boolean;
         /**
@@ -17273,6 +17372,7 @@ export namespace TelepathyGLib {
          * `TP_CONNECTION_FEATURE_CONTACT_LIST`.
          * @since 0.15.5
          * @read-only
+         * @default 0
          */
         get contact_list_state(): number;
         /**
@@ -17284,6 +17384,7 @@ export namespace TelepathyGLib {
          * `TP_CONNECTION_FEATURE_CONTACT_LIST`.
          * @since 0.15.5
          * @read-only
+         * @default 0
          */
         get contactListState(): number;
         /**
@@ -17299,6 +17400,7 @@ export namespace TelepathyGLib {
          * `TP_CONNECTION_FEATURE_CONTACT_GROUPS`.
          * @since 0.15.5
          * @read-only
+         * @default false
          */
         get disjoint_groups(): boolean;
         /**
@@ -17314,6 +17416,7 @@ export namespace TelepathyGLib {
          * `TP_CONNECTION_FEATURE_CONTACT_GROUPS`.
          * @since 0.15.5
          * @read-only
+         * @default false
          */
         get disjointGroups(): boolean;
         /**
@@ -17328,6 +17431,7 @@ export namespace TelepathyGLib {
          * `TP_CONNECTION_FEATURE_CONTACT_GROUPS`.
          * @since 0.15.5
          * @read-only
+         * @default 0
          */
         get group_storage(): number;
         /**
@@ -17342,6 +17446,7 @@ export namespace TelepathyGLib {
          * `TP_CONNECTION_FEATURE_CONTACT_GROUPS`.
          * @since 0.15.5
          * @read-only
+         * @default 0
          */
         get groupStorage(): number;
         /**
@@ -17350,6 +17455,7 @@ export namespace TelepathyGLib {
          * found in the Telepathy D-Bus Interface Specification.
          * @since 0.13.16
          * @read-only
+         * @default null
          */
         get protocol_name(): string;
         /**
@@ -17358,6 +17464,7 @@ export namespace TelepathyGLib {
          * found in the Telepathy D-Bus Interface Specification.
          * @since 0.13.16
          * @read-only
+         * @default null
          */
         get protocolName(): string;
         /**
@@ -17373,6 +17480,7 @@ export namespace TelepathyGLib {
          * `TP_CONNECTION_FEATURE_CONTACT_LIST`.
          * @since 0.15.5
          * @read-only
+         * @default false
          */
         get request_uses_message(): boolean;
         /**
@@ -17388,6 +17496,7 @@ export namespace TelepathyGLib {
          * `TP_CONNECTION_FEATURE_CONTACT_LIST`.
          * @since 0.15.5
          * @read-only
+         * @default false
          */
         get requestUsesMessage(): boolean;
         /**
@@ -17439,6 +17548,7 @@ export namespace TelepathyGLib {
          * `TP_CONNECTION_FEATURE_CONNECTED`.
          * @deprecated Use {@link TelepathyGLib.Connection.self_contact} instead.
          * @read-only
+         * @default 0
          */
         get self_handle(): number;
         /**
@@ -17454,6 +17564,7 @@ export namespace TelepathyGLib {
          * `TP_CONNECTION_FEATURE_CONNECTED`.
          * @deprecated Use {@link TelepathyGLib.Connection.self_contact} instead.
          * @read-only
+         * @default 0
          */
         get selfHandle(): number;
         /**
@@ -17467,6 +17578,7 @@ export namespace TelepathyGLib {
          * {@link TelepathyGLib.ConnectionStatus.CONNECTED} is delayed slightly, until introspection
          * of the connection has finished.
          * @read-only
+         * @default 4294967295
          */
         get status(): number;
         /**
@@ -17477,6 +17589,7 @@ export namespace TelepathyGLib {
          * or TP_CONNECTION_STATUS_REASON_NONE_SPECIFIED if unknown.
          * know yet.
          * @read-only
+         * @default 0
          */
         get status_reason(): number;
         /**
@@ -17487,6 +17600,7 @@ export namespace TelepathyGLib {
          * or TP_CONNECTION_STATUS_REASON_NONE_SPECIFIED if unknown.
          * know yet.
          * @read-only
+         * @default 0
          */
         get statusReason(): number;
 
@@ -17505,7 +17619,7 @@ export namespace TelepathyGLib {
 
         _init(...args: any[]): void;
 
-        static ['new'](dbus: DBusDaemon, bus_name?: string | null, object_path?: string | null): Connection;
+        static ['new'](dbus: DBusDaemon, bus_name: string | null, object_path: string | null): Connection;
 
         // Signals
 
@@ -17758,7 +17872,7 @@ export namespace TelepathyGLib {
          * @param id A strings representing the desired contact by its  identifier in the IM protocol (an XMPP JID, SIP URI, MSN Passport,  AOL screen-name etc.)
          * @param features An array of features  that must be ready for use (if supported)  before the callback is called (may be `null` if `n_features` is 0)
          */
-        dup_contact_by_id_async(id: string, features?: ContactFeature[] | null): globalThis.Promise<Contact>;
+        dup_contact_by_id_async(id: string, features: ContactFeature[] | null): globalThis.Promise<Contact>;
         /**
          * Create a {@link TelepathyGLib.Contact} object and make any asynchronous method calls necessary
          * to ensure that all the features specified in `features` are ready for use
@@ -17792,7 +17906,7 @@ export namespace TelepathyGLib {
          */
         dup_contact_by_id_async(
             id: string,
-            features?: ContactFeature[] | null,
+            features: ContactFeature[] | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Contact> | void;
         /**
@@ -18049,7 +18163,7 @@ export namespace TelepathyGLib {
             handles: number[],
             features: number[] | null,
             callback: ConnectionContactsByHandleCb,
-            weak_object?: GObject.Object | null,
+            weak_object: GObject.Object | null,
         ): void;
         /**
          * Create a number of {@link TelepathyGLib.Contact} objects and make asynchronous method calls
@@ -18069,7 +18183,7 @@ export namespace TelepathyGLib {
             ids: string[],
             features: ContactFeature[] | null,
             callback: ConnectionContactsByIdCb,
-            weak_object?: GObject.Object | null,
+            weak_object: GObject.Object | null,
         ): void;
         /**
          * If the connection has disconnected, return the D-Bus error name with which
@@ -18636,7 +18750,7 @@ export namespace TelepathyGLib {
             contacts: Contact[],
             features: ContactFeature[],
             callback: ConnectionUpgradeContactsCb,
-            weak_object?: GObject.Object | null,
+            weak_object: GObject.Object | null,
         ): void;
         /**
          * Given several {@link TelepathyGLib.Contact} objects, make asynchronous method calls
@@ -19035,12 +19149,14 @@ export namespace TelepathyGLib {
         /**
          * If `true`, always introspect the connection manager as it comes online,
          * even if we already have its info from a .manager file. Default `false`.
+         * @default false
          */
         get always_introspect(): boolean;
         set always_introspect(val: boolean);
         /**
          * If `true`, always introspect the connection manager as it comes online,
          * even if we already have its info from a .manager file. Default `false`.
+         * @default false
          */
         get alwaysIntrospect(): boolean;
         set alwaysIntrospect(val: boolean);
@@ -19048,24 +19164,28 @@ export namespace TelepathyGLib {
          * The name of the connection manager, e.g. "gabble" (read-only).
          * @since 0.19.3
          * @read-only
+         * @default null
          */
         get cm_name(): string;
         /**
          * The name of the connection manager, e.g. "gabble" (read-only).
          * @since 0.19.3
          * @read-only
+         * @default null
          */
         get cmName(): string;
         /**
          * The name of the connection manager, e.g. "gabble" (read-only).
          * @deprecated Use {@link TelepathyGLib.ConnectionManager.cm_name} instead.
          * @read-only
+         * @default null
          */
         get connection_manager(): string;
         /**
          * The name of the connection manager, e.g. "gabble" (read-only).
          * @deprecated Use {@link TelepathyGLib.ConnectionManager.cm_name} instead.
          * @read-only
+         * @default null
          */
         get connectionManager(): string;
         /**
@@ -19078,6 +19198,7 @@ export namespace TelepathyGLib {
          * (Note that this is of type `G_TYPE_UINT`, not `TP_TYPE_CM_INFO_SOURCE`,
          * for historical reasons.)
          * @read-only
+         * @default 0
          */
         get info_source(): number;
         /**
@@ -19090,6 +19211,7 @@ export namespace TelepathyGLib {
          * (Note that this is of type `G_TYPE_UINT`, not `TP_TYPE_CM_INFO_SOURCE`,
          * for historical reasons.)
          * @read-only
+         * @default 0
          */
         get infoSource(): number;
         /**
@@ -19098,6 +19220,7 @@ export namespace TelepathyGLib {
          * correct name.
          *
          * If set to the empty string, no .manager file will be read.
+         * @default null
          */
         get manager_file(): string;
         set manager_file(val: string);
@@ -19107,6 +19230,7 @@ export namespace TelepathyGLib {
          * correct name.
          *
          * If set to the empty string, no .manager file will be read.
+         * @default null
          */
         get managerFile(): string;
         set managerFile(val: string);
@@ -19126,7 +19250,7 @@ export namespace TelepathyGLib {
 
         _init(...args: any[]): void;
 
-        static ['new'](dbus: DBusDaemon, name: string, manager_filename?: string | null): ConnectionManager;
+        static ['new'](dbus: DBusDaemon, name: string, manager_filename: string | null): ConnectionManager;
 
         // Signals
 
@@ -19406,6 +19530,7 @@ export namespace TelepathyGLib {
          * This is never `null` for contact objects that are visible to library-user
          * code.
          * @read-only
+         * @default null
          */
         get alias(): string;
         /**
@@ -19447,6 +19572,7 @@ export namespace TelepathyGLib {
          * This is always the MIME type of the image given by {@link TelepathyGLib.Contact.avatar_file}.
          * @since 0.11.6
          * @read-only
+         * @default null
          */
         get avatar_mime_type(): string;
         /**
@@ -19456,6 +19582,7 @@ export namespace TelepathyGLib {
          * This is always the MIME type of the image given by {@link TelepathyGLib.Contact.avatar_file}.
          * @since 0.11.6
          * @read-only
+         * @default null
          */
         get avatarMimeType(): string;
         /**
@@ -19467,6 +19594,7 @@ export namespace TelepathyGLib {
          * or not (either for network protocol reasons, or because this {@link TelepathyGLib.Contact}
          * has not been set up to track {@link TelepathyGLib.ContactFeature.AVATAR_TOKEN}).
          * @read-only
+         * @default null
          */
         get avatar_token(): string;
         /**
@@ -19478,6 +19606,7 @@ export namespace TelepathyGLib {
          * or not (either for network protocol reasons, or because this {@link TelepathyGLib.Contact}
          * has not been set up to track {@link TelepathyGLib.ContactFeature.AVATAR_TOKEN}).
          * @read-only
+         * @default null
          */
         get avatarToken(): string;
         /**
@@ -19571,6 +19700,7 @@ export namespace TelepathyGLib {
          * If the {@link TelepathyGLib.Contact.connection} becomes invalid, this property is no longer
          * meaningful and will be set to 0.
          * @read-only
+         * @default 0
          */
         get handle(): number;
         /**
@@ -19581,6 +19711,7 @@ export namespace TelepathyGLib {
          * This is never `null` for contact objects that are visible to library-user
          * code.
          * @read-only
+         * @default null
          */
         get identifier(): string;
         /**
@@ -19591,6 +19722,7 @@ export namespace TelepathyGLib {
          * ContactBlocking interface.
          * @since 0.17.0
          * @read-only
+         * @default false
          */
         get is_blocked(): boolean;
         /**
@@ -19601,6 +19733,7 @@ export namespace TelepathyGLib {
          * ContactBlocking interface.
          * @since 0.17.0
          * @read-only
+         * @default false
          */
         get isBlocked(): boolean;
         /**
@@ -19689,6 +19822,7 @@ export namespace TelepathyGLib {
          * This may be {@link TelepathyGLib.ConnectionPresenceType.UNSET} if this {@link TelepathyGLib.Contact}
          * has not been set up to track {@link TelepathyGLib.ContactFeature.PRESENCE}.
          * @read-only
+         * @default 0
          */
         get presence_type(): number;
         /**
@@ -19701,6 +19835,7 @@ export namespace TelepathyGLib {
          * This may be {@link TelepathyGLib.ConnectionPresenceType.UNSET} if this {@link TelepathyGLib.Contact}
          * has not been set up to track {@link TelepathyGLib.ContactFeature.PRESENCE}.
          * @read-only
+         * @default 0
          */
         get presenceType(): number;
         /**
@@ -19712,6 +19847,7 @@ export namespace TelepathyGLib {
          * prepared, and it is guaranteed to be non-`null` afterward.
          * @since 0.13.12
          * @read-only
+         * @default null
          */
         get publish_request(): string;
         /**
@@ -19723,6 +19859,7 @@ export namespace TelepathyGLib {
          * prepared, and it is guaranteed to be non-`null` afterward.
          * @since 0.13.12
          * @read-only
+         * @default null
          */
         get publishRequest(): string;
         /**
@@ -19733,6 +19870,7 @@ export namespace TelepathyGLib {
          * {@link TelepathyGLib.ContactFeature.SUBSCRIPTION_STATES} has been prepared
          * @since 0.13.12
          * @read-only
+         * @default 0
          */
         get publish_state(): number;
         /**
@@ -19743,6 +19881,7 @@ export namespace TelepathyGLib {
          * {@link TelepathyGLib.ContactFeature.SUBSCRIPTION_STATES} has been prepared
          * @since 0.13.12
          * @read-only
+         * @default 0
          */
         get publishState(): number;
         /**
@@ -19753,6 +19892,7 @@ export namespace TelepathyGLib {
          * {@link TelepathyGLib.ContactFeature.SUBSCRIPTION_STATES} has been prepared
          * @since 0.13.12
          * @read-only
+         * @default 0
          */
         get subscribe_state(): number;
         /**
@@ -19763,6 +19903,7 @@ export namespace TelepathyGLib {
          * {@link TelepathyGLib.ContactFeature.SUBSCRIPTION_STATES} has been prepared
          * @since 0.13.12
          * @read-only
+         * @default 0
          */
         get subscribeState(): number;
 
@@ -20137,7 +20278,7 @@ export namespace TelepathyGLib {
          * set before its property gets updated and `callback` is called.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        request_contact_info_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        request_contact_info_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Requests an asynchronous request of the contact info of `self`. When
          * the operation is finished, `callback` will be called. You can then call
@@ -20183,7 +20324,7 @@ export namespace TelepathyGLib {
          * @param callback a callback to call when the request is satisfied
          */
         request_contact_info_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -20237,7 +20378,7 @@ export namespace TelepathyGLib {
          * new contact groups inside `callback`.
          * @param groups the set of  groups which the contact should be in (may be `null` if `n_groups` is 0)
          */
-        set_contact_groups_async(groups?: string[] | null): globalThis.Promise<boolean>;
+        set_contact_groups_async(groups: string[] | null): globalThis.Promise<boolean>;
         /**
          * Add `self` to the given groups (creating new groups if necessary), and remove
          * it from all other groups. If the user is removed from a group of which they
@@ -20272,7 +20413,7 @@ export namespace TelepathyGLib {
          * @param callback a callback to call when the request is satisfied
          */
         set_contact_groups_async(
-            groups?: string[] | null,
+            groups: string[] | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -20405,6 +20546,7 @@ export namespace TelepathyGLib {
          * To change the limit after the object has been constructed,
          * use `tp_contact_search_reset_async()`.
          * @since 0.13.11
+         * @default 0
          */
         get limit(): number;
         set limit(val: number);
@@ -20417,12 +20559,14 @@ export namespace TelepathyGLib {
          * use `tp_contact_search_reset_async()`.
          * @since 0.13.11
          * @construct-only
+         * @default null
          */
         get server(): string;
         /**
          * This search's state, as a %TpChannelContactSearchState.
          * @since 0.13.11
          * @read-only
+         * @default 0
          */
         get state(): number;
 
@@ -20480,7 +20624,7 @@ export namespace TelepathyGLib {
             account: Account,
             server: string,
             limit: number,
-            callback?: Gio.AsyncReadyCallback<ContactSearch> | null,
+            callback: Gio.AsyncReadyCallback<ContactSearch> | null,
         ): void;
 
         // Methods
@@ -20600,7 +20744,7 @@ export namespace TelepathyGLib {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -20690,7 +20834,7 @@ export namespace TelepathyGLib {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -20751,8 +20895,8 @@ export namespace TelepathyGLib {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -20808,38 +20952,19 @@ export namespace TelepathyGLib {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -20847,15 +20972,9 @@ export namespace TelepathyGLib {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -21022,7 +21141,7 @@ export namespace TelepathyGLib {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -21239,6 +21358,7 @@ export namespace TelepathyGLib {
 
         /**
          * @construct-only
+         * @default null
          */
         get identifier(): string;
 
@@ -21529,12 +21649,14 @@ export namespace TelepathyGLib {
          * A string representing the service name that will be used over the tube.
          * @since 0.18.0
          * @read-only
+         * @default null
          */
         get service_name(): string;
         /**
          * A string representing the service name that will be used over the tube.
          * @since 0.18.0
          * @read-only
+         * @default null
          */
         get serviceName(): string;
 
@@ -21636,7 +21758,7 @@ export namespace TelepathyGLib {
          * be used to communicate through the tube.
          * @param params parameters of the tube, or `null`
          */
-        offer_async(params?: GLib.HashTable<any, any> | null): globalThis.Promise<Gio.DBusConnection>;
+        offer_async(params: GLib.HashTable<any, any> | null): globalThis.Promise<Gio.DBusConnection>;
         /**
          * Offer an outgoing D-Bus tube. When the tube has been offered and accepted
          * `callback` will be called. You can then call
@@ -21655,7 +21777,7 @@ export namespace TelepathyGLib {
          * @param callback a callback to call when the tube has been offered
          */
         offer_async(
-            params?: GLib.HashTable<any, any> | null,
+            params: GLib.HashTable<any, any> | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Gio.DBusConnection> | void;
         /**
@@ -21710,6 +21832,7 @@ export namespace TelepathyGLib {
          * `TP_DEBUG_CLIENT_FEATURE_CORE` feature has been prepared.
          * @since 0.19.0
          * @read-only
+         * @default false
          */
         get enabled(): boolean;
 
@@ -21863,24 +21986,28 @@ export namespace TelepathyGLib {
          * Category of the debug message, or `null` if none was specified.
          * @since 0.19.0
          * @read-only
+         * @default null
          */
         get category(): string;
         /**
          * Domain of the debug message.
          * @since 0.19.0
          * @read-only
+         * @default null
          */
         get domain(): string;
         /**
          * A {@link GLib.LogLevelFlags} representing the level of the debug message.
          * @since 0.19.0
          * @read-only
+         * @default 0
          */
         get level(): number;
         /**
          * Text of the debug message, stripped from its trailing whitespaces.
          * @since 0.19.0
          * @read-only
+         * @default null
          */
         get message(): string;
         /**
@@ -22031,6 +22158,7 @@ export namespace TelepathyGLib {
          *
          * Since 0.15.5
          * @read-only
+         * @default null
          */
         get description(): string;
         /**
@@ -22057,6 +22185,7 @@ export namespace TelepathyGLib {
          *
          * Since 0.15.5
          * @read-only
+         * @default null
          */
         get filename(): string;
         /**
@@ -22066,6 +22195,7 @@ export namespace TelepathyGLib {
          * prepared for this property to be meaningful and kept up to date.
          * @since 0.17.1
          * @read-only
+         * @default 0
          */
         get initial_offset(): number;
         /**
@@ -22075,18 +22205,21 @@ export namespace TelepathyGLib {
          * prepared for this property to be meaningful and kept up to date.
          * @since 0.17.1
          * @read-only
+         * @default 0
          */
         get initialOffset(): number;
         /**
          * The MIME type of the file to be transferred.
          * @since 0.15.5
          * @read-only
+         * @default null
          */
         get mime_type(): string;
         /**
          * The MIME type of the file to be transferred.
          * @since 0.15.5
          * @read-only
+         * @default null
          */
         get mimeType(): string;
         /**
@@ -22157,6 +22290,7 @@ export namespace TelepathyGLib {
          *
          * Since 0.15.5
          * @read-only
+         * @default 0
          */
         get size(): number;
         /**
@@ -22167,6 +22301,7 @@ export namespace TelepathyGLib {
          *
          * Since 0.17.1
          * @read-only
+         * @default 0
          */
         get state(): number;
         /**
@@ -22177,6 +22312,7 @@ export namespace TelepathyGLib {
          * prepared for this property to be meaningful and kept up to date.
          * @since 0.15.5
          * @read-only
+         * @default 0
          */
         get transferred_bytes(): number;
         /**
@@ -22187,6 +22323,7 @@ export namespace TelepathyGLib {
          * prepared for this property to be meaningful and kept up to date.
          * @since 0.15.5
          * @read-only
+         * @default 0
          */
         get transferredBytes(): number;
 
@@ -22538,6 +22675,7 @@ export namespace TelepathyGLib {
          * Read-only except during construction.
          * @since 0.11.6
          * @construct-only
+         * @default 0
          */
         get user_action_time(): number;
         /**
@@ -22549,6 +22687,7 @@ export namespace TelepathyGLib {
          * Read-only except during construction.
          * @since 0.11.6
          * @construct-only
+         * @default 0
          */
         get userActionTime(): number;
 
@@ -22859,7 +22998,7 @@ export namespace TelepathyGLib {
          * @param len a number of bytes
          * @param bytes an array of `len` bytes
          */
-        set_bytes(part: number, key: string, len: number, bytes?: any | null): void;
+        set_bytes(part: number, key: string, len: number, bytes: any | null): void;
         /**
          * If `handle_or_0` is not zero, reference it with `tp_message_ref_handle()`.
          *
@@ -23262,12 +23401,14 @@ export namespace TelepathyGLib {
          * The name of the connection manager this protocol is on.
          * @since 0.19.1
          * @construct-only
+         * @default null
          */
         get cm_name(): string;
         /**
          * The name of the connection manager this protocol is on.
          * @since 0.19.1
          * @construct-only
+         * @default null
          */
         get cmName(): string;
         /**
@@ -23284,6 +23425,7 @@ export namespace TelepathyGLib {
          * fallback if no translated version can be found.
          * @since 0.11.11
          * @read-only
+         * @default null
          */
         get english_name(): string;
         /**
@@ -23300,6 +23442,7 @@ export namespace TelepathyGLib {
          * fallback if no translated version can be found.
          * @since 0.11.11
          * @read-only
+         * @default null
          */
         get englishName(): string;
         /**
@@ -23309,6 +23452,7 @@ export namespace TelepathyGLib {
          * {@link TelepathyGLib.Protocol.protocol_name}.
          * @since 0.11.11
          * @read-only
+         * @default null
          */
         get icon_name(): string;
         /**
@@ -23318,6 +23462,7 @@ export namespace TelepathyGLib {
          * {@link TelepathyGLib.Protocol.protocol_name}.
          * @since 0.11.11
          * @read-only
+         * @default null
          */
         get iconName(): string;
         /**
@@ -23341,6 +23486,7 @@ export namespace TelepathyGLib {
          * D-Bus Interface Specification, such as "jabber" or "local-xmpp".
          * @since 0.11.11
          * @construct-only
+         * @default null
          */
         get protocol_name(): string;
         /**
@@ -23348,6 +23494,7 @@ export namespace TelepathyGLib {
          * D-Bus Interface Specification, such as "jabber" or "local-xmpp".
          * @since 0.11.11
          * @construct-only
+         * @default null
          */
         get protocolName(): string;
         /**
@@ -23382,6 +23529,7 @@ export namespace TelepathyGLib {
          * or the `TP_PROTOCOL_FEATURE_CORE` feature has not been prepared.
          * @since 0.11.11
          * @read-only
+         * @default null
          */
         get vcard_field(): string;
         /**
@@ -23390,6 +23538,7 @@ export namespace TelepathyGLib {
          * or the `TP_PROTOCOL_FEATURE_CORE` feature has not been prepared.
          * @since 0.11.11
          * @read-only
+         * @default null
          */
         get vcardField(): string;
 
@@ -23576,7 +23725,7 @@ export namespace TelepathyGLib {
          * @param vardict the account parameters as a {@link GLib.Variant} of  type `G_VARIANT_TYPE_VARDICT`. If it is floating, ownership will  be taken, as if via `g_variant_ref_sink()`.
          * @param cancellable may be used to cancel the async request
          */
-        identify_account_async(vardict: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
+        identify_account_async(vardict: GLib.Variant, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * Return a string that could identify the account with the given
          * parameters. In most protocols that string is a normalized 'account'
@@ -23604,7 +23753,7 @@ export namespace TelepathyGLib {
          */
         identify_account_async(
             vardict: GLib.Variant,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
         /**
@@ -23620,7 +23769,7 @@ export namespace TelepathyGLib {
          * @param contact a contact identifier, possibly invalid
          * @param cancellable may be used to cancel the async request
          */
-        normalize_contact_async(contact: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
+        normalize_contact_async(contact: string, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * Perform best-effort offline contact normalization. This does syntactic
          * normalization (e.g. transforming case-insensitive text to lower-case),
@@ -23644,7 +23793,7 @@ export namespace TelepathyGLib {
          */
         normalize_contact_async(
             contact: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
         /**
@@ -23660,7 +23809,7 @@ export namespace TelepathyGLib {
          * @param uri a contact URI, possibly invalid
          * @param cancellable may be used to cancel the async request
          */
-        normalize_contact_uri_async(uri: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
+        normalize_contact_uri_async(uri: string, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * Perform best-effort offline contact normalization, for a contact in
          * the form of a URI. This method will fail if the URI is not in a
@@ -23684,7 +23833,7 @@ export namespace TelepathyGLib {
          */
         normalize_contact_uri_async(
             uri: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
         /**
@@ -23704,7 +23853,7 @@ export namespace TelepathyGLib {
         normalize_vcard_address_async(
             field: string,
             value: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<string>;
         /**
          * Perform best-effort offline contact normalization, for a contact in
@@ -23733,7 +23882,7 @@ export namespace TelepathyGLib {
         normalize_vcard_address_async(
             field: string,
             value: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
         /**
@@ -23963,11 +24112,13 @@ export namespace TelepathyGLib {
         /**
          * The D-Bus bus name for this object. Read-only except during construction.
          * @construct-only
+         * @default null
          */
         get bus_name(): string;
         /**
          * The D-Bus bus name for this object. Read-only except during construction.
          * @construct-only
+         * @default null
          */
         get busName(): string;
         /**
@@ -23997,12 +24148,14 @@ export namespace TelepathyGLib {
          * The D-Bus object path for this object. Read-only except during
          * construction.
          * @construct-only
+         * @default null
          */
         get object_path(): string;
         /**
          * The D-Bus object path for this object. Read-only except during
          * construction.
          * @construct-only
+         * @default null
          */
         get objectPath(): string;
 
@@ -24167,7 +24320,7 @@ export namespace TelepathyGLib {
          * must generally call `tp_proxy_prepare_async()` and wait for the result.
          * @param features an array  of desired features, ending with 0; `null` is equivalent to an array  containing only 0
          */
-        prepare_async(features?: GLib.Quark[] | null): globalThis.Promise<boolean>;
+        prepare_async(features: GLib.Quark[] | null): globalThis.Promise<boolean>;
         /**
          * {@link TelepathyGLib.Proxy} itself does not support any features, but subclasses like
          * {@link TelepathyGLib.Channel} can support features, which can either be core functionality like
@@ -24276,7 +24429,7 @@ export namespace TelepathyGLib {
          * @param callback if not `null`, called exactly once, when the features have all  been prepared or failed to prepare, or after the proxy is invalidated
          */
         prepare_async(
-            features?: GLib.Quark[] | null,
+            features: GLib.Quark[] | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -24461,6 +24614,7 @@ export namespace TelepathyGLib {
          * `TP_ROOM_LIST_FEATURE_LISTING` feature has been prepared.
          * @since 0.19.0
          * @read-only
+         * @default false
          */
         get listing(): boolean;
         /**
@@ -24468,6 +24622,7 @@ export namespace TelepathyGLib {
          * `null`.
          * @since 0.19.0
          * @construct-only
+         * @default null
          */
         get server(): string;
 
@@ -24520,7 +24675,7 @@ export namespace TelepathyGLib {
          * @param server the DNS name of the server whose rooms should listed
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the initialization is finished
          */
-        static new_async(account: Account, server: string, callback?: Gio.AsyncReadyCallback<RoomList> | null): void;
+        static new_async(account: Account, server: string, callback: Gio.AsyncReadyCallback<RoomList> | null): void;
 
         // Methods
 
@@ -24585,7 +24740,7 @@ export namespace TelepathyGLib {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -24675,7 +24830,7 @@ export namespace TelepathyGLib {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -24736,8 +24891,8 @@ export namespace TelepathyGLib {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -24793,38 +24948,19 @@ export namespace TelepathyGLib {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -24832,15 +24968,9 @@ export namespace TelepathyGLib {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -25007,7 +25137,7 @@ export namespace TelepathyGLib {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -25446,7 +25576,7 @@ export namespace TelepathyGLib {
 
         _init(...args: any[]): void;
 
-        static ['new'](dbus?: DBusDaemon | null): SimpleClientFactory;
+        static ['new'](dbus: DBusDaemon | null): SimpleClientFactory;
 
         // Signals
 
@@ -25516,7 +25646,7 @@ export namespace TelepathyGLib {
          * objects; the user must call `tp_proxy_prepare_async()` themself.
          * @param features an array  of desired features, ending with 0; `null` is equivalent to an array  containing only 0
          */
-        add_account_features(features?: GLib.Quark[] | null): void;
+        add_account_features(features: GLib.Quark[] | null): void;
         /**
          * Add `features` to the desired features to be prepared on {@link TelepathyGLib.Channel}
          * objects. Those features will be added to the features already returned be
@@ -25529,7 +25659,7 @@ export namespace TelepathyGLib {
          * objects; the user must call `tp_proxy_prepare_async()` themself.
          * @param features an array  of desired features, ending with 0; `null` is equivalent to an array  containing only 0
          */
-        add_channel_features(features?: GLib.Quark[] | null): void;
+        add_channel_features(features: GLib.Quark[] | null): void;
         /**
          * Add `features` to the desired features to be prepared on {@link TelepathyGLib.Connection}
          * objects. Those features will be added to the features already returned be
@@ -25542,7 +25672,7 @@ export namespace TelepathyGLib {
          * objects; the user must call `tp_proxy_prepare_async()` themself.
          * @param features an array  of desired features, ending with 0; `null` is equivalent to an array  containing only 0
          */
-        add_connection_features(features?: GLib.Quark[] | null): void;
+        add_connection_features(features: GLib.Quark[] | null): void;
         /**
          * Add `features` to the desired features to be prepared on {@link TelepathyGLib.Contact}
          * objects. Those features will be added to the features already returned be
@@ -25552,7 +25682,7 @@ export namespace TelepathyGLib {
          * objects; the user must call `tp_connection_upgrade_contacts()` themself.
          * @param features an array of desired  features (may be `null` if `n_features` is 0)
          */
-        add_contact_features(features?: ContactFeature[] | null): void;
+        add_contact_features(features: ContactFeature[] | null): void;
         /**
          * Return a zero-terminated {@link GLib.Array} containing the {@link TelepathyGLib.Account} features that
          * should be prepared on `account`.
@@ -25792,12 +25922,14 @@ export namespace TelepathyGLib {
          * The value of the Handler.BypassApproval D-Bus property.
          * @since 0.11.6
          * @construct-only
+         * @default false
          */
         set bypass_approval(val: boolean);
         /**
          * The value of the Handler.BypassApproval D-Bus property.
          * @since 0.11.6
          * @construct-only
+         * @default false
          */
         set bypassApproval(val: boolean);
         /**
@@ -25820,6 +25952,7 @@ export namespace TelepathyGLib {
          * If `true`, the Handler will implement the Requests interface
          * @since 0.11.6
          * @construct-only
+         * @default false
          */
         set requests(val: boolean);
         /**
@@ -25955,6 +26088,7 @@ export namespace TelepathyGLib {
          * The value of the Observer.Recover D-Bus property.
          * @since 0.11.5
          * @construct-only
+         * @default false
          */
         set recover(val: boolean);
         /**
@@ -26106,6 +26240,7 @@ export namespace TelepathyGLib {
          * A string representing the service name that will be used over the tube.
          * @since 0.13.2
          * @read-only
+         * @default null
          */
         get service(): string;
 
@@ -26212,7 +26347,7 @@ export namespace TelepathyGLib {
          * the tube.
          * @param params parameters of the tube, or `null`
          */
-        offer_async(params?: GLib.HashTable<any, any> | null): globalThis.Promise<boolean>;
+        offer_async(params: GLib.HashTable<any, any> | null): globalThis.Promise<boolean>;
         /**
          * Offer an outgoing stream tube. When the tube has been offered, `callback`
          * will be called. You can then call `tp_stream_tube_channel_offer_finish()`
@@ -26237,7 +26372,7 @@ export namespace TelepathyGLib {
          * @param callback a callback to call when the tube has been offered
          */
         offer_async(
-            params?: GLib.HashTable<any, any> | null,
+            params: GLib.HashTable<any, any> | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -26452,12 +26587,14 @@ export namespace TelepathyGLib {
          * The type of the certificate, typically either "x509" or "pgp".
          * @since 0.19.0
          * @read-only
+         * @default null
          */
         get cert_type(): string;
         /**
          * The type of the certificate, typically either "x509" or "pgp".
          * @since 0.19.0
          * @read-only
+         * @default null
          */
         get certType(): string;
         /**
@@ -26475,6 +26612,7 @@ export namespace TelepathyGLib {
          * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify}::state will be emitted when this changes.
          * @since 0.19.0
          * @read-only
+         * @default 0
          */
         get state(): number;
 
@@ -26577,7 +26715,7 @@ export namespace TelepathyGLib {
          * @param dbus_error a D-Bus error name such as `TP_ERROR_STR_CERT_REVOKED`, or  `null` to derive one from `reason`
          * @param details a variant of type `G_VARIANT_TYPE_VARDICT` containing the details of the rejection, or `null`
          */
-        add_rejection(reason: TLSCertificateRejectReason, dbus_error: string, details?: GLib.Variant | null): void;
+        add_rejection(reason: TLSCertificateRejectReason, dbus_error: string, details: GLib.Variant | null): void;
         /**
          * Return the {@link TelepathyGLib.TLSCertificate.cert_data} property
          * @returns the value of {@link TelepathyGLib.TLSCertificate.cert_data} property
@@ -26704,12 +26842,14 @@ export namespace TelepathyGLib {
          * The D-Bus error name of the rejection
          * @since 0.19.0
          * @construct-only
+         * @default null
          */
         get dbus_error(): string;
         /**
          * The D-Bus error name of the rejection
          * @since 0.19.0
          * @construct-only
+         * @default null
          */
         get dbusError(): string;
         /**
@@ -26729,6 +26869,7 @@ export namespace TelepathyGLib {
          * {@link TelepathyGLib.TLSCertificateRejectReason} representing the reason of the rejection
          * @since 0.19.0
          * @construct-only
+         * @default 0
          */
         get reason(): number;
 
@@ -27135,6 +27276,7 @@ export namespace TelepathyGLib {
          * by this channel.
          * @since 0.13.10
          * @read-only
+         * @default 0
          */
         get delivery_reporting_support(): number;
         /**
@@ -27142,6 +27284,7 @@ export namespace TelepathyGLib {
          * by this channel.
          * @since 0.13.10
          * @read-only
+         * @default 0
          */
         get deliveryReportingSupport(): number;
         /**
@@ -27152,6 +27295,7 @@ export namespace TelepathyGLib {
          * TP_TEXT_CHANNEL_FEATURE_SMS has been prepared.
          * @since 0.15.1
          * @read-only
+         * @default false
          */
         get is_sms_channel(): boolean;
         /**
@@ -27162,6 +27306,7 @@ export namespace TelepathyGLib {
          * TP_TEXT_CHANNEL_FEATURE_SMS has been prepared.
          * @since 0.15.1
          * @read-only
+         * @default false
          */
         get isSmsChannel(): boolean;
         /**
@@ -27169,6 +27314,7 @@ export namespace TelepathyGLib {
          * message parts on this channel.
          * @since 0.13.10
          * @read-only
+         * @default 0
          */
         get message_part_support_flags(): number;
         /**
@@ -27176,6 +27322,7 @@ export namespace TelepathyGLib {
          * message parts on this channel.
          * @since 0.13.10
          * @read-only
+         * @default 0
          */
         get messagePartSupportFlags(): number;
         /**
@@ -27185,6 +27332,7 @@ export namespace TelepathyGLib {
          * on this channel.
          * @since 0.15.1
          * @read-only
+         * @default false
          */
         get sms_flash(): boolean;
         /**
@@ -27194,6 +27342,7 @@ export namespace TelepathyGLib {
          * on this channel.
          * @since 0.15.1
          * @read-only
+         * @default false
          */
         get smsFlash(): boolean;
         /**
@@ -29258,10 +29407,12 @@ export namespace TelepathyGLib {
 
         /**
          * @construct-only
+         * @default 0
          */
         get handle_type(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get handleType(): number;
     }

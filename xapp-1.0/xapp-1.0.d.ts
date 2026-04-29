@@ -126,7 +126,7 @@ export namespace XApp {
      * @param window The {@link XApp.GtkWindow} to set the icon name for
      * @param file_name The icon path to set, or `null` to unset.
      */
-    function set_window_icon_from_file(window: Gtk.Window, file_name?: string | null): void;
+    function set_window_icon_from_file(window: Gtk.Window, file_name: string | null): void;
     /**
      * Sets the icon name hint for a window manager (like muffin) to make
      * available when applications want to change their icons during runtime
@@ -138,7 +138,7 @@ export namespace XApp {
      * @param window The {@link XApp.GtkWindow} to set the icon name for
      * @param icon_name The icon name to set, or `null` to unset.
      */
-    function set_window_icon_name(window: Gtk.Window, icon_name?: string | null): void;
+    function set_window_icon_name(window: Gtk.Window, icon_name: string | null): void;
     /**
      * Sets the progress hint for a window manager (like muffin) to make
      * available when applications want to display the application's progress
@@ -179,7 +179,7 @@ export namespace XApp {
      * @param xid The Window to set the icon name for
      * @param file_name The icon path to set, or `null` to unset.
      */
-    function set_xid_icon_from_file(xid: bigint | number, file_name?: string | null): void;
+    function set_xid_icon_from_file(xid: bigint | number, file_name: string | null): void;
     /**
      * Sets the icon name hint for a window manager (like muffin) to make
      * available when applications want to change their icons during runtime
@@ -190,7 +190,7 @@ export namespace XApp {
      * @param xid The Window to set the icon name for
      * @param icon_name The icon name to set, or `null` to unset.
      */
-    function set_xid_icon_name(xid: bigint | number, icon_name?: string | null): void;
+    function set_xid_icon_name(xid: bigint | number, icon_name: string | null): void;
     /**
      * Sets the progress hint for a window manager (like muffin) to make
      * available when applications want to display the application's progress
@@ -401,7 +401,7 @@ export namespace XApp {
          * @param mimetypes The mimetypes to filter for, or NULL to include all favorites.
          * @returns a new {@link Gtk.ActionGroup} populated with a list of favorites, or NULL             if there are no favorites.
          */
-        create_actions(mimetypes?: string | null): Gtk.Action[];
+        create_actions(mimetypes: string | null): Gtk.Action[];
         /**
          * Generates a GtkMenu widget populated with favorites. The callback will be called when
          * a menu item has been activated, and will include the uri of the respective item.
@@ -428,7 +428,7 @@ export namespace XApp {
          * @param mimetypes The mimetypes to filter by for results
          * @returns a list of `XAppFavoriteInfos`.             Free the list with `g_list_free`, free elements with `xapp_favorite_info_free`.
          */
-        get_favorites(mimetypes?: string[] | null): FavoriteInfo[];
+        get_favorites(mimetypes: string[] | null): FavoriteInfo[];
         /**
          * @returns The number of favorite files
          */
@@ -709,7 +709,7 @@ export namespace XApp {
          * for convenience and compatibility.  Set to `null` to unset.
          * @param file_name The icon path to set, or `null` to unset.
          */
-        set_icon_from_file(file_name?: string | null): void;
+        set_icon_from_file(file_name: string | null): void;
         /**
          * @param args
          */
@@ -723,7 +723,7 @@ export namespace XApp {
          * for convenience and compatibility.  Set to `null` to unset.
          * @param icon_name The icon name or path to set, or `null` to unset.
          */
-        set_icon_name(icon_name?: string | null): void;
+        set_icon_name(icon_name: string | null): void;
         /**
          * Sets the progress hint for a window manager (like muffin) to make
          * available when applications want to display the application's progress
@@ -799,38 +799,19 @@ export namespace XApp {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -838,15 +819,9 @@ export namespace XApp {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1013,7 +988,7 @@ export namespace XApp {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1307,11 +1282,13 @@ export namespace XApp {
         set icon(val: string);
         /**
          * The size to use when displaying the icon.
+         * @default Gtk.IconSize.DND
          */
         get icon_size(): Gtk.IconSize;
         set icon_size(val: Gtk.IconSize);
         /**
          * The size to use when displaying the icon.
+         * @default Gtk.IconSize.DND
          */
         get iconSize(): Gtk.IconSize;
         set iconSize(val: Gtk.IconSize);
@@ -1373,23 +1350,29 @@ export namespace XApp {
          * Sets the icon on the {@link XApp.IconChooserButton}.
          * @param category a string representing the category selected by default.
          */
-        set_default_category(category?: string | null): void;
+        set_default_category(category: string | null): void;
         /**
          * Sets the icon on the {@link XApp.IconChooserButton}.
          * @param icon a string representing the icon to be set. This may be an icon name or a file path.
          */
-        set_icon(icon?: string | null): void;
+        set_icon(icon: string | null): void;
         /**
          * Sets the icon size used in the button.
          * @param icon_size the size of icon to use in the button, or -1 to use the default value.
          */
         set_icon_size(icon_size: Gtk.IconSize): void;
-        /** @category Inherited from Gtk.Actionable */
-        get action_name(): string;
-        set action_name(val: string);
-        /** @category Inherited from Gtk.Actionable */
-        get actionName(): string;
-        set actionName(val: string);
+        /**
+         * @default null
+         * @category Inherited from Gtk.Actionable
+         */
+        get action_name(): string | null;
+        set action_name(val: string | null);
+        /**
+         * @default null
+         * @category Inherited from Gtk.Actionable
+         */
+        get actionName(): string | null;
+        set actionName(val: string | null);
         /** @category Inherited from Gtk.Actionable */
         get action_target(): GLib.Variant;
         set action_target(val: GLib.Variant);
@@ -1433,6 +1416,7 @@ export namespace XApp {
          * > widget when it changes.
          * @since 2.16
          * @deprecated since 3.10
+         * @default true
          * @category Inherited from Gtk.Activatable
          */
         get use_action_appearance(): boolean;
@@ -1450,35 +1434,56 @@ export namespace XApp {
          * > widget when it changes.
          * @since 2.16
          * @deprecated since 3.10
+         * @default true
          * @category Inherited from Gtk.Activatable
          */
         get useActionAppearance(): boolean;
         set useActionAppearance(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get app_paintable(): boolean;
         set app_paintable(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get appPaintable(): boolean;
         set appPaintable(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get can_default(): boolean;
         set can_default(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get canDefault(): boolean;
         set canDefault(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get can_focus(): boolean;
         set can_focus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get canFocus(): boolean;
         set canFocus(val: boolean);
         /**
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get composite_child(): boolean;
         /**
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get compositeChild(): boolean;
@@ -1486,6 +1491,7 @@ export namespace XApp {
          * Whether the widget is double buffered.
          * @since 2.18
          * @deprecated since 3.14: Widgets should not use this property.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get double_buffered(): boolean;
@@ -1494,16 +1500,21 @@ export namespace XApp {
          * Whether the widget is double buffered.
          * @since 2.18
          * @deprecated since 3.14: Widgets should not use this property.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get doubleBuffered(): boolean;
         set doubleBuffered(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default Gdk.EventMask.STRUCTURE_MASK
+         * @category Inherited from Gtk.Widget
+         */
         get events(): Gdk.EventMask;
         set events(val: Gdk.EventMask);
         /**
          * Whether to expand in both directions. Setting this sets both {@link Gtk.Widget.hexpand} and {@link Gtk.Widget.vexpand}
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get expand(): boolean;
@@ -1516,6 +1527,7 @@ export namespace XApp {
          * Before 3.20, several widgets (GtkButton, GtkFileChooserButton,
          * GtkComboBox) implemented this property individually.
          * @since 3.20
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get focus_on_click(): boolean;
@@ -1528,6 +1540,7 @@ export namespace XApp {
          * Before 3.20, several widgets (GtkButton, GtkFileChooserButton,
          * GtkComboBox) implemented this property individually.
          * @since 3.20
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get focusOnClick(): boolean;
@@ -1535,20 +1548,33 @@ export namespace XApp {
         /**
          * How to distribute horizontal space if widget gets extra space, see {@link Gtk.Align}
          * @since 3.0
+         * @default Gtk.Align.FILL
          * @category Inherited from Gtk.Widget
          */
         get halign(): Gtk.Align;
         set halign(val: Gtk.Align);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get has_default(): boolean;
         set has_default(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get hasDefault(): boolean;
         set hasDefault(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get has_focus(): boolean;
         set has_focus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get hasFocus(): boolean;
         set hasFocus(val: boolean);
         /**
@@ -1562,6 +1588,7 @@ export namespace XApp {
          * and motion-notify events.  This cannot and will not be undone when the
          * property is set to `false` again.
          * @since 2.12
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get has_tooltip(): boolean;
@@ -1577,19 +1604,27 @@ export namespace XApp {
          * and motion-notify events.  This cannot and will not be undone when the
          * property is set to `false` again.
          * @since 2.12
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hasTooltip(): boolean;
         set hasTooltip(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default -1
+         * @category Inherited from Gtk.Widget
+         */
         get height_request(): number;
         set height_request(val: number);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default -1
+         * @category Inherited from Gtk.Widget
+         */
         get heightRequest(): number;
         set heightRequest(val: number);
         /**
          * Whether to expand horizontally. See `gtk_widget_set_hexpand()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpand(): boolean;
@@ -1597,6 +1632,7 @@ export namespace XApp {
         /**
          * Whether to use the {@link Gtk.Widget.hexpand} property. See `gtk_widget_get_hexpand_set()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpand_set(): boolean;
@@ -1604,20 +1640,28 @@ export namespace XApp {
         /**
          * Whether to use the {@link Gtk.Widget.hexpand} property. See `gtk_widget_get_hexpand_set()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpandSet(): boolean;
         set hexpandSet(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get is_focus(): boolean;
         set is_focus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get isFocus(): boolean;
         set isFocus(val: boolean);
         /**
          * Sets all four sides' margin at once. If read, returns max
          * margin on any side.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin(): number;
@@ -1629,6 +1673,7 @@ export namespace XApp {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_bottom(): number;
@@ -1640,6 +1685,7 @@ export namespace XApp {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginBottom(): number;
@@ -1652,6 +1698,7 @@ export namespace XApp {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.12
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_end(): number;
@@ -1664,6 +1711,7 @@ export namespace XApp {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.12
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginEnd(): number;
@@ -1676,6 +1724,7 @@ export namespace XApp {
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
          * @deprecated since 3.12: Use {@link Gtk.Widget.margin_start} instead.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_left(): number;
@@ -1688,6 +1737,7 @@ export namespace XApp {
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
          * @deprecated since 3.12: Use {@link Gtk.Widget.margin_start} instead.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginLeft(): number;
@@ -1700,6 +1750,7 @@ export namespace XApp {
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
          * @deprecated since 3.12: Use {@link Gtk.Widget.margin_end} instead.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_right(): number;
@@ -1712,6 +1763,7 @@ export namespace XApp {
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
          * @deprecated since 3.12: Use {@link Gtk.Widget.margin_end} instead.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginRight(): number;
@@ -1724,6 +1776,7 @@ export namespace XApp {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.12
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_start(): number;
@@ -1736,6 +1789,7 @@ export namespace XApp {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.12
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginStart(): number;
@@ -1747,6 +1801,7 @@ export namespace XApp {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_top(): number;
@@ -1758,17 +1813,27 @@ export namespace XApp {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginTop(): number;
         set marginTop(val: number);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default null
+         * @category Inherited from Gtk.Widget
+         */
         get name(): string;
         set name(val: string);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get no_show_all(): boolean;
         set no_show_all(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get noShowAll(): boolean;
         set noShowAll(val: boolean);
         /**
@@ -1777,17 +1842,24 @@ export namespace XApp {
          *
          * Before 3.8 this was only available in GtkWindow
          * @since 3.8
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get opacity(): number;
         set opacity(val: number);
         /** @category Inherited from Gtk.Widget */
-        get parent(): Gtk.Container;
-        set parent(val: Gtk.Container);
-        /** @category Inherited from Gtk.Widget */
+        get parent(): Gtk.Container | null;
+        set parent(val: Gtk.Container | null);
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get receives_default(): boolean;
         set receives_default(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get receivesDefault(): boolean;
         set receivesDefault(val: boolean);
         /**
@@ -1795,6 +1867,7 @@ export namespace XApp {
          * more details about widget scaling.
          * @since 3.10
          * @read-only
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -1803,10 +1876,14 @@ export namespace XApp {
          * more details about widget scaling.
          * @since 3.10
          * @read-only
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default true
+         * @category Inherited from Gtk.Widget
+         */
         get sensitive(): boolean;
         set sensitive(val: boolean);
         /**
@@ -1829,10 +1906,11 @@ export namespace XApp {
          * Note that if both {@link Gtk.Widget.tooltip_text} and {@link Gtk.Widget.tooltip_markup}
          * are set, the last one wins.
          * @since 2.12
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltip_markup(): string;
-        set tooltip_markup(val: string);
+        get tooltip_markup(): string | null;
+        set tooltip_markup(val: string | null);
         /**
          * Sets the text of tooltip to be the given string, which is marked up
          * with the [Pango text markup language][PangoMarkupFormat].
@@ -1846,10 +1924,11 @@ export namespace XApp {
          * Note that if both {@link Gtk.Widget.tooltip_text} and {@link Gtk.Widget.tooltip_markup}
          * are set, the last one wins.
          * @since 2.12
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltipMarkup(): string;
-        set tooltipMarkup(val: string);
+        get tooltipMarkup(): string | null;
+        set tooltipMarkup(val: string | null);
         /**
          * Sets the text of tooltip to be the given string.
          *
@@ -1863,10 +1942,11 @@ export namespace XApp {
          * Note that if both {@link Gtk.Widget.tooltip_text} and {@link Gtk.Widget.tooltip_markup}
          * are set, the last one wins.
          * @since 2.12
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltip_text(): string;
-        set tooltip_text(val: string);
+        get tooltip_text(): string | null;
+        set tooltip_text(val: string | null);
         /**
          * Sets the text of tooltip to be the given string.
          *
@@ -1880,13 +1960,15 @@ export namespace XApp {
          * Note that if both {@link Gtk.Widget.tooltip_text} and {@link Gtk.Widget.tooltip_markup}
          * are set, the last one wins.
          * @since 2.12
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltipText(): string;
-        set tooltipText(val: string);
+        get tooltipText(): string | null;
+        set tooltipText(val: string | null);
         /**
          * How to distribute vertical space if widget gets extra space, see {@link Gtk.Align}
          * @since 3.0
+         * @default Gtk.Align.FILL
          * @category Inherited from Gtk.Widget
          */
         get valign(): Gtk.Align;
@@ -1894,6 +1976,7 @@ export namespace XApp {
         /**
          * Whether to expand vertically. See `gtk_widget_set_vexpand()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpand(): boolean;
@@ -1901,6 +1984,7 @@ export namespace XApp {
         /**
          * Whether to use the {@link Gtk.Widget.vexpand} property. See `gtk_widget_get_vexpand_set()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpand_set(): boolean;
@@ -1908,17 +1992,27 @@ export namespace XApp {
         /**
          * Whether to use the {@link Gtk.Widget.vexpand} property. See `gtk_widget_get_vexpand_set()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpandSet(): boolean;
         set vexpandSet(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get visible(): boolean;
         set visible(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default -1
+         * @category Inherited from Gtk.Widget
+         */
         get width_request(): number;
         set width_request(val: number);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default -1
+         * @category Inherited from Gtk.Widget
+         */
         get widthRequest(): number;
         set widthRequest(val: number);
         /**
@@ -1927,7 +2021,7 @@ export namespace XApp {
          * @read-only
          * @category Inherited from Gtk.Widget
          */
-        get window(): Gdk.Window;
+        get window(): Gdk.Window | null;
         /**
          * Gets the action name for `actionable`.
          *
@@ -1956,7 +2050,7 @@ export namespace XApp {
          * associated with the window.
          * @param action_name an action name, or `null`
          */
-        set_action_name(action_name?: string | null): void;
+        set_action_name(action_name: string | null): void;
         /**
          * Sets the target value of an actionable widget.
          *
@@ -1979,7 +2073,7 @@ export namespace XApp {
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
          */
-        set_action_target_value(target_value?: GLib.Variant | null): void;
+        set_action_target_value(target_value: GLib.Variant | null): void;
         /**
          * Sets the action-name and associated string target value of an
          * actionable widget.
@@ -2024,7 +2118,7 @@ export namespace XApp {
          * @param action_name an action name, or `null`
          * @virtual
          */
-        vfunc_set_action_name(action_name?: string | null): void;
+        vfunc_set_action_name(action_name: string | null): void;
         /**
          * Sets the target value of an actionable widget.
          *
@@ -2048,7 +2142,7 @@ export namespace XApp {
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
          * @virtual
          */
-        vfunc_set_action_target_value(target_value?: GLib.Variant | null): void;
+        vfunc_set_action_target_value(target_value: GLib.Variant | null): void;
         /**
          * This is a utility function for {@link Gtk.Activatable} implementors.
          *
@@ -2106,7 +2200,7 @@ export namespace XApp {
          * {@link Gtk.Activatable.use_action_appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
          */
-        sync_action_properties(action?: Gtk.Action | null): void;
+        sync_action_properties(action: Gtk.Action | null): void;
         /**
          * This is called to update the activatable completely, this is called
          * internally when the {@link Gtk.Activatable.related_action} property is set
@@ -2115,7 +2209,7 @@ export namespace XApp {
          * @param action the related {@link Gtk.Action} or `null`
          * @virtual
          */
-        vfunc_sync_action_properties(action?: Gtk.Action | null): void;
+        vfunc_sync_action_properties(action: Gtk.Action | null): void;
         /**
          * Called to update the activatable when its related action’s properties change.
          * You must check the {@link Gtk.Activatable.use_action_appearance} property only apply action
@@ -2172,38 +2266,19 @@ export namespace XApp {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -2211,15 +2286,9 @@ export namespace XApp {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -2386,7 +2455,7 @@ export namespace XApp {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -2745,7 +2814,7 @@ export namespace XApp {
          * @param text text to set on the layout (can be `null`)
          * @returns the new {@link Pango.Layout}
          */
-        create_pango_layout(text?: string | null): Pango.Layout;
+        create_pango_layout(text: string | null): Pango.Layout;
         /**
          * Destroys a widget.
          *
@@ -2814,7 +2883,7 @@ export namespace XApp {
             targets: Gtk.TargetList,
             actions: Gdk.DragAction,
             button: number,
-            event?: Gdk.Event | null,
+            event: Gdk.Event | null,
         ): Gdk.DragContext;
         /**
          * Initiates a drag on the source side. The function only needs to be used
@@ -2905,7 +2974,7 @@ export namespace XApp {
          * @param target_list list of droppable targets, or `null` to use    gtk_drag_dest_get_target_list (`widget`).
          * @returns first target that the source offers     and the dest can accept, or `GDK_NONE`
          */
-        drag_dest_find_target(context: Gdk.DragContext, target_list?: Gtk.TargetList | null): Gdk.Atom;
+        drag_dest_find_target(context: Gdk.DragContext, target_list: Gtk.TargetList | null): Gdk.Atom;
         /**
          * Returns the list of targets this widget can accept from
          * drag-and-drop.
@@ -2978,7 +3047,7 @@ export namespace XApp {
          * `gtk_drag_dest_set()`.
          * @param target_list list of droppable targets, or `null` for none
          */
-        drag_dest_set_target_list(target_list?: Gtk.TargetList | null): void;
+        drag_dest_set_target_list(target_list: Gtk.TargetList | null): void;
         /**
          * Tells the widget to emit {@link Gtk.Widget.SignalSignatures.drag_motion | Gtk.Widget::drag-motion} and
          * {@link Gtk.Widget.SignalSignatures.drag_leave | Gtk.Widget::drag-leave} events regardless of the targets and the
@@ -3088,7 +3157,7 @@ export namespace XApp {
          * `gtk_drag_source_set()`.
          * @param target_list list of draggable targets, or `null` for none
          */
-        drag_source_set_target_list(target_list?: Gtk.TargetList | null): void;
+        drag_source_set_target_list(target_list: Gtk.TargetList | null): void;
         /**
          * Undoes the effects of `gtk_drag_source_set()`.
          */
@@ -4046,7 +4115,7 @@ export namespace XApp {
          * `gdk_window_input_shape_combine_region()` for more information.
          * @param region shape to be added, or `null` to remove an existing shape
          */
-        input_shape_combine_region(region?: cairo.Region | null): void;
+        input_shape_combine_region(region: cairo.Region | null): void;
         /**
          * Inserts `group` into `widget`. Children of `widget` that implement
          * {@link Gtk.Actionable} can then be associated with actions in `group` by
@@ -4058,7 +4127,7 @@ export namespace XApp {
          * @param name the prefix for actions in `group`
          * @param group a {@link Gio.ActionGroup}, or `null`
          */
-        insert_action_group(name: string, group?: Gio.ActionGroup | null): void;
+        insert_action_group(name: string, group: Gio.ActionGroup | null): void;
         /**
          * Computes the intersection of a `widget`’s area and `area`, storing
          * the intersection in `intersection`, and returns `true` if there was
@@ -4209,7 +4278,7 @@ export namespace XApp {
          * @param state the state for which to set the base color
          * @param color the color to assign (does not need to     be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_base()`.
          */
-        modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_base(state: Gtk.StateType, color: Gdk.Color | null): void;
         /**
          * Sets the background color for a widget in a particular state.
          *
@@ -4228,7 +4297,7 @@ export namespace XApp {
          * @param state the state for which to set the background color
          * @param color the color to assign (does not need     to be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_bg()`.
          */
-        modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_bg(state: Gtk.StateType, color: Gdk.Color | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the {@link Gtk.Widget}
          * cursor-color and secondary-cursor-color
@@ -4239,7 +4308,7 @@ export namespace XApp {
          * @param primary the color to use for primary cursor (does not     need to be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_cursor()`.
          * @param secondary the color to use for secondary cursor (does     not need to be allocated), or `null` to undo the effect of     previous calls to of `gtk_widget_modify_cursor()`.
          */
-        modify_cursor(primary?: Gdk.Color | null, secondary?: Gdk.Color | null): void;
+        modify_cursor(primary: Gdk.Color | null, secondary: Gdk.Color | null): void;
         /**
          * Sets the foreground color for a widget in a particular state.
          *
@@ -4248,7 +4317,7 @@ export namespace XApp {
          * @param state the state for which to set the foreground color
          * @param color the color to assign (does not need to be allocated),     or `null` to undo the effect of previous calls to     of `gtk_widget_modify_fg()`.
          */
-        modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_fg(state: Gtk.StateType, color: Gdk.Color | null): void;
         /**
          * Sets the font to use for a widget.
          *
@@ -4256,7 +4325,7 @@ export namespace XApp {
          * See also `gtk_widget_modify_style()`.
          * @param font_desc the font description to use, or `null`     to undo the effect of previous calls to `gtk_widget_modify_font()`
          */
-        modify_font(font_desc?: Pango.FontDescription | null): void;
+        modify_font(font_desc: Pango.FontDescription | null): void;
         /**
          * Modifies style values on the widget.
          *
@@ -4290,7 +4359,7 @@ export namespace XApp {
          * @param state the state for which to set the text color
          * @param color the color to assign (does not need to     be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_text()`.
          */
-        modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_text(state: Gtk.StateType, color: Gdk.Color | null): void;
         /**
          * Sets the background color to use for a widget.
          *
@@ -4299,7 +4368,7 @@ export namespace XApp {
          * @param state the state for which to set the background color
          * @param color the color to assign, or `null` to undo the effect     of previous calls to `gtk_widget_override_background_color()`
          */
-        override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_background_color(state: Gtk.StateFlags, color: Gdk.RGBA | null): void;
         /**
          * Sets the color to use for a widget.
          *
@@ -4329,7 +4398,7 @@ export namespace XApp {
          * @param state the state for which to set the color
          * @param color the color to assign, or `null` to undo the effect     of previous calls to `gtk_widget_override_color()`
          */
-        override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_color(state: Gtk.StateFlags, color: Gdk.RGBA | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the
          * cursor-color and secondary-cursor-color
@@ -4341,13 +4410,13 @@ export namespace XApp {
          * @param cursor the color to use for primary cursor (does not need to be     allocated), or `null` to undo the effect of previous calls to     of `gtk_widget_override_cursor()`.
          * @param secondary_cursor the color to use for secondary cursor (does not     need to be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_override_cursor()`.
          */
-        override_cursor(cursor?: Gdk.RGBA | null, secondary_cursor?: Gdk.RGBA | null): void;
+        override_cursor(cursor: Gdk.RGBA | null, secondary_cursor: Gdk.RGBA | null): void;
         /**
          * Sets the font to use for a widget. All other style values are
          * left untouched. See `gtk_widget_override_color()`.
          * @param font_desc the font description to use, or `null` to undo     the effect of previous calls to `gtk_widget_override_font()`
          */
-        override_font(font_desc?: Pango.FontDescription | null): void;
+        override_font(font_desc: Pango.FontDescription | null): void;
         /**
          * Sets a symbolic color for a widget.
          *
@@ -4357,7 +4426,7 @@ export namespace XApp {
          * @param name the name of the symbolic color to modify
          * @param color the color to assign (does not need     to be allocated), or `null` to undo the effect of previous     calls to `gtk_widget_override_symbolic_color()`
          */
-        override_symbolic_color(name: string, color?: Gdk.RGBA | null): void;
+        override_symbolic_color(name: string, color: Gdk.RGBA | null): void;
         /**
          * Obtains the full path to `widget`. The path is simply the name of a
          * widget and all its parents in the container hierarchy, separated by
@@ -4528,7 +4597,7 @@ export namespace XApp {
          * @param detail render detail to pass to theme engine
          * @returns a new pixbuf, or `null` if the     stock ID wasn’t known
          */
-        render_icon(stock_id: string, size: number, detail?: string | null): GdkPixbuf.Pixbuf | null;
+        render_icon(stock_id: string, size: number, detail: string | null): GdkPixbuf.Pixbuf | null;
         /**
          * A convenience function that uses the theme engine and style
          * settings for `widget` to look up `stock_id` and render it to
@@ -4635,7 +4704,7 @@ export namespace XApp {
          * @param accel_path path used to look up the accelerator
          * @param accel_group a {@link Gtk.AccelGroup}.
          */
-        set_accel_path(accel_path?: string | null, accel_group?: Gtk.AccelGroup | null): void;
+        set_accel_path(accel_path: string | null, accel_group: Gtk.AccelGroup | null): void;
         /**
          * Sets the widget’s allocation.  This should not be used
          * directly, but from within a widget’s size_allocate method.
@@ -4819,13 +4888,13 @@ export namespace XApp {
          * will inherit the font map from its parent.
          * @param font_map a {@link Pango.FontMap}, or `null` to unset any previously     set font map
          */
-        set_font_map(font_map?: Pango.FontMap | null): void;
+        set_font_map(font_map: Pango.FontMap | null): void;
         /**
          * Sets the {@link cairo.FontOptions} used for Pango rendering in this widget.
          * When not set, the default font options for the {@link Gdk.Screen} will be used.
          * @param options a {@link cairo.FontOptions}, or `null` to unset any   previously set default font options.
          */
-        set_font_options(options?: cairo.FontOptions | null): void;
+        set_font_options(options: cairo.FontOptions | null): void;
         /**
          * Sets the horizontal alignment of `widget`.
          * See the {@link Gtk.Widget.halign} property.
@@ -5118,7 +5187,7 @@ export namespace XApp {
          * GTK 3, this function does nothing, the passed in style is ignored.
          * @param style a {@link Gtk.Style}, or `null` to remove the effect     of a previous call to `gtk_widget_set_style()` and go back to     the default style
          */
-        set_style(style?: Gtk.Style | null): void;
+        set_style(style: Gtk.Style | null): void;
         /**
          * Enables or disables multiple pointer awareness. If this setting is `true`,
          * `widget` will start receiving multiple, per device enter/leave events. Note
@@ -5138,7 +5207,7 @@ export namespace XApp {
          * `gtk_tooltip_set_markup()`.
          * @param markup the contents of the tooltip for `widget`, or `null`
          */
-        set_tooltip_markup(markup?: string | null): void;
+        set_tooltip_markup(markup: string | null): void;
         /**
          * Sets `text` as the contents of the tooltip. This function will take
          * care of setting {@link Gtk.Widget.has_tooltip} to `true` and of the default
@@ -5147,7 +5216,7 @@ export namespace XApp {
          * See also the {@link Gtk.Widget.tooltip_text} property and `gtk_tooltip_set_text()`.
          * @param text the contents of the tooltip for `widget`
          */
-        set_tooltip_text(text?: string | null): void;
+        set_tooltip_text(text: string | null): void;
         /**
          * Replaces the default window used for displaying
          * tooltips with `custom_window`. GTK+ will take care of showing and
@@ -5156,7 +5225,7 @@ export namespace XApp {
          * tooltip window will be used.
          * @param custom_window a {@link XApp.GtkWindow}, or `null`
          */
-        set_tooltip_window(custom_window?: Gtk.Window | null): void;
+        set_tooltip_window(custom_window: Gtk.Window | null): void;
         /**
          * Sets the vertical alignment of `widget`.
          * See the {@link Gtk.Widget.valign} property.
@@ -5200,7 +5269,7 @@ export namespace XApp {
          * so you should call this function before `widget` is realized.
          * @param visual visual to be used or `null` to unset a previous one
          */
-        set_visual(visual?: Gdk.Visual | null): void;
+        set_visual(visual: Gdk.Visual | null): void;
         /**
          * Sets a widget’s window. This function should only be used in a
          * widget’s {@link Gtk.Widget.SignalSignatures.realize | Gtk.Widget::realize} implementation. The %window passed is
@@ -5222,7 +5291,7 @@ export namespace XApp {
          * for more information.
          * @param region shape to be added, or `null` to remove an existing shape
          */
-        shape_combine_region(region?: cairo.Region | null): void;
+        shape_combine_region(region: cairo.Region | null): void;
         /**
          * Flags a widget to be displayed. Any widget that isn’t shown will
          * not appear on the screen. If you want to show all the widgets in a
@@ -6272,21 +6341,25 @@ export namespace XApp {
 
         /**
          * Whether to allow paths to be searched and selected or only icon names.
+         * @default true
          */
         get allow_paths(): boolean;
         set allow_paths(val: boolean);
         /**
          * Whether to allow paths to be searched and selected or only icon names.
+         * @default true
          */
         get allowPaths(): boolean;
         set allowPaths(val: boolean);
         /**
          * The icon to use by default.
+         * @default null
          */
         get default_icon(): string;
         set default_icon(val: string);
         /**
          * The icon to use by default.
+         * @default null
          */
         get defaultIcon(): string;
         set defaultIcon(val: string);
@@ -6294,6 +6367,7 @@ export namespace XApp {
          * The preferred size to use when looking up icons. This only works with icon names.
          * Additionally, there is no guarantee that a selected icon name will exist in a
          * particular size.
+         * @default XApp.IconSize.32
          */
         get icon_size(): IconSize;
         set icon_size(val: IconSize);
@@ -6301,6 +6375,7 @@ export namespace XApp {
          * The preferred size to use when looking up icons. This only works with icon names.
          * Additionally, there is no guarantee that a selected icon name will exist in a
          * particular size.
+         * @default XApp.IconSize.32
          */
         get iconSize(): IconSize;
         set iconSize(val: IconSize);
@@ -6464,38 +6539,19 @@ export namespace XApp {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -6503,15 +6559,9 @@ export namespace XApp {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -6678,7 +6728,7 @@ export namespace XApp {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -6901,6 +6951,7 @@ export namespace XApp {
 
         /**
          * @read-only
+         * @default false
          */
         get enabled(): boolean;
 
@@ -7181,7 +7232,7 @@ export namespace XApp {
             flags: Gio.DBusObjectManagerClientFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): ObjectManagerClient;
         // Conflicted with Gio.DBusObjectManagerClient.new_for_bus_sync
 
@@ -7192,7 +7243,7 @@ export namespace XApp {
             flags: Gio.DBusObjectManagerClientFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): ObjectManagerClient;
         // Conflicted with Gio.DBusObjectManagerClient.new_sync
 
@@ -7233,8 +7284,8 @@ export namespace XApp {
         static get_proxy_type(
             manager: Gio.DBusObjectManagerClient,
             object_path: string,
-            interface_name?: string | null,
-            user_data?: any | null,
+            interface_name: string | null,
+            user_data: any | null,
         ): GObject.GType;
         /**
          * Asynchronously creates {@link Gio.DBusObjectManagerClient} using `xapp_object_manager_client_get_proxy_type()` as the {@link Gio.DBusProxyTypeFunc}. See `g_dbus_object_manager_client_new()` for more details.
@@ -7255,8 +7306,8 @@ export namespace XApp {
             flags: Gio.DBusObjectManagerClientFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<ObjectManagerClient> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<ObjectManagerClient> | null,
         ): void;
         /**
          * @param args
@@ -7282,8 +7333,8 @@ export namespace XApp {
             flags: Gio.DBusObjectManagerClientFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<ObjectManagerClient> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<ObjectManagerClient> | null,
         ): void;
         /**
          * @param args
@@ -7330,7 +7381,7 @@ export namespace XApp {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -7420,7 +7471,7 @@ export namespace XApp {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -7486,8 +7537,8 @@ export namespace XApp {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -7612,7 +7663,7 @@ export namespace XApp {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -7655,7 +7706,7 @@ export namespace XApp {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -7703,38 +7754,19 @@ export namespace XApp {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -7742,15 +7774,9 @@ export namespace XApp {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -7917,7 +7943,7 @@ export namespace XApp {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -8171,16 +8197,16 @@ export namespace XApp {
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
          * @category Inherited from XApp.Object
          */
-        get status_icon_interface(): StatusIconInterface;
-        set status_icon_interface(val: StatusIconInterface);
+        get status_icon_interface(): StatusIconInterface | null;
+        set status_icon_interface(val: StatusIconInterface | null);
         /**
          * The {@link XApp.StatusIconInterface} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-x-StatusIcon.top_of_page">org.x.StatusIcon</link>, if any.
          *
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
          * @category Inherited from XApp.Object
          */
-        get statusIconInterface(): StatusIconInterface;
-        set statusIconInterface(val: StatusIconInterface);
+        get statusIconInterface(): StatusIconInterface | null;
+        set statusIconInterface(val: StatusIconInterface | null);
         /**
          * Gets the D-Bus interface with name `interface_name` associated with
          * `object`, if any.
@@ -8279,38 +8305,19 @@ export namespace XApp {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -8318,15 +8325,9 @@ export namespace XApp {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -8493,7 +8494,7 @@ export namespace XApp {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -8747,23 +8748,23 @@ export namespace XApp {
          * Sets the {@link XApp.StatusIconInterface} instance for the D-Bus interface <link linkend="gdbus-interface-org-x-StatusIcon.top_of_page">org.x.StatusIcon</link> on `object`.
          * @param interface_ A {@link XApp.StatusIconInterface} or `null` to clear the interface.
          */
-        set_status_icon_interface(interface_?: StatusIconInterface | null): void;
+        set_status_icon_interface(interface_: StatusIconInterface | null): void;
         /**
          * The {@link XApp.StatusIconInterface} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-x-StatusIcon.top_of_page">org.x.StatusIcon</link>, if any.
          *
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
          * @category Inherited from XApp.Object
          */
-        get status_icon_interface(): StatusIconInterface;
-        set status_icon_interface(val: StatusIconInterface);
+        get status_icon_interface(): StatusIconInterface | null;
+        set status_icon_interface(val: StatusIconInterface | null);
         /**
          * The {@link XApp.StatusIconInterface} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-x-StatusIcon.top_of_page">org.x.StatusIcon</link>, if any.
          *
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
          * @category Inherited from XApp.Object
          */
-        get statusIconInterface(): StatusIconInterface;
-        set statusIconInterface(val: StatusIconInterface);
+        get statusIconInterface(): StatusIconInterface | null;
+        set statusIconInterface(val: StatusIconInterface | null);
         /**
          * Gets the D-Bus interface with name `interface_name` associated with
          * `object`, if any.
@@ -8862,38 +8863,19 @@ export namespace XApp {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -8901,15 +8883,9 @@ export namespace XApp {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -9076,7 +9052,7 @@ export namespace XApp {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -9479,38 +9455,19 @@ export namespace XApp {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -9518,15 +9475,9 @@ export namespace XApp {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -9693,7 +9644,7 @@ export namespace XApp {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -9935,7 +9886,7 @@ export namespace XApp {
 
         interface ConstructorProps
             extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-            stack: Gtk.Stack;
+            stack: Gtk.Stack | null;
         }
     }
 
@@ -9947,8 +9898,8 @@ export namespace XApp {
 
         // Properties
 
-        get stack(): Gtk.Stack;
-        set stack(val: Gtk.Stack);
+        get stack(): Gtk.Stack | null;
+        set stack(val: Gtk.Stack | null);
 
         /**
          * Compile-time signal type information.
@@ -10051,38 +10002,19 @@ export namespace XApp {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -10090,15 +10022,9 @@ export namespace XApp {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -10265,7 +10191,7 @@ export namespace XApp {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -10534,6 +10460,7 @@ export namespace XApp {
          *
          * If this value is 0 it has not been set, and its value can be unreliable if the host
          * has multiple `XAppStatusIconMonitors` active.
+         * @default 0
          */
         get icon_size(): number;
         set icon_size(val: number);
@@ -10544,6 +10471,7 @@ export namespace XApp {
          *
          * If this value is 0 it has not been set, and its value can be unreliable if the host
          * has multiple `XAppStatusIconMonitors` active.
+         * @default 0
          */
         get iconSize(): number;
         set iconSize(val: number);
@@ -10554,6 +10482,7 @@ export namespace XApp {
          * additional icons are created, only the name given to the initial one will be used for dbus,
          * though different names can still affect the sort order. This is set to the value of
          * `g_get_prgname()` if no other name is provided.
+         * @default null
          */
         get name(): string;
         set name(val: string);
@@ -10755,7 +10684,7 @@ export namespace XApp {
          * button 'highlighting' can behave correctly.
          * @param metadata A json-formatted string of key:values.
          */
-        set_metadata(metadata?: string | null): void;
+        set_metadata(metadata: string | null): void;
         /**
          * Sets the status icon name. This is not shown to users.
          * @param name a name (this defaults to the name of the application, if not set)
@@ -10765,12 +10694,12 @@ export namespace XApp {
          * See the {@link XApp.StatusIcon.primary_menu} property for details
          * @param menu A {@link Gtk.Menu} to display when the primary mouse button is released.
          */
-        set_primary_menu(menu?: Gtk.Menu | null): void;
+        set_primary_menu(menu: Gtk.Menu | null): void;
         /**
          * See the {@link XApp.StatusIcon.secondary_menu} property for details
          * @param menu A {@link Gtk.Menu} to display when the primary mouse button is released.
          */
-        set_secondary_menu(menu?: Gtk.Menu | null): void;
+        set_secondary_menu(menu: Gtk.Menu | null): void;
         /**
          * Sets the tooltip text
          * @param tooltip_text the text to show in the tooltip
@@ -10854,7 +10783,7 @@ export namespace XApp {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): StatusIconInterfaceProxy;
         // Conflicted with Gio.DBusProxy.new_for_bus_sync
 
@@ -10865,7 +10794,7 @@ export namespace XApp {
             flags: Gio.DBusProxyFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): StatusIconInterfaceProxy;
         // Conflicted with Gio.DBusProxy.new_sync
 
@@ -10915,8 +10844,8 @@ export namespace XApp {
             flags: Gio.DBusProxyFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<StatusIconInterfaceProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<StatusIconInterfaceProxy> | null,
         ): void;
         /**
          * @param args
@@ -10942,8 +10871,8 @@ export namespace XApp {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<StatusIconInterfaceProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<StatusIconInterfaceProxy> | null,
         ): void;
         /**
          * @param args
@@ -10954,22 +10883,25 @@ export namespace XApp {
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.IconName">"IconName"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from XApp.StatusIconInterface
          */
-        get icon_name(): string;
-        set icon_name(val: string);
+        get icon_name(): string | null;
+        set icon_name(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.IconName">"IconName"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from XApp.StatusIconInterface
          */
-        get iconName(): string;
-        set iconName(val: string);
+        get iconName(): string | null;
+        set iconName(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.IconSize">"IconSize"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default 0
          * @category Inherited from XApp.StatusIconInterface
          */
         get icon_size(): number;
@@ -10978,6 +10910,7 @@ export namespace XApp {
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.IconSize">"IconSize"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default 0
          * @category Inherited from XApp.StatusIconInterface
          */
         get iconSize(): number;
@@ -10986,30 +10919,34 @@ export namespace XApp {
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.Label">"Label"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from XApp.StatusIconInterface
          */
-        get label(): string;
-        set label(val: string);
+        get label(): string | null;
+        set label(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.Metadata">"Metadata"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from XApp.StatusIconInterface
          */
-        get metadata(): string;
-        set metadata(val: string);
+        get metadata(): string | null;
+        set metadata(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.Name">"Name"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from XApp.StatusIconInterface
          */
-        get name(): string;
-        set name(val: string);
+        get name(): string | null;
+        set name(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.PrimaryMenuIsOpen">"PrimaryMenuIsOpen"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from XApp.StatusIconInterface
          */
         get primary_menu_is_open(): boolean;
@@ -11018,6 +10955,7 @@ export namespace XApp {
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.PrimaryMenuIsOpen">"PrimaryMenuIsOpen"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from XApp.StatusIconInterface
          */
         get primaryMenuIsOpen(): boolean;
@@ -11026,6 +10964,7 @@ export namespace XApp {
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.SecondaryMenuIsOpen">"SecondaryMenuIsOpen"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from XApp.StatusIconInterface
          */
         get secondary_menu_is_open(): boolean;
@@ -11034,6 +10973,7 @@ export namespace XApp {
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.SecondaryMenuIsOpen">"SecondaryMenuIsOpen"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from XApp.StatusIconInterface
          */
         get secondaryMenuIsOpen(): boolean;
@@ -11042,22 +10982,25 @@ export namespace XApp {
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.TooltipText">"TooltipText"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from XApp.StatusIconInterface
          */
-        get tooltip_text(): string;
-        set tooltip_text(val: string);
+        get tooltip_text(): string | null;
+        set tooltip_text(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.TooltipText">"TooltipText"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from XApp.StatusIconInterface
          */
-        get tooltipText(): string;
-        set tooltipText(val: string);
+        get tooltipText(): string | null;
+        set tooltipText(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.Visible">"Visible"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from XApp.StatusIconInterface
          */
         get visible(): boolean;
@@ -11102,7 +11045,7 @@ export namespace XApp {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -11192,7 +11135,7 @@ export namespace XApp {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -11258,8 +11201,8 @@ export namespace XApp {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -11285,7 +11228,7 @@ export namespace XApp {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -11304,7 +11247,7 @@ export namespace XApp {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Initializes the object implementing the interface.
          *
@@ -11347,7 +11290,7 @@ export namespace XApp {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -11390,7 +11333,7 @@ export namespace XApp {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.ButtonPress">ButtonPress()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -11410,7 +11353,7 @@ export namespace XApp {
             arg_button: number,
             arg_time: number,
             arg_panel_position: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.ButtonPress">ButtonPress()</link> D-Bus method on `proxy`.
@@ -11455,7 +11398,7 @@ export namespace XApp {
             arg_button: number,
             arg_time: number,
             arg_panel_position: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -11482,7 +11425,7 @@ export namespace XApp {
             arg_button: number,
             arg_time: number,
             arg_panel_position: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.ButtonRelease">ButtonRelease()</link> D-Bus method on `proxy`.
@@ -11503,7 +11446,7 @@ export namespace XApp {
             arg_button: number,
             arg_time: number,
             arg_panel_position: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.ButtonRelease">ButtonRelease()</link> D-Bus method on `proxy`.
@@ -11548,7 +11491,7 @@ export namespace XApp {
             arg_button: number,
             arg_time: number,
             arg_panel_position: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -11575,7 +11518,7 @@ export namespace XApp {
             arg_button: number,
             arg_time: number,
             arg_panel_position: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.Scroll">Scroll()</link> D-Bus method on `proxy`.
@@ -11592,7 +11535,7 @@ export namespace XApp {
             arg_delta: number,
             arg_orientation: number,
             arg_time: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.Scroll">Scroll()</link> D-Bus method on `proxy`.
@@ -11629,7 +11572,7 @@ export namespace XApp {
             arg_delta: number,
             arg_orientation: number,
             arg_time: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -11652,7 +11595,7 @@ export namespace XApp {
             arg_delta: number,
             arg_orientation: number,
             arg_time: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-x-StatusIcon.ButtonPress">ButtonPress()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
@@ -11772,38 +11715,19 @@ export namespace XApp {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -11811,15 +11735,9 @@ export namespace XApp {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -11986,7 +11904,7 @@ export namespace XApp {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -12253,22 +12171,25 @@ export namespace XApp {
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.IconName">"IconName"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from XApp.StatusIconInterface
          */
-        get icon_name(): string;
-        set icon_name(val: string);
+        get icon_name(): string | null;
+        set icon_name(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.IconName">"IconName"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from XApp.StatusIconInterface
          */
-        get iconName(): string;
-        set iconName(val: string);
+        get iconName(): string | null;
+        set iconName(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.IconSize">"IconSize"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default 0
          * @category Inherited from XApp.StatusIconInterface
          */
         get icon_size(): number;
@@ -12277,6 +12198,7 @@ export namespace XApp {
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.IconSize">"IconSize"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default 0
          * @category Inherited from XApp.StatusIconInterface
          */
         get iconSize(): number;
@@ -12285,30 +12207,34 @@ export namespace XApp {
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.Label">"Label"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from XApp.StatusIconInterface
          */
-        get label(): string;
-        set label(val: string);
+        get label(): string | null;
+        set label(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.Metadata">"Metadata"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from XApp.StatusIconInterface
          */
-        get metadata(): string;
-        set metadata(val: string);
+        get metadata(): string | null;
+        set metadata(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.Name">"Name"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from XApp.StatusIconInterface
          */
-        get name(): string;
-        set name(val: string);
+        get name(): string | null;
+        set name(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.PrimaryMenuIsOpen">"PrimaryMenuIsOpen"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from XApp.StatusIconInterface
          */
         get primary_menu_is_open(): boolean;
@@ -12317,6 +12243,7 @@ export namespace XApp {
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.PrimaryMenuIsOpen">"PrimaryMenuIsOpen"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from XApp.StatusIconInterface
          */
         get primaryMenuIsOpen(): boolean;
@@ -12325,6 +12252,7 @@ export namespace XApp {
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.SecondaryMenuIsOpen">"SecondaryMenuIsOpen"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from XApp.StatusIconInterface
          */
         get secondary_menu_is_open(): boolean;
@@ -12333,6 +12261,7 @@ export namespace XApp {
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.SecondaryMenuIsOpen">"SecondaryMenuIsOpen"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from XApp.StatusIconInterface
          */
         get secondaryMenuIsOpen(): boolean;
@@ -12341,22 +12270,25 @@ export namespace XApp {
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.TooltipText">"TooltipText"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from XApp.StatusIconInterface
          */
-        get tooltip_text(): string;
-        set tooltip_text(val: string);
+        get tooltip_text(): string | null;
+        set tooltip_text(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.TooltipText">"TooltipText"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from XApp.StatusIconInterface
          */
-        get tooltipText(): string;
-        set tooltipText(val: string);
+        get tooltipText(): string | null;
+        set tooltipText(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.Visible">"Visible"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from XApp.StatusIconInterface
          */
         get visible(): boolean;
@@ -12378,7 +12310,7 @@ export namespace XApp {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -12397,7 +12329,7 @@ export namespace XApp {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.ButtonPress">ButtonPress()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -12417,7 +12349,7 @@ export namespace XApp {
             arg_button: number,
             arg_time: number,
             arg_panel_position: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.ButtonPress">ButtonPress()</link> D-Bus method on `proxy`.
@@ -12462,7 +12394,7 @@ export namespace XApp {
             arg_button: number,
             arg_time: number,
             arg_panel_position: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -12489,7 +12421,7 @@ export namespace XApp {
             arg_button: number,
             arg_time: number,
             arg_panel_position: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.ButtonRelease">ButtonRelease()</link> D-Bus method on `proxy`.
@@ -12510,7 +12442,7 @@ export namespace XApp {
             arg_button: number,
             arg_time: number,
             arg_panel_position: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.ButtonRelease">ButtonRelease()</link> D-Bus method on `proxy`.
@@ -12555,7 +12487,7 @@ export namespace XApp {
             arg_button: number,
             arg_time: number,
             arg_panel_position: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -12582,7 +12514,7 @@ export namespace XApp {
             arg_button: number,
             arg_time: number,
             arg_panel_position: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.Scroll">Scroll()</link> D-Bus method on `proxy`.
@@ -12599,7 +12531,7 @@ export namespace XApp {
             arg_delta: number,
             arg_orientation: number,
             arg_time: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.Scroll">Scroll()</link> D-Bus method on `proxy`.
@@ -12636,7 +12568,7 @@ export namespace XApp {
             arg_delta: number,
             arg_orientation: number,
             arg_time: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -12659,7 +12591,7 @@ export namespace XApp {
             arg_delta: number,
             arg_orientation: number,
             arg_time: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-x-StatusIcon.ButtonPress">ButtonPress()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
@@ -12779,38 +12711,19 @@ export namespace XApp {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -12818,15 +12731,9 @@ export namespace XApp {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -12993,7 +12900,7 @@ export namespace XApp {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -13422,7 +13329,7 @@ export namespace XApp {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): SwitcherooControlProxy;
         // Conflicted with Gio.DBusProxy.new_for_bus_sync
 
@@ -13433,7 +13340,7 @@ export namespace XApp {
             flags: Gio.DBusProxyFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): SwitcherooControlProxy;
         // Conflicted with Gio.DBusProxy.new_sync
 
@@ -13483,8 +13390,8 @@ export namespace XApp {
             flags: Gio.DBusProxyFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<SwitcherooControlProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<SwitcherooControlProxy> | null,
         ): void;
         /**
          * @param args
@@ -13510,8 +13417,8 @@ export namespace XApp {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<SwitcherooControlProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<SwitcherooControlProxy> | null,
         ): void;
         /**
          * @param args
@@ -13524,12 +13431,13 @@ export namespace XApp {
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          * @category Inherited from XApp.SwitcherooControl
          */
-        get gpus(): GLib.Variant;
-        set gpus(val: GLib.Variant);
+        get gpus(): GLib.Variant | null;
+        set gpus(val: GLib.Variant | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-net-hadess-SwitcherooControl.HasDualGpu">"HasDualGpu"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from XApp.SwitcherooControl
          */
         get has_dual_gpu(): boolean;
@@ -13538,6 +13446,7 @@ export namespace XApp {
          * Represents the D-Bus property <link linkend="gdbus-property-net-hadess-SwitcherooControl.HasDualGpu">"HasDualGpu"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from XApp.SwitcherooControl
          */
         get hasDualGpu(): boolean;
@@ -13546,6 +13455,7 @@ export namespace XApp {
          * Represents the D-Bus property <link linkend="gdbus-property-net-hadess-SwitcherooControl.NumGPUs">"NumGPUs"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default 0
          * @category Inherited from XApp.SwitcherooControl
          */
         get num_gpus(): number;
@@ -13554,6 +13464,7 @@ export namespace XApp {
          * Represents the D-Bus property <link linkend="gdbus-property-net-hadess-SwitcherooControl.NumGPUs">"NumGPUs"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default 0
          * @category Inherited from XApp.SwitcherooControl
          */
         get numGpus(): number;
@@ -13598,7 +13509,7 @@ export namespace XApp {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -13688,7 +13599,7 @@ export namespace XApp {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -13754,8 +13665,8 @@ export namespace XApp {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -13781,7 +13692,7 @@ export namespace XApp {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -13800,7 +13711,7 @@ export namespace XApp {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Initializes the object implementing the interface.
          *
@@ -13843,7 +13754,7 @@ export namespace XApp {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -13886,7 +13797,7 @@ export namespace XApp {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -13934,38 +13845,19 @@ export namespace XApp {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -13973,15 +13865,9 @@ export namespace XApp {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -14148,7 +14034,7 @@ export namespace XApp {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -14408,12 +14294,13 @@ export namespace XApp {
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          * @category Inherited from XApp.SwitcherooControl
          */
-        get gpus(): GLib.Variant;
-        set gpus(val: GLib.Variant);
+        get gpus(): GLib.Variant | null;
+        set gpus(val: GLib.Variant | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-net-hadess-SwitcherooControl.HasDualGpu">"HasDualGpu"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from XApp.SwitcherooControl
          */
         get has_dual_gpu(): boolean;
@@ -14422,6 +14309,7 @@ export namespace XApp {
          * Represents the D-Bus property <link linkend="gdbus-property-net-hadess-SwitcherooControl.HasDualGpu">"HasDualGpu"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from XApp.SwitcherooControl
          */
         get hasDualGpu(): boolean;
@@ -14430,6 +14318,7 @@ export namespace XApp {
          * Represents the D-Bus property <link linkend="gdbus-property-net-hadess-SwitcherooControl.NumGPUs">"NumGPUs"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default 0
          * @category Inherited from XApp.SwitcherooControl
          */
         get num_gpus(): number;
@@ -14438,6 +14327,7 @@ export namespace XApp {
          * Represents the D-Bus property <link linkend="gdbus-property-net-hadess-SwitcherooControl.NumGPUs">"NumGPUs"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default 0
          * @category Inherited from XApp.SwitcherooControl
          */
         get numGpus(): number;
@@ -14459,7 +14349,7 @@ export namespace XApp {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -14478,7 +14368,7 @@ export namespace XApp {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -14526,38 +14416,19 @@ export namespace XApp {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -14565,15 +14436,9 @@ export namespace XApp {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -14740,7 +14605,7 @@ export namespace XApp {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -15168,9 +15033,9 @@ export namespace XApp {
 
         // Constructors
 
-        constructor(visible: boolean, sensitive: boolean, widgets?: Gtk.Widget[] | null);
+        constructor(visible: boolean, sensitive: boolean, widgets: Gtk.Widget[] | null);
 
-        static ['new'](visible: boolean, sensitive: boolean, widgets?: Gtk.Widget[] | null): VisibilityGroup;
+        static ['new'](visible: boolean, sensitive: boolean, widgets: Gtk.Widget[] | null): VisibilityGroup;
 
         // Methods
 
@@ -15230,7 +15095,7 @@ export namespace XApp {
         /**
          * @param widgets The widgets to add to this group, replacing any existing ones.
          */
-        set_widgets(widgets?: Gtk.Widget[] | null): void;
+        set_widgets(widgets: Gtk.Widget[] | null): void;
         /**
          * Show all widgets in the group.
          */
@@ -15241,8 +15106,8 @@ export namespace XApp {
         // Constructor properties interface
 
         interface ConstructorProps extends Gio.DBusObject.ConstructorProps {
-            status_icon_interface: StatusIconInterface;
-            statusIconInterface: StatusIconInterface;
+            status_icon_interface: StatusIconInterface | null;
+            statusIconInterface: StatusIconInterface | null;
         }
     }
 
@@ -15262,15 +15127,15 @@ export namespace XApp {
          *
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
          */
-        get status_icon_interface(): StatusIconInterface;
-        set status_icon_interface(val: StatusIconInterface);
+        get status_icon_interface(): StatusIconInterface | null;
+        set status_icon_interface(val: StatusIconInterface | null);
         /**
          * The {@link XApp.StatusIconInterface} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-x-StatusIcon.top_of_page">org.x.StatusIcon</link>, if any.
          *
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
          */
-        get statusIconInterface(): StatusIconInterface;
-        set statusIconInterface(val: StatusIconInterface);
+        get statusIconInterface(): StatusIconInterface | null;
+        set statusIconInterface(val: StatusIconInterface | null);
 
         // Methods
 
@@ -15348,19 +15213,19 @@ export namespace XApp {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            icon_name: string;
-            iconName: string;
+            icon_name: string | null;
+            iconName: string | null;
             icon_size: number;
             iconSize: number;
-            label: string;
-            metadata: string;
-            name: string;
+            label: string | null;
+            metadata: string | null;
+            name: string | null;
             primary_menu_is_open: boolean;
             primaryMenuIsOpen: boolean;
             secondary_menu_is_open: boolean;
             secondaryMenuIsOpen: boolean;
-            tooltip_text: string;
-            tooltipText: string;
+            tooltip_text: string | null;
+            tooltipText: string | null;
             visible: boolean;
         }
     }
@@ -15392,20 +15257,23 @@ export namespace XApp {
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.IconName">"IconName"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          */
-        get icon_name(): string;
-        set icon_name(val: string);
+        get icon_name(): string | null;
+        set icon_name(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.IconName">"IconName"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          */
-        get iconName(): string;
-        set iconName(val: string);
+        get iconName(): string | null;
+        set iconName(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.IconSize">"IconSize"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default 0
          */
         get icon_size(): number;
         set icon_size(val: number);
@@ -15413,6 +15281,7 @@ export namespace XApp {
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.IconSize">"IconSize"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default 0
          */
         get iconSize(): number;
         set iconSize(val: number);
@@ -15420,27 +15289,31 @@ export namespace XApp {
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.Label">"Label"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          */
-        get label(): string;
-        set label(val: string);
+        get label(): string | null;
+        set label(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.Metadata">"Metadata"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          */
-        get metadata(): string;
-        set metadata(val: string);
+        get metadata(): string | null;
+        set metadata(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.Name">"Name"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          */
-        get name(): string;
-        set name(val: string);
+        get name(): string | null;
+        set name(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.PrimaryMenuIsOpen">"PrimaryMenuIsOpen"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          */
         get primary_menu_is_open(): boolean;
         set primary_menu_is_open(val: boolean);
@@ -15448,6 +15321,7 @@ export namespace XApp {
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.PrimaryMenuIsOpen">"PrimaryMenuIsOpen"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          */
         get primaryMenuIsOpen(): boolean;
         set primaryMenuIsOpen(val: boolean);
@@ -15455,6 +15329,7 @@ export namespace XApp {
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.SecondaryMenuIsOpen">"SecondaryMenuIsOpen"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          */
         get secondary_menu_is_open(): boolean;
         set secondary_menu_is_open(val: boolean);
@@ -15462,6 +15337,7 @@ export namespace XApp {
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.SecondaryMenuIsOpen">"SecondaryMenuIsOpen"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          */
         get secondaryMenuIsOpen(): boolean;
         set secondaryMenuIsOpen(val: boolean);
@@ -15469,20 +15345,23 @@ export namespace XApp {
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.TooltipText">"TooltipText"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          */
-        get tooltip_text(): string;
-        set tooltip_text(val: string);
+        get tooltip_text(): string | null;
+        set tooltip_text(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.TooltipText">"TooltipText"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          */
-        get tooltipText(): string;
-        set tooltipText(val: string);
+        get tooltipText(): string | null;
+        set tooltipText(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.Visible">"Visible"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          */
         get visible(): boolean;
         set visible(val: boolean);
@@ -15508,7 +15387,7 @@ export namespace XApp {
             arg_button: number,
             arg_time: number,
             arg_panel_position: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.ButtonPress">ButtonPress()</link> D-Bus method on `proxy`.
@@ -15553,7 +15432,7 @@ export namespace XApp {
             arg_button: number,
             arg_time: number,
             arg_panel_position: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -15580,7 +15459,7 @@ export namespace XApp {
             arg_button: number,
             arg_time: number,
             arg_panel_position: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.ButtonRelease">ButtonRelease()</link> D-Bus method on `proxy`.
@@ -15601,7 +15480,7 @@ export namespace XApp {
             arg_button: number,
             arg_time: number,
             arg_panel_position: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.ButtonRelease">ButtonRelease()</link> D-Bus method on `proxy`.
@@ -15646,7 +15525,7 @@ export namespace XApp {
             arg_button: number,
             arg_time: number,
             arg_panel_position: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -15673,7 +15552,7 @@ export namespace XApp {
             arg_button: number,
             arg_time: number,
             arg_panel_position: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.Scroll">Scroll()</link> D-Bus method on `proxy`.
@@ -15690,7 +15569,7 @@ export namespace XApp {
             arg_delta: number,
             arg_orientation: number,
             arg_time: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.Scroll">Scroll()</link> D-Bus method on `proxy`.
@@ -15727,7 +15606,7 @@ export namespace XApp {
             arg_delta: number,
             arg_orientation: number,
             arg_time: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -15750,7 +15629,7 @@ export namespace XApp {
             arg_delta: number,
             arg_orientation: number,
             arg_time: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-x-StatusIcon.ButtonPress">ButtonPress()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
@@ -15783,7 +15662,7 @@ export namespace XApp {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            gpus: GLib.Variant;
+            gpus: GLib.Variant | null;
             has_dual_gpu: boolean;
             hasDualGpu: boolean;
             num_gpus: number;
@@ -15819,12 +15698,13 @@ export namespace XApp {
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        get gpus(): GLib.Variant;
-        set gpus(val: GLib.Variant);
+        get gpus(): GLib.Variant | null;
+        set gpus(val: GLib.Variant | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-net-hadess-SwitcherooControl.HasDualGpu">"HasDualGpu"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          */
         get has_dual_gpu(): boolean;
         set has_dual_gpu(val: boolean);
@@ -15832,6 +15712,7 @@ export namespace XApp {
          * Represents the D-Bus property <link linkend="gdbus-property-net-hadess-SwitcherooControl.HasDualGpu">"HasDualGpu"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          */
         get hasDualGpu(): boolean;
         set hasDualGpu(val: boolean);
@@ -15839,6 +15720,7 @@ export namespace XApp {
          * Represents the D-Bus property <link linkend="gdbus-property-net-hadess-SwitcherooControl.NumGPUs">"NumGPUs"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default 0
          */
         get num_gpus(): number;
         set num_gpus(val: number);
@@ -15846,6 +15728,7 @@ export namespace XApp {
          * Represents the D-Bus property <link linkend="gdbus-property-net-hadess-SwitcherooControl.NumGPUs">"NumGPUs"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default 0
          */
         get numGpus(): number;
         set numGpus(val: number);

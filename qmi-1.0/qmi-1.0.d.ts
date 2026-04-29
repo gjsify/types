@@ -19889,11 +19889,13 @@ export namespace Qmi {
 
         /**
          * @since 1.0
+         * @default 0
          */
         get client_cid(): number;
         set client_cid(val: number);
         /**
          * @since 1.0
+         * @default 0
          */
         get clientCid(): number;
         set clientCid(val: number);
@@ -19909,41 +19911,49 @@ export namespace Qmi {
         set clientDevice(val: Device);
         /**
          * @since 1.0
+         * @default Qmi.Service.UNKNOWN
          */
         get client_service(): Service;
         set client_service(val: Service);
         /**
          * @since 1.0
+         * @default Qmi.Service.UNKNOWN
          */
         get clientService(): Service;
         set clientService(val: Service);
         /**
          * @since 1.20
          * @read-only
+         * @default false
          */
         get client_valid(): boolean;
         /**
          * @since 1.20
          * @read-only
+         * @default false
          */
         get clientValid(): boolean;
         /**
          * @since 1.0
+         * @default 0
          */
         get client_version_major(): number;
         set client_version_major(val: number);
         /**
          * @since 1.0
+         * @default 0
          */
         get clientVersionMajor(): number;
         set clientVersionMajor(val: number);
         /**
          * @since 1.0
+         * @default 0
          */
         get client_version_minor(): number;
         set client_version_minor(val: number);
         /**
          * @since 1.0
+         * @default 0
          */
         get clientVersionMinor(): number;
         set clientVersionMinor(val: number);
@@ -20133,7 +20143,7 @@ export namespace Qmi {
         send(
             input: MessageAtrSendInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageAtrSendOutput>;
         /**
          * Asynchronously sends a Send request to the device.
@@ -20166,7 +20176,7 @@ export namespace Qmi {
         send(
             input: MessageAtrSendInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageAtrSendOutput> | void;
         /**
@@ -20260,7 +20270,7 @@ export namespace Qmi {
         activate_automatic(
             input: MessageDmsActivateAutomaticInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsActivateAutomaticOutput>;
         /**
          * Asynchronously sends a Activate Automatic request to the device.
@@ -20293,7 +20303,7 @@ export namespace Qmi {
         activate_automatic(
             input: MessageDmsActivateAutomaticInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsActivateAutomaticOutput> | void;
         /**
@@ -20315,7 +20325,7 @@ export namespace Qmi {
         activate_manual(
             input: MessageDmsActivateManualInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsActivateManualOutput>;
         /**
          * Asynchronously sends a Activate Manual request to the device.
@@ -20348,7 +20358,7 @@ export namespace Qmi {
         activate_manual(
             input: MessageDmsActivateManualInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsActivateManualOutput> | void;
         /**
@@ -20370,7 +20380,7 @@ export namespace Qmi {
         delete_stored_image(
             input: MessageDmsDeleteStoredImageInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsDeleteStoredImageOutput>;
         /**
          * Asynchronously sends a Delete Stored Image request to the device.
@@ -20403,7 +20413,7 @@ export namespace Qmi {
         delete_stored_image(
             input: MessageDmsDeleteStoredImageInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsDeleteStoredImageOutput> | void;
         /**
@@ -20425,7 +20435,7 @@ export namespace Qmi {
         foxconn_change_device_mode(
             input: MessageDmsFoxconnChangeDeviceModeInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsFoxconnChangeDeviceModeOutput>;
         /**
          * Asynchronously sends a Foxconn Change Device Mode request to the device.
@@ -20458,7 +20468,7 @@ export namespace Qmi {
         foxconn_change_device_mode(
             input: MessageDmsFoxconnChangeDeviceModeInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsFoxconnChangeDeviceModeOutput> | void;
         /**
@@ -20480,7 +20490,7 @@ export namespace Qmi {
         foxconn_get_firmware_version(
             input: MessageDmsFoxconnGetFirmwareVersionInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsFoxconnGetFirmwareVersionOutput>;
         /**
          * Asynchronously sends a Foxconn Get Firmware Version request to the device.
@@ -20513,7 +20523,7 @@ export namespace Qmi {
         foxconn_get_firmware_version(
             input: MessageDmsFoxconnGetFirmwareVersionInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsFoxconnGetFirmwareVersionOutput> | void;
         /**
@@ -20535,7 +20545,7 @@ export namespace Qmi {
         foxconn_set_fcc_authentication(
             input: MessageDmsFoxconnSetFccAuthenticationInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsFoxconnSetFccAuthenticationOutput>;
         /**
          * Asynchronously sends a Foxconn Set FCC Authentication request to the device.
@@ -20568,7 +20578,7 @@ export namespace Qmi {
         foxconn_set_fcc_authentication(
             input: MessageDmsFoxconnSetFccAuthenticationInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsFoxconnSetFccAuthenticationOutput> | void;
         /**
@@ -20590,7 +20600,7 @@ export namespace Qmi {
         foxconn_set_fcc_authentication_v2(
             input: MessageDmsFoxconnSetFccAuthenticationV2Input,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsFoxconnSetFccAuthenticationV2Output>;
         /**
          * Asynchronously sends a Foxconn Set FCC Authentication v2 request to the device.
@@ -20623,7 +20633,7 @@ export namespace Qmi {
         foxconn_set_fcc_authentication_v2(
             input: MessageDmsFoxconnSetFccAuthenticationV2Input,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsFoxconnSetFccAuthenticationV2Output> | void;
         /**
@@ -20645,7 +20655,7 @@ export namespace Qmi {
         get_activation_state(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsGetActivationStateOutput>;
         /**
          * Asynchronously sends a Get Activation State request to the device.
@@ -20678,7 +20688,7 @@ export namespace Qmi {
         get_activation_state(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsGetActivationStateOutput> | void;
         /**
@@ -20700,7 +20710,7 @@ export namespace Qmi {
         get_alt_net_config(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsGetAltNetConfigOutput>;
         /**
          * Asynchronously sends a Get Alt Net Config request to the device.
@@ -20733,7 +20743,7 @@ export namespace Qmi {
         get_alt_net_config(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsGetAltNetConfigOutput> | void;
         /**
@@ -20755,7 +20765,7 @@ export namespace Qmi {
         get_band_capabilities(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsGetBandCapabilitiesOutput>;
         /**
          * Asynchronously sends a Get Band Capabilities request to the device.
@@ -20788,7 +20798,7 @@ export namespace Qmi {
         get_band_capabilities(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsGetBandCapabilitiesOutput> | void;
         /**
@@ -20810,7 +20820,7 @@ export namespace Qmi {
         get_boot_image_download_mode(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsGetBootImageDownloadModeOutput>;
         /**
          * Asynchronously sends a Get Boot Image Download Mode request to the device.
@@ -20843,7 +20853,7 @@ export namespace Qmi {
         get_boot_image_download_mode(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsGetBootImageDownloadModeOutput> | void;
         /**
@@ -20865,7 +20875,7 @@ export namespace Qmi {
         get_capabilities(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsGetCapabilitiesOutput>;
         /**
          * Asynchronously sends a Get Capabilities request to the device.
@@ -20898,7 +20908,7 @@ export namespace Qmi {
         get_capabilities(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsGetCapabilitiesOutput> | void;
         /**
@@ -20920,7 +20930,7 @@ export namespace Qmi {
         get_factory_sku(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsGetFactorySkuOutput>;
         /**
          * Asynchronously sends a Get Factory SKU request to the device.
@@ -20953,7 +20963,7 @@ export namespace Qmi {
         get_factory_sku(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsGetFactorySkuOutput> | void;
         /**
@@ -20975,7 +20985,7 @@ export namespace Qmi {
         get_firmware_preference(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsGetFirmwarePreferenceOutput>;
         /**
          * Asynchronously sends a Get Firmware Preference request to the device.
@@ -21008,7 +21018,7 @@ export namespace Qmi {
         get_firmware_preference(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsGetFirmwarePreferenceOutput> | void;
         /**
@@ -21030,7 +21040,7 @@ export namespace Qmi {
         get_hardware_revision(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsGetHardwareRevisionOutput>;
         /**
          * Asynchronously sends a Get Hardware Revision request to the device.
@@ -21063,7 +21073,7 @@ export namespace Qmi {
         get_hardware_revision(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsGetHardwareRevisionOutput> | void;
         /**
@@ -21085,7 +21095,7 @@ export namespace Qmi {
         get_ids(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsGetIdsOutput>;
         /**
          * Asynchronously sends a Get IDs request to the device.
@@ -21118,7 +21128,7 @@ export namespace Qmi {
         get_ids(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsGetIdsOutput> | void;
         /**
@@ -21140,7 +21150,7 @@ export namespace Qmi {
         get_mac_address(
             input: MessageDmsGetMacAddressInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsGetMacAddressOutput>;
         /**
          * Asynchronously sends a Get MAC Address request to the device.
@@ -21173,7 +21183,7 @@ export namespace Qmi {
         get_mac_address(
             input: MessageDmsGetMacAddressInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsGetMacAddressOutput> | void;
         /**
@@ -21195,7 +21205,7 @@ export namespace Qmi {
         get_manufacturer(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsGetManufacturerOutput>;
         /**
          * Asynchronously sends a Get Manufacturer request to the device.
@@ -21228,7 +21238,7 @@ export namespace Qmi {
         get_manufacturer(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsGetManufacturerOutput> | void;
         /**
@@ -21250,7 +21260,7 @@ export namespace Qmi {
         get_model(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsGetModelOutput>;
         /**
          * Asynchronously sends a Get Model request to the device.
@@ -21283,7 +21293,7 @@ export namespace Qmi {
         get_model(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsGetModelOutput> | void;
         /**
@@ -21305,7 +21315,7 @@ export namespace Qmi {
         get_msisdn(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsGetMsisdnOutput>;
         /**
          * Asynchronously sends a Get MSISDN request to the device.
@@ -21338,7 +21348,7 @@ export namespace Qmi {
         get_msisdn(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsGetMsisdnOutput> | void;
         /**
@@ -21360,7 +21370,7 @@ export namespace Qmi {
         get_operating_mode(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsGetOperatingModeOutput>;
         /**
          * Asynchronously sends a Get Operating Mode request to the device.
@@ -21393,7 +21403,7 @@ export namespace Qmi {
         get_operating_mode(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsGetOperatingModeOutput> | void;
         /**
@@ -21415,7 +21425,7 @@ export namespace Qmi {
         get_power_state(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsGetPowerStateOutput>;
         /**
          * Asynchronously sends a Get Power State request to the device.
@@ -21448,7 +21458,7 @@ export namespace Qmi {
         get_power_state(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsGetPowerStateOutput> | void;
         /**
@@ -21470,7 +21480,7 @@ export namespace Qmi {
         get_prl_version(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsGetPrlVersionOutput>;
         /**
          * Asynchronously sends a Get PRL Version request to the device.
@@ -21503,7 +21513,7 @@ export namespace Qmi {
         get_prl_version(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsGetPrlVersionOutput> | void;
         /**
@@ -21525,7 +21535,7 @@ export namespace Qmi {
         get_revision(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsGetRevisionOutput>;
         /**
          * Asynchronously sends a Get Revision request to the device.
@@ -21558,7 +21568,7 @@ export namespace Qmi {
         get_revision(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsGetRevisionOutput> | void;
         /**
@@ -21580,7 +21590,7 @@ export namespace Qmi {
         get_software_version(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsGetSoftwareVersionOutput>;
         /**
          * Asynchronously sends a Get Software Version request to the device.
@@ -21613,7 +21623,7 @@ export namespace Qmi {
         get_software_version(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsGetSoftwareVersionOutput> | void;
         /**
@@ -21635,7 +21645,7 @@ export namespace Qmi {
         get_stored_image_info(
             input: MessageDmsGetStoredImageInfoInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsGetStoredImageInfoOutput>;
         /**
          * Asynchronously sends a Get Stored Image Info request to the device.
@@ -21668,7 +21678,7 @@ export namespace Qmi {
         get_stored_image_info(
             input: MessageDmsGetStoredImageInfoInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsGetStoredImageInfoOutput> | void;
         /**
@@ -21690,7 +21700,7 @@ export namespace Qmi {
         get_supported_messages(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsGetSupportedMessagesOutput>;
         /**
          * Asynchronously sends a Get Supported Messages request to the device.
@@ -21723,7 +21733,7 @@ export namespace Qmi {
         get_supported_messages(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsGetSupportedMessagesOutput> | void;
         /**
@@ -21745,7 +21755,7 @@ export namespace Qmi {
         get_time(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsGetTimeOutput>;
         /**
          * Asynchronously sends a Get Time request to the device.
@@ -21778,7 +21788,7 @@ export namespace Qmi {
         get_time(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsGetTimeOutput> | void;
         /**
@@ -21800,7 +21810,7 @@ export namespace Qmi {
         get_user_lock_state(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsGetUserLockStateOutput>;
         /**
          * Asynchronously sends a Get User Lock State request to the device.
@@ -21833,7 +21843,7 @@ export namespace Qmi {
         get_user_lock_state(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsGetUserLockStateOutput> | void;
         /**
@@ -21855,7 +21865,7 @@ export namespace Qmi {
         hp_change_device_mode(
             input: MessageDmsHpChangeDeviceModeInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsHpChangeDeviceModeOutput>;
         /**
          * Asynchronously sends a HP Change Device Mode request to the device.
@@ -21888,7 +21898,7 @@ export namespace Qmi {
         hp_change_device_mode(
             input: MessageDmsHpChangeDeviceModeInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsHpChangeDeviceModeOutput> | void;
         /**
@@ -21910,7 +21920,7 @@ export namespace Qmi {
         list_stored_images(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsListStoredImagesOutput>;
         /**
          * Asynchronously sends a List Stored Images request to the device.
@@ -21943,7 +21953,7 @@ export namespace Qmi {
         list_stored_images(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsListStoredImagesOutput> | void;
         /**
@@ -21965,7 +21975,7 @@ export namespace Qmi {
         read_eri_file(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsReadEriFileOutput>;
         /**
          * Asynchronously sends a Read ERI File request to the device.
@@ -21998,7 +22008,7 @@ export namespace Qmi {
         read_eri_file(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsReadEriFileOutput> | void;
         /**
@@ -22020,7 +22030,7 @@ export namespace Qmi {
         read_user_data(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsReadUserDataOutput>;
         /**
          * Asynchronously sends a Read User Data request to the device.
@@ -22053,7 +22063,7 @@ export namespace Qmi {
         read_user_data(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsReadUserDataOutput> | void;
         /**
@@ -22075,7 +22085,7 @@ export namespace Qmi {
         reset(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsResetOutput>;
         /**
          * Asynchronously sends a Reset request to the device.
@@ -22108,7 +22118,7 @@ export namespace Qmi {
         reset(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsResetOutput> | void;
         /**
@@ -22130,7 +22140,7 @@ export namespace Qmi {
         restore_factory_defaults(
             input: MessageDmsRestoreFactoryDefaultsInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsRestoreFactoryDefaultsOutput>;
         /**
          * Asynchronously sends a Restore Factory Defaults request to the device.
@@ -22163,7 +22173,7 @@ export namespace Qmi {
         restore_factory_defaults(
             input: MessageDmsRestoreFactoryDefaultsInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsRestoreFactoryDefaultsOutput> | void;
         /**
@@ -22185,7 +22195,7 @@ export namespace Qmi {
         set_alt_net_config(
             input: MessageDmsSetAltNetConfigInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsSetAltNetConfigOutput>;
         /**
          * Asynchronously sends a Set Alt Net Config request to the device.
@@ -22218,7 +22228,7 @@ export namespace Qmi {
         set_alt_net_config(
             input: MessageDmsSetAltNetConfigInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsSetAltNetConfigOutput> | void;
         /**
@@ -22240,7 +22250,7 @@ export namespace Qmi {
         set_boot_image_download_mode(
             input: MessageDmsSetBootImageDownloadModeInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsSetBootImageDownloadModeOutput>;
         /**
          * Asynchronously sends a Set Boot Image Download Mode request to the device.
@@ -22273,7 +22283,7 @@ export namespace Qmi {
         set_boot_image_download_mode(
             input: MessageDmsSetBootImageDownloadModeInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsSetBootImageDownloadModeOutput> | void;
         /**
@@ -22295,7 +22305,7 @@ export namespace Qmi {
         set_event_report(
             input: MessageDmsSetEventReportInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsSetEventReportOutput>;
         /**
          * Asynchronously sends a Set Event Report request to the device.
@@ -22328,7 +22338,7 @@ export namespace Qmi {
         set_event_report(
             input: MessageDmsSetEventReportInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsSetEventReportOutput> | void;
         /**
@@ -22350,7 +22360,7 @@ export namespace Qmi {
         set_fcc_authentication(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsSetFccAuthenticationOutput>;
         /**
          * Asynchronously sends a Set FCC Authentication request to the device.
@@ -22383,7 +22393,7 @@ export namespace Qmi {
         set_fcc_authentication(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsSetFccAuthenticationOutput> | void;
         /**
@@ -22405,7 +22415,7 @@ export namespace Qmi {
         set_firmware_id(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsSetFirmwareIdOutput>;
         /**
          * Asynchronously sends a Set Firmware ID request to the device.
@@ -22438,7 +22448,7 @@ export namespace Qmi {
         set_firmware_id(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsSetFirmwareIdOutput> | void;
         /**
@@ -22460,7 +22470,7 @@ export namespace Qmi {
         set_firmware_preference(
             input: MessageDmsSetFirmwarePreferenceInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsSetFirmwarePreferenceOutput>;
         /**
          * Asynchronously sends a Set Firmware Preference request to the device.
@@ -22493,7 +22503,7 @@ export namespace Qmi {
         set_firmware_preference(
             input: MessageDmsSetFirmwarePreferenceInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsSetFirmwarePreferenceOutput> | void;
         /**
@@ -22515,7 +22525,7 @@ export namespace Qmi {
         set_operating_mode(
             input: MessageDmsSetOperatingModeInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsSetOperatingModeOutput>;
         /**
          * Asynchronously sends a Set Operating Mode request to the device.
@@ -22548,7 +22558,7 @@ export namespace Qmi {
         set_operating_mode(
             input: MessageDmsSetOperatingModeInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsSetOperatingModeOutput> | void;
         /**
@@ -22570,7 +22580,7 @@ export namespace Qmi {
         set_service_programming_code(
             input: MessageDmsSetServiceProgrammingCodeInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsSetServiceProgrammingCodeOutput>;
         /**
          * Asynchronously sends a Set Service Programming Code request to the device.
@@ -22603,7 +22613,7 @@ export namespace Qmi {
         set_service_programming_code(
             input: MessageDmsSetServiceProgrammingCodeInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsSetServiceProgrammingCodeOutput> | void;
         /**
@@ -22625,7 +22635,7 @@ export namespace Qmi {
         set_time(
             input: MessageDmsSetTimeInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsSetTimeOutput>;
         /**
          * Asynchronously sends a Set Time request to the device.
@@ -22658,7 +22668,7 @@ export namespace Qmi {
         set_time(
             input: MessageDmsSetTimeInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsSetTimeOutput> | void;
         /**
@@ -22680,7 +22690,7 @@ export namespace Qmi {
         set_user_lock_code(
             input: MessageDmsSetUserLockCodeInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsSetUserLockCodeOutput>;
         /**
          * Asynchronously sends a Set User Lock Code request to the device.
@@ -22713,7 +22723,7 @@ export namespace Qmi {
         set_user_lock_code(
             input: MessageDmsSetUserLockCodeInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsSetUserLockCodeOutput> | void;
         /**
@@ -22735,7 +22745,7 @@ export namespace Qmi {
         set_user_lock_state(
             input: MessageDmsSetUserLockStateInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsSetUserLockStateOutput>;
         /**
          * Asynchronously sends a Set User Lock State request to the device.
@@ -22768,7 +22778,7 @@ export namespace Qmi {
         set_user_lock_state(
             input: MessageDmsSetUserLockStateInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsSetUserLockStateOutput> | void;
         /**
@@ -22790,7 +22800,7 @@ export namespace Qmi {
         swi_get_current_firmware(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsSwiGetCurrentFirmwareOutput>;
         /**
          * Asynchronously sends a Swi Get Current Firmware request to the device.
@@ -22823,7 +22833,7 @@ export namespace Qmi {
         swi_get_current_firmware(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsSwiGetCurrentFirmwareOutput> | void;
         /**
@@ -22845,7 +22855,7 @@ export namespace Qmi {
         swi_get_usb_composition(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsSwiGetUsbCompositionOutput>;
         /**
          * Asynchronously sends a Swi Get USB Composition request to the device.
@@ -22878,7 +22888,7 @@ export namespace Qmi {
         swi_get_usb_composition(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsSwiGetUsbCompositionOutput> | void;
         /**
@@ -22900,7 +22910,7 @@ export namespace Qmi {
         swi_set_usb_composition(
             input: MessageDmsSwiSetUsbCompositionInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsSwiSetUsbCompositionOutput>;
         /**
          * Asynchronously sends a Swi Set USB Composition request to the device.
@@ -22933,7 +22943,7 @@ export namespace Qmi {
         swi_set_usb_composition(
             input: MessageDmsSwiSetUsbCompositionInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsSwiSetUsbCompositionOutput> | void;
         /**
@@ -22955,7 +22965,7 @@ export namespace Qmi {
         uim_change_pin(
             input: MessageDmsUimChangePinInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsUimChangePinOutput>;
         /**
          * Asynchronously sends a UIM Change PIN request to the device.
@@ -22988,7 +22998,7 @@ export namespace Qmi {
         uim_change_pin(
             input: MessageDmsUimChangePinInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsUimChangePinOutput> | void;
         /**
@@ -23010,7 +23020,7 @@ export namespace Qmi {
         uim_get_ck_status(
             input: MessageDmsUimGetCkStatusInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsUimGetCkStatusOutput>;
         /**
          * Asynchronously sends a UIM Get CK Status request to the device.
@@ -23043,7 +23053,7 @@ export namespace Qmi {
         uim_get_ck_status(
             input: MessageDmsUimGetCkStatusInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsUimGetCkStatusOutput> | void;
         /**
@@ -23065,7 +23075,7 @@ export namespace Qmi {
         uim_get_iccid(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsUimGetIccidOutput>;
         /**
          * Asynchronously sends a UIM Get ICCID request to the device.
@@ -23098,7 +23108,7 @@ export namespace Qmi {
         uim_get_iccid(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsUimGetIccidOutput> | void;
         /**
@@ -23120,7 +23130,7 @@ export namespace Qmi {
         uim_get_imsi(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsUimGetImsiOutput>;
         /**
          * Asynchronously sends a UIM Get IMSI request to the device.
@@ -23153,7 +23163,7 @@ export namespace Qmi {
         uim_get_imsi(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsUimGetImsiOutput> | void;
         /**
@@ -23175,7 +23185,7 @@ export namespace Qmi {
         uim_get_pin_status(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsUimGetPinStatusOutput>;
         /**
          * Asynchronously sends a UIM Get PIN Status request to the device.
@@ -23208,7 +23218,7 @@ export namespace Qmi {
         uim_get_pin_status(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsUimGetPinStatusOutput> | void;
         /**
@@ -23230,7 +23240,7 @@ export namespace Qmi {
         uim_get_state(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsUimGetStateOutput>;
         /**
          * Asynchronously sends a UIM Get State request to the device.
@@ -23263,7 +23273,7 @@ export namespace Qmi {
         uim_get_state(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsUimGetStateOutput> | void;
         /**
@@ -23285,7 +23295,7 @@ export namespace Qmi {
         uim_set_ck_protection(
             input: MessageDmsUimSetCkProtectionInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsUimSetCkProtectionOutput>;
         /**
          * Asynchronously sends a UIM Set CK Protection request to the device.
@@ -23318,7 +23328,7 @@ export namespace Qmi {
         uim_set_ck_protection(
             input: MessageDmsUimSetCkProtectionInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsUimSetCkProtectionOutput> | void;
         /**
@@ -23340,7 +23350,7 @@ export namespace Qmi {
         uim_set_pin_protection(
             input: MessageDmsUimSetPinProtectionInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsUimSetPinProtectionOutput>;
         /**
          * Asynchronously sends a UIM Set PIN Protection request to the device.
@@ -23373,7 +23383,7 @@ export namespace Qmi {
         uim_set_pin_protection(
             input: MessageDmsUimSetPinProtectionInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsUimSetPinProtectionOutput> | void;
         /**
@@ -23395,7 +23405,7 @@ export namespace Qmi {
         uim_unblock_ck(
             input: MessageDmsUimUnblockCkInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsUimUnblockCkOutput>;
         /**
          * Asynchronously sends a UIM Unblock CK request to the device.
@@ -23428,7 +23438,7 @@ export namespace Qmi {
         uim_unblock_ck(
             input: MessageDmsUimUnblockCkInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsUimUnblockCkOutput> | void;
         /**
@@ -23450,7 +23460,7 @@ export namespace Qmi {
         uim_unblock_pin(
             input: MessageDmsUimUnblockPinInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsUimUnblockPinOutput>;
         /**
          * Asynchronously sends a UIM Unblock PIN request to the device.
@@ -23483,7 +23493,7 @@ export namespace Qmi {
         uim_unblock_pin(
             input: MessageDmsUimUnblockPinInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsUimUnblockPinOutput> | void;
         /**
@@ -23505,7 +23515,7 @@ export namespace Qmi {
         uim_verify_pin(
             input: MessageDmsUimVerifyPinInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsUimVerifyPinOutput>;
         /**
          * Asynchronously sends a UIM Verify PIN request to the device.
@@ -23538,7 +23548,7 @@ export namespace Qmi {
         uim_verify_pin(
             input: MessageDmsUimVerifyPinInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsUimVerifyPinOutput> | void;
         /**
@@ -23560,7 +23570,7 @@ export namespace Qmi {
         validate_service_programming_code(
             input: MessageDmsValidateServiceProgrammingCodeInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsValidateServiceProgrammingCodeOutput>;
         /**
          * Asynchronously sends a Validate Service Programming Code request to the device.
@@ -23593,7 +23603,7 @@ export namespace Qmi {
         validate_service_programming_code(
             input: MessageDmsValidateServiceProgrammingCodeInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsValidateServiceProgrammingCodeOutput> | void;
         /**
@@ -23615,7 +23625,7 @@ export namespace Qmi {
         write_user_data(
             input: MessageDmsWriteUserDataInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDmsWriteUserDataOutput>;
         /**
          * Asynchronously sends a Write User Data request to the device.
@@ -23648,7 +23658,7 @@ export namespace Qmi {
         write_user_data(
             input: MessageDmsWriteUserDataInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDmsWriteUserDataOutput> | void;
         /**
@@ -23735,7 +23745,7 @@ export namespace Qmi {
         close_port(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDpmClosePortOutput>;
         /**
          * Asynchronously sends a Close Port request to the device.
@@ -23768,7 +23778,7 @@ export namespace Qmi {
         close_port(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDpmClosePortOutput> | void;
         /**
@@ -23790,7 +23800,7 @@ export namespace Qmi {
         open_port(
             input: MessageDpmOpenPortInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDpmOpenPortOutput>;
         /**
          * Asynchronously sends a Open Port request to the device.
@@ -23823,7 +23833,7 @@ export namespace Qmi {
         open_port(
             input: MessageDpmOpenPortInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDpmOpenPortOutput> | void;
         /**
@@ -23917,7 +23927,7 @@ export namespace Qmi {
         get_apn_info(
             input: MessageDsdGetApnInfoInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDsdGetApnInfoOutput>;
         /**
          * Asynchronously sends a Get APN Info request to the device.
@@ -23950,7 +23960,7 @@ export namespace Qmi {
         get_apn_info(
             input: MessageDsdGetApnInfoInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDsdGetApnInfoOutput> | void;
         /**
@@ -23972,7 +23982,7 @@ export namespace Qmi {
         get_system_status(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDsdGetSystemStatusOutput>;
         /**
          * Asynchronously sends a Get System Status request to the device.
@@ -24005,7 +24015,7 @@ export namespace Qmi {
         get_system_status(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDsdGetSystemStatusOutput> | void;
         /**
@@ -24027,7 +24037,7 @@ export namespace Qmi {
         set_apn_type(
             input: MessageDsdSetApnTypeInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDsdSetApnTypeOutput>;
         /**
          * Asynchronously sends a Set APN Type request to the device.
@@ -24060,7 +24070,7 @@ export namespace Qmi {
         set_apn_type(
             input: MessageDsdSetApnTypeInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDsdSetApnTypeOutput> | void;
         /**
@@ -24082,7 +24092,7 @@ export namespace Qmi {
         system_status_change(
             input: MessageDsdSystemStatusChangeInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageDsdSystemStatusChangeOutput>;
         /**
          * Asynchronously sends a System Status Change request to the device.
@@ -24115,7 +24125,7 @@ export namespace Qmi {
         system_status_change(
             input: MessageDsdSystemStatusChangeInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageDsdSystemStatusChangeOutput> | void;
         /**
@@ -24202,7 +24212,7 @@ export namespace Qmi {
         get_firmware_version(
             input: MessageFoxGetFirmwareVersionInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageFoxGetFirmwareVersionOutput>;
         /**
          * Asynchronously sends a Get Firmware Version request to the device.
@@ -24235,7 +24245,7 @@ export namespace Qmi {
         get_firmware_version(
             input: MessageFoxGetFirmwareVersionInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageFoxGetFirmwareVersionOutput> | void;
         /**
@@ -24322,7 +24332,7 @@ export namespace Qmi {
         dms_get_firmware_list(
             input: MessageGasDmsGetFirmwareListInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageGasDmsGetFirmwareListOutput>;
         /**
          * Asynchronously sends a DMS Get Firmware List request to the device.
@@ -24355,7 +24365,7 @@ export namespace Qmi {
         dms_get_firmware_list(
             input: MessageGasDmsGetFirmwareListInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageGasDmsGetFirmwareListOutput> | void;
         /**
@@ -24377,7 +24387,7 @@ export namespace Qmi {
         dms_get_usb_composition(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageGasDmsGetUsbCompositionOutput>;
         /**
          * Asynchronously sends a DMS Get USB Composition request to the device.
@@ -24410,7 +24420,7 @@ export namespace Qmi {
         dms_get_usb_composition(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageGasDmsGetUsbCompositionOutput> | void;
         /**
@@ -24432,7 +24442,7 @@ export namespace Qmi {
         dms_set_active_firmware(
             input: MessageGasDmsSetActiveFirmwareInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageGasDmsSetActiveFirmwareOutput>;
         /**
          * Asynchronously sends a DMS Set Active Firmware request to the device.
@@ -24465,7 +24475,7 @@ export namespace Qmi {
         dms_set_active_firmware(
             input: MessageGasDmsSetActiveFirmwareInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageGasDmsSetActiveFirmwareOutput> | void;
         /**
@@ -24487,7 +24497,7 @@ export namespace Qmi {
         dms_set_usb_composition(
             input: MessageGasDmsSetUsbCompositionInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageGasDmsSetUsbCompositionOutput>;
         /**
          * Asynchronously sends a DMS Set USB Composition request to the device.
@@ -24520,7 +24530,7 @@ export namespace Qmi {
         dms_set_usb_composition(
             input: MessageGasDmsSetUsbCompositionInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageGasDmsSetUsbCompositionOutput> | void;
         /**
@@ -24607,7 +24617,7 @@ export namespace Qmi {
         test_get_value(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageGmsTestGetValueOutput>;
         /**
          * Asynchronously sends a Test Get Value request to the device.
@@ -24640,7 +24650,7 @@ export namespace Qmi {
         test_get_value(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageGmsTestGetValueOutput> | void;
         /**
@@ -24662,7 +24672,7 @@ export namespace Qmi {
         test_set_value(
             input: MessageGmsTestSetValueInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageGmsTestSetValueOutput>;
         /**
          * Asynchronously sends a Test Set Value request to the device.
@@ -24695,7 +24705,7 @@ export namespace Qmi {
         test_set_value(
             input: MessageGmsTestSetValueInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageGmsTestSetValueOutput> | void;
         /**
@@ -24901,7 +24911,7 @@ export namespace Qmi {
         delete_assistance_data(
             input: MessageLocDeleteAssistanceDataInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageLocDeleteAssistanceDataOutput>;
         /**
          * Asynchronously sends a Delete Assistance Data request to the device.
@@ -24934,7 +24944,7 @@ export namespace Qmi {
         delete_assistance_data(
             input: MessageLocDeleteAssistanceDataInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageLocDeleteAssistanceDataOutput> | void;
         /**
@@ -24956,7 +24966,7 @@ export namespace Qmi {
         get_engine_lock(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageLocGetEngineLockOutput>;
         /**
          * Asynchronously sends a Get Engine Lock request to the device.
@@ -24989,7 +24999,7 @@ export namespace Qmi {
         get_engine_lock(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageLocGetEngineLockOutput> | void;
         /**
@@ -25011,7 +25021,7 @@ export namespace Qmi {
         get_nmea_types(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageLocGetNmeaTypesOutput>;
         /**
          * Asynchronously sends a Get NMEA Types request to the device.
@@ -25044,7 +25054,7 @@ export namespace Qmi {
         get_nmea_types(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageLocGetNmeaTypesOutput> | void;
         /**
@@ -25066,7 +25076,7 @@ export namespace Qmi {
         get_operation_mode(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageLocGetOperationModeOutput>;
         /**
          * Asynchronously sends a Get Operation Mode request to the device.
@@ -25099,7 +25109,7 @@ export namespace Qmi {
         get_operation_mode(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageLocGetOperationModeOutput> | void;
         /**
@@ -25121,7 +25131,7 @@ export namespace Qmi {
         get_predicted_orbits_data_source(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageLocGetPredictedOrbitsDataSourceOutput>;
         /**
          * Asynchronously sends a Get Predicted Orbits Data Source request to the device.
@@ -25154,7 +25164,7 @@ export namespace Qmi {
         get_predicted_orbits_data_source(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageLocGetPredictedOrbitsDataSourceOutput> | void;
         /**
@@ -25176,7 +25186,7 @@ export namespace Qmi {
         get_server(
             input: MessageLocGetServerInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageLocGetServerOutput>;
         /**
          * Asynchronously sends a Get Server request to the device.
@@ -25209,7 +25219,7 @@ export namespace Qmi {
         get_server(
             input: MessageLocGetServerInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageLocGetServerOutput> | void;
         /**
@@ -25231,7 +25241,7 @@ export namespace Qmi {
         inject_predicted_orbits_data(
             input: MessageLocInjectPredictedOrbitsDataInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageLocInjectPredictedOrbitsDataOutput>;
         /**
          * Asynchronously sends a Inject Predicted Orbits Data request to the device.
@@ -25264,7 +25274,7 @@ export namespace Qmi {
         inject_predicted_orbits_data(
             input: MessageLocInjectPredictedOrbitsDataInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageLocInjectPredictedOrbitsDataOutput> | void;
         /**
@@ -25286,7 +25296,7 @@ export namespace Qmi {
         inject_xtra_data(
             input: MessageLocInjectXtraDataInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageLocInjectXtraDataOutput>;
         /**
          * Asynchronously sends a Inject Xtra Data request to the device.
@@ -25319,7 +25329,7 @@ export namespace Qmi {
         inject_xtra_data(
             input: MessageLocInjectXtraDataInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageLocInjectXtraDataOutput> | void;
         /**
@@ -25341,7 +25351,7 @@ export namespace Qmi {
         register_events(
             input: MessageLocRegisterEventsInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageLocRegisterEventsOutput>;
         /**
          * Asynchronously sends a Register Events request to the device.
@@ -25374,7 +25384,7 @@ export namespace Qmi {
         register_events(
             input: MessageLocRegisterEventsInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageLocRegisterEventsOutput> | void;
         /**
@@ -25396,7 +25406,7 @@ export namespace Qmi {
         set_engine_lock(
             input: MessageLocSetEngineLockInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageLocSetEngineLockOutput>;
         /**
          * Asynchronously sends a Set Engine Lock request to the device.
@@ -25429,7 +25439,7 @@ export namespace Qmi {
         set_engine_lock(
             input: MessageLocSetEngineLockInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageLocSetEngineLockOutput> | void;
         /**
@@ -25451,7 +25461,7 @@ export namespace Qmi {
         set_nmea_types(
             input: MessageLocSetNmeaTypesInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageLocSetNmeaTypesOutput>;
         /**
          * Asynchronously sends a Set NMEA Types request to the device.
@@ -25484,7 +25494,7 @@ export namespace Qmi {
         set_nmea_types(
             input: MessageLocSetNmeaTypesInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageLocSetNmeaTypesOutput> | void;
         /**
@@ -25506,7 +25516,7 @@ export namespace Qmi {
         set_operation_mode(
             input: MessageLocSetOperationModeInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageLocSetOperationModeOutput>;
         /**
          * Asynchronously sends a Set Operation Mode request to the device.
@@ -25539,7 +25549,7 @@ export namespace Qmi {
         set_operation_mode(
             input: MessageLocSetOperationModeInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageLocSetOperationModeOutput> | void;
         /**
@@ -25561,7 +25571,7 @@ export namespace Qmi {
         set_server(
             input: MessageLocSetServerInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageLocSetServerOutput>;
         /**
          * Asynchronously sends a Set Server request to the device.
@@ -25594,7 +25604,7 @@ export namespace Qmi {
         set_server(
             input: MessageLocSetServerInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageLocSetServerOutput> | void;
         /**
@@ -25616,7 +25626,7 @@ export namespace Qmi {
         start(
             input: MessageLocStartInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageLocStartOutput>;
         /**
          * Asynchronously sends a Start request to the device.
@@ -25649,7 +25659,7 @@ export namespace Qmi {
         start(
             input: MessageLocStartInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageLocStartOutput> | void;
         /**
@@ -25671,7 +25681,7 @@ export namespace Qmi {
         stop(
             input: MessageLocStopInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageLocStopOutput>;
         /**
          * Asynchronously sends a Stop request to the device.
@@ -25704,7 +25714,7 @@ export namespace Qmi {
         stop(
             input: MessageLocStopInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageLocStopOutput> | void;
         /**
@@ -25840,7 +25850,7 @@ export namespace Qmi {
         attach_detach(
             input: MessageNasAttachDetachInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageNasAttachDetachOutput>;
         /**
          * Asynchronously sends a Attach Detach request to the device.
@@ -25873,7 +25883,7 @@ export namespace Qmi {
         attach_detach(
             input: MessageNasAttachDetachInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageNasAttachDetachOutput> | void;
         /**
@@ -25895,7 +25905,7 @@ export namespace Qmi {
         config_signal_info(
             input: MessageNasConfigSignalInfoInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageNasConfigSignalInfoOutput>;
         /**
          * Asynchronously sends a Config Signal Info request to the device.
@@ -25928,7 +25938,7 @@ export namespace Qmi {
         config_signal_info(
             input: MessageNasConfigSignalInfoInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageNasConfigSignalInfoOutput> | void;
         /**
@@ -25950,7 +25960,7 @@ export namespace Qmi {
         config_signal_info_v2(
             input: MessageNasConfigSignalInfoV2Input,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageNasConfigSignalInfoV2Output>;
         /**
          * Asynchronously sends a Config Signal Info v2 request to the device.
@@ -25983,7 +25993,7 @@ export namespace Qmi {
         config_signal_info_v2(
             input: MessageNasConfigSignalInfoV2Input,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageNasConfigSignalInfoV2Output> | void;
         /**
@@ -26005,7 +26015,7 @@ export namespace Qmi {
         force_network_search(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageNasForceNetworkSearchOutput>;
         /**
          * Asynchronously sends a Force Network Search request to the device.
@@ -26038,7 +26048,7 @@ export namespace Qmi {
         force_network_search(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageNasForceNetworkSearchOutput> | void;
         /**
@@ -26060,7 +26070,7 @@ export namespace Qmi {
         get_cdma_position_info(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageNasGetCdmaPositionInfoOutput>;
         /**
          * Asynchronously sends a Get CDMA Position Info request to the device.
@@ -26093,7 +26103,7 @@ export namespace Qmi {
         get_cdma_position_info(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageNasGetCdmaPositionInfoOutput> | void;
         /**
@@ -26115,7 +26125,7 @@ export namespace Qmi {
         get_cell_location_info(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageNasGetCellLocationInfoOutput>;
         /**
          * Asynchronously sends a Get Cell Location Info request to the device.
@@ -26148,7 +26158,7 @@ export namespace Qmi {
         get_cell_location_info(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageNasGetCellLocationInfoOutput> | void;
         /**
@@ -26170,7 +26180,7 @@ export namespace Qmi {
         get_drx(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageNasGetDrxOutput>;
         /**
          * Asynchronously sends a Get DRX request to the device.
@@ -26203,7 +26213,7 @@ export namespace Qmi {
         get_drx(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageNasGetDrxOutput> | void;
         /**
@@ -26225,7 +26235,7 @@ export namespace Qmi {
         get_home_network(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageNasGetHomeNetworkOutput>;
         /**
          * Asynchronously sends a Get Home Network request to the device.
@@ -26258,7 +26268,7 @@ export namespace Qmi {
         get_home_network(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageNasGetHomeNetworkOutput> | void;
         /**
@@ -26280,7 +26290,7 @@ export namespace Qmi {
         get_lte_cphy_ca_info(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageNasGetLteCphyCaInfoOutput>;
         /**
          * Asynchronously sends a Get LTE Cphy CA Info request to the device.
@@ -26313,7 +26323,7 @@ export namespace Qmi {
         get_lte_cphy_ca_info(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageNasGetLteCphyCaInfoOutput> | void;
         /**
@@ -26335,7 +26345,7 @@ export namespace Qmi {
         get_operator_name(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageNasGetOperatorNameOutput>;
         /**
          * Asynchronously sends a Get Operator Name request to the device.
@@ -26368,7 +26378,7 @@ export namespace Qmi {
         get_operator_name(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageNasGetOperatorNameOutput> | void;
         /**
@@ -26390,7 +26400,7 @@ export namespace Qmi {
         get_plmn_name(
             input: MessageNasGetPlmnNameInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageNasGetPlmnNameOutput>;
         /**
          * Asynchronously sends a Get PLMN Name request to the device.
@@ -26423,7 +26433,7 @@ export namespace Qmi {
         get_plmn_name(
             input: MessageNasGetPlmnNameInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageNasGetPlmnNameOutput> | void;
         /**
@@ -26445,7 +26455,7 @@ export namespace Qmi {
         get_preferred_networks(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageNasGetPreferredNetworksOutput>;
         /**
          * Asynchronously sends a Get Preferred Networks request to the device.
@@ -26478,7 +26488,7 @@ export namespace Qmi {
         get_preferred_networks(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageNasGetPreferredNetworksOutput> | void;
         /**
@@ -26500,7 +26510,7 @@ export namespace Qmi {
         get_rf_band_information(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageNasGetRfBandInformationOutput>;
         /**
          * Asynchronously sends a Get RF Band Information request to the device.
@@ -26533,7 +26543,7 @@ export namespace Qmi {
         get_rf_band_information(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageNasGetRfBandInformationOutput> | void;
         /**
@@ -26555,7 +26565,7 @@ export namespace Qmi {
         get_serving_system(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageNasGetServingSystemOutput>;
         /**
          * Asynchronously sends a Get Serving System request to the device.
@@ -26588,7 +26598,7 @@ export namespace Qmi {
         get_serving_system(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageNasGetServingSystemOutput> | void;
         /**
@@ -26610,7 +26620,7 @@ export namespace Qmi {
         get_signal_info(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageNasGetSignalInfoOutput>;
         /**
          * Asynchronously sends a Get Signal Info request to the device.
@@ -26643,7 +26653,7 @@ export namespace Qmi {
         get_signal_info(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageNasGetSignalInfoOutput> | void;
         /**
@@ -26665,7 +26675,7 @@ export namespace Qmi {
         get_signal_strength(
             input: MessageNasGetSignalStrengthInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageNasGetSignalStrengthOutput>;
         /**
          * Asynchronously sends a Get Signal Strength request to the device.
@@ -26698,7 +26708,7 @@ export namespace Qmi {
         get_signal_strength(
             input: MessageNasGetSignalStrengthInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageNasGetSignalStrengthOutput> | void;
         /**
@@ -26720,7 +26730,7 @@ export namespace Qmi {
         get_supported_messages(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageNasGetSupportedMessagesOutput>;
         /**
          * Asynchronously sends a Get Supported Messages request to the device.
@@ -26753,7 +26763,7 @@ export namespace Qmi {
         get_supported_messages(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageNasGetSupportedMessagesOutput> | void;
         /**
@@ -26775,7 +26785,7 @@ export namespace Qmi {
         get_system_info(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageNasGetSystemInfoOutput>;
         /**
          * Asynchronously sends a Get System Info request to the device.
@@ -26808,7 +26818,7 @@ export namespace Qmi {
         get_system_info(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageNasGetSystemInfoOutput> | void;
         /**
@@ -26830,7 +26840,7 @@ export namespace Qmi {
         get_system_selection_preference(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageNasGetSystemSelectionPreferenceOutput>;
         /**
          * Asynchronously sends a Get System Selection Preference request to the device.
@@ -26863,7 +26873,7 @@ export namespace Qmi {
         get_system_selection_preference(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageNasGetSystemSelectionPreferenceOutput> | void;
         /**
@@ -26885,7 +26895,7 @@ export namespace Qmi {
         get_technology_preference(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageNasGetTechnologyPreferenceOutput>;
         /**
          * Asynchronously sends a Get Technology Preference request to the device.
@@ -26918,7 +26928,7 @@ export namespace Qmi {
         get_technology_preference(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageNasGetTechnologyPreferenceOutput> | void;
         /**
@@ -26940,7 +26950,7 @@ export namespace Qmi {
         get_tx_rx_info(
             input: MessageNasGetTxRxInfoInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageNasGetTxRxInfoOutput>;
         /**
          * Asynchronously sends a Get Tx Rx Info request to the device.
@@ -26973,7 +26983,7 @@ export namespace Qmi {
         get_tx_rx_info(
             input: MessageNasGetTxRxInfoInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageNasGetTxRxInfoOutput> | void;
         /**
@@ -26995,7 +27005,7 @@ export namespace Qmi {
         initiate_network_register(
             input: MessageNasInitiateNetworkRegisterInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageNasInitiateNetworkRegisterOutput>;
         /**
          * Asynchronously sends a Initiate Network Register request to the device.
@@ -27028,7 +27038,7 @@ export namespace Qmi {
         initiate_network_register(
             input: MessageNasInitiateNetworkRegisterInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageNasInitiateNetworkRegisterOutput> | void;
         /**
@@ -27057,7 +27067,7 @@ export namespace Qmi {
         network_scan(
             input: MessageNasNetworkScanInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageNasNetworkScanOutput>;
         /**
          * Asynchronously sends a Network Scan request to the device.
@@ -27104,7 +27114,7 @@ export namespace Qmi {
         network_scan(
             input: MessageNasNetworkScanInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageNasNetworkScanOutput> | void;
         /**
@@ -27126,7 +27136,7 @@ export namespace Qmi {
         register_indications(
             input: MessageNasRegisterIndicationsInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageNasRegisterIndicationsOutput>;
         /**
          * Asynchronously sends a Register Indications request to the device.
@@ -27159,7 +27169,7 @@ export namespace Qmi {
         register_indications(
             input: MessageNasRegisterIndicationsInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageNasRegisterIndicationsOutput> | void;
         /**
@@ -27181,7 +27191,7 @@ export namespace Qmi {
         reset(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageNasResetOutput>;
         /**
          * Asynchronously sends a Reset request to the device.
@@ -27214,7 +27224,7 @@ export namespace Qmi {
         reset(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageNasResetOutput> | void;
         /**
@@ -27236,7 +27246,7 @@ export namespace Qmi {
         set_event_report(
             input: MessageNasSetEventReportInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageNasSetEventReportOutput>;
         /**
          * Asynchronously sends a Set Event Report request to the device.
@@ -27269,7 +27279,7 @@ export namespace Qmi {
         set_event_report(
             input: MessageNasSetEventReportInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageNasSetEventReportOutput> | void;
         /**
@@ -27291,7 +27301,7 @@ export namespace Qmi {
         set_preferred_networks(
             input: MessageNasSetPreferredNetworksInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageNasSetPreferredNetworksOutput>;
         /**
          * Asynchronously sends a Set Preferred Networks request to the device.
@@ -27324,7 +27334,7 @@ export namespace Qmi {
         set_preferred_networks(
             input: MessageNasSetPreferredNetworksInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageNasSetPreferredNetworksOutput> | void;
         /**
@@ -27346,7 +27356,7 @@ export namespace Qmi {
         set_system_selection_preference(
             input: MessageNasSetSystemSelectionPreferenceInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageNasSetSystemSelectionPreferenceOutput>;
         /**
          * Asynchronously sends a Set System Selection Preference request to the device.
@@ -27379,7 +27389,7 @@ export namespace Qmi {
         set_system_selection_preference(
             input: MessageNasSetSystemSelectionPreferenceInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageNasSetSystemSelectionPreferenceOutput> | void;
         /**
@@ -27401,7 +27411,7 @@ export namespace Qmi {
         set_technology_preference(
             input: MessageNasSetTechnologyPreferenceInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageNasSetTechnologyPreferenceOutput>;
         /**
          * Asynchronously sends a Set Technology Preference request to the device.
@@ -27434,7 +27444,7 @@ export namespace Qmi {
         set_technology_preference(
             input: MessageNasSetTechnologyPreferenceInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageNasSetTechnologyPreferenceOutput> | void;
         /**
@@ -27456,7 +27466,7 @@ export namespace Qmi {
         swi_get_status(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageNasSwiGetStatusOutput>;
         /**
          * Asynchronously sends a Swi Get Status request to the device.
@@ -27489,7 +27499,7 @@ export namespace Qmi {
         swi_get_status(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageNasSwiGetStatusOutput> | void;
         /**
@@ -27583,7 +27593,7 @@ export namespace Qmi {
         cancel_session(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageOmaCancelSessionOutput>;
         /**
          * Asynchronously sends a Cancel Session request to the device.
@@ -27616,7 +27626,7 @@ export namespace Qmi {
         cancel_session(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageOmaCancelSessionOutput> | void;
         /**
@@ -27638,7 +27648,7 @@ export namespace Qmi {
         get_feature_setting(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageOmaGetFeatureSettingOutput>;
         /**
          * Asynchronously sends a Get Feature Setting request to the device.
@@ -27671,7 +27681,7 @@ export namespace Qmi {
         get_feature_setting(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageOmaGetFeatureSettingOutput> | void;
         /**
@@ -27693,7 +27703,7 @@ export namespace Qmi {
         get_session_info(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageOmaGetSessionInfoOutput>;
         /**
          * Asynchronously sends a Get Session Info request to the device.
@@ -27726,7 +27736,7 @@ export namespace Qmi {
         get_session_info(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageOmaGetSessionInfoOutput> | void;
         /**
@@ -27748,7 +27758,7 @@ export namespace Qmi {
         reset(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageOmaResetOutput>;
         /**
          * Asynchronously sends a Reset request to the device.
@@ -27781,7 +27791,7 @@ export namespace Qmi {
         reset(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageOmaResetOutput> | void;
         /**
@@ -27803,7 +27813,7 @@ export namespace Qmi {
         send_selection(
             input: MessageOmaSendSelectionInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageOmaSendSelectionOutput>;
         /**
          * Asynchronously sends a Send Selection request to the device.
@@ -27836,7 +27846,7 @@ export namespace Qmi {
         send_selection(
             input: MessageOmaSendSelectionInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageOmaSendSelectionOutput> | void;
         /**
@@ -27858,7 +27868,7 @@ export namespace Qmi {
         set_event_report(
             input: MessageOmaSetEventReportInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageOmaSetEventReportOutput>;
         /**
          * Asynchronously sends a Set Event Report request to the device.
@@ -27891,7 +27901,7 @@ export namespace Qmi {
         set_event_report(
             input: MessageOmaSetEventReportInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageOmaSetEventReportOutput> | void;
         /**
@@ -27913,7 +27923,7 @@ export namespace Qmi {
         set_feature_setting(
             input: MessageOmaSetFeatureSettingInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageOmaSetFeatureSettingOutput>;
         /**
          * Asynchronously sends a Set Feature Setting request to the device.
@@ -27946,7 +27956,7 @@ export namespace Qmi {
         set_feature_setting(
             input: MessageOmaSetFeatureSettingInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageOmaSetFeatureSettingOutput> | void;
         /**
@@ -27968,7 +27978,7 @@ export namespace Qmi {
         start_session(
             input: MessageOmaStartSessionInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageOmaStartSessionOutput>;
         /**
          * Asynchronously sends a Start Session request to the device.
@@ -28001,7 +28011,7 @@ export namespace Qmi {
         start_session(
             input: MessageOmaStartSessionInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageOmaStartSessionOutput> | void;
         /**
@@ -28088,7 +28098,7 @@ export namespace Qmi {
         get_all_capabilities(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessagePbmGetAllCapabilitiesOutput>;
         /**
          * Asynchronously sends a Get All Capabilities request to the device.
@@ -28121,7 +28131,7 @@ export namespace Qmi {
         get_all_capabilities(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessagePbmGetAllCapabilitiesOutput> | void;
         /**
@@ -28143,7 +28153,7 @@ export namespace Qmi {
         get_capabilities(
             input: MessagePbmGetCapabilitiesInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessagePbmGetCapabilitiesOutput>;
         /**
          * Asynchronously sends a Get Capabilities request to the device.
@@ -28176,7 +28186,7 @@ export namespace Qmi {
         get_capabilities(
             input: MessagePbmGetCapabilitiesInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessagePbmGetCapabilitiesOutput> | void;
         /**
@@ -28198,7 +28208,7 @@ export namespace Qmi {
         indication_register(
             input: MessagePbmIndicationRegisterInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessagePbmIndicationRegisterOutput>;
         /**
          * Asynchronously sends a Indication Register request to the device.
@@ -28231,7 +28241,7 @@ export namespace Qmi {
         indication_register(
             input: MessagePbmIndicationRegisterInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessagePbmIndicationRegisterOutput> | void;
         /**
@@ -28374,7 +28384,7 @@ export namespace Qmi {
         activate_config(
             input: MessagePdcActivateConfigInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessagePdcActivateConfigOutput>;
         /**
          * Asynchronously sends a Activate Config request to the device.
@@ -28407,7 +28417,7 @@ export namespace Qmi {
         activate_config(
             input: MessagePdcActivateConfigInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessagePdcActivateConfigOutput> | void;
         /**
@@ -28429,7 +28439,7 @@ export namespace Qmi {
         config_change(
             input: MessagePdcConfigChangeInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessagePdcConfigChangeOutput>;
         /**
          * Asynchronously sends a Config Change request to the device.
@@ -28462,7 +28472,7 @@ export namespace Qmi {
         config_change(
             input: MessagePdcConfigChangeInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessagePdcConfigChangeOutput> | void;
         /**
@@ -28484,7 +28494,7 @@ export namespace Qmi {
         deactivate_config(
             input: MessagePdcDeactivateConfigInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessagePdcDeactivateConfigOutput>;
         /**
          * Asynchronously sends a Deactivate Config request to the device.
@@ -28517,7 +28527,7 @@ export namespace Qmi {
         deactivate_config(
             input: MessagePdcDeactivateConfigInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessagePdcDeactivateConfigOutput> | void;
         /**
@@ -28539,7 +28549,7 @@ export namespace Qmi {
         delete_config(
             input: MessagePdcDeleteConfigInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessagePdcDeleteConfigOutput>;
         /**
          * Asynchronously sends a Delete Config request to the device.
@@ -28572,7 +28582,7 @@ export namespace Qmi {
         delete_config(
             input: MessagePdcDeleteConfigInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessagePdcDeleteConfigOutput> | void;
         /**
@@ -28594,7 +28604,7 @@ export namespace Qmi {
         get_config_info(
             input: MessagePdcGetConfigInfoInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessagePdcGetConfigInfoOutput>;
         /**
          * Asynchronously sends a Get Config Info request to the device.
@@ -28627,7 +28637,7 @@ export namespace Qmi {
         get_config_info(
             input: MessagePdcGetConfigInfoInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessagePdcGetConfigInfoOutput> | void;
         /**
@@ -28649,7 +28659,7 @@ export namespace Qmi {
         get_config_limits(
             input: MessagePdcGetConfigLimitsInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessagePdcGetConfigLimitsOutput>;
         /**
          * Asynchronously sends a Get Config Limits request to the device.
@@ -28682,7 +28692,7 @@ export namespace Qmi {
         get_config_limits(
             input: MessagePdcGetConfigLimitsInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessagePdcGetConfigLimitsOutput> | void;
         /**
@@ -28704,7 +28714,7 @@ export namespace Qmi {
         get_default_config_info(
             input: MessagePdcGetDefaultConfigInfoInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessagePdcGetDefaultConfigInfoOutput>;
         /**
          * Asynchronously sends a Get Default Config Info request to the device.
@@ -28737,7 +28747,7 @@ export namespace Qmi {
         get_default_config_info(
             input: MessagePdcGetDefaultConfigInfoInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessagePdcGetDefaultConfigInfoOutput> | void;
         /**
@@ -28759,7 +28769,7 @@ export namespace Qmi {
         get_selected_config(
             input: MessagePdcGetSelectedConfigInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessagePdcGetSelectedConfigOutput>;
         /**
          * Asynchronously sends a Get Selected Config request to the device.
@@ -28792,7 +28802,7 @@ export namespace Qmi {
         get_selected_config(
             input: MessagePdcGetSelectedConfigInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessagePdcGetSelectedConfigOutput> | void;
         /**
@@ -28814,7 +28824,7 @@ export namespace Qmi {
         list_configs(
             input: MessagePdcListConfigsInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessagePdcListConfigsOutput>;
         /**
          * Asynchronously sends a List Configs request to the device.
@@ -28847,7 +28857,7 @@ export namespace Qmi {
         list_configs(
             input: MessagePdcListConfigsInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessagePdcListConfigsOutput> | void;
         /**
@@ -28869,7 +28879,7 @@ export namespace Qmi {
         load_config(
             input: MessagePdcLoadConfigInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessagePdcLoadConfigOutput>;
         /**
          * Asynchronously sends a Load Config request to the device.
@@ -28902,7 +28912,7 @@ export namespace Qmi {
         load_config(
             input: MessagePdcLoadConfigInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessagePdcLoadConfigOutput> | void;
         /**
@@ -28924,7 +28934,7 @@ export namespace Qmi {
         register(
             input: MessagePdcRegisterInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessagePdcRegisterOutput>;
         /**
          * Asynchronously sends a Register request to the device.
@@ -28957,7 +28967,7 @@ export namespace Qmi {
         register(
             input: MessagePdcRegisterInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessagePdcRegisterOutput> | void;
         /**
@@ -28979,7 +28989,7 @@ export namespace Qmi {
         reset(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessagePdcResetOutput>;
         /**
          * Asynchronously sends a Reset request to the device.
@@ -29012,7 +29022,7 @@ export namespace Qmi {
         reset(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessagePdcResetOutput> | void;
         /**
@@ -29034,7 +29044,7 @@ export namespace Qmi {
         set_selected_config(
             input: MessagePdcSetSelectedConfigInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessagePdcSetSelectedConfigOutput>;
         /**
          * Asynchronously sends a Set Selected Config request to the device.
@@ -29067,7 +29077,7 @@ export namespace Qmi {
         set_selected_config(
             input: MessagePdcSetSelectedConfigInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessagePdcSetSelectedConfigOutput> | void;
         /**
@@ -29168,7 +29178,7 @@ export namespace Qmi {
         get_agps_config(
             input: MessagePdsGetAgpsConfigInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessagePdsGetAgpsConfigOutput>;
         /**
          * Asynchronously sends a Get AGPS Config request to the device.
@@ -29201,7 +29211,7 @@ export namespace Qmi {
         get_agps_config(
             input: MessagePdsGetAgpsConfigInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessagePdsGetAgpsConfigOutput> | void;
         /**
@@ -29223,7 +29233,7 @@ export namespace Qmi {
         get_auto_tracking_state(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessagePdsGetAutoTrackingStateOutput>;
         /**
          * Asynchronously sends a Get Auto Tracking State request to the device.
@@ -29256,7 +29266,7 @@ export namespace Qmi {
         get_auto_tracking_state(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessagePdsGetAutoTrackingStateOutput> | void;
         /**
@@ -29278,7 +29288,7 @@ export namespace Qmi {
         get_default_tracking_session(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessagePdsGetDefaultTrackingSessionOutput>;
         /**
          * Asynchronously sends a Get Default Tracking Session request to the device.
@@ -29311,7 +29321,7 @@ export namespace Qmi {
         get_default_tracking_session(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessagePdsGetDefaultTrackingSessionOutput> | void;
         /**
@@ -29333,7 +29343,7 @@ export namespace Qmi {
         get_gps_service_state(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessagePdsGetGpsServiceStateOutput>;
         /**
          * Asynchronously sends a Get GPS Service State request to the device.
@@ -29366,7 +29376,7 @@ export namespace Qmi {
         get_gps_service_state(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessagePdsGetGpsServiceStateOutput> | void;
         /**
@@ -29388,7 +29398,7 @@ export namespace Qmi {
         reset(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessagePdsResetOutput>;
         /**
          * Asynchronously sends a Reset request to the device.
@@ -29421,7 +29431,7 @@ export namespace Qmi {
         reset(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessagePdsResetOutput> | void;
         /**
@@ -29443,7 +29453,7 @@ export namespace Qmi {
         set_agps_config(
             input: MessagePdsSetAgpsConfigInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessagePdsSetAgpsConfigOutput>;
         /**
          * Asynchronously sends a Set AGPS Config request to the device.
@@ -29476,7 +29486,7 @@ export namespace Qmi {
         set_agps_config(
             input: MessagePdsSetAgpsConfigInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessagePdsSetAgpsConfigOutput> | void;
         /**
@@ -29498,7 +29508,7 @@ export namespace Qmi {
         set_auto_tracking_state(
             input: MessagePdsSetAutoTrackingStateInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessagePdsSetAutoTrackingStateOutput>;
         /**
          * Asynchronously sends a Set Auto Tracking State request to the device.
@@ -29531,7 +29541,7 @@ export namespace Qmi {
         set_auto_tracking_state(
             input: MessagePdsSetAutoTrackingStateInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessagePdsSetAutoTrackingStateOutput> | void;
         /**
@@ -29553,7 +29563,7 @@ export namespace Qmi {
         set_default_tracking_session(
             input: MessagePdsSetDefaultTrackingSessionInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessagePdsSetDefaultTrackingSessionOutput>;
         /**
          * Asynchronously sends a Set Default Tracking Session request to the device.
@@ -29586,7 +29596,7 @@ export namespace Qmi {
         set_default_tracking_session(
             input: MessagePdsSetDefaultTrackingSessionInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessagePdsSetDefaultTrackingSessionOutput> | void;
         /**
@@ -29608,7 +29618,7 @@ export namespace Qmi {
         set_event_report(
             input: MessagePdsSetEventReportInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessagePdsSetEventReportOutput>;
         /**
          * Asynchronously sends a Set Event Report request to the device.
@@ -29641,7 +29651,7 @@ export namespace Qmi {
         set_event_report(
             input: MessagePdsSetEventReportInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessagePdsSetEventReportOutput> | void;
         /**
@@ -29663,7 +29673,7 @@ export namespace Qmi {
         set_gps_service_state(
             input: MessagePdsSetGpsServiceStateInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessagePdsSetGpsServiceStateOutput>;
         /**
          * Asynchronously sends a Set GPS Service State request to the device.
@@ -29696,7 +29706,7 @@ export namespace Qmi {
         set_gps_service_state(
             input: MessagePdsSetGpsServiceStateInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessagePdsSetGpsServiceStateOutput> | void;
         /**
@@ -29797,7 +29807,7 @@ export namespace Qmi {
         get_flow_status(
             input: MessageQosGetFlowStatusInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageQosGetFlowStatusOutput>;
         /**
          * Asynchronously sends a Get Flow Status request to the device.
@@ -29830,7 +29840,7 @@ export namespace Qmi {
         get_flow_status(
             input: MessageQosGetFlowStatusInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageQosGetFlowStatusOutput> | void;
         /**
@@ -29852,7 +29862,7 @@ export namespace Qmi {
         get_network_status(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageQosGetNetworkStatusOutput>;
         /**
          * Asynchronously sends a Get Network Status request to the device.
@@ -29885,7 +29895,7 @@ export namespace Qmi {
         get_network_status(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageQosGetNetworkStatusOutput> | void;
         /**
@@ -29907,7 +29917,7 @@ export namespace Qmi {
         reset(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageQosResetOutput>;
         /**
          * Asynchronously sends a Reset request to the device.
@@ -29940,7 +29950,7 @@ export namespace Qmi {
         reset(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageQosResetOutput> | void;
         /**
@@ -29962,7 +29972,7 @@ export namespace Qmi {
         swi_read_data_stats(
             input: MessageQosSwiReadDataStatsInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageQosSwiReadDataStatsOutput>;
         /**
          * Asynchronously sends a Swi Read Data Stats request to the device.
@@ -29995,7 +30005,7 @@ export namespace Qmi {
         swi_read_data_stats(
             input: MessageQosSwiReadDataStatsInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageQosSwiReadDataStatsOutput> | void;
         /**
@@ -30082,7 +30092,7 @@ export namespace Qmi {
         rf_get_state(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageSarRfGetStateOutput>;
         /**
          * Asynchronously sends a RF Get State request to the device.
@@ -30115,7 +30125,7 @@ export namespace Qmi {
         rf_get_state(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageSarRfGetStateOutput> | void;
         /**
@@ -30137,7 +30147,7 @@ export namespace Qmi {
         rf_set_state(
             input: MessageSarRfSetStateInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageSarRfSetStateOutput>;
         /**
          * Asynchronously sends a RF Set State request to the device.
@@ -30170,7 +30180,7 @@ export namespace Qmi {
         rf_set_state(
             input: MessageSarRfSetStateInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageSarRfSetStateOutput> | void;
         /**
@@ -30278,7 +30288,7 @@ export namespace Qmi {
         change_pin(
             input: MessageUimChangePinInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageUimChangePinOutput>;
         /**
          * Asynchronously sends a Change PIN request to the device.
@@ -30311,7 +30321,7 @@ export namespace Qmi {
         change_pin(
             input: MessageUimChangePinInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageUimChangePinOutput> | void;
         /**
@@ -30333,7 +30343,7 @@ export namespace Qmi {
         change_provisioning_session(
             input: MessageUimChangeProvisioningSessionInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageUimChangeProvisioningSessionOutput>;
         /**
          * Asynchronously sends a Change Provisioning Session request to the device.
@@ -30366,7 +30376,7 @@ export namespace Qmi {
         change_provisioning_session(
             input: MessageUimChangeProvisioningSessionInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageUimChangeProvisioningSessionOutput> | void;
         /**
@@ -30388,7 +30398,7 @@ export namespace Qmi {
         depersonalization(
             input: MessageUimDepersonalizationInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageUimDepersonalizationOutput>;
         /**
          * Asynchronously sends a Depersonalization request to the device.
@@ -30421,7 +30431,7 @@ export namespace Qmi {
         depersonalization(
             input: MessageUimDepersonalizationInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageUimDepersonalizationOutput> | void;
         /**
@@ -30443,7 +30453,7 @@ export namespace Qmi {
         get_card_status(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageUimGetCardStatusOutput>;
         /**
          * Asynchronously sends a Get Card Status request to the device.
@@ -30476,7 +30486,7 @@ export namespace Qmi {
         get_card_status(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageUimGetCardStatusOutput> | void;
         /**
@@ -30498,7 +30508,7 @@ export namespace Qmi {
         get_configuration(
             input: MessageUimGetConfigurationInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageUimGetConfigurationOutput>;
         /**
          * Asynchronously sends a Get Configuration request to the device.
@@ -30531,7 +30541,7 @@ export namespace Qmi {
         get_configuration(
             input: MessageUimGetConfigurationInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageUimGetConfigurationOutput> | void;
         /**
@@ -30553,7 +30563,7 @@ export namespace Qmi {
         get_file_attributes(
             input: MessageUimGetFileAttributesInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageUimGetFileAttributesOutput>;
         /**
          * Asynchronously sends a Get File Attributes request to the device.
@@ -30586,7 +30596,7 @@ export namespace Qmi {
         get_file_attributes(
             input: MessageUimGetFileAttributesInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageUimGetFileAttributesOutput> | void;
         /**
@@ -30608,7 +30618,7 @@ export namespace Qmi {
         get_slot_status(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageUimGetSlotStatusOutput>;
         /**
          * Asynchronously sends a Get Slot Status request to the device.
@@ -30641,7 +30651,7 @@ export namespace Qmi {
         get_slot_status(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageUimGetSlotStatusOutput> | void;
         /**
@@ -30663,7 +30673,7 @@ export namespace Qmi {
         get_supported_messages(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageUimGetSupportedMessagesOutput>;
         /**
          * Asynchronously sends a Get Supported Messages request to the device.
@@ -30696,7 +30706,7 @@ export namespace Qmi {
         get_supported_messages(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageUimGetSupportedMessagesOutput> | void;
         /**
@@ -30718,7 +30728,7 @@ export namespace Qmi {
         power_off_sim(
             input: MessageUimPowerOffSimInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageUimPowerOffSimOutput>;
         /**
          * Asynchronously sends a Power Off SIM request to the device.
@@ -30751,7 +30761,7 @@ export namespace Qmi {
         power_off_sim(
             input: MessageUimPowerOffSimInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageUimPowerOffSimOutput> | void;
         /**
@@ -30773,7 +30783,7 @@ export namespace Qmi {
         power_on_sim(
             input: MessageUimPowerOnSimInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageUimPowerOnSimOutput>;
         /**
          * Asynchronously sends a Power On SIM request to the device.
@@ -30806,7 +30816,7 @@ export namespace Qmi {
         power_on_sim(
             input: MessageUimPowerOnSimInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageUimPowerOnSimOutput> | void;
         /**
@@ -30828,7 +30838,7 @@ export namespace Qmi {
         read_record(
             input: MessageUimReadRecordInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageUimReadRecordOutput>;
         /**
          * Asynchronously sends a Read Record request to the device.
@@ -30861,7 +30871,7 @@ export namespace Qmi {
         read_record(
             input: MessageUimReadRecordInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageUimReadRecordOutput> | void;
         /**
@@ -30883,7 +30893,7 @@ export namespace Qmi {
         read_transparent(
             input: MessageUimReadTransparentInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageUimReadTransparentOutput>;
         /**
          * Asynchronously sends a Read Transparent request to the device.
@@ -30916,7 +30926,7 @@ export namespace Qmi {
         read_transparent(
             input: MessageUimReadTransparentInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageUimReadTransparentOutput> | void;
         /**
@@ -30938,7 +30948,7 @@ export namespace Qmi {
         refresh_complete(
             input: MessageUimRefreshCompleteInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageUimRefreshCompleteOutput>;
         /**
          * Asynchronously sends a Refresh Complete request to the device.
@@ -30971,7 +30981,7 @@ export namespace Qmi {
         refresh_complete(
             input: MessageUimRefreshCompleteInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageUimRefreshCompleteOutput> | void;
         /**
@@ -30993,7 +31003,7 @@ export namespace Qmi {
         refresh_register(
             input: MessageUimRefreshRegisterInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageUimRefreshRegisterOutput>;
         /**
          * Asynchronously sends a Refresh Register request to the device.
@@ -31026,7 +31036,7 @@ export namespace Qmi {
         refresh_register(
             input: MessageUimRefreshRegisterInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageUimRefreshRegisterOutput> | void;
         /**
@@ -31042,7 +31052,7 @@ export namespace Qmi {
         refresh_register_all(
             input: MessageUimRefreshRegisterAllInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageUimRefreshRegisterAllOutput>;
         /**
          * Asynchronously sends a Refresh Register All request to the device.
@@ -31075,7 +31085,7 @@ export namespace Qmi {
         refresh_register_all(
             input: MessageUimRefreshRegisterAllInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageUimRefreshRegisterAllOutput> | void;
         /**
@@ -31103,7 +31113,7 @@ export namespace Qmi {
         register_events(
             input: MessageUimRegisterEventsInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageUimRegisterEventsOutput>;
         /**
          * Asynchronously sends a Register Events request to the device.
@@ -31136,7 +31146,7 @@ export namespace Qmi {
         register_events(
             input: MessageUimRegisterEventsInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageUimRegisterEventsOutput> | void;
         /**
@@ -31158,7 +31168,7 @@ export namespace Qmi {
         remote_unlock(
             input: MessageUimRemoteUnlockInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageUimRemoteUnlockOutput>;
         /**
          * Asynchronously sends a Remote Unlock request to the device.
@@ -31191,7 +31201,7 @@ export namespace Qmi {
         remote_unlock(
             input: MessageUimRemoteUnlockInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageUimRemoteUnlockOutput> | void;
         /**
@@ -31213,7 +31223,7 @@ export namespace Qmi {
         reset(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageUimResetOutput>;
         /**
          * Asynchronously sends a Reset request to the device.
@@ -31246,7 +31256,7 @@ export namespace Qmi {
         reset(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageUimResetOutput> | void;
         /**
@@ -31268,7 +31278,7 @@ export namespace Qmi {
         set_pin_protection(
             input: MessageUimSetPinProtectionInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageUimSetPinProtectionOutput>;
         /**
          * Asynchronously sends a Set PIN Protection request to the device.
@@ -31301,7 +31311,7 @@ export namespace Qmi {
         set_pin_protection(
             input: MessageUimSetPinProtectionInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageUimSetPinProtectionOutput> | void;
         /**
@@ -31323,7 +31333,7 @@ export namespace Qmi {
         switch_slot(
             input: MessageUimSwitchSlotInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageUimSwitchSlotOutput>;
         /**
          * Asynchronously sends a Switch Slot request to the device.
@@ -31356,7 +31366,7 @@ export namespace Qmi {
         switch_slot(
             input: MessageUimSwitchSlotInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageUimSwitchSlotOutput> | void;
         /**
@@ -31378,7 +31388,7 @@ export namespace Qmi {
         unblock_pin(
             input: MessageUimUnblockPinInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageUimUnblockPinOutput>;
         /**
          * Asynchronously sends a Unblock PIN request to the device.
@@ -31411,7 +31421,7 @@ export namespace Qmi {
         unblock_pin(
             input: MessageUimUnblockPinInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageUimUnblockPinOutput> | void;
         /**
@@ -31433,7 +31443,7 @@ export namespace Qmi {
         verify_pin(
             input: MessageUimVerifyPinInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageUimVerifyPinOutput>;
         /**
          * Asynchronously sends a Verify PIN request to the device.
@@ -31466,7 +31476,7 @@ export namespace Qmi {
         verify_pin(
             input: MessageUimVerifyPinInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageUimVerifyPinOutput> | void;
         /**
@@ -31588,7 +31598,7 @@ export namespace Qmi {
         answer_call(
             input: MessageVoiceAnswerCallInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageVoiceAnswerCallOutput>;
         /**
          * Asynchronously sends a Answer Call request to the device.
@@ -31621,7 +31631,7 @@ export namespace Qmi {
         answer_call(
             input: MessageVoiceAnswerCallInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageVoiceAnswerCallOutput> | void;
         /**
@@ -31643,7 +31653,7 @@ export namespace Qmi {
         answer_ussd(
             input: MessageVoiceAnswerUssdInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageVoiceAnswerUssdOutput>;
         /**
          * Asynchronously sends a Answer USSD request to the device.
@@ -31676,7 +31686,7 @@ export namespace Qmi {
         answer_ussd(
             input: MessageVoiceAnswerUssdInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageVoiceAnswerUssdOutput> | void;
         /**
@@ -31698,7 +31708,7 @@ export namespace Qmi {
         burst_dtmf(
             input: MessageVoiceBurstDtmfInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageVoiceBurstDtmfOutput>;
         /**
          * Asynchronously sends a Burst DTMF request to the device.
@@ -31731,7 +31741,7 @@ export namespace Qmi {
         burst_dtmf(
             input: MessageVoiceBurstDtmfInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageVoiceBurstDtmfOutput> | void;
         /**
@@ -31753,7 +31763,7 @@ export namespace Qmi {
         cancel_ussd(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageVoiceCancelUssdOutput>;
         /**
          * Asynchronously sends a Cancel USSD request to the device.
@@ -31786,7 +31796,7 @@ export namespace Qmi {
         cancel_ussd(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageVoiceCancelUssdOutput> | void;
         /**
@@ -31808,7 +31818,7 @@ export namespace Qmi {
         dial_call(
             input: MessageVoiceDialCallInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageVoiceDialCallOutput>;
         /**
          * Asynchronously sends a Dial Call request to the device.
@@ -31841,7 +31851,7 @@ export namespace Qmi {
         dial_call(
             input: MessageVoiceDialCallInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageVoiceDialCallOutput> | void;
         /**
@@ -31863,7 +31873,7 @@ export namespace Qmi {
         end_call(
             input: MessageVoiceEndCallInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageVoiceEndCallOutput>;
         /**
          * Asynchronously sends a End Call request to the device.
@@ -31896,7 +31906,7 @@ export namespace Qmi {
         end_call(
             input: MessageVoiceEndCallInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageVoiceEndCallOutput> | void;
         /**
@@ -31918,7 +31928,7 @@ export namespace Qmi {
         get_all_call_info(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageVoiceGetAllCallInfoOutput>;
         /**
          * Asynchronously sends a Get All Call Info request to the device.
@@ -31951,7 +31961,7 @@ export namespace Qmi {
         get_all_call_info(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageVoiceGetAllCallInfoOutput> | void;
         /**
@@ -31973,7 +31983,7 @@ export namespace Qmi {
         get_call_waiting(
             input: MessageVoiceGetCallWaitingInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageVoiceGetCallWaitingOutput>;
         /**
          * Asynchronously sends a Get Call Waiting request to the device.
@@ -32006,7 +32016,7 @@ export namespace Qmi {
         get_call_waiting(
             input: MessageVoiceGetCallWaitingInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageVoiceGetCallWaitingOutput> | void;
         /**
@@ -32028,7 +32038,7 @@ export namespace Qmi {
         get_config(
             input: MessageVoiceGetConfigInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageVoiceGetConfigOutput>;
         /**
          * Asynchronously sends a Get Config request to the device.
@@ -32061,7 +32071,7 @@ export namespace Qmi {
         get_config(
             input: MessageVoiceGetConfigInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageVoiceGetConfigOutput> | void;
         /**
@@ -32083,7 +32093,7 @@ export namespace Qmi {
         get_supported_messages(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageVoiceGetSupportedMessagesOutput>;
         /**
          * Asynchronously sends a Get Supported Messages request to the device.
@@ -32116,7 +32126,7 @@ export namespace Qmi {
         get_supported_messages(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageVoiceGetSupportedMessagesOutput> | void;
         /**
@@ -32138,7 +32148,7 @@ export namespace Qmi {
         indication_register(
             input: MessageVoiceIndicationRegisterInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageVoiceIndicationRegisterOutput>;
         /**
          * Asynchronously sends a Indication Register request to the device.
@@ -32171,7 +32181,7 @@ export namespace Qmi {
         indication_register(
             input: MessageVoiceIndicationRegisterInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageVoiceIndicationRegisterOutput> | void;
         /**
@@ -32193,7 +32203,7 @@ export namespace Qmi {
         manage_calls(
             input: MessageVoiceManageCallsInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageVoiceManageCallsOutput>;
         /**
          * Asynchronously sends a Manage Calls request to the device.
@@ -32226,7 +32236,7 @@ export namespace Qmi {
         manage_calls(
             input: MessageVoiceManageCallsInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageVoiceManageCallsOutput> | void;
         /**
@@ -32248,7 +32258,7 @@ export namespace Qmi {
         originate_ussd(
             input: MessageVoiceOriginateUssdInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageVoiceOriginateUssdOutput>;
         /**
          * Asynchronously sends a Originate USSD request to the device.
@@ -32281,7 +32291,7 @@ export namespace Qmi {
         originate_ussd(
             input: MessageVoiceOriginateUssdInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageVoiceOriginateUssdOutput> | void;
         /**
@@ -32303,7 +32313,7 @@ export namespace Qmi {
         originate_ussd_no_wait(
             input: MessageVoiceOriginateUssdNoWaitInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageVoiceOriginateUssdNoWaitOutput>;
         /**
          * Asynchronously sends a Originate USSD No Wait request to the device.
@@ -32336,7 +32346,7 @@ export namespace Qmi {
         originate_ussd_no_wait(
             input: MessageVoiceOriginateUssdNoWaitInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageVoiceOriginateUssdNoWaitOutput> | void;
         /**
@@ -32358,7 +32368,7 @@ export namespace Qmi {
         set_supplementary_service(
             input: MessageVoiceSetSupplementaryServiceInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageVoiceSetSupplementaryServiceOutput>;
         /**
          * Asynchronously sends a Set Supplementary Service request to the device.
@@ -32391,7 +32401,7 @@ export namespace Qmi {
         set_supplementary_service(
             input: MessageVoiceSetSupplementaryServiceInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageVoiceSetSupplementaryServiceOutput> | void;
         /**
@@ -32413,7 +32423,7 @@ export namespace Qmi {
         start_continuous_dtmf(
             input: MessageVoiceStartContinuousDtmfInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageVoiceStartContinuousDtmfOutput>;
         /**
          * Asynchronously sends a Start Continuous DTMF request to the device.
@@ -32446,7 +32456,7 @@ export namespace Qmi {
         start_continuous_dtmf(
             input: MessageVoiceStartContinuousDtmfInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageVoiceStartContinuousDtmfOutput> | void;
         /**
@@ -32468,7 +32478,7 @@ export namespace Qmi {
         stop_continuous_dtmf(
             input: MessageVoiceStopContinuousDtmfInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageVoiceStopContinuousDtmfOutput>;
         /**
          * Asynchronously sends a Stop Continuous DTMF request to the device.
@@ -32501,7 +32511,7 @@ export namespace Qmi {
         stop_continuous_dtmf(
             input: MessageVoiceStopContinuousDtmfInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageVoiceStopContinuousDtmfOutput> | void;
         /**
@@ -32588,7 +32598,7 @@ export namespace Qmi {
         get_data_format(
             input: MessageWdaGetDataFormatInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWdaGetDataFormatOutput>;
         /**
          * Asynchronously sends a Get Data Format request to the device.
@@ -32621,7 +32631,7 @@ export namespace Qmi {
         get_data_format(
             input: MessageWdaGetDataFormatInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWdaGetDataFormatOutput> | void;
         /**
@@ -32643,7 +32653,7 @@ export namespace Qmi {
         get_supported_messages(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWdaGetSupportedMessagesOutput>;
         /**
          * Asynchronously sends a Get Supported Messages request to the device.
@@ -32676,7 +32686,7 @@ export namespace Qmi {
         get_supported_messages(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWdaGetSupportedMessagesOutput> | void;
         /**
@@ -32698,7 +32708,7 @@ export namespace Qmi {
         set_data_format(
             input: MessageWdaSetDataFormatInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWdaSetDataFormatOutput>;
         /**
          * Asynchronously sends a Set Data Format request to the device.
@@ -32731,7 +32741,7 @@ export namespace Qmi {
         set_data_format(
             input: MessageWdaSetDataFormatInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWdaSetDataFormatOutput> | void;
         /**
@@ -32853,7 +32863,7 @@ export namespace Qmi {
         bind_data_port(
             input: MessageWdsBindDataPortInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWdsBindDataPortOutput>;
         /**
          * Asynchronously sends a Bind Data Port request to the device.
@@ -32886,7 +32896,7 @@ export namespace Qmi {
         bind_data_port(
             input: MessageWdsBindDataPortInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWdsBindDataPortOutput> | void;
         /**
@@ -32908,7 +32918,7 @@ export namespace Qmi {
         bind_mux_data_port(
             input: MessageWdsBindMuxDataPortInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWdsBindMuxDataPortOutput>;
         /**
          * Asynchronously sends a Bind Mux Data Port request to the device.
@@ -32941,7 +32951,7 @@ export namespace Qmi {
         bind_mux_data_port(
             input: MessageWdsBindMuxDataPortInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWdsBindMuxDataPortOutput> | void;
         /**
@@ -32963,7 +32973,7 @@ export namespace Qmi {
         configure_profile_event_list(
             input: MessageWdsConfigureProfileEventListInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWdsConfigureProfileEventListOutput>;
         /**
          * Asynchronously sends a Configure Profile Event List request to the device.
@@ -32996,7 +33006,7 @@ export namespace Qmi {
         configure_profile_event_list(
             input: MessageWdsConfigureProfileEventListInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWdsConfigureProfileEventListOutput> | void;
         /**
@@ -33018,7 +33028,7 @@ export namespace Qmi {
         create_profile(
             input: MessageWdsCreateProfileInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWdsCreateProfileOutput>;
         /**
          * Asynchronously sends a Create Profile request to the device.
@@ -33051,7 +33061,7 @@ export namespace Qmi {
         create_profile(
             input: MessageWdsCreateProfileInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWdsCreateProfileOutput> | void;
         /**
@@ -33073,7 +33083,7 @@ export namespace Qmi {
         delete_profile(
             input: MessageWdsDeleteProfileInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWdsDeleteProfileOutput>;
         /**
          * Asynchronously sends a Delete Profile request to the device.
@@ -33106,7 +33116,7 @@ export namespace Qmi {
         delete_profile(
             input: MessageWdsDeleteProfileInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWdsDeleteProfileOutput> | void;
         /**
@@ -33128,7 +33138,7 @@ export namespace Qmi {
         get_autoconnect_settings(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWdsGetAutoconnectSettingsOutput>;
         /**
          * Asynchronously sends a Get Autoconnect Settings request to the device.
@@ -33161,7 +33171,7 @@ export namespace Qmi {
         get_autoconnect_settings(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWdsGetAutoconnectSettingsOutput> | void;
         /**
@@ -33183,7 +33193,7 @@ export namespace Qmi {
         get_channel_rates(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWdsGetChannelRatesOutput>;
         /**
          * Asynchronously sends a Get Channel Rates request to the device.
@@ -33216,7 +33226,7 @@ export namespace Qmi {
         get_channel_rates(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWdsGetChannelRatesOutput> | void;
         /**
@@ -33238,7 +33248,7 @@ export namespace Qmi {
         get_current_data_bearer_technology(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWdsGetCurrentDataBearerTechnologyOutput>;
         /**
          * Asynchronously sends a Get Current Data Bearer Technology request to the device.
@@ -33271,7 +33281,7 @@ export namespace Qmi {
         get_current_data_bearer_technology(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWdsGetCurrentDataBearerTechnologyOutput> | void;
         /**
@@ -33293,7 +33303,7 @@ export namespace Qmi {
         get_current_settings(
             input: MessageWdsGetCurrentSettingsInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWdsGetCurrentSettingsOutput>;
         /**
          * Asynchronously sends a Get Current Settings request to the device.
@@ -33326,7 +33336,7 @@ export namespace Qmi {
         get_current_settings(
             input: MessageWdsGetCurrentSettingsInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWdsGetCurrentSettingsOutput> | void;
         /**
@@ -33348,7 +33358,7 @@ export namespace Qmi {
         get_data_bearer_technology(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWdsGetDataBearerTechnologyOutput>;
         /**
          * Asynchronously sends a Get Data Bearer Technology request to the device.
@@ -33381,7 +33391,7 @@ export namespace Qmi {
         get_data_bearer_technology(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWdsGetDataBearerTechnologyOutput> | void;
         /**
@@ -33403,7 +33413,7 @@ export namespace Qmi {
         get_default_profile_number(
             input: MessageWdsGetDefaultProfileNumberInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWdsGetDefaultProfileNumberOutput>;
         /**
          * Asynchronously sends a Get Default Profile Number request to the device.
@@ -33436,7 +33446,7 @@ export namespace Qmi {
         get_default_profile_number(
             input: MessageWdsGetDefaultProfileNumberInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWdsGetDefaultProfileNumberOutput> | void;
         /**
@@ -33458,7 +33468,7 @@ export namespace Qmi {
         get_default_settings(
             input: MessageWdsGetDefaultSettingsInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWdsGetDefaultSettingsOutput>;
         /**
          * Asynchronously sends a Get Default Settings request to the device.
@@ -33491,7 +33501,7 @@ export namespace Qmi {
         get_default_settings(
             input: MessageWdsGetDefaultSettingsInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWdsGetDefaultSettingsOutput> | void;
         /**
@@ -33513,7 +33523,7 @@ export namespace Qmi {
         get_dormancy_status(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWdsGetDormancyStatusOutput>;
         /**
          * Asynchronously sends a Get Dormancy Status request to the device.
@@ -33546,7 +33556,7 @@ export namespace Qmi {
         get_dormancy_status(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWdsGetDormancyStatusOutput> | void;
         /**
@@ -33568,7 +33578,7 @@ export namespace Qmi {
         get_lte_attach_parameters(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWdsGetLteAttachParametersOutput>;
         /**
          * Asynchronously sends a Get LTE Attach Parameters request to the device.
@@ -33601,7 +33611,7 @@ export namespace Qmi {
         get_lte_attach_parameters(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWdsGetLteAttachParametersOutput> | void;
         /**
@@ -33623,7 +33633,7 @@ export namespace Qmi {
         get_lte_attach_pdn_list(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWdsGetLteAttachPdnListOutput>;
         /**
          * Asynchronously sends a Get LTE Attach PDN List request to the device.
@@ -33656,7 +33666,7 @@ export namespace Qmi {
         get_lte_attach_pdn_list(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWdsGetLteAttachPdnListOutput> | void;
         /**
@@ -33678,7 +33688,7 @@ export namespace Qmi {
         get_max_lte_attach_pdn_number(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWdsGetMaxLteAttachPdnNumberOutput>;
         /**
          * Asynchronously sends a Get Max LTE Attach PDN Number request to the device.
@@ -33711,7 +33721,7 @@ export namespace Qmi {
         get_max_lte_attach_pdn_number(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWdsGetMaxLteAttachPdnNumberOutput> | void;
         /**
@@ -33733,7 +33743,7 @@ export namespace Qmi {
         get_packet_service_status(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWdsGetPacketServiceStatusOutput>;
         /**
          * Asynchronously sends a Get Packet Service Status request to the device.
@@ -33766,7 +33776,7 @@ export namespace Qmi {
         get_packet_service_status(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWdsGetPacketServiceStatusOutput> | void;
         /**
@@ -33788,7 +33798,7 @@ export namespace Qmi {
         get_packet_statistics(
             input: MessageWdsGetPacketStatisticsInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWdsGetPacketStatisticsOutput>;
         /**
          * Asynchronously sends a Get Packet Statistics request to the device.
@@ -33821,7 +33831,7 @@ export namespace Qmi {
         get_packet_statistics(
             input: MessageWdsGetPacketStatisticsInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWdsGetPacketStatisticsOutput> | void;
         /**
@@ -33843,7 +33853,7 @@ export namespace Qmi {
         get_pdn_throttle_info(
             input: MessageWdsGetPdnThrottleInfoInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWdsGetPdnThrottleInfoOutput>;
         /**
          * Asynchronously sends a Get PDN Throttle Info request to the device.
@@ -33876,7 +33886,7 @@ export namespace Qmi {
         get_pdn_throttle_info(
             input: MessageWdsGetPdnThrottleInfoInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWdsGetPdnThrottleInfoOutput> | void;
         /**
@@ -33898,7 +33908,7 @@ export namespace Qmi {
         get_profile_list(
             input: MessageWdsGetProfileListInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWdsGetProfileListOutput>;
         /**
          * Asynchronously sends a Get Profile List request to the device.
@@ -33931,7 +33941,7 @@ export namespace Qmi {
         get_profile_list(
             input: MessageWdsGetProfileListInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWdsGetProfileListOutput> | void;
         /**
@@ -33953,7 +33963,7 @@ export namespace Qmi {
         get_profile_settings(
             input: MessageWdsGetProfileSettingsInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWdsGetProfileSettingsOutput>;
         /**
          * Asynchronously sends a Get Profile Settings request to the device.
@@ -33986,7 +33996,7 @@ export namespace Qmi {
         get_profile_settings(
             input: MessageWdsGetProfileSettingsInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWdsGetProfileSettingsOutput> | void;
         /**
@@ -34008,7 +34018,7 @@ export namespace Qmi {
         get_supported_messages(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWdsGetSupportedMessagesOutput>;
         /**
          * Asynchronously sends a Get Supported Messages request to the device.
@@ -34041,7 +34051,7 @@ export namespace Qmi {
         get_supported_messages(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWdsGetSupportedMessagesOutput> | void;
         /**
@@ -34063,7 +34073,7 @@ export namespace Qmi {
         go_active(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWdsGoActiveOutput>;
         /**
          * Asynchronously sends a Go Active request to the device.
@@ -34096,7 +34106,7 @@ export namespace Qmi {
         go_active(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWdsGoActiveOutput> | void;
         /**
@@ -34118,7 +34128,7 @@ export namespace Qmi {
         go_dormant(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWdsGoDormantOutput>;
         /**
          * Asynchronously sends a Go Dormant request to the device.
@@ -34151,7 +34161,7 @@ export namespace Qmi {
         go_dormant(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWdsGoDormantOutput> | void;
         /**
@@ -34173,7 +34183,7 @@ export namespace Qmi {
         indication_register(
             input: MessageWdsIndicationRegisterInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWdsIndicationRegisterOutput>;
         /**
          * Asynchronously sends a Indication Register request to the device.
@@ -34206,7 +34216,7 @@ export namespace Qmi {
         indication_register(
             input: MessageWdsIndicationRegisterInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWdsIndicationRegisterOutput> | void;
         /**
@@ -34228,7 +34238,7 @@ export namespace Qmi {
         modify_profile(
             input: MessageWdsModifyProfileInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWdsModifyProfileOutput>;
         /**
          * Asynchronously sends a Modify Profile request to the device.
@@ -34261,7 +34271,7 @@ export namespace Qmi {
         modify_profile(
             input: MessageWdsModifyProfileInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWdsModifyProfileOutput> | void;
         /**
@@ -34283,7 +34293,7 @@ export namespace Qmi {
         reset(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWdsResetOutput>;
         /**
          * Asynchronously sends a Reset request to the device.
@@ -34316,7 +34326,7 @@ export namespace Qmi {
         reset(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWdsResetOutput> | void;
         /**
@@ -34338,7 +34348,7 @@ export namespace Qmi {
         set_autoconnect_settings(
             input: MessageWdsSetAutoconnectSettingsInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWdsSetAutoconnectSettingsOutput>;
         /**
          * Asynchronously sends a Set Autoconnect Settings request to the device.
@@ -34371,7 +34381,7 @@ export namespace Qmi {
         set_autoconnect_settings(
             input: MessageWdsSetAutoconnectSettingsInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWdsSetAutoconnectSettingsOutput> | void;
         /**
@@ -34393,7 +34403,7 @@ export namespace Qmi {
         set_default_profile_number(
             input: MessageWdsSetDefaultProfileNumberInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWdsSetDefaultProfileNumberOutput>;
         /**
          * Asynchronously sends a Set Default Profile Number request to the device.
@@ -34426,7 +34436,7 @@ export namespace Qmi {
         set_default_profile_number(
             input: MessageWdsSetDefaultProfileNumberInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWdsSetDefaultProfileNumberOutput> | void;
         /**
@@ -34448,7 +34458,7 @@ export namespace Qmi {
         set_event_report(
             input: MessageWdsSetEventReportInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWdsSetEventReportOutput>;
         /**
          * Asynchronously sends a Set Event Report request to the device.
@@ -34481,7 +34491,7 @@ export namespace Qmi {
         set_event_report(
             input: MessageWdsSetEventReportInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWdsSetEventReportOutput> | void;
         /**
@@ -34503,7 +34513,7 @@ export namespace Qmi {
         set_ip_family(
             input: MessageWdsSetIpFamilyInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWdsSetIpFamilyOutput>;
         /**
          * Asynchronously sends a Set IP Family request to the device.
@@ -34536,7 +34546,7 @@ export namespace Qmi {
         set_ip_family(
             input: MessageWdsSetIpFamilyInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWdsSetIpFamilyOutput> | void;
         /**
@@ -34558,7 +34568,7 @@ export namespace Qmi {
         set_lte_attach_pdn_list(
             input: MessageWdsSetLteAttachPdnListInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWdsSetLteAttachPdnListOutput>;
         /**
          * Asynchronously sends a Set LTE Attach PDN List request to the device.
@@ -34591,7 +34601,7 @@ export namespace Qmi {
         set_lte_attach_pdn_list(
             input: MessageWdsSetLteAttachPdnListInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWdsSetLteAttachPdnListOutput> | void;
         /**
@@ -34620,7 +34630,7 @@ export namespace Qmi {
         start_network(
             input: MessageWdsStartNetworkInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWdsStartNetworkOutput>;
         /**
          * Asynchronously sends a Start Network request to the device.
@@ -34667,7 +34677,7 @@ export namespace Qmi {
         start_network(
             input: MessageWdsStartNetworkInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWdsStartNetworkOutput> | void;
         /**
@@ -34689,7 +34699,7 @@ export namespace Qmi {
         stop_network(
             input: MessageWdsStopNetworkInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWdsStopNetworkOutput>;
         /**
          * Asynchronously sends a Stop Network request to the device.
@@ -34722,7 +34732,7 @@ export namespace Qmi {
         stop_network(
             input: MessageWdsStopNetworkInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWdsStopNetworkOutput> | void;
         /**
@@ -34744,7 +34754,7 @@ export namespace Qmi {
         swi_create_profile_indexed(
             input: MessageWdsSwiCreateProfileIndexedInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWdsSwiCreateProfileIndexedOutput>;
         /**
          * Asynchronously sends a Swi Create Profile Indexed request to the device.
@@ -34777,7 +34787,7 @@ export namespace Qmi {
         swi_create_profile_indexed(
             input: MessageWdsSwiCreateProfileIndexedInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWdsSwiCreateProfileIndexedOutput> | void;
         /**
@@ -34878,7 +34888,7 @@ export namespace Qmi {
         ['delete'](
             input: MessageWmsDeleteInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWmsDeleteOutput>;
         /**
          * Asynchronously sends a Delete request to the device.
@@ -34911,7 +34921,7 @@ export namespace Qmi {
         ['delete'](
             input: MessageWmsDeleteInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWmsDeleteOutput> | void;
         /**
@@ -34933,7 +34943,7 @@ export namespace Qmi {
         get_message_protocol(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWmsGetMessageProtocolOutput>;
         /**
          * Asynchronously sends a Get Message Protocol request to the device.
@@ -34966,7 +34976,7 @@ export namespace Qmi {
         get_message_protocol(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWmsGetMessageProtocolOutput> | void;
         /**
@@ -34988,7 +34998,7 @@ export namespace Qmi {
         get_routes(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWmsGetRoutesOutput>;
         /**
          * Asynchronously sends a Get Routes request to the device.
@@ -35021,7 +35031,7 @@ export namespace Qmi {
         get_routes(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWmsGetRoutesOutput> | void;
         /**
@@ -35043,7 +35053,7 @@ export namespace Qmi {
         get_supported_messages(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWmsGetSupportedMessagesOutput>;
         /**
          * Asynchronously sends a Get Supported Messages request to the device.
@@ -35076,7 +35086,7 @@ export namespace Qmi {
         get_supported_messages(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWmsGetSupportedMessagesOutput> | void;
         /**
@@ -35098,7 +35108,7 @@ export namespace Qmi {
         list_messages(
             input: MessageWmsListMessagesInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWmsListMessagesOutput>;
         /**
          * Asynchronously sends a List Messages request to the device.
@@ -35131,7 +35141,7 @@ export namespace Qmi {
         list_messages(
             input: MessageWmsListMessagesInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWmsListMessagesOutput> | void;
         /**
@@ -35153,7 +35163,7 @@ export namespace Qmi {
         modify_tag(
             input: MessageWmsModifyTagInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWmsModifyTagOutput>;
         /**
          * Asynchronously sends a Modify Tag request to the device.
@@ -35186,7 +35196,7 @@ export namespace Qmi {
         modify_tag(
             input: MessageWmsModifyTagInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWmsModifyTagOutput> | void;
         /**
@@ -35208,7 +35218,7 @@ export namespace Qmi {
         raw_read(
             input: MessageWmsRawReadInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWmsRawReadOutput>;
         /**
          * Asynchronously sends a Raw Read request to the device.
@@ -35241,7 +35251,7 @@ export namespace Qmi {
         raw_read(
             input: MessageWmsRawReadInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWmsRawReadOutput> | void;
         /**
@@ -35263,7 +35273,7 @@ export namespace Qmi {
         raw_send(
             input: MessageWmsRawSendInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWmsRawSendOutput>;
         /**
          * Asynchronously sends a Raw Send request to the device.
@@ -35296,7 +35306,7 @@ export namespace Qmi {
         raw_send(
             input: MessageWmsRawSendInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWmsRawSendOutput> | void;
         /**
@@ -35318,7 +35328,7 @@ export namespace Qmi {
         raw_write(
             input: MessageWmsRawWriteInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWmsRawWriteOutput>;
         /**
          * Asynchronously sends a Raw Write request to the device.
@@ -35351,7 +35361,7 @@ export namespace Qmi {
         raw_write(
             input: MessageWmsRawWriteInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWmsRawWriteOutput> | void;
         /**
@@ -35373,7 +35383,7 @@ export namespace Qmi {
         reset(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWmsResetOutput>;
         /**
          * Asynchronously sends a Reset request to the device.
@@ -35406,7 +35416,7 @@ export namespace Qmi {
         reset(
             unused: any | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWmsResetOutput> | void;
         /**
@@ -35428,7 +35438,7 @@ export namespace Qmi {
         send_ack(
             input: MessageWmsSendAckInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWmsSendAckOutput>;
         /**
          * Asynchronously sends a Send Ack request to the device.
@@ -35461,7 +35471,7 @@ export namespace Qmi {
         send_ack(
             input: MessageWmsSendAckInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWmsSendAckOutput> | void;
         /**
@@ -35483,7 +35493,7 @@ export namespace Qmi {
         send_from_memory_storage(
             input: MessageWmsSendFromMemoryStorageInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWmsSendFromMemoryStorageOutput>;
         /**
          * Asynchronously sends a Send From Memory Storage request to the device.
@@ -35516,7 +35526,7 @@ export namespace Qmi {
         send_from_memory_storage(
             input: MessageWmsSendFromMemoryStorageInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWmsSendFromMemoryStorageOutput> | void;
         /**
@@ -35538,7 +35548,7 @@ export namespace Qmi {
         set_event_report(
             input: MessageWmsSetEventReportInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWmsSetEventReportOutput>;
         /**
          * Asynchronously sends a Set Event Report request to the device.
@@ -35571,7 +35581,7 @@ export namespace Qmi {
         set_event_report(
             input: MessageWmsSetEventReportInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWmsSetEventReportOutput> | void;
         /**
@@ -35593,7 +35603,7 @@ export namespace Qmi {
         set_routes(
             input: MessageWmsSetRoutesInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MessageWmsSetRoutesOutput>;
         /**
          * Asynchronously sends a Set Routes request to the device.
@@ -35626,7 +35636,7 @@ export namespace Qmi {
         set_routes(
             input: MessageWmsSetRoutesInput,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MessageWmsSetRoutesOutput> | void;
         /**
@@ -35694,11 +35704,13 @@ export namespace Qmi {
         /**
          * @since 1.32
          * @read-only
+         * @default 0
          */
         get device_consecutive_timeouts(): number;
         /**
          * @since 1.32
          * @read-only
+         * @default 0
          */
         get deviceConsecutiveTimeouts(): number;
         /**
@@ -35714,11 +35726,13 @@ export namespace Qmi {
         /**
          * @since 1.12
          * @construct-only
+         * @default false
          */
         set device_no_file_check(val: boolean);
         /**
          * @since 1.12
          * @construct-only
+         * @default false
          */
         set deviceNoFileCheck(val: boolean);
         /**
@@ -35734,21 +35748,25 @@ export namespace Qmi {
         /**
          * @since 1.12
          * @construct-only
+         * @default qmi-proxy
          */
         set device_proxy_path(val: string);
         /**
          * @since 1.12
          * @construct-only
+         * @default qmi-proxy
          */
         set deviceProxyPath(val: string);
         /**
          * @since 1.14
          * @read-only
+         * @default null
          */
         get device_wwan_iface(): string;
         /**
          * @since 1.14
          * @read-only
+         * @default null
          */
         get deviceWwanIface(): string;
 
@@ -35807,8 +35825,8 @@ export namespace Qmi {
          */
         static ['new'](
             file: Gio.File,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<Device> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<Device> | null,
         ): void;
         /**
          * Asynchronously creates a {@link Qmi.Device} object to manage `node`.
@@ -35824,8 +35842,8 @@ export namespace Qmi {
          */
         static new_from_node(
             node: Qrtr.Node,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<Device> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<Device> | null,
         ): void;
 
         // Methods
@@ -35877,7 +35895,7 @@ export namespace Qmi {
             mux_id: number,
             base_ifname: string,
             ifname_prefix: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<string>;
         /**
          * Asynchronously creates a new virtual network device node with a custom prefix
@@ -35978,7 +35996,7 @@ export namespace Qmi {
             mux_id: number,
             base_ifname: string,
             ifname_prefix: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
         /**
@@ -36015,7 +36033,7 @@ export namespace Qmi {
             base_ifname: string,
             ifname_prefix: string,
             flags: DeviceAddLinkFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<string>;
         /**
          * Asynchronously creates a new virtual network device in the same way as
@@ -36076,7 +36094,7 @@ export namespace Qmi {
             base_ifname: string,
             ifname_prefix: string,
             flags: DeviceAddLinkFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
         /**
@@ -36106,7 +36124,7 @@ export namespace Qmi {
             service: Service,
             cid: number,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<Client>;
         /**
          * Asynchronously allocates a new {@link Qmi.Client} in `self`.
@@ -36153,7 +36171,7 @@ export namespace Qmi {
             service: Service,
             cid: number,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Client> | void;
         /**
@@ -36192,7 +36210,7 @@ export namespace Qmi {
          * @param timeout maximum time, in seconds, to wait for the device to be closed.
          * @param cancellable a {@link Gio.Cancellable}, or `null`.
          */
-        close_async(timeout: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        close_async(timeout: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously closes a {@link Qmi.Device}, preventing any further I/O.
          *
@@ -36230,7 +36248,7 @@ export namespace Qmi {
          */
         close_async(
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -36270,7 +36288,7 @@ export namespace Qmi {
             message: Message,
             message_context: MessageContext,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<Message>;
         /**
          * Asynchronously sends a {@link Qmi.Message} to the device.
@@ -36327,7 +36345,7 @@ export namespace Qmi {
             message: Message,
             message_context: MessageContext,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Message> | void;
         /**
@@ -36352,7 +36370,7 @@ export namespace Qmi {
          * @param base_ifname the interface where all links are available.
          * @param cancellable a {@link Gio.Cancellable}, or `null`.
          */
-        delete_all_links(base_ifname: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        delete_all_links(base_ifname: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously deletes all virtual network interfaces that have been previously
          * created with `qmi_device_add_link()` in `base_ifname`.
@@ -36394,7 +36412,7 @@ export namespace Qmi {
          */
         delete_all_links(
             base_ifname: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -36423,7 +36441,7 @@ export namespace Qmi {
          * @param mux_id the mux ID of the link to remove.
          * @param cancellable a {@link Gio.Cancellable}, or `null`.
          */
-        delete_link(ifname: string, mux_id: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        delete_link(ifname: string, mux_id: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously deletes a virtual network interface that has been previously
          * created with `qmi_device_add_link()`.
@@ -36475,7 +36493,7 @@ export namespace Qmi {
         delete_link(
             ifname: string,
             mux_id: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -36538,7 +36556,7 @@ export namespace Qmi {
          */
         get_service_version_info(
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<DeviceServiceVersionInfo[]>;
         /**
          * Asynchronously requests the service version information of the device.
@@ -36567,7 +36585,7 @@ export namespace Qmi {
          */
         get_service_version_info(
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<DeviceServiceVersionInfo[]> | void;
         /**
@@ -36607,11 +36625,7 @@ export namespace Qmi {
          * @param timeout maximum time, in seconds, to wait for the device to be opened.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        open(
-            flags: DeviceOpenFlags,
-            timeout: number,
-            cancellable?: Gio.Cancellable | null,
-        ): globalThis.Promise<boolean>;
+        open(flags: DeviceOpenFlags, timeout: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously opens a {@link Qmi.Device} for I/O.
          *
@@ -36641,7 +36655,7 @@ export namespace Qmi {
         open(
             flags: DeviceOpenFlags,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -36684,7 +36698,7 @@ export namespace Qmi {
             client: Client,
             flags: DeviceReleaseClientFlags,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously releases the {@link Qmi.Client} from the {@link Qmi.Device}.
@@ -36727,7 +36741,7 @@ export namespace Qmi {
             client: Client,
             flags: DeviceReleaseClientFlags,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -36762,7 +36776,7 @@ export namespace Qmi {
         set_instance_id(
             instance_id: number,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Sets the instance ID of the {@link Qmi.Device}.
@@ -36793,7 +36807,7 @@ export namespace Qmi {
         set_instance_id(
             instance_id: number,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -36843,7 +36857,7 @@ export namespace Qmi {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -36933,7 +36947,7 @@ export namespace Qmi {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -36994,8 +37008,8 @@ export namespace Qmi {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -37051,38 +37065,19 @@ export namespace Qmi {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -37090,15 +37085,9 @@ export namespace Qmi {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -37265,7 +37254,7 @@ export namespace Qmi {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -37484,11 +37473,13 @@ export namespace Qmi {
         /**
          * @since 1.8
          * @read-only
+         * @default 0
          */
         get qmi_proxy_n_clients(): number;
         /**
          * @since 1.8
          * @read-only
+         * @default 0
          */
         get qmiProxyNClients(): number;
 
@@ -40076,7 +40067,7 @@ export namespace Qmi {
         /**
          * @param compat_context
          */
-        set_compat_context(compat_context?: any | null): void;
+        set_compat_context(compat_context: any | null): void;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -47367,7 +47358,7 @@ export namespace Qmi {
         /**
          * @param compat_context
          */
-        set_compat_context(compat_context?: any | null): void;
+        set_compat_context(compat_context: any | null): void;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -54404,7 +54395,7 @@ export namespace Qmi {
         /**
          * @param compat_context
          */
-        set_compat_context(compat_context?: any | null): void;
+        set_compat_context(compat_context: any | null): void;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -54631,7 +54622,7 @@ export namespace Qmi {
         /**
          * @param compat_context
          */
-        set_compat_context(compat_context?: any | null): void;
+        set_compat_context(compat_context: any | null): void;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.

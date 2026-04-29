@@ -274,7 +274,7 @@ export namespace Secret {
      * @param cancellable optional cancellation object
      * @since 0.19.0
      */
-    function backend_get(flags: BackendFlags, cancellable?: Gio.Cancellable | null): globalThis.Promise<Backend>;
+    function backend_get(flags: BackendFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<Backend>;
     /**
      * Get a {@link Secret.Backend} instance.
      *
@@ -310,8 +310,8 @@ export namespace Secret {
      */
     function backend_get(
         flags: BackendFlags,
-        cancellable?: Gio.Cancellable | null,
-        callback?: Gio.AsyncReadyCallback<BackendFlags> | null,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<BackendFlags> | null,
     ): globalThis.Promise<Backend> | void;
     /**
      * Complete an asynchronous operation to get a {@link Secret.Backend}.
@@ -357,7 +357,7 @@ export namespace Secret {
     function password_clear(
         schema: Schema | null,
         attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): globalThis.Promise<boolean>;
     /**
      * Remove unlocked matching passwords from the secret service.
@@ -394,8 +394,8 @@ export namespace Secret {
     function password_clear(
         schema: Schema | null,
         attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-        cancellable?: Gio.Cancellable | null,
-        callback?: Gio.AsyncReadyCallback<Schema | null> | null,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<Schema | null> | null,
     ): globalThis.Promise<boolean> | void;
     /**
      * Remove unlocked matching passwords from the secret service.
@@ -414,7 +414,7 @@ export namespace Secret {
     function password_clear_sync(
         schema: Schema | null,
         attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): boolean;
     /**
      * Finish an asynchronous operation to lookup a password in the secret service.
@@ -437,7 +437,7 @@ export namespace Secret {
     function password_lookup(
         schema: Schema | null,
         attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): globalThis.Promise<string>;
     /**
      * Lookup a password in the secret service.
@@ -474,8 +474,8 @@ export namespace Secret {
     function password_lookup(
         schema: Schema | null,
         attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-        cancellable?: Gio.Cancellable | null,
-        callback?: Gio.AsyncReadyCallback<Schema | null> | null,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<Schema | null> | null,
     ): globalThis.Promise<string> | void;
     /**
      * Lookup a password in the secret service.
@@ -494,7 +494,7 @@ export namespace Secret {
     function password_lookup_sync(
         schema: Schema | null,
         attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): string;
     /**
      * Finish an asynchronous operation to search for items in the secret service.
@@ -519,7 +519,7 @@ export namespace Secret {
         schema: Schema | null,
         attributes: { [key: string]: any } | GLib.HashTable<string, string>,
         flags: SearchFlags,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): globalThis.Promise<Retrievable[]>;
     /**
      * Search for items in the secret service.
@@ -558,8 +558,8 @@ export namespace Secret {
         schema: Schema | null,
         attributes: { [key: string]: any } | GLib.HashTable<string, string>,
         flags: SearchFlags,
-        cancellable?: Gio.Cancellable | null,
-        callback?: Gio.AsyncReadyCallback<Schema | null> | null,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<Schema | null> | null,
     ): globalThis.Promise<Retrievable[]> | void;
     /**
      * Search for items in the secret service.
@@ -581,7 +581,7 @@ export namespace Secret {
         schema: Schema | null,
         attributes: { [key: string]: any } | GLib.HashTable<string, string>,
         flags: SearchFlags,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): Retrievable[];
     /**
      * Finish asynchronous operation to store a password in the secret service.
@@ -615,7 +615,7 @@ export namespace Secret {
         collection: string | null,
         label: string,
         password: string,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): globalThis.Promise<boolean>;
     /**
      * Store a password in the secret service.
@@ -674,8 +674,8 @@ export namespace Secret {
         collection: string | null,
         label: string,
         password: string,
-        cancellable?: Gio.Cancellable | null,
-        callback?: Gio.AsyncReadyCallback<Schema | null> | null,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<Schema | null> | null,
     ): globalThis.Promise<boolean> | void;
     /**
      * Store a password in the secret service.
@@ -699,8 +699,8 @@ export namespace Secret {
         collection: string | null,
         label: string,
         value: Value,
-        cancellable?: Gio.Cancellable | null,
-        callback?: Gio.AsyncReadyCallback<Schema | null> | null,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<Schema | null> | null,
     ): void;
     /**
      * Store a password in the secret service.
@@ -725,7 +725,7 @@ export namespace Secret {
         collection: string | null,
         label: string,
         value: Value,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): boolean;
     /**
      * Store a password in the secret service.
@@ -755,13 +755,13 @@ export namespace Secret {
         collection: string | null,
         label: string,
         password: string,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): boolean;
     /**
      * Clear the memory used by a password.
      * @param password password to clear
      */
-    function password_wipe(password?: string | null): void;
+    function password_wipe(password: string | null): void;
     /**
      * @gir-type Flags
      */
@@ -988,6 +988,7 @@ export namespace Secret {
         /**
          * The date and time (in seconds since the UNIX epoch) that this
          * collection was created.
+         * @default 0
          */
         get created(): number;
         set created(val: bigint | number);
@@ -995,6 +996,7 @@ export namespace Secret {
          * A set of flags describing which parts of the secret collection have
          * been initialized.
          * @construct-only
+         * @default Secret.CollectionFlags.NONE
          */
         get flags(): CollectionFlags;
         /**
@@ -1003,6 +1005,7 @@ export namespace Secret {
          * Setting this property will result in the label of the collection being
          * set asynchronously. To properly track the changing of the label use the
          * {@link Collection.set_label} function.
+         * @default null
          */
         get label(): string;
         set label(val: string);
@@ -1012,11 +1015,13 @@ export namespace Secret {
          * To lock or unlock a collection use the {@link Service.lock} or
          * {@link Service.unlock} functions.
          * @read-only
+         * @default true
          */
         get locked(): boolean;
         /**
          * The date and time (in seconds since the UNIX epoch) that this
          * collection was last modified.
+         * @default 0
          */
         get modified(): number;
         set modified(val: bigint | number);
@@ -1092,8 +1097,8 @@ export namespace Secret {
             label: string,
             alias: string | null,
             flags: CollectionCreateFlags,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<Collection> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<Collection> | null,
         ): void;
         /**
          * Finish operation to create a new collection in the secret service.
@@ -1126,7 +1131,7 @@ export namespace Secret {
             label: string,
             alias: string | null,
             flags: CollectionCreateFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): Collection;
         /**
          * Lookup which collection is assigned to this alias. Aliases help determine
@@ -1146,8 +1151,8 @@ export namespace Secret {
             service: Service | null,
             alias: string,
             flags: CollectionFlags,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<Collection> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<Collection> | null,
         ): void;
         /**
          * Finish an asynchronous operation to lookup which collection is assigned
@@ -1172,7 +1177,7 @@ export namespace Secret {
             service: Service | null,
             alias: string,
             flags: CollectionFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): Collection | null;
 
         // Methods
@@ -1185,7 +1190,7 @@ export namespace Secret {
          * any prompts that show up.
          * @param cancellable optional cancellation object
          */
-        ['delete'](cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        ['delete'](cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Delete this collection.
          *
@@ -1206,7 +1211,7 @@ export namespace Secret {
          * @param callback called when the operation completes
          */
         ['delete'](
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1224,7 +1229,7 @@ export namespace Secret {
          * @param cancellable optional cancellation object
          * @returns whether the collection was successfully deleted or not
          */
-        delete_sync(cancellable?: Gio.Cancellable | null): boolean;
+        delete_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Get the created date and time of the collection.
          *
@@ -1290,7 +1295,7 @@ export namespace Secret {
          * This method will return immediately and complete asynchronously.
          * @param cancellable optional cancellation object
          */
-        load_items(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        load_items(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Ensure that the {@link Secret.Collection} proxy has loaded all the items present
          * in the Secret Service.
@@ -1319,7 +1324,7 @@ export namespace Secret {
          * @param callback called when the operation completes
          */
         load_items(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1342,7 +1347,7 @@ export namespace Secret {
          * @param cancellable optional cancellation object
          * @returns whether the load was successful or not
          */
-        load_items_sync(cancellable?: Gio.Cancellable | null): boolean;
+        load_items_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Refresh the properties on this collection. This fires off a request to
          * refresh, and the properties will be updated later.
@@ -1376,7 +1381,7 @@ export namespace Secret {
             schema: Schema | null,
             attributes: { [key: string]: any } | GLib.HashTable<string, string>,
             flags: SearchFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<Item[]>;
         /**
          * Search for items matching the `attributes` in the `collection`.
@@ -1433,7 +1438,7 @@ export namespace Secret {
             schema: Schema | null,
             attributes: { [key: string]: any } | GLib.HashTable<string, string>,
             flags: SearchFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Item[]> | void;
         /**
@@ -1469,7 +1474,7 @@ export namespace Secret {
             schema: Schema | null,
             attributes: { [key: string]: any } | GLib.HashTable<string, string>,
             flags: SearchFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): Item[];
         /**
          * Set the label of this collection.
@@ -1478,7 +1483,7 @@ export namespace Secret {
          * @param label a new label
          * @param cancellable optional cancellation object
          */
-        set_label(label: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        set_label(label: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Set the label of this collection.
          *
@@ -1502,7 +1507,7 @@ export namespace Secret {
          */
         set_label(
             label: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1520,7 +1525,7 @@ export namespace Secret {
          * @param cancellable optional cancellation object
          * @returns whether the change was successful or not
          */
-        set_label_sync(label: string, cancellable?: Gio.Cancellable | null): boolean;
+        set_label_sync(label: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -1561,7 +1566,7 @@ export namespace Secret {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -1651,7 +1656,7 @@ export namespace Secret {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1717,8 +1722,8 @@ export namespace Secret {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -1744,7 +1749,7 @@ export namespace Secret {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -1763,7 +1768,7 @@ export namespace Secret {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Initializes the object implementing the interface.
          *
@@ -1806,7 +1811,7 @@ export namespace Secret {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -1849,7 +1854,7 @@ export namespace Secret {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -1897,38 +1902,19 @@ export namespace Secret {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1936,15 +1922,9 @@ export namespace Secret {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -2111,7 +2091,7 @@ export namespace Secret {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -2369,6 +2349,7 @@ export namespace Secret {
          * A set of flags describing which parts of the secret item have
          * been initialized.
          * @construct-only
+         * @default Secret.ItemFlags.NONE
          */
         get flags(): ItemFlags;
         /**
@@ -2380,6 +2361,7 @@ export namespace Secret {
          * To lock or unlock a item use the {@link Service.lock} or
          * {@link Service.unlock} functions.
          * @read-only
+         * @default true
          */
         get locked(): boolean;
         /**
@@ -2453,8 +2435,8 @@ export namespace Secret {
             label: string,
             value: Value,
             flags: ItemCreateFlags,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<Item> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<Item> | null,
         ): void;
         /**
          * Finish operation to create a new item in the secret service.
@@ -2486,7 +2468,7 @@ export namespace Secret {
             label: string,
             value: Value,
             flags: ItemCreateFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): Item;
         /**
          * Load the secret values for a secret item stored in the service.
@@ -2500,8 +2482,8 @@ export namespace Secret {
          */
         static load_secrets(
             items: Item[],
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<Item> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<Item> | null,
         ): void;
         /**
          * Complete asynchronous operation to load the secret values for
@@ -2523,7 +2505,7 @@ export namespace Secret {
          * @param items the items to retrieve secrets for
          * @param cancellable optional cancellation object
          */
-        static load_secrets_sync(items: Item[], cancellable?: Gio.Cancellable | null): boolean;
+        static load_secrets_sync(items: Item[], cancellable: Gio.Cancellable | null): boolean;
 
         // Methods
 
@@ -2535,7 +2517,7 @@ export namespace Secret {
          * any prompts that show up.
          * @param cancellable optional cancellation object
          */
-        ['delete'](cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        ['delete'](cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Delete this item.
          *
@@ -2556,7 +2538,7 @@ export namespace Secret {
          * @param callback called when the operation completes
          */
         ['delete'](
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2574,7 +2556,7 @@ export namespace Secret {
          * @param cancellable optional cancellation object
          * @returns whether the item was successfully deleted or not
          */
-        delete_sync(cancellable?: Gio.Cancellable | null): boolean;
+        delete_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Set the attributes of this item.
          *
@@ -2662,7 +2644,7 @@ export namespace Secret {
          * This function returns immediately and completes asynchronously.
          * @param cancellable optional cancellation object
          */
-        load_secret(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        load_secret(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Load the secret value of this item.
          *
@@ -2689,7 +2671,7 @@ export namespace Secret {
          * @param callback called when the operation completes
          */
         load_secret(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2712,7 +2694,7 @@ export namespace Secret {
          * @param cancellable optional cancellation object
          * @returns whether the secret item successfully loaded or not
          */
-        load_secret_sync(cancellable?: Gio.Cancellable | null): boolean;
+        load_secret_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Refresh the properties on this item.
          *
@@ -2738,7 +2720,7 @@ export namespace Secret {
         set_attributes(
             schema: Schema | null,
             attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Set the attributes of this item.
@@ -2775,7 +2757,7 @@ export namespace Secret {
         set_attributes(
             schema: Schema | null,
             attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2801,7 +2783,7 @@ export namespace Secret {
         set_attributes_sync(
             schema: Schema | null,
             attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Set the label of this item.
@@ -2810,7 +2792,7 @@ export namespace Secret {
          * @param label a new label
          * @param cancellable optional cancellation object
          */
-        set_label(label: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        set_label(label: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Set the label of this item.
          *
@@ -2834,7 +2816,7 @@ export namespace Secret {
          */
         set_label(
             label: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2852,7 +2834,7 @@ export namespace Secret {
          * @param cancellable optional cancellation object
          * @returns whether the change was successful or not
          */
-        set_label_sync(label: string, cancellable?: Gio.Cancellable | null): boolean;
+        set_label_sync(label: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Set the secret value of this item.
          *
@@ -2863,7 +2845,7 @@ export namespace Secret {
          * @param value a new secret value
          * @param cancellable optional cancellation object
          */
-        set_secret(value: Value, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        set_secret(value: Value, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Set the secret value of this item.
          *
@@ -2893,7 +2875,7 @@ export namespace Secret {
          */
         set_secret(
             value: Value,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2914,7 +2896,7 @@ export namespace Secret {
          * @param cancellable optional cancellation object
          * @returns whether the change was successful or not
          */
-        set_secret_sync(value: Value, cancellable?: Gio.Cancellable | null): boolean;
+        set_secret_sync(value: Value, cancellable: Gio.Cancellable | null): boolean;
         /**
          * The attributes set on this item.
          *
@@ -2929,6 +2911,7 @@ export namespace Secret {
          * The date and time (in seconds since the UNIX epoch) that this
          * item was created.
          * @since 0.19.0
+         * @default 0
          * @category Inherited from Secret.Retrievable
          */
         get created(): number;
@@ -2936,6 +2919,7 @@ export namespace Secret {
         /**
          * The human readable label for the item.
          * @since 0.19.0
+         * @default null
          * @category Inherited from Secret.Retrievable
          */
         get label(): string;
@@ -2944,6 +2928,7 @@ export namespace Secret {
          * The date and time (in seconds since the UNIX epoch) that this
          * item was last modified.
          * @since 0.19.0
+         * @default 0
          * @category Inherited from Secret.Retrievable
          */
         get modified(): number;
@@ -2988,7 +2973,7 @@ export namespace Secret {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -3078,7 +3063,7 @@ export namespace Secret {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -3144,8 +3129,8 @@ export namespace Secret {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -3171,7 +3156,7 @@ export namespace Secret {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -3190,7 +3175,7 @@ export namespace Secret {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Initializes the object implementing the interface.
          *
@@ -3233,7 +3218,7 @@ export namespace Secret {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -3276,7 +3261,7 @@ export namespace Secret {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Retrieve the secret value of this object.
          *
@@ -3286,7 +3271,7 @@ export namespace Secret {
          * This function returns immediately and completes asynchronously.
          * @param cancellable optional cancellation object
          */
-        retrieve_secret(cancellable?: Gio.Cancellable | null): globalThis.Promise<Value | null>;
+        retrieve_secret(cancellable: Gio.Cancellable | null): globalThis.Promise<Value | null>;
         /**
          * Retrieve the secret value of this object.
          *
@@ -3309,7 +3294,7 @@ export namespace Secret {
          * @param callback called when the operation completes
          */
         retrieve_secret(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Value | null> | void;
         /**
@@ -3329,7 +3314,7 @@ export namespace Secret {
          * @param cancellable optional cancellation object
          * @returns the secret value which should be   released with {@link Value.unref}, or `null`
          */
-        retrieve_secret_sync(cancellable?: Gio.Cancellable | null): Value | null;
+        retrieve_secret_sync(cancellable: Gio.Cancellable | null): Value | null;
         /**
          * Retrieve the secret value of this object.
          *
@@ -3341,10 +3326,7 @@ export namespace Secret {
          * @param callback called when the operation completes
          * @virtual
          */
-        vfunc_retrieve_secret(
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_retrieve_secret(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Complete asynchronous operation to retrieve the secret value of this object.
          * @param result asynchronous result passed to callback
@@ -3398,38 +3380,19 @@ export namespace Secret {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -3437,15 +3400,9 @@ export namespace Secret {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -3612,7 +3569,7 @@ export namespace Secret {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -3903,7 +3860,7 @@ export namespace Secret {
         perform(
             window_id: string | null,
             return_type: GLib.VariantType,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<GLib.Variant>;
         /**
          * Runs a prompt and performs the prompting.
@@ -3948,7 +3905,7 @@ export namespace Secret {
         perform(
             window_id: string | null,
             return_type: GLib.VariantType,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GLib.Variant> | void;
         /**
@@ -4049,7 +4006,7 @@ export namespace Secret {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -4139,7 +4096,7 @@ export namespace Secret {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -4205,8 +4162,8 @@ export namespace Secret {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -4232,7 +4189,7 @@ export namespace Secret {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -4251,7 +4208,7 @@ export namespace Secret {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Initializes the object implementing the interface.
          *
@@ -4294,7 +4251,7 @@ export namespace Secret {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -4337,7 +4294,7 @@ export namespace Secret {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -4385,38 +4342,19 @@ export namespace Secret {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -4424,15 +4362,9 @@ export namespace Secret {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -4599,7 +4531,7 @@ export namespace Secret {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -4928,8 +4860,8 @@ export namespace Secret {
          */
         static get(
             flags: ServiceFlags,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<Service> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<Service> | null,
         ): void;
         /**
          * @param args
@@ -4955,7 +4887,7 @@ export namespace Secret {
          * @param flags flags for which service functionality to ensure is initialized
          * @param cancellable optional cancellation object
          */
-        static get_sync(flags: ServiceFlags, cancellable?: Gio.Cancellable | null): Service;
+        static get_sync(flags: ServiceFlags, cancellable: Gio.Cancellable | null): Service;
         /**
          * Create a new {@link Secret.Service} proxy for the Secret Service.
          *
@@ -4980,8 +4912,8 @@ export namespace Secret {
             service_gtype: GObject.GType,
             service_bus_name: string | null,
             flags: ServiceFlags,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<Service> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<Service> | null,
         ): void;
         /**
          * Complete an asynchronous operation to create a new {@link Secret.Service} proxy for
@@ -5013,7 +4945,7 @@ export namespace Secret {
             service_gtype: GObject.GType,
             service_bus_name: string | null,
             flags: ServiceFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): Service;
 
         // Virtual methods
@@ -5043,8 +4975,8 @@ export namespace Secret {
         vfunc_prompt_async(
             prompt: Prompt,
             return_type: GLib.VariantType,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Complete asynchronous operation to perform prompting for a {@link Prompt}.
@@ -5099,7 +5031,7 @@ export namespace Secret {
         clear(
             schema: Schema | null,
             attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Remove unlocked items which match the attributes from the secret service.
@@ -5138,7 +5070,7 @@ export namespace Secret {
         clear(
             schema: Schema | null,
             attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -5166,7 +5098,7 @@ export namespace Secret {
         clear_sync(
             schema: Schema | null,
             attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Create a new item in a secret service collection and return its D-Bus
@@ -5200,7 +5132,7 @@ export namespace Secret {
             properties: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
             value: Value,
             flags: ItemCreateFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): string;
         /**
          * Decode a {@link Value} into {@link GLib.Variant} received with the Secret Service
@@ -5239,7 +5171,7 @@ export namespace Secret {
          * This method will return immediately and complete asynchronously.
          * @param cancellable optional cancellation object
          */
-        ensure_session(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        ensure_session(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Ensure that the {@link Secret.Service} proxy has established a session with the
          * Secret Service.
@@ -5272,7 +5204,7 @@ export namespace Secret {
          * @param callback called when the operation completes
          */
         ensure_session(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -5298,7 +5230,7 @@ export namespace Secret {
          * @param cancellable optional cancellation object
          * @returns whether a session is established or not
          */
-        ensure_session_sync(cancellable?: Gio.Cancellable | null): boolean;
+        ensure_session_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Get the GObject type for collections instantiated by this service.
          *
@@ -5368,7 +5300,7 @@ export namespace Secret {
          * This method will return immediately and complete asynchronously.
          * @param cancellable optional cancellation object
          */
-        load_collections(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        load_collections(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Ensure that the {@link Secret.Service} proxy has loaded all the collections present
          * in the Secret Service.
@@ -5399,7 +5331,7 @@ export namespace Secret {
          * @param callback called when the operation completes
          */
         load_collections(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -5424,7 +5356,7 @@ export namespace Secret {
          * @param cancellable optional cancellation object
          * @returns whether the load was successful or not
          */
-        load_collections_sync(cancellable?: Gio.Cancellable | null): boolean;
+        load_collections_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Lock items or collections in the secret service.
          *
@@ -5442,7 +5374,7 @@ export namespace Secret {
          */
         lock(
             objects: Gio.DBusProxy[],
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<[number, Gio.DBusProxy[] | null]>;
         /**
          * Lock items or collections in the secret service.
@@ -5483,7 +5415,7 @@ export namespace Secret {
          */
         lock(
             objects: Gio.DBusProxy[],
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[number, Gio.DBusProxy[] | null]> | void;
         /**
@@ -5512,7 +5444,7 @@ export namespace Secret {
          * @param cancellable optional cancellation object
          * @returns the number of items or collections that were locked
          */
-        lock_sync(objects: Gio.DBusProxy[], cancellable?: Gio.Cancellable | null): [number, Gio.DBusProxy[] | null];
+        lock_sync(objects: Gio.DBusProxy[], cancellable: Gio.Cancellable | null): [number, Gio.DBusProxy[] | null];
         /**
          * Lookup a secret value in the secret service.
          *
@@ -5529,7 +5461,7 @@ export namespace Secret {
         lookup(
             schema: Schema | null,
             attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<Value>;
         /**
          * Lookup a secret value in the secret service.
@@ -5568,7 +5500,7 @@ export namespace Secret {
         lookup(
             schema: Schema | null,
             attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Value> | void;
         /**
@@ -5597,7 +5529,7 @@ export namespace Secret {
         lookup_sync(
             schema: Schema | null,
             attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): Value;
         /**
          * Perform prompting for a {@link Prompt}.
@@ -5614,8 +5546,8 @@ export namespace Secret {
          */
         prompt(
             prompt: Prompt,
-            return_type?: GLib.VariantType | null,
-            cancellable?: Gio.Cancellable | null,
+            return_type: GLib.VariantType | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<GLib.Variant>;
         /**
          * Perform prompting for a {@link Prompt}.
@@ -5653,8 +5585,8 @@ export namespace Secret {
          */
         prompt(
             prompt: Prompt,
-            return_type?: GLib.VariantType | null,
-            cancellable?: Gio.Cancellable | null,
+            return_type: GLib.VariantType | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GLib.Variant> | void;
         /**
@@ -5717,7 +5649,7 @@ export namespace Secret {
             schema: Schema | null,
             attributes: { [key: string]: any } | GLib.HashTable<string, string>,
             flags: SearchFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<Item[]>;
         /**
          * Search for items matching the `attributes`.
@@ -5784,7 +5716,7 @@ export namespace Secret {
             schema: Schema | null,
             attributes: { [key: string]: any } | GLib.HashTable<string, string>,
             flags: SearchFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Item[]> | void;
         /**
@@ -5827,7 +5759,7 @@ export namespace Secret {
             schema: Schema | null,
             attributes: { [key: string]: any } | GLib.HashTable<string, string>,
             flags: SearchFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): Item[];
         /**
          * Assign a collection to this alias.
@@ -5844,8 +5776,8 @@ export namespace Secret {
          */
         set_alias(
             alias: string,
-            collection?: Collection | null,
-            cancellable?: Gio.Cancellable | null,
+            collection: Collection | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Assign a collection to this alias.
@@ -5883,8 +5815,8 @@ export namespace Secret {
          */
         set_alias(
             alias: string,
-            collection?: Collection | null,
-            cancellable?: Gio.Cancellable | null,
+            collection: Collection | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -5906,7 +5838,7 @@ export namespace Secret {
          * @param cancellable optional cancellation object
          * @returns `true` if successful
          */
-        set_alias_sync(alias: string, collection?: Collection | null, cancellable?: Gio.Cancellable | null): boolean;
+        set_alias_sync(alias: string, collection: Collection | null, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Store a secret value in the secret service.
          *
@@ -5936,7 +5868,7 @@ export namespace Secret {
             collection: string | null,
             label: string,
             value: Value,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Store a secret value in the secret service.
@@ -6001,7 +5933,7 @@ export namespace Secret {
             collection: string | null,
             label: string,
             value: Value,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -6041,7 +5973,7 @@ export namespace Secret {
             collection: string | null,
             label: string,
             value: Value,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Unlock items or collections in the secret service.
@@ -6060,7 +5992,7 @@ export namespace Secret {
          */
         unlock(
             objects: Gio.DBusProxy[],
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<[number, Gio.DBusProxy[] | null]>;
         /**
          * Unlock items or collections in the secret service.
@@ -6101,7 +6033,7 @@ export namespace Secret {
          */
         unlock(
             objects: Gio.DBusProxy[],
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[number, Gio.DBusProxy[] | null]> | void;
         /**
@@ -6130,12 +6062,13 @@ export namespace Secret {
          * @param cancellable optional cancellation object
          * @returns the number of items or collections that were unlocked
          */
-        unlock_sync(objects: Gio.DBusProxy[], cancellable?: Gio.Cancellable | null): [number, Gio.DBusProxy[] | null];
+        unlock_sync(objects: Gio.DBusProxy[], cancellable: Gio.Cancellable | null): [number, Gio.DBusProxy[] | null];
         /**
          * A set of flags describing which parts of the secret backend have
          * been initialized.
          * @since 0.19.0
          * @construct-only
+         * @default Secret.ServiceFlags.NONE
          * @category Inherited from Secret.Backend
          */
         get flags(): ServiceFlags;
@@ -6179,7 +6112,7 @@ export namespace Secret {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -6269,7 +6202,7 @@ export namespace Secret {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -6335,8 +6268,8 @@ export namespace Secret {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -6362,7 +6295,7 @@ export namespace Secret {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -6381,7 +6314,7 @@ export namespace Secret {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Initializes the object implementing the interface.
          *
@@ -6424,7 +6357,7 @@ export namespace Secret {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -6467,7 +6400,7 @@ export namespace Secret {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * implementation of {@link password_clear}, required
          * @param schema
@@ -6479,8 +6412,8 @@ export namespace Secret {
         vfunc_clear(
             schema: Schema,
             attributes: GLib.HashTable<any, any>,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * implementation of {@link password_clear_finish}, required
@@ -6497,8 +6430,8 @@ export namespace Secret {
          */
         vfunc_ensure_for_flags(
             flags: BackendFlags,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * implementation of reinitialization step in constructor, optional
@@ -6517,8 +6450,8 @@ export namespace Secret {
         vfunc_lookup(
             schema: Schema,
             attributes: GLib.HashTable<any, any>,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * implementation of {@link password_lookup_finish}, required
@@ -6539,8 +6472,8 @@ export namespace Secret {
             schema: Schema,
             attributes: GLib.HashTable<any, any>,
             flags: SearchFlags,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * implementation of {@link password_store}, required
@@ -6559,8 +6492,8 @@ export namespace Secret {
             collection: string,
             label: string,
             value: Value,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * implementation of {@link password_store_finish}, required
@@ -6615,38 +6548,19 @@ export namespace Secret {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -6654,15 +6568,9 @@ export namespace Secret {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -6829,7 +6737,7 @@ export namespace Secret {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -7275,8 +7183,8 @@ export namespace Secret {
             vfunc_clear(
                 schema: Schema,
                 attributes: GLib.HashTable<any, any>,
-                cancellable?: Gio.Cancellable | null,
-                callback?: Gio.AsyncReadyCallback<this> | null,
+                cancellable: Gio.Cancellable | null,
+                callback: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * implementation of {@link password_clear_finish}, required
@@ -7293,8 +7201,8 @@ export namespace Secret {
              */
             vfunc_ensure_for_flags(
                 flags: BackendFlags,
-                cancellable?: Gio.Cancellable | null,
-                callback?: Gio.AsyncReadyCallback<this> | null,
+                cancellable: Gio.Cancellable | null,
+                callback: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * implementation of reinitialization step in constructor, optional
@@ -7313,8 +7221,8 @@ export namespace Secret {
             vfunc_lookup(
                 schema: Schema,
                 attributes: GLib.HashTable<any, any>,
-                cancellable?: Gio.Cancellable | null,
-                callback?: Gio.AsyncReadyCallback<this> | null,
+                cancellable: Gio.Cancellable | null,
+                callback: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * implementation of {@link password_lookup_finish}, required
@@ -7335,8 +7243,8 @@ export namespace Secret {
                 schema: Schema,
                 attributes: GLib.HashTable<any, any>,
                 flags: SearchFlags,
-                cancellable?: Gio.Cancellable | null,
-                callback?: Gio.AsyncReadyCallback<this> | null,
+                cancellable: Gio.Cancellable | null,
+                callback: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * implementation of {@link password_store}, required
@@ -7355,8 +7263,8 @@ export namespace Secret {
                 collection: string,
                 label: string,
                 value: Value,
-                cancellable?: Gio.Cancellable | null,
-                callback?: Gio.AsyncReadyCallback<this> | null,
+                cancellable: Gio.Cancellable | null,
+                callback: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * implementation of {@link password_store_finish}, required
@@ -7392,8 +7300,8 @@ export namespace Secret {
          */
         get(
             flags: BackendFlags,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<Backend> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<Backend> | null,
         ): void;
         /**
          * Complete an asynchronous operation to get a {@link Secret.Backend}.
@@ -7415,6 +7323,7 @@ export namespace Secret {
          * been initialized.
          * @since 0.19.0
          * @construct-only
+         * @default Secret.ServiceFlags.NONE
          */
         get flags(): ServiceFlags;
     }
@@ -7443,8 +7352,8 @@ export namespace Secret {
              * @virtual
              */
             vfunc_retrieve_secret(
-                cancellable?: Gio.Cancellable | null,
-                callback?: Gio.AsyncReadyCallback<this> | null,
+                cancellable: Gio.Cancellable | null,
+                callback: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * Complete asynchronous operation to retrieve the secret value of this object.
@@ -7496,12 +7405,14 @@ export namespace Secret {
          * The date and time (in seconds since the UNIX epoch) that this
          * item was created.
          * @since 0.19.0
+         * @default 0
          */
         get created(): number;
         set created(val: bigint | number);
         /**
          * The human readable label for the item.
          * @since 0.19.0
+         * @default null
          */
         get label(): string;
         set label(val: string);
@@ -7509,6 +7420,7 @@ export namespace Secret {
          * The date and time (in seconds since the UNIX epoch) that this
          * item was last modified.
          * @since 0.19.0
+         * @default 0
          */
         get modified(): number;
         set modified(val: bigint | number);
@@ -7556,7 +7468,7 @@ export namespace Secret {
          * This function returns immediately and completes asynchronously.
          * @param cancellable optional cancellation object
          */
-        retrieve_secret(cancellable?: Gio.Cancellable | null): globalThis.Promise<Value | null>;
+        retrieve_secret(cancellable: Gio.Cancellable | null): globalThis.Promise<Value | null>;
         /**
          * Retrieve the secret value of this object.
          *
@@ -7579,7 +7491,7 @@ export namespace Secret {
          * @param callback called when the operation completes
          */
         retrieve_secret(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Value | null> | void;
         /**
@@ -7599,7 +7511,7 @@ export namespace Secret {
          * @param cancellable optional cancellation object
          * @returns the secret value which should be   released with {@link Value.unref}, or `null`
          */
-        retrieve_secret_sync(cancellable?: Gio.Cancellable | null): Value | null;
+        retrieve_secret_sync(cancellable: Gio.Cancellable | null): Value | null;
     }
 
     export const Retrievable: RetrievableNamespace & {

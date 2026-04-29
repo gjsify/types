@@ -121,8 +121,14 @@ export namespace FoundryGtk {
 
         // Properties
 
+        /**
+         * @default false
+         */
         get show_overview(): boolean;
         set show_overview(val: boolean);
+        /**
+         * @default false
+         */
         get showOverview(): boolean;
         set showOverview(val: boolean);
 
@@ -220,38 +226,19 @@ export namespace FoundryGtk {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -259,15 +246,9 @@ export namespace FoundryGtk {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -434,7 +415,7 @@ export namespace FoundryGtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -792,38 +773,19 @@ export namespace FoundryGtk {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -831,15 +793,9 @@ export namespace FoundryGtk {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1006,7 +962,7 @@ export namespace FoundryGtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1301,6 +1257,7 @@ export namespace FoundryGtk {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
@@ -1309,6 +1266,7 @@ export namespace FoundryGtk {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
@@ -1412,7 +1370,7 @@ export namespace FoundryGtk {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent?: Gtk.Accessible | null, next_sibling?: Gtk.Accessible | null): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
         /**
          * Updates the next accessible sibling.
          *
@@ -1420,7 +1378,7 @@ export namespace FoundryGtk {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling?: Gtk.Accessible | null): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
         /**
          * Informs ATs that the platform state has changed.
          *
@@ -1531,7 +1489,7 @@ export namespace FoundryGtk {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -1545,7 +1503,7 @@ export namespace FoundryGtk {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called at the end of each custom element handled by
@@ -1560,7 +1518,7 @@ export namespace FoundryGtk {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called for each unknown element under `<child>`.
@@ -1664,38 +1622,19 @@ export namespace FoundryGtk {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1703,15 +1642,9 @@ export namespace FoundryGtk {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1878,7 +1811,7 @@ export namespace FoundryGtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -2222,8 +2155,14 @@ export namespace FoundryGtk {
 
         // Properties
 
+        /**
+         * @default null
+         */
         get menu_id(): string;
         set menu_id(val: string);
+        /**
+         * @default null
+         */
         get menuId(): string;
         set menuId(val: string);
 
@@ -2490,38 +2429,19 @@ export namespace FoundryGtk {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -2529,15 +2449,9 @@ export namespace FoundryGtk {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -2704,7 +2618,7 @@ export namespace FoundryGtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -3122,38 +3036,19 @@ export namespace FoundryGtk {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -3161,15 +3056,9 @@ export namespace FoundryGtk {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -3341,7 +3230,7 @@ export namespace FoundryGtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -3683,21 +3572,25 @@ export namespace FoundryGtk {
         get context(): Foundry.Context;
         /**
          * @read-only
+         * @default null
          */
         get language_id(): string;
         /**
          * @read-only
+         * @default null
          */
         get languageId(): string;
         /**
          * The GtkSourceLanguage identifier of the syntax to use, ignoring any
          * guessed language.
+         * @default null
          */
         get override_syntax(): string;
         set override_syntax(val: string);
         /**
          * The GtkSourceLanguage identifier of the syntax to use, ignoring any
          * guessed language.
+         * @default null
          */
         get overrideSyntax(): string;
         set overrideSyntax(val: string);
@@ -3941,38 +3834,19 @@ export namespace FoundryGtk {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -3980,15 +3854,9 @@ export namespace FoundryGtk {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -4155,7 +4023,7 @@ export namespace FoundryGtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -4457,8 +4325,8 @@ export namespace FoundryGtk {
             showLineChanges: boolean;
             show_line_changes_overview: boolean;
             showLineChangesOverview: boolean;
-            vim_im_context: Gtk.IMContext;
-            vimImContext: Gtk.IMContext;
+            vim_im_context: Gtk.IMContext | null;
+            vimImContext: Gtk.IMContext | null;
         }
     }
 
@@ -4477,12 +4345,24 @@ export namespace FoundryGtk {
          * @construct-only
          */
         get document(): Foundry.TextDocument;
+        /**
+         * @default true
+         */
         get enable_completion(): boolean;
         set enable_completion(val: boolean);
+        /**
+         * @default true
+         */
         get enableCompletion(): boolean;
         set enableCompletion(val: boolean);
+        /**
+         * @default false
+         */
         get enable_vim(): boolean;
         set enable_vim(val: boolean);
+        /**
+         * @default false
+         */
         get enableVim(): boolean;
         set enableVim(val: boolean);
         get font(): Pango.FontDescription;
@@ -4490,12 +4370,14 @@ export namespace FoundryGtk {
         /**
          * Specify a non-default line height for text within the editor.
          * Some applications use this for improved readability.
+         * @default 1
          */
         get line_height(): number;
         set line_height(val: number);
         /**
          * Specify a non-default line height for text within the editor.
          * Some applications use this for improved readability.
+         * @default 1
          */
         get lineHeight(): number;
         set lineHeight(val: number);
@@ -4503,6 +4385,7 @@ export namespace FoundryGtk {
          * Shows the line changes on the left-hand side of the editor (when in LTR
          * direction) for each line in the editor. If the line is changed or added,
          * it will be drawn as a different color.
+         * @default false
          */
         get show_diagnostics(): boolean;
         set show_diagnostics(val: boolean);
@@ -4510,6 +4393,7 @@ export namespace FoundryGtk {
          * Shows the line changes on the left-hand side of the editor (when in LTR
          * direction) for each line in the editor. If the line is changed or added,
          * it will be drawn as a different color.
+         * @default false
          */
         get showDiagnostics(): boolean;
         set showDiagnostics(val: boolean);
@@ -4517,6 +4401,7 @@ export namespace FoundryGtk {
          * Shows the line changes on the left-hand side of the editor (when in LTR
          * direction) for each line in the editor. If the line is changed or added,
          * it will be drawn as a different color.
+         * @default false
          */
         get show_line_changes(): boolean;
         set show_line_changes(val: boolean);
@@ -4524,6 +4409,7 @@ export namespace FoundryGtk {
          * Shows the line changes on the left-hand side of the editor (when in LTR
          * direction) for each line in the editor. If the line is changed or added,
          * it will be drawn as a different color.
+         * @default false
          */
         get showLineChanges(): boolean;
         set showLineChanges(val: boolean);
@@ -4531,6 +4417,7 @@ export namespace FoundryGtk {
          * Shows the line changes on the right-hand side of the editor (when in LTR
          * direction) but as an overview of the entire document. This can give some
          * insight as to where in the document other changes are.
+         * @default false
          */
         get show_line_changes_overview(): boolean;
         set show_line_changes_overview(val: boolean);
@@ -4538,6 +4425,7 @@ export namespace FoundryGtk {
          * Shows the line changes on the right-hand side of the editor (when in LTR
          * direction) but as an overview of the entire document. This can give some
          * insight as to where in the document other changes are.
+         * @default false
          */
         get showLineChangesOverview(): boolean;
         set showLineChangesOverview(val: boolean);
@@ -4545,12 +4433,12 @@ export namespace FoundryGtk {
          * Gets the IM context used for vim emulation.
          * @read-only
          */
-        get vim_im_context(): Gtk.IMContext;
+        get vim_im_context(): Gtk.IMContext | null;
         /**
          * Gets the IM context used for vim emulation.
          * @read-only
          */
-        get vimImContext(): Gtk.IMContext;
+        get vimImContext(): Gtk.IMContext | null;
 
         /**
          * Compile-time signal type information.
@@ -4730,38 +4618,19 @@ export namespace FoundryGtk {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -4769,15 +4638,9 @@ export namespace FoundryGtk {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -4944,7 +4807,7 @@ export namespace FoundryGtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -5263,7 +5126,7 @@ export namespace FoundryGtk {
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps,
                 Gtk.Scrollable.ConstructorProps {
-            palette: TerminalPalette;
+            palette: TerminalPalette | null;
         }
     }
 
@@ -5278,8 +5141,8 @@ export namespace FoundryGtk {
 
         // Properties
 
-        get palette(): TerminalPalette;
-        set palette(val: TerminalPalette);
+        get palette(): TerminalPalette | null;
+        set palette(val: TerminalPalette | null);
 
         /**
          * Compile-time signal type information.
@@ -5342,6 +5205,7 @@ export namespace FoundryGtk {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
@@ -5350,6 +5214,7 @@ export namespace FoundryGtk {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
@@ -5360,16 +5225,18 @@ export namespace FoundryGtk {
          * This adjustment is shared between the scrollable widget and its parent.
          * @category Inherited from Gtk.Scrollable
          */
-        get hadjustment(): Gtk.Adjustment;
-        set hadjustment(val: Gtk.Adjustment);
+        get hadjustment(): Gtk.Adjustment | null;
+        set hadjustment(val: Gtk.Adjustment | null);
         /**
          * Determines when horizontal scrolling should start.
+         * @default Gtk.ScrollablePolicy.MINIMUM
          * @category Inherited from Gtk.Scrollable
          */
         get hscroll_policy(): Gtk.ScrollablePolicy;
         set hscroll_policy(val: Gtk.ScrollablePolicy);
         /**
          * Determines when horizontal scrolling should start.
+         * @default Gtk.ScrollablePolicy.MINIMUM
          * @category Inherited from Gtk.Scrollable
          */
         get hscrollPolicy(): Gtk.ScrollablePolicy;
@@ -5380,16 +5247,18 @@ export namespace FoundryGtk {
          * This adjustment is shared between the scrollable widget and its parent.
          * @category Inherited from Gtk.Scrollable
          */
-        get vadjustment(): Gtk.Adjustment;
-        set vadjustment(val: Gtk.Adjustment);
+        get vadjustment(): Gtk.Adjustment | null;
+        set vadjustment(val: Gtk.Adjustment | null);
         /**
          * Determines when vertical scrolling should start.
+         * @default Gtk.ScrollablePolicy.MINIMUM
          * @category Inherited from Gtk.Scrollable
          */
         get vscroll_policy(): Gtk.ScrollablePolicy;
         set vscroll_policy(val: Gtk.ScrollablePolicy);
         /**
          * Determines when vertical scrolling should start.
+         * @default Gtk.ScrollablePolicy.MINIMUM
          * @category Inherited from Gtk.Scrollable
          */
         get vscrollPolicy(): Gtk.ScrollablePolicy;
@@ -5493,7 +5362,7 @@ export namespace FoundryGtk {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent?: Gtk.Accessible | null, next_sibling?: Gtk.Accessible | null): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
         /**
          * Updates the next accessible sibling.
          *
@@ -5501,7 +5370,7 @@ export namespace FoundryGtk {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling?: Gtk.Accessible | null): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
         /**
          * Informs ATs that the platform state has changed.
          *
@@ -5748,7 +5617,7 @@ export namespace FoundryGtk {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -5762,7 +5631,7 @@ export namespace FoundryGtk {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called at the end of each custom element handled by
@@ -5777,7 +5646,7 @@ export namespace FoundryGtk {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called for each unknown element under `<child>`.
@@ -5868,7 +5737,7 @@ export namespace FoundryGtk {
          * Sets the horizontal adjustment of the {@link Gtk.Scrollable}.
          * @param hadjustment a {@link Gtk.Adjustment}
          */
-        set_hadjustment(hadjustment?: Gtk.Adjustment | null): void;
+        set_hadjustment(hadjustment: Gtk.Adjustment | null): void;
         /**
          * Sets the {@link Gtk.ScrollablePolicy}.
          *
@@ -5881,7 +5750,7 @@ export namespace FoundryGtk {
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
          */
-        set_vadjustment(vadjustment?: Gtk.Adjustment | null): void;
+        set_vadjustment(vadjustment: Gtk.Adjustment | null): void;
         /**
          * Sets the {@link Gtk.ScrollablePolicy}.
          *
@@ -5947,38 +5816,19 @@ export namespace FoundryGtk {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -5986,15 +5836,9 @@ export namespace FoundryGtk {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -6161,7 +6005,7 @@ export namespace FoundryGtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -6374,6 +6218,7 @@ export namespace FoundryGtk {
 
         /**
          * @read-only
+         * @default null
          */
         get title(): string;
 
@@ -6462,6 +6307,7 @@ export namespace FoundryGtk {
         get light(): TerminalPalette;
         /**
          * @read-only
+         * @default null
          */
         get title(): string;
 

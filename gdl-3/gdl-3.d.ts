@@ -175,8 +175,8 @@ export namespace Gdl {
         return_value: GObject.Value | any,
         n_param_values: number,
         param_values: GObject.Value | any,
-        invocation_hint?: any | null,
-        marshal_data?: any | null,
+        invocation_hint: any | null,
+        marshal_data: any | null,
     ): void;
     /**
      * @param closure
@@ -191,8 +191,8 @@ export namespace Gdl {
         return_value: GObject.Value | any,
         n_param_values: number,
         param_values: GObject.Value | any,
-        invocation_hint?: any | null,
-        marshal_data?: any | null,
+        invocation_hint: any | null,
+        marshal_data: any | null,
     ): void;
     /**
      * @param closure
@@ -207,8 +207,8 @@ export namespace Gdl {
         return_value: GObject.Value | any,
         n_param_values: number,
         param_values: GObject.Value | any,
-        invocation_hint?: any | null,
-        marshal_data?: any | null,
+        invocation_hint: any | null,
+        marshal_data: any | null,
     ): void;
     /**
      * @gir-type Flags
@@ -452,18 +452,34 @@ export namespace Gdl {
 
         // Properties
 
+        /**
+         * @default null
+         */
         get default_title(): string;
         set default_title(val: string);
+        /**
+         * @default null
+         */
         get defaultTitle(): string;
         set defaultTitle(val: string);
         /**
          * @construct-only
+         * @default false
          */
         get floating(): boolean;
+        /**
+         * @default 0
+         */
         get floatx(): number;
         set floatx(val: number);
+        /**
+         * @default 0
+         */
         get floaty(): number;
         set floaty(val: number);
+        /**
+         * @default -1
+         */
         get height(): number;
         set height(val: number);
         /**
@@ -472,6 +488,7 @@ export namespace Gdl {
          * after this flag is set; existing windows are not affected.  Usually,
          * this property is used when you create the dock.
          * @since 3.6
+         * @default true
          */
         get skip_taskbar(): boolean;
         set skip_taskbar(val: boolean);
@@ -481,9 +498,13 @@ export namespace Gdl {
          * after this flag is set; existing windows are not affected.  Usually,
          * this property is used when you create the dock.
          * @since 3.6
+         * @default true
          */
         get skipTaskbar(): boolean;
         set skipTaskbar(val: boolean);
+        /**
+         * @default -1
+         */
         get width(): number;
         set width(val: number);
 
@@ -658,38 +679,19 @@ export namespace Gdl {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -697,15 +699,9 @@ export namespace Gdl {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -872,7 +868,7 @@ export namespace Gdl {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1137,8 +1133,14 @@ export namespace Gdl {
 
         // Properties
 
+        /**
+         * @default Gdl.DockBarStyle.BOTH
+         */
         get dockbar_style(): DockBarStyle;
         set dockbar_style(val: DockBarStyle);
+        /**
+         * @default Gdl.DockBarStyle.BOTH
+         */
         get dockbarStyle(): DockBarStyle;
         set dockbarStyle(val: DockBarStyle);
         /**
@@ -1162,7 +1164,7 @@ export namespace Gdl {
 
         _init(...args: any[]): void;
 
-        static ['new'](master?: GObject.Object | null): DockBar;
+        static ['new'](master: GObject.Object | null): DockBar;
         // Conflicted with Gtk.Box.new
 
         static ['new'](...args: never[]): any;
@@ -1223,6 +1225,7 @@ export namespace Gdl {
         /**
          * The orientation of the orientable.
          * @since 2.16
+         * @default Gtk.Orientation.HORIZONTAL
          * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
@@ -1274,38 +1277,19 @@ export namespace Gdl {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1313,15 +1297,9 @@ export namespace Gdl {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1488,7 +1466,7 @@ export namespace Gdl {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1802,11 +1780,15 @@ export namespace Gdl {
 
         // Properties
 
+        /**
+         * @default Gdl.DockItemBehavior.NORMAL
+         */
         get behavior(): DockItemBehavior;
         set behavior(val: DockItemBehavior);
         /**
          * If set, the dock item is closed.
          * @since 3.6
+         * @default false
          */
         get closed(): boolean;
         set closed(val: boolean);
@@ -1814,9 +1796,13 @@ export namespace Gdl {
          * If set, the dock item is hidden but it has a corresponding icon in the
          * dock bar allowing to show it again.
          * @since 3.6
+         * @default false
          */
         get iconified(): boolean;
         set iconified(val: boolean);
+        /**
+         * @default false
+         */
         get locked(): boolean;
         set locked(val: boolean);
         /**
@@ -1826,17 +1812,33 @@ export namespace Gdl {
          * orientation is set to #GTK_ORIENTATION_HORIZONTAL, the grip
          * widget will be shown down the left edge of the item (even if the
          * widget text direction is set to RTL).
+         * @default Gtk.Orientation.VERTICAL
          */
         get orientation(): Gtk.Orientation;
         set orientation(val: Gtk.Orientation);
+        /**
+         * @default -1
+         */
         get preferred_height(): number;
         set preferred_height(val: number);
+        /**
+         * @default -1
+         */
         get preferredHeight(): number;
         set preferredHeight(val: number);
+        /**
+         * @default -1
+         */
         get preferred_width(): number;
         set preferred_width(val: number);
+        /**
+         * @default -1
+         */
         get preferredWidth(): number;
         set preferredWidth(val: number);
+        /**
+         * @default true
+         */
         get resize(): boolean;
         set resize(val: boolean);
 
@@ -2052,7 +2054,7 @@ export namespace Gdl {
          * child will be removed.
          * @param child a {@link Gtk.Widget}
          */
-        set_child(child?: Gtk.Widget | null): void;
+        set_child(child: Gtk.Widget | null): void;
         /**
          * This method has only an effect when you add you dock_item with
          * GDL_DOCK_ITEM_BEH_NEVER_FLOATING. In this case you have to assign
@@ -2144,38 +2146,19 @@ export namespace Gdl {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -2183,15 +2166,9 @@ export namespace Gdl {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -2358,7 +2335,7 @@ export namespace Gdl {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -2657,7 +2634,7 @@ export namespace Gdl {
          * @param child child to add
          * @param type kind of child or `null`
          */
-        add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
+        add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
         /**
          * Constructs a child of `buildable` with the name `name`.
          *
@@ -2676,7 +2653,7 @@ export namespace Gdl {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: any | null): void;
+        custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: any | null): void;
         /**
          * This is called at the end of each custom element handled by
          * the buildable.
@@ -2685,7 +2662,7 @@ export namespace Gdl {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: any | null): void;
+        custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: any | null): void;
         /**
          * This is called for each unknown element under `<child>`.
          * @param builder a {@link Gtk.Builder} used to construct this object
@@ -2743,7 +2720,7 @@ export namespace Gdl {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
         /**
          * Constructs a child of `buildable` with the name `name`.
          *
@@ -2767,7 +2744,7 @@ export namespace Gdl {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * This is called at the end of each custom element handled by
@@ -2782,7 +2759,7 @@ export namespace Gdl {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * This is called for each unknown element under `<child>`.
@@ -2883,38 +2860,19 @@ export namespace Gdl {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -2922,15 +2880,9 @@ export namespace Gdl {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -3097,7 +3049,7 @@ export namespace Gdl {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -3470,38 +3422,19 @@ export namespace Gdl {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -3509,15 +3442,9 @@ export namespace Gdl {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -3684,7 +3611,7 @@ export namespace Gdl {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -3901,6 +3828,7 @@ export namespace Gdl {
 
         /**
          * @read-only
+         * @default false
          */
         get dirty(): boolean;
         get master(): GObject.Object;
@@ -3995,7 +3923,7 @@ export namespace Gdl {
          * @param name The name of the layout to load or `null` for a default layout name.
          * @returns `true` if layout successfully loaded else `false`
          */
-        load_layout(name?: string | null): boolean;
+        load_layout(name: string | null): boolean;
         /**
          * Saves the `layout` with the given name to the memory.
          * This will set {@link Gdl.DockLayout.dirty} to `true`.
@@ -4003,7 +3931,7 @@ export namespace Gdl {
          * See also `gdl_dock_layout_save_to_file()`.
          * @param name The name of the layout to save or `null` for a default layout name.
          */
-        save_layout(name?: string | null): void;
+        save_layout(name: string | null): void;
         /**
          * This function saves the current layout in XML format to
          * the file with the given `filename`.
@@ -4062,22 +3990,49 @@ export namespace Gdl {
 
         // Properties
 
+        /**
+         * @default null
+         */
         get default_title(): string;
         set default_title(val: string);
+        /**
+         * @default null
+         */
         get defaultTitle(): string;
         set defaultTitle(val: string);
+        /**
+         * @default 0
+         */
         get locked(): number;
         set locked(val: number);
+        /**
+         * @default Gdl.SwitcherStyle.BOTH
+         */
         get switcher_style(): SwitcherStyle;
         set switcher_style(val: SwitcherStyle);
+        /**
+         * @default Gdl.SwitcherStyle.BOTH
+         */
         get switcherStyle(): SwitcherStyle;
         set switcherStyle(val: SwitcherStyle);
+        /**
+         * @default Gtk.PositionType.BOTTOM
+         */
         get tab_pos(): Gtk.PositionType;
         set tab_pos(val: Gtk.PositionType);
+        /**
+         * @default Gtk.PositionType.BOTTOM
+         */
         get tabPos(): Gtk.PositionType;
         set tabPos(val: Gtk.PositionType);
+        /**
+         * @default false
+         */
         get tab_reorderable(): boolean;
         set tab_reorderable(val: boolean);
+        /**
+         * @default false
+         */
         get tabReorderable(): boolean;
         set tabReorderable(val: boolean);
 
@@ -4251,6 +4206,9 @@ export namespace Gdl {
 
         // Properties
 
+        /**
+         * @default -1
+         */
         get page(): number;
         set page(val: number);
 
@@ -4342,38 +4300,19 @@ export namespace Gdl {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -4381,15 +4320,9 @@ export namespace Gdl {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -4556,7 +4489,7 @@ export namespace Gdl {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -4837,11 +4770,13 @@ export namespace Gdl {
 
         /**
          * A long descriptive name.
+         * @default null
          */
         get long_name(): string;
         set long_name(val: string);
         /**
          * A long descriptive name.
+         * @default null
          */
         get longName(): string;
         set longName(val: string);
@@ -4854,6 +4789,7 @@ export namespace Gdl {
          * The object name.  If the object is manual the name can be used
          * to recall the object from any other object in the ring
          * @construct-only
+         * @default null
          */
         get name(): string;
         /**
@@ -4870,11 +4806,13 @@ export namespace Gdl {
         set pixbufIcon(val: any);
         /**
          * A stock id to use for the icon of the dock object.
+         * @default null
          */
         get stock_id(): string;
         set stock_id(val: string);
         /**
          * A stock id to use for the icon of the dock object.
+         * @default null
          */
         get stockId(): string;
         set stockId(val: string);
@@ -4962,7 +4900,7 @@ export namespace Gdl {
          * @param placement where to return the placement information
          * @virtual
          */
-        vfunc_child_placement(child: DockObject, placement?: DockPlacement | null): boolean;
+        vfunc_child_placement(child: DockObject, placement: DockPlacement | null): boolean;
         /**
          * Dissociate a dock object from its parent, including or not its children.
          * @param recursive `true` to detach children
@@ -4976,7 +4914,7 @@ export namespace Gdl {
          * @param other_data Optional data giving additional information depending on the dock object.
          * @virtual
          */
-        vfunc_dock(requestor: DockObject, position: DockPlacement, other_data?: GObject.Value | null): void;
+        vfunc_dock(requestor: DockObject, position: DockPlacement, other_data: GObject.Value | null): void;
         /**
          * Dock a dock widget in `object` at the defined position.
          * @param x X coordinate
@@ -4992,7 +4930,7 @@ export namespace Gdl {
          * @param child The child widget to present or `null`
          * @virtual
          */
-        vfunc_present(child?: DockObject | null): void;
+        vfunc_present(child: DockObject | null): void;
         /**
          * Remove a compound object if it is not longer useful to hold the child. The
          * object has to be removed and the child reattached to the parent.
@@ -5006,7 +4944,7 @@ export namespace Gdl {
          * @param other_data Optional data giving additional information depending on the dock object.
          * @virtual
          */
-        vfunc_reorder(child: DockObject, new_position: DockPlacement, other_data?: GObject.Value | null): boolean;
+        vfunc_reorder(child: DockObject, new_position: DockPlacement, other_data: GObject.Value | null): boolean;
 
         // Methods
 
@@ -5031,7 +4969,7 @@ export namespace Gdl {
          * @param placement where to return the placement information
          * @returns `true` if `child` is a child of `object`.
          */
-        child_placement(child: DockObject, placement?: DockPlacement | null): boolean;
+        child_placement(child: DockObject, placement: DockPlacement | null): boolean;
         /**
          * Dissociate a dock object from its parent, including or not its children.
          * @param recursive `true` to detach children
@@ -5043,7 +4981,7 @@ export namespace Gdl {
          * @param position The position for the child
          * @param other_data Optional data giving additional information depending on the dock object.
          */
-        dock(requestor: DockObject, position: DockPlacement, other_data?: GObject.Value | null): void;
+        dock(requestor: DockObject, position: DockPlacement, other_data: GObject.Value | null): void;
         /**
          * Dock a dock widget in `object` at the defined position.
          * @param x X coordinate
@@ -5143,7 +5081,7 @@ export namespace Gdl {
          * only the `object` will be show.
          * @param child The child widget to present or `null`
          */
-        present(child?: DockObject | null): void;
+        present(child: DockObject | null): void;
         /**
          * Remove a compound object if it is not longer useful to hold the child. The
          * object has to be removed and the child reattached to the parent.
@@ -5156,7 +5094,7 @@ export namespace Gdl {
          * @param other_data Optional data giving additional information depending on the dock object.
          * @returns `true` if `child` has been moved
          */
-        reorder(child: DockObject, new_position: DockPlacement, other_data?: GObject.Value | null): boolean;
+        reorder(child: DockObject, new_position: DockPlacement, other_data: GObject.Value | null): boolean;
         /**
          * Set the long name of the object. This name is an human readable string
          * which can be displayed in the user interface.
@@ -5178,7 +5116,7 @@ export namespace Gdl {
          * Set a icon for a dock object using a {@link GdkPixbuf.Pixbuf}.
          * @param icon a icon or `null`
          */
-        set_pixbuf(icon?: GdkPixbuf.Pixbuf | null): void;
+        set_pixbuf(icon: GdkPixbuf.Pixbuf | null): void;
         /**
          * Set an icon for the dock object using a stock id.
          * @param stock_id a stock id
@@ -5241,38 +5179,19 @@ export namespace Gdl {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -5280,15 +5199,9 @@ export namespace Gdl {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -5455,7 +5368,7 @@ export namespace Gdl {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -5721,6 +5634,9 @@ export namespace Gdl {
 
         // Properties
 
+        /**
+         * @default 0
+         */
         get position(): number;
         set position(val: number);
 
@@ -5815,38 +5731,19 @@ export namespace Gdl {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -5854,15 +5751,9 @@ export namespace Gdl {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -6029,7 +5920,7 @@ export namespace Gdl {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -6341,28 +6232,44 @@ export namespace Gdl {
 
         /**
          * @construct-only
+         * @default false
          */
         get floating(): boolean;
         /**
          * @construct-only
+         * @default -1
          */
         get floatx(): number;
         /**
          * @construct-only
+         * @default -1
          */
         get floaty(): number;
+        /**
+         * @default -1
+         */
         get height(): number;
         set height(val: number);
         get host(): DockObject;
         set host(val: DockObject);
+        /**
+         * @default Gdl.DockPlacement.CENTER
+         */
         get next_placement(): DockPlacement;
         set next_placement(val: DockPlacement);
+        /**
+         * @default Gdl.DockPlacement.CENTER
+         */
         get nextPlacement(): DockPlacement;
         set nextPlacement(val: DockPlacement);
         /**
          * @construct-only
+         * @default false
          */
         get sticky(): boolean;
+        /**
+         * @default -1
+         */
         get width(): number;
         set width(val: number);
 
@@ -6462,38 +6369,19 @@ export namespace Gdl {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -6501,15 +6389,9 @@ export namespace Gdl {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -6676,7 +6558,7 @@ export namespace Gdl {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -7054,38 +6936,19 @@ export namespace Gdl {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -7093,15 +6956,9 @@ export namespace Gdl {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -7268,7 +7125,7 @@ export namespace Gdl {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -7649,38 +7506,19 @@ export namespace Gdl {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -7688,15 +7526,9 @@ export namespace Gdl {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -7863,7 +7695,7 @@ export namespace Gdl {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -8133,16 +7965,34 @@ export namespace Gdl {
 
         // Properties
 
+        /**
+         * @default Gdl.SwitcherStyle.BOTH
+         */
         get switcher_style(): SwitcherStyle;
         set switcher_style(val: SwitcherStyle);
+        /**
+         * @default Gdl.SwitcherStyle.BOTH
+         */
         get switcherStyle(): SwitcherStyle;
         set switcherStyle(val: SwitcherStyle);
+        /**
+         * @default Gtk.PositionType.BOTTOM
+         */
         get tab_pos(): Gtk.PositionType;
         set tab_pos(val: Gtk.PositionType);
+        /**
+         * @default Gtk.PositionType.BOTTOM
+         */
         get tabPos(): Gtk.PositionType;
         set tabPos(val: Gtk.PositionType);
+        /**
+         * @default false
+         */
         get tab_reorderable(): boolean;
         set tab_reorderable(val: boolean);
+        /**
+         * @default false
+         */
         get tabReorderable(): boolean;
         set tabReorderable(val: boolean);
 
@@ -8263,38 +8113,19 @@ export namespace Gdl {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -8302,15 +8133,9 @@ export namespace Gdl {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -8477,7 +8302,7 @@ export namespace Gdl {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set

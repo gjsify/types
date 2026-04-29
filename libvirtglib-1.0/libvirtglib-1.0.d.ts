@@ -65,7 +65,7 @@ export namespace LibvirtGLib {
      * mode of operation call <code>gvir_init_check</code> instead.
      * @param argv Address of the     <parameter>argv</parameter> parameter of `main()`, or `null`. Any options     understood by GTK+ are stripped before return.
      */
-    function init(argv?: string[] | null): string[] | null;
+    function init(argv: string[] | null): string[] | null;
     /**
      * This function does the same work as `gvir_init()` with only a single
      * change: It does not terminate the program if the Libvirt GLib library
@@ -76,7 +76,7 @@ export namespace LibvirtGLib {
      * @param argv Address of the     <parameter>argv</parameter> parameter of `main()`, or `null`. Any options     understood by GTK+ are stripped before return.
      * @returns `true` if the library was successfully initialized,     `false` otherwise
      */
-    function init_check(argv?: string[] | null): [boolean, string[] | null];
+    function init_check(argv: string[] | null): [boolean, string[] | null];
     /**
      * If `error` is NULL this does nothing. Otherwise it
      * creates a new {@link GLib.Error} and stores it in `error`; unlike

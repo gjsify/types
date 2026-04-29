@@ -323,7 +323,7 @@ export namespace Jcat {
          * Sets an optional AppStream ID on the blob.
          * @param appstream_id string
          */
-        set_appstream_id(appstream_id?: string | null): void;
+        set_appstream_id(appstream_id: string | null): void;
         /**
          * Sets the blob target.
          * @param target a {@link Jcat.BlobKind}, e.g. {@link Jcat.BlobKind.SHA256}
@@ -680,18 +680,22 @@ export namespace Jcat {
         get context(): Context;
         /**
          * @construct-only
+         * @default 0
          */
         get kind(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get method(): number;
         /**
          * @read-only
+         * @default 0
          */
         get verify_kind(): number;
         /**
          * @read-only
+         * @default 0
          */
         get verifyKind(): number;
 
@@ -909,7 +913,7 @@ export namespace Jcat {
          * @param cancellable {@link Gio.Cancellable}, or `null`
          * @returns `true` for success
          */
-        export_file(gfile: Gio.File, flags: ExportFlags, cancellable?: Gio.Cancellable | null): boolean;
+        export_file(gfile: Gio.File, flags: ExportFlags, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Exports a Jcat file to raw JSON.
          * @param flags a {@link Jcat.ExportFlags}, typically {@link Jcat.ExportFlags.NONE}
@@ -923,7 +927,7 @@ export namespace Jcat {
          * @param cancellable {@link Gio.Cancellable}, or `null`
          * @returns `true` for success
          */
-        export_stream(ostream: Gio.OutputStream, flags: ExportFlags, cancellable?: Gio.Cancellable | null): boolean;
+        export_stream(ostream: Gio.OutputStream, flags: ExportFlags, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Finds the item with the specified ID, falling back to the ID alias if set.
          * @param id An ID, typically a filename basename
@@ -958,7 +962,7 @@ export namespace Jcat {
          * @param cancellable {@link Gio.Cancellable}, or `null`
          * @returns `true` for success
          */
-        import_file(gfile: Gio.File, flags: ImportFlags, cancellable?: Gio.Cancellable | null): boolean;
+        import_file(gfile: Gio.File, flags: ImportFlags, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Imports a Jcat file from raw JSON.
          * @param json JSON data
@@ -973,7 +977,7 @@ export namespace Jcat {
          * @param cancellable {@link Gio.Cancellable}, or `null`
          * @returns `true` for success
          */
-        import_stream(istream: Gio.InputStream, flags: ImportFlags, cancellable?: Gio.Cancellable | null): boolean;
+        import_stream(istream: Gio.InputStream, flags: ImportFlags, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Converts the {@link Jcat.File} to a string.
          * @returns string
@@ -1118,12 +1122,18 @@ export namespace Jcat {
 
         // Properties
 
+        /**
+         * @default null
+         */
         get authority(): string;
         set authority(val: string);
         /**
          * @construct-only
          */
         get engine(): Engine;
+        /**
+         * @default 0
+         */
         get timestamp(): number;
         set timestamp(val: bigint | number);
 

@@ -538,7 +538,7 @@ export namespace RygelServer {
          * @param _callback_
          * @virtual
          */
-        vfunc_add_engine_resources(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_add_engine_resources(_callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -962,7 +962,7 @@ export namespace RygelServer {
         /**
          * @param str
          */
-        compare_string(str?: string | null): boolean;
+        compare_string(str: string | null): boolean;
         /**
          * @param integer
          */
@@ -1124,7 +1124,7 @@ export namespace RygelServer {
             offset: number,
             max_count: number,
             sort_criteria: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<[MediaObjects | null, number]>;
         /**
          * @param expression
@@ -1155,7 +1155,7 @@ export namespace RygelServer {
             offset: number,
             max_count: number,
             sort_criteria: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[MediaObjects | null, number]> | void;
         /**
@@ -1174,7 +1174,7 @@ export namespace RygelServer {
             offset: number,
             max_count: number,
             sort_criteria: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<[MediaObjects | null, number]>;
         /**
          * @param expression
@@ -1205,7 +1205,7 @@ export namespace RygelServer {
             offset: number,
             max_count: number,
             sort_criteria: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[MediaObjects | null, number]> | void;
         /**
@@ -1216,7 +1216,7 @@ export namespace RygelServer {
          * @param id
          * @param cancellable
          */
-        find_object(id: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<MediaObject | null>;
+        find_object(id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<MediaObject | null>;
         /**
          * @param id
          * @param cancellable
@@ -1234,7 +1234,7 @@ export namespace RygelServer {
          */
         find_object(
             id: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MediaObject | null> | void;
         /**
@@ -1260,8 +1260,8 @@ export namespace RygelServer {
             offset: number,
             max_count: number,
             sort_criteria: string,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param _res_
@@ -1287,7 +1287,7 @@ export namespace RygelServer {
             offset: number,
             max_count: number,
             sort_criteria: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MediaObjects | null>;
         /**
          * @param offset
@@ -1314,7 +1314,7 @@ export namespace RygelServer {
             offset: number,
             max_count: number,
             sort_criteria: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MediaObjects | null> | void;
         /**
@@ -1360,8 +1360,8 @@ export namespace RygelServer {
             offset: number,
             max_count: number,
             sort_criteria: string,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param _res_
@@ -1376,8 +1376,8 @@ export namespace RygelServer {
          */
         vfunc_find_object(
             id: string,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param _res_
@@ -1779,7 +1779,7 @@ export namespace RygelServer {
          * @param _callback_
          * @virtual
          */
-        vfunc_add_engine_resources(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_add_engine_resources(_callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -1941,8 +1941,8 @@ export namespace RygelServer {
             offset: number,
             max_count: number,
             sort_criteria: string,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param _res_
@@ -1957,8 +1957,8 @@ export namespace RygelServer {
          */
         vfunc_find_object(
             id: string,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param _res_
@@ -1978,7 +1978,7 @@ export namespace RygelServer {
             offset: number,
             max_count: number,
             sort_criteria: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<MediaObjects | null>;
         /**
          * @param offset
@@ -2005,7 +2005,7 @@ export namespace RygelServer {
             offset: number,
             max_count: number,
             sort_criteria: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MediaObjects | null> | void;
         /**
@@ -2016,7 +2016,7 @@ export namespace RygelServer {
          * @param id
          * @param cancellable
          */
-        find_object(id: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<MediaObject | null>;
+        find_object(id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<MediaObject | null>;
         /**
          * @param id
          * @param cancellable
@@ -2034,7 +2034,7 @@ export namespace RygelServer {
          */
         find_object(
             id: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MediaObject | null> | void;
         /**
@@ -2265,7 +2265,7 @@ export namespace RygelServer {
          * @param _callback_
          * @virtual
          */
-        vfunc_add_engine_resources(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_add_engine_resources(_callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -2463,7 +2463,7 @@ export namespace RygelServer {
          */
         static apply_replacements(
             replacement_pairs: { [key: string]: any } | GLib.HashTable<string, string>,
-            source_string?: string | null,
+            source_string: string | null,
         ): string | null;
 
         // Virtual methods
@@ -2512,7 +2512,7 @@ export namespace RygelServer {
         /**
          * @param cancellable
          */
-        get_writable(cancellable?: Gio.Cancellable | null): globalThis.Promise<Gio.File | null>;
+        get_writable(cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.File | null>;
         /**
          * @param cancellable
          * @param _callback_
@@ -2523,7 +2523,7 @@ export namespace RygelServer {
          * @param _callback_
          */
         get_writable(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Gio.File | null> | void;
         /**
@@ -2533,7 +2533,7 @@ export namespace RygelServer {
         /**
          * @param cancellable
          */
-        get_writables(cancellable?: Gio.Cancellable | null): globalThis.Promise<Gee.ArrayList>;
+        get_writables(cancellable: Gio.Cancellable | null): globalThis.Promise<Gee.ArrayList>;
         /**
          * @param cancellable
          * @param _callback_
@@ -2544,7 +2544,7 @@ export namespace RygelServer {
          * @param _callback_
          */
         get_writables(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Gee.ArrayList> | void;
         /**
@@ -2843,7 +2843,7 @@ export namespace RygelServer {
          */
         serialize(
             didl_resource: GUPnPAV.DIDLLiteResource,
-            replacements?: GLib.HashTable<string, string> | null,
+            replacements: GLib.HashTable<string, string> | null,
         ): GUPnPAV.DIDLLiteResource;
         /**
          * @param pi
@@ -2852,7 +2852,7 @@ export namespace RygelServer {
         /**
          * @param replacements
          */
-        get_protocol_info(replacements?: GLib.HashTable<string, string> | null): GUPnPAV.ProtocolInfo;
+        get_protocol_info(replacements: GLib.HashTable<string, string> | null): GUPnPAV.ProtocolInfo;
         supports_arbitrary_byte_seek(): boolean;
         supports_arbitrary_time_seek(): boolean;
         supports_limited_byte_seek(): boolean;
@@ -3317,7 +3317,7 @@ export namespace RygelServer {
          * @param _callback_
          * @virtual
          */
-        vfunc_get_resources_for_item(item: MediaObject, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_get_resources_for_item(item: MediaObject, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -4024,7 +4024,7 @@ export namespace RygelServer {
             thumbnailIndex: number;
             subtitle_index: number;
             subtitleIndex: number;
-            resource_name: string;
+            resource_name: string | null;
             resourceName: string;
             http_server: HTTPServer;
             httpServer: HTTPServer;
@@ -4052,8 +4052,8 @@ export namespace RygelServer {
         set subtitle_index(val: number);
         get subtitleIndex(): number;
         set subtitleIndex(val: number);
-        get resource_name(): string;
-        set resource_name(val: string);
+        get resource_name(): string | null;
+        set resource_name(val: string | null);
         get resourceName(): string;
         set resourceName(val: string);
         get http_server(): HTTPServer;
@@ -4087,7 +4087,7 @@ export namespace RygelServer {
             http_server: HTTPServer,
             thumbnail_index: number,
             subtitle_index: number,
-            resource_name?: string | null,
+            resource_name: string | null,
         ): HTTPItemURI;
 
         static from_string(uri: string, http_server: HTTPServer): HTTPItemURI;
@@ -4135,7 +4135,7 @@ export namespace RygelServer {
         /**
          * @param value
          */
-        set_resource_name(value?: string | null): void;
+        set_resource_name(value: string | null): void;
         get_http_server(): HTTPServer;
         /**
          * @param value
@@ -4216,7 +4216,7 @@ export namespace RygelServer {
          * @param _callback_
          * @virtual
          */
-        vfunc_handle(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_handle(_callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -4226,7 +4226,7 @@ export namespace RygelServer {
          * @param _callback_
          * @virtual
          */
-        vfunc_find_item(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_find_item(_callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -4269,7 +4269,7 @@ export namespace RygelServer {
          * @param status
          * @param reason
          */
-        end(status: number, reason?: string | null): void;
+        end(status: number, reason: string | null): void;
         /** @category Inherited from RygelCore.StateMachine */
         get cancellable(): Gio.Cancellable;
         set cancellable(val: Gio.Cancellable);
@@ -4295,7 +4295,7 @@ export namespace RygelServer {
          * @param _callback_
          * @virtual
          */
-        vfunc_run(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_run(_callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -4357,38 +4357,19 @@ export namespace RygelServer {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -4396,15 +4377,9 @@ export namespace RygelServer {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -4571,7 +4546,7 @@ export namespace RygelServer {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -4880,7 +4855,7 @@ export namespace RygelServer {
          * @param _callback_
          * @virtual
          */
-        vfunc_run(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_run(_callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -4942,38 +4917,19 @@ export namespace RygelServer {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -4981,15 +4937,9 @@ export namespace RygelServer {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -5156,7 +5106,7 @@ export namespace RygelServer {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -5554,7 +5504,7 @@ export namespace RygelServer {
          * @param _callback_
          * @virtual
          */
-        vfunc_run(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_run(_callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -5616,38 +5566,19 @@ export namespace RygelServer {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -5655,15 +5586,9 @@ export namespace RygelServer {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -5830,7 +5755,7 @@ export namespace RygelServer {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -7474,8 +7399,8 @@ export namespace RygelServer {
                 offset: number,
                 max_count: number,
                 sort_criteria: string,
-                cancellable?: Gio.Cancellable | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
+                cancellable: Gio.Cancellable | null,
+                _callback_: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * @param _res_
@@ -7530,7 +7455,7 @@ export namespace RygelServer {
             offset: number,
             max_count: number,
             sort_criteria: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<[MediaObjects | null, number]>;
         /**
          * @param expression
@@ -7561,7 +7486,7 @@ export namespace RygelServer {
             offset: number,
             max_count: number,
             sort_criteria: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[MediaObjects | null, number]> | void;
         /**
@@ -7580,7 +7505,7 @@ export namespace RygelServer {
             offset: number,
             max_count: number,
             sort_criteria: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<[MediaObjects | null, number]>;
         /**
          * @param expression
@@ -7611,7 +7536,7 @@ export namespace RygelServer {
             offset: number,
             max_count: number,
             sort_criteria: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[MediaObjects | null, number]> | void;
         /**
@@ -7622,7 +7547,7 @@ export namespace RygelServer {
          * @param id
          * @param cancellable
          */
-        find_object(id: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<MediaObject | null>;
+        find_object(id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<MediaObject | null>;
         /**
          * @param id
          * @param cancellable
@@ -7640,7 +7565,7 @@ export namespace RygelServer {
          */
         find_object(
             id: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MediaObject | null> | void;
         /**
@@ -7671,7 +7596,7 @@ export namespace RygelServer {
              * @param _callback_
              * @virtual
              */
-            vfunc_add_child(object: MediaObject, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+            vfunc_add_child(object: MediaObject, _callback_: Gio.AsyncReadyCallback<this> | null): void;
             /**
              * @param _res_
              * @virtual
@@ -7682,7 +7607,7 @@ export namespace RygelServer {
              * @param _callback_
              * @virtual
              */
-            vfunc_remove_child(object: MediaObject, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+            vfunc_remove_child(object: MediaObject, _callback_: Gio.AsyncReadyCallback<this> | null): void;
             /**
              * @param _res_
              * @virtual
@@ -7972,8 +7897,8 @@ export namespace RygelServer {
              */
             vfunc_add_item(
                 item: MediaFileItem,
-                cancellable?: Gio.Cancellable | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
+                cancellable: Gio.Cancellable | null,
+                _callback_: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * @param _res_
@@ -7988,8 +7913,8 @@ export namespace RygelServer {
              */
             vfunc_add_container(
                 container: MediaContainer,
-                cancellable?: Gio.Cancellable | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
+                cancellable: Gio.Cancellable | null,
+                _callback_: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * @param _res_
@@ -8004,8 +7929,8 @@ export namespace RygelServer {
              */
             vfunc_add_reference(
                 object: MediaObject,
-                cancellable?: Gio.Cancellable | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
+                cancellable: Gio.Cancellable | null,
+                _callback_: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * @param _res_
@@ -8020,8 +7945,8 @@ export namespace RygelServer {
              */
             vfunc_remove_item(
                 id: string,
-                cancellable?: Gio.Cancellable | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
+                cancellable: Gio.Cancellable | null,
+                _callback_: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * @param _res_
@@ -8036,8 +7961,8 @@ export namespace RygelServer {
              */
             vfunc_remove_container(
                 id: string,
-                cancellable?: Gio.Cancellable | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
+                cancellable: Gio.Cancellable | null,
+                _callback_: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * @param _res_
@@ -8088,7 +8013,7 @@ export namespace RygelServer {
          * @param item
          * @param cancellable
          */
-        add_item(item: MediaFileItem, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
+        add_item(item: MediaFileItem, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * @param item
          * @param cancellable
@@ -8106,7 +8031,7 @@ export namespace RygelServer {
          */
         add_item(
             item: MediaFileItem,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -8117,7 +8042,7 @@ export namespace RygelServer {
          * @param container
          * @param cancellable
          */
-        add_container(container: MediaContainer, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
+        add_container(container: MediaContainer, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * @param container
          * @param cancellable
@@ -8135,7 +8060,7 @@ export namespace RygelServer {
          */
         add_container(
             container: MediaContainer,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -8146,7 +8071,7 @@ export namespace RygelServer {
          * @param object
          * @param cancellable
          */
-        add_reference(object: MediaObject, cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
+        add_reference(object: MediaObject, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * @param object
          * @param cancellable
@@ -8164,7 +8089,7 @@ export namespace RygelServer {
          */
         add_reference(
             object: MediaObject,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
         /**
@@ -8175,7 +8100,7 @@ export namespace RygelServer {
          * @param id
          * @param cancellable
          */
-        remove_item(id: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
+        remove_item(id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * @param id
          * @param cancellable
@@ -8193,7 +8118,7 @@ export namespace RygelServer {
          */
         remove_item(
             id: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -8204,7 +8129,7 @@ export namespace RygelServer {
          * @param id
          * @param cancellable
          */
-        remove_container(id: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
+        remove_container(id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * @param id
          * @param cancellable
@@ -8222,7 +8147,7 @@ export namespace RygelServer {
          */
         remove_container(
             id: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -8253,7 +8178,7 @@ export namespace RygelServer {
              * @param playspeed
              * @virtual
              */
-            vfunc_preroll(seek?: HTTPSeekRequest | null, playspeed?: PlaySpeedRequest | null): Gee.List | null;
+            vfunc_preroll(seek: HTTPSeekRequest | null, playspeed: PlaySpeedRequest | null): Gee.List | null;
             /**
              * @virtual
              */
@@ -8291,7 +8216,7 @@ export namespace RygelServer {
          * @param seek
          * @param playspeed
          */
-        preroll(seek?: HTTPSeekRequest | null, playspeed?: PlaySpeedRequest | null): Gee.List | null;
+        preroll(seek: HTTPSeekRequest | null, playspeed: PlaySpeedRequest | null): Gee.List | null;
         start(): void;
         freeze(): void;
         thaw(): void;
@@ -8314,7 +8239,7 @@ export namespace RygelServer {
              * @param _callback_
              * @virtual
              */
-            vfunc_commit(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
+            vfunc_commit(_callback_: Gio.AsyncReadyCallback<this> | null): void;
             /**
              * @param _res_
              * @virtual

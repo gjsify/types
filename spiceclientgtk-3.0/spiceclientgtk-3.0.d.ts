@@ -180,31 +180,47 @@ export namespace SpiceClientGtk {
         /**
          * channel-id for this {@link SpiceClientGtk.Display}
          * @construct-only
+         * @default 0
          */
         get channel_id(): number;
         /**
          * channel-id for this {@link SpiceClientGtk.Display}
          * @construct-only
+         * @default 0
          */
         get channelId(): number;
         /**
          * Disable all keyboard & mouse inputs.
          * @since 0.8
+         * @default false
          */
         get disable_inputs(): boolean;
         set disable_inputs(val: boolean);
         /**
          * Disable all keyboard & mouse inputs.
          * @since 0.8
+         * @default false
          */
         get disableInputs(): boolean;
         set disableInputs(val: boolean);
+        /**
+         * @default true
+         */
         get grab_keyboard(): boolean;
         set grab_keyboard(val: boolean);
+        /**
+         * @default true
+         */
         get grabKeyboard(): boolean;
         set grabKeyboard(val: boolean);
+        /**
+         * @default true
+         */
         get grab_mouse(): boolean;
         set grab_mouse(val: boolean);
+        /**
+         * @default true
+         */
         get grabMouse(): boolean;
         set grabMouse(val: boolean);
         /**
@@ -214,6 +230,7 @@ export namespace SpiceClientGtk {
          * keypress-delay, the server will receive the delayed press
          * event, and a following release event when the key is released.
          * @since 0.13
+         * @default 100
          */
         get keypress_delay(): number;
         set keypress_delay(val: number);
@@ -224,6 +241,7 @@ export namespace SpiceClientGtk {
          * keypress-delay, the server will receive the delayed press
          * event, and a following release event when the key is released.
          * @since 0.13
+         * @default 100
          */
         get keypressDelay(): number;
         set keypressDelay(val: number);
@@ -232,6 +250,7 @@ export namespace SpiceClientGtk {
          * The value -1 means the whole display is shown.
          * By default, the monitor 0 is selected.
          * @since 0.13
+         * @default 0
          */
         get monitor_id(): number;
         set monitor_id(val: number);
@@ -240,18 +259,21 @@ export namespace SpiceClientGtk {
          * The value -1 means the whole display is shown.
          * By default, the monitor 0 is selected.
          * @since 0.13
+         * @default 0
          */
         get monitorId(): number;
         set monitorId(val: number);
         /**
          * If scaling, only scale down, never up.
          * @since 0.14
+         * @default false
          */
         get only_downscale(): boolean;
         set only_downscale(val: boolean);
         /**
          * If scaling, only scale down, never up.
          * @since 0.14
+         * @default false
          */
         get onlyDownscale(): boolean;
         set onlyDownscale(val: boolean);
@@ -261,12 +283,22 @@ export namespace SpiceClientGtk {
          * "mark" state, whether the monitor area is visible..
          * @since 0.13
          * @read-only
+         * @default false
          */
         get ready(): boolean;
+        /**
+         * @default false
+         */
         get resize_guest(): boolean;
         set resize_guest(val: boolean);
+        /**
+         * @default false
+         */
         get resizeGuest(): boolean;
         set resizeGuest(val: boolean);
+        /**
+         * @default true
+         */
         get scaling(): boolean;
         set scaling(val: boolean);
         /**
@@ -279,6 +311,7 @@ export namespace SpiceClientGtk {
          * (this option is only supported with cairo backend when scaling
          * is enabled)
          * @since 0.10
+         * @default 100
          */
         get zoom_level(): number;
         set zoom_level(val: number);
@@ -287,6 +320,7 @@ export namespace SpiceClientGtk {
          * (this option is only supported with cairo backend when scaling
          * is enabled)
          * @since 0.10
+         * @default 100
          */
         get zoomLevel(): number;
         set zoomLevel(val: number);
@@ -413,38 +447,19 @@ export namespace SpiceClientGtk {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -452,15 +467,9 @@ export namespace SpiceClientGtk {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -627,7 +636,7 @@ export namespace SpiceClientGtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -855,6 +864,7 @@ export namespace SpiceClientGtk {
          * When this is true the clipboard gets automatically shared between host
          * and guest.
          * @since 0.8
+         * @default true
          */
         get auto_clipboard(): boolean;
         set auto_clipboard(val: boolean);
@@ -862,6 +872,7 @@ export namespace SpiceClientGtk {
          * When this is true the clipboard gets automatically shared between host
          * and guest.
          * @since 0.8
+         * @default true
          */
         get autoClipboard(): boolean;
         set autoClipboard(val: boolean);
@@ -870,6 +881,7 @@ export namespace SpiceClientGtk {
          * redirection only happens when a {@link SpiceClientGtk.Display} associated with the
          * session had keyboard focus.
          * @since 0.8
+         * @default false
          */
         get auto_usbredir(): boolean;
         set auto_usbredir(val: boolean);
@@ -878,6 +890,7 @@ export namespace SpiceClientGtk {
          * redirection only happens when a {@link SpiceClientGtk.Display} associated with the
          * session had keyboard focus.
          * @since 0.8
+         * @default false
          */
         get autoUsbredir(): boolean;
         set autoUsbredir(val: boolean);
@@ -885,12 +898,14 @@ export namespace SpiceClientGtk {
          * Returns `true` if the pointer is currently grabbed by this session.
          * @since 0.27
          * @read-only
+         * @default false
          */
         get pointer_grabbed(): boolean;
         /**
          * Returns `true` if the pointer is currently grabbed by this session.
          * @since 0.27
          * @read-only
+         * @default false
          */
         get pointerGrabbed(): boolean;
         /**
@@ -902,12 +917,14 @@ export namespace SpiceClientGtk {
         /**
          * Automatically sync modifiers (Caps, Num and Scroll locks) with the guest.
          * @since 0.32
+         * @default true
          */
         get sync_modifiers(): boolean;
         set sync_modifiers(val: boolean);
         /**
          * Automatically sync modifiers (Caps, Num and Scroll locks) with the guest.
          * @since 0.32
+         * @default true
          */
         get syncModifiers(): boolean;
         set syncModifiers(val: boolean);
@@ -1065,12 +1082,14 @@ export namespace SpiceClientGtk {
          * Format string to pass to `spice_usb_device_get_description()` for getting
          * the device USB descriptions.
          * @construct-only
+         * @default null
          */
         get device_format_string(): string;
         /**
          * Format string to pass to `spice_usb_device_get_description()` for getting
          * the device USB descriptions.
          * @construct-only
+         * @default null
          */
         get deviceFormatString(): string;
         /**
@@ -1094,7 +1113,7 @@ export namespace SpiceClientGtk {
 
         _init(...args: any[]): void;
 
-        static ['new'](session: SpiceClientGLib.Session, device_format_string?: string | null): UsbDeviceWidget;
+        static ['new'](session: SpiceClientGLib.Session, device_format_string: string | null): UsbDeviceWidget;
         // Conflicted with Gtk.Box.new
 
         static ['new'](...args: never[]): any;
@@ -1122,6 +1141,7 @@ export namespace SpiceClientGtk {
         /**
          * The orientation of the orientable.
          * @since 2.16
+         * @default Gtk.Orientation.HORIZONTAL
          * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
@@ -1183,38 +1203,19 @@ export namespace SpiceClientGtk {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1222,15 +1223,9 @@ export namespace SpiceClientGtk {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1397,7 +1392,7 @@ export namespace SpiceClientGtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set

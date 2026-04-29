@@ -219,52 +219,94 @@ export namespace OsmGpsMap {
 
         // Properties
 
+        /**
+         * @default true
+         */
         get auto_center(): boolean;
         set auto_center(val: boolean);
+        /**
+         * @default true
+         */
         get autoCenter(): boolean;
         set autoCenter(val: boolean);
+        /**
+         * @default 0.25
+         */
         get auto_center_threshold(): number;
         set auto_center_threshold(val: number);
+        /**
+         * @default 0.25
+         */
         get autoCenterThreshold(): number;
         set autoCenterThreshold(val: number);
+        /**
+         * @default true
+         */
         get auto_download(): boolean;
         set auto_download(val: boolean);
+        /**
+         * @default true
+         */
         get autoDownload(): boolean;
         set autoDownload(val: boolean);
         /**
          * @construct-only
+         * @default 10
          */
         get drag_limit(): number;
         /**
          * @construct-only
+         * @default 10
          */
         get dragLimit(): number;
+        /**
+         * @default 20
+         */
         get gps_track_highlight_radius(): number;
         set gps_track_highlight_radius(val: number);
+        /**
+         * @default 20
+         */
         get gpsTrackHighlightRadius(): number;
         set gpsTrackHighlightRadius(val: number);
+        /**
+         * @default 5
+         */
         get gps_track_point_radius(): number;
         set gps_track_point_radius(val: number);
+        /**
+         * @default 5
+         */
         get gpsTrackPointRadius(): number;
         set gpsTrackPointRadius(val: number);
+        /**
+         * @default 4
+         */
         get gps_track_width(): number;
         set gps_track_width(val: number);
+        /**
+         * @default 4
+         */
         get gpsTrackWidth(): number;
         set gpsTrackWidth(val: number);
         /**
          * @construct-only
+         * @default png
          */
         get image_format(): string;
         /**
          * @construct-only
+         * @default png
          */
         get imageFormat(): string;
         /**
          * @read-only
+         * @default 0
          */
         get latitude(): number;
         /**
          * @read-only
+         * @default 0
          */
         get longitude(): number;
         /**
@@ -277,6 +319,7 @@ export namespace OsmGpsMap {
          * of setting {@link OsmGpsMap.Map.repo_uri}.
          * </para>
          * </note>
+         * @default 0
          */
         get map_source(): number;
         set map_source(val: number);
@@ -290,51 +333,68 @@ export namespace OsmGpsMap {
          * of setting {@link OsmGpsMap.Map.repo_uri}.
          * </para>
          * </note>
+         * @default 0
          */
         get mapSource(): number;
         set mapSource(val: number);
         /**
          * @construct-only
+         * @default 890
          */
         get map_x(): number;
         /**
          * @construct-only
+         * @default 890
          */
         get mapX(): number;
         /**
          * @construct-only
+         * @default 515
          */
         get map_y(): number;
         /**
          * @construct-only
+         * @default 515
          */
         get mapY(): number;
         /**
          * @construct-only
+         * @default 20
          */
         get max_zoom(): number;
         /**
          * @construct-only
+         * @default 20
          */
         get maxZoom(): number;
         /**
          * @construct-only
+         * @default 1
          */
         get min_zoom(): number;
         /**
          * @construct-only
+         * @default 1
          */
         get minZoom(): number;
         /**
          * @construct-only
+         * @default null
          */
         get proxy_uri(): string;
         /**
          * @construct-only
+         * @default null
          */
         get proxyUri(): string;
+        /**
+         * @default true
+         */
         get record_trip_history(): boolean;
         set record_trip_history(val: boolean);
+        /**
+         * @default true
+         */
         get recordTripHistory(): boolean;
         set recordTripHistory(val: boolean);
         /**
@@ -399,6 +459,7 @@ export namespace OsmGpsMap {
          * </para>
          * </note>
          * @construct-only
+         * @default https://tile.openstreetmap.org/#Z/#X/#Y.png
          */
         get repo_uri(): string;
         /**
@@ -463,12 +524,14 @@ export namespace OsmGpsMap {
          * </para>
          * </note>
          * @construct-only
+         * @default https://tile.openstreetmap.org/#Z/#X/#Y.png
          */
         get repoUri(): string;
         /**
          * Controls whether the current gps point is shown on the map. Note that
          * for derived classes that implement the draw_gps_point vfunc, if this
          * property is `false`
+         * @default true
          */
         get show_gps_point(): boolean;
         set show_gps_point(val: boolean);
@@ -476,11 +539,18 @@ export namespace OsmGpsMap {
          * Controls whether the current gps point is shown on the map. Note that
          * for derived classes that implement the draw_gps_point vfunc, if this
          * property is `false`
+         * @default true
          */
         get showGpsPoint(): boolean;
         set showGpsPoint(val: boolean);
+        /**
+         * @default true
+         */
         get show_trip_history(): boolean;
         set show_trip_history(val: boolean);
+        /**
+         * @default true
+         */
         get showTripHistory(): boolean;
         set showTripHistory(val: boolean);
         /**
@@ -496,6 +566,7 @@ export namespace OsmGpsMap {
          * causes the tile cache to be /tile-cache-base/friendlyname(repo-uri).
          *
          * Any other string is interpreted as a local path, i.e. /path/to/cache
+         * @default auto://
          */
         get tile_cache(): string;
         set tile_cache(val: string);
@@ -512,6 +583,7 @@ export namespace OsmGpsMap {
          * causes the tile cache to be /tile-cache-base/friendlyname(repo-uri).
          *
          * Any other string is interpreted as a local path, i.e. /path/to/cache
+         * @default auto://
          */
         get tileCache(): string;
         set tileCache(val: string);
@@ -528,6 +600,7 @@ export namespace OsmGpsMap {
          * base directory where map tiles will be cached call
          * `osm_gps_map_get_default_cache_directory()`
          * @construct-only
+         * @default null
          */
         get tile_cache_base(): string;
         /**
@@ -543,26 +616,31 @@ export namespace OsmGpsMap {
          * base directory where map tiles will be cached call
          * `osm_gps_map_get_default_cache_directory()`
          * @construct-only
+         * @default null
          */
         get tileCacheBase(): string;
         /**
          * @construct-only
+         * @default 0
          */
         get tile_zoom_offset(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get tileZoomOffset(): number;
         /**
          * The number of tiles currently waiting to download. Connect to
          * ::notify::tiles-queued if you want to be informed when this changes
          * @read-only
+         * @default 0
          */
         get tiles_queued(): number;
         /**
          * The number of tiles currently waiting to download. Connect to
          * ::notify::tiles-queued if you want to be informed when this changes
          * @read-only
+         * @default 0
          */
         get tilesQueued(): number;
         /**
@@ -570,6 +648,7 @@ export namespace OsmGpsMap {
          * is "libosmgpsmap/VERSION". The value of {@link OsmGpsMap.Map.user_agent} will be
          * appended to it.
          * @since 1.2.0
+         * @default null
          */
         get user_agent(): string;
         set user_agent(val: string);
@@ -578,6 +657,7 @@ export namespace OsmGpsMap {
          * is "libosmgpsmap/VERSION". The value of {@link OsmGpsMap.Map.user_agent} will be
          * appended to it.
          * @since 1.2.0
+         * @default null
          */
         get userAgent(): string;
         set userAgent(val: string);
@@ -585,6 +665,7 @@ export namespace OsmGpsMap {
          * The map zoom level. Connect to ::notify::zoom if you want to be informed
          * when this changes.
          * @construct-only
+         * @default 3
          */
         get zoom(): number;
 
@@ -949,38 +1030,19 @@ export namespace OsmGpsMap {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -988,15 +1050,9 @@ export namespace OsmGpsMap {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1163,7 +1219,7 @@ export namespace OsmGpsMap {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1391,18 +1447,39 @@ export namespace OsmGpsMap {
         set pixbuf(val: GdkPixbuf.Pixbuf);
         get point(): MapPoint;
         set point(val: MapPoint);
+        /**
+         * @default 0
+         */
         get rotation(): number;
         set rotation(val: number);
+        /**
+         * @default 0.5
+         */
         get x_align(): number;
         set x_align(val: number);
+        /**
+         * @default 0.5
+         */
         get xAlign(): number;
         set xAlign(val: number);
+        /**
+         * @default 0.5
+         */
         get y_align(): number;
         set y_align(val: number);
+        /**
+         * @default 0.5
+         */
         get yAlign(): number;
         set yAlign(val: number);
+        /**
+         * @default 0
+         */
         get z_order(): number;
         set z_order(val: number);
+        /**
+         * @default 0
+         */
         get zOrder(): number;
         set zOrder(val: number);
 
@@ -1528,113 +1605,135 @@ export namespace OsmGpsMap {
 
         /**
          * The dpad radius property.
+         * @default 30
          */
         get dpad_radius(): number;
         set dpad_radius(val: number);
         /**
          * The dpad radius property.
+         * @default 30
          */
         get dpadRadius(): number;
         set dpadRadius(val: number);
         /**
          * The osd x property.
+         * @default 10
          */
         get osd_x(): number;
         set osd_x(val: number);
         /**
          * The osd x property.
+         * @default 10
          */
         get osdX(): number;
         set osdX(val: number);
         /**
          * The osd y property.
+         * @default 10
          */
         get osd_y(): number;
         set osd_y(val: number);
         /**
          * The osd y property.
+         * @default 10
          */
         get osdY(): number;
         set osdY(val: number);
         /**
          * The show coordinates of map centre property.
+         * @default true
          */
         get show_coordinates(): boolean;
         set show_coordinates(val: boolean);
         /**
          * The show coordinates of map centre property.
+         * @default true
          */
         get showCoordinates(): boolean;
         set showCoordinates(val: boolean);
         /**
          * The show copyright property.
          * @since 1.2.0
+         * @default true
          */
         get show_copyright(): boolean;
         set show_copyright(val: boolean);
         /**
          * The show copyright property.
          * @since 1.2.0
+         * @default true
          */
         get showCopyright(): boolean;
         set showCopyright(val: boolean);
         /**
          * The show crosshair at map centre property.
+         * @default false
          */
         get show_crosshair(): boolean;
         set show_crosshair(val: boolean);
         /**
          * The show crosshair at map centre property.
+         * @default false
          */
         get showCrosshair(): boolean;
         set showCrosshair(val: boolean);
         /**
          * The show dpad for map navigation property.
+         * @default false
          */
         get show_dpad(): boolean;
         set show_dpad(val: boolean);
         /**
          * The show dpad for map navigation property.
+         * @default false
          */
         get showDpad(): boolean;
         set showDpad(val: boolean);
         /**
          * The show gps indicator in middle of dpad property.
+         * @default false
          */
         get show_gps_in_dpad(): boolean;
         set show_gps_in_dpad(val: boolean);
         /**
          * The show gps indicator in middle of dpad property.
+         * @default false
          */
         get showGpsInDpad(): boolean;
         set showGpsInDpad(val: boolean);
         /**
          * The show gps indicator in middle of zoom control property.
+         * @default false
          */
         get show_gps_in_zoom(): boolean;
         set show_gps_in_zoom(val: boolean);
         /**
          * The show gps indicator in middle of zoom control property.
+         * @default false
          */
         get showGpsInZoom(): boolean;
         set showGpsInZoom(val: boolean);
         /**
          * The show scale on the map property.
+         * @default true
          */
         get show_scale(): boolean;
         set show_scale(val: boolean);
         /**
          * The show scale on the map property.
+         * @default true
          */
         get showScale(): boolean;
         set showScale(val: boolean);
         /**
          * The show zoom control for map navigation property.
+         * @default false
          */
         get show_zoom(): boolean;
         set show_zoom(val: boolean);
         /**
          * The show zoom control for map navigation property.
+         * @default false
          */
         get showZoom(): boolean;
         set showZoom(val: boolean);
@@ -1771,38 +1870,19 @@ export namespace OsmGpsMap {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1810,15 +1890,9 @@ export namespace OsmGpsMap {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1985,7 +2059,7 @@ export namespace OsmGpsMap {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -2207,18 +2281,36 @@ export namespace OsmGpsMap {
 
         // Properties
 
+        /**
+         * @default true
+         */
         get breakable(): boolean;
         set breakable(val: boolean);
+        /**
+         * @default false
+         */
         get editable(): boolean;
         set editable(val: boolean);
+        /**
+         * @default 0.5
+         */
         get shade_alpha(): number;
         set shade_alpha(val: number);
+        /**
+         * @default 0.5
+         */
         get shadeAlpha(): number;
         set shadeAlpha(val: number);
+        /**
+         * @default true
+         */
         get shaded(): boolean;
         set shaded(val: boolean);
         get track(): any;
         set track(val: any);
+        /**
+         * @default true
+         */
         get visible(): boolean;
         set visible(val: boolean);
 
@@ -2323,20 +2415,35 @@ export namespace OsmGpsMap {
 
         // Properties
 
+        /**
+         * @default 0.6
+         */
         get alpha(): number;
         set alpha(val: number);
         get color(): Gdk.RGBA;
         set color(val: Gdk.RGBA);
+        /**
+         * @default false
+         */
         get editable(): boolean;
         set editable(val: boolean);
+        /**
+         * @default 4
+         */
         get line_width(): number;
         set line_width(val: number);
+        /**
+         * @default 4
+         */
         get lineWidth(): number;
         set lineWidth(val: number);
         /**
          * @construct-only
          */
         get track(): any;
+        /**
+         * @default true
+         */
         get visible(): boolean;
         set visible(val: boolean);
 
@@ -2486,11 +2593,11 @@ export namespace OsmGpsMap {
 
         static new_degrees(lat: number, lon: number): MapPoint;
 
-        static new_degrees_with_user_data(lat: number, lon: number, user_data?: any | null): MapPoint;
+        static new_degrees_with_user_data(lat: number, lon: number, user_data: any | null): MapPoint;
 
         static new_radians(rlat: number, rlon: number): MapPoint;
 
-        static new_radians_with_user_data(rlat: number, rlon: number, user_data?: any | null): MapPoint;
+        static new_radians_with_user_data(rlat: number, rlon: number, user_data: any | null): MapPoint;
 
         // Methods
 
@@ -2532,7 +2639,7 @@ export namespace OsmGpsMap {
          * Store user data in point
          * @param user_data user data
          */
-        set_user_data(user_data?: any | null): void;
+        set_user_data(user_data: any | null): void;
     }
 
     /**

@@ -335,7 +335,7 @@ export namespace Nautilus {
 
         _init(...args: any[]): void;
 
-        static ['new'](name: string, label: string, tip?: string | null, icon?: string | null): MenuItem;
+        static ['new'](name: string, label: string, tip: string | null, icon: string | null): MenuItem;
 
         // Signals
 

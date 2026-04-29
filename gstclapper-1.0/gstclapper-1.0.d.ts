@@ -185,7 +185,7 @@ export namespace GstClapper {
      * @gir-type Callback
      */
     interface ClapperSignalDispatcherFunc {
-        (data?: any | null): void;
+        (data: any | null): void;
     }
     namespace Clapper {
         // Signal signatures
@@ -327,8 +327,14 @@ export namespace GstClapper {
 
         // Properties
 
+        /**
+         * @default 0
+         */
         get audio_video_offset(): number;
         set audio_video_offset(val: bigint | number);
+        /**
+         * @default 0
+         */
         get audioVideoOffset(): number;
         set audioVideoOffset(val: bigint | number);
         /**
@@ -357,6 +363,7 @@ export namespace GstClapper {
         get currentVideoTrack(): ClapperVideoInfo;
         /**
          * @read-only
+         * @default 18446744073709551615
          */
         get duration(): number;
         /**
@@ -371,6 +378,9 @@ export namespace GstClapper {
          * @construct-only
          */
         get mpris(): ClapperMpris;
+        /**
+         * @default false
+         */
         get mute(): boolean;
         set mute(val: boolean);
         /**
@@ -379,12 +389,22 @@ export namespace GstClapper {
         get pipeline(): Gst.Element;
         /**
          * @read-only
+         * @default 18446744073709551615
          */
         get position(): number;
+        /**
+         * @default 1
+         */
         get rate(): number;
         set rate(val: number);
+        /**
+         * @default GstClapper.ClapperSeekMode.DEFAULT
+         */
         get seek_mode(): ClapperSeekMode;
         set seek_mode(val: ClapperSeekMode);
+        /**
+         * @default GstClapper.ClapperSeekMode.DEFAULT
+         */
         get seekMode(): ClapperSeekMode;
         set seekMode(val: ClapperSeekMode);
         /**
@@ -397,38 +417,67 @@ export namespace GstClapper {
         set signalDispatcher(val: ClapperSignalDispatcher);
         /**
          * @read-only
+         * @default GstClapper.ClapperState.STOPPED
          */
         get state(): ClapperState;
+        /**
+         * @default 0
+         */
         get subtitle_video_offset(): number;
         set subtitle_video_offset(val: bigint | number);
+        /**
+         * @default 0
+         */
         get subtitleVideoOffset(): number;
         set subtitleVideoOffset(val: bigint | number);
+        /**
+         * @default null
+         */
         get suburi(): string;
         set suburi(val: string);
+        /**
+         * @default null
+         */
         get uri(): string;
         set uri(val: string);
         /**
          * @construct-only
+         * @default false
          */
         set use_pipewire(val: boolean);
         /**
          * @construct-only
+         * @default false
          */
         set usePipewire(val: boolean);
         /**
          * @construct-only
+         * @default false
          */
         set use_playbin3(val: boolean);
         /**
          * @construct-only
+         * @default false
          */
         set usePlaybin3(val: boolean);
+        /**
+         * @default GstVideo.VideoMultiviewFlags.NONE
+         */
         get video_multiview_flags(): GstVideo.VideoMultiviewFlags;
         set video_multiview_flags(val: GstVideo.VideoMultiviewFlags);
+        /**
+         * @default GstVideo.VideoMultiviewFlags.NONE
+         */
         get videoMultiviewFlags(): GstVideo.VideoMultiviewFlags;
         set videoMultiviewFlags(val: GstVideo.VideoMultiviewFlags);
+        /**
+         * @default GstVideo.VideoMultiviewFramePacking.NONE
+         */
         get video_multiview_mode(): GstVideo.VideoMultiviewFramePacking;
         set video_multiview_mode(val: GstVideo.VideoMultiviewFramePacking);
+        /**
+         * @default GstVideo.VideoMultiviewFramePacking.NONE
+         */
         get videoMultiviewMode(): GstVideo.VideoMultiviewFramePacking;
         set videoMultiviewMode(val: GstVideo.VideoMultiviewFramePacking);
         /**
@@ -439,6 +488,9 @@ export namespace GstClapper {
          * @construct-only
          */
         set videoRenderer(val: ClapperVideoRenderer);
+        /**
+         * @default 1
+         */
         get volume(): number;
         set volume(val: number);
 
@@ -458,9 +510,9 @@ export namespace GstClapper {
         _init(...args: any[]): void;
 
         static ['new'](
-            video_renderer?: ClapperVideoRenderer | null,
-            signal_dispatcher?: ClapperSignalDispatcher | null,
-            mpris?: ClapperMpris | null,
+            video_renderer: ClapperVideoRenderer | null,
+            signal_dispatcher: ClapperSignalDispatcher | null,
+            mpris: ClapperMpris | null,
         ): Clapper;
 
         // Signals
@@ -495,7 +547,7 @@ export namespace GstClapper {
          * on the implementation side.
          * @param argv pointer to application's argv
          */
-        static gst_init(argv?: string[] | null): string[] | null;
+        static gst_init(argv: string[] | null): string[] | null;
         /**
          * Frees a `null` terminated array of {@link GstClapper.ClapperVisualization}.
          * @param viss a `null` terminated array of {@link GstClapper.ClapperVisualization} to free
@@ -610,7 +662,7 @@ export namespace GstClapper {
          * @param config Additional configuration
          * @returns Current video snapshot sample or `null` on failure
          */
-        get_video_snapshot(format: ClapperSnapshotFormat, config?: Gst.Structure | null): Gst.Sample;
+        get_video_snapshot(format: ClapperSnapshotFormat, config: Gst.Structure | null): Gst.Sample;
         /**
          * Returns the current volume level, as a percentage between 0 and 1.5
          * @returns the cubic volume as percentage between 0 and 1.5
@@ -910,7 +962,7 @@ export namespace GstClapper {
          * or the thread default one if `null` is used. See `gst_clapper_new()`.
          * @param application_context GMainContext to use or `null`
          */
-        static ['new'](application_context?: GLib.MainContext | null): ClapperSignalDispatcher;
+        static ['new'](application_context: GLib.MainContext | null): ClapperSignalDispatcher;
         /**
          * @param clapper
          * @param emitter
@@ -964,38 +1016,19 @@ export namespace GstClapper {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1003,15 +1036,9 @@ export namespace GstClapper {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1178,7 +1205,7 @@ export namespace GstClapper {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1602,40 +1629,52 @@ export namespace GstClapper {
 
         /**
          * @construct-only
+         * @default null
          */
         get default_art_url(): string;
         /**
          * @construct-only
+         * @default null
          */
         get defaultArtUrl(): string;
         /**
          * @construct-only
+         * @default null
          */
         get desktop_entry(): string;
         /**
          * @construct-only
+         * @default null
          */
         get desktopEntry(): string;
         /**
          * @construct-only
+         * @default null
          */
         get id_path(): string;
         /**
          * @construct-only
+         * @default null
          */
         get idPath(): string;
         /**
          * @construct-only
+         * @default null
          */
         get identity(): string;
         /**
          * @construct-only
+         * @default null
          */
         get own_name(): string;
         /**
          * @construct-only
+         * @default null
          */
         get ownName(): string;
+        /**
+         * @default 1
+         */
         get volume(): number;
         set volume(val: number);
 
@@ -1657,9 +1696,9 @@ export namespace GstClapper {
         static ['new'](
             own_name: string,
             id_path: string,
-            identity?: string | null,
-            desktop_entry?: string | null,
-            default_art_url?: string | null,
+            identity: string | null,
+            desktop_entry: string | null,
+            default_art_url: string | null,
         ): ClapperMpris;
 
         // Signals
@@ -1921,8 +1960,8 @@ export namespace GstClapper {
         interface ConstructorProps extends GObject.Object.ConstructorProps, ClapperVideoRenderer.ConstructorProps {
             video_sink: Gst.Element;
             videoSink: Gst.Element;
-            window_handle: any;
-            windowHandle: any;
+            window_handle: any | null;
+            windowHandle: any | null;
         }
     }
 
@@ -1938,10 +1977,10 @@ export namespace GstClapper {
         set video_sink(val: Gst.Element);
         get videoSink(): Gst.Element;
         set videoSink(val: Gst.Element);
-        get window_handle(): any;
-        set window_handle(val: any);
-        get windowHandle(): any;
-        set windowHandle(val: any);
+        get window_handle(): any | null;
+        set window_handle(val: any | null);
+        get windowHandle(): any | null;
+        set windowHandle(val: any | null);
 
         /**
          * Compile-time signal type information.
@@ -1989,7 +2028,7 @@ export namespace GstClapper {
         /**
          * @param window_handle Window handle to use or `null`
          */
-        static ['new'](window_handle?: any | null): ClapperVideoRenderer;
+        static ['new'](window_handle: any | null): ClapperVideoRenderer;
         /**
          * @param window_handle Window handle to use or `null`
          * @param video_sink the custom video_sink element to be set for the video renderer
@@ -2034,7 +2073,7 @@ export namespace GstClapper {
          * should be rendered
          * @param window_handle handle referencing to the platform specific window
          */
-        set_window_handle(window_handle?: any | null): void;
+        set_window_handle(window_handle: any | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -2082,38 +2121,19 @@ export namespace GstClapper {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -2121,15 +2141,9 @@ export namespace GstClapper {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -2296,7 +2310,7 @@ export namespace GstClapper {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set

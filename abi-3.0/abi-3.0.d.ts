@@ -69,7 +69,7 @@ export namespace Abi {
      * @gir-type Callback
      */
     interface Signal {
-        (arg0: Widget, closure?: any | null): boolean;
+        (arg0: Widget, closure: any | null): boolean;
     }
     namespace Table {
         // Signal signatures
@@ -244,12 +244,18 @@ export namespace Abi {
          * @param cols
          */
         set_selected(rows: number, cols: number): void;
-        /** @category Inherited from Gtk.Actionable */
-        get action_name(): string;
-        set action_name(val: string);
-        /** @category Inherited from Gtk.Actionable */
-        get actionName(): string;
-        set actionName(val: string);
+        /**
+         * @default null
+         * @category Inherited from Gtk.Actionable
+         */
+        get action_name(): string | null;
+        set action_name(val: string | null);
+        /**
+         * @default null
+         * @category Inherited from Gtk.Actionable
+         */
+        get actionName(): string | null;
+        set actionName(val: string | null);
         /** @category Inherited from Gtk.Actionable */
         get action_target(): GLib.Variant;
         set action_target(val: GLib.Variant);
@@ -293,6 +299,7 @@ export namespace Abi {
          * > widget when it changes.
          * @since 2.16
          * @deprecated since 3.10
+         * @default true
          * @category Inherited from Gtk.Activatable
          */
         get use_action_appearance(): boolean;
@@ -310,35 +317,56 @@ export namespace Abi {
          * > widget when it changes.
          * @since 2.16
          * @deprecated since 3.10
+         * @default true
          * @category Inherited from Gtk.Activatable
          */
         get useActionAppearance(): boolean;
         set useActionAppearance(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get app_paintable(): boolean;
         set app_paintable(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get appPaintable(): boolean;
         set appPaintable(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get can_default(): boolean;
         set can_default(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get canDefault(): boolean;
         set canDefault(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get can_focus(): boolean;
         set can_focus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get canFocus(): boolean;
         set canFocus(val: boolean);
         /**
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get composite_child(): boolean;
         /**
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get compositeChild(): boolean;
@@ -346,6 +374,7 @@ export namespace Abi {
          * Whether the widget is double buffered.
          * @since 2.18
          * @deprecated since 3.14: Widgets should not use this property.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get double_buffered(): boolean;
@@ -354,16 +383,21 @@ export namespace Abi {
          * Whether the widget is double buffered.
          * @since 2.18
          * @deprecated since 3.14: Widgets should not use this property.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get doubleBuffered(): boolean;
         set doubleBuffered(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default Gdk.EventMask.STRUCTURE_MASK
+         * @category Inherited from Gtk.Widget
+         */
         get events(): Gdk.EventMask;
         set events(val: Gdk.EventMask);
         /**
          * Whether to expand in both directions. Setting this sets both {@link Gtk.Widget.hexpand} and {@link Gtk.Widget.vexpand}
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get expand(): boolean;
@@ -376,6 +410,7 @@ export namespace Abi {
          * Before 3.20, several widgets (GtkButton, GtkFileChooserButton,
          * GtkComboBox) implemented this property individually.
          * @since 3.20
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get focus_on_click(): boolean;
@@ -388,6 +423,7 @@ export namespace Abi {
          * Before 3.20, several widgets (GtkButton, GtkFileChooserButton,
          * GtkComboBox) implemented this property individually.
          * @since 3.20
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get focusOnClick(): boolean;
@@ -395,20 +431,33 @@ export namespace Abi {
         /**
          * How to distribute horizontal space if widget gets extra space, see {@link Gtk.Align}
          * @since 3.0
+         * @default Gtk.Align.FILL
          * @category Inherited from Gtk.Widget
          */
         get halign(): Gtk.Align;
         set halign(val: Gtk.Align);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get has_default(): boolean;
         set has_default(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get hasDefault(): boolean;
         set hasDefault(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get has_focus(): boolean;
         set has_focus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get hasFocus(): boolean;
         set hasFocus(val: boolean);
         /**
@@ -422,6 +471,7 @@ export namespace Abi {
          * and motion-notify events.  This cannot and will not be undone when the
          * property is set to `false` again.
          * @since 2.12
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get has_tooltip(): boolean;
@@ -437,19 +487,27 @@ export namespace Abi {
          * and motion-notify events.  This cannot and will not be undone when the
          * property is set to `false` again.
          * @since 2.12
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hasTooltip(): boolean;
         set hasTooltip(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default -1
+         * @category Inherited from Gtk.Widget
+         */
         get height_request(): number;
         set height_request(val: number);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default -1
+         * @category Inherited from Gtk.Widget
+         */
         get heightRequest(): number;
         set heightRequest(val: number);
         /**
          * Whether to expand horizontally. See `gtk_widget_set_hexpand()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpand(): boolean;
@@ -457,6 +515,7 @@ export namespace Abi {
         /**
          * Whether to use the {@link Gtk.Widget.hexpand} property. See `gtk_widget_get_hexpand_set()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpand_set(): boolean;
@@ -464,20 +523,28 @@ export namespace Abi {
         /**
          * Whether to use the {@link Gtk.Widget.hexpand} property. See `gtk_widget_get_hexpand_set()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpandSet(): boolean;
         set hexpandSet(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get is_focus(): boolean;
         set is_focus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get isFocus(): boolean;
         set isFocus(val: boolean);
         /**
          * Sets all four sides' margin at once. If read, returns max
          * margin on any side.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin(): number;
@@ -489,6 +556,7 @@ export namespace Abi {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_bottom(): number;
@@ -500,6 +568,7 @@ export namespace Abi {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginBottom(): number;
@@ -512,6 +581,7 @@ export namespace Abi {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.12
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_end(): number;
@@ -524,6 +594,7 @@ export namespace Abi {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.12
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginEnd(): number;
@@ -536,6 +607,7 @@ export namespace Abi {
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
          * @deprecated since 3.12: Use {@link Gtk.Widget.margin_start} instead.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_left(): number;
@@ -548,6 +620,7 @@ export namespace Abi {
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
          * @deprecated since 3.12: Use {@link Gtk.Widget.margin_start} instead.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginLeft(): number;
@@ -560,6 +633,7 @@ export namespace Abi {
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
          * @deprecated since 3.12: Use {@link Gtk.Widget.margin_end} instead.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_right(): number;
@@ -572,6 +646,7 @@ export namespace Abi {
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
          * @deprecated since 3.12: Use {@link Gtk.Widget.margin_end} instead.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginRight(): number;
@@ -584,6 +659,7 @@ export namespace Abi {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.12
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_start(): number;
@@ -596,6 +672,7 @@ export namespace Abi {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.12
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginStart(): number;
@@ -607,6 +684,7 @@ export namespace Abi {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_top(): number;
@@ -618,17 +696,27 @@ export namespace Abi {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginTop(): number;
         set marginTop(val: number);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default null
+         * @category Inherited from Gtk.Widget
+         */
         get name(): string;
         set name(val: string);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get no_show_all(): boolean;
         set no_show_all(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get noShowAll(): boolean;
         set noShowAll(val: boolean);
         /**
@@ -637,17 +725,24 @@ export namespace Abi {
          *
          * Before 3.8 this was only available in GtkWindow
          * @since 3.8
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get opacity(): number;
         set opacity(val: number);
         /** @category Inherited from Gtk.Widget */
-        get parent(): Gtk.Container;
-        set parent(val: Gtk.Container);
-        /** @category Inherited from Gtk.Widget */
+        get parent(): Gtk.Container | null;
+        set parent(val: Gtk.Container | null);
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get receives_default(): boolean;
         set receives_default(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get receivesDefault(): boolean;
         set receivesDefault(val: boolean);
         /**
@@ -655,6 +750,7 @@ export namespace Abi {
          * more details about widget scaling.
          * @since 3.10
          * @read-only
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -663,10 +759,14 @@ export namespace Abi {
          * more details about widget scaling.
          * @since 3.10
          * @read-only
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default true
+         * @category Inherited from Gtk.Widget
+         */
         get sensitive(): boolean;
         set sensitive(val: boolean);
         /**
@@ -689,10 +789,11 @@ export namespace Abi {
          * Note that if both {@link Gtk.Widget.tooltip_text} and {@link Gtk.Widget.tooltip_markup}
          * are set, the last one wins.
          * @since 2.12
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltip_markup(): string;
-        set tooltip_markup(val: string);
+        get tooltip_markup(): string | null;
+        set tooltip_markup(val: string | null);
         /**
          * Sets the text of tooltip to be the given string, which is marked up
          * with the [Pango text markup language][PangoMarkupFormat].
@@ -706,10 +807,11 @@ export namespace Abi {
          * Note that if both {@link Gtk.Widget.tooltip_text} and {@link Gtk.Widget.tooltip_markup}
          * are set, the last one wins.
          * @since 2.12
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltipMarkup(): string;
-        set tooltipMarkup(val: string);
+        get tooltipMarkup(): string | null;
+        set tooltipMarkup(val: string | null);
         /**
          * Sets the text of tooltip to be the given string.
          *
@@ -723,10 +825,11 @@ export namespace Abi {
          * Note that if both {@link Gtk.Widget.tooltip_text} and {@link Gtk.Widget.tooltip_markup}
          * are set, the last one wins.
          * @since 2.12
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltip_text(): string;
-        set tooltip_text(val: string);
+        get tooltip_text(): string | null;
+        set tooltip_text(val: string | null);
         /**
          * Sets the text of tooltip to be the given string.
          *
@@ -740,13 +843,15 @@ export namespace Abi {
          * Note that if both {@link Gtk.Widget.tooltip_text} and {@link Gtk.Widget.tooltip_markup}
          * are set, the last one wins.
          * @since 2.12
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltipText(): string;
-        set tooltipText(val: string);
+        get tooltipText(): string | null;
+        set tooltipText(val: string | null);
         /**
          * How to distribute vertical space if widget gets extra space, see {@link Gtk.Align}
          * @since 3.0
+         * @default Gtk.Align.FILL
          * @category Inherited from Gtk.Widget
          */
         get valign(): Gtk.Align;
@@ -754,6 +859,7 @@ export namespace Abi {
         /**
          * Whether to expand vertically. See `gtk_widget_set_vexpand()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpand(): boolean;
@@ -761,6 +867,7 @@ export namespace Abi {
         /**
          * Whether to use the {@link Gtk.Widget.vexpand} property. See `gtk_widget_get_vexpand_set()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpand_set(): boolean;
@@ -768,17 +875,27 @@ export namespace Abi {
         /**
          * Whether to use the {@link Gtk.Widget.vexpand} property. See `gtk_widget_get_vexpand_set()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpandSet(): boolean;
         set vexpandSet(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get visible(): boolean;
         set visible(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default -1
+         * @category Inherited from Gtk.Widget
+         */
         get width_request(): number;
         set width_request(val: number);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default -1
+         * @category Inherited from Gtk.Widget
+         */
         get widthRequest(): number;
         set widthRequest(val: number);
         /**
@@ -787,7 +904,7 @@ export namespace Abi {
          * @read-only
          * @category Inherited from Gtk.Widget
          */
-        get window(): Gdk.Window;
+        get window(): Gdk.Window | null;
         /**
          * Gets the action name for `actionable`.
          *
@@ -816,7 +933,7 @@ export namespace Abi {
          * associated with the window.
          * @param action_name an action name, or `null`
          */
-        set_action_name(action_name?: string | null): void;
+        set_action_name(action_name: string | null): void;
         /**
          * Sets the target value of an actionable widget.
          *
@@ -839,7 +956,7 @@ export namespace Abi {
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
          */
-        set_action_target_value(target_value?: GLib.Variant | null): void;
+        set_action_target_value(target_value: GLib.Variant | null): void;
         /**
          * Sets the action-name and associated string target value of an
          * actionable widget.
@@ -884,7 +1001,7 @@ export namespace Abi {
          * @param action_name an action name, or `null`
          * @virtual
          */
-        vfunc_set_action_name(action_name?: string | null): void;
+        vfunc_set_action_name(action_name: string | null): void;
         /**
          * Sets the target value of an actionable widget.
          *
@@ -908,7 +1025,7 @@ export namespace Abi {
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
          * @virtual
          */
-        vfunc_set_action_target_value(target_value?: GLib.Variant | null): void;
+        vfunc_set_action_target_value(target_value: GLib.Variant | null): void;
         /**
          * This is a utility function for {@link Gtk.Activatable} implementors.
          *
@@ -966,7 +1083,7 @@ export namespace Abi {
          * {@link Gtk.Activatable.use_action_appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
          */
-        sync_action_properties(action?: Gtk.Action | null): void;
+        sync_action_properties(action: Gtk.Action | null): void;
         /**
          * This is called to update the activatable completely, this is called
          * internally when the {@link Gtk.Activatable.related_action} property is set
@@ -975,7 +1092,7 @@ export namespace Abi {
          * @param action the related {@link Gtk.Action} or `null`
          * @virtual
          */
-        vfunc_sync_action_properties(action?: Gtk.Action | null): void;
+        vfunc_sync_action_properties(action: Gtk.Action | null): void;
         /**
          * Called to update the activatable when its related action’s properties change.
          * You must check the {@link Gtk.Activatable.use_action_appearance} property only apply action
@@ -1032,38 +1149,19 @@ export namespace Abi {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1071,15 +1169,9 @@ export namespace Abi {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1246,7 +1338,7 @@ export namespace Abi {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1605,7 +1697,7 @@ export namespace Abi {
          * @param text text to set on the layout (can be `null`)
          * @returns the new {@link Pango.Layout}
          */
-        create_pango_layout(text?: string | null): Pango.Layout;
+        create_pango_layout(text: string | null): Pango.Layout;
         /**
          * Destroys a widget.
          *
@@ -1674,7 +1766,7 @@ export namespace Abi {
             targets: Gtk.TargetList,
             actions: Gdk.DragAction,
             button: number,
-            event?: Gdk.Event | null,
+            event: Gdk.Event | null,
         ): Gdk.DragContext;
         /**
          * Initiates a drag on the source side. The function only needs to be used
@@ -1765,7 +1857,7 @@ export namespace Abi {
          * @param target_list list of droppable targets, or `null` to use    gtk_drag_dest_get_target_list (`widget`).
          * @returns first target that the source offers     and the dest can accept, or `GDK_NONE`
          */
-        drag_dest_find_target(context: Gdk.DragContext, target_list?: Gtk.TargetList | null): Gdk.Atom;
+        drag_dest_find_target(context: Gdk.DragContext, target_list: Gtk.TargetList | null): Gdk.Atom;
         /**
          * Returns the list of targets this widget can accept from
          * drag-and-drop.
@@ -1838,7 +1930,7 @@ export namespace Abi {
          * `gtk_drag_dest_set()`.
          * @param target_list list of droppable targets, or `null` for none
          */
-        drag_dest_set_target_list(target_list?: Gtk.TargetList | null): void;
+        drag_dest_set_target_list(target_list: Gtk.TargetList | null): void;
         /**
          * Tells the widget to emit {@link Gtk.Widget.SignalSignatures.drag_motion | Gtk.Widget::drag-motion} and
          * {@link Gtk.Widget.SignalSignatures.drag_leave | Gtk.Widget::drag-leave} events regardless of the targets and the
@@ -1948,7 +2040,7 @@ export namespace Abi {
          * `gtk_drag_source_set()`.
          * @param target_list list of draggable targets, or `null` for none
          */
-        drag_source_set_target_list(target_list?: Gtk.TargetList | null): void;
+        drag_source_set_target_list(target_list: Gtk.TargetList | null): void;
         /**
          * Undoes the effects of `gtk_drag_source_set()`.
          */
@@ -2906,7 +2998,7 @@ export namespace Abi {
          * `gdk_window_input_shape_combine_region()` for more information.
          * @param region shape to be added, or `null` to remove an existing shape
          */
-        input_shape_combine_region(region?: cairo.Region | null): void;
+        input_shape_combine_region(region: cairo.Region | null): void;
         /**
          * Inserts `group` into `widget`. Children of `widget` that implement
          * {@link Gtk.Actionable} can then be associated with actions in `group` by
@@ -2918,7 +3010,7 @@ export namespace Abi {
          * @param name the prefix for actions in `group`
          * @param group a {@link Gio.ActionGroup}, or `null`
          */
-        insert_action_group(name: string, group?: Gio.ActionGroup | null): void;
+        insert_action_group(name: string, group: Gio.ActionGroup | null): void;
         /**
          * Computes the intersection of a `widget`’s area and `area`, storing
          * the intersection in `intersection`, and returns `true` if there was
@@ -3069,7 +3161,7 @@ export namespace Abi {
          * @param state the state for which to set the base color
          * @param color the color to assign (does not need to     be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_base()`.
          */
-        modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_base(state: Gtk.StateType, color: Gdk.Color | null): void;
         /**
          * Sets the background color for a widget in a particular state.
          *
@@ -3088,7 +3180,7 @@ export namespace Abi {
          * @param state the state for which to set the background color
          * @param color the color to assign (does not need     to be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_bg()`.
          */
-        modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_bg(state: Gtk.StateType, color: Gdk.Color | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the {@link Gtk.Widget}
          * cursor-color and secondary-cursor-color
@@ -3099,7 +3191,7 @@ export namespace Abi {
          * @param primary the color to use for primary cursor (does not     need to be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_cursor()`.
          * @param secondary the color to use for secondary cursor (does     not need to be allocated), or `null` to undo the effect of     previous calls to of `gtk_widget_modify_cursor()`.
          */
-        modify_cursor(primary?: Gdk.Color | null, secondary?: Gdk.Color | null): void;
+        modify_cursor(primary: Gdk.Color | null, secondary: Gdk.Color | null): void;
         /**
          * Sets the foreground color for a widget in a particular state.
          *
@@ -3108,7 +3200,7 @@ export namespace Abi {
          * @param state the state for which to set the foreground color
          * @param color the color to assign (does not need to be allocated),     or `null` to undo the effect of previous calls to     of `gtk_widget_modify_fg()`.
          */
-        modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_fg(state: Gtk.StateType, color: Gdk.Color | null): void;
         /**
          * Sets the font to use for a widget.
          *
@@ -3116,7 +3208,7 @@ export namespace Abi {
          * See also `gtk_widget_modify_style()`.
          * @param font_desc the font description to use, or `null`     to undo the effect of previous calls to `gtk_widget_modify_font()`
          */
-        modify_font(font_desc?: Pango.FontDescription | null): void;
+        modify_font(font_desc: Pango.FontDescription | null): void;
         /**
          * Modifies style values on the widget.
          *
@@ -3150,7 +3242,7 @@ export namespace Abi {
          * @param state the state for which to set the text color
          * @param color the color to assign (does not need to     be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_text()`.
          */
-        modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_text(state: Gtk.StateType, color: Gdk.Color | null): void;
         /**
          * Sets the background color to use for a widget.
          *
@@ -3159,7 +3251,7 @@ export namespace Abi {
          * @param state the state for which to set the background color
          * @param color the color to assign, or `null` to undo the effect     of previous calls to `gtk_widget_override_background_color()`
          */
-        override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_background_color(state: Gtk.StateFlags, color: Gdk.RGBA | null): void;
         /**
          * Sets the color to use for a widget.
          *
@@ -3189,7 +3281,7 @@ export namespace Abi {
          * @param state the state for which to set the color
          * @param color the color to assign, or `null` to undo the effect     of previous calls to `gtk_widget_override_color()`
          */
-        override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_color(state: Gtk.StateFlags, color: Gdk.RGBA | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the
          * cursor-color and secondary-cursor-color
@@ -3201,13 +3293,13 @@ export namespace Abi {
          * @param cursor the color to use for primary cursor (does not need to be     allocated), or `null` to undo the effect of previous calls to     of `gtk_widget_override_cursor()`.
          * @param secondary_cursor the color to use for secondary cursor (does not     need to be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_override_cursor()`.
          */
-        override_cursor(cursor?: Gdk.RGBA | null, secondary_cursor?: Gdk.RGBA | null): void;
+        override_cursor(cursor: Gdk.RGBA | null, secondary_cursor: Gdk.RGBA | null): void;
         /**
          * Sets the font to use for a widget. All other style values are
          * left untouched. See `gtk_widget_override_color()`.
          * @param font_desc the font description to use, or `null` to undo     the effect of previous calls to `gtk_widget_override_font()`
          */
-        override_font(font_desc?: Pango.FontDescription | null): void;
+        override_font(font_desc: Pango.FontDescription | null): void;
         /**
          * Sets a symbolic color for a widget.
          *
@@ -3217,7 +3309,7 @@ export namespace Abi {
          * @param name the name of the symbolic color to modify
          * @param color the color to assign (does not need     to be allocated), or `null` to undo the effect of previous     calls to `gtk_widget_override_symbolic_color()`
          */
-        override_symbolic_color(name: string, color?: Gdk.RGBA | null): void;
+        override_symbolic_color(name: string, color: Gdk.RGBA | null): void;
         /**
          * Obtains the full path to `widget`. The path is simply the name of a
          * widget and all its parents in the container hierarchy, separated by
@@ -3388,7 +3480,7 @@ export namespace Abi {
          * @param detail render detail to pass to theme engine
          * @returns a new pixbuf, or `null` if the     stock ID wasn’t known
          */
-        render_icon(stock_id: string, size: number, detail?: string | null): GdkPixbuf.Pixbuf | null;
+        render_icon(stock_id: string, size: number, detail: string | null): GdkPixbuf.Pixbuf | null;
         /**
          * A convenience function that uses the theme engine and style
          * settings for `widget` to look up `stock_id` and render it to
@@ -3495,7 +3587,7 @@ export namespace Abi {
          * @param accel_path path used to look up the accelerator
          * @param accel_group a {@link Gtk.AccelGroup}.
          */
-        set_accel_path(accel_path?: string | null, accel_group?: Gtk.AccelGroup | null): void;
+        set_accel_path(accel_path: string | null, accel_group: Gtk.AccelGroup | null): void;
         /**
          * Sets the widget’s allocation.  This should not be used
          * directly, but from within a widget’s size_allocate method.
@@ -3679,13 +3771,13 @@ export namespace Abi {
          * will inherit the font map from its parent.
          * @param font_map a {@link Pango.FontMap}, or `null` to unset any previously     set font map
          */
-        set_font_map(font_map?: Pango.FontMap | null): void;
+        set_font_map(font_map: Pango.FontMap | null): void;
         /**
          * Sets the {@link cairo.FontOptions} used for Pango rendering in this widget.
          * When not set, the default font options for the {@link Gdk.Screen} will be used.
          * @param options a {@link cairo.FontOptions}, or `null` to unset any   previously set default font options.
          */
-        set_font_options(options?: cairo.FontOptions | null): void;
+        set_font_options(options: cairo.FontOptions | null): void;
         /**
          * Sets the horizontal alignment of `widget`.
          * See the {@link Gtk.Widget.halign} property.
@@ -3978,7 +4070,7 @@ export namespace Abi {
          * GTK 3, this function does nothing, the passed in style is ignored.
          * @param style a {@link Gtk.Style}, or `null` to remove the effect     of a previous call to `gtk_widget_set_style()` and go back to     the default style
          */
-        set_style(style?: Gtk.Style | null): void;
+        set_style(style: Gtk.Style | null): void;
         /**
          * Enables or disables multiple pointer awareness. If this setting is `true`,
          * `widget` will start receiving multiple, per device enter/leave events. Note
@@ -3998,7 +4090,7 @@ export namespace Abi {
          * `gtk_tooltip_set_markup()`.
          * @param markup the contents of the tooltip for `widget`, or `null`
          */
-        set_tooltip_markup(markup?: string | null): void;
+        set_tooltip_markup(markup: string | null): void;
         /**
          * Sets `text` as the contents of the tooltip. This function will take
          * care of setting {@link Gtk.Widget.has_tooltip} to `true` and of the default
@@ -4007,7 +4099,7 @@ export namespace Abi {
          * See also the {@link Gtk.Widget.tooltip_text} property and `gtk_tooltip_set_text()`.
          * @param text the contents of the tooltip for `widget`
          */
-        set_tooltip_text(text?: string | null): void;
+        set_tooltip_text(text: string | null): void;
         /**
          * Replaces the default window used for displaying
          * tooltips with `custom_window`. GTK+ will take care of showing and
@@ -4016,7 +4108,7 @@ export namespace Abi {
          * tooltip window will be used.
          * @param custom_window a {@link Gtk.Window}, or `null`
          */
-        set_tooltip_window(custom_window?: Gtk.Window | null): void;
+        set_tooltip_window(custom_window: Gtk.Window | null): void;
         /**
          * Sets the vertical alignment of `widget`.
          * See the {@link Gtk.Widget.valign} property.
@@ -4060,7 +4152,7 @@ export namespace Abi {
          * so you should call this function before `widget` is realized.
          * @param visual visual to be used or `null` to unset a previous one
          */
-        set_visual(visual?: Gdk.Visual | null): void;
+        set_visual(visual: Gdk.Visual | null): void;
         /**
          * Sets a widget’s window. This function should only be used in a
          * widget’s {@link Gtk.Widget.SignalSignatures.realize | Gtk.Widget::realize} implementation. The %window passed is
@@ -4082,7 +4174,7 @@ export namespace Abi {
          * for more information.
          * @param region shape to be added, or `null` to remove an existing shape
          */
-        shape_combine_region(region?: cairo.Region | null): void;
+        shape_combine_region(region: cairo.Region | null): void;
         /**
          * Flags a widget to be displayed. Any widget that isn’t shown will
          * not appear on the screen. If you want to show all the widgets in a
@@ -5259,54 +5351,102 @@ export namespace Abi {
 
         /**
          * @read-only
+         * @default null
          */
         get content(): string;
         /**
          * @read-only
+         * @default 0
          */
         get content_length(): number;
         /**
          * @read-only
+         * @default 0
          */
         get contentLength(): number;
+        /**
+         * @default false
+         */
         get cursor_on(): boolean;
         set cursor_on(val: boolean);
+        /**
+         * @default false
+         */
         get cursorOn(): boolean;
         set cursorOn(val: boolean);
         /**
          * @read-only
+         * @default null
          */
         get selection(): string;
         /**
          * @read-only
+         * @default 0
          */
         get selection_length(): number;
         /**
          * @read-only
+         * @default 0
          */
         get selectionLength(): number;
+        /**
+         * @default 1
+         */
         get shadow_type(): number;
         set shadow_type(val: number);
+        /**
+         * @default 1
+         */
         get shadowType(): number;
         set shadowType(val: number);
+        /**
+         * @default false
+         */
         get unlink_after_load(): boolean;
         set unlink_after_load(val: boolean);
+        /**
+         * @default false
+         */
         get unlinkAfterLoad(): boolean;
         set unlinkAfterLoad(val: boolean);
+        /**
+         * @default false
+         */
         get view_normal_layout(): boolean;
         set view_normal_layout(val: boolean);
+        /**
+         * @default false
+         */
         get viewNormalLayout(): boolean;
         set viewNormalLayout(val: boolean);
+        /**
+         * @default false
+         */
         get view_para(): boolean;
         set view_para(val: boolean);
+        /**
+         * @default false
+         */
         get viewPara(): boolean;
         set viewPara(val: boolean);
+        /**
+         * @default false
+         */
         get view_print_layout(): boolean;
         set view_print_layout(val: boolean);
+        /**
+         * @default false
+         */
         get viewPrintLayout(): boolean;
         set viewPrintLayout(val: boolean);
+        /**
+         * @default false
+         */
         get view_web_layout(): boolean;
         set view_web_layout(val: boolean);
+        /**
+         * @default false
+         */
         get viewWebLayout(): boolean;
         set viewWebLayout(val: boolean);
 
@@ -6265,38 +6405,19 @@ export namespace Abi {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -6304,15 +6425,9 @@ export namespace Abi {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -6479,7 +6594,7 @@ export namespace Abi {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set

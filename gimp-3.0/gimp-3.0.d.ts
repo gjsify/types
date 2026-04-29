@@ -2963,8 +2963,8 @@ export namespace Gimp {
     function brushes_popup(
         brush_callback: string,
         popup_title: string,
-        initial_brush?: Brush | null,
-        parent_window?: GLib.Bytes | null,
+        initial_brush: Brush | null,
+        parent_window: GLib.Bytes | null,
     ): boolean;
     /**
      * Refresh current brushes. This function always succeeds.
@@ -3047,7 +3047,7 @@ export namespace Gimp {
      * @returns The list of buffer names.          The returned value must be freed with `g_strfreev()`.
      * @since 2.4
      */
-    function buffers_get_name_list(filter?: string | null): string[];
+    function buffers_get_name_list(filter: string | null): string[];
     /**
      * Returns the default top directory for GIMP cached files. If the
      * environment variable GIMP3_CACHEDIR exists, that is used.  It
@@ -4990,8 +4990,8 @@ export namespace Gimp {
         callback: string,
         popup_title: string,
         drawable_type: string,
-        initial_drawable?: Drawable | null,
-        parent_window?: GLib.Bytes | null,
+        initial_drawable: Drawable | null,
+        parent_window: GLib.Bytes | null,
     ): boolean;
     /**
      * Sets the selected drawable in a drawable selection dialog.
@@ -5012,7 +5012,7 @@ export namespace Gimp {
      * @returns The list of paint dynamics names.          The returned value must be freed with `g_strfreev()`.
      * @since 2.8
      */
-    function dynamics_get_name_list(filter?: string | null): string[];
+    function dynamics_get_name_list(filter: string | null): string[];
     /**
      * Refresh current paint dynamics. This function always succeeds.
      *
@@ -5283,7 +5283,7 @@ export namespace Gimp {
      * @returns A (possibly escaped) copy of `str` which should be freed using `g_free()` when it is not needed any longer.
      * @since 2.2
      */
-    function escape_uline(str?: string | null): string;
+    function escape_uline(str: string | null): string;
     /**
      * Returns whether file plug-ins should default to exporting the
      * image's color profile.
@@ -5448,7 +5448,7 @@ export namespace Gimp {
      * @param options Export option settings.
      * @returns TRUE on success.
      */
-    function file_save(run_mode: RunMode, image: Image, file: Gio.File, options?: ExportOptions | null): boolean;
+    function file_save(run_mode: RunMode, image: Image, file: Gio.File, options: ExportOptions | null): boolean;
     /**
      * Shows `file` in the system file manager.
      * @param file a {@link Gio.File}
@@ -5592,7 +5592,7 @@ export namespace Gimp {
      * @param filter An optional regular expression used to filter the list.
      * @returns The list of fonts.          The returned value must be freed with `g_free()`.
      */
-    function fonts_get_list(filter?: string | null): Font[];
+    function fonts_get_list(filter: string | null): Font[];
     /**
      * Invokes the Gimp font selection dialog.
      *
@@ -5606,8 +5606,8 @@ export namespace Gimp {
     function fonts_popup(
         font_callback: string,
         popup_title: string,
-        initial_font?: Font | null,
-        parent_window?: GLib.Bytes | null,
+        initial_font: Font | null,
+        parent_window: GLib.Bytes | null,
     ): boolean;
     /**
      * Refresh current fonts. This function always succeeds.
@@ -5771,7 +5771,7 @@ export namespace Gimp {
      * @param filter An optional regular expression used to filter the list.
      * @returns The list of gradients.          The returned value must be freed with `g_free()`.
      */
-    function gradients_get_list(filter?: string | null): Gradient[];
+    function gradients_get_list(filter: string | null): Gradient[];
     /**
      * Invokes the Gimp gradients selection dialog.
      *
@@ -5785,8 +5785,8 @@ export namespace Gimp {
     function gradients_popup(
         gradient_callback: string,
         popup_title: string,
-        initial_gradient?: Gradient | null,
-        parent_window?: GLib.Bytes | null,
+        initial_gradient: Gradient | null,
+        parent_window: GLib.Bytes | null,
     ): boolean;
     /**
      * Refresh current gradients. This function always succeeds.
@@ -5881,8 +5881,8 @@ export namespace Gimp {
     function images_popup(
         callback: string,
         popup_title: string,
-        initial_image?: Image | null,
-        parent_window?: GLib.Bytes | null,
+        initial_image: Image | null,
+        parent_window: GLib.Bytes | null,
     ): boolean;
     /**
      * Sets the selected image in a image selection dialog.
@@ -5956,8 +5956,8 @@ export namespace Gimp {
         callback: string,
         popup_title: string,
         item_type: string,
-        initial_item?: Item | null,
-        parent_window?: GLib.Bytes | null,
+        initial_item: Item | null,
+        parent_window: GLib.Bytes | null,
     ): boolean;
     /**
      * Sets the selected item in a item selection dialog.
@@ -6106,7 +6106,7 @@ export namespace Gimp {
      * @param filter An optional regular expression used to filter the list.
      * @returns The list of palettes.          The returned value must be freed with `g_free()`.
      */
-    function palettes_get_list(filter?: string | null): Palette[];
+    function palettes_get_list(filter: string | null): Palette[];
     /**
      * Invokes the Gimp palette selection dialog.
      *
@@ -6120,8 +6120,8 @@ export namespace Gimp {
     function palettes_popup(
         palette_callback: string,
         popup_title: string,
-        initial_palette?: Palette | null,
-        parent_window?: GLib.Bytes | null,
+        initial_palette: Palette | null,
+        parent_window: GLib.Bytes | null,
     ): boolean;
     /**
      * Refreshes current palettes. This function always succeeds.
@@ -6787,7 +6787,7 @@ export namespace Gimp {
      * @param pspec a {@link GObject.Object} {@link GObject.ParamSpec}
      * @param default_value a default value.
      */
-    function param_spec_object_set_default(pspec: GObject.ParamSpec, default_value?: GObject.Object | null): void;
+    function param_spec_object_set_default(pspec: GObject.ParamSpec, default_value: GObject.Object | null): void;
     /**
      * Creates a new `GimpParamSpecPalette` specifying a
      * {@link Palette} property. See also {@link Gimp.param_spec_resource}.
@@ -7066,7 +7066,7 @@ export namespace Gimp {
      * @param filter An optional regular expression used to filter the list.
      * @returns The list of patterns.          The returned value must be freed with `g_free()`.
      */
-    function patterns_get_list(filter?: string | null): Pattern[];
+    function patterns_get_list(filter: string | null): Pattern[];
     /**
      * Invokes the Gimp pattern selection.
      *
@@ -7080,8 +7080,8 @@ export namespace Gimp {
     function patterns_popup(
         pattern_callback: string,
         popup_title: string,
-        initial_pattern?: Pattern | null,
-        parent_window?: GLib.Bytes | null,
+        initial_pattern: Pattern | null,
+        parent_window: GLib.Bytes | null,
     ): boolean;
     /**
      * Refresh current patterns. This function always succeeds.
@@ -7231,8 +7231,8 @@ export namespace Gimp {
      */
     function progress_install_vtable(
         vtable: ProgressVtable,
-        user_data?: any | null,
-        user_data_destroy?: GLib.DestroyNotify | null,
+        user_data: any | null,
+        user_data_destroy: GLib.DestroyNotify | null,
     ): string;
     /**
      * Pulses the progress bar for the current plug-in.
@@ -7256,7 +7256,7 @@ export namespace Gimp {
      * @returns TRUE on success.
      * @since 2.4
      */
-    function progress_set_text(message?: string | null): boolean;
+    function progress_set_text(message: string | null): boolean;
     /**
      * Uninstalls a temporary progress procedure that was installed using
      * `gimp_progress_install()`.
@@ -7438,7 +7438,7 @@ export namespace Gimp {
      * @param str underline infested string (or `null`)
      * @returns A (possibly stripped) copy of `str` which should be               freed using `g_free()` when it is not needed any longer.
      */
-    function strip_uline(str?: string | null): string;
+    function strip_uline(str: string | null): string;
     /**
      * Returns the top directory for GIMP config files. If the environment
      * variable GIMP3_SYSCONFDIR exists, that is used.  It should be an
@@ -7484,7 +7484,7 @@ export namespace Gimp {
      * @param extension The extension the file will have.
      * @returns The new temp file.
      */
-    function temp_file(extension?: string | null): Gio.File;
+    function temp_file(extension: string | null): Gio.File;
     /**
      * Add text at the specified location as a floating selection or a new
      * layer.
@@ -7859,19 +7859,19 @@ export namespace Gimp {
      * @gir-type Callback
      */
     interface ProgressVtableEndFunc {
-        (user_data?: any | null): void;
+        (user_data: any | null): void;
     }
     /**
      * @gir-type Callback
      */
     interface ProgressVtableGetWindowFunc {
-        (user_data?: any | null): GLib.Bytes;
+        (user_data: any | null): GLib.Bytes;
     }
     /**
      * @gir-type Callback
      */
     interface ProgressVtablePulseFunc {
-        (user_data?: any | null): void;
+        (user_data: any | null): void;
     }
     /**
      * @gir-type Callback
@@ -8190,7 +8190,7 @@ export namespace Gimp {
             interpreter_name: string,
             proc_type: PDBProcType,
             run_func: BatchFunc,
-            run_data_destroy?: GLib.DestroyNotify | null,
+            run_data_destroy: GLib.DestroyNotify | null,
         ): BatchProcedure;
         // Conflicted with Gimp.Procedure.new
 
@@ -8558,38 +8558,19 @@ export namespace Gimp {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -8597,15 +8578,9 @@ export namespace Gimp {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -8772,7 +8747,7 @@ export namespace Gimp {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -9301,70 +9276,163 @@ export namespace Gimp {
 
         // Properties
 
+        /**
+         * @default null
+         */
         get cmyk_profile(): ConfigPath;
         set cmyk_profile(val: ConfigPath);
+        /**
+         * @default null
+         */
         get cmykProfile(): ConfigPath;
         set cmykProfile(val: ConfigPath);
+        /**
+         * @default true
+         */
         get display_optimize(): boolean;
         set display_optimize(val: boolean);
+        /**
+         * @default true
+         */
         get displayOptimize(): boolean;
         set displayOptimize(val: boolean);
+        /**
+         * @default null
+         */
         get display_profile(): ConfigPath;
         set display_profile(val: ConfigPath);
+        /**
+         * @default null
+         */
         get displayProfile(): ConfigPath;
         set displayProfile(val: ConfigPath);
+        /**
+         * @default false
+         */
         get display_profile_from_gdk(): boolean;
         set display_profile_from_gdk(val: boolean);
+        /**
+         * @default false
+         */
         get displayProfileFromGdk(): boolean;
         set displayProfileFromGdk(val: boolean);
+        /**
+         * @default Gimp.ColorRenderingIntent.RELATIVE_COLORIMETRIC
+         */
         get display_rendering_intent(): ColorRenderingIntent;
         set display_rendering_intent(val: ColorRenderingIntent);
+        /**
+         * @default Gimp.ColorRenderingIntent.RELATIVE_COLORIMETRIC
+         */
         get displayRenderingIntent(): ColorRenderingIntent;
         set displayRenderingIntent(val: ColorRenderingIntent);
+        /**
+         * @default true
+         */
         get display_use_black_point_compensation(): boolean;
         set display_use_black_point_compensation(val: boolean);
+        /**
+         * @default true
+         */
         get displayUseBlackPointCompensation(): boolean;
         set displayUseBlackPointCompensation(val: boolean);
+        /**
+         * @default null
+         */
         get gray_profile(): ConfigPath;
         set gray_profile(val: ConfigPath);
+        /**
+         * @default null
+         */
         get grayProfile(): ConfigPath;
         set grayProfile(val: ConfigPath);
+        /**
+         * @default Gimp.ColorManagementMode.DISPLAY
+         */
         get mode(): ColorManagementMode;
         set mode(val: ColorManagementMode);
         get out_of_gamut_color(): Gegl.Color;
         set out_of_gamut_color(val: Gegl.Color);
         get outOfGamutColor(): Gegl.Color;
         set outOfGamutColor(val: Gegl.Color);
+        /**
+         * @default null
+         */
         get rgb_profile(): ConfigPath;
         set rgb_profile(val: ConfigPath);
+        /**
+         * @default null
+         */
         get rgbProfile(): ConfigPath;
         set rgbProfile(val: ConfigPath);
+        /**
+         * @default false
+         */
         get show_hsv(): boolean;
         set show_hsv(val: boolean);
+        /**
+         * @default false
+         */
         get showHsv(): boolean;
         set showHsv(val: boolean);
+        /**
+         * @default false
+         */
         get show_rgb_u8(): boolean;
         set show_rgb_u8(val: boolean);
+        /**
+         * @default false
+         */
         get showRgbU8(): boolean;
         set showRgbU8(val: boolean);
+        /**
+         * @default false
+         */
         get simulation_gamut_check(): boolean;
         set simulation_gamut_check(val: boolean);
+        /**
+         * @default false
+         */
         get simulationGamutCheck(): boolean;
         set simulationGamutCheck(val: boolean);
+        /**
+         * @default true
+         */
         get simulation_optimize(): boolean;
         set simulation_optimize(val: boolean);
+        /**
+         * @default true
+         */
         get simulationOptimize(): boolean;
         set simulationOptimize(val: boolean);
+        /**
+         * @default null
+         */
         get simulation_profile(): ConfigPath;
         set simulation_profile(val: ConfigPath);
+        /**
+         * @default null
+         */
         get simulationProfile(): ConfigPath;
         set simulationProfile(val: ConfigPath);
+        /**
+         * @default Gimp.ColorRenderingIntent.PERCEPTUAL
+         */
         get simulation_rendering_intent(): ColorRenderingIntent;
         set simulation_rendering_intent(val: ColorRenderingIntent);
+        /**
+         * @default Gimp.ColorRenderingIntent.PERCEPTUAL
+         */
         get simulationRenderingIntent(): ColorRenderingIntent;
         set simulationRenderingIntent(val: ColorRenderingIntent);
+        /**
+         * @default false
+         */
         get simulation_use_black_point_compensation(): boolean;
         set simulation_use_black_point_compensation(val: boolean);
+        /**
+         * @default false
+         */
         get simulationUseBlackPointCompensation(): boolean;
         set simulationUseBlackPointCompensation(val: boolean);
 
@@ -9486,38 +9554,19 @@ export namespace Gimp {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -9525,15 +9574,9 @@ export namespace Gimp {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -9700,7 +9743,7 @@ export namespace Gimp {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -9931,7 +9974,7 @@ export namespace Gimp {
 
         static new_from_icc_profile(data: Uint8Array | string): ColorProfile;
 
-        static new_from_lcms_profile(lcms_profile?: any | null): ColorProfile;
+        static new_from_lcms_profile(lcms_profile: any | null): ColorProfile;
 
         static new_rgb_adobe(): ColorProfile;
 
@@ -10335,12 +10378,14 @@ export namespace Gimp {
         /**
          * The curve type.
          * @since 3.2
+         * @default Gimp.CurveType.SMOOTH
          */
         get curve_type(): CurveType;
         set curve_type(val: CurveType);
         /**
          * The curve type.
          * @since 3.2
+         * @default Gimp.CurveType.SMOOTH
          */
         get curveType(): CurveType;
         set curveType(val: CurveType);
@@ -10348,6 +10393,7 @@ export namespace Gimp {
          * The number of samples this {@link Gimp.CurveType.FREE} curve is
          * split into.
          * @since 3.2
+         * @default 256
          */
         get n_samples(): number;
         set n_samples(val: number);
@@ -10355,6 +10401,7 @@ export namespace Gimp {
          * The number of samples this {@link Gimp.CurveType.FREE} curve is
          * split into.
          * @since 3.2
+         * @default 256
          */
         get nSamples(): number;
         set nSamples(val: number);
@@ -10571,6 +10618,7 @@ export namespace Gimp {
 
         /**
          * @construct-only
+         * @default 0
          */
         get id(): number;
 
@@ -11535,6 +11583,7 @@ export namespace Gimp {
 
         /**
          * @construct-only
+         * @default 0
          */
         get id(): number;
 
@@ -11553,7 +11602,7 @@ export namespace Gimp {
 
         _init(...args: any[]): void;
 
-        static ['new'](drawable: Drawable, operation_name: string, name?: string | null): DrawableFilter;
+        static ['new'](drawable: Drawable, operation_name: string, name: string | null): DrawableFilter;
 
         // Signals
 
@@ -11843,6 +11892,7 @@ export namespace Gimp {
         /**
          * What {@link ExportCapabilities} are supported.
          * @since 3.0.0
+         * @default 0
          */
         get capabilities(): ExportCapabilities;
         set capabilities(val: ExportCapabilities);
@@ -11960,78 +12010,91 @@ export namespace Gimp {
         /**
          * What {@link Gimp.ExportCapabilities} are supported
          * @since 3.0.0
+         * @default 0
          */
         get capabilities(): ExportCapabilities;
         set capabilities(val: ExportCapabilities);
         /**
          * Whether the export procedure supports storing a comment.
          * @since 3.0.0
+         * @default false
          */
         get supports_comment(): boolean;
         set supports_comment(val: boolean);
         /**
          * Whether the export procedure supports storing a comment.
          * @since 3.0.0
+         * @default false
          */
         get supportsComment(): boolean;
         set supportsComment(val: boolean);
         /**
          * Whether the export procedure supports EXIF.
          * @since 3.0.0
+         * @default false
          */
         get supports_exif(): boolean;
         set supports_exif(val: boolean);
         /**
          * Whether the export procedure supports EXIF.
          * @since 3.0.0
+         * @default false
          */
         get supportsExif(): boolean;
         set supportsExif(val: boolean);
         /**
          * Whether the export procedure supports IPTC.
          * @since 3.0.0
+         * @default false
          */
         get supports_iptc(): boolean;
         set supports_iptc(val: boolean);
         /**
          * Whether the export procedure supports IPTC.
          * @since 3.0.0
+         * @default false
          */
         get supportsIptc(): boolean;
         set supportsIptc(val: boolean);
         /**
          * Whether the export procedure supports ICC color profiles.
          * @since 3.0.0
+         * @default false
          */
         get supports_profile(): boolean;
         set supports_profile(val: boolean);
         /**
          * Whether the export procedure supports ICC color profiles.
          * @since 3.0.0
+         * @default false
          */
         get supportsProfile(): boolean;
         set supportsProfile(val: boolean);
         /**
          * Whether the export procedure supports storing a thumbnail.
          * @since 3.0.0
+         * @default false
          */
         get supports_thumbnail(): boolean;
         set supports_thumbnail(val: boolean);
         /**
          * Whether the export procedure supports storing a thumbnail.
          * @since 3.0.0
+         * @default false
          */
         get supportsThumbnail(): boolean;
         set supportsThumbnail(val: boolean);
         /**
          * Whether the export procedure supports XMP.
          * @since 3.0.0
+         * @default false
          */
         get supports_xmp(): boolean;
         set supports_xmp(val: boolean);
         /**
          * Whether the export procedure supports XMP.
          * @since 3.0.0
+         * @default false
          */
         get supportsXmp(): boolean;
         set supportsXmp(val: boolean);
@@ -12057,7 +12120,7 @@ export namespace Gimp {
             proc_type: PDBProcType,
             export_metadata: boolean,
             run_func: RunExportFunc,
-            run_data_destroy?: GLib.DestroyNotify | null,
+            run_data_destroy: GLib.DestroyNotify | null,
         ): ExportProcedure;
         // Conflicted with Gimp.Procedure.new
 
@@ -12127,8 +12190,8 @@ export namespace Gimp {
          */
         set_capabilities(
             capabilities: ExportCapabilities,
-            get_capabilities_func?: ExportGetCapabilitiesFunc | null,
-            get_capabilities_data_destroy?: GLib.DestroyNotify | null,
+            get_capabilities_func: ExportGetCapabilitiesFunc | null,
+            get_capabilities_data_destroy: GLib.DestroyNotify | null,
         ): void;
         /**
          * Determine whether `procedure` supports exporting a comment. By default,
@@ -12599,38 +12662,19 @@ export namespace Gimp {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -12638,15 +12682,9 @@ export namespace Gimp {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -12813,7 +12851,7 @@ export namespace Gimp {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -13438,38 +13476,19 @@ export namespace Gimp {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -13477,15 +13496,9 @@ export namespace Gimp {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -13652,7 +13665,7 @@ export namespace Gimp {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -13875,7 +13888,7 @@ export namespace Gimp {
 
         _init(...args: any[]): void;
 
-        static ['new'](image: Image, name?: string | null): GroupLayer;
+        static ['new'](image: Image, name: string | null): GroupLayer;
 
         // Signals
 
@@ -13946,6 +13959,7 @@ export namespace Gimp {
 
         /**
          * @construct-only
+         * @default 0
          */
         get id(): number;
 
@@ -14074,7 +14088,7 @@ export namespace Gimp {
          * @param drawable Input drawable.
          * @returns TRUE on success.
          */
-        autocrop(drawable?: Drawable | null): boolean;
+        autocrop(drawable: Drawable | null): boolean;
         /**
          * Crop the selected layers based on empty borders of the input
          * drawable
@@ -14089,7 +14103,7 @@ export namespace Gimp {
          * @param drawable Input drawable.
          * @returns TRUE on success.
          */
-        autocrop_selected_layers(drawable?: Drawable | null): boolean;
+        autocrop_selected_layers(drawable: Drawable | null): boolean;
         /**
          * Set the image dirty count to 0.
          *
@@ -14265,7 +14279,7 @@ export namespace Gimp {
          * @param path The path object to export, or `null` for all in the image.
          * @returns TRUE on success.
          */
-        export_path_to_file(file: Gio.File, path?: Path | null): boolean;
+        export_path_to_file(file: Gio.File, path: Path | null): boolean;
         /**
          * Save a path as an SVG string.
          *
@@ -14276,7 +14290,7 @@ export namespace Gimp {
          * @param path The path object to export, or `null` for all in the image.
          * @returns A string whose contents are a complete SVG document.          The returned value must be freed with `g_free()`.
          */
-        export_path_to_string(path?: Path | null): string;
+        export_path_to_string(path: Path | null): string;
         /**
          * Find next guide on an image.
          *
@@ -15451,7 +15465,7 @@ export namespace Gimp {
          * @param profile A {@link Gimp.ColorProfile}, or `null`.
          * @returns `true` on success.
          */
-        set_color_profile(profile?: ColorProfile | null): boolean;
+        set_color_profile(profile: ColorProfile | null): boolean;
         /**
          * Sets the image's color profile from an ICC file
          *
@@ -15586,7 +15600,7 @@ export namespace Gimp {
          * @param profile A {@link Gimp.ColorProfile}, or `null`.
          * @returns `true` on success.
          */
-        set_simulation_profile(profile?: ColorProfile | null): boolean;
+        set_simulation_profile(profile: ColorProfile | null): boolean;
         /**
          * Sets the image's simulation color profile from an ICC file
          *
@@ -15833,7 +15847,7 @@ export namespace Gimp {
             name: string,
             proc_type: PDBProcType,
             run_func: RunImageFunc,
-            run_data_destroy?: GLib.DestroyNotify | null,
+            run_data_destroy: GLib.DestroyNotify | null,
         ): ImageProcedure;
         // Conflicted with Gimp.Procedure.new
 
@@ -15885,6 +15899,7 @@ export namespace Gimp {
 
         /**
          * @construct-only
+         * @default 0
          */
         get id(): number;
 
@@ -16744,7 +16759,7 @@ export namespace Gimp {
             progress_end: number,
         ): Layer;
 
-        static new_from_visible(image: Image, dest_image: Image, name?: string | null): Layer;
+        static new_from_visible(image: Image, dest_image: Image, name: string | null): Layer;
 
         // Signals
 
@@ -18112,7 +18127,7 @@ export namespace Gimp {
             name: string,
             proc_type: PDBProcType,
             run_func: RunLoadFunc,
-            run_data_destroy?: GLib.DestroyNotify | null,
+            run_data_destroy: GLib.DestroyNotify | null,
         ): LoadProcedure;
         // Conflicted with Gimp.Procedure.new
 
@@ -18432,16 +18447,24 @@ export namespace Gimp {
 
         // Properties
 
+        /**
+         * @default false
+         */
         get auto_load(): boolean;
         set auto_load(val: boolean);
+        /**
+         * @default false
+         */
         get autoLoad(): boolean;
         set autoLoad(val: boolean);
         /**
          * @read-only
+         * @default false
          */
         get on_disk(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get onDisk(): boolean;
 
@@ -18635,38 +18658,19 @@ export namespace Gimp {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -18674,15 +18678,9 @@ export namespace Gimp {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -18849,7 +18847,7 @@ export namespace Gimp {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -19279,38 +19277,19 @@ export namespace Gimp {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -19318,15 +19297,9 @@ export namespace Gimp {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -19493,7 +19466,7 @@ export namespace Gimp {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -20031,7 +20004,7 @@ export namespace Gimp {
          * @param entry_name The new name.
          * @returns TRUE on success.
          */
-        set_entry_name(entry_num: number, entry_name?: string | null): boolean;
+        set_entry_name(entry_num: number, entry_name: string | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -20079,38 +20052,19 @@ export namespace Gimp {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -20118,15 +20072,9 @@ export namespace Gimp {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -20293,7 +20241,7 @@ export namespace Gimp {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -21330,7 +21278,7 @@ export namespace Gimp {
 
         _init(...args: any[]): void;
 
-        static ['new'](image: Image, name?: string | null): Path;
+        static ['new'](image: Image, name: string | null): Path;
 
         static new_from_text_layer(image: Image, layer: Layer): Path;
 
@@ -21765,38 +21713,19 @@ export namespace Gimp {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -21804,15 +21733,9 @@ export namespace Gimp {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -21979,7 +21902,7 @@ export namespace Gimp {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -22252,11 +22175,13 @@ export namespace Gimp {
         /**
          * The program name as usually found on argv[0]
          * @construct-only
+         * @default null
          */
         set program_name(val: string);
         /**
          * The program name as usually found on argv[0]
          * @construct-only
+         * @default null
          */
         set programName(val: string);
         /**
@@ -22604,6 +22529,7 @@ export namespace Gimp {
 
         /**
          * @construct-only
+         * @default null
          */
         get name(): string;
         /**
@@ -22616,10 +22542,12 @@ export namespace Gimp {
         get plugIn(): PlugIn;
         /**
          * @construct-only
+         * @default Gimp.PDBProcType.PLUGIN
          */
         get procedure_type(): PDBProcType;
         /**
          * @construct-only
+         * @default Gimp.PDBProcType.PLUGIN
          */
         get procedureType(): PDBProcType;
 
@@ -22643,7 +22571,7 @@ export namespace Gimp {
             name: string,
             proc_type: PDBProcType,
             run_func: RunFunc,
-            run_data_destroy?: GLib.DestroyNotify | null,
+            run_data_destroy: GLib.DestroyNotify | null,
         ): Procedure;
 
         // Signals
@@ -24509,7 +24437,7 @@ export namespace Gimp {
          * @param error an optional {@link GLib.Error}. This parameter should be set if             `status` is either #GIMP_PDB_EXECUTION_ERROR or             #GIMP_PDB_CALLING_ERROR.
          * @returns the expected {@link Gimp.ValueArray} as could be returned by a {@link RunFunc}.
          */
-        new_return_values(status: PDBStatusType, error?: GLib.Error | null): ValueArray;
+        new_return_values(status: PDBStatusType, error: GLib.Error | null): ValueArray;
         /**
          * Notify the main GIMP application that the persistent procedure has
          * been properly initialized and is ready to run.
@@ -24535,7 +24463,7 @@ export namespace Gimp {
          * @param config the `procedure`'s arguments.
          * @returns The `procedure`'s return values.
          */
-        run(config?: ProcedureConfig | null): ValueArray;
+        run(config: ProcedureConfig | null): ValueArray;
         /**
          * When the procedure's `run()` function exits, a {@link Gimp.Procedure}'s arguments
          * or auxiliary arguments can be automatically synced with a {@link Gimp.Parasite} of
@@ -24575,22 +24503,22 @@ export namespace Gimp {
          * @param help The `procedure`'s help text.
          * @param help_id The `procedure`'s help ID.
          */
-        set_documentation(blurb: string, help?: string | null, help_id?: string | null): void;
+        set_documentation(blurb: string, help: string | null, help_id: string | null): void;
         /**
          * Sets the icon for `procedure` to the contents of an image file.
          * @param file a {@link Gio.File} pointing to an image file.
          */
-        set_icon_file(file?: Gio.File | null): void;
+        set_icon_file(file: Gio.File | null): void;
         /**
          * Sets the icon for `procedure` to the icon referenced by `icon_name`.
          * @param icon_name an icon name.
          */
-        set_icon_name(icon_name?: string | null): void;
+        set_icon_name(icon_name: string | null): void;
         /**
          * Sets the icon for `procedure` to `pixbuf`.
          * @param pixbuf a {@link GdkPixbuf.Pixbuf}.
          */
-        set_icon_pixbuf(pixbuf?: GdkPixbuf.Pixbuf | null): void;
+        set_icon_pixbuf(pixbuf: GdkPixbuf.Pixbuf | null): void;
         /**
          * This is a comma separated list of image types, or actually drawable
          * types, that this procedure can deal with. Wildcards are possible
@@ -24818,6 +24746,7 @@ export namespace Gimp {
 
         /**
          * @construct-only
+         * @default 0
          */
         get id(): number;
 
@@ -25067,38 +24996,19 @@ export namespace Gimp {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -25106,15 +25016,9 @@ export namespace Gimp {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -25281,7 +25185,7 @@ export namespace Gimp {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -26992,7 +26896,7 @@ export namespace Gimp {
             name: string,
             proc_type: PDBProcType,
             run_func: RunThumbnailFunc,
-            run_data_destroy?: GLib.DestroyNotify | null,
+            run_data_destroy: GLib.DestroyNotify | null,
         ): ThumbnailProcedure;
         // Conflicted with Gimp.Procedure.new
 
@@ -27055,26 +26959,32 @@ export namespace Gimp {
 
         /**
          * @construct-only
+         * @default null
          */
         get abbreviation(): string;
         /**
          * @construct-only
+         * @default 0
          */
         get digits(): number;
         /**
          * @construct-only
+         * @default 1
          */
         get factor(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get id(): number;
         /**
          * @construct-only
+         * @default null
          */
         get name(): string;
         /**
          * @construct-only
+         * @default null
          */
         get symbol(): string;
 
@@ -28419,7 +28329,7 @@ export namespace Gimp {
             proc_type: PDBProcType,
             extract_func: ExtractVectorFunc,
             run_func: RunVectorLoadFunc,
-            run_data_destroy?: GLib.DestroyNotify | null,
+            run_data_destroy: GLib.DestroyNotify | null,
         ): VectorLoadProcedure;
         // Conflicted with Gimp.LoadProcedure.new
 
@@ -28542,7 +28452,7 @@ export namespace Gimp {
          * @param data client data.
          * @returns Whether serialization succeeded.
          */
-        deserialize(scanner: GLib.Scanner, nest_level: number, data?: any | null): boolean;
+        deserialize(scanner: GLib.Scanner, nest_level: number, data: any | null): boolean;
         /**
          * Opens the file specified by `file`, reads configuration data from it
          * and configures `config` accordingly. Basically this function creates
@@ -28552,7 +28462,7 @@ export namespace Gimp {
          * @param data user data passed to the deserialize implementation.
          * @returns Whether deserialization succeeded.
          */
-        deserialize_file(file: Gio.File, data?: any | null): boolean;
+        deserialize_file(file: Gio.File, data: any | null): boolean;
         /**
          * Configures `config` from `parasite`. Basically this function creates
          * a properly configured {@link GLib.Scanner} for you and calls the deserialize
@@ -28561,7 +28471,7 @@ export namespace Gimp {
          * @param data client data
          * @returns `true` if deserialization succeeded, `false` otherwise.
          */
-        deserialize_parasite(parasite: Parasite, data?: any | null): boolean;
+        deserialize_parasite(parasite: Parasite, data: any | null): boolean;
         /**
          * This function uses the `scanner` to configure the properties of `config`.
          * @param scanner a {@link GLib.Scanner}.
@@ -28587,7 +28497,7 @@ export namespace Gimp {
          * @param data user data passed to the deserialize implementation.
          * @returns Whether deserialization succeeded.
          */
-        deserialize_stream(input: Gio.InputStream, data?: any | null): boolean;
+        deserialize_stream(input: Gio.InputStream, data: any | null): boolean;
         /**
          * Configures `config` from `text`. Basically this function creates a
          * properly configured {@link GLib.Scanner} for you and calls the deserialize
@@ -28596,7 +28506,7 @@ export namespace Gimp {
          * @param data client data
          * @returns `true` if deserialization succeeded, `false` otherwise.
          */
-        deserialize_string(text: string[], data?: any | null): boolean;
+        deserialize_string(text: string[], data: any | null): boolean;
         /**
          * Creates a copy of the passed object by copying all object
          * properties. The default implementation of the {@link Gimp.ConfigInterface}
@@ -28631,7 +28541,7 @@ export namespace Gimp {
          * @param data client data
          * @returns Whether serialization succeeded.
          */
-        serialize(writer: ConfigWriter, data?: any | null): boolean;
+        serialize(writer: ConfigWriter, data: any | null): boolean;
         /**
          * This function writes all object properties that have been changed from
          * their default values to the `writer`.
@@ -28666,7 +28576,7 @@ export namespace Gimp {
          * @param data user data passed to the serialize implementation.
          * @returns `true` if serialization succeeded, `false` otherwise.
          */
-        serialize_to_fd(fd: number, data?: any | null): boolean;
+        serialize_to_fd(fd: number, data: any | null): boolean;
         /**
          * Serializes the object properties of `config` to the file specified
          * by `file`. If a file with that name already exists, it is
@@ -28678,7 +28588,7 @@ export namespace Gimp {
          * @param data user data passed to the serialize implementation.
          * @returns `true` if serialization succeeded, `false` otherwise.
          */
-        serialize_to_file(file: Gio.File, header?: string | null, footer?: string | null, data?: any | null): boolean;
+        serialize_to_file(file: Gio.File, header: string | null, footer: string | null, data: any | null): boolean;
         /**
          * Serializes the object properties of `config` to a {@link Parasite}.
          * @param parasite_name the new parasite's name
@@ -28686,7 +28596,7 @@ export namespace Gimp {
          * @param data user data passed to the serialize implementation.
          * @returns the newly allocated parasite.
          */
-        serialize_to_parasite(parasite_name: string, parasite_flags: number, data?: any | null): Parasite;
+        serialize_to_parasite(parasite_name: string, parasite_flags: number, data: any | null): Parasite;
         /**
          * Serializes the object properties of `config` to the stream specified
          * by `output`.
@@ -28698,16 +28608,16 @@ export namespace Gimp {
          */
         serialize_to_stream(
             output: Gio.OutputStream,
-            header?: string | null,
-            footer?: string | null,
-            data?: any | null,
+            header: string | null,
+            footer: string | null,
+            data: any | null,
         ): boolean;
         /**
          * Serializes the object properties of `config` to a string.
          * @param data user data passed to the serialize implementation.
          * @returns a newly allocated NUL-terminated string.
          */
-        serialize_to_string(data?: any | null): string;
+        serialize_to_string(data: any | null): string;
         /**
          * Sets the current XCF version of the `config`. This information can be used
          * to adjust how properties are serialized depending on the version of the XCF
@@ -29245,7 +29155,7 @@ export namespace Gimp {
          * @param pspec a {@link GObject.Object} {@link GObject.ParamSpec}
          * @param default_value a default value.
          */
-        static set_default(pspec: GObject.ParamSpec, default_value?: GObject.Object | null): void;
+        static set_default(pspec: GObject.ParamSpec, default_value: GObject.Object | null): void;
     }
 
     /**
@@ -29280,7 +29190,7 @@ export namespace Gimp {
             }>,
         );
 
-        static ['new'](name: string, flags: number, data?: number[] | null): Parasite;
+        static ['new'](name: string, flags: number, data: number[] | null): Parasite;
 
         // Methods
 
@@ -29542,7 +29452,7 @@ export namespace Gimp {
          * @param value {@link GObject.Value} to copy into {@link Gimp.ValueArray}, or `null`
          * @returns the {@link Gimp.ValueArray} passed in as `value_array`
          */
-        append(value?: GObject.Value | null): ValueArray;
+        append(value: GObject.Value | null): ValueArray;
         /**
          * Return an exact copy of a {@link Gimp.ValueArray} by duplicating all its values.
          * @returns a newly allocated {@link Gimp.ValueArray}.
@@ -29597,7 +29507,7 @@ export namespace Gimp {
          * @param value {@link GObject.Value} to copy into {@link Gimp.ValueArray}, or `null`
          * @returns the {@link Gimp.ValueArray} passed in as `value_array`
          */
-        insert(index: number, value?: GObject.Value | null): ValueArray;
+        insert(index: number, value: GObject.Value | null): ValueArray;
         length(): number;
         /**
          * Insert a copy of `value` as first element of `value_array`. If `value` is
@@ -29605,7 +29515,7 @@ export namespace Gimp {
          * @param value {@link GObject.Value} to copy into {@link Gimp.ValueArray}, or `null`
          * @returns the {@link Gimp.ValueArray} passed in as `value_array`
          */
-        prepend(value?: GObject.Value | null): ValueArray;
+        prepend(value: GObject.Value | null): ValueArray;
         /**
          * Adds a reference to a {@link Gimp.ValueArray}.
          * @returns the same `value_array`

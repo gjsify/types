@@ -289,7 +289,7 @@ export namespace Handy {
      * @returns a newly allocated displayable name that represents `value`
      * @since 0.0.6
      */
-    function enum_value_row_name(value: EnumValueObject, user_data?: any | null): string;
+    function enum_value_row_name(value: EnumValueObject, user_data: any | null): string;
     /**
      * Returns whether animations are enabled for that widget. This should be used
      * when implementing an animated widget to know whether to animate it or not.
@@ -316,8 +316,8 @@ export namespace Handy {
      */
     function list_box_separator_header(
         row: Gtk.ListBoxRow,
-        before?: Gtk.ListBoxRow | null,
-        unused_user_data?: any | null,
+        before: Gtk.ListBoxRow | null,
+        unused_user_data: any | null,
     ): void;
     /**
      * Computes the length of the string in utf-8 characters. See `g_utf8_strlen`.
@@ -406,12 +406,12 @@ export namespace Handy {
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Actionable.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
-            activatable_widget: Gtk.Widget;
-            activatableWidget: Gtk.Widget;
+            activatable_widget: Gtk.Widget | null;
+            activatableWidget: Gtk.Widget | null;
             icon_name: string;
             iconName: string;
             subtitle: string;
-            title: string;
+            title: string | any;
             use_underline: boolean;
             useUnderline: boolean;
         }
@@ -429,14 +429,14 @@ export namespace Handy {
          * The activatable widget for this row.
          * @since 0.0.7
          */
-        get activatable_widget(): Gtk.Widget;
-        set activatable_widget(val: Gtk.Widget);
+        get activatable_widget(): Gtk.Widget | null;
+        set activatable_widget(val: Gtk.Widget | null);
         /**
          * The activatable widget for this row.
          * @since 0.0.7
          */
-        get activatableWidget(): Gtk.Widget;
-        set activatableWidget(val: Gtk.Widget);
+        get activatableWidget(): Gtk.Widget | null;
+        set activatableWidget(val: Gtk.Widget | null);
         /**
          * The icon name for this row.
          * @since 0.0.6
@@ -459,12 +459,15 @@ export namespace Handy {
          * The title for this row.
          * @since 0.0.6
          */
-        get title(): string;
-        set title(val: string);
+        // This accessor conflicts with another accessor's type in a parent class or interface.
+        get title(): string | any;
+        // This accessor conflicts with another accessor's type in a parent class or interface.
+        set title(val: string | any);
         /**
          * Whether an embedded underline in the text of the title and subtitle labels
          * indicates a mnemonic.
          * @since 0.0.6
+         * @default false
          */
         get use_underline(): boolean;
         set use_underline(val: boolean);
@@ -472,6 +475,7 @@ export namespace Handy {
          * Whether an embedded underline in the text of the title and subtitle labels
          * indicates a mnemonic.
          * @since 0.0.6
+         * @default false
          */
         get useUnderline(): boolean;
         set useUnderline(val: boolean);
@@ -533,12 +537,12 @@ export namespace Handy {
          * Adds an action widget to `self`.
          * @param widget the action widget
          */
-        add_action(widget?: Gtk.Widget | null): void;
+        add_action(widget: Gtk.Widget | null): void;
         /**
          * Adds a prefix widget to `self`.
          * @param widget the prefix widget
          */
-        add_prefix(widget?: Gtk.Widget | null): void;
+        add_prefix(widget: Gtk.Widget | null): void;
         /**
          * Gets the widget activated when `self` is activated.
          * @returns the widget activated when `self` is          activated, or `null` if none has been set.
@@ -579,7 +583,7 @@ export namespace Handy {
          * GtkWidget::mnemonic-activate signal on it.
          * @param widget the target {@link Gtk.Widget}, or `null` to unset
          */
-        set_activatable_widget(widget?: Gtk.Widget | null): void;
+        set_activatable_widget(widget: Gtk.Widget | null): void;
         /**
          * Sets the icon name for `self`.
          * @param icon_name the icon name
@@ -606,31 +610,51 @@ export namespace Handy {
          * @param use_underline `true` if underlines in the text indicate mnemonics
          */
         set_use_underline(use_underline: boolean): void;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get app_paintable(): boolean;
         set app_paintable(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get appPaintable(): boolean;
         set appPaintable(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get can_default(): boolean;
         set can_default(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get canDefault(): boolean;
         set canDefault(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get can_focus(): boolean;
         set can_focus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get canFocus(): boolean;
         set canFocus(val: boolean);
         /**
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get composite_child(): boolean;
         /**
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get compositeChild(): boolean;
@@ -638,6 +662,7 @@ export namespace Handy {
          * Whether the widget is double buffered.
          * @since 2.18
          * @deprecated since 3.14: Widgets should not use this property.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get double_buffered(): boolean;
@@ -646,16 +671,21 @@ export namespace Handy {
          * Whether the widget is double buffered.
          * @since 2.18
          * @deprecated since 3.14: Widgets should not use this property.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get doubleBuffered(): boolean;
         set doubleBuffered(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default Gdk.EventMask.STRUCTURE_MASK
+         * @category Inherited from Gtk.Widget
+         */
         get events(): Gdk.EventMask;
         set events(val: Gdk.EventMask);
         /**
          * Whether to expand in both directions. Setting this sets both {@link Gtk.Widget.hexpand} and {@link Gtk.Widget.vexpand}
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get expand(): boolean;
@@ -668,6 +698,7 @@ export namespace Handy {
          * Before 3.20, several widgets (GtkButton, GtkFileChooserButton,
          * GtkComboBox) implemented this property individually.
          * @since 3.20
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get focus_on_click(): boolean;
@@ -680,6 +711,7 @@ export namespace Handy {
          * Before 3.20, several widgets (GtkButton, GtkFileChooserButton,
          * GtkComboBox) implemented this property individually.
          * @since 3.20
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get focusOnClick(): boolean;
@@ -687,20 +719,33 @@ export namespace Handy {
         /**
          * How to distribute horizontal space if widget gets extra space, see {@link Gtk.Align}
          * @since 3.0
+         * @default Gtk.Align.FILL
          * @category Inherited from Gtk.Widget
          */
         get halign(): Gtk.Align;
         set halign(val: Gtk.Align);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get has_default(): boolean;
         set has_default(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get hasDefault(): boolean;
         set hasDefault(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get has_focus(): boolean;
         set has_focus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get hasFocus(): boolean;
         set hasFocus(val: boolean);
         /**
@@ -714,6 +759,7 @@ export namespace Handy {
          * and motion-notify events.  This cannot and will not be undone when the
          * property is set to `false` again.
          * @since 2.12
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get has_tooltip(): boolean;
@@ -729,19 +775,27 @@ export namespace Handy {
          * and motion-notify events.  This cannot and will not be undone when the
          * property is set to `false` again.
          * @since 2.12
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hasTooltip(): boolean;
         set hasTooltip(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default -1
+         * @category Inherited from Gtk.Widget
+         */
         get height_request(): number;
         set height_request(val: number);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default -1
+         * @category Inherited from Gtk.Widget
+         */
         get heightRequest(): number;
         set heightRequest(val: number);
         /**
          * Whether to expand horizontally. See `gtk_widget_set_hexpand()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpand(): boolean;
@@ -749,6 +803,7 @@ export namespace Handy {
         /**
          * Whether to use the {@link Gtk.Widget.hexpand} property. See `gtk_widget_get_hexpand_set()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpand_set(): boolean;
@@ -756,20 +811,28 @@ export namespace Handy {
         /**
          * Whether to use the {@link Gtk.Widget.hexpand} property. See `gtk_widget_get_hexpand_set()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpandSet(): boolean;
         set hexpandSet(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get is_focus(): boolean;
         set is_focus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get isFocus(): boolean;
         set isFocus(val: boolean);
         /**
          * Sets all four sides' margin at once. If read, returns max
          * margin on any side.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin(): number;
@@ -781,6 +844,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_bottom(): number;
@@ -792,6 +856,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginBottom(): number;
@@ -804,6 +869,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.12
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_end(): number;
@@ -816,6 +882,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.12
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginEnd(): number;
@@ -828,6 +895,7 @@ export namespace Handy {
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
          * @deprecated since 3.12: Use {@link Gtk.Widget.margin_start} instead.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_left(): number;
@@ -840,6 +908,7 @@ export namespace Handy {
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
          * @deprecated since 3.12: Use {@link Gtk.Widget.margin_start} instead.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginLeft(): number;
@@ -852,6 +921,7 @@ export namespace Handy {
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
          * @deprecated since 3.12: Use {@link Gtk.Widget.margin_end} instead.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_right(): number;
@@ -864,6 +934,7 @@ export namespace Handy {
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
          * @deprecated since 3.12: Use {@link Gtk.Widget.margin_end} instead.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginRight(): number;
@@ -876,6 +947,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.12
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_start(): number;
@@ -888,6 +960,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.12
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginStart(): number;
@@ -899,6 +972,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_top(): number;
@@ -910,17 +984,27 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginTop(): number;
         set marginTop(val: number);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default null
+         * @category Inherited from Gtk.Widget
+         */
         get name(): string;
         set name(val: string);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get no_show_all(): boolean;
         set no_show_all(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get noShowAll(): boolean;
         set noShowAll(val: boolean);
         /**
@@ -929,17 +1013,24 @@ export namespace Handy {
          *
          * Before 3.8 this was only available in GtkWindow
          * @since 3.8
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get opacity(): number;
         set opacity(val: number);
         /** @category Inherited from Gtk.Widget */
-        get parent(): Gtk.Container;
-        set parent(val: Gtk.Container);
-        /** @category Inherited from Gtk.Widget */
+        get parent(): Gtk.Container | null;
+        set parent(val: Gtk.Container | null);
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get receives_default(): boolean;
         set receives_default(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get receivesDefault(): boolean;
         set receivesDefault(val: boolean);
         /**
@@ -947,6 +1038,7 @@ export namespace Handy {
          * more details about widget scaling.
          * @since 3.10
          * @read-only
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -955,10 +1047,14 @@ export namespace Handy {
          * more details about widget scaling.
          * @since 3.10
          * @read-only
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default true
+         * @category Inherited from Gtk.Widget
+         */
         get sensitive(): boolean;
         set sensitive(val: boolean);
         /**
@@ -981,10 +1077,11 @@ export namespace Handy {
          * Note that if both {@link Gtk.Widget.tooltip_text} and {@link Gtk.Widget.tooltip_markup}
          * are set, the last one wins.
          * @since 2.12
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltip_markup(): string;
-        set tooltip_markup(val: string);
+        get tooltip_markup(): string | null;
+        set tooltip_markup(val: string | null);
         /**
          * Sets the text of tooltip to be the given string, which is marked up
          * with the [Pango text markup language][PangoMarkupFormat].
@@ -998,10 +1095,11 @@ export namespace Handy {
          * Note that if both {@link Gtk.Widget.tooltip_text} and {@link Gtk.Widget.tooltip_markup}
          * are set, the last one wins.
          * @since 2.12
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltipMarkup(): string;
-        set tooltipMarkup(val: string);
+        get tooltipMarkup(): string | null;
+        set tooltipMarkup(val: string | null);
         /**
          * Sets the text of tooltip to be the given string.
          *
@@ -1015,10 +1113,11 @@ export namespace Handy {
          * Note that if both {@link Gtk.Widget.tooltip_text} and {@link Gtk.Widget.tooltip_markup}
          * are set, the last one wins.
          * @since 2.12
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltip_text(): string;
-        set tooltip_text(val: string);
+        get tooltip_text(): string | null;
+        set tooltip_text(val: string | null);
         /**
          * Sets the text of tooltip to be the given string.
          *
@@ -1032,13 +1131,15 @@ export namespace Handy {
          * Note that if both {@link Gtk.Widget.tooltip_text} and {@link Gtk.Widget.tooltip_markup}
          * are set, the last one wins.
          * @since 2.12
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltipText(): string;
-        set tooltipText(val: string);
+        get tooltipText(): string | null;
+        set tooltipText(val: string | null);
         /**
          * How to distribute vertical space if widget gets extra space, see {@link Gtk.Align}
          * @since 3.0
+         * @default Gtk.Align.FILL
          * @category Inherited from Gtk.Widget
          */
         get valign(): Gtk.Align;
@@ -1046,6 +1147,7 @@ export namespace Handy {
         /**
          * Whether to expand vertically. See `gtk_widget_set_vexpand()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpand(): boolean;
@@ -1053,6 +1155,7 @@ export namespace Handy {
         /**
          * Whether to use the {@link Gtk.Widget.vexpand} property. See `gtk_widget_get_vexpand_set()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpand_set(): boolean;
@@ -1060,17 +1163,27 @@ export namespace Handy {
         /**
          * Whether to use the {@link Gtk.Widget.vexpand} property. See `gtk_widget_get_vexpand_set()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpandSet(): boolean;
         set vexpandSet(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get visible(): boolean;
         set visible(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default -1
+         * @category Inherited from Gtk.Widget
+         */
         get width_request(): number;
         set width_request(val: number);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default -1
+         * @category Inherited from Gtk.Widget
+         */
         get widthRequest(): number;
         set widthRequest(val: number);
         /**
@@ -1079,7 +1192,7 @@ export namespace Handy {
          * @read-only
          * @category Inherited from Gtk.Widget
          */
-        get window(): Gdk.Window;
+        get window(): Gdk.Window | null;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -1127,38 +1240,19 @@ export namespace Handy {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1166,15 +1260,9 @@ export namespace Handy {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1341,7 +1429,7 @@ export namespace Handy {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1692,7 +1780,7 @@ export namespace Handy {
          * @param text text to set on the layout (can be `null`)
          * @returns the new {@link Pango.Layout}
          */
-        create_pango_layout(text?: string | null): Pango.Layout;
+        create_pango_layout(text: string | null): Pango.Layout;
         /**
          * Destroys a widget.
          *
@@ -1761,7 +1849,7 @@ export namespace Handy {
             targets: Gtk.TargetList,
             actions: Gdk.DragAction,
             button: number,
-            event?: Gdk.Event | null,
+            event: Gdk.Event | null,
         ): Gdk.DragContext;
         /**
          * Initiates a drag on the source side. The function only needs to be used
@@ -1852,7 +1940,7 @@ export namespace Handy {
          * @param target_list list of droppable targets, or `null` to use    gtk_drag_dest_get_target_list (`widget`).
          * @returns first target that the source offers     and the dest can accept, or `GDK_NONE`
          */
-        drag_dest_find_target(context: Gdk.DragContext, target_list?: Gtk.TargetList | null): Gdk.Atom;
+        drag_dest_find_target(context: Gdk.DragContext, target_list: Gtk.TargetList | null): Gdk.Atom;
         /**
          * Returns the list of targets this widget can accept from
          * drag-and-drop.
@@ -1925,7 +2013,7 @@ export namespace Handy {
          * `gtk_drag_dest_set()`.
          * @param target_list list of droppable targets, or `null` for none
          */
-        drag_dest_set_target_list(target_list?: Gtk.TargetList | null): void;
+        drag_dest_set_target_list(target_list: Gtk.TargetList | null): void;
         /**
          * Tells the widget to emit {@link Gtk.Widget.SignalSignatures.drag_motion | Gtk.Widget::drag-motion} and
          * {@link Gtk.Widget.SignalSignatures.drag_leave | Gtk.Widget::drag-leave} events regardless of the targets and the
@@ -2035,7 +2123,7 @@ export namespace Handy {
          * `gtk_drag_source_set()`.
          * @param target_list list of draggable targets, or `null` for none
          */
-        drag_source_set_target_list(target_list?: Gtk.TargetList | null): void;
+        drag_source_set_target_list(target_list: Gtk.TargetList | null): void;
         /**
          * Undoes the effects of `gtk_drag_source_set()`.
          */
@@ -2993,7 +3081,7 @@ export namespace Handy {
          * `gdk_window_input_shape_combine_region()` for more information.
          * @param region shape to be added, or `null` to remove an existing shape
          */
-        input_shape_combine_region(region?: cairo.Region | null): void;
+        input_shape_combine_region(region: cairo.Region | null): void;
         /**
          * Inserts `group` into `widget`. Children of `widget` that implement
          * {@link Gtk.Actionable} can then be associated with actions in `group` by
@@ -3005,7 +3093,7 @@ export namespace Handy {
          * @param name the prefix for actions in `group`
          * @param group a {@link Gio.ActionGroup}, or `null`
          */
-        insert_action_group(name: string, group?: Gio.ActionGroup | null): void;
+        insert_action_group(name: string, group: Gio.ActionGroup | null): void;
         /**
          * Computes the intersection of a `widget`’s area and `area`, storing
          * the intersection in `intersection`, and returns `true` if there was
@@ -3156,7 +3244,7 @@ export namespace Handy {
          * @param state the state for which to set the base color
          * @param color the color to assign (does not need to     be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_base()`.
          */
-        modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_base(state: Gtk.StateType, color: Gdk.Color | null): void;
         /**
          * Sets the background color for a widget in a particular state.
          *
@@ -3175,7 +3263,7 @@ export namespace Handy {
          * @param state the state for which to set the background color
          * @param color the color to assign (does not need     to be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_bg()`.
          */
-        modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_bg(state: Gtk.StateType, color: Gdk.Color | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the {@link Gtk.Widget}
          * cursor-color and secondary-cursor-color
@@ -3186,7 +3274,7 @@ export namespace Handy {
          * @param primary the color to use for primary cursor (does not     need to be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_cursor()`.
          * @param secondary the color to use for secondary cursor (does     not need to be allocated), or `null` to undo the effect of     previous calls to of `gtk_widget_modify_cursor()`.
          */
-        modify_cursor(primary?: Gdk.Color | null, secondary?: Gdk.Color | null): void;
+        modify_cursor(primary: Gdk.Color | null, secondary: Gdk.Color | null): void;
         /**
          * Sets the foreground color for a widget in a particular state.
          *
@@ -3195,7 +3283,7 @@ export namespace Handy {
          * @param state the state for which to set the foreground color
          * @param color the color to assign (does not need to be allocated),     or `null` to undo the effect of previous calls to     of `gtk_widget_modify_fg()`.
          */
-        modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_fg(state: Gtk.StateType, color: Gdk.Color | null): void;
         /**
          * Sets the font to use for a widget.
          *
@@ -3203,7 +3291,7 @@ export namespace Handy {
          * See also `gtk_widget_modify_style()`.
          * @param font_desc the font description to use, or `null`     to undo the effect of previous calls to `gtk_widget_modify_font()`
          */
-        modify_font(font_desc?: Pango.FontDescription | null): void;
+        modify_font(font_desc: Pango.FontDescription | null): void;
         /**
          * Modifies style values on the widget.
          *
@@ -3237,7 +3325,7 @@ export namespace Handy {
          * @param state the state for which to set the text color
          * @param color the color to assign (does not need to     be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_text()`.
          */
-        modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_text(state: Gtk.StateType, color: Gdk.Color | null): void;
         /**
          * Sets the background color to use for a widget.
          *
@@ -3246,7 +3334,7 @@ export namespace Handy {
          * @param state the state for which to set the background color
          * @param color the color to assign, or `null` to undo the effect     of previous calls to `gtk_widget_override_background_color()`
          */
-        override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_background_color(state: Gtk.StateFlags, color: Gdk.RGBA | null): void;
         /**
          * Sets the color to use for a widget.
          *
@@ -3276,7 +3364,7 @@ export namespace Handy {
          * @param state the state for which to set the color
          * @param color the color to assign, or `null` to undo the effect     of previous calls to `gtk_widget_override_color()`
          */
-        override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_color(state: Gtk.StateFlags, color: Gdk.RGBA | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the
          * cursor-color and secondary-cursor-color
@@ -3288,13 +3376,13 @@ export namespace Handy {
          * @param cursor the color to use for primary cursor (does not need to be     allocated), or `null` to undo the effect of previous calls to     of `gtk_widget_override_cursor()`.
          * @param secondary_cursor the color to use for secondary cursor (does not     need to be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_override_cursor()`.
          */
-        override_cursor(cursor?: Gdk.RGBA | null, secondary_cursor?: Gdk.RGBA | null): void;
+        override_cursor(cursor: Gdk.RGBA | null, secondary_cursor: Gdk.RGBA | null): void;
         /**
          * Sets the font to use for a widget. All other style values are
          * left untouched. See `gtk_widget_override_color()`.
          * @param font_desc the font description to use, or `null` to undo     the effect of previous calls to `gtk_widget_override_font()`
          */
-        override_font(font_desc?: Pango.FontDescription | null): void;
+        override_font(font_desc: Pango.FontDescription | null): void;
         /**
          * Sets a symbolic color for a widget.
          *
@@ -3304,7 +3392,7 @@ export namespace Handy {
          * @param name the name of the symbolic color to modify
          * @param color the color to assign (does not need     to be allocated), or `null` to undo the effect of previous     calls to `gtk_widget_override_symbolic_color()`
          */
-        override_symbolic_color(name: string, color?: Gdk.RGBA | null): void;
+        override_symbolic_color(name: string, color: Gdk.RGBA | null): void;
         /**
          * Obtains the full path to `widget`. The path is simply the name of a
          * widget and all its parents in the container hierarchy, separated by
@@ -3475,7 +3563,7 @@ export namespace Handy {
          * @param detail render detail to pass to theme engine
          * @returns a new pixbuf, or `null` if the     stock ID wasn’t known
          */
-        render_icon(stock_id: string, size: number, detail?: string | null): GdkPixbuf.Pixbuf | null;
+        render_icon(stock_id: string, size: number, detail: string | null): GdkPixbuf.Pixbuf | null;
         /**
          * A convenience function that uses the theme engine and style
          * settings for `widget` to look up `stock_id` and render it to
@@ -3582,7 +3670,7 @@ export namespace Handy {
          * @param accel_path path used to look up the accelerator
          * @param accel_group a {@link Gtk.AccelGroup}.
          */
-        set_accel_path(accel_path?: string | null, accel_group?: Gtk.AccelGroup | null): void;
+        set_accel_path(accel_path: string | null, accel_group: Gtk.AccelGroup | null): void;
         /**
          * Sets the widget’s allocation.  This should not be used
          * directly, but from within a widget’s size_allocate method.
@@ -3766,13 +3854,13 @@ export namespace Handy {
          * will inherit the font map from its parent.
          * @param font_map a {@link Pango.FontMap}, or `null` to unset any previously     set font map
          */
-        set_font_map(font_map?: Pango.FontMap | null): void;
+        set_font_map(font_map: Pango.FontMap | null): void;
         /**
          * Sets the {@link cairo.FontOptions} used for Pango rendering in this widget.
          * When not set, the default font options for the {@link Gdk.Screen} will be used.
          * @param options a {@link cairo.FontOptions}, or `null` to unset any   previously set default font options.
          */
-        set_font_options(options?: cairo.FontOptions | null): void;
+        set_font_options(options: cairo.FontOptions | null): void;
         /**
          * Sets the horizontal alignment of `widget`.
          * See the {@link Gtk.Widget.halign} property.
@@ -4065,7 +4153,7 @@ export namespace Handy {
          * GTK 3, this function does nothing, the passed in style is ignored.
          * @param style a {@link Gtk.Style}, or `null` to remove the effect     of a previous call to `gtk_widget_set_style()` and go back to     the default style
          */
-        set_style(style?: Gtk.Style | null): void;
+        set_style(style: Gtk.Style | null): void;
         /**
          * Enables or disables multiple pointer awareness. If this setting is `true`,
          * `widget` will start receiving multiple, per device enter/leave events. Note
@@ -4085,7 +4173,7 @@ export namespace Handy {
          * `gtk_tooltip_set_markup()`.
          * @param markup the contents of the tooltip for `widget`, or `null`
          */
-        set_tooltip_markup(markup?: string | null): void;
+        set_tooltip_markup(markup: string | null): void;
         /**
          * Sets `text` as the contents of the tooltip. This function will take
          * care of setting {@link Gtk.Widget.has_tooltip} to `true` and of the default
@@ -4094,7 +4182,7 @@ export namespace Handy {
          * See also the {@link Gtk.Widget.tooltip_text} property and `gtk_tooltip_set_text()`.
          * @param text the contents of the tooltip for `widget`
          */
-        set_tooltip_text(text?: string | null): void;
+        set_tooltip_text(text: string | null): void;
         /**
          * Replaces the default window used for displaying
          * tooltips with `custom_window`. GTK+ will take care of showing and
@@ -4103,7 +4191,7 @@ export namespace Handy {
          * tooltip window will be used.
          * @param custom_window a {@link Gtk.Window}, or `null`
          */
-        set_tooltip_window(custom_window?: Gtk.Window | null): void;
+        set_tooltip_window(custom_window: Gtk.Window | null): void;
         /**
          * Sets the vertical alignment of `widget`.
          * See the {@link Gtk.Widget.valign} property.
@@ -4147,7 +4235,7 @@ export namespace Handy {
          * so you should call this function before `widget` is realized.
          * @param visual visual to be used or `null` to unset a previous one
          */
-        set_visual(visual?: Gdk.Visual | null): void;
+        set_visual(visual: Gdk.Visual | null): void;
         /**
          * Sets a widget’s window. This function should only be used in a
          * widget’s {@link Gtk.Widget.SignalSignatures.realize | Gtk.Widget::realize} implementation. The %window passed is
@@ -4169,7 +4257,7 @@ export namespace Handy {
          * for more information.
          * @param region shape to be added, or `null` to remove an existing shape
          */
-        shape_combine_region(region?: cairo.Region | null): void;
+        shape_combine_region(region: cairo.Region | null): void;
         /**
          * Flags a widget to be displayed. Any widget that isn’t shown will
          * not appear on the screen. If you want to show all the widgets in a
@@ -5169,10 +5257,19 @@ export namespace Handy {
 
         // Properties
 
+        /**
+         * @default 1
+         */
         get count(): number;
         set count(val: number);
+        /**
+         * @default Handy.ArrowsDirection.UP
+         */
         get direction(): ArrowsDirection;
         set direction(val: ArrowsDirection);
+        /**
+         * @default 1000
+         */
         get duration(): number;
         set duration(val: number);
 
@@ -5307,38 +5404,19 @@ export namespace Handy {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -5346,15 +5424,9 @@ export namespace Handy {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -5521,7 +5593,7 @@ export namespace Handy {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -5779,12 +5851,24 @@ export namespace Handy {
 
         // Properties
 
+        /**
+         * @default 0
+         */
         get linear_growth_width(): number;
         set linear_growth_width(val: number);
+        /**
+         * @default 0
+         */
         get linearGrowthWidth(): number;
         set linearGrowthWidth(val: number);
+        /**
+         * @default 0
+         */
         get maximum_width(): number;
         set maximum_width(val: number);
+        /**
+         * @default 0
+         */
         get maximumWidth(): number;
         set maximumWidth(val: number);
 
@@ -5899,38 +5983,19 @@ export namespace Handy {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -5938,15 +6003,9 @@ export namespace Handy {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -6113,7 +6172,7 @@ export namespace Handy {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -6385,12 +6444,14 @@ export namespace Handy {
         /**
          * The index of the selected item in its {@link Gio.ListModel}.
          * @since 0.0.7
+         * @default -1
          */
         get selected_index(): number;
         set selected_index(val: number);
         /**
          * The index of the selected item in its {@link Gio.ListModel}.
          * @since 0.0.7
+         * @default -1
          */
         get selectedIndex(): number;
         set selectedIndex(val: number);
@@ -6402,6 +6463,7 @@ export namespace Handy {
          *
          * If `true`, you should not access HdyActionRow:subtitle.
          * @since 0.0.10
+         * @default false
          */
         get use_subtitle(): boolean;
         set use_subtitle(val: boolean);
@@ -6413,6 +6475,7 @@ export namespace Handy {
          *
          * If `true`, you should not access HdyActionRow:subtitle.
          * @since 0.0.10
+         * @default false
          */
         get useSubtitle(): boolean;
         set useSubtitle(val: boolean);
@@ -6470,9 +6533,9 @@ export namespace Handy {
          * @param create_current_widget_func a function that creates   widgets for items to display as the seleted item, or `null` in case you also   passed `null` as `model`
          */
         bind_model(
-            model?: Gio.ListModel | null,
-            create_list_widget_func?: Gtk.ListBoxCreateWidgetFunc | null,
-            create_current_widget_func?: Gtk.ListBoxCreateWidgetFunc | null,
+            model: Gio.ListModel | null,
+            create_list_widget_func: Gtk.ListBoxCreateWidgetFunc | null,
+            create_current_widget_func: Gtk.ListBoxCreateWidgetFunc | null,
         ): void;
         /**
          * Binds `model` to `self`.
@@ -6488,7 +6551,7 @@ export namespace Handy {
          * @param model the {@link Gio.ListModel} to be bound to `self`
          * @param get_name_func a function that creates names for items, or `null`   in case you also passed `null` as `model`
          */
-        bind_name_model(model?: Gio.ListModel | null, get_name_func?: ComboRowGetNameFunc | null): void;
+        bind_name_model(model: Gio.ListModel | null, get_name_func: ComboRowGetNameFunc | null): void;
         /**
          * Gets the model bound to `self`, or `null` if none is bound.
          * @returns the {@link Gio.ListModel} bound to `self` or `null`
@@ -6521,12 +6584,12 @@ export namespace Handy {
          * @param enum_type the enumeration {@link GObject.GType} to be bound to `self`
          * @param get_name_func a function that creates names for items, or `null`   in case you also passed `null` as `model`
          */
-        set_for_enum(enum_type: GObject.GType, get_name_func?: ComboRowGetEnumValueNameFunc | null): void;
+        set_for_enum(enum_type: GObject.GType, get_name_func: ComboRowGetEnumValueNameFunc | null): void;
         /**
          * Sets a closure to convert items into names. See HdyComboRow:use-subtitle.
          * @param get_name_func a function that creates names for items, or `null`   in case you also passed `null` as `model`
          */
-        set_get_name_func(get_name_func?: ComboRowGetNameFunc | null): void;
+        set_get_name_func(get_name_func: ComboRowGetNameFunc | null): void;
         /**
          * Sets the index of the selected item in its {@link Gio.ListModel}.
          * @param selected_index the index of the selected item
@@ -6539,31 +6602,51 @@ export namespace Handy {
          * @param use_subtitle `true` to set the current value as the subtitle
          */
         set_use_subtitle(use_subtitle: boolean): void;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get app_paintable(): boolean;
         set app_paintable(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get appPaintable(): boolean;
         set appPaintable(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get can_default(): boolean;
         set can_default(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get canDefault(): boolean;
         set canDefault(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get can_focus(): boolean;
         set can_focus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get canFocus(): boolean;
         set canFocus(val: boolean);
         /**
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get composite_child(): boolean;
         /**
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get compositeChild(): boolean;
@@ -6571,6 +6654,7 @@ export namespace Handy {
          * Whether the widget is double buffered.
          * @since 2.18
          * @deprecated since 3.14: Widgets should not use this property.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get double_buffered(): boolean;
@@ -6579,16 +6663,21 @@ export namespace Handy {
          * Whether the widget is double buffered.
          * @since 2.18
          * @deprecated since 3.14: Widgets should not use this property.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get doubleBuffered(): boolean;
         set doubleBuffered(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default Gdk.EventMask.STRUCTURE_MASK
+         * @category Inherited from Gtk.Widget
+         */
         get events(): Gdk.EventMask;
         set events(val: Gdk.EventMask);
         /**
          * Whether to expand in both directions. Setting this sets both {@link Gtk.Widget.hexpand} and {@link Gtk.Widget.vexpand}
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get expand(): boolean;
@@ -6601,6 +6690,7 @@ export namespace Handy {
          * Before 3.20, several widgets (GtkButton, GtkFileChooserButton,
          * GtkComboBox) implemented this property individually.
          * @since 3.20
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get focus_on_click(): boolean;
@@ -6613,6 +6703,7 @@ export namespace Handy {
          * Before 3.20, several widgets (GtkButton, GtkFileChooserButton,
          * GtkComboBox) implemented this property individually.
          * @since 3.20
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get focusOnClick(): boolean;
@@ -6620,20 +6711,33 @@ export namespace Handy {
         /**
          * How to distribute horizontal space if widget gets extra space, see {@link Gtk.Align}
          * @since 3.0
+         * @default Gtk.Align.FILL
          * @category Inherited from Gtk.Widget
          */
         get halign(): Gtk.Align;
         set halign(val: Gtk.Align);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get has_default(): boolean;
         set has_default(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get hasDefault(): boolean;
         set hasDefault(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get has_focus(): boolean;
         set has_focus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get hasFocus(): boolean;
         set hasFocus(val: boolean);
         /**
@@ -6647,6 +6751,7 @@ export namespace Handy {
          * and motion-notify events.  This cannot and will not be undone when the
          * property is set to `false` again.
          * @since 2.12
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get has_tooltip(): boolean;
@@ -6662,19 +6767,27 @@ export namespace Handy {
          * and motion-notify events.  This cannot and will not be undone when the
          * property is set to `false` again.
          * @since 2.12
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hasTooltip(): boolean;
         set hasTooltip(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default -1
+         * @category Inherited from Gtk.Widget
+         */
         get height_request(): number;
         set height_request(val: number);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default -1
+         * @category Inherited from Gtk.Widget
+         */
         get heightRequest(): number;
         set heightRequest(val: number);
         /**
          * Whether to expand horizontally. See `gtk_widget_set_hexpand()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpand(): boolean;
@@ -6682,6 +6795,7 @@ export namespace Handy {
         /**
          * Whether to use the {@link Gtk.Widget.hexpand} property. See `gtk_widget_get_hexpand_set()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpand_set(): boolean;
@@ -6689,20 +6803,28 @@ export namespace Handy {
         /**
          * Whether to use the {@link Gtk.Widget.hexpand} property. See `gtk_widget_get_hexpand_set()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpandSet(): boolean;
         set hexpandSet(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get is_focus(): boolean;
         set is_focus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get isFocus(): boolean;
         set isFocus(val: boolean);
         /**
          * Sets all four sides' margin at once. If read, returns max
          * margin on any side.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin(): number;
@@ -6714,6 +6836,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_bottom(): number;
@@ -6725,6 +6848,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginBottom(): number;
@@ -6737,6 +6861,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.12
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_end(): number;
@@ -6749,6 +6874,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.12
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginEnd(): number;
@@ -6761,6 +6887,7 @@ export namespace Handy {
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
          * @deprecated since 3.12: Use {@link Gtk.Widget.margin_start} instead.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_left(): number;
@@ -6773,6 +6900,7 @@ export namespace Handy {
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
          * @deprecated since 3.12: Use {@link Gtk.Widget.margin_start} instead.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginLeft(): number;
@@ -6785,6 +6913,7 @@ export namespace Handy {
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
          * @deprecated since 3.12: Use {@link Gtk.Widget.margin_end} instead.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_right(): number;
@@ -6797,6 +6926,7 @@ export namespace Handy {
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
          * @deprecated since 3.12: Use {@link Gtk.Widget.margin_end} instead.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginRight(): number;
@@ -6809,6 +6939,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.12
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_start(): number;
@@ -6821,6 +6952,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.12
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginStart(): number;
@@ -6832,6 +6964,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_top(): number;
@@ -6843,17 +6976,27 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginTop(): number;
         set marginTop(val: number);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default null
+         * @category Inherited from Gtk.Widget
+         */
         get name(): string;
         set name(val: string);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get no_show_all(): boolean;
         set no_show_all(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get noShowAll(): boolean;
         set noShowAll(val: boolean);
         /**
@@ -6862,17 +7005,24 @@ export namespace Handy {
          *
          * Before 3.8 this was only available in GtkWindow
          * @since 3.8
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get opacity(): number;
         set opacity(val: number);
         /** @category Inherited from Gtk.Widget */
-        get parent(): Gtk.Container;
-        set parent(val: Gtk.Container);
-        /** @category Inherited from Gtk.Widget */
+        get parent(): Gtk.Container | null;
+        set parent(val: Gtk.Container | null);
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get receives_default(): boolean;
         set receives_default(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get receivesDefault(): boolean;
         set receivesDefault(val: boolean);
         /**
@@ -6880,6 +7030,7 @@ export namespace Handy {
          * more details about widget scaling.
          * @since 3.10
          * @read-only
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -6888,10 +7039,14 @@ export namespace Handy {
          * more details about widget scaling.
          * @since 3.10
          * @read-only
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default true
+         * @category Inherited from Gtk.Widget
+         */
         get sensitive(): boolean;
         set sensitive(val: boolean);
         /**
@@ -6914,10 +7069,11 @@ export namespace Handy {
          * Note that if both {@link Gtk.Widget.tooltip_text} and {@link Gtk.Widget.tooltip_markup}
          * are set, the last one wins.
          * @since 2.12
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltip_markup(): string;
-        set tooltip_markup(val: string);
+        get tooltip_markup(): string | null;
+        set tooltip_markup(val: string | null);
         /**
          * Sets the text of tooltip to be the given string, which is marked up
          * with the [Pango text markup language][PangoMarkupFormat].
@@ -6931,10 +7087,11 @@ export namespace Handy {
          * Note that if both {@link Gtk.Widget.tooltip_text} and {@link Gtk.Widget.tooltip_markup}
          * are set, the last one wins.
          * @since 2.12
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltipMarkup(): string;
-        set tooltipMarkup(val: string);
+        get tooltipMarkup(): string | null;
+        set tooltipMarkup(val: string | null);
         /**
          * Sets the text of tooltip to be the given string.
          *
@@ -6948,10 +7105,11 @@ export namespace Handy {
          * Note that if both {@link Gtk.Widget.tooltip_text} and {@link Gtk.Widget.tooltip_markup}
          * are set, the last one wins.
          * @since 2.12
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltip_text(): string;
-        set tooltip_text(val: string);
+        get tooltip_text(): string | null;
+        set tooltip_text(val: string | null);
         /**
          * Sets the text of tooltip to be the given string.
          *
@@ -6965,13 +7123,15 @@ export namespace Handy {
          * Note that if both {@link Gtk.Widget.tooltip_text} and {@link Gtk.Widget.tooltip_markup}
          * are set, the last one wins.
          * @since 2.12
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltipText(): string;
-        set tooltipText(val: string);
+        get tooltipText(): string | null;
+        set tooltipText(val: string | null);
         /**
          * How to distribute vertical space if widget gets extra space, see {@link Gtk.Align}
          * @since 3.0
+         * @default Gtk.Align.FILL
          * @category Inherited from Gtk.Widget
          */
         get valign(): Gtk.Align;
@@ -6979,6 +7139,7 @@ export namespace Handy {
         /**
          * Whether to expand vertically. See `gtk_widget_set_vexpand()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpand(): boolean;
@@ -6986,6 +7147,7 @@ export namespace Handy {
         /**
          * Whether to use the {@link Gtk.Widget.vexpand} property. See `gtk_widget_get_vexpand_set()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpand_set(): boolean;
@@ -6993,17 +7155,27 @@ export namespace Handy {
         /**
          * Whether to use the {@link Gtk.Widget.vexpand} property. See `gtk_widget_get_vexpand_set()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpandSet(): boolean;
         set vexpandSet(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get visible(): boolean;
         set visible(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default -1
+         * @category Inherited from Gtk.Widget
+         */
         get width_request(): number;
         set width_request(val: number);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default -1
+         * @category Inherited from Gtk.Widget
+         */
         get widthRequest(): number;
         set widthRequest(val: number);
         /**
@@ -7012,7 +7184,7 @@ export namespace Handy {
          * @read-only
          * @category Inherited from Gtk.Widget
          */
-        get window(): Gdk.Window;
+        get window(): Gdk.Window | null;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -7060,38 +7232,19 @@ export namespace Handy {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -7099,15 +7252,9 @@ export namespace Handy {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -7274,7 +7421,7 @@ export namespace Handy {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -7638,7 +7785,7 @@ export namespace Handy {
          * @param text text to set on the layout (can be `null`)
          * @returns the new {@link Pango.Layout}
          */
-        create_pango_layout(text?: string | null): Pango.Layout;
+        create_pango_layout(text: string | null): Pango.Layout;
         /**
          * Destroys a widget.
          *
@@ -7707,7 +7854,7 @@ export namespace Handy {
             targets: Gtk.TargetList,
             actions: Gdk.DragAction,
             button: number,
-            event?: Gdk.Event | null,
+            event: Gdk.Event | null,
         ): Gdk.DragContext;
         /**
          * Initiates a drag on the source side. The function only needs to be used
@@ -7798,7 +7945,7 @@ export namespace Handy {
          * @param target_list list of droppable targets, or `null` to use    gtk_drag_dest_get_target_list (`widget`).
          * @returns first target that the source offers     and the dest can accept, or `GDK_NONE`
          */
-        drag_dest_find_target(context: Gdk.DragContext, target_list?: Gtk.TargetList | null): Gdk.Atom;
+        drag_dest_find_target(context: Gdk.DragContext, target_list: Gtk.TargetList | null): Gdk.Atom;
         /**
          * Returns the list of targets this widget can accept from
          * drag-and-drop.
@@ -7871,7 +8018,7 @@ export namespace Handy {
          * `gtk_drag_dest_set()`.
          * @param target_list list of droppable targets, or `null` for none
          */
-        drag_dest_set_target_list(target_list?: Gtk.TargetList | null): void;
+        drag_dest_set_target_list(target_list: Gtk.TargetList | null): void;
         /**
          * Tells the widget to emit {@link Gtk.Widget.SignalSignatures.drag_motion | Gtk.Widget::drag-motion} and
          * {@link Gtk.Widget.SignalSignatures.drag_leave | Gtk.Widget::drag-leave} events regardless of the targets and the
@@ -7981,7 +8128,7 @@ export namespace Handy {
          * `gtk_drag_source_set()`.
          * @param target_list list of draggable targets, or `null` for none
          */
-        drag_source_set_target_list(target_list?: Gtk.TargetList | null): void;
+        drag_source_set_target_list(target_list: Gtk.TargetList | null): void;
         /**
          * Undoes the effects of `gtk_drag_source_set()`.
          */
@@ -8939,7 +9086,7 @@ export namespace Handy {
          * `gdk_window_input_shape_combine_region()` for more information.
          * @param region shape to be added, or `null` to remove an existing shape
          */
-        input_shape_combine_region(region?: cairo.Region | null): void;
+        input_shape_combine_region(region: cairo.Region | null): void;
         /**
          * Inserts `group` into `widget`. Children of `widget` that implement
          * {@link Gtk.Actionable} can then be associated with actions in `group` by
@@ -8951,7 +9098,7 @@ export namespace Handy {
          * @param name the prefix for actions in `group`
          * @param group a {@link Gio.ActionGroup}, or `null`
          */
-        insert_action_group(name: string, group?: Gio.ActionGroup | null): void;
+        insert_action_group(name: string, group: Gio.ActionGroup | null): void;
         /**
          * Computes the intersection of a `widget`’s area and `area`, storing
          * the intersection in `intersection`, and returns `true` if there was
@@ -9102,7 +9249,7 @@ export namespace Handy {
          * @param state the state for which to set the base color
          * @param color the color to assign (does not need to     be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_base()`.
          */
-        modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_base(state: Gtk.StateType, color: Gdk.Color | null): void;
         /**
          * Sets the background color for a widget in a particular state.
          *
@@ -9121,7 +9268,7 @@ export namespace Handy {
          * @param state the state for which to set the background color
          * @param color the color to assign (does not need     to be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_bg()`.
          */
-        modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_bg(state: Gtk.StateType, color: Gdk.Color | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the {@link Gtk.Widget}
          * cursor-color and secondary-cursor-color
@@ -9132,7 +9279,7 @@ export namespace Handy {
          * @param primary the color to use for primary cursor (does not     need to be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_cursor()`.
          * @param secondary the color to use for secondary cursor (does     not need to be allocated), or `null` to undo the effect of     previous calls to of `gtk_widget_modify_cursor()`.
          */
-        modify_cursor(primary?: Gdk.Color | null, secondary?: Gdk.Color | null): void;
+        modify_cursor(primary: Gdk.Color | null, secondary: Gdk.Color | null): void;
         /**
          * Sets the foreground color for a widget in a particular state.
          *
@@ -9141,7 +9288,7 @@ export namespace Handy {
          * @param state the state for which to set the foreground color
          * @param color the color to assign (does not need to be allocated),     or `null` to undo the effect of previous calls to     of `gtk_widget_modify_fg()`.
          */
-        modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_fg(state: Gtk.StateType, color: Gdk.Color | null): void;
         /**
          * Sets the font to use for a widget.
          *
@@ -9149,7 +9296,7 @@ export namespace Handy {
          * See also `gtk_widget_modify_style()`.
          * @param font_desc the font description to use, or `null`     to undo the effect of previous calls to `gtk_widget_modify_font()`
          */
-        modify_font(font_desc?: Pango.FontDescription | null): void;
+        modify_font(font_desc: Pango.FontDescription | null): void;
         /**
          * Modifies style values on the widget.
          *
@@ -9183,7 +9330,7 @@ export namespace Handy {
          * @param state the state for which to set the text color
          * @param color the color to assign (does not need to     be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_text()`.
          */
-        modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_text(state: Gtk.StateType, color: Gdk.Color | null): void;
         /**
          * Sets the background color to use for a widget.
          *
@@ -9192,7 +9339,7 @@ export namespace Handy {
          * @param state the state for which to set the background color
          * @param color the color to assign, or `null` to undo the effect     of previous calls to `gtk_widget_override_background_color()`
          */
-        override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_background_color(state: Gtk.StateFlags, color: Gdk.RGBA | null): void;
         /**
          * Sets the color to use for a widget.
          *
@@ -9222,7 +9369,7 @@ export namespace Handy {
          * @param state the state for which to set the color
          * @param color the color to assign, or `null` to undo the effect     of previous calls to `gtk_widget_override_color()`
          */
-        override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_color(state: Gtk.StateFlags, color: Gdk.RGBA | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the
          * cursor-color and secondary-cursor-color
@@ -9234,13 +9381,13 @@ export namespace Handy {
          * @param cursor the color to use for primary cursor (does not need to be     allocated), or `null` to undo the effect of previous calls to     of `gtk_widget_override_cursor()`.
          * @param secondary_cursor the color to use for secondary cursor (does not     need to be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_override_cursor()`.
          */
-        override_cursor(cursor?: Gdk.RGBA | null, secondary_cursor?: Gdk.RGBA | null): void;
+        override_cursor(cursor: Gdk.RGBA | null, secondary_cursor: Gdk.RGBA | null): void;
         /**
          * Sets the font to use for a widget. All other style values are
          * left untouched. See `gtk_widget_override_color()`.
          * @param font_desc the font description to use, or `null` to undo     the effect of previous calls to `gtk_widget_override_font()`
          */
-        override_font(font_desc?: Pango.FontDescription | null): void;
+        override_font(font_desc: Pango.FontDescription | null): void;
         /**
          * Sets a symbolic color for a widget.
          *
@@ -9250,7 +9397,7 @@ export namespace Handy {
          * @param name the name of the symbolic color to modify
          * @param color the color to assign (does not need     to be allocated), or `null` to undo the effect of previous     calls to `gtk_widget_override_symbolic_color()`
          */
-        override_symbolic_color(name: string, color?: Gdk.RGBA | null): void;
+        override_symbolic_color(name: string, color: Gdk.RGBA | null): void;
         /**
          * Obtains the full path to `widget`. The path is simply the name of a
          * widget and all its parents in the container hierarchy, separated by
@@ -9421,7 +9568,7 @@ export namespace Handy {
          * @param detail render detail to pass to theme engine
          * @returns a new pixbuf, or `null` if the     stock ID wasn’t known
          */
-        render_icon(stock_id: string, size: number, detail?: string | null): GdkPixbuf.Pixbuf | null;
+        render_icon(stock_id: string, size: number, detail: string | null): GdkPixbuf.Pixbuf | null;
         /**
          * A convenience function that uses the theme engine and style
          * settings for `widget` to look up `stock_id` and render it to
@@ -9528,7 +9675,7 @@ export namespace Handy {
          * @param accel_path path used to look up the accelerator
          * @param accel_group a {@link Gtk.AccelGroup}.
          */
-        set_accel_path(accel_path?: string | null, accel_group?: Gtk.AccelGroup | null): void;
+        set_accel_path(accel_path: string | null, accel_group: Gtk.AccelGroup | null): void;
         /**
          * Sets the widget’s allocation.  This should not be used
          * directly, but from within a widget’s size_allocate method.
@@ -9712,13 +9859,13 @@ export namespace Handy {
          * will inherit the font map from its parent.
          * @param font_map a {@link Pango.FontMap}, or `null` to unset any previously     set font map
          */
-        set_font_map(font_map?: Pango.FontMap | null): void;
+        set_font_map(font_map: Pango.FontMap | null): void;
         /**
          * Sets the {@link cairo.FontOptions} used for Pango rendering in this widget.
          * When not set, the default font options for the {@link Gdk.Screen} will be used.
          * @param options a {@link cairo.FontOptions}, or `null` to unset any   previously set default font options.
          */
-        set_font_options(options?: cairo.FontOptions | null): void;
+        set_font_options(options: cairo.FontOptions | null): void;
         /**
          * Sets the horizontal alignment of `widget`.
          * See the {@link Gtk.Widget.halign} property.
@@ -10011,7 +10158,7 @@ export namespace Handy {
          * GTK 3, this function does nothing, the passed in style is ignored.
          * @param style a {@link Gtk.Style}, or `null` to remove the effect     of a previous call to `gtk_widget_set_style()` and go back to     the default style
          */
-        set_style(style?: Gtk.Style | null): void;
+        set_style(style: Gtk.Style | null): void;
         /**
          * Enables or disables multiple pointer awareness. If this setting is `true`,
          * `widget` will start receiving multiple, per device enter/leave events. Note
@@ -10031,7 +10178,7 @@ export namespace Handy {
          * `gtk_tooltip_set_markup()`.
          * @param markup the contents of the tooltip for `widget`, or `null`
          */
-        set_tooltip_markup(markup?: string | null): void;
+        set_tooltip_markup(markup: string | null): void;
         /**
          * Sets `text` as the contents of the tooltip. This function will take
          * care of setting {@link Gtk.Widget.has_tooltip} to `true` and of the default
@@ -10040,7 +10187,7 @@ export namespace Handy {
          * See also the {@link Gtk.Widget.tooltip_text} property and `gtk_tooltip_set_text()`.
          * @param text the contents of the tooltip for `widget`
          */
-        set_tooltip_text(text?: string | null): void;
+        set_tooltip_text(text: string | null): void;
         /**
          * Replaces the default window used for displaying
          * tooltips with `custom_window`. GTK+ will take care of showing and
@@ -10049,7 +10196,7 @@ export namespace Handy {
          * tooltip window will be used.
          * @param custom_window a {@link Gtk.Window}, or `null`
          */
-        set_tooltip_window(custom_window?: Gtk.Window | null): void;
+        set_tooltip_window(custom_window: Gtk.Window | null): void;
         /**
          * Sets the vertical alignment of `widget`.
          * See the {@link Gtk.Widget.valign} property.
@@ -10093,7 +10240,7 @@ export namespace Handy {
          * so you should call this function before `widget` is realized.
          * @param visual visual to be used or `null` to unset a previous one
          */
-        set_visual(visual?: Gdk.Visual | null): void;
+        set_visual(visual: Gdk.Visual | null): void;
         /**
          * Sets a widget’s window. This function should only be used in a
          * widget’s {@link Gtk.Widget.SignalSignatures.realize | Gtk.Widget::realize} implementation. The %window passed is
@@ -10115,7 +10262,7 @@ export namespace Handy {
          * for more information.
          * @param region shape to be added, or `null` to remove an existing shape
          */
-        shape_combine_region(region?: cairo.Region | null): void;
+        shape_combine_region(region: cairo.Region | null): void;
         /**
          * Flags a widget to be displayed. Any widget that isn’t shown will
          * not appear on the screen. If you want to show all the widgets in a
@@ -11147,23 +11294,42 @@ export namespace Handy {
 
         // Properties
 
+        /**
+         * @default 0
+         */
         get column_spacing(): number;
         set column_spacing(val: number);
+        /**
+         * @default 0
+         */
         get columnSpacing(): number;
         set columnSpacing(val: number);
         get number(): string;
         set number(val: string);
         /**
          * The relief style of the edges of the main buttons.
+         * @default Gtk.ReliefStyle.NORMAL
          */
         get relief(): Gtk.ReliefStyle;
         set relief(val: Gtk.ReliefStyle);
+        /**
+         * @default 0
+         */
         get row_spacing(): number;
         set row_spacing(val: number);
+        /**
+         * @default 0
+         */
         get rowSpacing(): number;
         set rowSpacing(val: number);
+        /**
+         * @default true
+         */
         get show_action_buttons(): boolean;
         set show_action_buttons(val: boolean);
+        /**
+         * @default true
+         */
         get showActionButtons(): boolean;
         set showActionButtons(val: boolean);
 
@@ -11301,38 +11467,19 @@ export namespace Handy {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -11340,15 +11487,9 @@ export namespace Handy {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -11515,7 +11656,7 @@ export namespace Handy {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -11794,6 +11935,7 @@ export namespace Handy {
 
         /**
          * @read-only
+         * @default 0
          */
         get digit(): number;
         get symbols(): string;
@@ -11814,7 +11956,7 @@ export namespace Handy {
 
         _init(...args: any[]): void;
 
-        static ['new'](symbols?: string | null): DialerButton;
+        static ['new'](symbols: string | null): DialerButton;
         // Conflicted with Gtk.Button.new
 
         static ['new'](...args: never[]): any;
@@ -11852,12 +11994,18 @@ export namespace Handy {
          * @returns the button's symbols.
          */
         get_symbols(): string;
-        /** @category Inherited from Gtk.Actionable */
-        get action_name(): string;
-        set action_name(val: string);
-        /** @category Inherited from Gtk.Actionable */
-        get actionName(): string;
-        set actionName(val: string);
+        /**
+         * @default null
+         * @category Inherited from Gtk.Actionable
+         */
+        get action_name(): string | null;
+        set action_name(val: string | null);
+        /**
+         * @default null
+         * @category Inherited from Gtk.Actionable
+         */
+        get actionName(): string | null;
+        set actionName(val: string | null);
         /** @category Inherited from Gtk.Actionable */
         get action_target(): GLib.Variant;
         set action_target(val: GLib.Variant);
@@ -11901,6 +12049,7 @@ export namespace Handy {
          * > widget when it changes.
          * @since 2.16
          * @deprecated since 3.10
+         * @default true
          * @category Inherited from Gtk.Activatable
          */
         get use_action_appearance(): boolean;
@@ -11918,35 +12067,56 @@ export namespace Handy {
          * > widget when it changes.
          * @since 2.16
          * @deprecated since 3.10
+         * @default true
          * @category Inherited from Gtk.Activatable
          */
         get useActionAppearance(): boolean;
         set useActionAppearance(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get app_paintable(): boolean;
         set app_paintable(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get appPaintable(): boolean;
         set appPaintable(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get can_default(): boolean;
         set can_default(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get canDefault(): boolean;
         set canDefault(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get can_focus(): boolean;
         set can_focus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get canFocus(): boolean;
         set canFocus(val: boolean);
         /**
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get composite_child(): boolean;
         /**
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get compositeChild(): boolean;
@@ -11954,6 +12124,7 @@ export namespace Handy {
          * Whether the widget is double buffered.
          * @since 2.18
          * @deprecated since 3.14: Widgets should not use this property.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get double_buffered(): boolean;
@@ -11962,16 +12133,21 @@ export namespace Handy {
          * Whether the widget is double buffered.
          * @since 2.18
          * @deprecated since 3.14: Widgets should not use this property.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get doubleBuffered(): boolean;
         set doubleBuffered(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default Gdk.EventMask.STRUCTURE_MASK
+         * @category Inherited from Gtk.Widget
+         */
         get events(): Gdk.EventMask;
         set events(val: Gdk.EventMask);
         /**
          * Whether to expand in both directions. Setting this sets both {@link Gtk.Widget.hexpand} and {@link Gtk.Widget.vexpand}
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get expand(): boolean;
@@ -11984,6 +12160,7 @@ export namespace Handy {
          * Before 3.20, several widgets (GtkButton, GtkFileChooserButton,
          * GtkComboBox) implemented this property individually.
          * @since 3.20
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get focus_on_click(): boolean;
@@ -11996,6 +12173,7 @@ export namespace Handy {
          * Before 3.20, several widgets (GtkButton, GtkFileChooserButton,
          * GtkComboBox) implemented this property individually.
          * @since 3.20
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get focusOnClick(): boolean;
@@ -12003,20 +12181,33 @@ export namespace Handy {
         /**
          * How to distribute horizontal space if widget gets extra space, see {@link Gtk.Align}
          * @since 3.0
+         * @default Gtk.Align.FILL
          * @category Inherited from Gtk.Widget
          */
         get halign(): Gtk.Align;
         set halign(val: Gtk.Align);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get has_default(): boolean;
         set has_default(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get hasDefault(): boolean;
         set hasDefault(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get has_focus(): boolean;
         set has_focus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get hasFocus(): boolean;
         set hasFocus(val: boolean);
         /**
@@ -12030,6 +12221,7 @@ export namespace Handy {
          * and motion-notify events.  This cannot and will not be undone when the
          * property is set to `false` again.
          * @since 2.12
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get has_tooltip(): boolean;
@@ -12045,19 +12237,27 @@ export namespace Handy {
          * and motion-notify events.  This cannot and will not be undone when the
          * property is set to `false` again.
          * @since 2.12
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hasTooltip(): boolean;
         set hasTooltip(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default -1
+         * @category Inherited from Gtk.Widget
+         */
         get height_request(): number;
         set height_request(val: number);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default -1
+         * @category Inherited from Gtk.Widget
+         */
         get heightRequest(): number;
         set heightRequest(val: number);
         /**
          * Whether to expand horizontally. See `gtk_widget_set_hexpand()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpand(): boolean;
@@ -12065,6 +12265,7 @@ export namespace Handy {
         /**
          * Whether to use the {@link Gtk.Widget.hexpand} property. See `gtk_widget_get_hexpand_set()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpand_set(): boolean;
@@ -12072,20 +12273,28 @@ export namespace Handy {
         /**
          * Whether to use the {@link Gtk.Widget.hexpand} property. See `gtk_widget_get_hexpand_set()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpandSet(): boolean;
         set hexpandSet(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get is_focus(): boolean;
         set is_focus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get isFocus(): boolean;
         set isFocus(val: boolean);
         /**
          * Sets all four sides' margin at once. If read, returns max
          * margin on any side.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin(): number;
@@ -12097,6 +12306,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_bottom(): number;
@@ -12108,6 +12318,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginBottom(): number;
@@ -12120,6 +12331,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.12
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_end(): number;
@@ -12132,6 +12344,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.12
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginEnd(): number;
@@ -12144,6 +12357,7 @@ export namespace Handy {
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
          * @deprecated since 3.12: Use {@link Gtk.Widget.margin_start} instead.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_left(): number;
@@ -12156,6 +12370,7 @@ export namespace Handy {
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
          * @deprecated since 3.12: Use {@link Gtk.Widget.margin_start} instead.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginLeft(): number;
@@ -12168,6 +12383,7 @@ export namespace Handy {
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
          * @deprecated since 3.12: Use {@link Gtk.Widget.margin_end} instead.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_right(): number;
@@ -12180,6 +12396,7 @@ export namespace Handy {
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
          * @deprecated since 3.12: Use {@link Gtk.Widget.margin_end} instead.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginRight(): number;
@@ -12192,6 +12409,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.12
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_start(): number;
@@ -12204,6 +12422,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.12
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginStart(): number;
@@ -12215,6 +12434,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_top(): number;
@@ -12226,17 +12446,27 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginTop(): number;
         set marginTop(val: number);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default null
+         * @category Inherited from Gtk.Widget
+         */
         get name(): string;
         set name(val: string);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get no_show_all(): boolean;
         set no_show_all(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get noShowAll(): boolean;
         set noShowAll(val: boolean);
         /**
@@ -12245,17 +12475,24 @@ export namespace Handy {
          *
          * Before 3.8 this was only available in GtkWindow
          * @since 3.8
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get opacity(): number;
         set opacity(val: number);
         /** @category Inherited from Gtk.Widget */
-        get parent(): Gtk.Container;
-        set parent(val: Gtk.Container);
-        /** @category Inherited from Gtk.Widget */
+        get parent(): Gtk.Container | null;
+        set parent(val: Gtk.Container | null);
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get receives_default(): boolean;
         set receives_default(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get receivesDefault(): boolean;
         set receivesDefault(val: boolean);
         /**
@@ -12263,6 +12500,7 @@ export namespace Handy {
          * more details about widget scaling.
          * @since 3.10
          * @read-only
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -12271,10 +12509,14 @@ export namespace Handy {
          * more details about widget scaling.
          * @since 3.10
          * @read-only
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default true
+         * @category Inherited from Gtk.Widget
+         */
         get sensitive(): boolean;
         set sensitive(val: boolean);
         /**
@@ -12297,10 +12539,11 @@ export namespace Handy {
          * Note that if both {@link Gtk.Widget.tooltip_text} and {@link Gtk.Widget.tooltip_markup}
          * are set, the last one wins.
          * @since 2.12
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltip_markup(): string;
-        set tooltip_markup(val: string);
+        get tooltip_markup(): string | null;
+        set tooltip_markup(val: string | null);
         /**
          * Sets the text of tooltip to be the given string, which is marked up
          * with the [Pango text markup language][PangoMarkupFormat].
@@ -12314,10 +12557,11 @@ export namespace Handy {
          * Note that if both {@link Gtk.Widget.tooltip_text} and {@link Gtk.Widget.tooltip_markup}
          * are set, the last one wins.
          * @since 2.12
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltipMarkup(): string;
-        set tooltipMarkup(val: string);
+        get tooltipMarkup(): string | null;
+        set tooltipMarkup(val: string | null);
         /**
          * Sets the text of tooltip to be the given string.
          *
@@ -12331,10 +12575,11 @@ export namespace Handy {
          * Note that if both {@link Gtk.Widget.tooltip_text} and {@link Gtk.Widget.tooltip_markup}
          * are set, the last one wins.
          * @since 2.12
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltip_text(): string;
-        set tooltip_text(val: string);
+        get tooltip_text(): string | null;
+        set tooltip_text(val: string | null);
         /**
          * Sets the text of tooltip to be the given string.
          *
@@ -12348,13 +12593,15 @@ export namespace Handy {
          * Note that if both {@link Gtk.Widget.tooltip_text} and {@link Gtk.Widget.tooltip_markup}
          * are set, the last one wins.
          * @since 2.12
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltipText(): string;
-        set tooltipText(val: string);
+        get tooltipText(): string | null;
+        set tooltipText(val: string | null);
         /**
          * How to distribute vertical space if widget gets extra space, see {@link Gtk.Align}
          * @since 3.0
+         * @default Gtk.Align.FILL
          * @category Inherited from Gtk.Widget
          */
         get valign(): Gtk.Align;
@@ -12362,6 +12609,7 @@ export namespace Handy {
         /**
          * Whether to expand vertically. See `gtk_widget_set_vexpand()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpand(): boolean;
@@ -12369,6 +12617,7 @@ export namespace Handy {
         /**
          * Whether to use the {@link Gtk.Widget.vexpand} property. See `gtk_widget_get_vexpand_set()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpand_set(): boolean;
@@ -12376,17 +12625,27 @@ export namespace Handy {
         /**
          * Whether to use the {@link Gtk.Widget.vexpand} property. See `gtk_widget_get_vexpand_set()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpandSet(): boolean;
         set vexpandSet(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get visible(): boolean;
         set visible(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default -1
+         * @category Inherited from Gtk.Widget
+         */
         get width_request(): number;
         set width_request(val: number);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default -1
+         * @category Inherited from Gtk.Widget
+         */
         get widthRequest(): number;
         set widthRequest(val: number);
         /**
@@ -12395,7 +12654,7 @@ export namespace Handy {
          * @read-only
          * @category Inherited from Gtk.Widget
          */
-        get window(): Gdk.Window;
+        get window(): Gdk.Window | null;
         /**
          * Gets the action name for `actionable`.
          *
@@ -12424,7 +12683,7 @@ export namespace Handy {
          * associated with the window.
          * @param action_name an action name, or `null`
          */
-        set_action_name(action_name?: string | null): void;
+        set_action_name(action_name: string | null): void;
         /**
          * Sets the target value of an actionable widget.
          *
@@ -12447,7 +12706,7 @@ export namespace Handy {
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
          */
-        set_action_target_value(target_value?: GLib.Variant | null): void;
+        set_action_target_value(target_value: GLib.Variant | null): void;
         /**
          * Sets the action-name and associated string target value of an
          * actionable widget.
@@ -12492,7 +12751,7 @@ export namespace Handy {
          * @param action_name an action name, or `null`
          * @virtual
          */
-        vfunc_set_action_name(action_name?: string | null): void;
+        vfunc_set_action_name(action_name: string | null): void;
         /**
          * Sets the target value of an actionable widget.
          *
@@ -12516,7 +12775,7 @@ export namespace Handy {
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
          * @virtual
          */
-        vfunc_set_action_target_value(target_value?: GLib.Variant | null): void;
+        vfunc_set_action_target_value(target_value: GLib.Variant | null): void;
         /**
          * This is a utility function for {@link Gtk.Activatable} implementors.
          *
@@ -12574,7 +12833,7 @@ export namespace Handy {
          * {@link Gtk.Activatable.use_action_appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
          */
-        sync_action_properties(action?: Gtk.Action | null): void;
+        sync_action_properties(action: Gtk.Action | null): void;
         /**
          * This is called to update the activatable completely, this is called
          * internally when the {@link Gtk.Activatable.related_action} property is set
@@ -12583,7 +12842,7 @@ export namespace Handy {
          * @param action the related {@link Gtk.Action} or `null`
          * @virtual
          */
-        vfunc_sync_action_properties(action?: Gtk.Action | null): void;
+        vfunc_sync_action_properties(action: Gtk.Action | null): void;
         /**
          * Called to update the activatable when its related action’s properties change.
          * You must check the {@link Gtk.Activatable.use_action_appearance} property only apply action
@@ -12640,38 +12899,19 @@ export namespace Handy {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -12679,15 +12919,9 @@ export namespace Handy {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -12854,7 +13088,7 @@ export namespace Handy {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -13213,7 +13447,7 @@ export namespace Handy {
          * @param text text to set on the layout (can be `null`)
          * @returns the new {@link Pango.Layout}
          */
-        create_pango_layout(text?: string | null): Pango.Layout;
+        create_pango_layout(text: string | null): Pango.Layout;
         /**
          * Destroys a widget.
          *
@@ -13282,7 +13516,7 @@ export namespace Handy {
             targets: Gtk.TargetList,
             actions: Gdk.DragAction,
             button: number,
-            event?: Gdk.Event | null,
+            event: Gdk.Event | null,
         ): Gdk.DragContext;
         /**
          * Initiates a drag on the source side. The function only needs to be used
@@ -13373,7 +13607,7 @@ export namespace Handy {
          * @param target_list list of droppable targets, or `null` to use    gtk_drag_dest_get_target_list (`widget`).
          * @returns first target that the source offers     and the dest can accept, or `GDK_NONE`
          */
-        drag_dest_find_target(context: Gdk.DragContext, target_list?: Gtk.TargetList | null): Gdk.Atom;
+        drag_dest_find_target(context: Gdk.DragContext, target_list: Gtk.TargetList | null): Gdk.Atom;
         /**
          * Returns the list of targets this widget can accept from
          * drag-and-drop.
@@ -13446,7 +13680,7 @@ export namespace Handy {
          * `gtk_drag_dest_set()`.
          * @param target_list list of droppable targets, or `null` for none
          */
-        drag_dest_set_target_list(target_list?: Gtk.TargetList | null): void;
+        drag_dest_set_target_list(target_list: Gtk.TargetList | null): void;
         /**
          * Tells the widget to emit {@link Gtk.Widget.SignalSignatures.drag_motion | Gtk.Widget::drag-motion} and
          * {@link Gtk.Widget.SignalSignatures.drag_leave | Gtk.Widget::drag-leave} events regardless of the targets and the
@@ -13556,7 +13790,7 @@ export namespace Handy {
          * `gtk_drag_source_set()`.
          * @param target_list list of draggable targets, or `null` for none
          */
-        drag_source_set_target_list(target_list?: Gtk.TargetList | null): void;
+        drag_source_set_target_list(target_list: Gtk.TargetList | null): void;
         /**
          * Undoes the effects of `gtk_drag_source_set()`.
          */
@@ -14514,7 +14748,7 @@ export namespace Handy {
          * `gdk_window_input_shape_combine_region()` for more information.
          * @param region shape to be added, or `null` to remove an existing shape
          */
-        input_shape_combine_region(region?: cairo.Region | null): void;
+        input_shape_combine_region(region: cairo.Region | null): void;
         /**
          * Inserts `group` into `widget`. Children of `widget` that implement
          * {@link Gtk.Actionable} can then be associated with actions in `group` by
@@ -14526,7 +14760,7 @@ export namespace Handy {
          * @param name the prefix for actions in `group`
          * @param group a {@link Gio.ActionGroup}, or `null`
          */
-        insert_action_group(name: string, group?: Gio.ActionGroup | null): void;
+        insert_action_group(name: string, group: Gio.ActionGroup | null): void;
         /**
          * Computes the intersection of a `widget`’s area and `area`, storing
          * the intersection in `intersection`, and returns `true` if there was
@@ -14677,7 +14911,7 @@ export namespace Handy {
          * @param state the state for which to set the base color
          * @param color the color to assign (does not need to     be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_base()`.
          */
-        modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_base(state: Gtk.StateType, color: Gdk.Color | null): void;
         /**
          * Sets the background color for a widget in a particular state.
          *
@@ -14696,7 +14930,7 @@ export namespace Handy {
          * @param state the state for which to set the background color
          * @param color the color to assign (does not need     to be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_bg()`.
          */
-        modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_bg(state: Gtk.StateType, color: Gdk.Color | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the {@link Gtk.Widget}
          * cursor-color and secondary-cursor-color
@@ -14707,7 +14941,7 @@ export namespace Handy {
          * @param primary the color to use for primary cursor (does not     need to be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_cursor()`.
          * @param secondary the color to use for secondary cursor (does     not need to be allocated), or `null` to undo the effect of     previous calls to of `gtk_widget_modify_cursor()`.
          */
-        modify_cursor(primary?: Gdk.Color | null, secondary?: Gdk.Color | null): void;
+        modify_cursor(primary: Gdk.Color | null, secondary: Gdk.Color | null): void;
         /**
          * Sets the foreground color for a widget in a particular state.
          *
@@ -14716,7 +14950,7 @@ export namespace Handy {
          * @param state the state for which to set the foreground color
          * @param color the color to assign (does not need to be allocated),     or `null` to undo the effect of previous calls to     of `gtk_widget_modify_fg()`.
          */
-        modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_fg(state: Gtk.StateType, color: Gdk.Color | null): void;
         /**
          * Sets the font to use for a widget.
          *
@@ -14724,7 +14958,7 @@ export namespace Handy {
          * See also `gtk_widget_modify_style()`.
          * @param font_desc the font description to use, or `null`     to undo the effect of previous calls to `gtk_widget_modify_font()`
          */
-        modify_font(font_desc?: Pango.FontDescription | null): void;
+        modify_font(font_desc: Pango.FontDescription | null): void;
         /**
          * Modifies style values on the widget.
          *
@@ -14758,7 +14992,7 @@ export namespace Handy {
          * @param state the state for which to set the text color
          * @param color the color to assign (does not need to     be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_text()`.
          */
-        modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_text(state: Gtk.StateType, color: Gdk.Color | null): void;
         /**
          * Sets the background color to use for a widget.
          *
@@ -14767,7 +15001,7 @@ export namespace Handy {
          * @param state the state for which to set the background color
          * @param color the color to assign, or `null` to undo the effect     of previous calls to `gtk_widget_override_background_color()`
          */
-        override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_background_color(state: Gtk.StateFlags, color: Gdk.RGBA | null): void;
         /**
          * Sets the color to use for a widget.
          *
@@ -14797,7 +15031,7 @@ export namespace Handy {
          * @param state the state for which to set the color
          * @param color the color to assign, or `null` to undo the effect     of previous calls to `gtk_widget_override_color()`
          */
-        override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_color(state: Gtk.StateFlags, color: Gdk.RGBA | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the
          * cursor-color and secondary-cursor-color
@@ -14809,13 +15043,13 @@ export namespace Handy {
          * @param cursor the color to use for primary cursor (does not need to be     allocated), or `null` to undo the effect of previous calls to     of `gtk_widget_override_cursor()`.
          * @param secondary_cursor the color to use for secondary cursor (does not     need to be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_override_cursor()`.
          */
-        override_cursor(cursor?: Gdk.RGBA | null, secondary_cursor?: Gdk.RGBA | null): void;
+        override_cursor(cursor: Gdk.RGBA | null, secondary_cursor: Gdk.RGBA | null): void;
         /**
          * Sets the font to use for a widget. All other style values are
          * left untouched. See `gtk_widget_override_color()`.
          * @param font_desc the font description to use, or `null` to undo     the effect of previous calls to `gtk_widget_override_font()`
          */
-        override_font(font_desc?: Pango.FontDescription | null): void;
+        override_font(font_desc: Pango.FontDescription | null): void;
         /**
          * Sets a symbolic color for a widget.
          *
@@ -14825,7 +15059,7 @@ export namespace Handy {
          * @param name the name of the symbolic color to modify
          * @param color the color to assign (does not need     to be allocated), or `null` to undo the effect of previous     calls to `gtk_widget_override_symbolic_color()`
          */
-        override_symbolic_color(name: string, color?: Gdk.RGBA | null): void;
+        override_symbolic_color(name: string, color: Gdk.RGBA | null): void;
         /**
          * Obtains the full path to `widget`. The path is simply the name of a
          * widget and all its parents in the container hierarchy, separated by
@@ -14996,7 +15230,7 @@ export namespace Handy {
          * @param detail render detail to pass to theme engine
          * @returns a new pixbuf, or `null` if the     stock ID wasn’t known
          */
-        render_icon(stock_id: string, size: number, detail?: string | null): GdkPixbuf.Pixbuf | null;
+        render_icon(stock_id: string, size: number, detail: string | null): GdkPixbuf.Pixbuf | null;
         /**
          * A convenience function that uses the theme engine and style
          * settings for `widget` to look up `stock_id` and render it to
@@ -15103,7 +15337,7 @@ export namespace Handy {
          * @param accel_path path used to look up the accelerator
          * @param accel_group a {@link Gtk.AccelGroup}.
          */
-        set_accel_path(accel_path?: string | null, accel_group?: Gtk.AccelGroup | null): void;
+        set_accel_path(accel_path: string | null, accel_group: Gtk.AccelGroup | null): void;
         /**
          * Sets the widget’s allocation.  This should not be used
          * directly, but from within a widget’s size_allocate method.
@@ -15287,13 +15521,13 @@ export namespace Handy {
          * will inherit the font map from its parent.
          * @param font_map a {@link Pango.FontMap}, or `null` to unset any previously     set font map
          */
-        set_font_map(font_map?: Pango.FontMap | null): void;
+        set_font_map(font_map: Pango.FontMap | null): void;
         /**
          * Sets the {@link cairo.FontOptions} used for Pango rendering in this widget.
          * When not set, the default font options for the {@link Gdk.Screen} will be used.
          * @param options a {@link cairo.FontOptions}, or `null` to unset any   previously set default font options.
          */
-        set_font_options(options?: cairo.FontOptions | null): void;
+        set_font_options(options: cairo.FontOptions | null): void;
         /**
          * Sets the horizontal alignment of `widget`.
          * See the {@link Gtk.Widget.halign} property.
@@ -15586,7 +15820,7 @@ export namespace Handy {
          * GTK 3, this function does nothing, the passed in style is ignored.
          * @param style a {@link Gtk.Style}, or `null` to remove the effect     of a previous call to `gtk_widget_set_style()` and go back to     the default style
          */
-        set_style(style?: Gtk.Style | null): void;
+        set_style(style: Gtk.Style | null): void;
         /**
          * Enables or disables multiple pointer awareness. If this setting is `true`,
          * `widget` will start receiving multiple, per device enter/leave events. Note
@@ -15606,7 +15840,7 @@ export namespace Handy {
          * `gtk_tooltip_set_markup()`.
          * @param markup the contents of the tooltip for `widget`, or `null`
          */
-        set_tooltip_markup(markup?: string | null): void;
+        set_tooltip_markup(markup: string | null): void;
         /**
          * Sets `text` as the contents of the tooltip. This function will take
          * care of setting {@link Gtk.Widget.has_tooltip} to `true` and of the default
@@ -15615,7 +15849,7 @@ export namespace Handy {
          * See also the {@link Gtk.Widget.tooltip_text} property and `gtk_tooltip_set_text()`.
          * @param text the contents of the tooltip for `widget`
          */
-        set_tooltip_text(text?: string | null): void;
+        set_tooltip_text(text: string | null): void;
         /**
          * Replaces the default window used for displaying
          * tooltips with `custom_window`. GTK+ will take care of showing and
@@ -15624,7 +15858,7 @@ export namespace Handy {
          * tooltip window will be used.
          * @param custom_window a {@link Gtk.Window}, or `null`
          */
-        set_tooltip_window(custom_window?: Gtk.Window | null): void;
+        set_tooltip_window(custom_window: Gtk.Window | null): void;
         /**
          * Sets the vertical alignment of `widget`.
          * See the {@link Gtk.Widget.valign} property.
@@ -15668,7 +15902,7 @@ export namespace Handy {
          * so you should call this function before `widget` is realized.
          * @param visual visual to be used or `null` to unset a previous one
          */
-        set_visual(visual?: Gdk.Visual | null): void;
+        set_visual(visual: Gdk.Visual | null): void;
         /**
          * Sets a widget’s window. This function should only be used in a
          * widget’s {@link Gtk.Widget.SignalSignatures.realize | Gtk.Widget::realize} implementation. The %window passed is
@@ -15690,7 +15924,7 @@ export namespace Handy {
          * for more information.
          * @param region shape to be added, or `null` to remove an existing shape
          */
-        shape_combine_region(region?: cairo.Region | null): void;
+        shape_combine_region(region: cairo.Region | null): void;
         /**
          * Flags a widget to be displayed. Any widget that isn’t shown will
          * not appear on the screen. If you want to show all the widgets in a
@@ -16723,8 +16957,14 @@ export namespace Handy {
 
         // Properties
 
+        /**
+         * @default 1000
+         */
         get cycle_timeout(): number;
         set cycle_timeout(val: number);
+        /**
+         * @default 1000
+         */
         get cycleTimeout(): number;
         set cycleTimeout(val: number);
 
@@ -16805,31 +17045,51 @@ export namespace Handy {
          * Stop the cycling mode.
          */
         stop_cycle(): void;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get app_paintable(): boolean;
         set app_paintable(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get appPaintable(): boolean;
         set appPaintable(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get can_default(): boolean;
         set can_default(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get canDefault(): boolean;
         set canDefault(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get can_focus(): boolean;
         set can_focus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get canFocus(): boolean;
         set canFocus(val: boolean);
         /**
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get composite_child(): boolean;
         /**
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get compositeChild(): boolean;
@@ -16837,6 +17097,7 @@ export namespace Handy {
          * Whether the widget is double buffered.
          * @since 2.18
          * @deprecated since 3.14: Widgets should not use this property.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get double_buffered(): boolean;
@@ -16845,16 +17106,21 @@ export namespace Handy {
          * Whether the widget is double buffered.
          * @since 2.18
          * @deprecated since 3.14: Widgets should not use this property.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get doubleBuffered(): boolean;
         set doubleBuffered(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default Gdk.EventMask.STRUCTURE_MASK
+         * @category Inherited from Gtk.Widget
+         */
         get events(): Gdk.EventMask;
         set events(val: Gdk.EventMask);
         /**
          * Whether to expand in both directions. Setting this sets both {@link Gtk.Widget.hexpand} and {@link Gtk.Widget.vexpand}
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get expand(): boolean;
@@ -16867,6 +17133,7 @@ export namespace Handy {
          * Before 3.20, several widgets (GtkButton, GtkFileChooserButton,
          * GtkComboBox) implemented this property individually.
          * @since 3.20
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get focus_on_click(): boolean;
@@ -16879,6 +17146,7 @@ export namespace Handy {
          * Before 3.20, several widgets (GtkButton, GtkFileChooserButton,
          * GtkComboBox) implemented this property individually.
          * @since 3.20
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get focusOnClick(): boolean;
@@ -16886,20 +17154,33 @@ export namespace Handy {
         /**
          * How to distribute horizontal space if widget gets extra space, see {@link Gtk.Align}
          * @since 3.0
+         * @default Gtk.Align.FILL
          * @category Inherited from Gtk.Widget
          */
         get halign(): Gtk.Align;
         set halign(val: Gtk.Align);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get has_default(): boolean;
         set has_default(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get hasDefault(): boolean;
         set hasDefault(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get has_focus(): boolean;
         set has_focus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get hasFocus(): boolean;
         set hasFocus(val: boolean);
         /**
@@ -16913,6 +17194,7 @@ export namespace Handy {
          * and motion-notify events.  This cannot and will not be undone when the
          * property is set to `false` again.
          * @since 2.12
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get has_tooltip(): boolean;
@@ -16928,19 +17210,27 @@ export namespace Handy {
          * and motion-notify events.  This cannot and will not be undone when the
          * property is set to `false` again.
          * @since 2.12
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hasTooltip(): boolean;
         set hasTooltip(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default -1
+         * @category Inherited from Gtk.Widget
+         */
         get height_request(): number;
         set height_request(val: number);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default -1
+         * @category Inherited from Gtk.Widget
+         */
         get heightRequest(): number;
         set heightRequest(val: number);
         /**
          * Whether to expand horizontally. See `gtk_widget_set_hexpand()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpand(): boolean;
@@ -16948,6 +17238,7 @@ export namespace Handy {
         /**
          * Whether to use the {@link Gtk.Widget.hexpand} property. See `gtk_widget_get_hexpand_set()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpand_set(): boolean;
@@ -16955,20 +17246,28 @@ export namespace Handy {
         /**
          * Whether to use the {@link Gtk.Widget.hexpand} property. See `gtk_widget_get_hexpand_set()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpandSet(): boolean;
         set hexpandSet(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get is_focus(): boolean;
         set is_focus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get isFocus(): boolean;
         set isFocus(val: boolean);
         /**
          * Sets all four sides' margin at once. If read, returns max
          * margin on any side.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin(): number;
@@ -16980,6 +17279,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_bottom(): number;
@@ -16991,6 +17291,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginBottom(): number;
@@ -17003,6 +17304,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.12
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_end(): number;
@@ -17015,6 +17317,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.12
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginEnd(): number;
@@ -17027,6 +17330,7 @@ export namespace Handy {
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
          * @deprecated since 3.12: Use {@link Gtk.Widget.margin_start} instead.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_left(): number;
@@ -17039,6 +17343,7 @@ export namespace Handy {
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
          * @deprecated since 3.12: Use {@link Gtk.Widget.margin_start} instead.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginLeft(): number;
@@ -17051,6 +17356,7 @@ export namespace Handy {
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
          * @deprecated since 3.12: Use {@link Gtk.Widget.margin_end} instead.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_right(): number;
@@ -17063,6 +17369,7 @@ export namespace Handy {
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
          * @deprecated since 3.12: Use {@link Gtk.Widget.margin_end} instead.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginRight(): number;
@@ -17075,6 +17382,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.12
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_start(): number;
@@ -17087,6 +17395,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.12
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginStart(): number;
@@ -17098,6 +17407,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_top(): number;
@@ -17109,17 +17419,27 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginTop(): number;
         set marginTop(val: number);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default null
+         * @category Inherited from Gtk.Widget
+         */
         get name(): string;
         set name(val: string);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get no_show_all(): boolean;
         set no_show_all(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get noShowAll(): boolean;
         set noShowAll(val: boolean);
         /**
@@ -17128,17 +17448,24 @@ export namespace Handy {
          *
          * Before 3.8 this was only available in GtkWindow
          * @since 3.8
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get opacity(): number;
         set opacity(val: number);
         /** @category Inherited from Gtk.Widget */
-        get parent(): Gtk.Container;
-        set parent(val: Gtk.Container);
-        /** @category Inherited from Gtk.Widget */
+        get parent(): Gtk.Container | null;
+        set parent(val: Gtk.Container | null);
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get receives_default(): boolean;
         set receives_default(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get receivesDefault(): boolean;
         set receivesDefault(val: boolean);
         /**
@@ -17146,6 +17473,7 @@ export namespace Handy {
          * more details about widget scaling.
          * @since 3.10
          * @read-only
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -17154,10 +17482,14 @@ export namespace Handy {
          * more details about widget scaling.
          * @since 3.10
          * @read-only
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default true
+         * @category Inherited from Gtk.Widget
+         */
         get sensitive(): boolean;
         set sensitive(val: boolean);
         /**
@@ -17180,10 +17512,11 @@ export namespace Handy {
          * Note that if both {@link Gtk.Widget.tooltip_text} and {@link Gtk.Widget.tooltip_markup}
          * are set, the last one wins.
          * @since 2.12
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltip_markup(): string;
-        set tooltip_markup(val: string);
+        get tooltip_markup(): string | null;
+        set tooltip_markup(val: string | null);
         /**
          * Sets the text of tooltip to be the given string, which is marked up
          * with the [Pango text markup language][PangoMarkupFormat].
@@ -17197,10 +17530,11 @@ export namespace Handy {
          * Note that if both {@link Gtk.Widget.tooltip_text} and {@link Gtk.Widget.tooltip_markup}
          * are set, the last one wins.
          * @since 2.12
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltipMarkup(): string;
-        set tooltipMarkup(val: string);
+        get tooltipMarkup(): string | null;
+        set tooltipMarkup(val: string | null);
         /**
          * Sets the text of tooltip to be the given string.
          *
@@ -17214,10 +17548,11 @@ export namespace Handy {
          * Note that if both {@link Gtk.Widget.tooltip_text} and {@link Gtk.Widget.tooltip_markup}
          * are set, the last one wins.
          * @since 2.12
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltip_text(): string;
-        set tooltip_text(val: string);
+        get tooltip_text(): string | null;
+        set tooltip_text(val: string | null);
         /**
          * Sets the text of tooltip to be the given string.
          *
@@ -17231,13 +17566,15 @@ export namespace Handy {
          * Note that if both {@link Gtk.Widget.tooltip_text} and {@link Gtk.Widget.tooltip_markup}
          * are set, the last one wins.
          * @since 2.12
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltipText(): string;
-        set tooltipText(val: string);
+        get tooltipText(): string | null;
+        set tooltipText(val: string | null);
         /**
          * How to distribute vertical space if widget gets extra space, see {@link Gtk.Align}
          * @since 3.0
+         * @default Gtk.Align.FILL
          * @category Inherited from Gtk.Widget
          */
         get valign(): Gtk.Align;
@@ -17245,6 +17582,7 @@ export namespace Handy {
         /**
          * Whether to expand vertically. See `gtk_widget_set_vexpand()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpand(): boolean;
@@ -17252,6 +17590,7 @@ export namespace Handy {
         /**
          * Whether to use the {@link Gtk.Widget.vexpand} property. See `gtk_widget_get_vexpand_set()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpand_set(): boolean;
@@ -17259,17 +17598,27 @@ export namespace Handy {
         /**
          * Whether to use the {@link Gtk.Widget.vexpand} property. See `gtk_widget_get_vexpand_set()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpandSet(): boolean;
         set vexpandSet(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get visible(): boolean;
         set visible(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default -1
+         * @category Inherited from Gtk.Widget
+         */
         get width_request(): number;
         set width_request(val: number);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default -1
+         * @category Inherited from Gtk.Widget
+         */
         get widthRequest(): number;
         set widthRequest(val: number);
         /**
@@ -17278,7 +17627,7 @@ export namespace Handy {
          * @read-only
          * @category Inherited from Gtk.Widget
          */
-        get window(): Gdk.Window;
+        get window(): Gdk.Window | null;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -17326,38 +17675,19 @@ export namespace Handy {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -17365,15 +17695,9 @@ export namespace Handy {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -17540,7 +17864,7 @@ export namespace Handy {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -17899,7 +18223,7 @@ export namespace Handy {
          * @param text text to set on the layout (can be `null`)
          * @returns the new {@link Pango.Layout}
          */
-        create_pango_layout(text?: string | null): Pango.Layout;
+        create_pango_layout(text: string | null): Pango.Layout;
         /**
          * Destroys a widget.
          *
@@ -17968,7 +18292,7 @@ export namespace Handy {
             targets: Gtk.TargetList,
             actions: Gdk.DragAction,
             button: number,
-            event?: Gdk.Event | null,
+            event: Gdk.Event | null,
         ): Gdk.DragContext;
         /**
          * Initiates a drag on the source side. The function only needs to be used
@@ -18059,7 +18383,7 @@ export namespace Handy {
          * @param target_list list of droppable targets, or `null` to use    gtk_drag_dest_get_target_list (`widget`).
          * @returns first target that the source offers     and the dest can accept, or `GDK_NONE`
          */
-        drag_dest_find_target(context: Gdk.DragContext, target_list?: Gtk.TargetList | null): Gdk.Atom;
+        drag_dest_find_target(context: Gdk.DragContext, target_list: Gtk.TargetList | null): Gdk.Atom;
         /**
          * Returns the list of targets this widget can accept from
          * drag-and-drop.
@@ -18132,7 +18456,7 @@ export namespace Handy {
          * `gtk_drag_dest_set()`.
          * @param target_list list of droppable targets, or `null` for none
          */
-        drag_dest_set_target_list(target_list?: Gtk.TargetList | null): void;
+        drag_dest_set_target_list(target_list: Gtk.TargetList | null): void;
         /**
          * Tells the widget to emit {@link Gtk.Widget.SignalSignatures.drag_motion | Gtk.Widget::drag-motion} and
          * {@link Gtk.Widget.SignalSignatures.drag_leave | Gtk.Widget::drag-leave} events regardless of the targets and the
@@ -18242,7 +18566,7 @@ export namespace Handy {
          * `gtk_drag_source_set()`.
          * @param target_list list of draggable targets, or `null` for none
          */
-        drag_source_set_target_list(target_list?: Gtk.TargetList | null): void;
+        drag_source_set_target_list(target_list: Gtk.TargetList | null): void;
         /**
          * Undoes the effects of `gtk_drag_source_set()`.
          */
@@ -19200,7 +19524,7 @@ export namespace Handy {
          * `gdk_window_input_shape_combine_region()` for more information.
          * @param region shape to be added, or `null` to remove an existing shape
          */
-        input_shape_combine_region(region?: cairo.Region | null): void;
+        input_shape_combine_region(region: cairo.Region | null): void;
         /**
          * Inserts `group` into `widget`. Children of `widget` that implement
          * {@link Gtk.Actionable} can then be associated with actions in `group` by
@@ -19212,7 +19536,7 @@ export namespace Handy {
          * @param name the prefix for actions in `group`
          * @param group a {@link Gio.ActionGroup}, or `null`
          */
-        insert_action_group(name: string, group?: Gio.ActionGroup | null): void;
+        insert_action_group(name: string, group: Gio.ActionGroup | null): void;
         /**
          * Computes the intersection of a `widget`’s area and `area`, storing
          * the intersection in `intersection`, and returns `true` if there was
@@ -19363,7 +19687,7 @@ export namespace Handy {
          * @param state the state for which to set the base color
          * @param color the color to assign (does not need to     be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_base()`.
          */
-        modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_base(state: Gtk.StateType, color: Gdk.Color | null): void;
         /**
          * Sets the background color for a widget in a particular state.
          *
@@ -19382,7 +19706,7 @@ export namespace Handy {
          * @param state the state for which to set the background color
          * @param color the color to assign (does not need     to be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_bg()`.
          */
-        modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_bg(state: Gtk.StateType, color: Gdk.Color | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the {@link Gtk.Widget}
          * cursor-color and secondary-cursor-color
@@ -19393,7 +19717,7 @@ export namespace Handy {
          * @param primary the color to use for primary cursor (does not     need to be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_cursor()`.
          * @param secondary the color to use for secondary cursor (does     not need to be allocated), or `null` to undo the effect of     previous calls to of `gtk_widget_modify_cursor()`.
          */
-        modify_cursor(primary?: Gdk.Color | null, secondary?: Gdk.Color | null): void;
+        modify_cursor(primary: Gdk.Color | null, secondary: Gdk.Color | null): void;
         /**
          * Sets the foreground color for a widget in a particular state.
          *
@@ -19402,7 +19726,7 @@ export namespace Handy {
          * @param state the state for which to set the foreground color
          * @param color the color to assign (does not need to be allocated),     or `null` to undo the effect of previous calls to     of `gtk_widget_modify_fg()`.
          */
-        modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_fg(state: Gtk.StateType, color: Gdk.Color | null): void;
         /**
          * Sets the font to use for a widget.
          *
@@ -19410,7 +19734,7 @@ export namespace Handy {
          * See also `gtk_widget_modify_style()`.
          * @param font_desc the font description to use, or `null`     to undo the effect of previous calls to `gtk_widget_modify_font()`
          */
-        modify_font(font_desc?: Pango.FontDescription | null): void;
+        modify_font(font_desc: Pango.FontDescription | null): void;
         /**
          * Modifies style values on the widget.
          *
@@ -19444,7 +19768,7 @@ export namespace Handy {
          * @param state the state for which to set the text color
          * @param color the color to assign (does not need to     be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_text()`.
          */
-        modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_text(state: Gtk.StateType, color: Gdk.Color | null): void;
         /**
          * Sets the background color to use for a widget.
          *
@@ -19453,7 +19777,7 @@ export namespace Handy {
          * @param state the state for which to set the background color
          * @param color the color to assign, or `null` to undo the effect     of previous calls to `gtk_widget_override_background_color()`
          */
-        override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_background_color(state: Gtk.StateFlags, color: Gdk.RGBA | null): void;
         /**
          * Sets the color to use for a widget.
          *
@@ -19483,7 +19807,7 @@ export namespace Handy {
          * @param state the state for which to set the color
          * @param color the color to assign, or `null` to undo the effect     of previous calls to `gtk_widget_override_color()`
          */
-        override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_color(state: Gtk.StateFlags, color: Gdk.RGBA | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the
          * cursor-color and secondary-cursor-color
@@ -19495,13 +19819,13 @@ export namespace Handy {
          * @param cursor the color to use for primary cursor (does not need to be     allocated), or `null` to undo the effect of previous calls to     of `gtk_widget_override_cursor()`.
          * @param secondary_cursor the color to use for secondary cursor (does not     need to be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_override_cursor()`.
          */
-        override_cursor(cursor?: Gdk.RGBA | null, secondary_cursor?: Gdk.RGBA | null): void;
+        override_cursor(cursor: Gdk.RGBA | null, secondary_cursor: Gdk.RGBA | null): void;
         /**
          * Sets the font to use for a widget. All other style values are
          * left untouched. See `gtk_widget_override_color()`.
          * @param font_desc the font description to use, or `null` to undo     the effect of previous calls to `gtk_widget_override_font()`
          */
-        override_font(font_desc?: Pango.FontDescription | null): void;
+        override_font(font_desc: Pango.FontDescription | null): void;
         /**
          * Sets a symbolic color for a widget.
          *
@@ -19511,7 +19835,7 @@ export namespace Handy {
          * @param name the name of the symbolic color to modify
          * @param color the color to assign (does not need     to be allocated), or `null` to undo the effect of previous     calls to `gtk_widget_override_symbolic_color()`
          */
-        override_symbolic_color(name: string, color?: Gdk.RGBA | null): void;
+        override_symbolic_color(name: string, color: Gdk.RGBA | null): void;
         /**
          * Obtains the full path to `widget`. The path is simply the name of a
          * widget and all its parents in the container hierarchy, separated by
@@ -19682,7 +20006,7 @@ export namespace Handy {
          * @param detail render detail to pass to theme engine
          * @returns a new pixbuf, or `null` if the     stock ID wasn’t known
          */
-        render_icon(stock_id: string, size: number, detail?: string | null): GdkPixbuf.Pixbuf | null;
+        render_icon(stock_id: string, size: number, detail: string | null): GdkPixbuf.Pixbuf | null;
         /**
          * A convenience function that uses the theme engine and style
          * settings for `widget` to look up `stock_id` and render it to
@@ -19789,7 +20113,7 @@ export namespace Handy {
          * @param accel_path path used to look up the accelerator
          * @param accel_group a {@link Gtk.AccelGroup}.
          */
-        set_accel_path(accel_path?: string | null, accel_group?: Gtk.AccelGroup | null): void;
+        set_accel_path(accel_path: string | null, accel_group: Gtk.AccelGroup | null): void;
         /**
          * Sets the widget’s allocation.  This should not be used
          * directly, but from within a widget’s size_allocate method.
@@ -19973,13 +20297,13 @@ export namespace Handy {
          * will inherit the font map from its parent.
          * @param font_map a {@link Pango.FontMap}, or `null` to unset any previously     set font map
          */
-        set_font_map(font_map?: Pango.FontMap | null): void;
+        set_font_map(font_map: Pango.FontMap | null): void;
         /**
          * Sets the {@link cairo.FontOptions} used for Pango rendering in this widget.
          * When not set, the default font options for the {@link Gdk.Screen} will be used.
          * @param options a {@link cairo.FontOptions}, or `null` to unset any   previously set default font options.
          */
-        set_font_options(options?: cairo.FontOptions | null): void;
+        set_font_options(options: cairo.FontOptions | null): void;
         /**
          * Sets the horizontal alignment of `widget`.
          * See the {@link Gtk.Widget.halign} property.
@@ -20272,7 +20596,7 @@ export namespace Handy {
          * GTK 3, this function does nothing, the passed in style is ignored.
          * @param style a {@link Gtk.Style}, or `null` to remove the effect     of a previous call to `gtk_widget_set_style()` and go back to     the default style
          */
-        set_style(style?: Gtk.Style | null): void;
+        set_style(style: Gtk.Style | null): void;
         /**
          * Enables or disables multiple pointer awareness. If this setting is `true`,
          * `widget` will start receiving multiple, per device enter/leave events. Note
@@ -20292,7 +20616,7 @@ export namespace Handy {
          * `gtk_tooltip_set_markup()`.
          * @param markup the contents of the tooltip for `widget`, or `null`
          */
-        set_tooltip_markup(markup?: string | null): void;
+        set_tooltip_markup(markup: string | null): void;
         /**
          * Sets `text` as the contents of the tooltip. This function will take
          * care of setting {@link Gtk.Widget.has_tooltip} to `true` and of the default
@@ -20301,7 +20625,7 @@ export namespace Handy {
          * See also the {@link Gtk.Widget.tooltip_text} property and `gtk_tooltip_set_text()`.
          * @param text the contents of the tooltip for `widget`
          */
-        set_tooltip_text(text?: string | null): void;
+        set_tooltip_text(text: string | null): void;
         /**
          * Replaces the default window used for displaying
          * tooltips with `custom_window`. GTK+ will take care of showing and
@@ -20310,7 +20634,7 @@ export namespace Handy {
          * tooltip window will be used.
          * @param custom_window a {@link Gtk.Window}, or `null`
          */
-        set_tooltip_window(custom_window?: Gtk.Window | null): void;
+        set_tooltip_window(custom_window: Gtk.Window | null): void;
         /**
          * Sets the vertical alignment of `widget`.
          * See the {@link Gtk.Widget.valign} property.
@@ -20354,7 +20678,7 @@ export namespace Handy {
          * so you should call this function before `widget` is realized.
          * @param visual visual to be used or `null` to unset a previous one
          */
-        set_visual(visual?: Gdk.Visual | null): void;
+        set_visual(visual: Gdk.Visual | null): void;
         /**
          * Sets a widget’s window. This function should only be used in a
          * widget’s {@link Gtk.Widget.SignalSignatures.realize | Gtk.Widget::realize} implementation. The %window passed is
@@ -20376,7 +20700,7 @@ export namespace Handy {
          * for more information.
          * @param region shape to be added, or `null` to remove an existing shape
          */
-        shape_combine_region(region?: cairo.Region | null): void;
+        shape_combine_region(region: cairo.Region | null): void;
         /**
          * Flags a widget to be displayed. Any widget that isn’t shown will
          * not appear on the screen. If you want to show all the widgets in a
@@ -21410,6 +21734,7 @@ export namespace Handy {
          * `true` if the dialog is narrow.
          * @since 0.0.11
          * @read-only
+         * @default false
          */
         get narrow(): boolean;
 
@@ -21508,38 +21833,19 @@ export namespace Handy {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -21547,15 +21853,9 @@ export namespace Handy {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -21722,7 +22022,7 @@ export namespace Handy {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -22055,26 +22355,31 @@ export namespace Handy {
 
         /**
          * `true` if the expansion is enabled.
+         * @default true
          */
         get enable_expansion(): boolean;
         set enable_expansion(val: boolean);
         /**
          * `true` if the expansion is enabled.
+         * @default true
          */
         get enableExpansion(): boolean;
         set enableExpansion(val: boolean);
         /**
          * `true` if the row is expanded.
+         * @default false
          */
         get expanded(): boolean;
         set expanded(val: boolean);
         /**
          * `true` if the switch enabling the expansion is visible.
+         * @default false
          */
         get show_enable_switch(): boolean;
         set show_enable_switch(val: boolean);
         /**
          * `true` if the switch enabling the expansion is visible.
+         * @default false
          */
         get showEnableSwitch(): boolean;
         set showEnableSwitch(val: boolean);
@@ -22144,31 +22449,51 @@ export namespace Handy {
          * @param show_enable_switch `true` to show the switch enabling the expansion
          */
         set_show_enable_switch(show_enable_switch: boolean): void;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get app_paintable(): boolean;
         set app_paintable(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get appPaintable(): boolean;
         set appPaintable(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get can_default(): boolean;
         set can_default(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get canDefault(): boolean;
         set canDefault(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get can_focus(): boolean;
         set can_focus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get canFocus(): boolean;
         set canFocus(val: boolean);
         /**
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get composite_child(): boolean;
         /**
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get compositeChild(): boolean;
@@ -22176,6 +22501,7 @@ export namespace Handy {
          * Whether the widget is double buffered.
          * @since 2.18
          * @deprecated since 3.14: Widgets should not use this property.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get double_buffered(): boolean;
@@ -22184,16 +22510,21 @@ export namespace Handy {
          * Whether the widget is double buffered.
          * @since 2.18
          * @deprecated since 3.14: Widgets should not use this property.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get doubleBuffered(): boolean;
         set doubleBuffered(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default Gdk.EventMask.STRUCTURE_MASK
+         * @category Inherited from Gtk.Widget
+         */
         get events(): Gdk.EventMask;
         set events(val: Gdk.EventMask);
         /**
          * Whether to expand in both directions. Setting this sets both {@link Gtk.Widget.hexpand} and {@link Gtk.Widget.vexpand}
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get expand(): boolean;
@@ -22206,6 +22537,7 @@ export namespace Handy {
          * Before 3.20, several widgets (GtkButton, GtkFileChooserButton,
          * GtkComboBox) implemented this property individually.
          * @since 3.20
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get focus_on_click(): boolean;
@@ -22218,6 +22550,7 @@ export namespace Handy {
          * Before 3.20, several widgets (GtkButton, GtkFileChooserButton,
          * GtkComboBox) implemented this property individually.
          * @since 3.20
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get focusOnClick(): boolean;
@@ -22225,20 +22558,33 @@ export namespace Handy {
         /**
          * How to distribute horizontal space if widget gets extra space, see {@link Gtk.Align}
          * @since 3.0
+         * @default Gtk.Align.FILL
          * @category Inherited from Gtk.Widget
          */
         get halign(): Gtk.Align;
         set halign(val: Gtk.Align);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get has_default(): boolean;
         set has_default(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get hasDefault(): boolean;
         set hasDefault(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get has_focus(): boolean;
         set has_focus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get hasFocus(): boolean;
         set hasFocus(val: boolean);
         /**
@@ -22252,6 +22598,7 @@ export namespace Handy {
          * and motion-notify events.  This cannot and will not be undone when the
          * property is set to `false` again.
          * @since 2.12
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get has_tooltip(): boolean;
@@ -22267,19 +22614,27 @@ export namespace Handy {
          * and motion-notify events.  This cannot and will not be undone when the
          * property is set to `false` again.
          * @since 2.12
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hasTooltip(): boolean;
         set hasTooltip(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default -1
+         * @category Inherited from Gtk.Widget
+         */
         get height_request(): number;
         set height_request(val: number);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default -1
+         * @category Inherited from Gtk.Widget
+         */
         get heightRequest(): number;
         set heightRequest(val: number);
         /**
          * Whether to expand horizontally. See `gtk_widget_set_hexpand()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpand(): boolean;
@@ -22287,6 +22642,7 @@ export namespace Handy {
         /**
          * Whether to use the {@link Gtk.Widget.hexpand} property. See `gtk_widget_get_hexpand_set()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpand_set(): boolean;
@@ -22294,20 +22650,28 @@ export namespace Handy {
         /**
          * Whether to use the {@link Gtk.Widget.hexpand} property. See `gtk_widget_get_hexpand_set()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpandSet(): boolean;
         set hexpandSet(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get is_focus(): boolean;
         set is_focus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get isFocus(): boolean;
         set isFocus(val: boolean);
         /**
          * Sets all four sides' margin at once. If read, returns max
          * margin on any side.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin(): number;
@@ -22319,6 +22683,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_bottom(): number;
@@ -22330,6 +22695,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginBottom(): number;
@@ -22342,6 +22708,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.12
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_end(): number;
@@ -22354,6 +22721,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.12
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginEnd(): number;
@@ -22366,6 +22734,7 @@ export namespace Handy {
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
          * @deprecated since 3.12: Use {@link Gtk.Widget.margin_start} instead.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_left(): number;
@@ -22378,6 +22747,7 @@ export namespace Handy {
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
          * @deprecated since 3.12: Use {@link Gtk.Widget.margin_start} instead.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginLeft(): number;
@@ -22390,6 +22760,7 @@ export namespace Handy {
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
          * @deprecated since 3.12: Use {@link Gtk.Widget.margin_end} instead.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_right(): number;
@@ -22402,6 +22773,7 @@ export namespace Handy {
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
          * @deprecated since 3.12: Use {@link Gtk.Widget.margin_end} instead.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginRight(): number;
@@ -22414,6 +22786,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.12
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_start(): number;
@@ -22426,6 +22799,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.12
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginStart(): number;
@@ -22437,6 +22811,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_top(): number;
@@ -22448,17 +22823,27 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginTop(): number;
         set marginTop(val: number);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default null
+         * @category Inherited from Gtk.Widget
+         */
         get name(): string;
         set name(val: string);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get no_show_all(): boolean;
         set no_show_all(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get noShowAll(): boolean;
         set noShowAll(val: boolean);
         /**
@@ -22467,17 +22852,24 @@ export namespace Handy {
          *
          * Before 3.8 this was only available in GtkWindow
          * @since 3.8
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get opacity(): number;
         set opacity(val: number);
         /** @category Inherited from Gtk.Widget */
-        get parent(): Gtk.Container;
-        set parent(val: Gtk.Container);
-        /** @category Inherited from Gtk.Widget */
+        get parent(): Gtk.Container | null;
+        set parent(val: Gtk.Container | null);
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get receives_default(): boolean;
         set receives_default(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get receivesDefault(): boolean;
         set receivesDefault(val: boolean);
         /**
@@ -22485,6 +22877,7 @@ export namespace Handy {
          * more details about widget scaling.
          * @since 3.10
          * @read-only
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -22493,10 +22886,14 @@ export namespace Handy {
          * more details about widget scaling.
          * @since 3.10
          * @read-only
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default true
+         * @category Inherited from Gtk.Widget
+         */
         get sensitive(): boolean;
         set sensitive(val: boolean);
         /**
@@ -22519,10 +22916,11 @@ export namespace Handy {
          * Note that if both {@link Gtk.Widget.tooltip_text} and {@link Gtk.Widget.tooltip_markup}
          * are set, the last one wins.
          * @since 2.12
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltip_markup(): string;
-        set tooltip_markup(val: string);
+        get tooltip_markup(): string | null;
+        set tooltip_markup(val: string | null);
         /**
          * Sets the text of tooltip to be the given string, which is marked up
          * with the [Pango text markup language][PangoMarkupFormat].
@@ -22536,10 +22934,11 @@ export namespace Handy {
          * Note that if both {@link Gtk.Widget.tooltip_text} and {@link Gtk.Widget.tooltip_markup}
          * are set, the last one wins.
          * @since 2.12
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltipMarkup(): string;
-        set tooltipMarkup(val: string);
+        get tooltipMarkup(): string | null;
+        set tooltipMarkup(val: string | null);
         /**
          * Sets the text of tooltip to be the given string.
          *
@@ -22553,10 +22952,11 @@ export namespace Handy {
          * Note that if both {@link Gtk.Widget.tooltip_text} and {@link Gtk.Widget.tooltip_markup}
          * are set, the last one wins.
          * @since 2.12
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltip_text(): string;
-        set tooltip_text(val: string);
+        get tooltip_text(): string | null;
+        set tooltip_text(val: string | null);
         /**
          * Sets the text of tooltip to be the given string.
          *
@@ -22570,13 +22970,15 @@ export namespace Handy {
          * Note that if both {@link Gtk.Widget.tooltip_text} and {@link Gtk.Widget.tooltip_markup}
          * are set, the last one wins.
          * @since 2.12
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltipText(): string;
-        set tooltipText(val: string);
+        get tooltipText(): string | null;
+        set tooltipText(val: string | null);
         /**
          * How to distribute vertical space if widget gets extra space, see {@link Gtk.Align}
          * @since 3.0
+         * @default Gtk.Align.FILL
          * @category Inherited from Gtk.Widget
          */
         get valign(): Gtk.Align;
@@ -22584,6 +22986,7 @@ export namespace Handy {
         /**
          * Whether to expand vertically. See `gtk_widget_set_vexpand()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpand(): boolean;
@@ -22591,6 +22994,7 @@ export namespace Handy {
         /**
          * Whether to use the {@link Gtk.Widget.vexpand} property. See `gtk_widget_get_vexpand_set()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpand_set(): boolean;
@@ -22598,17 +23002,27 @@ export namespace Handy {
         /**
          * Whether to use the {@link Gtk.Widget.vexpand} property. See `gtk_widget_get_vexpand_set()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpandSet(): boolean;
         set vexpandSet(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get visible(): boolean;
         set visible(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default -1
+         * @category Inherited from Gtk.Widget
+         */
         get width_request(): number;
         set width_request(val: number);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default -1
+         * @category Inherited from Gtk.Widget
+         */
         get widthRequest(): number;
         set widthRequest(val: number);
         /**
@@ -22617,7 +23031,7 @@ export namespace Handy {
          * @read-only
          * @category Inherited from Gtk.Widget
          */
-        get window(): Gdk.Window;
+        get window(): Gdk.Window | null;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -22665,38 +23079,19 @@ export namespace Handy {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -22704,15 +23099,9 @@ export namespace Handy {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -22879,7 +23268,7 @@ export namespace Handy {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -23243,7 +23632,7 @@ export namespace Handy {
          * @param text text to set on the layout (can be `null`)
          * @returns the new {@link Pango.Layout}
          */
-        create_pango_layout(text?: string | null): Pango.Layout;
+        create_pango_layout(text: string | null): Pango.Layout;
         /**
          * Destroys a widget.
          *
@@ -23312,7 +23701,7 @@ export namespace Handy {
             targets: Gtk.TargetList,
             actions: Gdk.DragAction,
             button: number,
-            event?: Gdk.Event | null,
+            event: Gdk.Event | null,
         ): Gdk.DragContext;
         /**
          * Initiates a drag on the source side. The function only needs to be used
@@ -23403,7 +23792,7 @@ export namespace Handy {
          * @param target_list list of droppable targets, or `null` to use    gtk_drag_dest_get_target_list (`widget`).
          * @returns first target that the source offers     and the dest can accept, or `GDK_NONE`
          */
-        drag_dest_find_target(context: Gdk.DragContext, target_list?: Gtk.TargetList | null): Gdk.Atom;
+        drag_dest_find_target(context: Gdk.DragContext, target_list: Gtk.TargetList | null): Gdk.Atom;
         /**
          * Returns the list of targets this widget can accept from
          * drag-and-drop.
@@ -23476,7 +23865,7 @@ export namespace Handy {
          * `gtk_drag_dest_set()`.
          * @param target_list list of droppable targets, or `null` for none
          */
-        drag_dest_set_target_list(target_list?: Gtk.TargetList | null): void;
+        drag_dest_set_target_list(target_list: Gtk.TargetList | null): void;
         /**
          * Tells the widget to emit {@link Gtk.Widget.SignalSignatures.drag_motion | Gtk.Widget::drag-motion} and
          * {@link Gtk.Widget.SignalSignatures.drag_leave | Gtk.Widget::drag-leave} events regardless of the targets and the
@@ -23586,7 +23975,7 @@ export namespace Handy {
          * `gtk_drag_source_set()`.
          * @param target_list list of draggable targets, or `null` for none
          */
-        drag_source_set_target_list(target_list?: Gtk.TargetList | null): void;
+        drag_source_set_target_list(target_list: Gtk.TargetList | null): void;
         /**
          * Undoes the effects of `gtk_drag_source_set()`.
          */
@@ -24544,7 +24933,7 @@ export namespace Handy {
          * `gdk_window_input_shape_combine_region()` for more information.
          * @param region shape to be added, or `null` to remove an existing shape
          */
-        input_shape_combine_region(region?: cairo.Region | null): void;
+        input_shape_combine_region(region: cairo.Region | null): void;
         /**
          * Inserts `group` into `widget`. Children of `widget` that implement
          * {@link Gtk.Actionable} can then be associated with actions in `group` by
@@ -24556,7 +24945,7 @@ export namespace Handy {
          * @param name the prefix for actions in `group`
          * @param group a {@link Gio.ActionGroup}, or `null`
          */
-        insert_action_group(name: string, group?: Gio.ActionGroup | null): void;
+        insert_action_group(name: string, group: Gio.ActionGroup | null): void;
         /**
          * Computes the intersection of a `widget`’s area and `area`, storing
          * the intersection in `intersection`, and returns `true` if there was
@@ -24707,7 +25096,7 @@ export namespace Handy {
          * @param state the state for which to set the base color
          * @param color the color to assign (does not need to     be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_base()`.
          */
-        modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_base(state: Gtk.StateType, color: Gdk.Color | null): void;
         /**
          * Sets the background color for a widget in a particular state.
          *
@@ -24726,7 +25115,7 @@ export namespace Handy {
          * @param state the state for which to set the background color
          * @param color the color to assign (does not need     to be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_bg()`.
          */
-        modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_bg(state: Gtk.StateType, color: Gdk.Color | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the {@link Gtk.Widget}
          * cursor-color and secondary-cursor-color
@@ -24737,7 +25126,7 @@ export namespace Handy {
          * @param primary the color to use for primary cursor (does not     need to be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_cursor()`.
          * @param secondary the color to use for secondary cursor (does     not need to be allocated), or `null` to undo the effect of     previous calls to of `gtk_widget_modify_cursor()`.
          */
-        modify_cursor(primary?: Gdk.Color | null, secondary?: Gdk.Color | null): void;
+        modify_cursor(primary: Gdk.Color | null, secondary: Gdk.Color | null): void;
         /**
          * Sets the foreground color for a widget in a particular state.
          *
@@ -24746,7 +25135,7 @@ export namespace Handy {
          * @param state the state for which to set the foreground color
          * @param color the color to assign (does not need to be allocated),     or `null` to undo the effect of previous calls to     of `gtk_widget_modify_fg()`.
          */
-        modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_fg(state: Gtk.StateType, color: Gdk.Color | null): void;
         /**
          * Sets the font to use for a widget.
          *
@@ -24754,7 +25143,7 @@ export namespace Handy {
          * See also `gtk_widget_modify_style()`.
          * @param font_desc the font description to use, or `null`     to undo the effect of previous calls to `gtk_widget_modify_font()`
          */
-        modify_font(font_desc?: Pango.FontDescription | null): void;
+        modify_font(font_desc: Pango.FontDescription | null): void;
         /**
          * Modifies style values on the widget.
          *
@@ -24788,7 +25177,7 @@ export namespace Handy {
          * @param state the state for which to set the text color
          * @param color the color to assign (does not need to     be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_text()`.
          */
-        modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_text(state: Gtk.StateType, color: Gdk.Color | null): void;
         /**
          * Sets the background color to use for a widget.
          *
@@ -24797,7 +25186,7 @@ export namespace Handy {
          * @param state the state for which to set the background color
          * @param color the color to assign, or `null` to undo the effect     of previous calls to `gtk_widget_override_background_color()`
          */
-        override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_background_color(state: Gtk.StateFlags, color: Gdk.RGBA | null): void;
         /**
          * Sets the color to use for a widget.
          *
@@ -24827,7 +25216,7 @@ export namespace Handy {
          * @param state the state for which to set the color
          * @param color the color to assign, or `null` to undo the effect     of previous calls to `gtk_widget_override_color()`
          */
-        override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_color(state: Gtk.StateFlags, color: Gdk.RGBA | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the
          * cursor-color and secondary-cursor-color
@@ -24839,13 +25228,13 @@ export namespace Handy {
          * @param cursor the color to use for primary cursor (does not need to be     allocated), or `null` to undo the effect of previous calls to     of `gtk_widget_override_cursor()`.
          * @param secondary_cursor the color to use for secondary cursor (does not     need to be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_override_cursor()`.
          */
-        override_cursor(cursor?: Gdk.RGBA | null, secondary_cursor?: Gdk.RGBA | null): void;
+        override_cursor(cursor: Gdk.RGBA | null, secondary_cursor: Gdk.RGBA | null): void;
         /**
          * Sets the font to use for a widget. All other style values are
          * left untouched. See `gtk_widget_override_color()`.
          * @param font_desc the font description to use, or `null` to undo     the effect of previous calls to `gtk_widget_override_font()`
          */
-        override_font(font_desc?: Pango.FontDescription | null): void;
+        override_font(font_desc: Pango.FontDescription | null): void;
         /**
          * Sets a symbolic color for a widget.
          *
@@ -24855,7 +25244,7 @@ export namespace Handy {
          * @param name the name of the symbolic color to modify
          * @param color the color to assign (does not need     to be allocated), or `null` to undo the effect of previous     calls to `gtk_widget_override_symbolic_color()`
          */
-        override_symbolic_color(name: string, color?: Gdk.RGBA | null): void;
+        override_symbolic_color(name: string, color: Gdk.RGBA | null): void;
         /**
          * Obtains the full path to `widget`. The path is simply the name of a
          * widget and all its parents in the container hierarchy, separated by
@@ -25026,7 +25415,7 @@ export namespace Handy {
          * @param detail render detail to pass to theme engine
          * @returns a new pixbuf, or `null` if the     stock ID wasn’t known
          */
-        render_icon(stock_id: string, size: number, detail?: string | null): GdkPixbuf.Pixbuf | null;
+        render_icon(stock_id: string, size: number, detail: string | null): GdkPixbuf.Pixbuf | null;
         /**
          * A convenience function that uses the theme engine and style
          * settings for `widget` to look up `stock_id` and render it to
@@ -25133,7 +25522,7 @@ export namespace Handy {
          * @param accel_path path used to look up the accelerator
          * @param accel_group a {@link Gtk.AccelGroup}.
          */
-        set_accel_path(accel_path?: string | null, accel_group?: Gtk.AccelGroup | null): void;
+        set_accel_path(accel_path: string | null, accel_group: Gtk.AccelGroup | null): void;
         /**
          * Sets the widget’s allocation.  This should not be used
          * directly, but from within a widget’s size_allocate method.
@@ -25317,13 +25706,13 @@ export namespace Handy {
          * will inherit the font map from its parent.
          * @param font_map a {@link Pango.FontMap}, or `null` to unset any previously     set font map
          */
-        set_font_map(font_map?: Pango.FontMap | null): void;
+        set_font_map(font_map: Pango.FontMap | null): void;
         /**
          * Sets the {@link cairo.FontOptions} used for Pango rendering in this widget.
          * When not set, the default font options for the {@link Gdk.Screen} will be used.
          * @param options a {@link cairo.FontOptions}, or `null` to unset any   previously set default font options.
          */
-        set_font_options(options?: cairo.FontOptions | null): void;
+        set_font_options(options: cairo.FontOptions | null): void;
         /**
          * Sets the horizontal alignment of `widget`.
          * See the {@link Gtk.Widget.halign} property.
@@ -25616,7 +26005,7 @@ export namespace Handy {
          * GTK 3, this function does nothing, the passed in style is ignored.
          * @param style a {@link Gtk.Style}, or `null` to remove the effect     of a previous call to `gtk_widget_set_style()` and go back to     the default style
          */
-        set_style(style?: Gtk.Style | null): void;
+        set_style(style: Gtk.Style | null): void;
         /**
          * Enables or disables multiple pointer awareness. If this setting is `true`,
          * `widget` will start receiving multiple, per device enter/leave events. Note
@@ -25636,7 +26025,7 @@ export namespace Handy {
          * `gtk_tooltip_set_markup()`.
          * @param markup the contents of the tooltip for `widget`, or `null`
          */
-        set_tooltip_markup(markup?: string | null): void;
+        set_tooltip_markup(markup: string | null): void;
         /**
          * Sets `text` as the contents of the tooltip. This function will take
          * care of setting {@link Gtk.Widget.has_tooltip} to `true` and of the default
@@ -25645,7 +26034,7 @@ export namespace Handy {
          * See also the {@link Gtk.Widget.tooltip_text} property and `gtk_tooltip_set_text()`.
          * @param text the contents of the tooltip for `widget`
          */
-        set_tooltip_text(text?: string | null): void;
+        set_tooltip_text(text: string | null): void;
         /**
          * Replaces the default window used for displaying
          * tooltips with `custom_window`. GTK+ will take care of showing and
@@ -25654,7 +26043,7 @@ export namespace Handy {
          * tooltip window will be used.
          * @param custom_window a {@link Gtk.Window}, or `null`
          */
-        set_tooltip_window(custom_window?: Gtk.Window | null): void;
+        set_tooltip_window(custom_window: Gtk.Window | null): void;
         /**
          * Sets the vertical alignment of `widget`.
          * See the {@link Gtk.Widget.valign} property.
@@ -25698,7 +26087,7 @@ export namespace Handy {
          * so you should call this function before `widget` is realized.
          * @param visual visual to be used or `null` to unset a previous one
          */
-        set_visual(visual?: Gdk.Visual | null): void;
+        set_visual(visual: Gdk.Visual | null): void;
         /**
          * Sets a widget’s window. This function should only be used in a
          * widget’s {@link Gtk.Widget.SignalSignatures.realize | Gtk.Widget::realize} implementation. The %window passed is
@@ -25720,7 +26109,7 @@ export namespace Handy {
          * for more information.
          * @param region shape to be added, or `null` to remove an existing shape
          */
-        shape_combine_region(region?: cairo.Region | null): void;
+        shape_combine_region(region: cairo.Region | null): void;
         /**
          * Flags a widget to be displayed. Any widget that isn’t shown will
          * not appear on the screen. If you want to show all the widgets in a
@@ -26720,8 +27109,8 @@ export namespace Handy {
                 Gtk.Buildable.ConstructorProps {
             centering_policy: CenteringPolicy;
             centeringPolicy: CenteringPolicy;
-            custom_title: Gtk.Widget;
-            customTitle: Gtk.Widget;
+            custom_title: Gtk.Widget | null;
+            customTitle: Gtk.Widget | null;
             decoration_layout: string;
             decorationLayout: string;
             decoration_layout_set: boolean;
@@ -26733,8 +27122,8 @@ export namespace Handy {
             show_close_button: boolean;
             showCloseButton: boolean;
             spacing: number;
-            subtitle: string;
-            title: string;
+            subtitle: string | null;
+            title: string | null;
             transition_duration: number;
             transitionDuration: number;
             transition_running: boolean;
@@ -26750,14 +27139,20 @@ export namespace Handy {
 
         // Properties
 
+        /**
+         * @default Handy.CenteringPolicy.LOOSE
+         */
         get centering_policy(): CenteringPolicy;
         set centering_policy(val: CenteringPolicy);
+        /**
+         * @default Handy.CenteringPolicy.LOOSE
+         */
         get centeringPolicy(): CenteringPolicy;
         set centeringPolicy(val: CenteringPolicy);
-        get custom_title(): Gtk.Widget;
-        set custom_title(val: Gtk.Widget);
-        get customTitle(): Gtk.Widget;
-        set customTitle(val: Gtk.Widget);
+        get custom_title(): Gtk.Widget | null;
+        set custom_title(val: Gtk.Widget | null);
+        get customTitle(): Gtk.Widget | null;
+        set customTitle(val: Gtk.Widget | null);
         /**
          * The decoration layout for buttons. If this property is
          * not set, the {@link Gtk.Settings.gtk_decoration_layout} setting
@@ -26766,6 +27161,7 @@ export namespace Handy {
          * See `hdy_header_bar_set_decoration_layout()` for information
          * about the format of this string.
          * @since 0.0.10
+         * @default null
          */
         get decoration_layout(): string;
         set decoration_layout(val: string);
@@ -26777,18 +27173,21 @@ export namespace Handy {
          * See `hdy_header_bar_set_decoration_layout()` for information
          * about the format of this string.
          * @since 0.0.10
+         * @default null
          */
         get decorationLayout(): string;
         set decorationLayout(val: string);
         /**
          * Set to `true` if {@link Handy.HeaderBar.decoration_layout} is set.
          * @since 0.0.10
+         * @default false
          */
         get decoration_layout_set(): boolean;
         set decoration_layout_set(val: boolean);
         /**
          * Set to `true` if {@link Handy.HeaderBar.decoration_layout} is set.
          * @since 0.0.10
+         * @default false
          */
         get decorationLayoutSet(): boolean;
         set decorationLayoutSet(val: boolean);
@@ -26796,6 +27195,7 @@ export namespace Handy {
          * If `true`, reserve space for a subtitle, even if none
          * is currently set.
          * @since 0.0.10
+         * @default true
          */
         get has_subtitle(): boolean;
         set has_subtitle(val: boolean);
@@ -26803,11 +27203,18 @@ export namespace Handy {
          * If `true`, reserve space for a subtitle, even if none
          * is currently set.
          * @since 0.0.10
+         * @default true
          */
         get hasSubtitle(): boolean;
         set hasSubtitle(val: boolean);
+        /**
+         * @default false
+         */
         get interpolate_size(): boolean;
         set interpolate_size(val: boolean);
+        /**
+         * @default false
+         */
         get interpolateSize(): boolean;
         set interpolateSize(val: boolean);
         /**
@@ -26818,6 +27225,7 @@ export namespace Handy {
          * the state of the window (e.g. a close button will not be
          * shown if the window can't be closed).
          * @since 0.0.10
+         * @default false
          */
         get show_close_button(): boolean;
         set show_close_button(val: boolean);
@@ -26829,25 +27237,43 @@ export namespace Handy {
          * the state of the window (e.g. a close button will not be
          * shown if the window can't be closed).
          * @since 0.0.10
+         * @default false
          */
         get showCloseButton(): boolean;
         set showCloseButton(val: boolean);
+        /**
+         * @default 6
+         */
         get spacing(): number;
         set spacing(val: number);
-        get subtitle(): string;
-        set subtitle(val: string);
-        get title(): string;
-        set title(val: string);
+        /**
+         * @default null
+         */
+        get subtitle(): string | null;
+        set subtitle(val: string | null);
+        /**
+         * @default null
+         */
+        get title(): string | null;
+        set title(val: string | null);
+        /**
+         * @default 200
+         */
         get transition_duration(): number;
         set transition_duration(val: number);
+        /**
+         * @default 200
+         */
         get transitionDuration(): number;
         set transitionDuration(val: number);
         /**
          * @read-only
+         * @default false
          */
         get transition_running(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get transitionRunning(): boolean;
 
@@ -26979,7 +27405,7 @@ export namespace Handy {
          * label to be visible again.
          * @param title_widget a custom widget to use for a title
          */
-        set_custom_title(title_widget?: Gtk.Widget | null): void;
+        set_custom_title(title_widget: Gtk.Widget | null): void;
         /**
          * Sets the decoration layout for this header bar, overriding
          * the {@link Gtk.Settings.gtk_decoration_layout} setting.
@@ -27000,7 +27426,7 @@ export namespace Handy {
          * on the left, and minimize, maximize and close buttons on the right.
          * @param layout a decoration layout, or `null` to     unset the layout
          */
-        set_decoration_layout(layout?: string | null): void;
+        set_decoration_layout(layout: string | null): void;
         /**
          * Sets whether the header bar should reserve space
          * for a subtitle, even if none is currently set.
@@ -27031,14 +27457,14 @@ export namespace Handy {
          * {@link Handy.HeaderBar.has_subtitle} property to `false`.
          * @param subtitle a subtitle, or `null`
          */
-        set_subtitle(subtitle?: string | null): void;
+        set_subtitle(subtitle: string | null): void;
         /**
          * Sets the title of the {@link Handy.HeaderBar}. The title should help a user
          * identify the current view. A good title should not include the
          * application name.
          * @param title a title, or `null`
          */
-        set_title(title?: string | null): void;
+        set_title(title: string | null): void;
         /**
          * Sets the duration that transitions between pages in `self`
          * will take.
@@ -27092,38 +27518,19 @@ export namespace Handy {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -27131,15 +27538,9 @@ export namespace Handy {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -27306,7 +27707,7 @@ export namespace Handy {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -27505,7 +27906,7 @@ export namespace Handy {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gtk.Buildable.ConstructorProps {
-            focus: Gtk.HeaderBar;
+            focus: Gtk.HeaderBar | null;
         }
     }
 
@@ -27522,8 +27923,8 @@ export namespace Handy {
          * spread as if the header bars of the group were only one, otherwise the
          * focused header bar will be the only one to receive the decoration.
          */
-        get focus(): Gtk.HeaderBar;
-        set focus(val: Gtk.HeaderBar);
+        get focus(): Gtk.HeaderBar | null;
+        set focus(val: Gtk.HeaderBar | null);
 
         /**
          * Compile-time signal type information.
@@ -27598,7 +27999,7 @@ export namespace Handy {
          * otherwise `header_bar` will be the only one to receive the decoration.
          * @param header_bar a {@link Gtk.HeaderBar} of `self`, or `null`
          */
-        set_focus(header_bar?: Gtk.HeaderBar | null): void;
+        set_focus(header_bar: Gtk.HeaderBar | null): void;
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
@@ -27606,7 +28007,7 @@ export namespace Handy {
          * @param child child to add
          * @param type kind of child or `null`
          */
-        add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
+        add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
         /**
          * Constructs a child of `buildable` with the name `name`.
          *
@@ -27625,7 +28026,7 @@ export namespace Handy {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: any | null): void;
+        custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: any | null): void;
         /**
          * This is called at the end of each custom element handled by
          * the buildable.
@@ -27634,7 +28035,7 @@ export namespace Handy {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: any | null): void;
+        custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: any | null): void;
         /**
          * This is called for each unknown element under `<child>`.
          * @param builder a {@link Gtk.Builder} used to construct this object
@@ -27692,7 +28093,7 @@ export namespace Handy {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
         /**
          * Constructs a child of `buildable` with the name `name`.
          *
@@ -27716,7 +28117,7 @@ export namespace Handy {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * This is called at the end of each custom element handled by
@@ -27731,7 +28132,7 @@ export namespace Handy {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * This is called for each unknown element under `<child>`.
@@ -27832,38 +28233,19 @@ export namespace Handy {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -27871,15 +28253,9 @@ export namespace Handy {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -28046,7 +28422,7 @@ export namespace Handy {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -28332,8 +28708,14 @@ export namespace Handy {
          * @write-only
          */
         set leftAction(val: Gtk.Widget);
+        /**
+         * @default false
+         */
         get only_digits(): boolean;
         set only_digits(val: boolean);
+        /**
+         * @default false
+         */
         get onlyDigits(): boolean;
         set onlyDigits(val: boolean);
         /**
@@ -28344,8 +28726,14 @@ export namespace Handy {
          * @write-only
          */
         set rightAction(val: Gtk.Widget);
+        /**
+         * @default true
+         */
         get show_symbols(): boolean;
         set show_symbols(val: boolean);
+        /**
+         * @default true
+         */
         get showSymbols(): boolean;
         set showSymbols(val: boolean);
 
@@ -28416,6 +28804,7 @@ export namespace Handy {
         /**
          * The orientation of the orientable.
          * @since 2.16
+         * @default Gtk.Orientation.HORIZONTAL
          * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
@@ -28477,38 +28866,19 @@ export namespace Handy {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -28516,15 +28886,9 @@ export namespace Handy {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -28691,7 +29055,7 @@ export namespace Handy {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -29002,6 +29366,7 @@ export namespace Handy {
          * Whether or not `self` allows switching to the previous child that has
          * 'allow-visible' child property set to `true` via a swipe gesture.
          * @since 0.0.12
+         * @default false
          */
         get can_swipe_back(): boolean;
         set can_swipe_back(val: boolean);
@@ -29009,6 +29374,7 @@ export namespace Handy {
          * Whether or not `self` allows switching to the previous child that has
          * 'allow-visible' child property set to `true` via a swipe gesture.
          * @since 0.0.12
+         * @default false
          */
         get canSwipeBack(): boolean;
         set canSwipeBack(val: boolean);
@@ -29016,6 +29382,7 @@ export namespace Handy {
          * Whether or not `self` allows switching to the next child that has
          * 'allow-visible' child property set to `true` via a swipe gesture.
          * @since 0.0.12
+         * @default false
          */
         get can_swipe_forward(): boolean;
         set can_swipe_forward(val: boolean);
@@ -29023,30 +29390,41 @@ export namespace Handy {
          * Whether or not `self` allows switching to the next child that has
          * 'allow-visible' child property set to `true` via a swipe gesture.
          * @since 0.0.12
+         * @default false
          */
         get canSwipeForward(): boolean;
         set canSwipeForward(val: boolean);
+        /**
+         * @default 200
+         */
         get child_transition_duration(): number;
         set child_transition_duration(val: number);
+        /**
+         * @default 200
+         */
         get childTransitionDuration(): number;
         set childTransitionDuration(val: number);
         /**
          * @read-only
+         * @default false
          */
         get child_transition_running(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get childTransitionRunning(): boolean;
         /**
          * The type of animation used to transition between children
          * @deprecated since 0.0.12: Use {@link Handy.Leaflet.transition_type} instead
+         * @default Handy.LeafletChildTransitionType.NONE
          */
         get child_transition_type(): LeafletChildTransitionType;
         set child_transition_type(val: LeafletChildTransitionType);
         /**
          * The type of animation used to transition between children
          * @deprecated since 0.0.12: Use {@link Handy.Leaflet.transition_type} instead
+         * @default Handy.LeafletChildTransitionType.NONE
          */
         get childTransitionType(): LeafletChildTransitionType;
         set childTransitionType(val: LeafletChildTransitionType);
@@ -29058,6 +29436,7 @@ export namespace Handy {
          *
          * See also: {@link Handy.Leaflet.folded}.
          * @read-only
+         * @default Handy.Fold.UNFOLDED
          */
         get fold(): Fold;
         /**
@@ -29068,33 +29447,60 @@ export namespace Handy {
          * {@link Handy.Leaflet.fold} of a leaflet to any other `gboolean` property of other
          * {@link GObject.Object}'s using `g_object_bind_property`().
          * @read-only
+         * @default false
          */
         get folded(): boolean;
+        /**
+         * @default true
+         */
         get hhomogeneous_folded(): boolean;
         set hhomogeneous_folded(val: boolean);
+        /**
+         * @default true
+         */
         get hhomogeneousFolded(): boolean;
         set hhomogeneousFolded(val: boolean);
+        /**
+         * @default false
+         */
         get hhomogeneous_unfolded(): boolean;
         set hhomogeneous_unfolded(val: boolean);
+        /**
+         * @default false
+         */
         get hhomogeneousUnfolded(): boolean;
         set hhomogeneousUnfolded(val: boolean);
+        /**
+         * @default false
+         */
         get interpolate_size(): boolean;
         set interpolate_size(val: boolean);
+        /**
+         * @default false
+         */
         get interpolateSize(): boolean;
         set interpolateSize(val: boolean);
+        /**
+         * @default 250
+         */
         get mode_transition_duration(): number;
         set mode_transition_duration(val: number);
+        /**
+         * @default 250
+         */
         get modeTransitionDuration(): number;
         set modeTransitionDuration(val: number);
         /**
          * The type of animation used to transition between mode
          * @deprecated since 0.0.12: Use {@link Handy.Leaflet.transition_type} instead
+         * @default Handy.LeafletModeTransitionType.NONE
          */
         get mode_transition_type(): LeafletModeTransitionType;
         set mode_transition_type(val: LeafletModeTransitionType);
         /**
          * The type of animation used to transition between mode
          * @deprecated since 0.0.12: Use {@link Handy.Leaflet.transition_type} instead
+         * @default Handy.LeafletModeTransitionType.NONE
          */
         get modeTransitionType(): LeafletModeTransitionType;
         set modeTransitionType(val: LeafletModeTransitionType);
@@ -29106,6 +29512,7 @@ export namespace Handy {
          * possible to change the animation based on the mode or child that is about
          * to become current.
          * @since 0.0.12
+         * @default Handy.LeafletTransitionType.NONE
          */
         get transition_type(): LeafletTransitionType;
         set transition_type(val: LeafletTransitionType);
@@ -29117,23 +29524,42 @@ export namespace Handy {
          * possible to change the animation based on the mode or child that is about
          * to become current.
          * @since 0.0.12
+         * @default Handy.LeafletTransitionType.NONE
          */
         get transitionType(): LeafletTransitionType;
         set transitionType(val: LeafletTransitionType);
+        /**
+         * @default true
+         */
         get vhomogeneous_folded(): boolean;
         set vhomogeneous_folded(val: boolean);
+        /**
+         * @default true
+         */
         get vhomogeneousFolded(): boolean;
         set vhomogeneousFolded(val: boolean);
+        /**
+         * @default false
+         */
         get vhomogeneous_unfolded(): boolean;
         set vhomogeneous_unfolded(val: boolean);
+        /**
+         * @default false
+         */
         get vhomogeneousUnfolded(): boolean;
         set vhomogeneousUnfolded(val: boolean);
         get visible_child(): Gtk.Widget;
         set visible_child(val: Gtk.Widget);
         get visibleChild(): Gtk.Widget;
         set visibleChild(val: Gtk.Widget);
+        /**
+         * @default null
+         */
         get visible_child_name(): string;
         set visible_child_name(val: string);
+        /**
+         * @default null
+         */
         get visibleChildName(): string;
         set visibleChildName(val: string);
 
@@ -29340,35 +29766,56 @@ export namespace Handy {
         /**
          * The orientation of the orientable.
          * @since 2.16
+         * @default Gtk.Orientation.HORIZONTAL
          * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
         set orientation(val: Gtk.Orientation);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get app_paintable(): boolean;
         set app_paintable(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get appPaintable(): boolean;
         set appPaintable(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get can_default(): boolean;
         set can_default(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get canDefault(): boolean;
         set canDefault(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get can_focus(): boolean;
         set can_focus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get canFocus(): boolean;
         set canFocus(val: boolean);
         /**
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get composite_child(): boolean;
         /**
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get compositeChild(): boolean;
@@ -29376,6 +29823,7 @@ export namespace Handy {
          * Whether the widget is double buffered.
          * @since 2.18
          * @deprecated since 3.14: Widgets should not use this property.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get double_buffered(): boolean;
@@ -29384,16 +29832,21 @@ export namespace Handy {
          * Whether the widget is double buffered.
          * @since 2.18
          * @deprecated since 3.14: Widgets should not use this property.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get doubleBuffered(): boolean;
         set doubleBuffered(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default Gdk.EventMask.STRUCTURE_MASK
+         * @category Inherited from Gtk.Widget
+         */
         get events(): Gdk.EventMask;
         set events(val: Gdk.EventMask);
         /**
          * Whether to expand in both directions. Setting this sets both {@link Gtk.Widget.hexpand} and {@link Gtk.Widget.vexpand}
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get expand(): boolean;
@@ -29406,6 +29859,7 @@ export namespace Handy {
          * Before 3.20, several widgets (GtkButton, GtkFileChooserButton,
          * GtkComboBox) implemented this property individually.
          * @since 3.20
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get focus_on_click(): boolean;
@@ -29418,6 +29872,7 @@ export namespace Handy {
          * Before 3.20, several widgets (GtkButton, GtkFileChooserButton,
          * GtkComboBox) implemented this property individually.
          * @since 3.20
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get focusOnClick(): boolean;
@@ -29425,20 +29880,33 @@ export namespace Handy {
         /**
          * How to distribute horizontal space if widget gets extra space, see {@link Gtk.Align}
          * @since 3.0
+         * @default Gtk.Align.FILL
          * @category Inherited from Gtk.Widget
          */
         get halign(): Gtk.Align;
         set halign(val: Gtk.Align);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get has_default(): boolean;
         set has_default(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get hasDefault(): boolean;
         set hasDefault(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get has_focus(): boolean;
         set has_focus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get hasFocus(): boolean;
         set hasFocus(val: boolean);
         /**
@@ -29452,6 +29920,7 @@ export namespace Handy {
          * and motion-notify events.  This cannot and will not be undone when the
          * property is set to `false` again.
          * @since 2.12
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get has_tooltip(): boolean;
@@ -29467,19 +29936,27 @@ export namespace Handy {
          * and motion-notify events.  This cannot and will not be undone when the
          * property is set to `false` again.
          * @since 2.12
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hasTooltip(): boolean;
         set hasTooltip(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default -1
+         * @category Inherited from Gtk.Widget
+         */
         get height_request(): number;
         set height_request(val: number);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default -1
+         * @category Inherited from Gtk.Widget
+         */
         get heightRequest(): number;
         set heightRequest(val: number);
         /**
          * Whether to expand horizontally. See `gtk_widget_set_hexpand()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpand(): boolean;
@@ -29487,6 +29964,7 @@ export namespace Handy {
         /**
          * Whether to use the {@link Gtk.Widget.hexpand} property. See `gtk_widget_get_hexpand_set()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpand_set(): boolean;
@@ -29494,20 +29972,28 @@ export namespace Handy {
         /**
          * Whether to use the {@link Gtk.Widget.hexpand} property. See `gtk_widget_get_hexpand_set()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpandSet(): boolean;
         set hexpandSet(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get is_focus(): boolean;
         set is_focus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get isFocus(): boolean;
         set isFocus(val: boolean);
         /**
          * Sets all four sides' margin at once. If read, returns max
          * margin on any side.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin(): number;
@@ -29519,6 +30005,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_bottom(): number;
@@ -29530,6 +30017,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginBottom(): number;
@@ -29542,6 +30030,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.12
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_end(): number;
@@ -29554,6 +30043,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.12
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginEnd(): number;
@@ -29566,6 +30056,7 @@ export namespace Handy {
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
          * @deprecated since 3.12: Use {@link Gtk.Widget.margin_start} instead.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_left(): number;
@@ -29578,6 +30069,7 @@ export namespace Handy {
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
          * @deprecated since 3.12: Use {@link Gtk.Widget.margin_start} instead.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginLeft(): number;
@@ -29590,6 +30082,7 @@ export namespace Handy {
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
          * @deprecated since 3.12: Use {@link Gtk.Widget.margin_end} instead.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_right(): number;
@@ -29602,6 +30095,7 @@ export namespace Handy {
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
          * @deprecated since 3.12: Use {@link Gtk.Widget.margin_end} instead.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginRight(): number;
@@ -29614,6 +30108,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.12
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_start(): number;
@@ -29626,6 +30121,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.12
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginStart(): number;
@@ -29637,6 +30133,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_top(): number;
@@ -29648,17 +30145,27 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginTop(): number;
         set marginTop(val: number);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default null
+         * @category Inherited from Gtk.Widget
+         */
         get name(): string;
         set name(val: string);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get no_show_all(): boolean;
         set no_show_all(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get noShowAll(): boolean;
         set noShowAll(val: boolean);
         /**
@@ -29667,17 +30174,24 @@ export namespace Handy {
          *
          * Before 3.8 this was only available in GtkWindow
          * @since 3.8
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get opacity(): number;
         set opacity(val: number);
         /** @category Inherited from Gtk.Widget */
-        get parent(): Gtk.Container;
-        set parent(val: Gtk.Container);
-        /** @category Inherited from Gtk.Widget */
+        get parent(): Gtk.Container | null;
+        set parent(val: Gtk.Container | null);
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get receives_default(): boolean;
         set receives_default(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get receivesDefault(): boolean;
         set receivesDefault(val: boolean);
         /**
@@ -29685,6 +30199,7 @@ export namespace Handy {
          * more details about widget scaling.
          * @since 3.10
          * @read-only
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -29693,10 +30208,14 @@ export namespace Handy {
          * more details about widget scaling.
          * @since 3.10
          * @read-only
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default true
+         * @category Inherited from Gtk.Widget
+         */
         get sensitive(): boolean;
         set sensitive(val: boolean);
         /**
@@ -29719,10 +30238,11 @@ export namespace Handy {
          * Note that if both {@link Gtk.Widget.tooltip_text} and {@link Gtk.Widget.tooltip_markup}
          * are set, the last one wins.
          * @since 2.12
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltip_markup(): string;
-        set tooltip_markup(val: string);
+        get tooltip_markup(): string | null;
+        set tooltip_markup(val: string | null);
         /**
          * Sets the text of tooltip to be the given string, which is marked up
          * with the [Pango text markup language][PangoMarkupFormat].
@@ -29736,10 +30256,11 @@ export namespace Handy {
          * Note that if both {@link Gtk.Widget.tooltip_text} and {@link Gtk.Widget.tooltip_markup}
          * are set, the last one wins.
          * @since 2.12
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltipMarkup(): string;
-        set tooltipMarkup(val: string);
+        get tooltipMarkup(): string | null;
+        set tooltipMarkup(val: string | null);
         /**
          * Sets the text of tooltip to be the given string.
          *
@@ -29753,10 +30274,11 @@ export namespace Handy {
          * Note that if both {@link Gtk.Widget.tooltip_text} and {@link Gtk.Widget.tooltip_markup}
          * are set, the last one wins.
          * @since 2.12
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltip_text(): string;
-        set tooltip_text(val: string);
+        get tooltip_text(): string | null;
+        set tooltip_text(val: string | null);
         /**
          * Sets the text of tooltip to be the given string.
          *
@@ -29770,13 +30292,15 @@ export namespace Handy {
          * Note that if both {@link Gtk.Widget.tooltip_text} and {@link Gtk.Widget.tooltip_markup}
          * are set, the last one wins.
          * @since 2.12
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltipText(): string;
-        set tooltipText(val: string);
+        get tooltipText(): string | null;
+        set tooltipText(val: string | null);
         /**
          * How to distribute vertical space if widget gets extra space, see {@link Gtk.Align}
          * @since 3.0
+         * @default Gtk.Align.FILL
          * @category Inherited from Gtk.Widget
          */
         get valign(): Gtk.Align;
@@ -29784,6 +30308,7 @@ export namespace Handy {
         /**
          * Whether to expand vertically. See `gtk_widget_set_vexpand()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpand(): boolean;
@@ -29791,6 +30316,7 @@ export namespace Handy {
         /**
          * Whether to use the {@link Gtk.Widget.vexpand} property. See `gtk_widget_get_vexpand_set()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpand_set(): boolean;
@@ -29798,17 +30324,27 @@ export namespace Handy {
         /**
          * Whether to use the {@link Gtk.Widget.vexpand} property. See `gtk_widget_get_vexpand_set()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpandSet(): boolean;
         set vexpandSet(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get visible(): boolean;
         set visible(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default -1
+         * @category Inherited from Gtk.Widget
+         */
         get width_request(): number;
         set width_request(val: number);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default -1
+         * @category Inherited from Gtk.Widget
+         */
         get widthRequest(): number;
         set widthRequest(val: number);
         /**
@@ -29817,7 +30353,7 @@ export namespace Handy {
          * @read-only
          * @category Inherited from Gtk.Widget
          */
-        get window(): Gdk.Window;
+        get window(): Gdk.Window | null;
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
@@ -29898,38 +30434,19 @@ export namespace Handy {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -29937,15 +30454,9 @@ export namespace Handy {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -30112,7 +30623,7 @@ export namespace Handy {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -30471,7 +30982,7 @@ export namespace Handy {
          * @param text text to set on the layout (can be `null`)
          * @returns the new {@link Pango.Layout}
          */
-        create_pango_layout(text?: string | null): Pango.Layout;
+        create_pango_layout(text: string | null): Pango.Layout;
         /**
          * Destroys a widget.
          *
@@ -30540,7 +31051,7 @@ export namespace Handy {
             targets: Gtk.TargetList,
             actions: Gdk.DragAction,
             button: number,
-            event?: Gdk.Event | null,
+            event: Gdk.Event | null,
         ): Gdk.DragContext;
         /**
          * Initiates a drag on the source side. The function only needs to be used
@@ -30631,7 +31142,7 @@ export namespace Handy {
          * @param target_list list of droppable targets, or `null` to use    gtk_drag_dest_get_target_list (`widget`).
          * @returns first target that the source offers     and the dest can accept, or `GDK_NONE`
          */
-        drag_dest_find_target(context: Gdk.DragContext, target_list?: Gtk.TargetList | null): Gdk.Atom;
+        drag_dest_find_target(context: Gdk.DragContext, target_list: Gtk.TargetList | null): Gdk.Atom;
         /**
          * Returns the list of targets this widget can accept from
          * drag-and-drop.
@@ -30704,7 +31215,7 @@ export namespace Handy {
          * `gtk_drag_dest_set()`.
          * @param target_list list of droppable targets, or `null` for none
          */
-        drag_dest_set_target_list(target_list?: Gtk.TargetList | null): void;
+        drag_dest_set_target_list(target_list: Gtk.TargetList | null): void;
         /**
          * Tells the widget to emit {@link Gtk.Widget.SignalSignatures.drag_motion | Gtk.Widget::drag-motion} and
          * {@link Gtk.Widget.SignalSignatures.drag_leave | Gtk.Widget::drag-leave} events regardless of the targets and the
@@ -30814,7 +31325,7 @@ export namespace Handy {
          * `gtk_drag_source_set()`.
          * @param target_list list of draggable targets, or `null` for none
          */
-        drag_source_set_target_list(target_list?: Gtk.TargetList | null): void;
+        drag_source_set_target_list(target_list: Gtk.TargetList | null): void;
         /**
          * Undoes the effects of `gtk_drag_source_set()`.
          */
@@ -31772,7 +32283,7 @@ export namespace Handy {
          * `gdk_window_input_shape_combine_region()` for more information.
          * @param region shape to be added, or `null` to remove an existing shape
          */
-        input_shape_combine_region(region?: cairo.Region | null): void;
+        input_shape_combine_region(region: cairo.Region | null): void;
         /**
          * Inserts `group` into `widget`. Children of `widget` that implement
          * {@link Gtk.Actionable} can then be associated with actions in `group` by
@@ -31784,7 +32295,7 @@ export namespace Handy {
          * @param name the prefix for actions in `group`
          * @param group a {@link Gio.ActionGroup}, or `null`
          */
-        insert_action_group(name: string, group?: Gio.ActionGroup | null): void;
+        insert_action_group(name: string, group: Gio.ActionGroup | null): void;
         /**
          * Computes the intersection of a `widget`’s area and `area`, storing
          * the intersection in `intersection`, and returns `true` if there was
@@ -31935,7 +32446,7 @@ export namespace Handy {
          * @param state the state for which to set the base color
          * @param color the color to assign (does not need to     be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_base()`.
          */
-        modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_base(state: Gtk.StateType, color: Gdk.Color | null): void;
         /**
          * Sets the background color for a widget in a particular state.
          *
@@ -31954,7 +32465,7 @@ export namespace Handy {
          * @param state the state for which to set the background color
          * @param color the color to assign (does not need     to be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_bg()`.
          */
-        modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_bg(state: Gtk.StateType, color: Gdk.Color | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the {@link Gtk.Widget}
          * cursor-color and secondary-cursor-color
@@ -31965,7 +32476,7 @@ export namespace Handy {
          * @param primary the color to use for primary cursor (does not     need to be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_cursor()`.
          * @param secondary the color to use for secondary cursor (does     not need to be allocated), or `null` to undo the effect of     previous calls to of `gtk_widget_modify_cursor()`.
          */
-        modify_cursor(primary?: Gdk.Color | null, secondary?: Gdk.Color | null): void;
+        modify_cursor(primary: Gdk.Color | null, secondary: Gdk.Color | null): void;
         /**
          * Sets the foreground color for a widget in a particular state.
          *
@@ -31974,7 +32485,7 @@ export namespace Handy {
          * @param state the state for which to set the foreground color
          * @param color the color to assign (does not need to be allocated),     or `null` to undo the effect of previous calls to     of `gtk_widget_modify_fg()`.
          */
-        modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_fg(state: Gtk.StateType, color: Gdk.Color | null): void;
         /**
          * Sets the font to use for a widget.
          *
@@ -31982,7 +32493,7 @@ export namespace Handy {
          * See also `gtk_widget_modify_style()`.
          * @param font_desc the font description to use, or `null`     to undo the effect of previous calls to `gtk_widget_modify_font()`
          */
-        modify_font(font_desc?: Pango.FontDescription | null): void;
+        modify_font(font_desc: Pango.FontDescription | null): void;
         /**
          * Modifies style values on the widget.
          *
@@ -32016,7 +32527,7 @@ export namespace Handy {
          * @param state the state for which to set the text color
          * @param color the color to assign (does not need to     be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_text()`.
          */
-        modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_text(state: Gtk.StateType, color: Gdk.Color | null): void;
         /**
          * Sets the background color to use for a widget.
          *
@@ -32025,7 +32536,7 @@ export namespace Handy {
          * @param state the state for which to set the background color
          * @param color the color to assign, or `null` to undo the effect     of previous calls to `gtk_widget_override_background_color()`
          */
-        override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_background_color(state: Gtk.StateFlags, color: Gdk.RGBA | null): void;
         /**
          * Sets the color to use for a widget.
          *
@@ -32055,7 +32566,7 @@ export namespace Handy {
          * @param state the state for which to set the color
          * @param color the color to assign, or `null` to undo the effect     of previous calls to `gtk_widget_override_color()`
          */
-        override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_color(state: Gtk.StateFlags, color: Gdk.RGBA | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the
          * cursor-color and secondary-cursor-color
@@ -32067,13 +32578,13 @@ export namespace Handy {
          * @param cursor the color to use for primary cursor (does not need to be     allocated), or `null` to undo the effect of previous calls to     of `gtk_widget_override_cursor()`.
          * @param secondary_cursor the color to use for secondary cursor (does not     need to be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_override_cursor()`.
          */
-        override_cursor(cursor?: Gdk.RGBA | null, secondary_cursor?: Gdk.RGBA | null): void;
+        override_cursor(cursor: Gdk.RGBA | null, secondary_cursor: Gdk.RGBA | null): void;
         /**
          * Sets the font to use for a widget. All other style values are
          * left untouched. See `gtk_widget_override_color()`.
          * @param font_desc the font description to use, or `null` to undo     the effect of previous calls to `gtk_widget_override_font()`
          */
-        override_font(font_desc?: Pango.FontDescription | null): void;
+        override_font(font_desc: Pango.FontDescription | null): void;
         /**
          * Sets a symbolic color for a widget.
          *
@@ -32083,7 +32594,7 @@ export namespace Handy {
          * @param name the name of the symbolic color to modify
          * @param color the color to assign (does not need     to be allocated), or `null` to undo the effect of previous     calls to `gtk_widget_override_symbolic_color()`
          */
-        override_symbolic_color(name: string, color?: Gdk.RGBA | null): void;
+        override_symbolic_color(name: string, color: Gdk.RGBA | null): void;
         /**
          * Obtains the full path to `widget`. The path is simply the name of a
          * widget and all its parents in the container hierarchy, separated by
@@ -32254,7 +32765,7 @@ export namespace Handy {
          * @param detail render detail to pass to theme engine
          * @returns a new pixbuf, or `null` if the     stock ID wasn’t known
          */
-        render_icon(stock_id: string, size: number, detail?: string | null): GdkPixbuf.Pixbuf | null;
+        render_icon(stock_id: string, size: number, detail: string | null): GdkPixbuf.Pixbuf | null;
         /**
          * A convenience function that uses the theme engine and style
          * settings for `widget` to look up `stock_id` and render it to
@@ -32361,7 +32872,7 @@ export namespace Handy {
          * @param accel_path path used to look up the accelerator
          * @param accel_group a {@link Gtk.AccelGroup}.
          */
-        set_accel_path(accel_path?: string | null, accel_group?: Gtk.AccelGroup | null): void;
+        set_accel_path(accel_path: string | null, accel_group: Gtk.AccelGroup | null): void;
         /**
          * Sets the widget’s allocation.  This should not be used
          * directly, but from within a widget’s size_allocate method.
@@ -32545,13 +33056,13 @@ export namespace Handy {
          * will inherit the font map from its parent.
          * @param font_map a {@link Pango.FontMap}, or `null` to unset any previously     set font map
          */
-        set_font_map(font_map?: Pango.FontMap | null): void;
+        set_font_map(font_map: Pango.FontMap | null): void;
         /**
          * Sets the {@link cairo.FontOptions} used for Pango rendering in this widget.
          * When not set, the default font options for the {@link Gdk.Screen} will be used.
          * @param options a {@link cairo.FontOptions}, or `null` to unset any   previously set default font options.
          */
-        set_font_options(options?: cairo.FontOptions | null): void;
+        set_font_options(options: cairo.FontOptions | null): void;
         /**
          * Sets the horizontal alignment of `widget`.
          * See the {@link Gtk.Widget.halign} property.
@@ -32844,7 +33355,7 @@ export namespace Handy {
          * GTK 3, this function does nothing, the passed in style is ignored.
          * @param style a {@link Gtk.Style}, or `null` to remove the effect     of a previous call to `gtk_widget_set_style()` and go back to     the default style
          */
-        set_style(style?: Gtk.Style | null): void;
+        set_style(style: Gtk.Style | null): void;
         /**
          * Enables or disables multiple pointer awareness. If this setting is `true`,
          * `widget` will start receiving multiple, per device enter/leave events. Note
@@ -32864,7 +33375,7 @@ export namespace Handy {
          * `gtk_tooltip_set_markup()`.
          * @param markup the contents of the tooltip for `widget`, or `null`
          */
-        set_tooltip_markup(markup?: string | null): void;
+        set_tooltip_markup(markup: string | null): void;
         /**
          * Sets `text` as the contents of the tooltip. This function will take
          * care of setting {@link Gtk.Widget.has_tooltip} to `true` and of the default
@@ -32873,7 +33384,7 @@ export namespace Handy {
          * See also the {@link Gtk.Widget.tooltip_text} property and `gtk_tooltip_set_text()`.
          * @param text the contents of the tooltip for `widget`
          */
-        set_tooltip_text(text?: string | null): void;
+        set_tooltip_text(text: string | null): void;
         /**
          * Replaces the default window used for displaying
          * tooltips with `custom_window`. GTK+ will take care of showing and
@@ -32882,7 +33393,7 @@ export namespace Handy {
          * tooltip window will be used.
          * @param custom_window a {@link Gtk.Window}, or `null`
          */
-        set_tooltip_window(custom_window?: Gtk.Window | null): void;
+        set_tooltip_window(custom_window: Gtk.Window | null): void;
         /**
          * Sets the vertical alignment of `widget`.
          * See the {@link Gtk.Widget.valign} property.
@@ -32926,7 +33437,7 @@ export namespace Handy {
          * so you should call this function before `widget` is realized.
          * @param visual visual to be used or `null` to unset a previous one
          */
-        set_visual(visual?: Gdk.Visual | null): void;
+        set_visual(visual: Gdk.Visual | null): void;
         /**
          * Sets a widget’s window. This function should only be used in a
          * widget’s {@link Gtk.Widget.SignalSignatures.realize | Gtk.Widget::realize} implementation. The %window passed is
@@ -32948,7 +33459,7 @@ export namespace Handy {
          * for more information.
          * @param region shape to be added, or `null` to remove an existing shape
          */
-        shape_combine_region(region?: cairo.Region | null): void;
+        shape_combine_region(region: cairo.Region | null): void;
         /**
          * Flags a widget to be displayed. Any widget that isn’t shown will
          * not appear on the screen. If you want to show all the widgets in a
@@ -33989,6 +34500,7 @@ export namespace Handy {
          *
          * This should usually be `false`.
          * @since 0.0.12
+         * @default false
          */
         get allow_mouse_drag(): boolean;
         set allow_mouse_drag(val: boolean);
@@ -33998,18 +34510,21 @@ export namespace Handy {
          *
          * This should usually be `false`.
          * @since 0.0.12
+         * @default false
          */
         get allowMouseDrag(): boolean;
         set allowMouseDrag(val: boolean);
         /**
          * Animation duration in milliseconds, used by `hdy_paginator_scroll_to()`.
          * @since 0.0.11
+         * @default 250
          */
         get animation_duration(): number;
         set animation_duration(val: number);
         /**
          * Animation duration in milliseconds, used by `hdy_paginator_scroll_to()`.
          * @since 0.0.11
+         * @default 250
          */
         get animationDuration(): number;
         set animationDuration(val: number);
@@ -34019,6 +34534,7 @@ export namespace Handy {
          * centering does nothing, otherwise it adds whitespace to the left or above
          * the pages to compensate for the indicators.
          * @since 0.0.11
+         * @default false
          */
         get center_content(): boolean;
         set center_content(val: boolean);
@@ -34028,6 +34544,7 @@ export namespace Handy {
          * centering does nothing, otherwise it adds whitespace to the left or above
          * the pages to compensate for the indicators.
          * @since 0.0.11
+         * @default false
          */
         get centerContent(): boolean;
         set centerContent(val: boolean);
@@ -34035,6 +34552,7 @@ export namespace Handy {
          * Spacing between content and page indicators. Does nothing if
          * {@link Handy.Paginator.indicator_style} is `HDY_PAGINATOR_INDICATOR_STYLE_NONE`.
          * @since 0.0.11
+         * @default 0
          */
         get indicator_spacing(): number;
         set indicator_spacing(val: number);
@@ -34042,6 +34560,7 @@ export namespace Handy {
          * Spacing between content and page indicators. Does nothing if
          * {@link Handy.Paginator.indicator_style} is `HDY_PAGINATOR_INDICATOR_STYLE_NONE`.
          * @since 0.0.11
+         * @default 0
          */
         get indicatorSpacing(): number;
         set indicatorSpacing(val: number);
@@ -34050,6 +34569,7 @@ export namespace Handy {
          * below or besides the pages. If the pages are meant to be centered,
          * {@link Handy.Paginator.center_content} can be used to compensate for that.
          * @since 0.0.11
+         * @default Handy.PaginatorIndicatorStyle.NONE
          */
         get indicator_style(): PaginatorIndicatorStyle;
         set indicator_style(val: PaginatorIndicatorStyle);
@@ -34058,6 +34578,7 @@ export namespace Handy {
          * below or besides the pages. If the pages are meant to be centered,
          * {@link Handy.Paginator.center_content} can be used to compensate for that.
          * @since 0.0.11
+         * @default Handy.PaginatorIndicatorStyle.NONE
          */
         get indicatorStyle(): PaginatorIndicatorStyle;
         set indicatorStyle(val: PaginatorIndicatorStyle);
@@ -34065,6 +34586,7 @@ export namespace Handy {
          * Whether `self` can be navigated. This can be used to temporarily disable
          * a {@link Handy.Paginator} to only allow navigating it in a certain state.
          * @since 0.0.11
+         * @default true
          */
         get interactive(): boolean;
         set interactive(val: boolean);
@@ -34072,12 +34594,14 @@ export namespace Handy {
          * The number of pages in a {@link Handy.Paginator}
          * @since 0.0.11
          * @read-only
+         * @default 0
          */
         get n_pages(): number;
         /**
          * The number of pages in a {@link Handy.Paginator}
          * @since 0.0.11
          * @read-only
+         * @default 0
          */
         get nPages(): number;
         /**
@@ -34085,11 +34609,13 @@ export namespace Handy {
          * `hdy_paginator_scroll_to()` for changing it.
          * @since 0.0.11
          * @read-only
+         * @default 0
          */
         get position(): number;
         /**
          * Spacing between pages in pixels.
          * @since 0.0.11
+         * @default 0
          */
         get spacing(): number;
         set spacing(val: number);
@@ -34263,35 +34789,56 @@ export namespace Handy {
         /**
          * The orientation of the orientable.
          * @since 2.16
+         * @default Gtk.Orientation.HORIZONTAL
          * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
         set orientation(val: Gtk.Orientation);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get app_paintable(): boolean;
         set app_paintable(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get appPaintable(): boolean;
         set appPaintable(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get can_default(): boolean;
         set can_default(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get canDefault(): boolean;
         set canDefault(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get can_focus(): boolean;
         set can_focus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get canFocus(): boolean;
         set canFocus(val: boolean);
         /**
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get composite_child(): boolean;
         /**
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get compositeChild(): boolean;
@@ -34299,6 +34846,7 @@ export namespace Handy {
          * Whether the widget is double buffered.
          * @since 2.18
          * @deprecated since 3.14: Widgets should not use this property.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get double_buffered(): boolean;
@@ -34307,16 +34855,21 @@ export namespace Handy {
          * Whether the widget is double buffered.
          * @since 2.18
          * @deprecated since 3.14: Widgets should not use this property.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get doubleBuffered(): boolean;
         set doubleBuffered(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default Gdk.EventMask.STRUCTURE_MASK
+         * @category Inherited from Gtk.Widget
+         */
         get events(): Gdk.EventMask;
         set events(val: Gdk.EventMask);
         /**
          * Whether to expand in both directions. Setting this sets both {@link Gtk.Widget.hexpand} and {@link Gtk.Widget.vexpand}
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get expand(): boolean;
@@ -34329,6 +34882,7 @@ export namespace Handy {
          * Before 3.20, several widgets (GtkButton, GtkFileChooserButton,
          * GtkComboBox) implemented this property individually.
          * @since 3.20
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get focus_on_click(): boolean;
@@ -34341,6 +34895,7 @@ export namespace Handy {
          * Before 3.20, several widgets (GtkButton, GtkFileChooserButton,
          * GtkComboBox) implemented this property individually.
          * @since 3.20
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get focusOnClick(): boolean;
@@ -34348,20 +34903,33 @@ export namespace Handy {
         /**
          * How to distribute horizontal space if widget gets extra space, see {@link Gtk.Align}
          * @since 3.0
+         * @default Gtk.Align.FILL
          * @category Inherited from Gtk.Widget
          */
         get halign(): Gtk.Align;
         set halign(val: Gtk.Align);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get has_default(): boolean;
         set has_default(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get hasDefault(): boolean;
         set hasDefault(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get has_focus(): boolean;
         set has_focus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get hasFocus(): boolean;
         set hasFocus(val: boolean);
         /**
@@ -34375,6 +34943,7 @@ export namespace Handy {
          * and motion-notify events.  This cannot and will not be undone when the
          * property is set to `false` again.
          * @since 2.12
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get has_tooltip(): boolean;
@@ -34390,19 +34959,27 @@ export namespace Handy {
          * and motion-notify events.  This cannot and will not be undone when the
          * property is set to `false` again.
          * @since 2.12
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hasTooltip(): boolean;
         set hasTooltip(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default -1
+         * @category Inherited from Gtk.Widget
+         */
         get height_request(): number;
         set height_request(val: number);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default -1
+         * @category Inherited from Gtk.Widget
+         */
         get heightRequest(): number;
         set heightRequest(val: number);
         /**
          * Whether to expand horizontally. See `gtk_widget_set_hexpand()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpand(): boolean;
@@ -34410,6 +34987,7 @@ export namespace Handy {
         /**
          * Whether to use the {@link Gtk.Widget.hexpand} property. See `gtk_widget_get_hexpand_set()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpand_set(): boolean;
@@ -34417,20 +34995,28 @@ export namespace Handy {
         /**
          * Whether to use the {@link Gtk.Widget.hexpand} property. See `gtk_widget_get_hexpand_set()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpandSet(): boolean;
         set hexpandSet(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get is_focus(): boolean;
         set is_focus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get isFocus(): boolean;
         set isFocus(val: boolean);
         /**
          * Sets all four sides' margin at once. If read, returns max
          * margin on any side.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin(): number;
@@ -34442,6 +35028,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_bottom(): number;
@@ -34453,6 +35040,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginBottom(): number;
@@ -34465,6 +35053,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.12
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_end(): number;
@@ -34477,6 +35066,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.12
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginEnd(): number;
@@ -34489,6 +35079,7 @@ export namespace Handy {
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
          * @deprecated since 3.12: Use {@link Gtk.Widget.margin_start} instead.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_left(): number;
@@ -34501,6 +35092,7 @@ export namespace Handy {
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
          * @deprecated since 3.12: Use {@link Gtk.Widget.margin_start} instead.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginLeft(): number;
@@ -34513,6 +35105,7 @@ export namespace Handy {
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
          * @deprecated since 3.12: Use {@link Gtk.Widget.margin_end} instead.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_right(): number;
@@ -34525,6 +35118,7 @@ export namespace Handy {
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
          * @deprecated since 3.12: Use {@link Gtk.Widget.margin_end} instead.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginRight(): number;
@@ -34537,6 +35131,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.12
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_start(): number;
@@ -34549,6 +35144,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.12
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginStart(): number;
@@ -34560,6 +35156,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_top(): number;
@@ -34571,17 +35168,27 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginTop(): number;
         set marginTop(val: number);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default null
+         * @category Inherited from Gtk.Widget
+         */
         get name(): string;
         set name(val: string);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get no_show_all(): boolean;
         set no_show_all(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get noShowAll(): boolean;
         set noShowAll(val: boolean);
         /**
@@ -34590,17 +35197,24 @@ export namespace Handy {
          *
          * Before 3.8 this was only available in GtkWindow
          * @since 3.8
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get opacity(): number;
         set opacity(val: number);
         /** @category Inherited from Gtk.Widget */
-        get parent(): Gtk.Container;
-        set parent(val: Gtk.Container);
-        /** @category Inherited from Gtk.Widget */
+        get parent(): Gtk.Container | null;
+        set parent(val: Gtk.Container | null);
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get receives_default(): boolean;
         set receives_default(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get receivesDefault(): boolean;
         set receivesDefault(val: boolean);
         /**
@@ -34608,6 +35222,7 @@ export namespace Handy {
          * more details about widget scaling.
          * @since 3.10
          * @read-only
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -34616,10 +35231,14 @@ export namespace Handy {
          * more details about widget scaling.
          * @since 3.10
          * @read-only
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default true
+         * @category Inherited from Gtk.Widget
+         */
         get sensitive(): boolean;
         set sensitive(val: boolean);
         /**
@@ -34642,10 +35261,11 @@ export namespace Handy {
          * Note that if both {@link Gtk.Widget.tooltip_text} and {@link Gtk.Widget.tooltip_markup}
          * are set, the last one wins.
          * @since 2.12
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltip_markup(): string;
-        set tooltip_markup(val: string);
+        get tooltip_markup(): string | null;
+        set tooltip_markup(val: string | null);
         /**
          * Sets the text of tooltip to be the given string, which is marked up
          * with the [Pango text markup language][PangoMarkupFormat].
@@ -34659,10 +35279,11 @@ export namespace Handy {
          * Note that if both {@link Gtk.Widget.tooltip_text} and {@link Gtk.Widget.tooltip_markup}
          * are set, the last one wins.
          * @since 2.12
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltipMarkup(): string;
-        set tooltipMarkup(val: string);
+        get tooltipMarkup(): string | null;
+        set tooltipMarkup(val: string | null);
         /**
          * Sets the text of tooltip to be the given string.
          *
@@ -34676,10 +35297,11 @@ export namespace Handy {
          * Note that if both {@link Gtk.Widget.tooltip_text} and {@link Gtk.Widget.tooltip_markup}
          * are set, the last one wins.
          * @since 2.12
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltip_text(): string;
-        set tooltip_text(val: string);
+        get tooltip_text(): string | null;
+        set tooltip_text(val: string | null);
         /**
          * Sets the text of tooltip to be the given string.
          *
@@ -34693,13 +35315,15 @@ export namespace Handy {
          * Note that if both {@link Gtk.Widget.tooltip_text} and {@link Gtk.Widget.tooltip_markup}
          * are set, the last one wins.
          * @since 2.12
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltipText(): string;
-        set tooltipText(val: string);
+        get tooltipText(): string | null;
+        set tooltipText(val: string | null);
         /**
          * How to distribute vertical space if widget gets extra space, see {@link Gtk.Align}
          * @since 3.0
+         * @default Gtk.Align.FILL
          * @category Inherited from Gtk.Widget
          */
         get valign(): Gtk.Align;
@@ -34707,6 +35331,7 @@ export namespace Handy {
         /**
          * Whether to expand vertically. See `gtk_widget_set_vexpand()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpand(): boolean;
@@ -34714,6 +35339,7 @@ export namespace Handy {
         /**
          * Whether to use the {@link Gtk.Widget.vexpand} property. See `gtk_widget_get_vexpand_set()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpand_set(): boolean;
@@ -34721,17 +35347,27 @@ export namespace Handy {
         /**
          * Whether to use the {@link Gtk.Widget.vexpand} property. See `gtk_widget_get_vexpand_set()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpandSet(): boolean;
         set vexpandSet(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get visible(): boolean;
         set visible(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default -1
+         * @category Inherited from Gtk.Widget
+         */
         get width_request(): number;
         set width_request(val: number);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default -1
+         * @category Inherited from Gtk.Widget
+         */
         get widthRequest(): number;
         set widthRequest(val: number);
         /**
@@ -34740,7 +35376,7 @@ export namespace Handy {
          * @read-only
          * @category Inherited from Gtk.Widget
          */
-        get window(): Gdk.Window;
+        get window(): Gdk.Window | null;
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
@@ -34821,38 +35457,19 @@ export namespace Handy {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -34860,15 +35477,9 @@ export namespace Handy {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -35035,7 +35646,7 @@ export namespace Handy {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -35394,7 +36005,7 @@ export namespace Handy {
          * @param text text to set on the layout (can be `null`)
          * @returns the new {@link Pango.Layout}
          */
-        create_pango_layout(text?: string | null): Pango.Layout;
+        create_pango_layout(text: string | null): Pango.Layout;
         /**
          * Destroys a widget.
          *
@@ -35463,7 +36074,7 @@ export namespace Handy {
             targets: Gtk.TargetList,
             actions: Gdk.DragAction,
             button: number,
-            event?: Gdk.Event | null,
+            event: Gdk.Event | null,
         ): Gdk.DragContext;
         /**
          * Initiates a drag on the source side. The function only needs to be used
@@ -35554,7 +36165,7 @@ export namespace Handy {
          * @param target_list list of droppable targets, or `null` to use    gtk_drag_dest_get_target_list (`widget`).
          * @returns first target that the source offers     and the dest can accept, or `GDK_NONE`
          */
-        drag_dest_find_target(context: Gdk.DragContext, target_list?: Gtk.TargetList | null): Gdk.Atom;
+        drag_dest_find_target(context: Gdk.DragContext, target_list: Gtk.TargetList | null): Gdk.Atom;
         /**
          * Returns the list of targets this widget can accept from
          * drag-and-drop.
@@ -35627,7 +36238,7 @@ export namespace Handy {
          * `gtk_drag_dest_set()`.
          * @param target_list list of droppable targets, or `null` for none
          */
-        drag_dest_set_target_list(target_list?: Gtk.TargetList | null): void;
+        drag_dest_set_target_list(target_list: Gtk.TargetList | null): void;
         /**
          * Tells the widget to emit {@link Gtk.Widget.SignalSignatures.drag_motion | Gtk.Widget::drag-motion} and
          * {@link Gtk.Widget.SignalSignatures.drag_leave | Gtk.Widget::drag-leave} events regardless of the targets and the
@@ -35737,7 +36348,7 @@ export namespace Handy {
          * `gtk_drag_source_set()`.
          * @param target_list list of draggable targets, or `null` for none
          */
-        drag_source_set_target_list(target_list?: Gtk.TargetList | null): void;
+        drag_source_set_target_list(target_list: Gtk.TargetList | null): void;
         /**
          * Undoes the effects of `gtk_drag_source_set()`.
          */
@@ -36695,7 +37306,7 @@ export namespace Handy {
          * `gdk_window_input_shape_combine_region()` for more information.
          * @param region shape to be added, or `null` to remove an existing shape
          */
-        input_shape_combine_region(region?: cairo.Region | null): void;
+        input_shape_combine_region(region: cairo.Region | null): void;
         /**
          * Inserts `group` into `widget`. Children of `widget` that implement
          * {@link Gtk.Actionable} can then be associated with actions in `group` by
@@ -36707,7 +37318,7 @@ export namespace Handy {
          * @param name the prefix for actions in `group`
          * @param group a {@link Gio.ActionGroup}, or `null`
          */
-        insert_action_group(name: string, group?: Gio.ActionGroup | null): void;
+        insert_action_group(name: string, group: Gio.ActionGroup | null): void;
         /**
          * Computes the intersection of a `widget`’s area and `area`, storing
          * the intersection in `intersection`, and returns `true` if there was
@@ -36858,7 +37469,7 @@ export namespace Handy {
          * @param state the state for which to set the base color
          * @param color the color to assign (does not need to     be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_base()`.
          */
-        modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_base(state: Gtk.StateType, color: Gdk.Color | null): void;
         /**
          * Sets the background color for a widget in a particular state.
          *
@@ -36877,7 +37488,7 @@ export namespace Handy {
          * @param state the state for which to set the background color
          * @param color the color to assign (does not need     to be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_bg()`.
          */
-        modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_bg(state: Gtk.StateType, color: Gdk.Color | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the {@link Gtk.Widget}
          * cursor-color and secondary-cursor-color
@@ -36888,7 +37499,7 @@ export namespace Handy {
          * @param primary the color to use for primary cursor (does not     need to be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_cursor()`.
          * @param secondary the color to use for secondary cursor (does     not need to be allocated), or `null` to undo the effect of     previous calls to of `gtk_widget_modify_cursor()`.
          */
-        modify_cursor(primary?: Gdk.Color | null, secondary?: Gdk.Color | null): void;
+        modify_cursor(primary: Gdk.Color | null, secondary: Gdk.Color | null): void;
         /**
          * Sets the foreground color for a widget in a particular state.
          *
@@ -36897,7 +37508,7 @@ export namespace Handy {
          * @param state the state for which to set the foreground color
          * @param color the color to assign (does not need to be allocated),     or `null` to undo the effect of previous calls to     of `gtk_widget_modify_fg()`.
          */
-        modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_fg(state: Gtk.StateType, color: Gdk.Color | null): void;
         /**
          * Sets the font to use for a widget.
          *
@@ -36905,7 +37516,7 @@ export namespace Handy {
          * See also `gtk_widget_modify_style()`.
          * @param font_desc the font description to use, or `null`     to undo the effect of previous calls to `gtk_widget_modify_font()`
          */
-        modify_font(font_desc?: Pango.FontDescription | null): void;
+        modify_font(font_desc: Pango.FontDescription | null): void;
         /**
          * Modifies style values on the widget.
          *
@@ -36939,7 +37550,7 @@ export namespace Handy {
          * @param state the state for which to set the text color
          * @param color the color to assign (does not need to     be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_text()`.
          */
-        modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_text(state: Gtk.StateType, color: Gdk.Color | null): void;
         /**
          * Sets the background color to use for a widget.
          *
@@ -36948,7 +37559,7 @@ export namespace Handy {
          * @param state the state for which to set the background color
          * @param color the color to assign, or `null` to undo the effect     of previous calls to `gtk_widget_override_background_color()`
          */
-        override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_background_color(state: Gtk.StateFlags, color: Gdk.RGBA | null): void;
         /**
          * Sets the color to use for a widget.
          *
@@ -36978,7 +37589,7 @@ export namespace Handy {
          * @param state the state for which to set the color
          * @param color the color to assign, or `null` to undo the effect     of previous calls to `gtk_widget_override_color()`
          */
-        override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_color(state: Gtk.StateFlags, color: Gdk.RGBA | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the
          * cursor-color and secondary-cursor-color
@@ -36990,13 +37601,13 @@ export namespace Handy {
          * @param cursor the color to use for primary cursor (does not need to be     allocated), or `null` to undo the effect of previous calls to     of `gtk_widget_override_cursor()`.
          * @param secondary_cursor the color to use for secondary cursor (does not     need to be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_override_cursor()`.
          */
-        override_cursor(cursor?: Gdk.RGBA | null, secondary_cursor?: Gdk.RGBA | null): void;
+        override_cursor(cursor: Gdk.RGBA | null, secondary_cursor: Gdk.RGBA | null): void;
         /**
          * Sets the font to use for a widget. All other style values are
          * left untouched. See `gtk_widget_override_color()`.
          * @param font_desc the font description to use, or `null` to undo     the effect of previous calls to `gtk_widget_override_font()`
          */
-        override_font(font_desc?: Pango.FontDescription | null): void;
+        override_font(font_desc: Pango.FontDescription | null): void;
         /**
          * Sets a symbolic color for a widget.
          *
@@ -37006,7 +37617,7 @@ export namespace Handy {
          * @param name the name of the symbolic color to modify
          * @param color the color to assign (does not need     to be allocated), or `null` to undo the effect of previous     calls to `gtk_widget_override_symbolic_color()`
          */
-        override_symbolic_color(name: string, color?: Gdk.RGBA | null): void;
+        override_symbolic_color(name: string, color: Gdk.RGBA | null): void;
         /**
          * Obtains the full path to `widget`. The path is simply the name of a
          * widget and all its parents in the container hierarchy, separated by
@@ -37177,7 +37788,7 @@ export namespace Handy {
          * @param detail render detail to pass to theme engine
          * @returns a new pixbuf, or `null` if the     stock ID wasn’t known
          */
-        render_icon(stock_id: string, size: number, detail?: string | null): GdkPixbuf.Pixbuf | null;
+        render_icon(stock_id: string, size: number, detail: string | null): GdkPixbuf.Pixbuf | null;
         /**
          * A convenience function that uses the theme engine and style
          * settings for `widget` to look up `stock_id` and render it to
@@ -37284,7 +37895,7 @@ export namespace Handy {
          * @param accel_path path used to look up the accelerator
          * @param accel_group a {@link Gtk.AccelGroup}.
          */
-        set_accel_path(accel_path?: string | null, accel_group?: Gtk.AccelGroup | null): void;
+        set_accel_path(accel_path: string | null, accel_group: Gtk.AccelGroup | null): void;
         /**
          * Sets the widget’s allocation.  This should not be used
          * directly, but from within a widget’s size_allocate method.
@@ -37468,13 +38079,13 @@ export namespace Handy {
          * will inherit the font map from its parent.
          * @param font_map a {@link Pango.FontMap}, or `null` to unset any previously     set font map
          */
-        set_font_map(font_map?: Pango.FontMap | null): void;
+        set_font_map(font_map: Pango.FontMap | null): void;
         /**
          * Sets the {@link cairo.FontOptions} used for Pango rendering in this widget.
          * When not set, the default font options for the {@link Gdk.Screen} will be used.
          * @param options a {@link cairo.FontOptions}, or `null` to unset any   previously set default font options.
          */
-        set_font_options(options?: cairo.FontOptions | null): void;
+        set_font_options(options: cairo.FontOptions | null): void;
         /**
          * Sets the horizontal alignment of `widget`.
          * See the {@link Gtk.Widget.halign} property.
@@ -37767,7 +38378,7 @@ export namespace Handy {
          * GTK 3, this function does nothing, the passed in style is ignored.
          * @param style a {@link Gtk.Style}, or `null` to remove the effect     of a previous call to `gtk_widget_set_style()` and go back to     the default style
          */
-        set_style(style?: Gtk.Style | null): void;
+        set_style(style: Gtk.Style | null): void;
         /**
          * Enables or disables multiple pointer awareness. If this setting is `true`,
          * `widget` will start receiving multiple, per device enter/leave events. Note
@@ -37787,7 +38398,7 @@ export namespace Handy {
          * `gtk_tooltip_set_markup()`.
          * @param markup the contents of the tooltip for `widget`, or `null`
          */
-        set_tooltip_markup(markup?: string | null): void;
+        set_tooltip_markup(markup: string | null): void;
         /**
          * Sets `text` as the contents of the tooltip. This function will take
          * care of setting {@link Gtk.Widget.has_tooltip} to `true` and of the default
@@ -37796,7 +38407,7 @@ export namespace Handy {
          * See also the {@link Gtk.Widget.tooltip_text} property and `gtk_tooltip_set_text()`.
          * @param text the contents of the tooltip for `widget`
          */
-        set_tooltip_text(text?: string | null): void;
+        set_tooltip_text(text: string | null): void;
         /**
          * Replaces the default window used for displaying
          * tooltips with `custom_window`. GTK+ will take care of showing and
@@ -37805,7 +38416,7 @@ export namespace Handy {
          * tooltip window will be used.
          * @param custom_window a {@link Gtk.Window}, or `null`
          */
-        set_tooltip_window(custom_window?: Gtk.Window | null): void;
+        set_tooltip_window(custom_window: Gtk.Window | null): void;
         /**
          * Sets the vertical alignment of `widget`.
          * See the {@link Gtk.Widget.valign} property.
@@ -37849,7 +38460,7 @@ export namespace Handy {
          * so you should call this function before `widget` is realized.
          * @param visual visual to be used or `null` to unset a previous one
          */
-        set_visual(visual?: Gdk.Visual | null): void;
+        set_visual(visual: Gdk.Visual | null): void;
         /**
          * Sets a widget’s window. This function should only be used in a
          * widget’s {@link Gtk.Widget.SignalSignatures.realize | Gtk.Widget::realize} implementation. The %window passed is
@@ -37871,7 +38482,7 @@ export namespace Handy {
          * for more information.
          * @param region shape to be added, or `null` to remove an existing shape
          */
-        shape_combine_region(region?: cairo.Region | null): void;
+        shape_combine_region(region: cairo.Region | null): void;
         /**
          * Flags a widget to be displayed. Any widget that isn’t shown will
          * not appear on the screen. If you want to show all the widgets in a
@@ -38952,6 +39563,7 @@ export namespace Handy {
         /**
          * The orientation of the orientable.
          * @since 2.16
+         * @default Gtk.Orientation.HORIZONTAL
          * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
@@ -39013,38 +39625,19 @@ export namespace Handy {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -39052,15 +39645,9 @@ export namespace Handy {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -39227,7 +39814,7 @@ export namespace Handy {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -39488,9 +40075,9 @@ export namespace Handy {
                 Gtk.ScrolledWindow.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
-            icon_name: string;
-            iconName: string;
-            title: string;
+            icon_name: string | null;
+            iconName: string | null;
+            title: string | null;
         }
     }
 
@@ -39506,20 +40093,20 @@ export namespace Handy {
          * The icon name for this page of preferences.
          * @since 0.0.10
          */
-        get icon_name(): string;
-        set icon_name(val: string);
+        get icon_name(): string | null;
+        set icon_name(val: string | null);
         /**
          * The icon name for this page of preferences.
          * @since 0.0.10
          */
-        get iconName(): string;
-        set iconName(val: string);
+        get iconName(): string | null;
+        set iconName(val: string | null);
         /**
          * The title for this page of preferences.
          * @since 0.0.10
          */
-        get title(): string;
-        set title(val: string);
+        get title(): string | null;
+        set title(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -39575,12 +40162,12 @@ export namespace Handy {
          * Sets the icon name for `self`.
          * @param icon_name the icon name, or `null`
          */
-        set_icon_name(icon_name?: string | null): void;
+        set_icon_name(icon_name: string | null): void;
         /**
          * Sets the title of `self`.
          * @param title the title of the page, or `null`
          */
-        set_title(title?: string | null): void;
+        set_title(title: string | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -39628,38 +40215,19 @@ export namespace Handy {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -39667,15 +40235,9 @@ export namespace Handy {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -39842,7 +40404,7 @@ export namespace Handy {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -40093,7 +40655,7 @@ export namespace Handy {
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Actionable.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
-            title: string;
+            title: string | null;
             use_underline: boolean;
             useUnderline: boolean;
         }
@@ -40111,12 +40673,13 @@ export namespace Handy {
          * The title of the preference represented by this row.
          * @since 0.0.10
          */
-        get title(): string;
-        set title(val: string);
+        get title(): string | null;
+        set title(val: string | null);
         /**
          * Whether an embedded underline in the text of the title indicates a
          * mnemonic.
          * @since 0.0.10
+         * @default false
          */
         get use_underline(): boolean;
         set use_underline(val: boolean);
@@ -40124,6 +40687,7 @@ export namespace Handy {
          * Whether an embedded underline in the text of the title indicates a
          * mnemonic.
          * @since 0.0.10
+         * @default false
          */
         get useUnderline(): boolean;
         set useUnderline(val: boolean);
@@ -40183,50 +40747,76 @@ export namespace Handy {
          * Sets the title of the preference represented by `self`.
          * @param title the title, or `null`.
          */
-        set_title(title?: string | null): void;
+        set_title(title: string | null): void;
         /**
          * If true, an underline in the text of the title indicates the next character
          * should be used for the mnemonic accelerator key.
          * @param use_underline `true` if underlines in the text indicate mnemonics
          */
         set_use_underline(use_underline: boolean): void;
-        /** @category Inherited from Gtk.Actionable */
-        get action_name(): string;
-        set action_name(val: string);
-        /** @category Inherited from Gtk.Actionable */
-        get actionName(): string;
-        set actionName(val: string);
+        /**
+         * @default null
+         * @category Inherited from Gtk.Actionable
+         */
+        get action_name(): string | null;
+        set action_name(val: string | null);
+        /**
+         * @default null
+         * @category Inherited from Gtk.Actionable
+         */
+        get actionName(): string | null;
+        set actionName(val: string | null);
         /** @category Inherited from Gtk.Actionable */
         get action_target(): GLib.Variant;
         set action_target(val: GLib.Variant);
         /** @category Inherited from Gtk.Actionable */
         get actionTarget(): GLib.Variant;
         set actionTarget(val: GLib.Variant);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get app_paintable(): boolean;
         set app_paintable(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get appPaintable(): boolean;
         set appPaintable(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get can_default(): boolean;
         set can_default(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get canDefault(): boolean;
         set canDefault(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get can_focus(): boolean;
         set can_focus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get canFocus(): boolean;
         set canFocus(val: boolean);
         /**
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get composite_child(): boolean;
         /**
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get compositeChild(): boolean;
@@ -40234,6 +40824,7 @@ export namespace Handy {
          * Whether the widget is double buffered.
          * @since 2.18
          * @deprecated since 3.14: Widgets should not use this property.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get double_buffered(): boolean;
@@ -40242,16 +40833,21 @@ export namespace Handy {
          * Whether the widget is double buffered.
          * @since 2.18
          * @deprecated since 3.14: Widgets should not use this property.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get doubleBuffered(): boolean;
         set doubleBuffered(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default Gdk.EventMask.STRUCTURE_MASK
+         * @category Inherited from Gtk.Widget
+         */
         get events(): Gdk.EventMask;
         set events(val: Gdk.EventMask);
         /**
          * Whether to expand in both directions. Setting this sets both {@link Gtk.Widget.hexpand} and {@link Gtk.Widget.vexpand}
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get expand(): boolean;
@@ -40264,6 +40860,7 @@ export namespace Handy {
          * Before 3.20, several widgets (GtkButton, GtkFileChooserButton,
          * GtkComboBox) implemented this property individually.
          * @since 3.20
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get focus_on_click(): boolean;
@@ -40276,6 +40873,7 @@ export namespace Handy {
          * Before 3.20, several widgets (GtkButton, GtkFileChooserButton,
          * GtkComboBox) implemented this property individually.
          * @since 3.20
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get focusOnClick(): boolean;
@@ -40283,20 +40881,33 @@ export namespace Handy {
         /**
          * How to distribute horizontal space if widget gets extra space, see {@link Gtk.Align}
          * @since 3.0
+         * @default Gtk.Align.FILL
          * @category Inherited from Gtk.Widget
          */
         get halign(): Gtk.Align;
         set halign(val: Gtk.Align);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get has_default(): boolean;
         set has_default(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get hasDefault(): boolean;
         set hasDefault(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get has_focus(): boolean;
         set has_focus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get hasFocus(): boolean;
         set hasFocus(val: boolean);
         /**
@@ -40310,6 +40921,7 @@ export namespace Handy {
          * and motion-notify events.  This cannot and will not be undone when the
          * property is set to `false` again.
          * @since 2.12
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get has_tooltip(): boolean;
@@ -40325,19 +40937,27 @@ export namespace Handy {
          * and motion-notify events.  This cannot and will not be undone when the
          * property is set to `false` again.
          * @since 2.12
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hasTooltip(): boolean;
         set hasTooltip(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default -1
+         * @category Inherited from Gtk.Widget
+         */
         get height_request(): number;
         set height_request(val: number);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default -1
+         * @category Inherited from Gtk.Widget
+         */
         get heightRequest(): number;
         set heightRequest(val: number);
         /**
          * Whether to expand horizontally. See `gtk_widget_set_hexpand()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpand(): boolean;
@@ -40345,6 +40965,7 @@ export namespace Handy {
         /**
          * Whether to use the {@link Gtk.Widget.hexpand} property. See `gtk_widget_get_hexpand_set()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpand_set(): boolean;
@@ -40352,20 +40973,28 @@ export namespace Handy {
         /**
          * Whether to use the {@link Gtk.Widget.hexpand} property. See `gtk_widget_get_hexpand_set()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpandSet(): boolean;
         set hexpandSet(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get is_focus(): boolean;
         set is_focus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get isFocus(): boolean;
         set isFocus(val: boolean);
         /**
          * Sets all four sides' margin at once. If read, returns max
          * margin on any side.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin(): number;
@@ -40377,6 +41006,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_bottom(): number;
@@ -40388,6 +41018,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginBottom(): number;
@@ -40400,6 +41031,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.12
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_end(): number;
@@ -40412,6 +41044,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.12
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginEnd(): number;
@@ -40424,6 +41057,7 @@ export namespace Handy {
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
          * @deprecated since 3.12: Use {@link Gtk.Widget.margin_start} instead.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_left(): number;
@@ -40436,6 +41070,7 @@ export namespace Handy {
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
          * @deprecated since 3.12: Use {@link Gtk.Widget.margin_start} instead.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginLeft(): number;
@@ -40448,6 +41083,7 @@ export namespace Handy {
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
          * @deprecated since 3.12: Use {@link Gtk.Widget.margin_end} instead.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_right(): number;
@@ -40460,6 +41096,7 @@ export namespace Handy {
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
          * @deprecated since 3.12: Use {@link Gtk.Widget.margin_end} instead.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginRight(): number;
@@ -40472,6 +41109,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.12
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_start(): number;
@@ -40484,6 +41122,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.12
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginStart(): number;
@@ -40495,6 +41134,7 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_top(): number;
@@ -40506,17 +41146,27 @@ export namespace Handy {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginTop(): number;
         set marginTop(val: number);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default null
+         * @category Inherited from Gtk.Widget
+         */
         get name(): string;
         set name(val: string);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get no_show_all(): boolean;
         set no_show_all(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get noShowAll(): boolean;
         set noShowAll(val: boolean);
         /**
@@ -40525,17 +41175,24 @@ export namespace Handy {
          *
          * Before 3.8 this was only available in GtkWindow
          * @since 3.8
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get opacity(): number;
         set opacity(val: number);
         /** @category Inherited from Gtk.Widget */
-        get parent(): Gtk.Container;
-        set parent(val: Gtk.Container);
-        /** @category Inherited from Gtk.Widget */
+        get parent(): Gtk.Container | null;
+        set parent(val: Gtk.Container | null);
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get receives_default(): boolean;
         set receives_default(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get receivesDefault(): boolean;
         set receivesDefault(val: boolean);
         /**
@@ -40543,6 +41200,7 @@ export namespace Handy {
          * more details about widget scaling.
          * @since 3.10
          * @read-only
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -40551,10 +41209,14 @@ export namespace Handy {
          * more details about widget scaling.
          * @since 3.10
          * @read-only
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default true
+         * @category Inherited from Gtk.Widget
+         */
         get sensitive(): boolean;
         set sensitive(val: boolean);
         /**
@@ -40577,10 +41239,11 @@ export namespace Handy {
          * Note that if both {@link Gtk.Widget.tooltip_text} and {@link Gtk.Widget.tooltip_markup}
          * are set, the last one wins.
          * @since 2.12
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltip_markup(): string;
-        set tooltip_markup(val: string);
+        get tooltip_markup(): string | null;
+        set tooltip_markup(val: string | null);
         /**
          * Sets the text of tooltip to be the given string, which is marked up
          * with the [Pango text markup language][PangoMarkupFormat].
@@ -40594,10 +41257,11 @@ export namespace Handy {
          * Note that if both {@link Gtk.Widget.tooltip_text} and {@link Gtk.Widget.tooltip_markup}
          * are set, the last one wins.
          * @since 2.12
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltipMarkup(): string;
-        set tooltipMarkup(val: string);
+        get tooltipMarkup(): string | null;
+        set tooltipMarkup(val: string | null);
         /**
          * Sets the text of tooltip to be the given string.
          *
@@ -40611,10 +41275,11 @@ export namespace Handy {
          * Note that if both {@link Gtk.Widget.tooltip_text} and {@link Gtk.Widget.tooltip_markup}
          * are set, the last one wins.
          * @since 2.12
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltip_text(): string;
-        set tooltip_text(val: string);
+        get tooltip_text(): string | null;
+        set tooltip_text(val: string | null);
         /**
          * Sets the text of tooltip to be the given string.
          *
@@ -40628,13 +41293,15 @@ export namespace Handy {
          * Note that if both {@link Gtk.Widget.tooltip_text} and {@link Gtk.Widget.tooltip_markup}
          * are set, the last one wins.
          * @since 2.12
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltipText(): string;
-        set tooltipText(val: string);
+        get tooltipText(): string | null;
+        set tooltipText(val: string | null);
         /**
          * How to distribute vertical space if widget gets extra space, see {@link Gtk.Align}
          * @since 3.0
+         * @default Gtk.Align.FILL
          * @category Inherited from Gtk.Widget
          */
         get valign(): Gtk.Align;
@@ -40642,6 +41309,7 @@ export namespace Handy {
         /**
          * Whether to expand vertically. See `gtk_widget_set_vexpand()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpand(): boolean;
@@ -40649,6 +41317,7 @@ export namespace Handy {
         /**
          * Whether to use the {@link Gtk.Widget.vexpand} property. See `gtk_widget_get_vexpand_set()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpand_set(): boolean;
@@ -40656,17 +41325,27 @@ export namespace Handy {
         /**
          * Whether to use the {@link Gtk.Widget.vexpand} property. See `gtk_widget_get_vexpand_set()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpandSet(): boolean;
         set vexpandSet(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get visible(): boolean;
         set visible(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default -1
+         * @category Inherited from Gtk.Widget
+         */
         get width_request(): number;
         set width_request(val: number);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default -1
+         * @category Inherited from Gtk.Widget
+         */
         get widthRequest(): number;
         set widthRequest(val: number);
         /**
@@ -40675,7 +41354,7 @@ export namespace Handy {
          * @read-only
          * @category Inherited from Gtk.Widget
          */
-        get window(): Gdk.Window;
+        get window(): Gdk.Window | null;
         /**
          * Gets the action name for `actionable`.
          *
@@ -40704,7 +41383,7 @@ export namespace Handy {
          * associated with the window.
          * @param action_name an action name, or `null`
          */
-        set_action_name(action_name?: string | null): void;
+        set_action_name(action_name: string | null): void;
         /**
          * Sets the target value of an actionable widget.
          *
@@ -40727,7 +41406,7 @@ export namespace Handy {
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
          */
-        set_action_target_value(target_value?: GLib.Variant | null): void;
+        set_action_target_value(target_value: GLib.Variant | null): void;
         /**
          * Sets the action-name and associated string target value of an
          * actionable widget.
@@ -40772,7 +41451,7 @@ export namespace Handy {
          * @param action_name an action name, or `null`
          * @virtual
          */
-        vfunc_set_action_name(action_name?: string | null): void;
+        vfunc_set_action_name(action_name: string | null): void;
         /**
          * Sets the target value of an actionable widget.
          *
@@ -40796,7 +41475,7 @@ export namespace Handy {
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
          * @virtual
          */
-        vfunc_set_action_target_value(target_value?: GLib.Variant | null): void;
+        vfunc_set_action_target_value(target_value: GLib.Variant | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -40844,38 +41523,19 @@ export namespace Handy {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -40883,15 +41543,9 @@ export namespace Handy {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -41058,7 +41712,7 @@ export namespace Handy {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -41417,7 +42071,7 @@ export namespace Handy {
          * @param text text to set on the layout (can be `null`)
          * @returns the new {@link Pango.Layout}
          */
-        create_pango_layout(text?: string | null): Pango.Layout;
+        create_pango_layout(text: string | null): Pango.Layout;
         /**
          * Destroys a widget.
          *
@@ -41486,7 +42140,7 @@ export namespace Handy {
             targets: Gtk.TargetList,
             actions: Gdk.DragAction,
             button: number,
-            event?: Gdk.Event | null,
+            event: Gdk.Event | null,
         ): Gdk.DragContext;
         /**
          * Initiates a drag on the source side. The function only needs to be used
@@ -41577,7 +42231,7 @@ export namespace Handy {
          * @param target_list list of droppable targets, or `null` to use    gtk_drag_dest_get_target_list (`widget`).
          * @returns first target that the source offers     and the dest can accept, or `GDK_NONE`
          */
-        drag_dest_find_target(context: Gdk.DragContext, target_list?: Gtk.TargetList | null): Gdk.Atom;
+        drag_dest_find_target(context: Gdk.DragContext, target_list: Gtk.TargetList | null): Gdk.Atom;
         /**
          * Returns the list of targets this widget can accept from
          * drag-and-drop.
@@ -41650,7 +42304,7 @@ export namespace Handy {
          * `gtk_drag_dest_set()`.
          * @param target_list list of droppable targets, or `null` for none
          */
-        drag_dest_set_target_list(target_list?: Gtk.TargetList | null): void;
+        drag_dest_set_target_list(target_list: Gtk.TargetList | null): void;
         /**
          * Tells the widget to emit {@link Gtk.Widget.SignalSignatures.drag_motion | Gtk.Widget::drag-motion} and
          * {@link Gtk.Widget.SignalSignatures.drag_leave | Gtk.Widget::drag-leave} events regardless of the targets and the
@@ -41760,7 +42414,7 @@ export namespace Handy {
          * `gtk_drag_source_set()`.
          * @param target_list list of draggable targets, or `null` for none
          */
-        drag_source_set_target_list(target_list?: Gtk.TargetList | null): void;
+        drag_source_set_target_list(target_list: Gtk.TargetList | null): void;
         /**
          * Undoes the effects of `gtk_drag_source_set()`.
          */
@@ -42718,7 +43372,7 @@ export namespace Handy {
          * `gdk_window_input_shape_combine_region()` for more information.
          * @param region shape to be added, or `null` to remove an existing shape
          */
-        input_shape_combine_region(region?: cairo.Region | null): void;
+        input_shape_combine_region(region: cairo.Region | null): void;
         /**
          * Inserts `group` into `widget`. Children of `widget` that implement
          * {@link Gtk.Actionable} can then be associated with actions in `group` by
@@ -42730,7 +43384,7 @@ export namespace Handy {
          * @param name the prefix for actions in `group`
          * @param group a {@link Gio.ActionGroup}, or `null`
          */
-        insert_action_group(name: string, group?: Gio.ActionGroup | null): void;
+        insert_action_group(name: string, group: Gio.ActionGroup | null): void;
         /**
          * Computes the intersection of a `widget`’s area and `area`, storing
          * the intersection in `intersection`, and returns `true` if there was
@@ -42881,7 +43535,7 @@ export namespace Handy {
          * @param state the state for which to set the base color
          * @param color the color to assign (does not need to     be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_base()`.
          */
-        modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_base(state: Gtk.StateType, color: Gdk.Color | null): void;
         /**
          * Sets the background color for a widget in a particular state.
          *
@@ -42900,7 +43554,7 @@ export namespace Handy {
          * @param state the state for which to set the background color
          * @param color the color to assign (does not need     to be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_bg()`.
          */
-        modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_bg(state: Gtk.StateType, color: Gdk.Color | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the {@link Gtk.Widget}
          * cursor-color and secondary-cursor-color
@@ -42911,7 +43565,7 @@ export namespace Handy {
          * @param primary the color to use for primary cursor (does not     need to be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_cursor()`.
          * @param secondary the color to use for secondary cursor (does     not need to be allocated), or `null` to undo the effect of     previous calls to of `gtk_widget_modify_cursor()`.
          */
-        modify_cursor(primary?: Gdk.Color | null, secondary?: Gdk.Color | null): void;
+        modify_cursor(primary: Gdk.Color | null, secondary: Gdk.Color | null): void;
         /**
          * Sets the foreground color for a widget in a particular state.
          *
@@ -42920,7 +43574,7 @@ export namespace Handy {
          * @param state the state for which to set the foreground color
          * @param color the color to assign (does not need to be allocated),     or `null` to undo the effect of previous calls to     of `gtk_widget_modify_fg()`.
          */
-        modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_fg(state: Gtk.StateType, color: Gdk.Color | null): void;
         /**
          * Sets the font to use for a widget.
          *
@@ -42928,7 +43582,7 @@ export namespace Handy {
          * See also `gtk_widget_modify_style()`.
          * @param font_desc the font description to use, or `null`     to undo the effect of previous calls to `gtk_widget_modify_font()`
          */
-        modify_font(font_desc?: Pango.FontDescription | null): void;
+        modify_font(font_desc: Pango.FontDescription | null): void;
         /**
          * Modifies style values on the widget.
          *
@@ -42962,7 +43616,7 @@ export namespace Handy {
          * @param state the state for which to set the text color
          * @param color the color to assign (does not need to     be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_text()`.
          */
-        modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_text(state: Gtk.StateType, color: Gdk.Color | null): void;
         /**
          * Sets the background color to use for a widget.
          *
@@ -42971,7 +43625,7 @@ export namespace Handy {
          * @param state the state for which to set the background color
          * @param color the color to assign, or `null` to undo the effect     of previous calls to `gtk_widget_override_background_color()`
          */
-        override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_background_color(state: Gtk.StateFlags, color: Gdk.RGBA | null): void;
         /**
          * Sets the color to use for a widget.
          *
@@ -43001,7 +43655,7 @@ export namespace Handy {
          * @param state the state for which to set the color
          * @param color the color to assign, or `null` to undo the effect     of previous calls to `gtk_widget_override_color()`
          */
-        override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_color(state: Gtk.StateFlags, color: Gdk.RGBA | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the
          * cursor-color and secondary-cursor-color
@@ -43013,13 +43667,13 @@ export namespace Handy {
          * @param cursor the color to use for primary cursor (does not need to be     allocated), or `null` to undo the effect of previous calls to     of `gtk_widget_override_cursor()`.
          * @param secondary_cursor the color to use for secondary cursor (does not     need to be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_override_cursor()`.
          */
-        override_cursor(cursor?: Gdk.RGBA | null, secondary_cursor?: Gdk.RGBA | null): void;
+        override_cursor(cursor: Gdk.RGBA | null, secondary_cursor: Gdk.RGBA | null): void;
         /**
          * Sets the font to use for a widget. All other style values are
          * left untouched. See `gtk_widget_override_color()`.
          * @param font_desc the font description to use, or `null` to undo     the effect of previous calls to `gtk_widget_override_font()`
          */
-        override_font(font_desc?: Pango.FontDescription | null): void;
+        override_font(font_desc: Pango.FontDescription | null): void;
         /**
          * Sets a symbolic color for a widget.
          *
@@ -43029,7 +43683,7 @@ export namespace Handy {
          * @param name the name of the symbolic color to modify
          * @param color the color to assign (does not need     to be allocated), or `null` to undo the effect of previous     calls to `gtk_widget_override_symbolic_color()`
          */
-        override_symbolic_color(name: string, color?: Gdk.RGBA | null): void;
+        override_symbolic_color(name: string, color: Gdk.RGBA | null): void;
         /**
          * Obtains the full path to `widget`. The path is simply the name of a
          * widget and all its parents in the container hierarchy, separated by
@@ -43200,7 +43854,7 @@ export namespace Handy {
          * @param detail render detail to pass to theme engine
          * @returns a new pixbuf, or `null` if the     stock ID wasn’t known
          */
-        render_icon(stock_id: string, size: number, detail?: string | null): GdkPixbuf.Pixbuf | null;
+        render_icon(stock_id: string, size: number, detail: string | null): GdkPixbuf.Pixbuf | null;
         /**
          * A convenience function that uses the theme engine and style
          * settings for `widget` to look up `stock_id` and render it to
@@ -43307,7 +43961,7 @@ export namespace Handy {
          * @param accel_path path used to look up the accelerator
          * @param accel_group a {@link Gtk.AccelGroup}.
          */
-        set_accel_path(accel_path?: string | null, accel_group?: Gtk.AccelGroup | null): void;
+        set_accel_path(accel_path: string | null, accel_group: Gtk.AccelGroup | null): void;
         /**
          * Sets the widget’s allocation.  This should not be used
          * directly, but from within a widget’s size_allocate method.
@@ -43491,13 +44145,13 @@ export namespace Handy {
          * will inherit the font map from its parent.
          * @param font_map a {@link Pango.FontMap}, or `null` to unset any previously     set font map
          */
-        set_font_map(font_map?: Pango.FontMap | null): void;
+        set_font_map(font_map: Pango.FontMap | null): void;
         /**
          * Sets the {@link cairo.FontOptions} used for Pango rendering in this widget.
          * When not set, the default font options for the {@link Gdk.Screen} will be used.
          * @param options a {@link cairo.FontOptions}, or `null` to unset any   previously set default font options.
          */
-        set_font_options(options?: cairo.FontOptions | null): void;
+        set_font_options(options: cairo.FontOptions | null): void;
         /**
          * Sets the horizontal alignment of `widget`.
          * See the {@link Gtk.Widget.halign} property.
@@ -43790,7 +44444,7 @@ export namespace Handy {
          * GTK 3, this function does nothing, the passed in style is ignored.
          * @param style a {@link Gtk.Style}, or `null` to remove the effect     of a previous call to `gtk_widget_set_style()` and go back to     the default style
          */
-        set_style(style?: Gtk.Style | null): void;
+        set_style(style: Gtk.Style | null): void;
         /**
          * Enables or disables multiple pointer awareness. If this setting is `true`,
          * `widget` will start receiving multiple, per device enter/leave events. Note
@@ -43810,7 +44464,7 @@ export namespace Handy {
          * `gtk_tooltip_set_markup()`.
          * @param markup the contents of the tooltip for `widget`, or `null`
          */
-        set_tooltip_markup(markup?: string | null): void;
+        set_tooltip_markup(markup: string | null): void;
         /**
          * Sets `text` as the contents of the tooltip. This function will take
          * care of setting {@link Gtk.Widget.has_tooltip} to `true` and of the default
@@ -43819,7 +44473,7 @@ export namespace Handy {
          * See also the {@link Gtk.Widget.tooltip_text} property and `gtk_tooltip_set_text()`.
          * @param text the contents of the tooltip for `widget`
          */
-        set_tooltip_text(text?: string | null): void;
+        set_tooltip_text(text: string | null): void;
         /**
          * Replaces the default window used for displaying
          * tooltips with `custom_window`. GTK+ will take care of showing and
@@ -43828,7 +44482,7 @@ export namespace Handy {
          * tooltip window will be used.
          * @param custom_window a {@link Gtk.Window}, or `null`
          */
-        set_tooltip_window(custom_window?: Gtk.Window | null): void;
+        set_tooltip_window(custom_window: Gtk.Window | null): void;
         /**
          * Sets the vertical alignment of `widget`.
          * See the {@link Gtk.Widget.valign} property.
@@ -43872,7 +44526,7 @@ export namespace Handy {
          * so you should call this function before `widget` is realized.
          * @param visual visual to be used or `null` to unset a previous one
          */
-        set_visual(visual?: Gdk.Visual | null): void;
+        set_visual(visual: Gdk.Visual | null): void;
         /**
          * Sets a widget’s window. This function should only be used in a
          * widget’s {@link Gtk.Widget.SignalSignatures.realize | Gtk.Widget::realize} implementation. The %window passed is
@@ -43894,7 +44548,7 @@ export namespace Handy {
          * for more information.
          * @param region shape to be added, or `null` to remove an existing shape
          */
-        shape_combine_region(region?: cairo.Region | null): void;
+        shape_combine_region(region: cairo.Region | null): void;
         /**
          * Flags a widget to be displayed. Any widget that isn’t shown will
          * not appear on the screen. If you want to show all the widgets in a
@@ -45005,38 +45659,19 @@ export namespace Handy {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -45044,15 +45679,9 @@ export namespace Handy {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -45219,7 +45848,7 @@ export namespace Handy {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -45481,6 +46110,7 @@ export namespace Handy {
          * Whether the search mode is on and the search bar shown.
          *
          * See `hdy_search_bar_set_search_mode()` for details.
+         * @default false
          */
         get search_mode_enabled(): boolean;
         set search_mode_enabled(val: boolean);
@@ -45488,16 +46118,19 @@ export namespace Handy {
          * Whether the search mode is on and the search bar shown.
          *
          * See `hdy_search_bar_set_search_mode()` for details.
+         * @default false
          */
         get searchModeEnabled(): boolean;
         set searchModeEnabled(val: boolean);
         /**
          * Whether to show the close button in the toolbar.
+         * @default false
          */
         get show_close_button(): boolean;
         set show_close_button(val: boolean);
         /**
          * Whether to show the close button in the toolbar.
+         * @default false
          */
         get showCloseButton(): boolean;
         set showCloseButton(val: boolean);
@@ -45665,38 +46298,19 @@ export namespace Handy {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -45704,15 +46318,9 @@ export namespace Handy {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -45879,7 +46487,7 @@ export namespace Handy {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -46140,8 +46748,8 @@ export namespace Handy {
             transitionRunning: boolean;
             transition_type: SqueezerTransitionType;
             transitionType: SqueezerTransitionType;
-            visible_child: Gtk.Widget;
-            visibleChild: Gtk.Widget;
+            visible_child: Gtk.Widget | null;
+            visibleChild: Gtk.Widget | null;
         }
     }
 
@@ -46153,36 +46761,59 @@ export namespace Handy {
 
         // Properties
 
+        /**
+         * @default false
+         */
         get homogeneous(): boolean;
         set homogeneous(val: boolean);
+        /**
+         * @default false
+         */
         get interpolate_size(): boolean;
         set interpolate_size(val: boolean);
+        /**
+         * @default false
+         */
         get interpolateSize(): boolean;
         set interpolateSize(val: boolean);
+        /**
+         * @default 200
+         */
         get transition_duration(): number;
         set transition_duration(val: number);
+        /**
+         * @default 200
+         */
         get transitionDuration(): number;
         set transitionDuration(val: number);
         /**
          * @read-only
+         * @default false
          */
         get transition_running(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get transitionRunning(): boolean;
+        /**
+         * @default Handy.SqueezerTransitionType.NONE
+         */
         get transition_type(): SqueezerTransitionType;
         set transition_type(val: SqueezerTransitionType);
+        /**
+         * @default Handy.SqueezerTransitionType.NONE
+         */
         get transitionType(): SqueezerTransitionType;
         set transitionType(val: SqueezerTransitionType);
         /**
          * @read-only
          */
-        get visible_child(): Gtk.Widget;
+        get visible_child(): Gtk.Widget | null;
         /**
          * @read-only
          */
-        get visibleChild(): Gtk.Widget;
+        get visibleChild(): Gtk.Widget | null;
 
         /**
          * Compile-time signal type information.
@@ -46317,6 +46948,7 @@ export namespace Handy {
         /**
          * The orientation of the orientable.
          * @since 2.16
+         * @default Gtk.Orientation.HORIZONTAL
          * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
@@ -46378,38 +47010,19 @@ export namespace Handy {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -46417,15 +47030,9 @@ export namespace Handy {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -46592,7 +47199,7 @@ export namespace Handy {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -46860,7 +47467,7 @@ export namespace Handy {
          * @param child child to add
          * @param type kind of child or `null`
          */
-        add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
+        add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
         /**
          * Constructs a child of `buildable` with the name `name`.
          *
@@ -46879,7 +47486,7 @@ export namespace Handy {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: any | null): void;
+        custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: any | null): void;
         /**
          * This is called at the end of each custom element handled by
          * the buildable.
@@ -46888,7 +47495,7 @@ export namespace Handy {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: any | null): void;
+        custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: any | null): void;
         /**
          * This is called for each unknown element under `<child>`.
          * @param builder a {@link Gtk.Builder} used to construct this object
@@ -46946,7 +47553,7 @@ export namespace Handy {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
         /**
          * Constructs a child of `buildable` with the name `name`.
          *
@@ -46970,7 +47577,7 @@ export namespace Handy {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * This is called at the end of each custom element handled by
@@ -46985,7 +47592,7 @@ export namespace Handy {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * This is called for each unknown element under `<child>`.
@@ -47086,38 +47693,19 @@ export namespace Handy {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -47125,15 +47713,9 @@ export namespace Handy {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -47300,7 +47882,7 @@ export namespace Handy {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -47555,8 +48137,14 @@ export namespace Handy {
 
         // Properties
 
+        /**
+         * @default false
+         */
         get selection_mode(): boolean;
         set selection_mode(val: boolean);
+        /**
+         * @default false
+         */
         get selectionMode(): boolean;
         set selectionMode(val: boolean);
 
@@ -47657,38 +48245,19 @@ export namespace Handy {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -47696,15 +48265,9 @@ export namespace Handy {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -47871,7 +48434,7 @@ export namespace Handy {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -48218,7 +48781,7 @@ export namespace Handy {
             narrow_ellipsize: Pango.EllipsizeMode;
             narrowEllipsize: Pango.EllipsizeMode;
             policy: ViewSwitcherPolicy;
-            stack: Gtk.Stack;
+            stack: Gtk.Stack | null;
         }
     }
 
@@ -48234,6 +48797,7 @@ export namespace Handy {
          * Use the "icon-size" property to hint the icons to use, you almost certainly
          * want to leave this as {@link Gtk.IconSize.BUTTON}.
          * @since 0.0.10
+         * @default 4
          */
         get icon_size(): number;
         set icon_size(val: number);
@@ -48241,6 +48805,7 @@ export namespace Handy {
          * Use the "icon-size" property to hint the icons to use, you almost certainly
          * want to leave this as {@link Gtk.IconSize.BUTTON}.
          * @since 0.0.10
+         * @default 4
          */
         get iconSize(): number;
         set iconSize(val: number);
@@ -48253,6 +48818,7 @@ export namespace Handy {
          * has the side-effect that the label requests only enough space to display
          * the ellipsis.
          * @since 0.0.10
+         * @default Pango.EllipsizeMode.NONE
          */
         get narrow_ellipsize(): Pango.EllipsizeMode;
         set narrow_ellipsize(val: Pango.EllipsizeMode);
@@ -48265,6 +48831,7 @@ export namespace Handy {
          * has the side-effect that the label requests only enough space to display
          * the ellipsis.
          * @since 0.0.10
+         * @default Pango.EllipsizeMode.NONE
          */
         get narrowEllipsize(): Pango.EllipsizeMode;
         set narrowEllipsize(val: Pango.EllipsizeMode);
@@ -48272,6 +48839,7 @@ export namespace Handy {
          * The {@link Handy.ViewSwitcherPolicy} the view switcher should use to determine which
          * mode to use.
          * @since 0.0.10
+         * @default Handy.ViewSwitcherPolicy.AUTO
          */
         get policy(): ViewSwitcherPolicy;
         set policy(val: ViewSwitcherPolicy);
@@ -48279,8 +48847,8 @@ export namespace Handy {
          * The {@link Gtk.Stack} the view switcher controls.
          * @since 0.0.10
          */
-        get stack(): Gtk.Stack;
-        set stack(val: Gtk.Stack);
+        get stack(): Gtk.Stack | null;
+        set stack(val: Gtk.Stack | null);
 
         /**
          * Compile-time signal type information.
@@ -48367,10 +48935,11 @@ export namespace Handy {
          * Sets the {@link Gtk.Stack} to control.
          * @param stack a {@link Gtk.Stack}
          */
-        set_stack(stack?: Gtk.Stack | null): void;
+        set_stack(stack: Gtk.Stack | null): void;
         /**
          * The orientation of the orientable.
          * @since 2.16
+         * @default Gtk.Orientation.HORIZONTAL
          * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
@@ -48432,38 +49001,19 @@ export namespace Handy {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -48471,15 +49021,9 @@ export namespace Handy {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -48646,7 +49190,7 @@ export namespace Handy {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -48895,7 +49439,7 @@ export namespace Handy {
             iconSize: number;
             policy: ViewSwitcherPolicy;
             reveal: boolean;
-            stack: Gtk.Stack;
+            stack: Gtk.Stack | null;
         }
     }
 
@@ -48911,6 +49455,7 @@ export namespace Handy {
          * Use the "icon-size" property to hint the icons to use, you almost certainly
          * want to leave this as {@link Gtk.IconSize.BUTTON}.
          * @since 0.0.10
+         * @default 4
          */
         get icon_size(): number;
         set icon_size(val: number);
@@ -48918,6 +49463,7 @@ export namespace Handy {
          * Use the "icon-size" property to hint the icons to use, you almost certainly
          * want to leave this as {@link Gtk.IconSize.BUTTON}.
          * @since 0.0.10
+         * @default 4
          */
         get iconSize(): number;
         set iconSize(val: number);
@@ -48925,12 +49471,14 @@ export namespace Handy {
          * The {@link Handy.ViewSwitcherPolicy} the {@link Handy.ViewSwitcher} should use to determine
          * which mode to use.
          * @since 0.0.10
+         * @default Handy.ViewSwitcherPolicy.NARROW
          */
         get policy(): ViewSwitcherPolicy;
         set policy(val: ViewSwitcherPolicy);
         /**
          * Whether the bar should be revealed or hidden.
          * @since 0.0.10
+         * @default false
          */
         get reveal(): boolean;
         set reveal(val: boolean);
@@ -48938,8 +49486,8 @@ export namespace Handy {
          * The {@link Gtk.Stack} the {@link Handy.ViewSwitcher} controls.
          * @since 0.0.10
          */
-        get stack(): Gtk.Stack;
-        set stack(val: Gtk.Stack);
+        get stack(): Gtk.Stack | null;
+        set stack(val: Gtk.Stack | null);
 
         /**
          * Compile-time signal type information.
@@ -49020,7 +49568,7 @@ export namespace Handy {
          * Sets the {@link Gtk.Stack} to control.
          * @param stack a {@link Gtk.Stack}
          */
-        set_stack(stack?: Gtk.Stack | null): void;
+        set_stack(stack: Gtk.Stack | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -49068,38 +49616,19 @@ export namespace Handy {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -49107,15 +49636,9 @@ export namespace Handy {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -49282,7 +49805,7 @@ export namespace Handy {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set

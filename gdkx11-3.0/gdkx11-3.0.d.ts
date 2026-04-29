@@ -190,7 +190,7 @@ export namespace GdkX11 {
      * @param sm_client_id the client id assigned by the session manager    when the connection was opened, or `null` to remove the property.
      * @since 2.24
      */
-    function x11_set_sm_client_id(sm_client_id?: string | null): void;
+    function x11_set_sm_client_id(sm_client_id: string | null): void;
     /**
      * Ungrab the default display after it has been grabbed with
      * `gdk_x11_grab_server()`.
@@ -488,14 +488,17 @@ export namespace GdkX11 {
 
         /**
          * @construct-only
+         * @default 0
          */
         get major(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get minor(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get opcode(): number;
 
@@ -577,10 +580,12 @@ export namespace GdkX11 {
 
         /**
          * @construct-only
+         * @default 0
          */
         get device_id(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get deviceId(): number;
 
@@ -1471,7 +1476,7 @@ export namespace GdkX11 {
          * @param name Property name, will be interned as an X atom
          * @param value Property value, or `null` to delete
          */
-        set_utf8_property(name: string, value?: string | null): void;
+        set_utf8_property(name: string, value: string | null): void;
     }
 
     /**

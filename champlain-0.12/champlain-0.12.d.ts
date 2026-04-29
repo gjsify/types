@@ -250,14 +250,29 @@ export namespace Champlain {
 
         // Properties
 
+        /**
+         * @default 0
+         */
         get lower(): number;
         set lower(val: number);
+        /**
+         * @default 0
+         */
         get step_increment(): number;
         set step_increment(val: number);
+        /**
+         * @default 0
+         */
         get stepIncrement(): number;
         set stepIncrement(val: number);
+        /**
+         * @default 0
+         */
         get upper(): number;
         set upper(val: number);
+        /**
+         * @default 0
+         */
         get value(): number;
         set value(val: number);
 
@@ -405,6 +420,7 @@ export namespace Champlain {
         /**
          * The latitude coordonate
          * @since 0.10
+         * @default 0
          * @category Inherited from Champlain.Location
          */
         get latitude(): number;
@@ -412,6 +428,7 @@ export namespace Champlain {
         /**
          * The longitude coordonate
          * @since 0.10
+         * @default 0
          * @category Inherited from Champlain.Location
          */
         get longitude(): number;
@@ -496,38 +513,19 @@ export namespace Champlain {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -535,15 +533,9 @@ export namespace Champlain {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -710,7 +702,7 @@ export namespace Champlain {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1058,6 +1050,7 @@ export namespace Champlain {
         /**
          * The latitude coordonate
          * @since 0.10
+         * @default 0
          * @category Inherited from Champlain.Location
          */
         get latitude(): number;
@@ -1065,6 +1058,7 @@ export namespace Champlain {
         /**
          * The longitude coordonate
          * @since 0.10
+         * @default 0
          * @category Inherited from Champlain.Location
          */
         get longitude(): number;
@@ -1149,38 +1143,19 @@ export namespace Champlain {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1188,15 +1163,9 @@ export namespace Champlain {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1363,7 +1332,7 @@ export namespace Champlain {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1581,12 +1550,14 @@ export namespace Champlain {
         /**
          * The size of the rendered tile.
          * @since 0.8
+         * @default 256
          */
         get tile_size(): number;
         set tile_size(val: number);
         /**
          * The size of the rendered tile.
          * @since 0.8
+         * @default 256
          */
         get tileSize(): number;
         set tileSize(val: number);
@@ -1677,12 +1648,14 @@ export namespace Champlain {
          * The directory where the tile database is stored.
          * @since 0.6
          * @construct-only
+         * @default null
          */
         get cache_dir(): string;
         /**
          * The directory where the tile database is stored.
          * @since 0.6
          * @construct-only
+         * @default null
          */
         get cacheDir(): string;
         /**
@@ -1690,6 +1663,7 @@ export namespace Champlain {
          *
          * Note: this new value will not be applied until you call `champlain_file_cache_purge()`
          * @since 0.4
+         * @default 100000000
          */
         get size_limit(): number;
         set size_limit(val: number);
@@ -1698,6 +1672,7 @@ export namespace Champlain {
          *
          * Note: this new value will not be applied until you call `champlain_file_cache_purge()`
          * @since 0.4
+         * @default 100000000
          */
         get sizeLimit(): number;
         set sizeLimit(val: number);
@@ -2036,14 +2011,29 @@ export namespace Champlain {
 
         // Properties
 
+        /**
+         * @default 1.1
+         */
         get decel_rate(): number;
         set decel_rate(val: number);
+        /**
+         * @default 1.1
+         */
         get decelRate(): number;
         set decelRate(val: number);
+        /**
+         * @default false
+         */
         get mode(): boolean;
         set mode(val: boolean);
+        /**
+         * @default 3
+         */
         get motion_buffer(): number;
         set motion_buffer(val: number);
+        /**
+         * @default 3
+         */
         get motionBuffer(): number;
         set motionBuffer(val: number);
 
@@ -2329,7 +2319,7 @@ export namespace Champlain {
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          */
-        lower_child(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void;
+        lower_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
          *
@@ -2339,7 +2329,7 @@ export namespace Champlain {
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          */
-        raise_child(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void;
+        raise_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
@@ -2456,7 +2446,7 @@ export namespace Champlain {
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          * @virtual
          */
-        vfunc_lower(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void;
+        vfunc_lower(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
          *
@@ -2467,7 +2457,7 @@ export namespace Champlain {
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          * @virtual
          */
-        vfunc_raise(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void;
+        vfunc_raise(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
@@ -2602,38 +2592,19 @@ export namespace Champlain {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -2641,15 +2612,9 @@ export namespace Champlain {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -2816,7 +2781,7 @@ export namespace Champlain {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -3162,54 +3127,63 @@ export namespace Champlain {
         /**
          * The label's alignment
          * @since 0.10
+         * @default Pango.Alignment.LEFT
          */
         get alignment(): Pango.Alignment;
         set alignment(val: Pango.Alignment);
         /**
          * The label's color
          * @since 0.10
+         * @default #333333ff
          */
         get color(): Clutter.Color;
         set color(val: Clutter.Color);
         /**
          * If the label has a background
          * @since 0.10
+         * @default true
          */
         get draw_background(): boolean;
         set draw_background(val: boolean);
         /**
          * If the label has a background
          * @since 0.10
+         * @default true
          */
         get drawBackground(): boolean;
         set drawBackground(val: boolean);
         /**
          * If the label background has a shadow
          * @since 0.12.10
+         * @default true
          */
         get draw_shadow(): boolean;
         set draw_shadow(val: boolean);
         /**
          * If the label background has a shadow
          * @since 0.12.10
+         * @default true
          */
         get drawShadow(): boolean;
         set drawShadow(val: boolean);
         /**
          * The label's ellipsize mode
          * @since 0.10
+         * @default Pango.EllipsizeMode.NONE
          */
         get ellipsize(): Pango.EllipsizeMode;
         set ellipsize(val: Pango.EllipsizeMode);
         /**
          * The label's text font name
          * @since 0.10
+         * @default Sans 11
          */
         get font_name(): string;
         set font_name(val: string);
         /**
          * The label's text font name
          * @since 0.10
+         * @default Sans 11
          */
         get fontName(): string;
         set fontName(val: string);
@@ -3222,12 +3196,14 @@ export namespace Champlain {
         /**
          * If the label is in single line mode
          * @since 0.10
+         * @default true
          */
         get single_line_mode(): boolean;
         set single_line_mode(val: boolean);
         /**
          * If the label is in single line mode
          * @since 0.10
+         * @default true
          */
         get singleLineMode(): boolean;
         set singleLineMode(val: boolean);
@@ -3240,42 +3216,49 @@ export namespace Champlain {
         /**
          * The label's text color
          * @since 0.10
+         * @default #eeeeeeff
          */
         get text_color(): Clutter.Color;
         set text_color(val: Clutter.Color);
         /**
          * The label's text color
          * @since 0.10
+         * @default #eeeeeeff
          */
         get textColor(): Clutter.Color;
         set textColor(val: Clutter.Color);
         /**
          * If the label's text uses markup
          * @since 0.10
+         * @default false
          */
         get use_markup(): boolean;
         set use_markup(val: boolean);
         /**
          * If the label's text uses markup
          * @since 0.10
+         * @default false
          */
         get useMarkup(): boolean;
         set useMarkup(val: boolean);
         /**
          * If the label's text wrap is set
          * @since 0.10
+         * @default false
          */
         get wrap(): boolean;
         set wrap(val: boolean);
         /**
          * The label's text wrap mode
          * @since 0.10
+         * @default Pango.WrapMode.WORD
          */
         get wrap_mode(): Pango.WrapMode;
         set wrap_mode(val: Pango.WrapMode);
         /**
          * The label's text wrap mode
          * @since 0.10
+         * @default Pango.WrapMode.WORD
          */
         get wrapMode(): Pango.WrapMode;
         set wrapMode(val: Pango.WrapMode);
@@ -3305,9 +3288,9 @@ export namespace Champlain {
 
         static new_with_text(
             text: string,
-            font?: string | null,
-            text_color?: Clutter.Color | null,
-            label_color?: Clutter.Color | null,
+            font: string | null,
+            text_color: Clutter.Color | null,
+            label_color: Clutter.Color | null,
         ): Label;
 
         // Signals
@@ -3417,7 +3400,7 @@ export namespace Champlain {
          * Sets the label's background color.
          * @param color The label's background color or NULL to reset the background to the         default color. The color parameter is copied.
          */
-        set_color(color?: Clutter.Color | null): void;
+        set_color(color: Clutter.Color | null): void;
         /**
          * Sets if the label has a background.
          * @param background value.
@@ -3437,12 +3420,12 @@ export namespace Champlain {
          * Sets the label's font name such as "Sans 12".
          * @param font_name The label's font name or NULL to reset the font to the default             value.
          */
-        set_font_name(font_name?: string | null): void;
+        set_font_name(font_name: string | null): void;
         /**
          * Sets the label's image.
          * @param image The image as a `ClutterActor` or NULL to remove the current image.
          */
-        set_image(image?: Clutter.Actor | null): void;
+        set_image(image: Clutter.Actor | null): void;
         /**
          * Sets if the label's text is on a single line.
          * @param mode The label's single line mode
@@ -3457,7 +3440,7 @@ export namespace Champlain {
          * Sets the label's text color.
          * @param color The label's text color or NULL to reset the text to the default         color. The color parameter is copied.
          */
-        set_text_color(color?: Clutter.Color | null): void;
+        set_text_color(color: Clutter.Color | null): void;
         /**
          * Sets if the label's text uses markup.
          * @param use_markup The value
@@ -3476,6 +3459,7 @@ export namespace Champlain {
         /**
          * The latitude coordonate
          * @since 0.10
+         * @default 0
          * @category Inherited from Champlain.Location
          */
         get latitude(): number;
@@ -3483,6 +3467,7 @@ export namespace Champlain {
         /**
          * The longitude coordonate
          * @since 0.10
+         * @default 0
          * @category Inherited from Champlain.Location
          */
         get longitude(): number;
@@ -3567,38 +3552,19 @@ export namespace Champlain {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -3606,15 +3572,9 @@ export namespace Champlain {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -3781,7 +3741,7 @@ export namespace Champlain {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -4134,7 +4094,7 @@ export namespace Champlain {
          * @param view a {@link Champlain.View}
          * @virtual
          */
-        vfunc_set_view(view?: View | null): void;
+        vfunc_set_view(view: View | null): void;
 
         // Methods
 
@@ -4151,7 +4111,7 @@ export namespace Champlain {
          * by user code.
          * @param view a {@link Champlain.View}
          */
-        set_view(view?: View | null): void;
+        set_view(view: View | null): void;
         /**
          * Calls the `animate_property()` virtual function for `animatable`.
          *
@@ -4390,7 +4350,7 @@ export namespace Champlain {
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          */
-        lower_child(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void;
+        lower_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
          *
@@ -4400,7 +4360,7 @@ export namespace Champlain {
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          */
-        raise_child(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void;
+        raise_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
@@ -4517,7 +4477,7 @@ export namespace Champlain {
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          * @virtual
          */
-        vfunc_lower(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void;
+        vfunc_lower(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
          *
@@ -4528,7 +4488,7 @@ export namespace Champlain {
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          * @virtual
          */
-        vfunc_raise(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void;
+        vfunc_raise(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
@@ -4663,38 +4623,19 @@ export namespace Champlain {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -4702,15 +4643,9 @@ export namespace Champlain {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -4877,7 +4812,7 @@ export namespace Champlain {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -5189,6 +5124,7 @@ export namespace Champlain {
         /**
          * The license's alignment
          * @since 0.10
+         * @default Pango.Alignment.LEFT
          */
         get alignment(): Pango.Alignment;
         set alignment(val: Pango.Alignment);
@@ -5518,7 +5454,7 @@ export namespace Champlain {
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          */
-        lower_child(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void;
+        lower_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
          *
@@ -5528,7 +5464,7 @@ export namespace Champlain {
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          */
-        raise_child(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void;
+        raise_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
@@ -5645,7 +5581,7 @@ export namespace Champlain {
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          * @virtual
          */
-        vfunc_lower(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void;
+        vfunc_lower(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
          *
@@ -5656,7 +5592,7 @@ export namespace Champlain {
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          * @virtual
          */
-        vfunc_raise(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void;
+        vfunc_raise(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
@@ -5791,38 +5727,19 @@ export namespace Champlain {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -5830,15 +5747,9 @@ export namespace Champlain {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -6005,7 +5916,7 @@ export namespace Champlain {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -6540,7 +6451,7 @@ export namespace Champlain {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            data: any;
+            data: any | null;
             id: string;
             license: string;
             license_uri: string;
@@ -6574,7 +6485,7 @@ export namespace Champlain {
          * @since 0.10
          * @construct-only
          */
-        get data(): any;
+        get data(): any | null;
         /**
          * The id of the map source
          * @since 0.10
@@ -6603,24 +6514,28 @@ export namespace Champlain {
          * The maximum zoom level
          * @since 0.10
          * @construct-only
+         * @default 20
          */
         get max_zoom_level(): number;
         /**
          * The maximum zoom level
          * @since 0.10
          * @construct-only
+         * @default 20
          */
         get maxZoomLevel(): number;
         /**
          * The minimum zoom level
          * @since 0.10
          * @construct-only
+         * @default 0
          */
         get min_zoom_level(): number;
         /**
          * The minimum zoom level
          * @since 0.10
          * @construct-only
+         * @default 0
          */
         get minZoomLevel(): number;
         /**
@@ -6633,18 +6548,21 @@ export namespace Champlain {
          * The map projection of the map source
          * @since 0.10
          * @construct-only
+         * @default Champlain.MapProjection.MERCATOR
          */
         get projection(): MapProjection;
         /**
          * The tile size of the map source
          * @since 0.10
          * @construct-only
+         * @default 256
          */
         get tile_size(): number;
         /**
          * The tile size of the map source
          * @since 0.10
          * @construct-only
+         * @default 256
          */
         get tileSize(): number;
         /**
@@ -7010,18 +6928,21 @@ export namespace Champlain {
         /**
          * The draggable state of the marker
          * @since 0.10
+         * @default false
          */
         get draggable(): boolean;
         set draggable(val: boolean);
         /**
          * The selectable state of the marker
          * @since 0.10
+         * @default false
          */
         get selectable(): boolean;
         set selectable(val: boolean);
         /**
          * The selected state of the marker
          * @since 0.10
+         * @default false
          */
         get selected(): boolean;
         set selected(val: boolean);
@@ -7143,6 +7064,7 @@ export namespace Champlain {
         /**
          * The latitude coordonate
          * @since 0.10
+         * @default 0
          * @category Inherited from Champlain.Location
          */
         get latitude(): number;
@@ -7150,6 +7072,7 @@ export namespace Champlain {
         /**
          * The longitude coordonate
          * @since 0.10
+         * @default 0
          * @category Inherited from Champlain.Location
          */
         get longitude(): number;
@@ -7425,7 +7348,7 @@ export namespace Champlain {
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          */
-        lower_child(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void;
+        lower_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
          *
@@ -7435,7 +7358,7 @@ export namespace Champlain {
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          */
-        raise_child(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void;
+        raise_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
@@ -7552,7 +7475,7 @@ export namespace Champlain {
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          * @virtual
          */
-        vfunc_lower(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void;
+        vfunc_lower(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
          *
@@ -7563,7 +7486,7 @@ export namespace Champlain {
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          * @virtual
          */
-        vfunc_raise(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void;
+        vfunc_raise(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
@@ -7698,38 +7621,19 @@ export namespace Champlain {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -7737,15 +7641,9 @@ export namespace Champlain {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -7912,7 +7810,7 @@ export namespace Champlain {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -8224,12 +8122,14 @@ export namespace Champlain {
         /**
          * Determines the type of selection that will be performed.
          * @since 0.10
+         * @default Champlain.SelectionMode.NONE
          */
         get selection_mode(): SelectionMode;
         set selection_mode(val: SelectionMode);
         /**
          * Determines the type of selection that will be performed.
          * @since 0.10
+         * @default Champlain.SelectionMode.NONE
          */
         get selectionMode(): SelectionMode;
         set selectionMode(val: SelectionMode);
@@ -8421,38 +8321,19 @@ export namespace Champlain {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -8460,15 +8341,9 @@ export namespace Champlain {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -8635,7 +8510,7 @@ export namespace Champlain {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -8855,12 +8730,14 @@ export namespace Champlain {
         /**
          * The maximum number of tiles that are stored in the cache.
          * @since 0.8
+         * @default 100
          */
         get size_limit(): number;
         set size_limit(val: number);
         /**
          * The maximum number of tiles that are stored in the cache.
          * @since 0.8
+         * @default 100
          */
         get sizeLimit(): number;
         set sizeLimit(val: number);
@@ -8968,12 +8845,14 @@ export namespace Champlain {
         /**
          * The URI of an OpenStreetMap API server
          * @since 0.8
+         * @default https://www.informationfreeway.org/api/0.6
          */
         get api_uri(): string;
         set api_uri(val: string);
         /**
          * The URI of an OpenStreetMap API server
          * @since 0.8
+         * @default https://www.informationfreeway.org/api/0.6
          */
         get apiUri(): string;
         set apiUri(val: string);
@@ -8993,6 +8872,7 @@ export namespace Champlain {
          * The map source's state. Useful to know if the data source is loading
          * or not.
          * @since 0.8
+         * @default Champlain.State.NONE
          */
         get state(): State;
         set state(val: State);
@@ -9000,12 +8880,14 @@ export namespace Champlain {
          * The HTTP user agent used for requests
          * @since 0.12.16
          * @write-only
+         * @default libchamplain/0.12.22
          */
         set user_agent(val: string);
         /**
          * The HTTP user agent used for requests
          * @since 0.12.16
          * @write-only
+         * @default libchamplain/0.12.22
          */
         set userAgent(val: string);
 
@@ -9143,6 +9025,7 @@ export namespace Champlain {
          * Before changing this remember to verify how many simultaneous connections
          * your tile provider allows you to make.
          * @since 0.12.14
+         * @default 2
          */
         get max_conns(): number;
         set max_conns(val: number);
@@ -9153,12 +9036,14 @@ export namespace Champlain {
          * Before changing this remember to verify how many simultaneous connections
          * your tile provider allows you to make.
          * @since 0.12.14
+         * @default 2
          */
         get maxConns(): number;
         set maxConns(val: number);
         /**
          * Specifies whether the network tile source can access network
          * @since 0.4
+         * @default false
          */
         get offline(): boolean;
         set offline(val: boolean);
@@ -9190,12 +9075,14 @@ export namespace Champlain {
          * The HTTP user agent used for requests
          * @since 0.12.16
          * @write-only
+         * @default libchamplain/0.12.22
          */
         set user_agent(val: string);
         /**
          * The HTTP user agent used for requests
          * @since 0.12.16
          * @write-only
+         * @default libchamplain/0.12.22
          */
         set userAgent(val: string);
 
@@ -9512,60 +9399,70 @@ export namespace Champlain {
         /**
          * The shape is a closed path
          * @since 0.10
+         * @default false
          */
         get closed(): boolean;
         set closed(val: boolean);
         /**
          * The shape should be filled
          * @since 0.10
+         * @default false
          */
         get fill(): boolean;
         set fill(val: boolean);
         /**
          * The path's fill color
          * @since 0.10
+         * @default #cc0000aa
          */
         get fill_color(): Clutter.Color;
         set fill_color(val: Clutter.Color);
         /**
          * The path's fill color
          * @since 0.10
+         * @default #cc0000aa
          */
         get fillColor(): Clutter.Color;
         set fillColor(val: Clutter.Color);
         /**
          * The shape should be stroked
          * @since 0.10
+         * @default true
          */
         get stroke(): boolean;
         set stroke(val: boolean);
         /**
          * The path's stroke color
          * @since 0.10
+         * @default #a40000ff
          */
         get stroke_color(): Clutter.Color;
         set stroke_color(val: Clutter.Color);
         /**
          * The path's stroke color
          * @since 0.10
+         * @default #a40000ff
          */
         get strokeColor(): Clutter.Color;
         set strokeColor(val: Clutter.Color);
         /**
          * The path's stroke width (in pixels)
          * @since 0.10
+         * @default 2
          */
         get stroke_width(): number;
         set stroke_width(val: number);
         /**
          * The path's stroke width (in pixels)
          * @since 0.10
+         * @default 2
          */
         get strokeWidth(): number;
         set strokeWidth(val: number);
         /**
          * Wether the path is visible
          * @since 0.10
+         * @default true
          */
         get visible(): boolean;
         set visible(val: boolean);
@@ -9700,7 +9597,7 @@ export namespace Champlain {
          * Set the path's fill color.
          * @param color The path's fill color or NULL to reset to the         default color. The color parameter is copied.
          */
-        set_fill_color(color?: Clutter.Color | null): void;
+        set_fill_color(color: Clutter.Color | null): void;
         /**
          * Sets the path to be stroked
          * @param value if the path is stroked
@@ -9710,7 +9607,7 @@ export namespace Champlain {
          * Set the path's stroke color.
          * @param color The path's stroke color or NULL to reset to the         default color. The color parameter is copied.
          */
-        set_stroke_color(color?: Clutter.Color | null): void;
+        set_stroke_color(color: Clutter.Color | null): void;
         /**
          * Sets the width of the stroke
          * @param value the width of the stroke (in pixels)
@@ -9796,38 +9693,19 @@ export namespace Champlain {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -9835,15 +9713,9 @@ export namespace Champlain {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -10010,7 +9882,7 @@ export namespace Champlain {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -10325,8 +10197,14 @@ export namespace Champlain {
 
         // Properties
 
+        /**
+         * @default #333333ff
+         */
         get color(): Clutter.Color;
         set color(val: Clutter.Color);
+        /**
+         * @default 12
+         */
         // This accessor conflicts with another accessor's type in a parent class or interface.
         get size(): number | any;
         // This accessor conflicts with another accessor's type in a parent class or interface.
@@ -10393,7 +10271,7 @@ export namespace Champlain {
          * Set the color of the point.
          * @param color The color of the point or NULL to reset the background to the         default color. The color parameter is copied.
          */
-        set_color(color?: Clutter.Color | null): void;
+        set_color(color: Clutter.Color | null): void;
         /**
          * Set the size of the point.
          * @param size The size of the point.
@@ -10409,6 +10287,7 @@ export namespace Champlain {
         /**
          * The latitude coordonate
          * @since 0.10
+         * @default 0
          * @category Inherited from Champlain.Location
          */
         get latitude(): number;
@@ -10416,6 +10295,7 @@ export namespace Champlain {
         /**
          * The longitude coordonate
          * @since 0.10
+         * @default 0
          * @category Inherited from Champlain.Location
          */
         get longitude(): number;
@@ -10521,38 +10401,19 @@ export namespace Champlain {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -10560,15 +10421,9 @@ export namespace Champlain {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -10735,7 +10590,7 @@ export namespace Champlain {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -11141,18 +10996,21 @@ export namespace Champlain {
         /**
          * The size of the map scale on screen in pixels.
          * @since 0.10
+         * @default 100
          */
         get max_width(): number;
         set max_width(val: number);
         /**
          * The size of the map scale on screen in pixels.
          * @since 0.10
+         * @default 100
          */
         get maxWidth(): number;
         set maxWidth(val: number);
         /**
          * The scale's units.
          * @since 0.10
+         * @default Champlain.Unit.KM
          */
         get unit(): Unit;
         set unit(val: Unit);
@@ -11465,7 +11323,7 @@ export namespace Champlain {
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          */
-        lower_child(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void;
+        lower_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
          *
@@ -11475,7 +11333,7 @@ export namespace Champlain {
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          */
-        raise_child(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void;
+        raise_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
@@ -11592,7 +11450,7 @@ export namespace Champlain {
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          * @virtual
          */
-        vfunc_lower(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void;
+        vfunc_lower(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
          *
@@ -11603,7 +11461,7 @@ export namespace Champlain {
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          * @virtual
          */
-        vfunc_raise(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void;
+        vfunc_raise(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
@@ -11738,38 +11596,19 @@ export namespace Champlain {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -11777,15 +11616,9 @@ export namespace Champlain {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -11952,7 +11785,7 @@ export namespace Champlain {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -12294,24 +12127,28 @@ export namespace Champlain {
          * to identify if a tile has changed.  This information is saved in the cache
          * and sent in GET queries.
          * @since 0.4
+         * @default null
          */
         get etag(): string;
         set etag(val: string);
         /**
          * Specifies whether the tile should fade in when loading
          * @since 0.6
+         * @default false
          */
         get fade_in(): boolean;
         set fade_in(val: boolean);
         /**
          * Specifies whether the tile should fade in when loading
          * @since 0.6
+         * @default false
          */
         get fadeIn(): boolean;
         set fadeIn(val: boolean);
         /**
          * The size of the tile in pixels
          * @since 0.4
+         * @default 256
          */
         // This accessor conflicts with another accessor's type in a parent class or interface.
         get size(): number | any;
@@ -12320,30 +12157,35 @@ export namespace Champlain {
         /**
          * The state of the tile
          * @since 0.4
+         * @default Champlain.State.NONE
          */
         get state(): State;
         set state(val: State);
         /**
          * The x position of the tile
          * @since 0.4
+         * @default 0
          */
         get x(): number;
         set x(val: number);
         /**
          * The y position of the tile
          * @since 0.4
+         * @default 0
          */
         get y(): number;
         set y(val: number);
         /**
          * The zoom level of the tile
          * @since 0.4
+         * @default 0
          */
         get zoom_level(): number;
         set zoom_level(val: number);
         /**
          * The zoom level of the tile
          * @since 0.4
+         * @default 0
          */
         get zoomLevel(): number;
         set zoomLevel(val: number);
@@ -12766,7 +12608,7 @@ export namespace Champlain {
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          */
-        lower_child(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void;
+        lower_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
          *
@@ -12776,7 +12618,7 @@ export namespace Champlain {
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          */
-        raise_child(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void;
+        raise_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
@@ -12893,7 +12735,7 @@ export namespace Champlain {
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          * @virtual
          */
-        vfunc_lower(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void;
+        vfunc_lower(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
          *
@@ -12904,7 +12746,7 @@ export namespace Champlain {
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          * @virtual
          */
-        vfunc_raise(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void;
+        vfunc_raise(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
@@ -13039,38 +12881,19 @@ export namespace Champlain {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -13078,15 +12901,9 @@ export namespace Champlain {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -13253,7 +13070,7 @@ export namespace Champlain {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -13635,24 +13452,28 @@ export namespace Champlain {
         /**
          * The maximum zoom level
          * @since 0.4
+         * @default 18
          */
         get max_zoom_level(): number;
         set max_zoom_level(val: number);
         /**
          * The maximum zoom level
          * @since 0.4
+         * @default 18
          */
         get maxZoomLevel(): number;
         set maxZoomLevel(val: number);
         /**
          * The minimum zoom level
          * @since 0.4
+         * @default 0
          */
         get min_zoom_level(): number;
         set min_zoom_level(val: number);
         /**
          * The minimum zoom level
          * @since 0.4
+         * @default 0
          */
         get minZoomLevel(): number;
         set minZoomLevel(val: number);
@@ -13665,18 +13486,21 @@ export namespace Champlain {
         /**
          * The map projection of the tile source
          * @since 0.4
+         * @default Champlain.MapProjection.MERCATOR
          */
         get projection(): MapProjection;
         set projection(val: MapProjection);
         /**
          * The tile size of the tile source
          * @since 0.4
+         * @default 256
          */
         get tile_size(): number;
         set tile_size(val: number);
         /**
          * The tile size of the tile source
          * @since 0.4
+         * @default 256
          */
         get tileSize(): number;
         set tileSize(val: number);
@@ -15056,12 +14880,14 @@ export namespace Champlain {
         /**
          * Animate zoom change when zooming in/out.
          * @since 0.12
+         * @default true
          */
         get animate_zoom(): boolean;
         set animate_zoom(val: boolean);
         /**
          * Animate zoom change when zooming in/out.
          * @since 0.12
+         * @default true
          */
         get animateZoom(): boolean;
         set animateZoom(val: boolean);
@@ -15080,6 +14906,7 @@ export namespace Champlain {
         /**
          * The deceleration rate for the kinetic mode. The default value is 1.1.
          * @since 0.10
+         * @default 1.1
          */
         get deceleration(): number;
         set deceleration(val: number);
@@ -15089,6 +14916,7 @@ export namespace Champlain {
          *
          * Please note that animation of `champlain_view_ensure_visible` also
          * involves a 'goto' animation.
+         * @default 0
          */
         get goto_animation_duration(): number;
         set goto_animation_duration(val: number);
@@ -15098,6 +14926,7 @@ export namespace Champlain {
          *
          * Please note that animation of `champlain_view_ensure_visible` also
          * involves a 'goto' animation.
+         * @default 0
          */
         get gotoAnimationDuration(): number;
         set gotoAnimationDuration(val: number);
@@ -15106,6 +14935,7 @@ export namespace Champlain {
          *
          * Please note that animation of `champlain_view_ensure_visible` also
          * involves a 'goto' animation.
+         * @default Clutter.AnimationMode.EASE_IN_OUT_CIRC
          */
         get goto_animation_mode(): Clutter.AnimationMode;
         set goto_animation_mode(val: Clutter.AnimationMode);
@@ -15114,52 +14944,61 @@ export namespace Champlain {
          *
          * Please note that animation of `champlain_view_ensure_visible` also
          * involves a 'goto' animation.
+         * @default Clutter.AnimationMode.EASE_IN_OUT_CIRC
          */
         get gotoAnimationMode(): Clutter.AnimationMode;
         set gotoAnimationMode(val: Clutter.AnimationMode);
         /**
          * Determines whether the view should wrap horizontally.
+         * @default false
          */
         get horizontal_wrap(): boolean;
         set horizontal_wrap(val: boolean);
         /**
          * Determines whether the view should wrap horizontally.
+         * @default false
          */
         get horizontalWrap(): boolean;
         set horizontalWrap(val: boolean);
         /**
          * Keep the current centered position when resizing the view.
          * @since 0.2.7
+         * @default true
          */
         get keep_center_on_resize(): boolean;
         set keep_center_on_resize(val: boolean);
         /**
          * Keep the current centered position when resizing the view.
          * @since 0.2.7
+         * @default true
          */
         get keepCenterOnResize(): boolean;
         set keepCenterOnResize(val: boolean);
         /**
          * Determines whether the view should use kinetic mode.
          * @since 0.10
+         * @default false
          */
         get kinetic_mode(): boolean;
         set kinetic_mode(val: boolean);
         /**
          * Determines whether the view should use kinetic mode.
          * @since 0.10
+         * @default false
          */
         get kineticMode(): boolean;
         set kineticMode(val: boolean);
         /**
          * The latitude coordonate of the map
          * @since 0.1
+         * @default 0
          */
         get latitude(): number;
         set latitude(val: number);
         /**
          * The longitude coordonate of the map
          * @since 0.1
+         * @default 0
          */
         get longitude(): number;
         set longitude(val: number);
@@ -15178,24 +15017,28 @@ export namespace Champlain {
         /**
          * The highest allowed level of zoom of the content.
          * @since 0.4
+         * @default 20
          */
         get max_zoom_level(): number;
         set max_zoom_level(val: number);
         /**
          * The highest allowed level of zoom of the content.
          * @since 0.4
+         * @default 20
          */
         get maxZoomLevel(): number;
         set maxZoomLevel(val: number);
         /**
          * The lowest allowed level of zoom of the content.
          * @since 0.4
+         * @default 0
          */
         get min_zoom_level(): number;
         set min_zoom_level(val: number);
         /**
          * The lowest allowed level of zoom of the content.
          * @since 0.4
+         * @default 0
          */
         get minZoomLevel(): number;
         set minZoomLevel(val: number);
@@ -15204,6 +15047,7 @@ export namespace Champlain {
          * tiles or not.
          * @since 0.4
          * @read-only
+         * @default Champlain.State.NONE
          */
         get state(): State;
         /**
@@ -15219,24 +15063,28 @@ export namespace Champlain {
         /**
          * The level of zoom of the content.
          * @since 0.1
+         * @default 3
          */
         get zoom_level(): number;
         set zoom_level(val: number);
         /**
          * The level of zoom of the content.
          * @since 0.1
+         * @default 3
          */
         get zoomLevel(): number;
         set zoomLevel(val: number);
         /**
          * Should the view zoom in and recenter when the user double click on the map.
          * @since 0.4
+         * @default true
          */
         get zoom_on_double_click(): boolean;
         set zoom_on_double_click(val: boolean);
         /**
          * Should the view zoom in and recenter when the user double click on the map.
          * @since 0.4
+         * @default true
          */
         get zoomOnDoubleClick(): boolean;
         set zoomOnDoubleClick(val: boolean);
@@ -15804,7 +15652,7 @@ export namespace Champlain {
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          */
-        lower_child(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void;
+        lower_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
          *
@@ -15814,7 +15662,7 @@ export namespace Champlain {
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          */
-        raise_child(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void;
+        raise_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
@@ -15931,7 +15779,7 @@ export namespace Champlain {
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          * @virtual
          */
-        vfunc_lower(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void;
+        vfunc_lower(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
          *
@@ -15942,7 +15790,7 @@ export namespace Champlain {
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          * @virtual
          */
-        vfunc_raise(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void;
+        vfunc_raise(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
@@ -16077,38 +15925,19 @@ export namespace Champlain {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -16116,15 +15945,9 @@ export namespace Champlain {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -16291,7 +16114,7 @@ export namespace Champlain {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -16611,12 +16434,24 @@ export namespace Champlain {
         set hadjustment(val: Adjustment);
         get vadjustment(): Adjustment;
         set vadjustment(val: Adjustment);
+        /**
+         * @default 0
+         */
         get x_origin(): number;
         set x_origin(val: number);
+        /**
+         * @default 0
+         */
         get xOrigin(): number;
         set xOrigin(val: number);
+        /**
+         * @default 0
+         */
         get y_origin(): number;
         set y_origin(val: number);
+        /**
+         * @default 0
+         */
         get yOrigin(): number;
         set yOrigin(val: number);
 
@@ -16934,7 +16769,7 @@ export namespace Champlain {
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          */
-        lower_child(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void;
+        lower_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
          *
@@ -16944,7 +16779,7 @@ export namespace Champlain {
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          */
-        raise_child(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void;
+        raise_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
@@ -17061,7 +16896,7 @@ export namespace Champlain {
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          * @virtual
          */
-        vfunc_lower(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void;
+        vfunc_lower(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
          *
@@ -17072,7 +16907,7 @@ export namespace Champlain {
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          * @virtual
          */
-        vfunc_raise(actor: Clutter.Actor, sibling?: Clutter.Actor | null): void;
+        vfunc_raise(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
@@ -17207,38 +17042,19 @@ export namespace Champlain {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -17246,15 +17062,9 @@ export namespace Champlain {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -17421,7 +17231,7 @@ export namespace Champlain {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -18119,12 +17929,14 @@ export namespace Champlain {
         /**
          * The latitude coordonate
          * @since 0.10
+         * @default 0
          */
         get latitude(): number;
         set latitude(val: number);
         /**
          * The longitude coordonate
          * @since 0.10
+         * @default 0
          */
         get longitude(): number;
         set longitude(val: number);

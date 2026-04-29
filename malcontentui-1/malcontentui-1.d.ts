@@ -99,8 +99,8 @@ export namespace MalcontentUi {
                 Gtk.ShortcutManager.ConstructorProps {
             app_filter: Malcontent.AppFilter;
             appFilter: Malcontent.AppFilter;
-            user_display_name: string;
-            userDisplayName: string;
+            user_display_name: string | null;
+            userDisplayName: string | null;
         }
     }
 
@@ -154,9 +154,10 @@ export namespace MalcontentUi {
          *
          * If set, it must be valid UTF-8 and non-empty.
          * @since 0.5.0
+         * @default null
          */
-        get user_display_name(): string;
-        set user_display_name(val: string);
+        get user_display_name(): string | null;
+        set user_display_name(val: string | null);
         /**
          * The display name for the currently selected user account, or `NULL` if no
          * user is selected.
@@ -165,9 +166,10 @@ export namespace MalcontentUi {
          *
          * If set, it must be valid UTF-8 and non-empty.
          * @since 0.5.0
+         * @default null
          */
-        get userDisplayName(): string;
-        set userDisplayName(val: string);
+        get userDisplayName(): string | null;
+        set userDisplayName(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -184,7 +186,7 @@ export namespace MalcontentUi {
 
         _init(...args: any[]): void;
 
-        static ['new'](app_filter: Malcontent.AppFilter, user_display_name?: string | null): RestrictApplicationsDialog;
+        static ['new'](app_filter: Malcontent.AppFilter, user_display_name: string | null): RestrictApplicationsDialog;
         // Conflicted with Adw.PreferencesDialog.new
 
         static ['new'](...args: never[]): any;
@@ -243,13 +245,13 @@ export namespace MalcontentUi {
          * {@link MalcontentUi.RestrictApplicationsDialog.app_filter}.
          * @param app_filter the app filter to configure the   dialog from, or `NULL` to use an empty app filter
          */
-        set_app_filter(app_filter?: Malcontent.AppFilter | null): void;
+        set_app_filter(app_filter: Malcontent.AppFilter | null): void;
         /**
          * Set the value of
          * {@link MalcontentUi.RestrictApplicationsDialog.user_display_name}.
          * @param user_display_name the display name of the user   to configure the dialog for, or `NULL` if unknown
          */
-        set_user_display_name(user_display_name?: string | null): void;
+        set_user_display_name(user_display_name: string | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -297,38 +299,19 @@ export namespace MalcontentUi {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -336,15 +319,9 @@ export namespace MalcontentUi {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -511,7 +488,7 @@ export namespace MalcontentUi {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -766,7 +743,7 @@ export namespace MalcontentUi {
                 Gtk.Orientable.ConstructorProps {
             app_filter: Malcontent.AppFilter;
             appFilter: Malcontent.AppFilter;
-            search: string;
+            search: string | null;
         }
     }
 
@@ -821,9 +798,10 @@ export namespace MalcontentUi {
          * Search terms to filter the displayed list of apps by, or `NULL` to not
          * filter the search.
          * @since 0.12.0
+         * @default null
          */
-        get search(): string;
-        set search(val: string);
+        get search(): string | null;
+        set search(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -900,15 +878,16 @@ export namespace MalcontentUi {
          * desired.
          * @param app_filter the app filter to configure the   selector from, or `NULL` to use an empty app filter
          */
-        set_app_filter(app_filter?: Malcontent.AppFilter | null): void;
+        set_app_filter(app_filter: Malcontent.AppFilter | null): void;
         /**
          * Set the value of {@link MalcontentUi.RestrictApplicationsSelector.search},
          * or clear it to `NULL`.
          * @param search search terms, or `NULL` to not filter the app list
          */
-        set_search(search?: string | null): void;
+        set_search(search: string | null): void;
         /**
          * The orientation of the orientable.
+         * @default Gtk.Orientation.HORIZONTAL
          * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
@@ -970,38 +949,19 @@ export namespace MalcontentUi {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1009,15 +969,9 @@ export namespace MalcontentUi {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1184,7 +1138,7 @@ export namespace MalcontentUi {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1431,19 +1385,19 @@ export namespace MalcontentUi {
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps {
-            app_filter: Malcontent.AppFilter;
-            appFilter: Malcontent.AppFilter;
+            app_filter: Malcontent.AppFilter | null;
+            appFilter: Malcontent.AppFilter | null;
             dbus_connection: Gio.DBusConnection;
             dbusConnection: Gio.DBusConnection;
             description: string;
-            permission: Gio.Permission;
-            user: Malcontent.User;
+            permission: Gio.Permission | null;
+            user: Malcontent.User | null;
             user_account_type: Malcontent.UserType;
             userAccountType: Malcontent.UserType;
-            user_display_name: string;
-            userDisplayName: string;
-            user_locale: string;
-            userLocale: string;
+            user_display_name: string | null;
+            userDisplayName: string | null;
+            user_locale: string | null;
+            userLocale: string | null;
         }
     }
 
@@ -1495,8 +1449,8 @@ export namespace MalcontentUi {
          * {@link MalcontentUi.UserControls.user} fails.
          * @since 0.5.0
          */
-        get app_filter(): Malcontent.AppFilter;
-        set app_filter(val: Malcontent.AppFilter);
+        get app_filter(): Malcontent.AppFilter | null;
+        set app_filter(val: Malcontent.AppFilter | null);
         /**
          * The user’s current app filter, used to set up the user controls.
          *
@@ -1508,8 +1462,8 @@ export namespace MalcontentUi {
          * {@link MalcontentUi.UserControls.user} fails.
          * @since 0.5.0
          */
-        get appFilter(): Malcontent.AppFilter;
-        set appFilter(val: Malcontent.AppFilter);
+        get appFilter(): Malcontent.AppFilter | null;
+        set appFilter(val: Malcontent.AppFilter | null);
         /**
          * A connection to the system bus.
          *
@@ -1534,6 +1488,7 @@ export namespace MalcontentUi {
          *
          * If set, it must be valid UTF-8 and non-empty.
          * @since 0.11.0
+         * @default null
          */
         get description(): string;
         set description(val: string);
@@ -1544,25 +1499,27 @@ export namespace MalcontentUi {
          * This will be `NULL` if permission is not allowed or is unknown
          * @since 0.5.0
          */
-        get permission(): Gio.Permission;
-        set permission(val: Gio.Permission);
+        get permission(): Gio.Permission | null;
+        set permission(val: Gio.Permission | null);
         /**
          * The user the controls are configured for.
          *
          * This will be `NULL` if the user is unknown or not currently specified.
          * @since 0.14.0
          */
-        get user(): Malcontent.User;
-        set user(val: Malcontent.User);
+        get user(): Malcontent.User | null;
+        set user(val: Malcontent.User | null);
         /**
          * The type of the currently selected user account.
          * @since 0.5.0
+         * @default Malcontent.UserType.UNKNOWN
          */
         get user_account_type(): Malcontent.UserType;
         set user_account_type(val: Malcontent.UserType);
         /**
          * The type of the currently selected user account.
          * @since 0.5.0
+         * @default Malcontent.UserType.UNKNOWN
          */
         get userAccountType(): Malcontent.UserType;
         set userAccountType(val: Malcontent.UserType);
@@ -1574,9 +1531,10 @@ export namespace MalcontentUi {
          *
          * If set, it must be valid UTF-8 and non-empty.
          * @since 0.5.0
+         * @default null
          */
-        get user_display_name(): string;
-        set user_display_name(val: string);
+        get user_display_name(): string | null;
+        set user_display_name(val: string | null);
         /**
          * The display name for the currently selected user account, or `NULL` if no
          * user is selected.
@@ -1585,9 +1543,10 @@ export namespace MalcontentUi {
          *
          * If set, it must be valid UTF-8 and non-empty.
          * @since 0.5.0
+         * @default null
          */
-        get userDisplayName(): string;
-        set userDisplayName(val: string);
+        get userDisplayName(): string | null;
+        set userDisplayName(val: string | null);
         /**
          * The locale for the currently selected user account, or `NULL` if no
          * user is selected.
@@ -1600,9 +1559,10 @@ export namespace MalcontentUi {
          * country code, and `codeset` is a character set or encoding identifier like
          * `ISO-8859-1` or `UTF-8`.
          * @since 0.5.0
+         * @default null
          */
-        get user_locale(): string;
-        set user_locale(val: string);
+        get user_locale(): string | null;
+        set user_locale(val: string | null);
         /**
          * The locale for the currently selected user account, or `NULL` if no
          * user is selected.
@@ -1615,9 +1575,10 @@ export namespace MalcontentUi {
          * country code, and `codeset` is a character set or encoding identifier like
          * `ISO-8859-1` or `UTF-8`.
          * @since 0.5.0
+         * @default null
          */
-        get userLocale(): string;
-        set userLocale(val: string);
+        get userLocale(): string | null;
+        set userLocale(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -1707,22 +1668,22 @@ export namespace MalcontentUi {
          * is set.
          * @param app_filter the app filter to configure the user   controls from, or `NULL` if unknown
          */
-        set_app_filter(app_filter?: Malcontent.AppFilter | null): void;
+        set_app_filter(app_filter: Malcontent.AppFilter | null): void;
         /**
          * Set the value of {@link MalcontentUi.UserControls.description}.
          * @param description the description shown   above the controls, or `NULL` if none.
          */
-        set_description(description?: string | null): void;
+        set_description(description: string | null): void;
         /**
          * Set the value of {@link MalcontentUi.UserControls.permission}.
          * @param permission the {@link Gio.Permission} indicating   whether the current user has permission to view or change parental   controls, or `NULL` if permission is not allowed or is unknown
          */
-        set_permission(permission?: Gio.Permission | null): void;
+        set_permission(permission: Gio.Permission | null): void;
         /**
          * Set the value of {@link MalcontentUi.UserControls.user}.
          * @param user the user to configure the controls for,   or `NULL` if unknown
          */
-        set_user(user?: Malcontent.User | null): void;
+        set_user(user: Malcontent.User | null): void;
         /**
          * Set the value of {@link MalcontentUi.UserControls.user_account_type}.
          * @param user_account_type the account type of the user to configure the controls for
@@ -1732,12 +1693,12 @@ export namespace MalcontentUi {
          * Set the value of {@link MalcontentUi.UserControls.user_display_name}.
          * @param user_display_name the display name of the user   to configure the controls for, or `NULL` if unknown
          */
-        set_user_display_name(user_display_name?: string | null): void;
+        set_user_display_name(user_display_name: string | null): void;
         /**
          * Set the value of {@link MalcontentUi.UserControls.user_locale}.
          * @param user_locale the locale of the user   to configure the controls for, or `NULL` if unknown
          */
-        set_user_locale(user_locale?: string | null): void;
+        set_user_locale(user_locale: string | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -1785,38 +1746,19 @@ export namespace MalcontentUi {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1824,15 +1766,9 @@ export namespace MalcontentUi {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1999,7 +1935,7 @@ export namespace MalcontentUi {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set

@@ -100,18 +100,39 @@ export namespace GrlNet {
 
         // Properties
 
+        /**
+         * @default true
+         */
         get cache(): boolean;
         set cache(val: boolean);
+        /**
+         * @default 10
+         */
         get cache_size(): number;
         set cache_size(val: number);
+        /**
+         * @default 10
+         */
         get cacheSize(): number;
         set cacheSize(val: number);
+        /**
+         * @default 0
+         */
         get loglevel(): number;
         set loglevel(val: number);
+        /**
+         * @default 0
+         */
         get throttling(): number;
         set throttling(val: number);
+        /**
+         * @default null
+         */
         get user_agent(): string;
         set user_agent(val: string);
+        /**
+         * @default null
+         */
         get userAgent(): string;
         set userAgent(val: string);
 
@@ -169,7 +190,7 @@ export namespace GrlNet {
          * @param uri The URI of the resource to request
          * @param cancellable a {@link Gio.Cancellable} instance or `null` to ignore
          */
-        request_async(uri: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<Uint8Array | null>;
+        request_async(uri: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Uint8Array | null>;
         /**
          * Request the fetching of a web resource given the `uri`. This request is
          * asynchronous, thus the result will be returned within the `callback`.
@@ -191,7 +212,7 @@ export namespace GrlNet {
          */
         request_async(
             uri: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Uint8Array | null> | void;
         /**
@@ -215,9 +236,9 @@ export namespace GrlNet {
          */
         request_with_headers_async(
             uri: string,
-            headers?: GLib.HashTable<string, string> | null,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            headers: GLib.HashTable<string, string> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Sets if cache must be used. Note that this will only work if caching is

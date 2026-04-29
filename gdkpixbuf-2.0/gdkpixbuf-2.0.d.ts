@@ -268,13 +268,13 @@ export namespace GdkPixbuf {
      * @gir-type Callback
      */
     interface PixbufModuleLoadAnimationFunc {
-        (f?: any | null): PixbufAnimation;
+        (f: any | null): PixbufAnimation;
     }
     /**
      * @gir-type Callback
      */
     interface PixbufModuleLoadFunc {
-        (f?: any | null): Pixbuf;
+        (f: any | null): Pixbuf;
     }
     /**
      * @gir-type Callback
@@ -292,7 +292,7 @@ export namespace GdkPixbuf {
      * @gir-type Callback
      */
     interface PixbufModuleSaveFunc {
-        (f: any | null, pixbuf: Pixbuf, param_keys?: string[] | null, param_values?: string[] | null): boolean;
+        (f: any | null, pixbuf: Pixbuf, param_keys: string[] | null, param_values: string[] | null): boolean;
     }
     /**
      * @gir-type Callback
@@ -310,7 +310,7 @@ export namespace GdkPixbuf {
      * @gir-type Callback
      */
     interface PixbufModuleStopLoadFunc {
-        (context?: any | null): boolean;
+        (context: any | null): boolean;
     }
     /**
      * @gir-type Callback
@@ -525,6 +525,7 @@ export namespace GdkPixbuf {
          *
          * Currently only 8 bit per sample are supported.
          * @construct-only
+         * @default 8
          */
         get bits_per_sample(): number;
         /**
@@ -532,6 +533,7 @@ export namespace GdkPixbuf {
          *
          * Currently only 8 bit per sample are supported.
          * @construct-only
+         * @default 8
          */
         get bitsPerSample(): number;
         /**
@@ -539,21 +541,25 @@ export namespace GdkPixbuf {
          *
          * Currently, only `GDK_COLORSPACE_RGB` is supported.
          * @construct-only
+         * @default GdkPixbuf.Colorspace.RGB
          */
         get colorspace(): Colorspace;
         /**
          * Whether the pixbuf has an alpha channel.
          * @construct-only
+         * @default false
          */
         get has_alpha(): boolean;
         /**
          * Whether the pixbuf has an alpha channel.
          * @construct-only
+         * @default false
          */
         get hasAlpha(): boolean;
         /**
          * The number of rows of the pixbuf.
          * @construct-only
+         * @default 1
          */
         get height(): number;
         /**
@@ -561,6 +567,7 @@ export namespace GdkPixbuf {
          *
          * Currently, only 3 or 4 samples per pixel are supported.
          * @construct-only
+         * @default 3
          */
         get n_channels(): number;
         /**
@@ -568,6 +575,7 @@ export namespace GdkPixbuf {
          *
          * Currently, only 3 or 4 samples per pixel are supported.
          * @construct-only
+         * @default 3
          */
         get nChannels(): number;
         /**
@@ -590,11 +598,13 @@ export namespace GdkPixbuf {
          * This number must (obviously) be at least as large as the
          * width of the pixbuf.
          * @construct-only
+         * @default 1
          */
         get rowstride(): number;
         /**
          * The number of columns of the pixbuf.
          * @construct-only
+         * @default 1
          */
         get width(): number;
 
@@ -639,7 +649,7 @@ export namespace GdkPixbuf {
             width: number,
             height: number,
             rowstride: number,
-            destroy_fn?: PixbufDestroyNotify | null,
+            destroy_fn: PixbufDestroyNotify | null,
         ): Pixbuf;
 
         static new_from_file(filename: string): Pixbuf;
@@ -664,14 +674,14 @@ export namespace GdkPixbuf {
             preserve_aspect_ratio: boolean,
         ): Pixbuf;
 
-        static new_from_stream(stream: Gio.InputStream, cancellable?: Gio.Cancellable | null): Pixbuf;
+        static new_from_stream(stream: Gio.InputStream, cancellable: Gio.Cancellable | null): Pixbuf;
 
         static new_from_stream_at_scale(
             stream: Gio.InputStream,
             width: number,
             height: number,
             preserve_aspect_ratio: boolean,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): Pixbuf;
 
         static new_from_stream_finish(async_result: Gio.AsyncResult): Pixbuf;
@@ -741,8 +751,8 @@ export namespace GdkPixbuf {
          */
         static get_file_info_async(
             filename: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<Pixbuf> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<Pixbuf> | null,
         ): void;
         /**
          * Finishes an asynchronous pixbuf parsing operation started with
@@ -787,8 +797,8 @@ export namespace GdkPixbuf {
          */
         static new_from_stream_async(
             stream: Gio.InputStream,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<Pixbuf> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<Pixbuf> | null,
         ): void;
         /**
          * Creates a new pixbuf by asynchronously loading an image from an input stream.
@@ -810,8 +820,8 @@ export namespace GdkPixbuf {
             width: number,
             height: number,
             preserve_aspect_ratio: boolean,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<Pixbuf> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<Pixbuf> | null,
         ): void;
         /**
          * Finishes an asynchronous pixbuf save operation started with
@@ -1096,17 +1106,6 @@ export namespace GdkPixbuf {
          */
         get_pixels(): Uint8Array;
         /**
-         * Queries a pointer to the pixel data of a pixbuf.
-         *
-         * This function will cause an implicit copy of the pixbuf data if the
-         * pixbuf was created from read-only data.
-         *
-         * Please see the section on [image data](https://docs.gtk.org/gdk-pixbuf/class.Pixbuf.html#image-data) for information
-         * about how the pixel data is stored in memory.
-         * @returns A pointer to the pixbuf's pixel data.
-         */
-        get_pixels(): Uint8Array;
-        /**
          * Queries the rowstride of a pixbuf, which is the number of bytes between
          * the start of a row and the start of the next row.
          * @returns Distance between row starts.
@@ -1200,8 +1199,8 @@ export namespace GdkPixbuf {
          */
         save_to_bufferv(
             type: string,
-            option_keys?: string[] | null,
-            option_values?: string[] | null,
+            option_keys: string[] | null,
+            option_values: string[] | null,
         ): [boolean, Uint8Array];
         /**
          * Vector version of `gdk_pixbuf_save_to_callback()`.
@@ -1221,8 +1220,8 @@ export namespace GdkPixbuf {
         save_to_callbackv(
             save_func: PixbufSaveFunc,
             type: string,
-            option_keys?: string[] | null,
-            option_values?: string[] | null,
+            option_keys: string[] | null,
+            option_values: string[] | null,
         ): boolean;
         /**
          * Saves `pixbuf` to an output stream.
@@ -1241,9 +1240,9 @@ export namespace GdkPixbuf {
         save_to_streamv(
             stream: Gio.OutputStream,
             type: string,
-            option_keys?: string[] | null,
-            option_values?: string[] | null,
-            cancellable?: Gio.Cancellable | null,
+            option_keys: string[] | null,
+            option_values: string[] | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Saves `pixbuf` to an output stream asynchronously.
@@ -1265,10 +1264,10 @@ export namespace GdkPixbuf {
         save_to_streamv_async(
             stream: Gio.OutputStream,
             type: string,
-            option_keys?: string[] | null,
-            option_values?: string[] | null,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            option_keys: string[] | null,
+            option_values: string[] | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Vector version of `gdk_pixbuf_save()`.
@@ -1284,7 +1283,7 @@ export namespace GdkPixbuf {
          * @param option_values values for named options
          * @returns whether an error was set
          */
-        savev(filename: string, type: string, option_keys?: string[] | null, option_values?: string[] | null): boolean;
+        savev(filename: string, type: string, option_keys: string[] | null, option_values: string[] | null): boolean;
         /**
          * Creates a transformation of the source image `src` by scaling by
          * `scale_x` and `scale_y` then translating by `offset_x` and `offset_y`,
@@ -1362,7 +1361,7 @@ export namespace GdkPixbuf {
          * @param icon2 pointer to the second {@link Gio.Icon}.
          * @returns `true` if `icon1` is equal to `icon2`. `false` otherwise.
          */
-        equal(icon2?: Gio.Icon | null): boolean;
+        equal(icon2: Gio.Icon | null): boolean;
         /**
          * Gets a hash for an icon.
          * @returns a `guint` containing a hash for the `icon`, suitable for   use in a {@link GLib.HashTable} or similar data structure.
@@ -1402,7 +1401,7 @@ export namespace GdkPixbuf {
          * @param icon2 pointer to the second {@link Gio.Icon}.
          * @virtual
          */
-        vfunc_equal(icon2?: Gio.Icon | null): boolean;
+        vfunc_equal(icon2: Gio.Icon | null): boolean;
         /**
          * Gets a hash for an icon.
          * @virtual
@@ -1430,7 +1429,7 @@ export namespace GdkPixbuf {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns a {@link Gio.InputStream} to read the icon from.
          */
-        load(size: number, cancellable?: Gio.Cancellable | null): [Gio.InputStream, string];
+        load(size: number, cancellable: Gio.Cancellable | null): [Gio.InputStream, string];
         /**
          * Loads an icon asynchronously. To finish this function, see
          * `g_loadable_icon_load_finish()`. For the synchronous, blocking
@@ -1438,7 +1437,7 @@ export namespace GdkPixbuf {
          * @param size an integer.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        load_async(size: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<[Gio.InputStream, string]>;
+        load_async(size: number, cancellable: Gio.Cancellable | null): globalThis.Promise<[Gio.InputStream, string]>;
         /**
          * Loads an icon asynchronously. To finish this function, see
          * `g_loadable_icon_load_finish()`. For the synchronous, blocking
@@ -1462,7 +1461,7 @@ export namespace GdkPixbuf {
          */
         load_async(
             size: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[Gio.InputStream, string]> | void;
         /**
@@ -1478,7 +1477,7 @@ export namespace GdkPixbuf {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_load(size: number, cancellable?: Gio.Cancellable | null): [Gio.InputStream, string];
+        vfunc_load(size: number, cancellable: Gio.Cancellable | null): [Gio.InputStream, string];
         /**
          * Loads an icon asynchronously. To finish this function, see
          * `g_loadable_icon_load_finish()`. For the synchronous, blocking
@@ -1490,8 +1489,8 @@ export namespace GdkPixbuf {
          */
         vfunc_load_async(
             size: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes an asynchronous icon load started in `g_loadable_icon_load_async()`.
@@ -1546,38 +1545,19 @@ export namespace GdkPixbuf {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1585,15 +1565,9 @@ export namespace GdkPixbuf {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1760,7 +1734,7 @@ export namespace GdkPixbuf {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1998,7 +1972,7 @@ export namespace GdkPixbuf {
 
         static new_from_resource(resource_path: string): PixbufAnimation;
 
-        static new_from_stream(stream: Gio.InputStream, cancellable?: Gio.Cancellable | null): PixbufAnimation;
+        static new_from_stream(stream: Gio.InputStream, cancellable: Gio.Cancellable | null): PixbufAnimation;
 
         static new_from_stream_finish(async_result: Gio.AsyncResult): PixbufAnimation;
 
@@ -2040,8 +2014,8 @@ export namespace GdkPixbuf {
          */
         static new_from_stream_async(
             stream: Gio.InputStream,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<PixbufAnimation> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<PixbufAnimation> | null,
         ): void;
 
         // Virtual methods
@@ -2084,7 +2058,7 @@ export namespace GdkPixbuf {
          * @param start_time time when the animation starts playing
          * @virtual
          */
-        vfunc_get_iter(start_time?: GLib.TimeVal | null): PixbufAnimationIter;
+        vfunc_get_iter(start_time: GLib.TimeVal | null): PixbufAnimationIter;
         /**
          * fills `width` and `height` with the frame size of the animation.
          * @param width
@@ -2163,7 +2137,7 @@ export namespace GdkPixbuf {
          * @param start_time time when the animation starts playing
          * @returns an iterator to move over the animation
          */
-        get_iter(start_time?: GLib.TimeVal | null): PixbufAnimationIter;
+        get_iter(start_time: GLib.TimeVal | null): PixbufAnimationIter;
         /**
          * Retrieves a static image for the animation.
          *
@@ -2279,7 +2253,7 @@ export namespace GdkPixbuf {
          * @param current_time current time
          * @virtual
          */
-        vfunc_advance(current_time?: GLib.TimeVal | null): boolean;
+        vfunc_advance(current_time: GLib.TimeVal | null): boolean;
         /**
          * Gets the number of milliseconds the current pixbuf should be displayed,
          * or -1 if the current pixbuf should be displayed forever.
@@ -2350,7 +2324,7 @@ export namespace GdkPixbuf {
          * @param current_time current time
          * @returns `TRUE` if the image may need updating
          */
-        advance(current_time?: GLib.TimeVal | null): boolean;
+        advance(current_time: GLib.TimeVal | null): boolean;
         /**
          * Gets the number of milliseconds the current pixbuf should be displayed,
          * or -1 if the current pixbuf should be displayed forever.
@@ -2734,6 +2708,7 @@ export namespace GdkPixbuf {
          * Whether the animation should loop when it reaches the end.
          * @since 2.18
          * @deprecated since 2.44: Use a different image loading library for animatable assets
+         * @default false
          */
         get loop(): boolean;
         set loop(val: boolean);

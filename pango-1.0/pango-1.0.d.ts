@@ -1934,9 +1934,9 @@ export namespace Pango {
     function attr_shape_new_with_data(
         ink_rect: Rectangle,
         logical_rect: Rectangle,
-        data?: any | null,
-        copy_func?: AttrDataCopyFunc | null,
-        destroy_func?: GLib.DestroyNotify | null,
+        data: any | null,
+        copy_func: AttrDataCopyFunc | null,
+        destroy_func: GLib.DestroyNotify | null,
     ): Attribute;
     /**
      * Create a new attribute that influences how invisible
@@ -2237,7 +2237,7 @@ export namespace Pango {
      * @returns the gravity of `matrix`, which will never be {@link Pango.Gravity.AUTO}, or {@link Pango.Gravity.SOUTH} if `matrix` is `null`
      * @since 1.16
      */
-    function gravity_get_for_matrix(matrix?: Matrix | null): Gravity;
+    function gravity_get_for_matrix(matrix: Matrix | null): Gravity;
     /**
      * Returns the gravity to use in laying out a {@link Pango.Item}.
      *
@@ -2332,7 +2332,7 @@ export namespace Pango {
         start_index: number,
         length: number,
         attrs: AttrList,
-        cached_iter?: AttrIterator | null,
+        cached_iter: AttrIterator | null,
     ): Item[];
     /**
      * Like `pango_itemize()`, but with an explicitly specified base direction.
@@ -2357,7 +2357,7 @@ export namespace Pango {
         start_index: number,
         length: number,
         attrs: AttrList,
-        cached_iter?: AttrIterator | null,
+        cached_iter: AttrIterator | null,
     ): Item[];
     /**
      * Convert a language tag to a {@link Pango.Language}.
@@ -2375,7 +2375,7 @@ export namespace Pango {
      * @param language a string representing a language tag
      * @returns a {@link Pango.Language}
      */
-    function language_from_string(language?: string | null): Language | null;
+    function language_from_string(language: string | null): Language | null;
     /**
      * Returns the {@link Pango.Language} for the current locale of the process.
      *
@@ -2958,7 +2958,7 @@ export namespace Pango {
      * @gir-type Callback
      */
     interface AttrDataCopyFunc {
-        (user_data?: any | null): any | null;
+        (user_data: any | null): any | null;
     }
     /**
      * @gir-type Callback
@@ -3284,7 +3284,7 @@ export namespace Pango {
          * @param language language tag used to determine which script to get   the metrics for. `null` means that the language tag from the context   will be used. If no language tag is set on the context, metrics   for the default language (as determined by {@link Pango.Language.get_default}   will be returned.
          * @returns a {@link Pango.FontMetrics} object. The caller must call   {@link Pango.FontMetrics.unref} when finished using the object.
          */
-        get_metrics(desc?: FontDescription | null, language?: Language | null): FontMetrics;
+        get_metrics(desc: FontDescription | null, language: Language | null): FontMetrics;
         /**
          * Returns whether font rendering with this context should
          * round glyph positions and widths.
@@ -3358,7 +3358,7 @@ export namespace Pango {
          * suitable font map.
          * @param font_map the {@link Pango.FontMap} to set.
          */
-        set_font_map(font_map?: FontMap | null): void;
+        set_font_map(font_map: FontMap | null): void;
         /**
          * Sets the gravity hint for the context.
          *
@@ -3376,7 +3376,7 @@ export namespace Pango {
          * can be found using {@link Pango.Language.get_default}.
          * @param language the new language tag.
          */
-        set_language(language?: Language | null): void;
+        set_language(language: Language | null): void;
         /**
          * Sets the transformation matrix that will be applied when rendering
          * with this context.
@@ -3388,7 +3388,7 @@ export namespace Pango {
          * text is fit to the pixel grid.
          * @param matrix a {@link Pango.Matrix}, or `null` to unset any existing matrix. (No matrix set is the same as setting the identity matrix.)
          */
-        set_matrix(matrix?: Matrix | null): void;
+        set_matrix(matrix: Matrix | null): void;
         /**
          * Sets whether font rendering with this context should
          * round glyph positions and widths to integral positions,
@@ -3581,7 +3581,7 @@ export namespace Pango {
          * Frees an array of font descriptions.
          * @param descs a pointer   to an array of {@link Pango.FontDescription}, may be `null`
          */
-        static descriptions_free(descs?: FontDescription[] | null): void;
+        static descriptions_free(descs: FontDescription[] | null): void;
         /**
          * Loads data previously created via {@link Pango.Font.serialize}.
          *
@@ -3674,7 +3674,7 @@ export namespace Pango {
          * @param language language tag used to determine which script   to get the metrics for, or `null` to indicate to get the metrics for   the entire font.
          * @virtual
          */
-        vfunc_get_metrics(language?: Language | null): FontMetrics;
+        vfunc_get_metrics(language: Language | null): FontMetrics;
 
         // Methods
 
@@ -3773,7 +3773,7 @@ export namespace Pango {
          * @param language language tag used to determine which script   to get the metrics for, or `null` to indicate to get the metrics for   the entire font.
          * @returns a {@link Pango.FontMetrics} object. The caller must call   {@link Pango.FontMetrics.unref} when finished using the object.
          */
-        get_metrics(language?: Language | null): FontMetrics;
+        get_metrics(language: Language | null): FontMetrics;
         /**
          * Returns whether the font provides a glyph for this character.
          * @param wc a Unicode character
@@ -3984,24 +3984,28 @@ export namespace Pango {
          * Is this a monospace font
          * @since 1.52
          * @read-only
+         * @default false
          */
         get is_monospace(): boolean;
         /**
          * Is this a monospace font
          * @since 1.52
          * @read-only
+         * @default false
          */
         get isMonospace(): boolean;
         /**
          * Is this a variable font
          * @since 1.52
          * @read-only
+         * @default false
          */
         get is_variable(): boolean;
         /**
          * Is this a variable font
          * @since 1.52
          * @read-only
+         * @default false
          */
         get isVariable(): boolean;
         /**
@@ -4020,18 +4024,21 @@ export namespace Pango {
          * The number of items contained in this list.
          * @since 1.52
          * @read-only
+         * @default 0
          */
         get n_items(): number;
         /**
          * The number of items contained in this list.
          * @since 1.52
          * @read-only
+         * @default 0
          */
         get nItems(): number;
         /**
          * The name of the family
          * @since 1.52
          * @read-only
+         * @default null
          */
         get name(): string;
 
@@ -4078,7 +4085,7 @@ export namespace Pango {
          * @param name the name of a face. If the name is `null`,   the family's default face (fontconfig calls it "Regular")   will be returned.
          * @virtual
          */
-        vfunc_get_face(name?: string | null): FontFace | null;
+        vfunc_get_face(name: string | null): FontFace | null;
         /**
          * Gets the name of the family.
          *
@@ -4137,7 +4144,7 @@ export namespace Pango {
          * @param name the name of a face. If the name is `null`,   the family's default face (fontconfig calls it "Regular")   will be returned.
          * @returns the {@link Pango.FontFace},   or `null` if no face with the given name exists.
          */
-        get_face(name?: string | null): FontFace | null;
+        get_face(name: string | null): FontFace | null;
         /**
          * Gets the name of the family.
          *
@@ -4304,38 +4311,19 @@ export namespace Pango {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -4343,15 +4331,9 @@ export namespace Pango {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -4518,7 +4500,7 @@ export namespace Pango {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -4758,12 +4740,14 @@ export namespace Pango {
          * The number of items contained in this list.
          * @since 1.52
          * @read-only
+         * @default 0
          */
         get n_items(): number;
         /**
          * The number of items contained in this list.
          * @since 1.52
          * @read-only
+         * @default 0
          */
         get nItems(): number;
 
@@ -4961,7 +4945,7 @@ export namespace Pango {
          * @param variations font variations to use
          * @returns the modified font
          */
-        reload_font(font: Font, scale: number, context?: Context | null, variations?: string | null): Font;
+        reload_font(font: Font, scale: number, context: Context | null, variations: string | null): Font;
         /**
          * Gets the type of the items in `list`.
          *
@@ -5106,38 +5090,19 @@ export namespace Pango {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -5145,15 +5110,9 @@ export namespace Pango {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -5320,7 +5279,7 @@ export namespace Pango {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -6221,7 +6180,7 @@ export namespace Pango {
          * References `attrs`, so the caller can unref its reference.
          * @param attrs a {@link Pango.AttrList}
          */
-        set_attributes(attrs?: AttrList | null): void;
+        set_attributes(attrs: AttrList | null): void;
         /**
          * Sets whether to calculate the base direction
          * for the layout according to its contents.
@@ -6268,7 +6227,7 @@ export namespace Pango {
          * font description from the layout's context is used.
          * @param desc the new {@link Pango.FontDescription}   to unset the current font description
          */
-        set_font_description(desc?: FontDescription | null): void;
+        set_font_description(desc: FontDescription | null): void;
         /**
          * Sets the height to which the {@link Pango.Layout} should be ellipsized at.
          *
@@ -6444,7 +6403,7 @@ export namespace Pango {
          * {@link Pango.Alignment.LEFT}.
          * @param tabs a {@link Pango.TabArray}
          */
-        set_tabs(tabs?: TabArray | null): void;
+        set_tabs(tabs: TabArray | null): void;
         /**
          * Sets the text of the layout.
          *
@@ -6926,12 +6885,12 @@ export namespace Pango {
          * @param part the part to change the color of
          * @param color the new color or `null` to unset the current color
          */
-        set_color(part: RenderPart, color?: Color | null): void;
+        set_color(part: RenderPart, color: Color | null): void;
         /**
          * Sets the transformation matrix that will be applied when rendering.
          * @param matrix a {@link Pango.Matrix}, or `null` to unset any existing matrix  (No matrix set is the same as setting the identity matrix.)
          */
-        set_matrix(matrix?: Matrix | null): void;
+        set_matrix(matrix: Matrix | null): void;
     }
 
     /**
@@ -7380,9 +7339,9 @@ export namespace Pango {
         static new_with_data(
             ink_rect: Rectangle,
             logical_rect: Rectangle,
-            data?: any | null,
-            copy_func?: AttrDataCopyFunc | null,
-            destroy_func?: GLib.DestroyNotify | null,
+            data: any | null,
+            copy_func: AttrDataCopyFunc | null,
+            destroy_func: GLib.DestroyNotify | null,
         ): Attribute;
     }
 
@@ -7941,7 +7900,7 @@ export namespace Pango {
          * Features that are not supported by the font are silently ignored.
          * @param features a string representing the features
          */
-        set_features(features?: string | null): void;
+        set_features(features: string | null): void;
         /**
          * Sets the features field of a font description.
          *
@@ -8024,7 +7983,7 @@ export namespace Pango {
          * for example [hb_ot_var_get_axis_infos](https://harfbuzz.github.io/harfbuzz-hb-ot-var.html#hb-ot-var-get-axis-infos).
          * @param variations a string representing the variations
          */
-        set_variations(variations?: string | null): void;
+        set_variations(variations: string | null): void;
         /**
          * Sets the variations field of a font description.
          *
@@ -8761,7 +8720,7 @@ export namespace Pango {
          * {@link Pango.Language} for the current locale of the process.
          * @param language a string representing a language tag
          */
-        static from_string(language?: string | null): Language | null;
+        static from_string(language: string | null): Language | null;
         /**
          * Returns the {@link Pango.Language} for the current locale of the process.
          *

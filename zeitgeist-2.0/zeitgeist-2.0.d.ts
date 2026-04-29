@@ -335,7 +335,7 @@ export namespace Zeitgeist {
      * @param symbol_uri
      * @param parent_uri
      */
-    function symbol_is_a(symbol_uri?: string | null, parent_uri?: string | null): boolean;
+    function symbol_is_a(symbol_uri: string | null, parent_uri: string | null): boolean;
     function utils_get_data_path(): string;
     function utils_get_default_data_path(): string;
     function utils_get_database_file_path(): string;
@@ -363,7 +363,7 @@ export namespace Zeitgeist {
     /**
      * @param s
      */
-    function utils_is_empty_string(s?: string | null): boolean;
+    function utils_is_empty_string(s: string | null): boolean;
     function utils_log_may_read_directly(): boolean;
     /**
      * @param result_type
@@ -382,7 +382,7 @@ export namespace Zeitgeist {
     /**
      * @param mimetype
      */
-    function interpretation_for_mimetype(mimetype?: string | null): string | null;
+    function interpretation_for_mimetype(mimetype: string | null): string | null;
     /**
      * @param uri_scheme
      * @param manifestation_type
@@ -465,7 +465,7 @@ export namespace Zeitgeist {
         /**
          * @param cancellable
          */
-        get_data_sources(cancellable?: Gio.Cancellable | null): globalThis.Promise<DataSource[]>;
+        get_data_sources(cancellable: Gio.Cancellable | null): globalThis.Promise<DataSource[]>;
         /**
          * @param cancellable
          * @param _callback_
@@ -476,7 +476,7 @@ export namespace Zeitgeist {
          * @param _callback_
          */
         get_data_sources(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<DataSource[]> | void;
         /**
@@ -487,10 +487,7 @@ export namespace Zeitgeist {
          * @param unique_id
          * @param cancellable
          */
-        get_data_source_from_id(
-            unique_id: string,
-            cancellable?: Gio.Cancellable | null,
-        ): globalThis.Promise<DataSource>;
+        get_data_source_from_id(unique_id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<DataSource>;
         /**
          * @param unique_id
          * @param cancellable
@@ -508,7 +505,7 @@ export namespace Zeitgeist {
          */
         get_data_source_from_id(
             unique_id: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<DataSource> | void;
         /**
@@ -519,10 +516,7 @@ export namespace Zeitgeist {
          * @param data_source
          * @param cancellable
          */
-        register_data_source(
-            data_source: DataSource,
-            cancellable?: Gio.Cancellable | null,
-        ): globalThis.Promise<boolean>;
+        register_data_source(data_source: DataSource, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * @param data_source
          * @param cancellable
@@ -540,7 +534,7 @@ export namespace Zeitgeist {
          */
         register_data_source(
             data_source: DataSource,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -555,7 +549,7 @@ export namespace Zeitgeist {
         set_data_source_enabled(
             unique_id: string,
             enabled: boolean,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<void>;
         /**
          * @param unique_id
@@ -578,7 +572,7 @@ export namespace Zeitgeist {
         set_data_source_enabled(
             unique_id: string,
             enabled: boolean,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -661,7 +655,7 @@ export namespace Zeitgeist {
             offset: number,
             num_events: number,
             result_type: ResultType,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<ResultSet>;
         /**
          * @param query
@@ -700,7 +694,7 @@ export namespace Zeitgeist {
             offset: number,
             num_events: number,
             result_type: ResultType,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<ResultSet> | void;
         /**
@@ -725,7 +719,7 @@ export namespace Zeitgeist {
             offset: number,
             num_events: number,
             result_type: ResultType,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<[ResultSet, number[]]>;
         /**
          * @param query
@@ -768,7 +762,7 @@ export namespace Zeitgeist {
             offset: number,
             num_events: number,
             result_type: ResultType,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[ResultSet, number[]]> | void;
         /**
@@ -843,7 +837,7 @@ export namespace Zeitgeist {
          * @param event
          * @param cancellable
          */
-        insert_event(event: Event, cancellable?: Gio.Cancellable | null): globalThis.Promise<number[]>;
+        insert_event(event: Event, cancellable: Gio.Cancellable | null): globalThis.Promise<number[]>;
         /**
          * @param event
          * @param cancellable
@@ -861,7 +855,7 @@ export namespace Zeitgeist {
          */
         insert_event(
             event: Event,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<number[]> | void;
         /**
@@ -872,7 +866,7 @@ export namespace Zeitgeist {
          * @param events
          * @param cancellable
          */
-        insert_events(events: Event[], cancellable?: Gio.Cancellable | null): globalThis.Promise<number[]>;
+        insert_events(events: Event[], cancellable: Gio.Cancellable | null): globalThis.Promise<number[]>;
         /**
          * @param events
          * @param cancellable
@@ -890,7 +884,7 @@ export namespace Zeitgeist {
          */
         insert_events(
             events: Event[],
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<number[]> | void;
         /**
@@ -919,7 +913,7 @@ export namespace Zeitgeist {
             storage_state: StorageState,
             num_events: number,
             result_type: ResultType,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<ResultSet>;
         /**
          * @param time_range
@@ -954,7 +948,7 @@ export namespace Zeitgeist {
             storage_state: StorageState,
             num_events: number,
             result_type: ResultType,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<ResultSet> | void;
         /**
@@ -975,7 +969,7 @@ export namespace Zeitgeist {
             storage_state: StorageState,
             num_events: number,
             result_type: ResultType,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<number[]>;
         /**
          * @param time_range
@@ -1010,7 +1004,7 @@ export namespace Zeitgeist {
             storage_state: StorageState,
             num_events: number,
             result_type: ResultType,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<number[]> | void;
         /**
@@ -1021,7 +1015,7 @@ export namespace Zeitgeist {
          * @param event_ids
          * @param cancellable
          */
-        get_events(event_ids: number[], cancellable?: Gio.Cancellable | null): globalThis.Promise<ResultSet>;
+        get_events(event_ids: number[], cancellable: Gio.Cancellable | null): globalThis.Promise<ResultSet>;
         /**
          * @param event_ids
          * @param cancellable
@@ -1039,7 +1033,7 @@ export namespace Zeitgeist {
          */
         get_events(
             event_ids: number[],
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<ResultSet> | void;
         /**
@@ -1062,7 +1056,7 @@ export namespace Zeitgeist {
             storage_state: StorageState,
             num_events: number,
             result_type: RelevantResultType,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<string[]>;
         /**
          * @param time_range
@@ -1101,7 +1095,7 @@ export namespace Zeitgeist {
             storage_state: StorageState,
             num_events: number,
             result_type: RelevantResultType,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string[]> | void;
         /**
@@ -1112,7 +1106,7 @@ export namespace Zeitgeist {
          * @param event_ids
          * @param cancellable
          */
-        delete_events(event_ids: number[], cancellable?: Gio.Cancellable | null): globalThis.Promise<TimeRange>;
+        delete_events(event_ids: number[], cancellable: Gio.Cancellable | null): globalThis.Promise<TimeRange>;
         /**
          * @param event_ids
          * @param cancellable
@@ -1130,7 +1124,7 @@ export namespace Zeitgeist {
          */
         delete_events(
             event_ids: number[],
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<TimeRange> | void;
         /**
@@ -1140,7 +1134,7 @@ export namespace Zeitgeist {
         /**
          * @param cancellable
          */
-        quit(cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
+        quit(cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * @param cancellable
          * @param _callback_
@@ -1151,7 +1145,7 @@ export namespace Zeitgeist {
          * @param _callback_
          */
         quit(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -1332,7 +1326,7 @@ export namespace Zeitgeist {
         vfunc_notify_insert(
             time_range: GLib.Variant,
             events: GLib.Variant,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param _res_
@@ -1348,7 +1342,7 @@ export namespace Zeitgeist {
         vfunc_notify_delete(
             time_range: GLib.Variant,
             event_ids: number[],
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param _res_
@@ -1402,38 +1396,19 @@ export namespace Zeitgeist {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1441,15 +1416,9 @@ export namespace Zeitgeist {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1616,7 +1585,7 @@ export namespace Zeitgeist {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1989,7 +1958,7 @@ export namespace Zeitgeist {
             uniqueId: string;
             name: string;
             description: string;
-            event_templates: Event[];
+            event_templates: Event[] | null;
             eventTemplates: Event[];
             enabled: boolean;
             running: boolean;
@@ -2013,8 +1982,8 @@ export namespace Zeitgeist {
         set name(val: string);
         get description(): string;
         set description(val: string);
-        get event_templates(): Event[];
-        set event_templates(val: Event[]);
+        get event_templates(): Event[] | null;
+        set event_templates(val: Event[] | null);
         get eventTemplates(): Event[];
         set eventTemplates(val: Event[]);
         get enabled(): boolean;
@@ -2041,7 +2010,7 @@ export namespace Zeitgeist {
 
         static ['new'](): DataSource;
 
-        static full(unique_id: string, name: string, description: string, templates?: Event[] | null): DataSource;
+        static full(unique_id: string, name: string, description: string, templates: Event[] | null): DataSource;
 
         static from_variant(variant: GLib.Variant, reset_running: boolean): DataSource;
 
@@ -2088,7 +2057,7 @@ export namespace Zeitgeist {
         /**
          * @param value
          */
-        set_event_templates(value?: Event[] | null): void;
+        set_event_templates(value: Event[] | null): void;
         get_enabled(): boolean;
         /**
          * @param value
@@ -2124,12 +2093,12 @@ export namespace Zeitgeist {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             id: number;
             timestamp: bigint | number;
-            origin: string;
-            actor: string;
-            interpretation: string;
-            manifestation: string;
+            origin: string | null;
+            actor: string | null;
+            interpretation: string | null;
+            manifestation: string | null;
             subjects: Subject[];
-            payload: GLib.ByteArray;
+            payload: GLib.ByteArray | null;
         }
     }
 
@@ -2145,18 +2114,18 @@ export namespace Zeitgeist {
         set id(val: number);
         get timestamp(): number;
         set timestamp(val: bigint | number);
-        get origin(): string;
-        set origin(val: string);
-        get actor(): string;
-        set actor(val: string);
-        get interpretation(): string;
-        set interpretation(val: string);
-        get manifestation(): string;
-        set manifestation(val: string);
+        get origin(): string | null;
+        set origin(val: string | null);
+        get actor(): string | null;
+        set actor(val: string | null);
+        get interpretation(): string | null;
+        set interpretation(val: string | null);
+        get manifestation(): string | null;
+        set manifestation(val: string | null);
         get subjects(): Subject[];
         set subjects(val: Subject[]);
-        get payload(): GLib.ByteArray;
-        set payload(val: GLib.ByteArray);
+        get payload(): GLib.ByteArray | null;
+        set payload(val: GLib.ByteArray | null);
 
         /**
          * Compile-time signal type information.
@@ -2237,22 +2206,22 @@ export namespace Zeitgeist {
         /**
          * @param value
          */
-        set_origin(value?: string | null): void;
+        set_origin(value: string | null): void;
         get_actor(): string | null;
         /**
          * @param value
          */
-        set_actor(value?: string | null): void;
+        set_actor(value: string | null): void;
         get_interpretation(): string | null;
         /**
          * @param value
          */
-        set_interpretation(value?: string | null): void;
+        set_interpretation(value: string | null): void;
         get_manifestation(): string | null;
         /**
          * @param value
          */
-        set_manifestation(value?: string | null): void;
+        set_manifestation(value: string | null): void;
         get_subjects(): Subject[];
         /**
          * @param value
@@ -2262,7 +2231,7 @@ export namespace Zeitgeist {
         /**
          * @param value
          */
-        set_payload(value?: GLib.ByteArray | null): void;
+        set_payload(value: GLib.ByteArray | null): void;
     }
 
     namespace Subject {
@@ -2282,17 +2251,17 @@ export namespace Zeitgeist {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            uri: string;
-            origin: string;
-            text: string;
-            storage: string;
-            current_uri: string;
+            uri: string | null;
+            origin: string | null;
+            text: string | null;
+            storage: string | null;
+            current_uri: string | null;
             currentUri: string;
-            current_origin: string;
+            current_origin: string | null;
             currentOrigin: string;
-            mimetype: string;
-            interpretation: string;
-            manifestation: string;
+            mimetype: string | null;
+            interpretation: string | null;
+            manifestation: string | null;
         }
     }
 
@@ -2304,28 +2273,28 @@ export namespace Zeitgeist {
 
         // Properties
 
-        get uri(): string;
-        set uri(val: string);
-        get origin(): string;
-        set origin(val: string);
-        get text(): string;
-        set text(val: string);
-        get storage(): string;
-        set storage(val: string);
-        get current_uri(): string;
-        set current_uri(val: string);
+        get uri(): string | null;
+        set uri(val: string | null);
+        get origin(): string | null;
+        set origin(val: string | null);
+        get text(): string | null;
+        set text(val: string | null);
+        get storage(): string | null;
+        set storage(val: string | null);
+        get current_uri(): string | null;
+        set current_uri(val: string | null);
         get currentUri(): string;
         set currentUri(val: string);
-        get current_origin(): string;
-        set current_origin(val: string);
+        get current_origin(): string | null;
+        set current_origin(val: string | null);
         get currentOrigin(): string;
         set currentOrigin(val: string);
-        get mimetype(): string;
-        set mimetype(val: string);
-        get interpretation(): string;
-        set interpretation(val: string);
-        get manifestation(): string;
-        set manifestation(val: string);
+        get mimetype(): string | null;
+        set mimetype(val: string | null);
+        get interpretation(): string | null;
+        set interpretation(val: string | null);
+        get manifestation(): string | null;
+        set manifestation(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -2343,25 +2312,25 @@ export namespace Zeitgeist {
         _init(...args: any[]): void;
 
         static full(
-            uri?: string | null,
-            interpretation?: string | null,
-            manifestation?: string | null,
-            mimetype?: string | null,
-            origin?: string | null,
-            text?: string | null,
-            storage?: string | null,
+            uri: string | null,
+            interpretation: string | null,
+            manifestation: string | null,
+            mimetype: string | null,
+            origin: string | null,
+            text: string | null,
+            storage: string | null,
         ): Subject;
 
         static move_event(
-            source_uri?: string | null,
-            source_origin?: string | null,
-            destination_uri?: string | null,
-            destination_origin?: string | null,
-            interpretation?: string | null,
-            manifestation?: string | null,
-            mimetype?: string | null,
-            text?: string | null,
-            storage?: string | null,
+            source_uri: string | null,
+            source_origin: string | null,
+            destination_uri: string | null,
+            destination_origin: string | null,
+            interpretation: string | null,
+            manifestation: string | null,
+            mimetype: string | null,
+            text: string | null,
+            storage: string | null,
         ): Subject;
 
         static from_variant(subject_variant: GLib.Variant): Subject;
@@ -2400,47 +2369,47 @@ export namespace Zeitgeist {
         /**
          * @param value
          */
-        set_uri(value?: string | null): void;
+        set_uri(value: string | null): void;
         get_origin(): string | null;
         /**
          * @param value
          */
-        set_origin(value?: string | null): void;
+        set_origin(value: string | null): void;
         get_text(): string | null;
         /**
          * @param value
          */
-        set_text(value?: string | null): void;
+        set_text(value: string | null): void;
         get_storage(): string | null;
         /**
          * @param value
          */
-        set_storage(value?: string | null): void;
+        set_storage(value: string | null): void;
         get_current_uri(): string | null;
         /**
          * @param value
          */
-        set_current_uri(value?: string | null): void;
+        set_current_uri(value: string | null): void;
         get_current_origin(): string | null;
         /**
          * @param value
          */
-        set_current_origin(value?: string | null): void;
+        set_current_origin(value: string | null): void;
         get_mimetype(): string | null;
         /**
          * @param value
          */
-        set_mimetype(value?: string | null): void;
+        set_mimetype(value: string | null): void;
         get_interpretation(): string | null;
         /**
          * @param value
          */
-        set_interpretation(value?: string | null): void;
+        set_interpretation(value: string | null): void;
         get_manifestation(): string | null;
         /**
          * @param value
          */
-        set_manifestation(value?: string | null): void;
+        set_manifestation(value: string | null): void;
     }
 
     namespace TimeRange {
@@ -2660,38 +2629,19 @@ export namespace Zeitgeist {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -2699,15 +2649,9 @@ export namespace Zeitgeist {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -2874,7 +2818,7 @@ export namespace Zeitgeist {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -3250,8 +3194,8 @@ export namespace Zeitgeist {
              * @virtual
              */
             vfunc_get_data_sources(
-                cancellable?: Gio.Cancellable | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
+                cancellable: Gio.Cancellable | null,
+                _callback_: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * @param _res_
@@ -3273,9 +3217,9 @@ export namespace Zeitgeist {
                 name: string,
                 description: string,
                 event_templates: GLib.Variant,
-                cancellable?: Gio.Cancellable | null,
-                sender?: never | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
+                cancellable: Gio.Cancellable | null,
+                sender: never | null,
+                _callback_: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * @param _res_
@@ -3292,8 +3236,8 @@ export namespace Zeitgeist {
             vfunc_set_data_source_enabled(
                 unique_id: string,
                 enabled: boolean,
-                cancellable?: Gio.Cancellable | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
+                cancellable: Gio.Cancellable | null,
+                _callback_: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * @param _res_
@@ -3308,8 +3252,8 @@ export namespace Zeitgeist {
              */
             vfunc_get_data_source_from_id(
                 unique_id: string,
-                cancellable?: Gio.Cancellable | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
+                cancellable: Gio.Cancellable | null,
+                _callback_: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * @param _res_
@@ -3336,7 +3280,7 @@ export namespace Zeitgeist {
         /**
          * @param cancellable
          */
-        get_data_sources(cancellable?: Gio.Cancellable | null): globalThis.Promise<GLib.Variant>;
+        get_data_sources(cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.Variant>;
         /**
          * @param cancellable
          * @param _callback_
@@ -3347,7 +3291,7 @@ export namespace Zeitgeist {
          * @param _callback_
          */
         get_data_sources(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GLib.Variant> | void;
         /**
@@ -3367,8 +3311,8 @@ export namespace Zeitgeist {
             name: string,
             description: string,
             event_templates: GLib.Variant,
-            cancellable?: Gio.Cancellable | null,
-            sender?: never | null,
+            cancellable: Gio.Cancellable | null,
+            sender: never | null,
         ): globalThis.Promise<boolean>;
         /**
          * @param unique_id
@@ -3402,8 +3346,8 @@ export namespace Zeitgeist {
             name: string,
             description: string,
             event_templates: GLib.Variant,
-            cancellable?: Gio.Cancellable | null,
-            sender?: never | null,
+            cancellable: Gio.Cancellable | null,
+            sender: never | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -3418,7 +3362,7 @@ export namespace Zeitgeist {
         set_data_source_enabled(
             unique_id: string,
             enabled: boolean,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<void>;
         /**
          * @param unique_id
@@ -3441,7 +3385,7 @@ export namespace Zeitgeist {
         set_data_source_enabled(
             unique_id: string,
             enabled: boolean,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -3454,7 +3398,7 @@ export namespace Zeitgeist {
          */
         get_data_source_from_id(
             unique_id: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<GLib.Variant>;
         /**
          * @param unique_id
@@ -3473,7 +3417,7 @@ export namespace Zeitgeist {
          */
         get_data_source_from_id(
             unique_id: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GLib.Variant> | void;
         /**
@@ -3503,9 +3447,9 @@ export namespace Zeitgeist {
              */
             vfunc_delete_events(
                 event_ids: number[],
-                cancellable?: Gio.Cancellable | null,
-                sender?: never | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
+                cancellable: Gio.Cancellable | null,
+                sender: never | null,
+                _callback_: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * @param _res_
@@ -3529,9 +3473,9 @@ export namespace Zeitgeist {
                 storage_state: number,
                 num_events: number,
                 result_type: number,
-                cancellable?: Gio.Cancellable | null,
-                sender?: never | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
+                cancellable: Gio.Cancellable | null,
+                sender: never | null,
+                _callback_: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * @param _res_
@@ -3555,9 +3499,9 @@ export namespace Zeitgeist {
                 storage_state: number,
                 num_events: number,
                 result_type: number,
-                cancellable?: Gio.Cancellable | null,
-                sender?: never | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
+                cancellable: Gio.Cancellable | null,
+                sender: never | null,
+                _callback_: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * @param _res_
@@ -3583,9 +3527,9 @@ export namespace Zeitgeist {
                 storage_state: number,
                 num_events: number,
                 result_type: number,
-                cancellable?: Gio.Cancellable | null,
-                sender?: never | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
+                cancellable: Gio.Cancellable | null,
+                sender: never | null,
+                _callback_: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * @param _res_
@@ -3601,9 +3545,9 @@ export namespace Zeitgeist {
              */
             vfunc_get_events(
                 event_ids: number[],
-                cancellable?: Gio.Cancellable | null,
-                sender?: never | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
+                cancellable: Gio.Cancellable | null,
+                sender: never | null,
+                _callback_: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * @param _res_
@@ -3619,9 +3563,9 @@ export namespace Zeitgeist {
              */
             vfunc_insert_events(
                 events: GLib.Variant,
-                cancellable?: Gio.Cancellable | null,
-                sender?: never | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
+                cancellable: Gio.Cancellable | null,
+                sender: never | null,
+                _callback_: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * @param _res_
@@ -3640,8 +3584,8 @@ export namespace Zeitgeist {
                 monitor_path: never,
                 time_range: GLib.Variant,
                 event_templates: GLib.Variant,
-                owner?: never | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
+                owner: never | null,
+                _callback_: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * @param _res_
@@ -3656,8 +3600,8 @@ export namespace Zeitgeist {
              */
             vfunc_remove_monitor(
                 monitor_path: never,
-                owner?: never | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
+                owner: never | null,
+                _callback_: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * @param _res_
@@ -3669,7 +3613,7 @@ export namespace Zeitgeist {
              * @param _callback_
              * @virtual
              */
-            vfunc_quit(cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+            vfunc_quit(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
             /**
              * @param _res_
              * @virtual
@@ -3711,8 +3655,8 @@ export namespace Zeitgeist {
          */
         delete_events(
             event_ids: number[],
-            cancellable?: Gio.Cancellable | null,
-            sender?: never | null,
+            cancellable: Gio.Cancellable | null,
+            sender: never | null,
         ): globalThis.Promise<GLib.Variant>;
         /**
          * @param event_ids
@@ -3734,8 +3678,8 @@ export namespace Zeitgeist {
          */
         delete_events(
             event_ids: number[],
-            cancellable?: Gio.Cancellable | null,
-            sender?: never | null,
+            cancellable: Gio.Cancellable | null,
+            sender: never | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GLib.Variant> | void;
         /**
@@ -3757,8 +3701,8 @@ export namespace Zeitgeist {
             storage_state: number,
             num_events: number,
             result_type: number,
-            cancellable?: Gio.Cancellable | null,
-            sender?: never | null,
+            cancellable: Gio.Cancellable | null,
+            sender: never | null,
         ): globalThis.Promise<number[]>;
         /**
          * @param time_range
@@ -3796,8 +3740,8 @@ export namespace Zeitgeist {
             storage_state: number,
             num_events: number,
             result_type: number,
-            cancellable?: Gio.Cancellable | null,
-            sender?: never | null,
+            cancellable: Gio.Cancellable | null,
+            sender: never | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<number[]> | void;
         /**
@@ -3819,8 +3763,8 @@ export namespace Zeitgeist {
             storage_state: number,
             num_events: number,
             result_type: number,
-            cancellable?: Gio.Cancellable | null,
-            sender?: never | null,
+            cancellable: Gio.Cancellable | null,
+            sender: never | null,
         ): globalThis.Promise<GLib.Variant>;
         /**
          * @param time_range
@@ -3858,8 +3802,8 @@ export namespace Zeitgeist {
             storage_state: number,
             num_events: number,
             result_type: number,
-            cancellable?: Gio.Cancellable | null,
-            sender?: never | null,
+            cancellable: Gio.Cancellable | null,
+            sender: never | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GLib.Variant> | void;
         /**
@@ -3883,8 +3827,8 @@ export namespace Zeitgeist {
             storage_state: number,
             num_events: number,
             result_type: number,
-            cancellable?: Gio.Cancellable | null,
-            sender?: never | null,
+            cancellable: Gio.Cancellable | null,
+            sender: never | null,
         ): globalThis.Promise<string[]>;
         /**
          * @param time_range
@@ -3926,8 +3870,8 @@ export namespace Zeitgeist {
             storage_state: number,
             num_events: number,
             result_type: number,
-            cancellable?: Gio.Cancellable | null,
-            sender?: never | null,
+            cancellable: Gio.Cancellable | null,
+            sender: never | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string[]> | void;
         /**
@@ -3941,8 +3885,8 @@ export namespace Zeitgeist {
          */
         get_events(
             event_ids: number[],
-            cancellable?: Gio.Cancellable | null,
-            sender?: never | null,
+            cancellable: Gio.Cancellable | null,
+            sender: never | null,
         ): globalThis.Promise<GLib.Variant>;
         /**
          * @param event_ids
@@ -3964,8 +3908,8 @@ export namespace Zeitgeist {
          */
         get_events(
             event_ids: number[],
-            cancellable?: Gio.Cancellable | null,
-            sender?: never | null,
+            cancellable: Gio.Cancellable | null,
+            sender: never | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GLib.Variant> | void;
         /**
@@ -3979,8 +3923,8 @@ export namespace Zeitgeist {
          */
         insert_events(
             events: GLib.Variant,
-            cancellable?: Gio.Cancellable | null,
-            sender?: never | null,
+            cancellable: Gio.Cancellable | null,
+            sender: never | null,
         ): globalThis.Promise<number[]>;
         /**
          * @param events
@@ -4002,8 +3946,8 @@ export namespace Zeitgeist {
          */
         insert_events(
             events: GLib.Variant,
-            cancellable?: Gio.Cancellable | null,
-            sender?: never | null,
+            cancellable: Gio.Cancellable | null,
+            sender: never | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<number[]> | void;
         /**
@@ -4020,7 +3964,7 @@ export namespace Zeitgeist {
             monitor_path: never,
             time_range: GLib.Variant,
             event_templates: GLib.Variant,
-            owner?: never | null,
+            owner: never | null,
         ): globalThis.Promise<void>;
         /**
          * @param monitor_path
@@ -4047,7 +3991,7 @@ export namespace Zeitgeist {
             monitor_path: never,
             time_range: GLib.Variant,
             event_templates: GLib.Variant,
-            owner?: never | null,
+            owner: never | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -4058,7 +4002,7 @@ export namespace Zeitgeist {
          * @param monitor_path
          * @param owner
          */
-        remove_monitor(monitor_path: never, owner?: never | null): globalThis.Promise<void>;
+        remove_monitor(monitor_path: never, owner: never | null): globalThis.Promise<void>;
         /**
          * @param monitor_path
          * @param owner
@@ -4072,7 +4016,7 @@ export namespace Zeitgeist {
          */
         remove_monitor(
             monitor_path: never,
-            owner?: never | null,
+            owner: never | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -4082,7 +4026,7 @@ export namespace Zeitgeist {
         /**
          * @param cancellable
          */
-        quit(cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
+        quit(cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * @param cancellable
          * @param _callback_
@@ -4093,7 +4037,7 @@ export namespace Zeitgeist {
          * @param _callback_
          */
         quit(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -4126,7 +4070,7 @@ export namespace Zeitgeist {
             vfunc_notify_insert(
                 time_range: GLib.Variant,
                 events: GLib.Variant,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
+                _callback_: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * @param _res_
@@ -4142,7 +4086,7 @@ export namespace Zeitgeist {
             vfunc_notify_delete(
                 time_range: GLib.Variant,
                 event_ids: number[],
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
+                _callback_: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * @param _res_
@@ -4256,8 +4200,8 @@ export namespace Zeitgeist {
                 offset: number,
                 count: number,
                 result_type: number,
-                cancellable?: Gio.Cancellable | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
+                cancellable: Gio.Cancellable | null,
+                _callback_: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * @param _res_
@@ -4284,8 +4228,8 @@ export namespace Zeitgeist {
                 offset: number,
                 count: number,
                 result_type: number,
-                cancellable?: Gio.Cancellable | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
+                cancellable: Gio.Cancellable | null,
+                _callback_: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * @param _res_
@@ -4325,7 +4269,7 @@ export namespace Zeitgeist {
             offset: number,
             count: number,
             result_type: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<[void, GLib.Variant, number]>;
         /**
          * @param query_string
@@ -4364,7 +4308,7 @@ export namespace Zeitgeist {
             offset: number,
             count: number,
             result_type: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[void, GLib.Variant, number]> | void;
         /**
@@ -4389,7 +4333,7 @@ export namespace Zeitgeist {
             offset: number,
             count: number,
             result_type: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<[void, GLib.Variant, number[], number]>;
         /**
          * @param query_string
@@ -4432,7 +4376,7 @@ export namespace Zeitgeist {
             offset: number,
             count: number,
             result_type: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[void, GLib.Variant, number[], number]> | void;
         /**

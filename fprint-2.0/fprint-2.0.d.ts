@@ -285,13 +285,13 @@ export namespace FPrint {
      * @gir-type Callback
      */
     interface EnrollProgress {
-        (device: Device, completed_stages: number, print?: Print | null, error?: GLib.Error | null): void;
+        (device: Device, completed_stages: number, print: Print | null, error: GLib.Error | null): void;
     }
     /**
      * @gir-type Callback
      */
     interface MatchCb {
-        (device: Device, match?: Print | null, print?: Print | null, error?: GLib.Error | null): void;
+        (device: Device, match: Print | null, print: Print | null, error: GLib.Error | null): void;
     }
     /**
      * @gir-type Flags
@@ -558,46 +558,57 @@ export namespace FPrint {
         get deviceId(): string;
         /**
          * @read-only
+         * @default null
          */
         get driver(): string;
         /**
          * @read-only
+         * @default FPrint.FingerStatusFlags.NONE
          */
         get finger_status(): FingerStatusFlags;
         /**
          * @read-only
+         * @default FPrint.FingerStatusFlags.NONE
          */
         get fingerStatus(): FingerStatusFlags;
         /**
          * @construct-only
+         * @default 0
          */
         set fpi_driver_data(val: bigint | number);
         /**
          * @construct-only
+         * @default 0
          */
         set fpiDriverData(val: bigint | number);
         /**
          * @construct-only
+         * @default null
          */
         set fpi_environ(val: string);
         /**
          * @construct-only
+         * @default null
          */
         set fpiEnviron(val: string);
         /**
          * @construct-only
+         * @default null
          */
         get fpi_udev_data_hidraw(): string;
         /**
          * @construct-only
+         * @default null
          */
         get fpiUdevDataHidraw(): string;
         /**
          * @construct-only
+         * @default null
          */
         get fpi_udev_data_spidev(): string;
         /**
          * @construct-only
+         * @default null
          */
         get fpiUdevDataSpidev(): string;
         /**
@@ -610,34 +621,42 @@ export namespace FPrint {
         get fpiUsbDevice(): GUsb.Device;
         /**
          * @read-only
+         * @default null
          */
         get name(): string;
         /**
          * @read-only
+         * @default 0
          */
         get nr_enroll_stages(): number;
         /**
          * @read-only
+         * @default 0
          */
         get nrEnrollStages(): number;
         /**
          * @read-only
+         * @default false
          */
         get open(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get removed(): boolean;
         /**
          * @read-only
+         * @default FPrint.ScanType.SWIPE
          */
         get scan_type(): ScanType;
         /**
          * @read-only
+         * @default FPrint.ScanType.SWIPE
          */
         get scanType(): ScanType;
         /**
          * @read-only
+         * @default FPrint.Temperature.COLD
          */
         get temperature(): Temperature;
 
@@ -686,7 +705,7 @@ export namespace FPrint {
          * @param wait_for_finger Whether to wait for a finger or not
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        capture(wait_for_finger: boolean, cancellable?: Gio.Cancellable | null): globalThis.Promise<Image>;
+        capture(wait_for_finger: boolean, cancellable: Gio.Cancellable | null): globalThis.Promise<Image>;
         /**
          * Start an asynchronous operation to capture an image. The callback will
          * be called once the operation has finished. Retrieve the result with
@@ -710,7 +729,7 @@ export namespace FPrint {
          */
         capture(
             wait_for_finger: boolean,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Image> | void;
         /**
@@ -729,7 +748,7 @@ export namespace FPrint {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns A new {@link FPrint.Image} or `null` on error
          */
-        capture_sync(wait_for_finger: boolean, cancellable?: Gio.Cancellable | null): Image;
+        capture_sync(wait_for_finger: boolean, cancellable: Gio.Cancellable | null): Image;
         /**
          * Start an asynchronous operation to delete all prints from the device.
          * The callback will be called once the operation has finished. Retrieve
@@ -739,7 +758,7 @@ export namespace FPrint {
          * to always call.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        clear_storage(cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
+        clear_storage(cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * Start an asynchronous operation to delete all prints from the device.
          * The callback will be called once the operation has finished. Retrieve
@@ -762,7 +781,7 @@ export namespace FPrint {
          * @param callback the function to call on completion
          */
         clear_storage(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -778,14 +797,14 @@ export namespace FPrint {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `false` on error, `true` otherwise
          */
-        clear_storage_sync(cancellable?: Gio.Cancellable | null): void;
+        clear_storage_sync(cancellable: Gio.Cancellable | null): void;
         /**
          * Start an asynchronous operation to close the device. The callback will
          * be called once the operation has finished. Retrieve the result with
          * `fp_device_close_finish()`.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        close(cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
+        close(cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * Start an asynchronous operation to close the device. The callback will
          * be called once the operation has finished. Retrieve the result with
@@ -802,7 +821,7 @@ export namespace FPrint {
          * @param callback the function to call on completion
          */
         close(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -817,7 +836,7 @@ export namespace FPrint {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `false` on error, `true` otherwise
          */
-        close_sync(cancellable?: Gio.Cancellable | null): void;
+        close_sync(cancellable: Gio.Cancellable | null): void;
         /**
          * Start an asynchronous operation to delete a print from the device.
          * The callback will be called once the operation has finished. Retrieve
@@ -828,7 +847,7 @@ export namespace FPrint {
          * @param enrolled_print a {@link FPrint.Print} to delete
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        delete_print(enrolled_print: Print, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
+        delete_print(enrolled_print: Print, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * Start an asynchronous operation to delete a print from the device.
          * The callback will be called once the operation has finished. Retrieve
@@ -858,7 +877,7 @@ export namespace FPrint {
          */
         delete_print(
             enrolled_print: Print,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -875,7 +894,7 @@ export namespace FPrint {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `false` on error, `true` otherwise
          */
-        delete_print_sync(enrolled_print: Print, cancellable?: Gio.Cancellable | null): void;
+        delete_print_sync(enrolled_print: Print, cancellable: Gio.Cancellable | null): void;
         /**
          * Start an asynchronous operation to enroll a print. The callback will
          * be called once the operation has finished. Retrieve the result with
@@ -893,8 +912,8 @@ export namespace FPrint {
          */
         enroll(
             template_print: Print,
-            cancellable?: Gio.Cancellable | null,
-            progress_cb?: EnrollProgress | null,
+            cancellable: Gio.Cancellable | null,
+            progress_cb: EnrollProgress | null,
         ): globalThis.Promise<Print>;
         /**
          * Start an asynchronous operation to enroll a print. The callback will
@@ -936,8 +955,8 @@ export namespace FPrint {
          */
         enroll(
             template_print: Print,
-            cancellable?: Gio.Cancellable | null,
-            progress_cb?: EnrollProgress | null,
+            cancellable: Gio.Cancellable | null,
+            progress_cb: EnrollProgress | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Print> | void;
         /**
@@ -959,8 +978,8 @@ export namespace FPrint {
          */
         enroll_sync(
             template_print: Print,
-            cancellable?: Gio.Cancellable | null,
-            progress_cb?: EnrollProgress | null,
+            cancellable: Gio.Cancellable | null,
+            progress_cb: EnrollProgress | null,
         ): Print;
         /**
          * @returns The ID of the device
@@ -1026,8 +1045,8 @@ export namespace FPrint {
          */
         identify(
             prints: Print[],
-            cancellable?: Gio.Cancellable | null,
-            match_cb?: MatchCb | null,
+            cancellable: Gio.Cancellable | null,
+            match_cb: MatchCb | null,
         ): globalThis.Promise<[void, Print | null, Print | null]>;
         /**
          * Start an asynchronous operation to identify prints. The callback will
@@ -1055,8 +1074,8 @@ export namespace FPrint {
          */
         identify(
             prints: Print[],
-            cancellable?: Gio.Cancellable | null,
-            match_cb?: MatchCb | null,
+            cancellable: Gio.Cancellable | null,
+            match_cb: MatchCb | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[void, Print | null, Print | null]> | void;
         /**
@@ -1081,8 +1100,8 @@ export namespace FPrint {
          */
         identify_sync(
             prints: Print[],
-            cancellable?: Gio.Cancellable | null,
-            match_cb?: MatchCb | null,
+            cancellable: Gio.Cancellable | null,
+            match_cb: MatchCb | null,
         ): [Print | null, Print | null];
         /**
          * @returns Whether the device is open or not
@@ -1095,7 +1114,7 @@ export namespace FPrint {
          * Retrieve the result with `fp_device_list_prints_finish()`.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        list_prints(cancellable?: Gio.Cancellable | null): globalThis.Promise<Print[]>;
+        list_prints(cancellable: Gio.Cancellable | null): globalThis.Promise<Print[]>;
         /**
          * Start an asynchronous operation to list all prints stored on the device.
          * This only makes sense on devices that store prints on-chip.
@@ -1114,7 +1133,7 @@ export namespace FPrint {
          * @param callback the function to call on completion
          */
         list_prints(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Print[]> | void;
         /**
@@ -1130,7 +1149,7 @@ export namespace FPrint {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns Array of prints, or `null` on error
          */
-        list_prints_sync(cancellable?: Gio.Cancellable | null): Print[];
+        list_prints_sync(cancellable: Gio.Cancellable | null): Print[];
         /**
          * Finish an asynchronous operation to open the device.
          * See `fp_device_open()`.
@@ -1143,7 +1162,7 @@ export namespace FPrint {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `false` on error, `true` otherwise
          */
-        open_sync(cancellable?: Gio.Cancellable | null): void;
+        open_sync(cancellable: Gio.Cancellable | null): void;
         /**
          * Resume device after system suspend. Retrieve the result with
          * `fp_device_suspend_finish()`.
@@ -1153,7 +1172,7 @@ export namespace FPrint {
          * resume operation.
          * @param cancellable a {@link Gio.Cancellable}, or `null`, currently not used
          */
-        resume(cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
+        resume(cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * Resume device after system suspend. Retrieve the result with
          * `fp_device_suspend_finish()`.
@@ -1176,7 +1195,7 @@ export namespace FPrint {
          * @param callback the function to call on completion
          */
         resume(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -1193,7 +1212,7 @@ export namespace FPrint {
          * @param cancellable a {@link Gio.Cancellable}, or `null`, currently not used
          * @returns `false` on error, `true` otherwise
          */
-        resume_sync(cancellable?: Gio.Cancellable | null): void;
+        resume_sync(cancellable: Gio.Cancellable | null): void;
         /**
          * Check whether the device supports capturing images.
          * @returns Whether the device supports image capture
@@ -1222,7 +1241,7 @@ export namespace FPrint {
          * #FP_DEVICE_ERROR_BUSY, this includes calls to open or close the device.
          * @param cancellable a {@link Gio.Cancellable}, or `null`, currently not used
          */
-        suspend(cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
+        suspend(cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * Prepare the device for system suspend. Retrieve the result with
          * `fp_device_suspend_finish()`.
@@ -1263,7 +1282,7 @@ export namespace FPrint {
          * @param callback the function to call on completion
          */
         suspend(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -1280,7 +1299,7 @@ export namespace FPrint {
          * @param cancellable a {@link Gio.Cancellable}, or `null`, currently not used
          * @returns `false` on error, `true` otherwise
          */
-        suspend_sync(cancellable?: Gio.Cancellable | null): void;
+        suspend_sync(cancellable: Gio.Cancellable | null): void;
         /**
          * Start an asynchronous operation to verify a print. The callback will
          * be called once the operation has finished. Retrieve the result with
@@ -1291,8 +1310,8 @@ export namespace FPrint {
          */
         verify(
             enrolled_print: Print,
-            cancellable?: Gio.Cancellable | null,
-            match_cb?: MatchCb | null,
+            cancellable: Gio.Cancellable | null,
+            match_cb: MatchCb | null,
         ): globalThis.Promise<[void, boolean, Print | null]>;
         /**
          * Start an asynchronous operation to verify a print. The callback will
@@ -1320,8 +1339,8 @@ export namespace FPrint {
          */
         verify(
             enrolled_print: Print,
-            cancellable?: Gio.Cancellable | null,
-            match_cb?: MatchCb | null,
+            cancellable: Gio.Cancellable | null,
+            match_cb: MatchCb | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[void, boolean, Print | null]> | void;
         /**
@@ -1388,7 +1407,7 @@ export namespace FPrint {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -1478,7 +1497,7 @@ export namespace FPrint {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1539,8 +1558,8 @@ export namespace FPrint {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -1596,38 +1615,19 @@ export namespace FPrint {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1635,15 +1635,9 @@ export namespace FPrint {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1810,7 +1804,7 @@ export namespace FPrint {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -2025,10 +2019,12 @@ export namespace FPrint {
 
         /**
          * @construct-only
+         * @default 0
          */
         get height(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get width(): number;
 
@@ -2076,7 +2072,7 @@ export namespace FPrint {
          * Detects the minutiae found in an image.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        detect_minutiae(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        detect_minutiae(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Detects the minutiae found in an image.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
@@ -2089,7 +2085,7 @@ export namespace FPrint {
          * @param callback the function to call on completion
          */
         detect_minutiae(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2252,7 +2248,7 @@ export namespace FPrint {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -2342,7 +2338,7 @@ export namespace FPrint {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2403,8 +2399,8 @@ export namespace FPrint {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -2460,38 +2456,19 @@ export namespace FPrint {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -2499,15 +2476,9 @@ export namespace FPrint {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -2674,7 +2645,7 @@ export namespace FPrint {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -2882,21 +2853,21 @@ export namespace FPrint {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
-            description: string;
+            description: string | null;
             device_id: string;
             deviceId: string;
             device_stored: boolean;
             deviceStored: boolean;
             driver: string;
-            enroll_date: GLib.Date;
-            enrollDate: GLib.Date;
+            enroll_date: GLib.Date | null;
+            enrollDate: GLib.Date | null;
             finger: Finger;
             fpi_data: GLib.Variant;
             fpiData: GLib.Variant;
             fpi_prints: any;
             fpiPrints: any;
-            image: Image;
-            username: string;
+            image: Image | null;
+            username: string | null;
         }
     }
 
@@ -2908,32 +2879,43 @@ export namespace FPrint {
 
         // Properties
 
-        get description(): string;
-        set description(val: string);
+        /**
+         * @default null
+         */
+        get description(): string | null;
+        set description(val: string | null);
         /**
          * @construct-only
+         * @default null
          */
         get device_id(): string;
         /**
          * @construct-only
+         * @default null
          */
         get deviceId(): string;
         /**
          * @construct-only
+         * @default false
          */
         get device_stored(): boolean;
         /**
          * @construct-only
+         * @default false
          */
         get deviceStored(): boolean;
         /**
          * @construct-only
+         * @default null
          */
         get driver(): string;
-        get enroll_date(): GLib.Date;
-        set enroll_date(val: GLib.Date);
-        get enrollDate(): GLib.Date;
-        set enrollDate(val: GLib.Date);
+        get enroll_date(): GLib.Date | null;
+        set enroll_date(val: GLib.Date | null);
+        get enrollDate(): GLib.Date | null;
+        set enrollDate(val: GLib.Date | null);
+        /**
+         * @default FPrint.Finger.UNKNOWN
+         */
         get finger(): Finger;
         set finger(val: Finger);
         get fpi_data(): GLib.Variant;
@@ -2947,9 +2929,12 @@ export namespace FPrint {
         /**
          * @read-only
          */
-        get image(): Image;
-        get username(): string;
-        set username(val: string);
+        get image(): Image | null;
+        /**
+         * @default null
+         */
+        get username(): string | null;
+        set username(val: string | null);
 
         /**
          * Compile-time signal type information.

@@ -407,38 +407,19 @@ export namespace GtkVnc {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -446,15 +427,9 @@ export namespace GtkVnc {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -621,7 +596,7 @@ export namespace GtkVnc {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1006,72 +981,147 @@ export namespace GtkVnc {
 
         // Properties
 
+        /**
+         * @default false
+         */
         get allow_resize(): boolean;
         set allow_resize(val: boolean);
+        /**
+         * @default false
+         */
         get allowResize(): boolean;
         set allowResize(val: boolean);
         /**
          * @read-only
          */
         get connection(): GVnc.Connection;
+        /**
+         * @default GtkVnc.DisplayDepthColor.DEFAULT
+         */
         get depth(): DisplayDepthColor;
         set depth(val: DisplayDepthColor);
+        /**
+         * @default true
+         */
         get force_size(): boolean;
         set force_size(val: boolean);
+        /**
+         * @default true
+         */
         get forceSize(): boolean;
         set forceSize(val: boolean);
+        /**
+         * @default false
+         */
         get grab_keyboard(): boolean;
         set grab_keyboard(val: boolean);
+        /**
+         * @default false
+         */
         get grabKeyboard(): boolean;
         set grabKeyboard(val: boolean);
         get grab_keys(): GrabSequence;
         set grab_keys(val: GrabSequence);
         get grabKeys(): GrabSequence;
         set grabKeys(val: GrabSequence);
+        /**
+         * @default false
+         */
         get grab_pointer(): boolean;
         set grab_pointer(val: boolean);
+        /**
+         * @default false
+         */
         get grabPointer(): boolean;
         set grabPointer(val: boolean);
         /**
          * @read-only
+         * @default 0
          */
         get height(): number;
+        /**
+         * @default false
+         */
         get keep_aspect_ratio(): boolean;
         set keep_aspect_ratio(val: boolean);
+        /**
+         * @default false
+         */
         get keepAspectRatio(): boolean;
         set keepAspectRatio(val: boolean);
+        /**
+         * @default false
+         */
         get local_pointer(): boolean;
         set local_pointer(val: boolean);
+        /**
+         * @default false
+         */
         get localPointer(): boolean;
         set localPointer(val: boolean);
+        /**
+         * @default false
+         */
         get lossy_encoding(): boolean;
         set lossy_encoding(val: boolean);
+        /**
+         * @default false
+         */
         get lossyEncoding(): boolean;
         set lossyEncoding(val: boolean);
         /**
          * @read-only
+         * @default null
          */
         get name(): string;
+        /**
+         * @default false
+         */
         get read_only(): boolean;
         set read_only(val: boolean);
+        /**
+         * @default false
+         */
         get readOnly(): boolean;
         set readOnly(val: boolean);
+        /**
+         * @default 0
+         */
         get rotation(): number;
         set rotation(val: number);
+        /**
+         * @default false
+         */
         get scaling(): boolean;
         set scaling(val: boolean);
+        /**
+         * @default false
+         */
         get shared_flag(): boolean;
         set shared_flag(val: boolean);
+        /**
+         * @default false
+         */
         get sharedFlag(): boolean;
         set sharedFlag(val: boolean);
+        /**
+         * @default true
+         */
         get smoothing(): boolean;
         set smoothing(val: boolean);
         /**
          * @read-only
+         * @default 0
          */
         get width(): number;
+        /**
+         * @default 100
+         */
         get zoom_level(): number;
         set zoom_level(val: number);
+        /**
+         * @default 100
+         */
         get zoomLevel(): number;
         set zoomLevel(val: number);
 
@@ -1312,7 +1362,7 @@ export namespace GtkVnc {
          * @param hostname the hostname
          * @returns TRUE if a connection was opened, FALSE if already open
          */
-        open_addr(addr: Gio.SocketAddress, hostname?: string | null): boolean;
+        open_addr(addr: Gio.SocketAddress, hostname: string | null): boolean;
         /**
          * Open a connection using `fd` as the transport. If `fd`
          * refers to a TCP connection, it is recommended to use
@@ -1334,7 +1384,7 @@ export namespace GtkVnc {
          * @param hostname the host associated with the connection
          * @returns TRUE if a connection was opened, FALSE if already open
          */
-        open_fd_with_hostname(fd: number, hostname?: string | null): boolean;
+        open_fd_with_hostname(fd: number, hostname: string | null): boolean;
         /**
          * Open a TCP connection to the remote desktop at `host`
          * listening on `port`.
@@ -1552,38 +1602,19 @@ export namespace GtkVnc {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1591,15 +1622,9 @@ export namespace GtkVnc {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1766,7 +1791,7 @@ export namespace GtkVnc {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set

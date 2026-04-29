@@ -493,58 +493,72 @@ export namespace Playerctl {
 
         /**
          * @read-only
+         * @default false
          */
         get can_control(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get canControl(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get can_go_next(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get canGoNext(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get can_go_previous(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get canGoPrevious(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get can_pause(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get canPause(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get can_play(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get canPlay(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get can_seek(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get canSeek(): boolean;
         /**
          * @read-only
+         * @default Playerctl.LoopStatus.NONE
          */
         get loop_status(): LoopStatus;
         /**
          * @read-only
+         * @default Playerctl.LoopStatus.NONE
          */
         get loopStatus(): LoopStatus;
         /**
@@ -553,46 +567,59 @@ export namespace Playerctl {
         get metadata(): GLib.Variant;
         /**
          * @read-only
+         * @default Playerctl.PlaybackStatus.STOPPED
          */
         get playback_status(): PlaybackStatus;
         /**
          * @read-only
+         * @default Playerctl.PlaybackStatus.STOPPED
          */
         get playbackStatus(): PlaybackStatus;
         /**
          * @construct-only
+         * @default null
          */
         get player_instance(): string;
         /**
          * @construct-only
+         * @default null
          */
         get playerInstance(): string;
         /**
          * @construct-only
+         * @default null
          */
         get player_name(): string;
         /**
          * @construct-only
+         * @default null
          */
         get playerName(): string;
         /**
          * @read-only
+         * @default 0
          */
         get position(): number;
         /**
          * @read-only
+         * @default false
          */
         get shuffle(): boolean;
         /**
          * @construct-only
+         * @default Playerctl.Source.NONE
          */
         get source(): Source;
         /**
          * The playback status of the player as a string
          * @deprecated since 2.0.0: Use the "playback-status" signal instead.
          * @read-only
+         * @default null
          */
         get status(): string;
+        /**
+         * @default 0
+         */
         get volume(): number;
         set volume(val: number);
 
@@ -611,7 +638,7 @@ export namespace Playerctl {
 
         _init(...args: any[]): void;
 
-        static ['new'](player_name?: string | null): Player;
+        static ['new'](player_name: string | null): Player;
 
         static new_for_source(player_name: string | null, source: Source): Player;
 
@@ -701,7 +728,7 @@ export namespace Playerctl {
          * @param property the property from the metadata to print
          * @returns The artist from the metadata of the current track
          */
-        print_metadata_prop(property?: string | null): string;
+        print_metadata_prop(property: string | null): string;
         /**
          * Command the player to seek forward by offset given in microseconds.
          * @param offset the offset to seek forward to in microseconds
@@ -872,7 +899,7 @@ export namespace Playerctl {
          * @param sort_func The compare function to be used to sort the {@link Playerctl.PlayerManager.players}.
          * @param notify A function to notify when the sort function will no longer be used.
          */
-        set_sort_func(sort_func: GLib.CompareDataFunc, notify?: GLib.DestroyNotify | null): void;
+        set_sort_func(sort_func: GLib.CompareDataFunc, notify: GLib.DestroyNotify | null): void;
     }
 
     /**

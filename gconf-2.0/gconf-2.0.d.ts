@@ -148,12 +148,12 @@ export namespace GConf {
      * @param app
      * @param mod_info
      */
-    function postinit(app?: any | null, mod_info?: any | null): void;
+    function postinit(app: any | null, mod_info: any | null): void;
     /**
      * @param app
      * @param mod_info
      */
-    function preinit(app?: any | null, mod_info?: any | null): void;
+    function preinit(app: any | null, mod_info: any | null): void;
     /**
      * @param lookup_table
      * @param str
@@ -200,13 +200,13 @@ export namespace GConf {
      * @gir-type Callback
      */
     interface ListenersForeach {
-        (location: string, cnxn_id: number, listener_data?: any | null): void;
+        (location: string, cnxn_id: number, listener_data: any | null): void;
     }
     /**
      * @gir-type Callback
      */
     interface ListenersPredicate {
-        (location: string, cnxn_id: number, listener_data?: any | null): boolean;
+        (location: string, cnxn_id: number, listener_data: any | null): boolean;
     }
     /**
      * @gir-type Flags
@@ -406,8 +406,8 @@ export namespace GConf {
             key: string,
             car_type: ValueType,
             cdr_type: ValueType,
-            car_retloc?: any | null,
-            cdr_retloc?: any | null,
+            car_retloc: any | null,
+            cdr_retloc: any | null,
         ): boolean;
         /**
          * @param key
@@ -493,8 +493,8 @@ export namespace GConf {
             key: string,
             car_type: ValueType,
             cdr_type: ValueType,
-            address_of_car?: any | null,
-            address_of_cdr?: any | null,
+            address_of_car: any | null,
+            address_of_cdr: any | null,
         ): boolean;
         /**
          * @param key
@@ -587,8 +587,8 @@ export namespace GConf {
             key: string,
             car_type: ValueType,
             cdr_type: ValueType,
-            address_of_car?: any | null,
-            address_of_cdr?: any | null,
+            address_of_car: any | null,
+            address_of_cdr: any | null,
         ): void;
         /**
          * @param key

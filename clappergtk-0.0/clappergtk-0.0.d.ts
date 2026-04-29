@@ -200,7 +200,7 @@ export namespace ClapperGtk {
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps {
-            child: Gtk.Widget;
+            child: Gtk.Widget | null;
         }
     }
 
@@ -263,8 +263,8 @@ export namespace ClapperGtk {
         /**
          * The child widget of {@link ClapperGtk.Audio}.
          */
-        get child(): Gtk.Widget;
-        set child(val: Gtk.Widget);
+        get child(): Gtk.Widget | null;
+        set child(val: Gtk.Widget | null);
 
         /**
          * Compile-time signal type information.
@@ -315,7 +315,7 @@ export namespace ClapperGtk {
          * Set a child {@link Gtk.Widget} of `audio`.
          * @param child a {@link Gtk.Widget}
          */
-        set_child(child?: Gtk.Widget | null): void;
+        set_child(child: Gtk.Widget | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -363,38 +363,19 @@ export namespace ClapperGtk {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -402,15 +383,9 @@ export namespace ClapperGtk {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -577,7 +552,7 @@ export namespace ClapperGtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -864,17 +839,20 @@ export namespace ClapperGtk {
 
         /**
          * Try to automatically inhibit session when media is playing.
+         * @default false
          */
         get auto_inhibit(): boolean;
         set auto_inhibit(val: boolean);
         /**
          * Try to automatically inhibit session when media is playing.
+         * @default false
          */
         get autoInhibit(): boolean;
         set autoInhibit(val: boolean);
         /**
          * Get whether session is currently inhibited by playback.
          * @read-only
+         * @default false
          */
         get inhibited(): boolean;
         /**
@@ -947,6 +925,7 @@ export namespace ClapperGtk {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
@@ -955,6 +934,7 @@ export namespace ClapperGtk {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
@@ -1058,7 +1038,7 @@ export namespace ClapperGtk {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent?: Gtk.Accessible | null, next_sibling?: Gtk.Accessible | null): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
         /**
          * Updates the next accessible sibling.
          *
@@ -1066,7 +1046,7 @@ export namespace ClapperGtk {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling?: Gtk.Accessible | null): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
         /**
          * Informs ATs that the platform state has changed.
          *
@@ -1177,7 +1157,7 @@ export namespace ClapperGtk {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -1191,7 +1171,7 @@ export namespace ClapperGtk {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called at the end of each custom element handled by
@@ -1206,7 +1186,7 @@ export namespace ClapperGtk {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called for each unknown element under `<child>`.
@@ -1310,38 +1290,19 @@ export namespace ClapperGtk {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1349,15 +1310,9 @@ export namespace ClapperGtk {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1524,7 +1479,7 @@ export namespace ClapperGtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1911,38 +1866,19 @@ export namespace ClapperGtk {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1950,15 +1886,9 @@ export namespace ClapperGtk {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -2125,7 +2055,7 @@ export namespace ClapperGtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -2409,41 +2339,49 @@ export namespace ClapperGtk {
 
         /**
          * Adaptive height threshold that triggers `ClapperGtk.Container::adapt` signal.
+         * @default -1
          */
         get adaptive_height(): number;
         set adaptive_height(val: number);
         /**
          * Adaptive height threshold that triggers `ClapperGtk.Container::adapt` signal.
+         * @default -1
          */
         get adaptiveHeight(): number;
         set adaptiveHeight(val: number);
         /**
          * Adaptive width threshold that triggers `ClapperGtk.Container::adapt` signal.
+         * @default -1
          */
         get adaptive_width(): number;
         set adaptive_width(val: number);
         /**
          * Adaptive width threshold that triggers `ClapperGtk.Container::adapt` signal.
+         * @default -1
          */
         get adaptiveWidth(): number;
         set adaptiveWidth(val: number);
         /**
          * Height that container should target.
+         * @default -1
          */
         get height_target(): number;
         set height_target(val: number);
         /**
          * Height that container should target.
+         * @default -1
          */
         get heightTarget(): number;
         set heightTarget(val: number);
         /**
          * Width that container should target.
+         * @default -1
          */
         get width_target(): number;
         set width_target(val: number);
         /**
          * Width that container should target.
+         * @default -1
          */
         get widthTarget(): number;
         set widthTarget(val: number);
@@ -2550,6 +2488,7 @@ export namespace ClapperGtk {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
@@ -2558,6 +2497,7 @@ export namespace ClapperGtk {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
@@ -2661,7 +2601,7 @@ export namespace ClapperGtk {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent?: Gtk.Accessible | null, next_sibling?: Gtk.Accessible | null): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
         /**
          * Updates the next accessible sibling.
          *
@@ -2669,7 +2609,7 @@ export namespace ClapperGtk {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling?: Gtk.Accessible | null): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
         /**
          * Informs ATs that the platform state has changed.
          *
@@ -2780,7 +2720,7 @@ export namespace ClapperGtk {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -2794,7 +2734,7 @@ export namespace ClapperGtk {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called at the end of each custom element handled by
@@ -2809,7 +2749,7 @@ export namespace ClapperGtk {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called for each unknown element under `<child>`.
@@ -2913,38 +2853,19 @@ export namespace ClapperGtk {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -2952,15 +2873,9 @@ export namespace ClapperGtk {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -3127,7 +3042,7 @@ export namespace ClapperGtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -3410,31 +3325,37 @@ export namespace ClapperGtk {
 
         /**
          * Visibility of open subtitles option inside popover.
+         * @default false
          */
         get can_open_subtitles(): boolean;
         set can_open_subtitles(val: boolean);
         /**
          * Visibility of open subtitles option inside popover.
+         * @default false
          */
         get canOpenSubtitles(): boolean;
         set canOpenSubtitles(val: boolean);
         /**
          * Visibility of speed control inside popover.
+         * @default true
          */
         get speed_visible(): boolean;
         set speed_visible(val: boolean);
         /**
          * Visibility of speed control inside popover.
+         * @default true
          */
         get speedVisible(): boolean;
         set speedVisible(val: boolean);
         /**
          * Visibility of volume control inside popover.
+         * @default true
          */
         get volume_visible(): boolean;
         set volume_visible(val: boolean);
         /**
          * Visibility of volume control inside popover.
+         * @default true
          */
         get volumeVisible(): boolean;
         set volumeVisible(val: boolean);
@@ -3517,6 +3438,7 @@ export namespace ClapperGtk {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
@@ -3525,6 +3447,7 @@ export namespace ClapperGtk {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
@@ -3628,7 +3551,7 @@ export namespace ClapperGtk {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent?: Gtk.Accessible | null, next_sibling?: Gtk.Accessible | null): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
         /**
          * Updates the next accessible sibling.
          *
@@ -3636,7 +3559,7 @@ export namespace ClapperGtk {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling?: Gtk.Accessible | null): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
         /**
          * Informs ATs that the platform state has changed.
          *
@@ -3747,7 +3670,7 @@ export namespace ClapperGtk {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -3761,7 +3684,7 @@ export namespace ClapperGtk {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called at the end of each custom element handled by
@@ -3776,7 +3699,7 @@ export namespace ClapperGtk {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called for each unknown element under `<child>`.
@@ -3880,38 +3803,19 @@ export namespace ClapperGtk {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -3919,15 +3823,9 @@ export namespace ClapperGtk {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -4094,7 +3992,7 @@ export namespace ClapperGtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -4366,16 +4264,19 @@ export namespace ClapperGtk {
 
         /**
          * Mask of actions that container blocks from being triggered on video.
+         * @default ClapperGtk.VideoActionMask.NONE
          */
         get blocked_actions(): VideoActionMask;
         set blocked_actions(val: VideoActionMask);
         /**
          * Mask of actions that container blocks from being triggered on video.
+         * @default ClapperGtk.VideoActionMask.NONE
          */
         get blockedActions(): VideoActionMask;
         set blockedActions(val: VideoActionMask);
         /**
          * Width that container should target.
+         * @default true
          */
         get leading(): boolean;
         set leading(val: boolean);
@@ -4491,38 +4392,19 @@ export namespace ClapperGtk {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -4530,15 +4412,9 @@ export namespace ClapperGtk {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -4705,7 +4581,7 @@ export namespace ClapperGtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -5003,16 +4879,18 @@ export namespace ClapperGtk {
         emit(signal: string, ...args: any[]): void;
         /**
          * The name of the action with which this widget should be associated.
+         * @default null
          * @category Inherited from Gtk.Actionable
          */
-        get action_name(): string;
-        set action_name(val: string);
+        get action_name(): string | null;
+        set action_name(val: string | null);
         /**
          * The name of the action with which this widget should be associated.
+         * @default null
          * @category Inherited from Gtk.Actionable
          */
-        get actionName(): string;
-        set actionName(val: string);
+        get actionName(): string | null;
+        set actionName(val: string | null);
         /**
          * The target value of the actionable widget's action.
          * @category Inherited from Gtk.Actionable
@@ -5031,6 +4909,7 @@ export namespace ClapperGtk {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get can_focus(): boolean;
@@ -5041,18 +4920,21 @@ export namespace ClapperGtk {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get canFocus(): boolean;
         set canFocus(val: boolean);
         /**
          * Whether the widget can receive pointer events.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get can_target(): boolean;
         set can_target(val: boolean);
         /**
          * Whether the widget can receive pointer events.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get canTarget(): boolean;
@@ -5075,6 +4957,7 @@ export namespace ClapperGtk {
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
          * @construct-only
+         * @default null
          * @category Inherited from Gtk.Widget
          */
         get css_name(): string;
@@ -5084,6 +4967,7 @@ export namespace ClapperGtk {
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
          * @construct-only
+         * @default null
          * @category Inherited from Gtk.Widget
          */
         get cssName(): string;
@@ -5091,12 +4975,13 @@ export namespace ClapperGtk {
          * The cursor used by `widget`.
          * @category Inherited from Gtk.Widget
          */
-        get cursor(): Gdk.Cursor;
-        set cursor(val: Gdk.Cursor);
+        get cursor(): Gdk.Cursor | null;
+        set cursor(val: Gdk.Cursor | null);
         /**
          * Whether the widget should grab focus when it is clicked with the mouse.
          *
          * This property is only relevant for widgets that can take focus.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get focus_on_click(): boolean;
@@ -5105,18 +4990,21 @@ export namespace ClapperGtk {
          * Whether the widget should grab focus when it is clicked with the mouse.
          *
          * This property is only relevant for widgets that can take focus.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get focusOnClick(): boolean;
         set focusOnClick(val: boolean);
         /**
          * Whether this widget itself will accept the input focus.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get focusable(): boolean;
         set focusable(val: boolean);
         /**
          * How to distribute horizontal space if widget gets extra space.
+         * @default Gtk.Align.FILL
          * @category Inherited from Gtk.Widget
          */
         get halign(): Gtk.Align;
@@ -5124,24 +5012,28 @@ export namespace ClapperGtk {
         /**
          * Whether the widget is the default widget.
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get has_default(): boolean;
         /**
          * Whether the widget is the default widget.
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hasDefault(): boolean;
         /**
          * Whether the widget has the input focus.
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get has_focus(): boolean;
         /**
          * Whether the widget has the input focus.
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hasFocus(): boolean;
@@ -5152,6 +5044,7 @@ export namespace ClapperGtk {
          * A true value indicates that `widget` can have a tooltip, in this case
          * the widget will be queried using `Gtk.Widget::query-tooltip` to
          * determine whether it will provide a tooltip or not.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get has_tooltip(): boolean;
@@ -5163,6 +5056,7 @@ export namespace ClapperGtk {
          * A true value indicates that `widget` can have a tooltip, in this case
          * the widget will be queried using `Gtk.Widget::query-tooltip` to
          * determine whether it will provide a tooltip or not.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hasTooltip(): boolean;
@@ -5171,6 +5065,7 @@ export namespace ClapperGtk {
          * Overrides for height request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @default -1
          * @category Inherited from Gtk.Widget
          */
         get height_request(): number;
@@ -5179,24 +5074,28 @@ export namespace ClapperGtk {
          * Overrides for height request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @default -1
          * @category Inherited from Gtk.Widget
          */
         get heightRequest(): number;
         set heightRequest(val: number);
         /**
          * Whether to expand horizontally.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpand(): boolean;
         set hexpand(val: boolean);
         /**
          * Whether to use the `hexpand` property.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpand_set(): boolean;
         set hexpand_set(val: boolean);
         /**
          * Whether to use the `hexpand` property.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpandSet(): boolean;
@@ -5209,8 +5108,8 @@ export namespace ClapperGtk {
          * typically in their instance init function.
          * @category Inherited from Gtk.Widget
          */
-        get layout_manager(): Gtk.LayoutManager;
-        set layout_manager(val: Gtk.LayoutManager);
+        get layout_manager(): Gtk.LayoutManager | null;
+        set layout_manager(val: Gtk.LayoutManager | null);
         /**
          * The {@link Gtk.LayoutManager} instance to use to compute
          * the preferred size of the widget, and allocate its children.
@@ -5219,8 +5118,8 @@ export namespace ClapperGtk {
          * typically in their instance init function.
          * @category Inherited from Gtk.Widget
          */
-        get layoutManager(): Gtk.LayoutManager;
-        set layoutManager(val: Gtk.LayoutManager);
+        get layoutManager(): Gtk.LayoutManager | null;
+        set layoutManager(val: Gtk.LayoutManager | null);
         /**
          * Makes this widget act like a modal dialog, with respect to
          * event delivery.
@@ -5229,6 +5128,7 @@ export namespace ClapperGtk {
          * inside the widget, unless they are set up to ignore propagation
          * limits. See {@link Gtk.EventController.set_propagation_limit}.
          * @since 4.18
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get limit_events(): boolean;
@@ -5241,6 +5141,7 @@ export namespace ClapperGtk {
          * inside the widget, unless they are set up to ignore propagation
          * limits. See {@link Gtk.EventController.set_propagation_limit}.
          * @since 4.18
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get limitEvents(): boolean;
@@ -5251,6 +5152,7 @@ export namespace ClapperGtk {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_bottom(): number;
@@ -5261,6 +5163,7 @@ export namespace ClapperGtk {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginBottom(): number;
@@ -5274,6 +5177,7 @@ export namespace ClapperGtk {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_end(): number;
@@ -5287,6 +5191,7 @@ export namespace ClapperGtk {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginEnd(): number;
@@ -5300,6 +5205,7 @@ export namespace ClapperGtk {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_start(): number;
@@ -5313,6 +5219,7 @@ export namespace ClapperGtk {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginStart(): number;
@@ -5323,6 +5230,7 @@ export namespace ClapperGtk {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_top(): number;
@@ -5333,18 +5241,21 @@ export namespace ClapperGtk {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginTop(): number;
         set marginTop(val: number);
         /**
          * The name of the widget.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
         get name(): string;
         set name(val: string);
         /**
          * The requested opacity of the widget.
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get opacity(): number;
@@ -5354,6 +5265,7 @@ export namespace ClapperGtk {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @default Gtk.Overflow.VISIBLE
          * @category Inherited from Gtk.Widget
          */
         get overflow(): Gtk.Overflow;
@@ -5363,15 +5275,17 @@ export namespace ClapperGtk {
          * @read-only
          * @category Inherited from Gtk.Widget
          */
-        get parent(): Gtk.Widget;
+        get parent(): Gtk.Widget | null;
         /**
          * Whether the widget will receive the default action when it is focused.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get receives_default(): boolean;
         set receives_default(val: boolean);
         /**
          * Whether the widget will receive the default action when it is focused.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get receivesDefault(): boolean;
@@ -5383,21 +5297,24 @@ export namespace ClapperGtk {
          * @read-only
          * @category Inherited from Gtk.Widget
          */
-        get root(): Gtk.Root;
+        get root(): Gtk.Root | null;
         /**
          * The scale factor of the widget.
          * @read-only
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
         /**
          * The scale factor of the widget.
          * @read-only
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
         /**
          * Whether the widget responds to input.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get sensitive(): boolean;
@@ -5416,10 +5333,11 @@ export namespace ClapperGtk {
          *
          * Note that if both {@link Gtk.Widget.tooltip_text} and
          * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltip_markup(): string;
-        set tooltip_markup(val: string);
+        get tooltip_markup(): string | null;
+        set tooltip_markup(val: string | null);
         /**
          * Sets the text of tooltip to be the given string, which is marked up
          * with Pango markup.
@@ -5434,10 +5352,11 @@ export namespace ClapperGtk {
          *
          * Note that if both {@link Gtk.Widget.tooltip_text} and
          * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltipMarkup(): string;
-        set tooltipMarkup(val: string);
+        get tooltipMarkup(): string | null;
+        set tooltipMarkup(val: string | null);
         /**
          * Sets the text of tooltip to be the given string.
          *
@@ -5451,10 +5370,11 @@ export namespace ClapperGtk {
          *
          * Note that if both {@link Gtk.Widget.tooltip_text} and
          * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltip_text(): string;
-        set tooltip_text(val: string);
+        get tooltip_text(): string | null;
+        set tooltip_text(val: string | null);
         /**
          * Sets the text of tooltip to be the given string.
          *
@@ -5468,36 +5388,42 @@ export namespace ClapperGtk {
          *
          * Note that if both {@link Gtk.Widget.tooltip_text} and
          * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltipText(): string;
-        set tooltipText(val: string);
+        get tooltipText(): string | null;
+        set tooltipText(val: string | null);
         /**
          * How to distribute vertical space if widget gets extra space.
+         * @default Gtk.Align.FILL
          * @category Inherited from Gtk.Widget
          */
         get valign(): Gtk.Align;
         set valign(val: Gtk.Align);
         /**
          * Whether to expand vertically.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpand(): boolean;
         set vexpand(val: boolean);
         /**
          * Whether to use the `vexpand` property.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpand_set(): boolean;
         set vexpand_set(val: boolean);
         /**
          * Whether to use the `vexpand` property.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpandSet(): boolean;
         set vexpandSet(val: boolean);
         /**
          * Whether the widget is visible.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get visible(): boolean;
@@ -5506,6 +5432,7 @@ export namespace ClapperGtk {
          * Overrides for width request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @default -1
          * @category Inherited from Gtk.Widget
          */
         get width_request(): number;
@@ -5514,6 +5441,7 @@ export namespace ClapperGtk {
          * Overrides for width request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @default -1
          * @category Inherited from Gtk.Widget
          */
         get widthRequest(): number;
@@ -5544,7 +5472,7 @@ export namespace ClapperGtk {
          * associated with the window.
          * @param action_name an action name
          */
-        set_action_name(action_name?: string | null): void;
+        set_action_name(action_name: string | null): void;
         /**
          * Sets the target value of an actionable widget.
          *
@@ -5566,7 +5494,7 @@ export namespace ClapperGtk {
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value
          */
-        set_action_target_value(target_value?: GLib.Variant | null): void;
+        set_action_target_value(target_value: GLib.Variant | null): void;
         /**
          * Sets the action-name and associated string target value of an
          * actionable widget.
@@ -5603,7 +5531,7 @@ export namespace ClapperGtk {
          * @param action_name an action name
          * @virtual
          */
-        vfunc_set_action_name(action_name?: string | null): void;
+        vfunc_set_action_name(action_name: string | null): void;
         /**
          * Sets the target value of an actionable widget.
          *
@@ -5626,7 +5554,7 @@ export namespace ClapperGtk {
          * @param target_value a {@link GLib.Variant} to set as the target value
          * @virtual
          */
-        vfunc_set_action_target_value(target_value?: GLib.Variant | null): void;
+        vfunc_set_action_target_value(target_value: GLib.Variant | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -5674,38 +5602,19 @@ export namespace ClapperGtk {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -5713,15 +5622,9 @@ export namespace ClapperGtk {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -5888,7 +5791,7 @@ export namespace ClapperGtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -6118,7 +6021,7 @@ export namespace ClapperGtk {
          * @param args parameters to use
          * @returns true if the action was activated
          */
-        activate_action(name: string, args?: GLib.Variant | null): boolean;
+        activate_action(name: string, args: GLib.Variant | null): boolean;
         /**
          * Activates the `default.activate` action for the widget.
          *
@@ -6207,7 +6110,7 @@ export namespace ClapperGtk {
          * @param baseline new baseline, or -1
          * @param transform transformation to be applied
          */
-        allocate(width: number, height: number, baseline: number, transform?: Gsk.Transform | null): void;
+        allocate(width: number, height: number, baseline: number, transform: Gsk.Transform | null): void;
         /**
          * Called by widgets as the user moves around the window using
          * keyboard shortcuts.
@@ -6327,7 +6230,7 @@ export namespace ClapperGtk {
          * @param text text to set on the layout
          * @returns the new {@link Pango.Layout}
          */
-        create_pango_layout(text?: string | null): Pango.Layout;
+        create_pango_layout(text: string | null): Pango.Layout;
         /**
          * Clears the template children for the widget.
          *
@@ -7079,7 +6982,7 @@ export namespace ClapperGtk {
          * @param name the prefix for actions in `group`
          * @param group an action group
          */
-        insert_action_group(name: string, group?: Gio.ActionGroup | null): void;
+        insert_action_group(name: string, group: Gio.ActionGroup | null): void;
         /**
          * Sets the parent widget of the widget.
          *
@@ -7102,7 +7005,7 @@ export namespace ClapperGtk {
          * @param parent the parent widget to insert `widget` into
          * @param previous_sibling the new previous sibling of `widget`
          */
-        insert_after(parent: Gtk.Widget, previous_sibling?: Gtk.Widget | null): void;
+        insert_after(parent: Gtk.Widget, previous_sibling: Gtk.Widget | null): void;
         /**
          * Sets the parent widget of the widget.
          *
@@ -7124,7 +7027,7 @@ export namespace ClapperGtk {
          * @param parent the parent widget to insert `widget` into
          * @param next_sibling the new next sibling of `widget`
          */
-        insert_before(parent: Gtk.Widget, next_sibling?: Gtk.Widget | null): void;
+        insert_before(parent: Gtk.Widget, next_sibling: Gtk.Widget | null): void;
         /**
          * Determines whether the widget is a descendent of `ancestor`.
          * @param ancestor another {@link Gtk.Widget}
@@ -7434,7 +7337,7 @@ export namespace ClapperGtk {
          * inherited from its parent.
          * @param cursor the new cursor
          */
-        set_cursor(cursor?: Gdk.Cursor | null): void;
+        set_cursor(cursor: Gdk.Cursor | null): void;
         /**
          * Sets the cursor to be shown when the pointer hovers over
          * the widget.
@@ -7449,7 +7352,7 @@ export namespace ClapperGtk {
          * with a `NULL` cursor.
          * @param name the name of the cursor
          */
-        set_cursor_from_name(name?: string | null): void;
+        set_cursor_from_name(name: string | null): void;
         /**
          * Sets the reading direction on the widget.
          *
@@ -7477,7 +7380,7 @@ export namespace ClapperGtk {
          * {@link Gtk.Widget.grab_focus} on it.
          * @param child a direct child widget of `widget`   or `NULL` to unset the focus child
          */
-        set_focus_child(child?: Gtk.Widget | null): void;
+        set_focus_child(child: Gtk.Widget | null): void;
         /**
          * Sets whether the widget should grab focus when it is clicked
          * with the mouse.
@@ -7516,7 +7419,7 @@ export namespace ClapperGtk {
          * When not set, the widget will inherit the font map from its parent.
          * @param font_map a {@link Pango.FontMap}
          */
-        set_font_map(font_map?: Pango.FontMap | null): void;
+        set_font_map(font_map: Pango.FontMap | null): void;
         /**
          * Sets the `cairo_font_options_t` used for text rendering
          * in the widget.
@@ -7525,7 +7428,7 @@ export namespace ClapperGtk {
          * will be used.
          * @param options a `cairo_font_options_t` struct   to unset any previously set default font options
          */
-        set_font_options(options?: cairo.FontOptions | null): void;
+        set_font_options(options: cairo.FontOptions | null): void;
         /**
          * Sets the horizontal alignment of the widget.
          * @param align the horizontal alignment
@@ -7589,7 +7492,7 @@ export namespace ClapperGtk {
          * of the widget.
          * @param layout_manager a layout manager
          */
-        set_layout_manager(layout_manager?: Gtk.LayoutManager | null): void;
+        set_layout_manager(layout_manager: Gtk.LayoutManager | null): void;
         /**
          * Sets whether the widget acts like a modal dialog,
          * with respect to event delivery.
@@ -7765,7 +7668,7 @@ export namespace ClapperGtk {
          * See also {@link Gtk.Tooltip.set_markup}.
          * @param markup the contents of the tooltip for `widget`
          */
-        set_tooltip_markup(markup?: string | null): void;
+        set_tooltip_markup(markup: string | null): void;
         /**
          * Sets the contents of the tooltip for the widget.
          *
@@ -7779,7 +7682,7 @@ export namespace ClapperGtk {
          * See also {@link Gtk.Tooltip.set_text}.
          * @param text the contents of the tooltip for `widget`
          */
-        set_tooltip_text(text?: string | null): void;
+        set_tooltip_text(text: string | null): void;
         /**
          * Sets the vertical alignment of the widget.
          * @param align the vertical alignment
@@ -8089,7 +7992,7 @@ export namespace ClapperGtk {
          * @param child a direct child widget of `widget`   or `NULL` to unset the focus child
          * @virtual
          */
-        vfunc_set_focus_child(child?: Gtk.Widget | null): void;
+        vfunc_set_focus_child(child: Gtk.Widget | null): void;
         /**
          * Flags a widget to be displayed.
          *
@@ -8264,16 +8167,18 @@ export namespace ClapperGtk {
         emit(signal: string, ...args: any[]): void;
         /**
          * The name of the action with which this widget should be associated.
+         * @default null
          * @category Inherited from Gtk.Actionable
          */
-        get action_name(): string;
-        set action_name(val: string);
+        get action_name(): string | null;
+        set action_name(val: string | null);
         /**
          * The name of the action with which this widget should be associated.
+         * @default null
          * @category Inherited from Gtk.Actionable
          */
-        get actionName(): string;
-        set actionName(val: string);
+        get actionName(): string | null;
+        set actionName(val: string | null);
         /**
          * The target value of the actionable widget's action.
          * @category Inherited from Gtk.Actionable
@@ -8292,6 +8197,7 @@ export namespace ClapperGtk {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get can_focus(): boolean;
@@ -8302,18 +8208,21 @@ export namespace ClapperGtk {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get canFocus(): boolean;
         set canFocus(val: boolean);
         /**
          * Whether the widget can receive pointer events.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get can_target(): boolean;
         set can_target(val: boolean);
         /**
          * Whether the widget can receive pointer events.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get canTarget(): boolean;
@@ -8336,6 +8245,7 @@ export namespace ClapperGtk {
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
          * @construct-only
+         * @default null
          * @category Inherited from Gtk.Widget
          */
         get css_name(): string;
@@ -8345,6 +8255,7 @@ export namespace ClapperGtk {
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
          * @construct-only
+         * @default null
          * @category Inherited from Gtk.Widget
          */
         get cssName(): string;
@@ -8352,12 +8263,13 @@ export namespace ClapperGtk {
          * The cursor used by `widget`.
          * @category Inherited from Gtk.Widget
          */
-        get cursor(): Gdk.Cursor;
-        set cursor(val: Gdk.Cursor);
+        get cursor(): Gdk.Cursor | null;
+        set cursor(val: Gdk.Cursor | null);
         /**
          * Whether the widget should grab focus when it is clicked with the mouse.
          *
          * This property is only relevant for widgets that can take focus.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get focus_on_click(): boolean;
@@ -8366,18 +8278,21 @@ export namespace ClapperGtk {
          * Whether the widget should grab focus when it is clicked with the mouse.
          *
          * This property is only relevant for widgets that can take focus.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get focusOnClick(): boolean;
         set focusOnClick(val: boolean);
         /**
          * Whether this widget itself will accept the input focus.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get focusable(): boolean;
         set focusable(val: boolean);
         /**
          * How to distribute horizontal space if widget gets extra space.
+         * @default Gtk.Align.FILL
          * @category Inherited from Gtk.Widget
          */
         get halign(): Gtk.Align;
@@ -8385,24 +8300,28 @@ export namespace ClapperGtk {
         /**
          * Whether the widget is the default widget.
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get has_default(): boolean;
         /**
          * Whether the widget is the default widget.
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hasDefault(): boolean;
         /**
          * Whether the widget has the input focus.
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get has_focus(): boolean;
         /**
          * Whether the widget has the input focus.
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hasFocus(): boolean;
@@ -8413,6 +8332,7 @@ export namespace ClapperGtk {
          * A true value indicates that `widget` can have a tooltip, in this case
          * the widget will be queried using `Gtk.Widget::query-tooltip` to
          * determine whether it will provide a tooltip or not.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get has_tooltip(): boolean;
@@ -8424,6 +8344,7 @@ export namespace ClapperGtk {
          * A true value indicates that `widget` can have a tooltip, in this case
          * the widget will be queried using `Gtk.Widget::query-tooltip` to
          * determine whether it will provide a tooltip or not.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hasTooltip(): boolean;
@@ -8432,6 +8353,7 @@ export namespace ClapperGtk {
          * Overrides for height request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @default -1
          * @category Inherited from Gtk.Widget
          */
         get height_request(): number;
@@ -8440,24 +8362,28 @@ export namespace ClapperGtk {
          * Overrides for height request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @default -1
          * @category Inherited from Gtk.Widget
          */
         get heightRequest(): number;
         set heightRequest(val: number);
         /**
          * Whether to expand horizontally.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpand(): boolean;
         set hexpand(val: boolean);
         /**
          * Whether to use the `hexpand` property.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpand_set(): boolean;
         set hexpand_set(val: boolean);
         /**
          * Whether to use the `hexpand` property.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpandSet(): boolean;
@@ -8470,8 +8396,8 @@ export namespace ClapperGtk {
          * typically in their instance init function.
          * @category Inherited from Gtk.Widget
          */
-        get layout_manager(): Gtk.LayoutManager;
-        set layout_manager(val: Gtk.LayoutManager);
+        get layout_manager(): Gtk.LayoutManager | null;
+        set layout_manager(val: Gtk.LayoutManager | null);
         /**
          * The {@link Gtk.LayoutManager} instance to use to compute
          * the preferred size of the widget, and allocate its children.
@@ -8480,8 +8406,8 @@ export namespace ClapperGtk {
          * typically in their instance init function.
          * @category Inherited from Gtk.Widget
          */
-        get layoutManager(): Gtk.LayoutManager;
-        set layoutManager(val: Gtk.LayoutManager);
+        get layoutManager(): Gtk.LayoutManager | null;
+        set layoutManager(val: Gtk.LayoutManager | null);
         /**
          * Makes this widget act like a modal dialog, with respect to
          * event delivery.
@@ -8490,6 +8416,7 @@ export namespace ClapperGtk {
          * inside the widget, unless they are set up to ignore propagation
          * limits. See {@link Gtk.EventController.set_propagation_limit}.
          * @since 4.18
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get limit_events(): boolean;
@@ -8502,6 +8429,7 @@ export namespace ClapperGtk {
          * inside the widget, unless they are set up to ignore propagation
          * limits. See {@link Gtk.EventController.set_propagation_limit}.
          * @since 4.18
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get limitEvents(): boolean;
@@ -8512,6 +8440,7 @@ export namespace ClapperGtk {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_bottom(): number;
@@ -8522,6 +8451,7 @@ export namespace ClapperGtk {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginBottom(): number;
@@ -8535,6 +8465,7 @@ export namespace ClapperGtk {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_end(): number;
@@ -8548,6 +8479,7 @@ export namespace ClapperGtk {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginEnd(): number;
@@ -8561,6 +8493,7 @@ export namespace ClapperGtk {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_start(): number;
@@ -8574,6 +8507,7 @@ export namespace ClapperGtk {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginStart(): number;
@@ -8584,6 +8518,7 @@ export namespace ClapperGtk {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_top(): number;
@@ -8594,18 +8529,21 @@ export namespace ClapperGtk {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginTop(): number;
         set marginTop(val: number);
         /**
          * The name of the widget.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
         get name(): string;
         set name(val: string);
         /**
          * The requested opacity of the widget.
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get opacity(): number;
@@ -8615,6 +8553,7 @@ export namespace ClapperGtk {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @default Gtk.Overflow.VISIBLE
          * @category Inherited from Gtk.Widget
          */
         get overflow(): Gtk.Overflow;
@@ -8624,15 +8563,17 @@ export namespace ClapperGtk {
          * @read-only
          * @category Inherited from Gtk.Widget
          */
-        get parent(): Gtk.Widget;
+        get parent(): Gtk.Widget | null;
         /**
          * Whether the widget will receive the default action when it is focused.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get receives_default(): boolean;
         set receives_default(val: boolean);
         /**
          * Whether the widget will receive the default action when it is focused.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get receivesDefault(): boolean;
@@ -8644,21 +8585,24 @@ export namespace ClapperGtk {
          * @read-only
          * @category Inherited from Gtk.Widget
          */
-        get root(): Gtk.Root;
+        get root(): Gtk.Root | null;
         /**
          * The scale factor of the widget.
          * @read-only
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
         /**
          * The scale factor of the widget.
          * @read-only
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
         /**
          * Whether the widget responds to input.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get sensitive(): boolean;
@@ -8677,10 +8621,11 @@ export namespace ClapperGtk {
          *
          * Note that if both {@link Gtk.Widget.tooltip_text} and
          * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltip_markup(): string;
-        set tooltip_markup(val: string);
+        get tooltip_markup(): string | null;
+        set tooltip_markup(val: string | null);
         /**
          * Sets the text of tooltip to be the given string, which is marked up
          * with Pango markup.
@@ -8695,10 +8640,11 @@ export namespace ClapperGtk {
          *
          * Note that if both {@link Gtk.Widget.tooltip_text} and
          * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltipMarkup(): string;
-        set tooltipMarkup(val: string);
+        get tooltipMarkup(): string | null;
+        set tooltipMarkup(val: string | null);
         /**
          * Sets the text of tooltip to be the given string.
          *
@@ -8712,10 +8658,11 @@ export namespace ClapperGtk {
          *
          * Note that if both {@link Gtk.Widget.tooltip_text} and
          * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltip_text(): string;
-        set tooltip_text(val: string);
+        get tooltip_text(): string | null;
+        set tooltip_text(val: string | null);
         /**
          * Sets the text of tooltip to be the given string.
          *
@@ -8729,36 +8676,42 @@ export namespace ClapperGtk {
          *
          * Note that if both {@link Gtk.Widget.tooltip_text} and
          * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltipText(): string;
-        set tooltipText(val: string);
+        get tooltipText(): string | null;
+        set tooltipText(val: string | null);
         /**
          * How to distribute vertical space if widget gets extra space.
+         * @default Gtk.Align.FILL
          * @category Inherited from Gtk.Widget
          */
         get valign(): Gtk.Align;
         set valign(val: Gtk.Align);
         /**
          * Whether to expand vertically.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpand(): boolean;
         set vexpand(val: boolean);
         /**
          * Whether to use the `vexpand` property.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpand_set(): boolean;
         set vexpand_set(val: boolean);
         /**
          * Whether to use the `vexpand` property.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpandSet(): boolean;
         set vexpandSet(val: boolean);
         /**
          * Whether the widget is visible.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get visible(): boolean;
@@ -8767,6 +8720,7 @@ export namespace ClapperGtk {
          * Overrides for width request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @default -1
          * @category Inherited from Gtk.Widget
          */
         get width_request(): number;
@@ -8775,6 +8729,7 @@ export namespace ClapperGtk {
          * Overrides for width request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @default -1
          * @category Inherited from Gtk.Widget
          */
         get widthRequest(): number;
@@ -8805,7 +8760,7 @@ export namespace ClapperGtk {
          * associated with the window.
          * @param action_name an action name
          */
-        set_action_name(action_name?: string | null): void;
+        set_action_name(action_name: string | null): void;
         /**
          * Sets the target value of an actionable widget.
          *
@@ -8827,7 +8782,7 @@ export namespace ClapperGtk {
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value
          */
-        set_action_target_value(target_value?: GLib.Variant | null): void;
+        set_action_target_value(target_value: GLib.Variant | null): void;
         /**
          * Sets the action-name and associated string target value of an
          * actionable widget.
@@ -8864,7 +8819,7 @@ export namespace ClapperGtk {
          * @param action_name an action name
          * @virtual
          */
-        vfunc_set_action_name(action_name?: string | null): void;
+        vfunc_set_action_name(action_name: string | null): void;
         /**
          * Sets the target value of an actionable widget.
          *
@@ -8887,7 +8842,7 @@ export namespace ClapperGtk {
          * @param target_value a {@link GLib.Variant} to set as the target value
          * @virtual
          */
-        vfunc_set_action_target_value(target_value?: GLib.Variant | null): void;
+        vfunc_set_action_target_value(target_value: GLib.Variant | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -8935,38 +8890,19 @@ export namespace ClapperGtk {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -8974,15 +8910,9 @@ export namespace ClapperGtk {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -9149,7 +9079,7 @@ export namespace ClapperGtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -9379,7 +9309,7 @@ export namespace ClapperGtk {
          * @param args parameters to use
          * @returns true if the action was activated
          */
-        activate_action(name: string, args?: GLib.Variant | null): boolean;
+        activate_action(name: string, args: GLib.Variant | null): boolean;
         /**
          * Activates the `default.activate` action for the widget.
          *
@@ -9468,7 +9398,7 @@ export namespace ClapperGtk {
          * @param baseline new baseline, or -1
          * @param transform transformation to be applied
          */
-        allocate(width: number, height: number, baseline: number, transform?: Gsk.Transform | null): void;
+        allocate(width: number, height: number, baseline: number, transform: Gsk.Transform | null): void;
         /**
          * Called by widgets as the user moves around the window using
          * keyboard shortcuts.
@@ -9588,7 +9518,7 @@ export namespace ClapperGtk {
          * @param text text to set on the layout
          * @returns the new {@link Pango.Layout}
          */
-        create_pango_layout(text?: string | null): Pango.Layout;
+        create_pango_layout(text: string | null): Pango.Layout;
         /**
          * Clears the template children for the widget.
          *
@@ -10340,7 +10270,7 @@ export namespace ClapperGtk {
          * @param name the prefix for actions in `group`
          * @param group an action group
          */
-        insert_action_group(name: string, group?: Gio.ActionGroup | null): void;
+        insert_action_group(name: string, group: Gio.ActionGroup | null): void;
         /**
          * Sets the parent widget of the widget.
          *
@@ -10363,7 +10293,7 @@ export namespace ClapperGtk {
          * @param parent the parent widget to insert `widget` into
          * @param previous_sibling the new previous sibling of `widget`
          */
-        insert_after(parent: Gtk.Widget, previous_sibling?: Gtk.Widget | null): void;
+        insert_after(parent: Gtk.Widget, previous_sibling: Gtk.Widget | null): void;
         /**
          * Sets the parent widget of the widget.
          *
@@ -10385,7 +10315,7 @@ export namespace ClapperGtk {
          * @param parent the parent widget to insert `widget` into
          * @param next_sibling the new next sibling of `widget`
          */
-        insert_before(parent: Gtk.Widget, next_sibling?: Gtk.Widget | null): void;
+        insert_before(parent: Gtk.Widget, next_sibling: Gtk.Widget | null): void;
         /**
          * Determines whether the widget is a descendent of `ancestor`.
          * @param ancestor another {@link Gtk.Widget}
@@ -10695,7 +10625,7 @@ export namespace ClapperGtk {
          * inherited from its parent.
          * @param cursor the new cursor
          */
-        set_cursor(cursor?: Gdk.Cursor | null): void;
+        set_cursor(cursor: Gdk.Cursor | null): void;
         /**
          * Sets the cursor to be shown when the pointer hovers over
          * the widget.
@@ -10710,7 +10640,7 @@ export namespace ClapperGtk {
          * with a `NULL` cursor.
          * @param name the name of the cursor
          */
-        set_cursor_from_name(name?: string | null): void;
+        set_cursor_from_name(name: string | null): void;
         /**
          * Sets the reading direction on the widget.
          *
@@ -10738,7 +10668,7 @@ export namespace ClapperGtk {
          * {@link Gtk.Widget.grab_focus} on it.
          * @param child a direct child widget of `widget`   or `NULL` to unset the focus child
          */
-        set_focus_child(child?: Gtk.Widget | null): void;
+        set_focus_child(child: Gtk.Widget | null): void;
         /**
          * Sets whether the widget should grab focus when it is clicked
          * with the mouse.
@@ -10777,7 +10707,7 @@ export namespace ClapperGtk {
          * When not set, the widget will inherit the font map from its parent.
          * @param font_map a {@link Pango.FontMap}
          */
-        set_font_map(font_map?: Pango.FontMap | null): void;
+        set_font_map(font_map: Pango.FontMap | null): void;
         /**
          * Sets the `cairo_font_options_t` used for text rendering
          * in the widget.
@@ -10786,7 +10716,7 @@ export namespace ClapperGtk {
          * will be used.
          * @param options a `cairo_font_options_t` struct   to unset any previously set default font options
          */
-        set_font_options(options?: cairo.FontOptions | null): void;
+        set_font_options(options: cairo.FontOptions | null): void;
         /**
          * Sets the horizontal alignment of the widget.
          * @param align the horizontal alignment
@@ -10850,7 +10780,7 @@ export namespace ClapperGtk {
          * of the widget.
          * @param layout_manager a layout manager
          */
-        set_layout_manager(layout_manager?: Gtk.LayoutManager | null): void;
+        set_layout_manager(layout_manager: Gtk.LayoutManager | null): void;
         /**
          * Sets whether the widget acts like a modal dialog,
          * with respect to event delivery.
@@ -11026,7 +10956,7 @@ export namespace ClapperGtk {
          * See also {@link Gtk.Tooltip.set_markup}.
          * @param markup the contents of the tooltip for `widget`
          */
-        set_tooltip_markup(markup?: string | null): void;
+        set_tooltip_markup(markup: string | null): void;
         /**
          * Sets the contents of the tooltip for the widget.
          *
@@ -11040,7 +10970,7 @@ export namespace ClapperGtk {
          * See also {@link Gtk.Tooltip.set_text}.
          * @param text the contents of the tooltip for `widget`
          */
-        set_tooltip_text(text?: string | null): void;
+        set_tooltip_text(text: string | null): void;
         /**
          * Sets the vertical alignment of the widget.
          * @param align the vertical alignment
@@ -11350,7 +11280,7 @@ export namespace ClapperGtk {
          * @param child a direct child widget of `widget`   or `NULL` to unset the focus child
          * @virtual
          */
-        vfunc_set_focus_child(child?: Gtk.Widget | null): void;
+        vfunc_set_focus_child(child: Gtk.Widget | null): void;
         /**
          * Flags a widget to be displayed.
          *
@@ -11486,21 +11416,25 @@ export namespace ClapperGtk {
 
         /**
          * Reveal state of the position and duration labels.
+         * @default true
          */
         get reveal_labels(): boolean;
         set reveal_labels(val: boolean);
         /**
          * Reveal state of the position and duration labels.
+         * @default true
          */
         get revealLabels(): boolean;
         set revealLabels(val: boolean);
         /**
          * Method used for seeking.
+         * @default Clapper.PlayerSeekMethod.NORMAL
          */
         get seek_method(): Clapper.PlayerSeekMethod;
         set seek_method(val: Clapper.PlayerSeekMethod);
         /**
          * Method used for seeking.
+         * @default Clapper.PlayerSeekMethod.NORMAL
          */
         get seekMethod(): Clapper.PlayerSeekMethod;
         set seekMethod(val: Clapper.PlayerSeekMethod);
@@ -11569,6 +11503,7 @@ export namespace ClapperGtk {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
@@ -11577,6 +11512,7 @@ export namespace ClapperGtk {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
@@ -11680,7 +11616,7 @@ export namespace ClapperGtk {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent?: Gtk.Accessible | null, next_sibling?: Gtk.Accessible | null): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
         /**
          * Updates the next accessible sibling.
          *
@@ -11688,7 +11624,7 @@ export namespace ClapperGtk {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling?: Gtk.Accessible | null): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
         /**
          * Informs ATs that the platform state has changed.
          *
@@ -11799,7 +11735,7 @@ export namespace ClapperGtk {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -11813,7 +11749,7 @@ export namespace ClapperGtk {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called at the end of each custom element handled by
@@ -11828,7 +11764,7 @@ export namespace ClapperGtk {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called for each unknown element under `<child>`.
@@ -11932,38 +11868,19 @@ export namespace ClapperGtk {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -11971,15 +11888,9 @@ export namespace ClapperGtk {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -12146,7 +12057,7 @@ export namespace ClapperGtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -12427,16 +12338,19 @@ export namespace ClapperGtk {
         get extraMenuButton(): ExtraMenuButton;
         /**
          * Whether toggle fullscreen button should be visible.
+         * @default true
          */
         get fullscreenable(): boolean;
         set fullscreenable(val: boolean);
         /**
          * Method used for seeking.
+         * @default Clapper.PlayerSeekMethod.NORMAL
          */
         get seek_method(): Clapper.PlayerSeekMethod;
         set seek_method(val: Clapper.PlayerSeekMethod);
         /**
          * Method used for seeking.
+         * @default Clapper.PlayerSeekMethod.NORMAL
          */
         get seekMethod(): Clapper.PlayerSeekMethod;
         set seekMethod(val: Clapper.PlayerSeekMethod);
@@ -12558,38 +12472,19 @@ export namespace ClapperGtk {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -12597,15 +12492,9 @@ export namespace ClapperGtk {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -12772,7 +12661,7 @@ export namespace ClapperGtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -13044,20 +12933,24 @@ export namespace ClapperGtk {
         /**
          * Currently displayed title.
          * @read-only
+         * @default null
          */
         get current_title(): string;
         /**
          * Currently displayed title.
          * @read-only
+         * @default null
          */
         get currentTitle(): string;
         /**
          * When title cannot be determined, show URI instead.
+         * @default false
          */
         get fallback_to_uri(): boolean;
         set fallback_to_uri(val: boolean);
         /**
          * When title cannot be determined, show URI instead.
+         * @default false
          */
         get fallbackToUri(): boolean;
         set fallbackToUri(val: boolean);
@@ -13166,38 +13059,19 @@ export namespace ClapperGtk {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -13205,15 +13079,9 @@ export namespace ClapperGtk {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -13380,7 +13248,7 @@ export namespace ClapperGtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -13626,8 +13494,8 @@ export namespace ClapperGtk {
             currentTitle: string;
             fallback_to_uri: boolean;
             fallbackToUri: boolean;
-            media_item: Clapper.MediaItem;
-            mediaItem: Clapper.MediaItem;
+            media_item: Clapper.MediaItem | null;
+            mediaItem: Clapper.MediaItem | null;
         }
     }
 
@@ -13652,33 +13520,37 @@ export namespace ClapperGtk {
         /**
          * Currently displayed title.
          * @read-only
+         * @default null
          */
         get current_title(): string;
         /**
          * Currently displayed title.
          * @read-only
+         * @default null
          */
         get currentTitle(): string;
         /**
          * When title cannot be determined, show URI instead.
+         * @default false
          */
         get fallback_to_uri(): boolean;
         set fallback_to_uri(val: boolean);
         /**
          * When title cannot be determined, show URI instead.
+         * @default false
          */
         get fallbackToUri(): boolean;
         set fallbackToUri(val: boolean);
         /**
          * Currently set media item to display title of.
          */
-        get media_item(): Clapper.MediaItem;
-        set media_item(val: Clapper.MediaItem);
+        get media_item(): Clapper.MediaItem | null;
+        set media_item(val: Clapper.MediaItem | null);
         /**
          * Currently set media item to display title of.
          */
-        get mediaItem(): Clapper.MediaItem;
-        set mediaItem(val: Clapper.MediaItem);
+        get mediaItem(): Clapper.MediaItem | null;
+        set mediaItem(val: Clapper.MediaItem | null);
 
         /**
          * Compile-time signal type information.
@@ -13747,11 +13619,12 @@ export namespace ClapperGtk {
          * `label` will use default behavior (showing title of current queue item).
          * @param item a {@link Clapper.MediaItem}
          */
-        set_media_item(item?: Clapper.MediaItem | null): void;
+        set_media_item(item: Clapper.MediaItem | null): void;
         /**
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
@@ -13760,6 +13633,7 @@ export namespace ClapperGtk {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
@@ -13863,7 +13737,7 @@ export namespace ClapperGtk {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent?: Gtk.Accessible | null, next_sibling?: Gtk.Accessible | null): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
         /**
          * Updates the next accessible sibling.
          *
@@ -13871,7 +13745,7 @@ export namespace ClapperGtk {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling?: Gtk.Accessible | null): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
         /**
          * Informs ATs that the platform state has changed.
          *
@@ -13982,7 +13856,7 @@ export namespace ClapperGtk {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -13996,7 +13870,7 @@ export namespace ClapperGtk {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called at the end of each custom element handled by
@@ -14011,7 +13885,7 @@ export namespace ClapperGtk {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called for each unknown element under `<child>`.
@@ -14115,38 +13989,19 @@ export namespace ClapperGtk {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -14154,15 +14009,9 @@ export namespace ClapperGtk {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -14329,7 +14178,7 @@ export namespace ClapperGtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -14629,16 +14478,18 @@ export namespace ClapperGtk {
         emit(signal: string, ...args: any[]): void;
         /**
          * The name of the action with which this widget should be associated.
+         * @default null
          * @category Inherited from Gtk.Actionable
          */
-        get action_name(): string;
-        set action_name(val: string);
+        get action_name(): string | null;
+        set action_name(val: string | null);
         /**
          * The name of the action with which this widget should be associated.
+         * @default null
          * @category Inherited from Gtk.Actionable
          */
-        get actionName(): string;
-        set actionName(val: string);
+        get actionName(): string | null;
+        set actionName(val: string | null);
         /**
          * The target value of the actionable widget's action.
          * @category Inherited from Gtk.Actionable
@@ -14657,6 +14508,7 @@ export namespace ClapperGtk {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get can_focus(): boolean;
@@ -14667,18 +14519,21 @@ export namespace ClapperGtk {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get canFocus(): boolean;
         set canFocus(val: boolean);
         /**
          * Whether the widget can receive pointer events.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get can_target(): boolean;
         set can_target(val: boolean);
         /**
          * Whether the widget can receive pointer events.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get canTarget(): boolean;
@@ -14701,6 +14556,7 @@ export namespace ClapperGtk {
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
          * @construct-only
+         * @default null
          * @category Inherited from Gtk.Widget
          */
         get css_name(): string;
@@ -14710,6 +14566,7 @@ export namespace ClapperGtk {
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
          * @construct-only
+         * @default null
          * @category Inherited from Gtk.Widget
          */
         get cssName(): string;
@@ -14717,12 +14574,13 @@ export namespace ClapperGtk {
          * The cursor used by `widget`.
          * @category Inherited from Gtk.Widget
          */
-        get cursor(): Gdk.Cursor;
-        set cursor(val: Gdk.Cursor);
+        get cursor(): Gdk.Cursor | null;
+        set cursor(val: Gdk.Cursor | null);
         /**
          * Whether the widget should grab focus when it is clicked with the mouse.
          *
          * This property is only relevant for widgets that can take focus.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get focus_on_click(): boolean;
@@ -14731,18 +14589,21 @@ export namespace ClapperGtk {
          * Whether the widget should grab focus when it is clicked with the mouse.
          *
          * This property is only relevant for widgets that can take focus.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get focusOnClick(): boolean;
         set focusOnClick(val: boolean);
         /**
          * Whether this widget itself will accept the input focus.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get focusable(): boolean;
         set focusable(val: boolean);
         /**
          * How to distribute horizontal space if widget gets extra space.
+         * @default Gtk.Align.FILL
          * @category Inherited from Gtk.Widget
          */
         get halign(): Gtk.Align;
@@ -14750,24 +14611,28 @@ export namespace ClapperGtk {
         /**
          * Whether the widget is the default widget.
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get has_default(): boolean;
         /**
          * Whether the widget is the default widget.
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hasDefault(): boolean;
         /**
          * Whether the widget has the input focus.
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get has_focus(): boolean;
         /**
          * Whether the widget has the input focus.
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hasFocus(): boolean;
@@ -14778,6 +14643,7 @@ export namespace ClapperGtk {
          * A true value indicates that `widget` can have a tooltip, in this case
          * the widget will be queried using `Gtk.Widget::query-tooltip` to
          * determine whether it will provide a tooltip or not.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get has_tooltip(): boolean;
@@ -14789,6 +14655,7 @@ export namespace ClapperGtk {
          * A true value indicates that `widget` can have a tooltip, in this case
          * the widget will be queried using `Gtk.Widget::query-tooltip` to
          * determine whether it will provide a tooltip or not.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hasTooltip(): boolean;
@@ -14797,6 +14664,7 @@ export namespace ClapperGtk {
          * Overrides for height request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @default -1
          * @category Inherited from Gtk.Widget
          */
         get height_request(): number;
@@ -14805,24 +14673,28 @@ export namespace ClapperGtk {
          * Overrides for height request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @default -1
          * @category Inherited from Gtk.Widget
          */
         get heightRequest(): number;
         set heightRequest(val: number);
         /**
          * Whether to expand horizontally.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpand(): boolean;
         set hexpand(val: boolean);
         /**
          * Whether to use the `hexpand` property.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpand_set(): boolean;
         set hexpand_set(val: boolean);
         /**
          * Whether to use the `hexpand` property.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpandSet(): boolean;
@@ -14835,8 +14707,8 @@ export namespace ClapperGtk {
          * typically in their instance init function.
          * @category Inherited from Gtk.Widget
          */
-        get layout_manager(): Gtk.LayoutManager;
-        set layout_manager(val: Gtk.LayoutManager);
+        get layout_manager(): Gtk.LayoutManager | null;
+        set layout_manager(val: Gtk.LayoutManager | null);
         /**
          * The {@link Gtk.LayoutManager} instance to use to compute
          * the preferred size of the widget, and allocate its children.
@@ -14845,8 +14717,8 @@ export namespace ClapperGtk {
          * typically in their instance init function.
          * @category Inherited from Gtk.Widget
          */
-        get layoutManager(): Gtk.LayoutManager;
-        set layoutManager(val: Gtk.LayoutManager);
+        get layoutManager(): Gtk.LayoutManager | null;
+        set layoutManager(val: Gtk.LayoutManager | null);
         /**
          * Makes this widget act like a modal dialog, with respect to
          * event delivery.
@@ -14855,6 +14727,7 @@ export namespace ClapperGtk {
          * inside the widget, unless they are set up to ignore propagation
          * limits. See {@link Gtk.EventController.set_propagation_limit}.
          * @since 4.18
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get limit_events(): boolean;
@@ -14867,6 +14740,7 @@ export namespace ClapperGtk {
          * inside the widget, unless they are set up to ignore propagation
          * limits. See {@link Gtk.EventController.set_propagation_limit}.
          * @since 4.18
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get limitEvents(): boolean;
@@ -14877,6 +14751,7 @@ export namespace ClapperGtk {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_bottom(): number;
@@ -14887,6 +14762,7 @@ export namespace ClapperGtk {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginBottom(): number;
@@ -14900,6 +14776,7 @@ export namespace ClapperGtk {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_end(): number;
@@ -14913,6 +14790,7 @@ export namespace ClapperGtk {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginEnd(): number;
@@ -14926,6 +14804,7 @@ export namespace ClapperGtk {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_start(): number;
@@ -14939,6 +14818,7 @@ export namespace ClapperGtk {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginStart(): number;
@@ -14949,6 +14829,7 @@ export namespace ClapperGtk {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_top(): number;
@@ -14959,18 +14840,21 @@ export namespace ClapperGtk {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginTop(): number;
         set marginTop(val: number);
         /**
          * The name of the widget.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
         get name(): string;
         set name(val: string);
         /**
          * The requested opacity of the widget.
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get opacity(): number;
@@ -14980,6 +14864,7 @@ export namespace ClapperGtk {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @default Gtk.Overflow.VISIBLE
          * @category Inherited from Gtk.Widget
          */
         get overflow(): Gtk.Overflow;
@@ -14989,15 +14874,17 @@ export namespace ClapperGtk {
          * @read-only
          * @category Inherited from Gtk.Widget
          */
-        get parent(): Gtk.Widget;
+        get parent(): Gtk.Widget | null;
         /**
          * Whether the widget will receive the default action when it is focused.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get receives_default(): boolean;
         set receives_default(val: boolean);
         /**
          * Whether the widget will receive the default action when it is focused.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get receivesDefault(): boolean;
@@ -15009,21 +14896,24 @@ export namespace ClapperGtk {
          * @read-only
          * @category Inherited from Gtk.Widget
          */
-        get root(): Gtk.Root;
+        get root(): Gtk.Root | null;
         /**
          * The scale factor of the widget.
          * @read-only
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
         /**
          * The scale factor of the widget.
          * @read-only
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
         /**
          * Whether the widget responds to input.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get sensitive(): boolean;
@@ -15042,10 +14932,11 @@ export namespace ClapperGtk {
          *
          * Note that if both {@link Gtk.Widget.tooltip_text} and
          * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltip_markup(): string;
-        set tooltip_markup(val: string);
+        get tooltip_markup(): string | null;
+        set tooltip_markup(val: string | null);
         /**
          * Sets the text of tooltip to be the given string, which is marked up
          * with Pango markup.
@@ -15060,10 +14951,11 @@ export namespace ClapperGtk {
          *
          * Note that if both {@link Gtk.Widget.tooltip_text} and
          * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltipMarkup(): string;
-        set tooltipMarkup(val: string);
+        get tooltipMarkup(): string | null;
+        set tooltipMarkup(val: string | null);
         /**
          * Sets the text of tooltip to be the given string.
          *
@@ -15077,10 +14969,11 @@ export namespace ClapperGtk {
          *
          * Note that if both {@link Gtk.Widget.tooltip_text} and
          * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltip_text(): string;
-        set tooltip_text(val: string);
+        get tooltip_text(): string | null;
+        set tooltip_text(val: string | null);
         /**
          * Sets the text of tooltip to be the given string.
          *
@@ -15094,36 +14987,42 @@ export namespace ClapperGtk {
          *
          * Note that if both {@link Gtk.Widget.tooltip_text} and
          * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltipText(): string;
-        set tooltipText(val: string);
+        get tooltipText(): string | null;
+        set tooltipText(val: string | null);
         /**
          * How to distribute vertical space if widget gets extra space.
+         * @default Gtk.Align.FILL
          * @category Inherited from Gtk.Widget
          */
         get valign(): Gtk.Align;
         set valign(val: Gtk.Align);
         /**
          * Whether to expand vertically.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpand(): boolean;
         set vexpand(val: boolean);
         /**
          * Whether to use the `vexpand` property.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpand_set(): boolean;
         set vexpand_set(val: boolean);
         /**
          * Whether to use the `vexpand` property.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpandSet(): boolean;
         set vexpandSet(val: boolean);
         /**
          * Whether the widget is visible.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get visible(): boolean;
@@ -15132,6 +15031,7 @@ export namespace ClapperGtk {
          * Overrides for width request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @default -1
          * @category Inherited from Gtk.Widget
          */
         get width_request(): number;
@@ -15140,6 +15040,7 @@ export namespace ClapperGtk {
          * Overrides for width request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @default -1
          * @category Inherited from Gtk.Widget
          */
         get widthRequest(): number;
@@ -15170,7 +15071,7 @@ export namespace ClapperGtk {
          * associated with the window.
          * @param action_name an action name
          */
-        set_action_name(action_name?: string | null): void;
+        set_action_name(action_name: string | null): void;
         /**
          * Sets the target value of an actionable widget.
          *
@@ -15192,7 +15093,7 @@ export namespace ClapperGtk {
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value
          */
-        set_action_target_value(target_value?: GLib.Variant | null): void;
+        set_action_target_value(target_value: GLib.Variant | null): void;
         /**
          * Sets the action-name and associated string target value of an
          * actionable widget.
@@ -15229,7 +15130,7 @@ export namespace ClapperGtk {
          * @param action_name an action name
          * @virtual
          */
-        vfunc_set_action_name(action_name?: string | null): void;
+        vfunc_set_action_name(action_name: string | null): void;
         /**
          * Sets the target value of an actionable widget.
          *
@@ -15252,7 +15153,7 @@ export namespace ClapperGtk {
          * @param target_value a {@link GLib.Variant} to set as the target value
          * @virtual
          */
-        vfunc_set_action_target_value(target_value?: GLib.Variant | null): void;
+        vfunc_set_action_target_value(target_value: GLib.Variant | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -15300,38 +15201,19 @@ export namespace ClapperGtk {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -15339,15 +15221,9 @@ export namespace ClapperGtk {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -15514,7 +15390,7 @@ export namespace ClapperGtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -15744,7 +15620,7 @@ export namespace ClapperGtk {
          * @param args parameters to use
          * @returns true if the action was activated
          */
-        activate_action(name: string, args?: GLib.Variant | null): boolean;
+        activate_action(name: string, args: GLib.Variant | null): boolean;
         /**
          * Activates the `default.activate` action for the widget.
          *
@@ -15833,7 +15709,7 @@ export namespace ClapperGtk {
          * @param baseline new baseline, or -1
          * @param transform transformation to be applied
          */
-        allocate(width: number, height: number, baseline: number, transform?: Gsk.Transform | null): void;
+        allocate(width: number, height: number, baseline: number, transform: Gsk.Transform | null): void;
         /**
          * Called by widgets as the user moves around the window using
          * keyboard shortcuts.
@@ -15953,7 +15829,7 @@ export namespace ClapperGtk {
          * @param text text to set on the layout
          * @returns the new {@link Pango.Layout}
          */
-        create_pango_layout(text?: string | null): Pango.Layout;
+        create_pango_layout(text: string | null): Pango.Layout;
         /**
          * Clears the template children for the widget.
          *
@@ -16705,7 +16581,7 @@ export namespace ClapperGtk {
          * @param name the prefix for actions in `group`
          * @param group an action group
          */
-        insert_action_group(name: string, group?: Gio.ActionGroup | null): void;
+        insert_action_group(name: string, group: Gio.ActionGroup | null): void;
         /**
          * Sets the parent widget of the widget.
          *
@@ -16728,7 +16604,7 @@ export namespace ClapperGtk {
          * @param parent the parent widget to insert `widget` into
          * @param previous_sibling the new previous sibling of `widget`
          */
-        insert_after(parent: Gtk.Widget, previous_sibling?: Gtk.Widget | null): void;
+        insert_after(parent: Gtk.Widget, previous_sibling: Gtk.Widget | null): void;
         /**
          * Sets the parent widget of the widget.
          *
@@ -16750,7 +16626,7 @@ export namespace ClapperGtk {
          * @param parent the parent widget to insert `widget` into
          * @param next_sibling the new next sibling of `widget`
          */
-        insert_before(parent: Gtk.Widget, next_sibling?: Gtk.Widget | null): void;
+        insert_before(parent: Gtk.Widget, next_sibling: Gtk.Widget | null): void;
         /**
          * Determines whether the widget is a descendent of `ancestor`.
          * @param ancestor another {@link Gtk.Widget}
@@ -17060,7 +16936,7 @@ export namespace ClapperGtk {
          * inherited from its parent.
          * @param cursor the new cursor
          */
-        set_cursor(cursor?: Gdk.Cursor | null): void;
+        set_cursor(cursor: Gdk.Cursor | null): void;
         /**
          * Sets the cursor to be shown when the pointer hovers over
          * the widget.
@@ -17075,7 +16951,7 @@ export namespace ClapperGtk {
          * with a `NULL` cursor.
          * @param name the name of the cursor
          */
-        set_cursor_from_name(name?: string | null): void;
+        set_cursor_from_name(name: string | null): void;
         /**
          * Sets the reading direction on the widget.
          *
@@ -17103,7 +16979,7 @@ export namespace ClapperGtk {
          * {@link Gtk.Widget.grab_focus} on it.
          * @param child a direct child widget of `widget`   or `NULL` to unset the focus child
          */
-        set_focus_child(child?: Gtk.Widget | null): void;
+        set_focus_child(child: Gtk.Widget | null): void;
         /**
          * Sets whether the widget should grab focus when it is clicked
          * with the mouse.
@@ -17142,7 +17018,7 @@ export namespace ClapperGtk {
          * When not set, the widget will inherit the font map from its parent.
          * @param font_map a {@link Pango.FontMap}
          */
-        set_font_map(font_map?: Pango.FontMap | null): void;
+        set_font_map(font_map: Pango.FontMap | null): void;
         /**
          * Sets the `cairo_font_options_t` used for text rendering
          * in the widget.
@@ -17151,7 +17027,7 @@ export namespace ClapperGtk {
          * will be used.
          * @param options a `cairo_font_options_t` struct   to unset any previously set default font options
          */
-        set_font_options(options?: cairo.FontOptions | null): void;
+        set_font_options(options: cairo.FontOptions | null): void;
         /**
          * Sets the horizontal alignment of the widget.
          * @param align the horizontal alignment
@@ -17215,7 +17091,7 @@ export namespace ClapperGtk {
          * of the widget.
          * @param layout_manager a layout manager
          */
-        set_layout_manager(layout_manager?: Gtk.LayoutManager | null): void;
+        set_layout_manager(layout_manager: Gtk.LayoutManager | null): void;
         /**
          * Sets whether the widget acts like a modal dialog,
          * with respect to event delivery.
@@ -17391,7 +17267,7 @@ export namespace ClapperGtk {
          * See also {@link Gtk.Tooltip.set_markup}.
          * @param markup the contents of the tooltip for `widget`
          */
-        set_tooltip_markup(markup?: string | null): void;
+        set_tooltip_markup(markup: string | null): void;
         /**
          * Sets the contents of the tooltip for the widget.
          *
@@ -17405,7 +17281,7 @@ export namespace ClapperGtk {
          * See also {@link Gtk.Tooltip.set_text}.
          * @param text the contents of the tooltip for `widget`
          */
-        set_tooltip_text(text?: string | null): void;
+        set_tooltip_text(text: string | null): void;
         /**
          * Sets the vertical alignment of the widget.
          * @param align the vertical alignment
@@ -17715,7 +17591,7 @@ export namespace ClapperGtk {
          * @param child a direct child widget of `widget`   or `NULL` to unset the focus child
          * @virtual
          */
-        vfunc_set_focus_child(child?: Gtk.Widget | null): void;
+        vfunc_set_focus_child(child: Gtk.Widget | null): void;
         /**
          * Flags a widget to be displayed.
          *
@@ -17890,16 +17766,18 @@ export namespace ClapperGtk {
         emit(signal: string, ...args: any[]): void;
         /**
          * The name of the action with which this widget should be associated.
+         * @default null
          * @category Inherited from Gtk.Actionable
          */
-        get action_name(): string;
-        set action_name(val: string);
+        get action_name(): string | null;
+        set action_name(val: string | null);
         /**
          * The name of the action with which this widget should be associated.
+         * @default null
          * @category Inherited from Gtk.Actionable
          */
-        get actionName(): string;
-        set actionName(val: string);
+        get actionName(): string | null;
+        set actionName(val: string | null);
         /**
          * The target value of the actionable widget's action.
          * @category Inherited from Gtk.Actionable
@@ -17918,6 +17796,7 @@ export namespace ClapperGtk {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get can_focus(): boolean;
@@ -17928,18 +17807,21 @@ export namespace ClapperGtk {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get canFocus(): boolean;
         set canFocus(val: boolean);
         /**
          * Whether the widget can receive pointer events.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get can_target(): boolean;
         set can_target(val: boolean);
         /**
          * Whether the widget can receive pointer events.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get canTarget(): boolean;
@@ -17962,6 +17844,7 @@ export namespace ClapperGtk {
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
          * @construct-only
+         * @default null
          * @category Inherited from Gtk.Widget
          */
         get css_name(): string;
@@ -17971,6 +17854,7 @@ export namespace ClapperGtk {
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
          * @construct-only
+         * @default null
          * @category Inherited from Gtk.Widget
          */
         get cssName(): string;
@@ -17978,12 +17862,13 @@ export namespace ClapperGtk {
          * The cursor used by `widget`.
          * @category Inherited from Gtk.Widget
          */
-        get cursor(): Gdk.Cursor;
-        set cursor(val: Gdk.Cursor);
+        get cursor(): Gdk.Cursor | null;
+        set cursor(val: Gdk.Cursor | null);
         /**
          * Whether the widget should grab focus when it is clicked with the mouse.
          *
          * This property is only relevant for widgets that can take focus.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get focus_on_click(): boolean;
@@ -17992,18 +17877,21 @@ export namespace ClapperGtk {
          * Whether the widget should grab focus when it is clicked with the mouse.
          *
          * This property is only relevant for widgets that can take focus.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get focusOnClick(): boolean;
         set focusOnClick(val: boolean);
         /**
          * Whether this widget itself will accept the input focus.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get focusable(): boolean;
         set focusable(val: boolean);
         /**
          * How to distribute horizontal space if widget gets extra space.
+         * @default Gtk.Align.FILL
          * @category Inherited from Gtk.Widget
          */
         get halign(): Gtk.Align;
@@ -18011,24 +17899,28 @@ export namespace ClapperGtk {
         /**
          * Whether the widget is the default widget.
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get has_default(): boolean;
         /**
          * Whether the widget is the default widget.
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hasDefault(): boolean;
         /**
          * Whether the widget has the input focus.
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get has_focus(): boolean;
         /**
          * Whether the widget has the input focus.
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hasFocus(): boolean;
@@ -18039,6 +17931,7 @@ export namespace ClapperGtk {
          * A true value indicates that `widget` can have a tooltip, in this case
          * the widget will be queried using `Gtk.Widget::query-tooltip` to
          * determine whether it will provide a tooltip or not.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get has_tooltip(): boolean;
@@ -18050,6 +17943,7 @@ export namespace ClapperGtk {
          * A true value indicates that `widget` can have a tooltip, in this case
          * the widget will be queried using `Gtk.Widget::query-tooltip` to
          * determine whether it will provide a tooltip or not.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hasTooltip(): boolean;
@@ -18058,6 +17952,7 @@ export namespace ClapperGtk {
          * Overrides for height request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @default -1
          * @category Inherited from Gtk.Widget
          */
         get height_request(): number;
@@ -18066,24 +17961,28 @@ export namespace ClapperGtk {
          * Overrides for height request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @default -1
          * @category Inherited from Gtk.Widget
          */
         get heightRequest(): number;
         set heightRequest(val: number);
         /**
          * Whether to expand horizontally.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpand(): boolean;
         set hexpand(val: boolean);
         /**
          * Whether to use the `hexpand` property.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpand_set(): boolean;
         set hexpand_set(val: boolean);
         /**
          * Whether to use the `hexpand` property.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpandSet(): boolean;
@@ -18096,8 +17995,8 @@ export namespace ClapperGtk {
          * typically in their instance init function.
          * @category Inherited from Gtk.Widget
          */
-        get layout_manager(): Gtk.LayoutManager;
-        set layout_manager(val: Gtk.LayoutManager);
+        get layout_manager(): Gtk.LayoutManager | null;
+        set layout_manager(val: Gtk.LayoutManager | null);
         /**
          * The {@link Gtk.LayoutManager} instance to use to compute
          * the preferred size of the widget, and allocate its children.
@@ -18106,8 +18005,8 @@ export namespace ClapperGtk {
          * typically in their instance init function.
          * @category Inherited from Gtk.Widget
          */
-        get layoutManager(): Gtk.LayoutManager;
-        set layoutManager(val: Gtk.LayoutManager);
+        get layoutManager(): Gtk.LayoutManager | null;
+        set layoutManager(val: Gtk.LayoutManager | null);
         /**
          * Makes this widget act like a modal dialog, with respect to
          * event delivery.
@@ -18116,6 +18015,7 @@ export namespace ClapperGtk {
          * inside the widget, unless they are set up to ignore propagation
          * limits. See {@link Gtk.EventController.set_propagation_limit}.
          * @since 4.18
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get limit_events(): boolean;
@@ -18128,6 +18028,7 @@ export namespace ClapperGtk {
          * inside the widget, unless they are set up to ignore propagation
          * limits. See {@link Gtk.EventController.set_propagation_limit}.
          * @since 4.18
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get limitEvents(): boolean;
@@ -18138,6 +18039,7 @@ export namespace ClapperGtk {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_bottom(): number;
@@ -18148,6 +18050,7 @@ export namespace ClapperGtk {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginBottom(): number;
@@ -18161,6 +18064,7 @@ export namespace ClapperGtk {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_end(): number;
@@ -18174,6 +18078,7 @@ export namespace ClapperGtk {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginEnd(): number;
@@ -18187,6 +18092,7 @@ export namespace ClapperGtk {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_start(): number;
@@ -18200,6 +18106,7 @@ export namespace ClapperGtk {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginStart(): number;
@@ -18210,6 +18117,7 @@ export namespace ClapperGtk {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_top(): number;
@@ -18220,18 +18128,21 @@ export namespace ClapperGtk {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginTop(): number;
         set marginTop(val: number);
         /**
          * The name of the widget.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
         get name(): string;
         set name(val: string);
         /**
          * The requested opacity of the widget.
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get opacity(): number;
@@ -18241,6 +18152,7 @@ export namespace ClapperGtk {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @default Gtk.Overflow.VISIBLE
          * @category Inherited from Gtk.Widget
          */
         get overflow(): Gtk.Overflow;
@@ -18250,15 +18162,17 @@ export namespace ClapperGtk {
          * @read-only
          * @category Inherited from Gtk.Widget
          */
-        get parent(): Gtk.Widget;
+        get parent(): Gtk.Widget | null;
         /**
          * Whether the widget will receive the default action when it is focused.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get receives_default(): boolean;
         set receives_default(val: boolean);
         /**
          * Whether the widget will receive the default action when it is focused.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get receivesDefault(): boolean;
@@ -18270,21 +18184,24 @@ export namespace ClapperGtk {
          * @read-only
          * @category Inherited from Gtk.Widget
          */
-        get root(): Gtk.Root;
+        get root(): Gtk.Root | null;
         /**
          * The scale factor of the widget.
          * @read-only
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
         /**
          * The scale factor of the widget.
          * @read-only
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
         /**
          * Whether the widget responds to input.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get sensitive(): boolean;
@@ -18303,10 +18220,11 @@ export namespace ClapperGtk {
          *
          * Note that if both {@link Gtk.Widget.tooltip_text} and
          * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltip_markup(): string;
-        set tooltip_markup(val: string);
+        get tooltip_markup(): string | null;
+        set tooltip_markup(val: string | null);
         /**
          * Sets the text of tooltip to be the given string, which is marked up
          * with Pango markup.
@@ -18321,10 +18239,11 @@ export namespace ClapperGtk {
          *
          * Note that if both {@link Gtk.Widget.tooltip_text} and
          * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltipMarkup(): string;
-        set tooltipMarkup(val: string);
+        get tooltipMarkup(): string | null;
+        set tooltipMarkup(val: string | null);
         /**
          * Sets the text of tooltip to be the given string.
          *
@@ -18338,10 +18257,11 @@ export namespace ClapperGtk {
          *
          * Note that if both {@link Gtk.Widget.tooltip_text} and
          * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltip_text(): string;
-        set tooltip_text(val: string);
+        get tooltip_text(): string | null;
+        set tooltip_text(val: string | null);
         /**
          * Sets the text of tooltip to be the given string.
          *
@@ -18355,36 +18275,42 @@ export namespace ClapperGtk {
          *
          * Note that if both {@link Gtk.Widget.tooltip_text} and
          * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltipText(): string;
-        set tooltipText(val: string);
+        get tooltipText(): string | null;
+        set tooltipText(val: string | null);
         /**
          * How to distribute vertical space if widget gets extra space.
+         * @default Gtk.Align.FILL
          * @category Inherited from Gtk.Widget
          */
         get valign(): Gtk.Align;
         set valign(val: Gtk.Align);
         /**
          * Whether to expand vertically.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpand(): boolean;
         set vexpand(val: boolean);
         /**
          * Whether to use the `vexpand` property.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpand_set(): boolean;
         set vexpand_set(val: boolean);
         /**
          * Whether to use the `vexpand` property.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpandSet(): boolean;
         set vexpandSet(val: boolean);
         /**
          * Whether the widget is visible.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get visible(): boolean;
@@ -18393,6 +18319,7 @@ export namespace ClapperGtk {
          * Overrides for width request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @default -1
          * @category Inherited from Gtk.Widget
          */
         get width_request(): number;
@@ -18401,6 +18328,7 @@ export namespace ClapperGtk {
          * Overrides for width request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @default -1
          * @category Inherited from Gtk.Widget
          */
         get widthRequest(): number;
@@ -18431,7 +18359,7 @@ export namespace ClapperGtk {
          * associated with the window.
          * @param action_name an action name
          */
-        set_action_name(action_name?: string | null): void;
+        set_action_name(action_name: string | null): void;
         /**
          * Sets the target value of an actionable widget.
          *
@@ -18453,7 +18381,7 @@ export namespace ClapperGtk {
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value
          */
-        set_action_target_value(target_value?: GLib.Variant | null): void;
+        set_action_target_value(target_value: GLib.Variant | null): void;
         /**
          * Sets the action-name and associated string target value of an
          * actionable widget.
@@ -18490,7 +18418,7 @@ export namespace ClapperGtk {
          * @param action_name an action name
          * @virtual
          */
-        vfunc_set_action_name(action_name?: string | null): void;
+        vfunc_set_action_name(action_name: string | null): void;
         /**
          * Sets the target value of an actionable widget.
          *
@@ -18513,7 +18441,7 @@ export namespace ClapperGtk {
          * @param target_value a {@link GLib.Variant} to set as the target value
          * @virtual
          */
-        vfunc_set_action_target_value(target_value?: GLib.Variant | null): void;
+        vfunc_set_action_target_value(target_value: GLib.Variant | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -18561,38 +18489,19 @@ export namespace ClapperGtk {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -18600,15 +18509,9 @@ export namespace ClapperGtk {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -18775,7 +18678,7 @@ export namespace ClapperGtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -19005,7 +18908,7 @@ export namespace ClapperGtk {
          * @param args parameters to use
          * @returns true if the action was activated
          */
-        activate_action(name: string, args?: GLib.Variant | null): boolean;
+        activate_action(name: string, args: GLib.Variant | null): boolean;
         /**
          * Activates the `default.activate` action for the widget.
          *
@@ -19094,7 +18997,7 @@ export namespace ClapperGtk {
          * @param baseline new baseline, or -1
          * @param transform transformation to be applied
          */
-        allocate(width: number, height: number, baseline: number, transform?: Gsk.Transform | null): void;
+        allocate(width: number, height: number, baseline: number, transform: Gsk.Transform | null): void;
         /**
          * Called by widgets as the user moves around the window using
          * keyboard shortcuts.
@@ -19214,7 +19117,7 @@ export namespace ClapperGtk {
          * @param text text to set on the layout
          * @returns the new {@link Pango.Layout}
          */
-        create_pango_layout(text?: string | null): Pango.Layout;
+        create_pango_layout(text: string | null): Pango.Layout;
         /**
          * Clears the template children for the widget.
          *
@@ -19966,7 +19869,7 @@ export namespace ClapperGtk {
          * @param name the prefix for actions in `group`
          * @param group an action group
          */
-        insert_action_group(name: string, group?: Gio.ActionGroup | null): void;
+        insert_action_group(name: string, group: Gio.ActionGroup | null): void;
         /**
          * Sets the parent widget of the widget.
          *
@@ -19989,7 +19892,7 @@ export namespace ClapperGtk {
          * @param parent the parent widget to insert `widget` into
          * @param previous_sibling the new previous sibling of `widget`
          */
-        insert_after(parent: Gtk.Widget, previous_sibling?: Gtk.Widget | null): void;
+        insert_after(parent: Gtk.Widget, previous_sibling: Gtk.Widget | null): void;
         /**
          * Sets the parent widget of the widget.
          *
@@ -20011,7 +19914,7 @@ export namespace ClapperGtk {
          * @param parent the parent widget to insert `widget` into
          * @param next_sibling the new next sibling of `widget`
          */
-        insert_before(parent: Gtk.Widget, next_sibling?: Gtk.Widget | null): void;
+        insert_before(parent: Gtk.Widget, next_sibling: Gtk.Widget | null): void;
         /**
          * Determines whether the widget is a descendent of `ancestor`.
          * @param ancestor another {@link Gtk.Widget}
@@ -20321,7 +20224,7 @@ export namespace ClapperGtk {
          * inherited from its parent.
          * @param cursor the new cursor
          */
-        set_cursor(cursor?: Gdk.Cursor | null): void;
+        set_cursor(cursor: Gdk.Cursor | null): void;
         /**
          * Sets the cursor to be shown when the pointer hovers over
          * the widget.
@@ -20336,7 +20239,7 @@ export namespace ClapperGtk {
          * with a `NULL` cursor.
          * @param name the name of the cursor
          */
-        set_cursor_from_name(name?: string | null): void;
+        set_cursor_from_name(name: string | null): void;
         /**
          * Sets the reading direction on the widget.
          *
@@ -20364,7 +20267,7 @@ export namespace ClapperGtk {
          * {@link Gtk.Widget.grab_focus} on it.
          * @param child a direct child widget of `widget`   or `NULL` to unset the focus child
          */
-        set_focus_child(child?: Gtk.Widget | null): void;
+        set_focus_child(child: Gtk.Widget | null): void;
         /**
          * Sets whether the widget should grab focus when it is clicked
          * with the mouse.
@@ -20403,7 +20306,7 @@ export namespace ClapperGtk {
          * When not set, the widget will inherit the font map from its parent.
          * @param font_map a {@link Pango.FontMap}
          */
-        set_font_map(font_map?: Pango.FontMap | null): void;
+        set_font_map(font_map: Pango.FontMap | null): void;
         /**
          * Sets the `cairo_font_options_t` used for text rendering
          * in the widget.
@@ -20412,7 +20315,7 @@ export namespace ClapperGtk {
          * will be used.
          * @param options a `cairo_font_options_t` struct   to unset any previously set default font options
          */
-        set_font_options(options?: cairo.FontOptions | null): void;
+        set_font_options(options: cairo.FontOptions | null): void;
         /**
          * Sets the horizontal alignment of the widget.
          * @param align the horizontal alignment
@@ -20476,7 +20379,7 @@ export namespace ClapperGtk {
          * of the widget.
          * @param layout_manager a layout manager
          */
-        set_layout_manager(layout_manager?: Gtk.LayoutManager | null): void;
+        set_layout_manager(layout_manager: Gtk.LayoutManager | null): void;
         /**
          * Sets whether the widget acts like a modal dialog,
          * with respect to event delivery.
@@ -20652,7 +20555,7 @@ export namespace ClapperGtk {
          * See also {@link Gtk.Tooltip.set_markup}.
          * @param markup the contents of the tooltip for `widget`
          */
-        set_tooltip_markup(markup?: string | null): void;
+        set_tooltip_markup(markup: string | null): void;
         /**
          * Sets the contents of the tooltip for the widget.
          *
@@ -20666,7 +20569,7 @@ export namespace ClapperGtk {
          * See also {@link Gtk.Tooltip.set_text}.
          * @param text the contents of the tooltip for `widget`
          */
-        set_tooltip_text(text?: string | null): void;
+        set_tooltip_text(text: string | null): void;
         /**
          * Sets the vertical alignment of the widget.
          * @param align the vertical alignment
@@ -20976,7 +20879,7 @@ export namespace ClapperGtk {
          * @param child a direct child widget of `widget`   or `NULL` to unset the focus child
          * @virtual
          */
-        vfunc_set_focus_child(child?: Gtk.Widget | null): void;
+        vfunc_set_focus_child(child: Gtk.Widget | null): void;
         /**
          * Flags a widget to be displayed.
          *
@@ -21184,23 +21087,27 @@ export namespace ClapperGtk {
 
         /**
          * A delay in milliseconds before trying to fade all fading overlays.
+         * @default 3000
          */
         get fade_delay(): number;
         set fade_delay(val: number);
         /**
          * A delay in milliseconds before trying to fade all fading overlays.
+         * @default 3000
          */
         get fadeDelay(): number;
         set fadeDelay(val: number);
         /**
          * A delay in milliseconds before trying to fade all fading overlays
          * after revealed using touchscreen.
+         * @default 5000
          */
         get touch_fade_delay(): number;
         set touch_fade_delay(val: number);
         /**
          * A delay in milliseconds before trying to fade all fading overlays
          * after revealed using touchscreen.
+         * @default 5000
          */
         get touchFadeDelay(): number;
         set touchFadeDelay(val: number);
@@ -21340,38 +21247,19 @@ export namespace ClapperGtk {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -21379,15 +21267,9 @@ export namespace ClapperGtk {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -21554,7 +21436,7 @@ export namespace ClapperGtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set

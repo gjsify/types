@@ -203,7 +203,7 @@ export namespace Vte {
      * @gir-type Callback
      */
     interface SelectionFunc {
-        (terminal: Terminal, column: number, row: number, data?: any | null): boolean;
+        (terminal: Terminal, column: number, row: number, data: any | null): boolean;
     }
     /**
      * @gir-type Flags
@@ -274,6 +274,7 @@ export namespace Vte {
          * The file descriptor of the PTY master.
          * @since 0.26
          * @construct-only
+         * @default -1
          */
         get fd(): number;
         /**
@@ -281,12 +282,14 @@ export namespace Vte {
          * and whether to use the GNOME PTY helper.
          * @since 0.26
          * @construct-only
+         * @default Vte.PtyFlags.DEFAULT
          */
         get flags(): PtyFlags;
         /**
          * The value to set for the TERM environment variable just after
          * forking.
          * @since 0.26
+         * @default xterm
          */
         get term(): string;
         set term(val: string);
@@ -367,7 +370,7 @@ export namespace Vte {
          * Sets what value of the TERM environment variable to set just after forking.
          * @param emulation the name of a terminal description, or `null`
          */
-        set_term(emulation?: string | null): void;
+        set_term(emulation: string | null): void;
         /**
          * Tells the kernel whether the terminal is UTF-8 or not, in case it can make
          * use of the info.  Linux 2.6.5 or so defines IUTF8 to make the line
@@ -418,7 +421,7 @@ export namespace Vte {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -461,7 +464,7 @@ export namespace Vte {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -509,38 +512,19 @@ export namespace Vte {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -548,15 +532,9 @@ export namespace Vte {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -723,7 +701,7 @@ export namespace Vte {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1250,6 +1228,7 @@ export namespace Vte {
          * This may happen either by using a bold font variant, or by
          * repainting text with a different offset.
          * @since 0.20
+         * @default true
          */
         get allow_bold(): boolean;
         set allow_bold(val: boolean);
@@ -1258,6 +1237,7 @@ export namespace Vte {
          * This may happen either by using a bold font variant, or by
          * repainting text with a different offset.
          * @since 0.20
+         * @default true
          */
         get allowBold(): boolean;
         set allowBold(val: boolean);
@@ -1265,6 +1245,7 @@ export namespace Vte {
          * Controls whether or not the terminal will beep when the child outputs the
          * "bl" sequence.
          * @since 0.20
+         * @default true
          */
         get audible_bell(): boolean;
         set audible_bell(val: boolean);
@@ -1272,6 +1253,7 @@ export namespace Vte {
          * Controls whether or not the terminal will beep when the child outputs the
          * "bl" sequence.
          * @since 0.20
+         * @default true
          */
         get audibleBell(): boolean;
         set audibleBell(val: boolean);
@@ -1280,6 +1262,7 @@ export namespace Vte {
          * {@link Vte.Terminal.background_saturation}:, the terminal will tint its
          * in-memory copy of the image before applying it to the terminal.
          * @since 0.20
+         * @default null
          */
         get background_image_file(): string;
         set background_image_file(val: string);
@@ -1288,6 +1271,7 @@ export namespace Vte {
          * {@link Vte.Terminal.background_saturation}:, the terminal will tint its
          * in-memory copy of the image before applying it to the terminal.
          * @since 0.20
+         * @default null
          */
         get backgroundImageFile(): string;
         set backgroundImageFile(val: string);
@@ -1317,6 +1301,7 @@ export namespace Vte {
          * Sets the opacity of the terminal background, were 0.0 means completely
          * transparent and 1.0 means completely opaque.
          * @since 0.20
+         * @default 1
          */
         get background_opacity(): number;
         set background_opacity(val: number);
@@ -1324,6 +1309,7 @@ export namespace Vte {
          * Sets the opacity of the terminal background, were 0.0 means completely
          * transparent and 1.0 means completely opaque.
          * @since 0.20
+         * @default 1
          */
         get backgroundOpacity(): number;
         set backgroundOpacity(val: number);
@@ -1335,6 +1321,7 @@ export namespace Vte {
          * the image.  To do so, the terminal will create a copy of the background
          * image (or snapshot of the root window) and modify its pixel values.
          * @since 0.20
+         * @default 0.4
          */
         get background_saturation(): number;
         set background_saturation(val: number);
@@ -1346,6 +1333,7 @@ export namespace Vte {
          * the image.  To do so, the terminal will create a copy of the background
          * image (or snapshot of the root window) and modify its pixel values.
          * @since 0.20
+         * @default 0.4
          */
         get backgroundSaturation(): number;
         set backgroundSaturation(val: number);
@@ -1383,6 +1371,7 @@ export namespace Vte {
          * Note: When using a compositing window manager, you should instead
          * set a RGBA colourmap on the toplevel window, so you get real transparency.
          * @since 0.20
+         * @default false
          */
         get background_transparent(): boolean;
         set background_transparent(val: boolean);
@@ -1394,6 +1383,7 @@ export namespace Vte {
          * Note: When using a compositing window manager, you should instead
          * set a RGBA colourmap on the toplevel window, so you get real transparency.
          * @since 0.20
+         * @default false
          */
         get backgroundTransparent(): boolean;
         set backgroundTransparent(val: boolean);
@@ -1401,6 +1391,7 @@ export namespace Vte {
          * *Controls what string or control sequence the terminal sends to its child
          * when the user presses the backspace key.
          * @since 0.20
+         * @default Vte.TerminalEraseBinding.AUTO
          */
         get backspace_binding(): TerminalEraseBinding;
         set backspace_binding(val: TerminalEraseBinding);
@@ -1408,6 +1399,7 @@ export namespace Vte {
          * *Controls what string or control sequence the terminal sends to its child
          * when the user presses the backspace key.
          * @since 0.20
+         * @default Vte.TerminalEraseBinding.AUTO
          */
         get backspaceBinding(): TerminalEraseBinding;
         set backspaceBinding(val: TerminalEraseBinding);
@@ -1415,6 +1407,7 @@ export namespace Vte {
          * Sets whether or not the cursor will blink. Using {@link Vte.TerminalCursorBlinkMode.SYSTEM}
          * will use the {@link Gtk.Settings.SignalSignatures.gtk_cursor_blink | Gtk.Settings::gtk-cursor-blink} setting.
          * @since 0.20
+         * @default Vte.TerminalCursorBlinkMode.SYSTEM
          */
         get cursor_blink_mode(): TerminalCursorBlinkMode;
         set cursor_blink_mode(val: TerminalCursorBlinkMode);
@@ -1422,18 +1415,21 @@ export namespace Vte {
          * Sets whether or not the cursor will blink. Using {@link Vte.TerminalCursorBlinkMode.SYSTEM}
          * will use the {@link Gtk.Settings.SignalSignatures.gtk_cursor_blink | Gtk.Settings::gtk-cursor-blink} setting.
          * @since 0.20
+         * @default Vte.TerminalCursorBlinkMode.SYSTEM
          */
         get cursorBlinkMode(): TerminalCursorBlinkMode;
         set cursorBlinkMode(val: TerminalCursorBlinkMode);
         /**
          * Controls the shape of the cursor.
          * @since 0.20
+         * @default Vte.TerminalCursorShape.BLOCK
          */
         get cursor_shape(): TerminalCursorShape;
         set cursor_shape(val: TerminalCursorShape);
         /**
          * Controls the shape of the cursor.
          * @since 0.20
+         * @default Vte.TerminalCursorShape.BLOCK
          */
         get cursorShape(): TerminalCursorShape;
         set cursorShape(val: TerminalCursorShape);
@@ -1441,6 +1437,7 @@ export namespace Vte {
          * Controls what string or control sequence the terminal sends to its child
          * when the user presses the delete key.
          * @since 0.20
+         * @default Vte.TerminalEraseBinding.AUTO
          */
         get delete_binding(): TerminalEraseBinding;
         set delete_binding(val: TerminalEraseBinding);
@@ -1448,6 +1445,7 @@ export namespace Vte {
          * Controls what string or control sequence the terminal sends to its child
          * when the user presses the delete key.
          * @since 0.20
+         * @default Vte.TerminalEraseBinding.AUTO
          */
         get deleteBinding(): TerminalEraseBinding;
         set deleteBinding(val: TerminalEraseBinding);
@@ -1456,6 +1454,7 @@ export namespace Vte {
          * control sequences defined in the system's termcap file.  Unless you
          * are interested in this feature, always use the default which is "xterm".
          * @since 0.20
+         * @default xterm
          */
         get emulation(): string;
         set emulation(val: string);
@@ -1465,6 +1464,7 @@ export namespace Vte {
          * terminal can change the encoding.  The default is defined by the
          * application's locale settings.
          * @since 0.20
+         * @default null
          */
         get encoding(): string;
         set encoding(val: string);
@@ -1492,12 +1492,14 @@ export namespace Vte {
          * The terminal's so-called icon title, or `null` if no icon title has been set.
          * @since 0.20
          * @read-only
+         * @default null
          */
         get icon_title(): string;
         /**
          * The terminal's so-called icon title, or `null` if no icon title has been set.
          * @since 0.20
          * @read-only
+         * @default null
          */
         get iconTitle(): string;
         /**
@@ -1505,6 +1507,7 @@ export namespace Vte {
          * is enabled, the mouse cursor will be hidden when the user presses a key and
          * shown when the user moves the mouse.
          * @since 0.20
+         * @default false
          */
         get pointer_autohide(): boolean;
         set pointer_autohide(val: boolean);
@@ -1513,6 +1516,7 @@ export namespace Vte {
          * is enabled, the mouse cursor will be hidden when the user presses a key and
          * shown when the user moves the mouse.
          * @since 0.20
+         * @default false
          */
         get pointerAutohide(): boolean;
         set pointerAutohide(val: boolean);
@@ -1520,6 +1524,7 @@ export namespace Vte {
          * The file descriptor of the master end of the terminal's PTY.
          * @since 0.20
          * @deprecated since 0.26: Use the {@link Vte.Terminal.pty_object} property instead
+         * @default -1
          */
         get pty(): number;
         set pty(val: number);
@@ -1539,6 +1544,7 @@ export namespace Vte {
          * Controls whether or not the terminal will scroll the background image (if
          * one is set) when the text in the window must be scrolled.
          * @since 0.20
+         * @default false
          */
         get scroll_background(): boolean;
         set scroll_background(val: boolean);
@@ -1546,6 +1552,7 @@ export namespace Vte {
          * Controls whether or not the terminal will scroll the background image (if
          * one is set) when the text in the window must be scrolled.
          * @since 0.20
+         * @default false
          */
         get scrollBackground(): boolean;
         set scrollBackground(val: boolean);
@@ -1554,6 +1561,7 @@ export namespace Vte {
          * the viewable history when the user presses a key.  Modifier keys do not
          * trigger this behavior.
          * @since 0.20
+         * @default false
          */
         get scroll_on_keystroke(): boolean;
         set scroll_on_keystroke(val: boolean);
@@ -1562,6 +1570,7 @@ export namespace Vte {
          * the viewable history when the user presses a key.  Modifier keys do not
          * trigger this behavior.
          * @since 0.20
+         * @default false
          */
         get scrollOnKeystroke(): boolean;
         set scrollOnKeystroke(val: boolean);
@@ -1569,6 +1578,7 @@ export namespace Vte {
          * Controls whether or not the terminal will forcibly scroll to the bottom of
          * the viewable history when the new data is received from the child.
          * @since 0.20
+         * @default true
          */
         get scroll_on_output(): boolean;
         set scroll_on_output(val: boolean);
@@ -1576,6 +1586,7 @@ export namespace Vte {
          * Controls whether or not the terminal will forcibly scroll to the bottom of
          * the viewable history when the new data is received from the child.
          * @since 0.20
+         * @default true
          */
         get scrollOnOutput(): boolean;
         set scrollOnOutput(val: boolean);
@@ -1587,6 +1598,7 @@ export namespace Vte {
          * For terminal types which have an alternate screen buffer, no scrollback is
          * allowed on the alternate screen buffer.
          * @since 0.20
+         * @default 100
          */
         get scrollback_lines(): number;
         set scrollback_lines(val: number);
@@ -1598,6 +1610,7 @@ export namespace Vte {
          * For terminal types which have an alternate screen buffer, no scrollback is
          * allowed on the alternate screen buffer.
          * @since 0.20
+         * @default 100
          */
         get scrollbackLines(): number;
         set scrollbackLines(val: number);
@@ -1606,6 +1619,7 @@ export namespace Vte {
          * user when the child outputs the "bl" sequence.  The terminal
          * will clear itself to the default foreground color and then repaint itself.
          * @since 0.20
+         * @default false
          */
         get visible_bell(): boolean;
         set visible_bell(val: boolean);
@@ -1614,6 +1628,7 @@ export namespace Vte {
          * user when the child outputs the "bl" sequence.  The terminal
          * will clear itself to the default foreground color and then repaint itself.
          * @since 0.20
+         * @default false
          */
         get visibleBell(): boolean;
         set visibleBell(val: boolean);
@@ -1621,12 +1636,14 @@ export namespace Vte {
          * The terminal's title.
          * @since 0.20
          * @read-only
+         * @default null
          */
         get window_title(): string;
         /**
          * The terminal's title.
          * @since 0.20
          * @read-only
+         * @default null
          */
         get windowTitle(): string;
         /**
@@ -1638,6 +1655,7 @@ export namespace Vte {
          * As a special case, when setting this to `null` or the empty string, the terminal will
          * treat all graphic non-punctuation non-space characters as word characters.
          * @since 0.20
+         * @default null
          */
         get word_chars(): string;
         set word_chars(val: string);
@@ -1650,6 +1668,7 @@ export namespace Vte {
          * As a special case, when setting this to `null` or the empty string, the terminal will
          * treat all graphic non-punctuation non-space characters as word characters.
          * @since 0.20
+         * @default null
          */
         get wordChars(): string;
         set wordChars(val: string);
@@ -1894,7 +1913,7 @@ export namespace Vte {
             argv: string[],
             envv: string[] | null,
             spawn_flags: GLib.SpawnFlags,
-            child_setup?: GLib.SpawnChildSetupFunc | null,
+            child_setup: GLib.SpawnChildSetupFunc | null,
         ): [boolean, GLib.Pid | null];
         /**
          * An accessor function provided for the benefit of language bindings.
@@ -2119,7 +2138,7 @@ export namespace Vte {
          * @param tag the tag of the regex which should use the specified cursor
          * @param cursor the {@link Gdk.Cursor} which the terminal should use when the pattern is   highlighted, or `null` to use the standard cursor
          */
-        match_set_cursor(tag: number, cursor?: Gdk.Cursor | null): void;
+        match_set_cursor(tag: number, cursor: Gdk.Cursor | null): void;
         /**
          * Sets which cursor the terminal will use if the pointer is over the pattern
          * specified by `tag`.
@@ -2191,7 +2210,7 @@ export namespace Vte {
          * Sets the {@link GLib.Regex} regex to search for. Unsets the search regex when passed `null`.
          * @param regex a {@link GLib.Regex}, or `null`
          */
-        search_set_gregex(regex?: GLib.Regex | null): void;
+        search_set_gregex(regex: GLib.Regex | null): void;
         /**
          * Sets whether search should wrap around to the beginning of the
          * terminal content when reaching its end.
@@ -2228,7 +2247,7 @@ export namespace Vte {
          * in-memory copy of the image before applying it to the terminal.
          * @param image a {@link GdkPixbuf.Pixbuf} to use, or `null` to unset the background
          */
-        set_background_image(image?: GdkPixbuf.Pixbuf | null): void;
+        set_background_image(image: GdkPixbuf.Pixbuf | null): void;
         /**
          * Sets a background image for the widget.  If specified by
          * `vte_terminal_set_background_saturation()`, the terminal will tint its
@@ -2292,7 +2311,7 @@ export namespace Vte {
          * reversed.
          * @param cursor_background the new color to use for the text cursor, or `null`
          */
-        set_color_cursor(cursor_background?: Gdk.Color | null): void;
+        set_color_cursor(cursor_background: Gdk.Color | null): void;
         /**
          * Sets the color used to draw dim text in the default foreground color.
          * @param dim the new dim color
@@ -2309,7 +2328,7 @@ export namespace Vte {
          * be drawn with foreground and background colors reversed.
          * @param highlight_background the new color to use for highlighted text, or `null`
          */
-        set_color_highlight(highlight_background?: Gdk.Color | null): void;
+        set_color_highlight(highlight_background: Gdk.Color | null): void;
         /**
          * The terminal widget uses a 28-color model comprised of the default foreground
          * and background colors, the bold foreground color, the dim foreground
@@ -2357,7 +2376,7 @@ export namespace Vte {
          * are interested in this feature, always use "xterm".
          * @param emulation the name of a terminal description, or `null` to use the default
          */
-        set_emulation(emulation?: string | null): void;
+        set_emulation(emulation: string | null): void;
         /**
          * Changes the encoding the terminal will expect data from the child to
          * be encoded with.  For certain terminal types, applications executing in the
@@ -2365,7 +2384,7 @@ export namespace Vte {
          * application's locale settings.
          * @param codeset a valid `GIConv` target, or `null` to use the default encoding
          */
-        set_encoding(codeset?: string | null): void;
+        set_encoding(codeset: string | null): void;
         /**
          * Sets the font used for rendering all text displayed by the terminal,
          * overriding any fonts set using `gtk_widget_modify_font()`.  The terminal
@@ -2374,7 +2393,7 @@ export namespace Vte {
          * and columns.
          * @param font_desc a {@link Pango.FontDescription} for the desired font, or `null`
          */
-        set_font(font_desc?: Pango.FontDescription | null): void;
+        set_font(font_desc: Pango.FontDescription | null): void;
         /**
          * A convenience function which converts `name` into a {@link Pango.FontDescription} and
          * passes it to `vte_terminal_set_font()`.
@@ -2400,7 +2419,7 @@ export namespace Vte {
          * Use `null` to unset the PTY.
          * @param pty a {@link Vte.Pty}, or `null`
          */
-        set_pty_object(pty?: Pty | null): void;
+        set_pty_object(pty: Pty | null): void;
         /**
          * Controls whether or not the terminal will scroll the background image (if
          * one is set) when the text in the window must be scrolled.
@@ -2496,7 +2515,7 @@ export namespace Vte {
         write_contents(
             stream: Gio.OutputStream,
             flags: TerminalWriteFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -2505,7 +2524,7 @@ export namespace Vte {
          * @param child child to add
          * @param type kind of child or `null`
          */
-        add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
+        add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
         /**
          * Constructs a child of `buildable` with the name `name`.
          *
@@ -2524,7 +2543,7 @@ export namespace Vte {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: any | null): void;
+        custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: any | null): void;
         /**
          * This is called at the end of each custom element handled by
          * the buildable.
@@ -2533,7 +2552,7 @@ export namespace Vte {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: any | null): void;
+        custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: any | null): void;
         /**
          * This is called for each unknown element under &lt;child&gt;.
          * @param builder a {@link Gtk.Builder} used to construct this object
@@ -2591,7 +2610,7 @@ export namespace Vte {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
         /**
          * Constructs a child of `buildable` with the name `name`.
          *
@@ -2615,7 +2634,7 @@ export namespace Vte {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * This is called at the end of each custom element handled by
@@ -2630,7 +2649,7 @@ export namespace Vte {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -2731,38 +2750,19 @@ export namespace Vte {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -2770,15 +2770,9 @@ export namespace Vte {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -2945,7 +2939,7 @@ export namespace Vte {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set

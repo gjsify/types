@@ -169,48 +169,56 @@ export namespace UPowerGlib {
          * The daemon version.
          * @since 0.9.0
          * @read-only
+         * @default null
          */
         get daemon_version(): string;
         /**
          * The daemon version.
          * @since 0.9.0
          * @read-only
+         * @default null
          */
         get daemonVersion(): string;
         /**
          * If the laptop lid is closed.
          * @since 0.9.0
          * @read-only
+         * @default false
          */
         get lid_is_closed(): boolean;
         /**
          * If the laptop lid is closed.
          * @since 0.9.0
          * @read-only
+         * @default false
          */
         get lidIsClosed(): boolean;
         /**
          * If a laptop lid is present.
          * @since 0.9.0
          * @read-only
+         * @default false
          */
         get lid_is_present(): boolean;
         /**
          * If a laptop lid is present.
          * @since 0.9.0
          * @read-only
+         * @default false
          */
         get lidIsPresent(): boolean;
         /**
          * If the computer is on battery power.
          * @since 0.9.0
          * @read-only
+         * @default false
          */
         get on_battery(): boolean;
         /**
          * If the computer is on battery power.
          * @since 0.9.0
          * @read-only
+         * @default false
          */
         get onBattery(): boolean;
 
@@ -236,7 +244,7 @@ export namespace UPowerGlib {
 
         static new_finish(...args: never[]): any;
 
-        static new_full(cancellable?: Gio.Cancellable | null): Client;
+        static new_full(cancellable: Gio.Cancellable | null): Client;
 
         // Signals
 
@@ -268,7 +276,7 @@ export namespace UPowerGlib {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        static new_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<Client> | null): void;
+        static new_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Client> | null): void;
 
         // Virtual methods
 
@@ -312,7 +320,7 @@ export namespace UPowerGlib {
          * Asynchronously fetches the list of {@link UPowerGlib.Device} objects.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        get_devices_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<Device[]>;
+        get_devices_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Device[]>;
         /**
          * Asynchronously fetches the list of {@link UPowerGlib.Device} objects.
          * @param cancellable a {@link Gio.Cancellable} or `null`
@@ -325,7 +333,7 @@ export namespace UPowerGlib {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         get_devices_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Device[]> | void;
         /**
@@ -394,7 +402,7 @@ export namespace UPowerGlib {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -484,7 +492,7 @@ export namespace UPowerGlib {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -545,8 +553,8 @@ export namespace UPowerGlib {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -597,7 +605,7 @@ export namespace UPowerGlib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -640,7 +648,7 @@ export namespace UPowerGlib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -688,38 +696,19 @@ export namespace UPowerGlib {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -727,15 +716,9 @@ export namespace UPowerGlib {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -902,7 +885,7 @@ export namespace UPowerGlib {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1214,6 +1197,7 @@ export namespace UPowerGlib {
          * other than {@link UPowerGlib.DeviceLevel.NONE}, then User Interfaces should use this
          * approximate level instead of percentages.
          * @since 1.0
+         * @default 1
          */
         get battery_level(): number;
         set battery_level(val: number);
@@ -1222,6 +1206,7 @@ export namespace UPowerGlib {
          * other than {@link UPowerGlib.DeviceLevel.NONE}, then User Interfaces should use this
          * approximate level instead of percentages.
          * @since 1.0
+         * @default 1
          */
         get batteryLevel(): number;
         set batteryLevel(val: number);
@@ -1229,6 +1214,7 @@ export namespace UPowerGlib {
          * The percentage capacity of the device where 100% means the device has
          * the same charge potential as when it was manufactured.
          * @since 0.9.0
+         * @default 100
          */
         get capacity(): number;
         set capacity(val: number);
@@ -1236,6 +1222,7 @@ export namespace UPowerGlib {
          * Coarse representation of battery capacity. The value is one of the following:
          * Unknown, Critical, Low, Normal, High, and Full.
          * @since 1.90.10
+         * @default null
          */
         get capacity_level(): string;
         set capacity_level(val: string);
@@ -1243,6 +1230,7 @@ export namespace UPowerGlib {
          * Coarse representation of battery capacity. The value is one of the following:
          * Unknown, Critical, Low, Normal, High, and Full.
          * @since 1.90.10
+         * @default null
          */
         get capacityLevel(): string;
         set capacityLevel(val: string);
@@ -1250,6 +1238,7 @@ export namespace UPowerGlib {
          * The number of charge cycles for the battery, or -1 if unknown
          * or non-applicable.
          * @since 1.0
+         * @default -1
          */
         get charge_cycles(): number;
         set charge_cycles(val: number);
@@ -1257,30 +1246,35 @@ export namespace UPowerGlib {
          * The number of charge cycles for the battery, or -1 if unknown
          * or non-applicable.
          * @since 1.0
+         * @default -1
          */
         get chargeCycles(): number;
         set chargeCycles(val: number);
         /**
          * The charge end threshold of a battery.
          * @since 1.90.5
+         * @default 100
          */
         get charge_end_threshold(): number;
         set charge_end_threshold(val: number);
         /**
          * The charge end threshold of a battery.
          * @since 1.90.5
+         * @default 100
          */
         get chargeEndThreshold(): number;
         set chargeEndThreshold(val: number);
         /**
          * The charge start threshold of a battery.
          * @since 1.90.5
+         * @default 0
          */
         get charge_start_threshold(): number;
         set charge_start_threshold(val: number);
         /**
          * The charge start threshold of a battery.
          * @since 1.90.5
+         * @default 0
          */
         get chargeStartThreshold(): number;
         set chargeStartThreshold(val: number);
@@ -1288,6 +1282,7 @@ export namespace UPowerGlib {
          * The charge threshold of a battery is enabled, or false if unknown
          * or non-applicable.
          * @since 1.90.5
+         * @default false
          */
         get charge_threshold_enabled(): boolean;
         set charge_threshold_enabled(val: boolean);
@@ -1295,6 +1290,7 @@ export namespace UPowerGlib {
          * The charge threshold of a battery is enabled, or false if unknown
          * or non-applicable.
          * @since 1.90.5
+         * @default false
          */
         get chargeThresholdEnabled(): boolean;
         set chargeThresholdEnabled(val: boolean);
@@ -1302,6 +1298,7 @@ export namespace UPowerGlib {
          * The charge threshold of a battery is supported, or false if unknown
          * or non-applicable.
          * @since 1.90.5
+         * @default false
          */
         get charge_threshold_supported(): boolean;
         set charge_threshold_supported(val: boolean);
@@ -1309,12 +1306,14 @@ export namespace UPowerGlib {
          * The charge threshold of a battery is supported, or false if unknown
          * or non-applicable.
          * @since 1.90.5
+         * @default false
          */
         get chargeThresholdSupported(): boolean;
         set chargeThresholdSupported(val: boolean);
         /**
          * The energy left in the device. Measured in mWh.
          * @since 0.9.0
+         * @default 0
          */
         get energy(): number;
         set energy(val: number);
@@ -1322,6 +1321,7 @@ export namespace UPowerGlib {
          * The energy the device will have when it is empty. This is usually zero.
          * Measured in mWh.
          * @since 0.9.0
+         * @default 0
          */
         get energy_empty(): number;
         set energy_empty(val: number);
@@ -1329,78 +1329,91 @@ export namespace UPowerGlib {
          * The energy the device will have when it is empty. This is usually zero.
          * Measured in mWh.
          * @since 0.9.0
+         * @default 0
          */
         get energyEmpty(): number;
         set energyEmpty(val: number);
         /**
          * The amount of energy when the device is fully charged. Measured in mWh.
          * @since 0.9.0
+         * @default 0
          */
         get energy_full(): number;
         set energy_full(val: number);
         /**
          * The amount of energy when the device is fully charged. Measured in mWh.
          * @since 0.9.0
+         * @default 0
          */
         get energyFull(): number;
         set energyFull(val: number);
         /**
          * The amount of energy when the device was brand new. Measured in mWh.
          * @since 0.9.0
+         * @default 0
          */
         get energy_full_design(): number;
         set energy_full_design(val: number);
         /**
          * The amount of energy when the device was brand new. Measured in mWh.
          * @since 0.9.0
+         * @default 0
          */
         get energyFullDesign(): number;
         set energyFullDesign(val: number);
         /**
          * The rate of discharge or charge. Measured in mW.
          * @since 0.9.0
+         * @default 0
          */
         get energy_rate(): number;
         set energy_rate(val: number);
         /**
          * The rate of discharge or charge. Measured in mW.
          * @since 0.9.0
+         * @default 0
          */
         get energyRate(): number;
         set energyRate(val: number);
         /**
          * If the device has history data that might be useful.
          * @since 0.9.0
+         * @default false
          */
         get has_history(): boolean;
         set has_history(val: boolean);
         /**
          * If the device has history data that might be useful.
          * @since 0.9.0
+         * @default false
          */
         get hasHistory(): boolean;
         set hasHistory(val: boolean);
         /**
          * If the device has statistics data that might be useful.
          * @since 0.9.0
+         * @default false
          */
         get has_statistics(): boolean;
         set has_statistics(val: boolean);
         /**
          * If the device has statistics data that might be useful.
          * @since 0.9.0
+         * @default false
          */
         get hasStatistics(): boolean;
         set hasStatistics(val: boolean);
         /**
          * The icon name, following the Icon Naming Specification
          * @since 1.0
+         * @default null
          */
         get icon_name(): string;
         set icon_name(val: string);
         /**
          * The icon name, following the Icon Naming Specification
          * @since 1.0
+         * @default null
          */
         get iconName(): string;
         set iconName(val: string);
@@ -1409,6 +1422,7 @@ export namespace UPowerGlib {
          * can be removed, leaving an empty bay that is still technically a
          * device.
          * @since 0.9.0
+         * @default false
          */
         get is_present(): boolean;
         set is_present(val: boolean);
@@ -1417,24 +1431,28 @@ export namespace UPowerGlib {
          * can be removed, leaving an empty bay that is still technically a
          * device.
          * @since 0.9.0
+         * @default false
          */
         get isPresent(): boolean;
         set isPresent(val: boolean);
         /**
          * If the device has a rechargeable battery.
          * @since 0.9.0
+         * @default false
          */
         get is_rechargeable(): boolean;
         set is_rechargeable(val: boolean);
         /**
          * If the device has a rechargeable battery.
          * @since 0.9.0
+         * @default false
          */
         get isRechargeable(): boolean;
         set isRechargeable(val: boolean);
         /**
          * The device kind, e.g. {@link UPowerGlib.DeviceKind.KEYBOARD}.
          * @since 0.9.0
+         * @default 0
          */
         get kind(): number;
         set kind(val: number);
@@ -1444,30 +1462,35 @@ export namespace UPowerGlib {
          * NOTE: As of 1.91.1, this property is deprecated since the code it
          * depends on was removed in 0.99.12.
          * @since 0.9.19
+         * @default 0
          */
         get luminosity(): number;
         set luminosity(val: number);
         /**
          * The model of the device.
          * @since 0.9.0
+         * @default null
          */
         get model(): string;
         set model(val: string);
         /**
          * The native path of the device, useful for direct device access.
          * @since 0.9.0
+         * @default null
          */
         get native_path(): string;
         set native_path(val: string);
         /**
          * The native path of the device, useful for direct device access.
          * @since 0.9.0
+         * @default null
          */
         get nativePath(): string;
         set nativePath(val: string);
         /**
          * If the device is online, i.e. connected.
          * @since 0.9.0
+         * @default false
          */
         get online(): boolean;
         set online(val: boolean);
@@ -1476,110 +1499,139 @@ export namespace UPowerGlib {
          * is something other than {@link UPowerGlib.DeviceLevel.NONE}, then this percentage is an
          * approximation, and should not be used a number to display to the user.
          * @since 0.9.0
+         * @default 100
          */
         get percentage(): number;
         set percentage(val: number);
         /**
          * If the device is powering the system.
          * @since 0.9.0
+         * @default false
          */
         get power_supply(): boolean;
         set power_supply(val: boolean);
         /**
          * If the device is powering the system.
          * @since 0.9.0
+         * @default false
          */
         get powerSupply(): boolean;
         set powerSupply(val: boolean);
         /**
          * The serial number of the device.
          * @since 0.9.0
+         * @default null
          */
         get serial(): string;
         set serial(val: string);
         /**
          * The state the device is in at this time, e.g. {@link UPowerGlib.DeviceState.EMPTY}.
          * @since 0.9.0
+         * @default 0
          */
         get state(): number;
         set state(val: number);
         /**
          * The battery technology e.g. {@link UPowerGlib.DeviceTechnology.LITHIUM_ION}.
          * @since 0.9.0
+         * @default 0
          */
         get technology(): number;
         set technology(val: number);
         /**
          * The temperature of the device in degrees Celsius.
          * @since 0.9.22
+         * @default 0
          */
         get temperature(): number;
         set temperature(val: number);
         /**
          * The amount of time until the device is empty.
          * @since 0.9.0
+         * @default 0
          */
         get time_to_empty(): number;
         set time_to_empty(val: bigint | number);
         /**
          * The amount of time until the device is empty.
          * @since 0.9.0
+         * @default 0
          */
         get timeToEmpty(): number;
         set timeToEmpty(val: bigint | number);
         /**
          * The amount of time until the device is fully charged.
          * @since 0.9.0
+         * @default 0
          */
         get time_to_full(): number;
         set time_to_full(val: bigint | number);
         /**
          * The amount of time until the device is fully charged.
          * @since 0.9.0
+         * @default 0
          */
         get timeToFull(): number;
         set timeToFull(val: bigint | number);
         /**
          * The last time the device was updated.
          * @since 0.9.0
+         * @default 0
          */
         get update_time(): number;
         set update_time(val: bigint | number);
         /**
          * The last time the device was updated.
          * @since 0.9.0
+         * @default 0
          */
         get updateTime(): number;
         set updateTime(val: bigint | number);
         /**
          * The vendor of the device.
          * @since 0.9.0
+         * @default null
          */
         get vendor(): string;
         set vendor(val: string);
         /**
          * The current voltage of the device.
          * @since 0.9.0
+         * @default 0
          */
         get voltage(): number;
         set voltage(val: number);
+        /**
+         * @default 0
+         */
         get voltage_max_design(): number;
         set voltage_max_design(val: number);
+        /**
+         * @default 0
+         */
         get voltageMaxDesign(): number;
         set voltageMaxDesign(val: number);
+        /**
+         * @default 0
+         */
         get voltage_min_design(): number;
         set voltage_min_design(val: number);
+        /**
+         * @default 0
+         */
         get voltageMinDesign(): number;
         set voltageMinDesign(val: number);
         /**
          * The warning level e.g. {@link UPowerGlib.DeviceLevel.CRITICAL}.
          * @since 1.0
+         * @default 0
          */
         get warning_level(): number;
         set warning_level(val: number);
         /**
          * The warning level e.g. {@link UPowerGlib.DeviceLevel.CRITICAL}.
          * @since 1.0
+         * @default 0
          */
         get warningLevel(): number;
         set warningLevel(val: number);
@@ -1679,7 +1731,7 @@ export namespace UPowerGlib {
             type: string,
             timespec: number,
             resolution: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): HistoryItem[];
         /**
          * Gets the object path for the device.
@@ -1692,7 +1744,7 @@ export namespace UPowerGlib {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns an array of {@link UPowerGlib.StatsItem}'s, else `NULL` and `error` is used
          */
-        get_statistics_sync(type: string, cancellable?: Gio.Cancellable | null): StatsItem[];
+        get_statistics_sync(type: string, cancellable: Gio.Cancellable | null): StatsItem[];
         /**
          * Refreshes properties on the device.
          * This function is normally not required and will only return without
@@ -1700,14 +1752,14 @@ export namespace UPowerGlib {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `TRUE` for success, else `FALSE` and `error` is used
          */
-        refresh_sync(cancellable?: Gio.Cancellable | null): boolean;
+        refresh_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Sets the object path of the object and fills up initial properties.
          * @param object_path The UPower object path.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `TRUE` for success, else `FALSE` and `error` is used
          */
-        set_object_path_sync(object_path: string, cancellable?: Gio.Cancellable | null): boolean;
+        set_object_path_sync(object_path: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Converts the device to a string description.
          * @returns text representation of {@link UPowerGlib.Device}
@@ -1742,16 +1794,19 @@ export namespace UPowerGlib {
 
         /**
          * @since 0.9.0
+         * @default 0
          */
         get state(): number;
         set state(val: number);
         /**
          * @since 0.9.0
+         * @default 0
          */
         get time(): number;
         set time(val: number);
         /**
          * @since 0.9.0
+         * @default 0
          */
         get value(): number;
         set value(val: number);
@@ -1863,11 +1918,13 @@ export namespace UPowerGlib {
 
         /**
          * @since 0.9.0
+         * @default 0
          */
         get accuracy(): number;
         set accuracy(val: number);
         /**
          * @since 0.9.0
+         * @default 0
          */
         get value(): number;
         set value(val: number);

@@ -1218,7 +1218,7 @@ export namespace GMime {
      * @param charset the charset to use or `null` to use the default
      * @returns the encoded 'phrase'. Useful for encoding internet addresses.
      */
-    function utils_header_encode_phrase(options: FormatOptions | null, phrase: string, charset?: string | null): string;
+    function utils_header_encode_phrase(options: FormatOptions | null, phrase: string, charset: string | null): string;
     /**
      * Encodes a 'text' header according to the rules in rfc2047.
      * @param options a {@link GMime.FormatOptions} or `null`
@@ -1226,7 +1226,7 @@ export namespace GMime {
      * @param charset the charset to use or `null` to use the default
      * @returns the encoded header. Useful for encoding headers like "Subject".
      */
-    function utils_header_encode_text(options: FormatOptions | null, text: string, charset?: string | null): string;
+    function utils_header_encode_text(options: FormatOptions | null, text: string, charset: string | null): string;
     /**
      * Allocates a string buffer containing the rfc822 formatted date
      * string represented by `date`.
@@ -2339,7 +2339,7 @@ export namespace GMime {
          * @param options a {@link GMime.FormatOptions} or `null`
          * @returns a new string containing the encoded header value.
          */
-        encode(options?: FormatOptions | null): string;
+        encode(options: FormatOptions | null): string;
         /**
          * Gets the disposition or `null` on fail.
          * @returns the disposition string which is probably one of #GMIME_DISPOSITION_ATTACHMENT or #GMIME_DISPOSITION_INLINE.
@@ -2457,7 +2457,7 @@ export namespace GMime {
          * @param options a {@link GMime.FormatOptions} or `null`
          * @returns a new string containing the encoded header value.
          */
-        encode(options?: FormatOptions | null): string;
+        encode(options: FormatOptions | null): string;
         /**
          * Gets the Content-Type's media sub-type.
          * @returns the Content-Type's media sub-type.
@@ -2690,8 +2690,8 @@ export namespace GMime {
         vfunc_verify(
             flags: VerifyFlags,
             istream: Stream,
-            sigstream?: Stream | null,
-            ostream?: Stream | null,
+            sigstream: Stream | null,
+            ostream: Stream | null,
         ): SignatureList | null;
 
         // Methods
@@ -2811,8 +2811,8 @@ export namespace GMime {
         verify(
             flags: VerifyFlags,
             istream: Stream,
-            sigstream?: Stream | null,
-            ostream?: Stream | null,
+            sigstream: Stream | null,
+            ostream: Stream | null,
         ): SignatureList | null;
     }
 
@@ -3031,7 +3031,7 @@ export namespace GMime {
          * Set the session key to be returned by this decryption result.
          * @param session_key a string representing the session key or `null` to unset the key
          */
-        set_session_key(session_key?: string | null): void;
+        set_session_key(session_key: string | null): void;
         /**
          * Sets the list of signatures.
          * @param signatures A {@link GMime.SignatureList}
@@ -4427,7 +4427,7 @@ export namespace GMime {
          * @param value the new header value
          * @param charset a charset
          */
-        set_value(options: FormatOptions | null, value: string, charset?: string | null): void;
+        set_value(options: FormatOptions | null, value: string, charset: string | null): void;
         /**
          * Write the header to the specified stream.
          * @param options a {@link GMime.FormatOptions} or `null`
@@ -4472,7 +4472,7 @@ export namespace GMime {
 
         _init(...args: any[]): void;
 
-        static ['new'](options?: ParserOptions | null): HeaderList;
+        static ['new'](options: ParserOptions | null): HeaderList;
 
         // Signals
 
@@ -4505,7 +4505,7 @@ export namespace GMime {
          * @param value header value
          * @param charset a charset
          */
-        append(name: string, value: string, charset?: string | null): void;
+        append(name: string, value: string, charset: string | null): void;
         /**
          * Removes all of the headers from the {@link GMime.HeaderList}.
          */
@@ -4541,7 +4541,7 @@ export namespace GMime {
          * @param value header value
          * @param charset a charset
          */
-        prepend(name: string, value: string, charset?: string | null): void;
+        prepend(name: string, value: string, charset: string | null): void;
         /**
          * Remove the first instance of the specified header.
          * @param name header name
@@ -4566,7 +4566,7 @@ export namespace GMime {
          * @param value header value
          * @param charset a charset
          */
-        set(name: string, value: string, charset?: string | null): void;
+        set(name: string, value: string, charset: string | null): void;
         /**
          * @param args
          */
@@ -4578,7 +4578,7 @@ export namespace GMime {
          * @param options a {@link GMime.FormatOptions} or `null`
          * @returns a string containing the header block.
          */
-        to_string(options?: FormatOptions | null): string;
+        to_string(options: FormatOptions | null): string;
         /**
          * Write the headers to a stream.
          * @param options a {@link GMime.FormatOptions} or `null`
@@ -4673,7 +4673,7 @@ export namespace GMime {
          * Set the charset to use for encoding the name of the mailbox or group.
          * @param charset the charset to use when encoding the name or `null` to use the defaults
          */
-        set_charset(charset?: string | null): void;
+        set_charset(charset: string | null): void;
         /**
          * Set the display name of the {@link GMime.InternetAddress}.
          *
@@ -5138,7 +5138,7 @@ export namespace GMime {
         get_autocrypt_gossip_headers(
             now: GLib.DateTime | null,
             flags: DecryptFlags,
-            session_key?: string | null,
+            session_key: string | null,
         ): AutocryptHeaderList | null;
         /**
          * Creates a new {@link GMime.AutocryptHeaderList} of relevant headers of the
@@ -5216,7 +5216,7 @@ export namespace GMime {
          * @param now a {@link GLib.DateTime} object, or `null`
          * @returns a new {@link GMime.AutocryptHeader} object, or `null` if the message should be ignored for purposes of Autocrypt.
          */
-        get_autocrypt_header(now?: GLib.DateTime | null): AutocryptHeader | null;
+        get_autocrypt_header(now: GLib.DateTime | null): AutocryptHeader | null;
         /**
          * Gets combined list of parsed addresses in the Bcc header(s).
          * @returns the parsed list of addresses in the Bcc header(s).
@@ -5304,7 +5304,7 @@ export namespace GMime {
          * @param subject Subject string
          * @param charset The charset to use for encoding the subject or `null` to use the default
          */
-        set_subject(subject: string, charset?: string | null): void;
+        set_subject(subject: string, charset: string | null): void;
     }
 
     namespace MessagePart {
@@ -5998,7 +5998,7 @@ export namespace GMime {
          * @param options a {@link GMime.FormatOptions} or `null`
          * @virtual
          */
-        vfunc_get_headers(options?: FormatOptions | null): string;
+        vfunc_get_headers(options: FormatOptions | null): string;
         /**
          * @param header
          * @virtual
@@ -6041,7 +6041,7 @@ export namespace GMime {
          * @param value header value
          * @param charset a charset
          */
-        append_header(header: string, value: string, charset?: string | null): void;
+        append_header(header: string, value: string, charset: string | null): void;
         /**
          * Calculates and sets the most efficient Content-Transfer-Encoding
          * for this {@link GMime.Object} and all child parts based on the `constraint`
@@ -6143,14 +6143,14 @@ export namespace GMime {
          * @param options a {@link GMime.FormatOptions} or `null`
          * @returns an allocated string containing all of the raw MIME headers. Note: The returned string will not be suitable for display.
          */
-        get_headers(options?: FormatOptions | null): string;
+        get_headers(options: FormatOptions | null): string;
         /**
          * Prepends a new header to the header list.
          * @param header header name
          * @param value header value
          * @param charset a charset
          */
-        prepend_header(header: string, value: string, charset?: string | null): void;
+        prepend_header(header: string, value: string, charset: string | null): void;
         /**
          * Removed the specified header if it exists.
          * @param header header name
@@ -6206,13 +6206,13 @@ export namespace GMime {
          * @param value header value
          * @param charset a charset
          */
-        set_header(header: string, value: string, charset?: string | null): void;
+        set_header(header: string, value: string, charset: string | null): void;
         /**
          * Allocates a string buffer containing the contents of `object`.
          * @param options a {@link GMime.FormatOptions} or `null`
          * @returns an allocated string containing the contents of the mime object.
          */
-        to_string(options?: FormatOptions | null): string;
+        to_string(options: FormatOptions | null): string;
         /**
          * Write only the content of the MIME object to `stream`.
          * @param options a {@link GMime.FormatOptions} or `null`
@@ -6519,13 +6519,13 @@ export namespace GMime {
          * @param options a {@link GMime.ParserOptions} or `null`
          * @returns a MIME message or `null` on fail.
          */
-        construct_message(options?: ParserOptions | null): Message | null;
+        construct_message(options: ParserOptions | null): Message | null;
         /**
          * Constructs a MIME part from `parser`.
          * @param options a {@link GMime.ParserOptions} or `null`
          * @returns a MIME part based on `parser` or `null` on fail.
          */
-        construct_part(options?: ParserOptions | null): Object | null;
+        construct_part(options: ParserOptions | null): Object | null;
         /**
          * Tests the end-of-stream indicator for `parser`'s internal stream.
          * @returns `true` on EOS or `false` otherwise.
@@ -6776,7 +6776,7 @@ export namespace GMime {
          * @param session_key the session key to use or `null`
          * @returns a {@link GMime.DecryptResult} on success or `null` on error.
          */
-        openpgp_decrypt(flags: DecryptFlags, session_key?: string | null): DecryptResult | null;
+        openpgp_decrypt(flags: DecryptFlags, session_key: string | null): DecryptResult | null;
         /**
          * Encrypts (and optionally signs) the content of the `mime_part` and then replaces
          * the content with the new, encrypted, content.
@@ -7559,7 +7559,7 @@ export namespace GMime {
 
         _init(...args: any[]): void;
 
-        static ['new'](fp?: any | null): StreamFile;
+        static ['new'](fp: any | null): StreamFile;
 
         static new_with_bounds(fp: any | null, start: bigint | number, end: bigint | number): StreamFile;
 

@@ -2770,7 +2770,7 @@ export namespace Skk {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            name: string;
+            name: string | null;
             code: string;
             modifiers: ModifierType;
         }
@@ -2784,8 +2784,8 @@ export namespace Skk {
 
         // Properties
 
-        get name(): string;
-        set name(val: string);
+        get name(): string | null;
+        set name(val: string | null);
         get code(): string;
         set code(val: string);
         get modifiers(): ModifierType;
@@ -3206,7 +3206,7 @@ export namespace Skk {
             midasi: string;
             okuri: boolean;
             text: string;
-            annotation: string;
+            annotation: string | null;
             output: string;
         }
     }
@@ -3225,8 +3225,8 @@ export namespace Skk {
         set okuri(val: boolean);
         get text(): string;
         set text(val: string);
-        get annotation(): string;
-        set annotation(val: string);
+        get annotation(): string | null;
+        set annotation(val: string | null);
         get output(): string;
         set output(val: string);
 
@@ -3249,8 +3249,8 @@ export namespace Skk {
             midasi: string,
             okuri: boolean,
             text: string,
-            annotation?: string | null,
-            output?: string | null,
+            annotation: string | null,
+            output: string | null,
         ): Candidate;
 
         // Signals
@@ -3288,7 +3288,7 @@ export namespace Skk {
         /**
          * @param value
          */
-        set_annotation(value?: string | null): void;
+        set_annotation(value: string | null): void;
         get_output(): string;
         /**
          * @param value

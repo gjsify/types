@@ -789,7 +789,7 @@ export namespace GstSdp {
          * @param salt_data the salt
          * @returns `true` on success
          */
-        key_data_set_salt(salt_data?: Uint8Array | null): boolean;
+        key_data_set_salt(salt_data: Uint8Array | null): boolean;
         /**
          * Set the SPI/MKI validity in the {@link GstSdp.MIKEYPayloadType.KEY_DATA} `payload`.
          * @param spi_data the SPI/MKI data
@@ -1004,7 +1004,7 @@ export namespace GstSdp {
          * @param value the value
          * @returns `GST_SDP_OK`.
          */
-        set(key: string, value?: string | null): SDPResult;
+        set(key: string, value: string | null): SDPResult;
     }
 
     /**
@@ -1190,7 +1190,7 @@ export namespace GstSdp {
          * @param value a value
          * @returns #GST_SDP_OK.
          */
-        add_attribute(key: string, value?: string | null): SDPResult;
+        add_attribute(key: string, value: string | null): SDPResult;
         /**
          * Add the bandwidth information with `bwtype` and `bandwidth` to `media`.
          * @param bwtype the bandwidth modifier type
@@ -1576,7 +1576,7 @@ export namespace GstSdp {
          * @param value the value
          * @returns `GST_SDP_OK`.
          */
-        add_attribute(key: string, value?: string | null): SDPResult;
+        add_attribute(key: string, value: string | null): SDPResult;
         /**
          * Add the specified bandwidth information to `msg`.
          * @param bwtype the bandwidth modifier type

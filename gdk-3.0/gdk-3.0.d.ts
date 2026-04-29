@@ -4387,7 +4387,7 @@ export namespace Gdk {
     function cairo_surface_create_from_pixbuf(
         pixbuf: GdkPixbuf.Pixbuf,
         scale: number,
-        for_window?: Window | null,
+        for_window: Window | null,
     ): cairo.Surface;
     /**
      * Parses a textual specification of a color and fill in the
@@ -5487,7 +5487,7 @@ export namespace Gdk {
      * @returns the ID (greater than 0) of the event source.
      * @since 2.12
      */
-    function threads_add_idle(priority: number, _function: GLib.SourceFunc, notify?: GLib.DestroyNotify | null): number;
+    function threads_add_idle(priority: number, _function: GLib.SourceFunc, notify: GLib.DestroyNotify | null): number;
     /**
      * Sets a function to be called at regular intervals holding the GDK lock,
      * with the given priority.  The function is called repeatedly until it
@@ -5545,7 +5545,7 @@ export namespace Gdk {
         priority: number,
         interval: number,
         _function: GLib.SourceFunc,
-        notify?: GLib.DestroyNotify | null,
+        notify: GLib.DestroyNotify | null,
     ): number;
     /**
      * A variant of `gdk_threads_add_timeout_full()` with second-granularity.
@@ -5562,7 +5562,7 @@ export namespace Gdk {
         priority: number,
         interval: number,
         _function: GLib.SourceFunc,
-        notify?: GLib.DestroyNotify | null,
+        notify: GLib.DestroyNotify | null,
     ): number;
     /**
      * This function marks the beginning of a critical section in which
@@ -6586,7 +6586,7 @@ export namespace Gdk {
          * See also `gdk_app_launch_context_set_icon_name()`.
          * @param icon a {@link Gio.Icon}, or `null`
          */
-        set_icon(icon?: Gio.Icon | null): void;
+        set_icon(icon: Gio.Icon | null): void;
         /**
          * Sets the icon for applications that are launched with this context.
          * The `icon_name` will be interpreted in the same way as the Icon field
@@ -6598,7 +6598,7 @@ export namespace Gdk {
          * for the launched application itself.
          * @param icon_name an icon name, or `null`
          */
-        set_icon_name(icon_name?: string | null): void;
+        set_icon_name(icon_name: string | null): void;
         /**
          * Sets the screen on which applications will be launched when
          * using this context. See also `gdk_app_launch_context_set_display()`.
@@ -6652,10 +6652,12 @@ export namespace Gdk {
 
         /**
          * @construct-only
+         * @default Gdk.CursorType.X_CURSOR
          */
         get cursor_type(): CursorType;
         /**
          * @construct-only
+         * @default Gdk.CursorType.X_CURSOR
          */
         get cursorType(): CursorType;
         /**
@@ -6794,8 +6796,8 @@ export namespace Gdk {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            associated_device: Device;
-            associatedDevice: Device;
+            associated_device: Device | null;
+            associatedDevice: Device | null;
             axes: AxisFlags;
             device_manager: DeviceManager;
             deviceManager: DeviceManager;
@@ -6811,13 +6813,13 @@ export namespace Gdk {
             name: string;
             num_touches: number;
             numTouches: number;
-            product_id: string;
-            productId: string;
+            product_id: string | null;
+            productId: string | null;
             seat: Seat;
             tool: DeviceTool;
             type: DeviceType;
-            vendor_id: string;
-            vendorId: string;
+            vendor_id: string | null;
+            vendorId: string | null;
         }
     }
 
@@ -6841,18 +6843,19 @@ export namespace Gdk {
          * @since 3.0
          * @read-only
          */
-        get associated_device(): Device;
+        get associated_device(): Device | null;
         /**
          * Associated pointer or keyboard with this device, if any. Devices of type #GDK_DEVICE_TYPE_MASTER
          * always come in keyboard/pointer pairs. Other device types will have a `null` associated device.
          * @since 3.0
          * @read-only
          */
-        get associatedDevice(): Device;
+        get associatedDevice(): Device | null;
         /**
          * The axes currently available for this device.
          * @since 3.22
          * @read-only
+         * @default 0
          */
         get axes(): AxisFlags;
         /**
@@ -6878,6 +6881,7 @@ export namespace Gdk {
          * {@link Gdk.DeviceType.MASTER} will have `true` here.
          * @since 3.0
          * @construct-only
+         * @default false
          */
         get has_cursor(): boolean;
         /**
@@ -6885,40 +6889,52 @@ export namespace Gdk {
          * {@link Gdk.DeviceType.MASTER} will have `true` here.
          * @since 3.0
          * @construct-only
+         * @default false
          */
         get hasCursor(): boolean;
+        /**
+         * @default Gdk.InputMode.DISABLED
+         */
         get input_mode(): InputMode;
         set input_mode(val: InputMode);
+        /**
+         * @default Gdk.InputMode.DISABLED
+         */
         get inputMode(): InputMode;
         set inputMode(val: InputMode);
         /**
          * Source type for the device.
          * @since 3.0
          * @construct-only
+         * @default Gdk.InputSource.MOUSE
          */
         get input_source(): InputSource;
         /**
          * Source type for the device.
          * @since 3.0
          * @construct-only
+         * @default Gdk.InputSource.MOUSE
          */
         get inputSource(): InputSource;
         /**
          * Number of axes in the device.
          * @since 3.0
          * @read-only
+         * @default 0
          */
         get n_axes(): number;
         /**
          * Number of axes in the device.
          * @since 3.0
          * @read-only
+         * @default 0
          */
         get nAxes(): number;
         /**
          * The device name.
          * @since 3.0
          * @construct-only
+         * @default null
          */
         get name(): string;
         /**
@@ -6927,6 +6943,7 @@ export namespace Gdk {
          * of touches is unknown.
          * @since 3.20
          * @construct-only
+         * @default 0
          */
         get num_touches(): number;
         /**
@@ -6935,20 +6952,23 @@ export namespace Gdk {
          * of touches is unknown.
          * @since 3.20
          * @construct-only
+         * @default 0
          */
         get numTouches(): number;
         /**
          * Product ID of this device, see `gdk_device_get_product_id()`.
          * @since 3.16
          * @construct-only
+         * @default null
          */
-        get product_id(): string;
+        get product_id(): string | null;
         /**
          * Product ID of this device, see `gdk_device_get_product_id()`.
          * @since 3.16
          * @construct-only
+         * @default null
          */
-        get productId(): string;
+        get productId(): string | null;
         /**
          * {@link Gdk.Seat} of this device.
          * @since 3.20
@@ -6963,20 +6983,23 @@ export namespace Gdk {
          * Device role in the device manager.
          * @since 3.0
          * @construct-only
+         * @default Gdk.DeviceType.MASTER
          */
         get type(): DeviceType;
         /**
          * Vendor ID of this device, see `gdk_device_get_vendor_id()`.
          * @since 3.16
          * @construct-only
+         * @default null
          */
-        get vendor_id(): string;
+        get vendor_id(): string | null;
         /**
          * Vendor ID of this device, see `gdk_device_get_vendor_id()`.
          * @since 3.16
          * @construct-only
+         * @default null
          */
-        get vendorId(): string;
+        get vendorId(): string | null;
 
         /**
          * Compile-time signal type information.
@@ -7326,7 +7349,7 @@ export namespace Gdk {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            display: Display;
+            display: Display | null;
         }
     }
 
@@ -7457,7 +7480,7 @@ export namespace Gdk {
         /**
          * @construct-only
          */
-        get display(): Display;
+        get display(): Display | null;
 
         /**
          * Compile-time signal type information.
@@ -7552,26 +7575,32 @@ export namespace Gdk {
 
         /**
          * @construct-only
+         * @default 0
          */
         get axes(): AxisFlags;
         /**
          * @construct-only
+         * @default 0
          */
         get hardware_id(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get hardwareId(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get serial(): number;
         /**
          * @construct-only
+         * @default Gdk.DeviceToolType.UNKNOWN
          */
         get tool_type(): DeviceToolType;
         /**
          * @construct-only
+         * @default Gdk.DeviceToolType.UNKNOWN
          */
         get toolType(): DeviceToolType;
 
@@ -8014,7 +8043,7 @@ export namespace Gdk {
          * @param time_ a timestamp
          * @param targets an array of targets                    that should be saved, or `null`                    if all available targets should be saved.
          */
-        store_clipboard(clipboard_window: Window, time_: number, targets?: Atom[] | null): void;
+        store_clipboard(clipboard_window: Window, time_: number, targets: Atom[] | null): void;
         /**
          * Returns whether the speicifed display supports clipboard
          * persistance; i.e. if it’s possible to store the clipboard data after an
@@ -8111,8 +8140,8 @@ export namespace Gdk {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            default_display: Display;
-            defaultDisplay: Display;
+            default_display: Display | null;
+            defaultDisplay: Display | null;
         }
     }
 
@@ -8165,10 +8194,10 @@ export namespace Gdk {
 
         // Properties
 
-        get default_display(): Display;
-        set default_display(val: Display);
-        get defaultDisplay(): Display;
-        set defaultDisplay(val: Display);
+        get default_display(): Display | null;
+        set default_display(val: Display | null);
+        get defaultDisplay(): Display | null;
+        set defaultDisplay(val: Display | null);
 
         /**
          * Compile-time signal type information.
@@ -8443,7 +8472,7 @@ export namespace Gdk {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            clip: cairo.Region;
+            clip: cairo.Region | null;
             window: Window;
         }
     }
@@ -8471,7 +8500,7 @@ export namespace Gdk {
          * @since 3.22
          * @construct-only
          */
-        get clip(): cairo.Region;
+        get clip(): cairo.Region | null;
         /**
          * The {@link Gdk.Window} that created the drawing context.
          * @since 3.22
@@ -8780,10 +8809,10 @@ export namespace Gdk {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            display: Display;
-            shared_context: GLContext;
-            sharedContext: GLContext;
-            window: Window;
+            display: Display | null;
+            shared_context: GLContext | null;
+            sharedContext: GLContext | null;
+            window: Window | null;
         }
     }
 
@@ -8853,25 +8882,25 @@ export namespace Gdk {
          * @since 3.16
          * @construct-only
          */
-        get display(): Display;
+        get display(): Display | null;
         /**
          * The {@link Gdk.GLContext} that this context is sharing data with, or `null`
          * @since 3.16
          * @construct-only
          */
-        get shared_context(): GLContext;
+        get shared_context(): GLContext | null;
         /**
          * The {@link Gdk.GLContext} that this context is sharing data with, or `null`
          * @since 3.16
          * @construct-only
          */
-        get sharedContext(): GLContext;
+        get sharedContext(): GLContext | null;
         /**
          * The {@link Gdk.Window} the gl context is bound to.
          * @since 3.16
          * @construct-only
          */
-        get window(): Window;
+        get window(): Window | null;
 
         /**
          * Compile-time signal type information.
@@ -9344,8 +9373,8 @@ export namespace Gdk {
             geometry: Rectangle;
             height_mm: number;
             heightMm: number;
-            manufacturer: string;
-            model: string;
+            manufacturer: string | null;
+            model: string | null;
             refresh_rate: number;
             refreshRate: number;
             scale_factor: number;
@@ -9384,50 +9413,62 @@ export namespace Gdk {
         get geometry(): Rectangle;
         /**
          * @read-only
+         * @default 0
          */
         get height_mm(): number;
         /**
          * @read-only
+         * @default 0
          */
         get heightMm(): number;
         /**
          * @read-only
+         * @default null
          */
-        get manufacturer(): string;
+        get manufacturer(): string | null;
         /**
          * @read-only
+         * @default null
          */
-        get model(): string;
+        get model(): string | null;
         /**
          * @read-only
+         * @default 0
          */
         get refresh_rate(): number;
         /**
          * @read-only
+         * @default 0
          */
         get refreshRate(): number;
         /**
          * @read-only
+         * @default 1
          */
         get scale_factor(): number;
         /**
          * @read-only
+         * @default 1
          */
         get scaleFactor(): number;
         /**
          * @read-only
+         * @default Gdk.SubpixelLayout.UNKNOWN
          */
         get subpixel_layout(): SubpixelLayout;
         /**
          * @read-only
+         * @default Gdk.SubpixelLayout.UNKNOWN
          */
         get subpixelLayout(): SubpixelLayout;
         /**
          * @read-only
+         * @default 0
          */
         get width_mm(): number;
         /**
          * @read-only
+         * @default 0
          */
         get widthMm(): number;
         /**
@@ -9594,8 +9635,8 @@ export namespace Gdk {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            font_options: any;
-            fontOptions: any;
+            font_options: any | null;
+            fontOptions: any | null;
             resolution: number;
         }
     }
@@ -9619,10 +9660,13 @@ export namespace Gdk {
 
         // Properties
 
-        get font_options(): any;
-        set font_options(val: any);
-        get fontOptions(): any;
-        set fontOptions(val: any);
+        get font_options(): any | null;
+        set font_options(val: any | null);
+        get fontOptions(): any | null;
+        set fontOptions(val: any | null);
+        /**
+         * @default -1
+         */
         get resolution(): number;
         set resolution(val: number);
 
@@ -9965,7 +10009,7 @@ export namespace Gdk {
          * have already been created.
          * @param options a {@link cairo.FontOptions}, or `null` to unset any   previously set default font options.
          */
-        set_font_options(options?: cairo.FontOptions | null): void;
+        set_font_options(options: cairo.FontOptions | null): void;
         /**
          * Sets the resolution for font handling on the screen. This is a
          * scale factor between points specified in a {@link Pango.FontDescription}
@@ -10143,9 +10187,9 @@ export namespace Gdk {
             window: Window,
             capabilities: SeatCapabilities,
             owner_events: boolean,
-            cursor?: Cursor | null,
-            event?: Event | null,
-            prepare_func?: SeatGrabPrepareFunc | null,
+            cursor: Cursor | null,
+            event: Event | null,
+            prepare_func: SeatGrabPrepareFunc | null,
         ): GrabStatus;
         /**
          * Releases a grab added through `gdk_seat_grab()`.
@@ -10389,7 +10433,7 @@ export namespace Gdk {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            cursor: Cursor;
+            cursor: Cursor | null;
         }
     }
 
@@ -10406,8 +10450,8 @@ export namespace Gdk {
          * `gdk_window_get_cursor()` for details.
          * @since 2.18
          */
-        get cursor(): Cursor;
-        set cursor(val: Cursor);
+        get cursor(): Cursor | null;
+        set cursor(val: Cursor | null);
 
         /**
          * Compile-time signal type information.
@@ -10939,7 +10983,7 @@ export namespace Gdk {
          * @param user_data user data to look for
          * @returns list of child windows inside `window`
          */
-        get_children_with_user_data(user_data?: any | null): Window[];
+        get_children_with_user_data(user_data: any | null): Window[];
         /**
          * Computes the region of a window that potentially can be written
          * to by drawing primitives. This region may not take into account
@@ -11336,7 +11380,7 @@ export namespace Gdk {
          * @param region a {@link cairo.Region}
          * @param child_func function to use to decide if to     recurse to a child, `null` means never recurse.
          */
-        invalidate_maybe_recurse(region: cairo.Region, child_func?: WindowChildFunc | null): void;
+        invalidate_maybe_recurse(region: cairo.Region, child_func: WindowChildFunc | null): void;
         /**
          * A convenience wrapper around `gdk_window_invalidate_region()` which
          * invalidates a rectangular region. See
@@ -11637,7 +11681,7 @@ export namespace Gdk {
          * when the window is obscured then exposed.
          * @param pattern a pattern to use, or `null`
          */
-        set_background_pattern(pattern?: cairo.Pattern | null): void;
+        set_background_pattern(pattern: cairo.Pattern | null): void;
         /**
          * Sets the background color of `window`.
          *
@@ -11697,7 +11741,7 @@ export namespace Gdk {
          * should use this default.
          * @param cursor a cursor
          */
-        set_cursor(cursor?: Cursor | null): void;
+        set_cursor(cursor: Cursor | null): void;
         /**
          * “Decorations” are the features the window manager adds to a toplevel {@link Gdk.Window}.
          * This function sets the traditional Motif window manager hints that tell the
@@ -11851,7 +11895,7 @@ export namespace Gdk {
          * if your application pretends to be multiple applications.
          * @param leader group leader window, or `null` to restore the default group leader window
          */
-        set_group(leader?: Window | null): void;
+        set_group(leader: Window | null): void;
         /**
          * Sets a list of icons for the window. One of these will be used
          * to represent the window when it has been iconified. The icon is
@@ -11880,7 +11924,7 @@ export namespace Gdk {
          * Note that some platforms don't support window icons.
          * @param name name of window while iconified (minimized)
          */
-        set_icon_name(name?: string | null): void;
+        set_icon_name(name: string | null): void;
         /**
          * Set if `window` must be kept above other windows. If the
          * window was already above, then this function does nothing.
@@ -11957,7 +12001,7 @@ export namespace Gdk {
          * property in your `GtkWidget::style-updated` handler.
          * @param region a region, or `null`
          */
-        set_opaque_region(region?: cairo.Region | null): void;
+        set_opaque_region(region: cairo.Region | null): void;
         /**
          * An override redirect window is not under the control of the window manager.
          * This means it won’t have a titlebar, won’t be minimizable, etc. - it will
@@ -12124,7 +12168,7 @@ export namespace Gdk {
          * user data is a `GtkWidget`, and forward the event to that widget.
          * @param user_data user data
          */
-        set_user_data(user_data?: GObject.Object | null): void;
+        set_user_data(user_data: GObject.Object | null): void;
         /**
          * Makes pixels in `window` outside `shape_region` be transparent,
          * so that the window may be nonrectangular.
@@ -13677,7 +13721,7 @@ export namespace Gdk {
          * Sets the device tool for this event, should be rarely used.
          * @param tool tool to set on the event, or `null`
          */
-        set_device_tool(tool?: DeviceTool | null): void;
+        set_device_tool(tool: DeviceTool | null): void;
         /**
          * Sets the screen for `event` to `screen`. The event must
          * have been allocated by GTK+, for instance, by

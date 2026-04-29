@@ -2396,7 +2396,7 @@ export namespace GstVideo {
      */
     function buffer_add_video_overlay_composition_meta(
         buf: Gst.Buffer,
-        comp?: VideoOverlayComposition | null,
+        comp: VideoOverlayComposition | null,
     ): VideoOverlayCompositionMeta;
     /**
      * Attaches {@link GstVideo.VideoRegionOfInterestMeta} metadata to `buffer` with the given
@@ -3556,7 +3556,7 @@ export namespace GstVideo {
      * @returns a video `GstCaps`
      * @since 1.18
      */
-    function video_make_raw_caps(formats?: VideoFormat[] | null): Gst.Caps;
+    function video_make_raw_caps(formats: VideoFormat[] | null): Gst.Caps;
     /**
      * Return a generic raw video caps for formats defined in `formats` with features
      * `features`.
@@ -3568,8 +3568,8 @@ export namespace GstVideo {
      * @since 1.18
      */
     function video_make_raw_caps_with_features(
-        formats?: VideoFormat[] | null,
-        features?: Gst.CapsFeatures | null,
+        formats: VideoFormat[] | null,
+        features: Gst.CapsFeatures | null,
     ): Gst.Caps;
     /**
      * Extract {@link GstVideo.VideoMasteringDisplayInfo} from `mastering`
@@ -4678,6 +4678,7 @@ export namespace GstVideo {
          * live sources with a non-zero latency, you should set it to a non-zero value.
          * @since 1.22
          * @construct-only
+         * @default false
          */
         get force_live(): boolean;
         /**
@@ -4687,6 +4688,7 @@ export namespace GstVideo {
          * live sources with a non-zero latency, you should set it to a non-zero value.
          * @since 1.22
          * @construct-only
+         * @default false
          */
         get forceLive(): boolean;
 
@@ -4899,14 +4901,29 @@ export namespace GstVideo {
 
         // Properties
 
+        /**
+         * @default 18446744073709551615
+         */
         get max_last_buffer_repeat(): number;
         set max_last_buffer_repeat(val: bigint | number);
+        /**
+         * @default 18446744073709551615
+         */
         get maxLastBufferRepeat(): number;
         set maxLastBufferRepeat(val: bigint | number);
+        /**
+         * @default false
+         */
         get repeat_after_eos(): boolean;
         set repeat_after_eos(val: boolean);
+        /**
+         * @default false
+         */
         get repeatAfterEos(): boolean;
         set repeatAfterEos(val: boolean);
+        /**
+         * @default 0
+         */
         get zorder(): number;
         set zorder(val: number);
 
@@ -5325,6 +5342,7 @@ export namespace GstVideo {
          * GstVideoDecoderRequestSyncPointFlags to use for the automatically
          * requested sync points if `automatic-request-sync-points` is enabled.
          * @since 1.20
+         * @default GstVideo.VideoDecoderRequestSyncPointFlags.DISCARD_INPUT | GstVideo.VideoDecoderRequestSyncPointFlags.CORRUPT_OUTPUT
          */
         get automatic_request_sync_point_flags(): VideoDecoderRequestSyncPointFlags;
         set automatic_request_sync_point_flags(val: VideoDecoderRequestSyncPointFlags);
@@ -5332,6 +5350,7 @@ export namespace GstVideo {
          * GstVideoDecoderRequestSyncPointFlags to use for the automatically
          * requested sync points if `automatic-request-sync-points` is enabled.
          * @since 1.20
+         * @default GstVideo.VideoDecoderRequestSyncPointFlags.DISCARD_INPUT | GstVideo.VideoDecoderRequestSyncPointFlags.CORRUPT_OUTPUT
          */
         get automaticRequestSyncPointFlags(): VideoDecoderRequestSyncPointFlags;
         set automaticRequestSyncPointFlags(val: VideoDecoderRequestSyncPointFlags);
@@ -5340,6 +5359,7 @@ export namespace GstVideo {
          * it seems like a good idea, e.g. if the first frames are not key frames or
          * if packet loss was reported by upstream.
          * @since 1.20
+         * @default false
          */
         get automatic_request_sync_points(): boolean;
         set automatic_request_sync_points(val: boolean);
@@ -5348,6 +5368,7 @@ export namespace GstVideo {
          * it seems like a good idea, e.g. if the first frames are not key frames or
          * if packet loss was reported by upstream.
          * @since 1.20
+         * @default false
          */
         get automaticRequestSyncPoints(): boolean;
         set automaticRequestSyncPoints(val: boolean);
@@ -5355,6 +5376,7 @@ export namespace GstVideo {
          * If set to `true` the decoder will discard frames that are marked as
          * corrupted instead of outputting them.
          * @since 1.20
+         * @default false
          */
         get discard_corrupted_frames(): boolean;
         set discard_corrupted_frames(val: boolean);
@@ -5362,6 +5384,7 @@ export namespace GstVideo {
          * If set to `true` the decoder will discard frames that are marked as
          * corrupted instead of outputting them.
          * @since 1.20
+         * @default false
          */
         get discardCorruptedFrames(): boolean;
         set discardCorruptedFrames(val: boolean);
@@ -5369,6 +5392,7 @@ export namespace GstVideo {
          * Maximum number of tolerated consecutive decode errors. See
          * `gst_video_decoder_set_max_errors()` for more details.
          * @since 1.18
+         * @default -1
          */
         get max_errors(): number;
         set max_errors(val: number);
@@ -5376,6 +5400,7 @@ export namespace GstVideo {
          * Maximum number of tolerated consecutive decode errors. See
          * `gst_video_decoder_set_max_errors()` for more details.
          * @since 1.18
+         * @default -1
          */
         get maxErrors(): number;
         set maxErrors(val: number);
@@ -5387,6 +5412,7 @@ export namespace GstVideo {
          * See `gst_video_event_new_upstream_force_key_unit()` for more details about
          * force-key-unit events.
          * @since 1.20
+         * @default 0
          */
         get min_force_key_unit_interval(): number;
         set min_force_key_unit_interval(val: bigint | number);
@@ -5398,6 +5424,7 @@ export namespace GstVideo {
          * See `gst_video_event_new_upstream_force_key_unit()` for more details about
          * force-key-unit events.
          * @since 1.20
+         * @default 0
          */
         get minForceKeyUnitInterval(): number;
         set minForceKeyUnitInterval(val: bigint | number);
@@ -5407,6 +5434,7 @@ export namespace GstVideo {
          * This includes dropping output frames which are detected as late
          * using the metrics reported by those events.
          * @since 1.18
+         * @default true
          */
         get qos(): boolean;
         set qos(val: boolean);
@@ -5772,7 +5800,7 @@ export namespace GstVideo {
          * @param filter filter caps
          * @returns a {@link Gst.Caps} owned by caller
          */
-        proxy_getcaps(caps?: Gst.Caps | null, filter?: Gst.Caps | null): Gst.Caps;
+        proxy_getcaps(caps: Gst.Caps | null, filter: Gst.Caps | null): Gst.Caps;
         /**
          * Similar to `gst_video_decoder_drop_frame()`, but simply releases `frame`
          * without any processing other than removing it from list of pending frames,
@@ -5828,7 +5856,7 @@ export namespace GstVideo {
             interlace_mode: VideoInterlaceMode,
             width: number,
             height: number,
-            reference?: VideoCodecState | null,
+            reference: VideoCodecState | null,
         ): VideoCodecState | null;
         /**
          * Lets {@link GstVideo.VideoDecoder} sub-classes tell the baseclass what the decoder latency
@@ -5895,7 +5923,7 @@ export namespace GstVideo {
             fmt: VideoFormat,
             width: number,
             height: number,
-            reference?: VideoCodecState | null,
+            reference: VideoCodecState | null,
         ): VideoCodecState | null;
         /**
          * Allows baseclass to consider input data as packetized or not. If the
@@ -6022,6 +6050,7 @@ export namespace GstVideo {
          * Minimum interval between force-keyunit requests in nanoseconds. See
          * `gst_video_encoder_set_min_force_key_unit_interval()` for more details.
          * @since 1.18
+         * @default 0
          */
         get min_force_key_unit_interval(): number;
         set min_force_key_unit_interval(val: bigint | number);
@@ -6029,9 +6058,13 @@ export namespace GstVideo {
          * Minimum interval between force-keyunit requests in nanoseconds. See
          * `gst_video_encoder_set_min_force_key_unit_interval()` for more details.
          * @since 1.18
+         * @default 0
          */
         get minForceKeyUnitInterval(): number;
         set minForceKeyUnitInterval(val: bigint | number);
+        /**
+         * @default false
+         */
         get qos(): boolean;
         set qos(val: boolean);
 
@@ -6300,7 +6333,7 @@ export namespace GstVideo {
          * @param filter filter caps
          * @returns a {@link Gst.Caps} owned by caller
          */
-        proxy_getcaps(caps?: Gst.Caps | null, filter?: Gst.Caps | null): Gst.Caps;
+        proxy_getcaps(caps: Gst.Caps | null, filter: Gst.Caps | null): Gst.Caps;
         /**
          * Set the codec headers to be sent downstream whenever requested.
          * @param headers a list of {@link Gst.Buffer} containing the codec header
@@ -6352,7 +6385,7 @@ export namespace GstVideo {
          * @param reference An optional reference `GstVideoCodecState`
          * @returns the newly configured output state.
          */
-        set_output_state(caps: Gst.Caps, reference?: VideoCodecState | null): VideoCodecState | null;
+        set_output_state(caps: Gst.Caps, reference: VideoCodecState | null): VideoCodecState | null;
         /**
          * Configures `encoder` to handle Quality-of-Service events from downstream.
          * @param enabled the new qos value.
@@ -6417,7 +6450,7 @@ export namespace GstVideo {
          * @param value new value
          * @returns `true` for success, `false` if e.g. there is no preset with that `name`
          */
-        set_meta(name: string, tag: string, value?: string | null): boolean;
+        set_meta(name: string, tag: string, value: string | null): boolean;
         /**
          * Delete the given preset.
          * @param name preset name to remove
@@ -6472,7 +6505,7 @@ export namespace GstVideo {
          * @param value new value
          * @virtual
          */
-        vfunc_set_meta(name: string, tag: string, value?: string | null): boolean;
+        vfunc_set_meta(name: string, tag: string, value: string | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -6520,38 +6553,19 @@ export namespace GstVideo {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -6559,15 +6573,9 @@ export namespace GstVideo {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -6739,7 +6747,7 @@ export namespace GstVideo {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -7101,12 +7109,14 @@ export namespace GstVideo {
         /**
          * Whether to show video frames during preroll. If set to `false`, video
          * frames will only be rendered in PLAYING state.
+         * @default true
          */
         get show_preroll_frame(): boolean;
         set show_preroll_frame(val: boolean);
         /**
          * Whether to show video frames during preroll. If set to `false`, video
          * frames will only be rendered in PLAYING state.
+         * @default true
          */
         get showPrerollFrame(): boolean;
         set showPrerollFrame(val: boolean);
@@ -7497,7 +7507,7 @@ export namespace GstVideo {
          * before the `user_data` is replaced.
          * @param user_data private data
          */
-        set_user_data(user_data?: any | null): void;
+        set_user_data(user_data: any | null): void;
         /**
          * Decreases the refcount of the frame. If the refcount reaches 0, the frame
          * will be freed.
@@ -8431,9 +8441,9 @@ export namespace GstVideo {
 
         // Constructors
 
-        constructor(rectangle?: VideoOverlayRectangle | null);
+        constructor(rectangle: VideoOverlayRectangle | null);
 
-        static ['new'](rectangle?: VideoOverlayRectangle | null): VideoOverlayComposition;
+        static ['new'](rectangle: VideoOverlayRectangle | null): VideoOverlayComposition;
 
         // Methods
 
@@ -9841,8 +9851,14 @@ export namespace GstVideo {
     interface VideoDirection extends GObject.Object {
         // Properties
 
+        /**
+         * @default GstVideo.VideoOrientationMethod.IDENTITY
+         */
         get video_direction(): VideoOrientationMethod;
         set video_direction(val: VideoOrientationMethod);
+        /**
+         * @default GstVideo.VideoOrientationMethod.IDENTITY
+         */
         get videoDirection(): VideoOrientationMethod;
         set videoDirection(val: VideoOrientationMethod);
     }

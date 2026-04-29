@@ -519,7 +519,7 @@ export namespace GstRtsp {
      */
     function rtsp_connection_accept(
         socket: Gio.Socket,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): [RTSPResult, RTSPConnection | null];
     /**
      * Create a newly allocated {@link GstRtsp.RTSPConnection} from `url` and store it in `conn`.
@@ -653,8 +653,8 @@ export namespace GstRtsp {
      */
     function rtsp_message_new_response(
         code: RTSPStatusCode,
-        reason?: string | null,
-        request?: RTSPMessage | null,
+        reason: string | null,
+        request: RTSPMessage | null,
     ): [RTSPResult, RTSPMessage];
     /**
      * Convert `method` to a string.
@@ -1033,7 +1033,7 @@ export namespace GstRtsp {
          * @param socket a socket
          * @param cancellable a {@link Gio.Cancellable} to cancel the operation
          */
-        static accept(socket: Gio.Socket, cancellable?: Gio.Cancellable | null): [RTSPResult, RTSPConnection | null];
+        static accept(socket: Gio.Socket, cancellable: Gio.Cancellable | null): [RTSPResult, RTSPConnection | null];
         /**
          * Create a newly allocated {@link GstRtsp.RTSPConnection} from `url` and store it in `conn`.
          * The connection will not yet attempt to connect to `url`, use
@@ -1132,7 +1132,7 @@ export namespace GstRtsp {
          * @param conn2 a {@link GstRtsp.RTSPConnection} or `null`
          * @returns return GST_RTSP_OK on success.
          */
-        do_tunnel(conn2?: RTSPConnection | null): RTSPResult;
+        do_tunnel(conn2: RTSPConnection | null): RTSPResult;
         /**
          * Start or stop the flushing action on `conn`. When flushing, all current
          * and future actions on `conn` will return #GST_RTSP_EINTR until the connection
@@ -1439,14 +1439,14 @@ export namespace GstRtsp {
          * can't be verified with the default certificate database first.
          * @param database a {@link Gio.TlsDatabase}
          */
-        set_tls_database(database?: Gio.TlsDatabase | null): void;
+        set_tls_database(database: Gio.TlsDatabase | null): void;
         /**
          * Sets a {@link Gio.TlsInteraction} object to be used when the connection or certificate
          * database need to interact with the user. This will be used to prompt the
          * user for passwords where necessary.
          * @param interaction a {@link Gio.TlsInteraction}
          */
-        set_tls_interaction(interaction?: Gio.TlsInteraction | null): void;
+        set_tls_interaction(interaction: Gio.TlsInteraction | null): void;
         /**
          * Sets the TLS validation flags to be used to verify the peer
          * certificate when a TLS connection is established.
@@ -1627,7 +1627,7 @@ export namespace GstRtsp {
          * @param request the request that triggered the response or `null`
          * @returns a {@link GstRtsp.RTSPResult}.
          */
-        init_response(code: RTSPStatusCode, reason?: string | null, request?: RTSPMessage | null): RTSPResult;
+        init_response(code: RTSPStatusCode, reason: string | null, request: RTSPMessage | null): RTSPResult;
         /**
          * Parses the credentials given in a WWW-Authenticate or Authorization header.
          * @param field a {@link GstRtsp.RTSPHeaderField}
@@ -2030,7 +2030,7 @@ export namespace GstRtsp {
          * @param context a GMainContext (if NULL, the default context will be used)
          * @returns the ID (greater than 0) for the watch within the GMainContext.
          */
-        attach(context?: GLib.MainContext | null): number;
+        attach(context: GLib.MainContext | null): number;
         /**
          * Get the maximum amount of bytes and messages that will be queued in `watch`.
          * See `gst_rtsp_watch_set_send_backlog()`.

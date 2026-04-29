@@ -5887,7 +5887,7 @@ export namespace GMime {
 
         _init(...args: any[]): void;
 
-        static ['new'](fp?: any | null): StreamFile;
+        static ['new'](fp: any | null): StreamFile;
 
         static new_for_path(path: string, mode: string): StreamFile;
 

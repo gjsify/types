@@ -1126,8 +1126,8 @@ export namespace EDataServer {
         target: GObject.Object,
         target_property: string,
         flags: GObject.BindingFlags,
-        transform_to?: GObject.Closure | null,
-        transform_from?: GObject.Closure | null,
+        transform_to: GObject.Closure | null,
+        transform_from: GObject.Closure | null,
     ): GObject.Binding;
     /**
      * Transforms an enumeration nickname to its corresponding value.
@@ -1142,7 +1142,7 @@ export namespace EDataServer {
         binding: GObject.Binding,
         source_value: GObject.Value | any,
         target_value: GObject.Value | any,
-        not_used?: any | null,
+        not_used: any | null,
     ): boolean;
     /**
      * Transforms an enumeration value to its corresponding nickname.
@@ -1157,7 +1157,7 @@ export namespace EDataServer {
         binding: GObject.Binding,
         source_value: GObject.Value | any,
         target_value: GObject.Value | any,
-        not_used?: any | null,
+        not_used: any | null,
     ): boolean;
     /**
      * Adds a new category, with its corresponding icon, to the
@@ -1385,7 +1385,7 @@ export namespace EDataServer {
     function file_recursive_delete(
         file: Gio.File,
         io_priority: number,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): globalThis.Promise<boolean>;
     /**
      * Asynchronously deletes `file`.  If `file` is a directory, its contents
@@ -1428,8 +1428,8 @@ export namespace EDataServer {
     function file_recursive_delete(
         file: Gio.File,
         io_priority: number,
-        cancellable?: Gio.Cancellable | null,
-        callback?: Gio.AsyncReadyCallback<Gio.File> | null,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<Gio.File> | null,
     ): globalThis.Promise<boolean> | void;
     /**
      * Finishes the operation started with `e_file_recursive_delete()`.
@@ -1456,7 +1456,7 @@ export namespace EDataServer {
      * @returns `true` if the file was deleted, `false` otherwise
      * @since 3.6
      */
-    function file_recursive_delete_sync(file: Gio.File, cancellable?: Gio.Cancellable | null): boolean;
+    function file_recursive_delete_sync(file: Gio.File, cancellable: Gio.Cancellable | null): boolean;
     /**
      * @param string
      */
@@ -1532,7 +1532,7 @@ export namespace EDataServer {
      * @param value a Task::notes property value
      * @since 3.46
      */
-    function gdata_task_add_notes(builder: Json.Builder, value?: string | null): void;
+    function gdata_task_add_notes(builder: Json.Builder, value: string | null): void;
     /**
      * Adds a Task::status property `value` into the `builder`, which
      * should have started an object member.
@@ -1738,7 +1738,7 @@ export namespace EDataServer {
      * @param tm The #tm to convert to a calendar time representation.
      * @returns The calendar time representation of `tm`.
      */
-    function mktime_utc(tm?: any | null): number;
+    function mktime_utc(tm: any | null): number;
     /**
      * Processes the `compile_value` and returns the result, which is stored
      * into the `out_glob_buff`. The `out_glob_buff` should be large enough to hold
@@ -1781,7 +1781,7 @@ export namespace EDataServer {
     function oauth2_service_util_set_to_form(
         form: { [key: string]: any } | GLib.HashTable<string, string>,
         name: string,
-        value?: string | null,
+        value: string | null,
     ): void;
     /**
      * Takes ownership of `value` and sets it for `name` to `form`. The `value`
@@ -1800,7 +1800,7 @@ export namespace EDataServer {
     function oauth2_service_util_take_to_form(
         form: { [key: string]: any } | GLib.HashTable<string, string>,
         name: string,
-        value?: string | null,
+        value: string | null,
     ): void;
     /**
      * Transfers the contents of `src_queue` to the tail of `dst_queue`.
@@ -1823,7 +1823,7 @@ export namespace EDataServer {
      * @returns `true` on success, `false` on error
      * @since 3.18
      */
-    function secret_store_delete_sync(uid: string, cancellable?: Gio.Cancellable | null): boolean;
+    function secret_store_delete_sync(uid: string, cancellable: Gio.Cancellable | null): boolean;
     /**
      * Looks up a secret for the `uid`. Both the default and session keyrings
      * are queried.
@@ -1838,7 +1838,7 @@ export namespace EDataServer {
      * @returns `true` on success, `false` on error
      * @since 3.18
      */
-    function secret_store_lookup_sync(uid: string, cancellable?: Gio.Cancellable | null): [boolean, string];
+    function secret_store_lookup_sync(uid: string, cancellable: Gio.Cancellable | null): [boolean, string];
     /**
      * Stores the `secret` for the `uid`.
      *
@@ -1858,7 +1858,7 @@ export namespace EDataServer {
         secret: string,
         label: string,
         permanently: boolean,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): boolean;
     /**
      * Sets up automatic SSL certificate trust handling for `soup_message` using the trust
@@ -1889,7 +1889,7 @@ export namespace EDataServer {
      * @param tm The time value to format.
      * @returns The number of characters placed in `s`.
      */
-    function strftime(string: string, max: bigint | number, fmt: string, tm?: any | null): number;
+    function strftime(string: string, max: bigint | number, fmt: string, tm: any | null): number;
     /**
      * Creates a string representation of the time value `date_tm` and
      * stores it in `buffer`.  `buffer_size` should be at least 64 to be
@@ -1945,7 +1945,7 @@ export namespace EDataServer {
      * @param result Return value for the parsed date.
      * @returns An {@link EDataServer.TimeParseStatus} result code indicating whether `value` was an empty string, a valid date, or an invalid date.
      */
-    function time_parse_date(value: string, result?: any | null): TimeParseStatus;
+    function time_parse_date(value: string, result: any | null): TimeParseStatus;
     /**
      * Parses a string `value` containing a date and a time and stores the
      * result in `result`. The date in `value` is expected to be in a format
@@ -1957,7 +1957,7 @@ export namespace EDataServer {
      * @param result a #tm to store the result in
      * @returns E_TIME_PARSE_OK if the string was successfully parsed,          E_TIME_PARSE_NONE if the string was empty, or          E_TIME_PARSE_INVALID if the string could not be parsed.
      */
-    function time_parse_date_and_time(value: string, result?: any | null): TimeParseStatus;
+    function time_parse_date_and_time(value: string, result: any | null): TimeParseStatus;
     /**
      * Parses a string `value` containing a date and a time and stores the
      * result in `result`. The date in `value` is expected to be in a format
@@ -2001,7 +2001,7 @@ export namespace EDataServer {
      * @param result A #tm to store the result in.
      * @returns An {@link EDataServer.TimeParseStatus} result code indicating whether `value` was an empty string, a valid date, or an invalid date.
      */
-    function time_parse_time(value: string, result?: any | null): TimeParseStatus;
+    function time_parse_time(value: string, result: any | null): TimeParseStatus;
     /**
      * Similar to `g_timeout_add_seconds_full()`, but also names the {@link GLib.Source} as
      * `name`.
@@ -2022,7 +2022,7 @@ export namespace EDataServer {
         interval: number,
         name: string | null,
         _function: GLib.SourceFunc,
-        notify?: GLib.DestroyNotify | null,
+        notify: GLib.DestroyNotify | null,
     ): number;
     /**
      * Similar to `g_timeout_add_full()`, but also names the {@link GLib.Source} as `name`.
@@ -2042,7 +2042,7 @@ export namespace EDataServer {
         interval: number,
         name: string | null,
         _function: GLib.SourceFunc,
-        notify?: GLib.DestroyNotify | null,
+        notify: GLib.DestroyNotify | null,
     ): number;
     /**
      * Calls `func` for all instantiable subtypes of `parent_type`.
@@ -2070,7 +2070,7 @@ export namespace EDataServer {
      * @param tm The time value to format.
      * @returns The number of characters placed in `s`.
      */
-    function utf8_strftime(string: string, max: bigint | number, fmt: string, tm?: any | null): number;
+    function utf8_strftime(string: string, max: bigint | number, fmt: string, tm: any | null): number;
     /**
      * Checks whether the `collection_source` can be used as a credential source
      * for the `child_source`. The relationship is not tested in the function.
@@ -2081,8 +2081,8 @@ export namespace EDataServer {
      * @since 3.28
      */
     function util_can_use_collection_as_credential_source(
-        collection_source?: any | null,
-        child_source?: any | null,
+        collection_source: any | null,
+        child_source: any | null,
     ): boolean;
     /**
      * Changes component `component` in the `inout_uri` to value `value`.
@@ -2098,7 +2098,7 @@ export namespace EDataServer {
     function util_change_uri_component(
         inout_uri: GLib.Uri,
         component: Soup.URIComponent,
-        value?: string | null,
+        value: string | null,
     ): GLib.Uri;
     /**
      * Changes the port in the `inout_uri` to value `port`.
@@ -2257,7 +2257,7 @@ export namespace EDataServer {
      * @param source an {@link EDataServer.Source}
      * @returns Full name of the `source` as a newly allocated    string, which should be freed with `g_free()` when done with it. Since 3.18
      */
-    function util_get_source_full_name(registry?: any | null, source?: any | null): string;
+    function util_get_source_full_name(registry: any | null, source: any | null): string;
     /**
      * Returns a 64-bit integer hopefully uniquely identifying the
      * thread. To be used in debugging output and logging only.
@@ -2286,7 +2286,7 @@ export namespace EDataServer {
      * @returns `true`, when the `source` is well-known read-only source, or `false` otherwise
      * @since 3.50
      */
-    function util_guess_source_is_readonly(source?: any | null): boolean;
+    function util_guess_source_is_readonly(source: any | null): boolean;
     /**
      * Check whether the hostname `host` is equal to or a subdomain of `domain`.
      * Both `host` and `domain` are UTF-8 strings and can be IDNs (which will be
@@ -2296,7 +2296,7 @@ export namespace EDataServer {
      * @returns `true` if `host` is a subdomain of `domain` (or the same domain).          `false` if not, or if either argument is null or in some way          invalid as a domain/hostname.
      * @since 3.54
      */
-    function util_host_is_in_domain(host?: string | null, domain?: string | null): boolean;
+    function util_host_is_in_domain(host: string | null, domain: string | null): boolean;
     /**
      * Checks whether the `identity_source` can be used for sending, which means
      * whether it has configures send mail source.
@@ -2305,7 +2305,7 @@ export namespace EDataServer {
      * @returns Whether `identity_source` can be used to send messages
      * @since 3.26
      */
-    function util_identity_can_send(registry?: any | null, identity_source?: any | null): boolean;
+    function util_identity_can_send(registry: any | null, identity_source: any | null): boolean;
     /**
      * Calls `g_free()` on `string`, but before it rewrites its content with zeros.
      * This is suitable to free strings with passwords.
@@ -2330,7 +2330,7 @@ export namespace EDataServer {
      * @returns an integer less than, equal to, or greater than zero,    if `source_a` is <, == or > than `source_b`.
      * @since 3.40
      */
-    function util_source_compare_for_sort(source_a?: any | null, source_b?: any | null): number;
+    function util_source_compare_for_sort(source_a: any | null, source_b: any | null): number;
     /**
      * Splits a "data:" URI (of form data:[mime type][;charset=charset][;base64][,]encoded-data) into
      * respective components. The `out_data_start` points to the first byte inside the `uri`.
@@ -2347,7 +2347,7 @@ export namespace EDataServer {
      * @returns an integer less than 0 when `str1` is before `str2`; 0 when    the strings are equal and an integer greated than 0 when `str1` is after `str2`.
      * @since 3.32
      */
-    function util_strcmp0(str1?: string | null, str2?: string | null): number;
+    function util_strcmp0(str1: string | null, str2: string | null): number;
     /**
      * Duplicates `string` and strips off any leading or trailing whitespace.
      * The resulting string is returned unless it is empty or `null`, in which
@@ -2358,7 +2358,7 @@ export namespace EDataServer {
      * @returns a newly-allocated, stripped copy of `string`, or `null`
      * @since 3.6
      */
-    function util_strdup_strip(string?: string | null): string | null;
+    function util_strdup_strip(string: string | null): string | null;
     /**
      * Find the first instance of `needle` in `haystack`, ignoring case for
      * bytes that are ASCII characters.
@@ -2398,7 +2398,7 @@ export namespace EDataServer {
      * @param object a {@link GObject.Object}
      * @since 3.26
      */
-    function util_unref_in_thread(object?: any | null): void;
+    function util_unref_in_thread(object: any | null): void;
     /**
      * Returns a newly-allocated NULL-terminated string with invalid characters
      * replaced by Unicode replacement characters (U+FFFD).
@@ -2426,21 +2426,21 @@ export namespace EDataServer {
      * @returns a newly-allocated string
      * @since 3.0
      */
-    function util_utf8_make_valid(str?: string | null): string;
+    function util_utf8_make_valid(str: string | null): string;
     /**
      * Normalizes `str` by making it all lower case and removing any accents from it.
      * @param str a UTF-8 string
      * @returns The normalized version of `str`, or `null` if `str` was not valid UTF-8
      * @since 3.8
      */
-    function util_utf8_normalize(str?: string | null): string | null;
+    function util_utf8_normalize(str: string | null): string | null;
     /**
      * Returns a newly-allocated copy of `str` with accents removed.
      * @param str a UTF-8 string, or `null`
      * @returns a newly-allocated string
      * @since 2.28
      */
-    function util_utf8_remove_accents(str?: string | null): string | null;
+    function util_utf8_remove_accents(str: string | null): string | null;
     /**
      * Compares two UTF-8 strings using approximate case-insensitive ordering.
      * @param s1 a UTF-8 string
@@ -2456,7 +2456,7 @@ export namespace EDataServer {
      * @param needle The string to search for.
      * @returns A pointer to the first instance of `needle` in `haystack`, or          `null` if no match is found, or if either of the strings are          not legal UTF-8 strings.
      */
-    function util_utf8_strstrcase(haystack?: string | null, needle?: string | null): string | null;
+    function util_utf8_strstrcase(haystack: string | null, needle: string | null): string | null;
     /**
      * Find the first instance of `needle` in `haystack`, where both `needle`
      * and `haystack` are UTF-8 strings. Both strings are stripped and
@@ -2472,7 +2472,7 @@ export namespace EDataServer {
      * @param ptr an {@link EDataServer.WebDAVAccessControlEntry}
      * @since 3.26
      */
-    function webdav_access_control_entry_free(ptr?: any | null): void;
+    function webdav_access_control_entry_free(ptr: any | null): void;
     /**
      * Frees a `GSList` of discovered sources returned from
      * `e_webdav_discover_sources_finish()` or `e_webdav_discover_sources_sync()`.
@@ -2501,8 +2501,8 @@ export namespace EDataServer {
         source: Source,
         url_use_path: string | null,
         only_supports: number,
-        credentials?: NamedParameters | null,
-        cancellable?: Gio.Cancellable | null,
+        credentials: NamedParameters | null,
+        cancellable: Gio.Cancellable | null,
     ): globalThis.Promise<[string, Gio.TlsCertificateFlags | null, WebDAVDiscoveredSource[] | null, string[] | null]>;
     /**
      * Asynchronously runs discovery of the WebDAV sources (CalDAV and CardDAV), eventually
@@ -2552,9 +2552,9 @@ export namespace EDataServer {
         source: Source,
         url_use_path: string | null,
         only_supports: number,
-        credentials?: NamedParameters | null,
-        cancellable?: Gio.Cancellable | null,
-        callback?: Gio.AsyncReadyCallback<Source> | null,
+        credentials: NamedParameters | null,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<Source> | null,
     ): globalThis.Promise<
         [string, Gio.TlsCertificateFlags | null, WebDAVDiscoveredSource[] | null, string[] | null]
     > | void;
@@ -2604,10 +2604,10 @@ export namespace EDataServer {
         source: Source,
         url_use_path: string | null,
         only_supports: number,
-        credentials?: NamedParameters | null,
-        ref_source_func?: WebDAVDiscoverRefSourceFunc | null,
-        cancellable?: Gio.Cancellable | null,
-        callback?: Gio.AsyncReadyCallback<Source> | null,
+        credentials: NamedParameters | null,
+        ref_source_func: WebDAVDiscoverRefSourceFunc | null,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<Source> | null,
     ): void;
     /**
      * This is the same as `e_webdav_discover_sources_sync()`, it only allows to
@@ -2629,7 +2629,7 @@ export namespace EDataServer {
         only_supports: number,
         credentials: NamedParameters | null,
         ref_source_func: WebDAVDiscoverRefSourceFunc | null,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): [boolean, string, Gio.TlsCertificateFlags | null, WebDAVDiscoveredSource[] | null, string[] | null];
     /**
      * Synchronously runs discovery of the WebDAV sources (CalDAV and CardDAV), eventually
@@ -2666,7 +2666,7 @@ export namespace EDataServer {
         url_use_path: string | null,
         only_supports: number,
         credentials: NamedParameters | null,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): [boolean, string, Gio.TlsCertificateFlags | null, WebDAVDiscoveredSource[] | null, string[] | null];
     /**
      * Frees an {@link EDataServer.WebDAVPrivilege} previously created with `e_webdav_privilege_new()`
@@ -2674,7 +2674,7 @@ export namespace EDataServer {
      * @param ptr an {@link EDataServer.WebDAVPrivilege}
      * @since 3.26
      */
-    function webdav_privilege_free(ptr?: any | null): void;
+    function webdav_privilege_free(ptr: any | null): void;
     /**
      * Frees an {@link EDataServer.WebDAVPropertyChange} previously created with `e_webdav_property_change_new_set()`,
      * `e_webdav_property_change_new_remove()` or or `e_webdav_property_change_copy()`.
@@ -2682,14 +2682,14 @@ export namespace EDataServer {
      * @param ptr an {@link EDataServer.WebDAVPropertyChange}
      * @since 3.26
      */
-    function webdav_property_change_free(ptr?: any | null): void;
+    function webdav_property_change_free(ptr: any | null): void;
     /**
      * Frees an {@link EDataServer.WebDAVResource} previously created with `e_webdav_resource_new()`
      * or `e_webdav_resource_copy()`. The function does nothing, if `ptr` is `null`.
      * @param ptr an {@link EDataServer.WebDAVResource}
      * @since 3.26
      */
-    function webdav_resource_free(ptr?: any | null): void;
+    function webdav_resource_free(ptr: any | null): void;
     /**
      * Frees the memory used by `hash` and its contents.
      * @param hash the {@link GLib.HashTable} to destroy
@@ -2983,6 +2983,7 @@ export namespace EDataServer {
         get mainContext(): GLib.MainContext;
         /**
          * Whether this client's backing data is online.
+         * @default false
          */
         get online(): boolean;
         set online(val: boolean);
@@ -2990,11 +2991,13 @@ export namespace EDataServer {
          * Whether this client is open and ready to use.
          * @deprecated since 3.8: This property is no longer relevant and will always be `true` after successfully creating any concrete type of {@link EDataServer.Client}.
          * @read-only
+         * @default false
          */
         get opened(): boolean;
         /**
          * Whether this client's backing data is readonly.
          * @read-only
+         * @default false
          */
         get readonly(): boolean;
         /**
@@ -3045,7 +3048,7 @@ export namespace EDataServer {
          * @param code an {@link EDataServer.ClientError} code to create
          * @param custom_msg custom message to use for the error; can be `null`
          */
-        static error_create(code: ClientError, custom_msg?: string | null): GLib.Error;
+        static error_create(code: ClientError, custom_msg: string | null): GLib.Error;
         static error_quark(): GLib.Quark;
         /**
          * Get localized human readable description of the given error code.
@@ -3143,8 +3146,8 @@ export namespace EDataServer {
          */
         vfunc_get_backend_property(
             prop_name: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes previous call of `e_client_get_backend_property()`.
@@ -3158,7 +3161,7 @@ export namespace EDataServer {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @virtual
          */
-        vfunc_get_backend_property_sync(prop_name: string, cancellable?: Gio.Cancellable | null): [boolean, string];
+        vfunc_get_backend_property_sync(prop_name: string, cancellable: Gio.Cancellable | null): [boolean, string];
         /**
          * Opens the `client`, making it ready for queries and other operations.
          * The call is finished by `e_client_open_finish()` from the `callback`.
@@ -3169,8 +3172,8 @@ export namespace EDataServer {
          */
         vfunc_open(
             only_if_exists: boolean,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes previous call of `e_client_open()`.
@@ -3184,7 +3187,7 @@ export namespace EDataServer {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @virtual
          */
-        vfunc_open_sync(only_if_exists: boolean, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_open_sync(only_if_exists: boolean, cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param error
          * @virtual
@@ -3200,7 +3203,7 @@ export namespace EDataServer {
          * @param callback callback to call when a result is ready
          * @virtual
          */
-        vfunc_refresh(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_refresh(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Finishes previous call of `e_client_refresh()`.
          * @param result a {@link Gio.AsyncResult}
@@ -3215,7 +3218,7 @@ export namespace EDataServer {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @virtual
          */
-        vfunc_refresh_sync(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_refresh_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Removes the backing data for this {@link EDataServer.Client}. For example, with the file
          * backend this deletes the database file. You cannot get it back!
@@ -3224,7 +3227,7 @@ export namespace EDataServer {
          * @param callback callback to call when a result is ready
          * @virtual
          */
-        vfunc_remove(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_remove(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Finishes previous call of `e_client_remove()`.
          * @param result a {@link Gio.AsyncResult}
@@ -3237,7 +3240,7 @@ export namespace EDataServer {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @virtual
          */
-        vfunc_remove_sync(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_remove_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initiates retrieval of capabilities on the `client`. This is usually
          * required only once, after the `client` is opened. The returned value
@@ -3250,8 +3253,8 @@ export namespace EDataServer {
          * @virtual
          */
         vfunc_retrieve_capabilities(
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes previous call of `e_client_retrieve_capabilities()`.
@@ -3270,7 +3273,7 @@ export namespace EDataServer {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @virtual
          */
-        vfunc_retrieve_capabilities_sync(cancellable?: Gio.Cancellable | null): [boolean, string];
+        vfunc_retrieve_capabilities_sync(cancellable: Gio.Cancellable | null): [boolean, string];
         /**
          * Retrieves `client` properties to match server-side values, without waiting
          * for the D-Bus property change notifications delivery.
@@ -3279,7 +3282,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_retrieve_properties_sync(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_retrieve_properties_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Sets `client`'s backend property of name `prop_name`
          * to value `prop_value`. The call is finished
@@ -3293,8 +3296,8 @@ export namespace EDataServer {
         vfunc_set_backend_property(
             prop_name: string,
             prop_value: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes previous call of `e_client_set_backend_property()`.
@@ -3313,7 +3316,7 @@ export namespace EDataServer {
         vfunc_set_backend_property_sync(
             prop_name: string,
             prop_value: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Unwraps D-Bus error to local error. `dbus_error` is automatically freed.
@@ -3355,7 +3358,7 @@ export namespace EDataServer {
          * @param prop_name property name, whose value to retrieve; cannot be `null`
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          */
-        get_backend_property(prop_name: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
+        get_backend_property(prop_name: string, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * Queries `client`'s backend for a property of name `prop_name`.
          * The call is finished by `e_client_get_backend_property_finish()`
@@ -3379,7 +3382,7 @@ export namespace EDataServer {
          */
         get_backend_property(
             prop_name: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
         /**
@@ -3394,7 +3397,7 @@ export namespace EDataServer {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          */
-        get_backend_property_sync(prop_name: string, cancellable?: Gio.Cancellable | null): [boolean, string];
+        get_backend_property_sync(prop_name: string, cancellable: Gio.Cancellable | null): [boolean, string];
         /**
          * Get list of strings with capabilities advertised by a backend.
          * This list, together with inner strings, is owned by the `client`.
@@ -3432,7 +3435,7 @@ export namespace EDataServer {
          * @param only_if_exists this parameter is not used anymore
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          */
-        open(only_if_exists: boolean, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        open(only_if_exists: boolean, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Opens the `client`, making it ready for queries and other operations.
          * The call is finished by `e_client_open_finish()` from the `callback`.
@@ -3454,7 +3457,7 @@ export namespace EDataServer {
          */
         open(
             only_if_exists: boolean,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -3469,7 +3472,7 @@ export namespace EDataServer {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          */
-        open_sync(only_if_exists: boolean, cancellable?: Gio.Cancellable | null): boolean;
+        open_sync(only_if_exists: boolean, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Returns the {@link GLib.MainContext} on which event sources for `client` are to
          * be attached.
@@ -3487,7 +3490,7 @@ export namespace EDataServer {
          * The call is finished by `e_client_refresh_finish()` from the `callback`.
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          */
-        refresh(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        refresh(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Initiates refresh on the `client`. Finishing the method doesn't mean
          * that the refresh is done, backend only notifies whether it started
@@ -3508,7 +3511,7 @@ export namespace EDataServer {
          * @param callback callback to call when a result is ready
          */
         refresh(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -3525,14 +3528,14 @@ export namespace EDataServer {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          */
-        refresh_sync(cancellable?: Gio.Cancellable | null): boolean;
+        refresh_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Removes the backing data for this {@link EDataServer.Client}. For example, with the file
          * backend this deletes the database file. You cannot get it back!
          * The call is finished by `e_client_remove_finish()` from the `callback`.
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          */
-        remove(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        remove(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Removes the backing data for this {@link EDataServer.Client}. For example, with the file
          * backend this deletes the database file. You cannot get it back!
@@ -3549,7 +3552,7 @@ export namespace EDataServer {
          * @param callback callback to call when a result is ready
          */
         remove(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -3564,7 +3567,7 @@ export namespace EDataServer {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          */
-        remove_sync(cancellable?: Gio.Cancellable | null): boolean;
+        remove_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initiates retrieval of capabilities on the `client`. This is usually
          * required only once, after the `client` is opened. The returned value
@@ -3574,7 +3577,7 @@ export namespace EDataServer {
          * from the `callback`.
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          */
-        retrieve_capabilities(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
+        retrieve_capabilities(cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * Initiates retrieval of capabilities on the `client`. This is usually
          * required only once, after the `client` is opened. The returned value
@@ -3597,7 +3600,7 @@ export namespace EDataServer {
          * @param callback callback to call when a result is ready
          */
         retrieve_capabilities(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
         /**
@@ -3617,7 +3620,7 @@ export namespace EDataServer {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          */
-        retrieve_capabilities_sync(cancellable?: Gio.Cancellable | null): [boolean, string];
+        retrieve_capabilities_sync(cancellable: Gio.Cancellable | null): [boolean, string];
         /**
          * Asynchronously retrieves `client` properties to match server-side values,
          * without waiting for the D-Bus property change notifications delivery.
@@ -3626,7 +3629,7 @@ export namespace EDataServer {
          * call `e_client_retrieve_properties_finish()` to get the result of the operation.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        retrieve_properties(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        retrieve_properties(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously retrieves `client` properties to match server-side values,
          * without waiting for the D-Bus property change notifications delivery.
@@ -3647,7 +3650,7 @@ export namespace EDataServer {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         retrieve_properties(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -3666,7 +3669,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
          */
-        retrieve_properties_sync(cancellable?: Gio.Cancellable | null): boolean;
+        retrieve_properties_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Sets `client`'s backend property of name `prop_name`
          * to value `prop_value`. The call is finished
@@ -3678,7 +3681,7 @@ export namespace EDataServer {
         set_backend_property(
             prop_name: string,
             prop_value: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Sets `client`'s backend property of name `prop_name`
@@ -3707,7 +3710,7 @@ export namespace EDataServer {
         set_backend_property(
             prop_name: string,
             prop_value: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -3724,7 +3727,7 @@ export namespace EDataServer {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          */
-        set_backend_property_sync(prop_name: string, prop_value: string, cancellable?: Gio.Cancellable | null): boolean;
+        set_backend_property_sync(prop_name: string, prop_value: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Sets a D-Bus bus name that will be used to connect the client
          * to the backend subprocess.
@@ -3746,7 +3749,7 @@ export namespace EDataServer {
          * @param timeout_seconds a timeout for the wait, in seconds
          * @param cancellable a {@link Gio.Cancellable}; or `null`
          */
-        wait_for_connected(timeout_seconds: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        wait_for_connected(timeout_seconds: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously waits until the `client` is connected (according
          * to `ESource`::connection-status property), but not longer than `timeout_seconds`.
@@ -3774,7 +3777,7 @@ export namespace EDataServer {
          */
         wait_for_connected(
             timeout_seconds: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -3794,7 +3797,7 @@ export namespace EDataServer {
          * @param cancellable a {@link Gio.Cancellable}; or `null`
          * @returns `true` if successful, `false` otherwise.
          */
-        wait_for_connected_sync(timeout_seconds: number, cancellable?: Gio.Cancellable | null): boolean;
+        wait_for_connected_sync(timeout_seconds: number, cancellable: Gio.Cancellable | null): boolean;
     }
 
     namespace Extension {
@@ -3956,7 +3959,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
          */
-        tasklists_delete_sync(tasklist_id: string, cancellable?: Gio.Cancellable | null): boolean;
+        tasklists_delete_sync(tasklist_id: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Gets a task list `tasklist_id` and returns it as a {@link Json.Object},
          * which should be freed with `json_object_unref()`, when no longer needed.
@@ -3968,7 +3971,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
          */
-        tasklists_get_sync(tasklist_id: string, cancellable?: Gio.Cancellable | null): [boolean, Json.Object];
+        tasklists_get_sync(tasklist_id: string, cancellable: Gio.Cancellable | null): [boolean, Json.Object];
         /**
          * Creates a new task list, titled `title`. The `out_inserted_tasklist` should
          * be freed with `json_object_unref()`, when no longer needed.
@@ -3976,7 +3979,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
          */
-        tasklists_insert_sync(title: string, cancellable?: Gio.Cancellable | null): [boolean, Json.Object];
+        tasklists_insert_sync(title: string, cancellable: Gio.Cancellable | null): [boolean, Json.Object];
         /**
          * Lists all configured task lists for the user, calling the `cb` for each of them.
          * @param query an {@link EDataServer.GDataQuery} to limit returned task lists, or `null`
@@ -3987,7 +3990,7 @@ export namespace EDataServer {
         tasklists_list_sync(
             query: GDataQuery | null,
             cb: GDataObjectCallback,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Changes properties of a task list `tasklist_id`.
@@ -4002,7 +4005,7 @@ export namespace EDataServer {
         tasklists_patch_sync(
             tasklist_id: string,
             tasklist_properties: Json.Builder,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, Json.Object | null];
         /**
          * Updates a task list `tasklist_id` with values from the `tasklist`.
@@ -4014,7 +4017,7 @@ export namespace EDataServer {
         tasklists_update_sync(
             tasklist_id: string,
             tasklist: Json.Builder,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, Json.Object | null];
         /**
          * Clears all completed tasks from the task list `tasklist_id`. The affected tasks
@@ -4024,7 +4027,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
          */
-        tasks_clear_sync(tasklist_id: string, cancellable?: Gio.Cancellable | null): boolean;
+        tasks_clear_sync(tasklist_id: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Deletes a task `task_id` from a task list `tasklist_id`.
          * @param tasklist_id id of a task list
@@ -4032,7 +4035,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
          */
-        tasks_delete_sync(tasklist_id: string, task_id: string, cancellable?: Gio.Cancellable | null): boolean;
+        tasks_delete_sync(tasklist_id: string, task_id: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Gets a task `task_id` from a task list `tasklist_id` and returns it as a {@link Json.Object},
          * which should be freed with `json_object_unref()`, when no longer needed.
@@ -4048,7 +4051,7 @@ export namespace EDataServer {
         tasks_get_sync(
             tasklist_id: string,
             task_id: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, Json.Object];
         /**
          * Creates a new task `task` in the task list `tasklist_id`. The `out_inserted_task` should
@@ -4065,7 +4068,7 @@ export namespace EDataServer {
             task: Json.Builder,
             parent_task_id: string | null,
             previous_task_id: string | null,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, Json.Object];
         /**
          * Lists all tasks in the task list `tasklist_id`, calling the `cb` for each of them.
@@ -4079,7 +4082,7 @@ export namespace EDataServer {
             tasklist_id: string,
             query: GDataQuery | null,
             cb: GDataObjectCallback,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Moves the specified task `task_id` to another position in the task
@@ -4095,9 +4098,9 @@ export namespace EDataServer {
         tasks_move_sync(
             tasklist_id: string,
             task_id: string,
-            parent_task_id?: string | null,
-            previous_task_id?: string | null,
-            cancellable?: Gio.Cancellable | null,
+            parent_task_id: string | null,
+            previous_task_id: string | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Changes properties `task_properties` of a task `task_id` in the task list `tasklist_id`.
@@ -4114,7 +4117,7 @@ export namespace EDataServer {
             tasklist_id: string,
             task_id: string,
             task_properties: Json.Builder,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, Json.Object | null];
         /**
          * Updates a task `task_id` in a task list `tasklist_id` to the values from the `task`.
@@ -4128,7 +4131,7 @@ export namespace EDataServer {
             tasklist_id: string,
             task_id: string,
             task: Json.Builder,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, Json.Object | null];
     }
 
@@ -4159,6 +4162,7 @@ export namespace EDataServer {
         /**
          * The filename of the module.
          * @construct-only
+         * @default null
          */
         get filename(): string;
 
@@ -4222,7 +4226,7 @@ export namespace EDataServer {
          * @param dirname pathname for a directory containing modules to load
          * @param dirprefix prefix of `dirname`, which can be replaced by custom prefixes, or `null`
          */
-        static load_all_in_directory_and_prefixes(dirname: string, dirprefix?: string | null): Module[];
+        static load_all_in_directory_and_prefixes(dirname: string, dirprefix: string | null): Module[];
         /**
          * Load the module from the specified filename into memory. If
          * you want to unload it (enabling on-demand loading) you must call
@@ -4325,38 +4329,19 @@ export namespace EDataServer {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -4364,15 +4349,9 @@ export namespace EDataServer {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -4539,7 +4518,7 @@ export namespace EDataServer {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -4759,7 +4738,7 @@ export namespace EDataServer {
 
         _init(...args: any[]): void;
 
-        static new_sync(client_id: string, authority: string, cancellable?: Gio.Cancellable | null): MsOapxbc;
+        static new_sync(client_id: string, authority: string, cancellable: Gio.Cancellable | null): MsOapxbc;
 
         // Signals
 
@@ -4804,7 +4783,7 @@ export namespace EDataServer {
             sso_url: string,
             scopes: Json.Array,
             redirect_uri: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): Soup.Cookie | null;
         /**
          * Synchronously calls getAccounts() D-Bus method on the Microsoft
@@ -4819,7 +4798,7 @@ export namespace EDataServer {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns the accounts, or `null` on error
          */
-        get_accounts_sync(cancellable?: Gio.Cancellable | null): Json.Object | null;
+        get_accounts_sync(cancellable: Gio.Cancellable | null): Json.Object | null;
     }
 
     namespace NetworkMonitor {
@@ -4856,11 +4835,13 @@ export namespace EDataServer {
 
         /**
          * The GIO name of the underlying {@link Gio.NetworkMonitor} to use.
+         * @default null
          */
         get gio_name(): string;
         set gio_name(val: string);
         /**
          * The GIO name of the underlying {@link Gio.NetworkMonitor} to use.
+         * @default null
          */
         get gioName(): string;
         set gioName(val: string);
@@ -4932,13 +4913,14 @@ export namespace EDataServer {
          * by the `g_network_monitor_get_default()`, will be used.
          * @param gio_name a GIO name of a {@link Gio.NetworkMonitor} implementation to use, or `null`
          */
-        set_gio_name(gio_name?: string | null): void;
+        set_gio_name(gio_name: string | null): void;
         /**
          * More detailed information about the host's network connectivity.
          * See `g_network_monitor_get_connectivity()` and
          * {@link Gio.NetworkConnectivity} for more details.
          * @since 2.44
          * @read-only
+         * @default Gio.NetworkConnectivity.FULL
          * @category Inherited from Gio.NetworkMonitor
          */
         get connectivity(): Gio.NetworkConnectivity;
@@ -4962,6 +4944,7 @@ export namespace EDataServer {
          * See also {@link Gio.NetworkMonitor.SignalSignatures.network_changed | Gio.NetworkMonitor::network-changed}.
          * @since 2.32
          * @read-only
+         * @default false
          * @category Inherited from Gio.NetworkMonitor
          */
         get network_available(): boolean;
@@ -4985,6 +4968,7 @@ export namespace EDataServer {
          * See also {@link Gio.NetworkMonitor.SignalSignatures.network_changed | Gio.NetworkMonitor::network-changed}.
          * @since 2.32
          * @read-only
+         * @default false
          * @category Inherited from Gio.NetworkMonitor
          */
         get networkAvailable(): boolean;
@@ -5012,6 +4996,7 @@ export namespace EDataServer {
          * See also {@link Gio.NetworkMonitor.network_available}.
          * @since 2.46
          * @read-only
+         * @default false
          * @category Inherited from Gio.NetworkMonitor
          */
         get network_metered(): boolean;
@@ -5039,6 +5024,7 @@ export namespace EDataServer {
          * See also {@link Gio.NetworkMonitor.network_available}.
          * @since 2.46
          * @read-only
+         * @default false
          * @category Inherited from Gio.NetworkMonitor
          */
         get networkMetered(): boolean;
@@ -5084,7 +5070,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -5127,7 +5113,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Attempts to determine whether or not the host pointed to by
          * `connectable` can be reached, without actually trying to connect to
@@ -5150,7 +5136,7 @@ export namespace EDataServer {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` if `connectable` is reachable, `false` if not.
          */
-        can_reach(connectable: Gio.SocketConnectable, cancellable?: Gio.Cancellable | null): boolean;
+        can_reach(connectable: Gio.SocketConnectable, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously attempts to determine whether or not the host
          * pointed to by `connectable` can be reached, without actually
@@ -5166,7 +5152,7 @@ export namespace EDataServer {
          */
         can_reach_async(
             connectable: Gio.SocketConnectable,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously attempts to determine whether or not the host
@@ -5203,7 +5189,7 @@ export namespace EDataServer {
          */
         can_reach_async(
             connectable: Gio.SocketConnectable,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -5272,7 +5258,7 @@ export namespace EDataServer {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @virtual
          */
-        vfunc_can_reach(connectable: Gio.SocketConnectable, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_can_reach(connectable: Gio.SocketConnectable, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously attempts to determine whether or not the host
          * pointed to by `connectable` can be reached, without actually
@@ -5290,8 +5276,8 @@ export namespace EDataServer {
          */
         vfunc_can_reach_async(
             connectable: Gio.SocketConnectable,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes an async network connectivity test.
@@ -5354,38 +5340,19 @@ export namespace EDataServer {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -5393,15 +5360,9 @@ export namespace EDataServer {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -5568,7 +5529,7 @@ export namespace EDataServer {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -5886,7 +5847,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
          */
-        delete_token_sync(source: Source, cancellable?: Gio.Cancellable | null): boolean;
+        delete_token_sync(source: Source, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Additional cookies to be used in the prompt dialog when asking for the user
          * credentials. The default implementation does not provide any cookies.
@@ -5896,7 +5857,7 @@ export namespace EDataServer {
          */
         dup_credentials_prompter_cookies_sync(
             source: Source,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): Soup.Cookie[] | null;
         /**
          * Tries to extract an authorization code from a web page provided by the server.
@@ -5961,7 +5922,7 @@ export namespace EDataServer {
         get_access_token_sync(
             source: Source,
             ref_source: OAuth2ServiceRefSourceFunc,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, string, number];
         /**
          * Used to decide what to do when the server redirects to the next page.
@@ -6040,7 +6001,7 @@ export namespace EDataServer {
          * @param hostname a host name to search the service for, like "server.example.com", or `null`
          * @returns Whether the `service` can be used for the given arguments
          */
-        guess_can_process(protocol?: string | null, hostname?: string | null): boolean;
+        guess_can_process(protocol: string | null, hostname: string | null): boolean;
         /**
          * The `service` can change what arguments are passed in the authentication URI
          * in this method. The default implementation sets some values too, namely
@@ -6128,7 +6089,7 @@ export namespace EDataServer {
             source: Source,
             authorization_code: string,
             ref_source: OAuth2ServiceRefSourceFunc,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Queries `service` at `e_oauth2_service_get_refresh_uri()` with a request to refresh
@@ -6144,7 +6105,7 @@ export namespace EDataServer {
             source: Source,
             refresh_token: string,
             ref_source: OAuth2ServiceRefSourceFunc,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Checks whether the `service` can be used with the given `source`.
@@ -6169,7 +6130,7 @@ export namespace EDataServer {
          */
         vfunc_dup_credentials_prompter_cookies_sync(
             source: Source,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): Soup.Cookie[] | null;
         /**
          * Tries to extract an authorization code from a web page provided by the server.
@@ -6298,7 +6259,7 @@ export namespace EDataServer {
          * @param hostname a host name to search the service for, like "server.example.com", or `null`
          * @virtual
          */
-        vfunc_guess_can_process(protocol?: string | null, hostname?: string | null): boolean;
+        vfunc_guess_can_process(protocol: string | null, hostname: string | null): boolean;
         /**
          * The `service` can change what arguments are passed in the authentication URI
          * in this method. The default implementation sets some values too, namely
@@ -6421,38 +6382,19 @@ export namespace EDataServer {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -6460,15 +6402,9 @@ export namespace EDataServer {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -6635,7 +6571,7 @@ export namespace EDataServer {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -6899,7 +6835,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
          */
-        delete_token_sync(source: Source, cancellable?: Gio.Cancellable | null): boolean;
+        delete_token_sync(source: Source, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Additional cookies to be used in the prompt dialog when asking for the user
          * credentials. The default implementation does not provide any cookies.
@@ -6909,7 +6845,7 @@ export namespace EDataServer {
          */
         dup_credentials_prompter_cookies_sync(
             source: Source,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): Soup.Cookie[] | null;
         /**
          * Tries to extract an authorization code from a web page provided by the server.
@@ -6974,7 +6910,7 @@ export namespace EDataServer {
         get_access_token_sync(
             source: Source,
             ref_source: OAuth2ServiceRefSourceFunc,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, string, number];
         /**
          * Used to decide what to do when the server redirects to the next page.
@@ -7053,7 +6989,7 @@ export namespace EDataServer {
          * @param hostname a host name to search the service for, like "server.example.com", or `null`
          * @returns Whether the `service` can be used for the given arguments
          */
-        guess_can_process(protocol?: string | null, hostname?: string | null): boolean;
+        guess_can_process(protocol: string | null, hostname: string | null): boolean;
         /**
          * The `service` can change what arguments are passed in the authentication URI
          * in this method. The default implementation sets some values too, namely
@@ -7141,7 +7077,7 @@ export namespace EDataServer {
             source: Source,
             authorization_code: string,
             ref_source: OAuth2ServiceRefSourceFunc,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Queries `service` at `e_oauth2_service_get_refresh_uri()` with a request to refresh
@@ -7157,7 +7093,7 @@ export namespace EDataServer {
             source: Source,
             refresh_token: string,
             ref_source: OAuth2ServiceRefSourceFunc,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Checks whether the `service` can be used with the given `source`.
@@ -7182,7 +7118,7 @@ export namespace EDataServer {
          */
         vfunc_dup_credentials_prompter_cookies_sync(
             source: Source,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): Soup.Cookie[] | null;
         /**
          * Tries to extract an authorization code from a web page provided by the server.
@@ -7311,7 +7247,7 @@ export namespace EDataServer {
          * @param hostname a host name to search the service for, like "server.example.com", or `null`
          * @virtual
          */
-        vfunc_guess_can_process(protocol?: string | null, hostname?: string | null): boolean;
+        vfunc_guess_can_process(protocol: string | null, hostname: string | null): boolean;
         /**
          * The `service` can change what arguments are passed in the authentication URI
          * in this method. The default implementation sets some values too, namely
@@ -7434,38 +7370,19 @@ export namespace EDataServer {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -7473,15 +7390,9 @@ export namespace EDataServer {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -7648,7 +7559,7 @@ export namespace EDataServer {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -7910,7 +7821,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
          */
-        delete_token_sync(source: Source, cancellable?: Gio.Cancellable | null): boolean;
+        delete_token_sync(source: Source, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Additional cookies to be used in the prompt dialog when asking for the user
          * credentials. The default implementation does not provide any cookies.
@@ -7920,7 +7831,7 @@ export namespace EDataServer {
          */
         dup_credentials_prompter_cookies_sync(
             source: Source,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): Soup.Cookie[] | null;
         /**
          * Tries to extract an authorization code from a web page provided by the server.
@@ -7985,7 +7896,7 @@ export namespace EDataServer {
         get_access_token_sync(
             source: Source,
             ref_source: OAuth2ServiceRefSourceFunc,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, string, number];
         /**
          * Used to decide what to do when the server redirects to the next page.
@@ -8064,7 +7975,7 @@ export namespace EDataServer {
          * @param hostname a host name to search the service for, like "server.example.com", or `null`
          * @returns Whether the `service` can be used for the given arguments
          */
-        guess_can_process(protocol?: string | null, hostname?: string | null): boolean;
+        guess_can_process(protocol: string | null, hostname: string | null): boolean;
         /**
          * The `service` can change what arguments are passed in the authentication URI
          * in this method. The default implementation sets some values too, namely
@@ -8152,7 +8063,7 @@ export namespace EDataServer {
             source: Source,
             authorization_code: string,
             ref_source: OAuth2ServiceRefSourceFunc,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Queries `service` at `e_oauth2_service_get_refresh_uri()` with a request to refresh
@@ -8168,7 +8079,7 @@ export namespace EDataServer {
             source: Source,
             refresh_token: string,
             ref_source: OAuth2ServiceRefSourceFunc,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Checks whether the `service` can be used with the given `source`.
@@ -8193,7 +8104,7 @@ export namespace EDataServer {
          */
         vfunc_dup_credentials_prompter_cookies_sync(
             source: Source,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): Soup.Cookie[] | null;
         /**
          * Tries to extract an authorization code from a web page provided by the server.
@@ -8322,7 +8233,7 @@ export namespace EDataServer {
          * @param hostname a host name to search the service for, like "server.example.com", or `null`
          * @virtual
          */
-        vfunc_guess_can_process(protocol?: string | null, hostname?: string | null): boolean;
+        vfunc_guess_can_process(protocol: string | null, hostname: string | null): boolean;
         /**
          * The `service` can change what arguments are passed in the authentication URI
          * in this method. The default implementation sets some values too, namely
@@ -8445,38 +8356,19 @@ export namespace EDataServer {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -8484,15 +8376,9 @@ export namespace EDataServer {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -8659,7 +8545,7 @@ export namespace EDataServer {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -8915,7 +8801,7 @@ export namespace EDataServer {
          * instance.
          * @param auth_method an authentication method, or `null`
          */
-        static is_oauth2_alias_static(auth_method?: string | null): boolean;
+        static is_oauth2_alias_static(auth_method: string | null): boolean;
         static is_supported(): boolean;
 
         // Methods
@@ -8947,12 +8833,12 @@ export namespace EDataServer {
          * @param hostname a host name to search the service for, like "server.example.com", or `null`
          * @returns a referenced {@link EDataServer.OAuth2Service}, which can be used    with given constraints, or `null`, when none was found.
          */
-        guess(protocol?: string | null, hostname?: string | null): OAuth2Service | null;
+        guess(protocol: string | null, hostname: string | null): OAuth2Service | null;
         /**
          * @param auth_method an authentication method, or `null`
          * @returns whether exists any {@link EDataServer.OAuth2Service}, with the same name as `auth_method`. See: `e_oauth2_services_is_oauth2_alias_static()`
          */
-        is_oauth2_alias(auth_method?: string | null): boolean;
+        is_oauth2_alias(auth_method: string | null): boolean;
         /**
          * Lists all currently known services, which had been added
          * with `e_oauth2_services_add()`. Free the returned {@link GLib.SList} with
@@ -9038,38 +8924,19 @@ export namespace EDataServer {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -9077,15 +8944,9 @@ export namespace EDataServer {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -9252,7 +9113,7 @@ export namespace EDataServer {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -9551,7 +9412,7 @@ export namespace EDataServer {
             forceHttp1: boolean;
             handle_backoff_responses: boolean;
             handleBackoffResponses: boolean;
-            source: Source;
+            source: Source | null;
         }
     }
 
@@ -9579,6 +9440,7 @@ export namespace EDataServer {
          *
          * See `e_soup_session_set_force_http1()` for more information about the limitations.
          * @since 3.48
+         * @default false
          */
         get force_http1(): boolean;
         set force_http1(val: boolean);
@@ -9589,6 +9451,7 @@ export namespace EDataServer {
          *
          * See `e_soup_session_set_force_http1()` for more information about the limitations.
          * @since 3.48
+         * @default false
          */
         get forceHttp1(): boolean;
         set forceHttp1(val: boolean);
@@ -9599,6 +9462,7 @@ export namespace EDataServer {
          * Note: This handles only the synchronous functions to send the messages. Clients
          * using the asynchronous API need to handle the backoff responses on their own.
          * @since 3.54
+         * @default true
          */
         get handle_backoff_responses(): boolean;
         set handle_backoff_responses(val: boolean);
@@ -9609,6 +9473,7 @@ export namespace EDataServer {
          * Note: This handles only the synchronous functions to send the messages. Clients
          * using the asynchronous API need to handle the backoff responses on their own.
          * @since 3.54
+         * @default true
          */
         get handleBackoffResponses(): boolean;
         set handleBackoffResponses(val: boolean);
@@ -9617,7 +9482,7 @@ export namespace EDataServer {
          * @since 3.26
          * @construct-only
          */
-        get source(): Source;
+        get source(): Source | null;
 
         /**
          * Compile-time signal type information.
@@ -9730,7 +9595,7 @@ export namespace EDataServer {
             content_type: string | null,
             data: any | null,
             length: bigint | number,
-            free_func?: GLib.DestroyNotify | null,
+            free_func: GLib.DestroyNotify | null,
         ): void;
         /**
          * Returns the `reason_phrase`, if it's non-`null` and non-empty, a static string
@@ -9739,7 +9604,7 @@ export namespace EDataServer {
          * @param status_code an HTTP status code
          * @param reason_phrase preferred string to use for the message, or `null`
          */
-        static util_status_to_string(status_code: number, reason_phrase?: string | null): string;
+        static util_status_to_string(status_code: number, reason_phrase: string | null): string;
 
         // Methods
 
@@ -9834,7 +9699,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns prepare data for `e_soup_session_send_message()`,   or `null` on error.
          */
-        prepare_message_send_sync(message: Soup.Message, cancellable?: Gio.Cancellable | null): any | null;
+        prepare_message_send_sync(message: Soup.Message, cancellable: Gio.Cancellable | null): any | null;
         /**
          * Asynchronously sends the `message`. Finish the call with
          * `e_soup_session_send_message_finish()`.
@@ -9850,8 +9715,8 @@ export namespace EDataServer {
         send_message(
             message: Soup.Message,
             io_priority: number,
-            prepare_data?: any | null,
-            cancellable?: Gio.Cancellable | null,
+            prepare_data: any | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<[Gio.InputStream | null, string, Gio.TlsCertificateFlags | null]>;
         /**
          * Asynchronously sends the `message`. Finish the call with
@@ -9889,8 +9754,8 @@ export namespace EDataServer {
         send_message(
             message: Soup.Message,
             io_priority: number,
-            prepare_data?: any | null,
-            cancellable?: Gio.Cancellable | null,
+            prepare_data: any | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[Gio.InputStream | null, string, Gio.TlsCertificateFlags | null]> | void;
         /**
@@ -9916,7 +9781,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns A newly allocated {@link GLib.ByteArray},    which contains whole content from the URI pointed to by `message`.
          */
-        send_message_simple_sync(message: Soup.Message, cancellable?: Gio.Cancellable | null): Uint8Array;
+        send_message_simple_sync(message: Soup.Message, cancellable: Gio.Cancellable | null): Uint8Array;
         /**
          * Synchronously sends prepared message and returns {@link Gio.InputStream}
          * that can be used to read its contents.
@@ -9945,13 +9810,13 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns A newly allocated {@link Gio.InputStream},    that can be used to read from the URI pointed to by `message`.    Free it with `g_object_unref()`, when no longer needed.
          */
-        send_message_sync(message: Soup.Message, cancellable?: Gio.Cancellable | null): Gio.InputStream;
+        send_message_sync(message: Soup.Message, cancellable: Gio.Cancellable | null): Gio.InputStream;
         /**
          * Sets credentials to use for connection. Using `null` for `credentials`
          * unsets previous value.
          * @param credentials an {@link EDataServer.NamedParameters} with credentials to use, or `null`
          */
-        set_credentials(credentials?: NamedParameters | null): void;
+        set_credentials(credentials: NamedParameters | null): void;
         /**
          * Sets whether the messages created through the `session` using
          * `e_soup_session_new_message()` or `e_soup_session_new_message_from_uri()`
@@ -9984,7 +9849,7 @@ export namespace EDataServer {
          * Use `e_soup_session_get_log_level()` to get current log level.
          * @param logging_level logging level to setup, or `null`
          */
-        setup_logging(logging_level?: string | null): void;
+        setup_logging(logging_level: string | null): void;
     }
 
     namespace Source {
@@ -10043,7 +9908,7 @@ export namespace EDataServer {
             enabled: boolean;
             main_context: GLib.MainContext;
             mainContext: GLib.MainContext;
-            parent: string;
+            parent: string | null;
             remote_creatable: boolean;
             remoteCreatable: boolean;
             remote_deletable: boolean;
@@ -10068,25 +9933,30 @@ export namespace EDataServer {
         /**
          * Connection status of the source
          * @read-only
+         * @default EDataServer.SourceConnectionStatus.DISCONNECTED
          */
         get connection_status(): SourceConnectionStatus;
         /**
          * Connection status of the source
          * @read-only
+         * @default EDataServer.SourceConnectionStatus.DISCONNECTED
          */
         get connectionStatus(): SourceConnectionStatus;
         /**
          * The human-readable name of the data source
+         * @default Unnamed
          */
         get display_name(): string;
         set display_name(val: string);
         /**
          * The human-readable name of the data source
+         * @default Unnamed
          */
         get displayName(): string;
         set displayName(val: string);
         /**
          * Whether the data source is enabled
+         * @default true
          */
         get enabled(): boolean;
         set enabled(val: boolean);
@@ -10102,42 +9972,50 @@ export namespace EDataServer {
         get mainContext(): GLib.MainContext;
         /**
          * The unique identity of the parent data source
+         * @default null
          */
-        get parent(): string;
-        set parent(val: string);
+        get parent(): string | null;
+        set parent(val: string | null);
         /**
          * Whether the data source can create remote resources
          * @read-only
+         * @default false
          */
         get remote_creatable(): boolean;
         /**
          * Whether the data source can create remote resources
          * @read-only
+         * @default false
          */
         get remoteCreatable(): boolean;
         /**
          * Whether the data source can delete remote resources
          * @read-only
+         * @default false
          */
         get remote_deletable(): boolean;
         /**
          * Whether the data source can delete remote resources
          * @read-only
+         * @default false
          */
         get remoteDeletable(): boolean;
         /**
          * Whether the data source is removable
          * @read-only
+         * @default false
          */
         get removable(): boolean;
         /**
          * The unique identity of the data source
          * @construct-only
+         * @default null
          */
         get uid(): string;
         /**
          * Whether the data source is writable
          * @read-only
+         * @default false
          */
         get writable(): boolean;
 
@@ -10156,9 +10034,9 @@ export namespace EDataServer {
 
         _init(...args: any[]): void;
 
-        static ['new'](dbus_object?: Gio.DBusObject | null, main_context?: GLib.MainContext | null): Source;
+        static ['new'](dbus_object: Gio.DBusObject | null, main_context: GLib.MainContext | null): Source;
 
-        static new_with_uid(uid: string, main_context?: GLib.MainContext | null): Source;
+        static new_with_uid(uid: string, main_context: GLib.MainContext | null): Source;
 
         // Signals
 
@@ -10234,8 +10112,8 @@ export namespace EDataServer {
          * @virtual
          */
         vfunc_get_oauth2_access_token(
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes the operation started with `e_source_get_oauth2_access_token()`.
@@ -10265,7 +10143,7 @@ export namespace EDataServer {
         vfunc_invoke_authenticate_impl(
             dbus_source: any | null,
             arg_credentials: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * @param dbus_source
@@ -10284,7 +10162,7 @@ export namespace EDataServer {
             arg_certificate_errors: string,
             arg_dbus_error_name: string,
             arg_dbus_error_message: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Asynchronously creates a new remote resource by picking out relevant
@@ -10305,8 +10183,8 @@ export namespace EDataServer {
          */
         vfunc_remote_create(
             scratch_source: Source,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes the operation started with `e_source_remote_create()`.  If
@@ -10330,7 +10208,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_remote_create_sync(scratch_source: Source, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_remote_create_sync(scratch_source: Source, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously deletes the resource represented by `source` from a remote
          * server.  The `source` must be {@link EDataServer.Source.remote_deletable}.  This will also
@@ -10343,7 +10221,7 @@ export namespace EDataServer {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_remote_delete(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_remote_delete(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Finishes the operation started with `e_source_remote_delete()`.  If
          * an error occurred, the function will set `error` and return `false`.
@@ -10361,7 +10239,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_remote_delete_sync(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_remote_delete_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously requests the D-Bus service to delete the key files for
          * `source` and all of its descendants and broadcast their removal to all
@@ -10373,7 +10251,7 @@ export namespace EDataServer {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_remove(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_remove(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Finishes the operation started with `e_source_remove()`.  If an
          * error occurred, the function will set `error` and return `false`.
@@ -10390,12 +10268,12 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_remove_sync(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_remove_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param cancellable
          * @virtual
          */
-        vfunc_unset_last_credentials_required_arguments_impl(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_unset_last_credentials_required_arguments_impl(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously submits the current contents of `source` to the D-Bus
          * service to be written to disk and broadcast to other clients.  The
@@ -10407,7 +10285,7 @@ export namespace EDataServer {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_write(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_write(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Finishes the operation started with `e_source_write()`.  If an
          * error occurred, the function will set `error` and return `false`.
@@ -10424,7 +10302,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_write_sync(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_write_sync(cancellable: Gio.Cancellable | null): boolean;
 
         // Methods
 
@@ -10462,7 +10340,7 @@ export namespace EDataServer {
          * call `e_source_delete_password_finish()` to get the result of the operation.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        delete_password(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        delete_password(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously deletes the password for `source` from either the default
          * keyring or session keyring.  This operation does not rely on the registry
@@ -10485,7 +10363,7 @@ export namespace EDataServer {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         delete_password(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -10511,7 +10389,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
          */
-        delete_password_sync(cancellable?: Gio.Cancellable | null): boolean;
+        delete_password_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Thread-safe variation of `e_source_get_display_name()`.
          * Use this function when accessing `source` from multiple threads.
@@ -10555,7 +10433,7 @@ export namespace EDataServer {
             reason: SourceCredentialsReason,
             certificate_pem: string,
             certificate_errors: Gio.TlsCertificateFlags,
-            op_error?: GLib.Error | null,
+            op_error: GLib.Error | null,
         ): void;
         /**
          * Checks two {@link EDataServer.Source} instances for equality.  {@link EDataServer.Source} instances are
@@ -10620,7 +10498,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
         get_last_credentials_required_arguments(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<[SourceCredentialsReason, string, Gio.TlsCertificateFlags, GLib.Error]>;
         /**
          * Asynchronously calls the GetLastCredentialsRequiredArguments method
@@ -10651,7 +10529,7 @@ export namespace EDataServer {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         get_last_credentials_required_arguments(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[SourceCredentialsReason, string, Gio.TlsCertificateFlags, GLib.Error]> | void;
         /**
@@ -10678,7 +10556,7 @@ export namespace EDataServer {
          * @returns `true` on success, `false` on error
          */
         get_last_credentials_required_arguments_sync(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, SourceCredentialsReason, string, Gio.TlsCertificateFlags, GLib.Error];
         /**
          * Asynchronously obtains the OAuth 2.0 access token for `source` along
@@ -10689,7 +10567,7 @@ export namespace EDataServer {
          * operation.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        get_oauth2_access_token(cancellable?: Gio.Cancellable | null): globalThis.Promise<[string, number]>;
+        get_oauth2_access_token(cancellable: Gio.Cancellable | null): globalThis.Promise<[string, number]>;
         /**
          * Asynchronously obtains the OAuth 2.0 access token for `source` along
          * with its expiry in seconds from the current time (or 0 if unknown).
@@ -10715,7 +10593,7 @@ export namespace EDataServer {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request            is satisfied
          */
         get_oauth2_access_token(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[string, number]> | void;
         /**
@@ -10806,8 +10684,8 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
         invoke_authenticate(
-            credentials?: NamedParameters | null,
-            cancellable?: Gio.Cancellable | null,
+            credentials: NamedParameters | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously calls the InvokeAuthenticate method on the server side,
@@ -10837,8 +10715,8 @@ export namespace EDataServer {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         invoke_authenticate(
-            credentials?: NamedParameters | null,
-            cancellable?: Gio.Cancellable | null,
+            credentials: NamedParameters | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -10858,7 +10736,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
          */
-        invoke_authenticate_sync(credentials?: NamedParameters | null, cancellable?: Gio.Cancellable | null): boolean;
+        invoke_authenticate_sync(credentials: NamedParameters | null, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously calls the InvokeCredentialsRequired method on the server side,
          * to inform clients that credentials are required.
@@ -10875,8 +10753,8 @@ export namespace EDataServer {
             reason: SourceCredentialsReason,
             certificate_pem: string,
             certificate_errors: Gio.TlsCertificateFlags,
-            op_error?: GLib.Error | null,
-            cancellable?: Gio.Cancellable | null,
+            op_error: GLib.Error | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously calls the InvokeCredentialsRequired method on the server side,
@@ -10916,8 +10794,8 @@ export namespace EDataServer {
             reason: SourceCredentialsReason,
             certificate_pem: string,
             certificate_errors: Gio.TlsCertificateFlags,
-            op_error?: GLib.Error | null,
-            cancellable?: Gio.Cancellable | null,
+            op_error: GLib.Error | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -10958,8 +10836,8 @@ export namespace EDataServer {
             reason: SourceCredentialsReason,
             certificate_pem: string,
             certificate_errors: Gio.TlsCertificateFlags,
-            op_error?: GLib.Error | null,
-            cancellable?: Gio.Cancellable | null,
+            op_error: GLib.Error | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Asynchronously looks up a password for `source`.  Both the default and
@@ -10971,7 +10849,7 @@ export namespace EDataServer {
          * call `e_source_lookup_password_finish()` to get the result of the operation.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        lookup_password(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
+        lookup_password(cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * Asynchronously looks up a password for `source`.  Both the default and
          * session keyrings are queried.  This operation does not rely on the
@@ -10996,7 +10874,7 @@ export namespace EDataServer {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         lookup_password(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
         /**
@@ -11041,7 +10919,7 @@ export namespace EDataServer {
          */
         mail_signature_load(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<[string, bigint | number]>;
         /**
          * Asynchronously loads a signature from the signature file for `source`,
@@ -11080,7 +10958,7 @@ export namespace EDataServer {
          */
         mail_signature_load(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[string, bigint | number]> | void;
         /**
@@ -11105,7 +10983,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          */
-        mail_signature_load_sync(cancellable?: Gio.Cancellable | null): [boolean, string, number];
+        mail_signature_load_sync(cancellable: Gio.Cancellable | null): [boolean, string, number];
         /**
          * Asynchrously replaces the signature file for `source` with the given
          * `contents` of `length` bytes.  The signature file for `source` is given
@@ -11123,7 +11001,7 @@ export namespace EDataServer {
             contents: string,
             length: bigint | number,
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchrously replaces the signature file for `source` with the given
@@ -11164,7 +11042,7 @@ export namespace EDataServer {
             contents: string,
             length: bigint | number,
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -11185,7 +11063,7 @@ export namespace EDataServer {
         mail_signature_replace_sync(
             contents: string,
             length: bigint | number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Asynchronously replaces the signature file for `source` with a symbolic
@@ -11203,7 +11081,7 @@ export namespace EDataServer {
         mail_signature_symlink(
             symlink_target: string,
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously replaces the signature file for `source` with a symbolic
@@ -11242,7 +11120,7 @@ export namespace EDataServer {
         mail_signature_symlink(
             symlink_target: string,
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -11260,7 +11138,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          */
-        mail_signature_symlink_sync(symlink_target: string, cancellable?: Gio.Cancellable | null): boolean;
+        mail_signature_symlink_sync(symlink_target: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously determines what proxy, if any, to use to connect to `uri`.
          * See `e_source_proxy_lookup_sync()` for more details.
@@ -11270,7 +11148,7 @@ export namespace EDataServer {
          * @param uri a URI representing the destination to connect to
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        proxy_lookup(uri: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<string[] | null>;
+        proxy_lookup(uri: string, cancellable: Gio.Cancellable | null): globalThis.Promise<string[] | null>;
         /**
          * Asynchronously determines what proxy, if any, to use to connect to `uri`.
          * See `e_source_proxy_lookup_sync()` for more details.
@@ -11298,7 +11176,7 @@ export namespace EDataServer {
          */
         proxy_lookup(
             uri: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string[] | null> | void;
         /**
@@ -11338,7 +11216,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns a `null`-terminated array of proxy URIs,    or `null`
          */
-        proxy_lookup_sync(uri: string, cancellable?: Gio.Cancellable | null): string[] | null;
+        proxy_lookup_sync(uri: string, cancellable: Gio.Cancellable | null): string[] | null;
         /**
          * Returns the {@link Gio.DBusObject} that was passed to `e_source_new()`.
          *
@@ -11376,7 +11254,7 @@ export namespace EDataServer {
         refresh_add_timeout(
             context: GLib.MainContext | null,
             callback: SourceRefreshFunc,
-            notify?: GLib.DestroyNotify | null,
+            notify: GLib.DestroyNotify | null,
         ): number;
         /**
          * For all timeouts added with `e_source_refresh_add_timeout()`, invokes
@@ -11400,7 +11278,7 @@ export namespace EDataServer {
          * @param user_data user data to match against timeout callbacks
          * @returns the number of timeouts found and removed
          */
-        refresh_remove_timeouts_by_data(user_data?: any | null): number;
+        refresh_remove_timeouts_by_data(user_data: any | null): number;
         /**
          * Asynchronously creates a new remote resource by picking out relevant
          * details from `scratch_source`.  The `scratch_source` must be an {@link EDataServer.Source}
@@ -11416,7 +11294,7 @@ export namespace EDataServer {
          * @param scratch_source an {@link EDataServer.Source} describing the resource to create
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        remote_create(scratch_source: Source, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        remote_create(scratch_source: Source, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously creates a new remote resource by picking out relevant
          * details from `scratch_source`.  The `scratch_source` must be an {@link EDataServer.Source}
@@ -11456,7 +11334,7 @@ export namespace EDataServer {
          */
         remote_create(
             scratch_source: Source,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -11481,7 +11359,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
          */
-        remote_create_sync(scratch_source: Source, cancellable?: Gio.Cancellable | null): boolean;
+        remote_create_sync(scratch_source: Source, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously deletes the resource represented by `source` from a remote
          * server.  The `source` must be {@link EDataServer.Source.remote_deletable}.  This will also
@@ -11492,7 +11370,7 @@ export namespace EDataServer {
          * call `e_source_remote_delete_finish()` to get the result of the operation.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        remote_delete(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        remote_delete(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously deletes the resource represented by `source` from a remote
          * server.  The `source` must be {@link EDataServer.Source.remote_deletable}.  This will also
@@ -11517,7 +11395,7 @@ export namespace EDataServer {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         remote_delete(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -11537,7 +11415,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
          */
-        remote_delete_sync(cancellable?: Gio.Cancellable | null): boolean;
+        remote_delete_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously requests the D-Bus service to delete the key files for
          * `source` and all of its descendants and broadcast their removal to all
@@ -11547,7 +11425,7 @@ export namespace EDataServer {
          * call `e_source_remove_finish()` to get the result of the operation.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        remove(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        remove(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously requests the D-Bus service to delete the key files for
          * `source` and all of its descendants and broadcast their removal to all
@@ -11570,7 +11448,7 @@ export namespace EDataServer {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         remove(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -11589,7 +11467,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
          */
-        remove_sync(cancellable?: Gio.Cancellable | null): boolean;
+        remove_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Set's current connection status of the `source`.
          * @param connection_status one of the {@link EDataServer.SourceConnectionStatus}
@@ -11623,7 +11501,7 @@ export namespace EDataServer {
          * instead.
          * @param parent the UID of the parent {@link EDataServer.Source}, or `null`
          */
-        set_parent(parent?: string | null): void;
+        set_parent(parent: string | null): void;
         /**
          * Asynchronously stores a password for `source`.  This operation does
          * not rely on the registry service and therefore works for any {@link EDataServer.Source}
@@ -11642,7 +11520,7 @@ export namespace EDataServer {
         store_password(
             password: string,
             permanently: boolean,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously stores a password for `source`.  This operation does
@@ -11685,7 +11563,7 @@ export namespace EDataServer {
         store_password(
             password: string,
             permanently: boolean,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -11707,7 +11585,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
          */
-        store_password_sync(password: string, permanently: boolean, cancellable?: Gio.Cancellable | null): boolean;
+        store_password_sync(password: string, permanently: boolean, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Outputs the current contents of `source` as a key file string.
          * Free the returned string with `g_free()`.
@@ -11724,7 +11602,7 @@ export namespace EDataServer {
          * the result of the operation.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        unset_last_credentials_required_arguments(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        unset_last_credentials_required_arguments(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously calls the UnsetLastCredentialsRequiredArguments method
          * on the server side, to unset the last values used for the 'credentials-required'
@@ -11752,7 +11630,7 @@ export namespace EDataServer {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         unset_last_credentials_required_arguments(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -11770,7 +11648,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
          */
-        unset_last_credentials_required_arguments_sync(cancellable?: Gio.Cancellable | null): boolean;
+        unset_last_credentials_required_arguments_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously submits the current contents of `source` to the D-Bus
          * service to be written to disk and broadcast to other clients.  The
@@ -11780,7 +11658,7 @@ export namespace EDataServer {
          * call `e_source_write_finish()` to get the result of the operation.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        write(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        write(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously submits the current contents of `source` to the D-Bus
          * service to be written to disk and broadcast to other clients.  The
@@ -11803,7 +11681,7 @@ export namespace EDataServer {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         write(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -11822,7 +11700,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
          */
-        write_sync(cancellable?: Gio.Cancellable | null): boolean;
+        write_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -11865,7 +11743,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -11908,7 +11786,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Checks if `resolver` can be used on this system. (This is used
          * internally; `g_proxy_resolver_get_default()` will only return a proxy
@@ -11936,14 +11814,14 @@ export namespace EDataServer {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns A               NULL-terminated array of proxy URIs. Must be freed               with `g_strfreev()`.
          */
-        lookup(uri: string, cancellable?: Gio.Cancellable | null): string[];
+        lookup(uri: string, cancellable: Gio.Cancellable | null): string[];
         /**
          * Asynchronous lookup of proxy. See `g_proxy_resolver_lookup()` for more
          * details.
          * @param uri a URI representing the destination to connect to
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        lookup_async(uri: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<string[]>;
+        lookup_async(uri: string, cancellable: Gio.Cancellable | null): globalThis.Promise<string[]>;
         /**
          * Asynchronous lookup of proxy. See `g_proxy_resolver_lookup()` for more
          * details.
@@ -11965,7 +11843,7 @@ export namespace EDataServer {
          */
         lookup_async(
             uri: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string[]> | void;
         /**
@@ -12003,7 +11881,7 @@ export namespace EDataServer {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @virtual
          */
-        vfunc_lookup(uri: string, cancellable?: Gio.Cancellable | null): string[];
+        vfunc_lookup(uri: string, cancellable: Gio.Cancellable | null): string[];
         /**
          * Asynchronous lookup of proxy. See `g_proxy_resolver_lookup()` for more
          * details.
@@ -12014,8 +11892,8 @@ export namespace EDataServer {
          */
         vfunc_lookup_async(
             uri: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Call this function to obtain the array of proxy URIs when
@@ -12072,38 +11950,19 @@ export namespace EDataServer {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -12111,15 +11970,9 @@ export namespace EDataServer {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -12286,7 +12139,7 @@ export namespace EDataServer {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -12504,6 +12357,7 @@ export namespace EDataServer {
 
         /**
          * A sorting order of the source
+         * @default 0
          */
         get order(): number;
         set order(val: number);
@@ -12573,8 +12427,8 @@ export namespace EDataServer {
             forEveryEvent: boolean;
             include_me: boolean;
             includeMe: boolean;
-            last_notified: string;
-            lastNotified: string;
+            last_notified: string | null;
+            lastNotified: string | null;
         }
     }
 
@@ -12591,34 +12445,40 @@ export namespace EDataServer {
 
         /**
          * Show a notification before every event in this source
+         * @default false
          */
         get for_every_event(): boolean;
         set for_every_event(val: boolean);
         /**
          * Show a notification before every event in this source
+         * @default false
          */
         get forEveryEvent(): boolean;
         set forEveryEvent(val: boolean);
         /**
          * Include this source in alarm notifications
+         * @default true
          */
         get include_me(): boolean;
         set include_me(val: boolean);
         /**
          * Include this source in alarm notifications
+         * @default true
          */
         get includeMe(): boolean;
         set includeMe(val: boolean);
         /**
          * Last alarm notification (in ISO 8601 format)
+         * @default null
          */
-        get last_notified(): string;
-        set last_notified(val: string);
+        get last_notified(): string | null;
+        set last_notified(val: string | null);
         /**
          * Last alarm notification (in ISO 8601 format)
+         * @default null
          */
-        get lastNotified(): string;
-        set lastNotified(val: string);
+        get lastNotified(): string | null;
+        set lastNotified(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -12723,7 +12583,7 @@ export namespace EDataServer {
          * such as evolution-alarm-notify.
          * @param last_notified an ISO 8601 timestamp, or `null`
          */
-        set_last_notified(last_notified?: string | null): void;
+        set_last_notified(last_notified: string | null): void;
     }
 
     namespace SourceAuthentication {
@@ -12745,18 +12605,18 @@ export namespace EDataServer {
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
             connectable: Gio.SocketConnectable;
-            credential_name: string;
-            credentialName: string;
-            host: string;
+            credential_name: string | null;
+            credentialName: string | null;
+            host: string | null;
             is_external: boolean;
             isExternal: boolean;
-            method: string;
+            method: string | null;
             port: number;
             proxy_uid: string;
             proxyUid: string;
             remember_password: boolean;
             rememberPassword: boolean;
-            user: string;
+            user: string | null;
         }
     }
 
@@ -12781,69 +12641,80 @@ export namespace EDataServer {
          *
          * An empty string or `null` means to use E_SOURCE_CREDENTIAL_PASSWORD to pass the stored
          * "password" into the backend with `e_source_invoke_authenticate()`/_sync()
+         * @default null
          */
-        get credential_name(): string;
-        set credential_name(val: string);
+        get credential_name(): string | null;
+        set credential_name(val: string | null);
         /**
          * What name to use for the authentication method in credentials for authentication.
          *
          * An empty string or `null` means to use E_SOURCE_CREDENTIAL_PASSWORD to pass the stored
          * "password" into the backend with `e_source_invoke_authenticate()`/_sync()
+         * @default null
          */
-        get credentialName(): string;
-        set credentialName(val: string);
+        get credentialName(): string | null;
+        set credentialName(val: string | null);
         /**
          * Host name for the remote account
          */
-        get host(): string;
-        set host(val: string);
+        get host(): string | null;
+        set host(val: string | null);
         /**
          * Whether the authentication is done by another authentication manager (like any
          * Single Sign On daemon)
+         * @default false
          */
         get is_external(): boolean;
         set is_external(val: boolean);
         /**
          * Whether the authentication is done by another authentication manager (like any
          * Single Sign On daemon)
+         * @default false
          */
         get isExternal(): boolean;
         set isExternal(val: boolean);
         /**
          * Authentication method
+         * @default none
          */
-        get method(): string;
-        set method(val: string);
+        get method(): string | null;
+        set method(val: string | null);
         /**
          * Port number for the remote account
+         * @default 0
          */
         get port(): number;
         set port(val: number);
         /**
          * ESource UID of a proxy profile
+         * @default system-proxy
          */
         get proxy_uid(): string;
         set proxy_uid(val: string);
         /**
          * ESource UID of a proxy profile
+         * @default system-proxy
          */
         get proxyUid(): string;
         set proxyUid(val: string);
         /**
          * Whether to offer to remember the password by default when prompted
+         * @default true
          */
         get remember_password(): boolean;
         set remember_password(val: boolean);
         /**
          * Whether to offer to remember the password by default when prompted
+         * @default true
          */
         get rememberPassword(): boolean;
         set rememberPassword(val: boolean);
         /**
          * User name for the remote account
+         * @default null
          */
-        get user(): string;
-        set user(val: string);
+        get user(): string | null;
+        set user(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -13004,7 +12875,7 @@ export namespace EDataServer {
          * empty, `null` is set instead.
          * @param credential_name a credential name, or `null`
          */
-        set_credential_name(credential_name?: string | null): void;
+        set_credential_name(credential_name: string | null): void;
         /**
          * Sets the host name used to authenticate to a remote account.
          *
@@ -13013,7 +12884,7 @@ export namespace EDataServer {
          * instead.
          * @param host a host name, or `null`
          */
-        set_host(host?: string | null): void;
+        set_host(host: string | null): void;
         /**
          * Set if the authentication is done by an external application such as a
          * Single Sign On application (e.g. GNOME Online Accounts)
@@ -13029,7 +12900,7 @@ export namespace EDataServer {
          * `method` is `null` or an empty string.
          * @param method authentication method, or `null`
          */
-        set_method(method?: string | null): void;
+        set_method(method: string | null): void;
         /**
          * Sets the port number used to authenticate to a remote account.
          * @param port a port number
@@ -13056,7 +12927,7 @@ export namespace EDataServer {
          * instead.
          * @param user a user name, or `null`
          */
-        set_user(user?: string | null): void;
+        set_user(user: string | null): void;
     }
 
     namespace SourceAutocomplete {
@@ -13087,11 +12958,13 @@ export namespace EDataServer {
 
         /**
          * Include this source when autocompleting
+         * @default true
          */
         get include_me(): boolean;
         set include_me(val: boolean);
         /**
          * Include this source when autocompleting
+         * @default true
          */
         get includeMe(): boolean;
         set includeMe(val: boolean);
@@ -13266,8 +13139,8 @@ export namespace EDataServer {
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
-            backend_name: string;
-            backendName: string;
+            backend_name: string | null;
+            backendName: string | null;
         }
     }
 
@@ -13284,14 +13157,16 @@ export namespace EDataServer {
 
         /**
          * The name of the backend handling the data source
+         * @default null
          */
-        get backend_name(): string;
-        set backend_name(val: string);
+        get backend_name(): string | null;
+        set backend_name(val: string | null);
         /**
          * The name of the backend handling the data source
+         * @default null
          */
-        get backendName(): string;
-        set backendName(val: string);
+        get backendName(): string | null;
+        set backendName(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -13352,7 +13227,7 @@ export namespace EDataServer {
          * instead.
          * @param backend_name a backend name, or `null`
          */
-        set_backend_name(backend_name?: string | null): void;
+        set_backend_name(backend_name: string | null): void;
     }
 
     namespace SourceCalendar {
@@ -13568,13 +13443,13 @@ export namespace EDataServer {
             allowSourcesRename: boolean;
             calendar_enabled: boolean;
             calendarEnabled: boolean;
-            calendar_url: string;
-            calendarUrl: string;
+            calendar_url: string | null;
+            calendarUrl: string | null;
             contacts_enabled: boolean;
             contactsEnabled: boolean;
-            contacts_url: string;
-            contactsUrl: string;
-            identity: string;
+            contacts_url: string | null;
+            contactsUrl: string | null;
+            identity: string | null;
             mail_enabled: boolean;
             mailEnabled: boolean;
         }
@@ -13593,66 +13468,79 @@ export namespace EDataServer {
 
         /**
          * Set to TRUE when the collection source allows user rename the child sources
+         * @default false
          */
         get allow_sources_rename(): boolean;
         set allow_sources_rename(val: boolean);
         /**
          * Set to TRUE when the collection source allows user rename the child sources
+         * @default false
          */
         get allowSourcesRename(): boolean;
         set allowSourcesRename(val: boolean);
         /**
          * Whether calendar resources are enabled
+         * @default true
          */
         get calendar_enabled(): boolean;
         set calendar_enabled(val: boolean);
         /**
          * Whether calendar resources are enabled
+         * @default true
          */
         get calendarEnabled(): boolean;
         set calendarEnabled(val: boolean);
         /**
          * Calendar top URL
+         * @default null
          */
-        get calendar_url(): string;
-        set calendar_url(val: string);
+        get calendar_url(): string | null;
+        set calendar_url(val: string | null);
         /**
          * Calendar top URL
+         * @default null
          */
-        get calendarUrl(): string;
-        set calendarUrl(val: string);
+        get calendarUrl(): string | null;
+        set calendarUrl(val: string | null);
         /**
          * Whether contact resources are enabled
+         * @default true
          */
         get contacts_enabled(): boolean;
         set contacts_enabled(val: boolean);
         /**
          * Whether contact resources are enabled
+         * @default true
          */
         get contactsEnabled(): boolean;
         set contactsEnabled(val: boolean);
         /**
          * Contacts top URL
+         * @default null
          */
-        get contacts_url(): string;
-        set contacts_url(val: string);
+        get contacts_url(): string | null;
+        set contacts_url(val: string | null);
         /**
          * Contacts top URL
+         * @default null
          */
-        get contactsUrl(): string;
-        set contactsUrl(val: string);
+        get contactsUrl(): string | null;
+        set contactsUrl(val: string | null);
         /**
          * Uniquely identifies the account at the service provider
+         * @default null
          */
-        get identity(): string;
-        set identity(val: string);
+        get identity(): string | null;
+        set identity(val: string | null);
         /**
          * Whether mail resources are enabled
+         * @default true
          */
         get mail_enabled(): boolean;
         set mail_enabled(val: boolean);
         /**
          * Whether mail resources are enabled
+         * @default true
          */
         get mailEnabled(): boolean;
         set mailEnabled(val: boolean);
@@ -13797,7 +13685,7 @@ export namespace EDataServer {
          * instead.
          * @param calendar_url calendar top URL, or `null`
          */
-        set_calendar_url(calendar_url?: string | null): void;
+        set_calendar_url(calendar_url: string | null): void;
         /**
          * Sets whether address book sources within the collection should be enabled.
          *
@@ -13819,7 +13707,7 @@ export namespace EDataServer {
          * instead.
          * @param contacts_url contacts top URL, or `null`
          */
-        set_contacts_url(contacts_url?: string | null): void;
+        set_contacts_url(contacts_url: string | null): void;
         /**
          * Sets the string used to uniquely identify the user account at the
          * service provider.  Often this is an email address or user name.
@@ -13829,7 +13717,7 @@ export namespace EDataServer {
          * set instead.
          * @param identity the collection identity, or `null`
          */
-        set_identity(identity?: string | null): void;
+        set_identity(identity: string | null): void;
         /**
          * Sets whether mail sources within the collection should be enabled.
          *
@@ -13871,8 +13759,14 @@ export namespace EDataServer {
 
         // Properties
 
+        /**
+         * @default true
+         */
         get include_me(): boolean;
         set include_me(val: boolean);
+        /**
+         * @default true
+         */
         get includeMe(): boolean;
         set includeMe(val: boolean);
 
@@ -13957,11 +13851,13 @@ export namespace EDataServer {
 
         /**
          * Include this address book in the contacts calendar
+         * @default false
          */
         get include_me(): boolean;
         set include_me(val: boolean);
         /**
          * Include this address book in the contacts calendar
+         * @default false
          */
         get includeMe(): boolean;
         set includeMe(val: boolean);
@@ -14115,7 +14011,7 @@ export namespace EDataServer {
          * @param source an {@link EDataServer.Source}, to lookup credentials for
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        ['delete'](source: Source, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        ['delete'](source: Source, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously deletes any previously stored credentials for `source`.
          *
@@ -14143,7 +14039,7 @@ export namespace EDataServer {
          */
         ['delete'](
             source: Source,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -14162,7 +14058,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
          */
-        delete_sync(source: Source, cancellable?: Gio.Cancellable | null): boolean;
+        delete_sync(source: Source, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously looks up for credentials for `source`.
          *
@@ -14172,7 +14068,7 @@ export namespace EDataServer {
          * @param source an {@link EDataServer.Source}, to lookup credentials for
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        lookup(source: Source, cancellable?: Gio.Cancellable | null): globalThis.Promise<NamedParameters>;
+        lookup(source: Source, cancellable: Gio.Cancellable | null): globalThis.Promise<NamedParameters>;
         /**
          * Asynchronously looks up for credentials for `source`.
          *
@@ -14200,7 +14096,7 @@ export namespace EDataServer {
          */
         lookup(
             source: Source,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<NamedParameters> | void;
         /**
@@ -14265,7 +14161,7 @@ export namespace EDataServer {
             source: Source,
             credentials: NamedParameters,
             permanently: boolean,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously stores the `credentials` for `source`. Note the actual stored
@@ -14306,7 +14202,7 @@ export namespace EDataServer {
             source: Source,
             credentials: NamedParameters,
             permanently: boolean,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -14333,7 +14229,7 @@ export namespace EDataServer {
             source: Source,
             credentials: NamedParameters,
             permanently: boolean,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Unregisters previously registered `provider_impl` with
@@ -14413,38 +14309,19 @@ export namespace EDataServer {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -14452,15 +14329,9 @@ export namespace EDataServer {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -14627,7 +14498,7 @@ export namespace EDataServer {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -14904,7 +14775,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_delete_sync(source: Source, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_delete_sync(source: Source, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Asks `provider_impl` to lookup for stored credentials for `source`.
          * The `out_credentials` is populated with them. If the result is not
@@ -14935,7 +14806,7 @@ export namespace EDataServer {
             source: Source,
             credentials: NamedParameters,
             permanently: boolean,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
 
         // Methods
@@ -14966,7 +14837,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
          */
-        delete_sync(source: Source, cancellable?: Gio.Cancellable | null): boolean;
+        delete_sync(source: Source, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Returns an {@link EDataServer.SourceCredentialsProvider} with which the `provider_impl` is associated.
          * @returns an {@link EDataServer.SourceCredentialsProvider}
@@ -15002,7 +14873,7 @@ export namespace EDataServer {
             source: Source,
             credentials: NamedParameters,
             permanently: boolean,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
     }
 
@@ -15238,14 +15109,14 @@ export namespace EDataServer {
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
-            account_id: string;
-            accountId: string;
-            address: string;
-            calendar_url: string;
-            calendarUrl: string;
-            contacts_url: string;
-            contactsUrl: string;
-            name: string;
+            account_id: string | null;
+            accountId: string | null;
+            address: string | null;
+            calendar_url: string | null;
+            calendarUrl: string | null;
+            contacts_url: string | null;
+            contactsUrl: string | null;
+            name: string | null;
         }
     }
 
@@ -15262,44 +15133,52 @@ export namespace EDataServer {
 
         /**
          * GNOME Online Account ID
+         * @default null
          */
-        get account_id(): string;
-        set account_id(val: string);
+        get account_id(): string | null;
+        set account_id(val: string | null);
         /**
          * GNOME Online Account ID
+         * @default null
          */
-        get accountId(): string;
-        set accountId(val: string);
+        get accountId(): string | null;
+        set accountId(val: string | null);
         /**
          * GNOME Online Account's original Address
+         * @default null
          */
-        get address(): string;
-        set address(val: string);
+        get address(): string | null;
+        set address(val: string | null);
         /**
          * GNOME Online Calendar URL
+         * @default null
          */
-        get calendar_url(): string;
-        set calendar_url(val: string);
+        get calendar_url(): string | null;
+        set calendar_url(val: string | null);
         /**
          * GNOME Online Calendar URL
+         * @default null
          */
-        get calendarUrl(): string;
-        set calendarUrl(val: string);
+        get calendarUrl(): string | null;
+        set calendarUrl(val: string | null);
         /**
          * GNOME Online Contacts URL
+         * @default null
          */
-        get contacts_url(): string;
-        set contacts_url(val: string);
+        get contacts_url(): string | null;
+        set contacts_url(val: string | null);
         /**
          * GNOME Online Contacts URL
+         * @default null
          */
-        get contactsUrl(): string;
-        set contactsUrl(val: string);
+        get contactsUrl(): string | null;
+        set contactsUrl(val: string | null);
         /**
          * GNOME Online Account's original Name
+         * @default null
          */
-        get name(): string;
-        set name(val: string);
+        get name(): string | null;
+        set name(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -15422,7 +15301,7 @@ export namespace EDataServer {
          * instead.
          * @param account_id the associated GNOME Online Account ID, or `null`
          */
-        set_account_id(account_id?: string | null): void;
+        set_account_id(account_id: string | null): void;
         /**
          * Sets the Address of the GNOME Online Account associated
          * with the {@link EDataServer.Source} to which `extension` belongs.
@@ -15432,7 +15311,7 @@ export namespace EDataServer {
          * instead.
          * @param address the associated GNOME Online Account's Address, or `null`
          */
-        set_address(address?: string | null): void;
+        set_address(address: string | null): void;
         /**
          * Sets the calendar URL of the GNOME Online Account associated
          * with the {@link EDataServer.Source} to which `extension` belongs.
@@ -15442,7 +15321,7 @@ export namespace EDataServer {
          * instead.
          * @param calendar_url the associated GNOME Online Account                calendar URL, or `null`
          */
-        set_calendar_url(calendar_url?: string | null): void;
+        set_calendar_url(calendar_url: string | null): void;
         /**
          * Sets the contacts URL of the GNOME Online Account associated
          * with the {@link EDataServer.Source} to which `extension` belongs.
@@ -15452,7 +15331,7 @@ export namespace EDataServer {
          * instead.
          * @param contacts_url the associated GNOME Online Account                contacts URL, or `null`
          */
-        set_contacts_url(contacts_url?: string | null): void;
+        set_contacts_url(contacts_url: string | null): void;
         /**
          * Sets the Name of the GNOME Online Account associated
          * with the {@link EDataServer.Source} to which `extension` belongs.
@@ -15462,7 +15341,7 @@ export namespace EDataServer {
          * instead.
          * @param name the associated GNOME Online Account's Name, or `null`
          */
-        set_name(name?: string | null): void;
+        set_name(name: string | null): void;
     }
 
     namespace SourceLDAP {
@@ -15503,16 +15382,19 @@ export namespace EDataServer {
 
         /**
          * LDAP authentication method
+         * @default EDataServer.SourceLDAPAuthentication.NONE
          */
         get authentication(): SourceLDAPAuthentication;
         set authentication(val: SourceLDAPAuthentication);
         /**
          * Allow browsing contacts
+         * @default false
          */
         get can_browse(): boolean;
         set can_browse(val: boolean);
         /**
          * Allow browsing contacts
+         * @default false
          */
         get canBrowse(): boolean;
         set canBrowse(val: boolean);
@@ -15523,6 +15405,7 @@ export namespace EDataServer {
         set filter(val: string);
         /**
          * Download limit
+         * @default 100
          */
         get limit(): number;
         set limit(val: number);
@@ -15538,11 +15421,13 @@ export namespace EDataServer {
         set rootDn(val: string);
         /**
          * LDAP search scope
+         * @default EDataServer.SourceLDAPScope.ONELEVEL
          */
         get scope(): SourceLDAPScope;
         set scope(val: SourceLDAPScope);
         /**
          * LDAP security method
+         * @default EDataServer.SourceLDAPSecurity.NONE
          */
         get security(): SourceLDAPSecurity;
         set security(val: SourceLDAPSecurity);
@@ -15636,10 +15521,10 @@ export namespace EDataServer {
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
-            custom_file: Gio.File;
-            customFile: Gio.File;
-            email_address: string;
-            emailAddress: string;
+            custom_file: Gio.File | null;
+            customFile: Gio.File | null;
+            email_address: string | null;
+            emailAddress: string | null;
             writable: boolean;
         }
     }
@@ -15655,25 +15540,28 @@ export namespace EDataServer {
         /**
          * Custom iCalendar file
          */
-        get custom_file(): Gio.File;
-        set custom_file(val: Gio.File);
+        get custom_file(): Gio.File | null;
+        set custom_file(val: Gio.File | null);
         /**
          * Custom iCalendar file
          */
-        get customFile(): Gio.File;
-        set customFile(val: Gio.File);
+        get customFile(): Gio.File | null;
+        set customFile(val: Gio.File | null);
         /**
          * Email address associated with the calendar
+         * @default null
          */
-        get email_address(): string;
-        set email_address(val: string);
+        get email_address(): string | null;
+        set email_address(val: string | null);
         /**
          * Email address associated with the calendar
+         * @default null
          */
-        get emailAddress(): string;
-        set emailAddress(val: string);
+        get emailAddress(): string | null;
+        set emailAddress(val: string | null);
         /**
          * Whether the file can be opened in writable mode
+         * @default true
          */
         get writable(): boolean;
         set writable(val: boolean);
@@ -15755,7 +15643,7 @@ export namespace EDataServer {
          * Set, or unset, when using `null`, the custom file for the `extension`.
          * @param custom_file a {@link Gio.File}, or `null`
          */
-        set_custom_file(custom_file?: Gio.File | null): void;
+        set_custom_file(custom_file: Gio.File | null): void;
         /**
          * Sets the email address for `extension`.
          *
@@ -15764,7 +15652,7 @@ export namespace EDataServer {
          * instead.
          * @param email_address an email address, or `null`
          */
-        set_email_address(email_address?: string | null): void;
+        set_email_address(email_address: string | null): void;
         /**
          * Set whether the custom file should be opened in writable mode.
          * The default is `true`. The file can be still opened for read-only,
@@ -15802,11 +15690,13 @@ export namespace EDataServer {
 
         /**
          * Policy for responding to MDN requests
+         * @default EDataServer.MdnResponsePolicy.ASK
          */
         get response_policy(): MdnResponsePolicy;
         set response_policy(val: MdnResponsePolicy);
         /**
          * Policy for responding to MDN requests
+         * @default EDataServer.MdnResponsePolicy.ASK
          */
         get responsePolicy(): MdnResponsePolicy;
         set responsePolicy(val: MdnResponsePolicy);
@@ -15879,11 +15769,11 @@ export namespace EDataServer {
         // Constructor properties interface
 
         interface ConstructorProps extends SourceBackend.ConstructorProps {
-            archive_folder: string;
-            archiveFolder: string;
+            archive_folder: string | null;
+            archiveFolder: string | null;
             builtin: boolean;
-            identity_uid: string;
-            identityUid: string;
+            identity_uid: string | null;
+            identityUid: string | null;
             mark_seen: ThreeState;
             markSeen: ThreeState;
             mark_seen_timeout: number;
@@ -15907,55 +15797,64 @@ export namespace EDataServer {
         /**
          * Folder to Archive messages in
          */
-        get archive_folder(): string;
-        set archive_folder(val: string);
+        get archive_folder(): string | null;
+        set archive_folder(val: string | null);
         /**
          * Folder to Archive messages in
          */
-        get archiveFolder(): string;
-        set archiveFolder(val: string);
+        get archiveFolder(): string | null;
+        set archiveFolder(val: string | null);
         /**
          * Whether the account is builtin
+         * @default false
          */
         get builtin(): boolean;
         set builtin(val: boolean);
         /**
          * ESource UID of a Mail Identity
+         * @default self
          */
-        get identity_uid(): string;
-        set identity_uid(val: string);
+        get identity_uid(): string | null;
+        set identity_uid(val: string | null);
         /**
          * ESource UID of a Mail Identity
+         * @default self
          */
-        get identityUid(): string;
-        set identityUid(val: string);
+        get identityUid(): string | null;
+        set identityUid(val: string | null);
         /**
          * Three-state option for Mark messages as read after N seconds
+         * @default EDataServer.ThreeState.INCONSISTENT
          */
         get mark_seen(): ThreeState;
         set mark_seen(val: ThreeState);
         /**
          * Three-state option for Mark messages as read after N seconds
+         * @default EDataServer.ThreeState.INCONSISTENT
          */
         get markSeen(): ThreeState;
         set markSeen(val: ThreeState);
         /**
          * Timeout in milliseconds for Mark messages as read after N seconds
+         * @default 1500
          */
         get mark_seen_timeout(): number;
         set mark_seen_timeout(val: number);
         /**
          * Timeout in milliseconds for Mark messages as read after N seconds
+         * @default 1500
          */
         get markSeenTimeout(): number;
         set markSeenTimeout(val: number);
         /**
          * Whether the account needs to do an initial setup
+         * @default true
          */
         get needs_initial_setup(): boolean;
         set needs_initial_setup(val: boolean);
         /**
          * Whether the account needs to do an initial setup
+         * @default true
          */
         get needsInitialSetup(): boolean;
         set needsInitialSetup(val: boolean);
@@ -16054,7 +15953,7 @@ export namespace EDataServer {
          * instead.
          * @param archive_folder an identifier for the archive folder, or `null`
          */
-        set_archive_folder(archive_folder?: string | null): void;
+        set_archive_folder(archive_folder: string | null): void;
         /**
          * Sets whether the account is a builtin account. See `e_source_mail_account_get_builtin()`
          * for more information about what it means.
@@ -16066,7 +15965,7 @@ export namespace EDataServer {
          * identity to be used for this account.
          * @param identity_uid the mail identity {@link EDataServer.Source.uid}, or `null`
          */
-        set_identity_uid(identity_uid?: string | null): void;
+        set_identity_uid(identity_uid: string | null): void;
         /**
          * Sets whether the messages in this account should be marked
          * as seen automatically. An inconsistent state means to use
@@ -16108,17 +16007,17 @@ export namespace EDataServer {
         interface ConstructorProps extends SourceExtension.ConstructorProps {
             bcc: string[];
             cc: string[];
-            drafts_folder: string;
-            draftsFolder: string;
-            language: string;
+            drafts_folder: string | null;
+            draftsFolder: string | null;
+            language: string | null;
             reply_style: SourceMailCompositionReplyStyle;
             replyStyle: SourceMailCompositionReplyStyle;
             sign_imip: boolean;
             signImip: boolean;
             start_bottom: ThreeState;
             startBottom: ThreeState;
-            templates_folder: string;
-            templatesFolder: string;
+            templates_folder: string | null;
+            templatesFolder: string | null;
             top_signature: ThreeState;
             topSignature: ThreeState;
         }
@@ -16147,66 +16046,79 @@ export namespace EDataServer {
         set cc(val: string[]);
         /**
          * Preferred folder for draft messages
+         * @default null
          */
-        get drafts_folder(): string;
-        set drafts_folder(val: string);
+        get drafts_folder(): string | null;
+        set drafts_folder(val: string | null);
         /**
          * Preferred folder for draft messages
+         * @default null
          */
-        get draftsFolder(): string;
-        set draftsFolder(val: string);
+        get draftsFolder(): string | null;
+        set draftsFolder(val: string | null);
         /**
          * Preferred language
+         * @default null
          */
-        get language(): string;
-        set language(val: string);
+        get language(): string | null;
+        set language(val: string | null);
         /**
          * What reply style to prefer
+         * @default EDataServer.SourceMailCompositionReplyStyle.DEFAULT
          */
         get reply_style(): SourceMailCompositionReplyStyle;
         set reply_style(val: SourceMailCompositionReplyStyle);
         /**
          * What reply style to prefer
+         * @default EDataServer.SourceMailCompositionReplyStyle.DEFAULT
          */
         get replyStyle(): SourceMailCompositionReplyStyle;
         set replyStyle(val: SourceMailCompositionReplyStyle);
         /**
          * Include iMIP messages when signing
+         * @default true
          */
         get sign_imip(): boolean;
         set sign_imip(val: boolean);
         /**
          * Include iMIP messages when signing
+         * @default true
          */
         get signImip(): boolean;
         set signImip(val: boolean);
         /**
          * Whether start at bottom on reply or forward
+         * @default EDataServer.ThreeState.INCONSISTENT
          */
         get start_bottom(): ThreeState;
         set start_bottom(val: ThreeState);
         /**
          * Whether start at bottom on reply or forward
+         * @default EDataServer.ThreeState.INCONSISTENT
          */
         get startBottom(): ThreeState;
         set startBottom(val: ThreeState);
         /**
          * Preferred folder for message templates
+         * @default null
          */
-        get templates_folder(): string;
-        set templates_folder(val: string);
+        get templates_folder(): string | null;
+        set templates_folder(val: string | null);
         /**
          * Preferred folder for message templates
+         * @default null
          */
-        get templatesFolder(): string;
-        set templatesFolder(val: string);
+        get templatesFolder(): string | null;
+        set templatesFolder(val: string | null);
         /**
          * Whether place signature at the top on reply or forward
+         * @default EDataServer.ThreeState.INCONSISTENT
          */
         get top_signature(): ThreeState;
         set top_signature(val: ThreeState);
         /**
          * Whether place signature at the top on reply or forward
+         * @default EDataServer.ThreeState.INCONSISTENT
          */
         get topSignature(): ThreeState;
         set topSignature(val: ThreeState);
@@ -16379,7 +16291,7 @@ export namespace EDataServer {
          * `null` is set instead.
          * @param drafts_folder an identifier for the preferred drafts                 folder, or `null`
          */
-        set_drafts_folder(drafts_folder?: string | null): void;
+        set_drafts_folder(drafts_folder: string | null): void;
         /**
          * Sets the preferred language by an identifier string, like "en_US".
          * Use `null` to unset any previous value.
@@ -16389,7 +16301,7 @@ export namespace EDataServer {
          * `null` is set instead.
          * @param language an identifier for the preferred language, or `null`
          */
-        set_language(language?: string | null): void;
+        set_language(language: string | null): void;
         /**
          * Sets preferred reply style to be used when replying
          * using the associated account. To unset the preference,
@@ -16419,7 +16331,7 @@ export namespace EDataServer {
          * `null` is set instead.
          * @param templates_folder an identifier for the preferred templates                    folder, or `null`
          */
-        set_templates_folder(templates_folder?: string | null): void;
+        set_templates_folder(templates_folder: string | null): void;
         /**
          * Sets whether place signature at top when replying or forwarding using the associated account.
          * To unset the preference, use the {@link EDataServer.ThreeState.INCONSISTENT}.
@@ -16443,14 +16355,14 @@ export namespace EDataServer {
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
-            address: string;
-            aliases: string;
-            name: string;
-            organization: string;
-            reply_to: string;
-            replyTo: string;
-            signature_uid: string;
-            signatureUid: string;
+            address: string | null;
+            aliases: string | null;
+            name: string | null;
+            organization: string | null;
+            reply_to: string | null;
+            replyTo: string | null;
+            signature_uid: string | null;
+            signatureUid: string | null;
         }
     }
 
@@ -16467,44 +16379,52 @@ export namespace EDataServer {
 
         /**
          * Sender's email address
+         * @default null
          */
-        get address(): string;
-        set address(val: string);
+        get address(): string | null;
+        set address(val: string | null);
         /**
          * Sender's email address aliases
+         * @default null
          */
-        get aliases(): string;
-        set aliases(val: string);
+        get aliases(): string | null;
+        set aliases(val: string | null);
         /**
          * Sender's name
+         * @default null
          */
-        get name(): string;
-        set name(val: string);
+        get name(): string | null;
+        set name(val: string | null);
         /**
          * Sender's organization
+         * @default null
          */
-        get organization(): string;
-        set organization(val: string);
+        get organization(): string | null;
+        set organization(val: string | null);
         /**
          * Sender's reply-to address
+         * @default null
          */
-        get reply_to(): string;
-        set reply_to(val: string);
+        get reply_to(): string | null;
+        set reply_to(val: string | null);
         /**
          * Sender's reply-to address
+         * @default null
          */
-        get replyTo(): string;
-        set replyTo(val: string);
+        get replyTo(): string | null;
+        set replyTo(val: string | null);
         /**
          * ESource UID of the sender's signature
+         * @default none
          */
-        get signature_uid(): string;
-        set signature_uid(val: string);
+        get signature_uid(): string | null;
+        set signature_uid(val: string | null);
         /**
          * ESource UID of the sender's signature
+         * @default none
          */
-        get signatureUid(): string;
-        set signatureUid(val: string);
+        get signatureUid(): string | null;
+        set signatureUid(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -16652,7 +16572,7 @@ export namespace EDataServer {
          * instead.
          * @param address the sender's email address, or `null`
          */
-        set_address(address?: string | null): void;
+        set_address(address: string | null): void;
         /**
          * Sets the email address aliases for this identity. These are comma-separated
          * email addresses which may or may not contain also different name.
@@ -16662,7 +16582,7 @@ export namespace EDataServer {
          * instead.
          * @param aliases the sender's email address aliases, or `null`
          */
-        set_aliases(aliases?: string | null): void;
+        set_aliases(aliases: string | null): void;
         /**
          * Sets the sender's name for this identity.
          *
@@ -16670,7 +16590,7 @@ export namespace EDataServer {
          * trailing whitespace.
          * @param name the sender's name, or `null`
          */
-        set_name(name?: string | null): void;
+        set_name(name: string | null): void;
         /**
          * Sets the sender's organization for this identity.
          *
@@ -16679,7 +16599,7 @@ export namespace EDataServer {
          * instead.
          * @param organization the sender's organization, or `null`
          */
-        set_organization(organization?: string | null): void;
+        set_organization(organization: string | null): void;
         /**
          * Sets the email address for this identity to which recipients should
          * send replies.
@@ -16689,7 +16609,7 @@ export namespace EDataServer {
          * set instead.
          * @param reply_to the sender's reply-to address, or `null`
          */
-        set_reply_to(reply_to?: string | null): void;
+        set_reply_to(reply_to: string | null): void;
         /**
          * Sets the {@link EDataServer.Source.uid} of an {@link EDataServer.Source} describing a mail signature.
          *
@@ -16699,7 +16619,7 @@ export namespace EDataServer {
          * to "none" if `signature_uid` is `null` or an empty string.
          * @param signature_uid the sender's signature ID, or `null`
          */
-        set_signature_uid(signature_uid?: string | null): void;
+        set_signature_uid(signature_uid: string | null): void;
     }
 
     namespace SourceMailSignature {
@@ -16714,8 +16634,8 @@ export namespace EDataServer {
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
             file: Gio.File;
-            mime_type: string;
-            mimeType: string;
+            mime_type: string | null;
+            mimeType: string | null;
         }
     }
 
@@ -16737,14 +16657,16 @@ export namespace EDataServer {
         get file(): Gio.File;
         /**
          * MIME type of the signature content
+         * @default null
          */
-        get mime_type(): string;
-        set mime_type(val: string);
+        get mime_type(): string | null;
+        set mime_type(val: string | null);
         /**
          * MIME type of the signature content
+         * @default null
          */
-        get mimeType(): string;
-        set mimeType(val: string);
+        get mimeType(): string | null;
+        set mimeType(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -16824,7 +16746,7 @@ export namespace EDataServer {
          * set instead.
          * @param mime_type a MIME type, or `null`
          */
-        set_mime_type(mime_type?: string | null): void;
+        set_mime_type(mime_type: string | null): void;
     }
 
     namespace SourceMailSubmission {
@@ -16842,10 +16764,10 @@ export namespace EDataServer {
         interface ConstructorProps extends SourceExtension.ConstructorProps {
             replies_to_origin_folder: boolean;
             repliesToOriginFolder: boolean;
-            sent_folder: string;
-            sentFolder: string;
-            transport_uid: string;
-            transportUid: string;
+            sent_folder: string | null;
+            sentFolder: string | null;
+            transport_uid: string | null;
+            transportUid: string | null;
             use_sent_folder: boolean;
             useSentFolder: boolean;
         }
@@ -16865,42 +16787,50 @@ export namespace EDataServer {
         /**
          * Whether to save replies to folder of the message being replied to, instead of
          * the Sent folder
+         * @default false
          */
         get replies_to_origin_folder(): boolean;
         set replies_to_origin_folder(val: boolean);
         /**
          * Whether to save replies to folder of the message being replied to, instead of
          * the Sent folder
+         * @default false
          */
         get repliesToOriginFolder(): boolean;
         set repliesToOriginFolder(val: boolean);
         /**
          * Preferred folder for sent messages
+         * @default null
          */
-        get sent_folder(): string;
-        set sent_folder(val: string);
+        get sent_folder(): string | null;
+        set sent_folder(val: string | null);
         /**
          * Preferred folder for sent messages
+         * @default null
          */
-        get sentFolder(): string;
-        set sentFolder(val: string);
+        get sentFolder(): string | null;
+        set sentFolder(val: string | null);
         /**
          * ESource UID of a Mail Transport
+         * @default null
          */
-        get transport_uid(): string;
-        set transport_uid(val: string);
+        get transport_uid(): string | null;
+        set transport_uid(val: string | null);
         /**
          * ESource UID of a Mail Transport
+         * @default null
          */
-        get transportUid(): string;
-        set transportUid(val: string);
+        get transportUid(): string | null;
+        set transportUid(val: string | null);
         /**
          * Whether to save sent messages to sent-folder
+         * @default true
          */
         get use_sent_folder(): boolean;
         set use_sent_folder(val: boolean);
         /**
          * Whether to save sent messages to sent-folder
+         * @default true
          */
         get useSentFolder(): boolean;
         set useSentFolder(val: boolean);
@@ -16998,13 +16928,13 @@ export namespace EDataServer {
          * instead.
          * @param sent_folder an identifier for the preferred sent folder,               or `null`
          */
-        set_sent_folder(sent_folder?: string | null): void;
+        set_sent_folder(sent_folder: string | null): void;
         /**
          * Sets the {@link EDataServer.Source.uid} of the {@link EDataServer.Source} that describes the mail
          * transport to be used for outgoing messages.
          * @param transport_uid the mail transport {@link EDataServer.Source.uid}, or `null`
          */
-        set_transport_uid(transport_uid?: string | null): void;
+        set_transport_uid(transport_uid: string | null): void;
         /**
          * Sets whether save messages to the sent folder at all.
          * @param use_sent_folder the value to set
@@ -17161,11 +17091,13 @@ export namespace EDataServer {
 
         /**
          * Keep remote content synchronized locally
+         * @default false
          */
         get stay_synchronized(): boolean;
         set stay_synchronized(val: boolean);
         /**
          * Keep remote content synchronized locally
+         * @default false
          */
         get staySynchronized(): boolean;
         set staySynchronized(val: boolean);
@@ -17282,111 +17214,133 @@ export namespace EDataServer {
 
         /**
          * Always trust keys in my keyring
+         * @default false
          */
         get always_trust(): boolean;
         set always_trust(val: boolean);
         /**
          * Always trust keys in my keyring
+         * @default false
          */
         get alwaysTrust(): boolean;
         set alwaysTrust(val: boolean);
         /**
          * Ask before sending public key in messages
+         * @default true
          */
         get ask_send_public_key(): boolean;
         set ask_send_public_key(val: boolean);
         /**
          * Ask before sending public key in messages
+         * @default true
          */
         get askSendPublicKey(): boolean;
         set askSendPublicKey(val: boolean);
         /**
          * Encrypt outgoing messages by default
+         * @default false
          */
         get encrypt_by_default(): boolean;
         set encrypt_by_default(val: boolean);
         /**
          * Encrypt outgoing messages by default
+         * @default false
          */
         get encryptByDefault(): boolean;
         set encryptByDefault(val: boolean);
         /**
          * Always encrypt to myself
+         * @default true
          */
         get encrypt_to_self(): boolean;
         set encrypt_to_self(val: boolean);
         /**
          * Always encrypt to myself
+         * @default true
          */
         get encryptToSelf(): boolean;
         set encryptToSelf(val: boolean);
         /**
          * PGP/GPG Key ID
+         * @default null
          */
         get key_id(): string;
         set key_id(val: string);
         /**
          * PGP/GPG Key ID
+         * @default null
          */
         get keyId(): string;
         set keyId(val: string);
         /**
          * Locate keys in WKD for encryption
+         * @default true
          */
         get locate_keys(): boolean;
         set locate_keys(val: boolean);
         /**
          * Locate keys in WKD for encryption
+         * @default true
          */
         get locateKeys(): boolean;
         set locateKeys(val: boolean);
         /**
          * Prefer inline sign/encrypt
+         * @default false
          */
         get prefer_inline(): boolean;
         set prefer_inline(val: boolean);
         /**
          * Prefer inline sign/encrypt
+         * @default false
          */
         get preferInline(): boolean;
         set preferInline(val: boolean);
         /**
          * Send whether prefers encryption together with the public key in messages
+         * @default true
          */
         get send_prefer_encrypt(): boolean;
         set send_prefer_encrypt(val: boolean);
         /**
          * Send whether prefers encryption together with the public key in messages
+         * @default true
          */
         get sendPreferEncrypt(): boolean;
         set sendPreferEncrypt(val: boolean);
         /**
          * Send public key in messages
+         * @default true
          */
         get send_public_key(): boolean;
         set send_public_key(val: boolean);
         /**
          * Send public key in messages
+         * @default true
          */
         get sendPublicKey(): boolean;
         set sendPublicKey(val: boolean);
         /**
          * Sign outgoing messages by default
+         * @default false
          */
         get sign_by_default(): boolean;
         set sign_by_default(val: boolean);
         /**
          * Sign outgoing messages by default
+         * @default false
          */
         get signByDefault(): boolean;
         set signByDefault(val: boolean);
         /**
          * Hash algorithm used to sign messages
+         * @default null
          */
         get signing_algorithm(): string;
         set signing_algorithm(val: string);
         /**
          * Hash algorithm used to sign messages
+         * @default null
          */
         get signingAlgorithm(): string;
         set signingAlgorithm(val: string);
@@ -17647,101 +17601,121 @@ export namespace EDataServer {
 
         /**
          * Proxy autoconfiguration URL
+         * @default null
          */
         get autoconfig_url(): string;
         set autoconfig_url(val: string);
         /**
          * Proxy autoconfiguration URL
+         * @default null
          */
         get autoconfigUrl(): string;
         set autoconfigUrl(val: string);
         /**
          * FTP proxy host name
+         * @default null
          */
         get ftp_host(): string;
         set ftp_host(val: string);
         /**
          * FTP proxy host name
+         * @default null
          */
         get ftpHost(): string;
         set ftpHost(val: string);
         /**
          * FTP proxy port
+         * @default 0
          */
         get ftp_port(): number;
         set ftp_port(val: number);
         /**
          * FTP proxy port
+         * @default 0
          */
         get ftpPort(): number;
         set ftpPort(val: number);
         /**
          * HTTP proxy password
+         * @default null
          */
         get http_auth_password(): string;
         set http_auth_password(val: string);
         /**
          * HTTP proxy password
+         * @default null
          */
         get httpAuthPassword(): string;
         set httpAuthPassword(val: string);
         /**
          * HTTP proxy username
+         * @default null
          */
         get http_auth_user(): string;
         set http_auth_user(val: string);
         /**
          * HTTP proxy username
+         * @default null
          */
         get httpAuthUser(): string;
         set httpAuthUser(val: string);
         /**
          * HTTP proxy host name
+         * @default null
          */
         get http_host(): string;
         set http_host(val: string);
         /**
          * HTTP proxy host name
+         * @default null
          */
         get httpHost(): string;
         set httpHost(val: string);
         /**
          * HTTP proxy port
+         * @default 8080
          */
         get http_port(): number;
         set http_port(val: number);
         /**
          * HTTP proxy port
+         * @default 8080
          */
         get httpPort(): number;
         set httpPort(val: number);
         /**
          * Whether HTTP proxy server connections require authentication
+         * @default false
          */
         get http_use_auth(): boolean;
         set http_use_auth(val: boolean);
         /**
          * Whether HTTP proxy server connections require authentication
+         * @default false
          */
         get httpUseAuth(): boolean;
         set httpUseAuth(val: boolean);
         /**
          * Secure HTTP proxy host name
+         * @default null
          */
         get https_host(): string;
         set https_host(val: string);
         /**
          * Secure HTTP proxy host name
+         * @default null
          */
         get httpsHost(): string;
         set httpsHost(val: string);
         /**
          * Secure HTTP proxy port
+         * @default 0
          */
         get https_port(): number;
         set https_port(val: number);
         /**
          * Secure HTTP proxy port
+         * @default 0
          */
         get httpsPort(): number;
         set httpsPort(val: number);
@@ -17757,26 +17731,31 @@ export namespace EDataServer {
         set ignoreHosts(val: string[]);
         /**
          * Proxy configuration method
+         * @default EDataServer.ProxyMethod.DEFAULT
          */
         get method(): ProxyMethod;
         set method(val: ProxyMethod);
         /**
          * SOCKS proxy host name
+         * @default null
          */
         get socks_host(): string;
         set socks_host(val: string);
         /**
          * SOCKS proxy host name
+         * @default null
          */
         get socksHost(): string;
         set socksHost(val: string);
         /**
          * SOCKS proxy port
+         * @default 0
          */
         get socks_port(): number;
         set socks_port(val: number);
         /**
          * SOCKS proxy port
+         * @default 0
          */
         get socksPort(): number;
         set socksPort(val: number);
@@ -18109,26 +18088,31 @@ export namespace EDataServer {
 
         /**
          * Whether to periodically refresh
+         * @default true
          */
         get enabled(): boolean;
         set enabled(val: boolean);
         /**
          * Whether to enable refresh on metered network
+         * @default true
          */
         get enabled_on_metered_network(): boolean;
         set enabled_on_metered_network(val: boolean);
         /**
          * Whether to enable refresh on metered network
+         * @default true
          */
         get enabledOnMeteredNetwork(): boolean;
         set enabledOnMeteredNetwork(val: boolean);
         /**
          * Refresh interval in minutes
+         * @default 60
          */
         get interval_minutes(): number;
         set interval_minutes(val: number);
         /**
          * Refresh interval in minutes
+         * @default 60
          */
         get intervalMinutes(): number;
         set intervalMinutes(val: number);
@@ -18394,7 +18378,7 @@ export namespace EDataServer {
 
         static new_finish(...args: never[]): any;
 
-        static new_sync(cancellable?: Gio.Cancellable | null): SourceRegistry;
+        static new_sync(cancellable: Gio.Cancellable | null): SourceRegistry;
 
         // Signals
 
@@ -18439,8 +18423,8 @@ export namespace EDataServer {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         static ['new'](
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<SourceRegistry> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<SourceRegistry> | null,
         ): void;
 
         // Virtual methods
@@ -18511,7 +18495,7 @@ export namespace EDataServer {
          * @param source an {@link EDataServer.Source} with changes to commit
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        commit_source(source: Source, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        commit_source(source: Source, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * See `e_source_registry_commit_source_sync()` for details.
          *
@@ -18539,7 +18523,7 @@ export namespace EDataServer {
          */
         commit_source(
             source: Source,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -18569,7 +18553,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          */
-        commit_source_sync(source: Source, cancellable?: Gio.Cancellable | null): boolean;
+        commit_source_sync(source: Source, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously requests the D-Bus service create new key files for each
          * {@link EDataServer.Source} in `list_of_sources`.  Each list element must be a scratch
@@ -18581,7 +18565,7 @@ export namespace EDataServer {
          * @param list_of_sources a list of {@link EDataServer.Source} instances with no {@link Gio.DBusObject}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        create_sources(list_of_sources: Source[], cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        create_sources(list_of_sources: Source[], cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously requests the D-Bus service create new key files for each
          * {@link EDataServer.Source} in `list_of_sources`.  Each list element must be a scratch
@@ -18613,7 +18597,7 @@ export namespace EDataServer {
          */
         create_sources(
             list_of_sources: Source[],
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -18634,13 +18618,13 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          */
-        create_sources_sync(list_of_sources: Source[], cancellable?: Gio.Cancellable | null): boolean;
+        create_sources_sync(list_of_sources: Source[], cancellable: Gio.Cancellable | null): boolean;
         /**
          * Handy debugging function that uses `e_source_registry_build_display_tree()`
          * to print a tree of registered sources to standard output.
          * @param extension_name an extension name, or `null`
          */
-        debug_dump(extension_name?: string | null): void;
+        debug_dump(extension_name: string | null): void;
         /**
          * Compares `source`'s {@link EDataServer.Source.display_name} against other sources having
          * an {@link EDataServer.SourceExtension} named `extension_name`, if given, or else against
@@ -18660,7 +18644,7 @@ export namespace EDataServer {
          * @param extension_name an extension name, or `null`
          * @returns a unique display name for `source`
          */
-        dup_unique_display_name(source: Source, extension_name?: string | null): string;
+        dup_unique_display_name(source: Source, extension_name: string | null): string;
         /**
          * Examines `source` and its ancestors and returns the "deepest" {@link EDataServer.Source}
          * having an {@link EDataServer.SourceExtension} with the given `extension_name`.  If neither
@@ -18708,7 +18692,7 @@ export namespace EDataServer {
          * @param extension_name an extension name, or `null`
          * @returns a sorted list of sources
          */
-        list_enabled(extension_name?: string | null): Source[];
+        list_enabled(extension_name: string | null): Source[];
         /**
          * Returns a list of registered sources, sorted by display name.  If
          * `extension_name` is given, restrict the list to sources having that
@@ -18728,7 +18712,7 @@ export namespace EDataServer {
          * @param extension_name an extension name, or `null`
          * @returns a sorted list of sources
          */
-        list_sources(extension_name?: string | null): Source[];
+        list_sources(extension_name: string | null): Source[];
         /**
          * Returns the built-in address book {@link EDataServer.Source}.
          *
@@ -18905,7 +18889,7 @@ export namespace EDataServer {
          * @param source_uid UID of a collection {@link EDataServer.Source} whose backend to refresh
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        refresh_backend(source_uid: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        refresh_backend(source_uid: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously requests the D-Bus service to refresh collection backend
          * for an {@link EDataServer.Source} with UID `source_uid`. The result means that the refresh
@@ -18939,7 +18923,7 @@ export namespace EDataServer {
          */
         refresh_backend(
             source_uid: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -18961,21 +18945,21 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded
          */
-        refresh_backend_sync(source_uid: string, cancellable?: Gio.Cancellable | null): boolean;
+        refresh_backend_sync(source_uid: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Sets `default_source` as the default address book.  If `default_source`
          * is `null`, the default address book is reset to the built-in address book.
          * This setting will persist across sessions until changed.
          * @param default_source an address book {@link EDataServer.Source}, or `null`
          */
-        set_default_address_book(default_source?: Source | null): void;
+        set_default_address_book(default_source: Source | null): void;
         /**
          * Sets `default_source` as the default calendar.  If `default_source`
          * is `null`, the default calendar is reset to the built-in calendar.
          * This setting will persist across sessions until changed.
          * @param default_source a calendar {@link EDataServer.Source}, or `null`
          */
-        set_default_calendar(default_source?: Source | null): void;
+        set_default_calendar(default_source: Source | null): void;
         /**
          * This is a convenience function to set a default {@link EDataServer.Source} based on
          * `extension_name`.  This only works with a subset of extension names.
@@ -19009,35 +18993,35 @@ export namespace EDataServer {
          * @param extension_name an extension name
          * @param default_source an {@link EDataServer.Source}, or `null`
          */
-        set_default_for_extension_name(extension_name: string, default_source?: Source | null): void;
+        set_default_for_extension_name(extension_name: string, default_source: Source | null): void;
         /**
          * Sets `default_source` as the default mail account.  If `default_source`
          * is `null`, the default mail account is reset to the built-in mail account.
          * This setting will persist across sessions until changed.
          * @param default_source a mail account {@link EDataServer.Source}, or `null`
          */
-        set_default_mail_account(default_source?: Source | null): void;
+        set_default_mail_account(default_source: Source | null): void;
         /**
          * Sets `default_source` as the default mail identity.  If `default_source`
          * is `null`, the next request for the default mail identity will use the
          * fallbacks described in `e_source_registry_ref_default_mail_identity()`.
          * @param default_source a mail identity {@link EDataServer.Source}, or `null`
          */
-        set_default_mail_identity(default_source?: Source | null): void;
+        set_default_mail_identity(default_source: Source | null): void;
         /**
          * Sets `default_source` as the default memo list.  If `default_source`
          * is `null`, the default memo list is reset to the built-in memo list.
          * This setting will persist across sessions until changed.
          * @param default_source a memo list {@link EDataServer.Source}, or `null`
          */
-        set_default_memo_list(default_source?: Source | null): void;
+        set_default_memo_list(default_source: Source | null): void;
         /**
          * Sets `default_source` as the default task list.  If `default_source`
          * is `null`, the default task list is reset to the built-in task list.
          * This setting will persist across sessions until changed.
          * @param default_source a task list {@link EDataServer.Source}, or `null`
          */
-        set_default_task_list(default_source?: Source | null): void;
+        set_default_task_list(default_source: Source | null): void;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -19078,7 +19062,7 @@ export namespace EDataServer {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -19168,7 +19152,7 @@ export namespace EDataServer {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -19229,8 +19213,8 @@ export namespace EDataServer {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -19281,7 +19265,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -19324,7 +19308,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -19372,38 +19356,19 @@ export namespace EDataServer {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -19411,15 +19376,9 @@ export namespace EDataServer {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -19586,7 +19545,7 @@ export namespace EDataServer {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -19813,8 +19772,8 @@ export namespace EDataServer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            extension_name: string;
-            extensionName: string;
+            extension_name: string | null;
+            extensionName: string | null;
             registry: SourceRegistry;
         }
     }
@@ -19836,8 +19795,9 @@ export namespace EDataServer {
          * signal.
          * @since 3.26
          * @construct-only
+         * @default null
          */
-        get extension_name(): string;
+        get extension_name(): string | null;
         /**
          * Optional extension name, to consider sources with only.
          * It can be `null`, to check for all sources. This is
@@ -19845,8 +19805,9 @@ export namespace EDataServer {
          * signal.
          * @since 3.26
          * @construct-only
+         * @default null
          */
-        get extensionName(): string;
+        get extensionName(): string | null;
         /**
          * The {@link EDataServer.SourceRegistry} manages {@link EDataServer.Source} instances.
          * @since 3.26
@@ -19869,7 +19830,7 @@ export namespace EDataServer {
 
         _init(...args: any[]): void;
 
-        static ['new'](registry: SourceRegistry, extension_name?: string | null): SourceRegistryWatcher;
+        static ['new'](registry: SourceRegistry, extension_name: string | null): SourceRegistryWatcher;
 
         // Signals
 
@@ -19941,7 +19902,7 @@ export namespace EDataServer {
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
-            identity: string;
+            identity: string | null;
         }
     }
 
@@ -19958,9 +19919,10 @@ export namespace EDataServer {
 
         /**
          * Resource identity
+         * @default null
          */
-        get identity(): string;
-        set identity(val: string);
+        get identity(): string | null;
+        set identity(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -20023,7 +19985,7 @@ export namespace EDataServer {
          * instead.
          * @param identity the identity of a remote resource
          */
-        set_identity(identity?: string | null): void;
+        set_identity(identity: string | null): void;
     }
 
     namespace SourceRevisionGuards {
@@ -20053,6 +20015,7 @@ export namespace EDataServer {
 
         /**
          * Whether to enable or disable the revision guards
+         * @default false
          */
         get enabled(): boolean;
         set enabled(val: boolean);
@@ -20130,14 +20093,14 @@ export namespace EDataServer {
             encryptByDefault: boolean;
             encrypt_to_self: boolean;
             encryptToSelf: boolean;
-            encryption_certificate: string;
-            encryptionCertificate: string;
+            encryption_certificate: string | null;
+            encryptionCertificate: string | null;
             sign_by_default: boolean;
             signByDefault: boolean;
-            signing_algorithm: string;
-            signingAlgorithm: string;
-            signing_certificate: string;
-            signingCertificate: string;
+            signing_algorithm: string | null;
+            signingAlgorithm: string | null;
+            signing_certificate: string | null;
+            signingCertificate: string | null;
         }
     }
 
@@ -20154,64 +20117,76 @@ export namespace EDataServer {
 
         /**
          * Encrypt outgoing messages by default
+         * @default false
          */
         get encrypt_by_default(): boolean;
         set encrypt_by_default(val: boolean);
         /**
          * Encrypt outgoing messages by default
+         * @default false
          */
         get encryptByDefault(): boolean;
         set encryptByDefault(val: boolean);
         /**
          * Always encrypt to myself
+         * @default true
          */
         get encrypt_to_self(): boolean;
         set encrypt_to_self(val: boolean);
         /**
          * Always encrypt to myself
+         * @default true
          */
         get encryptToSelf(): boolean;
         set encryptToSelf(val: boolean);
         /**
          * S/MIME certificate for encrypting messages
+         * @default null
          */
-        get encryption_certificate(): string;
-        set encryption_certificate(val: string);
+        get encryption_certificate(): string | null;
+        set encryption_certificate(val: string | null);
         /**
          * S/MIME certificate for encrypting messages
+         * @default null
          */
-        get encryptionCertificate(): string;
-        set encryptionCertificate(val: string);
+        get encryptionCertificate(): string | null;
+        set encryptionCertificate(val: string | null);
         /**
          * Sign outgoing messages by default
+         * @default false
          */
         get sign_by_default(): boolean;
         set sign_by_default(val: boolean);
         /**
          * Sign outgoing messages by default
+         * @default false
          */
         get signByDefault(): boolean;
         set signByDefault(val: boolean);
         /**
          * Hash algorithm used to sign messages
+         * @default null
          */
-        get signing_algorithm(): string;
-        set signing_algorithm(val: string);
+        get signing_algorithm(): string | null;
+        set signing_algorithm(val: string | null);
         /**
          * Hash algorithm used to sign messages
+         * @default null
          */
-        get signingAlgorithm(): string;
-        set signingAlgorithm(val: string);
+        get signingAlgorithm(): string | null;
+        set signingAlgorithm(val: string | null);
         /**
          * S/MIME certificate for signing messages
+         * @default null
          */
-        get signing_certificate(): string;
-        set signing_certificate(val: string);
+        get signing_certificate(): string | null;
+        set signing_certificate(val: string | null);
         /**
          * S/MIME certificate for signing messages
+         * @default null
          */
-        get signingCertificate(): string;
-        set signingCertificate(val: string);
+        get signingCertificate(): string | null;
+        set signingCertificate(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -20325,7 +20300,7 @@ export namespace EDataServer {
          * If the `encryption_certificate` string is empty, `null` is set instead.
          * @param encryption_certificate the certificate name used to encrypt                          messages, or `null`
          */
-        set_encryption_certificate(encryption_certificate?: string | null): void;
+        set_encryption_certificate(encryption_certificate: string | null): void;
         /**
          * Sets whether to digitally sign outgoing messages by default using
          * S/MIME software such as Mozilla Network Security Services (NSS).
@@ -20341,14 +20316,14 @@ export namespace EDataServer {
          * `null` is set instead.
          * @param signing_algorithm the signing algorithm for outgoing                     messages, or `null`
          */
-        set_signing_algorithm(signing_algorithm?: string | null): void;
+        set_signing_algorithm(signing_algorithm: string | null): void;
         /**
          * Sets the S/MIME certificate name used to sign messages.
          *
          * If the `signing_certificate` string is empty, `null` is set instead.
          * @param signing_certificate the certificate name used to sign                       messages, or `null`
          */
-        set_signing_certificate(signing_certificate?: string | null): void;
+        set_signing_certificate(signing_certificate: string | null): void;
     }
 
     namespace SourceSecurity {
@@ -20380,11 +20355,13 @@ export namespace EDataServer {
 
         /**
          * Security method
+         * @default none
          */
         get method(): string;
         set method(val: string);
         /**
          * Secure the network connection
+         * @default false
          */
         get secure(): boolean;
         set secure(val: boolean);
@@ -20460,7 +20437,7 @@ export namespace EDataServer {
          * to "none" if `method` is `null` or an empty string.
          * @param method security method, or `null`
          */
-        set_method(method?: string | null): void;
+        set_method(method: string | null): void;
         /**
          * This function provides a simpler way to set {@link EDataServer.SourceSecurity.method}
          * when using a secure network connection is a yes or no option and the
@@ -20486,7 +20463,7 @@ export namespace EDataServer {
         // Constructor properties interface
 
         interface ConstructorProps extends SourceBackend.ConstructorProps {
-            color: string;
+            color: string | null;
             order: number;
             selected: boolean;
         }
@@ -20505,16 +20482,19 @@ export namespace EDataServer {
 
         /**
          * Textual specification of a color
+         * @default #62a0ea
          */
-        get color(): string;
-        set color(val: string);
+        get color(): string | null;
+        set color(val: string | null);
         /**
          * Preferred sorting order
+         * @default 0
          */
         get order(): number;
         set order(val: number);
         /**
          * Whether the data source is selected
+         * @default true
          */
         get selected(): boolean;
         set selected(val: boolean);
@@ -20595,7 +20575,7 @@ export namespace EDataServer {
          * instead.
          * @param color a color specification, or `null`
          */
-        set_color(color?: string | null): void;
+        set_color(color: string | null): void;
         /**
          * Sets the sorting order for the {@link EDataServer.Source} to which `extension` belongs.
          * @param order the sorting order
@@ -20699,11 +20679,13 @@ export namespace EDataServer {
 
         /**
          * Ubuntu Online Account ID
+         * @default 0
          */
         get account_id(): number;
         set account_id(val: number);
         /**
          * Ubuntu Online Account ID
+         * @default 0
          */
         get accountId(): number;
         set accountId(val: number);
@@ -20786,11 +20768,13 @@ export namespace EDataServer {
 
         /**
          * Weather location code
+         * @default null
          */
         get location(): string;
         set location(val: string);
         /**
          * Fahrenheit, Centigrade or Kelvin units
+         * @default EDataServer.SourceWeatherUnits.CENTIGRADE
          */
         get units(): SourceWeatherUnits;
         set units(val: SourceWeatherUnits);
@@ -20856,8 +20840,8 @@ export namespace EDataServer {
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
-            default_ext: string;
-            defaultExt: string;
+            default_ext: string | null;
+            defaultExt: string | null;
         }
     }
 
@@ -20874,14 +20858,16 @@ export namespace EDataServer {
 
         /**
          * Default file extension for new notes
+         * @default .md
          */
-        get default_ext(): string;
-        set default_ext(val: string);
+        get default_ext(): string | null;
+        set default_ext(val: string | null);
         /**
          * Default file extension for new notes
+         * @default .md
          */
-        get defaultExt(): string;
-        set defaultExt(val: string);
+        get defaultExt(): string | null;
+        set defaultExt(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -20942,7 +20928,7 @@ export namespace EDataServer {
          * instead.
          * @param default_ext a default file extension, or `null`
          */
-        set_default_ext(default_ext?: string | null): void;
+        set_default_ext(default_ext: string | null): void;
     }
 
     namespace SourceWebdav {
@@ -20970,20 +20956,20 @@ export namespace EDataServer {
             avoidIfmatch: boolean;
             calendar_auto_schedule: boolean;
             calendarAutoSchedule: boolean;
-            color: string;
-            display_name: string;
-            displayName: string;
-            email_address: string;
-            emailAddress: string;
+            color: string | null;
+            display_name: string | null;
+            displayName: string | null;
+            email_address: string | null;
+            emailAddress: string | null;
             limit_download_days: number;
             limitDownloadDays: number;
             order: number;
-            resource_path: string;
-            resourcePath: string;
-            resource_query: string;
-            resourceQuery: string;
-            ssl_trust: string;
-            sslTrust: string;
+            resource_path: string | null;
+            resourcePath: string | null;
+            resource_query: string | null;
+            resourceQuery: string | null;
+            ssl_trust: string | null;
+            sslTrust: string | null;
             timeout: number;
             uri: GLib.Uri;
         }
@@ -21002,98 +20988,112 @@ export namespace EDataServer {
 
         /**
          * Work around a bug in old Apache servers
+         * @default false
          */
         get avoid_ifmatch(): boolean;
         set avoid_ifmatch(val: boolean);
         /**
          * Work around a bug in old Apache servers
+         * @default false
          */
         get avoidIfmatch(): boolean;
         set avoidIfmatch(val: boolean);
         /**
          * Whether the server handles meeting invitations (CalDAV-only)
+         * @default false
          */
         get calendar_auto_schedule(): boolean;
         set calendar_auto_schedule(val: boolean);
         /**
          * Whether the server handles meeting invitations (CalDAV-only)
+         * @default false
          */
         get calendarAutoSchedule(): boolean;
         set calendarAutoSchedule(val: boolean);
         /**
          * Color of the WebDAV resource
          */
-        get color(): string;
-        set color(val: string);
+        get color(): string | null;
+        set color(val: string | null);
         /**
          * Display name of the WebDAV resource
          */
-        get display_name(): string;
-        set display_name(val: string);
+        get display_name(): string | null;
+        set display_name(val: string | null);
         /**
          * Display name of the WebDAV resource
          */
-        get displayName(): string;
-        set displayName(val: string);
+        get displayName(): string | null;
+        set displayName(val: string | null);
         /**
          * The user's email address
          */
-        get email_address(): string;
-        set email_address(val: string);
+        get email_address(): string | null;
+        set email_address(val: string | null);
         /**
          * The user's email address
          */
-        get emailAddress(): string;
-        set emailAddress(val: string);
+        get emailAddress(): string | null;
+        set emailAddress(val: string | null);
         /**
          * Limit how many past days can be downloaded. Zero means unlimited.
          * @since 3.60
+         * @default 0
          */
         get limit_download_days(): number;
         set limit_download_days(val: number);
         /**
          * Limit how many past days can be downloaded. Zero means unlimited.
          * @since 3.60
+         * @default 0
          */
         get limitDownloadDays(): number;
         set limitDownloadDays(val: number);
         /**
          * A sorting order of the resource
+         * @default 4294967295
          */
         get order(): number;
         set order(val: number);
         /**
          * Absolute path to a WebDAV resource
+         * @default null
          */
-        get resource_path(): string;
-        set resource_path(val: string);
+        get resource_path(): string | null;
+        set resource_path(val: string | null);
         /**
          * Absolute path to a WebDAV resource
+         * @default null
          */
-        get resourcePath(): string;
-        set resourcePath(val: string);
+        get resourcePath(): string | null;
+        set resourcePath(val: string | null);
         /**
          * Query to access a WebDAV resource
+         * @default null
          */
-        get resource_query(): string;
-        set resource_query(val: string);
+        get resource_query(): string | null;
+        set resource_query(val: string | null);
         /**
          * Query to access a WebDAV resource
+         * @default null
          */
-        get resourceQuery(): string;
-        set resourceQuery(val: string);
+        get resourceQuery(): string | null;
+        set resourceQuery(val: string | null);
         /**
          * SSL/TLS certificate trust setting, for invalid server certificates
+         * @default null
          */
-        get ssl_trust(): string;
-        set ssl_trust(val: string);
+        get ssl_trust(): string | null;
+        set ssl_trust(val: string | null);
         /**
          * SSL/TLS certificate trust setting, for invalid server certificates
+         * @default null
          */
-        get sslTrust(): string;
-        set sslTrust(val: string);
+        get sslTrust(): string | null;
+        set sslTrust(val: string | null);
         /**
          * Connection timeout, in seconds
+         * @default 30
          */
         get timeout(): number;
         set timeout(val: number);
@@ -21305,7 +21305,7 @@ export namespace EDataServer {
          * instead.
          * @param color the color of the WebDAV resource, or `null`
          */
-        set_color(color?: string | null): void;
+        set_color(color: string | null): void;
         /**
          * Updates the last known display name of a WebDAV resource, which may
          * differ from the {@link EDataServer.Source.display_name} property of the {@link EDataServer.Source} to which
@@ -21316,7 +21316,7 @@ export namespace EDataServer {
          * instead.
          * @param display_name the display name of the WebDAV resource,                or `null`
          */
-        set_display_name(display_name?: string | null): void;
+        set_display_name(display_name: string | null): void;
         /**
          * Sets the user's email address which can be passed to a CalDAV server if
          * the user wishes to receive scheduling messages.
@@ -21326,7 +21326,7 @@ export namespace EDataServer {
          * instead.
          * @param email_address the user's email address, or `null`
          */
-        set_email_address(email_address?: string | null): void;
+        set_email_address(email_address: string | null): void;
         /**
          * Limit how many past days can be downloaded. Zero means unlimited.
          * @param value a value, in days
@@ -21345,7 +21345,7 @@ export namespace EDataServer {
          * instead.
          * @param resource_path the absolute path to a WebDAV resource,                 or `null`
          */
-        set_resource_path(resource_path?: string | null): void;
+        set_resource_path(resource_path: string | null): void;
         /**
          * Sets the URI query required to access a resource on a WebDAV server.
          *
@@ -21359,13 +21359,13 @@ export namespace EDataServer {
          * instead.
          * @param resource_query the query to access a WebDAV resource,                  or `null`
          */
-        set_resource_query(resource_query?: string | null): void;
+        set_resource_query(resource_query: string | null): void;
         /**
          * Sets the SSL/TLS certificate trust. See `e_source_webdav_get_ssl_trust()`
          * for more infomation about its content and how to use it.
          * @param ssl_trust the ssl_trust to store, or `null` to unset
          */
-        set_ssl_trust(ssl_trust?: string | null): void;
+        set_ssl_trust(ssl_trust: string | null): void;
         /**
          * Set the SSL trust response, as {@link EDataServer.TrustPromptResponse}, while keeping
          * the certificate and host information as before. The function does
@@ -21498,7 +21498,7 @@ export namespace EDataServer {
          * The function does nothing, if `privileges` is `null`.
          * @param privileges a tree of {@link EDataServer.WebDAVPrivilege} structures
          */
-        static util_free_privileges(privileges?: GLib.Node | null): void;
+        static util_free_privileges(privileges: GLib.Node | null): void;
         /**
          * Compares two hrefs and return whether they reference
          * the same item on the server. The comparison is done in
@@ -21529,7 +21529,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        acl_sync(uri: string | null, xml: XmlDocument, cancellable?: Gio.Cancellable | null): boolean;
+        acl_sync(uri: string | null, xml: XmlDocument, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Copies a resource identified by `source_uri` to `destination_uri` on the server.
          * The `source_uri` can reference also collections, in which case the `depth` influences
@@ -21547,7 +21547,7 @@ export namespace EDataServer {
             destination_uri: string,
             depth: string,
             can_overwrite: boolean,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Deletes a resource identified by `uri` on the server. The URI can
@@ -21570,9 +21570,9 @@ export namespace EDataServer {
          */
         delete_sync(
             uri: string,
-            depth?: string | null,
-            etag?: string | null,
-            cancellable?: Gio.Cancellable | null,
+            depth: string | null,
+            etag: string | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Deletes a resource identified by `uri` on the server. The URI can
@@ -21599,10 +21599,10 @@ export namespace EDataServer {
          */
         delete_with_headers_sync(
             uri: string,
-            depth?: string | null,
-            etag?: string | null,
-            in_headers?: Soup.MessageHeaders | null,
-            cancellable?: Gio.Cancellable | null,
+            depth: string | null,
+            etag: string | null,
+            in_headers: Soup.MessageHeaders | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Converts possibly path-only `href` into a full URI under the `request_uri`.
@@ -21631,7 +21631,7 @@ export namespace EDataServer {
          */
         get_acl_restrictions_sync(
             uri: string | null,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, number, WebDAVACEPrincipalKind, string[]];
         /**
          * Gets Access Control List (ACL) for the `uri`, or, in case it's `null`, for the URI
@@ -21646,7 +21646,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        get_acl_sync(uri: string | null, cancellable?: Gio.Cancellable | null): [boolean, WebDAVAccessControlEntry[]];
+        get_acl_sync(uri: string | null, cancellable: Gio.Cancellable | null): [boolean, WebDAVAccessControlEntry[]];
         /**
          * Gets current user privileges for the `uri`, or, in case it's `null`, for the URI
          * defined in associated {@link EDataServer.Source}, with optional read of the capabilities
@@ -21662,7 +21662,7 @@ export namespace EDataServer {
          */
         get_current_user_privilege_set_full_sync(
             uri: string | null,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, WebDAVPrivilege[], GLib.HashTable<any, any> | null, GLib.HashTable<any, any> | null];
         /**
          * Gets current user privileges for the `uri`, or, in case it's `null`, for the URI
@@ -21677,7 +21677,7 @@ export namespace EDataServer {
          */
         get_current_user_privilege_set_sync(
             uri: string | null,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, WebDAVPrivilege[]];
         /**
          * Reads a resource identified by `uri` from the server. The URI cannot
@@ -21701,7 +21701,7 @@ export namespace EDataServer {
          */
         get_data_sync(
             uri: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, string, string, Soup.MessageHeaders | null, string, number];
         /**
          * Returns last DAV error code as returned by the server. Each recognized code
@@ -21729,10 +21729,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        get_principal_collection_set_sync(
-            uri: string | null,
-            cancellable?: Gio.Cancellable | null,
-        ): [boolean, string[]];
+        get_principal_collection_set_sync(uri: string | null, cancellable: Gio.Cancellable | null): [boolean, string[]];
         /**
          * Gets supported privileges for the `uri`, or, in case it's `null`, for the URI
          * defined in associated {@link EDataServer.Source}.
@@ -21745,10 +21742,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        get_supported_privilege_set_sync(
-            uri: string | null,
-            cancellable?: Gio.Cancellable | null,
-        ): [boolean, GLib.Node];
+        get_supported_privilege_set_sync(uri: string | null, cancellable: Gio.Cancellable | null): [boolean, GLib.Node];
         /**
          * Reads a resource identified by `uri` from the server and writes it
          * to the `stream`. The URI cannot reference a collection.
@@ -21767,7 +21761,7 @@ export namespace EDataServer {
          */
         get_sync(
             uri: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, string, string, Soup.MessageHeaders | null, Gio.OutputStream];
         /**
          * Issues a getctag property request for a collection identified by `uri`, or,
@@ -21781,7 +21775,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        getctag_sync(uri: string | null, cancellable?: Gio.Cancellable | null): [boolean, string];
+        getctag_sync(uri: string | null, cancellable: Gio.Cancellable | null): [boolean, string];
         /**
          * Lists content of the `uri`, or, in case it's `null`, of the URI defined
          * in associated {@link EDataServer.Source}, which should point to a collection. The `flags`
@@ -21802,7 +21796,7 @@ export namespace EDataServer {
             uri: string | null,
             depth: string,
             flags: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, WebDAVResource[]];
         /**
          * Locks a resource identified by `uri`, or, in case it's `null`, by the URI defined
@@ -21827,7 +21821,7 @@ export namespace EDataServer {
             lock_scope: WebDAVLockScope,
             lock_timeout: number,
             owner: string | null,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, string];
         /**
          * Locks a resource identified by `uri`, or, in case it's `null`, on the URI
@@ -21851,7 +21845,7 @@ export namespace EDataServer {
             depth: string,
             lock_timeout: number,
             xml: XmlDocument,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, string, libxml2.Doc | null];
         /**
          * Creates a new calendar collection identified by `uri` on the server.
@@ -21877,7 +21871,7 @@ export namespace EDataServer {
             description: string | null,
             color: string | null,
             supports: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Creates a new address book collection identified by `uri` on the server.
@@ -21893,9 +21887,9 @@ export namespace EDataServer {
          */
         mkcol_addressbook_sync(
             uri: string,
-            display_name?: string | null,
-            description?: string | null,
-            cancellable?: Gio.Cancellable | null,
+            display_name: string | null,
+            description: string | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Creates a new generic collection identified by `uri` on the server.
@@ -21905,7 +21899,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        mkcol_sync(uri: string, cancellable?: Gio.Cancellable | null): boolean;
+        mkcol_sync(uri: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Moves a resource identified by `source_uri` to `destination_uri` on the server.
          * The `source_uri` can reference also collections.
@@ -21919,14 +21913,14 @@ export namespace EDataServer {
             source_uri: string,
             destination_uri: string,
             can_overwrite: boolean,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * @param method an HTTP method
          * @param uri URI to create the request for, or `null` to read from {@link EDataServer.Source}
          * @returns A new {@link Soup.Message} for the given `uri`, or, when `null`,    for the URI stored in the associated {@link EDataServer.Source}. Free the returned structure    with `g_object_unref()`, when no longer needed.
          */
-        new_message(method: string, uri?: string | null): Soup.Message;
+        new_message(method: string, uri: string | null): Soup.Message;
         /**
          * @param args
          */
@@ -21953,7 +21947,7 @@ export namespace EDataServer {
          */
         options_sync(
             uri: string | null,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, GLib.HashTable<any, any>, GLib.HashTable<any, any>];
         /**
          * Issues POST request on the provided `uri`, or, in case it's `null`, on the URI
@@ -21984,7 +21978,7 @@ export namespace EDataServer {
             data_length: bigint | number,
             in_content_type: string | null,
             in_headers: Soup.MessageHeaders | null,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, string, Soup.MessageHeaders | null, Uint8Array | null];
         /**
          * Issues a DAV:principal-property-search for the `uri`, or, in case it's `null`,
@@ -22019,7 +22013,7 @@ export namespace EDataServer {
             match_ns_uri: string | null,
             match_property: string,
             match_value: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, WebDAVResource[]];
         /**
          * Issues PROPFIND request on the provided `uri`, or, in case it's `null`, on the URI
@@ -22039,7 +22033,7 @@ export namespace EDataServer {
             depth: string,
             xml: XmlDocument | null,
             func: WebDAVPropstatTraverseFunc,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Issues PROPPATCH request on the provided `uri`, or, in case it's `null`, on the URI
@@ -22050,7 +22044,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        proppatch_sync(uri: string | null, xml: XmlDocument, cancellable?: Gio.Cancellable | null): boolean;
+        proppatch_sync(uri: string | null, xml: XmlDocument, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Writes data to a resource identified by `uri` to the server. The URI cannot
          * reference a collection.
@@ -22093,7 +22087,7 @@ export namespace EDataServer {
             in_headers: Soup.MessageHeaders | null,
             bytes: string,
             length: bigint | number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, string, string, Soup.MessageHeaders | null];
         /**
          * Writes data from `stream` to a resource identified by `uri` to the server.
@@ -22142,7 +22136,7 @@ export namespace EDataServer {
             in_headers: Soup.MessageHeaders | null,
             stream: Gio.InputStream,
             stream_length: bigint | number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, string, string, Soup.MessageHeaders | null];
         /**
          * Refreshes existing lock `lock_token` for a resource identified by `uri`,
@@ -22159,7 +22153,7 @@ export namespace EDataServer {
             uri: string | null,
             lock_token: string,
             lock_timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Tries to read detailed error information from `response_data`,
@@ -22186,7 +22180,7 @@ export namespace EDataServer {
             message: Soup.Message,
             response_data: Uint8Array | null,
             ignore_multistatus: boolean,
-            prefix?: string | null,
+            prefix: string | null,
         ): boolean;
         /**
          * Issues REPORT request on the provided `uri`, or, in case it's `null`, on the URI
@@ -22215,10 +22209,10 @@ export namespace EDataServer {
             uri: string | null,
             depth: string | null,
             xml: XmlDocument,
-            func?: WebDAVPropstatTraverseFunc | null,
-            out_content_type?: string | null,
-            out_content?: Uint8Array | null,
-            cancellable?: Gio.Cancellable | null,
+            func: WebDAVPropstatTraverseFunc | null,
+            out_content_type: string | null,
+            out_content: Uint8Array | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Changes Access Control List (ACL) for the `uri`, or, in case it's `null`,
@@ -22248,7 +22242,7 @@ export namespace EDataServer {
         set_acl_sync(
             uri: string | null,
             entries: WebDAVAccessControlEntry[],
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Traverses a CALDAV:mkcalendar-response response and calls `func` for each returned DAV:propstat.
@@ -22305,7 +22299,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        unlock_sync(uri: string | null, lock_token: string, cancellable?: Gio.Cancellable | null): boolean;
+        unlock_sync(uri: string | null, lock_token: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Updates properties (set/remove) on the provided `uri`, or, in case it's `null`,
          * on the URI defined in associated {@link EDataServer.Source}, with the `changes`. The order
@@ -22322,7 +22316,7 @@ export namespace EDataServer {
         update_properties_sync(
             uri: string | null,
             changes: WebDAVPropertyChange[],
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
     }
 
@@ -22938,7 +22932,7 @@ export namespace EDataServer {
          * Functions clears content of `parameters` if `from` is `null`.
          * @param from an {@link EDataServer.NamedParameters} to get values from, or `null`
          */
-        assign(from?: NamedParameters | null): void;
+        assign(from: NamedParameters | null): void;
         /**
          * Removes all stored parameters from `parameters`.
          */
@@ -22996,7 +22990,7 @@ export namespace EDataServer {
          * @param name name of a parameter to set
          * @param value value to set, or `null` to unset
          */
-        set(name: string, value?: string | null): void;
+        set(name: string, value: string | null): void;
         /**
          * Compares current value of parameter named `name` with given `value`
          * and returns whether they are equal, either case sensitively or
@@ -23080,7 +23074,7 @@ export namespace EDataServer {
          * provided in `e_operation_pool_new()`.
          * @param opdata user data for the operation
          */
-        push(opdata?: any | null): void;
+        push(opdata: any | null): void;
         /**
          * Releases `opid` previously reserved by `e_operation_pool_reserve_opid()`.
          * @param opid an operation ID
@@ -23621,14 +23615,14 @@ export namespace EDataServer {
             principal_kind: WebDAVACEPrincipalKind,
             principal_href: string | null,
             flags: number,
-            inherited_href?: string | null,
+            inherited_href: string | null,
         );
 
         static ['new'](
             principal_kind: WebDAVACEPrincipalKind,
             principal_href: string | null,
             flags: number,
-            inherited_href?: string | null,
+            inherited_href: string | null,
         ): WebDAVAccessControlEntry;
 
         // Static methods
@@ -23638,7 +23632,7 @@ export namespace EDataServer {
          * or `e_webdav_access_control_entry_copy()`. The function does nothing, if `ptr` is `null`.
          * @param ptr an {@link EDataServer.WebDAVAccessControlEntry}
          */
-        static free(ptr?: any | null): void;
+        static free(ptr: any | null): void;
 
         // Methods
 
@@ -23739,7 +23733,7 @@ export namespace EDataServer {
          * or `e_webdav_privilege_copy()`. The function does nothing, if `ptr` is `null`.
          * @param ptr an {@link EDataServer.WebDAVPrivilege}
          */
-        static free(ptr?: any | null): void;
+        static free(ptr: any | null): void;
 
         // Methods
 
@@ -23768,7 +23762,7 @@ export namespace EDataServer {
 
         static new_remove(ns_uri: string, name: string): WebDAVPropertyChange;
 
-        static new_set(ns_uri: string, name: string, value?: string | null): WebDAVPropertyChange;
+        static new_set(ns_uri: string, name: string, value: string | null): WebDAVPropertyChange;
 
         // Static methods
 
@@ -23778,7 +23772,7 @@ export namespace EDataServer {
          * The function does nothing, if `ptr` is `null`.
          * @param ptr an {@link EDataServer.WebDAVPropertyChange}
          */
-        static free(ptr?: any | null): void;
+        static free(ptr: any | null): void;
 
         // Methods
 
@@ -23848,7 +23842,7 @@ export namespace EDataServer {
          * or `e_webdav_resource_copy()`. The function does nothing, if `ptr` is `null`.
          * @param ptr an {@link EDataServer.WebDAVResource}
          */
-        static free(ptr?: any | null): void;
+        static free(ptr: any | null): void;
 
         // Methods
 
@@ -23965,7 +23959,7 @@ export namespace EDataServer {
              */
             vfunc_dup_credentials_prompter_cookies_sync(
                 source: Source,
-                cancellable?: Gio.Cancellable | null,
+                cancellable: Gio.Cancellable | null,
             ): Soup.Cookie[] | null;
             /**
              * Tries to extract an authorization code from a web page provided by the server.
@@ -24094,7 +24088,7 @@ export namespace EDataServer {
              * @param hostname a host name to search the service for, like "server.example.com", or `null`
              * @virtual
              */
-            vfunc_guess_can_process(protocol?: string | null, hostname?: string | null): boolean;
+            vfunc_guess_can_process(protocol: string | null, hostname: string | null): boolean;
             /**
              * The `service` can change what arguments are passed in the authentication URI
              * in this method. The default implementation sets some values too, namely
@@ -24215,7 +24209,7 @@ export namespace EDataServer {
         util_set_to_form(
             form: { [key: string]: any } | GLib.HashTable<string, string>,
             name: string,
-            value?: string | null,
+            value: string | null,
         ): void;
         /**
          * Takes ownership of `value` and sets it for `name` to `form`. The `value`
@@ -24233,7 +24227,7 @@ export namespace EDataServer {
         util_take_to_form(
             form: { [key: string]: any } | GLib.HashTable<string, string>,
             name: string,
-            value?: string | null,
+            value: string | null,
         ): void;
     }
     /**
@@ -24265,7 +24259,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
          */
-        delete_token_sync(source: Source, cancellable?: Gio.Cancellable | null): boolean;
+        delete_token_sync(source: Source, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Additional cookies to be used in the prompt dialog when asking for the user
          * credentials. The default implementation does not provide any cookies.
@@ -24275,7 +24269,7 @@ export namespace EDataServer {
          */
         dup_credentials_prompter_cookies_sync(
             source: Source,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): Soup.Cookie[] | null;
         /**
          * Tries to extract an authorization code from a web page provided by the server.
@@ -24340,7 +24334,7 @@ export namespace EDataServer {
         get_access_token_sync(
             source: Source,
             ref_source: OAuth2ServiceRefSourceFunc,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, string, number];
         /**
          * Used to decide what to do when the server redirects to the next page.
@@ -24419,7 +24413,7 @@ export namespace EDataServer {
          * @param hostname a host name to search the service for, like "server.example.com", or `null`
          * @returns Whether the `service` can be used for the given arguments
          */
-        guess_can_process(protocol?: string | null, hostname?: string | null): boolean;
+        guess_can_process(protocol: string | null, hostname: string | null): boolean;
         /**
          * The `service` can change what arguments are passed in the authentication URI
          * in this method. The default implementation sets some values too, namely
@@ -24507,7 +24501,7 @@ export namespace EDataServer {
             source: Source,
             authorization_code: string,
             ref_source: OAuth2ServiceRefSourceFunc,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Queries `service` at `e_oauth2_service_get_refresh_uri()` with a request to refresh
@@ -24523,7 +24517,7 @@ export namespace EDataServer {
             source: Source,
             refresh_token: string,
             ref_source: OAuth2ServiceRefSourceFunc,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
     }
 

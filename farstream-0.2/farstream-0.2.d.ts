@@ -354,7 +354,7 @@ export namespace Farstream {
      * @param list2 a {@link GLib.List} of {@link Farstream.Codec}
      * @returns `true` if they are identical, `false` otherwise
      */
-    function codec_list_are_equal(list1?: Codec[] | null, list2?: Codec[] | null): boolean;
+    function codec_list_are_equal(list1: Codec[] | null, list2: Codec[] | null): boolean;
     /**
      * Copies a list of {@link Farstream.Codec} structures.
      * @param codec_list a GList of {@link Farstream.Codec} to copy
@@ -477,7 +477,7 @@ export namespace Farstream {
      * @param value a {@link GObject.Value} of type #FS_TYPE_CANDIDATE_LIST
      * @param candidates A {@link GLib.List} of {@link Farstream.Candidate}
      */
-    function value_set_candidate_list(value: GObject.Value | any, candidates?: Candidate[] | null): void;
+    function value_set_candidate_list(value: GObject.Value | any, candidates: Candidate[] | null): void;
     /**
      * @gir-type Alias
      */
@@ -755,38 +755,19 @@ export namespace Farstream {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -794,15 +775,9 @@ export namespace Farstream {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -959,7 +934,7 @@ export namespace Farstream {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -1453,38 +1428,19 @@ export namespace Farstream {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1492,15 +1448,9 @@ export namespace Farstream {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1667,7 +1617,7 @@ export namespace Farstream {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -2151,7 +2101,7 @@ export namespace Farstream {
          * @param new_codecs Codecs recently retrieved from the {@link Farstream.Session.codecs} property
          * @virtual
          */
-        vfunc_codecs_need_resend(old_codecs?: Codec[] | null, new_codecs?: Codec[] | null): Codec[];
+        vfunc_codecs_need_resend(old_codecs: Codec[] | null, new_codecs: Codec[] | null): Codec[];
         /**
          * Returns the GType of the stream transmitter, bindings can use it
          * to validate/convert the parameters passed to `fs_session_new_stream()`.
@@ -2188,7 +2138,7 @@ export namespace Farstream {
          * @param src_caps Caps for the src pad or `null`
          * @virtual
          */
-        vfunc_set_allowed_caps(sink_caps?: Gst.Caps | null, src_caps?: Gst.Caps | null): boolean;
+        vfunc_set_allowed_caps(sink_caps: Gst.Caps | null, src_caps: Gst.Caps | null): boolean;
         /**
          * Set the list of desired codec preferences. The user may
          * change this value during an ongoing session. Note that doing this can cause
@@ -2207,14 +2157,14 @@ export namespace Farstream {
          * @param codec_preferences a {@link GLib.List} of {@link Farstream.Codec} with the   desired configuration
          * @virtual
          */
-        vfunc_set_codec_preferences(codec_preferences?: Codec[] | null): boolean;
+        vfunc_set_codec_preferences(codec_preferences: Codec[] | null): boolean;
         /**
          * Sets encryption parameters. The exact parameters depend on the type of
          * plugin being used.
          * @param parameters a {@link Gst.Structure} containing the   encryption  parameters or `null` to disable encryption
          * @virtual
          */
-        vfunc_set_encryption_parameters(parameters?: Gst.Structure | null): boolean;
+        vfunc_set_encryption_parameters(parameters: Gst.Structure | null): boolean;
         /**
          * This function will set the currently being sent codec for all streams in this
          * session. The given {@link Farstream.Codec} must be taken directly from the #codecs
@@ -2260,7 +2210,7 @@ export namespace Farstream {
          * @param new_codecs Codecs recently retrieved from the {@link Farstream.Session.codecs} property
          * @returns A new {@link GLib.List} of  {@link Farstream.Codec} that need to be resent or `null` if there are none. This  list must be freed with `fs_codec_list_destroy()`.
          */
-        codecs_need_resend(old_codecs?: Codec[] | null, new_codecs?: Codec[] | null): Codec[];
+        codecs_need_resend(old_codecs: Codec[] | null, new_codecs: Codec[] | null): Codec[];
         /**
          * This will cause the session to remove all links to other objects and to
          * remove itself from the {@link Farstream.Conference}, it will also destroy all {@link Farstream.Stream}
@@ -2342,7 +2292,7 @@ export namespace Farstream {
          * @param src_caps Caps for the src pad or `null`
          * @returns `true` if the new filter caps were acceptable.
          */
-        set_allowed_caps(sink_caps?: Gst.Caps | null, src_caps?: Gst.Caps | null): boolean;
+        set_allowed_caps(sink_caps: Gst.Caps | null, src_caps: Gst.Caps | null): boolean;
         /**
          * Set the list of desired codec preferences. The user may
          * change this value during an ongoing session. Note that doing this can cause
@@ -2361,14 +2311,14 @@ export namespace Farstream {
          * @param codec_preferences a {@link GLib.List} of {@link Farstream.Codec} with the   desired configuration
          * @returns `true` on success, `false` on error.
          */
-        set_codec_preferences(codec_preferences?: Codec[] | null): boolean;
+        set_codec_preferences(codec_preferences: Codec[] | null): boolean;
         /**
          * Sets encryption parameters. The exact parameters depend on the type of
          * plugin being used.
          * @param parameters a {@link Gst.Structure} containing the   encryption  parameters or `null` to disable encryption
          * @returns `true` if the encryption parameters could be set, `false` otherwise
          */
-        set_encryption_parameters(parameters?: Gst.Structure | null): boolean;
+        set_encryption_parameters(parameters: Gst.Structure | null): boolean;
         /**
          * This function will set the currently being sent codec for all streams in this
          * session. The given {@link Farstream.Codec} must be taken directly from the #codecs
@@ -2648,7 +2598,7 @@ export namespace Farstream {
          * @param stream_transmitter_parameters an array of n_parameters {@link GObject.Parameter} struct that will be passed   to the newly-create {@link Farstream.StreamTransmitter}
          * @virtual
          */
-        vfunc_set_transmitter(transmitter: string, stream_transmitter_parameters?: GObject.Parameter[] | null): boolean;
+        vfunc_set_transmitter(transmitter: string, stream_transmitter_parameters: GObject.Parameter[] | null): boolean;
 
         // Methods
 
@@ -2778,7 +2728,7 @@ export namespace Farstream {
          * @param stream_transmitter_parameters an array of n_parameters {@link GObject.Parameter} struct that will be passed   to the newly-create {@link Farstream.StreamTransmitter}
          * @returns `true` if the transmitter could be set, `false` otherwise
          */
-        set_transmitter(transmitter: string, stream_transmitter_parameters?: GObject.Parameter[] | null): boolean;
+        set_transmitter(transmitter: string, stream_transmitter_parameters: GObject.Parameter[] | null): boolean;
         /**
          * Set the transmitter to use for this stream. This function will only succeed
          * once.
@@ -2794,7 +2744,7 @@ export namespace Farstream {
          */
         set_transmitter_ht(
             transmitter: string,
-            stream_transmitter_parameters?: GLib.HashTable<string, GObject.Value> | null,
+            stream_transmitter_parameters: GLib.HashTable<string, GObject.Value> | null,
         ): boolean;
     }
 
@@ -3332,9 +3282,9 @@ export namespace Farstream {
          * @returns the {@link Farstream.FeedbackParameter} from the {@link Farstream.Codec} or `null`
          */
         get_feedback_parameter(
-            type?: string | null,
-            subtype?: string | null,
-            extra_params?: string | null,
+            type: string | null,
+            subtype: string | null,
+            extra_params: string | null,
         ): FeedbackParameter;
         /**
          * Finds the {@link Farstream.CodecParameter} in the {@link Farstream.Codec} that has the requested name
@@ -3343,7 +3293,7 @@ export namespace Farstream {
          * @param value The value of the parameter to search for or `null` for any value
          * @returns the {@link Farstream.CodecParameter} from the {@link Farstream.Codec} or `null`
          */
-        get_optional_parameter(name: string, value?: string | null): CodecParameter;
+        get_optional_parameter(name: string, value: string | null): CodecParameter;
         /**
          * Removes an optional parameter from a codec.
          *

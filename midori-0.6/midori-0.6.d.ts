@@ -132,7 +132,7 @@ export namespace Midori {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Application.ConstructorProps {
-            exec_path: Gio.File;
+            exec_path: Gio.File | null;
             execPath: Gio.File;
         }
     }
@@ -145,8 +145,8 @@ export namespace Midori {
 
         // Properties
 
-        get exec_path(): Gio.File;
-        set exec_path(val: Gio.File);
+        get exec_path(): Gio.File | null;
+        set exec_path(val: Gio.File | null);
         get execPath(): Gio.File;
         set execPath(val: Gio.File);
 
@@ -194,7 +194,7 @@ export namespace Midori {
         /**
          * @param value
          */
-        set_exec_path(value?: Gio.File | null): void;
+        set_exec_path(value: Gio.File | null): void;
     }
 
     namespace Browser {
@@ -296,8 +296,8 @@ export namespace Midori {
             webContext: WebKit2.WebContext;
             is_loading: boolean;
             isLoading: boolean;
-            uri: string;
-            tab: Tab;
+            uri: string | null;
+            tab: Tab | null;
             trash: Gio.ListStore;
             is_fullscreen: boolean;
             isFullscreen: boolean;
@@ -322,10 +322,10 @@ export namespace Midori {
         set is_loading(val: boolean);
         get isLoading(): boolean;
         set isLoading(val: boolean);
-        get uri(): string;
-        set uri(val: string);
-        get tab(): Tab;
-        set tab(val: Tab);
+        get uri(): string | null;
+        set uri(val: string | null);
+        get tab(): Tab | null;
+        set tab(val: Tab | null);
         get trash(): Gio.ListStore;
         set trash(val: Gio.ListStore);
         get is_fullscreen(): boolean;
@@ -414,12 +414,12 @@ export namespace Midori {
         /**
          * @param value
          */
-        set_uri(value?: string | null): void;
+        set_uri(value: string | null): void;
         get_tab(): Tab | null;
         /**
          * @param value
          */
-        set_tab(value?: Tab | null): void;
+        set_tab(value: Tab | null): void;
         get_trash(): Gio.ListStore;
         /**
          * @param value
@@ -585,7 +585,7 @@ export namespace Midori {
         // Constructor properties interface
 
         interface ConstructorProps extends DatabaseItem.ConstructorProps {
-            search: string;
+            search: string | null;
         }
     }
 
@@ -597,8 +597,8 @@ export namespace Midori {
 
         // Properties
 
-        get search(): string;
-        set search(val: string);
+        get search(): string | null;
+        set search(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -615,7 +615,7 @@ export namespace Midori {
 
         _init(...args: any[]): void;
 
-        static for_input(uri: string, title?: string | null): SuggestionItem;
+        static for_input(uri: string, title: string | null): SuggestionItem;
 
         // Signals
 
@@ -644,7 +644,7 @@ export namespace Midori {
         /**
          * @param value
          */
-        set_search(value?: string | null): void;
+        set_search(value: string | null): void;
     }
 
     namespace Completion {
@@ -659,7 +659,7 @@ export namespace Midori {
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
             extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {
             incognito: boolean;
-            key: string;
+            key: string | null;
         }
     }
 
@@ -673,8 +673,8 @@ export namespace Midori {
 
         get incognito(): boolean;
         set incognito(val: boolean);
-        get key(): string;
-        set key(val: string);
+        get key(): string | null;
+        set key(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -729,7 +729,7 @@ export namespace Midori {
         /**
          * @param value
          */
-        set_key(value?: string | null): void;
+        set_key(value: string | null): void;
         /**
          * Gets the type of the items in `list`.
          *
@@ -874,38 +874,19 @@ export namespace Midori {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -913,15 +894,9 @@ export namespace Midori {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1088,7 +1063,7 @@ export namespace Midori {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1288,8 +1263,8 @@ export namespace Midori {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
-            database: Database;
-            query: string;
+            database: Database | null;
+            query: string | null;
         }
     }
 
@@ -1301,10 +1276,10 @@ export namespace Midori {
 
         // Properties
 
-        get database(): Database;
-        set database(val: Database);
-        get query(): string;
-        set query(val: string);
+        get database(): Database | null;
+        set database(val: Database | null);
+        get query(): string | null;
+        set query(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -1350,14 +1325,14 @@ export namespace Midori {
          * @param cancellable
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
 
         // Methods
 
         /**
          * @param cancellable
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         exec(): boolean;
         step(): boolean;
         row_id(): number;
@@ -1377,12 +1352,12 @@ export namespace Midori {
         /**
          * @param value
          */
-        set_database(value?: Database | null): void;
+        set_database(value: Database | null): void;
         get_query(): string | null;
         /**
          * @param value
          */
-        set_query(value?: string | null): void;
+        set_query(value: string | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -1430,38 +1405,19 @@ export namespace Midori {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1469,15 +1425,9 @@ export namespace Midori {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1644,7 +1594,7 @@ export namespace Midori {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1847,10 +1797,10 @@ export namespace Midori {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            database: Database;
+            database: Database | null;
             id: bigint | number;
             uri: string;
-            title: string;
+            title: string | null;
             date: bigint | number;
         }
     }
@@ -1863,14 +1813,14 @@ export namespace Midori {
 
         // Properties
 
-        get database(): Database;
-        set database(val: Database);
+        get database(): Database | null;
+        set database(val: Database | null);
         get id(): number;
         set id(val: bigint | number);
         get uri(): string;
         set uri(val: string);
-        get title(): string;
-        set title(val: string);
+        get title(): string | null;
+        set title(val: string | null);
         get date(): number;
         set date(val: bigint | number);
 
@@ -1931,7 +1881,7 @@ export namespace Midori {
         /**
          * @param value
          */
-        set_database(value?: Database | null): void;
+        set_database(value: Database | null): void;
         get_id(): number;
         /**
          * @param value
@@ -1946,7 +1896,7 @@ export namespace Midori {
         /**
          * @param value
          */
-        set_title(value?: string | null): void;
+        set_title(value: string | null): void;
         get_date(): number;
         /**
          * @param value
@@ -1974,9 +1924,9 @@ export namespace Midori {
                 Gio.Initable.ConstructorProps,
                 Gio.ListModel.ConstructorProps,
                 Loggable.ConstructorProps {
-            table: string;
+            table: string | null;
             path: string;
-            key: string;
+            key: string | null;
             readonly: boolean;
             first_use: boolean;
             firstUse: boolean;
@@ -1997,12 +1947,12 @@ export namespace Midori {
 
         // Properties
 
-        get table(): string;
-        set table(val: string);
+        get table(): string | null;
+        set table(val: string | null);
         get path(): string;
         set path(val: string);
-        get key(): string;
-        set key(val: string);
+        get key(): string | null;
+        set key(val: string | null);
         get readonly(): boolean;
         set readonly(val: boolean);
         get first_use(): boolean;
@@ -2070,13 +2020,13 @@ export namespace Midori {
          * @param cancellable
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param item
          * @param _callback_
          * @virtual
          */
-        vfunc_delete(item: DatabaseItem, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_delete(item: DatabaseItem, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -2087,7 +2037,7 @@ export namespace Midori {
          * @param _callback_
          * @virtual
          */
-        vfunc_lookup(uri: string, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_lookup(uri: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -2103,8 +2053,8 @@ export namespace Midori {
         vfunc_query(
             filter: string | null,
             max_items: number,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param _res_
@@ -2116,7 +2066,7 @@ export namespace Midori {
          * @param _callback_
          * @virtual
          */
-        vfunc_update(item: DatabaseItem, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_update(item: DatabaseItem, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -2127,7 +2077,7 @@ export namespace Midori {
          * @param _callback_
          * @virtual
          */
-        vfunc_insert(item: DatabaseItem, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_insert(item: DatabaseItem, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -2138,7 +2088,7 @@ export namespace Midori {
          * @param _callback_
          * @virtual
          */
-        vfunc_clear(timespan: GLib.TimeSpan, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_clear(timespan: GLib.TimeSpan, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -2150,7 +2100,7 @@ export namespace Midori {
         /**
          * @param cancellable
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param path
          */
@@ -2221,7 +2171,7 @@ export namespace Midori {
         query(
             filter: string | null,
             max_items: bigint | number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<DatabaseItem[] | null>;
         /**
          * @param filter
@@ -2244,7 +2194,7 @@ export namespace Midori {
         query(
             filter: string | null,
             max_items: bigint | number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<DatabaseItem[] | null> | void;
         /**
@@ -2318,7 +2268,7 @@ export namespace Midori {
         /**
          * @param value
          */
-        set_table(value?: string | null): void;
+        set_table(value: string | null): void;
         get_path(): string;
         /**
          * @param value
@@ -2328,7 +2278,7 @@ export namespace Midori {
         /**
          * @param value
          */
-        set_key(value?: string | null): void;
+        set_key(value: string | null): void;
         get_readonly(): boolean;
         /**
          * @param value
@@ -2487,38 +2437,19 @@ export namespace Midori {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -2526,15 +2457,9 @@ export namespace Midori {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -2701,7 +2626,7 @@ export namespace Midori {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -3044,12 +2969,12 @@ export namespace Midori {
             content_type: string;
             contentType: string;
             icon: Gio.Icon;
-            filename: string;
-            basename: string;
+            filename: string | null;
+            basename: string | null;
             progress: number;
-            download: WebKit2.Download;
+            download: WebKit2.Download | null;
             loading: boolean;
-            error: string;
+            error: string | null;
         }
     }
 
@@ -3073,18 +2998,18 @@ export namespace Midori {
          * @read-only
          */
         get icon(): Gio.Icon;
-        get filename(): string;
-        set filename(val: string);
-        get basename(): string;
-        set basename(val: string);
+        get filename(): string | null;
+        set filename(val: string | null);
+        get basename(): string | null;
+        set basename(val: string | null);
         get progress(): number;
         set progress(val: number);
-        get download(): WebKit2.Download;
-        set download(val: WebKit2.Download);
+        get download(): WebKit2.Download | null;
+        set download(val: WebKit2.Download | null);
         get loading(): boolean;
         set loading(val: boolean);
-        get error(): string;
-        set error(val: string);
+        get error(): string | null;
+        set error(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -3139,12 +3064,12 @@ export namespace Midori {
         /**
          * @param value
          */
-        set_filename(value?: string | null): void;
+        set_filename(value: string | null): void;
         get_basename(): string | null;
         /**
          * @param value
          */
-        set_basename(value?: string | null): void;
+        set_basename(value: string | null): void;
         get_progress(): number;
         /**
          * @param value
@@ -3154,7 +3079,7 @@ export namespace Midori {
         /**
          * @param value
          */
-        set_download(value?: WebKit2.Download | null): void;
+        set_download(value: WebKit2.Download | null): void;
         get_loading(): boolean;
         /**
          * @param value
@@ -3164,7 +3089,7 @@ export namespace Midori {
         /**
          * @param value
          */
-        set_error(value?: string | null): void;
+        set_error(value: string | null): void;
     }
 
     namespace DownloadRow {
@@ -3361,7 +3286,7 @@ export namespace Midori {
 
         interface ConstructorProps extends Gtk.Image.ConstructorProps {
             surface: cairo.Surface;
-            uri: string;
+            uri: string | null;
         }
     }
 
@@ -3377,8 +3302,8 @@ export namespace Midori {
          * @write-only
          */
         set surface(val: cairo.Surface);
-        get uri(): string;
-        set uri(val: string);
+        get uri(): string | null;
+        set uri(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -3423,12 +3348,12 @@ export namespace Midori {
         /**
          * @param value
          */
-        set_surface(value?: cairo.Surface | null): void;
+        set_surface(value: cairo.Surface | null): void;
         get_uri(): string | null;
         /**
          * @param value
          */
-        set_uri(value?: string | null): void;
+        set_uri(value: string | null): void;
     }
 
     namespace HistoryDatabase {
@@ -3837,38 +3762,19 @@ export namespace Midori {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -3876,15 +3782,9 @@ export namespace Midori {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -4051,7 +3951,7 @@ export namespace Midori {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -4297,9 +4197,9 @@ export namespace Midori {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Box.ConstructorProps {
-            title: string;
+            title: string | null;
             label: Gtk.Label;
-            widget: Gtk.Widget | any;
+            widget: (Gtk.Widget | null) | any;
         }
     }
 
@@ -4311,12 +4211,12 @@ export namespace Midori {
 
         // Properties
 
-        get title(): string;
-        set title(val: string);
+        get title(): string | null;
+        set title(val: string | null);
         get label(): Gtk.Label;
         set label(val: Gtk.Label);
         // This accessor conflicts with a property or field in a parent class or interface.
-        widget: Gtk.Widget | any;
+        widget: (Gtk.Widget | null) | any;
 
         /**
          * Compile-time signal type information.
@@ -4333,7 +4233,7 @@ export namespace Midori {
 
         _init(...args: any[]): void;
 
-        static ['new'](title?: string | null, widget?: Gtk.Widget | null): LabelWidget;
+        static ['new'](title: string | null, widget: Gtk.Widget | null): LabelWidget;
         // Conflicted with Gtk.Box.new
 
         static ['new'](...args: never[]): any;
@@ -4365,7 +4265,7 @@ export namespace Midori {
         /**
          * @param value
          */
-        set_title(value?: string | null): void;
+        set_title(value: string | null): void;
         get_label(): Gtk.Label;
         /**
          * @param value
@@ -4375,7 +4275,7 @@ export namespace Midori {
         /**
          * @param value
          */
-        set_widget(value?: Gtk.Widget | null): void;
+        set_widget(value: Gtk.Widget | null): void;
     }
 
     namespace Preferences {
@@ -4710,7 +4610,7 @@ export namespace Midori {
          * @param keywords
          * @param search
          */
-        uri_for_search(keywords?: string | null, search?: string | null): string;
+        uri_for_search(keywords: string | null, search: string | null): string;
         get_last_window_width(): number;
         /**
          * @param value
@@ -4876,13 +4776,13 @@ export namespace Midori {
          * @param value
          * @param _default_
          */
-        set_string(group: string, key: string, value: string, _default_?: string | null): void;
+        set_string(group: string, key: string, value: string, _default_: string | null): void;
         /**
          * @param group
          * @param key
          * @param _default_
          */
-        get_string(group: string, key: string, _default_?: string | null): string | null;
+        get_string(group: string, key: string, _default_: string | null): string | null;
         get_filename(): string;
         /**
          * @param value
@@ -4944,7 +4844,7 @@ export namespace Midori {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Statusbar.ConstructorProps {
-            label: string;
+            label: string | null;
         }
     }
 
@@ -4956,8 +4856,8 @@ export namespace Midori {
 
         // Properties
 
-        get label(): string;
-        set label(val: string);
+        get label(): string | null;
+        set label(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -5007,7 +4907,7 @@ export namespace Midori {
         /**
          * @param value
          */
-        set_label(value?: string | null): void;
+        set_label(value: string | null): void;
     }
 
     namespace SuggestionRow {
@@ -5067,9 +4967,9 @@ export namespace Midori {
 
         interface ConstructorProps extends Gtk.ListBoxRow.ConstructorProps {
             item: DatabaseItem;
-            location: string;
-            regex: GLib.Regex;
-            key: string;
+            location: string | null;
+            regex: GLib.Regex | null;
+            key: string | null;
         }
     }
 
@@ -5083,12 +4983,12 @@ export namespace Midori {
 
         get item(): DatabaseItem;
         set item(val: DatabaseItem);
-        get location(): string;
-        set location(val: string);
-        get regex(): GLib.Regex;
-        set regex(val: GLib.Regex);
-        get key(): string;
-        set key(val: string);
+        get location(): string | null;
+        set location(val: string | null);
+        get regex(): GLib.Regex | null;
+        set regex(val: GLib.Regex | null);
+        get key(): string | null;
+        set key(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -5142,17 +5042,17 @@ export namespace Midori {
         /**
          * @param value
          */
-        set_location(value?: string | null): void;
+        set_location(value: string | null): void;
         get_regex(): GLib.Regex | null;
         /**
          * @param value
          */
-        set_regex(value?: GLib.Regex | null): void;
+        set_regex(value: GLib.Regex | null): void;
         get_key(): string | null;
         /**
          * @param value
          */
-        set_key(value?: string | null): void;
+        set_key(value: string | null): void;
     }
 
     namespace Switcher {
@@ -5210,7 +5110,7 @@ export namespace Midori {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Box.ConstructorProps {
-            stack: Gtk.Stack;
+            stack: Gtk.Stack | null;
             show_close_buttons: boolean;
             showCloseButtons: boolean;
         }
@@ -5224,8 +5124,8 @@ export namespace Midori {
 
         // Properties
 
-        get stack(): Gtk.Stack;
-        set stack(val: Gtk.Stack);
+        get stack(): Gtk.Stack | null;
+        set stack(val: Gtk.Stack | null);
         get show_close_buttons(): boolean;
         set show_close_buttons(val: boolean);
         get showCloseButtons(): boolean;
@@ -5275,7 +5175,7 @@ export namespace Midori {
         /**
          * @param value
          */
-        set_stack(value?: Gtk.Stack | null): void;
+        set_stack(value: Gtk.Stack | null): void;
         get_show_close_buttons(): boolean;
         /**
          * @param value
@@ -5374,12 +5274,12 @@ export namespace Midori {
             canGoBack: boolean;
             can_go_forward: boolean | any;
             canGoForward: boolean;
-            item: DatabaseItem;
+            item: DatabaseItem | null;
             display_uri: string;
             displayUri: string;
             display_title: string;
             displayTitle: string;
-            color: string;
+            color: string | null;
             pinned: boolean;
             secure: boolean;
             link_uri: string;
@@ -5409,8 +5309,8 @@ export namespace Midori {
         can_go_forward: boolean | any;
         get canGoForward(): boolean;
         set canGoForward(val: boolean);
-        get item(): DatabaseItem;
-        set item(val: DatabaseItem);
+        get item(): DatabaseItem | null;
+        set item(val: DatabaseItem | null);
         get display_uri(): string;
         set display_uri(val: string);
         get displayUri(): string;
@@ -5419,8 +5319,8 @@ export namespace Midori {
         set display_title(val: string);
         get displayTitle(): string;
         set displayTitle(val: string);
-        get color(): string;
-        set color(val: string);
+        get color(): string | null;
+        set color(val: string | null);
         get pinned(): boolean;
         set pinned(val: boolean);
         get secure(): boolean;
@@ -5452,8 +5352,8 @@ export namespace Midori {
         static ['new'](
             related: Tab | null,
             web_context: WebKit2.WebContext,
-            uri?: string | null,
-            title?: string | null,
+            uri: string | null,
+            title: string | null,
         ): Tab;
         // Conflicted with WebKit2.WebView.new
 
@@ -5502,7 +5402,7 @@ export namespace Midori {
         /**
          * @param value
          */
-        set_item(value?: DatabaseItem | null): void;
+        set_item(value: DatabaseItem | null): void;
         get_display_uri(): string;
         /**
          * @param value
@@ -5517,7 +5417,7 @@ export namespace Midori {
         /**
          * @param value
          */
-        set_color(value?: string | null): void;
+        set_color(value: string | null): void;
         get_pinned(): boolean;
         /**
          * @param value
@@ -5597,8 +5497,8 @@ export namespace Midori {
 
         interface ConstructorProps extends Gtk.EventBox.ConstructorProps {
             tab: Tab;
-            uri: string;
-            title: string;
+            uri: string | null;
+            title: string | null;
             show_close: boolean;
             showClose: boolean;
             active: boolean;
@@ -5615,10 +5515,10 @@ export namespace Midori {
 
         get tab(): Tab;
         set tab(val: Tab);
-        get uri(): string;
-        set uri(val: string);
-        get title(): string;
-        set title(val: string);
+        get uri(): string | null;
+        set uri(val: string | null);
+        get title(): string | null;
+        set title(val: string | null);
         get show_close(): boolean;
         set show_close(val: boolean);
         get showClose(): boolean;
@@ -5678,12 +5578,12 @@ export namespace Midori {
         /**
          * @param value
          */
-        set_uri(value?: string | null): void;
+        set_uri(value: string | null): void;
         get_title(): string | null;
         /**
          * @param value
          */
-        set_title(value?: string | null): void;
+        set_title(value: string | null): void;
         get_show_close(): boolean;
         /**
          * @param value
@@ -5799,9 +5699,9 @@ export namespace Midori {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Entry.ConstructorProps {
-            key: string;
-            regex: GLib.Regex;
-            location: string;
+            key: string | null;
+            regex: GLib.Regex | null;
+            location: string | null;
             uri: string;
             secure: boolean;
         }
@@ -5815,12 +5715,12 @@ export namespace Midori {
 
         // Properties
 
-        get key(): string;
-        set key(val: string);
-        get regex(): GLib.Regex;
-        set regex(val: GLib.Regex);
-        get location(): string;
-        set location(val: string);
+        get key(): string | null;
+        set key(val: string | null);
+        get regex(): GLib.Regex | null;
+        set regex(val: GLib.Regex | null);
+        get location(): string | null;
+        set location(val: string | null);
         get uri(): string;
         set uri(val: string);
         get secure(): boolean;
@@ -5875,17 +5775,17 @@ export namespace Midori {
         /**
          * @param value
          */
-        set_key(value?: string | null): void;
+        set_key(value: string | null): void;
         get_regex(): GLib.Regex | null;
         /**
          * @param value
          */
-        set_regex(value?: GLib.Regex | null): void;
+        set_regex(value: GLib.Regex | null): void;
         get_location(): string | null;
         /**
          * @param value
          */
-        set_location(value?: string | null): void;
+        set_location(value: string | null): void;
         get_uri(): string;
         /**
          * @param value
@@ -6343,7 +6243,7 @@ export namespace Midori {
              * @param _callback_
              * @virtual
              */
-            vfunc_clear(timespan: GLib.TimeSpan, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+            vfunc_clear(timespan: GLib.TimeSpan, _callback_: Gio.AsyncReadyCallback<this> | null): void;
             /**
              * @param _res_
              * @virtual

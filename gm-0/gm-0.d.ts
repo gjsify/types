@@ -127,7 +127,7 @@ export namespace Gm {
         priority: number,
         seconds: bigint | number,
         _function: GLib.SourceOnceFunc,
-        notify?: GLib.DestroyNotify | null,
+        notify: GLib.DestroyNotify | null,
     ): number;
     /**
      * Sets a function to be called after a timeout with the default
@@ -156,7 +156,7 @@ export namespace Gm {
         priority: number,
         seconds: bigint | number,
         _function: GLib.SourceOnceFunc,
-        notify?: GLib.DestroyNotify | null,
+        notify: GLib.DestroyNotify | null,
     ): number;
     namespace Cutout {
         // Signal signatures
@@ -204,12 +204,14 @@ export namespace Gm {
          * A name identifying the cutout.
          * @since 0.0.2
          * @construct-only
+         * @default null
          */
         get name(): string;
         /**
          * The SVG path that describes the display cutout or notch.
          * @since 0.0.2
          * @construct-only
+         * @default null
          */
         get path(): string;
 
@@ -400,6 +402,7 @@ export namespace Gm {
          * The corner radius of the panel edges in device pixels.
          * @since 0.0.1
          * @deprecated since 0.6.0: Use {@link DisplayPanel.corner_radii} instead
+         * @default 0
          */
         get border_radius(): number;
         set border_radius(val: number);
@@ -407,6 +410,7 @@ export namespace Gm {
          * The corner radius of the panel edges in device pixels.
          * @since 0.0.1
          * @deprecated since 0.6.0: Use {@link DisplayPanel.corner_radii} instead
+         * @default 0
          */
         get borderRadius(): number;
         set borderRadius(val: number);
@@ -433,42 +437,49 @@ export namespace Gm {
         /**
          * The display height in millimeters
          * @since 0.0.1
+         * @default 0
          */
         get height(): number;
         set height(val: number);
         /**
          * The name of the display
          * @since 0.0.1
+         * @default null
          */
         get name(): string;
         set name(val: string);
         /**
          * The display width in millimeters
          * @since 0.0.1
+         * @default 0
          */
         get width(): number;
         set width(val: number);
         /**
          * The panel resolution in pixels in the x direction
          * @since 0.0.1
+         * @default 0
          */
         get x_res(): number;
         set x_res(val: number);
         /**
          * The panel resolution in pixels in the x direction
          * @since 0.0.1
+         * @default 0
          */
         get xRes(): number;
         set xRes(val: number);
         /**
          * The panel resolution in pixels in the y direction
          * @since 0.0.1
+         * @default 0
          */
         get y_res(): number;
         set y_res(val: number);
         /**
          * The panel resolution in pixels in the y direction
          * @since 0.0.1
+         * @default 0
          */
         get yRes(): number;
         set yRes(val: number);

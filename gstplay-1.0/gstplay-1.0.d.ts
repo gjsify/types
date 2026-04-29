@@ -333,15 +333,15 @@ export namespace GstPlay {
         interface ConstructorProps extends Gst.Object.ConstructorProps {
             audio_video_offset: bigint | number;
             audioVideoOffset: bigint | number;
-            current_audio_track: PlayAudioInfo;
-            currentAudioTrack: PlayAudioInfo;
-            current_subtitle_track: PlaySubtitleInfo;
-            currentSubtitleTrack: PlaySubtitleInfo;
-            current_video_track: PlayVideoInfo;
-            currentVideoTrack: PlayVideoInfo;
+            current_audio_track: PlayAudioInfo | null;
+            currentAudioTrack: PlayAudioInfo | null;
+            current_subtitle_track: PlaySubtitleInfo | null;
+            currentSubtitleTrack: PlaySubtitleInfo | null;
+            current_video_track: PlayVideoInfo | null;
+            currentVideoTrack: PlayVideoInfo | null;
             duration: bigint | number;
-            media_info: PlayMediaInfo;
-            mediaInfo: PlayMediaInfo;
+            media_info: PlayMediaInfo | null;
+            mediaInfo: PlayMediaInfo | null;
             mute: boolean;
             pipeline: Gst.Element;
             position: bigint | number;
@@ -349,7 +349,7 @@ export namespace GstPlay {
             subtitle_video_offset: bigint | number;
             subtitleVideoOffset: bigint | number;
             suburi: string;
-            uri: string;
+            uri: string | null;
             video_multiview_flags: GstVideo.VideoMultiviewFlags;
             videoMultiviewFlags: GstVideo.VideoMultiviewFlags;
             video_multiview_mode: GstVideo.VideoMultiviewFramePacking;
@@ -369,46 +369,56 @@ export namespace GstPlay {
 
         // Properties
 
+        /**
+         * @default 0
+         */
         get audio_video_offset(): number;
         set audio_video_offset(val: bigint | number);
+        /**
+         * @default 0
+         */
         get audioVideoOffset(): number;
         set audioVideoOffset(val: bigint | number);
         /**
          * @read-only
          */
-        get current_audio_track(): PlayAudioInfo;
+        get current_audio_track(): PlayAudioInfo | null;
         /**
          * @read-only
          */
-        get currentAudioTrack(): PlayAudioInfo;
+        get currentAudioTrack(): PlayAudioInfo | null;
         /**
          * @read-only
          */
-        get current_subtitle_track(): PlaySubtitleInfo;
+        get current_subtitle_track(): PlaySubtitleInfo | null;
         /**
          * @read-only
          */
-        get currentSubtitleTrack(): PlaySubtitleInfo;
+        get currentSubtitleTrack(): PlaySubtitleInfo | null;
         /**
          * @read-only
          */
-        get current_video_track(): PlayVideoInfo;
+        get current_video_track(): PlayVideoInfo | null;
         /**
          * @read-only
          */
-        get currentVideoTrack(): PlayVideoInfo;
+        get currentVideoTrack(): PlayVideoInfo | null;
         /**
          * @read-only
+         * @default 18446744073709551615
          */
         get duration(): number;
         /**
          * @read-only
          */
-        get media_info(): PlayMediaInfo;
+        get media_info(): PlayMediaInfo | null;
         /**
          * @read-only
          */
-        get mediaInfo(): PlayMediaInfo;
+        get mediaInfo(): PlayMediaInfo | null;
+        /**
+         * @default false
+         */
         get mute(): boolean;
         set mute(val: boolean);
         /**
@@ -417,30 +427,61 @@ export namespace GstPlay {
         get pipeline(): Gst.Element;
         /**
          * @read-only
+         * @default 18446744073709551615
          */
         get position(): number;
+        /**
+         * @default 1
+         */
         get rate(): number;
         set rate(val: number);
+        /**
+         * @default 0
+         */
         get subtitle_video_offset(): number;
         set subtitle_video_offset(val: bigint | number);
+        /**
+         * @default 0
+         */
         get subtitleVideoOffset(): number;
         set subtitleVideoOffset(val: bigint | number);
+        /**
+         * @default null
+         */
         get suburi(): string;
         set suburi(val: string);
-        get uri(): string;
-        set uri(val: string);
+        /**
+         * @default null
+         */
+        get uri(): string | null;
+        set uri(val: string | null);
+        /**
+         * @default GstVideo.VideoMultiviewFlags.NONE
+         */
         get video_multiview_flags(): GstVideo.VideoMultiviewFlags;
         set video_multiview_flags(val: GstVideo.VideoMultiviewFlags);
+        /**
+         * @default GstVideo.VideoMultiviewFlags.NONE
+         */
         get videoMultiviewFlags(): GstVideo.VideoMultiviewFlags;
         set videoMultiviewFlags(val: GstVideo.VideoMultiviewFlags);
+        /**
+         * @default GstVideo.VideoMultiviewFramePacking.NONE
+         */
         get video_multiview_mode(): GstVideo.VideoMultiviewFramePacking;
         set video_multiview_mode(val: GstVideo.VideoMultiviewFramePacking);
+        /**
+         * @default GstVideo.VideoMultiviewFramePacking.NONE
+         */
         get videoMultiviewMode(): GstVideo.VideoMultiviewFramePacking;
         set videoMultiviewMode(val: GstVideo.VideoMultiviewFramePacking);
         get video_renderer(): PlayVideoRenderer;
         set video_renderer(val: PlayVideoRenderer);
         get videoRenderer(): PlayVideoRenderer;
         set videoRenderer(val: PlayVideoRenderer);
+        /**
+         * @default 1
+         */
         get volume(): number;
         set volume(val: number);
 
@@ -459,7 +500,7 @@ export namespace GstPlay {
 
         _init(...args: any[]): void;
 
-        static ['new'](video_renderer?: PlayVideoRenderer | null): Play;
+        static ['new'](video_renderer: PlayVideoRenderer | null): Play;
 
         // Signals
 
@@ -526,7 +567,7 @@ export namespace GstPlay {
          * @param config a {@link GstPlay.Play} configuration
          * @param agent the string to use as user agent
          */
-        static config_set_user_agent(config: Gst.Structure, agent?: string | null): void;
+        static config_set_user_agent(config: Gst.Structure, agent: string | null): void;
         /**
          * @param info a {@link GstPlay.PlayMediaInfo}
          */
@@ -667,7 +708,7 @@ export namespace GstPlay {
          * @param config Additional configuration
          * @returns Current video snapshot sample or `null` on failure
          */
-        get_video_snapshot(format: PlaySnapshotFormat, config?: Gst.Structure | null): Gst.Sample | null;
+        get_video_snapshot(format: PlaySnapshotFormat, config: Gst.Structure | null): Gst.Sample | null;
         /**
          * Returns the current volume level, as a percentage between 0 and 1.
          * @returns the volume as percentage between 0 and 1.
@@ -766,7 +807,7 @@ export namespace GstPlay {
          * rendered.
          * @param uri subtitle URI
          */
-        set_subtitle_uri(uri?: string | null): void;
+        set_subtitle_uri(uri: string | null): void;
         /**
          * Sets subtitle-video-offset property by value of `offset`
          * @param offset `gint64` in nanoseconds
@@ -776,7 +817,7 @@ export namespace GstPlay {
          * Sets the next URI to play.
          * @param uri next URI to play.
          */
-        set_uri(uri?: string | null): void;
+        set_uri(uri: string | null): void;
         /**
          * @param stream_index stream index
          * @returns `true` or `false` Sets the video track `stream_index`.
@@ -791,7 +832,7 @@ export namespace GstPlay {
          * @param name visualization element obtained from `gst_play_visualizations_get`()
          * @returns `true` if the visualizations was set correctly. Otherwise, `false`.
          */
-        set_visualization(name?: string | null): boolean;
+        set_visualization(name: string | null): boolean;
         /**
          * Enable or disable the visualization.
          * @param enabled TRUE or FALSE
@@ -1388,8 +1429,8 @@ export namespace GstPlay {
         interface ConstructorProps extends GObject.Object.ConstructorProps, PlayVideoRenderer.ConstructorProps {
             video_sink: Gst.Element;
             videoSink: Gst.Element;
-            window_handle: any;
-            windowHandle: any;
+            window_handle: any | null;
+            windowHandle: any | null;
         }
     }
 
@@ -1406,10 +1447,10 @@ export namespace GstPlay {
         set video_sink(val: Gst.Element);
         get videoSink(): Gst.Element;
         set videoSink(val: Gst.Element);
-        get window_handle(): any;
-        set window_handle(val: any);
-        get windowHandle(): any;
-        set windowHandle(val: any);
+        get window_handle(): any | null;
+        set window_handle(val: any | null);
+        get windowHandle(): any | null;
+        set windowHandle(val: any | null);
 
         /**
          * Compile-time signal type information.
@@ -1454,7 +1495,7 @@ export namespace GstPlay {
         /**
          * @param window_handle Window handle to use or `null`
          */
-        static ['new'](window_handle?: any | null): PlayVideoRenderer;
+        static ['new'](window_handle: any | null): PlayVideoRenderer;
         /**
          * @param window_handle Window handle to use or `null`
          * @param video_sink the custom video_sink element to be set for the video renderer
@@ -1499,7 +1540,7 @@ export namespace GstPlay {
          * should be rendered
          * @param window_handle handle referencing to the platform specific window
          */
-        set_window_handle(window_handle?: any | null): void;
+        set_window_handle(window_handle: any | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -1547,38 +1588,19 @@ export namespace GstPlay {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1586,15 +1608,9 @@ export namespace GstPlay {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1761,7 +1777,7 @@ export namespace GstPlay {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set

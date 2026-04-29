@@ -768,7 +768,7 @@ export namespace Vte {
      * @gir-type Callback
      */
     interface TerminalSpawnAsyncCallback {
-        (terminal: Terminal, pid: GLib.Pid, error?: GLib.Error | null): void;
+        (terminal: Terminal, pid: GLib.Pid, error: GLib.Error | null): void;
     }
     /**
      * An enumeration type for features.
@@ -911,11 +911,13 @@ export namespace Vte {
         /**
          * The file descriptor of the PTY master.
          * @construct-only
+         * @default -1
          */
         get fd(): number;
         /**
          * Flags.
          * @construct-only
+         * @default Vte.PtyFlags.DEFAULT
          */
         get flags(): PtyFlags;
 
@@ -934,9 +936,9 @@ export namespace Vte {
 
         _init(...args: any[]): void;
 
-        static new_foreign_sync(fd: number, cancellable?: Gio.Cancellable | null): Pty;
+        static new_foreign_sync(fd: number, cancellable: Gio.Cancellable | null): Pty;
 
-        static new_sync(flags: PtyFlags, cancellable?: Gio.Cancellable | null): Pty;
+        static new_sync(flags: PtyFlags, cancellable: Gio.Cancellable | null): Pty;
 
         // Signals
 
@@ -1016,7 +1018,7 @@ export namespace Vte {
             child_setup: GLib.SpawnChildSetupFunc | null,
             child_setup_data_destroy: GLib.DestroyNotify | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<GLib.Pid | null>;
         /**
          * Like `vte_pty_spawn_with_fds_async()`, except that this function does not
@@ -1065,7 +1067,7 @@ export namespace Vte {
             child_setup: GLib.SpawnChildSetupFunc | null,
             child_setup_data_destroy: GLib.DestroyNotify | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GLib.Pid | null> | void;
         /**
@@ -1127,8 +1129,8 @@ export namespace Vte {
             child_setup: GLib.SpawnChildSetupFunc | null,
             child_setup_data_destroy: GLib.DestroyNotify | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Initializes the object implementing the interface.
@@ -1172,7 +1174,7 @@ export namespace Vte {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -1215,7 +1217,7 @@ export namespace Vte {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -1263,38 +1265,19 @@ export namespace Vte {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1302,15 +1285,9 @@ export namespace Vte {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1477,7 +1454,7 @@ export namespace Vte {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -3608,14 +3585,14 @@ export namespace Vte {
             cellWidthScale: number;
             cjk_ambiguous_width: number;
             cjkAmbiguousWidth: number;
-            context_menu: Gtk.Menu;
-            contextMenu: Gtk.Menu;
-            context_menu_model: Gio.MenuModel;
-            contextMenuModel: Gio.MenuModel;
-            current_directory_uri: string;
-            currentDirectoryUri: string;
-            current_file_uri: string;
-            currentFileUri: string;
+            context_menu: Gtk.Menu | null;
+            contextMenu: Gtk.Menu | null;
+            context_menu_model: Gio.MenuModel | null;
+            contextMenuModel: Gio.MenuModel | null;
+            current_directory_uri: string | null;
+            currentDirectoryUri: string | null;
+            current_file_uri: string | null;
+            currentFileUri: string | null;
             cursor_blink_mode: CursorBlinkMode;
             cursorBlinkMode: CursorBlinkMode;
             cursor_shape: CursorShape;
@@ -3634,22 +3611,22 @@ export namespace Vte {
             enableShaping: boolean;
             enable_sixel: boolean;
             enableSixel: boolean;
-            encoding: string;
+            encoding: string | null;
             font_desc: Pango.FontDescription;
             fontDesc: Pango.FontDescription;
-            font_options: cairo.FontOptions;
-            fontOptions: cairo.FontOptions;
+            font_options: cairo.FontOptions | null;
+            fontOptions: cairo.FontOptions | null;
             font_scale: number;
             fontScale: number;
             hyperlink_hover_uri: string;
             hyperlinkHoverUri: string;
-            icon_title: string;
-            iconTitle: string;
+            icon_title: string | null;
+            iconTitle: string | null;
             input_enabled: boolean;
             inputEnabled: boolean;
             pointer_autohide: boolean;
             pointerAutohide: boolean;
-            pty: Pty;
+            pty: Pty | null;
             rewrap_on_resize: boolean;
             rewrapOnResize: boolean;
             scroll_on_insert: boolean;
@@ -3664,10 +3641,10 @@ export namespace Vte {
             scrollbackLines: number;
             text_blink_mode: TextBlinkMode;
             textBlinkMode: TextBlinkMode;
-            window_title: string;
-            windowTitle: string;
-            word_char_exceptions: string;
-            wordCharExceptions: string;
+            window_title: string | null;
+            windowTitle: string | null;
+            word_char_exceptions: string | null;
+            wordCharExceptions: string | null;
             xalign: Align;
             xfill: boolean;
             yalign: Align;
@@ -3687,6 +3664,7 @@ export namespace Vte {
          * Controls whether or not the terminal will attempt to draw bold text,
          * by using a bold font variant.
          * @deprecated since 0.60: There's probably no reason for this feature to exist.
+         * @default true
          */
         get allow_bold(): boolean;
         set allow_bold(val: boolean);
@@ -3694,42 +3672,49 @@ export namespace Vte {
          * Controls whether or not the terminal will attempt to draw bold text,
          * by using a bold font variant.
          * @deprecated since 0.60: There's probably no reason for this feature to exist.
+         * @default true
          */
         get allowBold(): boolean;
         set allowBold(val: boolean);
         /**
          * Controls whether or not hyperlinks (OSC 8 escape sequence) are recognized and displayed.
          * @since 0.50
+         * @default false
          */
         get allow_hyperlink(): boolean;
         set allow_hyperlink(val: boolean);
         /**
          * Controls whether or not hyperlinks (OSC 8 escape sequence) are recognized and displayed.
          * @since 0.50
+         * @default false
          */
         get allowHyperlink(): boolean;
         set allowHyperlink(val: boolean);
         /**
          * Controls whether or not the terminal will beep when the child outputs the
          * "bl" sequence.
+         * @default true
          */
         get audible_bell(): boolean;
         set audible_bell(val: boolean);
         /**
          * Controls whether or not the terminal will beep when the child outputs the
          * "bl" sequence.
+         * @default true
          */
         get audibleBell(): boolean;
         set audibleBell(val: boolean);
         /**
          * Controls what string or control sequence the terminal sends to its child
          * when the user presses the backspace key.
+         * @default Vte.EraseBinding.AUTO
          */
         get backspace_binding(): EraseBinding;
         set backspace_binding(val: EraseBinding);
         /**
          * Controls what string or control sequence the terminal sends to its child
          * when the user presses the backspace key.
+         * @default Vte.EraseBinding.AUTO
          */
         get backspaceBinding(): EraseBinding;
         set backspaceBinding(val: EraseBinding);
@@ -3738,6 +3723,7 @@ export namespace Vte {
          * of the first 8 palette colors, in addition to making them bold (legacy behavior)
          * or if SGR 1 only enables bold and leaves the color intact.
          * @since 0.52
+         * @default false
          */
         get bold_is_bright(): boolean;
         set bold_is_bright(val: boolean);
@@ -3746,30 +3732,35 @@ export namespace Vte {
          * of the first 8 palette colors, in addition to making them bold (legacy behavior)
          * or if SGR 1 only enables bold and leaves the color intact.
          * @since 0.52
+         * @default false
          */
         get boldIsBright(): boolean;
         set boldIsBright(val: boolean);
         /**
          * Scale factor for the cell height, to increase line spacing. (The font's height is not affected.)
          * @since 0.52
+         * @default 1
          */
         get cell_height_scale(): number;
         set cell_height_scale(val: number);
         /**
          * Scale factor for the cell height, to increase line spacing. (The font's height is not affected.)
          * @since 0.52
+         * @default 1
          */
         get cellHeightScale(): number;
         set cellHeightScale(val: number);
         /**
          * Scale factor for the cell width, to increase letter spacing. (The font's width is not affected.)
          * @since 0.52
+         * @default 1
          */
         get cell_width_scale(): number;
         set cell_width_scale(val: number);
         /**
          * Scale factor for the cell width, to increase letter spacing. (The font's width is not affected.)
          * @since 0.52
+         * @default 1
          */
         get cellWidthScale(): number;
         set cellWidthScale(val: number);
@@ -3781,6 +3772,7 @@ export namespace Vte {
          *
          * This setting only takes effect the next time the terminal is reset, either
          * via escape sequence or with `vte_terminal_reset()`.
+         * @default 1
          */
         get cjk_ambiguous_width(): number;
         set cjk_ambiguous_width(val: number);
@@ -3792,6 +3784,7 @@ export namespace Vte {
          *
          * This setting only takes effect the next time the terminal is reset, either
          * via escape sequence or with `vte_terminal_reset()`.
+         * @default 1
          */
         get cjkAmbiguousWidth(): number;
         set cjkAmbiguousWidth(val: number);
@@ -3801,122 +3794,143 @@ export namespace Vte {
          * takes precedence over this.
          * @since 0.76
          */
-        get context_menu(): Gtk.Menu;
-        set context_menu(val: Gtk.Menu);
+        get context_menu(): Gtk.Menu | null;
+        set context_menu(val: Gtk.Menu | null);
         /**
          * The menu used for context menus. Note that context menu model set with the
          * {@link Vte.Terminal.SignalSignatures.context_menu_model | Vte.Terminal::context-menu-model} property or `vte_terminal_set_context_menu_model()`
          * takes precedence over this.
          * @since 0.76
          */
-        get contextMenu(): Gtk.Menu;
-        set contextMenu(val: Gtk.Menu);
+        get contextMenu(): Gtk.Menu | null;
+        set contextMenu(val: Gtk.Menu | null);
         /**
          * The menu model used for context menus. If non-`null`, the context menu is
          * generated from this model, and overrides a context menu set with the
          * {@link Vte.Terminal.SignalSignatures.context_menu | Vte.Terminal::context-menu} property or `vte_terminal_set_context_menu()`.
          * @since 0.76
          */
-        get context_menu_model(): Gio.MenuModel;
-        set context_menu_model(val: Gio.MenuModel);
+        get context_menu_model(): Gio.MenuModel | null;
+        set context_menu_model(val: Gio.MenuModel | null);
         /**
          * The menu model used for context menus. If non-`null`, the context menu is
          * generated from this model, and overrides a context menu set with the
          * {@link Vte.Terminal.SignalSignatures.context_menu | Vte.Terminal::context-menu} property or `vte_terminal_set_context_menu()`.
          * @since 0.76
          */
-        get contextMenuModel(): Gio.MenuModel;
-        set contextMenuModel(val: Gio.MenuModel);
+        get contextMenuModel(): Gio.MenuModel | null;
+        set contextMenuModel(val: Gio.MenuModel | null);
         /**
          * The current directory URI, or `null` if unset.
          * @deprecated since 0.78: Use the `VTE_TERMPROP_CURRENT_DIRECTORY_URI` termprop.
          * @read-only
+         * @default null
          */
-        get current_directory_uri(): string;
+        get current_directory_uri(): string | null;
         /**
          * The current directory URI, or `null` if unset.
          * @deprecated since 0.78: Use the `VTE_TERMPROP_CURRENT_DIRECTORY_URI` termprop.
          * @read-only
+         * @default null
          */
-        get currentDirectoryUri(): string;
+        get currentDirectoryUri(): string | null;
         /**
          * The current file URI, or `null` if unset.
          * @deprecated since 0.78: Use the `VTE_TERMPROP_CURRENT_FILE_URI` termprop.
          * @read-only
+         * @default null
          */
-        get current_file_uri(): string;
+        get current_file_uri(): string | null;
         /**
          * The current file URI, or `null` if unset.
          * @deprecated since 0.78: Use the `VTE_TERMPROP_CURRENT_FILE_URI` termprop.
          * @read-only
+         * @default null
          */
-        get currentFileUri(): string;
+        get currentFileUri(): string | null;
         /**
          * Sets whether or not the cursor will blink. Using {@link Vte.CursorBlinkMode.SYSTEM}
          * will use the {@link Gtk.Settings.gtk_cursor_blink} setting.
+         * @default Vte.CursorBlinkMode.SYSTEM
          */
         get cursor_blink_mode(): CursorBlinkMode;
         set cursor_blink_mode(val: CursorBlinkMode);
         /**
          * Sets whether or not the cursor will blink. Using {@link Vte.CursorBlinkMode.SYSTEM}
          * will use the {@link Gtk.Settings.gtk_cursor_blink} setting.
+         * @default Vte.CursorBlinkMode.SYSTEM
          */
         get cursorBlinkMode(): CursorBlinkMode;
         set cursorBlinkMode(val: CursorBlinkMode);
         /**
          * Controls the shape of the cursor.
+         * @default Vte.CursorShape.BLOCK
          */
         get cursor_shape(): CursorShape;
         set cursor_shape(val: CursorShape);
         /**
          * Controls the shape of the cursor.
+         * @default Vte.CursorShape.BLOCK
          */
         get cursorShape(): CursorShape;
         set cursorShape(val: CursorShape);
         /**
          * Controls what string or control sequence the terminal sends to its child
          * when the user presses the delete key.
+         * @default Vte.EraseBinding.AUTO
          */
         get delete_binding(): EraseBinding;
         set delete_binding(val: EraseBinding);
         /**
          * Controls what string or control sequence the terminal sends to its child
          * when the user presses the delete key.
+         * @default Vte.EraseBinding.AUTO
          */
         get deleteBinding(): EraseBinding;
         set deleteBinding(val: EraseBinding);
         /**
          * Controls whether or not a11y is enabled for the widget.
          * @since 0.78
+         * @default true
          */
         get enable_a11y(): boolean;
         set enable_a11y(val: boolean);
         /**
          * Controls whether or not a11y is enabled for the widget.
          * @since 0.78
+         * @default true
          */
         get enableA11y(): boolean;
         set enableA11y(val: boolean);
         /**
          * Controls whether or not the terminal will perform bidirectional text rendering.
          * @since 0.58
+         * @default true
          */
         get enable_bidi(): boolean;
         set enable_bidi(val: boolean);
         /**
          * Controls whether or not the terminal will perform bidirectional text rendering.
          * @since 0.58
+         * @default true
          */
         get enableBidi(): boolean;
         set enableBidi(val: boolean);
+        /**
+         * @default true
+         */
         get enable_fallback_scrolling(): boolean;
         set enable_fallback_scrolling(val: boolean);
+        /**
+         * @default true
+         */
         get enableFallbackScrolling(): boolean;
         set enableFallbackScrolling(val: boolean);
         /**
          * Whether legacy OSC 777 sequences are translated to
          * their corresponding termprops.
          * @since 0.78
+         * @default false
          */
         get enable_legacy_osc777(): boolean;
         set enable_legacy_osc777(val: boolean);
@@ -3924,30 +3938,35 @@ export namespace Vte {
          * Whether legacy OSC 777 sequences are translated to
          * their corresponding termprops.
          * @since 0.78
+         * @default false
          */
         get enableLegacyOsc777(): boolean;
         set enableLegacyOsc777(val: boolean);
         /**
          * Controls whether or not the terminal will shape Arabic text.
          * @since 0.58
+         * @default true
          */
         get enable_shaping(): boolean;
         set enable_shaping(val: boolean);
         /**
          * Controls whether or not the terminal will shape Arabic text.
          * @since 0.58
+         * @default true
          */
         get enableShaping(): boolean;
         set enableShaping(val: boolean);
         /**
          * Controls whether SIXEL image support is enabled.
          * @since 0.62
+         * @default false
          */
         get enable_sixel(): boolean;
         set enable_sixel(val: boolean);
         /**
          * Controls whether SIXEL image support is enabled.
          * @since 0.62
+         * @default false
          */
         get enableSixel(): boolean;
         set enableSixel(val: boolean);
@@ -3957,9 +3976,10 @@ export namespace Vte {
          * terminal can change the encoding.  The default is defined by the
          * application's locale settings.
          * @deprecated since 0.54: Instead of using this, you should use a tool like   luit(1) when support for non-UTF-8 is required
+         * @default null
          */
-        get encoding(): string;
-        set encoding(val: string);
+        get encoding(): string | null;
+        set encoding(val: string | null);
         /**
          * Specifies the font used for rendering all text displayed by the terminal,
          * overriding any fonts set using `gtk_widget_modify_font()`.  The terminal
@@ -3987,8 +4007,8 @@ export namespace Vte {
          * {@link cairo.HintMetrics.OFF} set.
          * @since 0.74
          */
-        get font_options(): cairo.FontOptions;
-        set font_options(val: cairo.FontOptions);
+        get font_options(): cairo.FontOptions | null;
+        set font_options(val: cairo.FontOptions | null);
         /**
          * The terminal's font options, or `null` to use the default font options.
          *
@@ -3998,15 +4018,17 @@ export namespace Vte {
          * {@link cairo.HintMetrics.OFF} set.
          * @since 0.74
          */
-        get fontOptions(): cairo.FontOptions;
-        set fontOptions(val: cairo.FontOptions);
+        get fontOptions(): cairo.FontOptions | null;
+        set fontOptions(val: cairo.FontOptions | null);
         /**
          * The terminal's font scale.
+         * @default 1
          */
         get font_scale(): number;
         set font_scale(val: number);
         /**
          * The terminal's font scale.
+         * @default 1
          */
         get fontScale(): number;
         set fontScale(val: number);
@@ -4014,28 +4036,33 @@ export namespace Vte {
          * The currently hovered hyperlink URI, or `null` if unset.
          * @since 0.50
          * @read-only
+         * @default null
          */
         get hyperlink_hover_uri(): string;
         /**
          * The currently hovered hyperlink URI, or `null` if unset.
          * @since 0.50
          * @read-only
+         * @default null
          */
         get hyperlinkHoverUri(): string;
         /**
          * @deprecated since 0.54: This property is always `null`.
          * @read-only
+         * @default null
          */
-        get icon_title(): string;
+        get icon_title(): string | null;
         /**
          * @deprecated since 0.54: This property is always `null`.
          * @read-only
+         * @default null
          */
-        get iconTitle(): string;
+        get iconTitle(): string | null;
         /**
          * Controls whether the terminal allows user input. When user input is disabled,
          * key press and mouse button press and motion events are not sent to the
          * terminal's child.
+         * @default true
          */
         get input_enabled(): boolean;
         set input_enabled(val: boolean);
@@ -4043,6 +4070,7 @@ export namespace Vte {
          * Controls whether the terminal allows user input. When user input is disabled,
          * key press and mouse button press and motion events are not sent to the
          * terminal's child.
+         * @default true
          */
         get inputEnabled(): boolean;
         set inputEnabled(val: boolean);
@@ -4050,6 +4078,7 @@ export namespace Vte {
          * Controls the value of the terminal's mouse autohide setting.  When autohiding
          * is enabled, the mouse cursor will be hidden when the user presses a key and
          * shown when the user moves the mouse.
+         * @default false
          */
         get pointer_autohide(): boolean;
         set pointer_autohide(val: boolean);
@@ -4057,18 +4086,20 @@ export namespace Vte {
          * Controls the value of the terminal's mouse autohide setting.  When autohiding
          * is enabled, the mouse cursor will be hidden when the user presses a key and
          * shown when the user moves the mouse.
+         * @default false
          */
         get pointerAutohide(): boolean;
         set pointerAutohide(val: boolean);
         /**
          * The PTY object for the terminal.
          */
-        get pty(): Pty;
-        set pty(val: Pty);
+        get pty(): Pty | null;
+        set pty(val: Pty | null);
         /**
          * Controls whether or not the terminal will rewrap its contents, including
          * the scrollback buffer, whenever the terminal's width changes.
          * @deprecated since 0.58
+         * @default true
          */
         get rewrap_on_resize(): boolean;
         set rewrap_on_resize(val: boolean);
@@ -4076,6 +4107,7 @@ export namespace Vte {
          * Controls whether or not the terminal will rewrap its contents, including
          * the scrollback buffer, whenever the terminal's width changes.
          * @deprecated since 0.58
+         * @default true
          */
         get rewrapOnResize(): boolean;
         set rewrapOnResize(val: boolean);
@@ -4083,6 +4115,7 @@ export namespace Vte {
          * Controls whether or not the terminal will forcibly scroll to the bottom of
          * the viewable history when the text is inserted (e.g. by a paste).
          * @since 0.76
+         * @default false
          */
         get scroll_on_insert(): boolean;
         set scroll_on_insert(val: boolean);
@@ -4090,6 +4123,7 @@ export namespace Vte {
          * Controls whether or not the terminal will forcibly scroll to the bottom of
          * the viewable history when the text is inserted (e.g. by a paste).
          * @since 0.76
+         * @default false
          */
         get scrollOnInsert(): boolean;
         set scrollOnInsert(val: boolean);
@@ -4097,6 +4131,7 @@ export namespace Vte {
          * Controls whether or not the terminal will forcibly scroll to the bottom of
          * the viewable history when the user presses a key.  Modifier keys do not
          * trigger this behavior.
+         * @default false
          */
         get scroll_on_keystroke(): boolean;
         set scroll_on_keystroke(val: boolean);
@@ -4104,18 +4139,21 @@ export namespace Vte {
          * Controls whether or not the terminal will forcibly scroll to the bottom of
          * the viewable history when the user presses a key.  Modifier keys do not
          * trigger this behavior.
+         * @default false
          */
         get scrollOnKeystroke(): boolean;
         set scrollOnKeystroke(val: boolean);
         /**
          * Controls whether or not the terminal will forcibly scroll to the bottom of
          * the viewable history when the new data is received from the child.
+         * @default true
          */
         get scroll_on_output(): boolean;
         set scroll_on_output(val: boolean);
         /**
          * Controls whether or not the terminal will forcibly scroll to the bottom of
          * the viewable history when the new data is received from the child.
+         * @default true
          */
         get scrollOnOutput(): boolean;
         set scrollOnOutput(val: boolean);
@@ -4124,6 +4162,7 @@ export namespace Vte {
          * or pixels. This can be enabled when the terminal is the child of a
          * GtkScrolledWindow to fix some bugs with its kinetic scrolling.
          * @since 0.66
+         * @default false
          */
         get scroll_unit_is_pixels(): boolean;
         set scroll_unit_is_pixels(val: boolean);
@@ -4132,6 +4171,7 @@ export namespace Vte {
          * or pixels. This can be enabled when the terminal is the child of a
          * GtkScrolledWindow to fix some bugs with its kinetic scrolling.
          * @since 0.66
+         * @default false
          */
         get scrollUnitIsPixels(): boolean;
         set scrollUnitIsPixels(val: boolean);
@@ -4146,6 +4186,7 @@ export namespace Vte {
          * Note that any value greater or equal to `G_MAXINT` is interpreted as unlimited
          * scrollback, i.e. like `-1` when passed to `vte_terminal_set_scrollback_lines()`,
          * and the value of this property for unlimited scrollback is `G_MAXUINT`.
+         * @default 512
          */
         get scrollback_lines(): number;
         set scrollback_lines(val: number);
@@ -4160,18 +4201,21 @@ export namespace Vte {
          * Note that any value greater or equal to `G_MAXINT` is interpreted as unlimited
          * scrollback, i.e. like `-1` when passed to `vte_terminal_set_scrollback_lines()`,
          * and the value of this property for unlimited scrollback is `G_MAXUINT`.
+         * @default 512
          */
         get scrollbackLines(): number;
         set scrollbackLines(val: number);
         /**
          * Controls whether or not the terminal will allow blinking text.
          * @since 0.52
+         * @default Vte.TextBlinkMode.ALWAYS
          */
         get text_blink_mode(): TextBlinkMode;
         set text_blink_mode(val: TextBlinkMode);
         /**
          * Controls whether or not the terminal will allow blinking text.
          * @since 0.52
+         * @default Vte.TextBlinkMode.ALWAYS
          */
         get textBlinkMode(): TextBlinkMode;
         set textBlinkMode(val: TextBlinkMode);
@@ -4179,14 +4223,16 @@ export namespace Vte {
          * The terminal's title.
          * @deprecated since 0.78: Use the `VTE_TERMPROP_XTERM_TITLE` termprop.
          * @read-only
+         * @default null
          */
-        get window_title(): string;
+        get window_title(): string | null;
         /**
          * The terminal's title.
          * @deprecated since 0.78: Use the `VTE_TERMPROP_XTERM_TITLE` termprop.
          * @read-only
+         * @default null
          */
-        get windowTitle(): string;
+        get windowTitle(): string | null;
         /**
          * The set of characters which will be considered parts of a word
          * when doing word-wise selection, in addition to the default which only
@@ -4195,8 +4241,9 @@ export namespace Vte {
          * If `null`, a built-in set is used.
          * @since 0.40
          * @read-only
+         * @default null
          */
-        get word_char_exceptions(): string;
+        get word_char_exceptions(): string | null;
         /**
          * The set of characters which will be considered parts of a word
          * when doing word-wise selection, in addition to the default which only
@@ -4205,23 +4252,27 @@ export namespace Vte {
          * If `null`, a built-in set is used.
          * @since 0.40
          * @read-only
+         * @default null
          */
-        get wordCharExceptions(): string;
+        get wordCharExceptions(): string | null;
         /**
          * The horizontal alignment of `terminal` within its allocation.
          * @since 0.76
+         * @default Vte.Align.START
          */
         get xalign(): Align;
         set xalign(val: Align);
         /**
          * The horizontal fillment of `terminal` within its allocation.
          * @since 0.76
+         * @default true
          */
         get xfill(): boolean;
         set xfill(val: boolean);
         /**
          * The vertical alignment of `terminal` within its allocation
          * @since 0.76
+         * @default Vte.Align.START
          */
         get yalign(): Align;
         set yalign(val: Align);
@@ -4231,6 +4282,7 @@ export namespace Vte {
          * {@link Vte.Terminal.yalign}={@link Vte.Align.START}, and is ignored for
          * all other yalign values.
          * @since 0.76
+         * @default true
          */
         get yfill(): boolean;
         set yfill(val: boolean);
@@ -4505,18 +4557,18 @@ export namespace Vte {
          * Interprets `data` as if it were data received from a child process.
          * @param data a string in the terminal's current encoding
          */
-        feed(data?: Uint8Array | null): void;
+        feed(data: Uint8Array | null): void;
         /**
          * Sends a block of UTF-8 text to the child as if it were entered by the user
          * at the keyboard.
          * @param text data to send to the child
          */
-        feed_child(text?: Uint8Array | null): void;
+        feed_child(text: Uint8Array | null): void;
         /**
          * Sends a block of binary data to the child.
          * @param data data to send to the child
          */
-        feed_child_binary(data?: Uint8Array | null): void;
+        feed_child_binary(data: Uint8Array | null): void;
         /**
          * Checks whether or not the terminal will attempt to draw bold text,
          * by using a bold font variant.
@@ -4920,7 +4972,7 @@ export namespace Vte {
          * @param is_selected a {@link Vte.SelectionFunc} callback. Deprecated: 0.44: Always pass `null` here.
          * @returns a newly allocated text string, or `null`.
          */
-        get_text(is_selected?: SelectionFunc | null): [string | null, CharAttributes[] | null];
+        get_text(is_selected: SelectionFunc | null): [string | null, CharAttributes[] | null];
         /**
          * Checks whether or not the terminal will allow blinking text.
          * @returns the blinking setting
@@ -4947,7 +4999,7 @@ export namespace Vte {
          * @param is_selected a {@link Vte.SelectionFunc} callback. Deprecated: 0.44: Always pass `null` here.
          * @returns a newly allocated text string, or `null`.
          */
-        get_text_include_trailing_spaces(is_selected?: SelectionFunc | null): [string, CharAttributes[] | null];
+        get_text_include_trailing_spaces(is_selected: SelectionFunc | null): [string, CharAttributes[] | null];
         /**
          * Extracts a view of the visible part of the terminal. The
          * entire scrollback buffer is scanned, so it is possible to read the entire
@@ -4973,7 +5025,7 @@ export namespace Vte {
             start_col: bigint | number,
             end_row: bigint | number,
             end_col: bigint | number,
-            is_selected?: SelectionFunc | null,
+            is_selected: SelectionFunc | null,
         ): [string | null, CharAttributes[] | null];
         /**
          * Returns the specified range of text in the specified format.
@@ -5108,7 +5160,7 @@ export namespace Vte {
          * @param tag the tag of the regex which should use the specified cursor
          * @param cursor the {@link Gdk.Cursor} which the terminal should use when the pattern is   highlighted, or `null` to use the standard cursor
          */
-        match_set_cursor(tag: number, cursor?: Gdk.Cursor | null): void;
+        match_set_cursor(tag: number, cursor: Gdk.Cursor | null): void;
         /**
          * Sets which cursor the terminal will use if the pointer is over the pattern
          * specified by `tag`.
@@ -5153,7 +5205,7 @@ export namespace Vte {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns a new {@link Vte.Pty}
          */
-        pty_new_sync(flags: PtyFlags, cancellable?: Gio.Cancellable | null): Pty;
+        pty_new_sync(flags: PtyFlags, cancellable: Gio.Cancellable | null): Pty;
         /**
          * Returns the value of a {@link Vte.PropertyType.DATA} termprop as a {@link GLib.Bytes}, or `null` if
          *   `prop` is unset, or `prop` is not a registered property.
@@ -5393,21 +5445,21 @@ export namespace Vte {
          * If `bold` is `null` then the default color is used.
          * @param bold the new bold color or `null`
          */
-        set_color_bold(bold?: Gdk.RGBA | null): void;
+        set_color_bold(bold: Gdk.RGBA | null): void;
         /**
          * Sets the background color for text which is under the cursor.  If `null`, text
          * under the cursor will be drawn with foreground and background colors
          * reversed.
          * @param cursor_background the new color to use for the text cursor, or `null`
          */
-        set_color_cursor(cursor_background?: Gdk.RGBA | null): void;
+        set_color_cursor(cursor_background: Gdk.RGBA | null): void;
         /**
          * Sets the foreground color for text which is under the cursor.  If `null`, text
          * under the cursor will be drawn with foreground and background colors
          * reversed.
          * @param cursor_foreground the new color to use for the text cursor, or `null`
          */
-        set_color_cursor_foreground(cursor_foreground?: Gdk.RGBA | null): void;
+        set_color_cursor_foreground(cursor_foreground: Gdk.RGBA | null): void;
         /**
          * Sets the foreground color used to draw normal text.
          * @param foreground the new foreground color
@@ -5420,7 +5472,7 @@ export namespace Vte {
          * be drawn with foreground and background colors reversed.
          * @param highlight_background the new color to use for highlighted text, or `null`
          */
-        set_color_highlight(highlight_background?: Gdk.RGBA | null): void;
+        set_color_highlight(highlight_background: Gdk.RGBA | null): void;
         /**
          * Sets the foreground color for text which is highlighted.  If `null`,
          * it is unset.  If neither highlight background nor highlight foreground are set,
@@ -5428,7 +5480,7 @@ export namespace Vte {
          * be drawn with foreground and background colors reversed.
          * @param highlight_foreground the new color to use for highlighted text, or `null`
          */
-        set_color_highlight_foreground(highlight_foreground?: Gdk.RGBA | null): void;
+        set_color_highlight_foreground(highlight_foreground: Gdk.RGBA | null): void;
         /**
          * `palette` specifies the new values for the 256 palette colors: 8 standard colors,
          * their 8 bright counterparts, 6x6x6 color cube, and 24 grayscale colors.
@@ -5443,7 +5495,7 @@ export namespace Vte {
          * @param background the new background color, or `null`
          * @param palette the color palette
          */
-        set_colors(foreground?: Gdk.RGBA | null, background?: Gdk.RGBA | null, palette?: Gdk.RGBA[] | null): void;
+        set_colors(foreground: Gdk.RGBA | null, background: Gdk.RGBA | null, palette: Gdk.RGBA[] | null): void;
         /**
          * Sets `menu` as the context menu in `terminal`.
          * Use `null` to unset the current menu.
@@ -5452,13 +5504,13 @@ export namespace Vte {
          * takes precedence over a menu set using this function.
          * @param menu a menu
          */
-        set_context_menu(menu?: Gtk.Widget | null): void;
+        set_context_menu(menu: Gtk.Widget | null): void;
         /**
          * Sets `model` as the context menu model in `terminal`.
          * Use `null` to unset the current menu model.
          * @param model a {@link Gio.MenuModel}
          */
-        set_context_menu_model(model?: Gio.MenuModel | null): void;
+        set_context_menu_model(model: Gio.MenuModel | null): void;
         /**
          * Sets whether or not the cursor will blink. Using {@link Vte.CursorBlinkMode.SYSTEM}
          * will use the {@link Gtk.Settings.SignalSignatures.gtk_cursor_blink | Gtk.Settings::gtk-cursor-blink} setting.
@@ -5528,7 +5580,7 @@ export namespace Vte {
          * @param codeset target charset, or `null` to use UTF-8
          * @returns `true` if the encoding could be changed to the specified one,  or `false` with `error` set to {@link GLib.ConvertError.NO_CONVERSION}.
          */
-        set_encoding(codeset?: string | null): boolean;
+        set_encoding(codeset: string | null): boolean;
         /**
          * Sets the font used for rendering all text displayed by the terminal,
          * overriding any fonts set using `gtk_widget_modify_font()`.  The terminal
@@ -5537,7 +5589,7 @@ export namespace Vte {
          * and columns.  The font scale is applied to the specified font.
          * @param font_desc a {@link Pango.FontDescription} for the desired font, or `null`
          */
-        set_font(font_desc?: Pango.FontDescription | null): void;
+        set_font(font_desc: Pango.FontDescription | null): void;
         /**
          * Sets the terminal's font options to `options`.
          *
@@ -5547,7 +5599,7 @@ export namespace Vte {
          * {@link cairo.HintMetrics.OFF} set.
          * @param font_options the font options, or `null`
          */
-        set_font_options(font_options?: cairo.FontOptions | null): void;
+        set_font_options(font_options: cairo.FontOptions | null): void;
         /**
          * Sets the terminal's font scale to `scale`.
          * @param scale the font scale
@@ -5581,7 +5633,7 @@ export namespace Vte {
          * Use `null` to unset the PTY.
          * @param pty a {@link Vte.Pty}, or `null`
          */
-        set_pty(pty?: Pty | null): void;
+        set_pty(pty: Pty | null): void;
         /**
          * Controls whether or not the terminal will rewrap its contents, including
          * the scrollback history, whenever the terminal's width changes.
@@ -5716,8 +5768,8 @@ export namespace Vte {
             child_setup: GLib.SpawnChildSetupFunc | null,
             child_setup_data_destroy: GLib.DestroyNotify | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: TerminalSpawnAsyncCallback | null,
+            cancellable: Gio.Cancellable | null,
+            callback: TerminalSpawnAsyncCallback | null,
         ): void;
         /**
          * Starts the specified command under a newly-allocated controlling
@@ -5758,8 +5810,8 @@ export namespace Vte {
             argv: string[],
             envv: string[] | null,
             spawn_flags: GLib.SpawnFlags,
-            child_setup?: GLib.SpawnChildSetupFunc | null,
-            cancellable?: Gio.Cancellable | null,
+            child_setup: GLib.SpawnChildSetupFunc | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, GLib.Pid | null];
         /**
          * A convenience function that wraps creating the {@link Vte.Pty} and spawning
@@ -5830,8 +5882,8 @@ export namespace Vte {
             child_setup: GLib.SpawnChildSetupFunc | null,
             child_setup_data_destroy: GLib.DestroyNotify | null,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: TerminalSpawnAsyncCallback | null,
+            cancellable: Gio.Cancellable | null,
+            callback: TerminalSpawnAsyncCallback | null,
         ): void;
         /**
          * Clears the current selection.
@@ -5870,7 +5922,7 @@ export namespace Vte {
          * @param cancellable a {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` if there was an error
          */
-        write_contents_sync(stream: Gio.OutputStream, flags: WriteFlags, cancellable?: Gio.Cancellable | null): boolean;
+        write_contents_sync(stream: Gio.OutputStream, flags: WriteFlags, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Horizontal {@link Gtk.Adjustment} of the scrollable widget. This adjustment is
          * shared between the scrollable widget and its parent.
@@ -5883,6 +5935,7 @@ export namespace Vte {
          * Determines whether horizontal scrolling should start once the scrollable
          * widget is allocated less than its minimum width or less than its natural width.
          * @since 3.0
+         * @default Gtk.ScrollablePolicy.MINIMUM
          * @category Inherited from Gtk.Scrollable
          */
         get hscroll_policy(): Gtk.ScrollablePolicy;
@@ -5891,6 +5944,7 @@ export namespace Vte {
          * Determines whether horizontal scrolling should start once the scrollable
          * widget is allocated less than its minimum width or less than its natural width.
          * @since 3.0
+         * @default Gtk.ScrollablePolicy.MINIMUM
          * @category Inherited from Gtk.Scrollable
          */
         get hscrollPolicy(): Gtk.ScrollablePolicy;
@@ -5907,6 +5961,7 @@ export namespace Vte {
          * Determines whether vertical scrolling should start once the scrollable
          * widget is allocated less than its minimum height or less than its natural height.
          * @since 3.0
+         * @default Gtk.ScrollablePolicy.MINIMUM
          * @category Inherited from Gtk.Scrollable
          */
         get vscroll_policy(): Gtk.ScrollablePolicy;
@@ -5915,6 +5970,7 @@ export namespace Vte {
          * Determines whether vertical scrolling should start once the scrollable
          * widget is allocated less than its minimum height or less than its natural height.
          * @since 3.0
+         * @default Gtk.ScrollablePolicy.MINIMUM
          * @category Inherited from Gtk.Scrollable
          */
         get vscrollPolicy(): Gtk.ScrollablePolicy;
@@ -5926,7 +5982,7 @@ export namespace Vte {
          * @param child child to add
          * @param type kind of child or `null`
          */
-        add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
+        add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
         /**
          * Constructs a child of `buildable` with the name `name`.
          *
@@ -5945,7 +6001,7 @@ export namespace Vte {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: any | null): void;
+        custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: any | null): void;
         /**
          * This is called at the end of each custom element handled by
          * the buildable.
@@ -5954,7 +6010,7 @@ export namespace Vte {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: any | null): void;
+        custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: any | null): void;
         /**
          * This is called for each unknown element under `<child>`.
          * @param builder a {@link Gtk.Builder} used to construct this object
@@ -6012,7 +6068,7 @@ export namespace Vte {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
         /**
          * Constructs a child of `buildable` with the name `name`.
          *
@@ -6036,7 +6092,7 @@ export namespace Vte {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * This is called at the end of each custom element handled by
@@ -6051,7 +6107,7 @@ export namespace Vte {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * This is called for each unknown element under `<child>`.
@@ -6138,7 +6194,7 @@ export namespace Vte {
          * Sets the horizontal adjustment of the {@link Gtk.Scrollable}.
          * @param hadjustment a {@link Gtk.Adjustment}
          */
-        set_hadjustment(hadjustment?: Gtk.Adjustment | null): void;
+        set_hadjustment(hadjustment: Gtk.Adjustment | null): void;
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
          * horizontal scrolling should start below the minimum width or
@@ -6150,7 +6206,7 @@ export namespace Vte {
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
          */
-        set_vadjustment(vadjustment?: Gtk.Adjustment | null): void;
+        set_vadjustment(vadjustment: Gtk.Adjustment | null): void;
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
          * vertical scrolling should start below the minimum height or
@@ -6214,38 +6270,19 @@ export namespace Vte {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -6253,15 +6290,9 @@ export namespace Vte {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -6428,7 +6459,7 @@ export namespace Vte {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set

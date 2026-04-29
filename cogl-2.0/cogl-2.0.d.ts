@@ -1839,7 +1839,7 @@ export namespace Cogl {
      * @returns `true` if the two colors are the same.
      * @since 1.0
      */
-    function color_equal(v1?: any | null, v2?: any | null): Bool;
+    function color_equal(v1: any | null, v2: any | null): Bool;
     /**
      * Converts a color expressed in HLS (hue, luminance and saturation)
      * values into a {@link Cogl.Color}.
@@ -1911,7 +1911,7 @@ export namespace Cogl {
      * @returns `true` if `v1` and `v2` are equal else `false`.
      * @since 2.0
      */
-    function euler_equal(v1?: any | null, v2?: any | null): Bool;
+    function euler_equal(v1: any | null, v2: any | null): Bool;
     /**
      * Iterates through all the context level features currently supported
      * for a given `context` and for each feature `callback` is called.
@@ -2063,204 +2063,204 @@ export namespace Cogl {
      * @returns `true` if the passed object represents an atlas   texture and `false` otherwise
      * @since 1.16
      */
-    function is_atlas_texture(object?: any | null): Bool;
+    function is_atlas_texture(object: any | null): Bool;
     /**
      * Gets whether the given object references a {@link Cogl.Attribute}.
      * @param object A {@link Cogl.Object}
      * @returns `true` if the `object` references a {@link Cogl.Attribute},   `false` otherwise
      */
-    function is_attribute(object?: any | null): Bool;
+    function is_attribute(object: any | null): Bool;
     /**
      * Gets whether the given object references a {@link Cogl.AttributeBuffer}.
      * @param object A {@link Cogl.Object}
      * @returns `true` if `object` references a {@link Cogl.AttributeBuffer},   `false` otherwise
      * @since 1.4
      */
-    function is_attribute_buffer(object?: any | null): Bool;
+    function is_attribute_buffer(object: any | null): Bool;
     /**
      * Checks whether `object` is a {@link Cogl.Bitmap}
      * @param object a {@link Cogl.Object} pointer
      * @returns `true` if the passed `object` represents a bitmap,   and `false` otherwise
      * @since 1.0
      */
-    function is_bitmap(object?: any | null): Bool;
+    function is_bitmap(object: any | null): Bool;
     /**
      * Checks whether `buffer` is a buffer object.
      * @param object a buffer object
      * @returns `true` if the handle is a CoglBuffer, and `false` otherwise
      * @since 1.2
      */
-    function is_buffer(object?: any | null): Bool;
+    function is_buffer(object: any | null): Bool;
     /**
      * Gets whether the given object references an existing context object.
      * @param object An object or `null`
      * @returns `true` if the `object` references a {@link Cogl.Context},   `false` otherwise
      * @since 1.10
      */
-    function is_context(object?: any | null): Bool;
+    function is_context(object: any | null): Bool;
     /**
      * Gets whether the given object references a {@link Cogl.Display}.
      * @param object A {@link Cogl.Object} pointer
      * @returns `true` if the object references a {@link Cogl.Display}   and `false` otherwise.
      * @since 1.10
      */
-    function is_display(object?: any | null): Bool;
+    function is_display(object: any | null): Bool;
     /**
      * Gets whether the given object references a {@link Cogl.FrameInfo}.
      * @param object A {@link Cogl.Object} pointer
      * @returns `true` if the object references a {@link Cogl.FrameInfo}   and `false` otherwise.
      * @since 2.0
      */
-    function is_frame_info(object?: any | null): Bool;
+    function is_frame_info(object: any | null): Bool;
     /**
      * Gets whether the given object references a {@link Cogl.Framebuffer}.
      * @param object A {@link Cogl.Object} pointer
      * @returns `true` if the object references a {@link Cogl.Framebuffer}   and `false` otherwise.
      * @since 1.10
      */
-    function is_framebuffer(object?: any | null): Bool;
+    function is_framebuffer(object: any | null): Bool;
     /**
      * Gets whether the given object references a {@link Cogl.GLES2Context}.
      * @param object A {@link Cogl.Object} pointer
      * @returns `true` if the object references a {@link Cogl.GLES2Context}   and `false` otherwise.
      * @since 2.0
      */
-    function is_gles2_context(object?: any | null): Bool;
+    function is_gles2_context(object: any | null): Bool;
     /**
      * Gets whether the given object references a {@link Cogl.IndexBuffer}.
      * @param object A {@link Cogl.Object}
      * @returns `true` if the `object` references a {@link Cogl.IndexBuffer},   `false` otherwise
      * @since 1.4
      */
-    function is_index_buffer(object?: any | null): Bool;
+    function is_index_buffer(object: any | null): Bool;
     /**
      * Gets whether the given object references a {@link Cogl.Indices}.
      * @param object A {@link Cogl.Object} pointer
      * @returns `true` if the object references a {@link Cogl.Indices}   and `false` otherwise.
      * @since 1.10
      */
-    function is_indices(object?: any | null): Bool;
+    function is_indices(object: any | null): Bool;
     /**
      * Determines if the given {@link Cogl.Object} refers to a {@link Cogl.MatrixStack}.
      * @param object a {@link Cogl.Object}
      * @returns `true` if `object` is a {@link Cogl.MatrixStack}, otherwise               `false`.
      */
-    function is_matrix_stack(object?: any | null): Bool;
+    function is_matrix_stack(object: any | null): Bool;
     /**
      * Gets whether the given object references a {@link Cogl.Onscreen}.
      * @param object A {@link Cogl.Object} pointer
      * @returns `true` if the object references a {@link Cogl.Onscreen}   and `false` otherwise.
      * @since 1.10
      */
-    function is_onscreen(object?: any | null): Bool;
+    function is_onscreen(object: any | null): Bool;
     /**
      * Gets whether the given object references a {@link Cogl.OnscreenTemplate}.
      * @param object A {@link Cogl.Object} pointer
      * @returns `true` if the object references a {@link Cogl.OnscreenTemplate}   and `false` otherwise.
      * @since 1.10
      */
-    function is_onscreen_template(object?: any | null): Bool;
+    function is_onscreen_template(object: any | null): Bool;
     /**
      * Gets whether the given object references a {@link Cogl.Output}.
      * @param object A {@link Cogl.Object} pointer
      * @returns `true` if the object references a {@link Cogl.Output}   and `false` otherwise.
      * @since 1.14
      */
-    function is_output(object?: any | null): Bool;
+    function is_output(object: any | null): Bool;
     /**
      * Gets whether the given `object` references an existing pipeline object.
      * @param object A {@link Cogl.Object}
      * @returns `true` if the `object` references a {@link Cogl.Pipeline},   `false` otherwise
      * @since 2.0
      */
-    function is_pipeline(object?: any | null): Bool;
+    function is_pipeline(object: any | null): Bool;
     /**
      * Checks whether `object` is a pixel buffer.
      * @param object a {@link Cogl.Object} to test
      * @returns `true` if the `object` is a pixel buffer, and `false`   otherwise
      * @since 1.2
      */
-    function is_pixel_buffer(object?: any | null): Bool;
+    function is_pixel_buffer(object: any | null): Bool;
     /**
      * Gets whether the given object references a {@link Cogl.Primitive}.
      * @param object A {@link Cogl.Object}
      * @returns `true` if the `object` references a {@link Cogl.Primitive},   `false` otherwise
      * @since 1.6
      */
-    function is_primitive(object?: any | null): Bool;
+    function is_primitive(object: any | null): Bool;
     /**
      * Gets whether the given object references a primitive texture object.
      * @param object A {@link Cogl.Object} pointer
      * @returns `true` if the pointer references a primitive texture, and   `false` otherwise
      * @since 2.0
      */
-    function is_primitive_texture(object?: any | null): Bool;
+    function is_primitive_texture(object: any | null): Bool;
     /**
      * Determines if the given `object` is a {@link Cogl.Renderer}
      * @param object A {@link Cogl.Object} pointer
      * @returns `true` if `object` is a {@link Cogl.Renderer}, else `false`.
      * @since 1.10
      */
-    function is_renderer(object?: any | null): Bool;
+    function is_renderer(object: any | null): Bool;
     /**
      * Gets whether the given `object` references an existing snippet object.
      * @param object A {@link Cogl.Object} pointer
      * @returns `true` if the `object` references a {@link Cogl.Snippet},   `false` otherwise
      * @since 1.10
      */
-    function is_snippet(object?: any | null): Bool;
+    function is_snippet(object: any | null): Bool;
     /**
      * Checks whether `object` is a {@link Cogl.SubTexture}.
      * @param object a {@link Cogl.Object}
      * @returns `true` if the passed `object` represents a               {@link Cogl.SubTexture} and `false` otherwise.
      * @since 1.10
      */
-    function is_sub_texture(object?: any | null): Bool;
+    function is_sub_texture(object: any | null): Bool;
     /**
      * @param object
      */
-    function is_swap_chain(object?: any | null): Bool;
+    function is_swap_chain(object: any | null): Bool;
     /**
      * Gets whether the given object references a texture object.
      * @param object A {@link Cogl.Object} pointer
      * @returns `true` if the `object` references a texture, and   `false` otherwise
      */
-    function is_texture(object?: any | null): Bool;
+    function is_texture(object: any | null): Bool;
     /**
      * Gets whether the given object references an existing {@link Cogl.Texture2D}
      * object.
      * @param object A {@link Cogl.Object}
      * @returns `true` if the object references a {@link Cogl.Texture2D},   `false` otherwise
      */
-    function is_texture_2d(object?: any | null): Bool;
+    function is_texture_2d(object: any | null): Bool;
     /**
      * Gets whether the given object references a {@link Cogl.Texture2DSliced}.
      * @param object A {@link Cogl.Object} pointer
      * @returns `true` if the object references a {@link Cogl.Texture2DSliced}   and `false` otherwise.
      * @since 1.10
      */
-    function is_texture_2d_sliced(object?: any | null): Bool;
+    function is_texture_2d_sliced(object: any | null): Bool;
     /**
      * Checks whether the given object references a {@link Cogl.Texture3D}
      * @param object a {@link Cogl.Object}
      * @returns `true` if the passed object represents a 3D texture   and `false` otherwise
      * @since 1.4
      */
-    function is_texture_3d(object?: any | null): Bool;
+    function is_texture_3d(object: any | null): Bool;
     /**
      * Checks whether `object` points to a {@link Cogl.TexturePixmapX11} instance.
      * @param object A pointer to a {@link Cogl.Object}
      * @returns `true` if the object is a {@link Cogl.TexturePixmapX11}, and   `false` otherwise
      * @since 1.4
      */
-    function is_texture_pixmap_x11(object?: any | null): Bool;
+    function is_texture_pixmap_x11(object: any | null): Bool;
     /**
      * Gets whether the given object references an existing
      * {@link Cogl.TextureRectangle} object.
      * @param object A {@link Cogl.Object}
      * @returns `true` if the object references a               {@link Cogl.TextureRectangle}, `false` otherwise.
      */
-    function is_texture_rectangle(object?: any | null): Bool;
+    function is_texture_rectangle(object: any | null): Bool;
     /**
      * Asks Cogl to explicitly reset the crtc output modes at the next
      * {@link Cogl.Onscreen} swap_buffers request. For applications that support
@@ -2336,7 +2336,7 @@ export namespace Cogl {
      * @param v2 A 4x4 transformation matrix
      * @since 1.4
      */
-    function matrix_equal(v1?: any | null, v2?: any | null): Bool;
+    function matrix_equal(v1: any | null, v2: any | null): Bool;
     /**
      * This should be called whenever an application is woken up from
      * going idle in its main loop. The `poll_fds` array should contain a
@@ -2451,7 +2451,7 @@ export namespace Cogl {
      * @returns `true` if the quaternions are equal else `false`.
      * @since 2.0
      */
-    function quaternion_equal(v1?: any | null, v2?: any | null): Bool;
+    function quaternion_equal(v1: any | null, v2: any | null): Bool;
     function renderer_error_quark(): number;
     function texture_error_quark(): number;
     /**
@@ -2563,7 +2563,7 @@ export namespace Cogl {
      * @returns TRUE if the vectors are equal else FALSE.
      * @since 1.4
      */
-    function vector3_equal(v1?: any | null, v2?: any | null): Bool;
+    function vector3_equal(v1: any | null, v2: any | null): Bool;
     /**
      * Compares the components of two vectors using the given epsilon and
      * returns TRUE if they are the same, using an internal epsilon for
@@ -2655,7 +2655,7 @@ export namespace Cogl {
      * @param wayland_display A compositor's Wayland display pointer
      * @since 1.10
      */
-    function wayland_display_set_compositor_display(display: Display, wayland_display?: any | null): void;
+    function wayland_display_set_compositor_display(display: Display, wayland_display: any | null): void;
     /**
      * @param onscreen
      */
@@ -2712,7 +2712,7 @@ export namespace Cogl {
      * @param surface
      * @since 1.16
      */
-    function wayland_onscreen_set_foreign_surface(onscreen: Onscreen, surface?: any | null): void;
+    function wayland_onscreen_set_foreign_surface(onscreen: Onscreen, surface: any | null): void;
     /**
      * Retrieves the Wayland display that Cogl is using. If a foreign
      * display has been specified using
@@ -2749,7 +2749,7 @@ export namespace Cogl {
      * @param display A Wayland display
      * @since 1.8
      */
-    function wayland_renderer_set_foreign_display(renderer: Renderer, display?: any | null): void;
+    function wayland_renderer_set_foreign_display(renderer: Renderer, display: any | null): void;
     /**
      * Sets the pixels in a rectangular subregion of `texture` from a
      * Wayland SHM buffer. Generally this would be used in response to
@@ -3540,7 +3540,7 @@ export namespace Cogl {
 
         _init(...args: any[]): void;
 
-        static ['new'](display?: Display | null): Context;
+        static ['new'](display: Display | null): Context;
 
         // Signals
 
@@ -4200,7 +4200,7 @@ export namespace Cogl {
          * @param value
          * @param object
          */
-        static value_set_object(value: GObject.Value | any, object?: any | null): void;
+        static value_set_object(value: GObject.Value | any, object: any | null): void;
     }
 
     namespace Onscreen {
@@ -4266,7 +4266,7 @@ export namespace Cogl {
          */
         add_dirty_callback(
             callback: OnscreenDirtyCallback,
-            destroy?: UserDataDestroyCallback | null,
+            destroy: UserDataDestroyCallback | null,
         ): OnscreenDirtyClosure;
         /**
          * Installs a `callback` function that will be called for significant
@@ -4296,7 +4296,7 @@ export namespace Cogl {
          * @param destroy An optional callback to destroy `user_data`           when the `callback` is removed or `onscreen` is freed.
          * @returns a {@link Cogl.FrameClosure} pointer that can be used to               remove the callback and associated `user_data` later.
          */
-        add_frame_callback(callback: FrameCallback, destroy?: UserDataDestroyCallback | null): FrameClosure;
+        add_frame_callback(callback: FrameCallback, destroy: UserDataDestroyCallback | null): FrameClosure;
         /**
          * Registers a `callback` with `onscreen` that will be called whenever
          * the `onscreen` framebuffer changes size.
@@ -4322,7 +4322,7 @@ export namespace Cogl {
          */
         add_resize_callback(
             callback: OnscreenResizeCallback,
-            destroy?: UserDataDestroyCallback | null,
+            destroy: UserDataDestroyCallback | null,
         ): OnscreenResizeClosure;
         /**
          * Installs a `callback` function that should be called whenever a swap buffers
@@ -6509,7 +6509,7 @@ export namespace Cogl {
 
         _init(...args: any[]): void;
 
-        static ['new'](context: Context, size: bigint | number, data?: any | null): PixelBuffer;
+        static ['new'](context: Context, size: bigint | number, data: any | null): PixelBuffer;
 
         // Signals
 
@@ -8272,7 +8272,7 @@ export namespace Cogl {
          * @param v1 a {@link Cogl.Color}
          * @param v2 a {@link Cogl.Color}
          */
-        static equal(v1?: any | null, v2?: any | null): Bool;
+        static equal(v1: any | null, v2: any | null): Bool;
         /**
          * Converts a color expressed in HLS (hue, luminance and saturation)
          * values into a {@link Cogl.Color}.
@@ -8669,7 +8669,7 @@ export namespace Cogl {
          * @param v1 The first euler angle to compare
          * @param v2 The second euler angle to compare
          */
-        static equal(v1?: any | null, v2?: any | null): Bool;
+        static equal(v1: any | null, v2: any | null): Bool;
 
         // Methods
 
@@ -8869,7 +8869,7 @@ export namespace Cogl {
          * @param v1 A 4x4 transformation matrix
          * @param v2 A 4x4 transformation matrix
          */
-        static equal(v1?: any | null, v2?: any | null): Bool;
+        static equal(v1: any | null, v2: any | null): Bool;
 
         // Methods
 
@@ -9554,7 +9554,7 @@ export namespace Cogl {
          * @param v1 A {@link Cogl.Quaternion}
          * @param v2 A {@link Cogl.Quaternion}
          */
-        static equal(v1?: any | null, v2?: any | null): Bool;
+        static equal(v1: any | null, v2: any | null): Bool;
 
         // Methods
 

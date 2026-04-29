@@ -238,7 +238,7 @@ export namespace Workbench {
          */
         populate_async(
             context: GtkSource.CompletionContext,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<Gio.ListModel>;
         /**
          * Asynchronously requests that the provider populates the completion
@@ -271,7 +271,7 @@ export namespace Workbench {
          */
         populate_async(
             context: GtkSource.CompletionContext,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Gio.ListModel> | void;
         /**
@@ -407,8 +407,8 @@ export namespace Workbench {
          */
         vfunc_populate_async(
             context: GtkSource.CompletionContext,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Completes an asynchronous operation to populate a completion provider.
@@ -475,38 +475,19 @@ export namespace Workbench {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -514,15 +495,9 @@ export namespace Workbench {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -689,7 +664,7 @@ export namespace Workbench {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -894,13 +869,13 @@ export namespace Workbench {
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
             extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {
-            cancellable: Gio.Cancellable;
-            context: GtkSource.CompletionContext;
+            cancellable: Gio.Cancellable | null;
+            context: GtkSource.CompletionContext | null;
             item_type: GObject.GTypeInput;
             itemType: GObject.GTypeInput;
             n_items: number;
             nItems: number;
-            provider: GtkSource.CompletionProvider;
+            provider: GtkSource.CompletionProvider | null;
             state: RequestState;
         }
     }
@@ -931,12 +906,12 @@ export namespace Workbench {
         /**
          * @construct-only
          */
-        get cancellable(): Gio.Cancellable;
+        get cancellable(): Gio.Cancellable | null;
         /**
          * The {@link GtkSource.CompletionContext} of the request.
          * @construct-only
          */
-        get context(): GtkSource.CompletionContext;
+        get context(): GtkSource.CompletionContext | null;
         /**
          * The {@link GtkSource.CompletionProposal} type.
          * @read-only
@@ -950,18 +925,20 @@ export namespace Workbench {
         /**
          * The current number of proposals.
          * @read-only
+         * @default 0
          */
         get n_items(): number;
         /**
          * The current number of proposals.
          * @read-only
+         * @default 0
          */
         get nItems(): number;
         /**
          * The {@link GtkSource.CompletionProvider} of the request.
          * @construct-only
          */
-        get provider(): GtkSource.CompletionProvider;
+        get provider(): GtkSource.CompletionProvider | null;
         /**
          * The state of the request.
          *
@@ -971,6 +948,7 @@ export namespace Workbench {
          * If a handler does not change the state, the value is guaranteed to change
          * to `WORKBENCH_REQUEST_STATE_CANCELLED` before finalization.
          * @read-only
+         * @default Workbench.RequestState.UNKNOWN
          */
         get state(): RequestState;
 
@@ -1199,38 +1177,19 @@ export namespace Workbench {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1238,15 +1197,9 @@ export namespace Workbench {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1413,7 +1366,7 @@ export namespace Workbench {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1742,6 +1695,7 @@ export namespace Workbench {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get can_focus(): boolean;
@@ -1752,18 +1706,21 @@ export namespace Workbench {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get canFocus(): boolean;
         set canFocus(val: boolean);
         /**
          * Whether the widget can receive pointer events.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get can_target(): boolean;
         set can_target(val: boolean);
         /**
          * Whether the widget can receive pointer events.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get canTarget(): boolean;
@@ -1786,6 +1743,7 @@ export namespace Workbench {
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
          * @construct-only
+         * @default null
          * @category Inherited from Gtk.Widget
          */
         get css_name(): string;
@@ -1795,6 +1753,7 @@ export namespace Workbench {
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
          * @construct-only
+         * @default null
          * @category Inherited from Gtk.Widget
          */
         get cssName(): string;
@@ -1802,12 +1761,13 @@ export namespace Workbench {
          * The cursor used by `widget`.
          * @category Inherited from Gtk.Widget
          */
-        get cursor(): Gdk.Cursor;
-        set cursor(val: Gdk.Cursor);
+        get cursor(): Gdk.Cursor | null;
+        set cursor(val: Gdk.Cursor | null);
         /**
          * Whether the widget should grab focus when it is clicked with the mouse.
          *
          * This property is only relevant for widgets that can take focus.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get focus_on_click(): boolean;
@@ -1816,18 +1776,21 @@ export namespace Workbench {
          * Whether the widget should grab focus when it is clicked with the mouse.
          *
          * This property is only relevant for widgets that can take focus.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get focusOnClick(): boolean;
         set focusOnClick(val: boolean);
         /**
          * Whether this widget itself will accept the input focus.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get focusable(): boolean;
         set focusable(val: boolean);
         /**
          * How to distribute horizontal space if widget gets extra space.
+         * @default Gtk.Align.FILL
          * @category Inherited from Gtk.Widget
          */
         get halign(): Gtk.Align;
@@ -1835,24 +1798,28 @@ export namespace Workbench {
         /**
          * Whether the widget is the default widget.
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get has_default(): boolean;
         /**
          * Whether the widget is the default widget.
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hasDefault(): boolean;
         /**
          * Whether the widget has the input focus.
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get has_focus(): boolean;
         /**
          * Whether the widget has the input focus.
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hasFocus(): boolean;
@@ -1863,6 +1830,7 @@ export namespace Workbench {
          * A true value indicates that `widget` can have a tooltip, in this case
          * the widget will be queried using `Gtk.Widget::query-tooltip` to
          * determine whether it will provide a tooltip or not.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get has_tooltip(): boolean;
@@ -1874,6 +1842,7 @@ export namespace Workbench {
          * A true value indicates that `widget` can have a tooltip, in this case
          * the widget will be queried using `Gtk.Widget::query-tooltip` to
          * determine whether it will provide a tooltip or not.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hasTooltip(): boolean;
@@ -1882,6 +1851,7 @@ export namespace Workbench {
          * Overrides for height request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @default -1
          * @category Inherited from Gtk.Widget
          */
         get height_request(): number;
@@ -1890,24 +1860,28 @@ export namespace Workbench {
          * Overrides for height request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @default -1
          * @category Inherited from Gtk.Widget
          */
         get heightRequest(): number;
         set heightRequest(val: number);
         /**
          * Whether to expand horizontally.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpand(): boolean;
         set hexpand(val: boolean);
         /**
          * Whether to use the `hexpand` property.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpand_set(): boolean;
         set hexpand_set(val: boolean);
         /**
          * Whether to use the `hexpand` property.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpandSet(): boolean;
@@ -1920,8 +1894,8 @@ export namespace Workbench {
          * typically in their instance init function.
          * @category Inherited from Gtk.Widget
          */
-        get layout_manager(): Gtk.LayoutManager;
-        set layout_manager(val: Gtk.LayoutManager);
+        get layout_manager(): Gtk.LayoutManager | null;
+        set layout_manager(val: Gtk.LayoutManager | null);
         /**
          * The {@link Gtk.LayoutManager} instance to use to compute
          * the preferred size of the widget, and allocate its children.
@@ -1930,8 +1904,8 @@ export namespace Workbench {
          * typically in their instance init function.
          * @category Inherited from Gtk.Widget
          */
-        get layoutManager(): Gtk.LayoutManager;
-        set layoutManager(val: Gtk.LayoutManager);
+        get layoutManager(): Gtk.LayoutManager | null;
+        set layoutManager(val: Gtk.LayoutManager | null);
         /**
          * Makes this widget act like a modal dialog, with respect to
          * event delivery.
@@ -1940,6 +1914,7 @@ export namespace Workbench {
          * inside the widget, unless they are set up to ignore propagation
          * limits. See {@link Gtk.EventController.set_propagation_limit}.
          * @since 4.18
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get limit_events(): boolean;
@@ -1952,6 +1927,7 @@ export namespace Workbench {
          * inside the widget, unless they are set up to ignore propagation
          * limits. See {@link Gtk.EventController.set_propagation_limit}.
          * @since 4.18
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get limitEvents(): boolean;
@@ -1962,6 +1938,7 @@ export namespace Workbench {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_bottom(): number;
@@ -1972,6 +1949,7 @@ export namespace Workbench {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginBottom(): number;
@@ -1985,6 +1963,7 @@ export namespace Workbench {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_end(): number;
@@ -1998,6 +1977,7 @@ export namespace Workbench {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginEnd(): number;
@@ -2011,6 +1991,7 @@ export namespace Workbench {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_start(): number;
@@ -2024,6 +2005,7 @@ export namespace Workbench {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginStart(): number;
@@ -2034,6 +2016,7 @@ export namespace Workbench {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_top(): number;
@@ -2044,18 +2027,21 @@ export namespace Workbench {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginTop(): number;
         set marginTop(val: number);
         /**
          * The name of the widget.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
         get name(): string;
         set name(val: string);
         /**
          * The requested opacity of the widget.
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get opacity(): number;
@@ -2065,6 +2051,7 @@ export namespace Workbench {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @default Gtk.Overflow.VISIBLE
          * @category Inherited from Gtk.Widget
          */
         get overflow(): Gtk.Overflow;
@@ -2074,15 +2061,17 @@ export namespace Workbench {
          * @read-only
          * @category Inherited from Gtk.Widget
          */
-        get parent(): Gtk.Widget;
+        get parent(): Gtk.Widget | null;
         /**
          * Whether the widget will receive the default action when it is focused.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get receives_default(): boolean;
         set receives_default(val: boolean);
         /**
          * Whether the widget will receive the default action when it is focused.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get receivesDefault(): boolean;
@@ -2094,21 +2083,24 @@ export namespace Workbench {
          * @read-only
          * @category Inherited from Gtk.Widget
          */
-        get root(): Gtk.Root;
+        get root(): Gtk.Root | null;
         /**
          * The scale factor of the widget.
          * @read-only
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
         /**
          * The scale factor of the widget.
          * @read-only
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
         /**
          * Whether the widget responds to input.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get sensitive(): boolean;
@@ -2127,10 +2119,11 @@ export namespace Workbench {
          *
          * Note that if both {@link Gtk.Widget.tooltip_text} and
          * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltip_markup(): string;
-        set tooltip_markup(val: string);
+        get tooltip_markup(): string | null;
+        set tooltip_markup(val: string | null);
         /**
          * Sets the text of tooltip to be the given string, which is marked up
          * with Pango markup.
@@ -2145,10 +2138,11 @@ export namespace Workbench {
          *
          * Note that if both {@link Gtk.Widget.tooltip_text} and
          * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltipMarkup(): string;
-        set tooltipMarkup(val: string);
+        get tooltipMarkup(): string | null;
+        set tooltipMarkup(val: string | null);
         /**
          * Sets the text of tooltip to be the given string.
          *
@@ -2162,10 +2156,11 @@ export namespace Workbench {
          *
          * Note that if both {@link Gtk.Widget.tooltip_text} and
          * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltip_text(): string;
-        set tooltip_text(val: string);
+        get tooltip_text(): string | null;
+        set tooltip_text(val: string | null);
         /**
          * Sets the text of tooltip to be the given string.
          *
@@ -2179,36 +2174,42 @@ export namespace Workbench {
          *
          * Note that if both {@link Gtk.Widget.tooltip_text} and
          * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltipText(): string;
-        set tooltipText(val: string);
+        get tooltipText(): string | null;
+        set tooltipText(val: string | null);
         /**
          * How to distribute vertical space if widget gets extra space.
+         * @default Gtk.Align.FILL
          * @category Inherited from Gtk.Widget
          */
         get valign(): Gtk.Align;
         set valign(val: Gtk.Align);
         /**
          * Whether to expand vertically.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpand(): boolean;
         set vexpand(val: boolean);
         /**
          * Whether to use the `vexpand` property.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpand_set(): boolean;
         set vexpand_set(val: boolean);
         /**
          * Whether to use the `vexpand` property.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpandSet(): boolean;
         set vexpandSet(val: boolean);
         /**
          * Whether the widget is visible.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get visible(): boolean;
@@ -2217,6 +2218,7 @@ export namespace Workbench {
          * Overrides for width request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @default -1
          * @category Inherited from Gtk.Widget
          */
         get width_request(): number;
@@ -2225,6 +2227,7 @@ export namespace Workbench {
          * Overrides for width request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @default -1
          * @category Inherited from Gtk.Widget
          */
         get widthRequest(): number;
@@ -2284,7 +2287,7 @@ export namespace Workbench {
          * this function.
          * @param focus widget to be the new focus widget, or `null`    to unset the focus widget
          */
-        set_focus(focus?: Gtk.Widget | null): void;
+        set_focus(focus: Gtk.Widget | null): void;
         /**
          * Add a {@link Gtk.ShortcutController} to be managed.
          * @param controller
@@ -2345,38 +2348,19 @@ export namespace Workbench {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -2384,15 +2368,9 @@ export namespace Workbench {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -2559,7 +2537,7 @@ export namespace Workbench {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -2789,7 +2767,7 @@ export namespace Workbench {
          * @param args parameters to use
          * @returns true if the action was activated
          */
-        activate_action(name: string, args?: GLib.Variant | null): boolean;
+        activate_action(name: string, args: GLib.Variant | null): boolean;
         /**
          * Activates the `default.activate` action for the widget.
          *
@@ -2878,7 +2856,7 @@ export namespace Workbench {
          * @param baseline new baseline, or -1
          * @param transform transformation to be applied
          */
-        allocate(width: number, height: number, baseline: number, transform?: Gsk.Transform | null): void;
+        allocate(width: number, height: number, baseline: number, transform: Gsk.Transform | null): void;
         /**
          * Called by widgets as the user moves around the window using
          * keyboard shortcuts.
@@ -2998,7 +2976,7 @@ export namespace Workbench {
          * @param text text to set on the layout
          * @returns the new {@link Pango.Layout}
          */
-        create_pango_layout(text?: string | null): Pango.Layout;
+        create_pango_layout(text: string | null): Pango.Layout;
         /**
          * Clears the template children for the widget.
          *
@@ -3738,7 +3716,7 @@ export namespace Workbench {
          * @param name the prefix for actions in `group`
          * @param group an action group
          */
-        insert_action_group(name: string, group?: Gio.ActionGroup | null): void;
+        insert_action_group(name: string, group: Gio.ActionGroup | null): void;
         /**
          * Sets the parent widget of the widget.
          *
@@ -3761,7 +3739,7 @@ export namespace Workbench {
          * @param parent the parent widget to insert `widget` into
          * @param previous_sibling the new previous sibling of `widget`
          */
-        insert_after(parent: Gtk.Widget, previous_sibling?: Gtk.Widget | null): void;
+        insert_after(parent: Gtk.Widget, previous_sibling: Gtk.Widget | null): void;
         /**
          * Sets the parent widget of the widget.
          *
@@ -3783,7 +3761,7 @@ export namespace Workbench {
          * @param parent the parent widget to insert `widget` into
          * @param next_sibling the new next sibling of `widget`
          */
-        insert_before(parent: Gtk.Widget, next_sibling?: Gtk.Widget | null): void;
+        insert_before(parent: Gtk.Widget, next_sibling: Gtk.Widget | null): void;
         /**
          * Determines whether the widget is a descendent of `ancestor`.
          * @param ancestor another {@link Gtk.Widget}
@@ -4074,7 +4052,7 @@ export namespace Workbench {
          * inherited from its parent.
          * @param cursor the new cursor
          */
-        set_cursor(cursor?: Gdk.Cursor | null): void;
+        set_cursor(cursor: Gdk.Cursor | null): void;
         /**
          * Sets the cursor to be shown when the pointer hovers over
          * the widget.
@@ -4089,7 +4067,7 @@ export namespace Workbench {
          * with a `NULL` cursor.
          * @param name the name of the cursor
          */
-        set_cursor_from_name(name?: string | null): void;
+        set_cursor_from_name(name: string | null): void;
         /**
          * Sets the reading direction on the widget.
          *
@@ -4117,7 +4095,7 @@ export namespace Workbench {
          * {@link Gtk.Widget.grab_focus} on it.
          * @param child a direct child widget of `widget`   or `NULL` to unset the focus child
          */
-        set_focus_child(child?: Gtk.Widget | null): void;
+        set_focus_child(child: Gtk.Widget | null): void;
         /**
          * Sets whether the widget should grab focus when it is clicked
          * with the mouse.
@@ -4156,7 +4134,7 @@ export namespace Workbench {
          * When not set, the widget will inherit the font map from its parent.
          * @param font_map a {@link Pango.FontMap}
          */
-        set_font_map(font_map?: Pango.FontMap | null): void;
+        set_font_map(font_map: Pango.FontMap | null): void;
         /**
          * Sets the `cairo_font_options_t` used for text rendering
          * in the widget.
@@ -4165,7 +4143,7 @@ export namespace Workbench {
          * will be used.
          * @param options a `cairo_font_options_t` struct   to unset any previously set default font options
          */
-        set_font_options(options?: cairo.FontOptions | null): void;
+        set_font_options(options: cairo.FontOptions | null): void;
         /**
          * Sets the horizontal alignment of the widget.
          * @param align the horizontal alignment
@@ -4229,7 +4207,7 @@ export namespace Workbench {
          * of the widget.
          * @param layout_manager a layout manager
          */
-        set_layout_manager(layout_manager?: Gtk.LayoutManager | null): void;
+        set_layout_manager(layout_manager: Gtk.LayoutManager | null): void;
         /**
          * Sets whether the widget acts like a modal dialog,
          * with respect to event delivery.
@@ -4405,7 +4383,7 @@ export namespace Workbench {
          * See also {@link Gtk.Tooltip.set_markup}.
          * @param markup the contents of the tooltip for `widget`
          */
-        set_tooltip_markup(markup?: string | null): void;
+        set_tooltip_markup(markup: string | null): void;
         /**
          * Sets the contents of the tooltip for the widget.
          *
@@ -4419,7 +4397,7 @@ export namespace Workbench {
          * See also {@link Gtk.Tooltip.set_text}.
          * @param text the contents of the tooltip for `widget`
          */
-        set_tooltip_text(text?: string | null): void;
+        set_tooltip_text(text: string | null): void;
         /**
          * Sets the vertical alignment of the widget.
          * @param align the vertical alignment
@@ -4721,7 +4699,7 @@ export namespace Workbench {
          * @param child a direct child widget of `widget`   or `NULL` to unset the focus child
          * @virtual
          */
-        vfunc_set_focus_child(child?: Gtk.Widget | null): void;
+        vfunc_set_focus_child(child: Gtk.Widget | null): void;
         /**
          * Flags a widget to be displayed.
          *

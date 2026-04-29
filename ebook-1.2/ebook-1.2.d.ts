@@ -87,7 +87,7 @@ export namespace EBook {
         only_clients: BookClient[] | null,
         flags: Camel.RecipientCertificateFlags,
         recipients: string[],
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): [boolean, string[]];
     namespace BookClient {
         // Signal signatures
@@ -127,6 +127,7 @@ export namespace EBook {
          * The currently active locale for this addressbook.
          * @since 3.12
          * @read-only
+         * @default null
          */
         get locale(): string;
 
@@ -195,8 +196,8 @@ export namespace EBook {
         static connect(
             source: EDataServer.Source,
             wait_for_connected_seconds: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<BookClient> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<BookClient> | null,
         ): void;
         /**
          * @param args
@@ -216,8 +217,8 @@ export namespace EBook {
         static connect_direct(
             source: EDataServer.Source,
             wait_for_connected_seconds: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<BookClient> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<BookClient> | null,
         ): void;
         /**
          * Finishes the operation started with `e_book_client_connect_direct()`.
@@ -242,7 +243,7 @@ export namespace EBook {
             registry: EDataServer.SourceRegistry,
             source: EDataServer.Source,
             wait_for_connected_seconds: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): BookClient;
         /**
          * Finishes the operation started with `e_book_client_connect()`.  If an
@@ -281,7 +282,7 @@ export namespace EBook {
         static connect_sync(
             source: EDataServer.Source,
             wait_for_connected_seconds: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): BookClient;
         /**
          * Get the {@link EBookContacts.Contact} referring to the user of the address book
@@ -308,7 +309,7 @@ export namespace EBook {
         add_contact(
             contact: EBookContacts.Contact,
             opflags: EBookContacts.BookOperationFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<string>;
         /**
          * Adds `contact` to `client`.
@@ -337,7 +338,7 @@ export namespace EBook {
         add_contact(
             contact: EBookContacts.Contact,
             opflags: EBookContacts.BookOperationFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
         /**
@@ -365,7 +366,7 @@ export namespace EBook {
         add_contact_sync(
             contact: EBookContacts.Contact,
             opflags: EBookContacts.BookOperationFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, string];
         /**
          * Adds `contacts` to `client`.
@@ -378,7 +379,7 @@ export namespace EBook {
         add_contacts(
             contacts: EBookContacts.Contact[],
             opflags: EBookContacts.BookOperationFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<string[] | null>;
         /**
          * Adds `contacts` to `client`.
@@ -407,7 +408,7 @@ export namespace EBook {
         add_contacts(
             contacts: EBookContacts.Contact[],
             opflags: EBookContacts.BookOperationFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string[] | null> | void;
         /**
@@ -441,7 +442,7 @@ export namespace EBook {
         add_contacts_sync(
             contacts: EBookContacts.Contact[],
             opflags: EBookContacts.BookOperationFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, string[] | null];
         /**
          * Asynchronously checks whether contains an `email_address`. When the `email_address`
@@ -454,7 +455,7 @@ export namespace EBook {
          * @param email_address an email address
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          */
-        contains_email(email_address: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        contains_email(email_address: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously checks whether contains an `email_address`. When the `email_address`
          * contains multiple addresses, then returns `true` when at least one
@@ -486,7 +487,7 @@ export namespace EBook {
          */
         contains_email(
             email_address: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -499,7 +500,7 @@ export namespace EBook {
          * @param email_address
          * @param cancellable
          */
-        contains_email_sync(email_address: string, cancellable?: Gio.Cancellable | null): boolean;
+        contains_email_sync(email_address: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Receive {@link EBookContacts.Contact} from the `client` for the given `uid`.
          * The call is finished by `e_book_client_get_contact_finish()`
@@ -507,10 +508,7 @@ export namespace EBook {
          * @param uid a unique string ID specifying the contact
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          */
-        get_contact(
-            uid: string,
-            cancellable?: Gio.Cancellable | null,
-        ): globalThis.Promise<EBookContacts.Contact | null>;
+        get_contact(uid: string, cancellable: Gio.Cancellable | null): globalThis.Promise<EBookContacts.Contact | null>;
         /**
          * Receive {@link EBookContacts.Contact} from the `client` for the given `uid`.
          * The call is finished by `e_book_client_get_contact_finish()`
@@ -534,7 +532,7 @@ export namespace EBook {
          */
         get_contact(
             uid: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<EBookContacts.Contact | null> | void;
         /**
@@ -553,7 +551,7 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          */
-        get_contact_sync(uid: string, cancellable?: Gio.Cancellable | null): [boolean, EBookContacts.Contact];
+        get_contact_sync(uid: string, cancellable: Gio.Cancellable | null): [boolean, EBookContacts.Contact];
         /**
          * Query `client` with `sexp`, receiving a list of contacts which
          * matched. The call is finished by `e_book_client_get_contacts_finish()`
@@ -564,7 +562,7 @@ export namespace EBook {
          * @param sexp an S-expression representing the query
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          */
-        get_contacts(sexp: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<EBookContacts.Contact[]>;
+        get_contacts(sexp: string, cancellable: Gio.Cancellable | null): globalThis.Promise<EBookContacts.Contact[]>;
         /**
          * Query `client` with `sexp`, receiving a list of contacts which
          * matched. The call is finished by `e_book_client_get_contacts_finish()`
@@ -594,7 +592,7 @@ export namespace EBook {
          */
         get_contacts(
             sexp: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<EBookContacts.Contact[]> | void;
         /**
@@ -616,7 +614,7 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          */
-        get_contacts_sync(sexp: string, cancellable?: Gio.Cancellable | null): [boolean, EBookContacts.Contact[]];
+        get_contacts_sync(sexp: string, cancellable: Gio.Cancellable | null): [boolean, EBookContacts.Contact[]];
         /**
          * Query `client` with `sexp`, receiving a list of contacts UIDs which
          * matched. The call is finished by `e_book_client_get_contacts_uids_finish()`
@@ -627,7 +625,7 @@ export namespace EBook {
          * @param sexp an S-expression representing the query
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          */
-        get_contacts_uids(sexp: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<string[]>;
+        get_contacts_uids(sexp: string, cancellable: Gio.Cancellable | null): globalThis.Promise<string[]>;
         /**
          * Query `client` with `sexp`, receiving a list of contacts UIDs which
          * matched. The call is finished by `e_book_client_get_contacts_uids_finish()`
@@ -657,7 +655,7 @@ export namespace EBook {
          */
         get_contacts_uids(
             sexp: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string[]> | void;
         /**
@@ -679,7 +677,7 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          */
-        get_contacts_uids_sync(sexp: string, cancellable?: Gio.Cancellable | null): [boolean, string[]];
+        get_contacts_uids_sync(sexp: string, cancellable: Gio.Cancellable | null): [boolean, string[]];
         /**
          * Create an {@link EBook.BookClientCursor}.
          * The call is finished by `e_book_client_get_cursor_finish()`
@@ -698,7 +696,7 @@ export namespace EBook {
             sort_fields: EBookContacts.ContactField,
             sort_types: EBookContacts.BookCursorSortType,
             n_fields: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<BookClientCursor>;
         /**
          * Create an {@link EBook.BookClientCursor}.
@@ -741,7 +739,7 @@ export namespace EBook {
             sort_fields: EBookContacts.ContactField,
             sort_types: EBookContacts.BookCursorSortType,
             n_fields: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<BookClientCursor> | void;
         /**
@@ -772,7 +770,7 @@ export namespace EBook {
             sort_fields: EBookContacts.ContactField,
             sort_types: EBookContacts.BookCursorSortType,
             n_fields: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, BookClientCursor];
         /**
          * Reports the locale in use for `client`. The addressbook might sort contacts
@@ -802,7 +800,7 @@ export namespace EBook {
          * @param sexp an S-expression representing the query
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          */
-        get_view(sexp: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<BookClientView>;
+        get_view(sexp: string, cancellable: Gio.Cancellable | null): globalThis.Promise<BookClientView>;
         /**
          * Query `client` with `sexp`, creating an {@link EBook.BookClientView}.
          * The call is finished by `e_book_client_get_view_finish()`
@@ -832,7 +830,7 @@ export namespace EBook {
          */
         get_view(
             sexp: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<BookClientView> | void;
         /**
@@ -854,7 +852,7 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          */
-        get_view_sync(sexp: string, cancellable?: Gio.Cancellable | null): [boolean, BookClientView];
+        get_view_sync(sexp: string, cancellable: Gio.Cancellable | null): [boolean, BookClientView];
         /**
          * Applies the changes made to `contact` to the stored version in `client`.
          * The call is finished by `e_book_client_modify_contact_finish()`
@@ -866,7 +864,7 @@ export namespace EBook {
         modify_contact(
             contact: EBookContacts.Contact,
             opflags: EBookContacts.BookOperationFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Applies the changes made to `contact` to the stored version in `client`.
@@ -895,7 +893,7 @@ export namespace EBook {
         modify_contact(
             contact: EBookContacts.Contact,
             opflags: EBookContacts.BookOperationFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -914,7 +912,7 @@ export namespace EBook {
         modify_contact_sync(
             contact: EBookContacts.Contact,
             opflags: EBookContacts.BookOperationFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Applies the changes made to `contacts` to the stored versions in `client`.
@@ -927,7 +925,7 @@ export namespace EBook {
         modify_contacts(
             contacts: EBookContacts.Contact[],
             opflags: EBookContacts.BookOperationFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Applies the changes made to `contacts` to the stored versions in `client`.
@@ -956,7 +954,7 @@ export namespace EBook {
         modify_contacts(
             contacts: EBookContacts.Contact[],
             opflags: EBookContacts.BookOperationFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -975,7 +973,7 @@ export namespace EBook {
         modify_contacts_sync(
             contacts: EBookContacts.Contact[],
             opflags: EBookContacts.BookOperationFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Removes `contact` from the `client`.
@@ -988,7 +986,7 @@ export namespace EBook {
         remove_contact(
             contact: EBookContacts.Contact,
             opflags: EBookContacts.BookOperationFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Removes `contact` from the `client`.
@@ -1017,7 +1015,7 @@ export namespace EBook {
         remove_contact(
             contact: EBookContacts.Contact,
             opflags: EBookContacts.BookOperationFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1031,7 +1029,7 @@ export namespace EBook {
         remove_contact_by_uid(
             uid: string,
             opflags: EBookContacts.BookOperationFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Removes contact with `uid` from the `client`.
@@ -1060,7 +1058,7 @@ export namespace EBook {
         remove_contact_by_uid(
             uid: string,
             opflags: EBookContacts.BookOperationFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1079,7 +1077,7 @@ export namespace EBook {
         remove_contact_by_uid_sync(
             uid: string,
             opflags: EBookContacts.BookOperationFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Finishes previous call of `e_book_client_remove_contact()`.
@@ -1097,7 +1095,7 @@ export namespace EBook {
         remove_contact_sync(
             contact: EBookContacts.Contact,
             opflags: EBookContacts.BookOperationFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Removes the contacts with uids from the list `uids` from `client`.  This is
@@ -1113,7 +1111,7 @@ export namespace EBook {
         remove_contacts(
             uids: string[],
             opflags: EBookContacts.BookOperationFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Removes the contacts with uids from the list `uids` from `client`.  This is
@@ -1148,7 +1146,7 @@ export namespace EBook {
         remove_contacts(
             uids: string[],
             opflags: EBookContacts.BookOperationFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1170,7 +1168,7 @@ export namespace EBook {
         remove_contacts_sync(
             uids: string[],
             opflags: EBookContacts.BookOperationFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Specify that `contact` residing in `client` is the {@link EBookContacts.Contact} that
@@ -1219,7 +1217,7 @@ export namespace EBook {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -1309,7 +1307,7 @@ export namespace EBook {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1370,8 +1368,8 @@ export namespace EBook {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -1422,7 +1420,7 @@ export namespace EBook {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -1465,7 +1463,7 @@ export namespace EBook {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -1513,38 +1511,19 @@ export namespace EBook {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1552,15 +1531,9 @@ export namespace EBook {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1727,7 +1700,7 @@ export namespace EBook {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -2022,6 +1995,7 @@ export namespace EBook {
          * </para></note>
          * @since 3.12
          * @construct-only
+         * @default null
          */
         set object_path(val: string);
         /**
@@ -2032,6 +2006,7 @@ export namespace EBook {
          * </para></note>
          * @since 3.12
          * @construct-only
+         * @default null
          */
         set objectPath(val: string);
         /**
@@ -2054,6 +2029,7 @@ export namespace EBook {
          * default context at cursor creation time.
          * @since 3.12
          * @read-only
+         * @default 0
          */
         get position(): number;
         /**
@@ -2084,6 +2060,7 @@ export namespace EBook {
          * default context at cursor creation time.
          * @since 3.12
          * @read-only
+         * @default 0
          */
         get total(): number;
 
@@ -2211,7 +2188,7 @@ export namespace EBook {
          * @param index the alphabetic index
          * @param cancellable a {@link Gio.Cancellable} to optionally cancel this operation while in progress
          */
-        set_alphabetic_index(index: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        set_alphabetic_index(index: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Sets the current cursor position to point to an <link linkend="cursor-alphabet">Alphabetic Index</link>.
          *
@@ -2241,7 +2218,7 @@ export namespace EBook {
          */
         set_alphabetic_index(
             index: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2278,7 +2255,7 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable} to optionally cancel this operation while in progress
          * @returns `true` on success, otherwise `false` is returned and `error` is set.
          */
-        set_alphabetic_index_sync(index: number, cancellable?: Gio.Cancellable | null): boolean;
+        set_alphabetic_index_sync(index: number, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Sets the <link linkend="cursor-search">Search Expression</link> for the cursor.
          *
@@ -2289,7 +2266,7 @@ export namespace EBook {
          * @param sexp the new search expression for `cursor`
          * @param cancellable a {@link Gio.Cancellable} to optionally cancel this operation while in progress
          */
-        set_sexp(sexp: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        set_sexp(sexp: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Sets the <link linkend="cursor-search">Search Expression</link> for the cursor.
          *
@@ -2319,7 +2296,7 @@ export namespace EBook {
          */
         set_sexp(
             sexp: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2349,7 +2326,7 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable} to optionally cancel this operation while in progress
          * @returns `true` on success, otherwise `false` is returned and `error` is set.
          */
-        set_sexp_sync(sexp: string, cancellable?: Gio.Cancellable | null): boolean;
+        set_sexp_sync(sexp: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * <link linkend="cursor-iteration">Steps the cursor through the results</link> by
          * a maximum of `count` and fetch the results traversed.
@@ -2367,7 +2344,7 @@ export namespace EBook {
             flags: EBookContacts.BookCursorStepFlags,
             origin: EBookContacts.BookCursorOrigin,
             count: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<[number, EBookContacts.Contact[] | null]>;
         /**
          * <link linkend="cursor-iteration">Steps the cursor through the results</link> by
@@ -2408,7 +2385,7 @@ export namespace EBook {
             flags: EBookContacts.BookCursorStepFlags,
             origin: EBookContacts.BookCursorOrigin,
             count: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[number, EBookContacts.Contact[] | null]> | void;
         /**
@@ -2459,7 +2436,7 @@ export namespace EBook {
             flags: EBookContacts.BookCursorStepFlags,
             origin: EBookContacts.BookCursorOrigin,
             count: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [number, EBookContacts.Contact[] | null];
         /**
          * Initializes the object implementing the interface.
@@ -2503,7 +2480,7 @@ export namespace EBook {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -2546,7 +2523,7 @@ export namespace EBook {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -2594,38 +2571,19 @@ export namespace EBook {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -2633,15 +2591,9 @@ export namespace EBook {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -2808,7 +2760,7 @@ export namespace EBook {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -3095,6 +3047,7 @@ export namespace EBook {
          * Note: This property can be used only with `E_BOOK_CLIENT_VIEW_FLAGS_MANUAL_QUERY`.
          * @since 3.50
          * @read-only
+         * @default 0
          */
         get n_total(): number;
         /**
@@ -3103,16 +3056,19 @@ export namespace EBook {
          * Note: This property can be used only with `E_BOOK_CLIENT_VIEW_FLAGS_MANUAL_QUERY`.
          * @since 3.50
          * @read-only
+         * @default 0
          */
         get nTotal(): number;
         /**
          * The object path used to create the D-Bus proxy
          * @construct-only
+         * @default null
          */
         get object_path(): string;
         /**
          * The object path used to create the D-Bus proxy
          * @construct-only
+         * @default null
          */
         get objectPath(): string;
 
@@ -3186,7 +3142,7 @@ export namespace EBook {
         dup_contacts(
             range_start: number,
             range_length: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<[number, EBookContacts.Contact[]]>;
         /**
          * Asynchronously reads `range_length` contacts from index `range_start`.
@@ -3225,7 +3181,7 @@ export namespace EBook {
         dup_contacts(
             range_start: number,
             range_length: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             cb?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[number, EBookContacts.Contact[]]> | void;
         /**
@@ -3328,7 +3284,7 @@ export namespace EBook {
          */
         set_sort_fields_sync(
             fields: EBookContacts.BookClientViewSortFields,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Tells `client_view` to start processing events.
@@ -3380,7 +3336,7 @@ export namespace EBook {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -3423,7 +3379,7 @@ export namespace EBook {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -3471,38 +3427,19 @@ export namespace EBook {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -3510,15 +3447,9 @@ export namespace EBook {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -3685,7 +3616,7 @@ export namespace EBook {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set

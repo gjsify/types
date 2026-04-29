@@ -1005,7 +1005,7 @@ export namespace ICalGLib {
      * @param buf The existing buffer to be added into the ical
      * @since 1.0
      */
-    function memory_add_tmp_buffer(buf?: any | null): void;
+    function memory_add_tmp_buffer(buf: any | null): void;
     /**
      * Append the character to the buffer. Only use them on normally allocated memory, or on buffers created
      * from icalmemory_new_buffer, never with buffers created by icalmemory_tmp_buffer. If icalmemory_append_string
@@ -1031,7 +1031,7 @@ export namespace ICalGLib {
      * @param buf The buffer to be freed
      * @since 1.0
      */
-    function memory_free_buffer(buf?: any | null): void;
+    function memory_free_buffer(buf: any | null): void;
     /**
      * Creates a new buffer with target size. The caller should deallocate it when necessary.
      * @param size The size of the new buffer to be created
@@ -1284,7 +1284,7 @@ export namespace ICalGLib {
 
         static new_from_bytes(bytes: GLib.Bytes | Uint8Array): Attach;
 
-        static new_from_data(data: string, free_fn?: GLib.Func | null): Attach;
+        static new_from_data(data: string, free_fn: GLib.Func | null): Attach;
 
         static new_from_url(url: string): Attach;
 
@@ -1596,7 +1596,7 @@ export namespace ICalGLib {
          * Applies the same manipulation on every tzid in {@link ICalGLib.Component}.
          * @param callback The callback function
          */
-        foreach_tzid(callback?: ComponentForeachTZIDFunc | null): void;
+        foreach_tzid(callback: ComponentForeachTZIDFunc | null): void;
         /**
          * Gets the comment of the {@link ICalGLib.Component}.
          * @returns The comment of `comp`.
@@ -1813,7 +1813,7 @@ export namespace ICalGLib {
          * Sets the `parent` {@link ICalGLib.Component} of the specified `component`.
          * @param parent An {@link ICalGLib.Component}, a new parent
          */
-        set_parent(parent?: Component | null): void;
+        set_parent(parent: Component | null): void;
         /**
          * Sets the recurrenceid of the {@link ICalGLib.Component}.
          * @param v A {@link ICalGLib.Time}
@@ -2190,7 +2190,7 @@ export namespace ICalGLib {
             alwaysDestroy: boolean;
             is_global_memory: boolean;
             isGlobalMemory: boolean;
-            native: any;
+            native: any | null;
             native_destroy_func: any;
             nativeDestroyFunc: any;
             owner: GObject.Object;
@@ -2210,6 +2210,7 @@ export namespace ICalGLib {
          * Whether free the native libical structure on {@link ICalGLib.Object}'s finalize even
          * if the object has set an owner.
          * @since 3.0.11
+         * @default false
          */
         get always_destroy(): boolean;
         set always_destroy(val: boolean);
@@ -2217,6 +2218,7 @@ export namespace ICalGLib {
          * Whether free the native libical structure on {@link ICalGLib.Object}'s finalize even
          * if the object has set an owner.
          * @since 3.0.11
+         * @default false
          */
         get alwaysDestroy(): boolean;
         set alwaysDestroy(val: boolean);
@@ -2224,19 +2226,21 @@ export namespace ICalGLib {
          * Whether the native libical structure is from a global shared memory.
          * If TRUE, then it is not freed on {@link ICalGLib.Object}'s finalize.
          * @construct-only
+         * @default false
          */
         get is_global_memory(): boolean;
         /**
          * Whether the native libical structure is from a global shared memory.
          * If TRUE, then it is not freed on {@link ICalGLib.Object}'s finalize.
          * @construct-only
+         * @default false
          */
         get isGlobalMemory(): boolean;
         /**
          * The native libical structure for this ICalObject.
          * @construct-only
          */
-        get native(): any;
+        get native(): any | null;
         /**
          * GDestroyNotify function to use to destroy the native libical pointer.
          */
@@ -2923,7 +2927,7 @@ export namespace ICalGLib {
          * Sets the parent {@link ICalGLib.Property} of an {@link ICalGLib.Parameter}.
          * @param property The parent {@link ICalGLib.Property}
          */
-        set_parent(property?: Property | null): void;
+        set_parent(property: Property | null): void;
         /**
          * @param v The type of {@link ICalGLib.Parameter} to be set in the `value`
          */
@@ -3104,7 +3108,7 @@ export namespace ICalGLib {
          * @param str A line of string representation of the {@link ICalGLib.Component}
          * @returns The complete {@link ICalGLib.Component}.
          */
-        add_line(str?: string | null): Component | null;
+        add_line(str: string | null): Component | null;
         /**
          * We won't get a clean exit if some components did not have an "END" tag. Clear off any component that
          * may be left in the list.
@@ -3763,7 +3767,7 @@ export namespace ICalGLib {
          * @param comp An {@link ICalGLib.Component}
          * @returns Get a DATE or DATE-TIME property as an {@link ICalGLib.Time}.
          */
-        get_datetime_with_component(comp?: Component | null): Time;
+        get_datetime_with_component(comp: Component | null): Time;
         /**
          * Gets the decreed of {@link ICalGLib.Property}.
          * @returns Get the decreed of {@link ICalGLib.Property}.
@@ -4586,7 +4590,7 @@ export namespace ICalGLib {
          * Sets the parent {@link ICalGLib.Component} of the specified {@link ICalGLib.Property}.
          * @param component An {@link ICalGLib.Component}
          */
-        set_parent(component?: Component | null): void;
+        set_parent(component: Component | null): void;
         /**
          * Sets the percentcomplete for the {@link ICalGLib.Property}.
          * @param v The percentcomplete
@@ -5487,13 +5491,13 @@ export namespace ICalGLib {
 
         static ['new'](): Time;
 
-        static new_current_with_zone(zone?: Timezone | null): Time;
+        static new_current_with_zone(zone: Timezone | null): Time;
 
         static new_from_day_of_year(day: number, year: number): Time;
 
         static new_from_string(str: string): Time;
 
-        static new_from_timet_with_zone(v: bigint | number, is_date: number, zone?: Timezone | null): Time;
+        static new_from_timet_with_zone(v: bigint | number, is_date: number, zone: Timezone | null): Time;
 
         static new_null_date(): Time;
 
@@ -5579,7 +5583,7 @@ export namespace ICalGLib {
          * @param zone The timezone
          * @returns The time as seconds past the UNIX epoch
          */
-        as_timet_with_zone(zone?: Timezone | null): number;
+        as_timet_with_zone(zone: Timezone | null): number;
         /**
          * Creates a new {@link ICalGLib.Time}, copy of `timetype`.
          * @returns The newly created {@link ICalGLib.Time}, copy of `timetype`.
@@ -5603,24 +5607,24 @@ export namespace ICalGLib {
          * @param zone The target timezone
          * @returns -1, 0, or 1 to indicate that a less than b, a==b or a larger than b.
          */
-        compare_date_only_tz(b: Time, zone?: Timezone | null): number;
+        compare_date_only_tz(b: Time, zone: Timezone | null): number;
         /**
          * Convert time from one timezone to another.
          * @param from_zone From timezone
          * @param to_zone To timezone
          */
-        convert_timezone(from_zone?: Timezone | null, to_zone?: Timezone | null): void;
+        convert_timezone(from_zone: Timezone | null, to_zone: Timezone | null): void;
         /**
          * Converts `tt` to `zone` and return new {@link ICalGLib.Time} object.
          * @param zone The target timezone
          * @returns The converted {@link ICalGLib.Time}
          */
-        convert_to_zone(zone?: Timezone | null): Time;
+        convert_to_zone(zone: Timezone | null): Time;
         /**
          * Converts `tt` to `zone` and store the result into `tt`.
          * @param zone The target timezone
          */
-        convert_to_zone_inplace(zone?: Timezone | null): void;
+        convert_to_zone_inplace(zone: Timezone | null): void;
         /**
          * Returns the day of the week of the given time. Sunday is 1.
          * @returns The day of the week of the given time. Sunday is 1.
@@ -5770,7 +5774,7 @@ export namespace ICalGLib {
          * Sets the timezone of the `tt`.
          * @param zone The timezone
          */
-        set_timezone(zone?: Timezone | null): void;
+        set_timezone(zone: Timezone | null): void;
         /**
          * Sets the year of {@link ICalGLib.Time}.
          * @param year The year
@@ -5999,18 +6003,18 @@ export namespace ICalGLib {
          * Returns a single builtin timezone, given its Olson city name.
          * @param location The location representing the timezone
          */
-        static get_builtin_timezone(location?: string | null): Timezone | null;
+        static get_builtin_timezone(location: string | null): Timezone | null;
         /**
          * Returns a single builtin timezone, given its offset.
          * @param offset The offset used to get the {@link ICalGLib.Timezone}
          * @param tzname The reference {@link ICalGLib.Timezone} name
          */
-        static get_builtin_timezone_from_offset(offset: number, tzname?: string | null): Timezone;
+        static get_builtin_timezone_from_offset(offset: number, tzname: string | null): Timezone;
         /**
          * Returns a single builtin timezone, given its TZID.
          * @param tzid The tzid name
          */
-        static get_builtin_timezone_from_tzid(tzid?: string | null): Timezone;
+        static get_builtin_timezone_from_tzid(tzid: string | null): Timezone;
         /**
          * Returns a list of builtin timezones.
          */
@@ -6072,7 +6076,7 @@ export namespace ICalGLib {
          * @param fp The file handle
          * @returns 1 if success.
          */
-        dump_changes(max_year: number, fp?: any | null): number;
+        dump_changes(max_year: number, fp: any | null): number;
         /**
          * Returns the VTIMEZONE component of a timezone.
          * @returns The VTIMEZONE component of the `zone`.
@@ -6708,7 +6712,7 @@ export namespace ICalGLib {
          * Sets the parent property of a value.
          * @param property The parent {@link ICalGLib.Property}
          */
-        set_parent(property?: Property | null): void;
+        set_parent(property: Property | null): void;
         /**
          * Sets the period in the {@link ICalGLib.Value}.
          * @param v The period value

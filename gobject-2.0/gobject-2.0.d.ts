@@ -525,8 +525,8 @@ export namespace GObject {
         return_value: Value | any,
         n_param_values: number,
         param_values: Value | any,
-        invocation_hint?: any | null,
-        marshal_data?: any | null,
+        invocation_hint: any | null,
+        marshal_data: any | null,
     ): void;
     /**
      * A {@link GObject.ClosureMarshal} function for use with signals with handlers that
@@ -545,8 +545,8 @@ export namespace GObject {
         return_value: Value | any,
         n_param_values: number,
         param_values: Value | any,
-        invocation_hint?: any | null,
-        marshal_data?: any | null,
+        invocation_hint: any | null,
+        marshal_data: any | null,
     ): void;
     /**
      * A {@link GObject.ClosureMarshal} function for use with signals with handlers that
@@ -564,8 +564,8 @@ export namespace GObject {
         return_value: Value | any,
         n_param_values: number,
         param_values: Value | any,
-        invocation_hint?: any | null,
-        marshal_data?: any | null,
+        invocation_hint: any | null,
+        marshal_data: any | null,
     ): void;
     /**
      * A {@link GObject.ClosureMarshal} function for use with signals with a single
@@ -582,8 +582,8 @@ export namespace GObject {
         return_value: Value | any,
         n_param_values: number,
         param_values: Value | any,
-        invocation_hint?: any | null,
-        marshal_data?: any | null,
+        invocation_hint: any | null,
+        marshal_data: any | null,
     ): void;
     /**
      * A {@link GObject.ClosureMarshal} function for use with signals with a single
@@ -600,8 +600,8 @@ export namespace GObject {
         return_value: Value | any,
         n_param_values: number,
         param_values: Value | any,
-        invocation_hint?: any | null,
-        marshal_data?: any | null,
+        invocation_hint: any | null,
+        marshal_data: any | null,
     ): void;
     /**
      * A {@link GObject.ClosureMarshal} function for use with signals with a single
@@ -618,8 +618,8 @@ export namespace GObject {
         return_value: Value | any,
         n_param_values: number,
         param_values: Value | any,
-        invocation_hint?: any | null,
-        marshal_data?: any | null,
+        invocation_hint: any | null,
+        marshal_data: any | null,
     ): void;
     /**
      * A {@link GObject.ClosureMarshal} function for use with signals with one
@@ -636,8 +636,8 @@ export namespace GObject {
         return_value: Value | any,
         n_param_values: number,
         param_values: Value | any,
-        invocation_hint?: any | null,
-        marshal_data?: any | null,
+        invocation_hint: any | null,
+        marshal_data: any | null,
     ): void;
     /**
      * A {@link GObject.ClosureMarshal} function for use with signals with a single
@@ -654,8 +654,8 @@ export namespace GObject {
         return_value: Value | any,
         n_param_values: number,
         param_values: Value | any,
-        invocation_hint?: any | null,
-        marshal_data?: any | null,
+        invocation_hint: any | null,
+        marshal_data: any | null,
     ): void;
     /**
      * A {@link GObject.ClosureMarshal} function for use with signals with a single
@@ -672,8 +672,8 @@ export namespace GObject {
         return_value: Value | any,
         n_param_values: number,
         param_values: Value | any,
-        invocation_hint?: any | null,
-        marshal_data?: any | null,
+        invocation_hint: any | null,
+        marshal_data: any | null,
     ): void;
     /**
      * A {@link GObject.ClosureMarshal} function for use with signals with one
@@ -690,8 +690,8 @@ export namespace GObject {
         return_value: Value | any,
         n_param_values: number,
         param_values: Value | any,
-        invocation_hint?: any | null,
-        marshal_data?: any | null,
+        invocation_hint: any | null,
+        marshal_data: any | null,
     ): void;
     /**
      * A {@link GObject.ClosureMarshal} function for use with signals with a single
@@ -708,8 +708,8 @@ export namespace GObject {
         return_value: Value | any,
         n_param_values: number,
         param_values: Value | any,
-        invocation_hint?: any | null,
-        marshal_data?: any | null,
+        invocation_hint: any | null,
+        marshal_data: any | null,
     ): void;
     /**
      * A {@link GObject.ClosureMarshal} function for use with signals with with a single
@@ -726,8 +726,8 @@ export namespace GObject {
         return_value: Value | any,
         n_param_values: number,
         param_values: Value | any,
-        invocation_hint?: any | null,
-        marshal_data?: any | null,
+        invocation_hint: any | null,
+        marshal_data: any | null,
     ): void;
     /**
      * A {@link GObject.ClosureMarshal} function for use with signals with a single
@@ -744,8 +744,8 @@ export namespace GObject {
         return_value: Value | any,
         n_param_values: number,
         param_values: Value | any,
-        invocation_hint?: any | null,
-        marshal_data?: any | null,
+        invocation_hint: any | null,
+        marshal_data: any | null,
     ): void;
     /**
      * A {@link GObject.ClosureMarshal} function for use with signals with a single
@@ -762,8 +762,8 @@ export namespace GObject {
         return_value: Value | any,
         n_param_values: number,
         param_values: Value | any,
-        invocation_hint?: any | null,
-        marshal_data?: any | null,
+        invocation_hint: any | null,
+        marshal_data: any | null,
     ): void;
     /**
      * A {@link GObject.ClosureMarshal} function for use with signals with a single raw
@@ -784,8 +784,8 @@ export namespace GObject {
         return_value: Value | any,
         n_param_values: number,
         param_values: Value | any,
-        invocation_hint?: any | null,
-        marshal_data?: any | null,
+        invocation_hint: any | null,
+        marshal_data: any | null,
     ): void;
     /**
      * A {@link GObject.ClosureMarshal} function for use with signals with a single string
@@ -802,8 +802,8 @@ export namespace GObject {
         return_value: Value | any,
         n_param_values: number,
         param_values: Value | any,
-        invocation_hint?: any | null,
-        marshal_data?: any | null,
+        invocation_hint: any | null,
+        marshal_data: any | null,
     ): void;
     /**
      * A {@link GObject.ClosureMarshal} function for use with signals with a single
@@ -820,8 +820,8 @@ export namespace GObject {
         return_value: Value | any,
         n_param_values: number,
         param_values: Value | any,
-        invocation_hint?: any | null,
-        marshal_data?: any | null,
+        invocation_hint: any | null,
+        marshal_data: any | null,
     ): void;
     /**
      * A {@link GObject.ClosureMarshal} function for use with signals with with a single
@@ -838,8 +838,8 @@ export namespace GObject {
         return_value: Value | any,
         n_param_values: number,
         param_values: Value | any,
-        invocation_hint?: any | null,
-        marshal_data?: any | null,
+        invocation_hint: any | null,
+        marshal_data: any | null,
     ): void;
     /**
      * A {@link GObject.ClosureMarshal} function for use with signals with an unsigned int
@@ -856,8 +856,8 @@ export namespace GObject {
         return_value: Value | any,
         n_param_values: number,
         param_values: Value | any,
-        invocation_hint?: any | null,
-        marshal_data?: any | null,
+        invocation_hint: any | null,
+        marshal_data: any | null,
     ): void;
     /**
      * A {@link GObject.ClosureMarshal} function for use with signals with a single
@@ -874,8 +874,8 @@ export namespace GObject {
         return_value: Value | any,
         n_param_values: number,
         param_values: Value | any,
-        invocation_hint?: any | null,
-        marshal_data?: any | null,
+        invocation_hint: any | null,
+        marshal_data: any | null,
     ): void;
     /**
      * A {@link GObject.ClosureMarshal} function for use with signals with a single
@@ -892,8 +892,8 @@ export namespace GObject {
         return_value: Value | any,
         n_param_values: number,
         param_values: Value | any,
-        invocation_hint?: any | null,
-        marshal_data?: any | null,
+        invocation_hint: any | null,
+        marshal_data: any | null,
     ): void;
     /**
      * A {@link GObject.ClosureMarshal} function for use with signals with no arguments.
@@ -909,8 +909,8 @@ export namespace GObject {
         return_value: Value | any,
         n_param_values: number,
         param_values: Value | any,
-        invocation_hint?: any | null,
-        marshal_data?: any | null,
+        invocation_hint: any | null,
+        marshal_data: any | null,
     ): void;
     /**
      * A generic marshaller function implemented via
@@ -931,8 +931,8 @@ export namespace GObject {
         return_gvalue: Value | any,
         n_param_values: number,
         param_values: Value | any,
-        invocation_hint?: any | null,
-        marshal_data?: any | null,
+        invocation_hint: any | null,
+        marshal_data: any | null,
     ): void;
     /**
      * Disconnects a handler from `instance` so it will not be called during
@@ -1611,7 +1611,7 @@ export namespace GObject {
         ihint: SignalInvocationHint,
         return_accu: Value | any,
         handler_return: Value | any,
-        dummy?: any | null,
+        dummy: any | null,
     ): boolean;
     /**
      * A predefined {@link GObject.SignalAccumulator} for signals that return a
@@ -1632,7 +1632,7 @@ export namespace GObject {
         ihint: SignalInvocationHint,
         return_accu: Value | any,
         handler_return: Value | any,
-        dummy?: any | null,
+        dummy: any | null,
     ): boolean;
     /**
      * Adds an emission hook for a signal, which will get called for any emission
@@ -1648,7 +1648,7 @@ export namespace GObject {
         signal_id: number,
         detail: GLib.Quark,
         hook_func: SignalEmissionHook,
-        data_destroy?: GLib.DestroyNotify | null,
+        data_destroy: GLib.DestroyNotify | null,
     ): number;
     /**
      * Calls the original class closure of a signal. This function should only
@@ -1811,9 +1811,9 @@ export namespace GObject {
         mask: SignalMatchType,
         signal_id: number,
         detail: GLib.Quark,
-        closure?: Closure | null,
-        func?: any | null,
-        data?: any | null,
+        closure: Closure | null,
+        func: any | null,
+        data: any | null,
     ): number;
     /**
      * Destroy all signal handlers of a type instance. This function is
@@ -1851,9 +1851,9 @@ export namespace GObject {
         mask: SignalMatchType,
         signal_id: number,
         detail: GLib.Quark,
-        closure?: Closure | null,
-        func?: any | null,
-        data?: any | null,
+        closure: Closure | null,
+        func: any | null,
+        data: any | null,
     ): number;
     /**
      * Unblocks all handlers on an instance that match a certain selection
@@ -1885,9 +1885,9 @@ export namespace GObject {
         mask: SignalMatchType,
         signal_id: number,
         detail: GLib.Quark,
-        closure?: Closure | null,
-        func?: any | null,
-        data?: any | null,
+        closure: Closure | null,
+        func: any | null,
+        data: any | null,
     ): number;
     /**
      * Returns whether there are any handlers connected to `instance` for the
@@ -2557,7 +2557,7 @@ export namespace GObject {
      * @param quark a {@link GLib.Quark} id to identify the data
      * @param data the data
      */
-    function type_set_qdata(type: GType, quark: GLib.Quark, data?: any | null): void;
+    function type_set_qdata(type: GType, quark: GLib.Quark, data: any | null): void;
     /**
      * @param type
      * @param flags
@@ -2624,13 +2624,13 @@ export namespace GObject {
      * @gir-type Callback
      */
     interface ClassFinalizeFunc {
-        (g_class: TypeClass, class_data?: any | null): void;
+        (g_class: TypeClass, class_data: any | null): void;
     }
     /**
      * @gir-type Callback
      */
     interface ClassInitFunc {
-        (g_class: TypeClass, class_data?: any | null): void;
+        (g_class: TypeClass, class_data: any | null): void;
     }
     /**
      * @gir-type Callback
@@ -2640,8 +2640,8 @@ export namespace GObject {
             closure: Closure,
             return_value: Value | null,
             param_values: unknown[],
-            invocation_hint?: any | null,
-            marshal_data?: any | null,
+            invocation_hint: any | null,
+            marshal_data: any | null,
         ): void;
     }
     /**
@@ -2660,13 +2660,13 @@ export namespace GObject {
      * @gir-type Callback
      */
     interface InterfaceFinalizeFunc {
-        (g_iface: TypeInterface, iface_data?: any | null): void;
+        (g_iface: TypeInterface, iface_data: any | null): void;
     }
     /**
      * @gir-type Callback
      */
     interface InterfaceInitFunc {
-        (g_iface: TypeInterface, iface_data?: any | null): void;
+        (g_iface: TypeInterface, iface_data: any | null): void;
     }
     /**
      * @gir-type Callback
@@ -2690,13 +2690,13 @@ export namespace GObject {
      * @gir-type Callback
      */
     interface SignalAccumulator {
-        (ihint: SignalInvocationHint, return_accu: unknown, handler_return: unknown, data?: any | null): boolean;
+        (ihint: SignalInvocationHint, return_accu: unknown, handler_return: unknown, data: any | null): boolean;
     }
     /**
      * @gir-type Callback
      */
     interface SignalEmissionHook {
-        (ihint: SignalInvocationHint, param_values: unknown[], data?: any | null): boolean;
+        (ihint: SignalInvocationHint, param_values: unknown[], data: any | null): boolean;
     }
     /**
      * @gir-type Callback
@@ -3288,10 +3288,10 @@ export namespace GObject {
 
         interface ConstructorProps extends Object.ConstructorProps {
             flags: BindingFlags;
-            source: Object;
+            source: Object | null;
             source_property: string;
             sourceProperty: string;
-            target: Object;
+            target: Object | null;
             target_property: string;
             targetProperty: string;
         }
@@ -3385,6 +3385,7 @@ export namespace GObject {
          * Flags to be used to control the {@link GObject.Binding}
          * @since 2.26
          * @construct-only
+         * @default GObject.BindingFlags.DEFAULT
          */
         get flags(): BindingFlags;
         /**
@@ -3392,7 +3393,7 @@ export namespace GObject {
          * @since 2.26
          * @construct-only
          */
-        get source(): Object;
+        get source(): Object | null;
         /**
          * The name of the property of {@link GObject.Binding.source} that should be used
          * as the source of the binding.
@@ -3401,6 +3402,7 @@ export namespace GObject {
          * best performance.
          * @since 2.26
          * @construct-only
+         * @default null
          */
         get source_property(): string;
         /**
@@ -3411,6 +3413,7 @@ export namespace GObject {
          * best performance.
          * @since 2.26
          * @construct-only
+         * @default null
          */
         get sourceProperty(): string;
         /**
@@ -3418,7 +3421,7 @@ export namespace GObject {
          * @since 2.26
          * @construct-only
          */
-        get target(): Object;
+        get target(): Object | null;
         /**
          * The name of the property of {@link GObject.Binding.target} that should be used
          * as the target of the binding.
@@ -3427,6 +3430,7 @@ export namespace GObject {
          * best performance.
          * @since 2.26
          * @construct-only
+         * @default null
          */
         get target_property(): string;
         /**
@@ -3437,6 +3441,7 @@ export namespace GObject {
          * best performance.
          * @since 2.26
          * @construct-only
+         * @default null
          */
         get targetProperty(): string;
 
@@ -3650,28 +3655,6 @@ export namespace GObject {
          * functions to be used by the binding. The binding flag
          * {@link GObject.BindingFlags.SYNC_CREATE} is automatically specified.
          *
-         * See `g_object_bind_property_full()` for more information.
-         * @param source_property the property on the source to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags the flags used to create the {@link GObject.Binding}
-         * @param transform_to the transformation function     from the source object to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the source object, or `null` to use the default
-         */
-        bind_full(
-            source_property: string,
-            target: Object,
-            target_property: string,
-            flags: BindingFlags,
-            transform_to?: BindingTransformFunc | null,
-            transform_from?: BindingTransformFunc | null,
-        ): void;
-        /**
-         * Creates a binding between `source_property` on the source object and
-         * `target_property` on `target`, allowing you to set the transformation
-         * functions to be used by the binding. The binding flag
-         * {@link GObject.BindingFlags.SYNC_CREATE} is automatically specified.
-         *
          * This function is the language bindings friendly version of
          * `g_binding_group_bind_property_full()`, using `GClosures`
          * instead of function pointers.
@@ -3689,8 +3672,8 @@ export namespace GObject {
             target: Object,
             target_property: string,
             flags: BindingFlags,
-            transform_to?: Closure | null,
-            transform_from?: Closure | null,
+            transform_to: Closure | null,
+            transform_from: Closure | null,
         ): void;
         /**
          * Gets the source object used for binding properties.
@@ -3705,7 +3688,7 @@ export namespace GObject {
          * Note that all properties that have been bound must exist on `source`.
          * @param source the source {@link GObject.Object},   or `null` to clear it
          */
-        set_source(source?: Object | null): void;
+        set_source(source: Object | null): void;
     }
 
     namespace InitiallyUnowned {
@@ -3881,7 +3864,7 @@ export namespace GObject {
          * @param what
          * @param data
          */
-        static compat_control(what: bigint | number, data?: any | null): number;
+        static compat_control(what: bigint | number, data: any | null): number;
         /**
          * Find the {@link GObject.ParamSpec} with the given name for an
          * interface. Generally, the interface vtable passed in as `g_iface`
@@ -4063,50 +4046,6 @@ export namespace GObject {
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(source_property: string, target: Object, target_property: string, flags: BindingFlags): Binding;
-        /**
-         * Complete version of `g_object_bind_property()`.
-         *
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`, allowing you to set the transformation functions to be used by
-         * the binding.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property_full(
-            source_property: string,
-            target: Object,
-            target_property: string,
-            flags: BindingFlags,
-            transform_to?: BindingTransformFunc | null,
-            transform_from?: BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
-        ): Binding;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
@@ -4297,7 +4236,7 @@ export namespace GObject {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -4868,7 +4807,7 @@ export namespace GObject {
          * @param quark a {@link GLib.Quark}, naming the user data pointer
          * @param data an opaque user data pointer
          */
-        set_qdata(quark: GLib.Quark, data?: any | null): void;
+        set_qdata(quark: GLib.Quark, data: any | null): void;
         /**
          * The initial reference count of a newly created {@link GObject.ParamSpec} is 1,
          * even though no one has explicitly called `g_param_spec_ref()` on it
@@ -5078,7 +5017,7 @@ export namespace GObject {
          * disconnected from that object prior to connecting to `target`.
          * @param target The target instance used     when connecting signals.
          */
-        set_target(target?: Object | null): void;
+        set_target(target: Object | null): void;
         /**
          * Unblocks all signal handlers managed by `self` so they will be
          * called again during any signal emissions unless it is blocked
@@ -5348,38 +5287,19 @@ export namespace GObject {
          */
         bind_property(source_property: string, target: Object, target_property: string, flags: BindingFlags): Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -5387,15 +5307,9 @@ export namespace GObject {
             target: Object,
             target_property: string,
             flags: BindingFlags,
-            transform_to?: BindingTransformFunc | null,
-            transform_from?: BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: Closure | null,
+            transform_from: Closure | null,
         ): Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -5562,7 +5476,7 @@ export namespace GObject {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -5782,8 +5696,8 @@ export namespace GObject {
             return_value: Value | any,
             n_param_values: number,
             param_values: Value | any,
-            invocation_hint?: any | null,
-            marshal_data?: any | null,
+            invocation_hint: any | null,
+            marshal_data: any | null,
         ): void;
         /**
          * A {@link GObject.ClosureMarshal} function for use with signals with handlers that
@@ -5802,8 +5716,8 @@ export namespace GObject {
             return_value: Value | any,
             n_param_values: number,
             param_values: Value | any,
-            invocation_hint?: any | null,
-            marshal_data?: any | null,
+            invocation_hint: any | null,
+            marshal_data: any | null,
         ): void;
         /**
          * A {@link GObject.ClosureMarshal} function for use with signals with handlers that
@@ -5821,8 +5735,8 @@ export namespace GObject {
             return_value: Value | any,
             n_param_values: number,
             param_values: Value | any,
-            invocation_hint?: any | null,
-            marshal_data?: any | null,
+            invocation_hint: any | null,
+            marshal_data: any | null,
         ): void;
         /**
          * A {@link GObject.ClosureMarshal} function for use with signals with a single
@@ -5839,8 +5753,8 @@ export namespace GObject {
             return_value: Value | any,
             n_param_values: number,
             param_values: Value | any,
-            invocation_hint?: any | null,
-            marshal_data?: any | null,
+            invocation_hint: any | null,
+            marshal_data: any | null,
         ): void;
         /**
          * A {@link GObject.ClosureMarshal} function for use with signals with a single
@@ -5857,8 +5771,8 @@ export namespace GObject {
             return_value: Value | any,
             n_param_values: number,
             param_values: Value | any,
-            invocation_hint?: any | null,
-            marshal_data?: any | null,
+            invocation_hint: any | null,
+            marshal_data: any | null,
         ): void;
         /**
          * A {@link GObject.ClosureMarshal} function for use with signals with a single
@@ -5875,8 +5789,8 @@ export namespace GObject {
             return_value: Value | any,
             n_param_values: number,
             param_values: Value | any,
-            invocation_hint?: any | null,
-            marshal_data?: any | null,
+            invocation_hint: any | null,
+            marshal_data: any | null,
         ): void;
         /**
          * A {@link GObject.ClosureMarshal} function for use with signals with one
@@ -5893,8 +5807,8 @@ export namespace GObject {
             return_value: Value | any,
             n_param_values: number,
             param_values: Value | any,
-            invocation_hint?: any | null,
-            marshal_data?: any | null,
+            invocation_hint: any | null,
+            marshal_data: any | null,
         ): void;
         /**
          * A {@link GObject.ClosureMarshal} function for use with signals with a single
@@ -5911,8 +5825,8 @@ export namespace GObject {
             return_value: Value | any,
             n_param_values: number,
             param_values: Value | any,
-            invocation_hint?: any | null,
-            marshal_data?: any | null,
+            invocation_hint: any | null,
+            marshal_data: any | null,
         ): void;
         /**
          * A {@link GObject.ClosureMarshal} function for use with signals with a single
@@ -5929,8 +5843,8 @@ export namespace GObject {
             return_value: Value | any,
             n_param_values: number,
             param_values: Value | any,
-            invocation_hint?: any | null,
-            marshal_data?: any | null,
+            invocation_hint: any | null,
+            marshal_data: any | null,
         ): void;
         /**
          * A {@link GObject.ClosureMarshal} function for use with signals with one
@@ -5947,8 +5861,8 @@ export namespace GObject {
             return_value: Value | any,
             n_param_values: number,
             param_values: Value | any,
-            invocation_hint?: any | null,
-            marshal_data?: any | null,
+            invocation_hint: any | null,
+            marshal_data: any | null,
         ): void;
         /**
          * A {@link GObject.ClosureMarshal} function for use with signals with a single
@@ -5965,8 +5879,8 @@ export namespace GObject {
             return_value: Value | any,
             n_param_values: number,
             param_values: Value | any,
-            invocation_hint?: any | null,
-            marshal_data?: any | null,
+            invocation_hint: any | null,
+            marshal_data: any | null,
         ): void;
         /**
          * A {@link GObject.ClosureMarshal} function for use with signals with with a single
@@ -5983,8 +5897,8 @@ export namespace GObject {
             return_value: Value | any,
             n_param_values: number,
             param_values: Value | any,
-            invocation_hint?: any | null,
-            marshal_data?: any | null,
+            invocation_hint: any | null,
+            marshal_data: any | null,
         ): void;
         /**
          * A {@link GObject.ClosureMarshal} function for use with signals with a single
@@ -6001,8 +5915,8 @@ export namespace GObject {
             return_value: Value | any,
             n_param_values: number,
             param_values: Value | any,
-            invocation_hint?: any | null,
-            marshal_data?: any | null,
+            invocation_hint: any | null,
+            marshal_data: any | null,
         ): void;
         /**
          * A {@link GObject.ClosureMarshal} function for use with signals with a single
@@ -6019,8 +5933,8 @@ export namespace GObject {
             return_value: Value | any,
             n_param_values: number,
             param_values: Value | any,
-            invocation_hint?: any | null,
-            marshal_data?: any | null,
+            invocation_hint: any | null,
+            marshal_data: any | null,
         ): void;
         /**
          * A {@link GObject.ClosureMarshal} function for use with signals with a single raw
@@ -6041,8 +5955,8 @@ export namespace GObject {
             return_value: Value | any,
             n_param_values: number,
             param_values: Value | any,
-            invocation_hint?: any | null,
-            marshal_data?: any | null,
+            invocation_hint: any | null,
+            marshal_data: any | null,
         ): void;
         /**
          * A {@link GObject.ClosureMarshal} function for use with signals with a single string
@@ -6059,8 +5973,8 @@ export namespace GObject {
             return_value: Value | any,
             n_param_values: number,
             param_values: Value | any,
-            invocation_hint?: any | null,
-            marshal_data?: any | null,
+            invocation_hint: any | null,
+            marshal_data: any | null,
         ): void;
         /**
          * A {@link GObject.ClosureMarshal} function for use with signals with a single
@@ -6077,8 +5991,8 @@ export namespace GObject {
             return_value: Value | any,
             n_param_values: number,
             param_values: Value | any,
-            invocation_hint?: any | null,
-            marshal_data?: any | null,
+            invocation_hint: any | null,
+            marshal_data: any | null,
         ): void;
         /**
          * A {@link GObject.ClosureMarshal} function for use with signals with with a single
@@ -6095,8 +6009,8 @@ export namespace GObject {
             return_value: Value | any,
             n_param_values: number,
             param_values: Value | any,
-            invocation_hint?: any | null,
-            marshal_data?: any | null,
+            invocation_hint: any | null,
+            marshal_data: any | null,
         ): void;
         /**
          * A {@link GObject.ClosureMarshal} function for use with signals with an unsigned int
@@ -6113,8 +6027,8 @@ export namespace GObject {
             return_value: Value | any,
             n_param_values: number,
             param_values: Value | any,
-            invocation_hint?: any | null,
-            marshal_data?: any | null,
+            invocation_hint: any | null,
+            marshal_data: any | null,
         ): void;
         /**
          * A {@link GObject.ClosureMarshal} function for use with signals with a single
@@ -6131,8 +6045,8 @@ export namespace GObject {
             return_value: Value | any,
             n_param_values: number,
             param_values: Value | any,
-            invocation_hint?: any | null,
-            marshal_data?: any | null,
+            invocation_hint: any | null,
+            marshal_data: any | null,
         ): void;
         /**
          * A {@link GObject.ClosureMarshal} function for use with signals with a single
@@ -6149,8 +6063,8 @@ export namespace GObject {
             return_value: Value | any,
             n_param_values: number,
             param_values: Value | any,
-            invocation_hint?: any | null,
-            marshal_data?: any | null,
+            invocation_hint: any | null,
+            marshal_data: any | null,
         ): void;
         /**
          * A {@link GObject.ClosureMarshal} function for use with signals with no arguments.
@@ -6166,8 +6080,8 @@ export namespace GObject {
             return_value: Value | any,
             n_param_values: number,
             param_values: Value | any,
-            invocation_hint?: any | null,
-            marshal_data?: any | null,
+            invocation_hint: any | null,
+            marshal_data: any | null,
         ): void;
         /**
          * A generic marshaller function implemented via
@@ -6187,8 +6101,8 @@ export namespace GObject {
             return_gvalue: Value | any,
             n_param_values: number,
             param_values: Value | any,
-            invocation_hint?: any | null,
-            marshal_data?: any | null,
+            invocation_hint: any | null,
+            marshal_data: any | null,
         ): void;
     }
 
@@ -7025,12 +6939,12 @@ export namespace GObject {
          * Set the contents of a `G_TYPE_BOXED` derived {@link GObject.Value} to `v_boxed`.
          * @param v_boxed caller-owned boxed object to be duplicated for the {@link GObject.Value}
          */
-        set_boxed(v_boxed?: any | null): void;
+        set_boxed(v_boxed: any | null): void;
         /**
          * This is an internal function introduced mainly for C marshallers.
          * @param v_boxed duplicated unowned boxed value to be set
          */
-        set_boxed_take_ownership(v_boxed?: any | null): void;
+        set_boxed_take_ownership(v_boxed: any | null): void;
         /**
          * Set the contents of a `G_TYPE_CHAR` {@link GObject.Value} to `v_char`.
          * @param v_char character value to be set
@@ -7068,7 +6982,7 @@ export namespace GObject {
          * the {@link GObject.Value} contains.
          * @param instance the instance
          */
-        set_instance(instance?: any | null): void;
+        set_instance(instance: any | null): void;
         /**
          * Set the contents of a `G_TYPE_INT` {@link GObject.Value} to `v_int`.
          * @param v_int integer value to be set
@@ -7085,7 +6999,7 @@ export namespace GObject {
          * `g_intern_string()`), and is thus not duplicated when setting the {@link GObject.Value}.
          * @param v_string static string to be set
          */
-        set_interned_string(v_string?: string | null): void;
+        set_interned_string(v_string: string | null): void;
         /**
          * Set the contents of a `G_TYPE_LONG` {@link GObject.Value} to `v_long`.
          * @param v_long long integer value to be set
@@ -7105,17 +7019,17 @@ export namespace GObject {
          * the {@link GObject.Value} still exists).
          * @param v_object object value to be set
          */
-        set_object(v_object?: Object | null): void;
+        set_object(v_object: Object | null): void;
         /**
          * Set the contents of a `G_TYPE_PARAM` {@link GObject.Value} to `param`.
          * @param param the {@link GObject.ParamSpec} to be set
          */
-        set_param(param?: ParamSpec | null): void;
+        set_param(param: ParamSpec | null): void;
         /**
          * Set the contents of a pointer {@link GObject.Value} to `v_pointer`.
          * @param v_pointer pointer value to be set
          */
-        set_pointer(v_pointer?: any | null): void;
+        set_pointer(v_pointer: any | null): void;
         /**
          * Set the contents of a `G_TYPE_CHAR` {@link GObject.Value} to `v_char`.
          * @param v_char signed 8 bit integer to be set
@@ -7128,7 +7042,7 @@ export namespace GObject {
          * when setting the {@link GObject.Value}.
          * @param v_boxed static boxed value to be set
          */
-        set_static_boxed(v_boxed?: any | null): void;
+        set_static_boxed(v_boxed: any | null): void;
         /**
          * Set the contents of a `G_TYPE_STRING` {@link GObject.Value} to `v_string`.
          * The string is assumed to be static, and is thus not duplicated
@@ -7138,17 +7052,17 @@ export namespace GObject {
          * is more appropriate.
          * @param v_string static string to be set
          */
-        set_static_string(v_string?: string | null): void;
+        set_static_string(v_string: string | null): void;
         /**
          * Set the contents of a `G_TYPE_STRING` {@link GObject.Value} to a copy of `v_string`.
          * @param v_string caller-owned string to be duplicated for the {@link GObject.Value}
          */
-        set_string(v_string?: string | null): void;
+        set_string(v_string: string | null): void;
         /**
          * This is an internal function introduced mainly for C marshallers.
          * @param v_string duplicated unowned string to be set
          */
-        set_string_take_ownership(v_string?: string | null): void;
+        set_string_take_ownership(v_string: string | null): void;
         /**
          * Set the contents of a `G_TYPE_UCHAR` {@link GObject.Value} to `v_uchar`.
          * @param v_uchar unsigned character value to be set
@@ -7174,7 +7088,7 @@ export namespace GObject {
          * If the variant is floating, it is consumed.
          * @param variant a {@link GLib.Variant}, or `null`
          */
-        set_variant(variant?: GLib.Variant | null): void;
+        set_variant(variant: GLib.Variant | null): void;
         /**
          * Steal ownership on contents of a `G_TYPE_STRING` {@link GObject.Value}.
          * As a result of this operation the value's contents will be reset to `null`.
@@ -7194,12 +7108,12 @@ export namespace GObject {
          * the caller doesn’t have to unref it any more.
          * @param v_boxed duplicated unowned boxed value to be set
          */
-        take_boxed(v_boxed?: any | null): void;
+        take_boxed(v_boxed: any | null): void;
         /**
          * Sets the contents of a `G_TYPE_STRING` {@link GObject.Value} to `v_string`.
          * @param v_string string to take ownership of
          */
-        take_string(v_string?: string | null): void;
+        take_string(v_string: string | null): void;
         /**
          * Set the contents of a variant {@link GObject.Value} to `variant`, and takes over
          * the ownership of the caller's reference to `variant`;
@@ -7215,7 +7129,7 @@ export namespace GObject {
          * This is an internal function introduced mainly for C marshallers.
          * @param variant a {@link GLib.Variant}, or `null`
          */
-        take_variant(variant?: GLib.Variant | null): void;
+        take_variant(variant: GLib.Variant | null): void;
         /**
          * Tries to cast the contents of `src_value` into a type appropriate
          * to store in `dest_value`.
@@ -7291,7 +7205,7 @@ export namespace GObject {
          * @param value {@link GObject.Value} to copy into {@link GObject.ValueArray}, or `null`
          * @returns the {@link GObject.ValueArray} passed in as `value_array`
          */
-        append(value?: Value | null): ValueArray;
+        append(value: Value | null): ValueArray;
         /**
          * Construct an exact copy of a {@link GObject.ValueArray} by duplicating all its
          * contents.
@@ -7315,30 +7229,20 @@ export namespace GObject {
          * @param value {@link GObject.Value} to copy into {@link GObject.ValueArray}, or `null`
          * @returns the {@link GObject.ValueArray} passed in as `value_array`
          */
-        insert(index_: number, value?: Value | null): ValueArray;
+        insert(index_: number, value: Value | null): ValueArray;
         /**
          * Insert a copy of `value` as first element of `value_array`. If `value` is
          * `null`, an uninitialized value is prepended.
          * @param value {@link GObject.Value} to copy into {@link GObject.ValueArray}, or `null`
          * @returns the {@link GObject.ValueArray} passed in as `value_array`
          */
-        prepend(value?: Value | null): ValueArray;
+        prepend(value: Value | null): ValueArray;
         /**
          * Remove the value at position `index_` from `value_array`.
          * @param index_ position of value to remove, which must be less than     `value_array`->n_values
          * @returns the {@link GObject.ValueArray} passed in as `value_array`
          */
         remove(index_: number): ValueArray;
-        /**
-         * Sort `value_array` using `compare_func` to compare the elements according to
-         * the semantics of {@link GLib.CompareFunc}.
-         *
-         * The current implementation uses the same sorting algorithm as standard
-         * C `qsort()` function.
-         * @param compare_func function to compare elements
-         * @returns the {@link GObject.ValueArray} passed in as `value_array`
-         */
-        sort(compare_func: GLib.CompareFunc): ValueArray;
         /**
          * Sort `value_array` using `compare_func` to compare the elements according
          * to the semantics of {@link GLib.CompareDataFunc}.

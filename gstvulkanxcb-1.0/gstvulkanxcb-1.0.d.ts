@@ -60,7 +60,7 @@ export namespace GstVulkanXCB {
 
         _init(...args: any[]): void;
 
-        static ['new'](name?: string | null): VulkanDisplayXCB;
+        static ['new'](name: string | null): VulkanDisplayXCB;
         // Conflicted with GstVulkan.VulkanDisplay.new
 
         static ['new'](...args: never[]): any;

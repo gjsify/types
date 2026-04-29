@@ -260,66 +260,78 @@ export namespace Lfb {
         /**
          * The application id to use for the event.
          * {@link LfbEvent.set_feedback_profile} for details.
+         * @default null
          */
         get app_id(): string;
         set app_id(val: string);
         /**
          * The application id to use for the event.
          * {@link LfbEvent.set_feedback_profile} for details.
+         * @default null
          */
         get appId(): string;
         set appId(val: string);
         /**
          * @read-only
+         * @default Lfb.EventEndReason.NATURAL
          */
         get end_reason(): EventEndReason;
         /**
          * @read-only
+         * @default Lfb.EventEndReason.NATURAL
          */
         get endReason(): EventEndReason;
         /**
          * The type of event from the Event naming spec, e.g. 'message-new-instant'.
          * @construct-only
+         * @default null
          */
         get event(): string;
         /**
          * The name of the feedback profile to use for this event. See
          * {@link LfbEvent.set_feedback_profile} for details.
+         * @default null
          */
         get feedback_profile(): string;
         set feedback_profile(val: string);
         /**
          * The name of the feedback profile to use for this event. See
          * {@link LfbEvent.set_feedback_profile} for details.
+         * @default null
          */
         get feedbackProfile(): string;
         set feedbackProfile(val: string);
         /**
          * Whether to flag this event as important.
          * {@link LfbEvent.set_important} for details.
+         * @default false
          */
         get important(): boolean;
         set important(val: boolean);
         /**
          * A custom sound-file to play. See {@link LfbEvent.set_sound_file}
          * for details.
+         * @default null
          */
         get sound_file(): string;
         set sound_file(val: string);
         /**
          * A custom sound-file to play. See {@link LfbEvent.set_sound_file}
          * for details.
+         * @default null
          */
         get soundFile(): string;
         set soundFile(val: string);
         /**
          * @read-only
+         * @default Lfb.EventState.NONE
          */
         get state(): EventState;
         /**
          * How long feedback should be provided in seconds. The special value
          * %-1 uses the natural length of each feedback while %0 plays each feedback
          * in a loop until ended explicitly via e.g. {@link LfbEvent.end_feedback}.
+         * @default -1
          */
         get timeout(): number;
         set timeout(val: number);
@@ -375,7 +387,7 @@ export namespace Lfb {
          * soon as possible.
          * @param cancellable A {@link Gio.Cancellable} to cancel the operation or `null`.
          */
-        end_feedback_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        end_feedback_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Tells the feedback server to end all feedback for the given event as
          * soon as possible.
@@ -390,7 +402,7 @@ export namespace Lfb {
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         end_feedback_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -511,7 +523,7 @@ export namespace Lfb {
          * {@link LfbEvent.trigger_feedback}.
          * @param cancellable A {@link Gio.Cancellable} to cancel the operation or `null`.
          */
-        trigger_feedback_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        trigger_feedback_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Tells the feedback server to provide proper feedback for the give
          * event to the user. This is the sync version of
@@ -531,7 +543,7 @@ export namespace Lfb {
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         trigger_feedback_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -606,7 +618,7 @@ export namespace Lfb {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): GdbusFeedbackHapticProxy;
         // Conflicted with Gio.DBusProxy.new_for_bus_sync
 
@@ -617,7 +629,7 @@ export namespace Lfb {
             flags: Gio.DBusProxyFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): GdbusFeedbackHapticProxy;
         // Conflicted with Gio.DBusProxy.new_sync
 
@@ -667,8 +679,8 @@ export namespace Lfb {
             flags: Gio.DBusProxyFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<GdbusFeedbackHapticProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<GdbusFeedbackHapticProxy> | null,
         ): void;
         /**
          * @param args
@@ -694,8 +706,8 @@ export namespace Lfb {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<GdbusFeedbackHapticProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<GdbusFeedbackHapticProxy> | null,
         ): void;
         /**
          * @param args
@@ -742,7 +754,7 @@ export namespace Lfb {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -832,7 +844,7 @@ export namespace Lfb {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -898,8 +910,8 @@ export namespace Lfb {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -925,7 +937,7 @@ export namespace Lfb {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -944,7 +956,7 @@ export namespace Lfb {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Initializes the object implementing the interface.
          *
@@ -987,7 +999,7 @@ export namespace Lfb {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -1030,7 +1042,7 @@ export namespace Lfb {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-sigxcpu-Feedback-Haptic.Vibrate">Vibrate()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -1044,7 +1056,7 @@ export namespace Lfb {
         call_vibrate(
             arg_app_id: string,
             arg_pattern: GLib.Variant,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-sigxcpu-Feedback-Haptic.Vibrate">Vibrate()</link> D-Bus method on `proxy`.
@@ -1077,7 +1089,7 @@ export namespace Lfb {
         call_vibrate(
             arg_app_id: string,
             arg_pattern: GLib.Variant,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1098,7 +1110,7 @@ export namespace Lfb {
         call_vibrate_sync(
             arg_app_id: string,
             arg_pattern: GLib.Variant,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, boolean];
         /**
          * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-sigxcpu-Feedback-Haptic.Vibrate">Vibrate()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
@@ -1167,38 +1179,19 @@ export namespace Lfb {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1206,15 +1199,9 @@ export namespace Lfb {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1381,7 +1368,7 @@ export namespace Lfb {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1652,7 +1639,7 @@ export namespace Lfb {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -1671,7 +1658,7 @@ export namespace Lfb {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-sigxcpu-Feedback-Haptic.Vibrate">Vibrate()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -1685,7 +1672,7 @@ export namespace Lfb {
         call_vibrate(
             arg_app_id: string,
             arg_pattern: GLib.Variant,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-sigxcpu-Feedback-Haptic.Vibrate">Vibrate()</link> D-Bus method on `proxy`.
@@ -1718,7 +1705,7 @@ export namespace Lfb {
         call_vibrate(
             arg_app_id: string,
             arg_pattern: GLib.Variant,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1739,7 +1726,7 @@ export namespace Lfb {
         call_vibrate_sync(
             arg_app_id: string,
             arg_pattern: GLib.Variant,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, boolean];
         /**
          * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-sigxcpu-Feedback-Haptic.Vibrate">Vibrate()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
@@ -1808,38 +1795,19 @@ export namespace Lfb {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1847,15 +1815,9 @@ export namespace Lfb {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -2022,7 +1984,7 @@ export namespace Lfb {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -2275,7 +2237,7 @@ export namespace Lfb {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): GdbusFeedbackProxy;
         // Conflicted with Gio.DBusProxy.new_for_bus_sync
 
@@ -2286,7 +2248,7 @@ export namespace Lfb {
             flags: Gio.DBusProxyFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): GdbusFeedbackProxy;
         // Conflicted with Gio.DBusProxy.new_sync
 
@@ -2334,8 +2296,8 @@ export namespace Lfb {
             flags: Gio.DBusProxyFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<GdbusFeedbackProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<GdbusFeedbackProxy> | null,
         ): void;
         /**
          * @param args
@@ -2361,8 +2323,8 @@ export namespace Lfb {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<GdbusFeedbackProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<GdbusFeedbackProxy> | null,
         ): void;
         /**
          * @param args
@@ -2373,10 +2335,11 @@ export namespace Lfb {
          * Represents the D-Bus property <link linkend="gdbus-property-org-sigxcpu-Feedback.Profile">"Profile"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default null
          * @category Inherited from Lfb.GdbusFeedback
          */
-        get profile(): string;
-        set profile(val: string);
+        get profile(): string | null;
+        set profile(val: string | null);
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -2417,7 +2380,7 @@ export namespace Lfb {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -2507,7 +2470,7 @@ export namespace Lfb {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2573,8 +2536,8 @@ export namespace Lfb {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -2600,7 +2563,7 @@ export namespace Lfb {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -2619,7 +2582,7 @@ export namespace Lfb {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Initializes the object implementing the interface.
          *
@@ -2662,7 +2625,7 @@ export namespace Lfb {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -2705,7 +2668,7 @@ export namespace Lfb {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-sigxcpu-Feedback.EndFeedback">EndFeedback()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -2715,7 +2678,7 @@ export namespace Lfb {
          * @param arg_id Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_end_feedback(arg_id: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_end_feedback(arg_id: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-sigxcpu-Feedback.EndFeedback">EndFeedback()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -2743,7 +2706,7 @@ export namespace Lfb {
          */
         call_end_feedback(
             arg_id: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2760,7 +2723,7 @@ export namespace Lfb {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_end_feedback_sync(arg_id: number, cancellable?: Gio.Cancellable | null): boolean;
+        call_end_feedback_sync(arg_id: number, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-sigxcpu-Feedback.TriggerFeedback">TriggerFeedback()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -2778,7 +2741,7 @@ export namespace Lfb {
             arg_event: string,
             arg_hints: GLib.Variant,
             arg_timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<number>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-sigxcpu-Feedback.TriggerFeedback">TriggerFeedback()</link> D-Bus method on `proxy`.
@@ -2819,7 +2782,7 @@ export namespace Lfb {
             arg_event: string,
             arg_hints: GLib.Variant,
             arg_timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<number> | void;
         /**
@@ -2844,7 +2807,7 @@ export namespace Lfb {
             arg_event: string,
             arg_hints: GLib.Variant,
             arg_timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, number];
         /**
          * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-sigxcpu-Feedback.EndFeedback">EndFeedback()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
@@ -2944,38 +2907,19 @@ export namespace Lfb {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -2983,15 +2927,9 @@ export namespace Lfb {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -3158,7 +3096,7 @@ export namespace Lfb {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -3414,10 +3352,11 @@ export namespace Lfb {
          * Represents the D-Bus property <link linkend="gdbus-property-org-sigxcpu-Feedback.Profile">"Profile"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default null
          * @category Inherited from Lfb.GdbusFeedback
          */
-        get profile(): string;
-        set profile(val: string);
+        get profile(): string | null;
+        set profile(val: string | null);
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
@@ -3435,7 +3374,7 @@ export namespace Lfb {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -3454,7 +3393,7 @@ export namespace Lfb {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-sigxcpu-Feedback.EndFeedback">EndFeedback()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -3464,7 +3403,7 @@ export namespace Lfb {
          * @param arg_id Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_end_feedback(arg_id: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_end_feedback(arg_id: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-sigxcpu-Feedback.EndFeedback">EndFeedback()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -3492,7 +3431,7 @@ export namespace Lfb {
          */
         call_end_feedback(
             arg_id: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -3509,7 +3448,7 @@ export namespace Lfb {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_end_feedback_sync(arg_id: number, cancellable?: Gio.Cancellable | null): boolean;
+        call_end_feedback_sync(arg_id: number, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-sigxcpu-Feedback.TriggerFeedback">TriggerFeedback()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -3527,7 +3466,7 @@ export namespace Lfb {
             arg_event: string,
             arg_hints: GLib.Variant,
             arg_timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<number>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-sigxcpu-Feedback.TriggerFeedback">TriggerFeedback()</link> D-Bus method on `proxy`.
@@ -3568,7 +3507,7 @@ export namespace Lfb {
             arg_event: string,
             arg_hints: GLib.Variant,
             arg_timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<number> | void;
         /**
@@ -3593,7 +3532,7 @@ export namespace Lfb {
             arg_event: string,
             arg_hints: GLib.Variant,
             arg_timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, number];
         /**
          * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-sigxcpu-Feedback.EndFeedback">EndFeedback()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
@@ -3693,38 +3632,19 @@ export namespace Lfb {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -3732,15 +3652,9 @@ export namespace Lfb {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -3907,7 +3821,7 @@ export namespace Lfb {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -4196,7 +4110,7 @@ export namespace Lfb {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            profile: string;
+            profile: string | null;
         }
     }
 
@@ -4227,9 +4141,10 @@ export namespace Lfb {
          * Represents the D-Bus property <link linkend="gdbus-property-org-sigxcpu-Feedback.Profile">"Profile"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default null
          */
-        get profile(): string;
-        set profile(val: string);
+        get profile(): string | null;
+        set profile(val: string | null);
 
         // Methods
 
@@ -4242,7 +4157,7 @@ export namespace Lfb {
          * @param arg_id Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_end_feedback(arg_id: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_end_feedback(arg_id: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-sigxcpu-Feedback.EndFeedback">EndFeedback()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -4270,7 +4185,7 @@ export namespace Lfb {
          */
         call_end_feedback(
             arg_id: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -4287,7 +4202,7 @@ export namespace Lfb {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_end_feedback_sync(arg_id: number, cancellable?: Gio.Cancellable | null): boolean;
+        call_end_feedback_sync(arg_id: number, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-sigxcpu-Feedback.TriggerFeedback">TriggerFeedback()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -4305,7 +4220,7 @@ export namespace Lfb {
             arg_event: string,
             arg_hints: GLib.Variant,
             arg_timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<number>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-sigxcpu-Feedback.TriggerFeedback">TriggerFeedback()</link> D-Bus method on `proxy`.
@@ -4346,7 +4261,7 @@ export namespace Lfb {
             arg_event: string,
             arg_hints: GLib.Variant,
             arg_timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<number> | void;
         /**
@@ -4371,7 +4286,7 @@ export namespace Lfb {
             arg_event: string,
             arg_hints: GLib.Variant,
             arg_timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, number];
         /**
          * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-sigxcpu-Feedback.EndFeedback">EndFeedback()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
@@ -4463,7 +4378,7 @@ export namespace Lfb {
         call_vibrate(
             arg_app_id: string,
             arg_pattern: GLib.Variant,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-sigxcpu-Feedback-Haptic.Vibrate">Vibrate()</link> D-Bus method on `proxy`.
@@ -4496,7 +4411,7 @@ export namespace Lfb {
         call_vibrate(
             arg_app_id: string,
             arg_pattern: GLib.Variant,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -4517,7 +4432,7 @@ export namespace Lfb {
         call_vibrate_sync(
             arg_app_id: string,
             arg_pattern: GLib.Variant,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, boolean];
         /**
          * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-sigxcpu-Feedback-Haptic.Vibrate">Vibrate()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.

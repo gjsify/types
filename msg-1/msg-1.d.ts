@@ -518,7 +518,7 @@ export namespace Msg {
          * @param cancellable a cancellable
          * @returns a new drive item
          */
-        add_item_to_folder(parent: DriveItem, item: DriveItem, cancellable?: Gio.Cancellable | null): DriveItem;
+        add_item_to_folder(parent: DriveItem, item: DriveItem, cancellable: Gio.Cancellable | null): DriveItem;
         /**
          * Copy a file async on remote server to a new directory.
          * @param file source {@link Msg.DriveItem}
@@ -526,7 +526,7 @@ export namespace Msg {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` if accepted, `false` on error
          */
-        copy_file(file: DriveItem, destination: DriveItem, cancellable?: Gio.Cancellable | null): boolean;
+        copy_file(file: DriveItem, destination: DriveItem, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a new folder called name under parent.
          * @param parent parent drive item
@@ -534,54 +534,54 @@ export namespace Msg {
          * @param cancellable a cancellable
          * @returns a newly created {@link Msg.DriveItem}
          */
-        create_folder(parent: DriveItem, name: string, cancellable?: Gio.Cancellable | null): DriveItem;
+        create_folder(parent: DriveItem, name: string, cancellable: Gio.Cancellable | null): DriveItem;
         /**
          * Deletes item.
          * @param item a {@link Msg.DriveItem}
          * @param cancellable a cancellable
          * @returns `true` when item has been deleted, otherwise `false`
          */
-        ['delete'](item: DriveItem, cancellable?: Gio.Cancellable | null): boolean;
+        ['delete'](item: DriveItem, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Download item
          * @param item a {@link Msg.DriveItem}
          * @param cancellable a {@link Gio.Cancellable}
          * @returns input stream of drive item
          */
-        download_item(item: DriveItem, cancellable?: Gio.Cancellable | null): Gio.InputStream;
+        download_item(item: DriveItem, cancellable: Gio.Cancellable | null): Gio.InputStream;
         /**
          * Download url
          * @param url url to download
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a new {@link Gio.InputStream} for url
          */
-        download_url(url: string, cancellable?: Gio.Cancellable | null): Gio.InputStream;
+        download_url(url: string, cancellable: Gio.Cancellable | null): Gio.InputStream;
         /**
          * Queries the Microsoft Graph API for all the drives of the currently logged in user
          * @param cancellable a {@link Gio.Cancellable}
          * @returns all drives the user can access
          */
-        get_drives(cancellable?: Gio.Cancellable | null): Drive[];
+        get_drives(cancellable: Gio.Cancellable | null): Drive[];
         /**
          * Get root item of selected drive
          * @param drive a {@link Msg.Drive}
          * @param cancellable a {@link Gio.Cancellable}
          * @returns root 'MsgDriveItem'
          */
-        get_root(drive: Drive, cancellable?: Gio.Cancellable | null): DriveItem;
+        get_root(drive: Drive, cancellable: Gio.Cancellable | null): DriveItem;
         /**
          * Requests all shared with me items
          * @param cancellable a {@link Gio.Cancellable}
          * @returns shared with me list
          */
-        get_shared_with_me(cancellable?: Gio.Cancellable | null): DriveItem[];
+        get_shared_with_me(cancellable: Gio.Cancellable | null): DriveItem[];
         /**
          * Get a list of all files in folder item
          * @param item a {@link Msg.DriveItem}
          * @param cancellable a {@link Gio.Cancellable}
          * @returns all items in folder
          */
-        list_children(item: DriveItem, cancellable?: Gio.Cancellable | null): DriveItem[];
+        list_children(item: DriveItem, cancellable: Gio.Cancellable | null): DriveItem[];
         /**
          * Move a file async on remote server to a new directory.
          * @param file source {@link Msg.DriveItem}
@@ -589,7 +589,7 @@ export namespace Msg {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns moved {@link Msg.DriveItem}
          */
-        move_file(file: DriveItem, destination: DriveItem, cancellable?: Gio.Cancellable | null): DriveItem;
+        move_file(file: DriveItem, destination: DriveItem, cancellable: Gio.Cancellable | null): DriveItem;
         /**
          * Sets a new drive item name
          * @param item a {@link Msg.DriveItem}
@@ -597,14 +597,14 @@ export namespace Msg {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns the renamed {@link Msg.DriveItem}
          */
-        rename(item: DriveItem, new_name: string, cancellable?: Gio.Cancellable | null): DriveItem;
+        rename(item: DriveItem, new_name: string, cancellable: Gio.Cancellable | null): DriveItem;
         /**
          * Creates an update stream for drive item in order to update it's content.
          * @param item a drive item
          * @param cancellable a cancellable
          * @returns an output stream
          */
-        update(item: DriveItem, cancellable?: Gio.Cancellable | null): Gio.OutputStream;
+        update(item: DriveItem, cancellable: Gio.Cancellable | null): Gio.OutputStream;
         /**
          * Finish a update session of given #item.
          * @param item a {@link Msg.DriveItem}
@@ -612,7 +612,7 @@ export namespace Msg {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a new {@link Msg.DriveItem} or `null` on error.
          */
-        update_finish(item: DriveItem, stream: Gio.OutputStream, cancellable?: Gio.Cancellable | null): DriveItem;
+        update_finish(item: DriveItem, stream: Gio.OutputStream, cancellable: Gio.Cancellable | null): DriveItem;
     }
 
     namespace GoaAuthorizer {
@@ -710,7 +710,7 @@ export namespace Msg {
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @returns `true` if the authorizer now has a valid token.
          */
-        refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
+        refresh_authorization(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Adds the necessary authorization to `message`. The type of `message`
          * can be DELETE, GET and POST.
@@ -729,7 +729,7 @@ export namespace Msg {
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @virtual
          */
-        vfunc_refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_refresh_authorization(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -777,38 +777,19 @@ export namespace Msg {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -816,15 +797,9 @@ export namespace Msg {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -991,7 +966,7 @@ export namespace Msg {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1250,8 +1225,8 @@ export namespace Msg {
         static send_async(
             stream: Gio.InputStream,
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<InputStream> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<InputStream> | null,
         ): void;
         /**
          * @param stream
@@ -1289,7 +1264,7 @@ export namespace Msg {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        seek(offset: bigint | number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
+        seek(offset: bigint | number, type: GLib.SeekType, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @returns the (positive or zero) offset from the beginning of the buffer, zero if the target is not seekable.
@@ -1309,7 +1284,7 @@ export namespace Msg {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        truncate(offset: bigint | number, cancellable?: Gio.Cancellable | null): boolean;
+        truncate(offset: bigint | number, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Tests if the stream supports the {@link Gio.SeekableIface}.
          * @virtual
@@ -1341,7 +1316,7 @@ export namespace Msg {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_seek(offset: number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_seek(offset: number, type: GLib.SeekType, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @virtual
@@ -1361,7 +1336,7 @@ export namespace Msg {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_truncate_fn(offset: number, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_truncate_fn(offset: number, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -1409,38 +1384,19 @@ export namespace Msg {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1448,15 +1404,9 @@ export namespace Msg {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1623,7 +1573,7 @@ export namespace Msg {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -2148,26 +2098,26 @@ export namespace Msg {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a new `MsgMail`
          */
-        create_draft_message(mail: MailMessage, cancellable?: Gio.Cancellable | null): MailMessage;
+        create_draft_message(mail: MailMessage, cancellable: Gio.Cancellable | null): MailMessage;
         /**
          * Delets #mail.
          * @param mail a `MsgMail`
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` for succes, else &FALSE
          */
-        delete_message(mail: MailMessage, cancellable?: Gio.Cancellable | null): boolean;
+        delete_message(mail: MailMessage, cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param type
          * @param cancellable
          */
-        get_folder_id(type: MailFolderType, cancellable?: Gio.Cancellable | null): string;
+        get_folder_id(type: MailFolderType, cancellable: Gio.Cancellable | null): string;
         /**
          * Get a specific mail folder for given service
          * @param type a `MsgMailMailFolderType`
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a {@link Msg.MailFolder}
          */
-        get_mail_folder(type: MailFolderType, cancellable?: Gio.Cancellable | null): MailFolder;
+        get_mail_folder(type: MailFolderType, cancellable: Gio.Cancellable | null): MailFolder;
         /**
          * Get all folders for given service
          * @param delta_url
@@ -2175,7 +2125,7 @@ export namespace Msg {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns all mail folders the user can access
          */
-        get_mail_folders(delta_url: string, delta_url_out: string, cancellable?: Gio.Cancellable | null): MailFolder[];
+        get_mail_folders(delta_url: string, delta_url_out: string, cancellable: Gio.Cancellable | null): MailFolder[];
         /**
          * Get all mails for given service
          * @param folder
@@ -2194,13 +2144,13 @@ export namespace Msg {
             delta_link: string,
             out_delta_link: string,
             max_page_size: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): MailMessage[];
         /**
          * @param mail
          * @param cancellable
          */
-        get_mime_message(mail: MailMessage, cancellable?: Gio.Cancellable | null): GLib.Bytes;
+        get_mime_message(mail: MailMessage, cancellable: Gio.Cancellable | null): GLib.Bytes;
     }
 
     namespace OAuth2Authorizer {
@@ -2233,22 +2183,32 @@ export namespace Msg {
 
         /**
          * @construct-only
+         * @default null
          */
         get client_id(): string;
         /**
          * @construct-only
+         * @default null
          */
         get clientId(): string;
         /**
          * @construct-only
+         * @default null
          */
         get redirect_uri(): string;
         /**
          * @construct-only
+         * @default null
          */
         get redirectUri(): string;
+        /**
+         * @default null
+         */
         get refresh_token(): string;
         set refresh_token(val: string);
+        /**
+         * @default null
+         */
         get refreshToken(): string;
         set refreshToken(val: string);
 
@@ -2308,7 +2268,7 @@ export namespace Msg {
          * @param authorization_code
          * @param cancellable
          */
-        request_authorization(authorization_code: string, cancellable?: Gio.Cancellable | null): boolean;
+        request_authorization(authorization_code: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Adds the necessary authorization to `message`. The type of `message`
          * can be DELETE, GET and POST.
@@ -2326,7 +2286,7 @@ export namespace Msg {
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @returns `true` if the authorizer now has a valid token.
          */
-        refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
+        refresh_authorization(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Adds the necessary authorization to `message`. The type of `message`
          * can be DELETE, GET and POST.
@@ -2345,7 +2305,7 @@ export namespace Msg {
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @virtual
          */
-        vfunc_refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_refresh_authorization(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -2393,38 +2353,19 @@ export namespace Msg {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -2432,15 +2373,9 @@ export namespace Msg {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -2607,7 +2542,7 @@ export namespace Msg {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -2871,7 +2806,7 @@ export namespace Msg {
             msg: Soup.Message,
             tls_cert: Gio.TlsCertificate,
             tls_errors: Gio.TlsCertificateFlags,
-            session?: any | null,
+            session: any | null,
         ): boolean;
         static get_https_port(): number;
         /**
@@ -2915,14 +2850,14 @@ export namespace Msg {
         /**
          * @param cancellable
          */
-        refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
+        refresh_authorization(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Adds authorizer information to `message` and send it.
          * @param message a {@link Soup.Message}
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a {@link Gio.InputStream}
          */
-        send(message: Soup.Message, cancellable?: Gio.Cancellable | null): Gio.InputStream;
+        send(message: Soup.Message, cancellable: Gio.Cancellable | null): Gio.InputStream;
         /**
          * A combination of `msg_service_send_and_read` and `msg_service_parse_response`
          * @param message a {@link Soup.Message}
@@ -2933,7 +2868,7 @@ export namespace Msg {
         send_and_parse_response(
             message: Soup.Message,
             object: Json.Object,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): Json.Parser;
         /**
          * Adds authorizer information to `message` and send it.
@@ -2941,7 +2876,7 @@ export namespace Msg {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a {@link GLib.Bytes} or `null` on error.
          */
-        send_and_read(message: Soup.Message, cancellable?: Gio.Cancellable | null): GLib.Bytes;
+        send_and_read(message: Soup.Message, cancellable: Gio.Cancellable | null): GLib.Bytes;
     }
 
     namespace User {
@@ -3168,33 +3103,33 @@ export namespace Msg {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a list of contacts with the given name.
          */
-        find_users(name: string, cancellable?: Gio.Cancellable | null): User[];
+        find_users(name: string, cancellable: Gio.Cancellable | null): User[];
         /**
          * Get all folders for given service
          * @param cancellable a {@link Gio.Cancellable}
          * @returns all user contact folders the user can access
          */
-        get_contact_folders(cancellable?: Gio.Cancellable | null): UserContactFolder[];
+        get_contact_folders(cancellable: Gio.Cancellable | null): UserContactFolder[];
         /**
          * Get all contats within users 'Contact' folder.
          * @param cancellable a {@link Gio.Cancellable}
          * @returns all contact in users contact folder
          */
-        get_contacts(cancellable?: Gio.Cancellable | null): UserContactFolder[];
+        get_contacts(cancellable: Gio.Cancellable | null): UserContactFolder[];
         /**
          * Try to load user photo using provided %mail address.
          * @param mail mail address
          * @param cancellable a {@link Gio.Cancellable}
          * @returns user photo or `null` if not found.
          */
-        get_photo(mail: string, cancellable?: Gio.Cancellable | null): GLib.Bytes;
+        get_photo(mail: string, cancellable: Gio.Cancellable | null): GLib.Bytes;
         /**
          * Get user information
          * @param name user name (`null` for me)
          * @param cancellable a {@link Gio.Cancellable}
          * @returns request user
          */
-        get_user(name: string, cancellable?: Gio.Cancellable | null): User;
+        get_user(name: string, cancellable: Gio.Cancellable | null): User;
     }
 
     /**
@@ -3330,7 +3265,7 @@ export namespace Msg {
              * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
              * @virtual
              */
-            vfunc_refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
+            vfunc_refresh_authorization(cancellable: Gio.Cancellable | null): boolean;
         }
 
         // Constructor properties interface
@@ -3365,7 +3300,7 @@ export namespace Msg {
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @returns `true` if the authorizer now has a valid token.
          */
-        refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
+        refresh_authorization(cancellable: Gio.Cancellable | null): boolean;
     }
 
     export const Authorizer: AuthorizerNamespace & {

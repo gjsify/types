@@ -77,7 +77,7 @@ export namespace GstHip {
      * @returns Whether the `query` was successfully responded to from the passed          `context`.
      * @since 1.28
      */
-    function hip_handle_context_query(element: Gst.Element, query: Gst.Query, device?: HipDevice | null): boolean;
+    function hip_handle_context_query(element: Gst.Element, query: Gst.Query, device: HipDevice | null): boolean;
     /**
      * Helper function for implementing {@link Gst.ElementClass}.set_context() in
      * HIP capable elements.
@@ -326,22 +326,27 @@ export namespace GstHip {
 
         /**
          * @read-only
+         * @default 0
          */
         get device_id(): number;
         /**
          * @read-only
+         * @default 0
          */
         get deviceId(): number;
         /**
          * @read-only
+         * @default false
          */
         get texture2d_support(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get texture2dSupport(): boolean;
         /**
          * @read-only
+         * @default Unknown
          */
         get vendor(): HipVendor;
 
@@ -679,7 +684,7 @@ export namespace GstHip {
          * Sets `event` to `mem` for later synchronization operation
          * @param event a {@link GstHip.HipEvent}
          */
-        set_event(event?: HipEvent | null): void;
+        set_event(event: HipEvent | null): void;
         /**
          * Waits for device synchronization by using previously configured {@link GstHip.HipEvent}
          * via `gst_hip_memory_set_event()`

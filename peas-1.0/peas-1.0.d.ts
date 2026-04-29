@@ -58,7 +58,7 @@ export namespace Peas {
      * @gir-type Callback
      */
     interface ExtensionSetForeachFunc {
-        (set: ExtensionSet, info: PluginInfo, exten: Extension, data?: any | null): void;
+        (set: ExtensionSet, info: PluginInfo, exten: Extension, data: any | null): void;
     }
     /**
      * @gir-type Callback
@@ -168,6 +168,7 @@ export namespace Peas {
          * See {@link Engine.new_with_nonglobal_loaders} for more information.
          * @since 1.14
          * @construct-only
+         * @default false
          */
         get nonglobal_loaders(): boolean;
         /**
@@ -176,6 +177,7 @@ export namespace Peas {
          * See {@link Engine.new_with_nonglobal_loaders} for more information.
          * @since 1.14
          * @construct-only
+         * @default false
          */
         get nonglobalLoaders(): boolean;
         /**
@@ -284,7 +286,7 @@ export namespace Peas {
          * @param module_dir the plugin module directory.
          * @param data_dir the plugin data directory.
          */
-        add_search_path(module_dir: string, data_dir?: string | null): void;
+        add_search_path(module_dir: string, data_dir: string | null): void;
         /**
          * If the plugin identified by `info` implements the `extension_type`,
          * then this function will return a new instance of this implementation,
@@ -374,7 +376,7 @@ export namespace Peas {
          * @param module_dir the plugin module directory.
          * @param data_dir the plugin data directory.
          */
-        prepend_search_path(module_dir: string, data_dir?: string | null): void;
+        prepend_search_path(module_dir: string, data_dir: string | null): void;
         /**
          * Returns if `info` provides an extension for `extension_type`.
          *
@@ -405,7 +407,7 @@ export namespace Peas {
          * If `plugin_names` is `null`, all plugins will be unloaded.
          * @param plugin_names A `null`-terminated  array of plugin names, or `null`.
          */
-        set_loaded_plugins(plugin_names?: string[] | null): void;
+        set_loaded_plugins(plugin_names: string[] | null): void;
         /**
          * Unloads the plugin corresponding to `info`.
          *
@@ -450,6 +452,7 @@ export namespace Peas {
          * Note: This is the same path as that returned by
          * {@link PluginInfo.get_data_dir}.
          * @read-only
+         * @default null
          */
         get data_dir(): string;
         /**
@@ -459,6 +462,7 @@ export namespace Peas {
          * Note: This is the same path as that returned by
          * {@link PluginInfo.get_data_dir}.
          * @read-only
+         * @default null
          */
         get dataDir(): string;
         /**
@@ -826,38 +830,19 @@ export namespace Peas {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -865,15 +850,9 @@ export namespace Peas {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1040,7 +1019,7 @@ export namespace Peas {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1268,6 +1247,7 @@ export namespace Peas {
          *
          * Since 1.14
          * @construct-only
+         * @default false
          */
         get local_linkage(): boolean;
         /**
@@ -1275,26 +1255,32 @@ export namespace Peas {
          *
          * Since 1.14
          * @construct-only
+         * @default false
          */
         get localLinkage(): boolean;
         /**
          * @construct-only
+         * @default null
          */
         get module_name(): string;
         /**
          * @construct-only
+         * @default null
          */
         get moduleName(): string;
         /**
          * @construct-only
+         * @default null
          */
         get path(): string;
         /**
          * @construct-only
+         * @default false
          */
         get resident(): boolean;
         /**
          * @construct-only
+         * @default peas_register_types
          */
         get symbol(): string;
 
@@ -1447,38 +1433,19 @@ export namespace Peas {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1486,15 +1453,9 @@ export namespace Peas {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1661,7 +1622,7 @@ export namespace Peas {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -2031,7 +1992,7 @@ export namespace Peas {
          * @param schema_id The schema id.
          * @returns a new {@link Gio.Settings}.
          */
-        get_settings(schema_id?: string | null): Gio.Settings | null;
+        get_settings(schema_id: string | null): Gio.Settings | null;
         /**
          * Gets the version of the plugin.
          *

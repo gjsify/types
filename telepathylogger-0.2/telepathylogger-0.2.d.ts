@@ -128,6 +128,7 @@ export namespace TelepathyLogger {
         get detailedEndReason(): string;
         /**
          * @construct-only
+         * @default 0
          */
         get duration(): number;
         /**
@@ -140,10 +141,12 @@ export namespace TelepathyLogger {
         get endActor(): Entity;
         /**
          * @construct-only
+         * @default 0
          */
         get end_reason(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get endReason(): number;
 
@@ -235,26 +238,31 @@ export namespace TelepathyLogger {
         /**
          * The entity's alias
          * @construct-only
+         * @default null
          */
         get alias(): string;
         /**
          * The entity's avatar token
          * @construct-only
+         * @default null
          */
         get avatar_token(): string;
         /**
          * The entity's avatar token
          * @construct-only
+         * @default null
          */
         get avatarToken(): string;
         /**
          * The entity's identifier
          * @construct-only
+         * @default null
          */
         get identifier(): string;
         /**
          * The entity's type (see {@link TelepathyLogger.EntityType}).
          * @construct-only
+         * @default 0
          */
         get type(): number;
 
@@ -360,18 +368,22 @@ export namespace TelepathyLogger {
         get account(): TelepathyGLib.Account;
         /**
          * @read-only
+         * @default null
          */
         get account_path(): string;
         /**
          * @read-only
+         * @default null
          */
         get accountPath(): string;
         /**
          * @construct-only
+         * @default null
          */
         get channel_path(): string;
         /**
          * @construct-only
+         * @default null
          */
         get channelPath(): string;
         /**
@@ -384,6 +396,7 @@ export namespace TelepathyLogger {
         get sender(): Entity;
         /**
          * @construct-only
+         * @default 0
          */
         get timestamp(): number;
 
@@ -684,7 +697,7 @@ export namespace TelepathyLogger {
             target: Entity,
             type_mask: number,
             num_events: number,
-            filter?: LogEventFilter | null,
+            filter: LogEventFilter | null,
         ): globalThis.Promise<Event[]>;
         /**
          * Retrieve the most recent `num_event` events exchanged with `target`.
@@ -717,7 +730,7 @@ export namespace TelepathyLogger {
             target: Entity,
             type_mask: number,
             num_events: number,
-            filter?: LogEventFilter | null,
+            filter: LogEventFilter | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Event[]> | void;
         /**
@@ -774,7 +787,7 @@ export namespace TelepathyLogger {
             account: TelepathyGLib.Account,
             target: Entity,
             type_mask: number,
-            filter?: LogEventFilter | null,
+            filter: LogEventFilter | null,
         ): LogWalker;
     }
 
@@ -965,38 +978,47 @@ export namespace TelepathyLogger {
 
         /**
          * @construct-only
+         * @default 0
          */
         get edit_timestamp(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get editTimestamp(): number;
         /**
          * @construct-only
+         * @default null
          */
         get message(): string;
         /**
          * @construct-only
+         * @default null
          */
         get message_token(): string;
         /**
          * @construct-only
+         * @default null
          */
         get messageToken(): string;
         /**
          * @construct-only
+         * @default 0
          */
         get message_type(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get messageType(): number;
         /**
          * @construct-only
+         * @default null
          */
         get supersedes_token(): string;
         /**
          * @construct-only
+         * @default null
          */
         get supersedesToken(): string;
 

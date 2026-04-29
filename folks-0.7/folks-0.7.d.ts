@@ -906,12 +906,12 @@ export namespace Folks {
          * @param storeids
          * @virtual
          */
-        vfunc_set_persona_stores(storeids?: Gee.Set | null): void;
+        vfunc_set_persona_stores(storeids: Gee.Set | null): void;
         /**
          * @param _callback_
          * @virtual
          */
-        vfunc_prepare(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_prepare(_callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -921,7 +921,7 @@ export namespace Folks {
          * @param _callback_
          * @virtual
          */
-        vfunc_unprepare(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_unprepare(_callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -957,7 +957,7 @@ export namespace Folks {
         /**
          * @param storeids
          */
-        set_persona_stores(storeids?: Gee.Set | null): void;
+        set_persona_stores(storeids: Gee.Set | null): void;
         prepare(): globalThis.Promise<void>;
         /**
          * @param _callback_
@@ -1128,7 +1128,7 @@ export namespace Folks {
 
         _init(...args: any[]): void;
 
-        static ['new'](value: string, parameters?: Gee.MultiMap | null): EmailFieldDetails;
+        static ['new'](value: string, parameters: Gee.MultiMap | null): EmailFieldDetails;
 
         // Signals
 
@@ -1190,7 +1190,7 @@ export namespace Folks {
 
         _init(...args: any[]): void;
 
-        static ['new'](value: string, parameters?: Gee.MultiMap | null): ExtendedFieldDetails;
+        static ['new'](value: string, parameters: Gee.MultiMap | null): ExtendedFieldDetails;
 
         // Signals
 
@@ -1254,7 +1254,7 @@ export namespace Folks {
 
         _init(...args: any[]): void;
 
-        static ['new'](value: string, parameters?: Gee.MultiMap | null): ImFieldDetails;
+        static ['new'](value: string, parameters: Gee.MultiMap | null): ImFieldDetails;
 
         // Signals
 
@@ -1311,12 +1311,12 @@ export namespace Folks {
             isPrepared: boolean;
             is_quiescent: boolean;
             isQuiescent: boolean;
-            primary_store: PersonaStore;
+            primary_store: PersonaStore | null;
             primaryStore: PersonaStore;
             backend_store: BackendStore;
             backendStore: BackendStore;
             individuals: Gee.Map;
-            user: Individual;
+            user: Individual | null;
         }
     }
 
@@ -1347,7 +1347,7 @@ export namespace Folks {
         /**
          * @read-only
          */
-        get primary_store(): PersonaStore;
+        get primary_store(): PersonaStore | null;
         /**
          * @read-only
          */
@@ -1362,8 +1362,8 @@ export namespace Folks {
         get backendStore(): BackendStore;
         get individuals(): Gee.Map;
         set individuals(val: Gee.Map);
-        get user(): Individual;
-        set user(val: Individual);
+        get user(): Individual | null;
+        set user(val: Individual | null);
 
         /**
          * Compile-time signal type information.
@@ -1784,7 +1784,7 @@ export namespace Folks {
 
         _init(...args: any[]): void;
 
-        static ['new'](personas?: Gee.Set | null): Individual;
+        static ['new'](personas: Gee.Set | null): Individual;
 
         // Signals
 
@@ -1830,14 +1830,14 @@ export namespace Folks {
         get alias(): string;
         set alias(val: string);
         /** @category Inherited from Folks.AvatarDetails */
-        get avatar(): Gio.LoadableIcon;
-        set avatar(val: Gio.LoadableIcon);
+        get avatar(): Gio.LoadableIcon | null;
+        set avatar(val: Gio.LoadableIcon | null);
         /** @category Inherited from Folks.BirthdayDetails */
-        get birthday(): GLib.DateTime;
-        set birthday(val: GLib.DateTime);
+        get birthday(): GLib.DateTime | null;
+        set birthday(val: GLib.DateTime | null);
         /** @category Inherited from Folks.BirthdayDetails */
-        get calendar_event_id(): string;
-        set calendar_event_id(val: string);
+        get calendar_event_id(): string | null;
+        set calendar_event_id(val: string | null);
         /** @category Inherited from Folks.BirthdayDetails */
         get calendarEventId(): string;
         set calendarEventId(val: string);
@@ -1879,7 +1879,7 @@ export namespace Folks {
          * @read-only
          * @category Inherited from Folks.InteractionDetails
          */
-        get last_im_interaction_datetime(): GLib.DateTime;
+        get last_im_interaction_datetime(): GLib.DateTime | null;
         /**
          * @read-only
          * @category Inherited from Folks.InteractionDetails
@@ -1899,7 +1899,7 @@ export namespace Folks {
          * @read-only
          * @category Inherited from Folks.InteractionDetails
          */
-        get last_call_interaction_datetime(): GLib.DateTime;
+        get last_call_interaction_datetime(): GLib.DateTime | null;
         /**
          * @read-only
          * @category Inherited from Folks.InteractionDetails
@@ -1912,11 +1912,11 @@ export namespace Folks {
         get localIds(): Gee.Set;
         set localIds(val: Gee.Set);
         /** @category Inherited from Folks.LocationDetails */
-        get location(): Location;
-        set location(val: Location);
+        get location(): Location | null;
+        set location(val: Location | null);
         /** @category Inherited from Folks.NameDetails */
-        get structured_name(): StructuredName;
-        set structured_name(val: StructuredName);
+        get structured_name(): StructuredName | null;
+        set structured_name(val: StructuredName | null);
         /** @category Inherited from Folks.NameDetails */
         get structuredName(): StructuredName;
         set structuredName(val: StructuredName);
@@ -2008,7 +2008,7 @@ export namespace Folks {
          * @param _callback_
          * @virtual
          */
-        vfunc_change_alias(alias: string, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_change_alias(alias: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -2026,7 +2026,7 @@ export namespace Folks {
         /**
          * @param avatar
          */
-        change_avatar(avatar?: Gio.LoadableIcon | null): globalThis.Promise<void>;
+        change_avatar(avatar: Gio.LoadableIcon | null): globalThis.Promise<void>;
         /**
          * @param avatar
          * @param _callback_
@@ -2037,7 +2037,7 @@ export namespace Folks {
          * @param _callback_
          */
         change_avatar(
-            avatar?: Gio.LoadableIcon | null,
+            avatar: Gio.LoadableIcon | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -2048,13 +2048,13 @@ export namespace Folks {
         /**
          * @param value
          */
-        set_avatar(value?: Gio.LoadableIcon | null): void;
+        set_avatar(value: Gio.LoadableIcon | null): void;
         /**
          * @param avatar
          * @param _callback_
          * @virtual
          */
-        vfunc_change_avatar(avatar?: Gio.LoadableIcon | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_change_avatar(avatar: Gio.LoadableIcon | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -2068,11 +2068,11 @@ export namespace Folks {
          * @param value
          * @virtual
          */
-        vfunc_set_avatar(value?: Gio.LoadableIcon | null): void;
+        vfunc_set_avatar(value: Gio.LoadableIcon | null): void;
         /**
          * @param birthday
          */
-        change_birthday(birthday?: GLib.DateTime | null): globalThis.Promise<void>;
+        change_birthday(birthday: GLib.DateTime | null): globalThis.Promise<void>;
         /**
          * @param birthday
          * @param _callback_
@@ -2083,7 +2083,7 @@ export namespace Folks {
          * @param _callback_
          */
         change_birthday(
-            birthday?: GLib.DateTime | null,
+            birthday: GLib.DateTime | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -2093,7 +2093,7 @@ export namespace Folks {
         /**
          * @param event_id
          */
-        change_calendar_event_id(event_id?: string | null): globalThis.Promise<void>;
+        change_calendar_event_id(event_id: string | null): globalThis.Promise<void>;
         /**
          * @param event_id
          * @param _callback_
@@ -2104,7 +2104,7 @@ export namespace Folks {
          * @param _callback_
          */
         change_calendar_event_id(
-            event_id?: string | null,
+            event_id: string | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -2115,18 +2115,18 @@ export namespace Folks {
         /**
          * @param value
          */
-        set_birthday(value?: GLib.DateTime | null): void;
+        set_birthday(value: GLib.DateTime | null): void;
         get_calendar_event_id(): string | null;
         /**
          * @param value
          */
-        set_calendar_event_id(value?: string | null): void;
+        set_calendar_event_id(value: string | null): void;
         /**
          * @param birthday
          * @param _callback_
          * @virtual
          */
-        vfunc_change_birthday(birthday?: GLib.DateTime | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_change_birthday(birthday: GLib.DateTime | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -2137,10 +2137,7 @@ export namespace Folks {
          * @param _callback_
          * @virtual
          */
-        vfunc_change_calendar_event_id(
-            event_id?: string | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_change_calendar_event_id(event_id: string | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -2154,7 +2151,7 @@ export namespace Folks {
          * @param value
          * @virtual
          */
-        vfunc_set_birthday(value?: GLib.DateTime | null): void;
+        vfunc_set_birthday(value: GLib.DateTime | null): void;
         /**
          * @virtual
          */
@@ -2163,7 +2160,7 @@ export namespace Folks {
          * @param value
          * @virtual
          */
-        vfunc_set_calendar_event_id(value?: string | null): void;
+        vfunc_set_calendar_event_id(value: string | null): void;
         /**
          * @param email_addresses
          */
@@ -2195,7 +2192,7 @@ export namespace Folks {
          * @param _callback_
          * @virtual
          */
-        vfunc_change_email_addresses(email_addresses: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_change_email_addresses(email_addresses: Gee.Set, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -2278,7 +2275,7 @@ export namespace Folks {
         vfunc_change_extended_field(
             name: string,
             value: ExtendedFieldDetails,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param _res_
@@ -2290,7 +2287,7 @@ export namespace Folks {
          * @param _callback_
          * @virtual
          */
-        vfunc_remove_extended_field(name: string, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_remove_extended_field(name: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -2327,7 +2324,7 @@ export namespace Folks {
          * @param _callback_
          * @virtual
          */
-        vfunc_change_is_favourite(is_favourite: boolean, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_change_is_favourite(is_favourite: boolean, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -2373,7 +2370,7 @@ export namespace Folks {
          * @param _callback_
          * @virtual
          */
-        vfunc_change_gender(gender: Gender, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_change_gender(gender: Gender, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -2445,7 +2442,7 @@ export namespace Folks {
          * @param _callback_
          * @virtual
          */
-        vfunc_change_group(group: string, is_member: boolean, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_change_group(group: string, is_member: boolean, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -2456,7 +2453,7 @@ export namespace Folks {
          * @param _callback_
          * @virtual
          */
-        vfunc_change_groups(groups: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_change_groups(groups: Gee.Set, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -2502,7 +2499,7 @@ export namespace Folks {
          * @param _callback_
          * @virtual
          */
-        vfunc_change_im_addresses(im_addresses: Gee.MultiMap, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_change_im_addresses(im_addresses: Gee.MultiMap, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -2568,7 +2565,7 @@ export namespace Folks {
          * @param _callback_
          * @virtual
          */
-        vfunc_change_local_ids(local_ids: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_change_local_ids(local_ids: Gee.Set, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -2586,7 +2583,7 @@ export namespace Folks {
         /**
          * @param location
          */
-        change_location(location?: Location | null): globalThis.Promise<void>;
+        change_location(location: Location | null): globalThis.Promise<void>;
         /**
          * @param location
          * @param _callback_
@@ -2597,7 +2594,7 @@ export namespace Folks {
          * @param _callback_
          */
         change_location(
-            location?: Location | null,
+            location: Location | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -2608,13 +2605,13 @@ export namespace Folks {
         /**
          * @param value
          */
-        set_location(value?: Location | null): void;
+        set_location(value: Location | null): void;
         /**
          * @param location
          * @param _callback_
          * @virtual
          */
-        vfunc_change_location(location?: Location | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_change_location(location: Location | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -2628,11 +2625,11 @@ export namespace Folks {
          * @param value
          * @virtual
          */
-        vfunc_set_location(value?: Location | null): void;
+        vfunc_set_location(value: Location | null): void;
         /**
          * @param name
          */
-        change_structured_name(name?: StructuredName | null): globalThis.Promise<void>;
+        change_structured_name(name: StructuredName | null): globalThis.Promise<void>;
         /**
          * @param name
          * @param _callback_
@@ -2643,7 +2640,7 @@ export namespace Folks {
          * @param _callback_
          */
         change_structured_name(
-            name?: StructuredName | null,
+            name: StructuredName | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -2696,7 +2693,7 @@ export namespace Folks {
         /**
          * @param value
          */
-        set_structured_name(value?: StructuredName | null): void;
+        set_structured_name(value: StructuredName | null): void;
         get_full_name(): string;
         /**
          * @param value
@@ -2713,8 +2710,8 @@ export namespace Folks {
          * @virtual
          */
         vfunc_change_structured_name(
-            name?: StructuredName | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
+            name: StructuredName | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param _res_
@@ -2726,7 +2723,7 @@ export namespace Folks {
          * @param _callback_
          * @virtual
          */
-        vfunc_change_full_name(full_name: string, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_change_full_name(full_name: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -2737,7 +2734,7 @@ export namespace Folks {
          * @param _callback_
          * @virtual
          */
-        vfunc_change_nickname(nickname: string, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_change_nickname(nickname: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -2751,7 +2748,7 @@ export namespace Folks {
          * @param value
          * @virtual
          */
-        vfunc_set_structured_name(value?: StructuredName | null): void;
+        vfunc_set_structured_name(value: StructuredName | null): void;
         /**
          * @virtual
          */
@@ -2798,7 +2795,7 @@ export namespace Folks {
          * @param _callback_
          * @virtual
          */
-        vfunc_change_notes(notes: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_change_notes(notes: Gee.Set, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -2901,7 +2898,7 @@ export namespace Folks {
          * @param _callback_
          * @virtual
          */
-        vfunc_change_phone_numbers(phone_numbers: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_change_phone_numbers(phone_numbers: Gee.Set, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -2947,10 +2944,7 @@ export namespace Folks {
          * @param _callback_
          * @virtual
          */
-        vfunc_change_postal_addresses(
-            postal_addresses: Gee.Set,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_change_postal_addresses(postal_addresses: Gee.Set, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -2993,7 +2987,7 @@ export namespace Folks {
          * @param _callback_
          * @virtual
          */
-        vfunc_change_roles(roles: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_change_roles(roles: Gee.Set, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -3036,7 +3030,7 @@ export namespace Folks {
          * @param _callback_
          * @virtual
          */
-        vfunc_change_urls(urls: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_change_urls(urls: Gee.Set, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -3087,7 +3081,7 @@ export namespace Folks {
          */
         vfunc_change_web_service_addresses(
             web_service_addresses: Gee.MultiMap,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param _res_
@@ -3150,38 +3144,19 @@ export namespace Folks {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -3189,15 +3164,9 @@ export namespace Folks {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -3364,7 +3333,7 @@ export namespace Folks {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -3690,14 +3659,14 @@ export namespace Folks {
         _init(...args: any[]): void;
 
         static ['new'](
-            family_name?: string | null,
-            given_name?: string | null,
-            additional_names?: string | null,
-            prefixes?: string | null,
-            suffixes?: string | null,
+            family_name: string | null,
+            given_name: string | null,
+            additional_names: string | null,
+            prefixes: string | null,
+            suffixes: string | null,
         ): StructuredName;
 
-        static simple(family_name?: string | null, given_name?: string | null): StructuredName;
+        static simple(family_name: string | null, given_name: string | null): StructuredName;
 
         // Signals
 
@@ -3808,7 +3777,7 @@ export namespace Folks {
 
         _init(...args: any[]): void;
 
-        static ['new'](value: string, parameters?: Gee.MultiMap | null, uid?: string | null): NoteFieldDetails;
+        static ['new'](value: string, parameters: Gee.MultiMap | null, uid: string | null): NoteFieldDetails;
 
         // Signals
 
@@ -3988,7 +3957,7 @@ export namespace Folks {
         /**
          * @param cancellable
          */
-        load_objects(cancellable?: Gio.Cancellable | null): globalThis.Promise<Gee.Set | null>;
+        load_objects(cancellable: Gio.Cancellable | null): globalThis.Promise<Gee.Set | null>;
         /**
          * @param cancellable
          * @param _callback_
@@ -3999,7 +3968,7 @@ export namespace Folks {
          * @param _callback_
          */
         load_objects(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Gee.Set | null> | void;
         /**
@@ -4010,7 +3979,7 @@ export namespace Folks {
          * @param objects
          * @param cancellable
          */
-        store_objects(objects: Gee.Set, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
+        store_objects(objects: Gee.Set, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * @param objects
          * @param cancellable
@@ -4028,7 +3997,7 @@ export namespace Folks {
          */
         store_objects(
             objects: Gee.Set,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -4284,7 +4253,7 @@ export namespace Folks {
          * @param _callback_
          * @virtual
          */
-        vfunc_prepare(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_prepare(_callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -4294,7 +4263,7 @@ export namespace Folks {
          * @param _callback_
          * @virtual
          */
-        vfunc_flush(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_flush(_callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -4307,7 +4276,7 @@ export namespace Folks {
          */
         vfunc_add_persona_from_details(
             details: GLib.HashTable<string, GObject.Value>,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param _res_
@@ -4319,7 +4288,7 @@ export namespace Folks {
          * @param _callback_
          * @virtual
          */
-        vfunc_remove_persona(persona: Persona, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_remove_persona(persona: Persona, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -4503,7 +4472,7 @@ export namespace Folks {
             is_user: boolean;
             isUser: boolean;
             store: PersonaStore;
-            individual: Individual;
+            individual: Individual | null;
             linkable_properties: string[];
             linkableProperties: string[];
             writeable_properties: string[];
@@ -4547,8 +4516,8 @@ export namespace Folks {
          * @construct-only
          */
         get store(): PersonaStore;
-        get individual(): Individual;
-        set individual(val: Individual);
+        get individual(): Individual | null;
+        set individual(val: Individual | null);
         /**
          * @read-only
          */
@@ -4687,7 +4656,7 @@ export namespace Folks {
 
         _init(...args: any[]): void;
 
-        static ['new'](value: string, parameters?: Gee.MultiMap | null): PhoneFieldDetails;
+        static ['new'](value: string, parameters: Gee.MultiMap | null): PhoneFieldDetails;
 
         // Signals
 
@@ -4799,15 +4768,15 @@ export namespace Folks {
         _init(...args: any[]): void;
 
         static ['new'](
-            po_box?: string | null,
-            extension?: string | null,
-            street?: string | null,
-            locality?: string | null,
-            region?: string | null,
-            postal_code?: string | null,
-            country?: string | null,
-            address_format?: string | null,
-            uid?: string | null,
+            po_box: string | null,
+            extension: string | null,
+            street: string | null,
+            locality: string | null,
+            region: string | null,
+            postal_code: string | null,
+            country: string | null,
+            address_format: string | null,
+            uid: string | null,
         ): PostalAddress;
 
         // Signals
@@ -4924,7 +4893,7 @@ export namespace Folks {
 
         _init(...args: any[]): void;
 
-        static ['new'](value: PostalAddress, parameters?: Gee.MultiMap | null): PostalAddressFieldDetails;
+        static ['new'](value: PostalAddress, parameters: Gee.MultiMap | null): PostalAddressFieldDetails;
 
         // Signals
 
@@ -5161,7 +5130,7 @@ export namespace Folks {
 
         _init(...args: any[]): void;
 
-        static ['new'](title?: string | null, organisation_name?: string | null, uid?: string | null): Role;
+        static ['new'](title: string | null, organisation_name: string | null, uid: string | null): Role;
 
         // Signals
 
@@ -5260,7 +5229,7 @@ export namespace Folks {
 
         _init(...args: any[]): void;
 
-        static ['new'](value: Role, parameters?: Gee.MultiMap | null): RoleFieldDetails;
+        static ['new'](value: Role, parameters: Gee.MultiMap | null): RoleFieldDetails;
 
         // Signals
 
@@ -5449,7 +5418,7 @@ export namespace Folks {
         interface ConstructorProps extends Query.ConstructorProps {
             query_string: string;
             queryString: string;
-            query_locale: string;
+            query_locale: string | null;
             queryLocale: string;
         }
     }
@@ -5466,8 +5435,8 @@ export namespace Folks {
         set query_string(val: string);
         get queryString(): string;
         set queryString(val: string);
-        get query_locale(): string;
-        set query_locale(val: string);
+        get query_locale(): string | null;
+        set query_locale(val: string | null);
         get queryLocale(): string;
         set queryLocale(val: string);
 
@@ -5520,7 +5489,7 @@ export namespace Folks {
         /**
          * @param value
          */
-        set_query_locale(value?: string | null): void;
+        set_query_locale(value: string | null): void;
     }
 
     namespace UrlFieldDetails {
@@ -5561,7 +5530,7 @@ export namespace Folks {
 
         _init(...args: any[]): void;
 
-        static ['new'](value: string, parameters?: Gee.MultiMap | null): UrlFieldDetails;
+        static ['new'](value: string, parameters: Gee.MultiMap | null): UrlFieldDetails;
 
         // Signals
 
@@ -5700,7 +5669,7 @@ export namespace Folks {
 
         _init(...args: any[]): void;
 
-        static ['new'](value: string, parameters?: Gee.MultiMap | null): WebServiceFieldDetails;
+        static ['new'](value: string, parameters: Gee.MultiMap | null): WebServiceFieldDetails;
 
         // Signals
 
@@ -6131,7 +6100,7 @@ export namespace Folks {
              * @param _callback_
              * @virtual
              */
-            vfunc_change_alias(alias: string, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+            vfunc_change_alias(alias: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
             /**
              * @param _res_
              * @virtual
@@ -6212,7 +6181,7 @@ export namespace Folks {
              * @param _callback_
              * @virtual
              */
-            vfunc_change_anti_links(anti_links: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+            vfunc_change_anti_links(anti_links: Gee.Set, _callback_: Gio.AsyncReadyCallback<this> | null): void;
             /**
              * @param _res_
              * @virtual
@@ -6372,10 +6341,7 @@ export namespace Folks {
              * @param _callback_
              * @virtual
              */
-            vfunc_change_avatar(
-                avatar?: Gio.LoadableIcon | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
-            ): void;
+            vfunc_change_avatar(avatar: Gio.LoadableIcon | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
             /**
              * @param _res_
              * @virtual
@@ -6389,13 +6355,13 @@ export namespace Folks {
              * @param value
              * @virtual
              */
-            vfunc_set_avatar(value?: Gio.LoadableIcon | null): void;
+            vfunc_set_avatar(value: Gio.LoadableIcon | null): void;
         }
 
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            avatar: Gio.LoadableIcon;
+            avatar: Gio.LoadableIcon | null;
         }
     }
 
@@ -6409,15 +6375,15 @@ export namespace Folks {
     interface AvatarDetails extends GObject.Object, AvatarDetails.Interface {
         // Properties
 
-        get avatar(): Gio.LoadableIcon;
-        set avatar(val: Gio.LoadableIcon);
+        get avatar(): Gio.LoadableIcon | null;
+        set avatar(val: Gio.LoadableIcon | null);
 
         // Methods
 
         /**
          * @param avatar
          */
-        change_avatar(avatar?: Gio.LoadableIcon | null): globalThis.Promise<void>;
+        change_avatar(avatar: Gio.LoadableIcon | null): globalThis.Promise<void>;
         /**
          * @param avatar
          * @param _callback_
@@ -6428,7 +6394,7 @@ export namespace Folks {
          * @param _callback_
          */
         change_avatar(
-            avatar?: Gio.LoadableIcon | null,
+            avatar: Gio.LoadableIcon | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -6439,7 +6405,7 @@ export namespace Folks {
         /**
          * @param value
          */
-        set_avatar(value?: Gio.LoadableIcon | null): void;
+        set_avatar(value: Gio.LoadableIcon | null): void;
     }
 
     export const AvatarDetails: AvatarDetailsNamespace & {
@@ -6460,8 +6426,8 @@ export namespace Folks {
              * @virtual
              */
             vfunc_change_birthday(
-                birthday?: GLib.DateTime | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
+                birthday: GLib.DateTime | null,
+                _callback_: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * @param _res_
@@ -6474,8 +6440,8 @@ export namespace Folks {
              * @virtual
              */
             vfunc_change_calendar_event_id(
-                event_id?: string | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
+                event_id: string | null,
+                _callback_: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * @param _res_
@@ -6490,7 +6456,7 @@ export namespace Folks {
              * @param value
              * @virtual
              */
-            vfunc_set_birthday(value?: GLib.DateTime | null): void;
+            vfunc_set_birthday(value: GLib.DateTime | null): void;
             /**
              * @virtual
              */
@@ -6499,14 +6465,14 @@ export namespace Folks {
              * @param value
              * @virtual
              */
-            vfunc_set_calendar_event_id(value?: string | null): void;
+            vfunc_set_calendar_event_id(value: string | null): void;
         }
 
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            birthday: GLib.DateTime;
-            calendar_event_id: string;
+            birthday: GLib.DateTime | null;
+            calendar_event_id: string | null;
             calendarEventId: string;
         }
     }
@@ -6521,10 +6487,10 @@ export namespace Folks {
     interface BirthdayDetails extends GObject.Object, BirthdayDetails.Interface {
         // Properties
 
-        get birthday(): GLib.DateTime;
-        set birthday(val: GLib.DateTime);
-        get calendar_event_id(): string;
-        set calendar_event_id(val: string);
+        get birthday(): GLib.DateTime | null;
+        set birthday(val: GLib.DateTime | null);
+        get calendar_event_id(): string | null;
+        set calendar_event_id(val: string | null);
         get calendarEventId(): string;
         set calendarEventId(val: string);
 
@@ -6533,7 +6499,7 @@ export namespace Folks {
         /**
          * @param birthday
          */
-        change_birthday(birthday?: GLib.DateTime | null): globalThis.Promise<void>;
+        change_birthday(birthday: GLib.DateTime | null): globalThis.Promise<void>;
         /**
          * @param birthday
          * @param _callback_
@@ -6544,7 +6510,7 @@ export namespace Folks {
          * @param _callback_
          */
         change_birthday(
-            birthday?: GLib.DateTime | null,
+            birthday: GLib.DateTime | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -6554,7 +6520,7 @@ export namespace Folks {
         /**
          * @param event_id
          */
-        change_calendar_event_id(event_id?: string | null): globalThis.Promise<void>;
+        change_calendar_event_id(event_id: string | null): globalThis.Promise<void>;
         /**
          * @param event_id
          * @param _callback_
@@ -6565,7 +6531,7 @@ export namespace Folks {
          * @param _callback_
          */
         change_calendar_event_id(
-            event_id?: string | null,
+            event_id: string | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -6576,12 +6542,12 @@ export namespace Folks {
         /**
          * @param value
          */
-        set_birthday(value?: GLib.DateTime | null): void;
+        set_birthday(value: GLib.DateTime | null): void;
         get_calendar_event_id(): string | null;
         /**
          * @param value
          */
-        set_calendar_event_id(value?: string | null): void;
+        set_calendar_event_id(value: string | null): void;
     }
 
     export const BirthdayDetails: BirthdayDetailsNamespace & {
@@ -6603,7 +6569,7 @@ export namespace Folks {
              */
             vfunc_change_email_addresses(
                 email_addresses: Gee.Set,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
+                _callback_: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * @param _res_
@@ -6700,7 +6666,7 @@ export namespace Folks {
             vfunc_change_extended_field(
                 name: string,
                 value: ExtendedFieldDetails,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
+                _callback_: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * @param _res_
@@ -6712,7 +6678,7 @@ export namespace Folks {
              * @param _callback_
              * @virtual
              */
-            vfunc_remove_extended_field(name: string, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+            vfunc_remove_extended_field(name: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
             /**
              * @param _res_
              * @virtual
@@ -6808,7 +6774,7 @@ export namespace Folks {
              * @param _callback_
              * @virtual
              */
-            vfunc_change_is_favourite(is_favourite: boolean, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+            vfunc_change_is_favourite(is_favourite: boolean, _callback_: Gio.AsyncReadyCallback<this> | null): void;
             /**
              * @param _res_
              * @virtual
@@ -6895,7 +6861,7 @@ export namespace Folks {
              * @param _callback_
              * @virtual
              */
-            vfunc_change_gender(gender: Gender, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+            vfunc_change_gender(gender: Gender, _callback_: Gio.AsyncReadyCallback<this> | null): void;
             /**
              * @param _res_
              * @virtual
@@ -6983,7 +6949,7 @@ export namespace Folks {
             vfunc_change_group(
                 group: string,
                 is_member: boolean,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
+                _callback_: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * @param _res_
@@ -6995,7 +6961,7 @@ export namespace Folks {
              * @param _callback_
              * @virtual
              */
-            vfunc_change_groups(groups: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+            vfunc_change_groups(groups: Gee.Set, _callback_: Gio.AsyncReadyCallback<this> | null): void;
             /**
              * @param _res_
              * @virtual
@@ -7106,7 +7072,7 @@ export namespace Folks {
              */
             vfunc_change_im_addresses(
                 im_addresses: Gee.MultiMap,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
+                _callback_: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * @param _res_
@@ -7218,11 +7184,11 @@ export namespace Folks {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             im_interaction_count: number;
             imInteractionCount: number;
-            last_im_interaction_datetime: GLib.DateTime;
+            last_im_interaction_datetime: GLib.DateTime | null;
             lastImInteractionDatetime: GLib.DateTime;
             call_interaction_count: number;
             callInteractionCount: number;
-            last_call_interaction_datetime: GLib.DateTime;
+            last_call_interaction_datetime: GLib.DateTime | null;
             lastCallInteractionDatetime: GLib.DateTime;
         }
     }
@@ -7248,7 +7214,7 @@ export namespace Folks {
         /**
          * @read-only
          */
-        get last_im_interaction_datetime(): GLib.DateTime;
+        get last_im_interaction_datetime(): GLib.DateTime | null;
         /**
          * @read-only
          */
@@ -7264,7 +7230,7 @@ export namespace Folks {
         /**
          * @read-only
          */
-        get last_call_interaction_datetime(): GLib.DateTime;
+        get last_call_interaction_datetime(): GLib.DateTime | null;
         /**
          * @read-only
          */
@@ -7295,7 +7261,7 @@ export namespace Folks {
              * @param _callback_
              * @virtual
              */
-            vfunc_change_local_ids(local_ids: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+            vfunc_change_local_ids(local_ids: Gee.Set, _callback_: Gio.AsyncReadyCallback<this> | null): void;
             /**
              * @param _res_
              * @virtual
@@ -7382,7 +7348,7 @@ export namespace Folks {
              * @param _callback_
              * @virtual
              */
-            vfunc_change_location(location?: Location | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+            vfunc_change_location(location: Location | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
             /**
              * @param _res_
              * @virtual
@@ -7396,13 +7362,13 @@ export namespace Folks {
              * @param value
              * @virtual
              */
-            vfunc_set_location(value?: Location | null): void;
+            vfunc_set_location(value: Location | null): void;
         }
 
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            location: Location;
+            location: Location | null;
         }
     }
 
@@ -7416,15 +7382,15 @@ export namespace Folks {
     interface LocationDetails extends GObject.Object, LocationDetails.Interface {
         // Properties
 
-        get location(): Location;
-        set location(val: Location);
+        get location(): Location | null;
+        set location(val: Location | null);
 
         // Methods
 
         /**
          * @param location
          */
-        change_location(location?: Location | null): globalThis.Promise<void>;
+        change_location(location: Location | null): globalThis.Promise<void>;
         /**
          * @param location
          * @param _callback_
@@ -7435,7 +7401,7 @@ export namespace Folks {
          * @param _callback_
          */
         change_location(
-            location?: Location | null,
+            location: Location | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -7446,7 +7412,7 @@ export namespace Folks {
         /**
          * @param value
          */
-        set_location(value?: Location | null): void;
+        set_location(value: Location | null): void;
     }
 
     export const LocationDetails: LocationDetailsNamespace & {
@@ -7467,8 +7433,8 @@ export namespace Folks {
              * @virtual
              */
             vfunc_change_structured_name(
-                name?: StructuredName | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
+                name: StructuredName | null,
+                _callback_: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * @param _res_
@@ -7480,7 +7446,7 @@ export namespace Folks {
              * @param _callback_
              * @virtual
              */
-            vfunc_change_full_name(full_name: string, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+            vfunc_change_full_name(full_name: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
             /**
              * @param _res_
              * @virtual
@@ -7491,7 +7457,7 @@ export namespace Folks {
              * @param _callback_
              * @virtual
              */
-            vfunc_change_nickname(nickname: string, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+            vfunc_change_nickname(nickname: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
             /**
              * @param _res_
              * @virtual
@@ -7505,7 +7471,7 @@ export namespace Folks {
              * @param value
              * @virtual
              */
-            vfunc_set_structured_name(value?: StructuredName | null): void;
+            vfunc_set_structured_name(value: StructuredName | null): void;
             /**
              * @virtual
              */
@@ -7529,7 +7495,7 @@ export namespace Folks {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            structured_name: StructuredName;
+            structured_name: StructuredName | null;
             structuredName: StructuredName;
             full_name: string;
             fullName: string;
@@ -7547,8 +7513,8 @@ export namespace Folks {
     interface NameDetails extends GObject.Object, NameDetails.Interface {
         // Properties
 
-        get structured_name(): StructuredName;
-        set structured_name(val: StructuredName);
+        get structured_name(): StructuredName | null;
+        set structured_name(val: StructuredName | null);
         get structuredName(): StructuredName;
         set structuredName(val: StructuredName);
         get full_name(): string;
@@ -7563,7 +7529,7 @@ export namespace Folks {
         /**
          * @param name
          */
-        change_structured_name(name?: StructuredName | null): globalThis.Promise<void>;
+        change_structured_name(name: StructuredName | null): globalThis.Promise<void>;
         /**
          * @param name
          * @param _callback_
@@ -7574,7 +7540,7 @@ export namespace Folks {
          * @param _callback_
          */
         change_structured_name(
-            name?: StructuredName | null,
+            name: StructuredName | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -7627,7 +7593,7 @@ export namespace Folks {
         /**
          * @param value
          */
-        set_structured_name(value?: StructuredName | null): void;
+        set_structured_name(value: StructuredName | null): void;
         get_full_name(): string;
         /**
          * @param value
@@ -7657,7 +7623,7 @@ export namespace Folks {
              * @param _callback_
              * @virtual
              */
-            vfunc_change_notes(notes: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+            vfunc_change_notes(notes: Gee.Set, _callback_: Gio.AsyncReadyCallback<this> | null): void;
             /**
              * @param _res_
              * @virtual
@@ -7738,7 +7704,7 @@ export namespace Folks {
              * @param _callback_
              * @virtual
              */
-            vfunc_change_phone_numbers(phone_numbers: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+            vfunc_change_phone_numbers(phone_numbers: Gee.Set, _callback_: Gio.AsyncReadyCallback<this> | null): void;
             /**
              * @param _res_
              * @virtual
@@ -7827,7 +7793,7 @@ export namespace Folks {
              */
             vfunc_change_postal_addresses(
                 postal_addresses: Gee.Set,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
+                _callback_: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * @param _res_
@@ -8041,7 +8007,7 @@ export namespace Folks {
              * @param _callback_
              * @virtual
              */
-            vfunc_change_roles(roles: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+            vfunc_change_roles(roles: Gee.Set, _callback_: Gio.AsyncReadyCallback<this> | null): void;
             /**
              * @param _res_
              * @virtual
@@ -8122,7 +8088,7 @@ export namespace Folks {
              * @param _callback_
              * @virtual
              */
-            vfunc_change_urls(urls: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+            vfunc_change_urls(urls: Gee.Set, _callback_: Gio.AsyncReadyCallback<this> | null): void;
             /**
              * @param _res_
              * @virtual
@@ -8205,7 +8171,7 @@ export namespace Folks {
              */
             vfunc_change_web_service_addresses(
                 web_service_addresses: Gee.MultiMap,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
+                _callback_: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * @param _res_

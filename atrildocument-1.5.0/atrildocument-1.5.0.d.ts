@@ -586,10 +586,19 @@ export namespace AtrilDocument {
          */
         get color(): any;
         set color(val: any);
+        /**
+         * @default null
+         */
         get contents(): string;
         set contents(val: string);
+        /**
+         * @default null
+         */
         get modified(): string;
         set modified(val: string);
+        /**
+         * @default null
+         */
         get name(): string;
         set name(val: string);
         /**
@@ -822,22 +831,40 @@ export namespace AtrilDocument {
          * @param attachment
          */
         set_attachment(attachment: Attachment): boolean;
-        /** @category Inherited from AtrilDocument.AnnotationMarkup */
+        /**
+         * @default true
+         * @category Inherited from AtrilDocument.AnnotationMarkup
+         */
         // This accessor conflicts with a field or function name in a parent class or interface.
         has_popup: boolean | any;
-        /** @category Inherited from AtrilDocument.AnnotationMarkup */
+        /**
+         * @default true
+         * @category Inherited from AtrilDocument.AnnotationMarkup
+         */
         get hasPopup(): boolean;
         set hasPopup(val: boolean);
-        /** @category Inherited from AtrilDocument.AnnotationMarkup */
+        /**
+         * @default null
+         * @category Inherited from AtrilDocument.AnnotationMarkup
+         */
         get label(): string;
         set label(val: string);
-        /** @category Inherited from AtrilDocument.AnnotationMarkup */
+        /**
+         * @default 1
+         * @category Inherited from AtrilDocument.AnnotationMarkup
+         */
         get opacity(): number;
         set opacity(val: number);
-        /** @category Inherited from AtrilDocument.AnnotationMarkup */
+        /**
+         * @default false
+         * @category Inherited from AtrilDocument.AnnotationMarkup
+         */
         get popup_is_open(): boolean;
         set popup_is_open(val: boolean);
-        /** @category Inherited from AtrilDocument.AnnotationMarkup */
+        /**
+         * @default false
+         * @category Inherited from AtrilDocument.AnnotationMarkup
+         */
         get popupIsOpen(): boolean;
         set popupIsOpen(val: boolean);
         /** @category Inherited from AtrilDocument.AnnotationMarkup */
@@ -850,13 +877,22 @@ export namespace AtrilDocument {
          */
         get color(): any;
         set color(val: any);
-        /** @category Inherited from AtrilDocument.Annotation */
+        /**
+         * @default null
+         * @category Inherited from AtrilDocument.Annotation
+         */
         get contents(): string;
         set contents(val: string);
-        /** @category Inherited from AtrilDocument.Annotation */
+        /**
+         * @default null
+         * @category Inherited from AtrilDocument.Annotation
+         */
         get modified(): string;
         set modified(val: string);
-        /** @category Inherited from AtrilDocument.Annotation */
+        /**
+         * @default null
+         * @category Inherited from AtrilDocument.Annotation
+         */
         get name(): string;
         set name(val: string);
         /**
@@ -1029,10 +1065,19 @@ export namespace AtrilDocument {
 
         // Properties
 
+        /**
+         * @default AtrilDocument.AnnotationTextIcon.NOTE
+         */
         get icon(): AnnotationTextIcon;
         set icon(val: AnnotationTextIcon);
+        /**
+         * @default false
+         */
         get is_open(): boolean;
         set is_open(val: boolean);
+        /**
+         * @default false
+         */
         get isOpen(): boolean;
         set isOpen(val: boolean);
 
@@ -1086,22 +1131,40 @@ export namespace AtrilDocument {
          * @param is_open
          */
         set_is_open(is_open: boolean): boolean;
-        /** @category Inherited from AtrilDocument.AnnotationMarkup */
+        /**
+         * @default true
+         * @category Inherited from AtrilDocument.AnnotationMarkup
+         */
         // This accessor conflicts with a field or function name in a parent class or interface.
         has_popup: boolean | any;
-        /** @category Inherited from AtrilDocument.AnnotationMarkup */
+        /**
+         * @default true
+         * @category Inherited from AtrilDocument.AnnotationMarkup
+         */
         get hasPopup(): boolean;
         set hasPopup(val: boolean);
-        /** @category Inherited from AtrilDocument.AnnotationMarkup */
+        /**
+         * @default null
+         * @category Inherited from AtrilDocument.AnnotationMarkup
+         */
         get label(): string;
         set label(val: string);
-        /** @category Inherited from AtrilDocument.AnnotationMarkup */
+        /**
+         * @default 1
+         * @category Inherited from AtrilDocument.AnnotationMarkup
+         */
         get opacity(): number;
         set opacity(val: number);
-        /** @category Inherited from AtrilDocument.AnnotationMarkup */
+        /**
+         * @default false
+         * @category Inherited from AtrilDocument.AnnotationMarkup
+         */
         get popup_is_open(): boolean;
         set popup_is_open(val: boolean);
-        /** @category Inherited from AtrilDocument.AnnotationMarkup */
+        /**
+         * @default false
+         * @category Inherited from AtrilDocument.AnnotationMarkup
+         */
         get popupIsOpen(): boolean;
         set popupIsOpen(val: boolean);
         /** @category Inherited from AtrilDocument.AnnotationMarkup */
@@ -1114,13 +1177,22 @@ export namespace AtrilDocument {
          */
         get color(): any;
         set color(val: any);
-        /** @category Inherited from AtrilDocument.Annotation */
+        /**
+         * @default null
+         * @category Inherited from AtrilDocument.Annotation
+         */
         get contents(): string;
         set contents(val: string);
-        /** @category Inherited from AtrilDocument.Annotation */
+        /**
+         * @default null
+         * @category Inherited from AtrilDocument.Annotation
+         */
         get modified(): string;
         set modified(val: string);
-        /** @category Inherited from AtrilDocument.Annotation */
+        /**
+         * @default null
+         * @category Inherited from AtrilDocument.Annotation
+         */
         get name(): string;
         set name(val: string);
         /**
@@ -1291,6 +1363,7 @@ export namespace AtrilDocument {
 
         /**
          * @construct-only
+         * @default 0
          */
         set ctime(val: bigint | number);
         /**
@@ -1299,18 +1372,22 @@ export namespace AtrilDocument {
         set data(val: any);
         /**
          * @construct-only
+         * @default null
          */
         set description(val: string);
         /**
          * @construct-only
+         * @default 0
          */
         set mtime(val: bigint | number);
         /**
          * @construct-only
+         * @default null
          */
         set name(val: string);
         /**
          * @construct-only
+         * @default 0
          */
         set size(val: number);
 
@@ -1339,7 +1416,7 @@ export namespace AtrilDocument {
             mtime: bigint | number,
             ctime: bigint | number,
             size: bigint | number,
-            data?: any | null,
+            data: any | null,
         ): Attachment;
 
         // Signals
@@ -2170,6 +2247,7 @@ export namespace AtrilDocument {
         get action(): any;
         /**
          * @construct-only
+         * @default null
          */
         get title(): string;
 
@@ -2262,6 +2340,7 @@ export namespace AtrilDocument {
         get dest(): any;
         /**
          * @construct-only
+         * @default null
          */
         get filename(): string;
         /**
@@ -2274,10 +2353,12 @@ export namespace AtrilDocument {
         get hideList(): any;
         /**
          * @construct-only
+         * @default null
          */
         get name(): string;
         /**
          * @construct-only
+         * @default null
          */
         get params(): string;
         /**
@@ -2298,10 +2379,12 @@ export namespace AtrilDocument {
         get toggleList(): any;
         /**
          * @construct-only
+         * @default AtrilDocument.LinkActionType.GOTO_DEST
          */
         get type(): LinkActionType;
         /**
          * @construct-only
+         * @default null
          */
         get uri(): string;
 
@@ -2402,46 +2485,57 @@ export namespace AtrilDocument {
 
         /**
          * @construct-only
+         * @default 0
          */
         get bottom(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get change(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get left(): number;
         /**
          * @construct-only
+         * @default null
          */
         get named(): string;
         /**
          * @construct-only
+         * @default 0
          */
         get page(): number;
         /**
          * @construct-only
+         * @default null
          */
         get page_label(): string;
         /**
          * @construct-only
+         * @default null
          */
         get pageLabel(): string;
         /**
          * @construct-only
+         * @default 0
          */
         get right(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get top(): number;
         /**
          * @construct-only
+         * @default AtrilDocument.LinkDestType.UNKNOWN
          */
         get type(): LinkDestType;
         /**
          * @construct-only
+         * @default 0
          */
         get zoom(): number;
 
@@ -2698,18 +2792,39 @@ export namespace AtrilDocument {
 
         // Properties
 
+        /**
+         * @default AtrilDocument.TransitionEffectAlignment.HORIZONTAL
+         */
         get alignment(): TransitionEffectAlignment;
         set alignment(val: TransitionEffectAlignment);
+        /**
+         * @default 0
+         */
         get angle(): number;
         set angle(val: number);
+        /**
+         * @default AtrilDocument.TransitionEffectDirection.INWARD
+         */
         get direction(): TransitionEffectDirection;
         set direction(val: TransitionEffectDirection);
+        /**
+         * @default 0
+         */
         get duration(): number;
         set duration(val: number);
+        /**
+         * @default false
+         */
         get rectangular(): boolean;
         set rectangular(val: boolean);
+        /**
+         * @default 1
+         */
         get scale(): number;
         set scale(val: number);
+        /**
+         * @default AtrilDocument.TransitionEffectType.REPLACE
+         */
         get type(): TransitionEffectType;
         set type(val: TransitionEffectType);
 
@@ -3069,7 +3184,7 @@ export namespace AtrilDocument {
          * @param data mapping data to find
          * @returns an {@link AtrilDocument.Mapping}
          */
-        find(data?: any | null): Mapping;
+        find(data: any | null): Mapping;
         /**
          * @param data mapping data to find
          * @param func function to use for equality check
@@ -3251,16 +3366,34 @@ export namespace AtrilDocument {
     interface AnnotationMarkup extends Annotation {
         // Properties
 
+        /**
+         * @default true
+         */
         get has_popup(): boolean;
         set has_popup(val: boolean);
+        /**
+         * @default true
+         */
         get hasPopup(): boolean;
         set hasPopup(val: boolean);
+        /**
+         * @default null
+         */
         get label(): string;
         set label(val: string);
+        /**
+         * @default 1
+         */
         get opacity(): number;
         set opacity(val: number);
+        /**
+         * @default false
+         */
         get popup_is_open(): boolean;
         set popup_is_open(val: boolean);
+        /**
+         * @default false
+         */
         get popupIsOpen(): boolean;
         set popupIsOpen(val: boolean);
         get rectangle(): Rectangle;

@@ -99,7 +99,7 @@ export namespace ClutterGst {
      * @param argv A pointer to an array
      * @returns A {@link Clutter.InitError}.
      */
-    function init(argv?: string[] | null): [Clutter.InitError, string[] | null];
+    function init(argv: string[] | null): [Clutter.InitError, string[] | null];
     /**
      * This function does the same work as `clutter_gst_init()`. Additionally, it
      * allows you to add your own command line options, and it automatically
@@ -183,6 +183,7 @@ export namespace ClutterGst {
          * Whether the content should fill its allocation with video rather
          * than adding borders.
          * @since 3.0
+         * @default false
          */
         get fill_allocation(): boolean;
         set fill_allocation(val: boolean);
@@ -190,18 +191,21 @@ export namespace ClutterGst {
          * Whether the content should fill its allocation with video rather
          * than adding borders.
          * @since 3.0
+         * @default false
          */
         get fillAllocation(): boolean;
         set fillAllocation(val: boolean);
         /**
          * Whether or not paint borders on the sides of the video
          * @since 3.0
+         * @default false
          */
         get paint_borders(): boolean;
         set paint_borders(val: boolean);
         /**
          * Whether or not paint borders on the sides of the video
          * @since 3.0
+         * @default false
          */
         get paintBorders(): boolean;
         set paintBorders(val: boolean);
@@ -343,38 +347,19 @@ export namespace ClutterGst {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -382,15 +367,9 @@ export namespace ClutterGst {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -557,7 +536,7 @@ export namespace ClutterGst {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1092,6 +1071,7 @@ export namespace ClutterGst {
         /**
          * The volume of the audio, as a normalized value between
          * 0.0 and 1.0.
+         * @default 0.5
          * @category Inherited from ClutterGst.Player
          */
         get audio_volume(): number;
@@ -1099,6 +1079,7 @@ export namespace ClutterGst {
         /**
          * The volume of the audio, as a normalized value between
          * 0.0 and 1.0.
+         * @default 0.5
          * @category Inherited from ClutterGst.Player
          */
         get audioVolume(): number;
@@ -1107,11 +1088,13 @@ export namespace ClutterGst {
          * Whether the {@link ClutterGst.Player} is in idle mode.
          * @since 1.4
          * @read-only
+         * @default true
          * @category Inherited from ClutterGst.Player
          */
         get idle(): boolean;
         /**
          * Whether the {@link ClutterGst.Player} actor is playing.
+         * @default false
          * @category Inherited from ClutterGst.Player
          */
         get playing(): boolean;
@@ -1283,38 +1266,19 @@ export namespace ClutterGst {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1322,15 +1286,9 @@ export namespace ClutterGst {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1497,7 +1455,7 @@ export namespace ClutterGst {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1737,11 +1695,13 @@ export namespace ClutterGst {
         /**
          * The device name.
          * @construct-only
+         * @default null
          */
         get name(): string;
         /**
          * The device node.
          * @construct-only
+         * @default null
          */
         get node(): string;
 
@@ -1950,12 +1910,24 @@ export namespace ClutterGst {
 
         get frame(): Frame;
         set frame(val: Frame);
+        /**
+         * @default true
+         */
         get paint_frame(): boolean;
         set paint_frame(val: boolean);
+        /**
+         * @default true
+         */
         get paintFrame(): boolean;
         set paintFrame(val: boolean);
+        /**
+         * @default true
+         */
         get paint_overlays(): boolean;
         set paint_overlays(val: boolean);
+        /**
+         * @default true
+         */
         get paintOverlays(): boolean;
         set paintOverlays(val: boolean);
         get player(): GObject.Object;
@@ -2143,38 +2115,19 @@ export namespace ClutterGst {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -2182,15 +2135,9 @@ export namespace ClutterGst {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -2357,7 +2304,7 @@ export namespace ClutterGst {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -2591,12 +2538,14 @@ export namespace ClutterGst {
         /**
          * Whether to cull the backface of the actor
          * @since 3.0
+         * @default false
          */
         get cull_backface(): boolean;
         set cull_backface(val: boolean);
         /**
          * Whether to cull the backface of the actor
          * @since 3.0
+         * @default false
          */
         get cullBackface(): boolean;
         set cullBackface(val: boolean);
@@ -2627,12 +2576,14 @@ export namespace ClutterGst {
         /**
          * Whether or not paint borders on the sides of the video
          * @since 3.0
+         * @default false
          */
         get paint_borders(): boolean;
         set paint_borders(val: boolean);
         /**
          * Whether or not paint borders on the sides of the video
          * @since 3.0
+         * @default false
          */
         get paintBorders(): boolean;
         set paintBorders(val: boolean);
@@ -2775,38 +2726,19 @@ export namespace ClutterGst {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -2814,15 +2746,9 @@ export namespace ClutterGst {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -2989,7 +2915,7 @@ export namespace ClutterGst {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -3256,12 +3182,14 @@ export namespace ClutterGst {
         /**
          * Index of the current audio stream.
          * @since 1.4
+         * @default -1
          */
         get audio_stream(): number;
         set audio_stream(val: number);
         /**
          * Index of the current audio stream.
          * @since 1.4
+         * @default -1
          */
         get audioStream(): number;
         set audioStream(val: number);
@@ -3281,56 +3209,66 @@ export namespace ClutterGst {
          * The fill level of the buffer for the current stream,
          * as a value between 0.0 and 1.0.
          * @read-only
+         * @default 0
          */
         get buffer_fill(): number;
         /**
          * The fill level of the buffer for the current stream,
          * as a value between 0.0 and 1.0.
          * @read-only
+         * @default 0
          */
         get bufferFill(): number;
         /**
          * Whether the current stream is seekable.
          * @read-only
+         * @default false
          */
         get can_seek(): boolean;
         /**
          * Whether the current stream is seekable.
          * @read-only
+         * @default false
          */
         get canSeek(): boolean;
         /**
          * The duration of the current stream, in seconds
          * @read-only
+         * @default 0
          */
         get duration(): number;
         /**
          * Whether or not the stream is being seeked.
          * @since 1.6
          * @read-only
+         * @default false
          */
         get in_seek(): boolean;
         /**
          * Whether or not the stream is being seeked.
          * @since 1.6
          * @read-only
+         * @default false
          */
         get inSeek(): boolean;
         /**
          * The current progress of the playback, as a normalized
          * value between 0.0 and 1.0.
+         * @default 0
          */
         get progress(): number;
         set progress(val: number);
         /**
          * Flags to use when seeking.
          * @since 1.4
+         * @default ClutterGst.SeekFlags.NONE
          */
         get seek_flags(): SeekFlags;
         set seek_flags(val: SeekFlags);
         /**
          * Flags to use when seeking.
          * @since 1.4
+         * @default ClutterGst.SeekFlags.NONE
          */
         get seekFlags(): SeekFlags;
         set seekFlags(val: SeekFlags);
@@ -3338,6 +3276,7 @@ export namespace ClutterGst {
          * The font used to display subtitles. The font description has to
          * follow the same grammar as the one recognized by
          * `pango_font_description_from_string()`.
+         * @default null
          */
         get subtitle_font_name(): string;
         set subtitle_font_name(val: string);
@@ -3345,18 +3284,21 @@ export namespace ClutterGst {
          * The font used to display subtitles. The font description has to
          * follow the same grammar as the one recognized by
          * `pango_font_description_from_string()`.
+         * @default null
          */
         get subtitleFontName(): string;
         set subtitleFontName(val: string);
         /**
          * Current subtitle track being displayed.
          * @since 1.4
+         * @default -1
          */
         get subtitle_track(): number;
         set subtitle_track(val: number);
         /**
          * Current subtitle track being displayed.
          * @since 1.4
+         * @default -1
          */
         get subtitleTrack(): number;
         set subtitleTrack(val: number);
@@ -3374,28 +3316,33 @@ export namespace ClutterGst {
         get subtitleTracks(): any;
         /**
          * The location of a subtitle file, expressed as a valid URI.
+         * @default null
          */
         get subtitle_uri(): string;
         set subtitle_uri(val: string);
         /**
          * The location of a subtitle file, expressed as a valid URI.
+         * @default null
          */
         get subtitleUri(): string;
         set subtitleUri(val: string);
         /**
          * The location of a media file, expressed as a valid URI.
+         * @default null
          */
         get uri(): string;
         set uri(val: string);
         /**
          * The User Agent used by {@link ClutterGst.Playback} with network protocols.
          * @since 1.4
+         * @default null
          */
         get user_agent(): string;
         set user_agent(val: string);
         /**
          * The User Agent used by {@link ClutterGst.Playback} with network protocols.
          * @since 1.4
+         * @default null
          */
         get userAgent(): string;
         set userAgent(val: string);
@@ -3622,6 +3569,7 @@ export namespace ClutterGst {
         /**
          * The volume of the audio, as a normalized value between
          * 0.0 and 1.0.
+         * @default 0.5
          * @category Inherited from ClutterGst.Player
          */
         get audio_volume(): number;
@@ -3629,6 +3577,7 @@ export namespace ClutterGst {
         /**
          * The volume of the audio, as a normalized value between
          * 0.0 and 1.0.
+         * @default 0.5
          * @category Inherited from ClutterGst.Player
          */
         get audioVolume(): number;
@@ -3637,11 +3586,13 @@ export namespace ClutterGst {
          * Whether the {@link ClutterGst.Player} is in idle mode.
          * @since 1.4
          * @read-only
+         * @default true
          * @category Inherited from ClutterGst.Player
          */
         get idle(): boolean;
         /**
          * Whether the {@link ClutterGst.Player} actor is playing.
+         * @default false
          * @category Inherited from ClutterGst.Player
          */
         get playing(): boolean;
@@ -3813,38 +3764,19 @@ export namespace ClutterGst {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -3852,15 +3784,9 @@ export namespace ClutterGst {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -4027,7 +3953,7 @@ export namespace ClutterGst {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -4303,8 +4229,14 @@ export namespace ClutterGst {
 
         // Properties
 
+        /**
+         * @default 150
+         */
         get update_priority(): number;
         set update_priority(val: number);
+        /**
+         * @default 150
+         */
         get updatePriority(): number;
         set updatePriority(val: number);
 
@@ -4584,38 +4516,19 @@ export namespace ClutterGst {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -4623,15 +4536,9 @@ export namespace ClutterGst {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -4803,7 +4710,7 @@ export namespace ClutterGst {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -5333,12 +5240,14 @@ export namespace ClutterGst {
         /**
          * The volume of the audio, as a normalized value between
          * 0.0 and 1.0.
+         * @default 0.5
          */
         get audio_volume(): number;
         set audio_volume(val: number);
         /**
          * The volume of the audio, as a normalized value between
          * 0.0 and 1.0.
+         * @default 0.5
          */
         get audioVolume(): number;
         set audioVolume(val: number);
@@ -5346,10 +5255,12 @@ export namespace ClutterGst {
          * Whether the {@link ClutterGst.Player} is in idle mode.
          * @since 1.4
          * @read-only
+         * @default true
          */
         get idle(): boolean;
         /**
          * Whether the {@link ClutterGst.Player} actor is playing.
+         * @default false
          */
         get playing(): boolean;
         set playing(val: boolean);

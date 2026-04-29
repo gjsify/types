@@ -897,7 +897,7 @@ export namespace Cogl {
      * @returns `true` if the two colors are the same.
      * @since 1.0
      */
-    function color_equal(v1?: any | null, v2?: any | null): boolean;
+    function color_equal(v1: any | null, v2: any | null): boolean;
     /**
      * Converts a color expressed in HLS (hue, luminance and saturation)
      * values into a {@link Cogl.Color}.
@@ -1098,14 +1098,14 @@ export namespace Cogl {
      * @returns `true` if the passed `object` represents a bitmap,   and `false` otherwise
      * @since 1.0
      */
-    function is_bitmap(object?: any | null): boolean;
+    function is_bitmap(object: any | null): boolean;
     /**
      * Gets whether the given object references a {@link Cogl.Framebuffer}.
      * @param object A {@link Cogl.Object} pointer
      * @returns `true` if the object references a {@link Cogl.Framebuffer}   and `false` otherwise.
      * @since 1.10
      */
-    function is_framebuffer(object?: any | null): boolean;
+    function is_framebuffer(object: any | null): boolean;
     /**
      * Gets whether the given handle references an existing material object.
      * @param handle A CoglHandle
@@ -1119,21 +1119,21 @@ export namespace Cogl {
      * @param object A pointer to a {@link Cogl.Object}
      * @returns `true` if `object` is a {@link Cogl.Offscreen} framebuffer,          `false` otherwise
      */
-    function is_offscreen(object?: any | null): boolean;
+    function is_offscreen(object: any | null): boolean;
     /**
      * Gets whether the given object references a {@link Cogl.Onscreen}.
      * @param object A {@link Cogl.Object} pointer
      * @returns `true` if the object references a {@link Cogl.Onscreen}   and `false` otherwise.
      * @since 1.10
      */
-    function is_onscreen(object?: any | null): boolean;
+    function is_onscreen(object: any | null): boolean;
     /**
      * Gets whether the given `object` references an existing pipeline object.
      * @param object A {@link Cogl.Object}
      * @returns `true` if the `object` references a {@link Cogl.Pipeline},   `false` otherwise
      * @since 2.0
      */
-    function is_pipeline(object?: any | null): boolean;
+    function is_pipeline(object: any | null): boolean;
     /**
      * Gets whether the given handle references an existing program object.
      * @param handle A CoglHandle
@@ -1153,21 +1153,21 @@ export namespace Cogl {
      * @param object A {@link Cogl.Object} pointer
      * @returns `true` if the `object` references a texture, and   `false` otherwise
      */
-    function is_texture(object?: any | null): boolean;
+    function is_texture(object: any | null): boolean;
     /**
      * Gets whether the given object references an existing {@link Cogl.Texture2D}
      * object.
      * @param object A {@link Cogl.Object}
      * @returns `true` if the object references a {@link Cogl.Texture2D},   `false` otherwise
      */
-    function is_texture_2d(object?: any | null): boolean;
+    function is_texture_2d(object: any | null): boolean;
     /**
      * Gets whether the given object references a {@link Cogl.Texture2DSliced}.
      * @param object A {@link Cogl.Object} pointer
      * @returns `true` if the object references a {@link Cogl.Texture2DSliced}   and `false` otherwise.
      * @since 1.10
      */
-    function is_texture_2d_sliced(object?: any | null): boolean;
+    function is_texture_2d_sliced(object: any | null): boolean;
     /**
      * Checks whether `handle` is a Vertex Buffer Object
      * @param handle a {@link Cogl.Handle} for a vertex buffer object
@@ -1209,7 +1209,7 @@ export namespace Cogl {
      * @param v2 A 4x4 transformation matrix
      * @since 1.4
      */
-    function matrix_equal(v1?: any | null, v2?: any | null): boolean;
+    function matrix_equal(v1: any | null, v2: any | null): boolean;
     /**
      * Replaces the current projection matrix with an orthographic projection
      * matrix. See <xref linkend="cogl-ortho-matrix"/> to see how the matrix is
@@ -1476,7 +1476,7 @@ export namespace Cogl {
      * @since 1.6
      * @deprecated since 1.16: Latest drawing apis all take an explicit                   {@link Cogl.Pipeline} argument so this stack of                   {@link Cogl.Material}<!-- -->s shouldn't be used.
      */
-    function push_source(material?: any | null): void;
+    function push_source(material: any | null): void;
     /**
      * Fills a rectangle at the given coordinates with the current source material
      * @param x_1 X coordinate of the top-left corner
@@ -1651,7 +1651,7 @@ export namespace Cogl {
      * @since 1.0
      * @deprecated since 1.16: Latest drawing apis all take an explicit                   {@link Cogl.Pipeline} argument so this stack of                   {@link Cogl.Material}<!-- -->s shouldn't be used.
      */
-    function set_source(material?: any | null): void;
+    function set_source(material: any | null): void;
     /**
      * This is a convenience function for creating a solid fill source material
      * from the given color. This color will be used for any subsequent drawing
@@ -1909,7 +1909,7 @@ export namespace Cogl {
         type: AttributeType,
         normalized: boolean,
         stride: number,
-        pointer?: any | null,
+        pointer: any | null,
     ): void;
     /**
      * Deletes an attribute from a buffer. You will need to call
@@ -2632,13 +2632,13 @@ export namespace Cogl {
          * Increments the reference count on the `offscreen` framebuffer.
          * @param offscreen A pointer to a {@link Cogl.Offscreen} framebuffer
          */
-        static ref(offscreen?: any | null): any | null;
+        static ref(offscreen: any | null): any | null;
         /**
          * Decreases the reference count for the `offscreen` buffer and frees it when
          * the count reaches 0.
          * @param offscreen A pointer to a {@link Cogl.Offscreen} framebuffer
          */
-        static unref(offscreen?: any | null): void;
+        static unref(offscreen: any | null): void;
         /**
          * Explicitly allocates a configured {@link Cogl.Framebuffer} allowing developers to
          * check and handle any errors that might arise from an unsupported
@@ -3447,7 +3447,7 @@ export namespace Cogl {
          */
         add_dirty_callback(
             callback: OnscreenDirtyCallback,
-            destroy?: UserDataDestroyCallback | null,
+            destroy: UserDataDestroyCallback | null,
         ): OnscreenDirtyClosure;
         /**
          * Registers a `callback` with `onscreen` that will be called whenever
@@ -3474,7 +3474,7 @@ export namespace Cogl {
          */
         add_resize_callback(
             callback: OnscreenResizeCallback,
-            destroy?: UserDataDestroyCallback | null,
+            destroy: UserDataDestroyCallback | null,
         ): OnscreenResizeClosure;
         /**
          * Installs a `callback` function that should be called whenever a swap buffers
@@ -5275,7 +5275,7 @@ export namespace Cogl {
         /**
          * @param user_data
          */
-        egl_image_external_alloc_finish(user_data?: any | null): void;
+        egl_image_external_alloc_finish(user_data: any | null): void;
         egl_image_external_bind(): void;
         /**
          * Explicitly allocates the storage for the given `texture` which
@@ -5839,7 +5839,7 @@ export namespace Cogl {
          * @param v1 a {@link Cogl.Color}
          * @param v2 a {@link Cogl.Color}
          */
-        static equal(v1?: any | null, v2?: any | null): boolean;
+        static equal(v1: any | null, v2: any | null): boolean;
         /**
          * Converts a color expressed in HLS (hue, luminance and saturation)
          * values into a {@link Cogl.Color}.
@@ -6738,7 +6738,7 @@ export namespace Cogl {
          * @param v1 A 4x4 transformation matrix
          * @param v2 A 4x4 transformation matrix
          */
-        static equal(v1?: any | null, v2?: any | null): boolean;
+        static equal(v1: any | null, v2: any | null): boolean;
 
         // Methods
 

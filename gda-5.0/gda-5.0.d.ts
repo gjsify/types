@@ -891,23 +891,23 @@ export namespace Gda {
      * @param boxed source to get a copy from.
      * @returns a newly allocated {@link Gda.Binary} which contains a copy of information in `boxed`. Free-function: gda_binary_free
      */
-    function binary_copy(boxed?: any | null): any | null;
+    function binary_copy(boxed: any | null): any | null;
     /**
      * Deallocates all memory associated to the given {@link Gda.Binary}.
      * @param boxed {@link Gda.Binary} to free.
      */
-    function binary_free(boxed?: any | null): void;
+    function binary_free(boxed: any | null): void;
     /**
      * Creates a new {@link Gda.Blob} structure from an existing one.
      * @param boxed source to get a copy from.
      * @returns a newly allocated {@link Gda.Blob} which contains a copy of information in `boxed`. Free-function: gda_blob_free
      */
-    function blob_copy(boxed?: any | null): any | null;
+    function blob_copy(boxed: any | null): any | null;
     /**
      * Deallocates all memory associated to the given {@link Gda.Blob}.
      * @param boxed {@link Gda.Blob} to free.
      */
-    function blob_free(boxed?: any | null): void;
+    function blob_free(boxed: any | null): void;
     /**
      * Creates an array of strings (terminated by a `null`) corresponding to possible completions.
      * If no completion is available, then the returned array contains just one NULL entry, and
@@ -935,9 +935,9 @@ export namespace Gda {
         cnc: Connection,
         select_stmt: Statement,
         require_pk: boolean,
-        insert_stmt?: Statement | null,
-        update_stmt?: Statement | null,
-        delete_stmt?: Statement | null,
+        insert_stmt: Statement | null,
+        update_stmt: Statement | null,
+        delete_stmt: Statement | null,
     ): boolean;
     /**
      * Obtain a pointer to a {@link Gda.DataHandler} which can manage {@link GObject.Value} values of type `for_type`. The returned
@@ -1018,11 +1018,11 @@ export namespace Gda {
     /**
      * @param boxed
      */
-    function geometricpoint_copy(boxed?: any | null): any | null;
+    function geometricpoint_copy(boxed: any | null): any | null;
     /**
      * @param boxed
      */
-    function geometricpoint_free(boxed?: any | null): void;
+    function geometricpoint_free(boxed: any | null): void;
     /**
      * Find the path to the application identified by `app_name`. For example if the application
      * is "gda-sql", then calling this function will return
@@ -1195,7 +1195,7 @@ export namespace Gda {
      * @returns `true` if `stmt` needs to be transformed to handle NULL parameters, and `false` otherwise
      * @since 4.2.9
      */
-    function rewrite_statement_for_null_parameters(stmt: Statement, params: Set, out_stmt?: Statement | null): boolean;
+    function rewrite_statement_for_null_parameters(stmt: Statement, params: Set, out_stmt: Statement | null): boolean;
     /**
      * Decodes `string` using the RFC 1738 recommendations: the
      * <constant>&lt;&gt;&quot;#%{}|\^~[]&apos;`;/?:@=&amp;</constant> and space characters are replaced by
@@ -1444,7 +1444,7 @@ export namespace Gda {
      * @param str a string to convert, or `null`
      * @returns a new {@link Gda.Binary} if no error were found in `str`, or `null` otherwise
      */
-    function string_to_binary(str?: string | null): Binary;
+    function string_to_binary(str: string | null): Binary;
     /**
      * Performs the reverse of `gda_blob_to_string()`.
      * @param str a string to convert
@@ -1462,19 +1462,19 @@ export namespace Gda {
     /**
      * @param boxed
      */
-    function time_copy(boxed?: any | null): any | null;
+    function time_copy(boxed: any | null): any | null;
     /**
      * @param boxed
      */
-    function time_free(boxed?: any | null): void;
+    function time_free(boxed: any | null): void;
     /**
      * @param boxed
      */
-    function timestamp_copy(boxed?: any | null): any | null;
+    function timestamp_copy(boxed: any | null): any | null;
     /**
      * @param boxed
      */
-    function timestamp_free(boxed?: any | null): void;
+    function timestamp_free(boxed: any | null): void;
     /**
      * Check the column types of a GdaDataModel.
      * @param model a {@link Gda.DataModel} object
@@ -1565,13 +1565,13 @@ export namespace Gda {
      * @gir-type Callback
      */
     interface AttributesManagerFunc {
-        (att_name: string, value: unknown, data?: any | null): void;
+        (att_name: string, value: unknown, data: any | null): void;
     }
     /**
      * @gir-type Callback
      */
     interface AttributesManagerSignal<A = GObject.Object> {
-        (obj: A, att_name: string, value: unknown, data?: any | null): void;
+        (obj: A, att_name: string, value: unknown, data: any | null): void;
     }
     /**
      * @gir-type Callback
@@ -1583,7 +1583,7 @@ export namespace Gda {
             task_id: number,
             result_status: boolean,
             error: GLib.Error,
-            data?: any | null,
+            data: any | null,
         ): void;
     }
     /**
@@ -1596,7 +1596,7 @@ export namespace Gda {
             task_id: number,
             result_obj: A,
             error: GLib.Error,
-            data?: any | null,
+            data: any | null,
         ): void;
     }
     /**
@@ -1621,21 +1621,21 @@ export namespace Gda {
             signame: string,
             n_param_values: number,
             param_values: unknown,
-            gda_reserved?: any | null,
-            data?: any | null,
+            gda_reserved: any | null,
+            data: any | null,
         ): void;
     }
     /**
      * @gir-type Callback
      */
     interface ThreadWrapperFunc {
-        (arg?: any | null): any | null;
+        (arg: any | null): any | null;
     }
     /**
      * @gir-type Callback
      */
     interface ThreadWrapperVoidFunc {
-        (arg?: any | null): void;
+        (arg: any | null): void;
     }
     /**
      * @gir-type Alias
@@ -2298,7 +2298,7 @@ export namespace Gda {
          * @param value a {@link GObject.Value}, or `null`
          * @param destroy a function to be called when `attribute` is not needed anymore, or `null`
          */
-        set_attribute(attribute: string, value?: GObject.Value | null, destroy?: GLib.DestroyNotify | null): void;
+        set_attribute(attribute: string, value: GObject.Value | null, destroy: GLib.DestroyNotify | null): void;
         /**
          * Sets the auto increment flag for the given column.
          * @param is_auto auto increment status.
@@ -2313,7 +2313,7 @@ export namespace Gda {
          * Sets `column`'s default {@link GObject.Value}.
          * @param default_value default {@link GObject.Value} for the column
          */
-        set_default_value(default_value?: GObject.Value | null): void;
+        set_default_value(default_value: GObject.Value | null): void;
         /**
          * Sets the column's description
          * @param title title name.
@@ -2933,7 +2933,7 @@ export namespace Gda {
             out_cnc_params: string,
             out_provider: string,
             out_username: string,
-            out_password?: string | null,
+            out_password: string | null,
         ): void;
 
         // Virtual methods
@@ -2995,7 +2995,7 @@ export namespace Gda {
          * @param name name of the savepoint to add
          * @returns TRUE if no error occurred
          */
-        add_savepoint(name?: string | null): boolean;
+        add_savepoint(name: string | null): boolean;
         /**
          * Requests that a task be cancelled. This operation may of may not have any effect
          * depending on the task's status, even if it returns `true`. If it returns `false`,
@@ -3097,7 +3097,7 @@ export namespace Gda {
          * @param name the name of the transation to commit, or `null`
          * @returns `true` if the transaction was finished successfully, `false` otherwise.
          */
-        commit_transaction(name?: string | null): boolean;
+        commit_transaction(name: string | null): boolean;
         /**
          * Creates a new {@link Gda.ServerOperation} object which can be modified in order
          * to perform the type type of action. It is a wrapper around the `gda_server_provider_create_operation()`
@@ -3106,7 +3106,7 @@ export namespace Gda {
          * @param options an optional list of parameters
          * @returns a new {@link Gda.ServerOperation} object, or `null` in the connection's provider does not support the `type` type of operation or if an error occurred
          */
-        create_operation(type: ServerOperationType, options?: Set | null): ServerOperation;
+        create_operation(type: ServerOperationType, options: Set | null): ServerOperation;
         /**
          * Creates a new parser object able to parse the SQL dialect understood by `cnc`.
          * If the {@link Gda.ServerProvider} object internally used by `cnc` does not have its own parser,
@@ -3141,7 +3141,7 @@ export namespace Gda {
          * @param name name of the savepoint to delete
          * @returns TRUE if no error occurred
          */
-        delete_savepoint(name?: string | null): boolean;
+        delete_savepoint(name: string | null): boolean;
         /**
          * This is a convenience function to execute a SQL command over the opened connection. For the
          * returned value, see `gda_connection_statement_execute_non_select()`'s documentation.
@@ -3314,7 +3314,7 @@ export namespace Gda {
          * @param name name of the savepoint to rollback to
          * @returns TRUE if no error occurred
          */
-        rollback_savepoint(name?: string | null): boolean;
+        rollback_savepoint(name: string | null): boolean;
         /**
          * Rollbacks the given transaction. This means that all changes
          * made to the underlying data source since the last call to
@@ -3323,7 +3323,7 @@ export namespace Gda {
          * @param name the name of the transation to commit, or `null`
          * @returns `true` if the operation was successful, `false` otherwise.
          */
-        rollback_transaction(name?: string | null): boolean;
+        rollback_transaction(name: string | null): boolean;
         /**
          * Executes `stmt`.
          *
@@ -3405,7 +3405,7 @@ export namespace Gda {
          * @param params a {@link Gda.Set} object (which can be obtained using `gda_statement_get_parameters()`), or `null`
          * @returns the number of rows affected (&gt;=0) or -1 or -2
          */
-        statement_execute_non_select(stmt: Statement, params?: Set | null): [number, Set | null];
+        statement_execute_non_select(stmt: Statement, params: Set | null): [number, Set | null];
         /**
          * Executes a selection command on the given connection.
          *
@@ -3421,7 +3421,7 @@ export namespace Gda {
          * @param params a {@link Gda.Set} object (which can be obtained using `gda_statement_get_parameters()`), or `null`
          * @returns a {@link Gda.DataModel} containing the data returned by the data source, or `null` if an error occurred
          */
-        statement_execute_select(stmt: Statement, params?: Set | null): DataModel;
+        statement_execute_select(stmt: Statement, params: Set | null): DataModel;
         /**
          * Executes a selection command on the given connection.
          *
@@ -3443,7 +3443,7 @@ export namespace Gda {
             stmt: Statement,
             params: Set | null,
             model_usage: StatementModelUsage,
-            col_types?: GObject.GType[] | null,
+            col_types: GObject.GType[] | null,
         ): DataModel;
         /**
          * Ask the database accessed through the `cnc` connection to prepare the usage of `stmt`. This is only useful
@@ -3517,7 +3517,7 @@ export namespace Gda {
          * @param context description of which part of `cnc`'s associated {@link Gda.MetaStore} should be updated, or `null`
          * @returns TRUE if no error occurred
          */
-        update_meta_store(context?: MetaContext | null): boolean;
+        update_meta_store(context: MetaContext | null): boolean;
         /**
          * `col_names` and `values` must have length (&gt;= 1).
          *
@@ -3632,38 +3632,19 @@ export namespace Gda {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -3671,15 +3652,9 @@ export namespace Gda {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -3846,7 +3821,7 @@ export namespace Gda {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -4146,7 +4121,7 @@ export namespace Gda {
          * Sets `event`'s `description`. This function should not be called directly.
          * @param description a description, or `null` (to unset current description if any)
          */
-        set_description(description?: string | null): void;
+        set_description(description: string | null): void;
         /**
          * Sets `event`'s severity (from a simple notice to a fatal event)
          * This function should not be called directly.
@@ -4273,7 +4248,7 @@ export namespace Gda {
          * @param mapping an array of `gint` which represents the mapping between `wrapper`'s columns and the columns of the wrapped data model
          * @returns `true` if the mapping actually changed
          */
-        set_mapping(mapping?: number[] | null): boolean;
+        set_mapping(mapping: number[] | null): boolean;
         /**
          * Adds the data from an XML node to the given data model (see the DTD for that node
          * in the $prefix/share/libgda/dtd/libgda-array.dtd file).
@@ -4302,7 +4277,7 @@ export namespace Gda {
          * @param values {@link GLib.List} of {@link GObject.Value}* representing the row to add.  The          length must match model's column count.  These {@link GObject.Value}     are value-copied (the user is still responsible for freeing them).
          * @returns the number of the added row, or -1 if an error occurred
          */
-        append_values(values?: GObject.Value[] | null): number;
+        append_values(values: GObject.Value[] | null): number;
         /**
          * Makes a copy of `src` into a new {@link Gda.DataModelArray} object
          * @returns a new data model, or `null` if an error occurred
@@ -4367,7 +4342,7 @@ export namespace Gda {
          * </itemizedlist>
          * @param to_stream where to dump the data model
          */
-        dump(to_stream?: any | null): void;
+        dump(to_stream: any | null): void;
         /**
          * Dumps a textual representation of the `model` into a new string. The main differences with `gda_data_model_export_to_string()` are that
          * the formatting options are passed using environment variables, and that the data is dumped regardless of the user locale (e.g. dates
@@ -4609,7 +4584,7 @@ export namespace Gda {
         import_from_model(
             from: DataModel,
             overwrite: boolean,
-            cols_trans?: GLib.HashTable<number, number> | null,
+            cols_trans: GLib.HashTable<number, number> | null,
         ): boolean;
         /**
          * Loads the data from `string` into `model`.
@@ -4688,7 +4663,7 @@ export namespace Gda {
          * @param hint a hint to send to the model
          * @param hint_value an optional value to specify the hint, or `null`
          */
-        send_hint(hint: DataModelHint, hint_value?: GObject.Value | null): void;
+        send_hint(hint: DataModelHint, hint_value: GObject.Value | null): void;
         /**
          * Sets the `name` of the given `col` in `model`, and if its title is not set, also sets the
          * title to `name`.
@@ -4731,7 +4706,7 @@ export namespace Gda {
          * @param values a list of {@link GObject.Value} (or `null`), one for at most the number of columns of `model`
          * @returns `true` if the value in the data model has been updated and no error occurred
          */
-        set_values(row: number, values?: GObject.Value[] | null): boolean;
+        set_values(row: number, values: GObject.Value[] | null): boolean;
         /**
          * Re-enables notifications of changes on the given data model.
          */
@@ -4762,7 +4737,7 @@ export namespace Gda {
          * @param values {@link GLib.List} of {@link GObject.Value}* representing the row to add.  The          length must match model's column count.  These {@link GObject.Value}     are value-copied (the user is still responsible for freeing them).
          * @virtual
          */
-        vfunc_i_append_values(values?: GObject.Value[] | null): number;
+        vfunc_i_append_values(values: GObject.Value[] | null): number;
         /**
          * Creates a new iterator object {@link Gda.DataModelIter} object which can be used to iterate through
          * rows in `model`. The new {@link Gda.DataModelIter} does not hold any reference to `model` (ie. if `model`
@@ -4920,7 +4895,7 @@ export namespace Gda {
          * @param hint_value an optional value to specify the hint, or `null`
          * @virtual
          */
-        vfunc_i_send_hint(hint: DataModelHint, hint_value?: GObject.Value | null): void;
+        vfunc_i_send_hint(hint: DataModelHint, hint_value: GObject.Value | null): void;
         /**
          * Enable or disable notifications changes on the given data model.
          * @param do_notify_changes Set to TRUE if you require notifications.
@@ -4951,7 +4926,7 @@ export namespace Gda {
          * @param values a list of {@link GObject.Value} (or `null`), one for at most the number of columns of `model`
          * @virtual
          */
-        vfunc_i_set_values(row: number, values?: GObject.Value[] | null): boolean;
+        vfunc_i_set_values(row: number, values: GObject.Value[] | null): boolean;
         /**
          * Emits the 'reset' and 'changed' signal on `model`.
          * @virtual
@@ -5031,38 +5006,19 @@ export namespace Gda {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -5070,15 +5026,9 @@ export namespace Gda {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -5245,7 +5195,7 @@ export namespace Gda {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -5640,13 +5590,6 @@ export namespace Gda {
          * @param cols number of columns for rows in this data model.
          */
         static ['new'](cols: number): DataModel;
-        /**
-         * Creates a new {@link Gda.DataModel} object with the column types as
-         * specified.
-         * @param cols number of columns for rows in this data model.
-         * @param types array of types of the columns of the model to create as {@link GObject.GType}, as many as indicated by `cols`
-         */
-        static new_with_g_types_v(cols: number, types: GObject.GType[]): DataModel;
 
         // Methods
 
@@ -5696,7 +5639,7 @@ export namespace Gda {
          * @param values {@link GLib.List} of {@link GObject.Value}* representing the row to add.  The          length must match model's column count.  These {@link GObject.Value}     are value-copied (the user is still responsible for freeing them).
          * @returns the number of the added row, or -1 if an error occurred
          */
-        append_values(values?: GObject.Value[] | null): number;
+        append_values(values: GObject.Value[] | null): number;
         /**
          * Makes a copy of `src` into a new {@link Gda.DataModelArray} object
          * @returns a new data model, or `null` if an error occurred
@@ -5761,7 +5704,7 @@ export namespace Gda {
          * </itemizedlist>
          * @param to_stream where to dump the data model
          */
-        dump(to_stream?: any | null): void;
+        dump(to_stream: any | null): void;
         /**
          * Dumps a textual representation of the `model` into a new string. The main differences with `gda_data_model_export_to_string()` are that
          * the formatting options are passed using environment variables, and that the data is dumped regardless of the user locale (e.g. dates
@@ -6003,7 +5946,7 @@ export namespace Gda {
         import_from_model(
             from: DataModel,
             overwrite: boolean,
-            cols_trans?: GLib.HashTable<number, number> | null,
+            cols_trans: GLib.HashTable<number, number> | null,
         ): boolean;
         /**
          * Loads the data from `string` into `model`.
@@ -6082,7 +6025,7 @@ export namespace Gda {
          * @param hint a hint to send to the model
          * @param hint_value an optional value to specify the hint, or `null`
          */
-        send_hint(hint: DataModelHint, hint_value?: GObject.Value | null): void;
+        send_hint(hint: DataModelHint, hint_value: GObject.Value | null): void;
         /**
          * Sets the `name` of the given `col` in `model`, and if its title is not set, also sets the
          * title to `name`.
@@ -6125,7 +6068,7 @@ export namespace Gda {
          * @param values a list of {@link GObject.Value} (or `null`), one for at most the number of columns of `model`
          * @returns `true` if the value in the data model has been updated and no error occurred
          */
-        set_values(row: number, values?: GObject.Value[] | null): boolean;
+        set_values(row: number, values: GObject.Value[] | null): boolean;
         /**
          * Re-enables notifications of changes on the given data model.
          */
@@ -6156,7 +6099,7 @@ export namespace Gda {
          * @param values {@link GLib.List} of {@link GObject.Value}* representing the row to add.  The          length must match model's column count.  These {@link GObject.Value}     are value-copied (the user is still responsible for freeing them).
          * @virtual
          */
-        vfunc_i_append_values(values?: GObject.Value[] | null): number;
+        vfunc_i_append_values(values: GObject.Value[] | null): number;
         /**
          * Creates a new iterator object {@link Gda.DataModelIter} object which can be used to iterate through
          * rows in `model`. The new {@link Gda.DataModelIter} does not hold any reference to `model` (ie. if `model`
@@ -6314,7 +6257,7 @@ export namespace Gda {
          * @param hint_value an optional value to specify the hint, or `null`
          * @virtual
          */
-        vfunc_i_send_hint(hint: DataModelHint, hint_value?: GObject.Value | null): void;
+        vfunc_i_send_hint(hint: DataModelHint, hint_value: GObject.Value | null): void;
         /**
          * Enable or disable notifications changes on the given data model.
          * @param do_notify_changes Set to TRUE if you require notifications.
@@ -6345,7 +6288,7 @@ export namespace Gda {
          * @param values a list of {@link GObject.Value} (or `null`), one for at most the number of columns of `model`
          * @virtual
          */
-        vfunc_i_set_values(row: number, values?: GObject.Value[] | null): boolean;
+        vfunc_i_set_values(row: number, values: GObject.Value[] | null): boolean;
         /**
          * Emits the 'reset' and 'changed' signal on `model`.
          * @virtual
@@ -6425,38 +6368,19 @@ export namespace Gda {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -6464,15 +6388,9 @@ export namespace Gda {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -6639,7 +6557,7 @@ export namespace Gda {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -6942,7 +6860,7 @@ export namespace Gda {
          * @param values {@link GLib.List} of {@link GObject.Value}* representing the row to add.  The          length must match model's column count.  These {@link GObject.Value}     are value-copied (the user is still responsible for freeing them).
          * @returns the number of the added row, or -1 if an error occurred
          */
-        append_values(values?: GObject.Value[] | null): number;
+        append_values(values: GObject.Value[] | null): number;
         /**
          * Makes a copy of `src` into a new {@link Gda.DataModelArray} object
          * @returns a new data model, or `null` if an error occurred
@@ -7007,7 +6925,7 @@ export namespace Gda {
          * </itemizedlist>
          * @param to_stream where to dump the data model
          */
-        dump(to_stream?: any | null): void;
+        dump(to_stream: any | null): void;
         /**
          * Dumps a textual representation of the `model` into a new string. The main differences with `gda_data_model_export_to_string()` are that
          * the formatting options are passed using environment variables, and that the data is dumped regardless of the user locale (e.g. dates
@@ -7249,7 +7167,7 @@ export namespace Gda {
         import_from_model(
             from: DataModel,
             overwrite: boolean,
-            cols_trans?: GLib.HashTable<number, number> | null,
+            cols_trans: GLib.HashTable<number, number> | null,
         ): boolean;
         /**
          * Loads the data from `string` into `model`.
@@ -7328,7 +7246,7 @@ export namespace Gda {
          * @param hint a hint to send to the model
          * @param hint_value an optional value to specify the hint, or `null`
          */
-        send_hint(hint: DataModelHint, hint_value?: GObject.Value | null): void;
+        send_hint(hint: DataModelHint, hint_value: GObject.Value | null): void;
         /**
          * Sets the `name` of the given `col` in `model`, and if its title is not set, also sets the
          * title to `name`.
@@ -7371,7 +7289,7 @@ export namespace Gda {
          * @param values a list of {@link GObject.Value} (or `null`), one for at most the number of columns of `model`
          * @returns `true` if the value in the data model has been updated and no error occurred
          */
-        set_values(row: number, values?: GObject.Value[] | null): boolean;
+        set_values(row: number, values: GObject.Value[] | null): boolean;
         /**
          * Re-enables notifications of changes on the given data model.
          */
@@ -7402,7 +7320,7 @@ export namespace Gda {
          * @param values {@link GLib.List} of {@link GObject.Value}* representing the row to add.  The          length must match model's column count.  These {@link GObject.Value}     are value-copied (the user is still responsible for freeing them).
          * @virtual
          */
-        vfunc_i_append_values(values?: GObject.Value[] | null): number;
+        vfunc_i_append_values(values: GObject.Value[] | null): number;
         /**
          * Creates a new iterator object {@link Gda.DataModelIter} object which can be used to iterate through
          * rows in `model`. The new {@link Gda.DataModelIter} does not hold any reference to `model` (ie. if `model`
@@ -7560,7 +7478,7 @@ export namespace Gda {
          * @param hint_value an optional value to specify the hint, or `null`
          * @virtual
          */
-        vfunc_i_send_hint(hint: DataModelHint, hint_value?: GObject.Value | null): void;
+        vfunc_i_send_hint(hint: DataModelHint, hint_value: GObject.Value | null): void;
         /**
          * Enable or disable notifications changes on the given data model.
          * @param do_notify_changes Set to TRUE if you require notifications.
@@ -7591,7 +7509,7 @@ export namespace Gda {
          * @param values a list of {@link GObject.Value} (or `null`), one for at most the number of columns of `model`
          * @virtual
          */
-        vfunc_i_set_values(row: number, values?: GObject.Value[] | null): boolean;
+        vfunc_i_set_values(row: number, values: GObject.Value[] | null): boolean;
         /**
          * Emits the 'reset' and 'changed' signal on `model`.
          * @virtual
@@ -7671,38 +7589,19 @@ export namespace Gda {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -7710,15 +7609,9 @@ export namespace Gda {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -7885,7 +7778,7 @@ export namespace Gda {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -8224,7 +8117,7 @@ export namespace Gda {
          * @param random_access TRUE if random access will be required
          * @param options importing options
          */
-        static new_file(filename: string, random_access: boolean, options?: Set | null): DataModel;
+        static new_file(filename: string, random_access: boolean, options: Set | null): DataModel;
         /**
          * Creates a new {@link Gda.DataModel} object which contains the data stored in the `data` string.
          *
@@ -8234,7 +8127,7 @@ export namespace Gda {
          * @param random_access TRUE if random access will be required
          * @param options importing options, see `gda_data_model_import_new_file()` for more information
          */
-        static new_mem(data: string, random_access: boolean, options?: Set | null): DataModel;
+        static new_mem(data: string, random_access: boolean, options: Set | null): DataModel;
         /**
          * Creates a new {@link Gda.DataModel} and loads the data in `node`. The resulting data model
          * can be accessed in a random way.
@@ -8282,7 +8175,7 @@ export namespace Gda {
          * @param values {@link GLib.List} of {@link GObject.Value}* representing the row to add.  The          length must match model's column count.  These {@link GObject.Value}     are value-copied (the user is still responsible for freeing them).
          * @returns the number of the added row, or -1 if an error occurred
          */
-        append_values(values?: GObject.Value[] | null): number;
+        append_values(values: GObject.Value[] | null): number;
         /**
          * Makes a copy of `src` into a new {@link Gda.DataModelArray} object
          * @returns a new data model, or `null` if an error occurred
@@ -8347,7 +8240,7 @@ export namespace Gda {
          * </itemizedlist>
          * @param to_stream where to dump the data model
          */
-        dump(to_stream?: any | null): void;
+        dump(to_stream: any | null): void;
         /**
          * Dumps a textual representation of the `model` into a new string. The main differences with `gda_data_model_export_to_string()` are that
          * the formatting options are passed using environment variables, and that the data is dumped regardless of the user locale (e.g. dates
@@ -8589,7 +8482,7 @@ export namespace Gda {
         import_from_model(
             from: DataModel,
             overwrite: boolean,
-            cols_trans?: GLib.HashTable<number, number> | null,
+            cols_trans: GLib.HashTable<number, number> | null,
         ): boolean;
         /**
          * Loads the data from `string` into `model`.
@@ -8668,7 +8561,7 @@ export namespace Gda {
          * @param hint a hint to send to the model
          * @param hint_value an optional value to specify the hint, or `null`
          */
-        send_hint(hint: DataModelHint, hint_value?: GObject.Value | null): void;
+        send_hint(hint: DataModelHint, hint_value: GObject.Value | null): void;
         /**
          * Sets the `name` of the given `col` in `model`, and if its title is not set, also sets the
          * title to `name`.
@@ -8711,7 +8604,7 @@ export namespace Gda {
          * @param values a list of {@link GObject.Value} (or `null`), one for at most the number of columns of `model`
          * @returns `true` if the value in the data model has been updated and no error occurred
          */
-        set_values(row: number, values?: GObject.Value[] | null): boolean;
+        set_values(row: number, values: GObject.Value[] | null): boolean;
         /**
          * Re-enables notifications of changes on the given data model.
          */
@@ -8742,7 +8635,7 @@ export namespace Gda {
          * @param values {@link GLib.List} of {@link GObject.Value}* representing the row to add.  The          length must match model's column count.  These {@link GObject.Value}     are value-copied (the user is still responsible for freeing them).
          * @virtual
          */
-        vfunc_i_append_values(values?: GObject.Value[] | null): number;
+        vfunc_i_append_values(values: GObject.Value[] | null): number;
         /**
          * Creates a new iterator object {@link Gda.DataModelIter} object which can be used to iterate through
          * rows in `model`. The new {@link Gda.DataModelIter} does not hold any reference to `model` (ie. if `model`
@@ -8900,7 +8793,7 @@ export namespace Gda {
          * @param hint_value an optional value to specify the hint, or `null`
          * @virtual
          */
-        vfunc_i_send_hint(hint: DataModelHint, hint_value?: GObject.Value | null): void;
+        vfunc_i_send_hint(hint: DataModelHint, hint_value: GObject.Value | null): void;
         /**
          * Enable or disable notifications changes on the given data model.
          * @param do_notify_changes Set to TRUE if you require notifications.
@@ -8931,7 +8824,7 @@ export namespace Gda {
          * @param values a list of {@link GObject.Value} (or `null`), one for at most the number of columns of `model`
          * @virtual
          */
-        vfunc_i_set_values(row: number, values?: GObject.Value[] | null): boolean;
+        vfunc_i_set_values(row: number, values: GObject.Value[] | null): boolean;
         /**
          * Emits the 'reset' and 'changed' signal on `model`.
          * @virtual
@@ -9011,38 +8904,19 @@ export namespace Gda {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -9050,15 +8924,9 @@ export namespace Gda {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -9225,7 +9093,7 @@ export namespace Gda {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -9754,7 +9622,7 @@ export namespace Gda {
          * @param cnc a {@link Gda.Connection}
          * @param attributes a string describing which LDAP attributes to retreive, or `null`
          */
-        static compute_columns(cnc: Connection, attributes?: string | null): Column[];
+        static compute_columns(cnc: Connection, attributes: string | null): Column[];
         /**
          * Creates a new {@link Gda.DataModel} object to extract some LDAP contents. The returned data model will
          * contain one row for each LDAP entry returned by the search, and will
@@ -9821,7 +9689,7 @@ export namespace Gda {
          * @param values {@link GLib.List} of {@link GObject.Value}* representing the row to add.  The          length must match model's column count.  These {@link GObject.Value}     are value-copied (the user is still responsible for freeing them).
          * @returns the number of the added row, or -1 if an error occurred
          */
-        append_values(values?: GObject.Value[] | null): number;
+        append_values(values: GObject.Value[] | null): number;
         /**
          * Makes a copy of `src` into a new {@link Gda.DataModelArray} object
          * @returns a new data model, or `null` if an error occurred
@@ -9886,7 +9754,7 @@ export namespace Gda {
          * </itemizedlist>
          * @param to_stream where to dump the data model
          */
-        dump(to_stream?: any | null): void;
+        dump(to_stream: any | null): void;
         /**
          * Dumps a textual representation of the `model` into a new string. The main differences with `gda_data_model_export_to_string()` are that
          * the formatting options are passed using environment variables, and that the data is dumped regardless of the user locale (e.g. dates
@@ -10128,7 +9996,7 @@ export namespace Gda {
         import_from_model(
             from: DataModel,
             overwrite: boolean,
-            cols_trans?: GLib.HashTable<number, number> | null,
+            cols_trans: GLib.HashTable<number, number> | null,
         ): boolean;
         /**
          * Loads the data from `string` into `model`.
@@ -10207,7 +10075,7 @@ export namespace Gda {
          * @param hint a hint to send to the model
          * @param hint_value an optional value to specify the hint, or `null`
          */
-        send_hint(hint: DataModelHint, hint_value?: GObject.Value | null): void;
+        send_hint(hint: DataModelHint, hint_value: GObject.Value | null): void;
         /**
          * Sets the `name` of the given `col` in `model`, and if its title is not set, also sets the
          * title to `name`.
@@ -10250,7 +10118,7 @@ export namespace Gda {
          * @param values a list of {@link GObject.Value} (or `null`), one for at most the number of columns of `model`
          * @returns `true` if the value in the data model has been updated and no error occurred
          */
-        set_values(row: number, values?: GObject.Value[] | null): boolean;
+        set_values(row: number, values: GObject.Value[] | null): boolean;
         /**
          * Re-enables notifications of changes on the given data model.
          */
@@ -10281,7 +10149,7 @@ export namespace Gda {
          * @param values {@link GLib.List} of {@link GObject.Value}* representing the row to add.  The          length must match model's column count.  These {@link GObject.Value}     are value-copied (the user is still responsible for freeing them).
          * @virtual
          */
-        vfunc_i_append_values(values?: GObject.Value[] | null): number;
+        vfunc_i_append_values(values: GObject.Value[] | null): number;
         /**
          * Creates a new iterator object {@link Gda.DataModelIter} object which can be used to iterate through
          * rows in `model`. The new {@link Gda.DataModelIter} does not hold any reference to `model` (ie. if `model`
@@ -10439,7 +10307,7 @@ export namespace Gda {
          * @param hint_value an optional value to specify the hint, or `null`
          * @virtual
          */
-        vfunc_i_send_hint(hint: DataModelHint, hint_value?: GObject.Value | null): void;
+        vfunc_i_send_hint(hint: DataModelHint, hint_value: GObject.Value | null): void;
         /**
          * Enable or disable notifications changes on the given data model.
          * @param do_notify_changes Set to TRUE if you require notifications.
@@ -10470,7 +10338,7 @@ export namespace Gda {
          * @param values a list of {@link GObject.Value} (or `null`), one for at most the number of columns of `model`
          * @virtual
          */
-        vfunc_i_set_values(row: number, values?: GObject.Value[] | null): boolean;
+        vfunc_i_set_values(row: number, values: GObject.Value[] | null): boolean;
         /**
          * Emits the 'reset' and 'changed' signal on `model`.
          * @virtual
@@ -10550,38 +10418,19 @@ export namespace Gda {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -10589,15 +10438,9 @@ export namespace Gda {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -10764,7 +10607,7 @@ export namespace Gda {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -11025,7 +10868,7 @@ export namespace Gda {
          * Creates a new {@link Gda.DataModel} which will contain analysed data from `model`.
          * @param model a {@link Gda.DataModel} to analyse data from, or `null`
          */
-        static ['new'](model?: DataModel | null): DataModel;
+        static ['new'](model: DataModel | null): DataModel;
 
         // Methods
 
@@ -11049,7 +10892,7 @@ export namespace Gda {
          * @param alias the field alias, or `null`
          * @returns `true` if no error occurred
          */
-        add_data(aggregate_type: DataPivotAggregate, field: string, alias?: string | null): boolean;
+        add_data(aggregate_type: DataPivotAggregate, field: string, alias: string | null): boolean;
         /**
          * Specifies that `field` has to be included in the analysis.
          * `field` is a field specification with the following accepted syntaxes:
@@ -11070,7 +10913,7 @@ export namespace Gda {
          * @param alias the field alias, or `null`
          * @returns `true` if no error occurred
          */
-        add_field(field_type: DataPivotFieldType, field: string, alias?: string | null): boolean;
+        add_field(field_type: DataPivotFieldType, field: string, alias: string | null): boolean;
         /**
          * Acutally populates `pivot` by analysing the data from the provided data model.
          * @returns `true` if no error occurred.
@@ -11104,7 +10947,7 @@ export namespace Gda {
          * @param values {@link GLib.List} of {@link GObject.Value}* representing the row to add.  The          length must match model's column count.  These {@link GObject.Value}     are value-copied (the user is still responsible for freeing them).
          * @returns the number of the added row, or -1 if an error occurred
          */
-        append_values(values?: GObject.Value[] | null): number;
+        append_values(values: GObject.Value[] | null): number;
         /**
          * Makes a copy of `src` into a new {@link Gda.DataModelArray} object
          * @returns a new data model, or `null` if an error occurred
@@ -11169,7 +11012,7 @@ export namespace Gda {
          * </itemizedlist>
          * @param to_stream where to dump the data model
          */
-        dump(to_stream?: any | null): void;
+        dump(to_stream: any | null): void;
         /**
          * Dumps a textual representation of the `model` into a new string. The main differences with `gda_data_model_export_to_string()` are that
          * the formatting options are passed using environment variables, and that the data is dumped regardless of the user locale (e.g. dates
@@ -11411,7 +11254,7 @@ export namespace Gda {
         import_from_model(
             from: DataModel,
             overwrite: boolean,
-            cols_trans?: GLib.HashTable<number, number> | null,
+            cols_trans: GLib.HashTable<number, number> | null,
         ): boolean;
         /**
          * Loads the data from `string` into `model`.
@@ -11490,7 +11333,7 @@ export namespace Gda {
          * @param hint a hint to send to the model
          * @param hint_value an optional value to specify the hint, or `null`
          */
-        send_hint(hint: DataModelHint, hint_value?: GObject.Value | null): void;
+        send_hint(hint: DataModelHint, hint_value: GObject.Value | null): void;
         /**
          * Sets the `name` of the given `col` in `model`, and if its title is not set, also sets the
          * title to `name`.
@@ -11533,7 +11376,7 @@ export namespace Gda {
          * @param values a list of {@link GObject.Value} (or `null`), one for at most the number of columns of `model`
          * @returns `true` if the value in the data model has been updated and no error occurred
          */
-        set_values(row: number, values?: GObject.Value[] | null): boolean;
+        set_values(row: number, values: GObject.Value[] | null): boolean;
         /**
          * Re-enables notifications of changes on the given data model.
          */
@@ -11564,7 +11407,7 @@ export namespace Gda {
          * @param values {@link GLib.List} of {@link GObject.Value}* representing the row to add.  The          length must match model's column count.  These {@link GObject.Value}     are value-copied (the user is still responsible for freeing them).
          * @virtual
          */
-        vfunc_i_append_values(values?: GObject.Value[] | null): number;
+        vfunc_i_append_values(values: GObject.Value[] | null): number;
         /**
          * Creates a new iterator object {@link Gda.DataModelIter} object which can be used to iterate through
          * rows in `model`. The new {@link Gda.DataModelIter} does not hold any reference to `model` (ie. if `model`
@@ -11722,7 +11565,7 @@ export namespace Gda {
          * @param hint_value an optional value to specify the hint, or `null`
          * @virtual
          */
-        vfunc_i_send_hint(hint: DataModelHint, hint_value?: GObject.Value | null): void;
+        vfunc_i_send_hint(hint: DataModelHint, hint_value: GObject.Value | null): void;
         /**
          * Enable or disable notifications changes on the given data model.
          * @param do_notify_changes Set to TRUE if you require notifications.
@@ -11753,7 +11596,7 @@ export namespace Gda {
          * @param values a list of {@link GObject.Value} (or `null`), one for at most the number of columns of `model`
          * @virtual
          */
-        vfunc_i_set_values(row: number, values?: GObject.Value[] | null): boolean;
+        vfunc_i_set_values(row: number, values: GObject.Value[] | null): boolean;
         /**
          * Emits the 'reset' and 'changed' signal on `model`.
          * @virtual
@@ -11833,38 +11676,19 @@ export namespace Gda {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -11872,15 +11696,9 @@ export namespace Gda {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -12047,7 +11865,7 @@ export namespace Gda {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -12602,7 +12420,7 @@ export namespace Gda {
          * @param filter_expr an SQL based expression which will filter the contents of `proxy`, or `null` to remove any previous filter
          * @returns TRUE if no error occurred
          */
-        set_filter_expr(filter_expr?: string | null): boolean;
+        set_filter_expr(filter_expr: string | null): boolean;
         /**
          * Orders by the `col` column
          * @param col the column number to order from
@@ -12662,7 +12480,7 @@ export namespace Gda {
          * @param values {@link GLib.List} of {@link GObject.Value}* representing the row to add.  The          length must match model's column count.  These {@link GObject.Value}     are value-copied (the user is still responsible for freeing them).
          * @returns the number of the added row, or -1 if an error occurred
          */
-        append_values(values?: GObject.Value[] | null): number;
+        append_values(values: GObject.Value[] | null): number;
         /**
          * Makes a copy of `src` into a new {@link Gda.DataModelArray} object
          * @returns a new data model, or `null` if an error occurred
@@ -12727,7 +12545,7 @@ export namespace Gda {
          * </itemizedlist>
          * @param to_stream where to dump the data model
          */
-        dump(to_stream?: any | null): void;
+        dump(to_stream: any | null): void;
         /**
          * Dumps a textual representation of the `model` into a new string. The main differences with `gda_data_model_export_to_string()` are that
          * the formatting options are passed using environment variables, and that the data is dumped regardless of the user locale (e.g. dates
@@ -12969,7 +12787,7 @@ export namespace Gda {
         import_from_model(
             from: DataModel,
             overwrite: boolean,
-            cols_trans?: GLib.HashTable<number, number> | null,
+            cols_trans: GLib.HashTable<number, number> | null,
         ): boolean;
         /**
          * Loads the data from `string` into `model`.
@@ -13048,7 +12866,7 @@ export namespace Gda {
          * @param hint a hint to send to the model
          * @param hint_value an optional value to specify the hint, or `null`
          */
-        send_hint(hint: DataModelHint, hint_value?: GObject.Value | null): void;
+        send_hint(hint: DataModelHint, hint_value: GObject.Value | null): void;
         /**
          * Sets the `name` of the given `col` in `model`, and if its title is not set, also sets the
          * title to `name`.
@@ -13091,7 +12909,7 @@ export namespace Gda {
          * @param values a list of {@link GObject.Value} (or `null`), one for at most the number of columns of `model`
          * @returns `true` if the value in the data model has been updated and no error occurred
          */
-        set_values(row: number, values?: GObject.Value[] | null): boolean;
+        set_values(row: number, values: GObject.Value[] | null): boolean;
         /**
          * Re-enables notifications of changes on the given data model.
          */
@@ -13122,7 +12940,7 @@ export namespace Gda {
          * @param values {@link GLib.List} of {@link GObject.Value}* representing the row to add.  The          length must match model's column count.  These {@link GObject.Value}     are value-copied (the user is still responsible for freeing them).
          * @virtual
          */
-        vfunc_i_append_values(values?: GObject.Value[] | null): number;
+        vfunc_i_append_values(values: GObject.Value[] | null): number;
         /**
          * Creates a new iterator object {@link Gda.DataModelIter} object which can be used to iterate through
          * rows in `model`. The new {@link Gda.DataModelIter} does not hold any reference to `model` (ie. if `model`
@@ -13280,7 +13098,7 @@ export namespace Gda {
          * @param hint_value an optional value to specify the hint, or `null`
          * @virtual
          */
-        vfunc_i_send_hint(hint: DataModelHint, hint_value?: GObject.Value | null): void;
+        vfunc_i_send_hint(hint: DataModelHint, hint_value: GObject.Value | null): void;
         /**
          * Enable or disable notifications changes on the given data model.
          * @param do_notify_changes Set to TRUE if you require notifications.
@@ -13311,7 +13129,7 @@ export namespace Gda {
          * @param values a list of {@link GObject.Value} (or `null`), one for at most the number of columns of `model`
          * @virtual
          */
-        vfunc_i_set_values(row: number, values?: GObject.Value[] | null): boolean;
+        vfunc_i_set_values(row: number, values: GObject.Value[] | null): boolean;
         /**
          * Emits the 'reset' and 'changed' signal on `model`.
          * @virtual
@@ -13391,38 +13209,19 @@ export namespace Gda {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -13430,15 +13229,9 @@ export namespace Gda {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -13605,7 +13398,7 @@ export namespace Gda {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -14164,7 +13957,7 @@ export namespace Gda {
          * @param values {@link GLib.List} of {@link GObject.Value}* representing the row to add.  The          length must match model's column count.  These {@link GObject.Value}     are value-copied (the user is still responsible for freeing them).
          * @returns the number of the added row, or -1 if an error occurred
          */
-        append_values(values?: GObject.Value[] | null): number;
+        append_values(values: GObject.Value[] | null): number;
         /**
          * Makes a copy of `src` into a new {@link Gda.DataModelArray} object
          * @returns a new data model, or `null` if an error occurred
@@ -14229,7 +14022,7 @@ export namespace Gda {
          * </itemizedlist>
          * @param to_stream where to dump the data model
          */
-        dump(to_stream?: any | null): void;
+        dump(to_stream: any | null): void;
         /**
          * Dumps a textual representation of the `model` into a new string. The main differences with `gda_data_model_export_to_string()` are that
          * the formatting options are passed using environment variables, and that the data is dumped regardless of the user locale (e.g. dates
@@ -14471,7 +14264,7 @@ export namespace Gda {
         import_from_model(
             from: DataModel,
             overwrite: boolean,
-            cols_trans?: GLib.HashTable<number, number> | null,
+            cols_trans: GLib.HashTable<number, number> | null,
         ): boolean;
         /**
          * Loads the data from `string` into `model`.
@@ -14550,7 +14343,7 @@ export namespace Gda {
          * @param hint a hint to send to the model
          * @param hint_value an optional value to specify the hint, or `null`
          */
-        send_hint(hint: DataModelHint, hint_value?: GObject.Value | null): void;
+        send_hint(hint: DataModelHint, hint_value: GObject.Value | null): void;
         /**
          * Sets the `name` of the given `col` in `model`, and if its title is not set, also sets the
          * title to `name`.
@@ -14593,7 +14386,7 @@ export namespace Gda {
          * @param values a list of {@link GObject.Value} (or `null`), one for at most the number of columns of `model`
          * @returns `true` if the value in the data model has been updated and no error occurred
          */
-        set_values(row: number, values?: GObject.Value[] | null): boolean;
+        set_values(row: number, values: GObject.Value[] | null): boolean;
         /**
          * Re-enables notifications of changes on the given data model.
          */
@@ -14624,7 +14417,7 @@ export namespace Gda {
          * @param values {@link GLib.List} of {@link GObject.Value}* representing the row to add.  The          length must match model's column count.  These {@link GObject.Value}     are value-copied (the user is still responsible for freeing them).
          * @virtual
          */
-        vfunc_i_append_values(values?: GObject.Value[] | null): number;
+        vfunc_i_append_values(values: GObject.Value[] | null): number;
         /**
          * Creates a new iterator object {@link Gda.DataModelIter} object which can be used to iterate through
          * rows in `model`. The new {@link Gda.DataModelIter} does not hold any reference to `model` (ie. if `model`
@@ -14782,7 +14575,7 @@ export namespace Gda {
          * @param hint_value an optional value to specify the hint, or `null`
          * @virtual
          */
-        vfunc_i_send_hint(hint: DataModelHint, hint_value?: GObject.Value | null): void;
+        vfunc_i_send_hint(hint: DataModelHint, hint_value: GObject.Value | null): void;
         /**
          * Enable or disable notifications changes on the given data model.
          * @param do_notify_changes Set to TRUE if you require notifications.
@@ -14813,7 +14606,7 @@ export namespace Gda {
          * @param values a list of {@link GObject.Value} (or `null`), one for at most the number of columns of `model`
          * @virtual
          */
-        vfunc_i_set_values(row: number, values?: GObject.Value[] | null): boolean;
+        vfunc_i_set_values(row: number, values: GObject.Value[] | null): boolean;
         /**
          * Emits the 'reset' and 'changed' signal on `model`.
          * @virtual
@@ -14893,38 +14686,19 @@ export namespace Gda {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -14932,15 +14706,9 @@ export namespace Gda {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -15107,7 +14875,7 @@ export namespace Gda {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -15388,7 +15156,7 @@ export namespace Gda {
          * @param value the value to be converted to a string, or `null`
          * @returns the new string, or `null` if an error occurred
          */
-        get_sql_from_value(value?: GObject.Value | null): string;
+        get_sql_from_value(value: GObject.Value | null): string;
         /**
          * Creates a new string which is a "user friendly" representation of the given value
          * (in the user's locale, specially for the dates). If the value is
@@ -15398,7 +15166,7 @@ export namespace Gda {
          * @param value the value to be converted to a string, or `null`
          * @returns the new string, or `null` if an error occurred
          */
-        get_str_from_value(value?: GObject.Value | null): string;
+        get_str_from_value(value: GObject.Value | null): string;
         /**
          * Creates a new GValue which represents the SQL value given as argument. This is
          * the opposite of the function `gda_data_handler_get_sql_from_value()`. The type argument
@@ -15457,7 +15225,7 @@ export namespace Gda {
          * @param value the value to be converted to a string, or `null`
          * @virtual
          */
-        vfunc_get_sql_from_value(value?: GObject.Value | null): string;
+        vfunc_get_sql_from_value(value: GObject.Value | null): string;
         /**
          * Creates a new string which is a "user friendly" representation of the given value
          * (in the user's locale, specially for the dates). If the value is
@@ -15467,7 +15235,7 @@ export namespace Gda {
          * @param value the value to be converted to a string, or `null`
          * @virtual
          */
-        vfunc_get_str_from_value(value?: GObject.Value | null): string;
+        vfunc_get_str_from_value(value: GObject.Value | null): string;
         /**
          * Creates a new GValue which represents the SQL value given as argument. This is
          * the opposite of the function `gda_data_handler_get_sql_from_value()`. The type argument
@@ -15543,38 +15311,19 @@ export namespace Gda {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -15582,15 +15331,9 @@ export namespace Gda {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -15757,7 +15500,7 @@ export namespace Gda {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -16038,7 +15781,7 @@ export namespace Gda {
          * @param value the value to be converted to a string, or `null`
          * @returns the new string, or `null` if an error occurred
          */
-        get_sql_from_value(value?: GObject.Value | null): string;
+        get_sql_from_value(value: GObject.Value | null): string;
         /**
          * Creates a new string which is a "user friendly" representation of the given value
          * (in the user's locale, specially for the dates). If the value is
@@ -16048,7 +15791,7 @@ export namespace Gda {
          * @param value the value to be converted to a string, or `null`
          * @returns the new string, or `null` if an error occurred
          */
-        get_str_from_value(value?: GObject.Value | null): string;
+        get_str_from_value(value: GObject.Value | null): string;
         /**
          * Creates a new GValue which represents the SQL value given as argument. This is
          * the opposite of the function `gda_data_handler_get_sql_from_value()`. The type argument
@@ -16107,7 +15850,7 @@ export namespace Gda {
          * @param value the value to be converted to a string, or `null`
          * @virtual
          */
-        vfunc_get_sql_from_value(value?: GObject.Value | null): string;
+        vfunc_get_sql_from_value(value: GObject.Value | null): string;
         /**
          * Creates a new string which is a "user friendly" representation of the given value
          * (in the user's locale, specially for the dates). If the value is
@@ -16117,7 +15860,7 @@ export namespace Gda {
          * @param value the value to be converted to a string, or `null`
          * @virtual
          */
-        vfunc_get_str_from_value(value?: GObject.Value | null): string;
+        vfunc_get_str_from_value(value: GObject.Value | null): string;
         /**
          * Creates a new GValue which represents the SQL value given as argument. This is
          * the opposite of the function `gda_data_handler_get_sql_from_value()`. The type argument
@@ -16193,38 +15936,19 @@ export namespace Gda {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -16232,15 +15956,9 @@ export namespace Gda {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -16407,7 +16125,7 @@ export namespace Gda {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -16688,7 +16406,7 @@ export namespace Gda {
          * @param value the value to be converted to a string, or `null`
          * @returns the new string, or `null` if an error occurred
          */
-        get_sql_from_value(value?: GObject.Value | null): string;
+        get_sql_from_value(value: GObject.Value | null): string;
         /**
          * Creates a new string which is a "user friendly" representation of the given value
          * (in the user's locale, specially for the dates). If the value is
@@ -16698,7 +16416,7 @@ export namespace Gda {
          * @param value the value to be converted to a string, or `null`
          * @returns the new string, or `null` if an error occurred
          */
-        get_str_from_value(value?: GObject.Value | null): string;
+        get_str_from_value(value: GObject.Value | null): string;
         /**
          * Creates a new GValue which represents the SQL value given as argument. This is
          * the opposite of the function `gda_data_handler_get_sql_from_value()`. The type argument
@@ -16757,7 +16475,7 @@ export namespace Gda {
          * @param value the value to be converted to a string, or `null`
          * @virtual
          */
-        vfunc_get_sql_from_value(value?: GObject.Value | null): string;
+        vfunc_get_sql_from_value(value: GObject.Value | null): string;
         /**
          * Creates a new string which is a "user friendly" representation of the given value
          * (in the user's locale, specially for the dates). If the value is
@@ -16767,7 +16485,7 @@ export namespace Gda {
          * @param value the value to be converted to a string, or `null`
          * @virtual
          */
-        vfunc_get_str_from_value(value?: GObject.Value | null): string;
+        vfunc_get_str_from_value(value: GObject.Value | null): string;
         /**
          * Creates a new GValue which represents the SQL value given as argument. This is
          * the opposite of the function `gda_data_handler_get_sql_from_value()`. The type argument
@@ -16843,38 +16561,19 @@ export namespace Gda {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -16882,15 +16581,9 @@ export namespace Gda {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -17057,7 +16750,7 @@ export namespace Gda {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -17314,7 +17007,7 @@ export namespace Gda {
          * @param prov a {@link Gda.ServerProvider} object
          * @param cnc a {@link Gda.Connection} object, or `null`
          */
-        static new_with_provider(prov: ServerProvider, cnc?: Connection | null): DataHandler;
+        static new_with_provider(prov: ServerProvider, cnc: Connection | null): DataHandler;
         /**
          * Checks wether the GdaDataHandler is able to handle the gda type given as argument.
          * @param type a {@link GObject.GType}
@@ -17345,7 +17038,7 @@ export namespace Gda {
          * @param value the value to be converted to a string, or `null`
          * @returns the new string, or `null` if an error occurred
          */
-        get_sql_from_value(value?: GObject.Value | null): string;
+        get_sql_from_value(value: GObject.Value | null): string;
         /**
          * Creates a new string which is a "user friendly" representation of the given value
          * (in the user's locale, specially for the dates). If the value is
@@ -17355,7 +17048,7 @@ export namespace Gda {
          * @param value the value to be converted to a string, or `null`
          * @returns the new string, or `null` if an error occurred
          */
-        get_str_from_value(value?: GObject.Value | null): string;
+        get_str_from_value(value: GObject.Value | null): string;
         /**
          * Creates a new GValue which represents the SQL value given as argument. This is
          * the opposite of the function `gda_data_handler_get_sql_from_value()`. The type argument
@@ -17414,7 +17107,7 @@ export namespace Gda {
          * @param value the value to be converted to a string, or `null`
          * @virtual
          */
-        vfunc_get_sql_from_value(value?: GObject.Value | null): string;
+        vfunc_get_sql_from_value(value: GObject.Value | null): string;
         /**
          * Creates a new string which is a "user friendly" representation of the given value
          * (in the user's locale, specially for the dates). If the value is
@@ -17424,7 +17117,7 @@ export namespace Gda {
          * @param value the value to be converted to a string, or `null`
          * @virtual
          */
-        vfunc_get_str_from_value(value?: GObject.Value | null): string;
+        vfunc_get_str_from_value(value: GObject.Value | null): string;
         /**
          * Creates a new GValue which represents the SQL value given as argument. This is
          * the opposite of the function `gda_data_handler_get_sql_from_value()`. The type argument
@@ -17500,38 +17193,19 @@ export namespace Gda {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -17539,15 +17213,9 @@ export namespace Gda {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -17714,7 +17382,7 @@ export namespace Gda {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -18056,7 +17724,7 @@ export namespace Gda {
          * @param value the value to be converted to a string, or `null`
          * @returns the new string, or `null` if an error occurred
          */
-        get_sql_from_value(value?: GObject.Value | null): string;
+        get_sql_from_value(value: GObject.Value | null): string;
         /**
          * Creates a new string which is a "user friendly" representation of the given value
          * (in the user's locale, specially for the dates). If the value is
@@ -18066,7 +17734,7 @@ export namespace Gda {
          * @param value the value to be converted to a string, or `null`
          * @returns the new string, or `null` if an error occurred
          */
-        get_str_from_value(value?: GObject.Value | null): string;
+        get_str_from_value(value: GObject.Value | null): string;
         /**
          * Creates a new GValue which represents the SQL value given as argument. This is
          * the opposite of the function `gda_data_handler_get_sql_from_value()`. The type argument
@@ -18125,7 +17793,7 @@ export namespace Gda {
          * @param value the value to be converted to a string, or `null`
          * @virtual
          */
-        vfunc_get_sql_from_value(value?: GObject.Value | null): string;
+        vfunc_get_sql_from_value(value: GObject.Value | null): string;
         /**
          * Creates a new string which is a "user friendly" representation of the given value
          * (in the user's locale, specially for the dates). If the value is
@@ -18135,7 +17803,7 @@ export namespace Gda {
          * @param value the value to be converted to a string, or `null`
          * @virtual
          */
-        vfunc_get_str_from_value(value?: GObject.Value | null): string;
+        vfunc_get_str_from_value(value: GObject.Value | null): string;
         /**
          * Creates a new GValue which represents the SQL value given as argument. This is
          * the opposite of the function `gda_data_handler_get_sql_from_value()`. The type argument
@@ -18211,38 +17879,19 @@ export namespace Gda {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -18250,15 +17899,9 @@ export namespace Gda {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -18425,7 +18068,7 @@ export namespace Gda {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -18706,7 +18349,7 @@ export namespace Gda {
          * @param value the value to be converted to a string, or `null`
          * @returns the new string, or `null` if an error occurred
          */
-        get_sql_from_value(value?: GObject.Value | null): string;
+        get_sql_from_value(value: GObject.Value | null): string;
         /**
          * Creates a new string which is a "user friendly" representation of the given value
          * (in the user's locale, specially for the dates). If the value is
@@ -18716,7 +18359,7 @@ export namespace Gda {
          * @param value the value to be converted to a string, or `null`
          * @returns the new string, or `null` if an error occurred
          */
-        get_str_from_value(value?: GObject.Value | null): string;
+        get_str_from_value(value: GObject.Value | null): string;
         /**
          * Creates a new GValue which represents the SQL value given as argument. This is
          * the opposite of the function `gda_data_handler_get_sql_from_value()`. The type argument
@@ -18775,7 +18418,7 @@ export namespace Gda {
          * @param value the value to be converted to a string, or `null`
          * @virtual
          */
-        vfunc_get_sql_from_value(value?: GObject.Value | null): string;
+        vfunc_get_sql_from_value(value: GObject.Value | null): string;
         /**
          * Creates a new string which is a "user friendly" representation of the given value
          * (in the user's locale, specially for the dates). If the value is
@@ -18785,7 +18428,7 @@ export namespace Gda {
          * @param value the value to be converted to a string, or `null`
          * @virtual
          */
-        vfunc_get_str_from_value(value?: GObject.Value | null): string;
+        vfunc_get_str_from_value(value: GObject.Value | null): string;
         /**
          * Creates a new GValue which represents the SQL value given as argument. This is
          * the opposite of the function `gda_data_handler_get_sql_from_value()`. The type argument
@@ -18861,38 +18504,19 @@ export namespace Gda {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -18900,15 +18524,9 @@ export namespace Gda {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -19075,7 +18693,7 @@ export namespace Gda {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -19473,7 +19091,7 @@ export namespace Gda {
          * `holder`'s value is set to `null`.
          * @param error a {@link GLib.Error} explaining why `holder` is declared invalid, or `null`
          */
-        force_invalid_e(error?: GLib.Error | null): void;
+        force_invalid_e(error: GLib.Error | null): void;
         /**
          * Get an "encoded" version of `holder`'s name. The "encoding" consists in replacing non
          * alphanumeric character with the string "__gdaXX" where XX is the hex. representation
@@ -19540,7 +19158,7 @@ export namespace Gda {
          * @param dh a {@link Gda.DataHandler} to use, or `null`
          * @returns the value, or `null`
          */
-        get_value_str(dh?: DataHandler | null): string;
+        get_value_str(dh: DataHandler | null): string;
         /**
          * Get the validity of `holder` (that is, of the value held by `holder`)
          * @returns TRUE if `holder`'s value can safely be used
@@ -19628,7 +19246,7 @@ export namespace Gda {
          * @param value a value to set the holder to, or `null`
          * @returns TRUE if value has been set
          */
-        set_value(value?: GObject.Value | null): boolean;
+        set_value(value: GObject.Value | null): boolean;
         /**
          * Same functionality as `gda_holder_set_value()` except that it uses a string representation
          * of the value to set, which will be converted into a GValue first (using default data handler if
@@ -19784,38 +19402,19 @@ export namespace Gda {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -19823,15 +19422,9 @@ export namespace Gda {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -19998,7 +19591,7 @@ export namespace Gda {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -20277,7 +19870,7 @@ export namespace Gda {
 
         _init(...args: any[]): void;
 
-        static ['new'](cnc_string?: string | null): MetaStore;
+        static ['new'](cnc_string: string | null): MetaStore;
 
         static new_with_file(file_name: string): MetaStore;
 
@@ -20394,7 +19987,7 @@ export namespace Gda {
          * @param vars a hash table with all variables names as keys and GValue* as value, representing values for all the variables mentioned in `select_sql`. If there is no variable then this part can be omitted.
          * @returns a new {@link Gda.DataModel}, or `null` if an error occurred
          */
-        extract(select_sql: string, vars?: GLib.HashTable<string, GObject.Value> | null): DataModel;
+        extract(select_sql: string, vars: GLib.HashTable<string, GObject.Value> | null): DataModel;
         /**
          * The {@link Gda.MetaStore} object maintains a list of (name,value) attributes (attributes names starting with a '_'
          * character are for internal use only and cannot be altered). This method and the `gda_meta_store_set_attribute_value()`
@@ -20448,7 +20041,7 @@ export namespace Gda {
          * @param new_data a {@link Gda.DataModel} containing the new data to set in `table_name`, or `null` (treated as a data model with no row at all)
          * @returns TRUE if no error occurred
          */
-        modify_with_context(context: MetaContext, new_data?: DataModel | null): boolean;
+        modify_with_context(context: MetaContext, new_data: DataModel | null): boolean;
         /**
          * The internal database used by `store` can be 'augmented' with some user-defined database objects
          * (such as tables or views). This method allows one to add a new database object.
@@ -20537,7 +20130,7 @@ export namespace Gda {
          * @param att_value value of the attribute to set, or `null` to unset the attribute
          * @returns TRUE if no error occurred
          */
-        set_attribute_value(att_name: string, att_value?: string | null): boolean;
+        set_attribute_value(att_name: string, att_value: string | null): boolean;
         /**
          * Specifies how `store` must handle SQL identifiers it has to store. This method is mainly used by
          * database providers.
@@ -20551,7 +20144,7 @@ export namespace Gda {
          * This method is mainly used by database providers.
          * @param func a {@link Gda.SqlReservedKeywordsFunc} function, or `null`
          */
-        set_reserved_keywords_func(func?: SqlReservedKeywordsFunc | null): void;
+        set_reserved_keywords_func(func: SqlReservedKeywordsFunc | null): void;
         /**
          * Removes a declared foreign key from `store`.
          *
@@ -20742,7 +20335,7 @@ export namespace Gda {
          * @param schema name of a schema, or `null`
          * @returns TRUE if no error occurred
          */
-        complement_schema(catalog?: GObject.Value | null, schema?: GObject.Value | null): boolean;
+        complement_schema(catalog: GObject.Value | null, schema: GObject.Value | null): boolean;
         /**
          * Creates a new graph (in the GraphViz syntax) representation of `mstruct`.
          * @param info informs what kind of information to show in the resulting graph
@@ -20867,7 +20460,7 @@ export namespace Gda {
          * Informs `pstmt` that it corresponds to the preparation of the `stmt` statement
          * @param stmt a {@link Gda.Statement} object, or `null`
          */
-        set_gda_statement(stmt?: Statement | null): void;
+        set_gda_statement(stmt: Statement | null): void;
     }
 
     namespace RepetitiveStatement {
@@ -21064,7 +20657,7 @@ export namespace Gda {
          * @param value a {@link GObject.Value} belonging to `row` (obtained with `gda_row_get_value()`).
          * @param error the error which lead to the invalidation
          */
-        invalidate_value_e(value: GObject.Value | any, error?: GLib.Error | null): void;
+        invalidate_value_e(value: GObject.Value | any, error: GLib.Error | null): void;
         /**
          * Tells if `value` has been marked as being invalid by `gda_row_invalidate_value()`.
          * This method is mainly used by database
@@ -21209,7 +20802,7 @@ export namespace Gda {
          * @param provider the database provider to use
          * @param db_name the name of the database to create, or `null`
          */
-        static prepare_create_database(provider: string, db_name?: string | null): ServerOperation | null;
+        static prepare_create_database(provider: string, db_name: string | null): ServerOperation | null;
         /**
          * Creates a new {@link Gda.ServerOperation} object which contains the specifications required
          * to drop a database. Once these specifications provided, use
@@ -21220,7 +20813,7 @@ export namespace Gda {
          * @param provider the database provider to use
          * @param db_name the name of the database to drop, or `null`
          */
-        static prepare_drop_database(provider: string, db_name?: string | null): ServerOperation | null;
+        static prepare_drop_database(provider: string, db_name: string | null): ServerOperation | null;
         /**
          * This is just a convenient function to create a {@link Gda.ServerOperation} to drop a
          * table in an opened connection.
@@ -21279,7 +20872,7 @@ export namespace Gda {
          * @param status a place to store the status of the node, or `null`
          * @returns the type of node, or GDA_SERVER_OPERATION_NODE_UNKNOWN if the node was not found
          */
-        get_node_type(path: string, status?: ServerOperationNodeStatus | null): ServerOperationNodeType;
+        get_node_type(path: string, status: ServerOperationNodeStatus | null): ServerOperationNodeType;
         /**
          * Get the type of operation `op` is for
          * @returns a {@link Gda.ServerOperationType} enum
@@ -21342,7 +20935,7 @@ export namespace Gda {
          * @param xml_file an XML specification file (see `gda_server_operation_new()`) or `null`
          * @returns `true` if `op` is valid
          */
-        is_valid(xml_file?: string | null): boolean;
+        is_valid(xml_file: string | null): boolean;
         /**
          * Loads the contents of `node` into `op`. The XML tree passed through the `node`
          * argument must correspond to an XML tree saved using `gda_server_operation_save_data_to_xml()`.
@@ -21356,7 +20949,7 @@ export namespace Gda {
          * @param provider the database provider to use, or `null` if `op` has been created using `gda_server_operation_prepare_create_database()`
          * @returns TRUE if no error occurred and the database has been created, FALSE otherwise
          */
-        perform_create_database(provider?: string | null): boolean;
+        perform_create_database(provider: string | null): boolean;
         /**
          * Performs a prepared {@link Gda.ServerOperation} to create a table. This could perform
          * an operation created by `gda_server_operation_prepare_create_table` or any other using the
@@ -21370,7 +20963,7 @@ export namespace Gda {
          * @param provider the database provider to use, or `null` if `op` has been created using `gda_server_operation_prepare_drop_database()`
          * @returns TRUE if no error occurred and the database has been destroyed
          */
-        perform_drop_database(provider?: string | null): boolean;
+        perform_drop_database(provider: string | null): boolean;
         /**
          * This is just a convenient function to perform a drop a table operation.
          * @returns TRUE if the table was dropped
@@ -21528,7 +21121,7 @@ export namespace Gda {
         vfunc_create_operation(
             cnc: Connection | null,
             type: ServerOperationType,
-            options?: Set | null,
+            options: Set | null,
         ): ServerOperation | null;
         /**
          * Creates a new {@link Gda.SqlParser} object which is adapted to `provider` (and possibly depending on
@@ -21539,7 +21132,7 @@ export namespace Gda {
          * @param cnc a {@link Gda.Connection}, or `null`
          * @virtual
          */
-        vfunc_create_parser(cnc?: Connection | null): SqlParser;
+        vfunc_create_parser(cnc: Connection | null): SqlParser;
         /**
          * @param cnc
          * @param name
@@ -21643,7 +21236,7 @@ export namespace Gda {
          * @param options a list of named parameters, or `null`
          * @virtual
          */
-        vfunc_supports_operation(cnc: Connection | null, type: ServerOperationType, options?: Set | null): boolean;
+        vfunc_supports_operation(cnc: Connection | null, type: ServerOperationType, options: Set | null): boolean;
         /**
          * Unescapes `str` for use within an SQL command. This is the exact opposite of `gda_server_provider_escape_string()`.
          * @param cnc a {@link Gda.Connection} object, or `null`
@@ -21669,7 +21262,7 @@ export namespace Gda {
         create_operation(
             cnc: Connection | null,
             type: ServerOperationType,
-            options?: Set | null,
+            options: Set | null,
         ): ServerOperation | null;
         /**
          * Creates a new {@link Gda.SqlParser} object which is adapted to `provider` (and possibly depending on
@@ -21680,7 +21273,7 @@ export namespace Gda {
          * @param cnc a {@link Gda.Connection}, or `null`
          * @returns a new {@link Gda.SqlParser} object, or `null`.
          */
-        create_parser(cnc?: Connection | null): SqlParser;
+        create_parser(cnc: Connection | null): SqlParser;
         /**
          * Escapes `str` for use within an SQL command (to avoid SQL injection attacks). Note that the returned value still needs
          * to be enclosed in single quotes before being used in an SQL statement.
@@ -21763,7 +21356,7 @@ export namespace Gda {
          * @param dbms_type a database type
          * @returns the requested {@link Gda.DataHandler}, or `null` if none found
          */
-        handler_find(cnc: Connection | null, g_type: GObject.GType, dbms_type?: string | null): DataHandler;
+        handler_find(cnc: Connection | null, g_type: GObject.GType, dbms_type: string | null): DataHandler;
         /**
          * This is a factory method to get a unique instance of a {@link Gda.SqlParser} object
          * for each {@link Gda.ServerProvider} object
@@ -21822,7 +21415,7 @@ export namespace Gda {
             cnc: Connection | null,
             string: string,
             preferred_type: GObject.GType,
-            dbms_type?: string | null,
+            dbms_type: string | null,
         ): unknown;
         /**
          * Tests if a feature is supported
@@ -21839,7 +21432,7 @@ export namespace Gda {
          * @param options a list of named parameters, or `null`
          * @returns `true` if the operation is supported
          */
-        supports_operation(cnc: Connection | null, type: ServerOperationType, options?: Set | null): boolean;
+        supports_operation(cnc: Connection | null, type: ServerOperationType, options: Set | null): boolean;
         /**
          * Unescapes `str` for use within an SQL command. This is the exact opposite of `gda_server_provider_escape_string()`.
          * @param cnc a {@link Gda.Connection} object, or `null`
@@ -22294,7 +21887,7 @@ export namespace Gda {
          * @param value value to set the expression to, or `null` or a GDA_TYPE_NULL value to represent an SQL NULL
          * @returns the ID of the new expression, or %0 if there was an error
          */
-        add_expr_value(dh?: DataHandler | null, value?: GObject.Value | null): SqlBuilderId;
+        add_expr_value(dh: DataHandler | null, value: GObject.Value | null): SqlBuilderId;
         /**
          * Defines an expression representing a field in `builder`,
          * which may be reused to build other parts of a statement,
@@ -22308,7 +21901,7 @@ export namespace Gda {
          * @param table_name a table name, or `null`
          * @returns the ID of the new expression, or %0 if there was an error
          */
-        add_field_id(field_name: string, table_name?: string | null): SqlBuilderId;
+        add_field_id(field_name: string, table_name: string | null): SqlBuilderId;
         /**
          * Valid only for: INSERT, UPDATE statements.
          *
@@ -22317,7 +21910,7 @@ export namespace Gda {
          * @param field_name a field name
          * @param value value to set the field to, or `null` or a GDA_TYPE_NULL value to represent an SQL NULL
          */
-        add_field_value_as_gvalue(field_name: string, value?: GObject.Value | null): void;
+        add_field_value_as_gvalue(field_name: string, value: GObject.Value | null): void;
         /**
          * Valid only for: INSERT, UPDATE, SELECT statements
          * <itemizedlist>
@@ -22430,14 +22023,14 @@ export namespace Gda {
          * @param alias an alias (eg. for the "AS" clause), or `null`
          * @returns the ID of the added field, or %0 if there was an error
          */
-        select_add_field(field_name: string, table_name?: string | null, alias?: string | null): SqlBuilderId;
+        select_add_field(field_name: string, table_name: string | null, alias: string | null): SqlBuilderId;
         /**
          * Adds a new target to a SELECT statement
          * @param table_name the name of the target table
          * @param alias the alias to give to the target, or `null`
          * @returns the ID of the new target, or %0 if there was an error
          */
-        select_add_target(table_name: string, alias?: string | null): SqlBuilderId;
+        select_add_target(table_name: string, alias: string | null): SqlBuilderId;
         /**
          * Adds a new target to a SELECT statement. If there already exists a target representing
          * the same table and the same alias (or with the same absence of alias) then the same target
@@ -22446,7 +22039,7 @@ export namespace Gda {
          * @param alias the alias to give to the target, or `null`
          * @returns the ID of the new (or existing) target, or %0 if there was an error
          */
-        select_add_target_id(table_id: SqlBuilderId, alias?: string | null): SqlBuilderId;
+        select_add_target_id(table_id: SqlBuilderId, alias: string | null): SqlBuilderId;
         /**
          * Valid only for: SELECT statements
          *
@@ -22460,7 +22053,7 @@ export namespace Gda {
          * @param asc `true` for an ascending sorting
          * @param collation_name name of the collation to use when sorting, or `null`
          */
-        select_order_by(expr_id: SqlBuilderId, asc: boolean, collation_name?: string | null): void;
+        select_order_by(expr_id: SqlBuilderId, asc: boolean, collation_name: string | null): void;
         /**
          * Defines (if `distinct` is `true`) or removes (if `distinct` is `false`) a DISTINCT clause
          * for a SELECT statement.
@@ -22736,38 +22329,19 @@ export namespace Gda {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -22775,15 +22349,9 @@ export namespace Gda {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -22950,7 +22518,7 @@ export namespace Gda {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -23253,7 +22821,7 @@ export namespace Gda {
          * @param cnc a {@link Gda.Connection} object, or `null`
          * @returns TRUE if every object actually exists in `cnc`'s database
          */
-        check_validity(cnc?: Connection | null): boolean;
+        check_validity(cnc: Connection | null): boolean;
         /**
          * Copy constructor
          * @returns a the new copy of `orig`
@@ -23452,7 +23020,7 @@ export namespace Gda {
          * @param arg_destroy_func function to be called when the execution has finished, to destroy `arg`, or `null`
          * @returns the job ID, or 0 if an error occurred
          */
-        execute(func: ThreadWrapperFunc, arg?: any | null, arg_destroy_func?: GLib.DestroyNotify | null): number;
+        execute(func: ThreadWrapperFunc, arg: any | null, arg_destroy_func: GLib.DestroyNotify | null): number;
         /**
          * Make `wrapper` execute the `func` function with the `arg` argument (along with a {@link GLib.Error} which is not `error`)
          * in the sub thread managed by `wrapper`. To execute a function which returns some pointer,
@@ -23472,11 +23040,7 @@ export namespace Gda {
          * @param arg_destroy_func function to be called when the execution has finished, to destroy `arg`, or `null`
          * @returns the job ID, or 0 if an error occurred
          */
-        execute_void(
-            func: ThreadWrapperVoidFunc,
-            arg?: any | null,
-            arg_destroy_func?: GLib.DestroyNotify | null,
-        ): number;
+        execute_void(func: ThreadWrapperVoidFunc, arg: any | null, arg_destroy_func: GLib.DestroyNotify | null): number;
         /**
          * Use this method to check if the execution of a function is finished. The function's execution must have
          * been requested using `gda_thread_wrapper_execute()`.
@@ -23769,7 +23333,7 @@ export namespace Gda {
          * @param node a {@link Gda.TreeNode} to start the dump from, or `null` for a full dump
          * @param stream a stream to send the dump to, or `null` for STDOUT
          */
-        dump(node?: TreeNode | null, stream?: any | null): void;
+        dump(node: TreeNode | null, stream: any | null): void;
         /**
          * Locates a {@link Gda.TreeNode} using the `tree_path` path.
          * @param tree_path full path to the required nodes (if `use_names` is `true`, then it must start with '/')
@@ -23817,7 +23381,7 @@ export namespace Gda {
          * @param node a {@link Gda.TreeNode} node in `tree`, or `null`
          * @returns TRUE if no error occurred.
          */
-        update_children(node?: TreeNode | null): boolean;
+        update_children(node: TreeNode | null): boolean;
         /**
          * Requests that `tree` be populated with nodes, starting from `node`
          * @param node a {@link Gda.TreeNode} node in `tree`
@@ -23931,7 +23495,7 @@ export namespace Gda {
          * @param attribute an attribute name
          * @param value the attribute's value, or `null`
          */
-        add_new_node_attribute(attribute: string, value?: GObject.Value | null): void;
+        add_new_node_attribute(attribute: string, value: GObject.Value | null): void;
         /**
          * Requests that `manager` creates a new {@link Gda.TreeNode}. The new node is not in any
          * way linked to `manager` yet, consider this method as a {@link Gda.TreeNode} factory.
@@ -23942,7 +23506,7 @@ export namespace Gda {
          * @param name name given to the new node, or `null`
          * @returns a new {@link Gda.TreeNode}
          */
-        create_node(parent?: TreeNode | null, name?: string | null): TreeNode;
+        create_node(parent: TreeNode | null, name: string | null): TreeNode;
         /**
          * Get the list of sub managers which have already been added using `gda_tree_manager_add_manager()`
          * @returns a list of `GdaTreeMenager` which should not be modified.
@@ -24181,7 +23745,7 @@ export namespace Gda {
 
         _init(...args: any[]): void;
 
-        static ['new'](cnc: Connection, dn?: string | null): TreeMgrLdap;
+        static ['new'](cnc: Connection, dn: string | null): TreeMgrLdap;
 
         // Signals
 
@@ -24457,7 +24021,7 @@ export namespace Gda {
 
         _init(...args: any[]): void;
 
-        static ['new'](cnc: Connection, schema?: string | null): TreeMgrTables;
+        static ['new'](cnc: Connection, schema: string | null): TreeMgrTables;
 
         // Signals
 
@@ -24553,7 +24117,7 @@ export namespace Gda {
 
         _init(...args: any[]): void;
 
-        static ['new'](name?: string | null): TreeNode;
+        static ['new'](name: string | null): TreeNode;
 
         // Signals
 
@@ -24680,7 +24244,7 @@ export namespace Gda {
          * @param attribute attribute name
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_node_attribute(attribute: string, value?: GObject.Value | null): void;
+        set_node_attribute(attribute: string, value: GObject.Value | null): void;
     }
 
     namespace UShort {
@@ -24891,12 +24455,12 @@ export namespace Gda {
          * Creates a new {@link Gda.Binary} structure from an existing one.
          * @param boxed source to get a copy from.
          */
-        static copy(boxed?: any | null): any | null;
+        static copy(boxed: any | null): any | null;
         /**
          * Deallocates all memory associated to the given {@link Gda.Binary}.
          * @param boxed {@link Gda.Binary} to free.
          */
-        static free(boxed?: any | null): void;
+        static free(boxed: any | null): void;
 
         // Methods
 
@@ -24937,12 +24501,12 @@ export namespace Gda {
          * Creates a new {@link Gda.Blob} structure from an existing one.
          * @param boxed source to get a copy from.
          */
-        static copy(boxed?: any | null): any | null;
+        static copy(boxed: any | null): any | null;
         /**
          * Deallocates all memory associated to the given {@link Gda.Blob}.
          * @param boxed {@link Gda.Blob} to free.
          */
-        static free(boxed?: any | null): void;
+        static free(boxed: any | null): void;
 
         // Methods
 
@@ -24950,7 +24514,7 @@ export namespace Gda {
          * correctly assigns `op` to `blob`
          * @param op a {@link Gda.BlobOp} object, or `null`
          */
-        set_op(op?: BlobOp | null): void;
+        set_op(op: BlobOp | null): void;
         /**
          * Converts all the non printable characters of blob->data into the \xxx representation
          * where xxx is the octal representation of the byte, and the '\' (backslash) character
@@ -25209,11 +24773,11 @@ export namespace Gda {
         /**
          * @param boxed
          */
-        static copy(boxed?: any | null): any | null;
+        static copy(boxed: any | null): any | null;
         /**
          * @param boxed
          */
-        static free(boxed?: any | null): void;
+        static free(boxed: any | null): void;
     }
 
     /**
@@ -25360,7 +24924,7 @@ export namespace Gda {
          * @param value the column's value
          * @param cnc a {@link Gda.Connection} to be used when identifier are normalized, or NULL
          */
-        set_column(column: string, value: GObject.Value | any, cnc?: Connection | null): void;
+        set_column(column: string, value: GObject.Value | any, cnc: Connection | null): void;
         /**
          * Set columns to use in the context. The {@link GLib.HashTable} use column's name as key and a {@link GObject.Value} as value,
          * to represent its value.
@@ -25371,7 +24935,7 @@ export namespace Gda {
          */
         set_columns(
             columns: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
-            cnc?: Connection | null,
+            cnc: Connection | null,
         ): void;
         /**
          * Set table's name to use in the context. The table is one of <link linkend="information_schema">database
@@ -25511,7 +25075,7 @@ export namespace Gda {
          * @param value a {@link GObject.Value}, or `null`
          * @param destroy function called when `attribute` has to be freed, or `null`
          */
-        set_attribute(attribute: string, value?: GObject.Value | null, destroy?: GLib.DestroyNotify | null): void;
+        set_attribute(attribute: string, value: GObject.Value | null, destroy: GLib.DestroyNotify | null): void;
     }
 
     /**
@@ -25925,7 +25489,7 @@ export namespace Gda {
          * in `model`.
          * @param model a {@link Gda.DataModel} to be used by `node`
          */
-        set_data_model(model?: DataModel | null): void;
+        set_data_model(model: DataModel | null): void;
         /**
          * Set a {@link Gda.Holder} to `node`.
          * @param holder
@@ -26210,11 +25774,11 @@ export namespace Gda {
         /**
          * @param boxed
          */
-        static copy(boxed?: any | null): any | null;
+        static copy(boxed: any | null): any | null;
         /**
          * @param boxed
          */
-        static free(boxed?: any | null): void;
+        static free(boxed: any | null): void;
 
         // Methods
 
@@ -26256,11 +25820,11 @@ export namespace Gda {
         /**
          * @param boxed
          */
-        static copy(boxed?: any | null): any | null;
+        static copy(boxed: any | null): any | null;
         /**
          * @param boxed
          */
-        static free(boxed?: any | null): void;
+        static free(boxed: any | null): void;
 
         // Methods
 
@@ -26477,7 +26041,7 @@ export namespace Gda {
              * @param value the value to be converted to a string, or `null`
              * @virtual
              */
-            vfunc_get_sql_from_value(value?: GObject.Value | null): string;
+            vfunc_get_sql_from_value(value: GObject.Value | null): string;
             /**
              * Creates a new string which is a "user friendly" representation of the given value
              * (in the user's locale, specially for the dates). If the value is
@@ -26487,7 +26051,7 @@ export namespace Gda {
              * @param value the value to be converted to a string, or `null`
              * @virtual
              */
-            vfunc_get_str_from_value(value?: GObject.Value | null): string;
+            vfunc_get_str_from_value(value: GObject.Value | null): string;
             /**
              * Creates a new GValue which represents the SQL value given as argument. This is
              * the opposite of the function `gda_data_handler_get_sql_from_value()`. The type argument
@@ -26573,7 +26137,7 @@ export namespace Gda {
          * @param value the value to be converted to a string, or `null`
          * @returns the new string, or `null` if an error occurred
          */
-        get_sql_from_value(value?: GObject.Value | null): string;
+        get_sql_from_value(value: GObject.Value | null): string;
         /**
          * Creates a new string which is a "user friendly" representation of the given value
          * (in the user's locale, specially for the dates). If the value is
@@ -26583,7 +26147,7 @@ export namespace Gda {
          * @param value the value to be converted to a string, or `null`
          * @returns the new string, or `null` if an error occurred
          */
-        get_str_from_value(value?: GObject.Value | null): string;
+        get_str_from_value(value: GObject.Value | null): string;
         /**
          * Creates a new GValue which represents the SQL value given as argument. This is
          * the opposite of the function `gda_data_handler_get_sql_from_value()`. The type argument
@@ -26652,7 +26216,7 @@ export namespace Gda {
              * @param values {@link GLib.List} of {@link GObject.Value}* representing the row to add.  The          length must match model's column count.  These {@link GObject.Value}     are value-copied (the user is still responsible for freeing them).
              * @virtual
              */
-            vfunc_i_append_values(values?: GObject.Value[] | null): number;
+            vfunc_i_append_values(values: GObject.Value[] | null): number;
             /**
              * Creates a new iterator object {@link Gda.DataModelIter} object which can be used to iterate through
              * rows in `model`. The new {@link Gda.DataModelIter} does not hold any reference to `model` (ie. if `model`
@@ -26810,7 +26374,7 @@ export namespace Gda {
              * @param hint_value an optional value to specify the hint, or `null`
              * @virtual
              */
-            vfunc_i_send_hint(hint: DataModelHint, hint_value?: GObject.Value | null): void;
+            vfunc_i_send_hint(hint: DataModelHint, hint_value: GObject.Value | null): void;
             /**
              * Enable or disable notifications changes on the given data model.
              * @param do_notify_changes Set to TRUE if you require notifications.
@@ -26841,7 +26405,7 @@ export namespace Gda {
              * @param values a list of {@link GObject.Value} (or `null`), one for at most the number of columns of `model`
              * @virtual
              */
-            vfunc_i_set_values(row: number, values?: GObject.Value[] | null): boolean;
+            vfunc_i_set_values(row: number, values: GObject.Value[] | null): boolean;
             /**
              * Emits the 'reset' and 'changed' signal on `model`.
              * @virtual
@@ -26921,7 +26485,7 @@ export namespace Gda {
          * @param values {@link GLib.List} of {@link GObject.Value}* representing the row to add.  The          length must match model's column count.  These {@link GObject.Value}     are value-copied (the user is still responsible for freeing them).
          * @returns the number of the added row, or -1 if an error occurred
          */
-        append_values(values?: GObject.Value[] | null): number;
+        append_values(values: GObject.Value[] | null): number;
         /**
          * Makes a copy of `src` into a new {@link Gda.DataModelArray} object
          * @returns a new data model, or `null` if an error occurred
@@ -26986,7 +26550,7 @@ export namespace Gda {
          * </itemizedlist>
          * @param to_stream where to dump the data model
          */
-        dump(to_stream?: any | null): void;
+        dump(to_stream: any | null): void;
         /**
          * Dumps a textual representation of the `model` into a new string. The main differences with `gda_data_model_export_to_string()` are that
          * the formatting options are passed using environment variables, and that the data is dumped regardless of the user locale (e.g. dates
@@ -27228,7 +26792,7 @@ export namespace Gda {
         import_from_model(
             from: DataModel,
             overwrite: boolean,
-            cols_trans?: GLib.HashTable<number, number> | null,
+            cols_trans: GLib.HashTable<number, number> | null,
         ): boolean;
         /**
          * Loads the data from `string` into `model`.
@@ -27307,7 +26871,7 @@ export namespace Gda {
          * @param hint a hint to send to the model
          * @param hint_value an optional value to specify the hint, or `null`
          */
-        send_hint(hint: DataModelHint, hint_value?: GObject.Value | null): void;
+        send_hint(hint: DataModelHint, hint_value: GObject.Value | null): void;
         /**
          * Sets the `name` of the given `col` in `model`, and if its title is not set, also sets the
          * title to `name`.
@@ -27350,7 +26914,7 @@ export namespace Gda {
          * @param values a list of {@link GObject.Value} (or `null`), one for at most the number of columns of `model`
          * @returns `true` if the value in the data model has been updated and no error occurred
          */
-        set_values(row: number, values?: GObject.Value[] | null): boolean;
+        set_values(row: number, values: GObject.Value[] | null): boolean;
         /**
          * Re-enables notifications of changes on the given data model.
          */

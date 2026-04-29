@@ -114,8 +114,8 @@ export namespace Panel {
         return_value: GObject.Value | any,
         n_param_values: number,
         param_values: GObject.Value | any,
-        invocation_hint?: any | null,
-        marshal_data?: any | null,
+        invocation_hint: any | null,
+        marshal_data: any | null,
     ): void;
     /**
      * @param closure
@@ -130,8 +130,8 @@ export namespace Panel {
         return_value: GObject.Value | any,
         n_param_values: number,
         param_values: GObject.Value | any,
-        invocation_hint?: any | null,
-        marshal_data?: any | null,
+        invocation_hint: any | null,
+        marshal_data: any | null,
     ): void;
     /**
      * @gir-type Callback
@@ -296,7 +296,7 @@ export namespace Panel {
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
-        activate_action(action_name: string, parameter?: GLib.Variant | null): void;
+        activate_action(action_name: string, parameter: GLib.Variant | null): void;
         /**
          * Request for the state of the named action within `action_group` to be
          * changed to `value`.
@@ -524,7 +524,7 @@ export namespace Panel {
          * @param parameter parameters to the activation
          * @virtual
          */
-        vfunc_activate_action(action_name: string, parameter?: GLib.Variant | null): void;
+        vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
         /**
          * Request for the state of the named action within `action_group` to be
          * changed to `value`.
@@ -728,38 +728,19 @@ export namespace Panel {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -767,15 +748,9 @@ export namespace Panel {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -942,7 +917,7 @@ export namespace Panel {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1255,38 +1230,19 @@ export namespace Panel {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1294,15 +1250,9 @@ export namespace Panel {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1469,7 +1419,7 @@ export namespace Panel {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1745,11 +1695,13 @@ export namespace Panel {
 
         /**
          * This property requests that the widget close after saving.
+         * @default false
          */
         get close_after_save(): boolean;
         set close_after_save(val: boolean);
         /**
          * This property requests that the widget close after saving.
+         * @default false
          */
         get closeAfterSave(): boolean;
         set closeAfterSave(val: boolean);
@@ -1803,7 +1755,7 @@ export namespace Panel {
          * @param parent
          * @param cancellable
          */
-        run_async(parent: Gtk.Widget, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        run_async(parent: Gtk.Widget, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * @param parent
          * @param cancellable
@@ -1821,7 +1773,7 @@ export namespace Panel {
          */
         run_async(
             parent: Gtk.Widget,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1879,38 +1831,19 @@ export namespace Panel {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1918,15 +1851,9 @@ export namespace Panel {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -2093,7 +2020,7 @@ export namespace Panel {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -2422,68 +2349,124 @@ export namespace Panel {
 
         // Properties
 
+        /**
+         * @default -1
+         */
         get bottom_height(): number;
         set bottom_height(val: number);
+        /**
+         * @default -1
+         */
         get bottomHeight(): number;
         set bottomHeight(val: number);
         /**
          * @read-only
+         * @default false
          */
         get can_reveal_bottom(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get canRevealBottom(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get can_reveal_end(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get canRevealEnd(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get can_reveal_start(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get canRevealStart(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get can_reveal_top(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get canRevealTop(): boolean;
+        /**
+         * @default -1
+         */
         get end_width(): number;
         set end_width(val: number);
+        /**
+         * @default -1
+         */
         get endWidth(): number;
         set endWidth(val: number);
+        /**
+         * @default false
+         */
         get reveal_bottom(): boolean;
         set reveal_bottom(val: boolean);
+        /**
+         * @default false
+         */
         get revealBottom(): boolean;
         set revealBottom(val: boolean);
+        /**
+         * @default false
+         */
         get reveal_end(): boolean;
         set reveal_end(val: boolean);
+        /**
+         * @default false
+         */
         get revealEnd(): boolean;
         set revealEnd(val: boolean);
+        /**
+         * @default false
+         */
         get reveal_start(): boolean;
         set reveal_start(val: boolean);
+        /**
+         * @default false
+         */
         get revealStart(): boolean;
         set revealStart(val: boolean);
+        /**
+         * @default false
+         */
         get reveal_top(): boolean;
         set reveal_top(val: boolean);
+        /**
+         * @default false
+         */
         get revealTop(): boolean;
         set revealTop(val: boolean);
+        /**
+         * @default -1
+         */
         get start_width(): number;
         set start_width(val: number);
+        /**
+         * @default -1
+         */
         get startWidth(): number;
         set startWidth(val: number);
+        /**
+         * @default -1
+         */
         get top_height(): number;
         set top_height(val: number);
+        /**
+         * @default -1
+         */
         get topHeight(): number;
         set topHeight(val: number);
 
@@ -2653,6 +2636,7 @@ export namespace Panel {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
@@ -2661,6 +2645,7 @@ export namespace Panel {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
@@ -2764,7 +2749,7 @@ export namespace Panel {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent?: Gtk.Accessible | null, next_sibling?: Gtk.Accessible | null): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
         /**
          * Updates the next accessible sibling.
          *
@@ -2772,7 +2757,7 @@ export namespace Panel {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling?: Gtk.Accessible | null): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
         /**
          * Informs ATs that the platform state has changed.
          *
@@ -2883,7 +2868,7 @@ export namespace Panel {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -2897,7 +2882,7 @@ export namespace Panel {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called at the end of each custom element handled by
@@ -2912,7 +2897,7 @@ export namespace Panel {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called for each unknown element under `<child>`.
@@ -3016,38 +3001,19 @@ export namespace Panel {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -3055,15 +3021,9 @@ export namespace Panel {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -3230,7 +3190,7 @@ export namespace Panel {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -3526,7 +3486,7 @@ export namespace Panel {
                 Gtk.ShortcutManager.ConstructorProps {
             dock: Dock;
             grid: Grid;
-            statusbar: Statusbar;
+            statusbar: Statusbar | null;
         }
     }
 
@@ -3560,7 +3520,7 @@ export namespace Panel {
         /**
          * @read-only
          */
-        get statusbar(): Statusbar;
+        get statusbar(): Statusbar | null;
 
         /**
          * Compile-time signal type information.
@@ -3608,7 +3568,7 @@ export namespace Panel {
          * @param position a {@link Panel.Position} or `null`
          * @virtual
          */
-        vfunc_add_widget(widget: Widget, position?: Position | null): boolean;
+        vfunc_add_widget(widget: Widget, position: Position | null): boolean;
 
         // Methods
 
@@ -3618,7 +3578,7 @@ export namespace Panel {
          * @param position a {@link Panel.Position} or `null`
          * @returns `true` if `widget` was added; otherwise `false` and `widget`   will have `g_object_ref_sink()` called and unref'd from an idle   callback.
          */
-        add_widget(widget: Widget, position?: Position | null): boolean;
+        add_widget(widget: Widget, position: Position | null): boolean;
         /**
          * Get the {@link Panel.Dock} for the workspace.
          * @returns a {@link Panel.Dock}
@@ -3654,6 +3614,7 @@ export namespace Panel {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get can_focus(): boolean;
@@ -3664,18 +3625,21 @@ export namespace Panel {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get canFocus(): boolean;
         set canFocus(val: boolean);
         /**
          * Whether the widget can receive pointer events.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get can_target(): boolean;
         set can_target(val: boolean);
         /**
          * Whether the widget can receive pointer events.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get canTarget(): boolean;
@@ -3698,6 +3662,7 @@ export namespace Panel {
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
          * @construct-only
+         * @default null
          * @category Inherited from Gtk.Widget
          */
         get css_name(): string;
@@ -3707,6 +3672,7 @@ export namespace Panel {
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
          * @construct-only
+         * @default null
          * @category Inherited from Gtk.Widget
          */
         get cssName(): string;
@@ -3714,12 +3680,13 @@ export namespace Panel {
          * The cursor used by `widget`.
          * @category Inherited from Gtk.Widget
          */
-        get cursor(): Gdk.Cursor;
-        set cursor(val: Gdk.Cursor);
+        get cursor(): Gdk.Cursor | null;
+        set cursor(val: Gdk.Cursor | null);
         /**
          * Whether the widget should grab focus when it is clicked with the mouse.
          *
          * This property is only relevant for widgets that can take focus.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get focus_on_click(): boolean;
@@ -3728,18 +3695,21 @@ export namespace Panel {
          * Whether the widget should grab focus when it is clicked with the mouse.
          *
          * This property is only relevant for widgets that can take focus.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get focusOnClick(): boolean;
         set focusOnClick(val: boolean);
         /**
          * Whether this widget itself will accept the input focus.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get focusable(): boolean;
         set focusable(val: boolean);
         /**
          * How to distribute horizontal space if widget gets extra space.
+         * @default Gtk.Align.FILL
          * @category Inherited from Gtk.Widget
          */
         get halign(): Gtk.Align;
@@ -3747,24 +3717,28 @@ export namespace Panel {
         /**
          * Whether the widget is the default widget.
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get has_default(): boolean;
         /**
          * Whether the widget is the default widget.
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hasDefault(): boolean;
         /**
          * Whether the widget has the input focus.
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get has_focus(): boolean;
         /**
          * Whether the widget has the input focus.
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hasFocus(): boolean;
@@ -3775,6 +3749,7 @@ export namespace Panel {
          * A true value indicates that `widget` can have a tooltip, in this case
          * the widget will be queried using `Gtk.Widget::query-tooltip` to
          * determine whether it will provide a tooltip or not.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get has_tooltip(): boolean;
@@ -3786,6 +3761,7 @@ export namespace Panel {
          * A true value indicates that `widget` can have a tooltip, in this case
          * the widget will be queried using `Gtk.Widget::query-tooltip` to
          * determine whether it will provide a tooltip or not.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hasTooltip(): boolean;
@@ -3794,6 +3770,7 @@ export namespace Panel {
          * Overrides for height request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @default -1
          * @category Inherited from Gtk.Widget
          */
         get height_request(): number;
@@ -3802,24 +3779,28 @@ export namespace Panel {
          * Overrides for height request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @default -1
          * @category Inherited from Gtk.Widget
          */
         get heightRequest(): number;
         set heightRequest(val: number);
         /**
          * Whether to expand horizontally.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpand(): boolean;
         set hexpand(val: boolean);
         /**
          * Whether to use the `hexpand` property.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpand_set(): boolean;
         set hexpand_set(val: boolean);
         /**
          * Whether to use the `hexpand` property.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpandSet(): boolean;
@@ -3832,8 +3813,8 @@ export namespace Panel {
          * typically in their instance init function.
          * @category Inherited from Gtk.Widget
          */
-        get layout_manager(): Gtk.LayoutManager;
-        set layout_manager(val: Gtk.LayoutManager);
+        get layout_manager(): Gtk.LayoutManager | null;
+        set layout_manager(val: Gtk.LayoutManager | null);
         /**
          * The {@link Gtk.LayoutManager} instance to use to compute
          * the preferred size of the widget, and allocate its children.
@@ -3842,8 +3823,8 @@ export namespace Panel {
          * typically in their instance init function.
          * @category Inherited from Gtk.Widget
          */
-        get layoutManager(): Gtk.LayoutManager;
-        set layoutManager(val: Gtk.LayoutManager);
+        get layoutManager(): Gtk.LayoutManager | null;
+        set layoutManager(val: Gtk.LayoutManager | null);
         /**
          * Makes this widget act like a modal dialog, with respect to
          * event delivery.
@@ -3852,6 +3833,7 @@ export namespace Panel {
          * inside the widget, unless they are set up to ignore propagation
          * limits. See {@link Gtk.EventController.set_propagation_limit}.
          * @since 4.18
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get limit_events(): boolean;
@@ -3864,6 +3846,7 @@ export namespace Panel {
          * inside the widget, unless they are set up to ignore propagation
          * limits. See {@link Gtk.EventController.set_propagation_limit}.
          * @since 4.18
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get limitEvents(): boolean;
@@ -3874,6 +3857,7 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_bottom(): number;
@@ -3884,6 +3868,7 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginBottom(): number;
@@ -3897,6 +3882,7 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_end(): number;
@@ -3910,6 +3896,7 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginEnd(): number;
@@ -3923,6 +3910,7 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_start(): number;
@@ -3936,6 +3924,7 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginStart(): number;
@@ -3946,6 +3935,7 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_top(): number;
@@ -3956,18 +3946,21 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginTop(): number;
         set marginTop(val: number);
         /**
          * The name of the widget.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
         get name(): string;
         set name(val: string);
         /**
          * The requested opacity of the widget.
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get opacity(): number;
@@ -3977,6 +3970,7 @@ export namespace Panel {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @default Gtk.Overflow.VISIBLE
          * @category Inherited from Gtk.Widget
          */
         get overflow(): Gtk.Overflow;
@@ -3986,15 +3980,17 @@ export namespace Panel {
          * @read-only
          * @category Inherited from Gtk.Widget
          */
-        get parent(): Gtk.Widget;
+        get parent(): Gtk.Widget | null;
         /**
          * Whether the widget will receive the default action when it is focused.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get receives_default(): boolean;
         set receives_default(val: boolean);
         /**
          * Whether the widget will receive the default action when it is focused.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get receivesDefault(): boolean;
@@ -4006,21 +4002,24 @@ export namespace Panel {
          * @read-only
          * @category Inherited from Gtk.Widget
          */
-        get root(): Gtk.Root;
+        get root(): Gtk.Root | null;
         /**
          * The scale factor of the widget.
          * @read-only
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
         /**
          * The scale factor of the widget.
          * @read-only
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
         /**
          * Whether the widget responds to input.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get sensitive(): boolean;
@@ -4039,10 +4038,11 @@ export namespace Panel {
          *
          * Note that if both {@link Gtk.Widget.tooltip_text} and
          * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltip_markup(): string;
-        set tooltip_markup(val: string);
+        get tooltip_markup(): string | null;
+        set tooltip_markup(val: string | null);
         /**
          * Sets the text of tooltip to be the given string, which is marked up
          * with Pango markup.
@@ -4057,10 +4057,11 @@ export namespace Panel {
          *
          * Note that if both {@link Gtk.Widget.tooltip_text} and
          * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltipMarkup(): string;
-        set tooltipMarkup(val: string);
+        get tooltipMarkup(): string | null;
+        set tooltipMarkup(val: string | null);
         /**
          * Sets the text of tooltip to be the given string.
          *
@@ -4074,10 +4075,11 @@ export namespace Panel {
          *
          * Note that if both {@link Gtk.Widget.tooltip_text} and
          * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltip_text(): string;
-        set tooltip_text(val: string);
+        get tooltip_text(): string | null;
+        set tooltip_text(val: string | null);
         /**
          * Sets the text of tooltip to be the given string.
          *
@@ -4091,36 +4093,42 @@ export namespace Panel {
          *
          * Note that if both {@link Gtk.Widget.tooltip_text} and
          * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltipText(): string;
-        set tooltipText(val: string);
+        get tooltipText(): string | null;
+        set tooltipText(val: string | null);
         /**
          * How to distribute vertical space if widget gets extra space.
+         * @default Gtk.Align.FILL
          * @category Inherited from Gtk.Widget
          */
         get valign(): Gtk.Align;
         set valign(val: Gtk.Align);
         /**
          * Whether to expand vertically.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpand(): boolean;
         set vexpand(val: boolean);
         /**
          * Whether to use the `vexpand` property.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpand_set(): boolean;
         set vexpand_set(val: boolean);
         /**
          * Whether to use the `vexpand` property.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpandSet(): boolean;
         set vexpandSet(val: boolean);
         /**
          * Whether the widget is visible.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get visible(): boolean;
@@ -4129,6 +4137,7 @@ export namespace Panel {
          * Overrides for width request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @default -1
          * @category Inherited from Gtk.Widget
          */
         get width_request(): number;
@@ -4137,6 +4146,7 @@ export namespace Panel {
          * Overrides for width request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @default -1
          * @category Inherited from Gtk.Widget
          */
         get widthRequest(): number;
@@ -4188,38 +4198,19 @@ export namespace Panel {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -4227,15 +4218,9 @@ export namespace Panel {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -4402,7 +4387,7 @@ export namespace Panel {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -4632,7 +4617,7 @@ export namespace Panel {
          * @param args parameters to use
          * @returns true if the action was activated
          */
-        activate_action(name: string, args?: GLib.Variant | null): boolean;
+        activate_action(name: string, args: GLib.Variant | null): boolean;
         /**
          * @param args
          */
@@ -4726,7 +4711,7 @@ export namespace Panel {
          * @param baseline new baseline, or -1
          * @param transform transformation to be applied
          */
-        allocate(width: number, height: number, baseline: number, transform?: Gsk.Transform | null): void;
+        allocate(width: number, height: number, baseline: number, transform: Gsk.Transform | null): void;
         /**
          * Called by widgets as the user moves around the window using
          * keyboard shortcuts.
@@ -4846,7 +4831,7 @@ export namespace Panel {
          * @param text text to set on the layout
          * @returns the new {@link Pango.Layout}
          */
-        create_pango_layout(text?: string | null): Pango.Layout;
+        create_pango_layout(text: string | null): Pango.Layout;
         /**
          * Clears the template children for the widget.
          *
@@ -5598,7 +5583,7 @@ export namespace Panel {
          * @param name the prefix for actions in `group`
          * @param group an action group
          */
-        insert_action_group(name: string, group?: Gio.ActionGroup | null): void;
+        insert_action_group(name: string, group: Gio.ActionGroup | null): void;
         /**
          * Sets the parent widget of the widget.
          *
@@ -5621,7 +5606,7 @@ export namespace Panel {
          * @param parent the parent widget to insert `widget` into
          * @param previous_sibling the new previous sibling of `widget`
          */
-        insert_after(parent: Gtk.Widget, previous_sibling?: Gtk.Widget | null): void;
+        insert_after(parent: Gtk.Widget, previous_sibling: Gtk.Widget | null): void;
         /**
          * Sets the parent widget of the widget.
          *
@@ -5643,7 +5628,7 @@ export namespace Panel {
          * @param parent the parent widget to insert `widget` into
          * @param next_sibling the new next sibling of `widget`
          */
-        insert_before(parent: Gtk.Widget, next_sibling?: Gtk.Widget | null): void;
+        insert_before(parent: Gtk.Widget, next_sibling: Gtk.Widget | null): void;
         /**
          * Determines whether the widget is a descendent of `ancestor`.
          * @param ancestor another {@link Gtk.Widget}
@@ -5953,7 +5938,7 @@ export namespace Panel {
          * inherited from its parent.
          * @param cursor the new cursor
          */
-        set_cursor(cursor?: Gdk.Cursor | null): void;
+        set_cursor(cursor: Gdk.Cursor | null): void;
         /**
          * Sets the cursor to be shown when the pointer hovers over
          * the widget.
@@ -5968,7 +5953,7 @@ export namespace Panel {
          * with a `NULL` cursor.
          * @param name the name of the cursor
          */
-        set_cursor_from_name(name?: string | null): void;
+        set_cursor_from_name(name: string | null): void;
         /**
          * Sets the reading direction on the widget.
          *
@@ -5996,7 +5981,7 @@ export namespace Panel {
          * {@link Gtk.Widget.grab_focus} on it.
          * @param child a direct child widget of `widget`   or `NULL` to unset the focus child
          */
-        set_focus_child(child?: Gtk.Widget | null): void;
+        set_focus_child(child: Gtk.Widget | null): void;
         /**
          * Sets whether the widget should grab focus when it is clicked
          * with the mouse.
@@ -6035,7 +6020,7 @@ export namespace Panel {
          * When not set, the widget will inherit the font map from its parent.
          * @param font_map a {@link Pango.FontMap}
          */
-        set_font_map(font_map?: Pango.FontMap | null): void;
+        set_font_map(font_map: Pango.FontMap | null): void;
         /**
          * Sets the `cairo_font_options_t` used for text rendering
          * in the widget.
@@ -6044,7 +6029,7 @@ export namespace Panel {
          * will be used.
          * @param options a `cairo_font_options_t` struct   to unset any previously set default font options
          */
-        set_font_options(options?: cairo.FontOptions | null): void;
+        set_font_options(options: cairo.FontOptions | null): void;
         /**
          * Sets the horizontal alignment of the widget.
          * @param align the horizontal alignment
@@ -6108,7 +6093,7 @@ export namespace Panel {
          * of the widget.
          * @param layout_manager a layout manager
          */
-        set_layout_manager(layout_manager?: Gtk.LayoutManager | null): void;
+        set_layout_manager(layout_manager: Gtk.LayoutManager | null): void;
         /**
          * Sets whether the widget acts like a modal dialog,
          * with respect to event delivery.
@@ -6284,7 +6269,7 @@ export namespace Panel {
          * See also {@link Gtk.Tooltip.set_markup}.
          * @param markup the contents of the tooltip for `widget`
          */
-        set_tooltip_markup(markup?: string | null): void;
+        set_tooltip_markup(markup: string | null): void;
         /**
          * Sets the contents of the tooltip for the widget.
          *
@@ -6298,7 +6283,7 @@ export namespace Panel {
          * See also {@link Gtk.Tooltip.set_text}.
          * @param text the contents of the tooltip for `widget`
          */
-        set_tooltip_text(text?: string | null): void;
+        set_tooltip_text(text: string | null): void;
         /**
          * Sets the vertical alignment of the widget.
          * @param align the vertical alignment
@@ -6608,7 +6593,7 @@ export namespace Panel {
          * @param child a direct child widget of `widget`   or `NULL` to unset the focus child
          * @virtual
          */
-        vfunc_set_focus_child(child?: Gtk.Widget | null): void;
+        vfunc_set_focus_child(child: Gtk.Widget | null): void;
         /**
          * Flags a widget to be displayed.
          *
@@ -6749,9 +6734,9 @@ export namespace Panel {
                 Gtk.Orientable.ConstructorProps {
             closeable: boolean;
             empty: boolean;
-            placeholder: Gtk.Widget;
-            visible_child: Widget;
-            visibleChild: Widget;
+            placeholder: Gtk.Widget | null;
+            visible_child: Widget | null;
+            visibleChild: Widget | null;
         }
     }
 
@@ -6771,18 +6756,20 @@ export namespace Panel {
 
         /**
          * @read-only
+         * @default false
          */
         get closeable(): boolean;
         /**
          * @read-only
+         * @default true
          */
         get empty(): boolean;
-        get placeholder(): Gtk.Widget;
-        set placeholder(val: Gtk.Widget);
-        get visible_child(): Widget;
-        set visible_child(val: Widget);
-        get visibleChild(): Widget;
-        set visibleChild(val: Widget);
+        get placeholder(): Gtk.Widget | null;
+        set placeholder(val: Gtk.Widget | null);
+        get visible_child(): Widget | null;
+        set visible_child(val: Widget | null);
+        get visibleChild(): Widget | null;
+        set visibleChild(val: Widget | null);
 
         /**
          * Compile-time signal type information.
@@ -6914,7 +6901,7 @@ export namespace Panel {
          * Sets the header for the frame, such as a {@link Panel.FrameSwitcher}.
          * @param header a {@link Panel.FrameHeader}
          */
-        set_header(header?: FrameHeader | null): void;
+        set_header(header: FrameHeader | null): void;
         /**
          * Sets the placeholder widget for the frame.
          *
@@ -6922,7 +6909,7 @@ export namespace Panel {
          * to display in the frame.
          * @param placeholder a {@link Gtk.Widget} or `null`
          */
-        set_placeholder(placeholder?: Gtk.Widget | null): void;
+        set_placeholder(placeholder: Gtk.Widget | null): void;
         /**
          * Sets the requested size for the panel frame.
          * @param requested_size the requested size.
@@ -6937,6 +6924,7 @@ export namespace Panel {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
@@ -6945,12 +6933,14 @@ export namespace Panel {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
         set accessibleRole(val: Gtk.AccessibleRole);
         /**
          * The orientation of the orientable.
+         * @default Gtk.Orientation.HORIZONTAL
          * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
@@ -7054,7 +7044,7 @@ export namespace Panel {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent?: Gtk.Accessible | null, next_sibling?: Gtk.Accessible | null): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
         /**
          * Updates the next accessible sibling.
          *
@@ -7062,7 +7052,7 @@ export namespace Panel {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling?: Gtk.Accessible | null): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
         /**
          * Informs ATs that the platform state has changed.
          *
@@ -7173,7 +7163,7 @@ export namespace Panel {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -7187,7 +7177,7 @@ export namespace Panel {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called at the end of each custom element handled by
@@ -7202,7 +7192,7 @@ export namespace Panel {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called for each unknown element under `<child>`.
@@ -7316,38 +7306,19 @@ export namespace Panel {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -7355,15 +7326,9 @@ export namespace Panel {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -7530,7 +7495,7 @@ export namespace Panel {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -7795,11 +7760,13 @@ export namespace Panel {
 
         /**
          * Whether to show the icon or not.
+         * @default false
          */
         get show_icon(): boolean;
         set show_icon(val: boolean);
         /**
          * Whether to show the icon or not.
+         * @default false
          */
         get showIcon(): boolean;
         set showIcon(val: boolean);
@@ -7863,6 +7830,7 @@ export namespace Panel {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
@@ -7871,6 +7839,7 @@ export namespace Panel {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
@@ -7879,14 +7848,15 @@ export namespace Panel {
          * The frame the header is attached to, or `null`.
          * @category Inherited from Panel.FrameHeader
          */
-        get frame(): Frame;
-        set frame(val: Frame);
+        get frame(): Frame | null;
+        set frame(val: Frame | null);
         /**
          * Whether the widget or any of its descendents can accept
          * the input focus.
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get can_focus(): boolean;
@@ -7897,18 +7867,21 @@ export namespace Panel {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get canFocus(): boolean;
         set canFocus(val: boolean);
         /**
          * Whether the widget can receive pointer events.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get can_target(): boolean;
         set can_target(val: boolean);
         /**
          * Whether the widget can receive pointer events.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get canTarget(): boolean;
@@ -7931,6 +7904,7 @@ export namespace Panel {
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
          * @construct-only
+         * @default null
          * @category Inherited from Gtk.Widget
          */
         get css_name(): string;
@@ -7940,6 +7914,7 @@ export namespace Panel {
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
          * @construct-only
+         * @default null
          * @category Inherited from Gtk.Widget
          */
         get cssName(): string;
@@ -7947,12 +7922,13 @@ export namespace Panel {
          * The cursor used by `widget`.
          * @category Inherited from Gtk.Widget
          */
-        get cursor(): Gdk.Cursor;
-        set cursor(val: Gdk.Cursor);
+        get cursor(): Gdk.Cursor | null;
+        set cursor(val: Gdk.Cursor | null);
         /**
          * Whether the widget should grab focus when it is clicked with the mouse.
          *
          * This property is only relevant for widgets that can take focus.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get focus_on_click(): boolean;
@@ -7961,18 +7937,21 @@ export namespace Panel {
          * Whether the widget should grab focus when it is clicked with the mouse.
          *
          * This property is only relevant for widgets that can take focus.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get focusOnClick(): boolean;
         set focusOnClick(val: boolean);
         /**
          * Whether this widget itself will accept the input focus.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get focusable(): boolean;
         set focusable(val: boolean);
         /**
          * How to distribute horizontal space if widget gets extra space.
+         * @default Gtk.Align.FILL
          * @category Inherited from Gtk.Widget
          */
         get halign(): Gtk.Align;
@@ -7980,24 +7959,28 @@ export namespace Panel {
         /**
          * Whether the widget is the default widget.
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get has_default(): boolean;
         /**
          * Whether the widget is the default widget.
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hasDefault(): boolean;
         /**
          * Whether the widget has the input focus.
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get has_focus(): boolean;
         /**
          * Whether the widget has the input focus.
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hasFocus(): boolean;
@@ -8008,6 +7991,7 @@ export namespace Panel {
          * A true value indicates that `widget` can have a tooltip, in this case
          * the widget will be queried using `Gtk.Widget::query-tooltip` to
          * determine whether it will provide a tooltip or not.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get has_tooltip(): boolean;
@@ -8019,6 +8003,7 @@ export namespace Panel {
          * A true value indicates that `widget` can have a tooltip, in this case
          * the widget will be queried using `Gtk.Widget::query-tooltip` to
          * determine whether it will provide a tooltip or not.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hasTooltip(): boolean;
@@ -8027,6 +8012,7 @@ export namespace Panel {
          * Overrides for height request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @default -1
          * @category Inherited from Gtk.Widget
          */
         get height_request(): number;
@@ -8035,24 +8021,28 @@ export namespace Panel {
          * Overrides for height request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @default -1
          * @category Inherited from Gtk.Widget
          */
         get heightRequest(): number;
         set heightRequest(val: number);
         /**
          * Whether to expand horizontally.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpand(): boolean;
         set hexpand(val: boolean);
         /**
          * Whether to use the `hexpand` property.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpand_set(): boolean;
         set hexpand_set(val: boolean);
         /**
          * Whether to use the `hexpand` property.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpandSet(): boolean;
@@ -8065,8 +8055,8 @@ export namespace Panel {
          * typically in their instance init function.
          * @category Inherited from Gtk.Widget
          */
-        get layout_manager(): Gtk.LayoutManager;
-        set layout_manager(val: Gtk.LayoutManager);
+        get layout_manager(): Gtk.LayoutManager | null;
+        set layout_manager(val: Gtk.LayoutManager | null);
         /**
          * The {@link Gtk.LayoutManager} instance to use to compute
          * the preferred size of the widget, and allocate its children.
@@ -8075,8 +8065,8 @@ export namespace Panel {
          * typically in their instance init function.
          * @category Inherited from Gtk.Widget
          */
-        get layoutManager(): Gtk.LayoutManager;
-        set layoutManager(val: Gtk.LayoutManager);
+        get layoutManager(): Gtk.LayoutManager | null;
+        set layoutManager(val: Gtk.LayoutManager | null);
         /**
          * Makes this widget act like a modal dialog, with respect to
          * event delivery.
@@ -8085,6 +8075,7 @@ export namespace Panel {
          * inside the widget, unless they are set up to ignore propagation
          * limits. See {@link Gtk.EventController.set_propagation_limit}.
          * @since 4.18
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get limit_events(): boolean;
@@ -8097,6 +8088,7 @@ export namespace Panel {
          * inside the widget, unless they are set up to ignore propagation
          * limits. See {@link Gtk.EventController.set_propagation_limit}.
          * @since 4.18
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get limitEvents(): boolean;
@@ -8107,6 +8099,7 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_bottom(): number;
@@ -8117,6 +8110,7 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginBottom(): number;
@@ -8130,6 +8124,7 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_end(): number;
@@ -8143,6 +8138,7 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginEnd(): number;
@@ -8156,6 +8152,7 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_start(): number;
@@ -8169,6 +8166,7 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginStart(): number;
@@ -8179,6 +8177,7 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_top(): number;
@@ -8189,18 +8188,21 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginTop(): number;
         set marginTop(val: number);
         /**
          * The name of the widget.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
         get name(): string;
         set name(val: string);
         /**
          * The requested opacity of the widget.
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get opacity(): number;
@@ -8210,6 +8212,7 @@ export namespace Panel {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @default Gtk.Overflow.VISIBLE
          * @category Inherited from Gtk.Widget
          */
         get overflow(): Gtk.Overflow;
@@ -8219,15 +8222,17 @@ export namespace Panel {
          * @read-only
          * @category Inherited from Gtk.Widget
          */
-        get parent(): Gtk.Widget;
+        get parent(): Gtk.Widget | null;
         /**
          * Whether the widget will receive the default action when it is focused.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get receives_default(): boolean;
         set receives_default(val: boolean);
         /**
          * Whether the widget will receive the default action when it is focused.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get receivesDefault(): boolean;
@@ -8239,21 +8244,24 @@ export namespace Panel {
          * @read-only
          * @category Inherited from Gtk.Widget
          */
-        get root(): Gtk.Root;
+        get root(): Gtk.Root | null;
         /**
          * The scale factor of the widget.
          * @read-only
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
         /**
          * The scale factor of the widget.
          * @read-only
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
         /**
          * Whether the widget responds to input.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get sensitive(): boolean;
@@ -8272,10 +8280,11 @@ export namespace Panel {
          *
          * Note that if both {@link Gtk.Widget.tooltip_text} and
          * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltip_markup(): string;
-        set tooltip_markup(val: string);
+        get tooltip_markup(): string | null;
+        set tooltip_markup(val: string | null);
         /**
          * Sets the text of tooltip to be the given string, which is marked up
          * with Pango markup.
@@ -8290,10 +8299,11 @@ export namespace Panel {
          *
          * Note that if both {@link Gtk.Widget.tooltip_text} and
          * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltipMarkup(): string;
-        set tooltipMarkup(val: string);
+        get tooltipMarkup(): string | null;
+        set tooltipMarkup(val: string | null);
         /**
          * Sets the text of tooltip to be the given string.
          *
@@ -8307,10 +8317,11 @@ export namespace Panel {
          *
          * Note that if both {@link Gtk.Widget.tooltip_text} and
          * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltip_text(): string;
-        set tooltip_text(val: string);
+        get tooltip_text(): string | null;
+        set tooltip_text(val: string | null);
         /**
          * Sets the text of tooltip to be the given string.
          *
@@ -8324,36 +8335,42 @@ export namespace Panel {
          *
          * Note that if both {@link Gtk.Widget.tooltip_text} and
          * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltipText(): string;
-        set tooltipText(val: string);
+        get tooltipText(): string | null;
+        set tooltipText(val: string | null);
         /**
          * How to distribute vertical space if widget gets extra space.
+         * @default Gtk.Align.FILL
          * @category Inherited from Gtk.Widget
          */
         get valign(): Gtk.Align;
         set valign(val: Gtk.Align);
         /**
          * Whether to expand vertically.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpand(): boolean;
         set vexpand(val: boolean);
         /**
          * Whether to use the `vexpand` property.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpand_set(): boolean;
         set vexpand_set(val: boolean);
         /**
          * Whether to use the `vexpand` property.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpandSet(): boolean;
         set vexpandSet(val: boolean);
         /**
          * Whether the widget is visible.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get visible(): boolean;
@@ -8362,6 +8379,7 @@ export namespace Panel {
          * Overrides for width request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @default -1
          * @category Inherited from Gtk.Widget
          */
         get width_request(): number;
@@ -8370,6 +8388,7 @@ export namespace Panel {
          * Overrides for width request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @default -1
          * @category Inherited from Gtk.Widget
          */
         get widthRequest(): number;
@@ -8473,7 +8492,7 @@ export namespace Panel {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent?: Gtk.Accessible | null, next_sibling?: Gtk.Accessible | null): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
         /**
          * Updates the next accessible sibling.
          *
@@ -8481,7 +8500,7 @@ export namespace Panel {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling?: Gtk.Accessible | null): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
         /**
          * Informs ATs that the platform state has changed.
          *
@@ -8592,7 +8611,7 @@ export namespace Panel {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -8606,7 +8625,7 @@ export namespace Panel {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called at the end of each custom element handled by
@@ -8621,7 +8640,7 @@ export namespace Panel {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called for each unknown element under `<child>`.
@@ -8707,12 +8726,12 @@ export namespace Panel {
          * Notifies the header that the visible page has changed.
          * @param widget a {@link Panel.Widget} or `null` if no page is visible
          */
-        page_changed(widget?: Widget | null): void;
+        page_changed(widget: Widget | null): void;
         /**
          * Sets the frame the header is attached to.
          * @param frame a {@link Panel.Frame} or `null`
          */
-        set_frame(frame?: Frame | null): void;
+        set_frame(frame: Frame | null): void;
         /**
          * Add a widget into a the prefix area with a priority. The highest
          * the priority the closest to the start.
@@ -8740,7 +8759,7 @@ export namespace Panel {
          * @param widget a {@link Panel.Widget} or `null` if no page is visible
          * @virtual
          */
-        vfunc_page_changed(widget?: Widget | null): void;
+        vfunc_page_changed(widget: Widget | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -8788,38 +8807,19 @@ export namespace Panel {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -8827,15 +8827,9 @@ export namespace Panel {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -9002,7 +8996,7 @@ export namespace Panel {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -9232,7 +9226,7 @@ export namespace Panel {
          * @param args parameters to use
          * @returns true if the action was activated
          */
-        activate_action(name: string, args?: GLib.Variant | null): boolean;
+        activate_action(name: string, args: GLib.Variant | null): boolean;
         /**
          * Activates the `default.activate` action for the widget.
          *
@@ -9321,7 +9315,7 @@ export namespace Panel {
          * @param baseline new baseline, or -1
          * @param transform transformation to be applied
          */
-        allocate(width: number, height: number, baseline: number, transform?: Gsk.Transform | null): void;
+        allocate(width: number, height: number, baseline: number, transform: Gsk.Transform | null): void;
         /**
          * Called by widgets as the user moves around the window using
          * keyboard shortcuts.
@@ -9441,7 +9435,7 @@ export namespace Panel {
          * @param text text to set on the layout
          * @returns the new {@link Pango.Layout}
          */
-        create_pango_layout(text?: string | null): Pango.Layout;
+        create_pango_layout(text: string | null): Pango.Layout;
         /**
          * Clears the template children for the widget.
          *
@@ -10193,7 +10187,7 @@ export namespace Panel {
          * @param name the prefix for actions in `group`
          * @param group an action group
          */
-        insert_action_group(name: string, group?: Gio.ActionGroup | null): void;
+        insert_action_group(name: string, group: Gio.ActionGroup | null): void;
         /**
          * Sets the parent widget of the widget.
          *
@@ -10216,7 +10210,7 @@ export namespace Panel {
          * @param parent the parent widget to insert `widget` into
          * @param previous_sibling the new previous sibling of `widget`
          */
-        insert_after(parent: Gtk.Widget, previous_sibling?: Gtk.Widget | null): void;
+        insert_after(parent: Gtk.Widget, previous_sibling: Gtk.Widget | null): void;
         /**
          * Sets the parent widget of the widget.
          *
@@ -10238,7 +10232,7 @@ export namespace Panel {
          * @param parent the parent widget to insert `widget` into
          * @param next_sibling the new next sibling of `widget`
          */
-        insert_before(parent: Gtk.Widget, next_sibling?: Gtk.Widget | null): void;
+        insert_before(parent: Gtk.Widget, next_sibling: Gtk.Widget | null): void;
         /**
          * Determines whether the widget is a descendent of `ancestor`.
          * @param ancestor another {@link Gtk.Widget}
@@ -10548,7 +10542,7 @@ export namespace Panel {
          * inherited from its parent.
          * @param cursor the new cursor
          */
-        set_cursor(cursor?: Gdk.Cursor | null): void;
+        set_cursor(cursor: Gdk.Cursor | null): void;
         /**
          * Sets the cursor to be shown when the pointer hovers over
          * the widget.
@@ -10563,7 +10557,7 @@ export namespace Panel {
          * with a `NULL` cursor.
          * @param name the name of the cursor
          */
-        set_cursor_from_name(name?: string | null): void;
+        set_cursor_from_name(name: string | null): void;
         /**
          * Sets the reading direction on the widget.
          *
@@ -10591,7 +10585,7 @@ export namespace Panel {
          * {@link Gtk.Widget.grab_focus} on it.
          * @param child a direct child widget of `widget`   or `NULL` to unset the focus child
          */
-        set_focus_child(child?: Gtk.Widget | null): void;
+        set_focus_child(child: Gtk.Widget | null): void;
         /**
          * Sets whether the widget should grab focus when it is clicked
          * with the mouse.
@@ -10630,7 +10624,7 @@ export namespace Panel {
          * When not set, the widget will inherit the font map from its parent.
          * @param font_map a {@link Pango.FontMap}
          */
-        set_font_map(font_map?: Pango.FontMap | null): void;
+        set_font_map(font_map: Pango.FontMap | null): void;
         /**
          * Sets the `cairo_font_options_t` used for text rendering
          * in the widget.
@@ -10639,7 +10633,7 @@ export namespace Panel {
          * will be used.
          * @param options a `cairo_font_options_t` struct   to unset any previously set default font options
          */
-        set_font_options(options?: cairo.FontOptions | null): void;
+        set_font_options(options: cairo.FontOptions | null): void;
         /**
          * Sets the horizontal alignment of the widget.
          * @param align the horizontal alignment
@@ -10703,7 +10697,7 @@ export namespace Panel {
          * of the widget.
          * @param layout_manager a layout manager
          */
-        set_layout_manager(layout_manager?: Gtk.LayoutManager | null): void;
+        set_layout_manager(layout_manager: Gtk.LayoutManager | null): void;
         /**
          * Sets whether the widget acts like a modal dialog,
          * with respect to event delivery.
@@ -10879,7 +10873,7 @@ export namespace Panel {
          * See also {@link Gtk.Tooltip.set_markup}.
          * @param markup the contents of the tooltip for `widget`
          */
-        set_tooltip_markup(markup?: string | null): void;
+        set_tooltip_markup(markup: string | null): void;
         /**
          * Sets the contents of the tooltip for the widget.
          *
@@ -10893,7 +10887,7 @@ export namespace Panel {
          * See also {@link Gtk.Tooltip.set_text}.
          * @param text the contents of the tooltip for `widget`
          */
-        set_tooltip_text(text?: string | null): void;
+        set_tooltip_text(text: string | null): void;
         /**
          * Sets the vertical alignment of the widget.
          * @param align the vertical alignment
@@ -11203,7 +11197,7 @@ export namespace Panel {
          * @param child a direct child widget of `widget`   or `NULL` to unset the focus child
          * @virtual
          */
-        vfunc_set_focus_child(child?: Gtk.Widget | null): void;
+        vfunc_set_focus_child(child: Gtk.Widget | null): void;
         /**
          * Flags a widget to be displayed.
          *
@@ -11378,6 +11372,7 @@ export namespace Panel {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
@@ -11386,12 +11381,14 @@ export namespace Panel {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
         set accessibleRole(val: Gtk.AccessibleRole);
         /**
          * The orientation of the orientable.
+         * @default Gtk.Orientation.HORIZONTAL
          * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
@@ -11400,14 +11397,15 @@ export namespace Panel {
          * The frame the header is attached to, or `null`.
          * @category Inherited from Panel.FrameHeader
          */
-        get frame(): Frame;
-        set frame(val: Frame);
+        get frame(): Frame | null;
+        set frame(val: Frame | null);
         /**
          * Whether the widget or any of its descendents can accept
          * the input focus.
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get can_focus(): boolean;
@@ -11418,18 +11416,21 @@ export namespace Panel {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get canFocus(): boolean;
         set canFocus(val: boolean);
         /**
          * Whether the widget can receive pointer events.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get can_target(): boolean;
         set can_target(val: boolean);
         /**
          * Whether the widget can receive pointer events.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get canTarget(): boolean;
@@ -11452,6 +11453,7 @@ export namespace Panel {
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
          * @construct-only
+         * @default null
          * @category Inherited from Gtk.Widget
          */
         get css_name(): string;
@@ -11461,6 +11463,7 @@ export namespace Panel {
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
          * @construct-only
+         * @default null
          * @category Inherited from Gtk.Widget
          */
         get cssName(): string;
@@ -11468,12 +11471,13 @@ export namespace Panel {
          * The cursor used by `widget`.
          * @category Inherited from Gtk.Widget
          */
-        get cursor(): Gdk.Cursor;
-        set cursor(val: Gdk.Cursor);
+        get cursor(): Gdk.Cursor | null;
+        set cursor(val: Gdk.Cursor | null);
         /**
          * Whether the widget should grab focus when it is clicked with the mouse.
          *
          * This property is only relevant for widgets that can take focus.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get focus_on_click(): boolean;
@@ -11482,18 +11486,21 @@ export namespace Panel {
          * Whether the widget should grab focus when it is clicked with the mouse.
          *
          * This property is only relevant for widgets that can take focus.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get focusOnClick(): boolean;
         set focusOnClick(val: boolean);
         /**
          * Whether this widget itself will accept the input focus.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get focusable(): boolean;
         set focusable(val: boolean);
         /**
          * How to distribute horizontal space if widget gets extra space.
+         * @default Gtk.Align.FILL
          * @category Inherited from Gtk.Widget
          */
         get halign(): Gtk.Align;
@@ -11501,24 +11508,28 @@ export namespace Panel {
         /**
          * Whether the widget is the default widget.
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get has_default(): boolean;
         /**
          * Whether the widget is the default widget.
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hasDefault(): boolean;
         /**
          * Whether the widget has the input focus.
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get has_focus(): boolean;
         /**
          * Whether the widget has the input focus.
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hasFocus(): boolean;
@@ -11529,6 +11540,7 @@ export namespace Panel {
          * A true value indicates that `widget` can have a tooltip, in this case
          * the widget will be queried using `Gtk.Widget::query-tooltip` to
          * determine whether it will provide a tooltip or not.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get has_tooltip(): boolean;
@@ -11540,6 +11552,7 @@ export namespace Panel {
          * A true value indicates that `widget` can have a tooltip, in this case
          * the widget will be queried using `Gtk.Widget::query-tooltip` to
          * determine whether it will provide a tooltip or not.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hasTooltip(): boolean;
@@ -11548,6 +11561,7 @@ export namespace Panel {
          * Overrides for height request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @default -1
          * @category Inherited from Gtk.Widget
          */
         get height_request(): number;
@@ -11556,24 +11570,28 @@ export namespace Panel {
          * Overrides for height request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @default -1
          * @category Inherited from Gtk.Widget
          */
         get heightRequest(): number;
         set heightRequest(val: number);
         /**
          * Whether to expand horizontally.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpand(): boolean;
         set hexpand(val: boolean);
         /**
          * Whether to use the `hexpand` property.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpand_set(): boolean;
         set hexpand_set(val: boolean);
         /**
          * Whether to use the `hexpand` property.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpandSet(): boolean;
@@ -11586,8 +11604,8 @@ export namespace Panel {
          * typically in their instance init function.
          * @category Inherited from Gtk.Widget
          */
-        get layout_manager(): Gtk.LayoutManager;
-        set layout_manager(val: Gtk.LayoutManager);
+        get layout_manager(): Gtk.LayoutManager | null;
+        set layout_manager(val: Gtk.LayoutManager | null);
         /**
          * The {@link Gtk.LayoutManager} instance to use to compute
          * the preferred size of the widget, and allocate its children.
@@ -11596,8 +11614,8 @@ export namespace Panel {
          * typically in their instance init function.
          * @category Inherited from Gtk.Widget
          */
-        get layoutManager(): Gtk.LayoutManager;
-        set layoutManager(val: Gtk.LayoutManager);
+        get layoutManager(): Gtk.LayoutManager | null;
+        set layoutManager(val: Gtk.LayoutManager | null);
         /**
          * Makes this widget act like a modal dialog, with respect to
          * event delivery.
@@ -11606,6 +11624,7 @@ export namespace Panel {
          * inside the widget, unless they are set up to ignore propagation
          * limits. See {@link Gtk.EventController.set_propagation_limit}.
          * @since 4.18
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get limit_events(): boolean;
@@ -11618,6 +11637,7 @@ export namespace Panel {
          * inside the widget, unless they are set up to ignore propagation
          * limits. See {@link Gtk.EventController.set_propagation_limit}.
          * @since 4.18
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get limitEvents(): boolean;
@@ -11628,6 +11648,7 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_bottom(): number;
@@ -11638,6 +11659,7 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginBottom(): number;
@@ -11651,6 +11673,7 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_end(): number;
@@ -11664,6 +11687,7 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginEnd(): number;
@@ -11677,6 +11701,7 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_start(): number;
@@ -11690,6 +11715,7 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginStart(): number;
@@ -11700,6 +11726,7 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_top(): number;
@@ -11710,18 +11737,21 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginTop(): number;
         set marginTop(val: number);
         /**
          * The name of the widget.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
         get name(): string;
         set name(val: string);
         /**
          * The requested opacity of the widget.
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get opacity(): number;
@@ -11731,6 +11761,7 @@ export namespace Panel {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @default Gtk.Overflow.VISIBLE
          * @category Inherited from Gtk.Widget
          */
         get overflow(): Gtk.Overflow;
@@ -11740,15 +11771,17 @@ export namespace Panel {
          * @read-only
          * @category Inherited from Gtk.Widget
          */
-        get parent(): Gtk.Widget;
+        get parent(): Gtk.Widget | null;
         /**
          * Whether the widget will receive the default action when it is focused.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get receives_default(): boolean;
         set receives_default(val: boolean);
         /**
          * Whether the widget will receive the default action when it is focused.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get receivesDefault(): boolean;
@@ -11760,21 +11793,24 @@ export namespace Panel {
          * @read-only
          * @category Inherited from Gtk.Widget
          */
-        get root(): Gtk.Root;
+        get root(): Gtk.Root | null;
         /**
          * The scale factor of the widget.
          * @read-only
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
         /**
          * The scale factor of the widget.
          * @read-only
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
         /**
          * Whether the widget responds to input.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get sensitive(): boolean;
@@ -11793,10 +11829,11 @@ export namespace Panel {
          *
          * Note that if both {@link Gtk.Widget.tooltip_text} and
          * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltip_markup(): string;
-        set tooltip_markup(val: string);
+        get tooltip_markup(): string | null;
+        set tooltip_markup(val: string | null);
         /**
          * Sets the text of tooltip to be the given string, which is marked up
          * with Pango markup.
@@ -11811,10 +11848,11 @@ export namespace Panel {
          *
          * Note that if both {@link Gtk.Widget.tooltip_text} and
          * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltipMarkup(): string;
-        set tooltipMarkup(val: string);
+        get tooltipMarkup(): string | null;
+        set tooltipMarkup(val: string | null);
         /**
          * Sets the text of tooltip to be the given string.
          *
@@ -11828,10 +11866,11 @@ export namespace Panel {
          *
          * Note that if both {@link Gtk.Widget.tooltip_text} and
          * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltip_text(): string;
-        set tooltip_text(val: string);
+        get tooltip_text(): string | null;
+        set tooltip_text(val: string | null);
         /**
          * Sets the text of tooltip to be the given string.
          *
@@ -11845,36 +11884,42 @@ export namespace Panel {
          *
          * Note that if both {@link Gtk.Widget.tooltip_text} and
          * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltipText(): string;
-        set tooltipText(val: string);
+        get tooltipText(): string | null;
+        set tooltipText(val: string | null);
         /**
          * How to distribute vertical space if widget gets extra space.
+         * @default Gtk.Align.FILL
          * @category Inherited from Gtk.Widget
          */
         get valign(): Gtk.Align;
         set valign(val: Gtk.Align);
         /**
          * Whether to expand vertically.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpand(): boolean;
         set vexpand(val: boolean);
         /**
          * Whether to use the `vexpand` property.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpand_set(): boolean;
         set vexpand_set(val: boolean);
         /**
          * Whether to use the `vexpand` property.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpandSet(): boolean;
         set vexpandSet(val: boolean);
         /**
          * Whether the widget is visible.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get visible(): boolean;
@@ -11883,6 +11928,7 @@ export namespace Panel {
          * Overrides for width request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @default -1
          * @category Inherited from Gtk.Widget
          */
         get width_request(): number;
@@ -11891,6 +11937,7 @@ export namespace Panel {
          * Overrides for width request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @default -1
          * @category Inherited from Gtk.Widget
          */
         get widthRequest(): number;
@@ -11994,7 +12041,7 @@ export namespace Panel {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent?: Gtk.Accessible | null, next_sibling?: Gtk.Accessible | null): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
         /**
          * Updates the next accessible sibling.
          *
@@ -12002,7 +12049,7 @@ export namespace Panel {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling?: Gtk.Accessible | null): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
         /**
          * Informs ATs that the platform state has changed.
          *
@@ -12113,7 +12160,7 @@ export namespace Panel {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -12127,7 +12174,7 @@ export namespace Panel {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called at the end of each custom element handled by
@@ -12142,7 +12189,7 @@ export namespace Panel {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called for each unknown element under `<child>`.
@@ -12238,12 +12285,12 @@ export namespace Panel {
          * Notifies the header that the visible page has changed.
          * @param widget a {@link Panel.Widget} or `null` if no page is visible
          */
-        page_changed(widget?: Widget | null): void;
+        page_changed(widget: Widget | null): void;
         /**
          * Sets the frame the header is attached to.
          * @param frame a {@link Panel.Frame} or `null`
          */
-        set_frame(frame?: Frame | null): void;
+        set_frame(frame: Frame | null): void;
         /**
          * Add a widget into a the prefix area with a priority. The highest
          * the priority the closest to the start.
@@ -12271,7 +12318,7 @@ export namespace Panel {
          * @param widget a {@link Panel.Widget} or `null` if no page is visible
          * @virtual
          */
-        vfunc_page_changed(widget?: Widget | null): void;
+        vfunc_page_changed(widget: Widget | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -12319,38 +12366,19 @@ export namespace Panel {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -12358,15 +12386,9 @@ export namespace Panel {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -12533,7 +12555,7 @@ export namespace Panel {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -12763,7 +12785,7 @@ export namespace Panel {
          * @param args parameters to use
          * @returns true if the action was activated
          */
-        activate_action(name: string, args?: GLib.Variant | null): boolean;
+        activate_action(name: string, args: GLib.Variant | null): boolean;
         /**
          * Activates the `default.activate` action for the widget.
          *
@@ -12852,7 +12874,7 @@ export namespace Panel {
          * @param baseline new baseline, or -1
          * @param transform transformation to be applied
          */
-        allocate(width: number, height: number, baseline: number, transform?: Gsk.Transform | null): void;
+        allocate(width: number, height: number, baseline: number, transform: Gsk.Transform | null): void;
         /**
          * Called by widgets as the user moves around the window using
          * keyboard shortcuts.
@@ -12972,7 +12994,7 @@ export namespace Panel {
          * @param text text to set on the layout
          * @returns the new {@link Pango.Layout}
          */
-        create_pango_layout(text?: string | null): Pango.Layout;
+        create_pango_layout(text: string | null): Pango.Layout;
         /**
          * Clears the template children for the widget.
          *
@@ -13724,7 +13746,7 @@ export namespace Panel {
          * @param name the prefix for actions in `group`
          * @param group an action group
          */
-        insert_action_group(name: string, group?: Gio.ActionGroup | null): void;
+        insert_action_group(name: string, group: Gio.ActionGroup | null): void;
         /**
          * Sets the parent widget of the widget.
          *
@@ -13747,7 +13769,7 @@ export namespace Panel {
          * @param parent the parent widget to insert `widget` into
          * @param previous_sibling the new previous sibling of `widget`
          */
-        insert_after(parent: Gtk.Widget, previous_sibling?: Gtk.Widget | null): void;
+        insert_after(parent: Gtk.Widget, previous_sibling: Gtk.Widget | null): void;
         /**
          * Sets the parent widget of the widget.
          *
@@ -13769,7 +13791,7 @@ export namespace Panel {
          * @param parent the parent widget to insert `widget` into
          * @param next_sibling the new next sibling of `widget`
          */
-        insert_before(parent: Gtk.Widget, next_sibling?: Gtk.Widget | null): void;
+        insert_before(parent: Gtk.Widget, next_sibling: Gtk.Widget | null): void;
         /**
          * Determines whether the widget is a descendent of `ancestor`.
          * @param ancestor another {@link Gtk.Widget}
@@ -14079,7 +14101,7 @@ export namespace Panel {
          * inherited from its parent.
          * @param cursor the new cursor
          */
-        set_cursor(cursor?: Gdk.Cursor | null): void;
+        set_cursor(cursor: Gdk.Cursor | null): void;
         /**
          * Sets the cursor to be shown when the pointer hovers over
          * the widget.
@@ -14094,7 +14116,7 @@ export namespace Panel {
          * with a `NULL` cursor.
          * @param name the name of the cursor
          */
-        set_cursor_from_name(name?: string | null): void;
+        set_cursor_from_name(name: string | null): void;
         /**
          * Sets the reading direction on the widget.
          *
@@ -14122,7 +14144,7 @@ export namespace Panel {
          * {@link Gtk.Widget.grab_focus} on it.
          * @param child a direct child widget of `widget`   or `NULL` to unset the focus child
          */
-        set_focus_child(child?: Gtk.Widget | null): void;
+        set_focus_child(child: Gtk.Widget | null): void;
         /**
          * Sets whether the widget should grab focus when it is clicked
          * with the mouse.
@@ -14161,7 +14183,7 @@ export namespace Panel {
          * When not set, the widget will inherit the font map from its parent.
          * @param font_map a {@link Pango.FontMap}
          */
-        set_font_map(font_map?: Pango.FontMap | null): void;
+        set_font_map(font_map: Pango.FontMap | null): void;
         /**
          * Sets the `cairo_font_options_t` used for text rendering
          * in the widget.
@@ -14170,7 +14192,7 @@ export namespace Panel {
          * will be used.
          * @param options a `cairo_font_options_t` struct   to unset any previously set default font options
          */
-        set_font_options(options?: cairo.FontOptions | null): void;
+        set_font_options(options: cairo.FontOptions | null): void;
         /**
          * Sets the horizontal alignment of the widget.
          * @param align the horizontal alignment
@@ -14234,7 +14256,7 @@ export namespace Panel {
          * of the widget.
          * @param layout_manager a layout manager
          */
-        set_layout_manager(layout_manager?: Gtk.LayoutManager | null): void;
+        set_layout_manager(layout_manager: Gtk.LayoutManager | null): void;
         /**
          * Sets whether the widget acts like a modal dialog,
          * with respect to event delivery.
@@ -14410,7 +14432,7 @@ export namespace Panel {
          * See also {@link Gtk.Tooltip.set_markup}.
          * @param markup the contents of the tooltip for `widget`
          */
-        set_tooltip_markup(markup?: string | null): void;
+        set_tooltip_markup(markup: string | null): void;
         /**
          * Sets the contents of the tooltip for the widget.
          *
@@ -14424,7 +14446,7 @@ export namespace Panel {
          * See also {@link Gtk.Tooltip.set_text}.
          * @param text the contents of the tooltip for `widget`
          */
-        set_tooltip_text(text?: string | null): void;
+        set_tooltip_text(text: string | null): void;
         /**
          * Sets the vertical alignment of the widget.
          * @param align the vertical alignment
@@ -14734,7 +14756,7 @@ export namespace Panel {
          * @param child a direct child widget of `widget`   or `NULL` to unset the focus child
          * @virtual
          */
-        vfunc_set_focus_child(child?: Gtk.Widget | null): void;
+        vfunc_set_focus_child(child: Gtk.Widget | null): void;
         /**
          * Flags a widget to be displayed.
          *
@@ -14874,21 +14896,25 @@ export namespace Panel {
 
         /**
          * Whether the tabs automatically hide.
+         * @default false
          */
         get autohide(): boolean;
         set autohide(val: boolean);
         /**
          * Whether tabs expand to full width.
+         * @default true
          */
         get expand_tabs(): boolean;
         set expand_tabs(val: boolean);
         /**
          * Whether tabs expand to full width.
+         * @default true
          */
         get expandTabs(): boolean;
         set expandTabs(val: boolean);
         /**
          * Whether tabs use inverted layout.
+         * @default false
          */
         get inverted(): boolean;
         set inverted(val: boolean);
@@ -14967,6 +14993,7 @@ export namespace Panel {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
@@ -14975,6 +15002,7 @@ export namespace Panel {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
@@ -14983,14 +15011,15 @@ export namespace Panel {
          * The frame the header is attached to, or `null`.
          * @category Inherited from Panel.FrameHeader
          */
-        get frame(): Frame;
-        set frame(val: Frame);
+        get frame(): Frame | null;
+        set frame(val: Frame | null);
         /**
          * Whether the widget or any of its descendents can accept
          * the input focus.
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get can_focus(): boolean;
@@ -15001,18 +15030,21 @@ export namespace Panel {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get canFocus(): boolean;
         set canFocus(val: boolean);
         /**
          * Whether the widget can receive pointer events.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get can_target(): boolean;
         set can_target(val: boolean);
         /**
          * Whether the widget can receive pointer events.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get canTarget(): boolean;
@@ -15035,6 +15067,7 @@ export namespace Panel {
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
          * @construct-only
+         * @default null
          * @category Inherited from Gtk.Widget
          */
         get css_name(): string;
@@ -15044,6 +15077,7 @@ export namespace Panel {
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
          * @construct-only
+         * @default null
          * @category Inherited from Gtk.Widget
          */
         get cssName(): string;
@@ -15051,12 +15085,13 @@ export namespace Panel {
          * The cursor used by `widget`.
          * @category Inherited from Gtk.Widget
          */
-        get cursor(): Gdk.Cursor;
-        set cursor(val: Gdk.Cursor);
+        get cursor(): Gdk.Cursor | null;
+        set cursor(val: Gdk.Cursor | null);
         /**
          * Whether the widget should grab focus when it is clicked with the mouse.
          *
          * This property is only relevant for widgets that can take focus.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get focus_on_click(): boolean;
@@ -15065,18 +15100,21 @@ export namespace Panel {
          * Whether the widget should grab focus when it is clicked with the mouse.
          *
          * This property is only relevant for widgets that can take focus.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get focusOnClick(): boolean;
         set focusOnClick(val: boolean);
         /**
          * Whether this widget itself will accept the input focus.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get focusable(): boolean;
         set focusable(val: boolean);
         /**
          * How to distribute horizontal space if widget gets extra space.
+         * @default Gtk.Align.FILL
          * @category Inherited from Gtk.Widget
          */
         get halign(): Gtk.Align;
@@ -15084,24 +15122,28 @@ export namespace Panel {
         /**
          * Whether the widget is the default widget.
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get has_default(): boolean;
         /**
          * Whether the widget is the default widget.
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hasDefault(): boolean;
         /**
          * Whether the widget has the input focus.
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get has_focus(): boolean;
         /**
          * Whether the widget has the input focus.
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hasFocus(): boolean;
@@ -15112,6 +15154,7 @@ export namespace Panel {
          * A true value indicates that `widget` can have a tooltip, in this case
          * the widget will be queried using `Gtk.Widget::query-tooltip` to
          * determine whether it will provide a tooltip or not.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get has_tooltip(): boolean;
@@ -15123,6 +15166,7 @@ export namespace Panel {
          * A true value indicates that `widget` can have a tooltip, in this case
          * the widget will be queried using `Gtk.Widget::query-tooltip` to
          * determine whether it will provide a tooltip or not.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hasTooltip(): boolean;
@@ -15131,6 +15175,7 @@ export namespace Panel {
          * Overrides for height request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @default -1
          * @category Inherited from Gtk.Widget
          */
         get height_request(): number;
@@ -15139,24 +15184,28 @@ export namespace Panel {
          * Overrides for height request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @default -1
          * @category Inherited from Gtk.Widget
          */
         get heightRequest(): number;
         set heightRequest(val: number);
         /**
          * Whether to expand horizontally.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpand(): boolean;
         set hexpand(val: boolean);
         /**
          * Whether to use the `hexpand` property.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpand_set(): boolean;
         set hexpand_set(val: boolean);
         /**
          * Whether to use the `hexpand` property.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpandSet(): boolean;
@@ -15169,8 +15218,8 @@ export namespace Panel {
          * typically in their instance init function.
          * @category Inherited from Gtk.Widget
          */
-        get layout_manager(): Gtk.LayoutManager;
-        set layout_manager(val: Gtk.LayoutManager);
+        get layout_manager(): Gtk.LayoutManager | null;
+        set layout_manager(val: Gtk.LayoutManager | null);
         /**
          * The {@link Gtk.LayoutManager} instance to use to compute
          * the preferred size of the widget, and allocate its children.
@@ -15179,8 +15228,8 @@ export namespace Panel {
          * typically in their instance init function.
          * @category Inherited from Gtk.Widget
          */
-        get layoutManager(): Gtk.LayoutManager;
-        set layoutManager(val: Gtk.LayoutManager);
+        get layoutManager(): Gtk.LayoutManager | null;
+        set layoutManager(val: Gtk.LayoutManager | null);
         /**
          * Makes this widget act like a modal dialog, with respect to
          * event delivery.
@@ -15189,6 +15238,7 @@ export namespace Panel {
          * inside the widget, unless they are set up to ignore propagation
          * limits. See {@link Gtk.EventController.set_propagation_limit}.
          * @since 4.18
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get limit_events(): boolean;
@@ -15201,6 +15251,7 @@ export namespace Panel {
          * inside the widget, unless they are set up to ignore propagation
          * limits. See {@link Gtk.EventController.set_propagation_limit}.
          * @since 4.18
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get limitEvents(): boolean;
@@ -15211,6 +15262,7 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_bottom(): number;
@@ -15221,6 +15273,7 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginBottom(): number;
@@ -15234,6 +15287,7 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_end(): number;
@@ -15247,6 +15301,7 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginEnd(): number;
@@ -15260,6 +15315,7 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_start(): number;
@@ -15273,6 +15329,7 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginStart(): number;
@@ -15283,6 +15340,7 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_top(): number;
@@ -15293,18 +15351,21 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginTop(): number;
         set marginTop(val: number);
         /**
          * The name of the widget.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
         get name(): string;
         set name(val: string);
         /**
          * The requested opacity of the widget.
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get opacity(): number;
@@ -15314,6 +15375,7 @@ export namespace Panel {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @default Gtk.Overflow.VISIBLE
          * @category Inherited from Gtk.Widget
          */
         get overflow(): Gtk.Overflow;
@@ -15323,15 +15385,17 @@ export namespace Panel {
          * @read-only
          * @category Inherited from Gtk.Widget
          */
-        get parent(): Gtk.Widget;
+        get parent(): Gtk.Widget | null;
         /**
          * Whether the widget will receive the default action when it is focused.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get receives_default(): boolean;
         set receives_default(val: boolean);
         /**
          * Whether the widget will receive the default action when it is focused.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get receivesDefault(): boolean;
@@ -15343,21 +15407,24 @@ export namespace Panel {
          * @read-only
          * @category Inherited from Gtk.Widget
          */
-        get root(): Gtk.Root;
+        get root(): Gtk.Root | null;
         /**
          * The scale factor of the widget.
          * @read-only
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
         /**
          * The scale factor of the widget.
          * @read-only
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
         /**
          * Whether the widget responds to input.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get sensitive(): boolean;
@@ -15376,10 +15443,11 @@ export namespace Panel {
          *
          * Note that if both {@link Gtk.Widget.tooltip_text} and
          * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltip_markup(): string;
-        set tooltip_markup(val: string);
+        get tooltip_markup(): string | null;
+        set tooltip_markup(val: string | null);
         /**
          * Sets the text of tooltip to be the given string, which is marked up
          * with Pango markup.
@@ -15394,10 +15462,11 @@ export namespace Panel {
          *
          * Note that if both {@link Gtk.Widget.tooltip_text} and
          * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltipMarkup(): string;
-        set tooltipMarkup(val: string);
+        get tooltipMarkup(): string | null;
+        set tooltipMarkup(val: string | null);
         /**
          * Sets the text of tooltip to be the given string.
          *
@@ -15411,10 +15480,11 @@ export namespace Panel {
          *
          * Note that if both {@link Gtk.Widget.tooltip_text} and
          * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltip_text(): string;
-        set tooltip_text(val: string);
+        get tooltip_text(): string | null;
+        set tooltip_text(val: string | null);
         /**
          * Sets the text of tooltip to be the given string.
          *
@@ -15428,36 +15498,42 @@ export namespace Panel {
          *
          * Note that if both {@link Gtk.Widget.tooltip_text} and
          * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltipText(): string;
-        set tooltipText(val: string);
+        get tooltipText(): string | null;
+        set tooltipText(val: string | null);
         /**
          * How to distribute vertical space if widget gets extra space.
+         * @default Gtk.Align.FILL
          * @category Inherited from Gtk.Widget
          */
         get valign(): Gtk.Align;
         set valign(val: Gtk.Align);
         /**
          * Whether to expand vertically.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpand(): boolean;
         set vexpand(val: boolean);
         /**
          * Whether to use the `vexpand` property.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpand_set(): boolean;
         set vexpand_set(val: boolean);
         /**
          * Whether to use the `vexpand` property.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpandSet(): boolean;
         set vexpandSet(val: boolean);
         /**
          * Whether the widget is visible.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get visible(): boolean;
@@ -15466,6 +15542,7 @@ export namespace Panel {
          * Overrides for width request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @default -1
          * @category Inherited from Gtk.Widget
          */
         get width_request(): number;
@@ -15474,6 +15551,7 @@ export namespace Panel {
          * Overrides for width request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @default -1
          * @category Inherited from Gtk.Widget
          */
         get widthRequest(): number;
@@ -15577,7 +15655,7 @@ export namespace Panel {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent?: Gtk.Accessible | null, next_sibling?: Gtk.Accessible | null): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
         /**
          * Updates the next accessible sibling.
          *
@@ -15585,7 +15663,7 @@ export namespace Panel {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling?: Gtk.Accessible | null): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
         /**
          * Informs ATs that the platform state has changed.
          *
@@ -15696,7 +15774,7 @@ export namespace Panel {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -15710,7 +15788,7 @@ export namespace Panel {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called at the end of each custom element handled by
@@ -15725,7 +15803,7 @@ export namespace Panel {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called for each unknown element under `<child>`.
@@ -15811,12 +15889,12 @@ export namespace Panel {
          * Notifies the header that the visible page has changed.
          * @param widget a {@link Panel.Widget} or `null` if no page is visible
          */
-        page_changed(widget?: Widget | null): void;
+        page_changed(widget: Widget | null): void;
         /**
          * Sets the frame the header is attached to.
          * @param frame a {@link Panel.Frame} or `null`
          */
-        set_frame(frame?: Frame | null): void;
+        set_frame(frame: Frame | null): void;
         /**
          * Add a widget into a the prefix area with a priority. The highest
          * the priority the closest to the start.
@@ -15844,7 +15922,7 @@ export namespace Panel {
          * @param widget a {@link Panel.Widget} or `null` if no page is visible
          * @virtual
          */
-        vfunc_page_changed(widget?: Widget | null): void;
+        vfunc_page_changed(widget: Widget | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -15892,38 +15970,19 @@ export namespace Panel {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -15931,15 +15990,9 @@ export namespace Panel {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -16106,7 +16159,7 @@ export namespace Panel {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -16336,7 +16389,7 @@ export namespace Panel {
          * @param args parameters to use
          * @returns true if the action was activated
          */
-        activate_action(name: string, args?: GLib.Variant | null): boolean;
+        activate_action(name: string, args: GLib.Variant | null): boolean;
         /**
          * Activates the `default.activate` action for the widget.
          *
@@ -16425,7 +16478,7 @@ export namespace Panel {
          * @param baseline new baseline, or -1
          * @param transform transformation to be applied
          */
-        allocate(width: number, height: number, baseline: number, transform?: Gsk.Transform | null): void;
+        allocate(width: number, height: number, baseline: number, transform: Gsk.Transform | null): void;
         /**
          * Called by widgets as the user moves around the window using
          * keyboard shortcuts.
@@ -16545,7 +16598,7 @@ export namespace Panel {
          * @param text text to set on the layout
          * @returns the new {@link Pango.Layout}
          */
-        create_pango_layout(text?: string | null): Pango.Layout;
+        create_pango_layout(text: string | null): Pango.Layout;
         /**
          * Clears the template children for the widget.
          *
@@ -17297,7 +17350,7 @@ export namespace Panel {
          * @param name the prefix for actions in `group`
          * @param group an action group
          */
-        insert_action_group(name: string, group?: Gio.ActionGroup | null): void;
+        insert_action_group(name: string, group: Gio.ActionGroup | null): void;
         /**
          * Sets the parent widget of the widget.
          *
@@ -17320,7 +17373,7 @@ export namespace Panel {
          * @param parent the parent widget to insert `widget` into
          * @param previous_sibling the new previous sibling of `widget`
          */
-        insert_after(parent: Gtk.Widget, previous_sibling?: Gtk.Widget | null): void;
+        insert_after(parent: Gtk.Widget, previous_sibling: Gtk.Widget | null): void;
         /**
          * Sets the parent widget of the widget.
          *
@@ -17342,7 +17395,7 @@ export namespace Panel {
          * @param parent the parent widget to insert `widget` into
          * @param next_sibling the new next sibling of `widget`
          */
-        insert_before(parent: Gtk.Widget, next_sibling?: Gtk.Widget | null): void;
+        insert_before(parent: Gtk.Widget, next_sibling: Gtk.Widget | null): void;
         /**
          * Determines whether the widget is a descendent of `ancestor`.
          * @param ancestor another {@link Gtk.Widget}
@@ -17652,7 +17705,7 @@ export namespace Panel {
          * inherited from its parent.
          * @param cursor the new cursor
          */
-        set_cursor(cursor?: Gdk.Cursor | null): void;
+        set_cursor(cursor: Gdk.Cursor | null): void;
         /**
          * Sets the cursor to be shown when the pointer hovers over
          * the widget.
@@ -17667,7 +17720,7 @@ export namespace Panel {
          * with a `NULL` cursor.
          * @param name the name of the cursor
          */
-        set_cursor_from_name(name?: string | null): void;
+        set_cursor_from_name(name: string | null): void;
         /**
          * Sets the reading direction on the widget.
          *
@@ -17695,7 +17748,7 @@ export namespace Panel {
          * {@link Gtk.Widget.grab_focus} on it.
          * @param child a direct child widget of `widget`   or `NULL` to unset the focus child
          */
-        set_focus_child(child?: Gtk.Widget | null): void;
+        set_focus_child(child: Gtk.Widget | null): void;
         /**
          * Sets whether the widget should grab focus when it is clicked
          * with the mouse.
@@ -17734,7 +17787,7 @@ export namespace Panel {
          * When not set, the widget will inherit the font map from its parent.
          * @param font_map a {@link Pango.FontMap}
          */
-        set_font_map(font_map?: Pango.FontMap | null): void;
+        set_font_map(font_map: Pango.FontMap | null): void;
         /**
          * Sets the `cairo_font_options_t` used for text rendering
          * in the widget.
@@ -17743,7 +17796,7 @@ export namespace Panel {
          * will be used.
          * @param options a `cairo_font_options_t` struct   to unset any previously set default font options
          */
-        set_font_options(options?: cairo.FontOptions | null): void;
+        set_font_options(options: cairo.FontOptions | null): void;
         /**
          * Sets the horizontal alignment of the widget.
          * @param align the horizontal alignment
@@ -17807,7 +17860,7 @@ export namespace Panel {
          * of the widget.
          * @param layout_manager a layout manager
          */
-        set_layout_manager(layout_manager?: Gtk.LayoutManager | null): void;
+        set_layout_manager(layout_manager: Gtk.LayoutManager | null): void;
         /**
          * Sets whether the widget acts like a modal dialog,
          * with respect to event delivery.
@@ -17983,7 +18036,7 @@ export namespace Panel {
          * See also {@link Gtk.Tooltip.set_markup}.
          * @param markup the contents of the tooltip for `widget`
          */
-        set_tooltip_markup(markup?: string | null): void;
+        set_tooltip_markup(markup: string | null): void;
         /**
          * Sets the contents of the tooltip for the widget.
          *
@@ -17997,7 +18050,7 @@ export namespace Panel {
          * See also {@link Gtk.Tooltip.set_text}.
          * @param text the contents of the tooltip for `widget`
          */
-        set_tooltip_text(text?: string | null): void;
+        set_tooltip_text(text: string | null): void;
         /**
          * Sets the vertical alignment of the widget.
          * @param align the vertical alignment
@@ -18307,7 +18360,7 @@ export namespace Panel {
          * @param child a direct child widget of `widget`   or `NULL` to unset the focus child
          * @virtual
          */
-        vfunc_set_focus_child(child?: Gtk.Widget | null): void;
+        vfunc_set_focus_child(child: Gtk.Widget | null): void;
         /**
          * Flags a widget to be displayed.
          *
@@ -18512,7 +18565,7 @@ export namespace Panel {
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
-        activate_action(action_name: string, parameter?: GLib.Variant | null): void;
+        activate_action(action_name: string, parameter: GLib.Variant | null): void;
         /**
          * Request for the state of the named action within `action_group` to be
          * changed to `value`.
@@ -18740,7 +18793,7 @@ export namespace Panel {
          * @param parameter parameters to the activation
          * @virtual
          */
-        vfunc_activate_action(action_name: string, parameter?: GLib.Variant | null): void;
+        vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
         /**
          * Request for the state of the named action within `action_group` to be
          * changed to `value`.
@@ -18944,38 +18997,19 @@ export namespace Panel {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -18983,15 +19017,9 @@ export namespace Panel {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -19158,7 +19186,7 @@ export namespace Panel {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -19521,6 +19549,7 @@ export namespace Panel {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
@@ -19529,6 +19558,7 @@ export namespace Panel {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
@@ -19632,7 +19662,7 @@ export namespace Panel {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent?: Gtk.Accessible | null, next_sibling?: Gtk.Accessible | null): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
         /**
          * Updates the next accessible sibling.
          *
@@ -19640,7 +19670,7 @@ export namespace Panel {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling?: Gtk.Accessible | null): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
         /**
          * Informs ATs that the platform state has changed.
          *
@@ -19751,7 +19781,7 @@ export namespace Panel {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -19765,7 +19795,7 @@ export namespace Panel {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called at the end of each custom element handled by
@@ -19780,7 +19810,7 @@ export namespace Panel {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called for each unknown element under `<child>`.
@@ -19884,38 +19914,19 @@ export namespace Panel {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -19923,15 +19934,9 @@ export namespace Panel {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -20098,7 +20103,7 @@ export namespace Panel {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -20407,6 +20412,7 @@ export namespace Panel {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
@@ -20415,6 +20421,7 @@ export namespace Panel {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
@@ -20518,7 +20525,7 @@ export namespace Panel {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent?: Gtk.Accessible | null, next_sibling?: Gtk.Accessible | null): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
         /**
          * Updates the next accessible sibling.
          *
@@ -20526,7 +20533,7 @@ export namespace Panel {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling?: Gtk.Accessible | null): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
         /**
          * Informs ATs that the platform state has changed.
          *
@@ -20637,7 +20644,7 @@ export namespace Panel {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -20651,7 +20658,7 @@ export namespace Panel {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called at the end of each custom element handled by
@@ -20666,7 +20673,7 @@ export namespace Panel {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called for each unknown element under `<child>`.
@@ -20770,38 +20777,19 @@ export namespace Panel {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -20809,15 +20797,9 @@ export namespace Panel {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -20984,7 +20966,7 @@ export namespace Panel {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -21275,14 +21257,17 @@ export namespace Panel {
 
         /**
          * @construct-only
+         * @default null
          */
         get path(): string;
         /**
          * @construct-only
+         * @default null
          */
         get schema_id(): string;
         /**
          * @construct-only
+         * @default null
          */
         get schemaId(): string;
 
@@ -21630,7 +21615,7 @@ export namespace Panel {
             iconName: string;
             menu_model: Gio.MenuModel;
             menuModel: Gio.MenuModel;
-            popover: Gtk.Popover;
+            popover: Gtk.Popover | null;
             progress: number;
         }
     }
@@ -21656,21 +21641,25 @@ export namespace Panel {
 
         /**
          * The tooltip for the action.
+         * @default null
          */
         get action_tooltip(): string;
         set action_tooltip(val: string);
         /**
          * The tooltip for the action.
+         * @default null
          */
         get actionTooltip(): string;
         set actionTooltip(val: string);
         /**
          * The name of the icon to use.
+         * @default null
          */
         get icon_name(): string;
         set icon_name(val: string);
         /**
          * The name of the icon to use.
+         * @default null
          */
         get iconName(): string;
         set iconName(val: string);
@@ -21687,10 +21676,11 @@ export namespace Panel {
         /**
          * The popover to show.
          */
-        get popover(): Gtk.Popover;
-        set popover(val: Gtk.Popover);
+        get popover(): Gtk.Popover | null;
+        set popover(val: Gtk.Popover | null);
         /**
          * The current progress value.
+         * @default 0
          */
         get progress(): number;
         set progress(val: number);
@@ -21769,7 +21759,7 @@ export namespace Panel {
          * Sets the omnibar popover, that will appear when clicking on the omni bar.
          * @param popover a {@link Gtk.Popover} or `null`
          */
-        set_popover(popover?: Gtk.Popover | null): void;
+        set_popover(popover: Gtk.Popover | null): void;
         /**
          * Sets the progress value displayed in the omni bar.
          * @param progress the progress value
@@ -21789,6 +21779,7 @@ export namespace Panel {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
@@ -21797,22 +21788,25 @@ export namespace Panel {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
         set accessibleRole(val: Gtk.AccessibleRole);
         /**
          * The name of the action with which this widget should be associated.
+         * @default null
          * @category Inherited from Gtk.Actionable
          */
-        get action_name(): string;
-        set action_name(val: string);
+        get action_name(): string | null;
+        set action_name(val: string | null);
         /**
          * The name of the action with which this widget should be associated.
+         * @default null
          * @category Inherited from Gtk.Actionable
          */
-        get actionName(): string;
-        set actionName(val: string);
+        get actionName(): string | null;
+        set actionName(val: string | null);
         /**
          * The target value of the actionable widget's action.
          * @category Inherited from Gtk.Actionable
@@ -21831,6 +21825,7 @@ export namespace Panel {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get can_focus(): boolean;
@@ -21841,18 +21836,21 @@ export namespace Panel {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get canFocus(): boolean;
         set canFocus(val: boolean);
         /**
          * Whether the widget can receive pointer events.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get can_target(): boolean;
         set can_target(val: boolean);
         /**
          * Whether the widget can receive pointer events.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get canTarget(): boolean;
@@ -21875,6 +21873,7 @@ export namespace Panel {
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
          * @construct-only
+         * @default null
          * @category Inherited from Gtk.Widget
          */
         get css_name(): string;
@@ -21884,6 +21883,7 @@ export namespace Panel {
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
          * @construct-only
+         * @default null
          * @category Inherited from Gtk.Widget
          */
         get cssName(): string;
@@ -21891,12 +21891,13 @@ export namespace Panel {
          * The cursor used by `widget`.
          * @category Inherited from Gtk.Widget
          */
-        get cursor(): Gdk.Cursor;
-        set cursor(val: Gdk.Cursor);
+        get cursor(): Gdk.Cursor | null;
+        set cursor(val: Gdk.Cursor | null);
         /**
          * Whether the widget should grab focus when it is clicked with the mouse.
          *
          * This property is only relevant for widgets that can take focus.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get focus_on_click(): boolean;
@@ -21905,18 +21906,21 @@ export namespace Panel {
          * Whether the widget should grab focus when it is clicked with the mouse.
          *
          * This property is only relevant for widgets that can take focus.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get focusOnClick(): boolean;
         set focusOnClick(val: boolean);
         /**
          * Whether this widget itself will accept the input focus.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get focusable(): boolean;
         set focusable(val: boolean);
         /**
          * How to distribute horizontal space if widget gets extra space.
+         * @default Gtk.Align.FILL
          * @category Inherited from Gtk.Widget
          */
         get halign(): Gtk.Align;
@@ -21924,24 +21928,28 @@ export namespace Panel {
         /**
          * Whether the widget is the default widget.
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get has_default(): boolean;
         /**
          * Whether the widget is the default widget.
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hasDefault(): boolean;
         /**
          * Whether the widget has the input focus.
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get has_focus(): boolean;
         /**
          * Whether the widget has the input focus.
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hasFocus(): boolean;
@@ -21952,6 +21960,7 @@ export namespace Panel {
          * A true value indicates that `widget` can have a tooltip, in this case
          * the widget will be queried using `Gtk.Widget::query-tooltip` to
          * determine whether it will provide a tooltip or not.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get has_tooltip(): boolean;
@@ -21963,6 +21972,7 @@ export namespace Panel {
          * A true value indicates that `widget` can have a tooltip, in this case
          * the widget will be queried using `Gtk.Widget::query-tooltip` to
          * determine whether it will provide a tooltip or not.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hasTooltip(): boolean;
@@ -21971,6 +21981,7 @@ export namespace Panel {
          * Overrides for height request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @default -1
          * @category Inherited from Gtk.Widget
          */
         get height_request(): number;
@@ -21979,24 +21990,28 @@ export namespace Panel {
          * Overrides for height request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @default -1
          * @category Inherited from Gtk.Widget
          */
         get heightRequest(): number;
         set heightRequest(val: number);
         /**
          * Whether to expand horizontally.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpand(): boolean;
         set hexpand(val: boolean);
         /**
          * Whether to use the `hexpand` property.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpand_set(): boolean;
         set hexpand_set(val: boolean);
         /**
          * Whether to use the `hexpand` property.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpandSet(): boolean;
@@ -22009,8 +22024,8 @@ export namespace Panel {
          * typically in their instance init function.
          * @category Inherited from Gtk.Widget
          */
-        get layout_manager(): Gtk.LayoutManager;
-        set layout_manager(val: Gtk.LayoutManager);
+        get layout_manager(): Gtk.LayoutManager | null;
+        set layout_manager(val: Gtk.LayoutManager | null);
         /**
          * The {@link Gtk.LayoutManager} instance to use to compute
          * the preferred size of the widget, and allocate its children.
@@ -22019,8 +22034,8 @@ export namespace Panel {
          * typically in their instance init function.
          * @category Inherited from Gtk.Widget
          */
-        get layoutManager(): Gtk.LayoutManager;
-        set layoutManager(val: Gtk.LayoutManager);
+        get layoutManager(): Gtk.LayoutManager | null;
+        set layoutManager(val: Gtk.LayoutManager | null);
         /**
          * Makes this widget act like a modal dialog, with respect to
          * event delivery.
@@ -22029,6 +22044,7 @@ export namespace Panel {
          * inside the widget, unless they are set up to ignore propagation
          * limits. See {@link Gtk.EventController.set_propagation_limit}.
          * @since 4.18
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get limit_events(): boolean;
@@ -22041,6 +22057,7 @@ export namespace Panel {
          * inside the widget, unless they are set up to ignore propagation
          * limits. See {@link Gtk.EventController.set_propagation_limit}.
          * @since 4.18
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get limitEvents(): boolean;
@@ -22051,6 +22068,7 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_bottom(): number;
@@ -22061,6 +22079,7 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginBottom(): number;
@@ -22074,6 +22093,7 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_end(): number;
@@ -22087,6 +22107,7 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginEnd(): number;
@@ -22100,6 +22121,7 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_start(): number;
@@ -22113,6 +22135,7 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginStart(): number;
@@ -22123,6 +22146,7 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_top(): number;
@@ -22133,18 +22157,21 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginTop(): number;
         set marginTop(val: number);
         /**
          * The name of the widget.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
         get name(): string;
         set name(val: string);
         /**
          * The requested opacity of the widget.
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get opacity(): number;
@@ -22154,6 +22181,7 @@ export namespace Panel {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @default Gtk.Overflow.VISIBLE
          * @category Inherited from Gtk.Widget
          */
         get overflow(): Gtk.Overflow;
@@ -22163,15 +22191,17 @@ export namespace Panel {
          * @read-only
          * @category Inherited from Gtk.Widget
          */
-        get parent(): Gtk.Widget;
+        get parent(): Gtk.Widget | null;
         /**
          * Whether the widget will receive the default action when it is focused.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get receives_default(): boolean;
         set receives_default(val: boolean);
         /**
          * Whether the widget will receive the default action when it is focused.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get receivesDefault(): boolean;
@@ -22183,21 +22213,24 @@ export namespace Panel {
          * @read-only
          * @category Inherited from Gtk.Widget
          */
-        get root(): Gtk.Root;
+        get root(): Gtk.Root | null;
         /**
          * The scale factor of the widget.
          * @read-only
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
         /**
          * The scale factor of the widget.
          * @read-only
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
         /**
          * Whether the widget responds to input.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get sensitive(): boolean;
@@ -22216,10 +22249,11 @@ export namespace Panel {
          *
          * Note that if both {@link Gtk.Widget.tooltip_text} and
          * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltip_markup(): string;
-        set tooltip_markup(val: string);
+        get tooltip_markup(): string | null;
+        set tooltip_markup(val: string | null);
         /**
          * Sets the text of tooltip to be the given string, which is marked up
          * with Pango markup.
@@ -22234,10 +22268,11 @@ export namespace Panel {
          *
          * Note that if both {@link Gtk.Widget.tooltip_text} and
          * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltipMarkup(): string;
-        set tooltipMarkup(val: string);
+        get tooltipMarkup(): string | null;
+        set tooltipMarkup(val: string | null);
         /**
          * Sets the text of tooltip to be the given string.
          *
@@ -22251,10 +22286,11 @@ export namespace Panel {
          *
          * Note that if both {@link Gtk.Widget.tooltip_text} and
          * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltip_text(): string;
-        set tooltip_text(val: string);
+        get tooltip_text(): string | null;
+        set tooltip_text(val: string | null);
         /**
          * Sets the text of tooltip to be the given string.
          *
@@ -22268,36 +22304,42 @@ export namespace Panel {
          *
          * Note that if both {@link Gtk.Widget.tooltip_text} and
          * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltipText(): string;
-        set tooltipText(val: string);
+        get tooltipText(): string | null;
+        set tooltipText(val: string | null);
         /**
          * How to distribute vertical space if widget gets extra space.
+         * @default Gtk.Align.FILL
          * @category Inherited from Gtk.Widget
          */
         get valign(): Gtk.Align;
         set valign(val: Gtk.Align);
         /**
          * Whether to expand vertically.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpand(): boolean;
         set vexpand(val: boolean);
         /**
          * Whether to use the `vexpand` property.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpand_set(): boolean;
         set vexpand_set(val: boolean);
         /**
          * Whether to use the `vexpand` property.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpandSet(): boolean;
         set vexpandSet(val: boolean);
         /**
          * Whether the widget is visible.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get visible(): boolean;
@@ -22306,6 +22348,7 @@ export namespace Panel {
          * Overrides for width request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @default -1
          * @category Inherited from Gtk.Widget
          */
         get width_request(): number;
@@ -22314,6 +22357,7 @@ export namespace Panel {
          * Overrides for width request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @default -1
          * @category Inherited from Gtk.Widget
          */
         get widthRequest(): number;
@@ -22417,7 +22461,7 @@ export namespace Panel {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent?: Gtk.Accessible | null, next_sibling?: Gtk.Accessible | null): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
         /**
          * Updates the next accessible sibling.
          *
@@ -22425,7 +22469,7 @@ export namespace Panel {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling?: Gtk.Accessible | null): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
         /**
          * Informs ATs that the platform state has changed.
          *
@@ -22546,7 +22590,7 @@ export namespace Panel {
          * associated with the window.
          * @param action_name an action name
          */
-        set_action_name(action_name?: string | null): void;
+        set_action_name(action_name: string | null): void;
         /**
          * Sets the target value of an actionable widget.
          *
@@ -22568,7 +22612,7 @@ export namespace Panel {
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value
          */
-        set_action_target_value(target_value?: GLib.Variant | null): void;
+        set_action_target_value(target_value: GLib.Variant | null): void;
         /**
          * Sets the action-name and associated string target value of an
          * actionable widget.
@@ -22605,7 +22649,7 @@ export namespace Panel {
          * @param action_name an action name
          * @virtual
          */
-        vfunc_set_action_name(action_name?: string | null): void;
+        vfunc_set_action_name(action_name: string | null): void;
         /**
          * Sets the target value of an actionable widget.
          *
@@ -22628,7 +22672,7 @@ export namespace Panel {
          * @param target_value a {@link GLib.Variant} to set as the target value
          * @virtual
          */
-        vfunc_set_action_target_value(target_value?: GLib.Variant | null): void;
+        vfunc_set_action_target_value(target_value: GLib.Variant | null): void;
         /**
          * Gets the ID of the `buildable` object.
          *
@@ -22645,7 +22689,7 @@ export namespace Panel {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -22659,7 +22703,7 @@ export namespace Panel {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called at the end of each custom element handled by
@@ -22674,7 +22718,7 @@ export namespace Panel {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called for each unknown element under `<child>`.
@@ -22778,38 +22822,19 @@ export namespace Panel {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -22817,15 +22842,9 @@ export namespace Panel {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -22992,7 +23011,7 @@ export namespace Panel {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -23222,7 +23241,7 @@ export namespace Panel {
          * @param args parameters to use
          * @returns true if the action was activated
          */
-        activate_action(name: string, args?: GLib.Variant | null): boolean;
+        activate_action(name: string, args: GLib.Variant | null): boolean;
         /**
          * Activates the `default.activate` action for the widget.
          *
@@ -23311,7 +23330,7 @@ export namespace Panel {
          * @param baseline new baseline, or -1
          * @param transform transformation to be applied
          */
-        allocate(width: number, height: number, baseline: number, transform?: Gsk.Transform | null): void;
+        allocate(width: number, height: number, baseline: number, transform: Gsk.Transform | null): void;
         /**
          * Called by widgets as the user moves around the window using
          * keyboard shortcuts.
@@ -23431,7 +23450,7 @@ export namespace Panel {
          * @param text text to set on the layout
          * @returns the new {@link Pango.Layout}
          */
-        create_pango_layout(text?: string | null): Pango.Layout;
+        create_pango_layout(text: string | null): Pango.Layout;
         /**
          * Clears the template children for the widget.
          *
@@ -24183,7 +24202,7 @@ export namespace Panel {
          * @param name the prefix for actions in `group`
          * @param group an action group
          */
-        insert_action_group(name: string, group?: Gio.ActionGroup | null): void;
+        insert_action_group(name: string, group: Gio.ActionGroup | null): void;
         /**
          * Sets the parent widget of the widget.
          *
@@ -24206,7 +24225,7 @@ export namespace Panel {
          * @param parent the parent widget to insert `widget` into
          * @param previous_sibling the new previous sibling of `widget`
          */
-        insert_after(parent: Gtk.Widget, previous_sibling?: Gtk.Widget | null): void;
+        insert_after(parent: Gtk.Widget, previous_sibling: Gtk.Widget | null): void;
         /**
          * Sets the parent widget of the widget.
          *
@@ -24228,7 +24247,7 @@ export namespace Panel {
          * @param parent the parent widget to insert `widget` into
          * @param next_sibling the new next sibling of `widget`
          */
-        insert_before(parent: Gtk.Widget, next_sibling?: Gtk.Widget | null): void;
+        insert_before(parent: Gtk.Widget, next_sibling: Gtk.Widget | null): void;
         /**
          * Determines whether the widget is a descendent of `ancestor`.
          * @param ancestor another {@link Gtk.Widget}
@@ -24538,7 +24557,7 @@ export namespace Panel {
          * inherited from its parent.
          * @param cursor the new cursor
          */
-        set_cursor(cursor?: Gdk.Cursor | null): void;
+        set_cursor(cursor: Gdk.Cursor | null): void;
         /**
          * Sets the cursor to be shown when the pointer hovers over
          * the widget.
@@ -24553,7 +24572,7 @@ export namespace Panel {
          * with a `NULL` cursor.
          * @param name the name of the cursor
          */
-        set_cursor_from_name(name?: string | null): void;
+        set_cursor_from_name(name: string | null): void;
         /**
          * Sets the reading direction on the widget.
          *
@@ -24581,7 +24600,7 @@ export namespace Panel {
          * {@link Gtk.Widget.grab_focus} on it.
          * @param child a direct child widget of `widget`   or `NULL` to unset the focus child
          */
-        set_focus_child(child?: Gtk.Widget | null): void;
+        set_focus_child(child: Gtk.Widget | null): void;
         /**
          * Sets whether the widget should grab focus when it is clicked
          * with the mouse.
@@ -24620,7 +24639,7 @@ export namespace Panel {
          * When not set, the widget will inherit the font map from its parent.
          * @param font_map a {@link Pango.FontMap}
          */
-        set_font_map(font_map?: Pango.FontMap | null): void;
+        set_font_map(font_map: Pango.FontMap | null): void;
         /**
          * Sets the `cairo_font_options_t` used for text rendering
          * in the widget.
@@ -24629,7 +24648,7 @@ export namespace Panel {
          * will be used.
          * @param options a `cairo_font_options_t` struct   to unset any previously set default font options
          */
-        set_font_options(options?: cairo.FontOptions | null): void;
+        set_font_options(options: cairo.FontOptions | null): void;
         /**
          * Sets the horizontal alignment of the widget.
          * @param align the horizontal alignment
@@ -24693,7 +24712,7 @@ export namespace Panel {
          * of the widget.
          * @param layout_manager a layout manager
          */
-        set_layout_manager(layout_manager?: Gtk.LayoutManager | null): void;
+        set_layout_manager(layout_manager: Gtk.LayoutManager | null): void;
         /**
          * Sets whether the widget acts like a modal dialog,
          * with respect to event delivery.
@@ -24869,7 +24888,7 @@ export namespace Panel {
          * See also {@link Gtk.Tooltip.set_markup}.
          * @param markup the contents of the tooltip for `widget`
          */
-        set_tooltip_markup(markup?: string | null): void;
+        set_tooltip_markup(markup: string | null): void;
         /**
          * Sets the contents of the tooltip for the widget.
          *
@@ -24883,7 +24902,7 @@ export namespace Panel {
          * See also {@link Gtk.Tooltip.set_text}.
          * @param text the contents of the tooltip for `widget`
          */
-        set_tooltip_text(text?: string | null): void;
+        set_tooltip_text(text: string | null): void;
         /**
          * Sets the vertical alignment of the widget.
          * @param align the vertical alignment
@@ -25193,7 +25212,7 @@ export namespace Panel {
          * @param child a direct child widget of `widget`   or `NULL` to unset the focus child
          * @virtual
          */
-        vfunc_set_focus_child(child?: Gtk.Widget | null): void;
+        vfunc_set_focus_child(child: Gtk.Widget | null): void;
         /**
          * Flags a widget to be displayed.
          *
@@ -25407,6 +25426,7 @@ export namespace Panel {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
@@ -25415,12 +25435,14 @@ export namespace Panel {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
         set accessibleRole(val: Gtk.AccessibleRole);
         /**
          * The orientation of the orientable.
+         * @default Gtk.Orientation.HORIZONTAL
          * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
@@ -25524,7 +25546,7 @@ export namespace Panel {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent?: Gtk.Accessible | null, next_sibling?: Gtk.Accessible | null): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
         /**
          * Updates the next accessible sibling.
          *
@@ -25532,7 +25554,7 @@ export namespace Panel {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling?: Gtk.Accessible | null): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
         /**
          * Informs ATs that the platform state has changed.
          *
@@ -25643,7 +25665,7 @@ export namespace Panel {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -25657,7 +25679,7 @@ export namespace Panel {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called at the end of each custom element handled by
@@ -25672,7 +25694,7 @@ export namespace Panel {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called for each unknown element under `<child>`.
@@ -25786,38 +25808,19 @@ export namespace Panel {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -25825,15 +25828,9 @@ export namespace Panel {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -26000,7 +25997,7 @@ export namespace Panel {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -26233,44 +26230,68 @@ export namespace Panel {
 
         /**
          * The area.
+         * @default Panel.Area.CENTER
          */
         get area(): Area;
         set area(val: Area);
         /**
          * The area is set.
+         * @default false
          */
         get area_set(): boolean;
         set area_set(val: boolean);
         /**
          * The area is set.
+         * @default false
          */
         get areaSet(): boolean;
         set areaSet(val: boolean);
         /**
          * The column in the position.
+         * @default 0
          */
         get column(): number;
         set column(val: number);
         /**
          * The column is set.
+         * @default false
          */
         get column_set(): boolean;
         set column_set(val: boolean);
         /**
          * The column is set.
+         * @default false
          */
         get columnSet(): boolean;
         set columnSet(val: boolean);
+        /**
+         * @default 0
+         */
         get depth(): number;
         set depth(val: number);
+        /**
+         * @default false
+         */
         get depth_set(): boolean;
         set depth_set(val: boolean);
+        /**
+         * @default false
+         */
         get depthSet(): boolean;
         set depthSet(val: boolean);
+        /**
+         * @default 0
+         */
         get row(): number;
         set row(val: number);
+        /**
+         * @default false
+         */
         get row_set(): boolean;
         set row_set(val: boolean);
+        /**
+         * @default false
+         */
         get rowSet(): boolean;
         set rowSet(val: boolean);
 
@@ -26433,14 +26454,14 @@ export namespace Panel {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            icon: Gio.Icon;
-            icon_name: string;
-            iconName: string;
+            icon: Gio.Icon | null;
+            icon_name: string | null;
+            iconName: string | null;
             is_draft: boolean;
             isDraft: boolean;
             progress: number;
-            subtitle: string;
-            title: string;
+            subtitle: string | null;
+            title: string | null;
         }
     }
 
@@ -26460,8 +26481,8 @@ export namespace Panel {
          * Alternatively, you can use {@link Panel.SaveDelegate.icon_name} for a
          * named icon.
          */
-        get icon(): Gio.Icon;
-        set icon(val: Gio.Icon);
+        get icon(): Gio.Icon | null;
+        set icon(val: Gio.Icon | null);
         /**
          * The "icon-name" property contains the name of an icon to use when
          * showing information about the save operation in UI such as a save
@@ -26469,9 +26490,10 @@ export namespace Panel {
          *
          * You can also use {@link Panel.SaveDelegate.icon} to set a {@link Gio.Icon} instead of
          * an icon name.
+         * @default null
          */
-        get icon_name(): string;
-        set icon_name(val: string);
+        get icon_name(): string | null;
+        set icon_name(val: string | null);
         /**
          * The "icon-name" property contains the name of an icon to use when
          * showing information about the save operation in UI such as a save
@@ -26479,24 +26501,28 @@ export namespace Panel {
          *
          * You can also use {@link Panel.SaveDelegate.icon} to set a {@link Gio.Icon} instead of
          * an icon name.
+         * @default null
          */
-        get iconName(): string;
-        set iconName(val: string);
+        get iconName(): string | null;
+        set iconName(val: string | null);
         /**
          * The "is-draft" property indicates that the document represented by the
          * delegate is a draft and might be lost of not saved.
+         * @default false
          */
         get is_draft(): boolean;
         set is_draft(val: boolean);
         /**
          * The "is-draft" property indicates that the document represented by the
          * delegate is a draft and might be lost of not saved.
+         * @default false
          */
         get isDraft(): boolean;
         set isDraft(val: boolean);
         /**
          * The "progress" property contains progress between 0.0 and 1.0 and
          * should be updated by the delegate implementation as saving progresses.
+         * @default 0
          */
         get progress(): number;
         set progress(val: number);
@@ -26504,16 +26530,18 @@ export namespace Panel {
          * The "subtitle" property contains additional information that may
          * not make sense to put in the title. This might include the directory
          * that the file will be saved within.
+         * @default null
          */
-        get subtitle(): string;
-        set subtitle(val: string);
+        get subtitle(): string | null;
+        set subtitle(val: string | null);
         /**
          * The "title" property contains the title of the document being saved.
          * Generally, this should be the base name of the document such as
          * `file.txt`.
+         * @default null
          */
-        get title(): string;
-        set title(val: string);
+        get title(): string | null;
+        set title(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -26573,7 +26601,7 @@ export namespace Panel {
          * @param callback
          * @virtual
          */
-        vfunc_save_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_save_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param result
          * @virtual
@@ -26609,7 +26637,7 @@ export namespace Panel {
         /**
          * @param cancellable
          */
-        save_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        save_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * @param cancellable
          * @param callback
@@ -26620,7 +26648,7 @@ export namespace Panel {
          * @param callback
          */
         save_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -26631,12 +26659,12 @@ export namespace Panel {
          * Sets the {@link Gio.Icon} for the save delegate. Pass `null` to unset.
          * @param icon a {@link Gio.Icon} or `null`
          */
-        set_icon(icon?: Gio.Icon | null): void;
+        set_icon(icon: Gio.Icon | null): void;
         /**
          * Sets the icon name for the save delegate. Pass `null` to unset.
          * @param icon the icon name or `null`
          */
-        set_icon_name(icon?: string | null): void;
+        set_icon_name(icon: string | null): void;
         /**
          * @param is_draft
          */
@@ -26649,12 +26677,12 @@ export namespace Panel {
          * Sets the subtitle for the save delegate. Pass `null` to unset.
          * @param subtitle the subtitle or `null`
          */
-        set_subtitle(subtitle?: string | null): void;
+        set_subtitle(subtitle: string | null): void;
         /**
          * Sets the title for the save delegate. Pass `null` to unset.
          * @param title the title or `null`
          */
-        set_title(title?: string | null): void;
+        set_title(title: string | null): void;
     }
 
     namespace SaveDialog {
@@ -26761,12 +26789,14 @@ export namespace Panel {
         /**
          * This property requests that the widget close after saving.
          * @deprecated since 1.8: Use {@link PanelChangesDialog}
+         * @default false
          */
         get close_after_save(): boolean;
         set close_after_save(val: boolean);
         /**
          * This property requests that the widget close after saving.
          * @deprecated since 1.8: Use {@link PanelChangesDialog}
+         * @default false
          */
         get closeAfterSave(): boolean;
         set closeAfterSave(val: boolean);
@@ -26819,7 +26849,7 @@ export namespace Panel {
         /**
          * @param cancellable
          */
-        run_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        run_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * @param cancellable
          * @param callback
@@ -26830,7 +26860,7 @@ export namespace Panel {
          * @param callback
          */
         run_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -26847,6 +26877,7 @@ export namespace Panel {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get can_focus(): boolean;
@@ -26857,18 +26888,21 @@ export namespace Panel {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get canFocus(): boolean;
         set canFocus(val: boolean);
         /**
          * Whether the widget can receive pointer events.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get can_target(): boolean;
         set can_target(val: boolean);
         /**
          * Whether the widget can receive pointer events.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get canTarget(): boolean;
@@ -26891,6 +26925,7 @@ export namespace Panel {
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
          * @construct-only
+         * @default null
          * @category Inherited from Gtk.Widget
          */
         get css_name(): string;
@@ -26900,6 +26935,7 @@ export namespace Panel {
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
          * @construct-only
+         * @default null
          * @category Inherited from Gtk.Widget
          */
         get cssName(): string;
@@ -26907,12 +26943,13 @@ export namespace Panel {
          * The cursor used by `widget`.
          * @category Inherited from Gtk.Widget
          */
-        get cursor(): Gdk.Cursor;
-        set cursor(val: Gdk.Cursor);
+        get cursor(): Gdk.Cursor | null;
+        set cursor(val: Gdk.Cursor | null);
         /**
          * Whether the widget should grab focus when it is clicked with the mouse.
          *
          * This property is only relevant for widgets that can take focus.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get focus_on_click(): boolean;
@@ -26921,18 +26958,21 @@ export namespace Panel {
          * Whether the widget should grab focus when it is clicked with the mouse.
          *
          * This property is only relevant for widgets that can take focus.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get focusOnClick(): boolean;
         set focusOnClick(val: boolean);
         /**
          * Whether this widget itself will accept the input focus.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get focusable(): boolean;
         set focusable(val: boolean);
         /**
          * How to distribute horizontal space if widget gets extra space.
+         * @default Gtk.Align.FILL
          * @category Inherited from Gtk.Widget
          */
         get halign(): Gtk.Align;
@@ -26940,24 +26980,28 @@ export namespace Panel {
         /**
          * Whether the widget is the default widget.
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get has_default(): boolean;
         /**
          * Whether the widget is the default widget.
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hasDefault(): boolean;
         /**
          * Whether the widget has the input focus.
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get has_focus(): boolean;
         /**
          * Whether the widget has the input focus.
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hasFocus(): boolean;
@@ -26968,6 +27012,7 @@ export namespace Panel {
          * A true value indicates that `widget` can have a tooltip, in this case
          * the widget will be queried using `Gtk.Widget::query-tooltip` to
          * determine whether it will provide a tooltip or not.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get has_tooltip(): boolean;
@@ -26979,6 +27024,7 @@ export namespace Panel {
          * A true value indicates that `widget` can have a tooltip, in this case
          * the widget will be queried using `Gtk.Widget::query-tooltip` to
          * determine whether it will provide a tooltip or not.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hasTooltip(): boolean;
@@ -26987,6 +27033,7 @@ export namespace Panel {
          * Overrides for height request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @default -1
          * @category Inherited from Gtk.Widget
          */
         get height_request(): number;
@@ -26995,24 +27042,28 @@ export namespace Panel {
          * Overrides for height request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @default -1
          * @category Inherited from Gtk.Widget
          */
         get heightRequest(): number;
         set heightRequest(val: number);
         /**
          * Whether to expand horizontally.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpand(): boolean;
         set hexpand(val: boolean);
         /**
          * Whether to use the `hexpand` property.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpand_set(): boolean;
         set hexpand_set(val: boolean);
         /**
          * Whether to use the `hexpand` property.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpandSet(): boolean;
@@ -27025,8 +27076,8 @@ export namespace Panel {
          * typically in their instance init function.
          * @category Inherited from Gtk.Widget
          */
-        get layout_manager(): Gtk.LayoutManager;
-        set layout_manager(val: Gtk.LayoutManager);
+        get layout_manager(): Gtk.LayoutManager | null;
+        set layout_manager(val: Gtk.LayoutManager | null);
         /**
          * The {@link Gtk.LayoutManager} instance to use to compute
          * the preferred size of the widget, and allocate its children.
@@ -27035,8 +27086,8 @@ export namespace Panel {
          * typically in their instance init function.
          * @category Inherited from Gtk.Widget
          */
-        get layoutManager(): Gtk.LayoutManager;
-        set layoutManager(val: Gtk.LayoutManager);
+        get layoutManager(): Gtk.LayoutManager | null;
+        set layoutManager(val: Gtk.LayoutManager | null);
         /**
          * Makes this widget act like a modal dialog, with respect to
          * event delivery.
@@ -27045,6 +27096,7 @@ export namespace Panel {
          * inside the widget, unless they are set up to ignore propagation
          * limits. See {@link Gtk.EventController.set_propagation_limit}.
          * @since 4.18
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get limit_events(): boolean;
@@ -27057,6 +27109,7 @@ export namespace Panel {
          * inside the widget, unless they are set up to ignore propagation
          * limits. See {@link Gtk.EventController.set_propagation_limit}.
          * @since 4.18
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get limitEvents(): boolean;
@@ -27067,6 +27120,7 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_bottom(): number;
@@ -27077,6 +27131,7 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginBottom(): number;
@@ -27090,6 +27145,7 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_end(): number;
@@ -27103,6 +27159,7 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginEnd(): number;
@@ -27116,6 +27173,7 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_start(): number;
@@ -27129,6 +27187,7 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginStart(): number;
@@ -27139,6 +27198,7 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_top(): number;
@@ -27149,18 +27209,21 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginTop(): number;
         set marginTop(val: number);
         /**
          * The name of the widget.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
         get name(): string;
         set name(val: string);
         /**
          * The requested opacity of the widget.
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get opacity(): number;
@@ -27170,6 +27233,7 @@ export namespace Panel {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @default Gtk.Overflow.VISIBLE
          * @category Inherited from Gtk.Widget
          */
         get overflow(): Gtk.Overflow;
@@ -27179,15 +27243,17 @@ export namespace Panel {
          * @read-only
          * @category Inherited from Gtk.Widget
          */
-        get parent(): Gtk.Widget;
+        get parent(): Gtk.Widget | null;
         /**
          * Whether the widget will receive the default action when it is focused.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get receives_default(): boolean;
         set receives_default(val: boolean);
         /**
          * Whether the widget will receive the default action when it is focused.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get receivesDefault(): boolean;
@@ -27199,21 +27265,24 @@ export namespace Panel {
          * @read-only
          * @category Inherited from Gtk.Widget
          */
-        get root(): Gtk.Root;
+        get root(): Gtk.Root | null;
         /**
          * The scale factor of the widget.
          * @read-only
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
         /**
          * The scale factor of the widget.
          * @read-only
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
         /**
          * Whether the widget responds to input.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get sensitive(): boolean;
@@ -27232,10 +27301,11 @@ export namespace Panel {
          *
          * Note that if both {@link Gtk.Widget.tooltip_text} and
          * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltip_markup(): string;
-        set tooltip_markup(val: string);
+        get tooltip_markup(): string | null;
+        set tooltip_markup(val: string | null);
         /**
          * Sets the text of tooltip to be the given string, which is marked up
          * with Pango markup.
@@ -27250,10 +27320,11 @@ export namespace Panel {
          *
          * Note that if both {@link Gtk.Widget.tooltip_text} and
          * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltipMarkup(): string;
-        set tooltipMarkup(val: string);
+        get tooltipMarkup(): string | null;
+        set tooltipMarkup(val: string | null);
         /**
          * Sets the text of tooltip to be the given string.
          *
@@ -27267,10 +27338,11 @@ export namespace Panel {
          *
          * Note that if both {@link Gtk.Widget.tooltip_text} and
          * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltip_text(): string;
-        set tooltip_text(val: string);
+        get tooltip_text(): string | null;
+        set tooltip_text(val: string | null);
         /**
          * Sets the text of tooltip to be the given string.
          *
@@ -27284,36 +27356,42 @@ export namespace Panel {
          *
          * Note that if both {@link Gtk.Widget.tooltip_text} and
          * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltipText(): string;
-        set tooltipText(val: string);
+        get tooltipText(): string | null;
+        set tooltipText(val: string | null);
         /**
          * How to distribute vertical space if widget gets extra space.
+         * @default Gtk.Align.FILL
          * @category Inherited from Gtk.Widget
          */
         get valign(): Gtk.Align;
         set valign(val: Gtk.Align);
         /**
          * Whether to expand vertically.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpand(): boolean;
         set vexpand(val: boolean);
         /**
          * Whether to use the `vexpand` property.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpand_set(): boolean;
         set vexpand_set(val: boolean);
         /**
          * Whether to use the `vexpand` property.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpandSet(): boolean;
         set vexpandSet(val: boolean);
         /**
          * Whether the widget is visible.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get visible(): boolean;
@@ -27322,6 +27400,7 @@ export namespace Panel {
          * Overrides for width request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @default -1
          * @category Inherited from Gtk.Widget
          */
         get width_request(): number;
@@ -27330,6 +27409,7 @@ export namespace Panel {
          * Overrides for width request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @default -1
          * @category Inherited from Gtk.Widget
          */
         get widthRequest(): number;
@@ -27381,38 +27461,19 @@ export namespace Panel {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -27420,15 +27481,9 @@ export namespace Panel {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -27595,7 +27650,7 @@ export namespace Panel {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -27825,7 +27880,7 @@ export namespace Panel {
          * @param args parameters to use
          * @returns true if the action was activated
          */
-        activate_action(name: string, args?: GLib.Variant | null): boolean;
+        activate_action(name: string, args: GLib.Variant | null): boolean;
         /**
          * Activates the `default.activate` action for the widget.
          *
@@ -27914,7 +27969,7 @@ export namespace Panel {
          * @param baseline new baseline, or -1
          * @param transform transformation to be applied
          */
-        allocate(width: number, height: number, baseline: number, transform?: Gsk.Transform | null): void;
+        allocate(width: number, height: number, baseline: number, transform: Gsk.Transform | null): void;
         /**
          * Called by widgets as the user moves around the window using
          * keyboard shortcuts.
@@ -28034,7 +28089,7 @@ export namespace Panel {
          * @param text text to set on the layout
          * @returns the new {@link Pango.Layout}
          */
-        create_pango_layout(text?: string | null): Pango.Layout;
+        create_pango_layout(text: string | null): Pango.Layout;
         /**
          * Clears the template children for the widget.
          *
@@ -28786,7 +28841,7 @@ export namespace Panel {
          * @param name the prefix for actions in `group`
          * @param group an action group
          */
-        insert_action_group(name: string, group?: Gio.ActionGroup | null): void;
+        insert_action_group(name: string, group: Gio.ActionGroup | null): void;
         /**
          * Sets the parent widget of the widget.
          *
@@ -28809,7 +28864,7 @@ export namespace Panel {
          * @param parent the parent widget to insert `widget` into
          * @param previous_sibling the new previous sibling of `widget`
          */
-        insert_after(parent: Gtk.Widget, previous_sibling?: Gtk.Widget | null): void;
+        insert_after(parent: Gtk.Widget, previous_sibling: Gtk.Widget | null): void;
         /**
          * Sets the parent widget of the widget.
          *
@@ -28831,7 +28886,7 @@ export namespace Panel {
          * @param parent the parent widget to insert `widget` into
          * @param next_sibling the new next sibling of `widget`
          */
-        insert_before(parent: Gtk.Widget, next_sibling?: Gtk.Widget | null): void;
+        insert_before(parent: Gtk.Widget, next_sibling: Gtk.Widget | null): void;
         /**
          * Determines whether the widget is a descendent of `ancestor`.
          * @param ancestor another {@link Gtk.Widget}
@@ -29141,7 +29196,7 @@ export namespace Panel {
          * inherited from its parent.
          * @param cursor the new cursor
          */
-        set_cursor(cursor?: Gdk.Cursor | null): void;
+        set_cursor(cursor: Gdk.Cursor | null): void;
         /**
          * Sets the cursor to be shown when the pointer hovers over
          * the widget.
@@ -29156,7 +29211,7 @@ export namespace Panel {
          * with a `NULL` cursor.
          * @param name the name of the cursor
          */
-        set_cursor_from_name(name?: string | null): void;
+        set_cursor_from_name(name: string | null): void;
         /**
          * Sets the reading direction on the widget.
          *
@@ -29184,7 +29239,7 @@ export namespace Panel {
          * {@link Gtk.Widget.grab_focus} on it.
          * @param child a direct child widget of `widget`   or `NULL` to unset the focus child
          */
-        set_focus_child(child?: Gtk.Widget | null): void;
+        set_focus_child(child: Gtk.Widget | null): void;
         /**
          * Sets whether the widget should grab focus when it is clicked
          * with the mouse.
@@ -29223,7 +29278,7 @@ export namespace Panel {
          * When not set, the widget will inherit the font map from its parent.
          * @param font_map a {@link Pango.FontMap}
          */
-        set_font_map(font_map?: Pango.FontMap | null): void;
+        set_font_map(font_map: Pango.FontMap | null): void;
         /**
          * Sets the `cairo_font_options_t` used for text rendering
          * in the widget.
@@ -29232,7 +29287,7 @@ export namespace Panel {
          * will be used.
          * @param options a `cairo_font_options_t` struct   to unset any previously set default font options
          */
-        set_font_options(options?: cairo.FontOptions | null): void;
+        set_font_options(options: cairo.FontOptions | null): void;
         /**
          * Sets the horizontal alignment of the widget.
          * @param align the horizontal alignment
@@ -29296,7 +29351,7 @@ export namespace Panel {
          * of the widget.
          * @param layout_manager a layout manager
          */
-        set_layout_manager(layout_manager?: Gtk.LayoutManager | null): void;
+        set_layout_manager(layout_manager: Gtk.LayoutManager | null): void;
         /**
          * Sets whether the widget acts like a modal dialog,
          * with respect to event delivery.
@@ -29472,7 +29527,7 @@ export namespace Panel {
          * See also {@link Gtk.Tooltip.set_markup}.
          * @param markup the contents of the tooltip for `widget`
          */
-        set_tooltip_markup(markup?: string | null): void;
+        set_tooltip_markup(markup: string | null): void;
         /**
          * Sets the contents of the tooltip for the widget.
          *
@@ -29486,7 +29541,7 @@ export namespace Panel {
          * See also {@link Gtk.Tooltip.set_text}.
          * @param text the contents of the tooltip for `widget`
          */
-        set_tooltip_text(text?: string | null): void;
+        set_tooltip_text(text: string | null): void;
         /**
          * Sets the vertical alignment of the widget.
          * @param align the vertical alignment
@@ -29796,7 +29851,7 @@ export namespace Panel {
          * @param child a direct child widget of `widget`   or `NULL` to unset the focus child
          * @virtual
          */
-        vfunc_set_focus_child(child?: Gtk.Widget | null): void;
+        vfunc_set_focus_child(child: Gtk.Widget | null): void;
         /**
          * Flags a widget to be displayed.
          *
@@ -29979,13 +30034,13 @@ export namespace Panel {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            id: string;
-            module_name: string;
-            moduleName: string;
-            position: Position;
-            type_hint: string;
-            typeHint: string;
-            workspace: string;
+            id: string | null;
+            module_name: string | null;
+            moduleName: string | null;
+            position: Position | null;
+            type_hint: string | null;
+            typeHint: string | null;
+            workspace: string | null;
         }
     }
 
@@ -29997,20 +30052,38 @@ export namespace Panel {
 
         // Properties
 
-        get id(): string;
-        set id(val: string);
-        get module_name(): string;
-        set module_name(val: string);
-        get moduleName(): string;
-        set moduleName(val: string);
-        get position(): Position;
-        set position(val: Position);
-        get type_hint(): string;
-        set type_hint(val: string);
-        get typeHint(): string;
-        set typeHint(val: string);
-        get workspace(): string;
-        set workspace(val: string);
+        /**
+         * @default null
+         */
+        get id(): string | null;
+        set id(val: string | null);
+        /**
+         * @default null
+         */
+        get module_name(): string | null;
+        set module_name(val: string | null);
+        /**
+         * @default null
+         */
+        get moduleName(): string | null;
+        set moduleName(val: string | null);
+        get position(): Position | null;
+        set position(val: Position | null);
+        /**
+         * @default null
+         */
+        get type_hint(): string | null;
+        set type_hint(val: string | null);
+        /**
+         * @default null
+         */
+        get typeHint(): string | null;
+        set typeHint(val: string | null);
+        /**
+         * @default null
+         */
+        get workspace(): string | null;
+        set workspace(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -30066,7 +30139,7 @@ export namespace Panel {
          * @param expected_type a {@link GLib.VariantType} or `null`
          * @returns a non-floating {@link GLib.Variant} which should   be released with `g_variant_unref()`; otherwise `null`.
          */
-        get_metadata_value(key: string, expected_type?: GLib.VariantType | null): GLib.Variant | null;
+        get_metadata_value(key: string, expected_type: GLib.VariantType | null): GLib.Variant | null;
         /**
          * Gets the module-name that created an item.
          * @returns a module-name or `null`
@@ -30110,7 +30183,7 @@ export namespace Panel {
          * not be expected to come across multiple items with the same id.
          * @param id an optional identifier for the item
          */
-        set_id(id?: string | null): void;
+        set_id(id: string | null): void;
         /**
          * Sets the value for metadata `key`.
          *
@@ -30118,7 +30191,7 @@ export namespace Panel {
          * @param key the metadata key
          * @param value the value for `key` or `null`
          */
-        set_metadata_value(key: string, value?: GLib.Variant | null): void;
+        set_metadata_value(key: string, value: GLib.Variant | null): void;
         /**
          * Sets the module-name for the session item.
          *
@@ -30126,12 +30199,12 @@ export namespace Panel {
          * the item when decoding them at project load time.
          * @param module_name the module name owning the item
          */
-        set_module_name(module_name?: string | null): void;
+        set_module_name(module_name: string | null): void;
         /**
          * Sets the position for `self`, if any.
          * @param position a {@link Panel.Position} or `null`
          */
-        set_position(position?: Position | null): void;
+        set_position(position: Position | null): void;
         /**
          * Sets the type-hint value for the item.
          *
@@ -30139,14 +30212,14 @@ export namespace Panel {
          * an object when loading session items.
          * @param type_hint a type hint string for the item
          */
-        set_type_hint(type_hint?: string | null): void;
+        set_type_hint(type_hint: string | null): void;
         /**
          * Sets the workspace id for the item.
          *
          * This is generally used to tie an item to a specific workspace.
          * @param workspace a workspace string for the item
          */
-        set_workspace(workspace?: string | null): void;
+        set_workspace(workspace: string | null): void;
     }
 
     namespace Settings {
@@ -30232,42 +30305,52 @@ export namespace Panel {
          *
          * This might be a unique "project-id" for example, in an IDE.
          * @construct-only
+         * @default null
          */
         get identifier(): string;
         /**
          * @construct-only
+         * @default null
          */
         get path(): string;
         /**
          * @construct-only
+         * @default null
          */
         get path_prefix(): string;
         /**
          * @construct-only
+         * @default null
          */
         get pathPrefix(): string;
         /**
          * @construct-only
+         * @default null
          */
         get path_suffix(): string;
         /**
          * @construct-only
+         * @default null
          */
         get pathSuffix(): string;
         /**
          * @construct-only
+         * @default null
          */
         get schema_id(): string;
         /**
          * @construct-only
+         * @default null
          */
         get schemaId(): string;
         /**
          * @construct-only
+         * @default null
          */
         get schema_id_prefix(): string;
         /**
          * @construct-only
+         * @default null
          */
         get schemaIdPrefix(): string;
 
@@ -30362,8 +30445,8 @@ export namespace Panel {
             object: any | null,
             property: string,
             flags: Gio.SettingsBindFlags,
-            get_mapping?: Gio.SettingsBindGetMapping | null,
-            set_mapping?: Gio.SettingsBindSetMapping | null,
+            get_mapping: Gio.SettingsBindGetMapping | null,
+            set_mapping: Gio.SettingsBindSetMapping | null,
         ): void;
         /**
          * @param key
@@ -30500,7 +30583,7 @@ export namespace Panel {
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
-        activate_action(action_name: string, parameter?: GLib.Variant | null): void;
+        activate_action(action_name: string, parameter: GLib.Variant | null): void;
         /**
          * Request for the state of the named action within `action_group` to be
          * changed to `value`.
@@ -30728,7 +30811,7 @@ export namespace Panel {
          * @param parameter parameters to the activation
          * @virtual
          */
-        vfunc_activate_action(action_name: string, parameter?: GLib.Variant | null): void;
+        vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
         /**
          * Request for the state of the named action within `action_group` to be
          * changed to `value`.
@@ -30932,38 +31015,19 @@ export namespace Panel {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -30971,15 +31035,9 @@ export namespace Panel {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -31146,7 +31204,7 @@ export namespace Panel {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -31458,6 +31516,7 @@ export namespace Panel {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
@@ -31466,6 +31525,7 @@ export namespace Panel {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
@@ -31569,7 +31629,7 @@ export namespace Panel {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent?: Gtk.Accessible | null, next_sibling?: Gtk.Accessible | null): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
         /**
          * Updates the next accessible sibling.
          *
@@ -31577,7 +31637,7 @@ export namespace Panel {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling?: Gtk.Accessible | null): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
         /**
          * Informs ATs that the platform state has changed.
          *
@@ -31688,7 +31748,7 @@ export namespace Panel {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -31702,7 +31762,7 @@ export namespace Panel {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called at the end of each custom element handled by
@@ -31717,7 +31777,7 @@ export namespace Panel {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called for each unknown element under `<child>`.
@@ -31821,38 +31881,19 @@ export namespace Panel {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -31860,15 +31901,9 @@ export namespace Panel {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -32035,7 +32070,7 @@ export namespace Panel {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -32300,11 +32335,13 @@ export namespace Panel {
 
         /**
          * The name of the action activated on activation.
+         * @default null
          */
         get action_name(): string;
         set action_name(val: string);
         /**
          * The name of the action activated on activation.
+         * @default null
          */
         get actionName(): string;
         set actionName(val: string);
@@ -32363,6 +32400,7 @@ export namespace Panel {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
@@ -32371,6 +32409,7 @@ export namespace Panel {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
@@ -32474,7 +32513,7 @@ export namespace Panel {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent?: Gtk.Accessible | null, next_sibling?: Gtk.Accessible | null): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
         /**
          * Updates the next accessible sibling.
          *
@@ -32482,7 +32521,7 @@ export namespace Panel {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling?: Gtk.Accessible | null): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
         /**
          * Informs ATs that the platform state has changed.
          *
@@ -32593,7 +32632,7 @@ export namespace Panel {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -32607,7 +32646,7 @@ export namespace Panel {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called at the end of each custom element handled by
@@ -32622,7 +32661,7 @@ export namespace Panel {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called for each unknown element under `<child>`.
@@ -32726,38 +32765,19 @@ export namespace Panel {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -32765,15 +32785,9 @@ export namespace Panel {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -32940,7 +32954,7 @@ export namespace Panel {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -33207,6 +33221,7 @@ export namespace Panel {
         /**
          * The area this button will reveal.
          * @construct-only
+         * @default Panel.Area.START
          */
         get area(): Area;
         /**
@@ -33256,6 +33271,7 @@ export namespace Panel {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
@@ -33264,6 +33280,7 @@ export namespace Panel {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
@@ -33367,7 +33384,7 @@ export namespace Panel {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent?: Gtk.Accessible | null, next_sibling?: Gtk.Accessible | null): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
         /**
          * Updates the next accessible sibling.
          *
@@ -33375,7 +33392,7 @@ export namespace Panel {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling?: Gtk.Accessible | null): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
         /**
          * Informs ATs that the platform state has changed.
          *
@@ -33486,7 +33503,7 @@ export namespace Panel {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -33500,7 +33517,7 @@ export namespace Panel {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called at the end of each custom element handled by
@@ -33515,7 +33532,7 @@ export namespace Panel {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called for each unknown element under `<child>`.
@@ -33619,38 +33636,19 @@ export namespace Panel {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -33658,15 +33656,9 @@ export namespace Panel {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -33833,7 +33825,7 @@ export namespace Panel {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -34104,22 +34096,22 @@ export namespace Panel {
             busy: boolean;
             can_maximize: boolean;
             canMaximize: boolean;
-            child: Gtk.Widget;
-            icon: Gio.Icon;
-            icon_name: string;
-            iconName: string;
+            child: Gtk.Widget | null;
+            icon: Gio.Icon | null;
+            icon_name: string | null;
+            iconName: string | null;
             id: string;
             kind: string;
-            menu_model: Gio.MenuModel;
-            menuModel: Gio.MenuModel;
+            menu_model: Gio.MenuModel | null;
+            menuModel: Gio.MenuModel | null;
             modified: boolean;
             needs_attention: boolean;
             needsAttention: boolean;
             reorderable: boolean;
-            save_delegate: SaveDelegate;
-            saveDelegate: SaveDelegate;
-            title: string;
-            tooltip: string;
+            save_delegate: SaveDelegate | null;
+            saveDelegate: SaveDelegate | null;
+            title: string | null;
+            tooltip: string | null;
         }
     }
 
@@ -34135,77 +34127,106 @@ export namespace Panel {
 
         /**
          * @read-only
+         * @default false
          */
         get busy(): boolean;
+        /**
+         * @default false
+         */
         get can_maximize(): boolean;
         set can_maximize(val: boolean);
+        /**
+         * @default false
+         */
         get canMaximize(): boolean;
         set canMaximize(val: boolean);
         /**
          * The child inside this widget.
          */
-        get child(): Gtk.Widget;
-        set child(val: Gtk.Widget);
+        get child(): Gtk.Widget | null;
+        set child(val: Gtk.Widget | null);
         /**
          * The icon for this widget.
          */
-        get icon(): Gio.Icon;
-        set icon(val: Gio.Icon);
+        get icon(): Gio.Icon | null;
+        set icon(val: Gio.Icon | null);
         /**
          * The icon name for this widget.
+         * @default null
          */
-        get icon_name(): string;
-        set icon_name(val: string);
+        get icon_name(): string | null;
+        set icon_name(val: string | null);
         /**
          * The icon name for this widget.
+         * @default null
          */
-        get iconName(): string;
-        set iconName(val: string);
+        get iconName(): string | null;
+        set iconName(val: string | null);
+        /**
+         * @default null
+         */
         get id(): string;
         set id(val: string);
+        /**
+         * @default unknown
+         */
         get kind(): string;
         set kind(val: string);
         /**
          * A menu model to display additional options for the page to the user via
          * menus.
          */
-        get menu_model(): Gio.MenuModel;
-        set menu_model(val: Gio.MenuModel);
+        get menu_model(): Gio.MenuModel | null;
+        set menu_model(val: Gio.MenuModel | null);
         /**
          * A menu model to display additional options for the page to the user via
          * menus.
          */
-        get menuModel(): Gio.MenuModel;
-        set menuModel(val: Gio.MenuModel);
+        get menuModel(): Gio.MenuModel | null;
+        set menuModel(val: Gio.MenuModel | null);
+        /**
+         * @default false
+         */
         get modified(): boolean;
         set modified(val: boolean);
+        /**
+         * @default false
+         */
         get needs_attention(): boolean;
         set needs_attention(val: boolean);
+        /**
+         * @default false
+         */
         get needsAttention(): boolean;
         set needsAttention(val: boolean);
+        /**
+         * @default true
+         */
         get reorderable(): boolean;
         set reorderable(val: boolean);
         /**
          * The save delegate attached to this widget.
          */
-        get save_delegate(): SaveDelegate;
-        set save_delegate(val: SaveDelegate);
+        get save_delegate(): SaveDelegate | null;
+        set save_delegate(val: SaveDelegate | null);
         /**
          * The save delegate attached to this widget.
          */
-        get saveDelegate(): SaveDelegate;
-        set saveDelegate(val: SaveDelegate);
+        get saveDelegate(): SaveDelegate | null;
+        set saveDelegate(val: SaveDelegate | null);
         /**
          * The title for this widget.
+         * @default null
          */
-        get title(): string;
-        set title(val: string);
+        get title(): string | null;
+        set title(val: string | null);
         /**
          * The tooltip to display in tabs for the widget.
          * @since 1.2
+         * @default null
          */
-        get tooltip(): string;
-        set tooltip(val: string);
+        get tooltip(): string | null;
+        set tooltip(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -34385,17 +34406,17 @@ export namespace Panel {
          * Sets the child widget of the panel.
          * @param child a {@link Gtk.Widget} or `null`
          */
-        set_child(child?: Gtk.Widget | null): void;
+        set_child(child: Gtk.Widget | null): void;
         /**
          * Sets a {@link Gio.Icon} for the widget.
          * @param icon a {@link Gio.Icon} or `null`
          */
-        set_icon(icon?: Gio.Icon | null): void;
+        set_icon(icon: Gio.Icon | null): void;
         /**
          * Sets the icon name for the widget.
          * @param icon_name the icon name or `null`
          */
-        set_icon_name(icon_name?: string | null): void;
+        set_icon_name(icon_name: string | null): void;
         /**
          * Sets the id of the panel widget.
          * @param id the id to set for the panel widget.
@@ -34405,7 +34426,7 @@ export namespace Panel {
          * Sets the kind of the widget.
          * @param kind the kind of this widget
          */
-        set_kind(kind?: string | null): void;
+        set_kind(kind: string | null): void;
         /**
          * Sets the {@link Gio.MenuModel} for the widget.
          *
@@ -34413,7 +34434,7 @@ export namespace Panel {
          * for the page to the user via menus.
          * @param menu_model a {@link Gio.MenuModel}
          */
-        set_menu_model(menu_model?: Gio.MenuModel | null): void;
+        set_menu_model(menu_model: Gio.MenuModel | null): void;
         /**
          * Sets the modified status of a panel widget.
          * @param modified the modified status
@@ -34436,23 +34457,24 @@ export namespace Panel {
          * Document editors might use this to save the file to disk.
          * @param save_delegate a {@link Panel.SaveDelegate} or `null`
          */
-        set_save_delegate(save_delegate?: SaveDelegate | null): void;
+        set_save_delegate(save_delegate: SaveDelegate | null): void;
         /**
          * Sets the title for the widget.
          * @param title the title or `null`
          */
-        set_title(title?: string | null): void;
+        set_title(title: string | null): void;
         /**
          * Sets the tooltip for the widget to be displayed in tabs.
          * @param tooltip the tooltip or `null`
          */
-        set_tooltip(tooltip?: string | null): void;
+        set_tooltip(tooltip: string | null): void;
         unmark_busy(): void;
         unmaximize(): void;
         /**
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
@@ -34461,6 +34483,7 @@ export namespace Panel {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
@@ -34564,7 +34587,7 @@ export namespace Panel {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent?: Gtk.Accessible | null, next_sibling?: Gtk.Accessible | null): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
         /**
          * Updates the next accessible sibling.
          *
@@ -34572,7 +34595,7 @@ export namespace Panel {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling?: Gtk.Accessible | null): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
         /**
          * Informs ATs that the platform state has changed.
          *
@@ -34683,7 +34706,7 @@ export namespace Panel {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -34697,7 +34720,7 @@ export namespace Panel {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called at the end of each custom element handled by
@@ -34712,7 +34735,7 @@ export namespace Panel {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called for each unknown element under `<child>`.
@@ -34816,38 +34839,19 @@ export namespace Panel {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -34855,15 +34859,9 @@ export namespace Panel {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -35030,7 +35028,7 @@ export namespace Panel {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -35252,6 +35250,7 @@ export namespace Panel {
          * This is generally used by applications to help destinguish between
          * projects, so that the project-id matches the workbench-id.
          * @since 1.4
+         * @default null
          */
         get id(): string;
         set id(val: string);
@@ -35324,7 +35323,7 @@ export namespace Panel {
          * @param callback
          * @virtual
          */
-        vfunc_unload_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_unload_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param result
          * @virtual
@@ -35484,6 +35483,7 @@ export namespace Panel {
          * This is generally used by applications to help destinguish between
          * types of workspaces, particularly when saving session state.
          * @since 1.4
+         * @default null
          */
         get id(): string;
         set id(val: string);
@@ -35587,6 +35587,7 @@ export namespace Panel {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get can_focus(): boolean;
@@ -35597,18 +35598,21 @@ export namespace Panel {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get canFocus(): boolean;
         set canFocus(val: boolean);
         /**
          * Whether the widget can receive pointer events.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get can_target(): boolean;
         set can_target(val: boolean);
         /**
          * Whether the widget can receive pointer events.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get canTarget(): boolean;
@@ -35631,6 +35635,7 @@ export namespace Panel {
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
          * @construct-only
+         * @default null
          * @category Inherited from Gtk.Widget
          */
         get css_name(): string;
@@ -35640,6 +35645,7 @@ export namespace Panel {
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
          * @construct-only
+         * @default null
          * @category Inherited from Gtk.Widget
          */
         get cssName(): string;
@@ -35647,12 +35653,13 @@ export namespace Panel {
          * The cursor used by `widget`.
          * @category Inherited from Gtk.Widget
          */
-        get cursor(): Gdk.Cursor;
-        set cursor(val: Gdk.Cursor);
+        get cursor(): Gdk.Cursor | null;
+        set cursor(val: Gdk.Cursor | null);
         /**
          * Whether the widget should grab focus when it is clicked with the mouse.
          *
          * This property is only relevant for widgets that can take focus.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get focus_on_click(): boolean;
@@ -35661,18 +35668,21 @@ export namespace Panel {
          * Whether the widget should grab focus when it is clicked with the mouse.
          *
          * This property is only relevant for widgets that can take focus.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get focusOnClick(): boolean;
         set focusOnClick(val: boolean);
         /**
          * Whether this widget itself will accept the input focus.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get focusable(): boolean;
         set focusable(val: boolean);
         /**
          * How to distribute horizontal space if widget gets extra space.
+         * @default Gtk.Align.FILL
          * @category Inherited from Gtk.Widget
          */
         get halign(): Gtk.Align;
@@ -35680,24 +35690,28 @@ export namespace Panel {
         /**
          * Whether the widget is the default widget.
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get has_default(): boolean;
         /**
          * Whether the widget is the default widget.
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hasDefault(): boolean;
         /**
          * Whether the widget has the input focus.
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get has_focus(): boolean;
         /**
          * Whether the widget has the input focus.
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hasFocus(): boolean;
@@ -35708,6 +35722,7 @@ export namespace Panel {
          * A true value indicates that `widget` can have a tooltip, in this case
          * the widget will be queried using `Gtk.Widget::query-tooltip` to
          * determine whether it will provide a tooltip or not.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get has_tooltip(): boolean;
@@ -35719,6 +35734,7 @@ export namespace Panel {
          * A true value indicates that `widget` can have a tooltip, in this case
          * the widget will be queried using `Gtk.Widget::query-tooltip` to
          * determine whether it will provide a tooltip or not.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hasTooltip(): boolean;
@@ -35727,6 +35743,7 @@ export namespace Panel {
          * Overrides for height request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @default -1
          * @category Inherited from Gtk.Widget
          */
         get height_request(): number;
@@ -35735,24 +35752,28 @@ export namespace Panel {
          * Overrides for height request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @default -1
          * @category Inherited from Gtk.Widget
          */
         get heightRequest(): number;
         set heightRequest(val: number);
         /**
          * Whether to expand horizontally.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpand(): boolean;
         set hexpand(val: boolean);
         /**
          * Whether to use the `hexpand` property.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpand_set(): boolean;
         set hexpand_set(val: boolean);
         /**
          * Whether to use the `hexpand` property.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpandSet(): boolean;
@@ -35765,8 +35786,8 @@ export namespace Panel {
          * typically in their instance init function.
          * @category Inherited from Gtk.Widget
          */
-        get layout_manager(): Gtk.LayoutManager;
-        set layout_manager(val: Gtk.LayoutManager);
+        get layout_manager(): Gtk.LayoutManager | null;
+        set layout_manager(val: Gtk.LayoutManager | null);
         /**
          * The {@link Gtk.LayoutManager} instance to use to compute
          * the preferred size of the widget, and allocate its children.
@@ -35775,8 +35796,8 @@ export namespace Panel {
          * typically in their instance init function.
          * @category Inherited from Gtk.Widget
          */
-        get layoutManager(): Gtk.LayoutManager;
-        set layoutManager(val: Gtk.LayoutManager);
+        get layoutManager(): Gtk.LayoutManager | null;
+        set layoutManager(val: Gtk.LayoutManager | null);
         /**
          * Makes this widget act like a modal dialog, with respect to
          * event delivery.
@@ -35785,6 +35806,7 @@ export namespace Panel {
          * inside the widget, unless they are set up to ignore propagation
          * limits. See {@link Gtk.EventController.set_propagation_limit}.
          * @since 4.18
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get limit_events(): boolean;
@@ -35797,6 +35819,7 @@ export namespace Panel {
          * inside the widget, unless they are set up to ignore propagation
          * limits. See {@link Gtk.EventController.set_propagation_limit}.
          * @since 4.18
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get limitEvents(): boolean;
@@ -35807,6 +35830,7 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_bottom(): number;
@@ -35817,6 +35841,7 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginBottom(): number;
@@ -35830,6 +35855,7 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_end(): number;
@@ -35843,6 +35869,7 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginEnd(): number;
@@ -35856,6 +35883,7 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_start(): number;
@@ -35869,6 +35897,7 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginStart(): number;
@@ -35879,6 +35908,7 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_top(): number;
@@ -35889,18 +35919,21 @@ export namespace Panel {
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
          * {@link Gtk.Widget.set_size_request} for example.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginTop(): number;
         set marginTop(val: number);
         /**
          * The name of the widget.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
         get name(): string;
         set name(val: string);
         /**
          * The requested opacity of the widget.
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get opacity(): number;
@@ -35910,6 +35943,7 @@ export namespace Panel {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @default Gtk.Overflow.VISIBLE
          * @category Inherited from Gtk.Widget
          */
         get overflow(): Gtk.Overflow;
@@ -35919,15 +35953,17 @@ export namespace Panel {
          * @read-only
          * @category Inherited from Gtk.Widget
          */
-        get parent(): Gtk.Widget;
+        get parent(): Gtk.Widget | null;
         /**
          * Whether the widget will receive the default action when it is focused.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get receives_default(): boolean;
         set receives_default(val: boolean);
         /**
          * Whether the widget will receive the default action when it is focused.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get receivesDefault(): boolean;
@@ -35939,21 +35975,24 @@ export namespace Panel {
          * @read-only
          * @category Inherited from Gtk.Widget
          */
-        get root(): Gtk.Root;
+        get root(): Gtk.Root | null;
         /**
          * The scale factor of the widget.
          * @read-only
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
         /**
          * The scale factor of the widget.
          * @read-only
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
         /**
          * Whether the widget responds to input.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get sensitive(): boolean;
@@ -35972,10 +36011,11 @@ export namespace Panel {
          *
          * Note that if both {@link Gtk.Widget.tooltip_text} and
          * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltip_markup(): string;
-        set tooltip_markup(val: string);
+        get tooltip_markup(): string | null;
+        set tooltip_markup(val: string | null);
         /**
          * Sets the text of tooltip to be the given string, which is marked up
          * with Pango markup.
@@ -35990,10 +36030,11 @@ export namespace Panel {
          *
          * Note that if both {@link Gtk.Widget.tooltip_text} and
          * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltipMarkup(): string;
-        set tooltipMarkup(val: string);
+        get tooltipMarkup(): string | null;
+        set tooltipMarkup(val: string | null);
         /**
          * Sets the text of tooltip to be the given string.
          *
@@ -36007,10 +36048,11 @@ export namespace Panel {
          *
          * Note that if both {@link Gtk.Widget.tooltip_text} and
          * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltip_text(): string;
-        set tooltip_text(val: string);
+        get tooltip_text(): string | null;
+        set tooltip_text(val: string | null);
         /**
          * Sets the text of tooltip to be the given string.
          *
@@ -36024,36 +36066,42 @@ export namespace Panel {
          *
          * Note that if both {@link Gtk.Widget.tooltip_text} and
          * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltipText(): string;
-        set tooltipText(val: string);
+        get tooltipText(): string | null;
+        set tooltipText(val: string | null);
         /**
          * How to distribute vertical space if widget gets extra space.
+         * @default Gtk.Align.FILL
          * @category Inherited from Gtk.Widget
          */
         get valign(): Gtk.Align;
         set valign(val: Gtk.Align);
         /**
          * Whether to expand vertically.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpand(): boolean;
         set vexpand(val: boolean);
         /**
          * Whether to use the `vexpand` property.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpand_set(): boolean;
         set vexpand_set(val: boolean);
         /**
          * Whether to use the `vexpand` property.
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpandSet(): boolean;
         set vexpandSet(val: boolean);
         /**
          * Whether the widget is visible.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get visible(): boolean;
@@ -36062,6 +36110,7 @@ export namespace Panel {
          * Overrides for width request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @default -1
          * @category Inherited from Gtk.Widget
          */
         get width_request(): number;
@@ -36070,6 +36119,7 @@ export namespace Panel {
          * Overrides for width request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @default -1
          * @category Inherited from Gtk.Widget
          */
         get widthRequest(): number;
@@ -36121,38 +36171,19 @@ export namespace Panel {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -36160,15 +36191,9 @@ export namespace Panel {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -36335,7 +36360,7 @@ export namespace Panel {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -36558,7 +36583,7 @@ export namespace Panel {
          * @param args parameters to use
          * @returns true if the action was activated
          */
-        activate_action(name: string, args?: GLib.Variant | null): boolean;
+        activate_action(name: string, args: GLib.Variant | null): boolean;
         /**
          * @param args
          */
@@ -36652,7 +36677,7 @@ export namespace Panel {
          * @param baseline new baseline, or -1
          * @param transform transformation to be applied
          */
-        allocate(width: number, height: number, baseline: number, transform?: Gsk.Transform | null): void;
+        allocate(width: number, height: number, baseline: number, transform: Gsk.Transform | null): void;
         /**
          * Called by widgets as the user moves around the window using
          * keyboard shortcuts.
@@ -36772,7 +36797,7 @@ export namespace Panel {
          * @param text text to set on the layout
          * @returns the new {@link Pango.Layout}
          */
-        create_pango_layout(text?: string | null): Pango.Layout;
+        create_pango_layout(text: string | null): Pango.Layout;
         /**
          * Clears the template children for the widget.
          *
@@ -37524,7 +37549,7 @@ export namespace Panel {
          * @param name the prefix for actions in `group`
          * @param group an action group
          */
-        insert_action_group(name: string, group?: Gio.ActionGroup | null): void;
+        insert_action_group(name: string, group: Gio.ActionGroup | null): void;
         /**
          * Sets the parent widget of the widget.
          *
@@ -37547,7 +37572,7 @@ export namespace Panel {
          * @param parent the parent widget to insert `widget` into
          * @param previous_sibling the new previous sibling of `widget`
          */
-        insert_after(parent: Gtk.Widget, previous_sibling?: Gtk.Widget | null): void;
+        insert_after(parent: Gtk.Widget, previous_sibling: Gtk.Widget | null): void;
         /**
          * Sets the parent widget of the widget.
          *
@@ -37569,7 +37594,7 @@ export namespace Panel {
          * @param parent the parent widget to insert `widget` into
          * @param next_sibling the new next sibling of `widget`
          */
-        insert_before(parent: Gtk.Widget, next_sibling?: Gtk.Widget | null): void;
+        insert_before(parent: Gtk.Widget, next_sibling: Gtk.Widget | null): void;
         /**
          * Determines whether the widget is a descendent of `ancestor`.
          * @param ancestor another {@link Gtk.Widget}
@@ -37879,7 +37904,7 @@ export namespace Panel {
          * inherited from its parent.
          * @param cursor the new cursor
          */
-        set_cursor(cursor?: Gdk.Cursor | null): void;
+        set_cursor(cursor: Gdk.Cursor | null): void;
         /**
          * Sets the cursor to be shown when the pointer hovers over
          * the widget.
@@ -37894,7 +37919,7 @@ export namespace Panel {
          * with a `NULL` cursor.
          * @param name the name of the cursor
          */
-        set_cursor_from_name(name?: string | null): void;
+        set_cursor_from_name(name: string | null): void;
         /**
          * Sets the reading direction on the widget.
          *
@@ -37922,7 +37947,7 @@ export namespace Panel {
          * {@link Gtk.Widget.grab_focus} on it.
          * @param child a direct child widget of `widget`   or `NULL` to unset the focus child
          */
-        set_focus_child(child?: Gtk.Widget | null): void;
+        set_focus_child(child: Gtk.Widget | null): void;
         /**
          * Sets whether the widget should grab focus when it is clicked
          * with the mouse.
@@ -37961,7 +37986,7 @@ export namespace Panel {
          * When not set, the widget will inherit the font map from its parent.
          * @param font_map a {@link Pango.FontMap}
          */
-        set_font_map(font_map?: Pango.FontMap | null): void;
+        set_font_map(font_map: Pango.FontMap | null): void;
         /**
          * Sets the `cairo_font_options_t` used for text rendering
          * in the widget.
@@ -37970,7 +37995,7 @@ export namespace Panel {
          * will be used.
          * @param options a `cairo_font_options_t` struct   to unset any previously set default font options
          */
-        set_font_options(options?: cairo.FontOptions | null): void;
+        set_font_options(options: cairo.FontOptions | null): void;
         /**
          * Sets the horizontal alignment of the widget.
          * @param align the horizontal alignment
@@ -38034,7 +38059,7 @@ export namespace Panel {
          * of the widget.
          * @param layout_manager a layout manager
          */
-        set_layout_manager(layout_manager?: Gtk.LayoutManager | null): void;
+        set_layout_manager(layout_manager: Gtk.LayoutManager | null): void;
         /**
          * Sets whether the widget acts like a modal dialog,
          * with respect to event delivery.
@@ -38210,7 +38235,7 @@ export namespace Panel {
          * See also {@link Gtk.Tooltip.set_markup}.
          * @param markup the contents of the tooltip for `widget`
          */
-        set_tooltip_markup(markup?: string | null): void;
+        set_tooltip_markup(markup: string | null): void;
         /**
          * Sets the contents of the tooltip for the widget.
          *
@@ -38224,7 +38249,7 @@ export namespace Panel {
          * See also {@link Gtk.Tooltip.set_text}.
          * @param text the contents of the tooltip for `widget`
          */
-        set_tooltip_text(text?: string | null): void;
+        set_tooltip_text(text: string | null): void;
         /**
          * Sets the vertical alignment of the widget.
          * @param align the vertical alignment
@@ -38534,7 +38559,7 @@ export namespace Panel {
          * @param child a direct child widget of `widget`   or `NULL` to unset the focus child
          * @virtual
          */
-        vfunc_set_focus_child(child?: Gtk.Widget | null): void;
+        vfunc_set_focus_child(child: Gtk.Widget | null): void;
         /**
          * Flags a widget to be displayed.
          *
@@ -38763,13 +38788,13 @@ export namespace Panel {
              * @param widget a {@link Panel.Widget} or `null` if no page is visible
              * @virtual
              */
-            vfunc_page_changed(widget?: Widget | null): void;
+            vfunc_page_changed(widget: Widget | null): void;
         }
 
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Widget.ConstructorProps {
-            frame: Frame;
+            frame: Frame | null;
         }
     }
 
@@ -38787,8 +38812,8 @@ export namespace Panel {
         /**
          * The frame the header is attached to, or `null`.
          */
-        get frame(): Frame;
-        set frame(val: Frame);
+        get frame(): Frame | null;
+        set frame(val: Frame | null);
 
         // Methods
 
@@ -38821,12 +38846,12 @@ export namespace Panel {
          * Notifies the header that the visible page has changed.
          * @param widget a {@link Panel.Widget} or `null` if no page is visible
          */
-        page_changed(widget?: Widget | null): void;
+        page_changed(widget: Widget | null): void;
         /**
          * Sets the frame the header is attached to.
          * @param frame a {@link Panel.Frame} or `null`
          */
-        set_frame(frame?: Frame | null): void;
+        set_frame(frame: Frame | null): void;
     }
 
     export const FrameHeader: FrameHeaderNamespace & {

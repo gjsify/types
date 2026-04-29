@@ -230,7 +230,7 @@ export namespace Gly {
      * @gir-type Callback
      */
     interface LoaderGetMimeTypesDoneFunc {
-        (mime_types: string[], data?: any | null): void;
+        (mime_types: string[], data: any | null): void;
     }
     /**
      * @gir-type Flags
@@ -406,14 +406,22 @@ export namespace Gly {
 
         /**
          * @construct-only
+         * @default null
          */
         get mime_type(): string;
         /**
          * @construct-only
+         * @default null
          */
         get mimeType(): string;
+        /**
+         * @default Auto
+         */
         get sandbox_selector(): SandboxSelector;
         set sandbox_selector(val: SandboxSelector);
+        /**
+         * @default Auto
+         */
         get sandboxSelector(): SandboxSelector;
         set sandboxSelector(val: SandboxSelector);
 
@@ -503,7 +511,7 @@ export namespace Gly {
          * Asynchronous version of {@link Creator.create}.
          * @param cancellable A {@link Gio.Cancellable} to cancel the operation
          */
-        create_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<EncodedImage>;
+        create_async(cancellable: Gio.Cancellable | null): globalThis.Promise<EncodedImage>;
         /**
          * Asynchronous version of {@link Creator.create}.
          * @param cancellable A {@link Gio.Cancellable} to cancel the operation
@@ -516,7 +524,7 @@ export namespace Gly {
          * @param callback A callback to call when the operation is complete
          */
         create_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<EncodedImage> | void;
         /**
@@ -749,24 +757,34 @@ export namespace Gly {
 
         // Properties
 
+        /**
+         * @default false
+         */
         get loop_animation(): boolean;
         set loop_animation(val: boolean);
+        /**
+         * @default false
+         */
         get loopAnimation(): boolean;
         set loopAnimation(val: boolean);
         /**
          * @read-only
+         * @default 0
          */
         get scale_height(): number;
         /**
          * @read-only
+         * @default 0
          */
         get scaleHeight(): number;
         /**
          * @read-only
+         * @default 0
          */
         get scale_width(): number;
         /**
          * @read-only
+         * @default 0
          */
         get scaleWidth(): number;
 
@@ -926,7 +944,7 @@ export namespace Gly {
          */
         get_specific_frame_async(
             frame_request: FrameRequest,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<Frame>;
         /**
          * Asynchronous version of {@link Image.get_specific_frame}.
@@ -947,7 +965,7 @@ export namespace Gly {
          */
         get_specific_frame_async(
             frame_request: FrameRequest,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Frame> | void;
         /**
@@ -988,7 +1006,7 @@ export namespace Gly {
          * Asynchronous version of {@link Image.next_frame}.
          * @param cancellable A {@link Gio.Cancellable} to cancel the operation
          */
-        next_frame_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<Frame>;
+        next_frame_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Frame>;
         /**
          * Asynchronous version of {@link Image.next_frame}.
          * @param cancellable A {@link Gio.Cancellable} to cancel the operation
@@ -1001,7 +1019,7 @@ export namespace Gly {
          * @param callback A callback to call when the operation is complete
          */
         next_frame_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Frame> | void;
         /**
@@ -1072,8 +1090,14 @@ export namespace Gly {
 
         // Properties
 
+        /**
+         * @default false
+         */
         get apply_transformation(): boolean;
         set apply_transformation(val: boolean);
+        /**
+         * @default false
+         */
         get applyTransformation(): boolean;
         set applyTransformation(val: boolean);
         /**
@@ -1086,12 +1110,24 @@ export namespace Gly {
          * @construct-only
          */
         get file(): Gio.File;
+        /**
+         * @default 0
+         */
         get memory_format_selection(): MemoryFormatSelection;
         set memory_format_selection(val: MemoryFormatSelection);
+        /**
+         * @default 0
+         */
         get memoryFormatSelection(): MemoryFormatSelection;
         set memoryFormatSelection(val: MemoryFormatSelection);
+        /**
+         * @default Auto
+         */
         get sandbox_selector(): SandboxSelector;
         set sandbox_selector(val: SandboxSelector);
+        /**
+         * @default Auto
+         */
         get sandboxSelector(): SandboxSelector;
         set sandboxSelector(val: SandboxSelector);
         /**
@@ -1157,8 +1193,8 @@ export namespace Gly {
          * @param callback
          */
         static get_mime_types_async(
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<Loader> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<Loader> | null,
         ): void;
         /**
          * Finishes the {@link Loader.get_mime_types_async} call.
@@ -1177,7 +1213,7 @@ export namespace Gly {
          * Asynchronous version of {@link Loader.load}.
          * @param cancellable A {@link Gio.Cancellable} to cancel the operation
          */
-        load_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<Image>;
+        load_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Image>;
         /**
          * Asynchronous version of {@link Loader.load}.
          * @param cancellable A {@link Gio.Cancellable} to cancel the operation
@@ -1190,7 +1226,7 @@ export namespace Gly {
          * @param callback A callback to call when the operation is complete
          */
         load_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Image> | void;
         /**

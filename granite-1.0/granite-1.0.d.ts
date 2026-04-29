@@ -333,7 +333,7 @@ export namespace Granite {
      */
     function services_application_set_badge(
         count: bigint | number,
-        _callback_?: Gio.AsyncReadyCallback<bigint | number> | null,
+        _callback_: Gio.AsyncReadyCallback<bigint | number> | null,
     ): globalThis.Promise<boolean> | void;
     /**
      * @param _res_
@@ -357,7 +357,7 @@ export namespace Granite {
      */
     function services_application_set_badge_visible(
         visible: boolean,
-        _callback_?: Gio.AsyncReadyCallback<boolean> | null,
+        _callback_: Gio.AsyncReadyCallback<boolean> | null,
     ): globalThis.Promise<boolean> | void;
     /**
      * @param _res_
@@ -381,7 +381,7 @@ export namespace Granite {
      */
     function services_application_set_progress(
         progress: number,
-        _callback_?: Gio.AsyncReadyCallback<number> | null,
+        _callback_: Gio.AsyncReadyCallback<number> | null,
     ): globalThis.Promise<boolean> | void;
     /**
      * @param _res_
@@ -405,7 +405,7 @@ export namespace Granite {
      */
     function services_application_set_progress_visible(
         visible: boolean,
-        _callback_?: Gio.AsyncReadyCallback<boolean> | null,
+        _callback_: Gio.AsyncReadyCallback<boolean> | null,
     ): globalThis.Promise<boolean> | void;
     /**
      * @param _res_
@@ -478,12 +478,12 @@ export namespace Granite {
     /**
      * @param accel
      */
-    function accel_to_string(accel?: string | null): string;
+    function accel_to_string(accel: string | null): string;
     /**
      * @param accels
      * @param description
      */
-    function markup_accel_tooltip(accels?: string[] | null, description?: string | null): string;
+    function markup_accel_tooltip(accels: string[] | null, description: string | null): string;
     /**
      * @param bg_color
      */
@@ -808,38 +808,19 @@ export namespace Granite {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -847,15 +828,9 @@ export namespace Granite {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1022,7 +997,7 @@ export namespace Granite {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -2025,7 +2000,7 @@ export namespace Granite {
         /**
          * @param label
          */
-        show_action(label?: string | null): void;
+        show_action(label: string | null): void;
         hide_action(): void;
     }
 
@@ -2082,7 +2057,7 @@ export namespace Granite {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.EventBox.ConstructorProps {
-            pixbuf: GdkPixbuf.Pixbuf;
+            pixbuf: GdkPixbuf.Pixbuf | null;
         }
     }
 
@@ -2095,8 +2070,8 @@ export namespace Granite {
 
         // Properties
 
-        get pixbuf(): GdkPixbuf.Pixbuf;
-        set pixbuf(val: GdkPixbuf.Pixbuf);
+        get pixbuf(): GdkPixbuf.Pixbuf | null;
+        set pixbuf(val: GdkPixbuf.Pixbuf | null);
 
         /**
          * Compile-time signal type information.
@@ -2148,7 +2123,7 @@ export namespace Granite {
         /**
          * @param value
          */
-        set_pixbuf(value?: GdkPixbuf.Pixbuf | null): void;
+        set_pixbuf(value: GdkPixbuf.Pixbuf | null): void;
         /**
          * @param pixel_size
          */
@@ -2650,38 +2625,19 @@ export namespace Granite {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -2689,15 +2645,9 @@ export namespace Granite {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -2864,7 +2814,7 @@ export namespace Granite {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -3286,38 +3236,19 @@ export namespace Granite {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -3325,15 +3256,9 @@ export namespace Granite {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -3500,7 +3425,7 @@ export namespace Granite {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -3761,14 +3686,14 @@ export namespace Granite {
             pinnable: boolean;
             restore_data: string;
             restoreData: string;
-            close_tab_label: AccelLabel;
+            close_tab_label: AccelLabel | null;
             closeTabLabel: AccelLabel;
-            duplicate_tab_label: AccelLabel;
+            duplicate_tab_label: AccelLabel | null;
             duplicateTabLabel: AccelLabel;
-            new_window_label: AccelLabel;
+            new_window_label: AccelLabel | null;
             newWindowLabel: AccelLabel;
             page: Gtk.Widget;
-            icon: Gio.Icon;
+            icon: Gio.Icon | null;
             working: boolean;
             ellipsize_mode: Pango.EllipsizeMode;
             ellipsizeMode: Pango.EllipsizeMode;
@@ -3801,7 +3726,7 @@ export namespace Granite {
         /**
          * @construct-only
          */
-        get close_tab_label(): AccelLabel;
+        get close_tab_label(): AccelLabel | null;
         /**
          * @construct-only
          */
@@ -3809,7 +3734,7 @@ export namespace Granite {
         /**
          * @construct-only
          */
-        get duplicate_tab_label(): AccelLabel;
+        get duplicate_tab_label(): AccelLabel | null;
         /**
          * @construct-only
          */
@@ -3817,15 +3742,15 @@ export namespace Granite {
         /**
          * @construct-only
          */
-        get new_window_label(): AccelLabel;
+        get new_window_label(): AccelLabel | null;
         /**
          * @construct-only
          */
         get newWindowLabel(): AccelLabel;
         get page(): Gtk.Widget;
         set page(val: Gtk.Widget);
-        get icon(): Gio.Icon;
-        set icon(val: Gio.Icon);
+        get icon(): Gio.Icon | null;
+        set icon(val: Gio.Icon | null);
         get working(): boolean;
         set working(val: boolean);
         get ellipsize_mode(): Pango.EllipsizeMode;
@@ -3860,18 +3785,18 @@ export namespace Granite {
 
         _init(...args: any[]): void;
 
-        static ['new'](label?: string | null, icon?: Gio.Icon | null, page?: Gtk.Widget | null): WidgetsTab;
+        static ['new'](label: string | null, icon: Gio.Icon | null, page: Gtk.Widget | null): WidgetsTab;
         // Conflicted with Gtk.EventBox.new
 
         static ['new'](...args: never[]): any;
 
         static with_accellabels(
-            label?: string | null,
-            icon?: Gio.Icon | null,
-            page?: Gtk.Widget | null,
-            _close_tab_label?: AccelLabel | null,
-            _duplicate_tab_label?: AccelLabel | null,
-            _new_window_label?: AccelLabel | null,
+            label: string | null,
+            icon: Gio.Icon | null,
+            page: Gtk.Widget | null,
+            _close_tab_label: AccelLabel | null,
+            _duplicate_tab_label: AccelLabel | null,
+            _new_window_label: AccelLabel | null,
         ): WidgetsTab;
 
         // Signals
@@ -3933,7 +3858,7 @@ export namespace Granite {
         /**
          * @param value
          */
-        set_icon(value?: Gio.Icon | null): void;
+        set_icon(value: Gio.Icon | null): void;
         get_working(): boolean;
         /**
          * @param value
@@ -4576,7 +4501,7 @@ export namespace Granite {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.EventBox.ConstructorProps {
-            overlay: Gtk.Overlay;
+            overlay: Gtk.Overlay | null;
             status: string;
             label: string;
             active: boolean;
@@ -4595,7 +4520,7 @@ export namespace Granite {
          * @deprecated since 0.5.1
          * @construct-only
          */
-        get overlay(): Gtk.Overlay;
+        get overlay(): Gtk.Overlay | null;
         /**
          * @deprecated since 0.4.2
          */
@@ -4621,7 +4546,7 @@ export namespace Granite {
 
         _init(...args: any[]): void;
 
-        static ['new'](overlay?: Gtk.Overlay | null): WidgetsOverlayBar;
+        static ['new'](overlay: Gtk.Overlay | null): WidgetsOverlayBar;
         // Conflicted with Gtk.EventBox.new
 
         static ['new'](...args: never[]): any;
@@ -4745,7 +4670,7 @@ export namespace Granite {
 
         interface ConstructorProps extends Gtk.ScrolledWindow.ConstructorProps {
             root: WidgetsSourceListExpandableItem;
-            selected: WidgetsSourceListItem;
+            selected: WidgetsSourceListItem | null;
             ellipsize_mode: Pango.EllipsizeMode;
             ellipsizeMode: Pango.EllipsizeMode;
             editing: boolean;
@@ -4762,8 +4687,8 @@ export namespace Granite {
 
         get root(): WidgetsSourceListExpandableItem;
         set root(val: WidgetsSourceListExpandableItem);
-        get selected(): WidgetsSourceListItem;
-        set selected(val: WidgetsSourceListItem);
+        get selected(): WidgetsSourceListItem | null;
+        set selected(val: WidgetsSourceListItem | null);
         get ellipsize_mode(): Pango.EllipsizeMode;
         set ellipsize_mode(val: Pango.EllipsizeMode);
         get ellipsizeMode(): Pango.EllipsizeMode;
@@ -4820,7 +4745,7 @@ export namespace Granite {
          * @param item
          * @virtual
          */
-        vfunc_item_selected(item?: WidgetsSourceListItem | null): void;
+        vfunc_item_selected(item: WidgetsSourceListItem | null): void;
 
         // Methods
 
@@ -4833,7 +4758,7 @@ export namespace Granite {
         /**
          * @param value
          */
-        set_selected(value?: WidgetsSourceListItem | null): void;
+        set_selected(value: WidgetsSourceListItem | null): void;
         get_ellipsize_mode(): Pango.EllipsizeMode;
         /**
          * @param value
@@ -4937,8 +4862,8 @@ export namespace Granite {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             parent: WidgetsSourceListExpandableItem;
             name: string;
-            tooltip: string;
-            markup: string;
+            tooltip: string | null;
+            markup: string | null;
             badge: string;
             editable: boolean;
             visible: boolean;
@@ -4962,10 +4887,10 @@ export namespace Granite {
         set parent(val: WidgetsSourceListExpandableItem);
         get name(): string;
         set name(val: string);
-        get tooltip(): string;
-        set tooltip(val: string);
-        get markup(): string;
-        set markup(val: string);
+        get tooltip(): string | null;
+        set tooltip(val: string | null);
+        get markup(): string | null;
+        set markup(val: string | null);
         get badge(): string;
         set badge(val: string);
         get editable(): boolean;
@@ -5055,12 +4980,12 @@ export namespace Granite {
         /**
          * @param value
          */
-        set_tooltip(value?: string | null): void;
+        set_tooltip(value: string | null): void;
         get_markup(): string | null;
         /**
          * @param value
          */
-        set_markup(value?: string | null): void;
+        set_markup(value: string | null): void;
         get_badge(): string;
         /**
          * @param value
@@ -5738,7 +5663,7 @@ export namespace Granite {
         /**
          * @param label
          */
-        set_default_action(label?: string | null): void;
+        set_default_action(label: string | null): void;
         send_notification(): void;
     }
 
@@ -5806,7 +5731,7 @@ export namespace Granite {
         interface ConstructorProps extends Gtk.Button.ConstructorProps {
             title: string;
             description: string;
-            icon: Gtk.Image;
+            icon: Gtk.Image | null;
         }
     }
 
@@ -5822,8 +5747,8 @@ export namespace Granite {
         set title(val: string);
         get description(): string;
         set description(val: string);
-        get icon(): Gtk.Image;
-        set icon(val: Gtk.Image);
+        get icon(): Gtk.Image | null;
+        set icon(val: Gtk.Image | null);
 
         /**
          * Compile-time signal type information.
@@ -5884,7 +5809,7 @@ export namespace Granite {
         /**
          * @param value
          */
-        set_icon(value?: Gtk.Image | null): void;
+        set_icon(value: Gtk.Image | null): void;
     }
 
     namespace WidgetsWelcome {
@@ -6249,11 +6174,11 @@ export namespace Granite {
         interface ConstructorProps extends Gtk.ScrolledWindow.ConstructorProps {
             status_type: SettingsPageStatusType;
             statusType: SettingsPageStatusType;
-            display_widget: Gtk.Widget;
+            display_widget: Gtk.Widget | null;
             displayWidget: Gtk.Widget;
-            header: string;
+            header: string | null;
             status: string;
-            icon_name: string;
+            icon_name: string | null;
             iconName: string;
             title: string;
         }
@@ -6274,7 +6199,7 @@ export namespace Granite {
         /**
          * @construct-only
          */
-        get display_widget(): Gtk.Widget;
+        get display_widget(): Gtk.Widget | null;
         /**
          * @construct-only
          */
@@ -6282,11 +6207,11 @@ export namespace Granite {
         /**
          * @construct-only
          */
-        get header(): string;
+        get header(): string | null;
         get status(): string;
         set status(val: string);
-        get icon_name(): string;
-        set icon_name(val: string);
+        get icon_name(): string | null;
+        set icon_name(val: string | null);
         get iconName(): string;
         set iconName(val: string);
         get title(): string;
@@ -6346,7 +6271,7 @@ export namespace Granite {
         /**
          * @param value
          */
-        set_icon_name(value?: string | null): void;
+        set_icon_name(value: string | null): void;
         get_title(): string;
         /**
          * @param value
@@ -6434,11 +6359,11 @@ export namespace Granite {
             actionArea: Gtk.ButtonBox;
             content_area: Gtk.Grid;
             contentArea: Gtk.Grid;
-            status_switch: Gtk.Switch;
+            status_switch: Gtk.Switch | null;
             statusSwitch: Gtk.Switch;
             activatable: boolean;
             description: string;
-            icon_name: string;
+            icon_name: string | any;
             iconName: string;
             title: string;
         }
@@ -6471,7 +6396,7 @@ export namespace Granite {
         /**
          * @construct-only
          */
-        get status_switch(): Gtk.Switch;
+        get status_switch(): Gtk.Switch | null;
         /**
          * @construct-only
          */
@@ -6482,8 +6407,10 @@ export namespace Granite {
         get activatable(): boolean;
         get description(): string;
         set description(val: string);
-        get icon_name(): string;
-        set icon_name(val: string);
+        // This accessor conflicts with another accessor's type in a parent class or interface.
+        get icon_name(): string | any;
+        // This accessor conflicts with another accessor's type in a parent class or interface.
+        set icon_name(val: string | any);
         get iconName(): string;
         set iconName(val: string);
         get title(): string;
@@ -6618,7 +6545,7 @@ export namespace Granite {
         interface ConstructorProps extends Gtk.Grid.ConstructorProps {
             action_name: string;
             actionName: string;
-            accel_string: string;
+            accel_string: string | null;
             accelString: string;
             label: string;
         }
@@ -6636,8 +6563,8 @@ export namespace Granite {
         set action_name(val: string);
         get actionName(): string;
         set actionName(val: string);
-        get accel_string(): string;
-        set accel_string(val: string);
+        get accel_string(): string | null;
+        set accel_string(val: string | null);
         get accelString(): string;
         set accelString(val: string);
         get label(): string;
@@ -6658,7 +6585,7 @@ export namespace Granite {
 
         _init(...args: any[]): void;
 
-        static ['new'](label: string, accel_string?: string | null): AccelLabel;
+        static ['new'](label: string, accel_string: string | null): AccelLabel;
         // Conflicted with Gtk.Grid.new
 
         static ['new'](...args: never[]): any;
@@ -6697,7 +6624,7 @@ export namespace Granite {
         /**
          * @param value
          */
-        set_accel_string(value?: string | null): void;
+        set_accel_string(value: string | null): void;
         get_label(): string;
         /**
          * @param value
@@ -6777,7 +6704,7 @@ export namespace Granite {
             loadOnRealize: boolean;
             auto_size_request: boolean;
             autoSizeRequest: boolean;
-            gicon_async: Gio.Icon;
+            gicon_async: Gio.Icon | null;
             giconAsync: Gio.Icon;
             size_async: number;
             sizeAsync: number;
@@ -6808,8 +6735,8 @@ export namespace Granite {
          * @construct-only
          */
         get autoSizeRequest(): boolean;
-        get gicon_async(): Gio.Icon;
-        set gicon_async(val: Gio.Icon);
+        get gicon_async(): Gio.Icon | null;
+        set gicon_async(val: Gio.Icon | null);
         get giconAsync(): Gio.Icon;
         set giconAsync(val: Gio.Icon);
         get size_async(): number;
@@ -6884,7 +6811,7 @@ export namespace Granite {
         set_from_gicon_async(
             icon: Gio.Icon,
             size: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<void>;
         /**
          * @param icon
@@ -6907,7 +6834,7 @@ export namespace Granite {
         set_from_gicon_async(
             icon: Gio.Icon,
             size: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -6922,7 +6849,7 @@ export namespace Granite {
         set_from_icon_name_async(
             icon_name: string,
             icon_size: Gtk.IconSize,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<void>;
         /**
          * @param icon_name
@@ -6945,7 +6872,7 @@ export namespace Granite {
         set_from_icon_name_async(
             icon_name: string,
             icon_size: Gtk.IconSize,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -6964,7 +6891,7 @@ export namespace Granite {
             width: number,
             height: number,
             preserve_aspect_ratio: boolean,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<void>;
         /**
          * @param file
@@ -6995,7 +6922,7 @@ export namespace Granite {
             width: number,
             height: number,
             preserve_aspect_ratio: boolean,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -8069,7 +7996,7 @@ export namespace Granite {
 
         interface ConstructorProps extends Gtk.ScrolledWindow.ConstructorProps {
             stack: Gtk.Stack;
-            visible_child_name: string;
+            visible_child_name: string | null;
             visibleChildName: string;
         }
     }
@@ -8086,8 +8013,8 @@ export namespace Granite {
          * @construct-only
          */
         get stack(): Gtk.Stack;
-        get visible_child_name(): string;
-        set visible_child_name(val: string);
+        get visible_child_name(): string | null;
+        set visible_child_name(val: string | null);
         get visibleChildName(): string;
         set visibleChildName(val: string);
 
@@ -8139,7 +8066,7 @@ export namespace Granite {
         /**
          * @param value
          */
-        set_visible_child_name(value?: string | null): void;
+        set_visible_child_name(value: string | null): void;
     }
 
     namespace Settings {
@@ -8279,7 +8206,7 @@ export namespace Granite {
 
         interface ConstructorProps extends Gtk.ToggleButton.ConstructorProps {
             text: string;
-            description: string;
+            description: string | null;
         }
     }
 
@@ -8293,8 +8220,8 @@ export namespace Granite {
 
         get text(): string;
         set text(val: string);
-        get description(): string;
-        set description(val: string);
+        get description(): string | null;
+        set description(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -8348,7 +8275,7 @@ export namespace Granite {
         /**
          * @param value
          */
-        set_description(value?: string | null): void;
+        set_description(value: string | null): void;
     }
 
     namespace ValidatedEntry {

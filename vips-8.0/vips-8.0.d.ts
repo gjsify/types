@@ -2074,7 +2074,7 @@ export namespace Vips {
      * @param b client data
      * @returns `NULL` if `fn` returns `NULL` for all arguments, otherwise the first non-`NULL` value from `fn`.
      */
-    function argument_map(object: Object, fn: ArgumentMapFn, b?: any | null): any | null;
+    function argument_map(object: Object, fn: ArgumentMapFn, b: any | null): any | null;
     /**
      * Return `TRUE` if `format` is uchar or schar.
      * @param format format to test
@@ -3078,8 +3078,8 @@ export namespace Vips {
     function hash_table_map(
         hash: { [key: string]: any } | GLib.HashTable<any, any>,
         fn: SListMap2Fn,
-        a?: any | null,
-        b?: any | null,
+        a: any | null,
+        b: any | null,
     ): any | null;
     /**
      * @param image
@@ -3158,7 +3158,7 @@ export namespace Vips {
      * @param a
      * @param b
      */
-    function map_equal(a?: any | null, b?: any | null): any | null;
+    function map_equal(a: any | null, b: any | null): any | null;
     /**
      * Return the maximum coordinate value. This can be the default, a value set
      * set by the `--vips-max-coord` CLI arg, or a value set in the `VIPS_MAX_COORD`
@@ -3267,7 +3267,7 @@ export namespace Vips {
      * @param b user data
      * @returns new head of `list`
      */
-    function slist_filter(list: Uint8Array | string, fn: SListMap2Fn, a?: any | null, b?: any | null): Uint8Array;
+    function slist_filter(list: Uint8Array | string, fn: SListMap2Fn, a: any | null, b: any | null): Uint8Array;
     /**
      * Fold over a slist, applying `fn` to each element.
      * @param list a {@link GLib.SList}
@@ -3281,8 +3281,8 @@ export namespace Vips {
         list: Uint8Array | string,
         start: any | null,
         fn: SListFold2Fn,
-        a?: any | null,
-        b?: any | null,
+        a: any | null,
+        b: any | null,
     ): any | null;
     /**
      * Free a {@link GLib.SList} of things which need {@link GLib.free}ing.
@@ -3297,7 +3297,7 @@ export namespace Vips {
      * @param b user data
      * @returns `NULL` if `fn` returns `NULL` for all arguments, otherwise the first non-`NULL` value from `fn`.
      */
-    function slist_map2(list: Uint8Array | string, fn: SListMap2Fn, a?: any | null, b?: any | null): any | null;
+    function slist_map2(list: Uint8Array | string, fn: SListMap2Fn, a: any | null, b: any | null): any | null;
     /**
      * Map backwards. We _reverse() rather than recurse and unwind to save stack.
      * @param list a {@link GLib.SList}
@@ -3306,7 +3306,7 @@ export namespace Vips {
      * @param b user data
      * @returns `NULL` if `fn` returns `NULL` for all arguments, otherwise the first non-`NULL` value from `fn`.
      */
-    function slist_map2_rev(list: Uint8Array | string, fn: SListMap2Fn, a?: any | null, b?: any | null): any | null;
+    function slist_map2_rev(list: Uint8Array | string, fn: SListMap2Fn, a: any | null, b: any | null): any | null;
     /**
      * Map over a slist. _copy() the list in case the callback changes it.
      * @param list a {@link GLib.SList}
@@ -3320,10 +3320,10 @@ export namespace Vips {
     function slist_map4(
         list: Uint8Array | string,
         fn: SListMap4Fn,
-        a?: any | null,
-        b?: any | null,
-        c?: any | null,
-        d?: any | null,
+        a: any | null,
+        b: any | null,
+        c: any | null,
+        d: any | null,
     ): any | null;
     /**
      * Start function for many images in. `a` is a pointer to
@@ -3335,7 +3335,7 @@ export namespace Vips {
      * @param a user data
      * @param b user data
      */
-    function start_many(out: Image, a?: any | null, b?: any | null): any | null;
+    function start_many(out: Image, a: any | null, b: any | null): any | null;
     /**
      * Start function for one image in. Input image is `a`.
      *
@@ -3345,7 +3345,7 @@ export namespace Vips {
      * @param a user data
      * @param b user data
      */
-    function start_one(out: Image, a?: any | null, b?: any | null): any | null;
+    function start_one(out: Image, a: any | null, b: any | null): any | null;
     /**
      * Stop function for many images in. `a` is a pointer to
      * a `NULL`-terminated array of input images.
@@ -3356,7 +3356,7 @@ export namespace Vips {
      * @param a user data
      * @param b user data
      */
-    function stop_many(seq?: any | null, a?: any | null, b?: any | null): number;
+    function stop_many(seq: any | null, a: any | null, b: any | null): number;
     /**
      * Stop function for one image in. Input image is `a`.
      *
@@ -3366,7 +3366,7 @@ export namespace Vips {
      * @param a user data
      * @param b user data
      */
-    function stop_one(seq?: any | null, a?: any | null, b?: any | null): number;
+    function stop_one(seq: any | null, a: any | null, b: any | null): number;
     /**
      * {@link GLib.strdup} a string. When `object` is freed, the string will be freed for
      * you.  If `object` is `NULL`, you need to
@@ -3436,7 +3436,7 @@ export namespace Vips {
      *     {@link tracked_aligned_alloc}.
      * @param s memory to free
      */
-    function tracked_aligned_free(s?: any | null): void;
+    function tracked_aligned_free(s: any | null): void;
     /**
      * Exactly as [`close()`](man:close(2)), but update the number of files currently open via
      * {@link tracked_get_files}. This is used
@@ -3460,7 +3460,7 @@ export namespace Vips {
      *     {@link tracked_malloc}.
      * @param s memory to free
      */
-    function tracked_free(s?: any | null): void;
+    function tracked_free(s: any | null): void;
     /**
      * Returns the number of active allocations.
      * @returns the number of active allocations
@@ -3618,7 +3618,7 @@ export namespace Vips {
      * @param value set this value
      * @param free_fn data will be freed with this function
      */
-    function value_set_area(value: GObject.Value | any, free_fn?: CallbackFn | null): void;
+    function value_set_area(value: GObject.Value | any, free_fn: CallbackFn | null): void;
     /**
      * Set `value` to be an array of things.
      *
@@ -3637,7 +3637,7 @@ export namespace Vips {
      * @param value {@link GObject.Value} to get from
      * @param array array of doubles
      */
-    function value_set_array_double(value: GObject.Value | any, array?: number[] | null): void;
+    function value_set_array_double(value: GObject.Value | any, array: number[] | null): void;
     /**
      * Set `value` to hold an array of images. Pass in the array length in `n`.
      *
@@ -3655,7 +3655,7 @@ export namespace Vips {
      * @param value {@link GObject.Value} to get from
      * @param array array of ints
      */
-    function value_set_array_int(value: GObject.Value | any, array?: number[] | null): void;
+    function value_set_array_int(value: GObject.Value | any, array: number[] | null): void;
     /**
      * Set `value` to hold an array of {@link GObject.Object}. Pass in the array
      * length in `n`.
@@ -3765,8 +3765,8 @@ export namespace Vips {
             object_class: typeof Object,
             pspec: GObject.ParamSpec,
             argument_class: ArgumentClass,
-            a?: any | null,
-            b?: any | null,
+            a: any | null,
+            b: any | null,
         ): any | null;
     }
     /**
@@ -3778,21 +3778,21 @@ export namespace Vips {
             pspec: GObject.ParamSpec,
             argument_class: ArgumentClass,
             argument_instance: ArgumentInstance,
-            a?: any | null,
-            b?: any | null,
+            a: any | null,
+            b: any | null,
         ): any | null;
     }
     /**
      * @gir-type Callback
      */
     interface CallbackFn {
-        (a?: any | null, b?: any | null): number;
+        (a: any | null, b: any | null): number;
     }
     /**
      * @gir-type Callback
      */
     interface ClassMapFn {
-        (cls: typeof Object, a?: any | null): any | null;
+        (cls: typeof Object, a: any | null): any | null;
     }
     /**
      * @gir-type Callback
@@ -3804,7 +3804,7 @@ export namespace Vips {
      * @gir-type Callback
      */
     interface ImageMapFn {
-        (image: Image, name: string, value: unknown, a?: any | null): any | null;
+        (image: Image, name: string, value: unknown, a: any | null): any | null;
     }
     /**
      * @gir-type Callback
@@ -3816,7 +3816,7 @@ export namespace Vips {
      * @gir-type Callback
      */
     interface ObjectSetArguments {
-        (object: Object, a?: any | null, b?: any | null): any | null;
+        (object: Object, a: any | null, b: any | null): any | null;
     }
     /**
      * @gir-type Callback
@@ -3828,43 +3828,43 @@ export namespace Vips {
      * @gir-type Callback
      */
     interface RegionWrite {
-        (region: Region, area: Rect, a?: any | null): number;
+        (region: Region, area: Rect, a: any | null): number;
     }
     /**
      * @gir-type Callback
      */
     interface SListFold2Fn {
-        (item?: any | null, a?: any | null, b?: any | null, c?: any | null): any | null;
+        (item: any | null, a: any | null, b: any | null, c: any | null): any | null;
     }
     /**
      * @gir-type Callback
      */
     interface SListMap2Fn {
-        (item?: any | null, a?: any | null, b?: any | null): any | null;
+        (item: any | null, a: any | null, b: any | null): any | null;
     }
     /**
      * @gir-type Callback
      */
     interface SListMap4Fn {
-        (item?: any | null, a?: any | null, b?: any | null, c?: any | null, d?: any | null): any | null;
+        (item: any | null, a: any | null, b: any | null, c: any | null, d: any | null): any | null;
     }
     /**
      * @gir-type Callback
      */
     interface SinkNotify {
-        (im: Image, rect: Rect, a?: any | null): void;
+        (im: Image, rect: Rect, a: any | null): void;
     }
     /**
      * @gir-type Callback
      */
     interface StartFn {
-        (out: Image, a?: any | null, b?: any | null): any | null;
+        (out: Image, a: any | null, b: any | null): any | null;
     }
     /**
      * @gir-type Callback
      */
     interface StopFn {
-        (seq?: any | null, a?: any | null, b?: any | null): number;
+        (seq: any | null, a: any | null, b: any | null): number;
     }
     /**
      * @gir-type Callback
@@ -3876,25 +3876,25 @@ export namespace Vips {
      * @gir-type Callback
      */
     interface ThreadpoolProgressFn {
-        (a?: any | null): number;
+        (a: any | null): number;
     }
     /**
      * @gir-type Callback
      */
     interface ThreadpoolWorkFn {
-        (state: ThreadState, a?: any | null): number;
+        (state: ThreadState, a: any | null): number;
     }
     /**
      * @gir-type Callback
      */
     interface TypeMap2Fn {
-        (type: GObject.GType, a?: any | null, b?: any | null): any | null;
+        (type: GObject.GType, a: any | null, b: any | null): any | null;
     }
     /**
      * @gir-type Callback
      */
     interface TypeMapFn {
-        (type: GObject.GType, a?: any | null): any | null;
+        (type: GObject.GType, a: any | null): any | null;
     }
     /**
      * @gir-type Flags
@@ -4290,8 +4290,14 @@ export namespace Vips {
 
         // Properties
 
+        /**
+         * @default 0
+         */
         get descriptor(): number;
         set descriptor(val: number);
+        /**
+         * @default null
+         */
         get filename(): string;
         set filename(val: string);
 
@@ -4572,7 +4578,7 @@ export namespace Vips {
          * @param a user data
          * @param b user data
          */
-        static map(base: string, fn: SListMap2Fn, a?: any | null, b?: any | null): any | null;
+        static map(base: string, fn: SListMap2Fn, a: any | null, b: any | null): any | null;
     }
 
     namespace ForeignLoad {
@@ -4726,24 +4732,51 @@ export namespace Vips {
 
         // Properties
 
+        /**
+         * @default Vips.Access.RANDOM
+         */
         get access(): Access;
         set access(val: Access);
+        /**
+         * @default true
+         */
         get disc(): boolean;
         set disc(val: boolean);
+        /**
+         * @default false
+         */
         get fail(): boolean;
         set fail(val: boolean);
+        /**
+         * @default Vips.FailOn.NONE
+         */
         get fail_on(): FailOn;
         set fail_on(val: FailOn);
+        /**
+         * @default Vips.FailOn.NONE
+         */
         get failOn(): FailOn;
         set failOn(val: FailOn);
+        /**
+         * @default Vips.ForeignFlags.NONE
+         */
         get flags(): ForeignFlags;
         set flags(val: ForeignFlags);
+        /**
+         * @default false
+         */
         get memory(): boolean;
         set memory(val: boolean);
         get out(): Image;
         set out(val: Image);
+        /**
+         * @default false
+         */
         get revalidate(): boolean;
         set revalidate(val: boolean);
+        /**
+         * @default false
+         */
         get sequential(): boolean;
         set sequential(val: boolean);
 
@@ -4931,14 +4964,29 @@ export namespace Vips {
         set background(val: ArrayDouble);
         get in(): Image;
         set in(val: Image);
+        /**
+         * @default Vips.ForeignKeep.EXIF | Vips.ForeignKeep.XMP | Vips.ForeignKeep.IPTC | Vips.ForeignKeep.ICC | Vips.ForeignKeep.OTHER | Vips.ForeignKeep.GAINMAP
+         */
         get keep(): ForeignKeep;
         set keep(val: ForeignKeep);
+        /**
+         * @default 0
+         */
         get page_height(): number;
         set page_height(val: number);
+        /**
+         * @default 0
+         */
         get pageHeight(): number;
         set pageHeight(val: number);
+        /**
+         * @default null
+         */
         get profile(): string;
         set profile(val: string);
+        /**
+         * @default false
+         */
         get strip(): boolean;
         set strip(val: boolean);
 
@@ -5078,7 +5126,7 @@ export namespace Vips {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        seek(offset: bigint | number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
+        seek(offset: bigint | number, type: GLib.SeekType, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @returns the (positive or zero) offset from the beginning of the buffer, zero if the target is not seekable.
@@ -5098,7 +5146,7 @@ export namespace Vips {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        truncate(offset: bigint | number, cancellable?: Gio.Cancellable | null): boolean;
+        truncate(offset: bigint | number, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Tests if the stream supports the {@link Gio.SeekableIface}.
          * @virtual
@@ -5130,7 +5178,7 @@ export namespace Vips {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_seek(offset: number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_seek(offset: number, type: GLib.SeekType, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @virtual
@@ -5150,7 +5198,7 @@ export namespace Vips {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_truncate_fn(offset: number, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_truncate_fn(offset: number, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -5198,38 +5246,19 @@ export namespace Vips {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -5237,15 +5266,9 @@ export namespace Vips {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -5412,7 +5435,7 @@ export namespace Vips {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -5776,40 +5799,88 @@ export namespace Vips {
 
         // Properties
 
+        /**
+         * @default 1
+         */
         get bands(): number;
         set bands(val: number);
+        /**
+         * @default Vips.Coding.NONE
+         */
         get coding(): Coding;
         set coding(val: Coding);
+        /**
+         * @default Vips.DemandStyle.SMALLTILE
+         */
         get demand(): DemandStyle;
         set demand(val: DemandStyle);
+        /**
+         * @default null
+         */
         get filename(): string;
         set filename(val: string);
         get foreign_buffer(): any;
         set foreign_buffer(val: any);
         get foreignBuffer(): any;
         set foreignBuffer(val: any);
+        /**
+         * @default Vips.BandFormat.UCHAR
+         */
         get format(): BandFormat;
         set format(val: BandFormat);
+        /**
+         * @default 1
+         */
         get height(): number;
         set height(val: number);
+        /**
+         * @default Vips.Interpretation.MULTIBAND
+         */
         get interpretation(): Interpretation;
         set interpretation(val: Interpretation);
+        /**
+         * @default false
+         */
         get kill(): boolean;
         set kill(val: boolean);
+        /**
+         * @default p
+         */
         get mode(): string;
         set mode(val: string);
+        /**
+         * @default 64
+         */
         get sizeof_header(): number;
         set sizeof_header(val: bigint | number);
+        /**
+         * @default 64
+         */
         get sizeofHeader(): number;
         set sizeofHeader(val: bigint | number);
+        /**
+         * @default 1
+         */
         get width(): number;
         set width(val: number);
+        /**
+         * @default 0
+         */
         get xoffset(): number;
         set xoffset(val: number);
+        /**
+         * @default 0
+         */
         get xres(): number;
         set xres(val: number);
+        /**
+         * @default 0
+         */
         get yoffset(): number;
         set yoffset(val: number);
+        /**
+         * @default 0
+         */
         get yres(): number;
         set yres(val: number);
 
@@ -5932,35 +6003,35 @@ export namespace Vips {
          * @param data
          * @virtual
          */
-        vfunc_eval(progress: Progress, data?: any | null): void;
+        vfunc_eval(progress: Progress, data: any | null): void;
         /**
          * @param data
          * @virtual
          */
-        vfunc_invalidate(data?: any | null): void;
+        vfunc_invalidate(data: any | null): void;
         /**
          * @param data
          * @virtual
          */
-        vfunc_minimise(data?: any | null): void;
-        /**
-         * @param progress
-         * @param data
-         * @virtual
-         */
-        vfunc_posteval(progress: Progress, data?: any | null): void;
+        vfunc_minimise(data: any | null): void;
         /**
          * @param progress
          * @param data
          * @virtual
          */
-        vfunc_preeval(progress: Progress, data?: any | null): void;
+        vfunc_posteval(progress: Progress, data: any | null): void;
+        /**
+         * @param progress
+         * @param data
+         * @virtual
+         */
+        vfunc_preeval(progress: Progress, data: any | null): void;
         /**
          * @param result
          * @param data
          * @virtual
          */
-        vfunc_written(result: number, data?: any | null): void;
+        vfunc_written(result: number, data: any | null): void;
 
         // Methods
 
@@ -6048,7 +6119,7 @@ export namespace Vips {
          * is intended to be used with g_signal_connect.
          * @param buffer the original buffer that was stolen
          */
-        free_buffer(buffer?: any | null): void;
+        free_buffer(buffer: any | null): void;
         /**
          * Generates an image. The action depends on the image type.
          *
@@ -6072,7 +6143,7 @@ export namespace Vips {
          * @param b user data
          * @returns 0 on success, or -1 on error.
          */
-        generate(start_fn: StartFn, generate_fn: GenerateFn, stop_fn: StopFn, a?: any | null, b?: any | null): number;
+        generate(start_fn: StartFn, generate_fn: GenerateFn, stop_fn: StopFn, a: any | null, b: any | null): number;
         /**
          * Fill `value_copy` with a copy of the header field. `value_copy` must be zeroed
          * but uninitialised.
@@ -6667,7 +6738,7 @@ export namespace Vips {
          * @param name metadata name
          * @param free_fn free function for `data`
          */
-        set_area(name: string, free_fn?: CallbackFn | null): void;
+        set_area(name: string, free_fn: CallbackFn | null): void;
         /**
          * Attaches `array` as a metadata item on `image` as `name`.
          * A convenience function over {@link Image.set}.
@@ -6677,7 +6748,7 @@ export namespace Vips {
          * @param name metadata name
          * @param array array of doubles
          */
-        set_array_double(name: string, array?: number[] | null): void;
+        set_array_double(name: string, array: number[] | null): void;
         /**
          * Attaches `array` as a metadata item on `image` as `name`.
          * A convenience function over {@link Image.set}.
@@ -6687,7 +6758,7 @@ export namespace Vips {
          * @param name metadata name
          * @param array array of ints
          */
-        set_array_int(name: string, array?: number[] | null): void;
+        set_array_int(name: string, array: number[] | null): void;
         /**
          * Attaches `data` as a metadata item on `image` under the name `name`.
          *
@@ -6796,7 +6867,7 @@ export namespace Vips {
          * @param b user data
          * @returns 0 on success, or -1 on error.
          */
-        sink(start_fn: StartFn, generate_fn: GenerateFn, stop_fn: StopFn, a?: any | null, b?: any | null): number;
+        sink(start_fn: StartFn, generate_fn: GenerateFn, stop_fn: StopFn, a: any | null, b: any | null): number;
         /**
          * {@link Image.sink_disc} loops over `im`, top-to-bottom, generating it in sections.
          * As each section is produced, `write_fn` is called.
@@ -6865,7 +6936,7 @@ export namespace Vips {
             tile_height: number,
             max_tiles: number,
             priority: number,
-            notify_fn?: SinkNotify | null,
+            notify_fn: SinkNotify | null,
         ): [number, Image];
         /**
          * Loops over an image. `generate_fn` is called for every
@@ -6893,8 +6964,8 @@ export namespace Vips {
             start_fn: StartFn,
             generate_fn: GenerateFn,
             stop_fn: StopFn,
-            a?: any | null,
-            b?: any | null,
+            a: any | null,
+            b: any | null,
         ): number;
         /**
          * Check that an image is readable via the {@link IMAGE_ADDR} macro, that is,
@@ -7320,7 +7391,7 @@ export namespace Vips {
          * @param data
          * @virtual
          */
-        vfunc_postbuild(data?: any | null): number;
+        vfunc_postbuild(data: any | null): number;
         /**
          * @virtual
          */
@@ -8532,6 +8603,9 @@ export namespace Vips {
 
         get blob(): Blob;
         set blob(val: Blob);
+        /**
+         * @default false
+         */
         get memory(): boolean;
         set memory(val: boolean);
 
@@ -8903,7 +8977,7 @@ export namespace Vips {
 
         _init(...args: any[]): void;
 
-        static ['new'](im: Image, a?: any | null): ThreadState;
+        static ['new'](im: Image, a: any | null): ThreadState;
 
         // Signals
 
@@ -8933,7 +9007,7 @@ export namespace Vips {
          * @param a
          * @param b
          */
-        static set(object: Object, a?: any | null, b?: any | null): any | null;
+        static set(object: Object, a: any | null, b: any | null): any | null;
     }
 
     /**
@@ -8950,9 +9024,9 @@ export namespace Vips {
 
         // Constructors
 
-        constructor(free_fn?: CallbackFn | null);
+        constructor(free_fn: CallbackFn | null);
 
-        static ['new'](free_fn?: CallbackFn | null): Area;
+        static ['new'](free_fn: CallbackFn | null): Area;
 
         static new_array(type: GObject.GType, sizeof_type: bigint | number, n: number): Area;
 
@@ -9004,7 +9078,7 @@ export namespace Vips {
          * @param fn call this function for every argument
          * @param b client data
          */
-        static map(object: Object, fn: ArgumentMapFn, b?: any | null): any | null;
+        static map(object: Object, fn: ArgumentMapFn, b: any | null): any | null;
     }
 
     /**
@@ -9381,7 +9455,7 @@ export namespace Vips {
          * @param size optionally return length in bytes here
          * @returns start of write area.
          */
-        get_write(size?: (bigint | number) | null): number;
+        get_write(size: (bigint | number) | null): number;
         /**
          * Initialize `dbuf`. You can also just init to zero, eg.
          * `VipsDbuf buf = {0};`.
@@ -9424,7 +9498,7 @@ export namespace Vips {
          * @param size optionally return length in bytes here
          * @returns The pointer held by `dbuf`.
          */
-        steal(size?: (bigint | number) | null): number;
+        steal(size: (bigint | number) | null): number;
         /**
          * Return a pointer to `dbuf`'s internal data.
          *
@@ -9433,7 +9507,7 @@ export namespace Vips {
          * @param size optionally return length in bytes here
          * @returns The pointer held by `dbuf`.
          */
-        string(size?: (bigint | number) | null): number;
+        string(size: (bigint | number) | null): number;
         /**
          * @returns the current write point
          */

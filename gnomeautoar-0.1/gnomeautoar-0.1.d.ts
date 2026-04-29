@@ -291,13 +291,13 @@ export namespace GnomeAutoar {
      * @gir-type Callback
      */
     interface FilterFunc {
-        (a?: any | null): number;
+        (a: any | null): number;
     }
     /**
      * @gir-type Callback
      */
     interface FormatFunc {
-        (a?: any | null): number;
+        (a: any | null): number;
     }
     namespace Compressor {
         // Signal signatures
@@ -384,30 +384,47 @@ export namespace GnomeAutoar {
 
         /**
          * @read-only
+         * @default 0
          */
         get completed_files(): number;
         /**
          * @read-only
+         * @default 0
          */
         get completedFiles(): number;
         /**
          * @read-only
+         * @default 0
          */
         get completed_size(): number;
         /**
          * @read-only
+         * @default 0
          */
         get completedSize(): number;
+        /**
+         * @default false
+         */
         get create_top_level_directory(): boolean;
         set create_top_level_directory(val: boolean);
+        /**
+         * @default false
+         */
         get createTopLevelDirectory(): boolean;
         set createTopLevelDirectory(val: boolean);
         /**
          * @read-only
+         * @default 0
          */
         get files(): number;
+        /**
+         * @default 100000
+         */
         get notify_interval(): number;
         set notify_interval(val: bigint | number);
+        /**
+         * @default 100000
+         */
         get notifyInterval(): number;
         set notifyInterval(val: bigint | number);
         /**
@@ -418,12 +435,19 @@ export namespace GnomeAutoar {
          * @construct-only
          */
         get outputFile(): Gio.File;
+        /**
+         * @default false
+         */
         get output_is_dest(): boolean;
         set output_is_dest(val: boolean);
+        /**
+         * @default false
+         */
         get outputIsDest(): boolean;
         set outputIsDest(val: boolean);
         /**
          * @read-only
+         * @default 0
          */
         get size(): number;
         /**
@@ -581,7 +605,7 @@ export namespace GnomeAutoar {
          * thread as the caller of this functions.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null` to ignore
          */
-        start(cancellable?: Gio.Cancellable | null): void;
+        start(cancellable: Gio.Cancellable | null): void;
         /**
          * Asynchronously runs the archive creating work. You should connect to
          * {@link GnomeAutoar.Compressor.SignalSignatures.cancelled | GnomeAutoar.Compressor::cancelled}, {@link GnomeAutoar.Compressor.SignalSignatures.error | GnomeAutoar.Compressor::error}, and
@@ -590,7 +614,7 @@ export namespace GnomeAutoar {
          * safely manipulate GTK+ widgets in the callbacks.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null` to ignore
          */
-        start_async(cancellable?: Gio.Cancellable | null): void;
+        start_async(cancellable: Gio.Cancellable | null): void;
     }
 
     namespace Extractor {
@@ -695,26 +719,42 @@ export namespace GnomeAutoar {
 
         /**
          * @read-only
+         * @default 0
          */
         get completed_files(): number;
         /**
          * @read-only
+         * @default 0
          */
         get completedFiles(): number;
         /**
          * @read-only
+         * @default 0
          */
         get completed_size(): number;
         /**
          * @read-only
+         * @default 0
          */
         get completedSize(): number;
+        /**
+         * @default false
+         */
         get delete_after_extraction(): boolean;
         set delete_after_extraction(val: boolean);
+        /**
+         * @default false
+         */
         get deleteAfterExtraction(): boolean;
         set deleteAfterExtraction(val: boolean);
+        /**
+         * @default 100000
+         */
         get notify_interval(): number;
         set notify_interval(val: bigint | number);
+        /**
+         * @default 100000
+         */
         get notifyInterval(): number;
         set notifyInterval(val: bigint | number);
         /**
@@ -725,8 +765,14 @@ export namespace GnomeAutoar {
          * @construct-only
          */
         get outputFile(): Gio.File;
+        /**
+         * @default false
+         */
         get output_is_dest(): boolean;
         set output_is_dest(val: boolean);
+        /**
+         * @default false
+         */
         get outputIsDest(): boolean;
         set outputIsDest(val: boolean);
         /**
@@ -739,18 +785,22 @@ export namespace GnomeAutoar {
         get sourceFile(): Gio.File;
         /**
          * @read-only
+         * @default 0
          */
         get total_files(): number;
         /**
          * @read-only
+         * @default 0
          */
         get totalFiles(): number;
         /**
          * @read-only
+         * @default 0
          */
         get total_size(): number;
         /**
          * @read-only
+         * @default 0
          */
         get totalSize(): number;
 
@@ -892,7 +942,7 @@ export namespace GnomeAutoar {
          * thread as the caller of this functions.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null` to ignore
          */
-        start(cancellable?: Gio.Cancellable | null): void;
+        start(cancellable: Gio.Cancellable | null): void;
         /**
          * Asynchronously runs the archive extracting work. You should connect to
          * {@link GnomeAutoar.Extractor.SignalSignatures.cancelled | GnomeAutoar.Extractor::cancelled}, {@link GnomeAutoar.Extractor.SignalSignatures.error | GnomeAutoar.Extractor::error}, and
@@ -901,7 +951,7 @@ export namespace GnomeAutoar {
          * safely manipulate GTK+ widgets in the callbacks.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null` to ignore
          */
-        start_async(cancellable?: Gio.Cancellable | null): void;
+        start_async(cancellable: Gio.Cancellable | null): void;
     }
 
     /**

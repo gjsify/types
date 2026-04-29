@@ -1993,7 +1993,7 @@ export namespace Atspi {
      * @param filter Unused parameter.
      * @returns `true` if successful, otherwise `false`.
      */
-    function deregister_device_event_listener(listener: DeviceListener, filter?: any | null): boolean;
+    function deregister_device_event_listener(listener: DeviceListener, filter: any | null): boolean;
     /**
      * Removes a keystroke event listener from the registry's listener queue,
      *            ceasing notification of events with modifiers matching `modmask`.
@@ -2101,7 +2101,7 @@ export namespace Atspi {
     function register_device_event_listener(
         listener: DeviceListener,
         event_types: DeviceEventMask,
-        filter?: any | null,
+        filter: any | null,
     ): boolean;
     /**
      * Registers a listener for keystroke events, either pre-emptively for
@@ -2418,11 +2418,6 @@ export namespace Atspi {
          */
         get_action_iface(): Action;
         /**
-         * Gets the {@link Atspi.Action} interface for an {@link Atspi.Accessible}.
-         * @returns a pointer to an {@link Atspi.Action} interface          instance, or NULL if `obj` does not implement {@link Atspi.Action}.
-         */
-        get_action_iface(): Action;
-        /**
          * Gets the containing {@link Atspi.Application} for an object.
          * @returns the containing {@link Atspi.Application} instance for          this object.
          */
@@ -2467,16 +2462,6 @@ export namespace Atspi {
          */
         get_collection_iface(): Collection;
         /**
-         * Gets the {@link Atspi.Collection} interface for an {@link Atspi.Accessible}.
-         * @returns a pointer to an {@link Atspi.Collection} interface          instance, or NULL if `obj` does not implement {@link Atspi.Collection}.
-         */
-        get_collection_iface(): Collection;
-        /**
-         * Gets the {@link Atspi.Component} interface for an {@link Atspi.Accessible}.
-         * @returns a pointer to an {@link Atspi.Component} interface          instance, or NULL if `obj` does not implement {@link Atspi.Component}.
-         */
-        get_component_iface(): Component;
-        /**
          * Gets the {@link Atspi.Component} interface for an {@link Atspi.Accessible}.
          * @returns a pointer to an {@link Atspi.Component} interface          instance, or NULL if `obj` does not implement {@link Atspi.Component}.
          */
@@ -2491,16 +2476,6 @@ export namespace Atspi {
          * @returns a pointer to an {@link Atspi.Document} interface          instance, or NULL if `obj` does not implement {@link Atspi.Document}.
          */
         get_document_iface(): Document;
-        /**
-         * Gets the {@link Atspi.Document} interface for an {@link Atspi.Accessible}.
-         * @returns a pointer to an {@link Atspi.Document} interface          instance, or NULL if `obj` does not implement {@link Atspi.Document}.
-         */
-        get_document_iface(): Document;
-        /**
-         * Gets the {@link Atspi.EditableText} interface for an {@link Atspi.Accessible}.
-         * @returns a pointer to an {@link Atspi.EditableText} interface          instance, or NULL if `obj` does not implement {@link Atspi.EditableText}.
-         */
-        get_editable_text_iface(): EditableText;
         /**
          * Gets the {@link Atspi.EditableText} interface for an {@link Atspi.Accessible}.
          * @returns a pointer to an {@link Atspi.EditableText} interface          instance, or NULL if `obj` does not implement {@link Atspi.EditableText}.
@@ -2517,21 +2492,11 @@ export namespace Atspi {
          */
         get_hypertext_iface(): Hypertext;
         /**
-         * Gets the {@link Atspi.Hypertext} interface for an {@link Atspi.Accessible}.
-         * @returns a pointer to an {@link Atspi.Hypertext} interface          instance, or NULL if `obj` does not implement {@link Atspi.Hypertext}.
-         */
-        get_hypertext_iface(): Hypertext;
-        /**
          * Gets the application id for a {@link Atspi.Accessible} object.
          * Only works on application root objects.
          * @returns a positive `gint` indicating the id for the {@link Atspi.Accessible} object or -1 on exception.
          */
         get_id(): number;
-        /**
-         * Gets the {@link Atspi.Image} interface for an {@link Atspi.Accessible}.
-         * @returns a pointer to an {@link Atspi.Image} interface instance, or          NULL if `obj` does not implement {@link Atspi.Image}.
-         */
-        get_image_iface(): Image;
         /**
          * Gets the {@link Atspi.Image} interface for an {@link Atspi.Accessible}.
          * @returns a pointer to an {@link Atspi.Image} interface instance, or          NULL if `obj` does not implement {@link Atspi.Image}.
@@ -2599,11 +2564,6 @@ export namespace Atspi {
          */
         get_selection_iface(): Selection;
         /**
-         * Gets the {@link Atspi.Selection} interface for an {@link Atspi.Accessible}.
-         * @returns a pointer to an {@link Atspi.Selection} interface          instance, or NULL if `obj` does not implement {@link Atspi.Selection}.
-         */
-        get_selection_iface(): Selection;
-        /**
          * Gets the states currently held by an object.
          * @returns a pointer to an {@link Atspi.StateSet} representing an object's current state set.
          */
@@ -2618,16 +2578,6 @@ export namespace Atspi {
          * @returns a pointer to an {@link Atspi.TableCell} interface instance,          or NULL if `obj` does not implement {@link Atspi.Table}.
          */
         get_table_cell(): TableCell;
-        /**
-         * Gets the {@link Atspi.Table} interface for an {@link Atspi.Accessible}.
-         * @returns a pointer to an {@link Atspi.Table} interface instance, or          NULL if `obj` does not implement {@link Atspi.Table}.
-         */
-        get_table_iface(): Table;
-        /**
-         * Gets the {@link Atspi.Table} interface for an {@link Atspi.Accessible}.
-         * @returns a pointer to an {@link Atspi.Text} interface instance, or          NULL if `obj` does not implement {@link Atspi.Text}.
-         */
-        get_text_iface(): Text;
         /**
          * Gets the {@link Atspi.Table} interface for an {@link Atspi.Accessible}.
          * @returns a pointer to an {@link Atspi.Text} interface instance, or          NULL if `obj` does not implement {@link Atspi.Text}.
@@ -2645,11 +2595,6 @@ export namespace Atspi {
          * @returns a UTF-8 string indicating the toolkit version for the {@link Atspi.Accessible} object or NULL on exception.
          */
         get_toolkit_version(): string;
-        /**
-         * Gets the {@link Atspi.Table} interface for an {@link Atspi.Accessible}.
-         * @returns a pointer to an {@link Atspi.Value} interface instance, or          NULL if `obj` does not implement {@link Atspi.Value}.
-         */
-        get_value_iface(): Value;
         /**
          * Gets the {@link Atspi.Table} interface for an {@link Atspi.Accessible}.
          * @returns a pointer to an {@link Atspi.Value} interface instance, or          NULL if `obj` does not implement {@link Atspi.Value}.
@@ -2679,13 +2624,6 @@ export namespace Atspi {
          * @returns a UTF-8 string describing the '`i`-th' invocable action.
          */
         get_action_description(i: number): string;
-        /**
-         * Get the name of the '`i`-th' action invocable on an
-         *      object implementing {@link Atspi.Action}.
-         * @param i an integer indicating which action to query.
-         * @returns the non-localized name of the action, as a UTF-8 string.
-         */
-        get_action_name(i: number): string;
         /**
          * Get the keybindings for the `i`-th action invocable on an
          *      object implementing {@link Atspi.Action}, if any are defined.
@@ -2724,6 +2662,13 @@ export namespace Atspi {
          * @returns an integer indicating the number of invocable actions.
          */
         get_n_actions(): number;
+        /**
+         * Get the name of the '`i`-th' action invocable on an
+         *      object implementing {@link Atspi.Action}.
+         * @param i an integer indicating which action to query.
+         * @returns the non-localized name of the action, as a UTF-8 string.
+         */
+        get_action_name(i: number): string;
         /**
          * @returns The active descendant of the given object. Not yet implemented.
          */
@@ -3654,38 +3599,19 @@ export namespace Atspi {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -3693,15 +3619,9 @@ export namespace Atspi {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -3868,7 +3788,7 @@ export namespace Atspi {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -4240,13 +4160,13 @@ export namespace Atspi {
          * @param callback the function to call when the            given key is pressed.
          * @returns an identifier that can be later used to remove the grab. Add a key grab for the given key/modifier combination.
          */
-        add_key_grab(kd: KeyDefinition, callback?: KeyCallback | null): number;
+        add_key_grab(kd: KeyDefinition, callback: KeyCallback | null): number;
         /**
          * Add a callback that will receive a notification whenever a key is
          * pressed or released.
          * @param callback the function to call when the given key is            pressed.
          */
-        add_key_watcher(callback?: KeyCallback | null): void;
+        add_key_watcher(callback: KeyCallback | null): void;
         /**
          * @param id
          */
@@ -4593,7 +4513,7 @@ export namespace Atspi {
             callback: EventListenerCB | null,
             event_type: string,
             properties: string[],
-            app?: Accessible | null,
+            app: Accessible | null,
         ): boolean;
 
         // Methods
@@ -4698,7 +4618,7 @@ export namespace Atspi {
          * @param properties a list of             properties that should be sent along with the event. The             properties are valued for the duration of the event callback.             TODO: Document.
          * @returns `TRUE` if successful, otherwise `FALSE`.
          */
-        register_full(event_type: string, properties?: string[] | null): boolean;
+        register_full(event_type: string, properties: string[] | null): boolean;
         /**
          * Adds an in-process callback function to an existing {@link Atspi.EventListener}.
          * @param event_type a character string indicating the type of events for which            notification is requested.  See `atspi_event_listener_register` for a description of the format and legal event types.
@@ -4706,7 +4626,7 @@ export namespace Atspi {
          * @param app the application whose events should be reported, or      %null for all applications.
          * @returns `TRUE` if successful, otherwise `FALSE`.
          */
-        register_with_app(event_type: string, properties?: string[] | null, app?: Accessible | null): boolean;
+        register_with_app(event_type: string, properties: string[] | null, app: Accessible | null): boolean;
     }
 
     namespace Hyperlink {
@@ -5445,20 +5365,6 @@ export namespace Atspi {
          */
         get_action_description(i: number): string;
         /**
-         * Get the name of the '`i`-th' action invocable on an
-         *      object implementing {@link Atspi.Action}.
-         * @param i an integer indicating which action to query.
-         * @returns the non-localized name of the action, as a UTF-8 string.
-         */
-        get_action_name(i: number): string;
-        /**
-         * Get the description of '`i`-th' action invocable on an
-         *      object implementing {@link Atspi.Action}.
-         * @param i an integer indicating which action to query.
-         * @returns a UTF-8 string describing the '`i`-th' invocable action.
-         */
-        get_action_description(i: number): string;
-        /**
          * Get the keybindings for the `i`-th action invocable on an
          *      object implementing {@link Atspi.Action}, if any are defined.
          *      The keybindings string format is as follows:
@@ -5748,18 +5654,6 @@ export namespace Atspi {
          * @returns a `gint` indicating the current page number in the `AccessibleDocument` object.
          */
         get_current_page_number(): number;
-        /**
-         * Gets the value of a single attribute, if specified for the document as a whole.
-         * @param attribute a string indicating the name of a specific attribute.
-         * @returns a string corresponding to the value of the specified attribute, or an empty string if the attribute is unspecified for the object.
-         */
-        get_document_attribute_value(attribute: string): string;
-        /**
-         * Gets all constant attributes for the document as a whole. For attributes
-         * that change within the document content, see `atspi_text_get_attribute_run` instead.
-         * @returns a {@link GLib.HashTable}          containing the constant attributes of the document, as name-value pairs.
-         */
-        get_document_attributes(): GLib.HashTable<string, string>;
         /**
          * Gets the locale associated with the document's content,
          * e.g. the locale for LOCALE_TYPE_MESSAGES.
@@ -6533,22 +6427,6 @@ export namespace Atspi {
          * @returns an {@link Atspi.TextRange} containing a UTF-8 string representing the          delimited text, whose delimiting boundaries bracket the          current offset, or an empty string if no such text exists.
          */
         get_text_at_offset(offset: number, type: TextBoundaryType): TextRange;
-        /**
-         * Gets the value of a named attribute at a given offset.
-         * @param offset The character offset at which to query the attribute.
-         * @param attribute_name The attribute to query.
-         * @returns the value of a given attribute at the given offset, or `null` if not present.
-         */
-        get_text_attribute_value(offset: number, attribute_name: string): string | null;
-        /**
-         * Gets the attributes applied to a range of text from an {@link Atspi.Text}
-         * object. The text attributes correspond to CSS attributes
-         * where possible.
-         * <em>DEPRECATED</em>
-         * @param offset a `gint` indicating the offset from which the attribute        search is based.
-         * @returns a {@link GLib.HashTable} describing the attributes at the given character offset.
-         */
-        get_text_attributes(offset: number): [GLib.HashTable<string, string>, number, number];
         /**
          * Gets delimited text from an {@link Atspi.Text} object which precedes a given
          *          text offset.

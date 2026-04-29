@@ -425,7 +425,7 @@ export namespace Tepl {
         binding: GObject.Binding,
         from_value: GObject.Value | any,
         to_value: GObject.Value | any,
-        user_data?: any | null,
+        user_data: any | null,
     ): boolean;
     /**
      * Especially useful for external {@link Gio.Settings} (provided by another application
@@ -462,7 +462,7 @@ export namespace Tepl {
      * @returns whether the directories are correctly created. `false` is returned on error.
      * @since 5.0
      */
-    function utils_create_parent_directories(file: Gio.File, cancellable?: Gio.Cancellable | null): boolean;
+    function utils_create_parent_directories(file: Gio.File, cancellable: Gio.Cancellable | null): boolean;
     /**
      * This function is deprecated, use the {@link GLib.Uri} functions instead.
      *
@@ -485,7 +485,7 @@ export namespace Tepl {
      */
     function utils_file_query_exists_async(
         file: Gio.File,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): globalThis.Promise<boolean>;
     /**
      * The asynchronous version of `g_file_query_exists()`. When the operation is
@@ -512,8 +512,8 @@ export namespace Tepl {
      */
     function utils_file_query_exists_async(
         file: Gio.File,
-        cancellable?: Gio.Cancellable | null,
-        callback?: Gio.AsyncReadyCallback<Gio.File> | null,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<Gio.File> | null,
     ): globalThis.Promise<boolean> | void;
     /**
      * Finishes the operation started with `tepl_utils_file_query_exists_async()`.
@@ -668,7 +668,7 @@ export namespace Tepl {
      * @param font_desc the {@link Pango.FontDescription} to use, or `null` to undo   the effect of previous calls to this function on `widget`.
      * @since 6.2
      */
-    function utils_override_font_description(widget: Gtk.Widget, font_desc?: Pango.FontDescription | null): void;
+    function utils_override_font_description(widget: Gtk.Widget, font_desc: Pango.FontDescription | null): void;
     /**
      * A convenience function that calls `tepl_utils_override_font_description()`.
      *
@@ -678,7 +678,7 @@ export namespace Tepl {
      * @param font_str a string representation of a {@link Pango.FontDescription}, or   `null` to undo the effect of previous calls to this function on `widget`.
      * @since 6.2
      */
-    function utils_override_font_string(widget: Gtk.Widget, font_str?: string | null): void;
+    function utils_override_font_string(widget: Gtk.Widget, font_str: string | null): void;
     /**
      * Replaces the home directory with a tilde, if the home directory is present in
      * the `filename`.
@@ -695,7 +695,7 @@ export namespace Tepl {
      * @param new_widget the new {@link Gtk.Widget}.
      * @since 6.11
      */
-    function utils_set_widget(widget_ptr: Gtk.Widget, new_widget?: Gtk.Widget | null): void;
+    function utils_set_widget(widget_ptr: Gtk.Widget, new_widget: Gtk.Widget | null): void;
     /**
      * To better configure a {@link Gtk.Statusbar} (to make it smaller).
      * @param statusbar a {@link Gtk.Statusbar}.
@@ -1171,6 +1171,7 @@ export namespace Tepl {
          * If the active view is `null`, the title contains only the application
          * name.
          * @since 4.0
+         * @default false
          */
         get handle_title(): boolean;
         set handle_title(val: boolean);
@@ -1188,6 +1189,7 @@ export namespace Tepl {
          * If the active view is `null`, the title contains only the application
          * name.
          * @since 4.0
+         * @default false
          */
         get handleTitle(): boolean;
         set handleTitle(val: boolean);
@@ -1297,42 +1299,42 @@ export namespace Tepl {
          * @read-only
          * @category Inherited from Tepl.TabGroup
          */
-        get active_buffer(): Buffer;
+        get active_buffer(): Buffer | null;
         /**
          * The {@link Tepl.Buffer} of the active tab.
          * @since 3.0
          * @read-only
          * @category Inherited from Tepl.TabGroup
          */
-        get activeBuffer(): Buffer;
+        get activeBuffer(): Buffer | null;
         /**
          * The {@link Tepl.Tab} currently shown.
          * @since 3.0
          * @category Inherited from Tepl.TabGroup
          */
-        get active_tab(): Tab;
-        set active_tab(val: Tab);
+        get active_tab(): Tab | null;
+        set active_tab(val: Tab | null);
         /**
          * The {@link Tepl.Tab} currently shown.
          * @since 3.0
          * @category Inherited from Tepl.TabGroup
          */
-        get activeTab(): Tab;
-        set activeTab(val: Tab);
+        get activeTab(): Tab | null;
+        set activeTab(val: Tab | null);
         /**
          * The {@link Tepl.View} of the active tab.
          * @since 3.0
          * @read-only
          * @category Inherited from Tepl.TabGroup
          */
-        get active_view(): View;
+        get active_view(): View | null;
         /**
          * The {@link Tepl.View} of the active tab.
          * @since 3.0
          * @read-only
          * @category Inherited from Tepl.TabGroup
          */
-        get activeView(): View;
+        get activeView(): View | null;
         /**
          * Appends `tab` to `tab_group`.
          * @param tab a {@link Tepl.Tab}.
@@ -1455,38 +1457,19 @@ export namespace Tepl {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1494,15 +1477,9 @@ export namespace Tepl {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1669,7 +1646,7 @@ export namespace Tepl {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1914,24 +1891,28 @@ export namespace Tepl {
          * The full title. See `tepl_buffer_get_full_title()`.
          * @since 3.0
          * @read-only
+         * @default null
          */
         get tepl_full_title(): string;
         /**
          * The full title. See `tepl_buffer_get_full_title()`.
          * @since 3.0
          * @read-only
+         * @default null
          */
         get teplFullTitle(): string;
         /**
          * The short title. See `tepl_buffer_get_short_title()`.
          * @since 3.0
          * @read-only
+         * @default null
          */
         get tepl_short_title(): string;
         /**
          * The short title. See `tepl_buffer_get_short_title()`.
          * @since 3.0
          * @read-only
+         * @default null
          */
         get teplShortTitle(): string;
 
@@ -2055,8 +2036,8 @@ export namespace Tepl {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             code_comment_is_supported: boolean;
             codeCommentIsSupported: boolean;
-            source_view: GtkSource.View;
-            sourceView: GtkSource.View;
+            source_view: GtkSource.View | null;
+            sourceView: GtkSource.View | null;
         }
     }
 
@@ -2077,6 +2058,7 @@ export namespace Tepl {
          * - The {@link Gtk.TextView.editable} property is `true`.
          * @since 6.14
          * @read-only
+         * @default false
          */
         get code_comment_is_supported(): boolean;
         /**
@@ -2088,6 +2070,7 @@ export namespace Tepl {
          * - The {@link Gtk.TextView.editable} property is `true`.
          * @since 6.14
          * @read-only
+         * @default false
          */
         get codeCommentIsSupported(): boolean;
         /**
@@ -2096,14 +2079,14 @@ export namespace Tepl {
          * @since 6.14
          * @construct-only
          */
-        get source_view(): GtkSource.View;
+        get source_view(): GtkSource.View | null;
         /**
          * The associated {@link GtkSource.View} widget. {@link Tepl.CodeCommentView} has a weak
          * reference to the {@link GtkSource.View}.
          * @since 6.14
          * @construct-only
          */
-        get sourceView(): GtkSource.View;
+        get sourceView(): GtkSource.View | null;
 
         /**
          * Compile-time signal type information.
@@ -2155,7 +2138,7 @@ export namespace Tepl {
          * @param start_iter a {@link Gtk.TextIter}.
          * @param end_iter a {@link Gtk.TextIter}, or `null` to comment only the line at   `start_iter`.
          */
-        comment_lines(start_iter: Gtk.TextIter, end_iter?: Gtk.TextIter | null): void;
+        comment_lines(start_iter: Gtk.TextIter, end_iter: Gtk.TextIter | null): void;
         /**
          * Comments the selected lines.
          *
@@ -2217,6 +2200,7 @@ export namespace Tepl {
          * - `g_file_get_parse_name()`
          * - `tepl_utils_replace_home_dir_with_tilde()`
          * @read-only
+         * @default null
          */
         get full_name(): string;
         /**
@@ -2230,6 +2214,7 @@ export namespace Tepl {
          * - `g_file_get_parse_name()`
          * - `tepl_utils_replace_home_dir_with_tilde()`
          * @read-only
+         * @default null
          */
         get fullName(): string;
         /**
@@ -2242,12 +2227,14 @@ export namespace Tepl {
          * The line ending type.
          * @since 1.0
          * @read-only
+         * @default Tepl.NewlineType.LF
          */
         get newline_type(): NewlineType;
         /**
          * The line ending type.
          * @since 1.0
          * @read-only
+         * @default Tepl.NewlineType.LF
          */
         get newlineType(): NewlineType;
         /**
@@ -2268,6 +2255,7 @@ export namespace Tepl {
          * compared to the real display-name).
          * @since 1.0
          * @read-only
+         * @default null
          */
         get short_name(): string;
         /**
@@ -2288,6 +2276,7 @@ export namespace Tepl {
          * compared to the real display-name).
          * @since 1.0
          * @read-only
+         * @default null
          */
         get shortName(): string;
 
@@ -2344,7 +2333,7 @@ export namespace Tepl {
          * @param chooser a {@link Gtk.FileChooser}.
          * @param parent a {@link Gtk.Window}, or `null`.
          */
-        static chooser_set_parent(chooser: Gtk.FileChooser, parent?: Gtk.Window | null): void;
+        static chooser_set_parent(chooser: Gtk.FileChooser, parent: Gtk.Window | null): void;
         /**
          * Calls `gtk_native_dialog_show()` or `gtk_window_present()` depending on the type
          * of `chooser`.
@@ -2379,7 +2368,7 @@ export namespace Tepl {
          * Sets the {@link Tepl.File.location} property.
          * @param location the new {@link Gio.File}, or `null`.
          */
-        set_location(location?: Gio.File | null): void;
+        set_location(location: Gio.File | null): void;
     }
 
     namespace FileLoader {
@@ -2393,9 +2382,9 @@ export namespace Tepl {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            buffer: Buffer;
-            file: File;
-            location: Gio.File;
+            buffer: Buffer | null;
+            file: File | null;
+            location: Gio.File | null;
         }
     }
 
@@ -2413,21 +2402,21 @@ export namespace Tepl {
          * @since 1.0
          * @construct-only
          */
-        get buffer(): Buffer;
+        get buffer(): Buffer | null;
         /**
          * The {@link Tepl.File}. The {@link Tepl.FileLoader} object has a weak
          * reference to the file.
          * @since 1.0
          * @construct-only
          */
-        get file(): File;
+        get file(): File | null;
         /**
          * The {@link Gio.File} to load. By default the location is taken from the
          * {@link Tepl.File} at construction time.
          * @since 1.0
          * @construct-only
          */
-        get location(): Gio.File;
+        get location(): Gio.File | null;
 
         /**
          * Compile-time signal type information.
@@ -2488,7 +2477,7 @@ export namespace Tepl {
          * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        load_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        load_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Loads asynchronously the file content into the {@link Tepl.Buffer}.
          *
@@ -2512,7 +2501,7 @@ export namespace Tepl {
          */
         load_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2570,6 +2559,7 @@ export namespace Tepl {
         /**
          * File saving flags.
          * @since 1.0
+         * @default Tepl.FileSaverFlags.NONE
          */
         get flags(): FileSaverFlags;
         set flags(val: FileSaverFlags);
@@ -2583,12 +2573,14 @@ export namespace Tepl {
         /**
          * The newline type.
          * @since 1.0
+         * @default Tepl.NewlineType.LF
          */
         get newline_type(): NewlineType;
         set newline_type(val: NewlineType);
         /**
          * The newline type.
          * @since 1.0
+         * @default Tepl.NewlineType.LF
          */
         get newlineType(): NewlineType;
         set newlineType(val: NewlineType);
@@ -2665,7 +2657,7 @@ export namespace Tepl {
          * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        save_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        save_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Saves asynchronously the buffer into the file. See the {@link Gio.AsyncResult}
          * documentation to know how to use this function.
@@ -2687,7 +2679,7 @@ export namespace Tepl {
          */
         save_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2724,7 +2716,7 @@ export namespace Tepl {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            buffer: Gtk.TextBuffer;
+            buffer: Gtk.TextBuffer | null;
             folded: boolean;
         }
     }
@@ -2743,10 +2735,11 @@ export namespace Tepl {
          * @since 1.0
          * @construct-only
          */
-        get buffer(): Gtk.TextBuffer;
+        get buffer(): Gtk.TextBuffer | null;
         /**
          * Whether the {@link Tepl.FoldRegion} is folded or not.
          * @since 1.0
+         * @default false
          */
         get folded(): boolean;
         set folded(val: boolean);
@@ -2941,6 +2934,7 @@ export namespace Tepl {
         /**
          * The orientation of the orientable.
          * @since 2.16
+         * @default Gtk.Orientation.HORIZONTAL
          * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
@@ -3002,38 +2996,19 @@ export namespace Tepl {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -3041,15 +3016,9 @@ export namespace Tepl {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -3216,7 +3185,7 @@ export namespace Tepl {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -3571,6 +3540,7 @@ export namespace Tepl {
          * `gtk_widget_destroy()` when the {@link Gtk.InfoBar.SignalSignatures.response | Gtk.InfoBar::response} signal is
          * received with the `response_id` {@link Gtk.ResponseType.CLOSE}.
          * @since 6.0
+         * @default false
          */
         get handle_close_response(): boolean;
         set handle_close_response(val: boolean);
@@ -3579,6 +3549,7 @@ export namespace Tepl {
          * `gtk_widget_destroy()` when the {@link Gtk.InfoBar.SignalSignatures.response | Gtk.InfoBar::response} signal is
          * received with the `response_id` {@link Gtk.ResponseType.CLOSE}.
          * @since 6.0
+         * @default false
          */
         get handleCloseResponse(): boolean;
         set handleCloseResponse(val: boolean);
@@ -3593,6 +3564,7 @@ export namespace Tepl {
          * Note that setting this property doesn't change the value of the
          * {@link Tepl.InfoBar.icon_name} property; the two properties are separate.
          * @since 6.0
+         * @default false
          */
         get icon_from_message_type(): boolean;
         set icon_from_message_type(val: boolean);
@@ -3607,6 +3579,7 @@ export namespace Tepl {
          * Note that setting this property doesn't change the value of the
          * {@link Tepl.InfoBar.icon_name} property; the two properties are separate.
          * @since 6.0
+         * @default false
          */
         get iconFromMessageType(): boolean;
         set iconFromMessageType(val: boolean);
@@ -3617,6 +3590,7 @@ export namespace Tepl {
          * {@link Tepl.InfoBar.icon_from_message_type} property is not taken into
          * account.
          * @since 6.0
+         * @default null
          */
         get icon_name(): string;
         set icon_name(val: string);
@@ -3627,6 +3601,7 @@ export namespace Tepl {
          * {@link Tepl.InfoBar.icon_from_message_type} property is not taken into
          * account.
          * @since 6.0
+         * @default null
          */
         get iconName(): string;
         set iconName(val: string);
@@ -3648,7 +3623,7 @@ export namespace Tepl {
 
         static ['new'](): InfoBar;
 
-        static new_simple(msg_type: Gtk.MessageType, primary_msg: string, secondary_msg?: string | null): InfoBar;
+        static new_simple(msg_type: Gtk.MessageType, primary_msg: string, secondary_msg: string | null): InfoBar;
 
         // Signals
 
@@ -3799,38 +3774,19 @@ export namespace Tepl {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -3838,15 +3794,9 @@ export namespace Tepl {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -4013,7 +3963,7 @@ export namespace Tepl {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -4315,7 +4265,7 @@ export namespace Tepl {
 
         _init(...args: any[]): void;
 
-        static ['new'](parent?: Gtk.Window | null): LanguageChooserDialog;
+        static ['new'](parent: Gtk.Window | null): LanguageChooserDialog;
         // Conflicted with Gtk.Dialog.new
 
         static ['new'](...args: never[]): any;
@@ -4346,7 +4296,7 @@ export namespace Tepl {
          * Selects `language` in the list.
          * @param language a {@link GtkSource.Language}, or `null` for "Plain Text".
          */
-        select_language(language?: GtkSource.Language | null): void;
+        select_language(language: GtkSource.Language | null): void;
         /**
          * The function pointer for the
          *   {@link Tepl.LanguageChooser.SignalSignatures.language_activated | Tepl.LanguageChooser::language-activated} signal.
@@ -4359,7 +4309,7 @@ export namespace Tepl {
          * @param language a {@link GtkSource.Language}, or `null` for "Plain Text".
          * @virtual
          */
-        vfunc_select_language(language?: GtkSource.Language | null): void;
+        vfunc_select_language(language: GtkSource.Language | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -4407,38 +4357,19 @@ export namespace Tepl {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -4446,15 +4377,9 @@ export namespace Tepl {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -4621,7 +4546,7 @@ export namespace Tepl {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -4926,6 +4851,7 @@ export namespace Tepl {
         /**
          * The orientation of the orientable.
          * @since 2.16
+         * @default Gtk.Orientation.HORIZONTAL
          * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
@@ -4944,7 +4870,7 @@ export namespace Tepl {
          * Selects `language` in the list.
          * @param language a {@link GtkSource.Language}, or `null` for "Plain Text".
          */
-        select_language(language?: GtkSource.Language | null): void;
+        select_language(language: GtkSource.Language | null): void;
         /**
          * The function pointer for the
          *   {@link Tepl.LanguageChooser.SignalSignatures.language_activated | Tepl.LanguageChooser::language-activated} signal.
@@ -4957,7 +4883,7 @@ export namespace Tepl {
          * @param language a {@link GtkSource.Language}, or `null` for "Plain Text".
          * @virtual
          */
-        vfunc_select_language(language?: GtkSource.Language | null): void;
+        vfunc_select_language(language: GtkSource.Language | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -5005,38 +4931,19 @@ export namespace Tepl {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -5044,15 +4951,9 @@ export namespace Tepl {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -5219,7 +5120,7 @@ export namespace Tepl {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -5531,7 +5432,7 @@ export namespace Tepl {
          * `tepl_line_column_indicator_set_tab_group()`, but not both.
          * @param view a {@link Tepl.View}, or `null`.
          */
-        set_view(view?: View | null): void;
+        set_view(view: View | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -5579,38 +5480,19 @@ export namespace Tepl {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -5618,15 +5500,9 @@ export namespace Tepl {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -5793,7 +5669,7 @@ export namespace Tepl {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -6056,7 +5932,7 @@ export namespace Tepl {
          * @param key a key.
          * @param value a nul-terminated UTF-8 string, or `null` to unset the key.
          */
-        set(key: string, value?: string | null): void;
+        set(key: string, value: string | null): void;
         /**
          * @param args
          */
@@ -6299,42 +6175,42 @@ export namespace Tepl {
          * @read-only
          * @category Inherited from Tepl.TabGroup
          */
-        get active_buffer(): Buffer;
+        get active_buffer(): Buffer | null;
         /**
          * The {@link Tepl.Buffer} of the active tab.
          * @since 3.0
          * @read-only
          * @category Inherited from Tepl.TabGroup
          */
-        get activeBuffer(): Buffer;
+        get activeBuffer(): Buffer | null;
         /**
          * The {@link Tepl.Tab} currently shown.
          * @since 3.0
          * @category Inherited from Tepl.TabGroup
          */
-        get active_tab(): Tab;
-        set active_tab(val: Tab);
+        get active_tab(): Tab | null;
+        set active_tab(val: Tab | null);
         /**
          * The {@link Tepl.Tab} currently shown.
          * @since 3.0
          * @category Inherited from Tepl.TabGroup
          */
-        get activeTab(): Tab;
-        set activeTab(val: Tab);
+        get activeTab(): Tab | null;
+        set activeTab(val: Tab | null);
         /**
          * The {@link Tepl.View} of the active tab.
          * @since 3.0
          * @read-only
          * @category Inherited from Tepl.TabGroup
          */
-        get active_view(): View;
+        get active_view(): View | null;
         /**
          * The {@link Tepl.View} of the active tab.
          * @since 3.0
          * @read-only
          * @category Inherited from Tepl.TabGroup
          */
-        get activeView(): View;
+        get activeView(): View | null;
         /**
          * Appends `tab` to `tab_group`.
          * @param tab a {@link Tepl.Tab}.
@@ -6457,38 +6333,19 @@ export namespace Tepl {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -6496,15 +6353,9 @@ export namespace Tepl {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -6671,7 +6522,7 @@ export namespace Tepl {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -6929,6 +6780,7 @@ export namespace Tepl {
          * - If `true`, indicates the overwrite mode.
          * - If `false`, indicates the insert mode.
          * @since 6.4
+         * @default false
          */
         get overwrite(): boolean;
         set overwrite(val: boolean);
@@ -6987,7 +6839,7 @@ export namespace Tepl {
          * to `view`. If `view` is `null`, then `indicator` will be empty.
          * @param view a {@link Gtk.TextView}, or `null`.
          */
-        set_view(view?: Gtk.TextView | null): void;
+        set_view(view: Gtk.TextView | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -7035,38 +6887,19 @@ export namespace Tepl {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -7074,15 +6907,9 @@ export namespace Tepl {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -7249,7 +7076,7 @@ export namespace Tepl {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -7558,7 +7385,7 @@ export namespace Tepl {
          * @param title a human-readable title for `component`.
          * @param icon_name the icon name for `component`, or `null`.
          */
-        add_component(component: Gtk.Widget, name: string, title: string, icon_name?: string | null): void;
+        add_component(component: Gtk.Widget, name: string, title: string, icon_name: string | null): void;
         /**
          * @returns the {@link Gtk.Stack} widget of `panel` (a direct child {@link Gtk.Widget} of `panel`).
          */
@@ -7598,6 +7425,7 @@ export namespace Tepl {
         /**
          * The orientation of the orientable.
          * @since 2.16
+         * @default Gtk.Orientation.HORIZONTAL
          * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
@@ -7659,38 +7487,19 @@ export namespace Tepl {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -7698,15 +7507,9 @@ export namespace Tepl {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -7873,7 +7676,7 @@ export namespace Tepl {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -8076,12 +7879,12 @@ export namespace Tepl {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            icon_name: string;
-            iconName: string;
+            icon_name: string | null;
+            iconName: string | null;
             name: string;
             position: number;
-            title: string;
-            widget: Gtk.Widget;
+            title: string | null;
+            widget: Gtk.Widget | null;
         }
     }
 
@@ -8100,8 +7903,9 @@ export namespace Tepl {
          * {@link Gtk.Image}'s {@link Gtk.Image.icon_name} property.
          * @since 6.11
          * @construct-only
+         * @default null
          */
-        get icon_name(): string;
+        get icon_name(): string | null;
         /**
          * The icon name.
          *
@@ -8109,8 +7913,9 @@ export namespace Tepl {
          * {@link Gtk.Image}'s {@link Gtk.Image.icon_name} property.
          * @since 6.11
          * @construct-only
+         * @default null
          */
-        get iconName(): string;
+        get iconName(): string | null;
         /**
          * The name.
          *
@@ -8118,6 +7923,7 @@ export namespace Tepl {
          * uniquely identifies an item within a list.
          * @since 6.11
          * @construct-only
+         * @default null
          */
         get name(): string;
         /**
@@ -8126,6 +7932,7 @@ export namespace Tepl {
          * Used to sort items in the desired order.
          * @since 6.11
          * @construct-only
+         * @default 0
          */
         get position(): number;
         /**
@@ -8135,14 +7942,15 @@ export namespace Tepl {
          * choose this item.
          * @since 6.11
          * @construct-only
+         * @default null
          */
-        get title(): string;
+        get title(): string | null;
         /**
          * The {@link Gtk.Widget} (the main content).
          * @since 6.11
          * @construct-only
          */
-        get widget(): Gtk.Widget;
+        get widget(): Gtk.Widget | null;
 
         /**
          * Compile-time signal type information.
@@ -8328,10 +8136,10 @@ export namespace Tepl {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Panel.ConstructorProps {
-            active_item: PanelItem;
-            activeItem: PanelItem;
-            active_item_name: string;
-            activeItemName: string;
+            active_item: PanelItem | null;
+            activeItem: PanelItem | null;
+            active_item_name: string | null;
+            activeItemName: string | null;
         }
     }
 
@@ -8347,26 +8155,28 @@ export namespace Tepl {
          * The {@link Tepl.PanelItem} currently shown.
          * @since 6.11
          */
-        get active_item(): PanelItem;
-        set active_item(val: PanelItem);
+        get active_item(): PanelItem | null;
+        set active_item(val: PanelItem | null);
         /**
          * The {@link Tepl.PanelItem} currently shown.
          * @since 6.11
          */
-        get activeItem(): PanelItem;
-        set activeItem(val: PanelItem);
+        get activeItem(): PanelItem | null;
+        set activeItem(val: PanelItem | null);
         /**
          * The name of the {@link Tepl.PanelSimple.active_item}.
          * @since 6.11
+         * @default null
          */
-        get active_item_name(): string;
-        set active_item_name(val: string);
+        get active_item_name(): string | null;
+        set active_item_name(val: string | null);
         /**
          * The name of the {@link Tepl.PanelSimple.active_item}.
          * @since 6.11
+         * @default null
          */
-        get activeItemName(): string;
-        set activeItemName(val: string);
+        get activeItemName(): string | null;
+        set activeItemName(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -8448,7 +8258,7 @@ export namespace Tepl {
          * {@link Tepl.PanelItem} named `name` (if found).
          * @param name a name.
          */
-        set_active_item_name(name?: string | null): void;
+        set_active_item_name(name: string | null): void;
         /**
          * Adds an item to the panel.
          * @param item a {@link Tepl.PanelItem}.
@@ -8465,7 +8275,7 @@ export namespace Tepl {
          * Only one {@link Tepl.PanelItem} is shown at a time in a {@link Tepl.Panel}.
          * @param item a {@link Tepl.PanelItem}.
          */
-        set_active(item?: PanelItem | null): void;
+        set_active(item: PanelItem | null): void;
         /**
          * Adds an item to the panel.
          * @param item a {@link Tepl.PanelItem}.
@@ -8485,7 +8295,7 @@ export namespace Tepl {
          * @param item a {@link Tepl.PanelItem}.
          * @virtual
          */
-        vfunc_set_active(item?: PanelItem | null): void;
+        vfunc_set_active(item: PanelItem | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -8533,38 +8343,19 @@ export namespace Tepl {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -8572,15 +8363,9 @@ export namespace Tepl {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -8747,7 +8532,7 @@ export namespace Tepl {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -8967,7 +8752,7 @@ export namespace Tepl {
 
         _init(...args: any[]): void;
 
-        static ['new'](panel_simple?: PanelSimple | null, stack?: Gtk.Stack | null): PanelStack;
+        static ['new'](panel_simple: PanelSimple | null, stack: Gtk.Stack | null): PanelStack;
 
         // Signals
 
@@ -9156,38 +8941,19 @@ export namespace Tepl {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -9195,15 +8961,9 @@ export namespace Tepl {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -9370,7 +9130,7 @@ export namespace Tepl {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -9775,38 +9535,19 @@ export namespace Tepl {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -9814,15 +9555,9 @@ export namespace Tepl {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -9989,7 +9724,7 @@ export namespace Tepl {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -10262,6 +9997,7 @@ export namespace Tepl {
          * with the {@link Gtk.ResponseType.CANCEL} response.
          * @since 6.0
          * @construct-only
+         * @default true
          */
         get has_cancel_button(): boolean;
         /**
@@ -10269,6 +10005,7 @@ export namespace Tepl {
          * with the {@link Gtk.ResponseType.CANCEL} response.
          * @since 6.0
          * @construct-only
+         * @default true
          */
         get hasCancelButton(): boolean;
 
@@ -10383,38 +10120,19 @@ export namespace Tepl {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -10422,15 +10140,9 @@ export namespace Tepl {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -10597,7 +10309,7 @@ export namespace Tepl {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -10819,8 +10531,8 @@ export namespace Tepl {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            style_scheme_id: string;
-            styleSchemeId: string;
+            style_scheme_id: string | null;
+            styleSchemeId: string | null;
         }
     }
 
@@ -10839,8 +10551,9 @@ export namespace Tepl {
          * or dark, and uses the corresponding {@link Gio.Settings} key.
          * @since 6.11
          * @read-only
+         * @default null
          */
-        get style_scheme_id(): string;
+        get style_scheme_id(): string | null;
         /**
          * See `tepl_settings_provide_style_scheme_settings()`.
          *
@@ -10848,8 +10561,9 @@ export namespace Tepl {
          * or dark, and uses the corresponding {@link Gio.Settings} key.
          * @since 6.11
          * @read-only
+         * @default null
          */
-        get styleSchemeId(): string;
+        get styleSchemeId(): string | null;
 
         /**
          * Compile-time signal type information.
@@ -10940,8 +10654,8 @@ export namespace Tepl {
          * @param theme_variant_setting_key a {@link Gio.Settings} key of type enum   {@link Tepl.SettingsThemeVariant}, or `null`.
          */
         handle_theme_variant(
-            theme_variant_settings?: Gio.Settings | null,
-            theme_variant_setting_key?: string | null,
+            theme_variant_settings: Gio.Settings | null,
+            theme_variant_setting_key: string | null,
         ): void;
         /**
          * @returns the {@link Gio.Settings} for `"org.gnome.desktop.interface"`.
@@ -11099,6 +10813,7 @@ export namespace Tepl {
         /**
          * The orientation of the orientable.
          * @since 2.16
+         * @default Gtk.Orientation.HORIZONTAL
          * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
@@ -11160,38 +10875,19 @@ export namespace Tepl {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -11199,15 +10895,9 @@ export namespace Tepl {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -11374,7 +11064,7 @@ export namespace Tepl {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -11694,31 +11384,51 @@ export namespace Tepl {
          * @param str the text to set.
          */
         set_label_text(str: string): void;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get app_paintable(): boolean;
         set app_paintable(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get appPaintable(): boolean;
         set appPaintable(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get can_default(): boolean;
         set can_default(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get canDefault(): boolean;
         set canDefault(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get can_focus(): boolean;
         set can_focus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get canFocus(): boolean;
         set canFocus(val: boolean);
         /**
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get composite_child(): boolean;
         /**
          * @read-only
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get compositeChild(): boolean;
@@ -11726,6 +11436,7 @@ export namespace Tepl {
          * Whether the widget is double buffered.
          * @since 2.18
          * @deprecated since 3.14: Widgets should not use this property.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get double_buffered(): boolean;
@@ -11734,16 +11445,21 @@ export namespace Tepl {
          * Whether the widget is double buffered.
          * @since 2.18
          * @deprecated since 3.14: Widgets should not use this property.
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get doubleBuffered(): boolean;
         set doubleBuffered(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default Gdk.EventMask.STRUCTURE_MASK
+         * @category Inherited from Gtk.Widget
+         */
         get events(): Gdk.EventMask;
         set events(val: Gdk.EventMask);
         /**
          * Whether to expand in both directions. Setting this sets both {@link Gtk.Widget.hexpand} and {@link Gtk.Widget.vexpand}
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get expand(): boolean;
@@ -11756,6 +11472,7 @@ export namespace Tepl {
          * Before 3.20, several widgets (GtkButton, GtkFileChooserButton,
          * GtkComboBox) implemented this property individually.
          * @since 3.20
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get focus_on_click(): boolean;
@@ -11768,6 +11485,7 @@ export namespace Tepl {
          * Before 3.20, several widgets (GtkButton, GtkFileChooserButton,
          * GtkComboBox) implemented this property individually.
          * @since 3.20
+         * @default true
          * @category Inherited from Gtk.Widget
          */
         get focusOnClick(): boolean;
@@ -11775,20 +11493,33 @@ export namespace Tepl {
         /**
          * How to distribute horizontal space if widget gets extra space, see {@link Gtk.Align}
          * @since 3.0
+         * @default Gtk.Align.FILL
          * @category Inherited from Gtk.Widget
          */
         get halign(): Gtk.Align;
         set halign(val: Gtk.Align);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get has_default(): boolean;
         set has_default(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get hasDefault(): boolean;
         set hasDefault(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get has_focus(): boolean;
         set has_focus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get hasFocus(): boolean;
         set hasFocus(val: boolean);
         /**
@@ -11802,6 +11533,7 @@ export namespace Tepl {
          * and motion-notify events.  This cannot and will not be undone when the
          * property is set to `false` again.
          * @since 2.12
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get has_tooltip(): boolean;
@@ -11817,19 +11549,27 @@ export namespace Tepl {
          * and motion-notify events.  This cannot and will not be undone when the
          * property is set to `false` again.
          * @since 2.12
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hasTooltip(): boolean;
         set hasTooltip(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default -1
+         * @category Inherited from Gtk.Widget
+         */
         get height_request(): number;
         set height_request(val: number);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default -1
+         * @category Inherited from Gtk.Widget
+         */
         get heightRequest(): number;
         set heightRequest(val: number);
         /**
          * Whether to expand horizontally. See `gtk_widget_set_hexpand()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpand(): boolean;
@@ -11837,6 +11577,7 @@ export namespace Tepl {
         /**
          * Whether to use the {@link Gtk.Widget.hexpand} property. See `gtk_widget_get_hexpand_set()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpand_set(): boolean;
@@ -11844,20 +11585,28 @@ export namespace Tepl {
         /**
          * Whether to use the {@link Gtk.Widget.hexpand} property. See `gtk_widget_get_hexpand_set()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get hexpandSet(): boolean;
         set hexpandSet(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get is_focus(): boolean;
         set is_focus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get isFocus(): boolean;
         set isFocus(val: boolean);
         /**
          * Sets all four sides' margin at once. If read, returns max
          * margin on any side.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin(): number;
@@ -11869,6 +11618,7 @@ export namespace Tepl {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_bottom(): number;
@@ -11880,6 +11630,7 @@ export namespace Tepl {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginBottom(): number;
@@ -11892,6 +11643,7 @@ export namespace Tepl {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.12
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_end(): number;
@@ -11904,6 +11656,7 @@ export namespace Tepl {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.12
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginEnd(): number;
@@ -11916,6 +11669,7 @@ export namespace Tepl {
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
          * @deprecated since 3.12: Use {@link Gtk.Widget.margin_start} instead.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_left(): number;
@@ -11928,6 +11682,7 @@ export namespace Tepl {
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
          * @deprecated since 3.12: Use {@link Gtk.Widget.margin_start} instead.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginLeft(): number;
@@ -11940,6 +11695,7 @@ export namespace Tepl {
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
          * @deprecated since 3.12: Use {@link Gtk.Widget.margin_end} instead.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_right(): number;
@@ -11952,6 +11708,7 @@ export namespace Tepl {
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
          * @deprecated since 3.12: Use {@link Gtk.Widget.margin_end} instead.
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginRight(): number;
@@ -11964,6 +11721,7 @@ export namespace Tepl {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.12
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_start(): number;
@@ -11976,6 +11734,7 @@ export namespace Tepl {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.12
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginStart(): number;
@@ -11987,6 +11746,7 @@ export namespace Tepl {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get margin_top(): number;
@@ -11998,17 +11758,27 @@ export namespace Tepl {
          * request, the margin will be added in addition to the size from
          * `gtk_widget_set_size_request()` for example.
          * @since 3.0
+         * @default 0
          * @category Inherited from Gtk.Widget
          */
         get marginTop(): number;
         set marginTop(val: number);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default null
+         * @category Inherited from Gtk.Widget
+         */
         get name(): string;
         set name(val: string);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get no_show_all(): boolean;
         set no_show_all(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get noShowAll(): boolean;
         set noShowAll(val: boolean);
         /**
@@ -12017,17 +11787,24 @@ export namespace Tepl {
          *
          * Before 3.8 this was only available in GtkWindow
          * @since 3.8
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get opacity(): number;
         set opacity(val: number);
         /** @category Inherited from Gtk.Widget */
-        get parent(): Gtk.Container;
-        set parent(val: Gtk.Container);
-        /** @category Inherited from Gtk.Widget */
+        get parent(): Gtk.Container | null;
+        set parent(val: Gtk.Container | null);
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get receives_default(): boolean;
         set receives_default(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get receivesDefault(): boolean;
         set receivesDefault(val: boolean);
         /**
@@ -12035,6 +11812,7 @@ export namespace Tepl {
          * more details about widget scaling.
          * @since 3.10
          * @read-only
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -12043,10 +11821,14 @@ export namespace Tepl {
          * more details about widget scaling.
          * @since 3.10
          * @read-only
+         * @default 1
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default true
+         * @category Inherited from Gtk.Widget
+         */
         get sensitive(): boolean;
         set sensitive(val: boolean);
         /**
@@ -12069,10 +11851,11 @@ export namespace Tepl {
          * Note that if both {@link Gtk.Widget.tooltip_text} and {@link Gtk.Widget.tooltip_markup}
          * are set, the last one wins.
          * @since 2.12
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltip_markup(): string;
-        set tooltip_markup(val: string);
+        get tooltip_markup(): string | null;
+        set tooltip_markup(val: string | null);
         /**
          * Sets the text of tooltip to be the given string, which is marked up
          * with the [Pango text markup language][PangoMarkupFormat].
@@ -12086,10 +11869,11 @@ export namespace Tepl {
          * Note that if both {@link Gtk.Widget.tooltip_text} and {@link Gtk.Widget.tooltip_markup}
          * are set, the last one wins.
          * @since 2.12
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltipMarkup(): string;
-        set tooltipMarkup(val: string);
+        get tooltipMarkup(): string | null;
+        set tooltipMarkup(val: string | null);
         /**
          * Sets the text of tooltip to be the given string.
          *
@@ -12103,10 +11887,11 @@ export namespace Tepl {
          * Note that if both {@link Gtk.Widget.tooltip_text} and {@link Gtk.Widget.tooltip_markup}
          * are set, the last one wins.
          * @since 2.12
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltip_text(): string;
-        set tooltip_text(val: string);
+        get tooltip_text(): string | null;
+        set tooltip_text(val: string | null);
         /**
          * Sets the text of tooltip to be the given string.
          *
@@ -12120,13 +11905,15 @@ export namespace Tepl {
          * Note that if both {@link Gtk.Widget.tooltip_text} and {@link Gtk.Widget.tooltip_markup}
          * are set, the last one wins.
          * @since 2.12
+         * @default null
          * @category Inherited from Gtk.Widget
          */
-        get tooltipText(): string;
-        set tooltipText(val: string);
+        get tooltipText(): string | null;
+        set tooltipText(val: string | null);
         /**
          * How to distribute vertical space if widget gets extra space, see {@link Gtk.Align}
          * @since 3.0
+         * @default Gtk.Align.FILL
          * @category Inherited from Gtk.Widget
          */
         get valign(): Gtk.Align;
@@ -12134,6 +11921,7 @@ export namespace Tepl {
         /**
          * Whether to expand vertically. See `gtk_widget_set_vexpand()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpand(): boolean;
@@ -12141,6 +11929,7 @@ export namespace Tepl {
         /**
          * Whether to use the {@link Gtk.Widget.vexpand} property. See `gtk_widget_get_vexpand_set()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpand_set(): boolean;
@@ -12148,17 +11937,27 @@ export namespace Tepl {
         /**
          * Whether to use the {@link Gtk.Widget.vexpand} property. See `gtk_widget_get_vexpand_set()`.
          * @since 3.0
+         * @default false
          * @category Inherited from Gtk.Widget
          */
         get vexpandSet(): boolean;
         set vexpandSet(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default false
+         * @category Inherited from Gtk.Widget
+         */
         get visible(): boolean;
         set visible(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default -1
+         * @category Inherited from Gtk.Widget
+         */
         get width_request(): number;
         set width_request(val: number);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @default -1
+         * @category Inherited from Gtk.Widget
+         */
         get widthRequest(): number;
         set widthRequest(val: number);
         /**
@@ -12167,7 +11966,7 @@ export namespace Tepl {
          * @read-only
          * @category Inherited from Gtk.Widget
          */
-        get window(): Gdk.Window;
+        get window(): Gdk.Window | null;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -12215,38 +12014,19 @@ export namespace Tepl {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -12254,15 +12034,9 @@ export namespace Tepl {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -12429,7 +12203,7 @@ export namespace Tepl {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -12788,7 +12562,7 @@ export namespace Tepl {
          * @param text text to set on the layout (can be `null`)
          * @returns the new {@link Pango.Layout}
          */
-        create_pango_layout(text?: string | null): Pango.Layout;
+        create_pango_layout(text: string | null): Pango.Layout;
         /**
          * Destroys a widget.
          *
@@ -12857,7 +12631,7 @@ export namespace Tepl {
             targets: Gtk.TargetList,
             actions: Gdk.DragAction,
             button: number,
-            event?: Gdk.Event | null,
+            event: Gdk.Event | null,
         ): Gdk.DragContext;
         /**
          * Initiates a drag on the source side. The function only needs to be used
@@ -12948,7 +12722,7 @@ export namespace Tepl {
          * @param target_list list of droppable targets, or `null` to use    gtk_drag_dest_get_target_list (`widget`).
          * @returns first target that the source offers     and the dest can accept, or `GDK_NONE`
          */
-        drag_dest_find_target(context: Gdk.DragContext, target_list?: Gtk.TargetList | null): Gdk.Atom;
+        drag_dest_find_target(context: Gdk.DragContext, target_list: Gtk.TargetList | null): Gdk.Atom;
         /**
          * Returns the list of targets this widget can accept from
          * drag-and-drop.
@@ -13021,7 +12795,7 @@ export namespace Tepl {
          * `gtk_drag_dest_set()`.
          * @param target_list list of droppable targets, or `null` for none
          */
-        drag_dest_set_target_list(target_list?: Gtk.TargetList | null): void;
+        drag_dest_set_target_list(target_list: Gtk.TargetList | null): void;
         /**
          * Tells the widget to emit {@link Gtk.Widget.SignalSignatures.drag_motion | Gtk.Widget::drag-motion} and
          * {@link Gtk.Widget.SignalSignatures.drag_leave | Gtk.Widget::drag-leave} events regardless of the targets and the
@@ -13131,7 +12905,7 @@ export namespace Tepl {
          * `gtk_drag_source_set()`.
          * @param target_list list of draggable targets, or `null` for none
          */
-        drag_source_set_target_list(target_list?: Gtk.TargetList | null): void;
+        drag_source_set_target_list(target_list: Gtk.TargetList | null): void;
         /**
          * Undoes the effects of `gtk_drag_source_set()`.
          */
@@ -14094,7 +13868,7 @@ export namespace Tepl {
          * `gdk_window_input_shape_combine_region()` for more information.
          * @param region shape to be added, or `null` to remove an existing shape
          */
-        input_shape_combine_region(region?: cairo.Region | null): void;
+        input_shape_combine_region(region: cairo.Region | null): void;
         /**
          * Inserts `group` into `widget`. Children of `widget` that implement
          * {@link Gtk.Actionable} can then be associated with actions in `group` by
@@ -14106,7 +13880,7 @@ export namespace Tepl {
          * @param name the prefix for actions in `group`
          * @param group a {@link Gio.ActionGroup}, or `null`
          */
-        insert_action_group(name: string, group?: Gio.ActionGroup | null): void;
+        insert_action_group(name: string, group: Gio.ActionGroup | null): void;
         /**
          * Computes the intersection of a `widget`’s area and `area`, storing
          * the intersection in `intersection`, and returns `true` if there was
@@ -14257,7 +14031,7 @@ export namespace Tepl {
          * @param state the state for which to set the base color
          * @param color the color to assign (does not need to     be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_base()`.
          */
-        modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_base(state: Gtk.StateType, color: Gdk.Color | null): void;
         /**
          * Sets the background color for a widget in a particular state.
          *
@@ -14276,7 +14050,7 @@ export namespace Tepl {
          * @param state the state for which to set the background color
          * @param color the color to assign (does not need     to be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_bg()`.
          */
-        modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_bg(state: Gtk.StateType, color: Gdk.Color | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the {@link Gtk.Widget}
          * cursor-color and secondary-cursor-color
@@ -14287,7 +14061,7 @@ export namespace Tepl {
          * @param primary the color to use for primary cursor (does not     need to be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_cursor()`.
          * @param secondary the color to use for secondary cursor (does     not need to be allocated), or `null` to undo the effect of     previous calls to of `gtk_widget_modify_cursor()`.
          */
-        modify_cursor(primary?: Gdk.Color | null, secondary?: Gdk.Color | null): void;
+        modify_cursor(primary: Gdk.Color | null, secondary: Gdk.Color | null): void;
         /**
          * Sets the foreground color for a widget in a particular state.
          *
@@ -14296,7 +14070,7 @@ export namespace Tepl {
          * @param state the state for which to set the foreground color
          * @param color the color to assign (does not need to be allocated),     or `null` to undo the effect of previous calls to     of `gtk_widget_modify_fg()`.
          */
-        modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_fg(state: Gtk.StateType, color: Gdk.Color | null): void;
         /**
          * Sets the font to use for a widget.
          *
@@ -14304,7 +14078,7 @@ export namespace Tepl {
          * See also `gtk_widget_modify_style()`.
          * @param font_desc the font description to use, or `null`     to undo the effect of previous calls to `gtk_widget_modify_font()`
          */
-        modify_font(font_desc?: Pango.FontDescription | null): void;
+        modify_font(font_desc: Pango.FontDescription | null): void;
         /**
          * Modifies style values on the widget.
          *
@@ -14338,7 +14112,7 @@ export namespace Tepl {
          * @param state the state for which to set the text color
          * @param color the color to assign (does not need to     be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_text()`.
          */
-        modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_text(state: Gtk.StateType, color: Gdk.Color | null): void;
         /**
          * Sets the background color to use for a widget.
          *
@@ -14347,7 +14121,7 @@ export namespace Tepl {
          * @param state the state for which to set the background color
          * @param color the color to assign, or `null` to undo the effect     of previous calls to `gtk_widget_override_background_color()`
          */
-        override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_background_color(state: Gtk.StateFlags, color: Gdk.RGBA | null): void;
         /**
          * Sets the color to use for a widget.
          *
@@ -14377,7 +14151,7 @@ export namespace Tepl {
          * @param state the state for which to set the color
          * @param color the color to assign, or `null` to undo the effect     of previous calls to `gtk_widget_override_color()`
          */
-        override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_color(state: Gtk.StateFlags, color: Gdk.RGBA | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the
          * cursor-color and secondary-cursor-color
@@ -14389,13 +14163,13 @@ export namespace Tepl {
          * @param cursor the color to use for primary cursor (does not need to be     allocated), or `null` to undo the effect of previous calls to     of `gtk_widget_override_cursor()`.
          * @param secondary_cursor the color to use for secondary cursor (does not     need to be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_override_cursor()`.
          */
-        override_cursor(cursor?: Gdk.RGBA | null, secondary_cursor?: Gdk.RGBA | null): void;
+        override_cursor(cursor: Gdk.RGBA | null, secondary_cursor: Gdk.RGBA | null): void;
         /**
          * Sets the font to use for a widget. All other style values are
          * left untouched. See `gtk_widget_override_color()`.
          * @param font_desc the font description to use, or `null` to undo     the effect of previous calls to `gtk_widget_override_font()`
          */
-        override_font(font_desc?: Pango.FontDescription | null): void;
+        override_font(font_desc: Pango.FontDescription | null): void;
         /**
          * Sets a symbolic color for a widget.
          *
@@ -14405,7 +14179,7 @@ export namespace Tepl {
          * @param name the name of the symbolic color to modify
          * @param color the color to assign (does not need     to be allocated), or `null` to undo the effect of previous     calls to `gtk_widget_override_symbolic_color()`
          */
-        override_symbolic_color(name: string, color?: Gdk.RGBA | null): void;
+        override_symbolic_color(name: string, color: Gdk.RGBA | null): void;
         /**
          * Obtains the full path to `widget`. The path is simply the name of a
          * widget and all its parents in the container hierarchy, separated by
@@ -14576,7 +14350,7 @@ export namespace Tepl {
          * @param detail render detail to pass to theme engine
          * @returns a new pixbuf, or `null` if the     stock ID wasn’t known
          */
-        render_icon(stock_id: string, size: number, detail?: string | null): GdkPixbuf.Pixbuf | null;
+        render_icon(stock_id: string, size: number, detail: string | null): GdkPixbuf.Pixbuf | null;
         /**
          * A convenience function that uses the theme engine and style
          * settings for `widget` to look up `stock_id` and render it to
@@ -14683,7 +14457,7 @@ export namespace Tepl {
          * @param accel_path path used to look up the accelerator
          * @param accel_group a {@link Gtk.AccelGroup}.
          */
-        set_accel_path(accel_path?: string | null, accel_group?: Gtk.AccelGroup | null): void;
+        set_accel_path(accel_path: string | null, accel_group: Gtk.AccelGroup | null): void;
         /**
          * Sets the widget’s allocation.  This should not be used
          * directly, but from within a widget’s size_allocate method.
@@ -14872,13 +14646,13 @@ export namespace Tepl {
          * will inherit the font map from its parent.
          * @param font_map a {@link Pango.FontMap}, or `null` to unset any previously     set font map
          */
-        set_font_map(font_map?: Pango.FontMap | null): void;
+        set_font_map(font_map: Pango.FontMap | null): void;
         /**
          * Sets the {@link cairo.FontOptions} used for Pango rendering in this widget.
          * When not set, the default font options for the {@link Gdk.Screen} will be used.
          * @param options a {@link cairo.FontOptions}, or `null` to unset any   previously set default font options.
          */
-        set_font_options(options?: cairo.FontOptions | null): void;
+        set_font_options(options: cairo.FontOptions | null): void;
         /**
          * Sets the horizontal alignment of `widget`.
          * See the {@link Gtk.Widget.halign} property.
@@ -15171,7 +14945,7 @@ export namespace Tepl {
          * GTK 3, this function does nothing, the passed in style is ignored.
          * @param style a {@link Gtk.Style}, or `null` to remove the effect     of a previous call to `gtk_widget_set_style()` and go back to     the default style
          */
-        set_style(style?: Gtk.Style | null): void;
+        set_style(style: Gtk.Style | null): void;
         /**
          * Enables or disables multiple pointer awareness. If this setting is `true`,
          * `widget` will start receiving multiple, per device enter/leave events. Note
@@ -15191,7 +14965,7 @@ export namespace Tepl {
          * `gtk_tooltip_set_markup()`.
          * @param markup the contents of the tooltip for `widget`, or `null`
          */
-        set_tooltip_markup(markup?: string | null): void;
+        set_tooltip_markup(markup: string | null): void;
         /**
          * Sets `text` as the contents of the tooltip. This function will take
          * care of setting {@link Gtk.Widget.has_tooltip} to `true` and of the default
@@ -15200,7 +14974,7 @@ export namespace Tepl {
          * See also the {@link Gtk.Widget.tooltip_text} property and `gtk_tooltip_set_text()`.
          * @param text the contents of the tooltip for `widget`
          */
-        set_tooltip_text(text?: string | null): void;
+        set_tooltip_text(text: string | null): void;
         /**
          * Replaces the default window used for displaying
          * tooltips with `custom_window`. GTK+ will take care of showing and
@@ -15209,7 +14983,7 @@ export namespace Tepl {
          * tooltip window will be used.
          * @param custom_window a {@link Gtk.Window}, or `null`
          */
-        set_tooltip_window(custom_window?: Gtk.Window | null): void;
+        set_tooltip_window(custom_window: Gtk.Window | null): void;
         /**
          * Sets the vertical alignment of `widget`.
          * See the {@link Gtk.Widget.valign} property.
@@ -15253,7 +15027,7 @@ export namespace Tepl {
          * so you should call this function before `widget` is realized.
          * @param visual visual to be used or `null` to unset a previous one
          */
-        set_visual(visual?: Gdk.Visual | null): void;
+        set_visual(visual: Gdk.Visual | null): void;
         /**
          * Sets a widget’s window. This function should only be used in a
          * widget’s {@link Gtk.Widget.SignalSignatures.realize | Gtk.Widget::realize} implementation. The %window passed is
@@ -15275,7 +15049,7 @@ export namespace Tepl {
          * for more information.
          * @param region shape to be added, or `null` to remove an existing shape
          */
-        shape_combine_region(region?: cairo.Region | null): void;
+        shape_combine_region(region: cairo.Region | null): void;
         /**
          * Flags a widget to be displayed. Any widget that isn’t shown will
          * not appear on the screen. If you want to show all the widgets in a
@@ -16378,38 +16152,19 @@ export namespace Tepl {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -16417,15 +16172,9 @@ export namespace Tepl {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -16592,7 +16341,7 @@ export namespace Tepl {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -16927,38 +16676,19 @@ export namespace Tepl {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -16966,15 +16696,9 @@ export namespace Tepl {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -17141,7 +16865,7 @@ export namespace Tepl {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -17383,8 +17107,8 @@ export namespace Tepl {
 
         interface ConstructorProps
             extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-            style_scheme_id: string;
-            styleSchemeId: string;
+            style_scheme_id: string | null;
+            styleSchemeId: string | null;
         }
     }
 
@@ -17403,9 +17127,10 @@ export namespace Tepl {
          *
          * When set, if the ID doesn't exist, no row is selected.
          * @since 6.11
+         * @default null
          */
-        get style_scheme_id(): string;
-        set style_scheme_id(val: string);
+        get style_scheme_id(): string | null;
+        set style_scheme_id(val: string | null);
         /**
          * The selected {@link GtkSource.StyleScheme} ID.
          *
@@ -17413,9 +17138,10 @@ export namespace Tepl {
          *
          * When set, if the ID doesn't exist, no row is selected.
          * @since 6.11
+         * @default null
          */
-        get styleSchemeId(): string;
-        set styleSchemeId(val: string);
+        get styleSchemeId(): string | null;
+        set styleSchemeId(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -17515,38 +17241,19 @@ export namespace Tepl {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -17554,15 +17261,9 @@ export namespace Tepl {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -17729,7 +17430,7 @@ export namespace Tepl {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -18209,6 +17910,7 @@ export namespace Tepl {
         /**
          * The orientation of the orientable.
          * @since 2.16
+         * @default Gtk.Orientation.HORIZONTAL
          * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
@@ -18219,42 +17921,42 @@ export namespace Tepl {
          * @read-only
          * @category Inherited from Tepl.TabGroup
          */
-        get active_buffer(): Buffer;
+        get active_buffer(): Buffer | null;
         /**
          * The {@link Tepl.Buffer} of the active tab.
          * @since 3.0
          * @read-only
          * @category Inherited from Tepl.TabGroup
          */
-        get activeBuffer(): Buffer;
+        get activeBuffer(): Buffer | null;
         /**
          * The {@link Tepl.Tab} currently shown.
          * @since 3.0
          * @category Inherited from Tepl.TabGroup
          */
-        get active_tab(): Tab;
-        set active_tab(val: Tab);
+        get active_tab(): Tab | null;
+        set active_tab(val: Tab | null);
         /**
          * The {@link Tepl.Tab} currently shown.
          * @since 3.0
          * @category Inherited from Tepl.TabGroup
          */
-        get activeTab(): Tab;
-        set activeTab(val: Tab);
+        get activeTab(): Tab | null;
+        set activeTab(val: Tab | null);
         /**
          * The {@link Tepl.View} of the active tab.
          * @since 3.0
          * @read-only
          * @category Inherited from Tepl.TabGroup
          */
-        get active_view(): View;
+        get active_view(): View | null;
         /**
          * The {@link Tepl.View} of the active tab.
          * @since 3.0
          * @read-only
          * @category Inherited from Tepl.TabGroup
          */
-        get activeView(): View;
+        get activeView(): View | null;
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
@@ -18387,38 +18089,19 @@ export namespace Tepl {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -18426,15 +18109,9 @@ export namespace Tepl {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -18601,7 +18278,7 @@ export namespace Tepl {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -18851,7 +18528,7 @@ export namespace Tepl {
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
-            tab: Tab;
+            tab: Tab | null;
         }
     }
 
@@ -18869,7 +18546,7 @@ export namespace Tepl {
          * @since 3.0
          * @construct-only
          */
-        get tab(): Tab;
+        get tab(): Tab | null;
 
         /**
          * Compile-time signal type information.
@@ -18940,6 +18617,7 @@ export namespace Tepl {
         /**
          * The orientation of the orientable.
          * @since 2.16
+         * @default Gtk.Orientation.HORIZONTAL
          * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
@@ -19001,38 +18679,19 @@ export namespace Tepl {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -19040,15 +18699,9 @@ export namespace Tepl {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -19215,7 +18868,7 @@ export namespace Tepl {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -19642,38 +19295,19 @@ export namespace Tepl {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -19681,15 +19315,9 @@ export namespace Tepl {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -19856,7 +19484,7 @@ export namespace Tepl {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -20476,7 +20104,7 @@ export namespace Tepl {
              * @param language a {@link GtkSource.Language}, or `null` for "Plain Text".
              * @virtual
              */
-            vfunc_select_language(language?: GtkSource.Language | null): void;
+            vfunc_select_language(language: GtkSource.Language | null): void;
         }
 
         // Constructor properties interface
@@ -20498,7 +20126,7 @@ export namespace Tepl {
          * Selects `language` in the list.
          * @param language a {@link GtkSource.Language}, or `null` for "Plain Text".
          */
-        select_language(language?: GtkSource.Language | null): void;
+        select_language(language: GtkSource.Language | null): void;
     }
 
     export const LanguageChooser: LanguageChooserNamespace & {
@@ -20532,7 +20160,7 @@ export namespace Tepl {
              * @param item a {@link Tepl.PanelItem}.
              * @virtual
              */
-            vfunc_set_active(item?: PanelItem | null): void;
+            vfunc_set_active(item: PanelItem | null): void;
         }
 
         // Constructor properties interface
@@ -20566,7 +20194,7 @@ export namespace Tepl {
          * Only one {@link Tepl.PanelItem} is shown at a time in a {@link Tepl.Panel}.
          * @param item a {@link Tepl.PanelItem}.
          */
-        set_active(item?: PanelItem | null): void;
+        set_active(item: PanelItem | null): void;
     }
 
     export const Panel: PanelNamespace & {
@@ -20616,12 +20244,12 @@ export namespace Tepl {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            active_buffer: Buffer;
-            activeBuffer: Buffer;
-            active_tab: Tab;
-            activeTab: Tab;
-            active_view: View;
-            activeView: View;
+            active_buffer: Buffer | null;
+            activeBuffer: Buffer | null;
+            active_tab: Tab | null;
+            activeTab: Tab | null;
+            active_view: View | null;
+            activeView: View | null;
         }
     }
 
@@ -20640,37 +20268,37 @@ export namespace Tepl {
          * @since 3.0
          * @read-only
          */
-        get active_buffer(): Buffer;
+        get active_buffer(): Buffer | null;
         /**
          * The {@link Tepl.Buffer} of the active tab.
          * @since 3.0
          * @read-only
          */
-        get activeBuffer(): Buffer;
+        get activeBuffer(): Buffer | null;
         /**
          * The {@link Tepl.Tab} currently shown.
          * @since 3.0
          */
-        get active_tab(): Tab;
-        set active_tab(val: Tab);
+        get active_tab(): Tab | null;
+        set active_tab(val: Tab | null);
         /**
          * The {@link Tepl.Tab} currently shown.
          * @since 3.0
          */
-        get activeTab(): Tab;
-        set activeTab(val: Tab);
+        get activeTab(): Tab | null;
+        set activeTab(val: Tab | null);
         /**
          * The {@link Tepl.View} of the active tab.
          * @since 3.0
          * @read-only
          */
-        get active_view(): View;
+        get active_view(): View | null;
         /**
          * The {@link Tepl.View} of the active tab.
          * @since 3.0
          * @read-only
          */
-        get activeView(): View;
+        get activeView(): View | null;
 
         // Methods
 

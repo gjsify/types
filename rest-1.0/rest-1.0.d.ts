@@ -272,13 +272,13 @@ export namespace Rest {
      * @gir-type Callback
      */
     interface ProxyCallAsyncCallback<A = GObject.Object> {
-        (call: ProxyCall, error: GLib.Error, weak_object: A, userdata?: any | null): void;
+        (call: ProxyCall, error: GLib.Error, weak_object: A, userdata: any | null): void;
     }
     /**
      * @gir-type Callback
      */
     interface ProxyCallContinuousCallback<A = GObject.Object> {
-        (call: ProxyCall, buf: string, len: number, error: GLib.Error, weak_object: A, userdata?: any | null): void;
+        (call: ProxyCall, buf: string, len: number, error: GLib.Error, weak_object: A, userdata: any | null): void;
     }
     /**
      * @gir-type Callback
@@ -290,7 +290,7 @@ export namespace Rest {
             uploaded: number,
             error: GLib.Error,
             weak_object: A,
-            userdata?: any | null,
+            userdata: any | null,
         ): void;
     }
     namespace OAuth2Proxy {
@@ -344,8 +344,14 @@ export namespace Rest {
 
         // Properties
 
+        /**
+         * @default null
+         */
         get access_token(): string;
         set access_token(val: string);
+        /**
+         * @default null
+         */
         get accessToken(): string;
         set accessToken(val: string);
         get auth_url(): string;
@@ -368,8 +374,14 @@ export namespace Rest {
         set redirect_uri(val: string);
         get redirectUri(): string;
         set redirectUri(val: string);
+        /**
+         * @default null
+         */
         get refresh_token(): string;
         set refresh_token(val: string);
+        /**
+         * @default null
+         */
         get refreshToken(): string;
         set refreshToken(val: string);
         get token_url(): string;
@@ -450,7 +462,7 @@ export namespace Rest {
         fetch_access_token_async(
             authorization_code: string,
             code_verifier: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * @param authorization_code
@@ -473,7 +485,7 @@ export namespace Rest {
         fetch_access_token_async(
             authorization_code: string,
             code_verifier: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -492,7 +504,7 @@ export namespace Rest {
         /**
          * @param cancellable
          */
-        refresh_access_token_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        refresh_access_token_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * @param cancellable
          * @param callback
@@ -506,7 +518,7 @@ export namespace Rest {
          * @param callback
          */
         refresh_access_token_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -643,36 +655,74 @@ export namespace Rest {
 
         // Properties
 
+        /**
+         * @default false
+         */
         get binding_required(): boolean;
         set binding_required(val: boolean);
+        /**
+         * @default false
+         */
         get bindingRequired(): boolean;
         set bindingRequired(val: boolean);
         /**
          * @construct-only
+         * @default false
          */
         get disable_cookies(): boolean;
         /**
          * @construct-only
+         * @default false
          */
         get disableCookies(): boolean;
+        /**
+         * @default null
+         */
         get password(): string;
         set password(val: string);
+        /**
+         * @default null
+         */
         get ssl_ca_file(): string;
         set ssl_ca_file(val: string);
+        /**
+         * @default null
+         */
         get sslCaFile(): string;
         set sslCaFile(val: string);
+        /**
+         * @default true
+         */
         get ssl_strict(): boolean;
         set ssl_strict(val: boolean);
+        /**
+         * @default true
+         */
         get sslStrict(): boolean;
         set sslStrict(val: boolean);
+        /**
+         * @default null
+         */
         get url_format(): string;
         set url_format(val: string);
+        /**
+         * @default null
+         */
         get urlFormat(): string;
         set urlFormat(val: string);
+        /**
+         * @default null
+         */
         get user_agent(): string;
         set user_agent(val: string);
+        /**
+         * @default null
+         */
         get userAgent(): string;
         set userAgent(val: string);
+        /**
+         * @default null
+         */
         get username(): string;
         set username(val: string);
 
@@ -986,7 +1036,7 @@ export namespace Rest {
         /**
          * @param cancellable an optional {@link Gio.Cancellable} that can be used to   cancel the call, or `null`
          */
-        invoke_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        invoke_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * @param cancellable an optional {@link Gio.Cancellable} that can be used to   cancel the call, or `null`
          * @param callback callback to call when the async call is finished
@@ -997,7 +1047,7 @@ export namespace Rest {
          * @param callback callback to call when the async call is finished
          */
         invoke_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1168,7 +1218,7 @@ export namespace Rest {
             use: MemoryUse,
             data: Uint8Array | string,
             content_type: string,
-            filename?: string | null,
+            filename: string | null,
         );
 
         static new_full(
@@ -1176,7 +1226,7 @@ export namespace Rest {
             use: MemoryUse,
             data: Uint8Array | string,
             content_type: string,
-            filename?: string | null,
+            filename: string | null,
         ): Param;
 
         static new_string(name: string, use: MemoryUse, string: string): Param;
@@ -1185,9 +1235,9 @@ export namespace Rest {
             name: string,
             data: Uint8Array | string,
             content_type: string,
-            filename?: string | null,
-            owner?: any | null,
-            owner_dnotify?: GLib.DestroyNotify | null,
+            filename: string | null,
+            owner: any | null,
+            owner_dnotify: GLib.DestroyNotify | null,
         ): Param;
 
         // Methods

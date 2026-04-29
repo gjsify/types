@@ -200,38 +200,19 @@ export namespace Libxfce4windowingui {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -239,15 +220,9 @@ export namespace Libxfce4windowingui {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -414,7 +389,7 @@ export namespace Libxfce4windowingui {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -715,6 +690,7 @@ export namespace Libxfce4windowingui {
          * The saturation of icons for minimized windows.  The value should be
          * between 0 and 100.  Lower values will make the icon look more like a
          * greyscale image.
+         * @default 50
          */
         get minimized_icon_saturation(): number;
         set minimized_icon_saturation(val: number);
@@ -722,6 +698,7 @@ export namespace Libxfce4windowingui {
          * The saturation of icons for minimized windows.  The value should be
          * between 0 and 100.  Lower values will make the icon look more like a
          * greyscale image.
+         * @default 50
          */
         get minimizedIconSaturation(): number;
         set minimizedIconSaturation(val: number);
@@ -733,104 +710,122 @@ export namespace Libxfce4windowingui {
         /**
          * Whether or not to show all workspaces in the list, or just the current
          * workspace.
+         * @default true
          */
         get show_all_workspaces(): boolean;
         set show_all_workspaces(val: boolean);
         /**
          * Whether or not to show all workspaces in the list, or just the current
          * workspace.
+         * @default true
          */
         get showAllWorkspaces(): boolean;
         set showAllWorkspaces(val: boolean);
         /**
          * Whether or not to show icons in the menu.
+         * @default true
          */
         get show_icons(): boolean;
         set show_icons(val: boolean);
         /**
          * Whether or not to show icons in the menu.
+         * @default true
          */
         get showIcons(): boolean;
         set showIcons(val: boolean);
         /**
          * Whether or not sticky/pinned windows should be shown once (on the active
          * workspace), or in each workspace list.
+         * @default false
          */
         get show_sticky_windows_once(): boolean;
         set show_sticky_windows_once(val: boolean);
         /**
          * Whether or not sticky/pinned windows should be shown once (on the active
          * workspace), or in each workspace list.
+         * @default false
          */
         get showStickyWindowsOnce(): boolean;
         set showStickyWindowsOnce(val: boolean);
         /**
          * Whether or not to show an extra section that lists urgent windows on
          * other workspaces.
+         * @default false
          */
         get show_urgent_windows_section(): boolean;
         set show_urgent_windows_section(val: boolean);
         /**
          * Whether or not to show an extra section that lists urgent windows on
          * other workspaces.
+         * @default false
          */
         get showUrgentWindowsSection(): boolean;
         set showUrgentWindowsSection(val: boolean);
         /**
          * Whether or not to show a section in the menu with items to add and
          * remove workspaces.
+         * @default true
          */
         get show_workspace_actions(): boolean;
         set show_workspace_actions(val: boolean);
         /**
          * Whether or not to show a section in the menu with items to add and
          * remove workspaces.
+         * @default true
          */
         get showWorkspaceActions(): boolean;
         set showWorkspaceActions(val: boolean);
         /**
          * Whether or not to show a heading with the workspace name before the list
          * of windows on that workspace.
+         * @default true
          */
         get show_workspace_names(): boolean;
         set show_workspace_names(val: boolean);
         /**
          * Whether or not to show a heading with the workspace name before the list
          * of windows on that workspace.
+         * @default true
          */
         get showWorkspaceNames(): boolean;
         set showWorkspaceNames(val: boolean);
         /**
          * Whether or not the lists of windows should be in submenus for each
          * workspace.
+         * @default false
          */
         get show_workspace_submenus(): boolean;
         set show_workspace_submenus(val: boolean);
         /**
          * Whether or not the lists of windows should be in submenus for each
          * workspace.
+         * @default false
          */
         get showWorkspaceSubmenus(): boolean;
         set showWorkspaceSubmenus(val: boolean);
         /**
          * The {@link Pango.EllipsizeMode} to use when ellipsizing window titles.
+         * @default Pango.EllipsizeMode.MIDDLE
          */
         get window_title_ellipsize_mode(): Pango.EllipsizeMode;
         set window_title_ellipsize_mode(val: Pango.EllipsizeMode);
         /**
          * The {@link Pango.EllipsizeMode} to use when ellipsizing window titles.
+         * @default Pango.EllipsizeMode.MIDDLE
          */
         get windowTitleEllipsizeMode(): Pango.EllipsizeMode;
         set windowTitleEllipsizeMode(val: Pango.EllipsizeMode);
         /**
          * The maximum width (in characters) of window titles to display before
          * ellipsizing.
+         * @default 24
          */
         get window_title_max_width_chars(): number;
         set window_title_max_width_chars(val: number);
         /**
          * The maximum width (in characters) of window titles to display before
          * ellipsizing.
+         * @default 24
          */
         get windowTitleMaxWidthChars(): number;
         set windowTitleMaxWidthChars(val: number);
@@ -922,38 +917,19 @@ export namespace Libxfce4windowingui {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -961,15 +937,9 @@ export namespace Libxfce4windowingui {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1136,7 +1106,7 @@ export namespace Libxfce4windowingui {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set

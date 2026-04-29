@@ -947,7 +947,7 @@ export namespace BlockDev {
      * @param extra extra options for the addition (right now                                                 passed to the 'btrfs' utility)
      * @returns whether the `device` was successfully added to the `mountpoint` btrfs volume or not Tech category: {@link BlockDev.BtrfsTech.MULTI_DEV}-{@link BlockDev.BtrfsTechMode.MODIFY}
      */
-    function btrfs_add_device(mountpoint: string, device: string, extra?: ExtraArg[] | null): boolean;
+    function btrfs_add_device(mountpoint: string, device: string, extra: ExtraArg[] | null): boolean;
     /**
      * @param mountpoint a mountpoint of the btrfs filesystem to change label of
      * @param label new label for the filesystem
@@ -959,7 +959,7 @@ export namespace BlockDev {
      * @param extra extra options for the check (right now                                                 passed to the 'btrfs' utility)
      * @returns whether the filesystem was successfully checked or not Tech category: {@link BlockDev.BtrfsTech.FS}-{@link BlockDev.BtrfsTechMode.QUERY}
      */
-    function btrfs_check(device: string, extra?: ExtraArg[] | null): boolean;
+    function btrfs_check(device: string, extra: ExtraArg[] | null): boolean;
     /**
      * @param source path to source subvolume
      * @param dest path to new snapshot volume
@@ -967,14 +967,14 @@ export namespace BlockDev {
      * @param extra extra options for the snapshot creation (right now                                                 passed to the 'btrfs' utility)
      * @returns whether the `dest` snapshot of `source` was successfully created or not Tech category: {@link BlockDev.BtrfsTech.SNAPSHOT}-{@link BlockDev.BtrfsTechMode.CREATE}
      */
-    function btrfs_create_snapshot(source: string, dest: string, ro: boolean, extra?: ExtraArg[] | null): boolean;
+    function btrfs_create_snapshot(source: string, dest: string, ro: boolean, extra: ExtraArg[] | null): boolean;
     /**
      * @param mountpoint mountpoint of the btrfs volume to create subvolume under
      * @param name name of the subvolume
      * @param extra extra options for the subvolume creation (right now                                                 passed to the 'btrfs' utility)
      * @returns whether the `mountpoint`/`name` subvolume was successfully created or not Tech category: {@link BlockDev.BtrfsTech.SUBVOL}-{@link BlockDev.BtrfsTechMode.CREATE}
      */
-    function btrfs_create_subvolume(mountpoint: string, name: string, extra?: ExtraArg[] | null): boolean;
+    function btrfs_create_subvolume(mountpoint: string, name: string, extra: ExtraArg[] | null): boolean;
     /**
      * @param devices list of devices to create btrfs volume from
      * @param label label for the volume
@@ -985,10 +985,10 @@ export namespace BlockDev {
      */
     function btrfs_create_volume(
         devices: string[],
-        label?: string | null,
-        data_level?: string | null,
-        md_level?: string | null,
-        extra?: ExtraArg[] | null,
+        label: string | null,
+        data_level: string | null,
+        md_level: string | null,
+        extra: ExtraArg[] | null,
     ): boolean;
     /**
      * @param mountpoint mountpoint of the btrfs volume to delete subvolume from
@@ -996,7 +996,7 @@ export namespace BlockDev {
      * @param extra extra options for the subvolume deletion (right now                                                 passed to the 'btrfs' utility)
      * @returns whether the `mountpoint`/`name` subvolume was successfully deleted or not Tech category: {@link BlockDev.BtrfsTech.SUBVOL}-{@link BlockDev.BtrfsTechMode.DELETE}
      */
-    function btrfs_delete_subvolume(mountpoint: string, name: string, extra?: ExtraArg[] | null): boolean;
+    function btrfs_delete_subvolume(mountpoint: string, name: string, extra: ExtraArg[] | null): boolean;
     function btrfs_error_quark(): GLib.Quark;
     /**
      * @param device a device that is part of the queried btrfs volume
@@ -1035,10 +1035,10 @@ export namespace BlockDev {
      */
     function btrfs_mkfs(
         devices: string[],
-        label?: string | null,
-        data_level?: string | null,
-        md_level?: string | null,
-        extra?: ExtraArg[] | null,
+        label: string | null,
+        data_level: string | null,
+        md_level: string | null,
+        extra: ExtraArg[] | null,
     ): boolean;
     /**
      * @param mountpoint mountpoint of the btrfs volume to remove device from
@@ -1046,20 +1046,20 @@ export namespace BlockDev {
      * @param extra extra options for the removal (right now                                                 passed to the 'btrfs' utility)
      * @returns whether the `device` was successfully removed from the `mountpoint` btrfs volume or not Tech category: {@link BlockDev.BtrfsTech.MULTI_DEV}-{@link BlockDev.BtrfsTechMode.MODIFY}
      */
-    function btrfs_remove_device(mountpoint: string, device: string, extra?: ExtraArg[] | null): boolean;
+    function btrfs_remove_device(mountpoint: string, device: string, extra: ExtraArg[] | null): boolean;
     /**
      * @param device a device that is part of the to be repaired btrfs volume
      * @param extra extra options for the repair (right now                                                 passed to the 'btrfs' utility)
      * @returns whether the filesystem was successfully checked and repaired or not Tech category: {@link BlockDev.BtrfsTech.FS}-{@link BlockDev.BtrfsTechMode.MODIFY}
      */
-    function btrfs_repair(device: string, extra?: ExtraArg[] | null): boolean;
+    function btrfs_repair(device: string, extra: ExtraArg[] | null): boolean;
     /**
      * @param mountpoint a mountpoint of the to be resized btrfs filesystem
      * @param size requested new size
      * @param extra extra options for the volume resize (right now                                                 passed to the 'btrfs' utility)
      * @returns whether the `mountpoint` filesystem was successfully resized to `size` or not Tech category: {@link BlockDev.BtrfsTech.FS}-{@link BlockDev.BtrfsTechMode.MODIFY}
      */
-    function btrfs_resize(mountpoint: string, size: bigint | number, extra?: ExtraArg[] | null): boolean;
+    function btrfs_resize(mountpoint: string, size: bigint | number, extra: ExtraArg[] | null): boolean;
     /**
      * @param mountpoint mountpoint of the volume to set the default subvolume ID of
      * @param subvol_id ID of the subvolume to be set as the default subvolume
@@ -1069,7 +1069,7 @@ export namespace BlockDev {
     function btrfs_set_default_subvolume(
         mountpoint: string,
         subvol_id: bigint | number,
-        extra?: ExtraArg[] | null,
+        extra: ExtraArg[] | null,
     ): boolean;
     /**
      * @param bitlk_device BITLK device to close
@@ -1132,7 +1132,7 @@ export namespace BlockDev {
         passphrase: string,
         cert_data: number[],
         directory: string,
-        backup_passphrase?: string | null,
+        backup_passphrase: string | null,
     ): boolean;
     /**
      * @param fvault2_device FVAULT2 device to close
@@ -1177,8 +1177,8 @@ export namespace BlockDev {
         device: string,
         algorithm: string,
         wipe: boolean,
-        context?: CryptoKeyslotContext | null,
-        extra?: CryptoIntegrityExtra | null,
+        context: CryptoKeyslotContext | null,
+        extra: CryptoIntegrityExtra | null,
     ): boolean;
     /**
      * @param device a device to get information about
@@ -1201,7 +1201,7 @@ export namespace BlockDev {
         algorithm: string,
         context: CryptoKeyslotContext | null,
         flags: CryptoIntegrityOpenFlags,
-        extra?: CryptoIntegrityExtra | null,
+        extra: CryptoIntegrityExtra | null,
     ): boolean;
     /**
      * @param tech the queried tech
@@ -1273,7 +1273,7 @@ export namespace BlockDev {
         context: CryptoKeyslotContext,
         min_entropy: bigint | number,
         luks_version: CryptoLUKSVersion,
-        extra?: CryptoLUKSExtra | null,
+        extra: CryptoLUKSExtra | null,
     ): boolean;
     /**
      * @param device device to backup the LUKS header
@@ -1326,7 +1326,7 @@ export namespace BlockDev {
     function crypto_luks_resize(
         luks_device: string,
         size: bigint | number,
-        context?: CryptoKeyslotContext | null,
+        context: CryptoKeyslotContext | null,
     ): boolean;
     /**
      * Supported `context` types for this function: passphrase, key file
@@ -1334,14 +1334,14 @@ export namespace BlockDev {
      * @param context key slot context (passphrase/keyfile/token...) for `luks_device`
      * @returns whether the given `luks_device` was successfully resumed or not Tech category: {@link BlockDev.CryptoTech.LUKS}-{@link BlockDev.CryptoTechMode.SUSPEND_RESUME}
      */
-    function crypto_luks_resume(luks_device: string, context?: CryptoKeyslotContext | null): boolean;
+    function crypto_luks_resume(luks_device: string, context: CryptoKeyslotContext | null): boolean;
     /**
      * @param device device to set label on
      * @param label label to set
      * @param subsystem subsystem to set
      * @returns whether the given `label` and `subsystem` were successfully set or not Tech category: {@link BlockDev.CryptoTech.LUKS}-{@link BlockDev.CryptoTechMode.MODIFY}
      */
-    function crypto_luks_set_label(device: string, label?: string | null, subsystem?: string | null): boolean;
+    function crypto_luks_set_label(device: string, label: string | null, subsystem: string | null): boolean;
     /**
      * Note: This function is valid only for LUKS2.
      * @param device a LUKS device to set the persistent flags on
@@ -1354,7 +1354,7 @@ export namespace BlockDev {
      * @param uuid UUID to set or `null` to generate a new one
      * @returns whether the given `uuid` was successfully set or not Tech category: {@link BlockDev.CryptoTech.LUKS}-{@link BlockDev.CryptoTechMode.MODIFY}
      */
-    function crypto_luks_set_uuid(device: string, uuid?: string | null): boolean;
+    function crypto_luks_set_uuid(device: string, uuid: string | null): boolean;
     /**
      * @param luks_device the queried LUKS device
      * @returns one of "invalid", "inactive", "active" or "busy" or `null` if failed to determine (`error` is populated with the error in such cases) Tech category: {@link BlockDev.CryptoTech.LUKS}-{@link BlockDev.CryptoTechMode.QUERY}
@@ -1396,7 +1396,7 @@ export namespace BlockDev {
         min_entropy: bigint | number,
         hw_encryption: CryptoLUKSHWEncryptionType,
         opal_context: CryptoKeyslotContext,
-        extra?: CryptoLUKSExtra | null,
+        extra: CryptoLUKSExtra | null,
     ): boolean;
     /**
      * @param device device to check for OPAL support
@@ -1451,7 +1451,7 @@ export namespace BlockDev {
      * @param uuid UUID for the new dev mapper device or `null` if not specified
      * @returns whether the new linear mapping `map_name` was successfully created for the `device` or not Tech category: {@link BlockDev.DMTech.DM_TECH_MAP}-{@link BlockDev.DMTechMode.CREATE_ACTIVATE}
      */
-    function dm_create_linear(map_name: string, device: string, length: bigint | number, uuid?: string | null): boolean;
+    function dm_create_linear(map_name: string, device: string, length: bigint | number, uuid: string | null): boolean;
     function dm_error_quark(): GLib.Quark;
     /**
      * @param device_name name of the device
@@ -1505,18 +1505,18 @@ export namespace BlockDev {
      * @param log_func logging function to use
      * @returns whether the library was successfully initialized with all the          required or default (see `require_plugins`) plugins or not either          before or by this call
      */
-    function ensure_init(require_plugins?: PluginSpec[] | null, log_func?: UtilsLogFunc | null): boolean;
+    function ensure_init(require_plugins: PluginSpec[] | null, log_func: UtilsLogFunc | null): boolean;
     /**
      * Frees `args` and all its elements.
      * @param args A list of %BDExtraArg to free
      */
-    function extra_arg_list_free(args?: ExtraArg[] | null): void;
+    function extra_arg_list_free(args: ExtraArg[] | null): void;
     /**
      * @param device the device containing the file system to check
      * @param extra extra options for the check (right now                                                 passed to the 'btrfsck' utility)
      * @returns whether the filesystem was successfully checked or not Tech category: {@link BlockDev.FSTech.BTRFS}-{@link BlockDev.FSTechMode.CHECK}
      */
-    function fs_btrfs_check(device: string, extra?: ExtraArg[] | null): boolean;
+    function fs_btrfs_check(device: string, extra: ExtraArg[] | null): boolean;
     /**
      * @param label label to check
      * @returns whether `label` is a valid label for the Btrfs file system or not          (reason is provided in `error`) Note: This function is intended to be used for btrfs filesystem on a single device,       for more complicated setups use the btrfs plugin instead. Tech category: always available
@@ -1537,20 +1537,20 @@ export namespace BlockDev {
      * @param extra extra options for the creation (right now                                                 passed to the 'mkfs.btrfs' utility)
      * @returns whether a new btrfs fs was successfully created on `device` or not Tech category: {@link BlockDev.FSTech.BTRFS}-{@link BlockDev.FSTechMode.MKFS}
      */
-    function fs_btrfs_mkfs(device: string, extra?: ExtraArg[] | null): boolean;
+    function fs_btrfs_mkfs(device: string, extra: ExtraArg[] | null): boolean;
     /**
      * @param device the device containing the file system to repair
      * @param extra extra options for the repair (right now                                                 passed to the 'btrfs' utility)
      * @returns whether the filesystem was successfully checked and repaired or not Tech category: {@link BlockDev.FSTech.BTRFS}-{@link BlockDev.FSTechMode.REPAIR}
      */
-    function fs_btrfs_repair(device: string, extra?: ExtraArg[] | null): boolean;
+    function fs_btrfs_repair(device: string, extra: ExtraArg[] | null): boolean;
     /**
      * @param mpoint a mountpoint of the to be resized btrfs filesystem
      * @param new_size requested new size
      * @param extra extra options for the volume resize (right now                                                 passed to the 'btrfs' utility)
      * @returns whether the `mpoint` filesystem was successfully resized to `new_size` or not Note: This function WON'T WORK for multi device btrfs filesystems,       for more complicated setups use the btrfs plugin instead. Tech category: {@link BlockDev.BtrfsTech.FS}-{@link BlockDev.BtrfsTechMode.MODIFY}
      */
-    function fs_btrfs_resize(mpoint: string, new_size: bigint | number, extra?: ExtraArg[] | null): boolean;
+    function fs_btrfs_resize(mpoint: string, new_size: bigint | number, extra: ExtraArg[] | null): boolean;
     /**
      * @param mpoint the mount point of the file system to set label for
      * @param label label to set
@@ -1562,7 +1562,7 @@ export namespace BlockDev {
      * @param uuid UUID to set or `null` to generate a new one
      * @returns whether the UUID of the Btrfs file system on the `device` was          successfully set or not Note: This function is intended to be used for btrfs filesystem on a single device,       for more complicated setups use the btrfs plugin instead. Tech category: {@link BlockDev.FSTech.BTRFS}-{@link BlockDev.FSTechMode.SET_UUID}
      */
-    function fs_btrfs_set_uuid(device: string, uuid?: string | null): boolean;
+    function fs_btrfs_set_uuid(device: string, uuid: string | null): boolean;
     /**
      * Searches for the required utility to check the given filesystem and returns whether
      * it is installed.
@@ -1657,7 +1657,7 @@ export namespace BlockDev {
      * @param fstype the filesystem type on `device` or `null` to detect
      * @returns whether the file system on `device` passed the consistency check or not Tech category: {@link BlockDev.FSTech.GENERIC}-{@link BlockDev.FSTechMode.CHECK}
      */
-    function fs_check(device: string, fstype?: string | null): boolean;
+    function fs_check(device: string, fstype: string | null): boolean;
     /**
      * This calls other fs check label functions from this plugin based on the provided
      * filesystem (e.g. bd_fs_xfs_check_label for XFS). This function will return
@@ -1692,7 +1692,7 @@ export namespace BlockDev {
      * @param extra extra options for the repair (right now                                                 passed to the 'exfatfsck' utility)
      * @returns whether the exfat file system on the `device` is clean or not Tech category: {@link BlockDev.FSTech.EXFAT}-{@link BlockDev.FSTechMode.CHECK}
      */
-    function fs_exfat_check(device: string, extra?: ExtraArg[] | null): boolean;
+    function fs_exfat_check(device: string, extra: ExtraArg[] | null): boolean;
     /**
      * @param label label to check
      * @returns whether `label` is a valid label for the exfat file system or not          (reason is provided in `error`) Tech category: always available
@@ -1713,13 +1713,13 @@ export namespace BlockDev {
      * @param extra extra options for the creation (right now                                                 passed to the 'mkexfatfs' utility)
      * @returns whether a new exfat fs was successfully created on `device` or not Tech category: {@link BlockDev.FSTech.EXFAT}-{@link BlockDev.FSTechMode.MKFS}
      */
-    function fs_exfat_mkfs(device: string, extra?: ExtraArg[] | null): boolean;
+    function fs_exfat_mkfs(device: string, extra: ExtraArg[] | null): boolean;
     /**
      * @param device the device containing the file system to repair
      * @param extra extra options for the repair (right now                                                 passed to the 'exfatfsck' utility)
      * @returns whether the exfat file system on the `device` was successfully repaired          (if needed) or not (error is set in that case) Tech category: {@link BlockDev.FSTech.EXFAT}-{@link BlockDev.FSTechMode.REPAIR}
      */
-    function fs_exfat_repair(device: string, extra?: ExtraArg[] | null): boolean;
+    function fs_exfat_repair(device: string, extra: ExtraArg[] | null): boolean;
     /**
      * @param device the device containing the file system to set label for
      * @param label label to set
@@ -1731,13 +1731,13 @@ export namespace BlockDev {
      * @param uuid volume ID to set or `null` to generate a new one
      * @returns whether the volume ID of exFAT file system on the `device` was          successfully set or not Tech category: {@link BlockDev.FSTech.EXFAT}-{@link BlockDev.FSTechMode.SET_UUID}
      */
-    function fs_exfat_set_uuid(device: string, uuid?: string | null): boolean;
+    function fs_exfat_set_uuid(device: string, uuid: string | null): boolean;
     /**
      * @param device the device the file system on which to check
      * @param extra extra options for the check (right now                                                 passed to the 'e2fsck' utility)
      * @returns whether an ext2 file system on the `device` is clean or not Tech category: {@link BlockDev.FSTech.EXT2}-{@link BlockDev.FSTechMode.CHECK}
      */
-    function fs_ext2_check(device: string, extra?: ExtraArg[] | null): boolean;
+    function fs_ext2_check(device: string, extra: ExtraArg[] | null): boolean;
     /**
      * @param label label to check
      * @returns whether `label` is a valid label for the ext2 file system or not          (reason is provided in `error`) Tech category: always available
@@ -1763,21 +1763,21 @@ export namespace BlockDev {
      * @param extra extra options for the creation (right now                                                 passed to the 'mke2fs' utility)
      * @returns whether a new ext2 fs was successfully created on `device` or not Tech category: {@link BlockDev.FSTech.EXT2}-{@link BlockDev.FSTechMode.MKFS}
      */
-    function fs_ext2_mkfs(device: string, extra?: ExtraArg[] | null): boolean;
+    function fs_ext2_mkfs(device: string, extra: ExtraArg[] | null): boolean;
     /**
      * @param device the device the file system on which to repair
      * @param unsafe whether to do unsafe operations too
      * @param extra extra options for the repair (right now                                                 passed to the 'e2fsck' utility)
      * @returns whether an ext2 file system on the `device` was successfully repaired          (if needed) or not (error is set in that case) Tech category: {@link BlockDev.FSTech.EXT2}-{@link BlockDev.FSTechMode.REPAIR}
      */
-    function fs_ext2_repair(device: string, unsafe: boolean, extra?: ExtraArg[] | null): boolean;
+    function fs_ext2_repair(device: string, unsafe: boolean, extra: ExtraArg[] | null): boolean;
     /**
      * @param device the device the file system of which to resize
      * @param new_size new requested size for the file system (if 0, the file system is            adapted to the underlying block device)
      * @param extra extra options for the resize (right now                                                 passed to the 'resize2fs' utility)
      * @returns whether the file system on `device` was successfully resized or not Tech category: {@link BlockDev.FSTech.EXT2}-{@link BlockDev.FSTechMode.RESIZE}
      */
-    function fs_ext2_resize(device: string, new_size: bigint | number, extra?: ExtraArg[] | null): boolean;
+    function fs_ext2_resize(device: string, new_size: bigint | number, extra: ExtraArg[] | null): boolean;
     /**
      * @param device the device the file system on which to set label for
      * @param label label to set
@@ -1789,13 +1789,13 @@ export namespace BlockDev {
      * @param uuid UUID to set `null` to generate a new one                      UUID can also be one of "clear", "random" and "time" to clear,                      generate a new random/time-based UUID
      * @returns whether the UUID of ext2 file system on the `device` was          successfully set or not Tech category: {@link BlockDev.FSTech.EXT2}-{@link BlockDev.FSTechMode.SET_UUID}
      */
-    function fs_ext2_set_uuid(device: string, uuid?: string | null): boolean;
+    function fs_ext2_set_uuid(device: string, uuid: string | null): boolean;
     /**
      * @param device the device the file system on which to check
      * @param extra extra options for the check (right now                                                 passed to the 'e2fsck' utility)
      * @returns whether an ext3 file system on the `device` is clean or not Tech category: {@link BlockDev.FSTech.EXT3}-{@link BlockDev.FSTechMode.CHECK}
      */
-    function fs_ext3_check(device: string, extra?: ExtraArg[] | null): boolean;
+    function fs_ext3_check(device: string, extra: ExtraArg[] | null): boolean;
     /**
      * @param label label to check
      * @returns whether `label` is a valid label for the ext3 file system or not          (reason is provided in `error`) Tech category: always available
@@ -1821,21 +1821,21 @@ export namespace BlockDev {
      * @param extra extra options for the creation (right now                                                 passed to the 'mke2fs' utility)
      * @returns whether a new ext3 fs was successfully created on `device` or not Tech category: {@link BlockDev.FSTech.EXT3}-{@link BlockDev.FSTechMode.MKFS}
      */
-    function fs_ext3_mkfs(device: string, extra?: ExtraArg[] | null): boolean;
+    function fs_ext3_mkfs(device: string, extra: ExtraArg[] | null): boolean;
     /**
      * @param device the device the file system on which to repair
      * @param unsafe whether to do unsafe operations too
      * @param extra extra options for the repair (right now                                                 passed to the 'e2fsck' utility)
      * @returns whether an ext3 file system on the `device` was successfully repaired          (if needed) or not (error is set in that case) Tech category: {@link BlockDev.FSTech.EXT3}-{@link BlockDev.FSTechMode.REPAIR}
      */
-    function fs_ext3_repair(device: string, unsafe: boolean, extra?: ExtraArg[] | null): boolean;
+    function fs_ext3_repair(device: string, unsafe: boolean, extra: ExtraArg[] | null): boolean;
     /**
      * @param device the device the file system of which to resize
      * @param new_size new requested size for the file system (if 0, the file system is            adapted to the underlying block device)
      * @param extra extra options for the resize (right now                                                 passed to the 'resize2fs' utility)
      * @returns whether the file system on `device` was successfully resized or not Tech category: {@link BlockDev.FSTech.EXT3}-{@link BlockDev.FSTechMode.RESIZE}
      */
-    function fs_ext3_resize(device: string, new_size: bigint | number, extra?: ExtraArg[] | null): boolean;
+    function fs_ext3_resize(device: string, new_size: bigint | number, extra: ExtraArg[] | null): boolean;
     /**
      * @param device the device the file system on which to set label for
      * @param label label to set
@@ -1847,13 +1847,13 @@ export namespace BlockDev {
      * @param uuid UUID to set `null` to generate a new one                      UUID can also be one of "clear", "random" and "time" to clear,                      generate a new random/time-based UUID
      * @returns whether the UUID of ext3 file system on the `device` was          successfully set or not Tech category: {@link BlockDev.FSTech.EXT3}-{@link BlockDev.FSTechMode.SET_UUID}
      */
-    function fs_ext3_set_uuid(device: string, uuid?: string | null): boolean;
+    function fs_ext3_set_uuid(device: string, uuid: string | null): boolean;
     /**
      * @param device the device the file system on which to check
      * @param extra extra options for the check (right now                                                 passed to the 'e2fsck' utility)
      * @returns whether an ext4 file system on the `device` is clean or not Tech category: {@link BlockDev.FSTech.EXT4}-{@link BlockDev.FSTechMode.CHECK}
      */
-    function fs_ext4_check(device: string, extra?: ExtraArg[] | null): boolean;
+    function fs_ext4_check(device: string, extra: ExtraArg[] | null): boolean;
     /**
      * @param label label to check
      * @returns whether `label` is a valid label for the ext4 file system or not          (reason is provided in `error`) Tech category: always available
@@ -1879,21 +1879,21 @@ export namespace BlockDev {
      * @param extra extra options for the creation (right now                                                 passed to the 'mkfs.ext4' utility)
      * @returns whether a new ext4 fs was successfully created on `device` or not Tech category: {@link BlockDev.FSTech.EXT4}-{@link BlockDev.FSTechMode.MKFS}
      */
-    function fs_ext4_mkfs(device: string, extra?: ExtraArg[] | null): boolean;
+    function fs_ext4_mkfs(device: string, extra: ExtraArg[] | null): boolean;
     /**
      * @param device the device the file system on which to repair
      * @param unsafe whether to do unsafe operations too
      * @param extra extra options for the repair (right now                                                 passed to the 'e2fsck' utility)
      * @returns whether an ext4 file system on the `device` was successfully repaired          (if needed) or not (error is set in that case) Tech category: {@link BlockDev.FSTech.EXT4}-{@link BlockDev.FSTechMode.REPAIR}
      */
-    function fs_ext4_repair(device: string, unsafe: boolean, extra?: ExtraArg[] | null): boolean;
+    function fs_ext4_repair(device: string, unsafe: boolean, extra: ExtraArg[] | null): boolean;
     /**
      * @param device the device the file system of which to resize
      * @param new_size new requested size for the file system (if 0, the file system is            adapted to the underlying block device)
      * @param extra extra options for the resize (right now                                                 passed to the 'resize2fs' utility)
      * @returns whether the file system on `device` was successfully resized or not Tech category: {@link BlockDev.FSTech.EXT4}-{@link BlockDev.FSTechMode.RESIZE}
      */
-    function fs_ext4_resize(device: string, new_size: bigint | number, extra?: ExtraArg[] | null): boolean;
+    function fs_ext4_resize(device: string, new_size: bigint | number, extra: ExtraArg[] | null): boolean;
     /**
      * @param device the device the file system on which to set label for
      * @param label label to set
@@ -1905,13 +1905,13 @@ export namespace BlockDev {
      * @param uuid UUID to set `null` to generate a new one                      UUID can also be one of "clear", "random" and "time" to clear,                      generate a new random/time-based UUID
      * @returns whether the UUID of ext4 file system on the `device` was          successfully set or not Tech category: {@link BlockDev.FSTech.EXT4}-{@link BlockDev.FSTechMode.SET_UUID}
      */
-    function fs_ext4_set_uuid(device: string, uuid?: string | null): boolean;
+    function fs_ext4_set_uuid(device: string, uuid: string | null): boolean;
     /**
      * @param device the device containing the file system to check
      * @param extra extra options for the repair (right now                                                 passed to the 'fsck.f2fs' utility)
      * @returns whether an f2fs file system on the `device` is clean or not Tech category: {@link BlockDev.FSTech.F2FS}-{@link BlockDev.FSTechMode.CHECK}
      */
-    function fs_f2fs_check(device: string, extra?: ExtraArg[] | null): boolean;
+    function fs_f2fs_check(device: string, extra: ExtraArg[] | null): boolean;
     /**
      * @param label label to check
      * @returns whether `label` is a valid label for the f2fs file system or not          (reason is provided in `error`) Tech category: always available
@@ -1927,13 +1927,13 @@ export namespace BlockDev {
      * @param extra extra options for the creation (right now                                                 passed to the 'mkfs.f2fs' utility)
      * @returns whether a new f2fs fs was successfully created on `device` or not Tech category: {@link BlockDev.FSTech.F2FS}-{@link BlockDev.FSTechMode.MKFS}
      */
-    function fs_f2fs_mkfs(device: string, extra?: ExtraArg[] | null): boolean;
+    function fs_f2fs_mkfs(device: string, extra: ExtraArg[] | null): boolean;
     /**
      * @param device the device containing the file system to repair
      * @param extra extra options for the repair (right now                                                 passed to the 'fsck.f2fs' utility)
      * @returns whether an f2fs file system on the `device` was successfully repaired          (if needed) or not (error is set in that case) Tech category: {@link BlockDev.FSTech.F2FS}-{@link BlockDev.FSTechMode.REPAIR}
      */
-    function fs_f2fs_repair(device: string, extra?: ExtraArg[] | null): boolean;
+    function fs_f2fs_repair(device: string, extra: ExtraArg[] | null): boolean;
     /**
      * @param device the device containing the file system to resize
      * @param new_size new requested size for the file system *in file system sectors* (see `bd_fs_f2fs_get_info()`)            (if 0, the file system is adapted to the underlying block device)
@@ -1945,7 +1945,7 @@ export namespace BlockDev {
         device: string,
         new_size: bigint | number,
         safe: boolean,
-        extra?: ExtraArg[] | null,
+        extra: ExtraArg[] | null,
     ): boolean;
     /**
      * Returns (transfer-none): features supported by `fstype`, see %BDFSFeatures for more information.
@@ -1969,7 +1969,7 @@ export namespace BlockDev {
      * @param fstype the filesystem type on `device` or `null` to detect
      * @returns free space of filesystem on `device`, 0 in case of error. Tech category: {@link BlockDev.FSTech.GENERIC}-{@link BlockDev.FSTechMode.QUERY}
      */
-    function fs_get_free_space(device: string, fstype?: string | null): number;
+    function fs_get_free_space(device: string, fstype: string | null): number;
     /**
      * Get first signature on `device` as a string.
      * @param device the device to probe
@@ -1984,7 +1984,7 @@ export namespace BlockDev {
      * @param fstype the filesystem type on `device` or `null` to detect
      * @returns minimum size of filesystem on `device`, 0 in case of error. Tech category: {@link BlockDev.FSTech.GENERIC}-{@link BlockDev.FSTechMode.RESIZE}
      */
-    function fs_get_min_size(device: string, fstype?: string | null): number;
+    function fs_get_min_size(device: string, fstype: string | null): number;
     /**
      * Get mountpoint for `device`. If `device` is mounted multiple times only
      * one mountpoint will be returned.
@@ -2003,7 +2003,7 @@ export namespace BlockDev {
      * @param fstype the filesystem type on `device` or `null` to detect
      * @returns size of filesystem on `device`, 0 in case of error. Tech category: {@link BlockDev.FSTech.GENERIC}-{@link BlockDev.FSTechMode.QUERY}
      */
-    function fs_get_size(device: string, fstype?: string | null): number;
+    function fs_get_size(device: string, fstype: string | null): number;
     /**
      * @param path path (folder) to check
      * @returns whether `path` is a mountpoint or not Tech category: {@link BlockDev.FSTech.MOUNT} (no mode, ignored)
@@ -2033,7 +2033,7 @@ export namespace BlockDev {
      * @param extra extra mkfs options not provided in `options`
      * @returns whether `fstype` was successfully created on `device` or not. Tech category: {@link BlockDev.FSTech.GENERIC}-{@link BlockDev.FSTechMode.MKFS}
      */
-    function fs_mkfs(device: string, fstype: string, options: FSMkfsOptions, extra?: ExtraArg[] | null): boolean;
+    function fs_mkfs(device: string, fstype: string, options: FSMkfsOptions, extra: ExtraArg[] | null): boolean;
     /**
      * @param device device to mount, if not specified `mountpoint` entry                        from fstab will be used
      * @param mountpoint mountpoint for `device`, if not specified `device`                            entry from fstab will be used
@@ -2043,11 +2043,11 @@ export namespace BlockDev {
      * @returns whether `device` (or `mountpoint`) was successfully mounted or not Tech category: {@link BlockDev.FSTech.MOUNT} (no mode, ignored)
      */
     function fs_mount(
-        device?: string | null,
-        mountpoint?: string | null,
-        fstype?: string | null,
-        options?: string | null,
-        extra?: ExtraArg[] | null,
+        device: string | null,
+        mountpoint: string | null,
+        fstype: string | null,
+        options: string | null,
+        extra: ExtraArg[] | null,
     ): boolean;
     /**
      * @param label label to check
@@ -2069,7 +2069,7 @@ export namespace BlockDev {
      * @param extra extra options for the creation (right now                                                 passed to the 'mkfs.nilfs2' utility)
      * @returns whether a new nilfs fs was successfully created on `device` or not Tech category: {@link BlockDev.FSTech.NILFS2}-{@link BlockDev.FSTechMode.MKFS}
      */
-    function fs_nilfs2_mkfs(device: string, extra?: ExtraArg[] | null): boolean;
+    function fs_nilfs2_mkfs(device: string, extra: ExtraArg[] | null): boolean;
     /**
      * @param device the device the file system of which to resize
      * @param new_size new requested size for the file system (if 0, the file system is            adapted to the underlying block device)
@@ -2087,13 +2087,13 @@ export namespace BlockDev {
      * @param uuid UUID to set or `null` to generate a new one
      * @returns whether the uuid of nilfs file system on the `device` was          successfully set or not Tech category: {@link BlockDev.FSTech.NILFS2}-{@link BlockDev.FSTechMode.SET_UUID}
      */
-    function fs_nilfs2_set_uuid(device: string, uuid?: string | null): boolean;
+    function fs_nilfs2_set_uuid(device: string, uuid: string | null): boolean;
     /**
      * @param device the device containing the file system to check
      * @param extra extra options for the repair (right now                                               passed to the 'ntfsfix' utility)
      * @returns whether an ntfs file system on the `device` is clean or not Tech category: {@link BlockDev.FSTech.NTFS}-{@link BlockDev.FSTechMode.CHECK}
      */
-    function fs_ntfs_check(device: string, extra?: ExtraArg[] | null): boolean;
+    function fs_ntfs_check(device: string, extra: ExtraArg[] | null): boolean;
     /**
      * @param label label to check
      * @returns whether `label` is a valid label for the ntfs file system or not          (reason is provided in `error`) Tech category: always available
@@ -2119,13 +2119,13 @@ export namespace BlockDev {
      * @param extra extra options for the creation (right now                                                 passed to the 'mkntfs' utility)
      * @returns whether a new NTFS fs was successfully created on `device` or not Tech category: {@link BlockDev.FSTech.NTFS}-{@link BlockDev.FSTechMode.MKFS}
      */
-    function fs_ntfs_mkfs(device: string, extra?: ExtraArg[] | null): boolean;
+    function fs_ntfs_mkfs(device: string, extra: ExtraArg[] | null): boolean;
     /**
      * @param device the device containing the file system to repair
      * @param extra extra options for the repair (right now                                               passed to the 'ntfsfix' utility)
      * @returns whether an NTFS file system on the `device` was successfully repaired          (if needed) or not (error is set in that case) Tech category: {@link BlockDev.FSTech.NTFS}-{@link BlockDev.FSTechMode.REPAIR}
      */
-    function fs_ntfs_repair(device: string, extra?: ExtraArg[] | null): boolean;
+    function fs_ntfs_repair(device: string, extra: ExtraArg[] | null): boolean;
     /**
      * @param device the device the file system of which to resize
      * @param new_size new requested size for the file system in bytes (if 0, the file system            is adapted to the underlying block device)
@@ -2143,7 +2143,7 @@ export namespace BlockDev {
      * @param uuid UUID to set or `null` to generate a new one
      * @returns whether the UUID of the NTFS file system on the `device` was          successfully set or not Tech category: {@link BlockDev.FSTech.NTFS}-{@link BlockDev.FSTechMode.SET_UUID}
      */
-    function fs_ntfs_set_uuid(device: string, uuid?: string | null): boolean;
+    function fs_ntfs_set_uuid(device: string, uuid: string | null): boolean;
     /**
      * Repair filesystem on `device`. This calls other fs repair functions from this
      * plugin based on detected filesystem (e.g. bd_fs_xfs_repair for XFS). This
@@ -2154,7 +2154,7 @@ export namespace BlockDev {
      * @param fstype the filesystem type on `device` or `null` to detect
      * @returns whether the file system on `device` was successfully repaired or not Tech category: {@link BlockDev.FSTech.GENERIC}-{@link BlockDev.FSTechMode.REPAIR}
      */
-    function fs_repair(device: string, fstype?: string | null): boolean;
+    function fs_repair(device: string, fstype: string | null): boolean;
     /**
      * Resize filesystem on `device`. This calls other fs resize functions from this
      * plugin based on provides or detected filesystem (e.g. bd_fs_xfs_resize for XFS).
@@ -2167,7 +2167,7 @@ export namespace BlockDev {
      * @param fstype the filesystem type on `device` or `null` to detect
      * @returns whether the file system on `device` was successfully resized or not Tech category: {@link BlockDev.FSTech.GENERIC}-{@link BlockDev.FSTechMode.RESIZE}
      */
-    function fs_resize(device: string, new_size: bigint | number, fstype?: string | null): boolean;
+    function fs_resize(device: string, new_size: bigint | number, fstype: string | null): boolean;
     /**
      * Set label for filesystem on `device`. This calls other fs label functions from this
      * plugin based on detected filesystem (e.g. bd_fs_xfs_set_label for XFS). This
@@ -2180,7 +2180,7 @@ export namespace BlockDev {
      * @param fstype the filesystem type on `device` or `null` to detect
      * @returns whether the file system on `device` was successfully relabeled or not Tech category: {@link BlockDev.FSTech.GENERIC}-{@link BlockDev.FSTechMode.SET_LABEL}
      */
-    function fs_set_label(device: string, label: string, fstype?: string | null): boolean;
+    function fs_set_label(device: string, label: string, fstype: string | null): boolean;
     /**
      * Set UUID for filesystem on `device`. This calls other fs UUID functions from this
      * plugin based on detected filesystem (e.g. bd_fs_xfs_set_uuid for XFS). This
@@ -2190,7 +2190,7 @@ export namespace BlockDev {
      * @param fstype the filesystem type on `device` or `null` to detect
      * @returns whether the UUID on the file system on `device` was successfully changed or not Tech category: {@link BlockDev.FSTech.GENERIC}-{@link BlockDev.FSTechMode.SET_UUID}
      */
-    function fs_set_uuid(device: string, uuid?: string | null, fstype?: string | null): boolean;
+    function fs_set_uuid(device: string, uuid: string | null, fstype: string | null): boolean;
     /**
      * @returns list of filesystems supported by this plugin Note: This returns filesystems supported by libblockdev, but not necessarily       by the systems this is running on, for this information you need to       run one of the `bd_fs_can_` functions. Tech category: always available
      */
@@ -2225,7 +2225,7 @@ export namespace BlockDev {
         media_type: string | null,
         revision: string | null,
         block_size: bigint | number,
-        extra?: ExtraArg[] | null,
+        extra: ExtraArg[] | null,
     ): boolean;
     /**
      * Note: This sets both Volume Identifier and Logical Volume Identifier. Volume Identifier
@@ -2241,7 +2241,7 @@ export namespace BlockDev {
      * @param uuid UUID to set or `null` to generate a new one
      * @returns whether the UUID of the UDF file system on the `device` was          successfully set or not Tech category: {@link BlockDev.FSTech.UDF}-{@link BlockDev.FSTechMode.SET_UUID}
      */
-    function fs_udf_set_uuid(device: string, uuid?: string | null): boolean;
+    function fs_udf_set_uuid(device: string, uuid: string | null): boolean;
     /**
      * Un-freezes filesystem mounted on `mountpoint`. The filesystem must
      * support freezing.
@@ -2256,13 +2256,13 @@ export namespace BlockDev {
      * @param extra extra options for the unmount;                                               currently only 'run_as_uid'                                               and 'run_as_gid' are supported;                                               value must be a valid non zero                                               uid (gid), if you specify one of                                               these, the function will run in                                               a child process with real user
      * @returns whether `spec` was successfully unmounted or not Tech category: {@link BlockDev.FSTech.MOUNT} (no mode, ignored)
      */
-    function fs_unmount(spec: string, lazy: boolean, force: boolean, extra?: ExtraArg[] | null): boolean;
+    function fs_unmount(spec: string, lazy: boolean, force: boolean, extra: ExtraArg[] | null): boolean;
     /**
      * @param device the device containing the file system to check
      * @param extra extra options for the repair (right now                                                 passed to the 'fsck.vfat' utility)
      * @returns whether an vfat file system on the `device` is clean or not Tech category: {@link BlockDev.FSTech.VFAT}-{@link BlockDev.FSTechMode.CHECK}
      */
-    function fs_vfat_check(device: string, extra?: ExtraArg[] | null): boolean;
+    function fs_vfat_check(device: string, extra: ExtraArg[] | null): boolean;
     /**
      * @param label label to check
      * @returns whether `label` is a valid label for the vfat file system or not          (reason is provided in `error`) Tech category: always available
@@ -2284,13 +2284,13 @@ export namespace BlockDev {
      * @param extra extra options for the creation (right now                                                 passed to the 'mkfs.vfat' utility)
      * @returns whether a new vfat fs was successfully created on `device` or not Tech category: {@link BlockDev.FSTech.VFAT}-{@link BlockDev.FSTechMode.MKFS}
      */
-    function fs_vfat_mkfs(device: string, extra?: ExtraArg[] | null): boolean;
+    function fs_vfat_mkfs(device: string, extra: ExtraArg[] | null): boolean;
     /**
      * @param device the device containing the file system to repair
      * @param extra extra options for the repair (right now                                                 passed to the 'fsck.vfat' utility)
      * @returns whether an vfat file system on the `device` was successfully repaired          (if needed) or not (error is set in that case) Tech category: {@link BlockDev.FSTech.VFAT}-{@link BlockDev.FSTechMode.REPAIR}
      */
-    function fs_vfat_repair(device: string, extra?: ExtraArg[] | null): boolean;
+    function fs_vfat_repair(device: string, extra: ExtraArg[] | null): boolean;
     /**
      * @param device the device the file system of which to resize
      * @param new_size new requested size for the file system (if 0, the file system is            adapted to the underlying block device)
@@ -2308,7 +2308,7 @@ export namespace BlockDev {
      * @param uuid volume ID to set or `null` to generate a new one
      * @returns whether the volume ID of vfat file system on the `device` was          successfully set or not Tech category: {@link BlockDev.FSTech.VFAT}-{@link BlockDev.FSTechMode.SET_UUID}
      */
-    function fs_vfat_set_uuid(device: string, uuid?: string | null): boolean;
+    function fs_vfat_set_uuid(device: string, uuid: string | null): boolean;
     /**
      * @param device the device to wipe signatures from
      * @param all whether to wipe all (`true`) signatures or just the first (`false`) one
@@ -2321,7 +2321,7 @@ export namespace BlockDev {
      * @param extra extra options for the repair (right now                                               passed to the 'xfs_repair' utility)
      * @returns whether an xfs file system on the `device` is clean or not Note: If the file system is mounted RW, it will always be reported as not       clean! Tech category: {@link BlockDev.FSTech.XFS}-{@link BlockDev.FSTechMode.CHECK}
      */
-    function fs_xfs_check(device: string, extra?: ExtraArg[] | null): boolean;
+    function fs_xfs_check(device: string, extra: ExtraArg[] | null): boolean;
     /**
      * @param label label to check
      * @returns whether `label` is a valid label for the xfs file system or not          (reason is provided in `error`) Tech category: always available
@@ -2342,20 +2342,20 @@ export namespace BlockDev {
      * @param extra extra options for the creation (right now                                                 passed to the 'mkfs.xfs' utility)
      * @returns whether a new xfs fs was successfully created on `device` or not Tech category: {@link BlockDev.FSTech.XFS}-{@link BlockDev.FSTechMode.MKFS}
      */
-    function fs_xfs_mkfs(device: string, extra?: ExtraArg[] | null): boolean;
+    function fs_xfs_mkfs(device: string, extra: ExtraArg[] | null): boolean;
     /**
      * @param device the device containing the file system to repair
      * @param extra extra options for the repair (right now                                                 passed to the 'xfs_repair' utility)
      * @returns whether an xfs file system on the `device` was successfully repaired          (if needed) or not (error is set in that case) Tech category: {@link BlockDev.FSTech.XFS}-{@link BlockDev.FSTechMode.REPAIR}
      */
-    function fs_xfs_repair(device: string, extra?: ExtraArg[] | null): boolean;
+    function fs_xfs_repair(device: string, extra: ExtraArg[] | null): boolean;
     /**
      * @param mpoint the mount point of the file system to resize
      * @param new_size new requested size for the file system *in file system blocks* (see `bd_fs_xfs_get_info()`)            (if 0, the file system is adapted to the underlying block device)
      * @param extra extra options for the resize (right now                                                 passed to the 'xfs_growfs' utility)
      * @returns whether the file system mounted on `mpoint` was successfully resized or not Tech category: {@link BlockDev.FSTech.XFS}-{@link BlockDev.FSTechMode.RESIZE}
      */
-    function fs_xfs_resize(mpoint: string, new_size: bigint | number, extra?: ExtraArg[] | null): boolean;
+    function fs_xfs_resize(mpoint: string, new_size: bigint | number, extra: ExtraArg[] | null): boolean;
     /**
      * @param device the device containing the file system to set label for
      * @param label label to set
@@ -2367,7 +2367,7 @@ export namespace BlockDev {
      * @param uuid UUID to set `null` to generate a new one                      UUID can also be one of "nil" and "generate" to clear or                      generate a new UUID
      * @returns whether the UUID of xfs file system on the `device` was          successfully set or not Tech category: {@link BlockDev.FSTech.XFS}-{@link BlockDev.FSTechMode.SET_UUID}
      */
-    function fs_xfs_set_uuid(device: string, uuid?: string | null): boolean;
+    function fs_xfs_set_uuid(device: string, uuid: string | null): boolean;
     /**
      * @returns an array of string names of plugins that are available
      */
@@ -2387,7 +2387,7 @@ export namespace BlockDev {
      * @param log_func logging function to use
      * @returns whether the library was successfully initialized with all the          required or default (see `require_plugins`) plugins or not Example of libblockdev initialization with 'fs' and 'lvm' plugins. Specific version of the lvm plugin is required: |[<!-- language="C" --> GError *error = NULL; gboolean ret = FALSE; BDPluginSpec fs_plugin = {BD_PLUGIN_FS, NULL}; BDPluginSpec lvm_plugin = {BD_PLUGIN_LVM, "libbd_lvm.so.3"}; BDPluginSpec *plugins[] = {&fs_plugin, &lvm_plugin, NULL}; ret = bd_init (plugins, NULL, &error); ]|
      */
-    function init(require_plugins?: PluginSpec[] | null, log_func?: UtilsLogFunc | null): boolean;
+    function init(require_plugins: PluginSpec[] | null, log_func: UtilsLogFunc | null): boolean;
     /**
      * @returns whether the library is initialized or not The library is considered initialized if some of the *init*() functions was/were called and either at least one plugin is loaded or 0 plugins are loaded after an explicit call that requested 0 plugins to be loaded.
      */
@@ -2496,7 +2496,7 @@ export namespace BlockDev {
         vg_name: string,
         data_lv: string,
         cache_pool_lv: string,
-        extra?: ExtraArg[] | null,
+        extra: ExtraArg[] | null,
     ): boolean;
     /**
      * @param vg_name name of the VG to create a cached LV in
@@ -2547,7 +2547,7 @@ export namespace BlockDev {
      * @param extra extra options for the cache detachment                                                 (just passed to LVM as is)
      * @returns whether the cache was successfully detached from the `cached_lv` or not Note: synces the cache first Tech category: {@link BlockDev.LVMTech.CACHE}-{@link BlockDev.LVMTechMode.MODIFY}
      */
-    function lvm_cache_detach(vg_name: string, cached_lv: string, destroy: boolean, extra?: ExtraArg[] | null): boolean;
+    function lvm_cache_detach(vg_name: string, cached_lv: string, destroy: boolean, extra: ExtraArg[] | null): boolean;
     /**
      * @param cache_size size of the cache to determine MD size for
      * @returns recommended default size of the cache metadata LV or 0 in case of error Tech category: {@link BlockDev.LVMTech.CACHE_CALCS} no mode (it is ignored)
@@ -2577,8 +2577,8 @@ export namespace BlockDev {
         vg_name: string,
         data_lv: string,
         metadata_lv: string,
-        name?: string | null,
-        extra?: ExtraArg[] | null,
+        name: string | null,
+        extra: ExtraArg[] | null,
     ): boolean;
     /**
      * @param vg_name name of the VG containing the `cached_lv`
@@ -2607,7 +2607,7 @@ export namespace BlockDev {
         type: string,
         values_only: boolean,
         global_config: boolean,
-        extra?: ExtraArg[] | null,
+        extra: ExtraArg[] | null,
     ): string;
     /**
      * @param vg_name name of the VG that contains the LV to set tags on
@@ -2634,14 +2634,14 @@ export namespace BlockDev {
      * @param extra extra options for the lvmdevices command
      * @returns whether the `device` was successfully added to `devices_file` or not Tech category: {@link BlockDev.LVMTech.DEVICES} no mode (it is ignored)
      */
-    function lvm_devices_add(device: string, devices_file?: string | null, extra?: ExtraArg[] | null): boolean;
+    function lvm_devices_add(device: string, devices_file: string | null, extra: ExtraArg[] | null): boolean;
     /**
      * @param device device (PV) to delete from the devices file
      * @param devices_file LVM devices file or `null` for default
      * @param extra extra options for the lvmdevices command
      * @returns whether the `device` was successfully removed from `devices_file` or not Tech category: {@link BlockDev.LVMTech.DEVICES} no mode (it is ignored)
      */
-    function lvm_devices_delete(device: string, devices_file?: string | null, extra?: ExtraArg[] | null): boolean;
+    function lvm_devices_delete(device: string, devices_file: string | null, extra: ExtraArg[] | null): boolean;
     function lvm_error_quark(): GLib.Quark;
     /**
      * @returns a copy of a string representation of                                                     the currently set LVM devices filter Tech category: {@link BlockDev.LVMTech.DEVICES} no mode (it is ignored)
@@ -2745,7 +2745,7 @@ export namespace BlockDev {
         lv_name: string,
         ignore_skip: boolean,
         shared: boolean,
-        extra?: ExtraArg[] | null,
+        extra: ExtraArg[] | null,
     ): boolean;
     /**
      * @param vg_name name of the VG to create a new LV in
@@ -2760,9 +2760,9 @@ export namespace BlockDev {
         vg_name: string,
         lv_name: string,
         size: bigint | number,
-        type?: string | null,
-        pv_list?: string[] | null,
-        extra?: ExtraArg[] | null,
+        type: string | null,
+        pv_list: string[] | null,
+        extra: ExtraArg[] | null,
     ): boolean;
     /**
      * @param vg_name name of the VG containing the to-be-deactivated LV
@@ -2770,7 +2770,7 @@ export namespace BlockDev {
      * @param extra extra options for the LV deactivation                                                 (just passed to LVM as is)
      * @returns whether the `vg_name`/`lv_name` LV was successfully deactivated or not Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.MODIFY}
      */
-    function lvm_lvdeactivate(vg_name: string, lv_name: string, extra?: ExtraArg[] | null): boolean;
+    function lvm_lvdeactivate(vg_name: string, lv_name: string, extra: ExtraArg[] | null): boolean;
     /**
      * @param vg_name name of the VG that contains the LV to get information about
      * @param lv_name name of the LV to get information about
@@ -2797,7 +2797,7 @@ export namespace BlockDev {
      * @param extra extra options for the LV removal                                                 (just passed to LVM as is)
      * @returns whether the `vg_name`/`lv_name` LV was successfully removed or not Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.REMOVE}
      */
-    function lvm_lvremove(vg_name: string, lv_name: string, force: boolean, extra?: ExtraArg[] | null): boolean;
+    function lvm_lvremove(vg_name: string, lv_name: string, force: boolean, extra: ExtraArg[] | null): boolean;
     /**
      * @param vg_name name of the VG containing the to-be-renamed LV
      * @param lv_name name of the to-be-renamed LV
@@ -2805,7 +2805,7 @@ export namespace BlockDev {
      * @param extra extra options for the LV rename                                                 (just passed to LVM as is)
      * @returns whether the `vg_name`/`lv_name` LV was successfully renamed to `vg_name`/`new_name` or not Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.MODIFY}
      */
-    function lvm_lvrename(vg_name: string, lv_name: string, new_name: string, extra?: ExtraArg[] | null): boolean;
+    function lvm_lvrename(vg_name: string, lv_name: string, new_name: string, extra: ExtraArg[] | null): boolean;
     /**
      * @param vg_name name of the VG containing the to-be-repaired LV
      * @param lv_name name of the to-be-repaired LV
@@ -2813,7 +2813,7 @@ export namespace BlockDev {
      * @param extra extra options for the LV repair                                                 (just passed to LVM as is)
      * @returns whether the `vg_name`/`lv_name` LV was successfully repaired or not Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.MODIFY}
      */
-    function lvm_lvrepair(vg_name: string, lv_name: string, pv_list: string[], extra?: ExtraArg[] | null): boolean;
+    function lvm_lvrepair(vg_name: string, lv_name: string, pv_list: string[], extra: ExtraArg[] | null): boolean;
     /**
      * @param vg_name name of the VG containing the to-be-resized LV
      * @param lv_name name of the to-be-resized LV
@@ -2821,18 +2821,18 @@ export namespace BlockDev {
      * @param extra extra options for the LV resize                                                 (just passed to LVM as is)
      * @returns whether the `vg_name`/`lv_name` LV was successfully resized or not Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.MODIFY}
      */
-    function lvm_lvresize(vg_name: string, lv_name: string, size: bigint | number, extra?: ExtraArg[] | null): boolean;
+    function lvm_lvresize(vg_name: string, lv_name: string, size: bigint | number, extra: ExtraArg[] | null): boolean;
     /**
      * @param vg_name name of the VG to get information about LVs from
      * @returns information about LVs found in the given `vg_name` VG or in system if `vg_name` is `null` Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.QUERY}
      */
-    function lvm_lvs(vg_name?: string | null): LVMLVdata[];
+    function lvm_lvs(vg_name: string | null): LVMLVdata[];
     /**
      * This function will fill out the data_lvs, metadata_lvs, and segs fields as well.
      * @param vg_name name of the VG to get information about LVs from
      * @returns information about LVs found in the given `vg_name` VG or in system if `vg_name` is `null`. Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.QUERY}
      */
-    function lvm_lvs_tree(vg_name?: string | null): LVMLVdata[];
+    function lvm_lvs_tree(vg_name: string | null): LVMLVdata[];
     /**
      * @param vg_name name of the VG containing the LV a new snapshot should be created of
      * @param origin_name name of the LV a new snapshot should be created of
@@ -2846,7 +2846,7 @@ export namespace BlockDev {
         origin_name: string,
         snapshot_name: string,
         size: bigint | number,
-        extra?: ExtraArg[] | null,
+        extra: ExtraArg[] | null,
     ): boolean;
     /**
      * @param vg_name name of the VG containing the to-be-merged LV snapshot
@@ -2854,7 +2854,7 @@ export namespace BlockDev {
      * @param extra extra options for the LV snapshot merge                                                 (just passed to LVM as is)
      * @returns whether the `vg_name`/`snapshot_name` LV snapshot was successfully merged or not Tech category: {@link BlockDev.LVMTech.BASIC_SNAP}-{@link BlockDev.LVMTechMode.MODIFY}
      */
-    function lvm_lvsnapshotmerge(vg_name: string, snapshot_name: string, extra?: ExtraArg[] | null): boolean;
+    function lvm_lvsnapshotmerge(vg_name: string, snapshot_name: string, extra: ExtraArg[] | null): boolean;
     /**
      * @param device the device to make PV from
      * @param data_alignment data (first PE) alignment or 0 to use the default
@@ -2866,7 +2866,7 @@ export namespace BlockDev {
         device: string,
         data_alignment: bigint | number,
         metadata_size: bigint | number,
-        extra?: ExtraArg[] | null,
+        extra: ExtraArg[] | null,
     ): boolean;
     /**
      * @param device a PV to get information about or `null`
@@ -2879,20 +2879,20 @@ export namespace BlockDev {
      * @param extra extra options for the PV move                                                 (just passed to LVM as is)
      * @returns whether the extents from the `src` PV where successfully moved or not If `dest` is `null`, VG allocation rules are used for the extents from the `src` PV (see pvmove(8)). Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.MODIFY}
      */
-    function lvm_pvmove(src: string, dest?: string | null, extra?: ExtraArg[] | null): boolean;
+    function lvm_pvmove(src: string, dest: string | null, extra: ExtraArg[] | null): boolean;
     /**
      * @param device the PV device to be removed/destroyed
      * @param extra extra options for the PV removal                                                 (just passed to LVM as is)
      * @returns whether the PV was successfully removed/destroyed or not Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.REMOVE}
      */
-    function lvm_pvremove(device: string, extra?: ExtraArg[] | null): boolean;
+    function lvm_pvremove(device: string, extra: ExtraArg[] | null): boolean;
     /**
      * @param device the device to resize
      * @param size the new requested size of the PV or 0 if it should be adjusted to device's size
      * @param extra extra options for the PV resize                                                 (just passed to LVM as is)
      * @returns whether the PV's size was successfully changed or not If given `size` different from 0, sets the PV's size to the given value (see pvresize(8)). If given `size` 0, adjusts the PV's size to the underlying block device's size. Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.MODIFY}
      */
-    function lvm_pvresize(device: string, size: bigint | number, extra?: ExtraArg[] | null): boolean;
+    function lvm_pvresize(device: string, size: bigint | number, extra: ExtraArg[] | null): boolean;
     /**
      * @returns information about PVs found in the system Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.QUERY}
      */
@@ -2903,7 +2903,7 @@ export namespace BlockDev {
      * @param extra extra options for the PV scan                                                 (just passed to LVM as is)
      * @returns whether the system or `device` was successfully scanned for PVs or not The `device` argument is used only if `update_cache` is `true`. Otherwise the whole system is scanned for PVs. Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.QUERY}
      */
-    function lvm_pvscan(device: string | null, update_cache: boolean, extra?: ExtraArg[] | null): boolean;
+    function lvm_pvscan(device: string | null, update_cache: boolean, extra: ExtraArg[] | null): boolean;
     /**
      * @param size size to be rounded
      * @param pe_size physical extent (PE) size or 0 to use the default
@@ -2915,7 +2915,7 @@ export namespace BlockDev {
      * @param devices list of devices for lvm commands to work on
      * @returns whether the devices filter was successfully set or not Tech category: {@link BlockDev.LVMTech.DEVICES} no mode (it is ignored)
      */
-    function lvm_set_devices_filter(devices?: string[] | null): boolean;
+    function lvm_set_devices_filter(devices: string[] | null): boolean;
     /**
      * Note: This function sets configuration options for LVM calls internally
      *       in libblockdev, it doesn't change the global lvm.conf config file.
@@ -2925,7 +2925,7 @@ export namespace BlockDev {
      * @param new_config string representation of the new global libblockdev LVM                          configuration to set or `null` to reset to default
      * @returns whether the new requested global config `new_config` was successfully          set or not Tech category: {@link BlockDev.LVMTech.GLOB_CONF} no mode (it is ignored)
      */
-    function lvm_set_global_config(new_config?: string | null): boolean;
+    function lvm_set_global_config(new_config: string | null): boolean;
     /**
      * @param vg_name name of the VG containing the thin pool providing extents for the to-be-created thin LV
      * @param pool_name name of the pool LV providing extents for the to-be-created thin LV
@@ -2939,7 +2939,7 @@ export namespace BlockDev {
         pool_name: string,
         lv_name: string,
         size: bigint | number,
-        extra?: ExtraArg[] | null,
+        extra: ExtraArg[] | null,
     ): boolean;
     /**
      * @param vg_name name of the VG containing the queried thin LV
@@ -2961,8 +2961,8 @@ export namespace BlockDev {
         vg_name: string,
         data_lv: string,
         metadata_lv: string,
-        name?: string | null,
-        extra?: ExtraArg[] | null,
+        name: string | null,
+        extra: ExtraArg[] | null,
     ): boolean;
     /**
      * @param vg_name name of the VG to create a thin pool in
@@ -2980,8 +2980,8 @@ export namespace BlockDev {
         size: bigint | number,
         md_size: bigint | number,
         chunk_size: bigint | number,
-        profile?: string | null,
-        extra?: ExtraArg[] | null,
+        profile: string | null,
+        extra: ExtraArg[] | null,
     ): boolean;
     /**
      * @param vg_name name of the VG containing the thin LV a new snapshot should be created of
@@ -2995,8 +2995,8 @@ export namespace BlockDev {
         vg_name: string,
         origin_name: string,
         snapshot_name: string,
-        pool_name?: string | null,
-        extra?: ExtraArg[] | null,
+        pool_name: string | null,
+        extra: ExtraArg[] | null,
     ): boolean;
     /**
      * @param vg_name name of the VG containing the to-be-changed VDO pool LV
@@ -3004,28 +3004,28 @@ export namespace BlockDev {
      * @param extra extra options for the VDO change                                                 (just passed to LVM as is)
      * @returns whether compression was successfully disabled on `vg_name`/`pool_name` LV or not Tech category: {@link BlockDev.LVMTech.VDO}-{@link BlockDev.LVMTechMode.MODIFY}
      */
-    function lvm_vdo_disable_compression(vg_name: string, pool_name: string, extra?: ExtraArg[] | null): boolean;
+    function lvm_vdo_disable_compression(vg_name: string, pool_name: string, extra: ExtraArg[] | null): boolean;
     /**
      * @param vg_name name of the VG containing the to-be-changed VDO pool LV
      * @param pool_name name of the VDO pool LV to disable deduplication on
      * @param extra extra options for the VDO change                                                 (just passed to LVM as is)
      * @returns whether deduplication was successfully disabled on `vg_name`/`pool_name` LV or not Tech category: {@link BlockDev.LVMTech.VDO}-{@link BlockDev.LVMTechMode.MODIFY}
      */
-    function lvm_vdo_disable_deduplication(vg_name: string, pool_name: string, extra?: ExtraArg[] | null): boolean;
+    function lvm_vdo_disable_deduplication(vg_name: string, pool_name: string, extra: ExtraArg[] | null): boolean;
     /**
      * @param vg_name name of the VG containing the to-be-changed VDO pool LV
      * @param pool_name name of the VDO pool LV to enable compression on
      * @param extra extra options for the VDO change                                                 (just passed to LVM as is)
      * @returns whether compression was successfully enabled on `vg_name`/`pool_name` LV or not Tech category: {@link BlockDev.LVMTech.VDO}-{@link BlockDev.LVMTechMode.MODIFY}
      */
-    function lvm_vdo_enable_compression(vg_name: string, pool_name: string, extra?: ExtraArg[] | null): boolean;
+    function lvm_vdo_enable_compression(vg_name: string, pool_name: string, extra: ExtraArg[] | null): boolean;
     /**
      * @param vg_name name of the VG containing the to-be-changed VDO pool LV
      * @param pool_name name of the VDO pool LV to enable deduplication on
      * @param extra extra options for the VDO change                                                 (just passed to LVM as is)
      * @returns whether deduplication was successfully enabled on `vg_name`/`pool_name` LV or not Tech category: {@link BlockDev.LVMTech.VDO}-{@link BlockDev.LVMTechMode.MODIFY}
      */
-    function lvm_vdo_enable_deduplication(vg_name: string, pool_name: string, extra?: ExtraArg[] | null): boolean;
+    function lvm_vdo_enable_deduplication(vg_name: string, pool_name: string, extra: ExtraArg[] | null): boolean;
     /**
      * @param vg_name name of the VG that contains `pool_name` VDO pool
      * @param pool_name name of the VDO pool to get statistics for
@@ -3069,7 +3069,7 @@ export namespace BlockDev {
         compression: boolean,
         deduplication: boolean,
         write_policy: LVMVDOWritePolicy,
-        extra?: ExtraArg[] | null,
+        extra: ExtraArg[] | null,
     ): boolean;
     /**
      * @param vg_name name of the VG to create a new LV in
@@ -3094,7 +3094,7 @@ export namespace BlockDev {
         compression: boolean,
         deduplication: boolean,
         write_policy: LVMVDOWritePolicy,
-        extra?: ExtraArg[] | null,
+        extra: ExtraArg[] | null,
     ): boolean;
     /**
      * @param vg_name name of the VG containing the to-be-resized VDO pool LV
@@ -3107,7 +3107,7 @@ export namespace BlockDev {
         vg_name: string,
         pool_name: string,
         size: bigint | number,
-        extra?: ExtraArg[] | null,
+        extra: ExtraArg[] | null,
     ): boolean;
     /**
      * @param vg_name name of the VG containing the to-be-resized VDO LV
@@ -3116,12 +3116,7 @@ export namespace BlockDev {
      * @param extra extra options for the VDO LV resize                                                 (just passed to LVM as is)
      * @returns whether the `vg_name`/`lv_name` VDO LV was successfully resized or not Note: Reduction needs to process TRIM for reduced disk area to unmap used data blocks       from the VDO pool LV and it may take a long time. Tech category: {@link BlockDev.LVMTech.VDO}-{@link BlockDev.LVMTechMode.MODIFY}
      */
-    function lvm_vdo_resize(
-        vg_name: string,
-        lv_name: string,
-        size: bigint | number,
-        extra?: ExtraArg[] | null,
-    ): boolean;
+    function lvm_vdo_resize(vg_name: string, lv_name: string, size: bigint | number, extra: ExtraArg[] | null): boolean;
     /**
      * @param vg_name name of the VG containing the queried VDO LV
      * @param lv_name name of the queried VDO LV
@@ -3133,7 +3128,7 @@ export namespace BlockDev {
      * @param extra extra options for the VG activation                                                 (just passed to LVM as is)
      * @returns whether the VG was successfully activated or not Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.MODIFY}
      */
-    function lvm_vgactivate(vg_name: string, extra?: ExtraArg[] | null): boolean;
+    function lvm_vgactivate(vg_name: string, extra: ExtraArg[] | null): boolean;
     /**
      * Note: This function does not back up the data content of LVs. See `vgcfbackup(8)` man page
      *       for more information.
@@ -3142,7 +3137,7 @@ export namespace BlockDev {
      * @param extra extra options for the vgcfgbackup command                                               (just passed to LVM as is)
      * @returns Whether the backup was successfully created or not. Tech category: {@link BlockDev.LVMTech.VG_CFG_BACKUP_RESTORE} no mode (it is ignored)
      */
-    function lvm_vgcfgbackup(vg_name: string, backup_file?: string | null, extra?: ExtraArg[] | null): boolean;
+    function lvm_vgcfgbackup(vg_name: string, backup_file: string | null, extra: ExtraArg[] | null): boolean;
     /**
      * Note: This function restores VG configuration created by %bd_lvm_vgcfgbackup from given
      *       `backup_file` or from the latest backup in /etc/lvm/backup.
@@ -3151,7 +3146,7 @@ export namespace BlockDev {
      * @param extra extra options for the vgcfgrestore command                                               (just passed to LVM as is)
      * @returns Whether the configuration was successfully restored or not. Tech category: {@link BlockDev.LVMTech.VG_CFG_BACKUP_RESTORE} no mode (it is ignored)
      */
-    function lvm_vgcfgrestore(vg_name: string, backup_file?: string | null, extra?: ExtraArg[] | null): boolean;
+    function lvm_vgcfgrestore(vg_name: string, backup_file: string | null, extra: ExtraArg[] | null): boolean;
     /**
      * @param name name of the newly created VG
      * @param pv_list list of PVs the newly created VG should use
@@ -3159,25 +3154,20 @@ export namespace BlockDev {
      * @param extra extra options for the VG creation                                                 (just passed to LVM as is)
      * @returns whether the VG `name` was successfully created or not Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.CREATE}
      */
-    function lvm_vgcreate(
-        name: string,
-        pv_list: string[],
-        pe_size: bigint | number,
-        extra?: ExtraArg[] | null,
-    ): boolean;
+    function lvm_vgcreate(name: string, pv_list: string[], pe_size: bigint | number, extra: ExtraArg[] | null): boolean;
     /**
      * @param vg_name name of the to be deactivated VG
      * @param extra extra options for the VG deactivation                                                 (just passed to LVM as is)
      * @returns whether the VG was successfully deactivated or not Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.MODIFY}
      */
-    function lvm_vgdeactivate(vg_name: string, extra?: ExtraArg[] | null): boolean;
+    function lvm_vgdeactivate(vg_name: string, extra: ExtraArg[] | null): boolean;
     /**
      * @param vg_name name of the to be extended VG
      * @param device PV device to extend the `vg_name` VG with
      * @param extra extra options for the VG extension                                                 (just passed to LVM as is)
      * @returns whether the VG `vg_name` was successfully extended with the given `device` or not. Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.MODIFY}
      */
-    function lvm_vgextend(vg_name: string, device: string, extra?: ExtraArg[] | null): boolean;
+    function lvm_vgextend(vg_name: string, device: string, extra: ExtraArg[] | null): boolean;
     /**
      * @param vg_name a VG to get information about
      * @returns information about the `vg_name` VG or `null` in case of error (the `error`) gets populated in those cases) Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.QUERY}
@@ -3188,33 +3178,33 @@ export namespace BlockDev {
      * @param extra extra options for the vgchange command                                               (just passed to LVM as is)
      * @returns whether the lock was successfully started for `vg_name` or not Tech category: {@link BlockDev.LVMTech.SHARED}-{@link BlockDev.LVMTechMode.MODIFY}
      */
-    function lvm_vglock_start(vg_name: string, extra?: ExtraArg[] | null): boolean;
+    function lvm_vglock_start(vg_name: string, extra: ExtraArg[] | null): boolean;
     /**
      * @param vg_name a shared VG to stop the lockspace in lvmlockd
      * @param extra extra options for the vgchange command                                               (just passed to LVM as is)
      * @returns whether the lock was successfully stopped for `vg_name` or not Tech category: {@link BlockDev.LVMTech.SHARED}-{@link BlockDev.LVMTechMode.MODIFY}
      */
-    function lvm_vglock_stop(vg_name: string, extra?: ExtraArg[] | null): boolean;
+    function lvm_vglock_stop(vg_name: string, extra: ExtraArg[] | null): boolean;
     /**
      * @param vg_name name of the to be reduced VG
      * @param device PV device the `vg_name` VG should be reduced of or `null`                        if the VG should be reduced of the missing PVs
      * @param extra extra options for the VG reduction                                                 (just passed to LVM as is)
      * @returns whether the VG `vg_name` was successfully reduced of the given `device` or not Note: This function does not move extents off of the PV before removing       it from the VG. You must do that first by calling `bd_lvm_pvmove`. Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.MODIFY}
      */
-    function lvm_vgreduce(vg_name: string, device?: string | null, extra?: ExtraArg[] | null): boolean;
+    function lvm_vgreduce(vg_name: string, device: string | null, extra: ExtraArg[] | null): boolean;
     /**
      * @param vg_name name of the to be removed VG
      * @param extra extra options for the VG removal                                                 (just passed to LVM as is)
      * @returns whether the VG was successfully removed or not Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.REMOVE}
      */
-    function lvm_vgremove(vg_name: string, extra?: ExtraArg[] | null): boolean;
+    function lvm_vgremove(vg_name: string, extra: ExtraArg[] | null): boolean;
     /**
      * @param old_vg_name old name of the VG to rename
      * @param new_vg_name new name for the `old_vg_name` VG
      * @param extra extra options for the VG rename                                                 (just passed to LVM as is)
      * @returns whether the VG was successfully renamed or not Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.MODIFY}
      */
-    function lvm_vgrename(old_vg_name: string, new_vg_name: string, extra?: ExtraArg[] | null): boolean;
+    function lvm_vgrename(old_vg_name: string, new_vg_name: string, extra: ExtraArg[] | null): boolean;
     /**
      * @returns information about VGs found in the system Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.QUERY}
      */
@@ -3230,7 +3220,7 @@ export namespace BlockDev {
         vg_name: string,
         data_lv: string,
         cache_lv: string,
-        extra?: ExtraArg[] | null,
+        extra: ExtraArg[] | null,
     ): boolean;
     /**
      * @param vg_name name of the VG to create a cached LV in
@@ -3260,7 +3250,7 @@ export namespace BlockDev {
         vg_name: string,
         cached_lv: string,
         destroy: boolean,
-        extra?: ExtraArg[] | null,
+        extra: ExtraArg[] | null,
     ): boolean;
     /**
      * @param raid_spec specification of the RAID device (name, node or path) to activate (if not given "--scan" is implied and `members` is ignored)
@@ -3275,7 +3265,7 @@ export namespace BlockDev {
         members: string[] | null,
         uuid: string | null,
         start_degraded: boolean,
-        extra?: ExtraArg[] | null,
+        extra: ExtraArg[] | null,
     ): boolean;
     /**
      * @param raid_spec specification of the RAID device (name, node or path) to add `device` into
@@ -3284,7 +3274,7 @@ export namespace BlockDev {
      * @param extra extra options for the addition (right now                                                 passed to the 'mdadm' utility)
      * @returns whether the `device` was successfully added to the `raid_spec` RAID or not The `raid_devs` parameter is used when adding devices to a raid array that has no actual redundancy. In this case it is necessary to explicitly grow the array all at once rather than manage it in the sense of adding spares. Whether the new device will be added as a spare or an active member is decided by mdadm. Tech category: {@link BlockDev.MDTech.MD_TECH_MDRAID}-{@link BlockDev.MDTechMode.MODIFY}
      */
-    function md_add(raid_spec: string, device: string, raid_devs: bigint | number, extra?: ExtraArg[] | null): boolean;
+    function md_add(raid_spec: string, device: string, raid_devs: bigint | number, extra: ExtraArg[] | null): boolean;
     /**
      * @param uuid UUID to canonicalize
      * @returns canonicalized form of `uuid` This function expects a UUID in the form that mdadm returns. The change is as follows: 3386ff85:f5012621:4a435f06:1eb47236 -> 3386ff85-f501-2621-4a43-5f061eb47236 Tech category: always available
@@ -3309,7 +3299,7 @@ export namespace BlockDev {
         version: string | null,
         bitmap: string | null,
         chunk_size: bigint | number,
-        extra?: ExtraArg[] | null,
+        extra: ExtraArg[] | null,
     ): boolean;
     /**
      * @param raid_spec specification of the RAID device (name, node or path)
@@ -3357,7 +3347,7 @@ export namespace BlockDev {
      * @param version metadata version or `null` to use the current default version
      * @returns Calculated superblock size for an array with a given `member_size` and metadata `version` or default if unsupported `version` is used. Tech category: always available
      */
-    function md_get_superblock_size(member_size: bigint | number, version?: string | null): number;
+    function md_get_superblock_size(member_size: bigint | number, version: string | null): number;
     /**
      * @param tech the queried tech
      * @param mode a bit mask of queried modes of operation for `tech`
@@ -3386,7 +3376,7 @@ export namespace BlockDev {
      * @param extra extra options for the removal (right now                                                 passed to the 'mdadm' utility)
      * @returns whether the `device` was successfully removed from the `raid_spec` RAID or not. Tech category: {@link BlockDev.MDTech.MD_TECH_MDRAID}-{@link BlockDev.MDTechMode.MODIFY}
      */
-    function md_remove(raid_spec: string, device: string, fail: boolean, extra?: ExtraArg[] | null): boolean;
+    function md_remove(raid_spec: string, device: string, fail: boolean, extra: ExtraArg[] | null): boolean;
     /**
      * @param raid_spec specification of the RAID device (name, node or path) to request sync action on
      * @param action requested sync action (resync, recovery, check, repair or idle)
@@ -3449,7 +3439,7 @@ export namespace BlockDev {
         bus: string | null,
         region: string | null,
         idle: boolean,
-        extra?: ExtraArg[] | null,
+        extra: ExtraArg[] | null,
     ): NVDIMMNamespaceInfo[];
     /**
      * @param namespace name of the namespace to disable
@@ -3457,14 +3447,14 @@ export namespace BlockDev {
      * @returns whether the `namespace` was successfully disabled or not Tech category: {@link BlockDev.NVDIMMTech.NVDIMM_TECH_NAMESPACE}-{@link BlockDev.NVDIMMTechMode.ACTIVATE_DEACTIVATE}
      * @deprecated since 3.1: NVDIMM plugin will be removed in the next major release
      */
-    function nvdimm_namespace_disable(namespace: string, extra?: ExtraArg[] | null): boolean;
+    function nvdimm_namespace_disable(namespace: string, extra: ExtraArg[] | null): boolean;
     /**
      * @param namespace name of the namespace to enable
      * @param extra extra options (currently unused)
      * @returns whether the `namespace` was successfully enabled or not Tech category: {@link BlockDev.NVDIMMTech.NVDIMM_TECH_NAMESPACE}-{@link BlockDev.NVDIMMTechMode.ACTIVATE_DEACTIVATE}
      * @deprecated since 3.1: NVDIMM plugin will be removed in the next major release
      */
-    function nvdimm_namespace_enable(namespace: string, extra?: ExtraArg[] | null): boolean;
+    function nvdimm_namespace_enable(namespace: string, extra: ExtraArg[] | null): boolean;
     /**
      * @param device name or path of a block device (e.g. "/dev/pmem0")
      * @returns namespace device name (e.g. "namespaceX.Y") for `device`                           or `null` if `device` is not a NVDIMM namespace                           (`error` may be set to indicate error) Tech category: {@link BlockDev.NVDIMMTech.NVDIMM_TECH_NAMESPACE}-{@link BlockDev.NVDIMMTechMode.QUERY}
@@ -3495,7 +3485,7 @@ export namespace BlockDev {
      * @returns information about given namespace or `null` if no such                           namespace was found (`error` may be set to indicate error) Tech category: {@link BlockDev.NVDIMMTech.NVDIMM_TECH_NAMESPACE}-{@link BlockDev.NVDIMMTechMode.QUERY}
      * @deprecated since 3.1: NVDIMM plugin will be removed in the next major release
      */
-    function nvdimm_namespace_info(namespace: string, extra?: ExtraArg[] | null): NVDIMMNamespaceInfo;
+    function nvdimm_namespace_info(namespace: string, extra: ExtraArg[] | null): NVDIMMNamespaceInfo;
     /**
      * @param namespace name of the namespace to reconfigure
      * @param mode mode type to set (memory/sector/raw/dax)
@@ -3508,7 +3498,7 @@ export namespace BlockDev {
         namespace: string,
         mode: NVDIMMNamespaceMode,
         force: boolean,
-        extra?: ExtraArg[] | null,
+        extra: ExtraArg[] | null,
     ): boolean;
     /**
      * Creates a transport connection to a remote system (specified by `transport_addr` and `transport_svcid`)
@@ -3570,13 +3560,13 @@ export namespace BlockDev {
     function nvme_connect(
         subsysnqn: string,
         transport: string,
-        transport_addr?: string | null,
-        transport_svcid?: string | null,
-        host_traddr?: string | null,
-        host_iface?: string | null,
-        host_nqn?: string | null,
-        host_id?: string | null,
-        extra?: ExtraArg[] | null,
+        transport_addr: string | null,
+        transport_svcid: string | null,
+        host_traddr: string | null,
+        host_iface: string | null,
+        host_nqn: string | null,
+        host_id: string | null,
+        extra: ExtraArg[] | null,
     ): boolean;
     /**
      * Initiates or aborts the Device Self-test operation on the controller or a namespace,
@@ -3618,9 +3608,9 @@ export namespace BlockDev {
      */
     function nvme_find_ctrls_for_ns(
         ns_sysfs_path: string,
-        subsysnqn?: string | null,
-        host_nqn?: string | null,
-        host_id?: string | null,
+        subsysnqn: string | null,
+        host_nqn: string | null,
+        host_id: string | null,
     ): string[];
     /**
      * Performs low level format of the NVM media, destroying all data and metadata for either
@@ -3929,14 +3919,14 @@ export namespace BlockDev {
      * @param log_func logging function to use or `null`                                           to keep the old one
      * @returns whether the library was successfully initialized or not If `reload` is `true` all the plugins are closed and reloaded otherwise only the missing plugins are loaded.
      */
-    function reinit(require_plugins: PluginSpec[] | null, reload: boolean, log_func?: UtilsLogFunc | null): boolean;
+    function reinit(require_plugins: PluginSpec[] | null, reload: boolean, log_func: UtilsLogFunc | null): boolean;
     /**
      * Retrieve SMART information from the drive.
      * @param device device to check.
      * @param extra extra options to pass through.
      * @returns ATA SMART log or `null` in case of an error (with `error` set). Tech category: {@link BlockDev.SmartTech.ATA}-{@link BlockDev.SmartTechMode.INFO}
      */
-    function smart_ata_get_info(device: string, extra?: ExtraArg[] | null): SmartATA;
+    function smart_ata_get_info(device: string, extra: ExtraArg[] | null): SmartATA;
     /**
      * Retrieve SMART information from the supplied data.
      * @param data binary data to parse.
@@ -3950,7 +3940,7 @@ export namespace BlockDev {
      * @param extra extra options to pass through.
      * @returns `true` when the self-test was triggered successfully or `false` in case of an error (with `error` set). Tech category: {@link BlockDev.SmartTech.ATA}-{@link BlockDev.SmartTechMode.SELFTEST}
      */
-    function smart_device_self_test(device: string, operation: SmartSelfTestOp, extra?: ExtraArg[] | null): boolean;
+    function smart_device_self_test(device: string, operation: SmartSelfTestOp, extra: ExtraArg[] | null): boolean;
     function smart_error_quark(): GLib.Quark;
     /**
      * @param tech the queried tech
@@ -3964,7 +3954,7 @@ export namespace BlockDev {
      * @param extra extra options to pass through.
      * @returns SCSI SMART log or `null` in case of an error (with `error` set). Tech category: {@link BlockDev.SmartTech.SCSI}-{@link BlockDev.SmartTechMode.INFO}
      */
-    function smart_scsi_get_info(device: string, extra?: ExtraArg[] | null): SmartSCSI;
+    function smart_scsi_get_info(device: string, extra: ExtraArg[] | null): SmartSCSI;
     /**
      * Enables or disables SMART functionality on device.
      * @param device SMART-capable device.
@@ -3972,7 +3962,7 @@ export namespace BlockDev {
      * @param extra extra options to pass through.
      * @returns `true` when the functionality was set successfully or `false` in case of an error (with `error` set). Tech category: {@link BlockDev.SmartTech.ATA}-{@link BlockDev.SmartTechMode.INFO}
      */
-    function smart_set_enabled(device: string, enabled: boolean, extra?: ExtraArg[] | null): boolean;
+    function smart_set_enabled(device: string, enabled: boolean, extra: ExtraArg[] | null): boolean;
     /**
      * @param label label to check
      * @returns whether `label` is a valid label for swap or not          (reason is provided in `error`) Tech category: always available
@@ -3997,12 +3987,7 @@ export namespace BlockDev {
      * @param extra extra options for the creation (right now                                                 passed to the 'mkswap' utility)
      * @returns whether the swap space was successfully created or not Tech category: {@link BlockDev.SwapTech.SWAP_TECH_SWAP}-{@link BlockDev.SwapTechMode.CREATE}
      */
-    function swap_mkswap(
-        device: string,
-        label?: string | null,
-        uuid?: string | null,
-        extra?: ExtraArg[] | null,
-    ): boolean;
+    function swap_mkswap(device: string, label: string | null, uuid: string | null, extra: ExtraArg[] | null): boolean;
     /**
      * @param device a device to set label on
      * @param label label that will be set
@@ -4036,10 +4021,7 @@ export namespace BlockDev {
      * @param log_func logging function to use
      * @returns whether the library was successfully initialized with all the          required or default (see `require_plugins`) plugins or not *UNLIKE IN CASE OF `bd_init()` AND `bd_ensure_init()`, FAILURE TO LOAD A PLUGIN  IS NOT CONSIDERED ERROR*
      */
-    function try_init(
-        request_plugins?: PluginSpec[] | null,
-        log_func?: UtilsLogFunc | null,
-    ): [boolean, string[] | null];
+    function try_init(request_plugins: PluginSpec[] | null, log_func: UtilsLogFunc | null): [boolean, string[] | null];
     /**
      * @param require_plugins `null`-terminated list                 of plugins that should be loaded (if no so_name is specified                 for the plugin, the default is used) or `null` to load all                 plugins
      * @param reload whether to reload the already loaded plugins or not
@@ -4049,7 +4031,7 @@ export namespace BlockDev {
     function try_reinit(
         require_plugins: PluginSpec[] | null,
         reload: boolean,
-        log_func?: UtilsLogFunc | null,
+        log_func: UtilsLogFunc | null,
     ): [boolean, string[] | null];
     /**
      * Checks whether the currently running linux kernel version is equal or higher
@@ -4072,9 +4054,9 @@ export namespace BlockDev {
      */
     function utils_check_util_version(
         util: string,
-        version?: string | null,
-        version_arg?: string | null,
-        version_regexp?: string | null,
+        version: string | null,
+        version_arg: string | null,
+        version_regexp: string | null,
     ): boolean;
     /**
      * @param connection existing GDBusConnection or `null`
@@ -4117,13 +4099,13 @@ export namespace BlockDev {
      * @param extra extra arguments
      * @returns whether the `argv` was successfully executed (no error and exit code 0) or not
      */
-    function utils_exec_and_report_error(argv: string[], extra?: ExtraArg[] | null): boolean;
+    function utils_exec_and_report_error(argv: string[], extra: ExtraArg[] | null): boolean;
     /**
      * @param argv the argv array for the call
      * @param extra extra arguments
      * @returns whether the `argv` was successfully executed (no error and exit code 0) or not
      */
-    function utils_exec_and_report_error_no_progress(argv: string[], extra?: ExtraArg[] | null): boolean;
+    function utils_exec_and_report_error_no_progress(argv: string[], extra: ExtraArg[] | null): boolean;
     /**
      * Note that any NULL bytes read from standard output and standard error
      * output are treated as separators similar to newlines and `prog_extract`
@@ -4150,7 +4132,7 @@ export namespace BlockDev {
      * @param extra extra arguments
      * @returns whether the `argv` was successfully executed (no error and exit code 0) or not
      */
-    function utils_exec_with_input(argv: string[], input?: string | null, extra?: ExtraArg[] | null): boolean;
+    function utils_exec_with_input(argv: string[], input: string | null, extra: ExtraArg[] | null): boolean;
     /**
      * @param dev_spec specification of the device (e.g. "/dev/sda", any symlink, or the name of a file            under "/dev")
      * @returns a list of all symlinks (known to udev) for the                                                     device specified with `dev_spec` or `null` in                                                     case of error
@@ -4171,23 +4153,23 @@ export namespace BlockDev {
      * @param new_log_func logging function to use or                                               `null` to disable logging; use                                               `bd_utils_log_stdout` to reset to                                               the default behaviour
      * @returns whether logging was successfully initialized or not
      */
-    function utils_init_logging(new_log_func?: UtilsLogFunc | null): boolean;
+    function utils_init_logging(new_log_func: UtilsLogFunc | null): boolean;
     /**
      * @param new_prog_func progress reporting function to                                                use or `null` to reset to default
      * @returns whether progress reporting was successfully initialized or not
      */
-    function utils_init_prog_reporting(new_prog_func?: UtilsProgFunc | null): boolean;
+    function utils_init_prog_reporting(new_prog_func: UtilsProgFunc | null): boolean;
     /**
      * @param new_prog_func progress reporting function to                                                use on current thread or `null`                                                to reset to default or global
      * @returns whether progress reporting was successfully initialized or not
      */
-    function utils_init_prog_reporting_thread(new_prog_func?: UtilsProgFunc | null): boolean;
+    function utils_init_prog_reporting_thread(new_prog_func: UtilsProgFunc | null): boolean;
     /**
      * @param module_name name of the kernel module to load
      * @param options module options
      * @returns whether the `module_name` was successfully loaded or not
      */
-    function utils_load_kernel_module(module_name: string, options?: string | null): boolean;
+    function utils_load_kernel_module(module_name: string, options: string | null): boolean;
     /**
      * @param level log level
      * @param msg log message
@@ -4271,7 +4253,7 @@ export namespace BlockDev {
      * @gir-type Callback
      */
     interface UtilsProgFunc {
-        (task_id: number, status: UtilsProgStatus, completion: number, msg?: string | null): void;
+        (task_id: number, status: UtilsProgStatus, completion: number, msg: string | null): void;
     }
     /**
      * @gir-type Flags
@@ -4825,9 +4807,9 @@ export namespace BlockDev {
             data_device: string | null,
             integrity: string | null,
             sector_size: number,
-            label?: string | null,
-            subsystem?: string | null,
-            pbkdf?: CryptoLUKSPBKDF | null,
+            label: string | null,
+            subsystem: string | null,
+            pbkdf: CryptoLUKSPBKDF | null,
         );
 
         static ['new'](
@@ -4835,9 +4817,9 @@ export namespace BlockDev {
             data_device: string | null,
             integrity: string | null,
             sector_size: number,
-            label?: string | null,
-            subsystem?: string | null,
-            pbkdf?: CryptoLUKSPBKDF | null,
+            label: string | null,
+            subsystem: string | null,
+            pbkdf: CryptoLUKSPBKDF | null,
         ): CryptoLUKSExtra;
 
         // Methods
@@ -4995,7 +4977,7 @@ export namespace BlockDev {
          * Frees `args` and all its elements.
          * @param args A list of %BDExtraArg to free
          */
-        static list_free(args?: ExtraArg[] | null): void;
+        static list_free(args: ExtraArg[] | null): void;
 
         // Methods
 
@@ -5408,7 +5390,7 @@ export namespace BlockDev {
          * Frees `data`.
          * @param data %BDLVMCacheStats to free
          */
-        static free(data?: LVMLVdata | null): void;
+        static free(data: LVMLVdata | null): void;
 
         // Methods
 
@@ -6052,9 +6034,9 @@ export namespace BlockDev {
 
         // Constructors
 
-        constructor(name: Plugin, so_name?: string | null);
+        constructor(name: Plugin, so_name: string | null);
 
-        static ['new'](name: Plugin, so_name?: string | null): PluginSpec;
+        static ['new'](name: Plugin, so_name: string | null): PluginSpec;
 
         // Methods
 
@@ -6100,7 +6082,7 @@ export namespace BlockDev {
          * @param device device to check.
          * @param extra extra options to pass through.
          */
-        static get_info(device: string, extra?: ExtraArg[] | null): SmartATA;
+        static get_info(device: string, extra: ExtraArg[] | null): SmartATA;
         /**
          * Retrieve SMART information from the supplied data.
          * @param data binary data to parse.
@@ -6201,7 +6183,7 @@ export namespace BlockDev {
          * @param device device to check.
          * @param extra extra options to pass through.
          */
-        static get_info(device: string, extra?: ExtraArg[] | null): SmartSCSI;
+        static get_info(device: string, extra: ExtraArg[] | null): SmartSCSI;
 
         // Methods
 

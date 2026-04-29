@@ -619,8 +619,8 @@ export namespace GIRepository {
         return_gvalue: GObject.Value | any,
         n_param_values: number,
         param_values: GObject.Value | any,
-        invocation_hint?: any | null,
-        marshal_data?: any | null,
+        invocation_hint: any | null,
+        marshal_data: any | null,
     ): void;
     /**
      * Obtain the type of the constant as a {@link GIRepository.TypeInfo}.
@@ -1912,7 +1912,7 @@ export namespace GIRepository {
          * @param version Required version, may be `null` for latest
          * @returns `true` if namespace-version is loaded, `false` otherwise
          */
-        is_registered(namespace_: string, version?: string | null): boolean;
+        is_registered(namespace_: string, version: string | null): boolean;
         /**
          * TODO
          * @param typelib TODO
@@ -2140,7 +2140,7 @@ export namespace GIRepository {
          * @param symbol_name
          * @param symbol
          */
-        symbol(symbol_name: string, symbol?: any | null): boolean;
+        symbol(symbol_name: string, symbol: any | null): boolean;
     }
 
     /**

@@ -131,7 +131,7 @@ export namespace Grl {
      * @param argv list of arguments
      * @since 0.1.6
      */
-    function init(argv?: string[] | null): string[] | null;
+    function init(argv: string[] | null): string[] | null;
     /**
      * Configure a set of log domains. The default configuration is to display
      * warning and error messages only for all the log domains.

@@ -88,6 +88,7 @@ export namespace MateMenu {
         /**
          * Flags controlling the content of the menu.
          * @construct-only
+         * @default MateMenu.TreeFlags.NONE
          */
         get flags(): TreeFlags;
         /**
@@ -95,6 +96,7 @@ export namespace MateMenu {
          * will be looked up in $XDG_CONFIG_DIRS/menus/. See the Desktop Menu
          * specification.
          * @construct-only
+         * @default applications.menu
          */
         get menu_basename(): string;
         /**
@@ -102,18 +104,21 @@ export namespace MateMenu {
          * will be looked up in $XDG_CONFIG_DIRS/menus/. See the Desktop Menu
          * specification.
          * @construct-only
+         * @default applications.menu
          */
         get menuBasename(): string;
         /**
          * The full path of the menu file. If set, MateMenuTree:menu-basename will get
          * ignored.
          * @construct-only
+         * @default null
          */
         get menu_path(): string;
         /**
          * The full path of the menu file. If set, MateMenuTree:menu-basename will get
          * ignored.
          * @construct-only
+         * @default null
          */
         get menuPath(): string;
 
@@ -162,11 +167,11 @@ export namespace MateMenu {
         /**
          * @param item a `MateMenuTreeItem`
          */
-        static item_ref(item?: any | null): any | null;
+        static item_ref(item: any | null): any | null;
         /**
          * @param item
          */
-        static item_unref(item?: any | null): void;
+        static item_unref(item: any | null): void;
 
         // Methods
 

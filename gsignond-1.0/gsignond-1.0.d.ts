@@ -805,13 +805,13 @@ export namespace GSignond {
          * @param password the password.
          * @returns `true` if successful, `false` otherwise.
          */
-        set_password(password?: string | null): boolean;
+        set_password(password: string | null): boolean;
         /**
          * Sets the username of the GSignondCredentials object
          * @param username the username.
          * @returns `true` if successful, `false` otherwise.
          */
-        set_username(username?: string | null): boolean;
+        set_username(username: string | null): boolean;
     }
 
     namespace Dictionary {

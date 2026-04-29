@@ -212,24 +212,28 @@ export namespace AppIndicator3 {
         /**
          * If the indicator sets it's status to {@link AppIndicator3.IndicatorStatus.ATTENTION}
          * then this textual description of the icon shown.
+         * @default null
          */
         get attention_icon_desc(): string;
         set attention_icon_desc(val: string);
         /**
          * If the indicator sets it's status to {@link AppIndicator3.IndicatorStatus.ATTENTION}
          * then this textual description of the icon shown.
+         * @default null
          */
         get attentionIconDesc(): string;
         set attentionIconDesc(val: string);
         /**
          * If the indicator sets it's status to {@link AppIndicator3.IndicatorStatus.ATTENTION}
          * then this icon is shown.
+         * @default null
          */
         get attention_icon_name(): string;
         set attention_icon_name(val: string);
         /**
          * If the indicator sets it's status to {@link AppIndicator3.IndicatorStatus.ATTENTION}
          * then this icon is shown.
+         * @default null
          */
         get attentionIconName(): string;
         set attentionIconName(val: string);
@@ -237,43 +241,51 @@ export namespace AppIndicator3 {
          * The type of indicator that this represents.  Please don't use 'Other'.
          * Defaults to 'ApplicationStatus'.
          * @construct-only
+         * @default null
          */
         get category(): string;
         /**
          * Pretty simple, `true` if we have a reasonable expectation of being
          * displayed through this object. You should hide your TrayIcon if so.
          * @read-only
+         * @default false
          */
         get connected(): boolean;
         /**
          * The description of the regular icon that is shown for the indicator.
+         * @default null
          */
         get icon_desc(): string;
         set icon_desc(val: string);
         /**
          * The description of the regular icon that is shown for the indicator.
+         * @default null
          */
         get iconDesc(): string;
         set iconDesc(val: string);
         /**
          * The name of the regular icon that is shown for the indicator.
+         * @default null
          */
         get icon_name(): string;
         set icon_name(val: string);
         /**
          * The name of the regular icon that is shown for the indicator.
+         * @default null
          */
         get iconName(): string;
         set iconName(val: string);
         /**
          * An additional place to look for icon names that may be installed by the
          * application.
+         * @default null
          */
         get icon_theme_path(): string;
         set icon_theme_path(val: string);
         /**
          * An additional place to look for icon names that may be installed by the
          * application.
+         * @default null
          */
         get iconThemePath(): string;
         set iconThemePath(val: string);
@@ -281,6 +293,7 @@ export namespace AppIndicator3 {
          * The ID for this indicator, which should be unique, but used consistently
          * by this program and its indicator.
          * @construct-only
+         * @default null
          */
         get id(): string;
         /**
@@ -290,6 +303,7 @@ export namespace AppIndicator3 {
          * updated information.  In general, it shouldn't be shown unless a
          * user requests it as it can take up a significant amount of space
          * on the user's panel.  This may not be shown in all visualizations.
+         * @default null
          */
         get label(): string;
         set label(val: string);
@@ -301,6 +315,7 @@ export namespace AppIndicator3 {
          * percentage like "54% thrust" in {@link AppIndicator3.Indicator.label} you'd want to
          * set this string to "100% thrust" to ensure space when Scotty can
          * get you enough power.
+         * @default null
          */
         get label_guide(): string;
         set label_guide(val: string);
@@ -312,6 +327,7 @@ export namespace AppIndicator3 {
          * percentage like "54% thrust" in {@link AppIndicator3.Indicator.label} you'd want to
          * set this string to "100% thrust" to ensure space when Scotty can
          * get you enough power.
+         * @default null
          */
         get labelGuide(): string;
         set labelGuide(val: string);
@@ -324,6 +340,7 @@ export namespace AppIndicator3 {
          * To do that you can override the generated ordering index and replace it
          * with a new one.  Again, you probably don't want to be doing this, but
          * in case you do, this is the way.
+         * @default 0
          */
         get ordering_index(): number;
         set ordering_index(val: number);
@@ -336,12 +353,14 @@ export namespace AppIndicator3 {
          * To do that you can override the generated ordering index and replace it
          * with a new one.  Again, you probably don't want to be doing this, but
          * in case you do, this is the way.
+         * @default 0
          */
         get orderingIndex(): number;
         set orderingIndex(val: number);
         /**
          * Whether the indicator is shown or requests attention. Defaults to
          * 'Passive'.
+         * @default null
          */
         get status(): string;
         set status(val: string);
@@ -350,6 +369,7 @@ export namespace AppIndicator3 {
          * readable form.  This is used in the Unity desktop in the HUD as
          * the first part of the menu entries to distinguish them from the
          * focused application's entries.
+         * @default null
          */
         get title(): string;
         set title(val: string);
@@ -412,13 +432,13 @@ export namespace AppIndicator3 {
          * @param user_data
          * @virtual
          */
-        vfunc_new_attention_icon(user_data?: any | null): void;
+        vfunc_new_attention_icon(user_data: any | null): void;
         /**
          * Slot for {@link AppIndicator3.Indicator.SignalSignatures.new_icon | AppIndicator3.Indicator::new-icon}.
          * @param user_data
          * @virtual
          */
-        vfunc_new_icon(user_data?: any | null): void;
+        vfunc_new_icon(user_data: any | null): void;
         /**
          * Slot for {@link AppIndicator3.Indicator.SignalSignatures.new_icon_theme_path | AppIndicator3.Indicator::new-icon-theme-path}
          * @param icon_theme_path
@@ -584,7 +604,7 @@ export namespace AppIndicator3 {
          * Wrapper function for property {@link AppIndicator3.Indicator.menu}.
          * @param menu A {@link Gtk.Menu} to set
          */
-        set_menu(menu?: Gtk.Menu | null): void;
+        set_menu(menu: Gtk.Menu | null): void;
         /**
          * Sets the ordering index for the app indicator which effects the
          * placement of it on the panel.  For almost all app indicator
@@ -605,7 +625,7 @@ export namespace AppIndicator3 {
          * Setting `menuitem` to `null` causes to disable this feature.
          * @param menuitem A {@link Gtk.Widget} to be activated on secondary activation
          */
-        set_secondary_activate_target(menuitem?: Gtk.Widget | null): void;
+        set_secondary_activate_target(menuitem: Gtk.Widget | null): void;
         /**
          * Wrapper function for property {@link AppIndicator3.Indicator.status}.
          * @param status The status to set for this indicator
@@ -623,7 +643,7 @@ export namespace AppIndicator3 {
          * Setting `title` to `null` removes the title.
          * @param title Title of the app indicator
          */
-        set_title(title?: string | null): void;
+        set_title(title: string | null): void;
     }
 
     /**

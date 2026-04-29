@@ -1942,7 +1942,7 @@ export namespace WebKit2 {
          * supplied. To continue without credentials, pass `null` as `credential`.
          * @param credential A {@link WebKit2.Credential}, or `null`
          */
-        authenticate(credential?: Credential | null): void;
+        authenticate(credential: Credential | null): void;
         /**
          * Determine whether this {@link WebKit2.AuthenticationRequest} should allow the storage of credentials.
          *
@@ -2114,6 +2114,7 @@ export namespace WebKit2 {
          * The session unique identifier.
          * @since 2.18
          * @construct-only
+         * @default null
          */
         get id(): string;
 
@@ -2713,7 +2714,7 @@ export namespace WebKit2 {
 
         _init(...args: any[]): void;
 
-        static new_from_gaction(action: Gio.Action, label: string, target?: GLib.Variant | null): ContextMenuItem;
+        static new_from_gaction(action: Gio.Action, label: string, target: GLib.Variant | null): ContextMenuItem;
 
         static new_from_stock_action(action: ContextMenuAction): ContextMenuItem;
 
@@ -2778,7 +2779,7 @@ export namespace WebKit2 {
          * submenu of `item` is removed.
          * @param submenu a {@link WebKit2.ContextMenu}
          */
-        set_submenu(submenu?: ContextMenu | null): void;
+        set_submenu(submenu: ContextMenu | null): void;
     }
 
     namespace CookieManager {
@@ -2856,7 +2857,7 @@ export namespace WebKit2 {
          * @param cookie the {@link Soup.Cookie} to be added
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          */
-        add_cookie(cookie: Soup.Cookie, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        add_cookie(cookie: Soup.Cookie, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously add a {@link Soup.Cookie} to the underlying storage.
          *
@@ -2882,7 +2883,7 @@ export namespace WebKit2 {
          */
         add_cookie(
             cookie: Soup.Cookie,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2903,7 +2904,7 @@ export namespace WebKit2 {
          * @param cookie the {@link Soup.Cookie} to be deleted
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          */
-        delete_cookie(cookie: Soup.Cookie, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        delete_cookie(cookie: Soup.Cookie, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously delete a {@link Soup.Cookie} from the current session.
          *
@@ -2929,7 +2930,7 @@ export namespace WebKit2 {
          */
         delete_cookie(
             cookie: Soup.Cookie,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2954,7 +2955,7 @@ export namespace WebKit2 {
          * `webkit_cookie_manager_get_accept_policy_finish()` to get the result of the operation.
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          */
-        get_accept_policy(cancellable?: Gio.Cancellable | null): globalThis.Promise<CookieAcceptPolicy>;
+        get_accept_policy(cancellable: Gio.Cancellable | null): globalThis.Promise<CookieAcceptPolicy>;
         /**
          * Asynchronously get the cookie acceptance policy of `cookie_manager`.
          *
@@ -2981,7 +2982,7 @@ export namespace WebKit2 {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         get_accept_policy(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<CookieAcceptPolicy> | void;
         /**
@@ -3001,7 +3002,7 @@ export namespace WebKit2 {
          * @param uri the URI associated to the cookies to be retrieved
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          */
-        get_cookies(uri: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<Soup.Cookie[]>;
+        get_cookies(uri: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Soup.Cookie[]>;
         /**
          * Asynchronously get a list of {@link Soup.Cookie} from `cookie_manager`.
          *
@@ -3033,7 +3034,7 @@ export namespace WebKit2 {
          */
         get_cookies(
             uri: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Soup.Cookie[]> | void;
         /**
@@ -3052,7 +3053,7 @@ export namespace WebKit2 {
          * `webkit_cookie_manager_get_domains_with_cookies_finish()` to get the result of the operation.
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          */
-        get_domains_with_cookies(cancellable?: Gio.Cancellable | null): globalThis.Promise<string[]>;
+        get_domains_with_cookies(cancellable: Gio.Cancellable | null): globalThis.Promise<string[]>;
         /**
          * Asynchronously get the list of domains for which `cookie_manager` contains cookies.
          *
@@ -3074,7 +3075,7 @@ export namespace WebKit2 {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         get_domains_with_cookies(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string[]> | void;
         /**
@@ -3240,38 +3241,19 @@ export namespace WebKit2 {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -3279,15 +3261,9 @@ export namespace WebKit2 {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -3454,7 +3430,7 @@ export namespace WebKit2 {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -3728,6 +3704,7 @@ export namespace WebKit2 {
          * disk. If this property is `false` and the destination already exists,
          * the download will fail.
          * @since 2.6
+         * @default false
          */
         get allow_overwrite(): boolean;
         set allow_overwrite(val: boolean);
@@ -3736,12 +3713,14 @@ export namespace WebKit2 {
          * disk. If this property is `false` and the destination already exists,
          * the download will fail.
          * @since 2.6
+         * @default false
          */
         get allowOverwrite(): boolean;
         set allowOverwrite(val: boolean);
         /**
          * The local URI to where the download will be saved.
          * @read-only
+         * @default null
          */
         get destination(): string;
         /**
@@ -3752,6 +3731,7 @@ export namespace WebKit2 {
          * If you need a more accurate progress information you can connect to
          * {@link WebKit2.Download.SignalSignatures.received_data | WebKit2.Download::received-data} signal to track the progress.
          * @read-only
+         * @default 1
          */
         get estimated_progress(): number;
         /**
@@ -3762,6 +3742,7 @@ export namespace WebKit2 {
          * If you need a more accurate progress information you can connect to
          * {@link WebKit2.Download.SignalSignatures.received_data | WebKit2.Download::received-data} signal to track the progress.
          * @read-only
+         * @default 1
          */
         get estimatedProgress(): number;
         /**
@@ -3950,6 +3931,7 @@ export namespace WebKit2 {
          * See `webkit_editor_state_get_typing_attributes()` for more information.
          * @since 2.10
          * @read-only
+         * @default 0
          */
         get typing_attributes(): number;
         /**
@@ -3957,6 +3939,7 @@ export namespace WebKit2 {
          * See `webkit_editor_state_get_typing_attributes()` for more information.
          * @since 2.10
          * @read-only
+         * @default 0
          */
         get typingAttributes(): number;
 
@@ -4134,7 +4117,7 @@ export namespace WebKit2 {
          * @param page_uri URI of the page for which we want to retrieve the favicon
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        get_favicon(page_uri: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<cairo.Surface>;
+        get_favicon(page_uri: string, cancellable: Gio.Cancellable | null): globalThis.Promise<cairo.Surface>;
         /**
          * Asynchronously obtains a {@link cairo.Surface} of the favicon.
          *
@@ -4182,7 +4165,7 @@ export namespace WebKit2 {
          */
         get_favicon(
             page_uri: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<cairo.Surface> | void;
         /**
@@ -4274,6 +4257,7 @@ export namespace WebKit2 {
          * `webkit_file_chooser_request_get_select_multiple()` for
          * more details.
          * @read-only
+         * @default false
          */
         get select_multiple(): boolean;
         /**
@@ -4282,6 +4266,7 @@ export namespace WebKit2 {
          * `webkit_file_chooser_request_get_select_multiple()` for
          * more details.
          * @read-only
+         * @default false
          */
         get selectMultiple(): boolean;
         /**
@@ -4476,21 +4461,25 @@ export namespace WebKit2 {
         /**
          * The maximum number of matches to report for a given search.
          * @read-only
+         * @default 0
          */
         get max_match_count(): number;
         /**
          * The maximum number of matches to report for a given search.
          * @read-only
+         * @default 0
          */
         get maxMatchCount(): number;
         /**
          * The options to be used in the search operation.
          * @read-only
+         * @default WebKit2.FindOptions.NONE
          */
         get options(): FindOptions;
         /**
          * The current search text for this {@link WebKit2.FindController}.
          * @read-only
+         * @default null
          */
         get text(): string;
         /**
@@ -4795,6 +4784,7 @@ export namespace WebKit2 {
          * You can connect to notify::enable-high-accuracy signal to monitor it.
          * @since 2.26
          * @read-only
+         * @default false
          */
         get enable_high_accuracy(): boolean;
         /**
@@ -4803,6 +4793,7 @@ export namespace WebKit2 {
          * You can connect to notify::enable-high-accuracy signal to monitor it.
          * @since 2.26
          * @read-only
+         * @default false
          */
         get enableHighAccuracy(): boolean;
 
@@ -5002,38 +4993,19 @@ export namespace WebKit2 {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -5041,15 +5013,9 @@ export namespace WebKit2 {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -5216,7 +5182,7 @@ export namespace WebKit2 {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -5466,66 +5432,77 @@ export namespace WebKit2 {
          * Bitmask of {@link WebKit2.HitTestResultContext} flags representing
          * the context of the {@link WebKit2.HitTestResult}.
          * @construct-only
+         * @default 0
          */
         get context(): number;
         /**
          * The URI of the image if flag {@link WebKit2.HitTestResultContext.IMAGE}
          * is present in {@link WebKit2.HitTestResult.context}
          * @construct-only
+         * @default null
          */
         get image_uri(): string;
         /**
          * The URI of the image if flag {@link WebKit2.HitTestResultContext.IMAGE}
          * is present in {@link WebKit2.HitTestResult.context}
          * @construct-only
+         * @default null
          */
         get imageUri(): string;
         /**
          * The label of the link if flag {@link WebKit2.HitTestResultContext.LINK}
          * is present in {@link WebKit2.HitTestResult.context}
          * @construct-only
+         * @default null
          */
         get link_label(): string;
         /**
          * The label of the link if flag {@link WebKit2.HitTestResultContext.LINK}
          * is present in {@link WebKit2.HitTestResult.context}
          * @construct-only
+         * @default null
          */
         get linkLabel(): string;
         /**
          * The title of the link if flag {@link WebKit2.HitTestResultContext.LINK}
          * is present in {@link WebKit2.HitTestResult.context}
          * @construct-only
+         * @default null
          */
         get link_title(): string;
         /**
          * The title of the link if flag {@link WebKit2.HitTestResultContext.LINK}
          * is present in {@link WebKit2.HitTestResult.context}
          * @construct-only
+         * @default null
          */
         get linkTitle(): string;
         /**
          * The URI of the link if flag {@link WebKit2.HitTestResultContext.LINK}
          * is present in {@link WebKit2.HitTestResult.context}
          * @construct-only
+         * @default null
          */
         get link_uri(): string;
         /**
          * The URI of the link if flag {@link WebKit2.HitTestResultContext.LINK}
          * is present in {@link WebKit2.HitTestResult.context}
          * @construct-only
+         * @default null
          */
         get linkUri(): string;
         /**
          * The URI of the media if flag {@link WebKit2.HitTestResultContext.MEDIA}
          * is present in {@link WebKit2.HitTestResult.context}
          * @construct-only
+         * @default null
          */
         get media_uri(): string;
         /**
          * The URI of the media if flag {@link WebKit2.HitTestResultContext.MEDIA}
          * is present in {@link WebKit2.HitTestResult.context}
          * @construct-only
+         * @default null
          */
         get mediaUri(): string;
 
@@ -5714,24 +5691,28 @@ export namespace WebKit2 {
         /**
          * The {@link WebKit2.InputHints} of the input associated with this context.
          * @since 2.28
+         * @default WebKit2.InputHints.NONE
          */
         get input_hints(): InputHints;
         set input_hints(val: InputHints);
         /**
          * The {@link WebKit2.InputHints} of the input associated with this context.
          * @since 2.28
+         * @default WebKit2.InputHints.NONE
          */
         get inputHints(): InputHints;
         set inputHints(val: InputHints);
         /**
          * The {@link WebKit2.InputPurpose} of the input associated with this context.
          * @since 2.28
+         * @default WebKit2.InputPurpose.FREE_FORM
          */
         get input_purpose(): InputPurpose;
         set input_purpose(val: InputPurpose);
         /**
          * The {@link WebKit2.InputPurpose} of the input associated with this context.
          * @since 2.28
+         * @default WebKit2.InputPurpose.FREE_FORM
          */
         get inputPurpose(): InputPurpose;
         set inputPurpose(val: InputPurpose);
@@ -6075,38 +6056,19 @@ export namespace WebKit2 {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -6114,15 +6076,9 @@ export namespace WebKit2 {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -6289,7 +6245,7 @@ export namespace WebKit2 {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -6610,38 +6566,19 @@ export namespace WebKit2 {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -6649,15 +6586,9 @@ export namespace WebKit2 {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -6824,7 +6755,7 @@ export namespace WebKit2 {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -7060,6 +6991,7 @@ export namespace WebKit2 {
          * link with a target attribute equal to "_blank", this property will contain the
          * value of that attribute. In all other cases, this value will be `null`.
          * @read-only
+         * @default null
          */
         get frame_name(): string;
         /**
@@ -7068,6 +7000,7 @@ export namespace WebKit2 {
          * link with a target attribute equal to "_blank", this property will contain the
          * value of that attribute. In all other cases, this value will be `null`.
          * @read-only
+         * @default null
          */
         get frameName(): string;
         /**
@@ -7078,6 +7011,7 @@ export namespace WebKit2 {
          * were active, the value of this property will be zero.
          * @deprecated since 2.6: Use {@link WebKit2.NavigationPolicyDecision.navigation_action} instead
          * @read-only
+         * @default 0
          */
         get modifiers(): number;
         /**
@@ -7088,6 +7022,7 @@ export namespace WebKit2 {
          * property will be 0.
          * @deprecated since 2.6: Use {@link WebKit2.NavigationPolicyDecision.navigation_action} instead
          * @read-only
+         * @default 0
          */
         get mouse_button(): number;
         /**
@@ -7098,6 +7033,7 @@ export namespace WebKit2 {
          * property will be 0.
          * @deprecated since 2.6: Use {@link WebKit2.NavigationPolicyDecision.navigation_action} instead
          * @read-only
+         * @default 0
          */
         get mouseButton(): number;
         /**
@@ -7118,6 +7054,7 @@ export namespace WebKit2 {
          * action caused the navigation.
          * @deprecated since 2.6: Use {@link WebKit2.NavigationPolicyDecision.navigation_action} instead
          * @read-only
+         * @default WebKit2.NavigationType.LINK_CLICKED
          */
         get navigation_type(): NavigationType;
         /**
@@ -7126,6 +7063,7 @@ export namespace WebKit2 {
          * action caused the navigation.
          * @deprecated since 2.6: Use {@link WebKit2.NavigationPolicyDecision.navigation_action} instead
          * @read-only
+         * @default WebKit2.NavigationType.LINK_CLICKED
          */
         get navigationType(): NavigationType;
         /**
@@ -7239,7 +7177,7 @@ export namespace WebKit2 {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             body: string;
             id: bigint | number;
-            tag: string;
+            tag: string | null;
             title: string;
         }
     }
@@ -7258,24 +7196,28 @@ export namespace WebKit2 {
          * The body for the notification.
          * @since 2.8
          * @read-only
+         * @default null
          */
         get body(): string;
         /**
          * The unique id for the notification.
          * @since 2.8
          * @read-only
+         * @default 0
          */
         get id(): number;
         /**
          * The tag identifier for the notification.
          * @since 2.16
          * @read-only
+         * @default null
          */
-        get tag(): string;
+        get tag(): string | null;
         /**
          * The title for the notification.
          * @since 2.8
          * @read-only
+         * @default null
          */
         get title(): string;
 
@@ -7476,38 +7418,19 @@ export namespace WebKit2 {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -7515,15 +7438,9 @@ export namespace WebKit2 {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -7690,7 +7607,7 @@ export namespace WebKit2 {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -8205,38 +8122,19 @@ export namespace WebKit2 {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -8244,15 +8142,9 @@ export namespace WebKit2 {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -8419,7 +8311,7 @@ export namespace WebKit2 {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -8756,6 +8648,7 @@ export namespace WebKit2 {
          * The title of the custom widget.
          * @since 2.16
          * @construct-only
+         * @default null
          */
         get title(): string;
         /**
@@ -9020,7 +8913,7 @@ export namespace WebKit2 {
          * @param parent transient parent of the print dialog
          * @returns the {@link WebKit2.PrintOperationResponse} of the print dialog
          */
-        run_dialog(parent?: Gtk.Window | null): PrintOperationResponse;
+        run_dialog(parent: Gtk.Window | null): PrintOperationResponse;
         /**
          * Set the current page setup of `print_operation`.
          *
@@ -9526,6 +9419,7 @@ export namespace WebKit2 {
          * setting allows you to change that behaviour, so that it would be
          * possible to do a XMLHttpRequest of a local file, for example.
          * @since 2.10
+         * @default false
          */
         get allow_file_access_from_file_urls(): boolean;
         set allow_file_access_from_file_urls(val: boolean);
@@ -9536,6 +9430,7 @@ export namespace WebKit2 {
          * setting allows you to change that behaviour, so that it would be
          * possible to do a XMLHttpRequest of a local file, for example.
          * @since 2.10
+         * @default false
          */
         get allowFileAccessFromFileUrls(): boolean;
         set allowFileAccessFromFileUrls(val: boolean);
@@ -9546,6 +9441,7 @@ export namespace WebKit2 {
          * `false`, the associated {@link WebKit2.WebView} won't be able to create
          * new modal dialogs, so not even the {@link WebKit2.WebView.SignalSignatures.create | WebKit2.WebView::create}
          * signal will be emitted.
+         * @default false
          */
         get allow_modal_dialogs(): boolean;
         set allow_modal_dialogs(val: boolean);
@@ -9556,6 +9452,7 @@ export namespace WebKit2 {
          * `false`, the associated {@link WebKit2.WebView} won't be able to create
          * new modal dialogs, so not even the {@link WebKit2.WebView.SignalSignatures.create | WebKit2.WebView::create}
          * signal will be emitted.
+         * @default false
          */
         get allowModalDialogs(): boolean;
         set allowModalDialogs(val: boolean);
@@ -9565,6 +9462,7 @@ export namespace WebKit2 {
          * and phishing attacks. In contrast, a scenario where it could be enabled could be an app that
          * embeds a WebView and you have control of the pages being show instead of a generic browser.
          * @since 2.28
+         * @default false
          */
         get allow_top_navigation_to_data_urls(): boolean;
         set allow_top_navigation_to_data_urls(val: boolean);
@@ -9574,6 +9472,7 @@ export namespace WebKit2 {
          * and phishing attacks. In contrast, a scenario where it could be enabled could be an app that
          * embeds a WebView and you have control of the pages being show instead of a generic browser.
          * @since 2.28
+         * @default false
          */
         get allowTopNavigationToDataUrls(): boolean;
         set allowTopNavigationToDataUrls(val: boolean);
@@ -9585,6 +9484,7 @@ export namespace WebKit2 {
          * allowed. This setting allows you to change that behaviour, so that
          * it would be possible to use local storage, for example.
          * @since 2.14
+         * @default false
          */
         get allow_universal_access_from_file_urls(): boolean;
         set allow_universal_access_from_file_urls(val: boolean);
@@ -9596,6 +9496,7 @@ export namespace WebKit2 {
          * allowed. This setting allows you to change that behaviour, so that
          * it would be possible to use local storage, for example.
          * @since 2.14
+         * @default false
          */
         get allowUniversalAccessFromFileUrls(): boolean;
         set allowUniversalAccessFromFileUrls(val: boolean);
@@ -9603,6 +9504,7 @@ export namespace WebKit2 {
          * Determines whether images should be automatically loaded or not.
          * On devices where network bandwidth is of concern, it might be
          * useful to turn this property off.
+         * @default true
          */
         get auto_load_images(): boolean;
         set auto_load_images(val: boolean);
@@ -9610,60 +9512,71 @@ export namespace WebKit2 {
          * Determines whether images should be automatically loaded or not.
          * On devices where network bandwidth is of concern, it might be
          * useful to turn this property off.
+         * @default true
          */
         get autoLoadImages(): boolean;
         set autoLoadImages(val: boolean);
         /**
          * The font family used as the default for content using a cursive font.
+         * @default serif
          */
         get cursive_font_family(): string;
         set cursive_font_family(val: string);
         /**
          * The font family used as the default for content using a cursive font.
+         * @default serif
          */
         get cursiveFontFamily(): string;
         set cursiveFontFamily(val: string);
         /**
          * The default text charset used when interpreting content with an unspecified charset.
+         * @default iso-8859-1
          */
         get default_charset(): string;
         set default_charset(val: string);
         /**
          * The default text charset used when interpreting content with an unspecified charset.
+         * @default iso-8859-1
          */
         get defaultCharset(): string;
         set defaultCharset(val: string);
         /**
          * The font family to use as the default for content that does not specify a font.
+         * @default sans-serif
          */
         get default_font_family(): string;
         set default_font_family(val: string);
         /**
          * The font family to use as the default for content that does not specify a font.
+         * @default sans-serif
          */
         get defaultFontFamily(): string;
         set defaultFontFamily(val: string);
         /**
          * The default font size in pixels to use for content displayed if
          * no font size is specified.
+         * @default 16
          */
         get default_font_size(): number;
         set default_font_size(val: number);
         /**
          * The default font size in pixels to use for content displayed if
          * no font size is specified.
+         * @default 16
          */
         get defaultFontSize(): number;
         set defaultFontSize(val: number);
         /**
          * The default font size in pixels to use for content displayed in
          * monospace font if no font size is specified.
+         * @default 13
          */
         get default_monospace_font_size(): number;
         set default_monospace_font_size(val: number);
         /**
          * The default font size in pixels to use for content displayed in
          * monospace font if no font size is specified.
+         * @default 13
          */
         get defaultMonospaceFontSize(): number;
         set defaultMonospaceFontSize(val: number);
@@ -9671,6 +9584,7 @@ export namespace WebKit2 {
          * Whether to draw compositing borders and repaint counters on layers drawn
          * with accelerated compositing. This is useful for debugging issues related
          * to web content that is composited with the GPU.
+         * @default false
          */
         get draw_compositing_indicators(): boolean;
         set draw_compositing_indicators(val: boolean);
@@ -9678,6 +9592,7 @@ export namespace WebKit2 {
          * Whether to draw compositing borders and repaint counters on layers drawn
          * with accelerated compositing. This is useful for debugging issues related
          * to web content that is composited with the GPU.
+         * @default false
          */
         get drawCompositingIndicators(): boolean;
         set drawCompositingIndicators(val: boolean);
@@ -9688,6 +9603,7 @@ export namespace WebKit2 {
          * using hardware accelerated drawing operations.
          * @since 2.2
          * @deprecated since 2.32.
+         * @default false
          */
         get enable_accelerated_2d_canvas(): boolean;
         set enable_accelerated_2d_canvas(val: boolean);
@@ -9698,50 +9614,59 @@ export namespace WebKit2 {
          * using hardware accelerated drawing operations.
          * @since 2.2
          * @deprecated since 2.32.
+         * @default false
          */
         get enableAccelerated2dCanvas(): boolean;
         set enableAccelerated2dCanvas(val: boolean);
         /**
          * Enable or disable horizontal swipe gesture for back-forward navigation.
          * @since 2.24
+         * @default false
          */
         get enable_back_forward_navigation_gestures(): boolean;
         set enable_back_forward_navigation_gestures(val: boolean);
         /**
          * Enable or disable horizontal swipe gesture for back-forward navigation.
          * @since 2.24
+         * @default false
          */
         get enableBackForwardNavigationGestures(): boolean;
         set enableBackForwardNavigationGestures(val: boolean);
         /**
          * Whether to enable accessibility enhanced keyboard navigation.
+         * @default false
          */
         get enable_caret_browsing(): boolean;
         set enable_caret_browsing(val: boolean);
         /**
          * Whether to enable accessibility enhanced keyboard navigation.
+         * @default false
          */
         get enableCaretBrowsing(): boolean;
         set enableCaretBrowsing(val: boolean);
         /**
          * Determines whether or not developer tools, such as the Web Inspector, are enabled.
+         * @default false
          */
         get enable_developer_extras(): boolean;
         set enable_developer_extras(val: boolean);
         /**
          * Determines whether or not developer tools, such as the Web Inspector, are enabled.
+         * @default false
          */
         get enableDeveloperExtras(): boolean;
         set enableDeveloperExtras(val: boolean);
         /**
          * Determines whether or not to prefetch domain names. DNS prefetching attempts
          * to resolve domain names before a user tries to follow a link.
+         * @default false
          */
         get enable_dns_prefetching(): boolean;
         set enable_dns_prefetching(val: boolean);
         /**
          * Determines whether or not to prefetch domain names. DNS prefetching attempts
          * to resolve domain names before a user tries to follow a link.
+         * @default false
          */
         get enableDnsPrefetching(): boolean;
         set enableDnsPrefetching(val: boolean);
@@ -9753,6 +9678,7 @@ export namespace WebKit2 {
          *
          * See https://www.w3.org/TR/encrypted-media/
          * @since 2.20
+         * @default false
          */
         get enable_encrypted_media(): boolean;
         set enable_encrypted_media(val: boolean);
@@ -9764,6 +9690,7 @@ export namespace WebKit2 {
          *
          * See https://www.w3.org/TR/encrypted-media/
          * @since 2.20
+         * @default false
          */
         get enableEncryptedMedia(): boolean;
         set enableEncryptedMedia(val: boolean);
@@ -9772,6 +9699,7 @@ export namespace WebKit2 {
          * to its contents, which will flatten all the frames to become one scrollable page.
          * On touch devices scrollable subframes on a page can result in a confusing user experience.
          * @deprecated since 2.38
+         * @default false
          */
         get enable_frame_flattening(): boolean;
         set enable_frame_flattening(val: boolean);
@@ -9780,6 +9708,7 @@ export namespace WebKit2 {
          * to its contents, which will flatten all the frames to become one scrollable page.
          * On touch devices scrollable subframes on a page can result in a confusing user experience.
          * @deprecated since 2.38
+         * @default false
          */
         get enableFrameFlattening(): boolean;
         set enableFrameFlattening(val: boolean);
@@ -9788,6 +9717,7 @@ export namespace WebKit2 {
          * allows any HTML element to request fullscreen display. See also
          * the current draft of the spec:
          * http://www.w3.org/TR/fullscreen/
+         * @default true
          */
         get enable_fullscreen(): boolean;
         set enable_fullscreen(val: boolean);
@@ -9796,16 +9726,19 @@ export namespace WebKit2 {
          * allows any HTML element to request fullscreen display. See also
          * the current draft of the spec:
          * http://www.w3.org/TR/fullscreen/
+         * @default true
          */
         get enableFullscreen(): boolean;
         set enableFullscreen(val: boolean);
         /**
          * Whether to enable HTML5 client-side SQL database support (IndexedDB).
+         * @default true
          */
         get enable_html5_database(): boolean;
         set enable_html5_database(val: boolean);
         /**
          * Whether to enable HTML5 client-side SQL database support (IndexedDB).
+         * @default true
          */
         get enableHtml5Database(): boolean;
         set enableHtml5Database(val: boolean);
@@ -9815,6 +9748,7 @@ export namespace WebKit2 {
          *
          * HTML5 local storage specification is available at
          * http://dev.w3.org/html5/webstorage/.
+         * @default true
          */
         get enable_html5_local_storage(): boolean;
         set enable_html5_local_storage(val: boolean);
@@ -9824,6 +9758,7 @@ export namespace WebKit2 {
          *
          * HTML5 local storage specification is available at
          * http://dev.w3.org/html5/webstorage/.
+         * @default true
          */
         get enableHtml5LocalStorage(): boolean;
         set enableHtml5LocalStorage(val: boolean);
@@ -9832,6 +9767,7 @@ export namespace WebKit2 {
          *
          * The hyperlink auditing specification is available at
          * http://www.whatwg.org/specs/web-apps/current-work/multipage/links.html#hyperlink-auditing.
+         * @default true
          */
         get enable_hyperlink_auditing(): boolean;
         set enable_hyperlink_auditing(val: boolean);
@@ -9840,28 +9776,33 @@ export namespace WebKit2 {
          *
          * The hyperlink auditing specification is available at
          * http://www.whatwg.org/specs/web-apps/current-work/multipage/links.html#hyperlink-auditing.
+         * @default true
          */
         get enableHyperlinkAuditing(): boolean;
         set enableHyperlinkAuditing(val: boolean);
         /**
          * Determines whether or not Java is enabled on the page.
          * @deprecated since 2.38
+         * @default false
          */
         get enable_java(): boolean;
         set enable_java(val: boolean);
         /**
          * Determines whether or not Java is enabled on the page.
          * @deprecated since 2.38
+         * @default false
          */
         get enableJava(): boolean;
         set enableJava(val: boolean);
         /**
          * Determines whether or not JavaScript executes within a page.
+         * @default true
          */
         get enable_javascript(): boolean;
         set enable_javascript(val: boolean);
         /**
          * Determines whether or not JavaScript executes within a page.
+         * @default true
          */
         get enableJavascript(): boolean;
         set enableJavascript(val: boolean);
@@ -9870,6 +9811,7 @@ export namespace WebKit2 {
          * all JavaScript-related elements and attributes are removed from the document during parsing. Note that
          * executing JavaScript is still allowed if {@link WebKit2.Settings.enable_javascript} is `true`.
          * @since 2.24
+         * @default true
          */
         get enable_javascript_markup(): boolean;
         set enable_javascript_markup(val: boolean);
@@ -9878,6 +9820,7 @@ export namespace WebKit2 {
          * all JavaScript-related elements and attributes are removed from the document during parsing. Note that
          * executing JavaScript is still allowed if {@link WebKit2.Settings.enable_javascript} is `true`.
          * @since 2.24
+         * @default true
          */
         get enableJavascriptMarkup(): boolean;
         set enableJavascriptMarkup(val: boolean);
@@ -9886,6 +9829,7 @@ export namespace WebKit2 {
          * default. Disabling it means `<audio>`, `<track>` and `<video>` elements will have
          * playback support disabled.
          * @since 2.26
+         * @default true
          */
         get enable_media(): boolean;
         set enable_media(val: boolean);
@@ -9894,6 +9838,7 @@ export namespace WebKit2 {
          * default. Disabling it means `<audio>`, `<track>` and `<video>` elements will have
          * playback support disabled.
          * @since 2.26
+         * @default true
          */
         get enableMedia(): boolean;
         set enableMedia(val: boolean);
@@ -9907,6 +9852,7 @@ export namespace WebKit2 {
          *
          * See also https://wicg.github.io/media-capabilities/
          * @since 2.22
+         * @default false
          */
         get enable_media_capabilities(): boolean;
         set enable_media_capabilities(val: boolean);
@@ -9920,6 +9866,7 @@ export namespace WebKit2 {
          *
          * See also https://wicg.github.io/media-capabilities/
          * @since 2.22
+         * @default false
          */
         get enableMediaCapabilities(): boolean;
         set enableMediaCapabilities(val: boolean);
@@ -9930,6 +9877,7 @@ export namespace WebKit2 {
          *
          * See also http://dev.w3.org/2011/webrtc/editor/getusermedia.html
          * @since 2.4
+         * @default false
          */
         get enable_media_stream(): boolean;
         set enable_media_stream(val: boolean);
@@ -9940,6 +9888,7 @@ export namespace WebKit2 {
          *
          * See also http://dev.w3.org/2011/webrtc/editor/getusermedia.html
          * @since 2.4
+         * @default false
          */
         get enableMediaStream(): boolean;
         set enableMediaStream(val: boolean);
@@ -9950,6 +9899,7 @@ export namespace WebKit2 {
          *
          * See also http://www.w3.org/TR/media-source/
          * @since 2.4
+         * @default true
          */
         get enable_mediasource(): boolean;
         set enable_mediasource(val: boolean);
@@ -9960,6 +9910,7 @@ export namespace WebKit2 {
          *
          * See also http://www.w3.org/TR/media-source/
          * @since 2.4
+         * @default true
          */
         get enableMediasource(): boolean;
         set enableMediasource(val: boolean);
@@ -9968,6 +9919,7 @@ export namespace WebKit2 {
          * Microphone and Camera devices to be used as MediaStream
          * sources.
          * @since 2.24
+         * @default false
          */
         get enable_mock_capture_devices(): boolean;
         set enable_mock_capture_devices(val: boolean);
@@ -9976,6 +9928,7 @@ export namespace WebKit2 {
          * Microphone and Camera devices to be used as MediaStream
          * sources.
          * @since 2.24
+         * @default false
          */
         get enableMockCaptureDevices(): boolean;
         set enableMockCaptureDevices(val: boolean);
@@ -9986,6 +9939,7 @@ export namespace WebKit2 {
          *
          * HTML5 offline web application specification is available at
          * http://dev.w3.org/html5/spec/offline.html.
+         * @default true
          */
         get enable_offline_web_application_cache(): boolean;
         set enable_offline_web_application_cache(val: boolean);
@@ -9996,6 +9950,7 @@ export namespace WebKit2 {
          *
          * HTML5 offline web application specification is available at
          * http://dev.w3.org/html5/spec/offline.html.
+         * @default true
          */
         get enableOfflineWebApplicationCache(): boolean;
         set enableOfflineWebApplicationCache(val: boolean);
@@ -10009,6 +9964,7 @@ export namespace WebKit2 {
          * between pages much faster. For details about the different types
          * of caches and their purposes see:
          * http://webkit.org/blog/427/webkit-page-cache-i-the-basics/
+         * @default true
          */
         get enable_page_cache(): boolean;
         set enable_page_cache(val: boolean);
@@ -10022,18 +9978,21 @@ export namespace WebKit2 {
          * between pages much faster. For details about the different types
          * of caches and their purposes see:
          * http://webkit.org/blog/427/webkit-page-cache-i-the-basics/
+         * @default true
          */
         get enablePageCache(): boolean;
         set enablePageCache(val: boolean);
         /**
          * Determines whether or not plugins on the page are enabled.
          * @deprecated since 2.32
+         * @default false
          */
         get enable_plugins(): boolean;
         set enable_plugins(val: boolean);
         /**
          * Determines whether or not plugins on the page are enabled.
          * @deprecated since 2.32
+         * @default false
          */
         get enablePlugins(): boolean;
         set enablePlugins(val: boolean);
@@ -10041,6 +10000,7 @@ export namespace WebKit2 {
          * Determines whether or not private browsing is enabled. Private browsing
          * will disable history, cache and form auto-fill for any pages visited.
          * @deprecated since 2.16.: Use {@link WebKit2.WebView.is_ephemeral} or {@link WebKit2.WebsiteDataManager.is_ephemeral} instead.
+         * @default false
          */
         get enable_private_browsing(): boolean;
         set enable_private_browsing(val: boolean);
@@ -10048,16 +10008,19 @@ export namespace WebKit2 {
          * Determines whether or not private browsing is enabled. Private browsing
          * will disable history, cache and form auto-fill for any pages visited.
          * @deprecated since 2.16.: Use {@link WebKit2.WebView.is_ephemeral} or {@link WebKit2.WebsiteDataManager.is_ephemeral} instead.
+         * @default false
          */
         get enablePrivateBrowsing(): boolean;
         set enablePrivateBrowsing(val: boolean);
         /**
          * Determines whether or not text areas can be resized.
+         * @default true
          */
         get enable_resizable_text_areas(): boolean;
         set enable_resizable_text_areas(val: boolean);
         /**
          * Determines whether or not text areas can be resized.
+         * @default true
          */
         get enableResizableTextAreas(): boolean;
         set enableResizableTextAreas(val: boolean);
@@ -10068,6 +10031,7 @@ export namespace WebKit2 {
          * MediaWiki will incorrectly send to WebKit a CSS file with KHTML
          * workarounds. By turning on site-specific quirks, WebKit will
          * special-case this and other cases to make some specific sites work.
+         * @default true
          */
         get enable_site_specific_quirks(): boolean;
         set enable_site_specific_quirks(val: boolean);
@@ -10078,16 +10042,19 @@ export namespace WebKit2 {
          * MediaWiki will incorrectly send to WebKit a CSS file with KHTML
          * workarounds. By turning on site-specific quirks, WebKit will
          * special-case this and other cases to make some specific sites work.
+         * @default true
          */
         get enableSiteSpecificQuirks(): boolean;
         set enableSiteSpecificQuirks(val: boolean);
         /**
          * Enable or disable smooth scrolling.
+         * @default true
          */
         get enable_smooth_scrolling(): boolean;
         set enable_smooth_scrolling(val: boolean);
         /**
          * Enable or disable smooth scrolling.
+         * @default true
          */
         get enableSmoothScrolling(): boolean;
         set enableSmoothScrolling(val: boolean);
@@ -10099,6 +10066,7 @@ export namespace WebKit2 {
          * there is an element they might be trying to reach towards the right, and if
          * there are multiple elements, which element they probably wants.
          * @since 2.4
+         * @default false
          */
         get enable_spatial_navigation(): boolean;
         set enable_spatial_navigation(val: boolean);
@@ -10110,6 +10078,7 @@ export namespace WebKit2 {
          * there is an element they might be trying to reach towards the right, and if
          * there are multiple elements, which element they probably wants.
          * @since 2.4
+         * @default false
          */
         get enableSpatialNavigation(): boolean;
         set enableSpatialNavigation(val: boolean);
@@ -10118,6 +10087,7 @@ export namespace WebKit2 {
          * When this setting is enabled, users will be able to focus the next element
          * in the page by pressing the tab key. If the selected element is editable,
          * then pressing tab key will insert the tab character.
+         * @default true
          */
         get enable_tabs_to_links(): boolean;
         set enable_tabs_to_links(val: boolean);
@@ -10126,6 +10096,7 @@ export namespace WebKit2 {
          * When this setting is enabled, users will be able to focus the next element
          * in the page by pressing the tab key. If the selected element is editable,
          * then pressing tab key will insert the tab character.
+         * @default true
          */
         get enableTabsToLinks(): boolean;
         set enableTabsToLinks(val: boolean);
@@ -10134,6 +10105,7 @@ export namespace WebKit2 {
          * API for processing and synthesizing audio in web applications
          *
          * See also https://webaudio.github.io/web-audio-api
+         * @default true
          */
         get enable_webaudio(): boolean;
         set enable_webaudio(val: boolean);
@@ -10142,18 +10114,21 @@ export namespace WebKit2 {
          * API for processing and synthesizing audio in web applications
          *
          * See also https://webaudio.github.io/web-audio-api
+         * @default true
          */
         get enableWebaudio(): boolean;
         set enableWebaudio(val: boolean);
         /**
          * Enable or disable support for WebGL on pages. WebGL enables web
          * content to use an API based on OpenGL ES 2.0.
+         * @default true
          */
         get enable_webgl(): boolean;
         set enable_webgl(val: boolean);
         /**
          * Enable or disable support for WebGL on pages. WebGL enables web
          * content to use an API based on OpenGL ES 2.0.
+         * @default true
          */
         get enableWebgl(): boolean;
         set enableWebgl(val: boolean);
@@ -10165,6 +10140,7 @@ export namespace WebKit2 {
          *
          * See also https://www.w3.org/TR/webrtc/
          * @since 2.38
+         * @default false
          */
         get enable_webrtc(): boolean;
         set enable_webrtc(val: boolean);
@@ -10176,6 +10152,7 @@ export namespace WebKit2 {
          *
          * See also https://www.w3.org/TR/webrtc/
          * @since 2.38
+         * @default false
          */
         get enableWebrtc(): boolean;
         set enableWebrtc(val: boolean);
@@ -10183,6 +10160,7 @@ export namespace WebKit2 {
          * Enable or disable writing console messages to stdout. These are messages
          * sent to the console with console.log and related methods.
          * @since 2.2
+         * @default false
          */
         get enable_write_console_messages_to_stdout(): boolean;
         set enable_write_console_messages_to_stdout(val: boolean);
@@ -10190,6 +10168,7 @@ export namespace WebKit2 {
          * Enable or disable writing console messages to stdout. These are messages
          * sent to the console with console.log and related methods.
          * @since 2.2
+         * @default false
          */
         get enableWriteConsoleMessagesToStdout(): boolean;
         set enableWriteConsoleMessagesToStdout(val: boolean);
@@ -10197,6 +10176,7 @@ export namespace WebKit2 {
          * Whether to enable the XSS auditor. This feature filters some kinds of
          * reflective XSS attacks on vulnerable web sites.
          * @deprecated since 2.38
+         * @default true
          */
         get enable_xss_auditor(): boolean;
         set enable_xss_auditor(val: boolean);
@@ -10204,16 +10184,19 @@ export namespace WebKit2 {
          * Whether to enable the XSS auditor. This feature filters some kinds of
          * reflective XSS attacks on vulnerable web sites.
          * @deprecated since 2.38
+         * @default true
          */
         get enableXssAuditor(): boolean;
         set enableXssAuditor(val: boolean);
         /**
          * The font family used as the default for content using a fantasy font.
+         * @default serif
          */
         get fantasy_font_family(): string;
         set fantasy_font_family(val: string);
         /**
          * The font family used as the default for content using a fantasy font.
+         * @default serif
          */
         get fantasyFontFamily(): string;
         set fantasyFontFamily(val: string);
@@ -10230,6 +10213,7 @@ export namespace WebKit2 {
          * supported by the hardware or the system. In that case you can get the value to know the
          * actual policy being used, but changing the setting will not have any effect.
          * @since 2.16
+         * @default WebKit2.HardwareAccelerationPolicy.ALWAYS
          */
         get hardware_acceleration_policy(): HardwareAccelerationPolicy;
         set hardware_acceleration_policy(val: HardwareAccelerationPolicy);
@@ -10246,42 +10230,49 @@ export namespace WebKit2 {
          * supported by the hardware or the system. In that case you can get the value to know the
          * actual policy being used, but changing the setting will not have any effect.
          * @since 2.16
+         * @default WebKit2.HardwareAccelerationPolicy.ALWAYS
          */
         get hardwareAccelerationPolicy(): HardwareAccelerationPolicy;
         set hardwareAccelerationPolicy(val: HardwareAccelerationPolicy);
         /**
          * Whether JavaScript can access the clipboard. The default value is `false`. If
          * set to `true`, document.execCommand() allows cut, copy and paste commands.
+         * @default false
          */
         get javascript_can_access_clipboard(): boolean;
         set javascript_can_access_clipboard(val: boolean);
         /**
          * Whether JavaScript can access the clipboard. The default value is `false`. If
          * set to `true`, document.execCommand() allows cut, copy and paste commands.
+         * @default false
          */
         get javascriptCanAccessClipboard(): boolean;
         set javascriptCanAccessClipboard(val: boolean);
         /**
          * Whether JavaScript can open popup windows automatically without user
          * intervention.
+         * @default false
          */
         get javascript_can_open_windows_automatically(): boolean;
         set javascript_can_open_windows_automatically(val: boolean);
         /**
          * Whether JavaScript can open popup windows automatically without user
          * intervention.
+         * @default false
          */
         get javascriptCanOpenWindowsAutomatically(): boolean;
         set javascriptCanOpenWindowsAutomatically(val: boolean);
         /**
          * Determines whether a site can load favicons irrespective
          * of the value of {@link WebKit2.Settings.auto_load_images}.
+         * @default false
          */
         get load_icons_ignoring_image_load_setting(): boolean;
         set load_icons_ignoring_image_load_setting(val: boolean);
         /**
          * Determines whether a site can load favicons irrespective
          * of the value of {@link WebKit2.Settings.auto_load_images}.
+         * @default false
          */
         get loadIconsIgnoringImageLoadSetting(): boolean;
         set loadIconsIgnoringImageLoadSetting(val: boolean);
@@ -10289,6 +10280,7 @@ export namespace WebKit2 {
          * List of media content types requiring hardware support, split by semicolons (:).
          * For example: 'video/webm; codecs="vp*":video/mp4; codecs="avc*":video/&ast; codecs="av1*"'.
          * @since 2.30
+         * @default null
          */
         get media_content_types_requiring_hardware_support(): string;
         set media_content_types_requiring_hardware_support(val: string);
@@ -10296,6 +10288,7 @@ export namespace WebKit2 {
          * List of media content types requiring hardware support, split by semicolons (:).
          * For example: 'video/webm; codecs="vp*":video/mp4; codecs="avc*":video/&ast; codecs="av1*"'.
          * @since 2.30
+         * @default null
          */
         get mediaContentTypesRequiringHardwareSupport(): string;
         set mediaContentTypesRequiringHardwareSupport(val: string);
@@ -10303,6 +10296,7 @@ export namespace WebKit2 {
          * Whether media playback is full-screen only or inline playback is allowed.
          * This is `true` by default, so media playback can be inline. Setting it to
          * `false` allows specifying that media playback should be always fullscreen.
+         * @default true
          */
         get media_playback_allows_inline(): boolean;
         set media_playback_allows_inline(val: boolean);
@@ -10310,6 +10304,7 @@ export namespace WebKit2 {
          * Whether media playback is full-screen only or inline playback is allowed.
          * This is `true` by default, so media playback can be inline. Setting it to
          * `false` allows specifying that media playback should be always fullscreen.
+         * @default true
          */
         get mediaPlaybackAllowsInline(): boolean;
         set mediaPlaybackAllowsInline(val: boolean);
@@ -10319,6 +10314,7 @@ export namespace WebKit2 {
          * by default, so media playback could start automatically.
          * Setting it on requires a gesture by the user to start playback, or to
          * load the media.
+         * @default false
          */
         get media_playback_requires_user_gesture(): boolean;
         set media_playback_requires_user_gesture(val: boolean);
@@ -10328,6 +10324,7 @@ export namespace WebKit2 {
          * by default, so media playback could start automatically.
          * Setting it on requires a gesture by the user to start playback, or to
          * load the media.
+         * @default false
          */
         get mediaPlaybackRequiresUserGesture(): boolean;
         set mediaPlaybackRequiresUserGesture(val: boolean);
@@ -10335,6 +10332,7 @@ export namespace WebKit2 {
          * The minimum font size in pixels used to display text. This setting
          * controls the absolute smallest size. Values other than 0 can
          * potentially break page layouts.
+         * @default 0
          */
         get minimum_font_size(): number;
         set minimum_font_size(val: number);
@@ -10342,56 +10340,67 @@ export namespace WebKit2 {
          * The minimum font size in pixels used to display text. This setting
          * controls the absolute smallest size. Values other than 0 can
          * potentially break page layouts.
+         * @default 0
          */
         get minimumFontSize(): number;
         set minimumFontSize(val: number);
         /**
          * The font family used as the default for content using a monospace font.
+         * @default monospace
          */
         get monospace_font_family(): string;
         set monospace_font_family(val: string);
         /**
          * The font family used as the default for content using a monospace font.
+         * @default monospace
          */
         get monospaceFontFamily(): string;
         set monospaceFontFamily(val: string);
         /**
          * The font family used as the default for content using a pictograph font.
+         * @default serif
          */
         get pictograph_font_family(): string;
         set pictograph_font_family(val: string);
         /**
          * The font family used as the default for content using a pictograph font.
+         * @default serif
          */
         get pictographFontFamily(): string;
         set pictographFontFamily(val: string);
         /**
          * Whether background images should be drawn during printing.
+         * @default true
          */
         get print_backgrounds(): boolean;
         set print_backgrounds(val: boolean);
         /**
          * Whether background images should be drawn during printing.
+         * @default true
          */
         get printBackgrounds(): boolean;
         set printBackgrounds(val: boolean);
         /**
          * The font family used as the default for content using a sans-serif font.
+         * @default sans-serif
          */
         get sans_serif_font_family(): string;
         set sans_serif_font_family(val: string);
         /**
          * The font family used as the default for content using a sans-serif font.
+         * @default sans-serif
          */
         get sansSerifFontFamily(): string;
         set sansSerifFontFamily(val: string);
         /**
          * The font family used as the default for content using a serif font.
+         * @default serif
          */
         get serif_font_family(): string;
         set serif_font_family(val: string);
         /**
          * The font family used as the default for content using a serif font.
+         * @default serif
          */
         get serifFontFamily(): string;
         set serifFontFamily(val: string);
@@ -10404,6 +10413,7 @@ export namespace WebKit2 {
          *
          * If this property is set to the empty string or `null`, it will revert to the standard
          * user-agent.
+         * @default null
          */
         get user_agent(): string;
         set user_agent(val: string);
@@ -10416,6 +10426,7 @@ export namespace WebKit2 {
          *
          * If this property is set to the empty string or `null`, it will revert to the standard
          * user-agent.
+         * @default null
          */
         get userAgent(): string;
         set userAgent(val: string);
@@ -10424,6 +10435,7 @@ export namespace WebKit2 {
          * text of the page or all the contents. Other contents containing text
          * like form controls will be also affected by zoom factor when
          * this property is enabled.
+         * @default false
          */
         get zoom_text_only(): boolean;
         set zoom_text_only(val: boolean);
@@ -10432,6 +10444,7 @@ export namespace WebKit2 {
          * text of the page or all the contents. Other contents containing text
          * like form controls will be also affected by zoom factor when
          * this property is enabled.
+         * @default false
          */
         get zoomTextOnly(): boolean;
         set zoomTextOnly(val: boolean);
@@ -11052,7 +11065,7 @@ export namespace WebKit2 {
          * Set the {@link WebKit2.Settings.media_content_types_requiring_hardware_support} property.
          * @param content_types list of media content types requiring hardware support split by semicolons (:) or `null` to use the default value.
          */
-        set_media_content_types_requiring_hardware_support(content_types?: string | null): void;
+        set_media_content_types_requiring_hardware_support(content_types: string | null): void;
         /**
          * Set the {@link WebKit2.Settings.media_playback_allows_inline} property.
          * @param enabled Value to be set
@@ -11097,7 +11110,7 @@ export namespace WebKit2 {
          * Set the {@link WebKit2.Settings.user_agent} property.
          * @param user_agent The new custom user agent string or `null` to use the default user agent
          */
-        set_user_agent(user_agent?: string | null): void;
+        set_user_agent(user_agent: string | null): void;
         /**
          * Set the {@link WebKit2.Settings.user_agent} property by appending the application details.
          *
@@ -11108,8 +11121,8 @@ export namespace WebKit2 {
          * @param application_version The application version for the user agent or `null` to user the default version.
          */
         set_user_agent_with_application_details(
-            application_name?: string | null,
-            application_version?: string | null,
+            application_name: string | null,
+            application_version: string | null,
         ): void;
         /**
          * Set the {@link WebKit2.Settings.zoom_text_only} property.
@@ -11146,6 +11159,7 @@ export namespace WebKit2 {
 
         /**
          * The URI to which the request will be made.
+         * @default about:blank
          */
         get uri(): string;
         set uri(val: string);
@@ -11256,11 +11270,13 @@ export namespace WebKit2 {
         /**
          * The expected content length of the response.
          * @read-only
+         * @default 0
          */
         get content_length(): number;
         /**
          * The expected content length of the response.
          * @read-only
+         * @default 0
          */
         get contentLength(): number;
         /**
@@ -11278,36 +11294,43 @@ export namespace WebKit2 {
         /**
          * The MIME type of the response.
          * @read-only
+         * @default null
          */
         get mime_type(): string;
         /**
          * The MIME type of the response.
          * @read-only
+         * @default null
          */
         get mimeType(): string;
         /**
          * The status code of the response as returned by the server.
          * @read-only
+         * @default 0
          */
         get status_code(): number;
         /**
          * The status code of the response as returned by the server.
          * @read-only
+         * @default 0
          */
         get statusCode(): number;
         /**
          * The suggested filename for the URI response.
          * @read-only
+         * @default null
          */
         get suggested_filename(): string;
         /**
          * The suggested filename for the URI response.
          * @read-only
+         * @default null
          */
         get suggestedFilename(): string;
         /**
          * The URI for which the response was made.
          * @read-only
+         * @default null
          */
         get uri(): string;
 
@@ -11461,7 +11484,7 @@ export namespace WebKit2 {
          * @param stream_length the length of the stream or -1 if not known
          * @param content_type the content type of the stream or `null` if not known
          */
-        finish(stream: Gio.InputStream, stream_length: bigint | number, content_type?: string | null): void;
+        finish(stream: Gio.InputStream, stream_length: bigint | number, content_type: string | null): void;
         /**
          * Finish a {@link WebKit2.URISchemeRequest} with a {@link GLib.Error}.
          * @param error a {@link GLib.Error} that will be passed to the {@link WebKit2.WebView}
@@ -11550,12 +11573,14 @@ export namespace WebKit2 {
          * The input stream length in bytes, `-1` for unknown length.
          * @since 2.36
          * @construct-only
+         * @default -1
          */
         set stream_length(val: bigint | number);
         /**
          * The input stream length in bytes, `-1` for unknown length.
          * @since 2.36
          * @construct-only
+         * @default -1
          */
         set streamLength(val: bigint | number);
 
@@ -11619,7 +11644,7 @@ export namespace WebKit2 {
          * @param status_code the HTTP status code to be returned
          * @param reason_phrase a reason phrase
          */
-        set_status(status_code: number, reason_phrase?: string | null): void;
+        set_status(status_code: number, reason_phrase: string | null): void;
     }
 
     namespace UserContentFilterStore {
@@ -11663,6 +11688,7 @@ export namespace WebKit2 {
          * directory where user content filters are stored on disk.
          * @since 2.24
          * @construct-only
+         * @default null
          */
         get path(): string;
 
@@ -11716,7 +11742,7 @@ export namespace WebKit2 {
          * filter identifiers.
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          */
-        fetch_identifiers(cancellable?: Gio.Cancellable | null): globalThis.Promise<string[]>;
+        fetch_identifiers(cancellable: Gio.Cancellable | null): globalThis.Promise<string[]>;
         /**
          * Asynchronously retrieve a list of the identifiers for all the stored filters.
          *
@@ -11737,7 +11763,7 @@ export namespace WebKit2 {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the removal is completed
          */
         fetch_identifiers(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string[]> | void;
         /**
@@ -11765,7 +11791,7 @@ export namespace WebKit2 {
          * @param identifier a filter identifier
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          */
-        load(identifier: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<UserContentFilter>;
+        load(identifier: string, cancellable: Gio.Cancellable | null): globalThis.Promise<UserContentFilter>;
         /**
          * Asynchronously load a content filter given its `identifier`.
          *
@@ -11797,7 +11823,7 @@ export namespace WebKit2 {
          */
         load(
             identifier: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<UserContentFilter> | void;
         /**
@@ -11816,7 +11842,7 @@ export namespace WebKit2 {
          * @param identifier a filter identifier
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          */
-        remove(identifier: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        remove(identifier: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously remove a content filter given its `identifier`.
          *
@@ -11844,7 +11870,7 @@ export namespace WebKit2 {
          */
         remove(
             identifier: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -11874,7 +11900,7 @@ export namespace WebKit2 {
         save(
             identifier: string,
             source: GLib.Bytes | Uint8Array,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<UserContentFilter>;
         /**
          * Asynchronously save a content filter from a set source rule.
@@ -11921,7 +11947,7 @@ export namespace WebKit2 {
         save(
             identifier: string,
             source: GLib.Bytes | Uint8Array,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<UserContentFilter> | void;
         /**
@@ -11947,7 +11973,7 @@ export namespace WebKit2 {
         save_from_file(
             identifier: string,
             file: Gio.File,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<UserContentFilter>;
         /**
          * Asynchronously save a content filter from the contents of a file.
@@ -11986,7 +12012,7 @@ export namespace WebKit2 {
         save_from_file(
             identifier: string,
             file: Gio.File,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<UserContentFilter> | void;
         /**
@@ -12254,24 +12280,28 @@ export namespace WebKit2 {
          * Whether the media device to which the permission was requested has a microphone or not.
          * @since 2.8
          * @read-only
+         * @default false
          */
         get is_for_audio_device(): boolean;
         /**
          * Whether the media device to which the permission was requested has a microphone or not.
          * @since 2.8
          * @read-only
+         * @default false
          */
         get isForAudioDevice(): boolean;
         /**
          * Whether the media device to which the permission was requested has a video capture capability or not.
          * @since 2.8
          * @read-only
+         * @default false
          */
         get is_for_video_device(): boolean;
         /**
          * Whether the media device to which the permission was requested has a video capture capability or not.
          * @since 2.8
          * @read-only
+         * @default false
          */
         get isForVideoDevice(): boolean;
 
@@ -12377,38 +12407,19 @@ export namespace WebKit2 {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -12416,15 +12427,9 @@ export namespace WebKit2 {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -12591,7 +12596,7 @@ export namespace WebKit2 {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -12792,10 +12797,10 @@ export namespace WebKit2 {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
-            fd_list: Gio.UnixFDList;
-            fdList: Gio.UnixFDList;
+            fd_list: Gio.UnixFDList | null;
+            fdList: Gio.UnixFDList | null;
             name: string;
-            parameters: GLib.Variant;
+            parameters: GLib.Variant | null;
         }
     }
 
@@ -12821,17 +12826,18 @@ export namespace WebKit2 {
          * @since 2.28
          * @construct-only
          */
-        get fd_list(): Gio.UnixFDList;
+        get fd_list(): Gio.UnixFDList | null;
         /**
          * The UNIX file descriptors of the user message.
          * @since 2.28
          * @construct-only
          */
-        get fdList(): Gio.UnixFDList;
+        get fdList(): Gio.UnixFDList | null;
         /**
          * The name of the user message.
          * @since 2.28
          * @construct-only
+         * @default null
          */
         get name(): string;
         /**
@@ -12841,7 +12847,7 @@ export namespace WebKit2 {
          * @since 2.28
          * @construct-only
          */
-        get parameters(): GLib.Variant;
+        get parameters(): GLib.Variant | null;
 
         /**
          * Compile-time signal type information.
@@ -12858,12 +12864,12 @@ export namespace WebKit2 {
 
         _init(...args: any[]): void;
 
-        static ['new'](name: string, parameters?: GLib.Variant | null): UserMessage;
+        static ['new'](name: string, parameters: GLib.Variant | null): UserMessage;
 
         static new_with_fd_list(
             name: string,
-            parameters?: GLib.Variant | null,
-            fd_list?: Gio.UnixFDList | null,
+            parameters: GLib.Variant | null,
+            fd_list: Gio.UnixFDList | null,
         ): UserMessage;
 
         // Signals
@@ -13031,6 +13037,7 @@ export namespace WebKit2 {
          * @since 2.8
          * @deprecated since 2.10.: Use {@link WebKit2.WebsiteDataManager.local_storage_directory} instead.
          * @construct-only
+         * @default null
          */
         get local_storage_directory(): string;
         /**
@@ -13038,6 +13045,7 @@ export namespace WebKit2 {
          * @since 2.8
          * @deprecated since 2.10.: Use {@link WebKit2.WebsiteDataManager.local_storage_directory} instead.
          * @construct-only
+         * @default null
          */
         get localStorageDirectory(): string;
         /**
@@ -13062,6 +13070,7 @@ export namespace WebKit2 {
          * websites stealing data from other visited pages.
          * @since 2.28
          * @construct-only
+         * @default false
          */
         get process_swap_on_cross_site_navigation_enabled(): boolean;
         /**
@@ -13074,6 +13083,7 @@ export namespace WebKit2 {
          * websites stealing data from other visited pages.
          * @since 2.28
          * @construct-only
+         * @default false
          */
         get processSwapOnCrossSiteNavigationEnabled(): boolean;
         /**
@@ -13087,6 +13097,7 @@ export namespace WebKit2 {
          * wikipedia page for instance, https://en.wikipedia.org/wiki/List_of_tz_database_time_zones.
          * @since 2.38
          * @construct-only
+         * @default null
          */
         get time_zone_override(): string;
         /**
@@ -13100,6 +13111,7 @@ export namespace WebKit2 {
          * wikipedia page for instance, https://en.wikipedia.org/wiki/List_of_tz_database_time_zones.
          * @since 2.38
          * @construct-only
+         * @default null
          */
         get timeZoneOverride(): string;
         /**
@@ -13277,7 +13289,7 @@ export namespace WebKit2 {
          * `webkit_web_context_get_plugins_finish()` to get the result of the operation.
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          */
-        get_plugins(cancellable?: Gio.Cancellable | null): globalThis.Promise<Plugin[]>;
+        get_plugins(cancellable: Gio.Cancellable | null): globalThis.Promise<Plugin[]>;
         /**
          * Asynchronously get the list of installed plugins.
          *
@@ -13296,7 +13308,7 @@ export namespace WebKit2 {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         get_plugins(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Plugin[]> | void;
         /**
@@ -13526,7 +13538,7 @@ export namespace WebKit2 {
          * {@link WebKit2.WebContext} won't cause any effect.
          * @param path an absolute path to the icon database directory or `null` to use the defaults
          */
-        set_favicon_database_directory(path?: string | null): void;
+        set_favicon_database_directory(path: string | null): void;
         /**
          * Set the network proxy settings to be used by connections started in `context`.
          *
@@ -13540,7 +13552,7 @@ export namespace WebKit2 {
          * @param proxy_mode a {@link WebKit2.NetworkProxyMode}
          * @param proxy_settings a {@link WebKit2.NetworkProxySettings}, or `null`
          */
-        set_network_proxy_settings(proxy_mode: NetworkProxyMode, proxy_settings?: NetworkProxySettings | null): void;
+        set_network_proxy_settings(proxy_mode: NetworkProxyMode, proxy_settings: NetworkProxySettings | null): void;
         /**
          * Set the list of preferred languages.
          *
@@ -13554,7 +13566,7 @@ export namespace WebKit2 {
          *   `Intl` functions.
          * @param languages a `null`-terminated list of language identifiers
          */
-        set_preferred_languages(languages?: string[] | null): void;
+        set_preferred_languages(languages: string[] | null): void;
         /**
          * Specifies a process model for WebViews.
          *
@@ -13773,11 +13785,13 @@ export namespace WebKit2 {
         /**
          * The height that the inspector view should have when it is attached.
          * @read-only
+         * @default 0
          */
         get attached_height(): number;
         /**
          * The height that the inspector view should have when it is attached.
          * @read-only
+         * @default 0
          */
         get attachedHeight(): number;
         /**
@@ -13785,6 +13799,7 @@ export namespace WebKit2 {
          * the inspected view.
          * @since 2.8
          * @read-only
+         * @default false
          */
         get can_attach(): boolean;
         /**
@@ -13792,16 +13807,19 @@ export namespace WebKit2 {
          * the inspected view.
          * @since 2.8
          * @read-only
+         * @default false
          */
         get canAttach(): boolean;
         /**
          * The URI that is currently being inspected.
          * @read-only
+         * @default null
          */
         get inspected_uri(): string;
         /**
          * The URI that is currently being inspected.
          * @read-only
+         * @default null
          */
         get inspectedUri(): string;
 
@@ -13990,6 +14008,7 @@ export namespace WebKit2 {
          * The current active URI of the {@link WebKit2.WebResource}.
          * See `webkit_web_resource_get_uri()` for more details.
          * @read-only
+         * @default null
          */
         get uri(): string;
 
@@ -14038,7 +14057,7 @@ export namespace WebKit2 {
          * `webkit_web_resource_get_data_finish()` to get the result of the operation.
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          */
-        get_data(cancellable?: Gio.Cancellable | null): globalThis.Promise<Uint8Array>;
+        get_data(cancellable: Gio.Cancellable | null): globalThis.Promise<Uint8Array>;
         /**
          * Asynchronously get the raw data for `resource`.
          *
@@ -14057,7 +14076,7 @@ export namespace WebKit2 {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         get_data(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Uint8Array> | void;
         /**
@@ -14708,8 +14727,8 @@ export namespace WebKit2 {
             automationPresentationType: AutomationBrowsingContextPresentation;
             camera_capture_state: MediaCaptureState;
             cameraCaptureState: MediaCaptureState;
-            default_content_security_policy: string;
-            defaultContentSecurityPolicy: string;
+            default_content_security_policy: string | null;
+            defaultContentSecurityPolicy: string | null;
             display_capture_state: MediaCaptureState;
             displayCaptureState: MediaCaptureState;
             editable: boolean;
@@ -14775,6 +14794,7 @@ export namespace WebKit2 {
          * {@link WebKit2.AutomationBrowsingContextPresentation.TAB} should be used.
          * @since 2.28
          * @construct-only
+         * @default WebKit2.AutomationBrowsingContextPresentation.WINDOW
          */
         get automation_presentation_type(): AutomationBrowsingContextPresentation;
         /**
@@ -14784,6 +14804,7 @@ export namespace WebKit2 {
          * {@link WebKit2.AutomationBrowsingContextPresentation.TAB} should be used.
          * @since 2.28
          * @construct-only
+         * @default WebKit2.AutomationBrowsingContextPresentation.WINDOW
          */
         get automationPresentationType(): AutomationBrowsingContextPresentation;
         /**
@@ -14799,6 +14820,7 @@ export namespace WebKit2 {
          * can still re-request the permission to the user. Permission desision caching is left to the
          * application.
          * @since 2.34
+         * @default WebKit2.MediaCaptureState.NONE
          */
         get camera_capture_state(): MediaCaptureState;
         set camera_capture_state(val: MediaCaptureState);
@@ -14815,6 +14837,7 @@ export namespace WebKit2 {
          * can still re-request the permission to the user. Permission desision caching is left to the
          * application.
          * @since 2.34
+         * @default WebKit2.MediaCaptureState.NONE
          */
         get cameraCaptureState(): MediaCaptureState;
         set cameraCaptureState(val: MediaCaptureState);
@@ -14831,8 +14854,9 @@ export namespace WebKit2 {
          * on top of the policy set here.
          * @since 2.38
          * @construct-only
+         * @default null
          */
-        get default_content_security_policy(): string;
+        get default_content_security_policy(): string | null;
         /**
          * The default Content-Security-Policy used by the webview as if it were set
          * by an HTTP header.
@@ -14846,8 +14870,9 @@ export namespace WebKit2 {
          * on top of the policy set here.
          * @since 2.38
          * @construct-only
+         * @default null
          */
-        get defaultContentSecurityPolicy(): string;
+        get defaultContentSecurityPolicy(): string | null;
         /**
          * Capture state of the display device. Whenever the user grants a media-request sent by the web
          * page, requesting screencasting capabilities (`navigator.mediaDevices.getDisplayMedia() this
@@ -14861,6 +14886,7 @@ export namespace WebKit2 {
          * can still re-request the permission to the user. Permission desision caching is left to the
          * application.
          * @since 2.34
+         * @default WebKit2.MediaCaptureState.NONE
          */
         get display_capture_state(): MediaCaptureState;
         set display_capture_state(val: MediaCaptureState);
@@ -14877,6 +14903,7 @@ export namespace WebKit2 {
          * can still re-request the permission to the user. Permission desision caching is left to the
          * application.
          * @since 2.34
+         * @default WebKit2.MediaCaptureState.NONE
          */
         get displayCaptureState(): MediaCaptureState;
         set displayCaptureState(val: MediaCaptureState);
@@ -14884,6 +14911,7 @@ export namespace WebKit2 {
          * Whether the pages loaded inside {@link WebKit2.WebView} are editable. For more
          * information see `webkit_web_view_set_editable()`.
          * @since 2.8
+         * @default false
          */
         get editable(): boolean;
         set editable(val: boolean);
@@ -14896,6 +14924,7 @@ export namespace WebKit2 {
          * to be received for a document, including all its possible subresources
          * and child documents.
          * @read-only
+         * @default 0
          */
         get estimated_load_progress(): number;
         /**
@@ -14907,6 +14936,7 @@ export namespace WebKit2 {
          * to be received for a document, including all its possible subresources
          * and child documents.
          * @read-only
+         * @default 0
          */
         get estimatedLoadProgress(): number;
         /**
@@ -14921,6 +14951,7 @@ export namespace WebKit2 {
          * signal request.
          * @since 2.18
          * @construct-only
+         * @default false
          */
         get is_controlled_by_automation(): boolean;
         /**
@@ -14929,6 +14960,7 @@ export namespace WebKit2 {
          * signal request.
          * @since 2.18
          * @construct-only
+         * @default false
          */
         get isControlledByAutomation(): boolean;
         /**
@@ -14946,6 +14978,7 @@ export namespace WebKit2 {
          * See also `webkit_web_context_new_ephemeral()`.
          * @since 2.16
          * @construct-only
+         * @default false
          */
         get is_ephemeral(): boolean;
         /**
@@ -14963,6 +14996,7 @@ export namespace WebKit2 {
          * See also `webkit_web_context_new_ephemeral()`.
          * @since 2.16
          * @construct-only
+         * @default false
          */
         get isEphemeral(): boolean;
         /**
@@ -14973,6 +15007,7 @@ export namespace WebKit2 {
          * When the load operation finishes the property is set to `false` before
          * {@link WebKit2.WebView.SignalSignatures.load_changed | WebKit2.WebView::load-changed} is emitted with {@link WebKit2.LoadEvent.FINISHED}.
          * @read-only
+         * @default false
          */
         get is_loading(): boolean;
         /**
@@ -14983,12 +15018,14 @@ export namespace WebKit2 {
          * When the load operation finishes the property is set to `false` before
          * {@link WebKit2.WebView.SignalSignatures.load_changed | WebKit2.WebView::load-changed} is emitted with {@link WebKit2.LoadEvent.FINISHED}.
          * @read-only
+         * @default false
          */
         get isLoading(): boolean;
         /**
          * Whether the {@link WebKit2.WebView} audio is muted. When `true`, audio is silenced.
          * It may still be playing, i.e. {@link WebKit2.WebView.is_playing_audio} may be `true`.
          * @since 2.30
+         * @default false
          */
         get is_muted(): boolean;
         set is_muted(val: boolean);
@@ -14996,6 +15033,7 @@ export namespace WebKit2 {
          * Whether the {@link WebKit2.WebView} audio is muted. When `true`, audio is silenced.
          * It may still be playing, i.e. {@link WebKit2.WebView.is_playing_audio} may be `true`.
          * @since 2.30
+         * @default false
          */
         get isMuted(): boolean;
         set isMuted(val: boolean);
@@ -15006,6 +15044,7 @@ export namespace WebKit2 {
          * the property is set back to `false`.
          * @since 2.8
          * @read-only
+         * @default false
          */
         get is_playing_audio(): boolean;
         /**
@@ -15015,18 +15054,21 @@ export namespace WebKit2 {
          * the property is set back to `false`.
          * @since 2.8
          * @read-only
+         * @default false
          */
         get isPlayingAudio(): boolean;
         /**
          * Whether the web process currently associated to the {@link WebKit2.WebView} is responsive.
          * @since 2.34
          * @read-only
+         * @default true
          */
         get is_web_process_responsive(): boolean;
         /**
          * Whether the web process currently associated to the {@link WebKit2.WebView} is responsive.
          * @since 2.34
          * @read-only
+         * @default true
          */
         get isWebProcessResponsive(): boolean;
         /**
@@ -15042,6 +15084,7 @@ export namespace WebKit2 {
          * can still re-request the permission to the user. Permission desision caching is left to the
          * application.
          * @since 2.34
+         * @default WebKit2.MediaCaptureState.NONE
          */
         get microphone_capture_state(): MediaCaptureState;
         set microphone_capture_state(val: MediaCaptureState);
@@ -15058,6 +15101,7 @@ export namespace WebKit2 {
          * can still re-request the permission to the user. Permission desision caching is left to the
          * application.
          * @since 2.34
+         * @default WebKit2.MediaCaptureState.NONE
          */
         get microphoneCaptureState(): MediaCaptureState;
         set microphoneCaptureState(val: MediaCaptureState);
@@ -15065,12 +15109,14 @@ export namespace WebKit2 {
          * The identifier of the `WebKitWebPage` corresponding to the {@link WebKit2.WebView}.
          * @since 2.28
          * @read-only
+         * @default 0
          */
         get page_id(): number;
         /**
          * The identifier of the `WebKitWebPage` corresponding to the {@link WebKit2.WebView}.
          * @since 2.28
          * @read-only
+         * @default 0
          */
         get pageId(): number;
         /**
@@ -15099,12 +15145,14 @@ export namespace WebKit2 {
          * The main frame document title of this {@link WebKit2.WebView}. If
          * the title has not been received yet, it will be `null`.
          * @read-only
+         * @default null
          */
         get title(): string;
         /**
          * The current active URI of the {@link WebKit2.WebView}.
          * See `webkit_web_view_get_uri()` for more details.
          * @read-only
+         * @default null
          */
         get uri(): string;
         /**
@@ -15139,6 +15187,7 @@ export namespace WebKit2 {
          * [Chrome's documentation](https://developer.chrome.com/docs/extensions/mv3/intro/mv3-migration/#content-security-policy).
          * @since 2.38
          * @construct-only
+         * @default WebKit2.WebExtensionMode.NONE
          */
         get web_extension_mode(): WebExtensionMode;
         /**
@@ -15151,6 +15200,7 @@ export namespace WebKit2 {
          * [Chrome's documentation](https://developer.chrome.com/docs/extensions/mv3/intro/mv3-migration/#content-security-policy).
          * @since 2.38
          * @construct-only
+         * @default WebKit2.WebExtensionMode.NONE
          */
         get webExtensionMode(): WebExtensionMode;
         /**
@@ -15168,12 +15218,14 @@ export namespace WebKit2 {
         /**
          * The zoom level of the {@link WebKit2.WebView} content.
          * See `webkit_web_view_set_zoom_level()` for more details.
+         * @default 1
          */
         get zoom_level(): number;
         set zoom_level(val: number);
         /**
          * The zoom level of the {@link WebKit2.WebView} content.
          * See `webkit_web_view_set_zoom_level()` for more details.
+         * @default 1
          */
         get zoomLevel(): number;
         set zoomLevel(val: number);
@@ -15374,7 +15426,7 @@ export namespace WebKit2 {
          * @param command the command to check
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          */
-        can_execute_editing_command(command: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        can_execute_editing_command(command: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously check if it is possible to execute the given editing command.
          *
@@ -15400,7 +15452,7 @@ export namespace WebKit2 {
          */
         can_execute_editing_command(
             command: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -15605,7 +15657,7 @@ export namespace WebKit2 {
         get_snapshot(
             region: SnapshotRegion,
             options: SnapshotOptions,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<cairo.Surface>;
         /**
          * Asynchronously retrieves a snapshot of `web_view` for `region`.
@@ -15642,7 +15694,7 @@ export namespace WebKit2 {
         get_snapshot(
             region: SnapshotRegion,
             options: SnapshotOptions,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<cairo.Surface> | void;
         /**
@@ -15823,7 +15875,7 @@ export namespace WebKit2 {
          * @param content_uri the URI for the alternate page content
          * @param base_uri the base URI for relative locations or `null`
          */
-        load_alternate_html(content: string, content_uri: string, base_uri?: string | null): void;
+        load_alternate_html(content: string, content_uri: string, base_uri: string | null): void;
         /**
          * Load the specified `bytes` into `web_view` using the given `mime_type` and `encoding`.
          *
@@ -15838,9 +15890,9 @@ export namespace WebKit2 {
          */
         load_bytes(
             bytes: GLib.Bytes | Uint8Array,
-            mime_type?: string | null,
-            encoding?: string | null,
-            base_uri?: string | null,
+            mime_type: string | null,
+            encoding: string | null,
+            base_uri: string | null,
         ): void;
         /**
          * Load the given `content` string with the specified `base_uri`.
@@ -15856,7 +15908,7 @@ export namespace WebKit2 {
          * @param content The HTML string to load
          * @param base_uri The base URI for relative locations or `null`
          */
-        load_html(content: string, base_uri?: string | null): void;
+        load_html(content: string, base_uri: string | null): void;
         /**
          * Load the specified `plain_text` string into `web_view`.
          *
@@ -15908,8 +15960,8 @@ export namespace WebKit2 {
             body: string,
             _arguments: GLib.Variant,
             world_name: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Asynchronously run `script` in the context of the current page in `web_view`.
@@ -15922,7 +15974,7 @@ export namespace WebKit2 {
          * @param script the script to run
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          */
-        run_javascript(script: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<JavascriptResult>;
+        run_javascript(script: string, cancellable: Gio.Cancellable | null): globalThis.Promise<JavascriptResult>;
         /**
          * Asynchronously run `script` in the context of the current page in `web_view`.
          *
@@ -15954,7 +16006,7 @@ export namespace WebKit2 {
          */
         run_javascript(
             script: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<JavascriptResult> | void;
         /**
@@ -16022,7 +16074,7 @@ export namespace WebKit2 {
          */
         run_javascript_from_gresource(
             resource: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<JavascriptResult>;
         /**
          * Asynchronously run the script from `resource`.
@@ -16057,7 +16109,7 @@ export namespace WebKit2 {
          */
         run_javascript_from_gresource(
             resource: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<JavascriptResult> | void;
         /**
@@ -16083,7 +16135,7 @@ export namespace WebKit2 {
         run_javascript_in_world(
             script: string,
             world_name: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<JavascriptResult>;
         /**
          * Asynchronously run `script` in the script world.
@@ -16120,7 +16172,7 @@ export namespace WebKit2 {
         run_javascript_in_world(
             script: string,
             world_name: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<JavascriptResult> | void;
         /**
@@ -16142,7 +16194,7 @@ export namespace WebKit2 {
          * @param save_mode the {@link WebKit2.SaveMode} specifying how the web page should be saved.
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          */
-        save(save_mode: SaveMode, cancellable?: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>;
+        save(save_mode: SaveMode, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>;
         /**
          * Asynchronously save the current web page.
          *
@@ -16178,7 +16230,7 @@ export namespace WebKit2 {
          */
         save(
             save_mode: SaveMode,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Gio.InputStream> | void;
         /**
@@ -16204,7 +16256,7 @@ export namespace WebKit2 {
         save_to_file(
             file: Gio.File,
             save_mode: SaveMode,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously save the current web page.
@@ -16245,7 +16297,7 @@ export namespace WebKit2 {
         save_to_file(
             file: Gio.File,
             save_mode: SaveMode,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -16266,7 +16318,7 @@ export namespace WebKit2 {
          */
         send_message_to_page(
             message: UserMessage,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<UserMessage>;
         /**
          * Send `message` to the `WebKitWebPage` corresponding to `web_view`.
@@ -16297,7 +16349,7 @@ export namespace WebKit2 {
          */
         send_message_to_page(
             message: UserMessage,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<UserMessage> | void;
         /**
@@ -16365,7 +16417,7 @@ export namespace WebKit2 {
          * the most recent call will be effective.
          * @param allowlist an allowlist of URI patterns, or `null`
          */
-        set_cors_allowlist(allowlist?: string[] | null): void;
+        set_cors_allowlist(allowlist: string[] | null): void;
         /**
          * Sets the current custom character encoding override of `web_view`.
          *
@@ -16375,7 +16427,7 @@ export namespace WebKit2 {
          * encoding override.
          * @param charset a character encoding name or `null`
          */
-        set_custom_charset(charset?: string | null): void;
+        set_custom_charset(charset: string | null): void;
         /**
          * Set the display capture state of a {@link WebKit2.WebView}.
          *
@@ -16406,7 +16458,7 @@ export namespace WebKit2 {
          * Note that the same {@link WebKit2.InputMethodContext} can't be set on more than one {@link WebKit2.WebView} at the same time.
          * @param context the {@link WebKit2.InputMethodContext} to set, or `null`
          */
-        set_input_method_context(context?: InputMethodContext | null): void;
+        set_input_method_context(context: InputMethodContext | null): void;
         /**
          * Sets the mute state of `web_view`.
          * @param muted mute flag
@@ -16513,38 +16565,19 @@ export namespace WebKit2 {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -16552,15 +16585,9 @@ export namespace WebKit2 {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -16727,7 +16754,7 @@ export namespace WebKit2 {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -17018,6 +17045,7 @@ export namespace WebKit2 {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
@@ -17026,6 +17054,7 @@ export namespace WebKit2 {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
@@ -17129,7 +17158,7 @@ export namespace WebKit2 {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent?: Gtk.Accessible | null, next_sibling?: Gtk.Accessible | null): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
         /**
          * Updates the next accessible sibling.
          *
@@ -17137,7 +17166,7 @@ export namespace WebKit2 {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling?: Gtk.Accessible | null): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
         /**
          * Informs ATs that the platform state has changed.
          *
@@ -17248,7 +17277,7 @@ export namespace WebKit2 {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -17262,7 +17291,7 @@ export namespace WebKit2 {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called at the end of each custom element handled by
@@ -17277,7 +17306,7 @@ export namespace WebKit2 {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called for each unknown element under `<child>`.
@@ -17381,38 +17410,19 @@ export namespace WebKit2 {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -17420,15 +17430,9 @@ export namespace WebKit2 {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -17595,7 +17599,7 @@ export namespace WebKit2 {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -17926,38 +17930,19 @@ export namespace WebKit2 {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -17965,15 +17950,9 @@ export namespace WebKit2 {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -18140,7 +18119,7 @@ export namespace WebKit2 {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -18350,30 +18329,30 @@ export namespace WebKit2 {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            base_cache_directory: string;
-            baseCacheDirectory: string;
-            base_data_directory: string;
-            baseDataDirectory: string;
-            disk_cache_directory: string;
-            diskCacheDirectory: string;
-            dom_cache_directory: string;
-            domCacheDirectory: string;
-            hsts_cache_directory: string;
-            hstsCacheDirectory: string;
-            indexeddb_directory: string;
-            indexeddbDirectory: string;
+            base_cache_directory: string | null;
+            baseCacheDirectory: string | null;
+            base_data_directory: string | null;
+            baseDataDirectory: string | null;
+            disk_cache_directory: string | null;
+            diskCacheDirectory: string | null;
+            dom_cache_directory: string | null;
+            domCacheDirectory: string | null;
+            hsts_cache_directory: string | null;
+            hstsCacheDirectory: string | null;
+            indexeddb_directory: string | null;
+            indexeddbDirectory: string | null;
             is_ephemeral: boolean;
             isEphemeral: boolean;
-            itp_directory: string;
-            itpDirectory: string;
-            local_storage_directory: string;
-            localStorageDirectory: string;
-            offline_application_cache_directory: string;
-            offlineApplicationCacheDirectory: string;
-            service_worker_registrations_directory: string;
-            serviceWorkerRegistrationsDirectory: string;
-            websql_directory: string;
-            websqlDirectory: string;
+            itp_directory: string | null;
+            itpDirectory: string | null;
+            local_storage_directory: string | null;
+            localStorageDirectory: string | null;
+            offline_application_cache_directory: string | null;
+            offlineApplicationCacheDirectory: string | null;
+            service_worker_registrations_directory: string | null;
+            serviceWorkerRegistrationsDirectory: string | null;
+            websql_directory: string | null;
+            websqlDirectory: string | null;
         }
     }
 
@@ -18422,77 +18401,89 @@ export namespace WebKit2 {
          * for any Website cache when no specific cache directory has been provided.
          * @since 2.10
          * @construct-only
+         * @default null
          */
-        get base_cache_directory(): string;
+        get base_cache_directory(): string | null;
         /**
          * The base directory for Website cache. This is used as a base directory
          * for any Website cache when no specific cache directory has been provided.
          * @since 2.10
          * @construct-only
+         * @default null
          */
-        get baseCacheDirectory(): string;
+        get baseCacheDirectory(): string | null;
         /**
          * The base directory for Website data. This is used as a base directory
          * for any Website data when no specific data directory has been provided.
          * @since 2.10
          * @construct-only
+         * @default null
          */
-        get base_data_directory(): string;
+        get base_data_directory(): string | null;
         /**
          * The base directory for Website data. This is used as a base directory
          * for any Website data when no specific data directory has been provided.
          * @since 2.10
          * @construct-only
+         * @default null
          */
-        get baseDataDirectory(): string;
+        get baseDataDirectory(): string | null;
         /**
          * The directory where HTTP disk cache will be stored.
          * @since 2.10
          * @construct-only
+         * @default null
          */
-        get disk_cache_directory(): string;
+        get disk_cache_directory(): string | null;
         /**
          * The directory where HTTP disk cache will be stored.
          * @since 2.10
          * @construct-only
+         * @default null
          */
-        get diskCacheDirectory(): string;
+        get diskCacheDirectory(): string | null;
         /**
          * The directory where DOM cache will be stored.
          * @since 2.30
          * @construct-only
+         * @default null
          */
-        get dom_cache_directory(): string;
+        get dom_cache_directory(): string | null;
         /**
          * The directory where DOM cache will be stored.
          * @since 2.30
          * @construct-only
+         * @default null
          */
-        get domCacheDirectory(): string;
+        get domCacheDirectory(): string | null;
         /**
          * The directory where the HTTP Strict-Transport-Security (HSTS) cache will be stored.
          * @since 2.26
          * @construct-only
+         * @default null
          */
-        get hsts_cache_directory(): string;
+        get hsts_cache_directory(): string | null;
         /**
          * The directory where the HTTP Strict-Transport-Security (HSTS) cache will be stored.
          * @since 2.26
          * @construct-only
+         * @default null
          */
-        get hstsCacheDirectory(): string;
+        get hstsCacheDirectory(): string | null;
         /**
          * The directory where IndexedDB databases will be stored.
          * @since 2.10
          * @construct-only
+         * @default null
          */
-        get indexeddb_directory(): string;
+        get indexeddb_directory(): string | null;
         /**
          * The directory where IndexedDB databases will be stored.
          * @since 2.10
          * @construct-only
+         * @default null
          */
-        get indexeddbDirectory(): string;
+        get indexeddbDirectory(): string | null;
         /**
          * Whether the {@link WebKit2.WebsiteDataManager} is ephemeral. An ephemeral {@link WebKit2.WebsiteDataManager}
          * handles all websites data as non-persistent, and nothing will be written to the client
@@ -18500,6 +18491,7 @@ export namespace WebKit2 {
          * parameters to configure data directories will be ignored.
          * @since 2.16
          * @construct-only
+         * @default false
          */
         get is_ephemeral(): boolean;
         /**
@@ -18509,70 +18501,81 @@ export namespace WebKit2 {
          * parameters to configure data directories will be ignored.
          * @since 2.16
          * @construct-only
+         * @default false
          */
         get isEphemeral(): boolean;
         /**
          * The directory where Intelligent Tracking Prevention (ITP) data will be stored.
          * @since 2.30
          * @construct-only
+         * @default null
          */
-        get itp_directory(): string;
+        get itp_directory(): string | null;
         /**
          * The directory where Intelligent Tracking Prevention (ITP) data will be stored.
          * @since 2.30
          * @construct-only
+         * @default null
          */
-        get itpDirectory(): string;
+        get itpDirectory(): string | null;
         /**
          * The directory where local storage data will be stored.
          * @since 2.10
          * @construct-only
+         * @default null
          */
-        get local_storage_directory(): string;
+        get local_storage_directory(): string | null;
         /**
          * The directory where local storage data will be stored.
          * @since 2.10
          * @construct-only
+         * @default null
          */
-        get localStorageDirectory(): string;
+        get localStorageDirectory(): string | null;
         /**
          * The directory where offline web application cache will be stored.
          * @since 2.10
          * @construct-only
+         * @default null
          */
-        get offline_application_cache_directory(): string;
+        get offline_application_cache_directory(): string | null;
         /**
          * The directory where offline web application cache will be stored.
          * @since 2.10
          * @construct-only
+         * @default null
          */
-        get offlineApplicationCacheDirectory(): string;
+        get offlineApplicationCacheDirectory(): string | null;
         /**
          * The directory where service workers registrations will be stored.
          * @since 2.30
          * @construct-only
+         * @default null
          */
-        get service_worker_registrations_directory(): string;
+        get service_worker_registrations_directory(): string | null;
         /**
          * The directory where service workers registrations will be stored.
          * @since 2.30
          * @construct-only
+         * @default null
          */
-        get serviceWorkerRegistrationsDirectory(): string;
+        get serviceWorkerRegistrationsDirectory(): string | null;
         /**
          * The directory where WebSQL databases will be stored.
          * @since 2.10
          * @deprecated since 2.24.: WebSQL is no longer supported. Use IndexedDB instead.
          * @construct-only
+         * @default null
          */
-        get websql_directory(): string;
+        get websql_directory(): string | null;
         /**
          * The directory where WebSQL databases will be stored.
          * @since 2.10
          * @deprecated since 2.24.: WebSQL is no longer supported. Use IndexedDB instead.
          * @construct-only
+         * @default null
          */
-        get websqlDirectory(): string;
+        get websqlDirectory(): string | null;
 
         /**
          * Compile-time signal type information.
@@ -18652,7 +18655,7 @@ export namespace WebKit2 {
         clear(
             types: WebsiteDataTypes,
             timespan: GLib.TimeSpan,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously clear the website data of the given `types` modified in the past `timespan`.
@@ -18695,7 +18698,7 @@ export namespace WebKit2 {
         clear(
             types: WebsiteDataTypes,
             timespan: GLib.TimeSpan,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -18712,7 +18715,7 @@ export namespace WebKit2 {
          * @param types {@link WebKit2.WebsiteDataTypes}
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          */
-        fetch(types: WebsiteDataTypes, cancellable?: Gio.Cancellable | null): globalThis.Promise<WebsiteData[]>;
+        fetch(types: WebsiteDataTypes, cancellable: Gio.Cancellable | null): globalThis.Promise<WebsiteData[]>;
         /**
          * Asynchronously get the list of {@link WebKit2.WebsiteData} for the given `types`.
          *
@@ -18738,7 +18741,7 @@ export namespace WebKit2 {
          */
         fetch(
             types: WebsiteDataTypes,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<WebsiteData[]> | void;
         /**
@@ -18802,7 +18805,7 @@ export namespace WebKit2 {
          * `webkit_website_data_manager_get_itp_summary_finish()` to get the result of the operation.
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          */
-        get_itp_summary(cancellable?: Gio.Cancellable | null): globalThis.Promise<ITPThirdParty[]>;
+        get_itp_summary(cancellable: Gio.Cancellable | null): globalThis.Promise<ITPThirdParty[]>;
         /**
          * Asynchronously get the list of {@link WebKit2.ITPThirdParty} seen for `manager`.
          *
@@ -18827,7 +18830,7 @@ export namespace WebKit2 {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         get_itp_summary(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<ITPThirdParty[]> | void;
         /**
@@ -18883,7 +18886,7 @@ export namespace WebKit2 {
         remove(
             types: WebsiteDataTypes,
             website_data: WebsiteData[],
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously removes the website data in the given `website_data` list.
@@ -18920,7 +18923,7 @@ export namespace WebKit2 {
         remove(
             types: WebsiteDataTypes,
             website_data: WebsiteData[],
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -18952,7 +18955,7 @@ export namespace WebKit2 {
          * @param proxy_mode a {@link WebKit2.NetworkProxyMode}
          * @param proxy_settings a {@link WebKit2.NetworkProxySettings}, or `null`
          */
-        set_network_proxy_settings(proxy_mode: NetworkProxyMode, proxy_settings?: NetworkProxySettings | null): void;
+        set_network_proxy_settings(proxy_mode: NetworkProxyMode, proxy_settings: NetworkProxySettings | null): void;
         /**
          * Enable or disable persistent credential storage.
          *
@@ -18999,6 +19002,7 @@ export namespace WebKit2 {
          * The {@link WebKit2.AutoplayPolicy} of {@link WebKit2.WebsitePolicies}.
          * @since 2.30
          * @construct-only
+         * @default WebKit2.AutoplayPolicy.ALLOW_WITHOUT_SOUND
          */
         get autoplay(): AutoplayPolicy;
 
@@ -19146,6 +19150,7 @@ export namespace WebKit2 {
         /**
          * Whether window will be displayed fullscreen.
          * @construct-only
+         * @default false
          */
         get fullscreen(): boolean;
         /**
@@ -19156,56 +19161,67 @@ export namespace WebKit2 {
         /**
          * Whether the locationbar should be visible for the window.
          * @construct-only
+         * @default true
          */
         get locationbar_visible(): boolean;
         /**
          * Whether the locationbar should be visible for the window.
          * @construct-only
+         * @default true
          */
         get locationbarVisible(): boolean;
         /**
          * Whether the menubar should be visible for the window.
          * @construct-only
+         * @default true
          */
         get menubar_visible(): boolean;
         /**
          * Whether the menubar should be visible for the window.
          * @construct-only
+         * @default true
          */
         get menubarVisible(): boolean;
         /**
          * Whether the window can be resized.
          * @construct-only
+         * @default true
          */
         get resizable(): boolean;
         /**
          * Whether the scrollbars should be visible for the window.
          * @construct-only
+         * @default true
          */
         get scrollbars_visible(): boolean;
         /**
          * Whether the scrollbars should be visible for the window.
          * @construct-only
+         * @default true
          */
         get scrollbarsVisible(): boolean;
         /**
          * Whether the statusbar should be visible for the window.
          * @construct-only
+         * @default true
          */
         get statusbar_visible(): boolean;
         /**
          * Whether the statusbar should be visible for the window.
          * @construct-only
+         * @default true
          */
         get statusbarVisible(): boolean;
         /**
          * Whether the toolbar should be visible for the window.
          * @construct-only
+         * @default true
          */
         get toolbar_visible(): boolean;
         /**
          * Whether the toolbar should be visible for the window.
          * @construct-only
+         * @default true
          */
         get toolbarVisible(): boolean;
 
@@ -19799,7 +19815,7 @@ export namespace WebKit2 {
          * for the underline too.
          * @param rgba a {@link Gdk.RGBA} or `null`
          */
-        set_color(rgba?: Gdk.RGBA | null): void;
+        set_color(rgba: Gdk.RGBA | null): void;
     }
 
     /**
@@ -20104,9 +20120,9 @@ export namespace WebKit2 {
 
         // Constructors
 
-        constructor(default_proxy_uri?: string | null, ignore_hosts?: string[] | null);
+        constructor(default_proxy_uri: string | null, ignore_hosts: string[] | null);
 
-        static ['new'](default_proxy_uri?: string | null, ignore_hosts?: string[] | null): NetworkProxySettings;
+        static ['new'](default_proxy_uri: string | null, ignore_hosts: string[] | null): NetworkProxySettings;
 
         // Methods
 
@@ -20614,16 +20630,16 @@ export namespace WebKit2 {
             source: string,
             injected_frames: UserContentInjectedFrames,
             injection_time: UserScriptInjectionTime,
-            allow_list?: string[] | null,
-            block_list?: string[] | null,
+            allow_list: string[] | null,
+            block_list: string[] | null,
         );
 
         static ['new'](
             source: string,
             injected_frames: UserContentInjectedFrames,
             injection_time: UserScriptInjectionTime,
-            allow_list?: string[] | null,
-            block_list?: string[] | null,
+            allow_list: string[] | null,
+            block_list: string[] | null,
         ): UserScript;
 
         static new_for_world(
@@ -20631,8 +20647,8 @@ export namespace WebKit2 {
             injected_frames: UserContentInjectedFrames,
             injection_time: UserScriptInjectionTime,
             world_name: string,
-            allow_list?: string[] | null,
-            block_list?: string[] | null,
+            allow_list: string[] | null,
+            block_list: string[] | null,
         ): UserScript;
 
         // Methods
@@ -20668,16 +20684,16 @@ export namespace WebKit2 {
             source: string,
             injected_frames: UserContentInjectedFrames,
             level: UserStyleLevel,
-            allow_list?: string[] | null,
-            block_list?: string[] | null,
+            allow_list: string[] | null,
+            block_list: string[] | null,
         );
 
         static ['new'](
             source: string,
             injected_frames: UserContentInjectedFrames,
             level: UserStyleLevel,
-            allow_list?: string[] | null,
-            block_list?: string[] | null,
+            allow_list: string[] | null,
+            block_list: string[] | null,
         ): UserStyleSheet;
 
         static new_for_world(
@@ -20685,8 +20701,8 @@ export namespace WebKit2 {
             injected_frames: UserContentInjectedFrames,
             level: UserStyleLevel,
             world_name: string,
-            allow_list?: string[] | null,
-            block_list?: string[] | null,
+            allow_list: string[] | null,
+            block_list: string[] | null,
         ): UserStyleSheet;
 
         // Methods

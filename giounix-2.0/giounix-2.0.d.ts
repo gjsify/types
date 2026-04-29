@@ -412,7 +412,7 @@ export namespace GioUnix {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.AppInfo.ConstructorProps {
-            filename: string;
+            filename: string | null;
         }
     }
 
@@ -433,8 +433,9 @@ export namespace GioUnix {
         /**
          * The origin filename of this {@link GioUnix.DesktopAppInfo}
          * @construct-only
+         * @default null
          */
-        get filename(): string;
+        get filename(): string | null;
 
         /**
          * Compile-time signal type information.
@@ -608,7 +609,7 @@ export namespace GioUnix {
          * @param desktop_env a string specifying a desktop name
          * @returns `TRUE` if the `info` should be shown in `desktop_env` according to the `OnlyShowIn` and `NotShowIn` keys, `FALSE` otherwise.
          */
-        get_show_in(desktop_env?: string | null): boolean;
+        get_show_in(desktop_env: string | null): boolean;
         /**
          * Retrieves the `StartupWMClass` field from `info`. This represents the
          * `WM_CLASS` property of the main window of the application, if launched
@@ -659,7 +660,7 @@ export namespace GioUnix {
          * @param action_name the name of the action as from   {@link GioUnix.DesktopAppInfo.list_actions}
          * @param launch_context a {@link Gio.AppLaunchContext}
          */
-        launch_action(action_name: string, launch_context?: Gio.AppLaunchContext | null): void;
+        launch_action(action_name: string, launch_context: Gio.AppLaunchContext | null): void;
         /**
          * This function performs the equivalent of {@link Gio.AppInfo.launch_uris},
          * but is intended primarily for operating system components that
@@ -688,8 +689,8 @@ export namespace GioUnix {
             uris: string[],
             launch_context: Gio.AppLaunchContext | null,
             spawn_flags: GLib.SpawnFlags,
-            user_setup?: GLib.SpawnChildSetupFunc | null,
-            pid_callback?: DesktopAppLaunchCallback | null,
+            user_setup: GLib.SpawnChildSetupFunc | null,
+            pid_callback: DesktopAppLaunchCallback | null,
         ): boolean;
         /**
          * Equivalent to {@link GioUnix.DesktopAppInfo.launch_uris_as_manager} but
@@ -859,7 +860,7 @@ export namespace GioUnix {
          * @param context the launch context
          * @returns `TRUE` on successful launch, `FALSE` otherwise.
          */
-        launch(files?: Gio.File[] | null, context?: Gio.AppLaunchContext | null): boolean;
+        launch(files: Gio.File[] | null, context: Gio.AppLaunchContext | null): boolean;
         /**
          * Launches the application. This passes the `uris` to the launched application
          * as arguments, using the optional `context` to get information
@@ -877,7 +878,7 @@ export namespace GioUnix {
          * @param context the launch context
          * @returns `TRUE` on successful launch, `FALSE` otherwise.
          */
-        launch_uris(uris?: string[] | null, context?: Gio.AppLaunchContext | null): boolean;
+        launch_uris(uris: string[] | null, context: Gio.AppLaunchContext | null): boolean;
         /**
          * Async version of {@link Gio.AppInfo.launch_uris}.
          *
@@ -890,9 +891,9 @@ export namespace GioUnix {
          * @param cancellable a {@link Gio.Cancellable}
          */
         launch_uris_async(
-            uris?: string[] | null,
-            context?: Gio.AppLaunchContext | null,
-            cancellable?: Gio.Cancellable | null,
+            uris: string[] | null,
+            context: Gio.AppLaunchContext | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Async version of {@link Gio.AppInfo.launch_uris}.
@@ -925,9 +926,9 @@ export namespace GioUnix {
          * @param callback a {@link Gio.AsyncReadyCallback} to call   when the request is done
          */
         launch_uris_async(
-            uris?: string[] | null,
-            context?: Gio.AppLaunchContext | null,
-            cancellable?: Gio.Cancellable | null,
+            uris: string[] | null,
+            context: Gio.AppLaunchContext | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1110,7 +1111,7 @@ export namespace GioUnix {
          * @param context the launch context
          * @virtual
          */
-        vfunc_launch(files?: Gio.File[] | null, context?: Gio.AppLaunchContext | null): boolean;
+        vfunc_launch(files: Gio.File[] | null, context: Gio.AppLaunchContext | null): boolean;
         /**
          * Launches the application. This passes the `uris` to the launched application
          * as arguments, using the optional `context` to get information
@@ -1128,7 +1129,7 @@ export namespace GioUnix {
          * @param context the launch context
          * @virtual
          */
-        vfunc_launch_uris(uris?: string[] | null, context?: Gio.AppLaunchContext | null): boolean;
+        vfunc_launch_uris(uris: string[] | null, context: Gio.AppLaunchContext | null): boolean;
         /**
          * Async version of {@link Gio.AppInfo.launch_uris}.
          *
@@ -1143,10 +1144,10 @@ export namespace GioUnix {
          * @virtual
          */
         vfunc_launch_uris_async(
-            uris?: string[] | null,
-            context?: Gio.AppLaunchContext | null,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            uris: string[] | null,
+            context: Gio.AppLaunchContext | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes a {@link Gio.AppInfo.launch_uris_async} operation.
@@ -1244,38 +1245,19 @@ export namespace GioUnix {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1283,15 +1265,9 @@ export namespace GioUnix {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1458,7 +1434,7 @@ export namespace GioUnix {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1821,12 +1797,14 @@ export namespace GioUnix {
         /**
          * Whether to close the file descriptor when the stream is closed.
          * @since 2.20
+         * @default true
          */
         get close_fd(): boolean;
         set close_fd(val: boolean);
         /**
          * Whether to close the file descriptor when the stream is closed.
          * @since 2.20
+         * @default true
          */
         get closeFd(): boolean;
         set closeFd(val: boolean);
@@ -1834,6 +1812,7 @@ export namespace GioUnix {
          * The file descriptor that the stream reads from.
          * @since 2.20
          * @construct-only
+         * @default -1
          */
         get fd(): number;
 
@@ -1920,7 +1899,7 @@ export namespace GioUnix {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns a new {@link GLib.Source}
          */
-        create_source(cancellable?: Gio.Cancellable | null): GLib.Source;
+        create_source(cancellable: Gio.Cancellable | null): GLib.Source;
         /**
          * Checks if `stream` can be read.
          *
@@ -1954,7 +1933,7 @@ export namespace GioUnix {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns the number of bytes read, or -1 on error (including   {@link Gio.IOErrorEnum.WOULD_BLOCK}).
          */
-        read_nonblocking(cancellable?: Gio.Cancellable | null): [number, Uint8Array];
+        read_nonblocking(cancellable: Gio.Cancellable | null): [number, Uint8Array];
         /**
          * Checks if `stream` is actually pollable. Some classes may implement
          * {@link Gio.PollableInputStream} but have only certain instances of that class
@@ -1981,7 +1960,7 @@ export namespace GioUnix {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @virtual
          */
-        vfunc_create_source(cancellable?: Gio.Cancellable | null): GLib.Source;
+        vfunc_create_source(cancellable: Gio.Cancellable | null): GLib.Source;
         /**
          * Checks if `stream` can be read.
          *
@@ -2051,7 +2030,7 @@ export namespace GioUnix {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` on success, `false` on failure
          */
-        close(cancellable?: Gio.Cancellable | null): boolean;
+        close(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Requests an asynchronous closes of the stream, releasing resources related to it.
          * When the operation is finished `callback` will be called.
@@ -2066,7 +2045,7 @@ export namespace GioUnix {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional cancellable object
          */
-        close_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        close_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Requests an asynchronous closes of the stream, releasing resources related to it.
          * When the operation is finished `callback` will be called.
@@ -2104,7 +2083,7 @@ export namespace GioUnix {
          */
         close_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2148,7 +2127,7 @@ export namespace GioUnix {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns Number of bytes read, or -1 on error, or 0 on end of file.
          */
-        read(cancellable?: Gio.Cancellable | null): [number, Uint8Array];
+        read(cancellable: Gio.Cancellable | null): [number, Uint8Array];
         /**
          * Tries to read `count` bytes from the stream into the buffer starting at
          * `buffer`. Will block during this read.
@@ -2172,7 +2151,7 @@ export namespace GioUnix {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` on success, `false` if there was an error
          */
-        read_all(cancellable?: Gio.Cancellable | null): [boolean, Uint8Array, number];
+        read_all(cancellable: Gio.Cancellable | null): [boolean, Uint8Array, number];
         /**
          * Request an asynchronous read of `count` bytes from the stream into the
          * buffer starting at `buffer`.
@@ -2189,7 +2168,7 @@ export namespace GioUnix {
          */
         read_all_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [globalThis.Promise<number>, Uint8Array];
         /**
          * Request an asynchronous read of `count` bytes from the stream into the
@@ -2228,7 +2207,7 @@ export namespace GioUnix {
          */
         read_all_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): [globalThis.Promise<number> | void, Uint8Array];
         /**
@@ -2272,7 +2251,7 @@ export namespace GioUnix {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        read_async(io_priority: number, cancellable?: Gio.Cancellable | null): [globalThis.Promise<number>, Uint8Array];
+        read_async(io_priority: number, cancellable: Gio.Cancellable | null): [globalThis.Promise<number>, Uint8Array];
         /**
          * Request an asynchronous read of `count` bytes from the stream into the buffer
          * starting at `buffer`. When the operation is finished `callback` will be called.
@@ -2336,7 +2315,7 @@ export namespace GioUnix {
          */
         read_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): [globalThis.Promise<number> | void, Uint8Array];
         /**
@@ -2367,7 +2346,7 @@ export namespace GioUnix {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns a new {@link GLib.Bytes}, or `null` on error
          */
-        read_bytes(count: bigint | number, cancellable?: Gio.Cancellable | null): GLib.Bytes;
+        read_bytes(count: bigint | number, cancellable: Gio.Cancellable | null): GLib.Bytes;
         /**
          * Request an asynchronous read of `count` bytes from the stream into a
          * new {@link GLib.Bytes}. When the operation is finished `callback` will be
@@ -2396,7 +2375,7 @@ export namespace GioUnix {
         read_bytes_async(
             count: bigint | number,
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<GLib.Bytes>;
         /**
          * Request an asynchronous read of `count` bytes from the stream into a
@@ -2459,7 +2438,7 @@ export namespace GioUnix {
         read_bytes_async(
             count: bigint | number,
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GLib.Bytes> | void;
         /**
@@ -2500,7 +2479,7 @@ export namespace GioUnix {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns Number of bytes skipped, or -1 on error
          */
-        skip(count: bigint | number, cancellable?: Gio.Cancellable | null): number;
+        skip(count: bigint | number, cancellable: Gio.Cancellable | null): number;
         /**
          * Request an asynchronous skip of `count` bytes from the stream.
          * When the operation is finished `callback` will be called.
@@ -2532,7 +2511,7 @@ export namespace GioUnix {
         skip_async(
             count: bigint | number,
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<number>;
         /**
          * Request an asynchronous skip of `count` bytes from the stream.
@@ -2601,7 +2580,7 @@ export namespace GioUnix {
         skip_async(
             count: bigint | number,
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<number> | void;
         /**
@@ -2628,8 +2607,8 @@ export namespace GioUnix {
          */
         vfunc_close_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes closing a stream asynchronously, started from `g_input_stream_close_async()`.
@@ -2641,7 +2620,7 @@ export namespace GioUnix {
          * @param cancellable
          * @virtual
          */
-        vfunc_close_fn(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_close_fn(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Request an asynchronous read of `count` bytes from the stream into the buffer
          * starting at `buffer`. When the operation is finished `callback` will be called.
@@ -2673,8 +2652,8 @@ export namespace GioUnix {
          */
         vfunc_read_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): Uint8Array | null;
         /**
          * Finishes an asynchronous stream read operation.
@@ -2688,7 +2667,7 @@ export namespace GioUnix {
          * @param cancellable
          * @virtual
          */
-        vfunc_read_fn(buffer: any | null, count: number, cancellable?: Gio.Cancellable | null): bigint | number;
+        vfunc_read_fn(buffer: any | null, count: number, cancellable: Gio.Cancellable | null): bigint | number;
         /**
          * Tries to skip `count` bytes from the stream. Will block during the operation.
          *
@@ -2708,7 +2687,7 @@ export namespace GioUnix {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_skip(count: number, cancellable?: Gio.Cancellable | null): bigint | number;
+        vfunc_skip(count: number, cancellable: Gio.Cancellable | null): bigint | number;
         /**
          * Request an asynchronous skip of `count` bytes from the stream.
          * When the operation is finished `callback` will be called.
@@ -2742,8 +2721,8 @@ export namespace GioUnix {
         vfunc_skip_async(
             count: number,
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes a stream skip operation.
@@ -2846,38 +2825,19 @@ export namespace GioUnix {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -2885,15 +2845,9 @@ export namespace GioUnix {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -3060,7 +3014,7 @@ export namespace GioUnix {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -3394,12 +3348,14 @@ export namespace GioUnix {
         /**
          * Whether to close the file descriptor when the stream is closed.
          * @since 2.20
+         * @default true
          */
         get close_fd(): boolean;
         set close_fd(val: boolean);
         /**
          * Whether to close the file descriptor when the stream is closed.
          * @since 2.20
+         * @default true
          */
         get closeFd(): boolean;
         set closeFd(val: boolean);
@@ -3407,6 +3363,7 @@ export namespace GioUnix {
          * The file descriptor that the stream writes to.
          * @since 2.20
          * @construct-only
+         * @default -1
          */
         get fd(): number;
 
@@ -3493,7 +3450,7 @@ export namespace GioUnix {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns a new {@link GLib.Source}
          */
-        create_source(cancellable?: Gio.Cancellable | null): GLib.Source;
+        create_source(cancellable: Gio.Cancellable | null): GLib.Source;
         /**
          * Checks if `stream` can be written.
          *
@@ -3532,7 +3489,7 @@ export namespace GioUnix {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns the number of bytes written, or -1 on error (including   {@link Gio.IOErrorEnum.WOULD_BLOCK}).
          */
-        write_nonblocking(buffer: Uint8Array | string, cancellable?: Gio.Cancellable | null): number;
+        write_nonblocking(buffer: Uint8Array | string, cancellable: Gio.Cancellable | null): number;
         /**
          * Attempts to write the bytes contained in the `n_vectors` `vectors` to `stream`,
          * as with `g_output_stream_writev()`. If `stream` is not currently writable,
@@ -3559,7 +3516,7 @@ export namespace GioUnix {
          */
         writev_nonblocking(
             vectors: Gio.OutputVector[],
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [Gio.PollableReturn, number];
         /**
          * Checks if `stream` is actually pollable. Some classes may implement
@@ -3587,7 +3544,7 @@ export namespace GioUnix {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @virtual
          */
-        vfunc_create_source(cancellable?: Gio.Cancellable | null): GLib.Source;
+        vfunc_create_source(cancellable: Gio.Cancellable | null): GLib.Source;
         /**
          * Checks if `stream` can be written.
          *
@@ -3625,7 +3582,7 @@ export namespace GioUnix {
          * @param buffer a buffer to write     data from
          * @virtual
          */
-        vfunc_write_nonblocking(buffer?: Uint8Array | null): bigint | number;
+        vfunc_write_nonblocking(buffer: Uint8Array | null): bigint | number;
         /**
          * Attempts to write the bytes contained in the `n_vectors` `vectors` to `stream`,
          * as with `g_output_stream_writev()`. If `stream` is not currently writable,
@@ -3692,7 +3649,7 @@ export namespace GioUnix {
          * @param cancellable optional cancellable object
          * @returns `true` on success, `false` on failure
          */
-        close(cancellable?: Gio.Cancellable | null): boolean;
+        close(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Requests an asynchronous close of the stream, releasing resources
          * related to it. When the operation is finished `callback` will be
@@ -3707,7 +3664,7 @@ export namespace GioUnix {
          * @param io_priority the io priority of the request.
          * @param cancellable optional cancellable object
          */
-        close_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        close_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Requests an asynchronous close of the stream, releasing resources
          * related to it. When the operation is finished `callback` will be
@@ -3745,7 +3702,7 @@ export namespace GioUnix {
          */
         close_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -3767,7 +3724,7 @@ export namespace GioUnix {
          * @param cancellable optional cancellable object
          * @returns `true` on success, `false` on error
          */
-        flush(cancellable?: Gio.Cancellable | null): boolean;
+        flush(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Forces an asynchronous write of all user-space buffered data for
          * the given `stream`.
@@ -3779,7 +3736,7 @@ export namespace GioUnix {
          * @param io_priority the io priority of the request.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        flush_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        flush_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Forces an asynchronous write of all user-space buffered data for
          * the given `stream`.
@@ -3811,7 +3768,7 @@ export namespace GioUnix {
          */
         flush_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -3855,7 +3812,7 @@ export namespace GioUnix {
         splice(
             source: Gio.InputStream,
             flags: Gio.OutputStreamSpliceFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): number;
         /**
          * Splices a stream asynchronously.
@@ -3874,7 +3831,7 @@ export namespace GioUnix {
             source: Gio.InputStream,
             flags: Gio.OutputStreamSpliceFlags,
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<number>;
         /**
          * Splices a stream asynchronously.
@@ -3915,7 +3872,7 @@ export namespace GioUnix {
             source: Gio.InputStream,
             flags: Gio.OutputStreamSpliceFlags,
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<number> | void;
         /**
@@ -3949,7 +3906,7 @@ export namespace GioUnix {
          * @param cancellable optional cancellable object
          * @returns Number of bytes written, or -1 on error
          */
-        write(buffer: Uint8Array | string, cancellable?: Gio.Cancellable | null): number;
+        write(buffer: Uint8Array | string, cancellable: Gio.Cancellable | null): number;
         /**
          * Tries to write `count` bytes from `buffer` into the stream. Will block
          * during the operation.
@@ -3974,7 +3931,7 @@ export namespace GioUnix {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` on success, `false` if there was an error
          */
-        write_all(buffer: Uint8Array | string, cancellable?: Gio.Cancellable | null): [boolean, number];
+        write_all(buffer: Uint8Array | string, cancellable: Gio.Cancellable | null): [boolean, number];
         /**
          * Request an asynchronous write of `count` bytes from `buffer` into
          * the stream. When the operation is finished `callback` will be called.
@@ -3998,7 +3955,7 @@ export namespace GioUnix {
         write_all_async(
             buffer: Uint8Array | string,
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<number>;
         /**
          * Request an asynchronous write of `count` bytes from `buffer` into
@@ -4051,7 +4008,7 @@ export namespace GioUnix {
         write_all_async(
             buffer: Uint8Array | string,
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<number> | void;
         /**
@@ -4112,7 +4069,7 @@ export namespace GioUnix {
         write_async(
             buffer: Uint8Array | string,
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<number>;
         /**
          * Request an asynchronous write of `count` bytes from `buffer` into
@@ -4205,7 +4162,7 @@ export namespace GioUnix {
         write_async(
             buffer: Uint8Array | string,
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<number> | void;
         /**
@@ -4224,7 +4181,7 @@ export namespace GioUnix {
          * @param cancellable optional cancellable object
          * @returns Number of bytes written, or -1 on error
          */
-        write_bytes(bytes: GLib.Bytes | Uint8Array, cancellable?: Gio.Cancellable | null): number;
+        write_bytes(bytes: GLib.Bytes | Uint8Array, cancellable: Gio.Cancellable | null): number;
         /**
          * This function is similar to `g_output_stream_write_async()`, but
          * takes a {@link GLib.Bytes} as input.  Due to the refcounted nature of {@link GLib.Bytes},
@@ -4246,7 +4203,7 @@ export namespace GioUnix {
         write_bytes_async(
             bytes: GLib.Bytes | Uint8Array,
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<number>;
         /**
          * This function is similar to `g_output_stream_write_async()`, but
@@ -4295,7 +4252,7 @@ export namespace GioUnix {
         write_bytes_async(
             bytes: GLib.Bytes | Uint8Array,
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<number> | void;
         /**
@@ -4338,7 +4295,7 @@ export namespace GioUnix {
          * @param cancellable optional cancellable object
          * @returns `true` on success, `false` if there was an error
          */
-        writev(vectors: Gio.OutputVector[], cancellable?: Gio.Cancellable | null): [boolean, number];
+        writev(vectors: Gio.OutputVector[], cancellable: Gio.Cancellable | null): [boolean, number];
         /**
          * Tries to write the bytes contained in the `n_vectors` `vectors` into the
          * stream. Will block during the operation.
@@ -4366,7 +4323,7 @@ export namespace GioUnix {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` on success, `false` if there was an error
          */
-        writev_all(vectors: Gio.OutputVector[], cancellable?: Gio.Cancellable | null): [boolean, number];
+        writev_all(vectors: Gio.OutputVector[], cancellable: Gio.Cancellable | null): [boolean, number];
         /**
          * Request an asynchronous write of the bytes contained in the `n_vectors` `vectors` into
          * the stream. When the operation is finished `callback` will be called.
@@ -4391,7 +4348,7 @@ export namespace GioUnix {
         writev_all_async(
             vectors: Gio.OutputVector[],
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<number>;
         /**
          * Request an asynchronous write of the bytes contained in the `n_vectors` `vectors` into
@@ -4446,7 +4403,7 @@ export namespace GioUnix {
         writev_all_async(
             vectors: Gio.OutputVector[],
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<number> | void;
         /**
@@ -4502,7 +4459,7 @@ export namespace GioUnix {
         writev_async(
             vectors: Gio.OutputVector[],
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<number>;
         /**
          * Request an asynchronous write of the bytes contained in `n_vectors` `vectors` into
@@ -4585,7 +4542,7 @@ export namespace GioUnix {
         writev_async(
             vectors: Gio.OutputVector[],
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<number> | void;
         /**
@@ -4612,8 +4569,8 @@ export namespace GioUnix {
          */
         vfunc_close_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Closes an output stream.
@@ -4625,7 +4582,7 @@ export namespace GioUnix {
          * @param cancellable
          * @virtual
          */
-        vfunc_close_fn(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_close_fn(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Forces a write of all user-space buffered data for the given
          * `stream`. Will block during the operation. Closing the stream will
@@ -4639,7 +4596,7 @@ export namespace GioUnix {
          * @param cancellable optional cancellable object
          * @virtual
          */
-        vfunc_flush(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_flush(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Forces an asynchronous write of all user-space buffered data for
          * the given `stream`.
@@ -4655,8 +4612,8 @@ export namespace GioUnix {
          */
         vfunc_flush_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes flushing an output stream.
@@ -4674,7 +4631,7 @@ export namespace GioUnix {
         vfunc_splice(
             source: Gio.InputStream,
             flags: Gio.OutputStreamSpliceFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): bigint | number;
         /**
          * Splices a stream asynchronously.
@@ -4695,8 +4652,8 @@ export namespace GioUnix {
             source: Gio.InputStream,
             flags: Gio.OutputStreamSpliceFlags,
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes an asynchronous stream splice operation.
@@ -4749,8 +4706,8 @@ export namespace GioUnix {
         vfunc_write_async(
             buffer: Uint8Array | null,
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes a stream write operation.
@@ -4783,7 +4740,7 @@ export namespace GioUnix {
          * @param cancellable optional cancellable object
          * @virtual
          */
-        vfunc_write_fn(buffer?: Uint8Array | null, cancellable?: Gio.Cancellable | null): bigint | number;
+        vfunc_write_fn(buffer: Uint8Array | null, cancellable: Gio.Cancellable | null): bigint | number;
         /**
          * Request an asynchronous write of the bytes contained in `n_vectors` `vectors` into
          * the stream. When the operation is finished `callback` will be called.
@@ -4824,8 +4781,8 @@ export namespace GioUnix {
         vfunc_writev_async(
             vectors: Gio.OutputVector[],
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes a stream writev operation.
@@ -4861,7 +4818,7 @@ export namespace GioUnix {
          * @param cancellable optional cancellable object
          * @virtual
          */
-        vfunc_writev_fn(vectors: Gio.OutputVector[], cancellable?: Gio.Cancellable | null): [boolean, bigint | number];
+        vfunc_writev_fn(vectors: Gio.OutputVector[], cancellable: Gio.Cancellable | null): [boolean, bigint | number];
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -4909,38 +4866,19 @@ export namespace GioUnix {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -4948,15 +4886,9 @@ export namespace GioUnix {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -5123,7 +5055,7 @@ export namespace GioUnix {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set

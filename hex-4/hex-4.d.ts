@@ -98,7 +98,7 @@ export namespace Hex {
      * @param file file to initialize the buffer with, or `null`
      * @returns a pointer to a valid implementation of a {@link Hex.Buffer} interface, pre-cast as type {@link Hex.Buffer}, or `null` if the operation failed. Starting with 4.2, if a specific backend is requested, and the system supports plugins as a whole but cannot load that specified plugin, `null` will be returned as though the operation failed, so as to customize the fallback scheme programmatically.
      */
-    function buffer_util_new(plugin?: string | null, file?: Gio.File | null): Buffer;
+    function buffer_util_new(plugin: string | null, file: Gio.File | null): Buffer;
     /**
      * Bitwise flags for search options that can be combined as desired.
      * @gir-type Flags
@@ -320,6 +320,23 @@ export namespace Hex {
          * @param found_msg message intended to be displayed by the client if the string   is found
          * @param not_found_msg message intended to be displayed by the client if the string   is not found
          * @param cancellable
+         */
+        find_backward_async(
+            start: bigint | number,
+            what: Uint8Array | string,
+            found_msg: string,
+            not_found_msg: string,
+            cancellable: Gio.Cancellable | null,
+        ): [globalThis.Promise<DocumentFindData>, number];
+        /**
+         * Non-blocking version of {@link Hex.Document.find_backward}. This is the
+         * function that should generally be used by a GUI client to find a string
+         * backwards in a {@link Hex.Document}.
+         * @param start starting offset byte of the payload to commence the search
+         * @param what a pointer to the data to   search within the {@link Hex.Document}
+         * @param found_msg message intended to be displayed by the client if the string   is found
+         * @param not_found_msg message intended to be displayed by the client if the string   is not found
+         * @param cancellable
          * @param callback function to be called when the operation is   complete
          */
         find_backward_async(
@@ -327,9 +344,28 @@ export namespace Hex {
             what: Uint8Array | string,
             found_msg: string,
             not_found_msg: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): number;
+        /**
+         * Non-blocking version of {@link Hex.Document.find_backward}. This is the
+         * function that should generally be used by a GUI client to find a string
+         * backwards in a {@link Hex.Document}.
+         * @param start starting offset byte of the payload to commence the search
+         * @param what a pointer to the data to   search within the {@link Hex.Document}
+         * @param found_msg message intended to be displayed by the client if the string   is found
+         * @param not_found_msg message intended to be displayed by the client if the string   is not found
+         * @param cancellable
+         * @param callback function to be called when the operation is   complete
+         */
+        find_backward_async(
+            start: bigint | number,
+            what: Uint8Array | string,
+            found_msg: string,
+            not_found_msg: string,
+            cancellable: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): [globalThis.Promise<DocumentFindData> | void, number];
         /**
          * Full version of {@link Hex.Document.find_backward} which allows for
          * more flexibility than the above, which is only for a byte-by-byte exact
@@ -346,13 +382,33 @@ export namespace Hex {
          * Non-blocking version of {@link Hex.Document.find_backward_full}.
          * @param find_data a {@link Hex.DocumentFindData} structure
          * @param cancellable a {@link Gio.Cancellable}
+         */
+        find_backward_full_async(
+            find_data: DocumentFindData,
+            cancellable: Gio.Cancellable | null,
+        ): globalThis.Promise<DocumentFindData>;
+        /**
+         * Non-blocking version of {@link Hex.Document.find_backward_full}.
+         * @param find_data a {@link Hex.DocumentFindData} structure
+         * @param cancellable a {@link Gio.Cancellable}
          * @param callback function to be called when the operation is   complete
          */
         find_backward_full_async(
             find_data: DocumentFindData,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * Non-blocking version of {@link Hex.Document.find_backward_full}.
+         * @param find_data a {@link Hex.DocumentFindData} structure
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback function to be called when the operation is   complete
+         */
+        find_backward_full_async(
+            find_data: DocumentFindData,
+            cancellable: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<DocumentFindData> | void;
         /**
          * Obtain the result of a completed asynchronous find operation (forwards or
          * backwards).
@@ -381,6 +437,23 @@ export namespace Hex {
          * @param found_msg message intended to be displayed by the client if the string   is found
          * @param not_found_msg message intended to be displayed by the client if the string   is not found
          * @param cancellable
+         */
+        find_forward_async(
+            start: bigint | number,
+            what: Uint8Array | string,
+            found_msg: string,
+            not_found_msg: string,
+            cancellable: Gio.Cancellable | null,
+        ): [globalThis.Promise<DocumentFindData>, number];
+        /**
+         * Non-blocking version of {@link Hex.Document.find_forward}. This is the
+         * function that should generally be used by a GUI client to find a string
+         * forwards in a {@link Hex.Document}.
+         * @param start starting offset byte of the payload to commence the search
+         * @param what a pointer to the data to   search within the {@link Hex.Document}
+         * @param found_msg message intended to be displayed by the client if the string   is found
+         * @param not_found_msg message intended to be displayed by the client if the string   is not found
+         * @param cancellable
          * @param callback function to be called when the operation is   complete
          */
         find_forward_async(
@@ -388,9 +461,28 @@ export namespace Hex {
             what: Uint8Array | string,
             found_msg: string,
             not_found_msg: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): number;
+        /**
+         * Non-blocking version of {@link Hex.Document.find_forward}. This is the
+         * function that should generally be used by a GUI client to find a string
+         * forwards in a {@link Hex.Document}.
+         * @param start starting offset byte of the payload to commence the search
+         * @param what a pointer to the data to   search within the {@link Hex.Document}
+         * @param found_msg message intended to be displayed by the client if the string   is found
+         * @param not_found_msg message intended to be displayed by the client if the string   is not found
+         * @param cancellable
+         * @param callback function to be called when the operation is   complete
+         */
+        find_forward_async(
+            start: bigint | number,
+            what: Uint8Array | string,
+            found_msg: string,
+            not_found_msg: string,
+            cancellable: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): [globalThis.Promise<DocumentFindData> | void, number];
         /**
          * Full version of {@link Hex.Document.find_forward} which allows for
          * more flexibility than the above, which is only for a byte-by-byte exact
@@ -407,13 +499,33 @@ export namespace Hex {
          * Non-blocking version of {@link Hex.Document.find_forward_full}.
          * @param find_data a {@link Hex.DocumentFindData} structure
          * @param cancellable a {@link Gio.Cancellable}
+         */
+        find_forward_full_async(
+            find_data: DocumentFindData,
+            cancellable: Gio.Cancellable | null,
+        ): globalThis.Promise<DocumentFindData>;
+        /**
+         * Non-blocking version of {@link Hex.Document.find_forward_full}.
+         * @param find_data a {@link Hex.DocumentFindData} structure
+         * @param cancellable a {@link Gio.Cancellable}
          * @param callback function to be called when the operation is   complete
          */
         find_forward_full_async(
             find_data: DocumentFindData,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * Non-blocking version of {@link Hex.Document.find_forward_full}.
+         * @param find_data a {@link Hex.DocumentFindData} structure
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback function to be called when the operation is   complete
+         */
+        find_forward_full_async(
+            find_data: DocumentFindData,
+            cancellable: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<DocumentFindData> | void;
         /**
          * Get the {@link Hex.Buffer} connected with the {@link Hex.Document}.
          * @returns a pointer to the {@link Hex.Buffer} connected with the {@link Hex.Document}, or `null` if no such interface is so connected.
@@ -444,7 +556,7 @@ export namespace Hex {
          * the operation completes.
          * @param cancellable a {@link Gio.Cancellable}
          */
-        read_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        read_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Read the {@link Gio.File} into the buffer connected to the {@link Hex.Document} object.
          *
@@ -467,7 +579,7 @@ export namespace Hex {
          * @param callback function to be called when the operation is   complete
          */
         read_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -566,7 +678,7 @@ export namespace Hex {
          * value in your {@link Gio.AsyncReadyCallback} function.
          * @param cancellable a {@link Gio.Cancellable}
          */
-        write_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        write_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Write the buffer to the pre-existing {@link Gio.File} connected to the {@link Hex.Document}
          * object. This can be used for a 'Save (in place)' operation. This is the
@@ -593,7 +705,7 @@ export namespace Hex {
          * @param callback function to be called when the operation is   complete
          */
         write_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -628,13 +740,42 @@ export namespace Hex {
          * value in your {@link Gio.AsyncReadyCallback} function.
          * @param file {@link Gio.File} to be written to
          * @param cancellable a {@link Gio.Cancellable}
+         */
+        write_to_file_async(file: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        /**
+         * Write the buffer to `file` asynchronously. This can be used for a 'Save As'
+         * operation.  This is the non-blocking version of
+         * {@link Hex.Document.write_to_file}.
+         *
+         * Note that for both this method and {@link Hex.Document.write_async},
+         * {@link Hex.Document.write_finish} is the method to retrieve the return
+         * value in your {@link Gio.AsyncReadyCallback} function.
+         * @param file {@link Gio.File} to be written to
+         * @param cancellable a {@link Gio.Cancellable}
          * @param callback function to be called when the operation is   complete
          */
         write_to_file_async(
             file: Gio.File,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * Write the buffer to `file` asynchronously. This can be used for a 'Save As'
+         * operation.  This is the non-blocking version of
+         * {@link Hex.Document.write_to_file}.
+         *
+         * Note that for both this method and {@link Hex.Document.write_async},
+         * {@link Hex.Document.write_finish} is the method to retrieve the return
+         * value in your {@link Gio.AsyncReadyCallback} function.
+         * @param file {@link Gio.File} to be written to
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback function to be called when the operation is   complete
+         */
+        write_to_file_async(
+            file: Gio.File,
+            cancellable: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<boolean> | void;
     }
 
     namespace Widget {
@@ -751,6 +892,7 @@ export namespace Hex {
          * 0x1F) will be rendered as unicode symbols on the ASCII side of the
          * {@link Hex.Widget}.
          * @since 4.10
+         * @default false
          */
         get display_control_characters(): boolean;
         set display_control_characters(val: boolean);
@@ -759,6 +901,7 @@ export namespace Hex {
          * 0x1F) will be rendered as unicode symbols on the ASCII side of the
          * {@link Hex.Widget}.
          * @since 4.10
+         * @default false
          */
         get displayControlCharacters(): boolean;
         set displayControlCharacters(val: boolean);
@@ -771,24 +914,28 @@ export namespace Hex {
         /**
          * Whether zeroes (`00`) will be faded on the hex side of the {@link Hex.Widget}.
          * @since 4.8
+         * @default false
          */
         get fade_zeroes(): boolean;
         set fade_zeroes(val: boolean);
         /**
          * Whether zeroes (`00`) will be faded on the hex side of the {@link Hex.Widget}.
          * @since 4.8
+         * @default false
          */
         get fadeZeroes(): boolean;
         set fadeZeroes(val: boolean);
         /**
          * Whether insert-mode (versus overwrite) is currently engaged.
          * @since 4.10
+         * @default false
          */
         get insert_mode(): boolean;
         set insert_mode(val: boolean);
         /**
          * Whether insert-mode (versus overwrite) is currently engaged.
          * @since 4.10
+         * @default false
          */
         get insertMode(): boolean;
         set insertMode(val: boolean);
@@ -846,7 +993,7 @@ export namespace Hex {
          * @param color A custom color to set for the mark, or `NULL` to use the   default
          * @returns A pointer to a {@link Hex.WidgetMark} object, owned by the {@link Hex.Widget}.
          */
-        add_mark(start: bigint | number, end: bigint | number, color?: Gdk.RGBA | null): WidgetMark;
+        add_mark(start: bigint | number, end: bigint | number, color: Gdk.RGBA | null): WidgetMark;
         /**
          * Clear the selection (if any). Any autohighlights will remain intact.
          */
@@ -1038,6 +1185,7 @@ export namespace Hex {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
@@ -1046,6 +1194,7 @@ export namespace Hex {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
@@ -1149,7 +1298,7 @@ export namespace Hex {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent?: Gtk.Accessible | null, next_sibling?: Gtk.Accessible | null): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
         /**
          * Updates the next accessible sibling.
          *
@@ -1157,7 +1306,7 @@ export namespace Hex {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling?: Gtk.Accessible | null): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
         /**
          * Informs ATs that the platform state has changed.
          *
@@ -1268,7 +1417,7 @@ export namespace Hex {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -1282,7 +1431,7 @@ export namespace Hex {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called at the end of each custom element handled by
@@ -1297,7 +1446,7 @@ export namespace Hex {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called for each unknown element under `<child>`.
@@ -1401,38 +1550,19 @@ export namespace Hex {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1440,15 +1570,9 @@ export namespace Hex {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1615,7 +1739,7 @@ export namespace Hex {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1848,11 +1972,13 @@ export namespace Hex {
         /**
          * Whether the {@link Hex.WidgetMark} has a custom color.
          * @read-only
+         * @default false
          */
         get have_custom_color(): boolean;
         /**
          * Whether the {@link Hex.WidgetMark} has a custom color.
          * @read-only
+         * @default false
          */
         get haveCustomColor(): boolean;
 
@@ -2050,10 +2176,7 @@ export namespace Hex {
              * @param callback function to be called when the operation is   complete
              * @virtual
              */
-            vfunc_read_async(
-                cancellable?: Gio.Cancellable | null,
-                callback?: Gio.AsyncReadyCallback<this> | null,
-            ): void;
+            vfunc_read_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
             /**
              * Obtain the result of a completed file read operation.
              *
@@ -2101,8 +2224,8 @@ export namespace Hex {
              */
             vfunc_write_to_file_async(
                 file: Gio.File,
-                cancellable?: Gio.Cancellable | null,
-                callback?: Gio.AsyncReadyCallback<this> | null,
+                cancellable: Gio.Cancellable | null,
+                callback: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * Obtain the result of a completed write-to-file operation.
@@ -2155,7 +2278,7 @@ export namespace Hex {
          * @param plugin the name of the plugin, or `null`
          * @param file file to initialize the buffer with, or `null`
          */
-        util_new(plugin?: string | null, file?: Gio.File | null): Buffer;
+        util_new(plugin: string | null, file: Gio.File | null): Buffer;
     }
     /**
      * {@link Hex.Buffer} is an interface which can be implemented to act as a buffer
@@ -2221,7 +2344,7 @@ export namespace Hex {
          * version of {@link Hex.Buffer.read}.
          * @param cancellable a {@link Gio.Cancellable}
          */
-        read_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        read_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Read the {@link Gio.File}, previously set, into the buffer. This is the non-blocking
          * version of {@link Hex.Buffer.read}.
@@ -2236,7 +2359,7 @@ export namespace Hex {
          * @param callback function to be called when the operation is   complete
          */
         read_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2287,7 +2410,7 @@ export namespace Hex {
          * @param file {@link Gio.File} to write to
          * @param cancellable a {@link Gio.Cancellable}
          */
-        write_to_file_async(file: Gio.File, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        write_to_file_async(file: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Write the buffer to the {@link Gio.File} specified. This is the non-blocking
          * version of {@link Hex.Buffer.write_to_file}.
@@ -2309,7 +2432,7 @@ export namespace Hex {
          */
         write_to_file_async(
             file: Gio.File,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**

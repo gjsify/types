@@ -710,10 +710,19 @@ export namespace EvinceDocument {
          */
         get color(): any;
         set color(val: any);
+        /**
+         * @default null
+         */
         get contents(): string;
         set contents(val: string);
+        /**
+         * @default null
+         */
         get modified(): string;
         set modified(val: string);
+        /**
+         * @default null
+         */
         get name(): string;
         set name(val: string);
         /**
@@ -967,28 +976,52 @@ export namespace EvinceDocument {
          * @param attachment
          */
         set_attachment(attachment: Attachment): boolean;
-        /** @category Inherited from EvinceDocument.AnnotationMarkup */
+        /**
+         * @default false
+         * @category Inherited from EvinceDocument.AnnotationMarkup
+         */
         // This accessor conflicts with a field or function name in a parent class or interface.
         can_have_popup: boolean | any;
-        /** @category Inherited from EvinceDocument.AnnotationMarkup */
+        /**
+         * @default false
+         * @category Inherited from EvinceDocument.AnnotationMarkup
+         */
         get canHavePopup(): boolean;
         set canHavePopup(val: boolean);
-        /** @category Inherited from EvinceDocument.AnnotationMarkup */
+        /**
+         * @default true
+         * @category Inherited from EvinceDocument.AnnotationMarkup
+         */
         // This accessor conflicts with a field or function name in a parent class or interface.
         has_popup: boolean | any;
-        /** @category Inherited from EvinceDocument.AnnotationMarkup */
+        /**
+         * @default true
+         * @category Inherited from EvinceDocument.AnnotationMarkup
+         */
         get hasPopup(): boolean;
         set hasPopup(val: boolean);
-        /** @category Inherited from EvinceDocument.AnnotationMarkup */
+        /**
+         * @default null
+         * @category Inherited from EvinceDocument.AnnotationMarkup
+         */
         get label(): string;
         set label(val: string);
-        /** @category Inherited from EvinceDocument.AnnotationMarkup */
+        /**
+         * @default 1
+         * @category Inherited from EvinceDocument.AnnotationMarkup
+         */
         get opacity(): number;
         set opacity(val: number);
-        /** @category Inherited from EvinceDocument.AnnotationMarkup */
+        /**
+         * @default false
+         * @category Inherited from EvinceDocument.AnnotationMarkup
+         */
         get popup_is_open(): boolean;
         set popup_is_open(val: boolean);
-        /** @category Inherited from EvinceDocument.AnnotationMarkup */
+        /**
+         * @default false
+         * @category Inherited from EvinceDocument.AnnotationMarkup
+         */
         get popupIsOpen(): boolean;
         set popupIsOpen(val: boolean);
         /** @category Inherited from EvinceDocument.AnnotationMarkup */
@@ -1009,13 +1042,22 @@ export namespace EvinceDocument {
          */
         get color(): any;
         set color(val: any);
-        /** @category Inherited from EvinceDocument.Annotation */
+        /**
+         * @default null
+         * @category Inherited from EvinceDocument.Annotation
+         */
         get contents(): string;
         set contents(val: string);
-        /** @category Inherited from EvinceDocument.Annotation */
+        /**
+         * @default null
+         * @category Inherited from EvinceDocument.Annotation
+         */
         get modified(): string;
         set modified(val: string);
-        /** @category Inherited from EvinceDocument.Annotation */
+        /**
+         * @default null
+         * @category Inherited from EvinceDocument.Annotation
+         */
         get name(): string;
         set name(val: string);
         /**
@@ -1209,10 +1251,19 @@ export namespace EvinceDocument {
 
         // Properties
 
+        /**
+         * @default EvinceDocument.AnnotationTextIcon.NOTE
+         */
         get icon(): AnnotationTextIcon;
         set icon(val: AnnotationTextIcon);
+        /**
+         * @default false
+         */
         get is_open(): boolean;
         set is_open(val: boolean);
+        /**
+         * @default false
+         */
         get isOpen(): boolean;
         set isOpen(val: boolean);
 
@@ -1266,28 +1317,52 @@ export namespace EvinceDocument {
          * @param is_open
          */
         set_is_open(is_open: boolean): boolean;
-        /** @category Inherited from EvinceDocument.AnnotationMarkup */
+        /**
+         * @default false
+         * @category Inherited from EvinceDocument.AnnotationMarkup
+         */
         // This accessor conflicts with a field or function name in a parent class or interface.
         can_have_popup: boolean | any;
-        /** @category Inherited from EvinceDocument.AnnotationMarkup */
+        /**
+         * @default false
+         * @category Inherited from EvinceDocument.AnnotationMarkup
+         */
         get canHavePopup(): boolean;
         set canHavePopup(val: boolean);
-        /** @category Inherited from EvinceDocument.AnnotationMarkup */
+        /**
+         * @default true
+         * @category Inherited from EvinceDocument.AnnotationMarkup
+         */
         // This accessor conflicts with a field or function name in a parent class or interface.
         has_popup: boolean | any;
-        /** @category Inherited from EvinceDocument.AnnotationMarkup */
+        /**
+         * @default true
+         * @category Inherited from EvinceDocument.AnnotationMarkup
+         */
         get hasPopup(): boolean;
         set hasPopup(val: boolean);
-        /** @category Inherited from EvinceDocument.AnnotationMarkup */
+        /**
+         * @default null
+         * @category Inherited from EvinceDocument.AnnotationMarkup
+         */
         get label(): string;
         set label(val: string);
-        /** @category Inherited from EvinceDocument.AnnotationMarkup */
+        /**
+         * @default 1
+         * @category Inherited from EvinceDocument.AnnotationMarkup
+         */
         get opacity(): number;
         set opacity(val: number);
-        /** @category Inherited from EvinceDocument.AnnotationMarkup */
+        /**
+         * @default false
+         * @category Inherited from EvinceDocument.AnnotationMarkup
+         */
         get popup_is_open(): boolean;
         set popup_is_open(val: boolean);
-        /** @category Inherited from EvinceDocument.AnnotationMarkup */
+        /**
+         * @default false
+         * @category Inherited from EvinceDocument.AnnotationMarkup
+         */
         get popupIsOpen(): boolean;
         set popupIsOpen(val: boolean);
         /** @category Inherited from EvinceDocument.AnnotationMarkup */
@@ -1308,13 +1383,22 @@ export namespace EvinceDocument {
          */
         get color(): any;
         set color(val: any);
-        /** @category Inherited from EvinceDocument.Annotation */
+        /**
+         * @default null
+         * @category Inherited from EvinceDocument.Annotation
+         */
         get contents(): string;
         set contents(val: string);
-        /** @category Inherited from EvinceDocument.Annotation */
+        /**
+         * @default null
+         * @category Inherited from EvinceDocument.Annotation
+         */
         get modified(): string;
         set modified(val: string);
-        /** @category Inherited from EvinceDocument.Annotation */
+        /**
+         * @default null
+         * @category Inherited from EvinceDocument.Annotation
+         */
         get name(): string;
         set name(val: string);
         /**
@@ -1505,6 +1589,9 @@ export namespace EvinceDocument {
 
         // Properties
 
+        /**
+         * @default EvinceDocument.AnnotationTextMarkupType.HIGHLIGHT
+         */
         get type(): AnnotationTextMarkupType;
         set type(val: AnnotationTextMarkupType);
 
@@ -1561,28 +1648,52 @@ export namespace EvinceDocument {
          * @param markup_type
          */
         set_markup_type(markup_type: AnnotationTextMarkupType): boolean;
-        /** @category Inherited from EvinceDocument.AnnotationMarkup */
+        /**
+         * @default false
+         * @category Inherited from EvinceDocument.AnnotationMarkup
+         */
         // This accessor conflicts with a field or function name in a parent class or interface.
         can_have_popup: boolean | any;
-        /** @category Inherited from EvinceDocument.AnnotationMarkup */
+        /**
+         * @default false
+         * @category Inherited from EvinceDocument.AnnotationMarkup
+         */
         get canHavePopup(): boolean;
         set canHavePopup(val: boolean);
-        /** @category Inherited from EvinceDocument.AnnotationMarkup */
+        /**
+         * @default true
+         * @category Inherited from EvinceDocument.AnnotationMarkup
+         */
         // This accessor conflicts with a field or function name in a parent class or interface.
         has_popup: boolean | any;
-        /** @category Inherited from EvinceDocument.AnnotationMarkup */
+        /**
+         * @default true
+         * @category Inherited from EvinceDocument.AnnotationMarkup
+         */
         get hasPopup(): boolean;
         set hasPopup(val: boolean);
-        /** @category Inherited from EvinceDocument.AnnotationMarkup */
+        /**
+         * @default null
+         * @category Inherited from EvinceDocument.AnnotationMarkup
+         */
         get label(): string;
         set label(val: string);
-        /** @category Inherited from EvinceDocument.AnnotationMarkup */
+        /**
+         * @default 1
+         * @category Inherited from EvinceDocument.AnnotationMarkup
+         */
         get opacity(): number;
         set opacity(val: number);
-        /** @category Inherited from EvinceDocument.AnnotationMarkup */
+        /**
+         * @default false
+         * @category Inherited from EvinceDocument.AnnotationMarkup
+         */
         get popup_is_open(): boolean;
         set popup_is_open(val: boolean);
-        /** @category Inherited from EvinceDocument.AnnotationMarkup */
+        /**
+         * @default false
+         * @category Inherited from EvinceDocument.AnnotationMarkup
+         */
         get popupIsOpen(): boolean;
         set popupIsOpen(val: boolean);
         /** @category Inherited from EvinceDocument.AnnotationMarkup */
@@ -1603,13 +1714,22 @@ export namespace EvinceDocument {
          */
         get color(): any;
         set color(val: any);
-        /** @category Inherited from EvinceDocument.Annotation */
+        /**
+         * @default null
+         * @category Inherited from EvinceDocument.Annotation
+         */
         get contents(): string;
         set contents(val: string);
-        /** @category Inherited from EvinceDocument.Annotation */
+        /**
+         * @default null
+         * @category Inherited from EvinceDocument.Annotation
+         */
         get modified(): string;
         set modified(val: string);
-        /** @category Inherited from EvinceDocument.Annotation */
+        /**
+         * @default null
+         * @category Inherited from EvinceDocument.Annotation
+         */
         get name(): string;
         set name(val: string);
         /**
@@ -1799,6 +1919,7 @@ export namespace EvinceDocument {
 
         /**
          * @construct-only
+         * @default 0
          */
         set ctime(val: bigint | number);
         /**
@@ -1807,18 +1928,22 @@ export namespace EvinceDocument {
         set data(val: any);
         /**
          * @construct-only
+         * @default null
          */
         set description(val: string);
         /**
          * @construct-only
+         * @default 0
          */
         set mtime(val: bigint | number);
         /**
          * @construct-only
+         * @default null
          */
         set name(val: string);
         /**
          * @construct-only
+         * @default 0
          */
         set size(val: number);
 
@@ -1847,7 +1972,7 @@ export namespace EvinceDocument {
             mtime: GLib.Time,
             ctime: GLib.Time,
             size: bigint | number,
-            data?: any | null,
+            data: any | null,
         ): Attachment;
 
         // Signals
@@ -1914,6 +2039,9 @@ export namespace EvinceDocument {
 
         // Properties
 
+        /**
+         * @default false
+         */
         get modified(): boolean;
         set modified(val: boolean);
 
@@ -2007,7 +2135,7 @@ export namespace EvinceDocument {
             fd: number,
             mime_type: string,
             flags: DocumentLoadFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): Document;
         /**
          * Synchronously creates a {@link EvinceDocument.Document} for the document at `file`; or, if no
@@ -2022,7 +2150,7 @@ export namespace EvinceDocument {
         static factory_get_document_for_gfile(
             file: Gio.File,
             flags: DocumentLoadFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): Document;
         /**
          * Synchronously creates a {@link EvinceDocument.Document} for the document from `stream`; or, if no
@@ -2043,7 +2171,7 @@ export namespace EvinceDocument {
             stream: Gio.InputStream,
             mime_type: string | null,
             flags: DocumentLoadFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): Document;
         /**
          * Creates a {@link EvinceDocument.Document} for the document at `uri`; or, if no backend handling
@@ -2261,7 +2389,7 @@ export namespace EvinceDocument {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @virtual
          */
-        vfunc_load_fd(fd: number, flags: DocumentLoadFlags, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_load_fd(fd: number, flags: DocumentLoadFlags, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Synchronously loads the document from `file`.
          * See `ev_document_load()` for more information.
@@ -2270,7 +2398,7 @@ export namespace EvinceDocument {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @virtual
          */
-        vfunc_load_gfile(file: Gio.File, flags: DocumentLoadFlags, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_load_gfile(file: Gio.File, flags: DocumentLoadFlags, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Synchronously loads the document from `stream`.
          * See `ev_document_load()` for more information.
@@ -2282,7 +2410,7 @@ export namespace EvinceDocument {
         vfunc_load_stream(
             stream: Gio.InputStream,
             flags: DocumentLoadFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * @param rc
@@ -2390,7 +2518,7 @@ export namespace EvinceDocument {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` if loading succeeded, or `false` on error with `error` filled in
          */
-        load_fd(fd: number, flags: DocumentLoadFlags, cancellable?: Gio.Cancellable | null): boolean;
+        load_fd(fd: number, flags: DocumentLoadFlags, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Loads `document` from `uri`.
          *
@@ -2413,7 +2541,7 @@ export namespace EvinceDocument {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` if loading succeeded, or `false` on error with `error` filled in
          */
-        load_gfile(file: Gio.File, flags: DocumentLoadFlags, cancellable?: Gio.Cancellable | null): boolean;
+        load_gfile(file: Gio.File, flags: DocumentLoadFlags, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Synchronously loads the document from `stream`.
          * See `ev_document_load()` for more information.
@@ -2422,7 +2550,7 @@ export namespace EvinceDocument {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` if loading succeeded, or `false` on error with `error` filled in
          */
-        load_stream(stream: Gio.InputStream, flags: DocumentLoadFlags, cancellable?: Gio.Cancellable | null): boolean;
+        load_stream(stream: Gio.InputStream, flags: DocumentLoadFlags, cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param rc
          */
@@ -2919,6 +3047,7 @@ export namespace EvinceDocument {
         get action(): LinkAction;
         /**
          * @construct-only
+         * @default null
          */
         get title(): string;
 
@@ -3021,14 +3150,17 @@ export namespace EvinceDocument {
         get dest(): LinkDest;
         /**
          * @construct-only
+         * @default false
          */
         get exclude_reset_fields(): boolean;
         /**
          * @construct-only
+         * @default false
          */
         get excludeResetFields(): boolean;
         /**
          * @construct-only
+         * @default null
          */
         get filename(): string;
         /**
@@ -3041,10 +3173,12 @@ export namespace EvinceDocument {
         get hideList(): any;
         /**
          * @construct-only
+         * @default null
          */
         get name(): string;
         /**
          * @construct-only
+         * @default null
          */
         get params(): string;
         /**
@@ -3073,10 +3207,12 @@ export namespace EvinceDocument {
         get toggleList(): any;
         /**
          * @construct-only
+         * @default EvinceDocument.LinkActionType.GOTO_DEST
          */
         get type(): LinkActionType;
         /**
          * @construct-only
+         * @default null
          */
         get uri(): string;
 
@@ -3211,46 +3347,57 @@ export namespace EvinceDocument {
 
         /**
          * @construct-only
+         * @default 0
          */
         get bottom(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get change(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get left(): number;
         /**
          * @construct-only
+         * @default null
          */
         get named(): string;
         /**
          * @construct-only
+         * @default 0
          */
         get page(): number;
         /**
          * @construct-only
+         * @default null
          */
         get page_label(): string;
         /**
          * @construct-only
+         * @default null
          */
         get pageLabel(): string;
         /**
          * @construct-only
+         * @default 0
          */
         get right(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get top(): number;
         /**
          * @construct-only
+         * @default EvinceDocument.LinkDestType.UNKNOWN
          */
         get type(): LinkDestType;
         /**
          * @construct-only
+         * @default 0
          */
         get zoom(): number;
 
@@ -3620,22 +3767,49 @@ export namespace EvinceDocument {
 
         // Properties
 
+        /**
+         * @default EvinceDocument.TransitionEffectAlignment.HORIZONTAL
+         */
         get alignment(): TransitionEffectAlignment;
         set alignment(val: TransitionEffectAlignment);
+        /**
+         * @default 0
+         */
         get angle(): number;
         set angle(val: number);
+        /**
+         * @default EvinceDocument.TransitionEffectDirection.INWARD
+         */
         get direction(): TransitionEffectDirection;
         set direction(val: TransitionEffectDirection);
+        /**
+         * @default 0
+         */
         get duration(): number;
         set duration(val: number);
+        /**
+         * @default 0
+         */
         get duration_real(): number;
         set duration_real(val: number);
+        /**
+         * @default 0
+         */
         get durationReal(): number;
         set durationReal(val: number);
+        /**
+         * @default false
+         */
         get rectangular(): boolean;
         set rectangular(val: boolean);
+        /**
+         * @default 1
+         */
         get scale(): number;
         set scale(val: number);
+        /**
+         * @default EvinceDocument.TransitionEffectType.REPLACE
+         */
         get type(): TransitionEffectType;
         set type(val: TransitionEffectType);
 
@@ -4100,7 +4274,7 @@ export namespace EvinceDocument {
          * @param data mapping data to find
          * @returns an {@link EvinceDocument.Mapping}
          */
-        find(data?: any | null): Mapping;
+        find(data: any | null): Mapping;
         /**
          * @param data mapping data to find
          * @param func function to use for equality check
@@ -4295,20 +4469,44 @@ export namespace EvinceDocument {
     interface AnnotationMarkup extends Annotation {
         // Properties
 
+        /**
+         * @default false
+         */
         get can_have_popup(): boolean;
         set can_have_popup(val: boolean);
+        /**
+         * @default false
+         */
         get canHavePopup(): boolean;
         set canHavePopup(val: boolean);
+        /**
+         * @default true
+         */
         get has_popup(): boolean;
         set has_popup(val: boolean);
+        /**
+         * @default true
+         */
         get hasPopup(): boolean;
         set hasPopup(val: boolean);
+        /**
+         * @default null
+         */
         get label(): string;
         set label(val: string);
+        /**
+         * @default 1
+         */
         get opacity(): number;
         set opacity(val: number);
+        /**
+         * @default false
+         */
         get popup_is_open(): boolean;
         set popup_is_open(val: boolean);
+        /**
+         * @default false
+         */
         get popupIsOpen(): boolean;
         set popupIsOpen(val: boolean);
         get rectangle(): Rectangle;

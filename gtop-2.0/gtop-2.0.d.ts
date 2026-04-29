@@ -788,7 +788,7 @@ export namespace GTop {
             send_size: bigint | number,
             send_buf: any | null,
             recv_size: bigint | number,
-            recv_buf?: any | null,
+            recv_buf: any | null,
         ): any | null;
         /**
          * @param command
@@ -802,7 +802,7 @@ export namespace GTop {
             send_size: bigint | number,
             send_buf: any | null,
             recv_size: bigint | number,
-            recv_buf?: any | null,
+            recv_buf: any | null,
         ): any | null;
         close_p(): void;
         close_r(): void;

@@ -433,6 +433,7 @@ export namespace GdkWayland {
         /**
          * Whether to hide on outside clicks.
          * @construct-only
+         * @default false
          * @category Inherited from Gdk.Popup
          */
         get autohide(): boolean;
@@ -441,13 +442,13 @@ export namespace GdkWayland {
          * @construct-only
          * @category Inherited from Gdk.Popup
          */
-        get parent(): Gdk.Surface;
+        get parent(): Gdk.Surface | null;
         /**
          * The mouse pointer for the {@link Gdk.Surface}.
          * @category Inherited from Gdk.Surface
          */
-        get cursor(): Gdk.Cursor;
-        set cursor(val: Gdk.Cursor);
+        get cursor(): Gdk.Cursor | null;
+        set cursor(val: Gdk.Cursor | null);
         /**
          * The {@link Gdk.Display} connection of the surface.
          * @construct-only
@@ -469,12 +470,14 @@ export namespace GdkWayland {
         /**
          * The height of the surface, in pixels.
          * @read-only
+         * @default 0
          * @category Inherited from Gdk.Surface
          */
         get height(): number;
         /**
          * Whether the surface is mapped.
          * @read-only
+         * @default false
          * @category Inherited from Gdk.Surface
          */
         get mapped(): boolean;
@@ -482,6 +485,7 @@ export namespace GdkWayland {
          * The scale of the surface.
          * @since 4.12
          * @read-only
+         * @default 1
          * @category Inherited from Gdk.Surface
          */
         get scale(): number;
@@ -491,6 +495,7 @@ export namespace GdkWayland {
          * The scale factor is the next larger integer,
          * compared to {@link Gdk.Surface.scale}.
          * @read-only
+         * @default 1
          * @category Inherited from Gdk.Surface
          */
         get scale_factor(): number;
@@ -500,12 +505,14 @@ export namespace GdkWayland {
          * The scale factor is the next larger integer,
          * compared to {@link Gdk.Surface.scale}.
          * @read-only
+         * @default 1
          * @category Inherited from Gdk.Surface
          */
         get scaleFactor(): number;
         /**
          * The width of the surface in pixels.
          * @read-only
+         * @default 0
          * @category Inherited from Gdk.Surface
          */
         get width(): number;
@@ -766,7 +773,7 @@ export namespace GdkWayland {
          * to create the cursor. To make the cursor invisible, use `GDK_BLANK_CURSOR`.
          * @param cursor a {@link Gdk.Cursor}
          */
-        set_cursor(cursor?: Gdk.Cursor | null): void;
+        set_cursor(cursor: Gdk.Cursor | null): void;
         /**
          * Sets a specific {@link Gdk.Cursor} for a given device when it gets inside `surface`.
          *
@@ -796,7 +803,7 @@ export namespace GdkWayland {
          * a particular backend supports input regions.
          * @param region region of surface to be reactive,   or `null` to make the entire surface reactive
          */
-        set_input_region(region?: cairo.Region | null): void;
+        set_input_region(region: cairo.Region | null): void;
         /**
          * Marks a region of the {@link Gdk.Surface} as opaque.
          *
@@ -815,7 +822,7 @@ export namespace GdkWayland {
          * [GtkWidgetClass.css_changed](../gtk4/vfunc.Widget.css_changed.html) handler.
          * @param region a region, or `null` to make the entire   surface opaque
          */
-        set_opaque_region(region?: cairo.Region | null): void;
+        set_opaque_region(region: cairo.Region | null): void;
         /**
          * Translates coordinates between two surfaces.
          *
@@ -1114,29 +1121,34 @@ export namespace GdkWayland {
          * The capabilities that are available for this toplevel.
          * @since 4.20
          * @read-only
+         * @default 0
          * @category Inherited from Gdk.Toplevel
          */
         get capabilities(): Gdk.ToplevelCapabilities;
         /**
          * Whether the window manager should add decorations.
+         * @default false
          * @category Inherited from Gdk.Toplevel
          */
         get decorated(): boolean;
         set decorated(val: boolean);
         /**
          * Whether the window manager should allow to close the surface.
+         * @default false
          * @category Inherited from Gdk.Toplevel
          */
         get deletable(): boolean;
         set deletable(val: boolean);
         /**
          * The fullscreen mode of the surface.
+         * @default Gdk.FullscreenMode.CURRENT_MONITOR
          * @category Inherited from Gdk.Toplevel
          */
         get fullscreen_mode(): Gdk.FullscreenMode;
         set fullscreen_mode(val: Gdk.FullscreenMode);
         /**
          * The fullscreen mode of the surface.
+         * @default Gdk.FullscreenMode.CURRENT_MONITOR
          * @category Inherited from Gdk.Toplevel
          */
         get fullscreenMode(): Gdk.FullscreenMode;
@@ -1153,6 +1165,7 @@ export namespace GdkWayland {
          * toplevel sizes with the windowing system. It does not affect interactive
          * resizes started with {@link Gdk.Toplevel.begin_resize}.
          * @since 4.20
+         * @default Gdk.Gravity.NORTH_EAST
          * @category Inherited from Gdk.Toplevel
          */
         get gravity(): Gdk.Gravity;
@@ -1171,6 +1184,7 @@ export namespace GdkWayland {
         set iconList(val: any);
         /**
          * Whether the surface is modal.
+         * @default false
          * @category Inherited from Gdk.Toplevel
          */
         get modal(): boolean;
@@ -1178,12 +1192,14 @@ export namespace GdkWayland {
         /**
          * Whether the surface should inhibit keyboard shortcuts.
          * @read-only
+         * @default false
          * @category Inherited from Gdk.Toplevel
          */
         get shortcuts_inhibited(): boolean;
         /**
          * Whether the surface should inhibit keyboard shortcuts.
          * @read-only
+         * @default false
          * @category Inherited from Gdk.Toplevel
          */
         get shortcutsInhibited(): boolean;
@@ -1192,6 +1208,7 @@ export namespace GdkWayland {
          *
          * See {@link Gdk.AppLaunchContext} for more information about
          * startup feedback.
+         * @default null
          * @category Inherited from Gdk.Toplevel
          */
         get startup_id(): string;
@@ -1201,6 +1218,7 @@ export namespace GdkWayland {
          *
          * See {@link Gdk.AppLaunchContext} for more information about
          * startup feedback.
+         * @default null
          * @category Inherited from Gdk.Toplevel
          */
         get startupId(): string;
@@ -1208,11 +1226,13 @@ export namespace GdkWayland {
         /**
          * The state of the toplevel.
          * @read-only
+         * @default 0
          * @category Inherited from Gdk.Toplevel
          */
         get state(): Gdk.ToplevelState;
         /**
          * The title of the surface.
+         * @default null
          * @category Inherited from Gdk.Toplevel
          */
         get title(): string;
@@ -1233,8 +1253,8 @@ export namespace GdkWayland {
          * The mouse pointer for the {@link Gdk.Surface}.
          * @category Inherited from Gdk.Surface
          */
-        get cursor(): Gdk.Cursor;
-        set cursor(val: Gdk.Cursor);
+        get cursor(): Gdk.Cursor | null;
+        set cursor(val: Gdk.Cursor | null);
         /**
          * The {@link Gdk.Display} connection of the surface.
          * @construct-only
@@ -1256,12 +1276,14 @@ export namespace GdkWayland {
         /**
          * The height of the surface, in pixels.
          * @read-only
+         * @default 0
          * @category Inherited from Gdk.Surface
          */
         get height(): number;
         /**
          * Whether the surface is mapped.
          * @read-only
+         * @default false
          * @category Inherited from Gdk.Surface
          */
         get mapped(): boolean;
@@ -1269,6 +1291,7 @@ export namespace GdkWayland {
          * The scale of the surface.
          * @since 4.12
          * @read-only
+         * @default 1
          * @category Inherited from Gdk.Surface
          */
         get scale(): number;
@@ -1278,6 +1301,7 @@ export namespace GdkWayland {
          * The scale factor is the next larger integer,
          * compared to {@link Gdk.Surface.scale}.
          * @read-only
+         * @default 1
          * @category Inherited from Gdk.Surface
          */
         get scale_factor(): number;
@@ -1287,12 +1311,14 @@ export namespace GdkWayland {
          * The scale factor is the next larger integer,
          * compared to {@link Gdk.Surface.scale}.
          * @read-only
+         * @default 1
          * @category Inherited from Gdk.Surface
          */
         get scaleFactor(): number;
         /**
          * The width of the surface in pixels.
          * @read-only
+         * @default 0
          * @category Inherited from Gdk.Surface
          */
         get width(): number;
@@ -1376,7 +1402,7 @@ export namespace GdkWayland {
          * by listening to the {@link Gdk.Toplevel.shortcuts_inhibited} property.
          * @param event the {@link Gdk.Event} that is triggering the inhibit   request, or `null` if none is available
          */
-        inhibit_system_shortcuts(event?: Gdk.Event | null): void;
+        inhibit_system_shortcuts(event: Gdk.Event | null): void;
         /**
          * Asks to lower the `toplevel` below other windows.
          *
@@ -1714,7 +1740,7 @@ export namespace GdkWayland {
          * to create the cursor. To make the cursor invisible, use `GDK_BLANK_CURSOR`.
          * @param cursor a {@link Gdk.Cursor}
          */
-        set_cursor(cursor?: Gdk.Cursor | null): void;
+        set_cursor(cursor: Gdk.Cursor | null): void;
         /**
          * Sets a specific {@link Gdk.Cursor} for a given device when it gets inside `surface`.
          *
@@ -1744,7 +1770,7 @@ export namespace GdkWayland {
          * a particular backend supports input regions.
          * @param region region of surface to be reactive,   or `null` to make the entire surface reactive
          */
-        set_input_region(region?: cairo.Region | null): void;
+        set_input_region(region: cairo.Region | null): void;
         /**
          * Marks a region of the {@link Gdk.Surface} as opaque.
          *
@@ -1763,7 +1789,7 @@ export namespace GdkWayland {
          * [GtkWidgetClass.css_changed](../gtk4/vfunc.Widget.css_changed.html) handler.
          * @param region a region, or `null` to make the entire   surface opaque
          */
-        set_opaque_region(region?: cairo.Region | null): void;
+        set_opaque_region(region: cairo.Region | null): void;
         /**
          * Translates coordinates between two surfaces.
          *

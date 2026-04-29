@@ -184,7 +184,7 @@ export namespace Libxfce4ui {
         parent: Gtk.Window | null,
         num_tabs: number,
         show_confirm_box: boolean,
-        confirm_box_checked?: boolean | null,
+        confirm_box_checked: boolean | null,
     ): number;
     /**
      * Asks the user to visit the online documentation. If confirmed, it will open
@@ -201,10 +201,10 @@ export namespace Libxfce4ui {
      * @since 4.10
      */
     function dialog_show_help(
-        parent?: Gtk.Window | null,
-        component?: string | null,
-        page?: string | null,
-        offset?: string | null,
+        parent: Gtk.Window | null,
+        component: string | null,
+        page: string | null,
+        offset: string | null,
     ): void;
     /**
      * Asks the user to visit the online documentation. If confirmed, it will open
@@ -223,11 +223,11 @@ export namespace Libxfce4ui {
      * @since 4.12
      */
     function dialog_show_help_with_version(
-        parent?: Gtk.Window | null,
-        component?: string | null,
-        page?: string | null,
-        offset?: string | null,
-        version?: string | null,
+        parent: Gtk.Window | null,
+        component: string | null,
+        page: string | null,
+        offset: string | null,
+        version: string | null,
     ): void;
     /**
      * Similar to gdk_seat_grab but tries to grab the seat five times with 100ms
@@ -243,7 +243,7 @@ export namespace Libxfce4ui {
         seat: Gdk.Seat,
         window: Gdk.Window,
         capabilities: Gdk.SeatCapabilities,
-        cursor?: Gdk.Cursor | null,
+        cursor: Gdk.Cursor | null,
     ): boolean;
     /**
      * Returns the currently active {@link Gdk.Screen}, that is, the screen which
@@ -283,7 +283,7 @@ export namespace Libxfce4ui {
         accel_group: Gtk.AccelGroup,
         action_entries: GtkActionEntry,
         n_action_entries: number,
-        callback_data?: any | null,
+        callback_data: any | null,
     ): void;
     /**
      * This method will disconnect each accel_path from the {@link Libxfce4ui.GtkActionEntry} in action_entries.
@@ -315,7 +315,7 @@ export namespace Libxfce4ui {
      * @param label the text of the button, with an underscore                        in front of the mnemonic character.
      * @returns the newly created {@link Gtk.Button} widget.
      */
-    function gtk_button_new_mixed(stock_id?: string | null, label?: string | null): Gtk.Widget;
+    function gtk_button_new_mixed(stock_id: string | null, label: string | null): Gtk.Widget;
     /**
      * Convenience method to create a {@link Gtk.CheckMenuItem} and preconfigure it with the passed parameters.
      * @param label_text Label to use for the {@link Gtk.CheckMenuItem}
@@ -335,7 +335,7 @@ export namespace Libxfce4ui {
         callback: GObject.Callback | null,
         callback_param: GObject.Object | null,
         active: boolean,
-        menu_to_append_item?: Gtk.MenuShell | null,
+        menu_to_append_item: Gtk.MenuShell | null,
     ): Gtk.Widget;
     /**
      * Activates the callback function of the {@link Libxfce4ui.GtkActionEntry} that corresponds to `accel_path`. If no such action
@@ -417,12 +417,12 @@ export namespace Libxfce4ui {
      */
     function gtk_image_menu_item_new(
         label_text: string,
-        tooltip_text?: string | null,
-        accel_path?: string | null,
-        callback?: GObject.Callback | null,
-        callback_param?: GObject.Object | null,
-        image?: Gtk.Widget | null,
-        menu_to_append_item?: Gtk.MenuShell | null,
+        tooltip_text: string | null,
+        accel_path: string | null,
+        callback: GObject.Callback | null,
+        callback_param: GObject.Object | null,
+        image: Gtk.Widget | null,
+        menu_to_append_item: Gtk.MenuShell | null,
     ): Gtk.Widget;
     /**
      * Convenience method to create a {@link Gtk.ImageMenuItem} and preconfigure it with the passed parameters.
@@ -438,12 +438,12 @@ export namespace Libxfce4ui {
      */
     function gtk_image_menu_item_new_from_icon_name(
         label_text: string,
-        tooltip_text?: string | null,
-        accel_path?: string | null,
-        callback?: GObject.Callback | null,
-        callback_param?: GObject.Object | null,
-        icon_name?: string | null,
-        menu_to_append_item?: Gtk.MenuShell | null,
+        tooltip_text: string | null,
+        accel_path: string | null,
+        callback: GObject.Callback | null,
+        callback_param: GObject.Object | null,
+        icon_name: string | null,
+        menu_to_append_item: Gtk.MenuShell | null,
     ): Gtk.Widget;
     /**
      * Sets the `ATK_RELATION_LABEL_FOR` relation on `label` for `widget`, which means
@@ -479,11 +479,11 @@ export namespace Libxfce4ui {
      */
     function gtk_menu_item_new(
         label_text: string,
-        tooltip_text?: string | null,
-        accel_path?: string | null,
-        callback?: GObject.Callback | null,
-        callback_param?: GObject.Object | null,
-        menu_to_append_item?: Gtk.MenuShell | null,
+        tooltip_text: string | null,
+        accel_path: string | null,
+        callback: GObject.Callback | null,
+        callback_param: GObject.Object | null,
+        menu_to_append_item: Gtk.MenuShell | null,
     ): Gtk.Widget;
     /**
      * Method to create a menu item from the passed action entry
@@ -495,8 +495,8 @@ export namespace Libxfce4ui {
      */
     function gtk_menu_item_new_from_action_entry(
         action_entry: GtkActionEntry,
-        callback_param?: GObject.Object | null,
-        menu_to_append_item?: Gtk.MenuShell | null,
+        callback_param: GObject.Object | null,
+        menu_to_append_item: Gtk.MenuShell | null,
     ): Gtk.Widget | null;
     /**
      * Use the passed accel_path show the related {@link Gtk.AccelLabel} with the correct accelerator on the item.
@@ -504,7 +504,7 @@ export namespace Libxfce4ui {
      * @param accel_path Unique path, used to identify the accelerator, or NULL to show no accelerator
      * @since 4.16
      */
-    function gtk_menu_item_set_accel_label(menu_item: Gtk.MenuItem, accel_path?: string | null): void;
+    function gtk_menu_item_set_accel_label(menu_item: Gtk.MenuItem, accel_path: string | null): void;
     /**
      * Attempts to pop up a {@link Gtk.Menu} for a short duration. Unlike the original
      * `gtk_menu_popup()`, this function will verify that the menu has been mapped
@@ -565,7 +565,7 @@ export namespace Libxfce4ui {
         callback: GObject.Callback | null,
         callback_param: GObject.Object | null,
         active: boolean,
-        menu_to_append_item?: Gtk.MenuShell | null,
+        menu_to_append_item: Gtk.MenuShell | null,
     ): Gtk.Widget;
     /**
      * Method to create a toggle menu item from the passed action entry
@@ -580,7 +580,7 @@ export namespace Libxfce4ui {
         action_entry: GtkActionEntry,
         callback_param: GObject.Object | null,
         active: boolean,
-        menu_to_append_item?: Gtk.MenuShell | null,
+        menu_to_append_item: Gtk.MenuShell | null,
     ): Gtk.Widget | null;
     /**
      * Method to create a toolbar toggle-button from the passed action entry.
@@ -729,7 +729,7 @@ export namespace Libxfce4ui {
         flags: GLib.SpawnFlags,
         startup_notify: boolean,
         startup_timestamp: number,
-        startup_icon_name?: string | null,
+        startup_icon_name: string | null,
     ): boolean;
     /**
      * Like `xfce_spawn_on_screen()`, but allows to attach a closure to watch the
@@ -779,8 +779,8 @@ export namespace Libxfce4ui {
         flags: GLib.SpawnFlags,
         startup_notify: boolean,
         startup_timestamp: number,
-        startup_icon_name?: string | null,
-        child_watch_closure?: GObject.Closure | null,
+        startup_icon_name: string | null,
+        child_watch_closure: GObject.Closure | null,
     ): boolean;
     /**
      * Moves a widget from one GtkContainer to another, handling reference
@@ -945,6 +945,7 @@ export namespace Libxfce4ui {
          * indicates no maximum length.
          * @since 4.16
          * @construct-only
+         * @default -1
          */
         set max_text_length(val: number);
         /**
@@ -952,6 +953,7 @@ export namespace Libxfce4ui {
          * indicates no maximum length.
          * @since 4.16
          * @construct-only
+         * @default -1
          */
         set maxTextLength(val: number);
         /**
@@ -960,6 +962,7 @@ export namespace Libxfce4ui {
          * filename.
          * @since 4.16
          * @construct-only
+         * @default null
          */
         set original_filename(val: string);
         /**
@@ -968,6 +971,7 @@ export namespace Libxfce4ui {
          * filename.
          * @since 4.16
          * @construct-only
+         * @default null
          */
         set originalFilename(val: string);
 
@@ -1047,6 +1051,7 @@ export namespace Libxfce4ui {
         /**
          * The orientation of the orientable.
          * @since 2.16
+         * @default Gtk.Orientation.HORIZONTAL
          * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
@@ -1108,38 +1113,19 @@ export namespace Libxfce4ui {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1147,15 +1133,9 @@ export namespace Libxfce4ui {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1322,7 +1302,7 @@ export namespace Libxfce4ui {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1616,6 +1596,7 @@ export namespace Libxfce4ui {
 
         /**
          * @construct-only
+         * @default 0
          */
         set argc(val: number);
         /**
@@ -1624,20 +1605,37 @@ export namespace Libxfce4ui {
         set argv(val: string[]);
         /**
          * @construct-only
+         * @default null
          */
         get client_id(): string;
         /**
          * @construct-only
+         * @default null
          */
         get clientId(): string;
+        /**
+         * @default null
+         */
         get current_directory(): string;
         set current_directory(val: string);
+        /**
+         * @default null
+         */
         get currentDirectory(): string;
         set currentDirectory(val: string);
+        /**
+         * @default null
+         */
         get desktop_file(): string;
         set desktop_file(val: string);
+        /**
+         * @default null
+         */
         get desktopFile(): string;
         set desktopFile(val: string);
+        /**
+         * @default 50
+         */
         get priority(): number;
         set priority(val: number);
         get restart_command(): string[];
@@ -1646,6 +1644,7 @@ export namespace Libxfce4ui {
         set restartCommand(val: string[]);
         /**
          * @read-only
+         * @default false
          */
         get resumed(): boolean;
 
@@ -1916,16 +1915,34 @@ export namespace Libxfce4ui {
 
         // Properties
 
+        /**
+         * @default null
+         */
         get heartbeat_command(): string;
         set heartbeat_command(val: string);
+        /**
+         * @default null
+         */
         get heartbeatCommand(): string;
         set heartbeatCommand(val: string);
+        /**
+         * @default null
+         */
         get lock_command(): string;
         set lock_command(val: string);
+        /**
+         * @default null
+         */
         get lockCommand(): string;
         set lockCommand(val: string);
+        /**
+         * @default false
+         */
         get lock_on_sleep(): boolean;
         set lock_on_sleep(val: boolean);
+        /**
+         * @default false
+         */
         get lockOnSleep(): boolean;
         set lockOnSleep(val: boolean);
 
@@ -2089,6 +2106,7 @@ export namespace Libxfce4ui {
 
         /**
          * The subtitle displayed below the main dialog title.
+         * @default null
          */
         get subtitle(): string;
         set subtitle(val: string);
@@ -2181,7 +2199,7 @@ export namespace Libxfce4ui {
          * shown at the top of dialog.
          * @param subtitle the new subtitle for the `titled_dialog`, or `null`.
          */
-        set_subtitle(subtitle?: string | null): void;
+        set_subtitle(subtitle: string | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -2229,38 +2247,19 @@ export namespace Libxfce4ui {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -2268,15 +2267,9 @@ export namespace Libxfce4ui {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -2443,7 +2436,7 @@ export namespace Libxfce4ui {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set

@@ -306,16 +306,16 @@ export namespace LightDM {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            authentication_user: string;
-            authenticationUser: string;
+            authentication_user: string | null;
+            authenticationUser: string | null;
             autologin_guest_hint: boolean;
             autologinGuestHint: boolean;
-            autologin_session_hint: string;
-            autologinSessionHint: string;
+            autologin_session_hint: string | null;
+            autologinSessionHint: string | null;
             autologin_timeout_hint: number;
             autologinTimeoutHint: number;
-            autologin_user_hint: string;
-            autologinUserHint: string;
+            autologin_user_hint: string | null;
+            autologinUserHint: string | null;
             default_session_hint: string;
             defaultSessionHint: string;
             has_guest_account_hint: boolean;
@@ -330,8 +330,8 @@ export namespace LightDM {
             lockHint: boolean;
             select_guest_hint: boolean;
             selectGuestHint: boolean;
-            select_user_hint: string;
-            selectUserHint: string;
+            select_user_hint: string | null;
+            selectUserHint: string | null;
             show_manual_login_hint: boolean;
             showManualLoginHint: boolean;
             show_remote_login_hint: boolean;
@@ -351,122 +351,152 @@ export namespace LightDM {
 
         /**
          * @read-only
+         * @default null
          */
-        get authentication_user(): string;
+        get authentication_user(): string | null;
         /**
          * @read-only
+         * @default null
          */
-        get authenticationUser(): string;
+        get authenticationUser(): string | null;
         /**
          * @read-only
+         * @default false
          */
         get autologin_guest_hint(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get autologinGuestHint(): boolean;
         /**
          * @read-only
+         * @default null
          */
-        get autologin_session_hint(): string;
+        get autologin_session_hint(): string | null;
         /**
          * @read-only
+         * @default null
          */
-        get autologinSessionHint(): string;
+        get autologinSessionHint(): string | null;
         /**
          * @read-only
+         * @default 0
          */
         get autologin_timeout_hint(): number;
         /**
          * @read-only
+         * @default 0
          */
         get autologinTimeoutHint(): number;
         /**
          * @read-only
+         * @default null
          */
-        get autologin_user_hint(): string;
+        get autologin_user_hint(): string | null;
         /**
          * @read-only
+         * @default null
          */
-        get autologinUserHint(): string;
+        get autologinUserHint(): string | null;
         /**
          * @read-only
+         * @default null
          */
         get default_session_hint(): string;
         /**
          * @read-only
+         * @default null
          */
         get defaultSessionHint(): string;
         /**
          * @read-only
+         * @default false
          */
         get has_guest_account_hint(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get hasGuestAccountHint(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get hide_users_hint(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get hideUsersHint(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get in_authentication(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get inAuthentication(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get is_authenticated(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get isAuthenticated(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get lock_hint(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get lockHint(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get select_guest_hint(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get selectGuestHint(): boolean;
         /**
          * @read-only
+         * @default null
          */
-        get select_user_hint(): string;
+        get select_user_hint(): string | null;
         /**
          * @read-only
+         * @default null
          */
-        get selectUserHint(): string;
+        get selectUserHint(): string | null;
         /**
          * @read-only
+         * @default false
          */
         get show_manual_login_hint(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get showManualLoginHint(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get show_remote_login_hint(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get showRemoteLoginHint(): boolean;
 
@@ -546,7 +576,7 @@ export namespace LightDM {
          * @param username A username or `NULL` to prompt for a username.
          * @returns `TRUE` if authentication request sent.
          */
-        authenticate(username?: string | null): boolean;
+        authenticate(username: string | null): boolean;
         /**
          * Starts the authentication procedure for the guest user.
          * @returns `TRUE` if authentication request sent.
@@ -563,7 +593,7 @@ export namespace LightDM {
          * @param username A username of `NULL` to prompt for a username.
          * @returns `TRUE` if authentication request sent.
          */
-        authenticate_remote(session: string, username?: string | null): boolean;
+        authenticate_remote(session: string, username: string | null): boolean;
         /**
          * Cancel the current user authentication.
          * @returns `TRUE` if cancel request sent.
@@ -586,7 +616,7 @@ export namespace LightDM {
          * See `lightdm_greeter_connect_to_daemon_sync()` for the synchronous version.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        connect_to_daemon(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        connect_to_daemon(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously connects the greeter to the display manager.
          *
@@ -607,7 +637,7 @@ export namespace LightDM {
          * @param callback A {@link Gio.AsyncReadyCallback} to call when completed or `null`.
          */
         connect_to_daemon(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -635,7 +665,7 @@ export namespace LightDM {
          * @param username A username
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        ensure_shared_data_dir(username: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
+        ensure_shared_data_dir(username: string, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * Ensure that a shared data dir for the given user is available.  Both the
          * greeter user and `username` will have write access to that folder.  The
@@ -673,7 +703,7 @@ export namespace LightDM {
          */
         ensure_shared_data_dir(
             username: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
         /**
@@ -815,7 +845,7 @@ export namespace LightDM {
          * @param session The session to log into or `NULL` to use the default.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        start_session(session?: string | null, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        start_session(session: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously start a session for the authenticated user.
          *
@@ -842,8 +872,8 @@ export namespace LightDM {
          * @param callback A {@link Gio.AsyncReadyCallback} to call when completed or `null`.
          */
         start_session(
-            session?: string | null,
-            cancellable?: Gio.Cancellable | null,
+            session: string | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -857,7 +887,7 @@ export namespace LightDM {
          * @param session The session to log into or `NULL` to use the default.
          * @returns TRUE if the session was started.
          */
-        start_session_sync(session?: string | null): boolean;
+        start_session_sync(session: string | null): boolean;
     }
 
     namespace Language {
@@ -889,14 +919,17 @@ export namespace LightDM {
 
         /**
          * @construct-only
+         * @default null
          */
         get code(): string;
         /**
          * @read-only
+         * @default null
          */
         get name(): string;
         /**
          * @read-only
+         * @default null
          */
         get territory(): string;
 
@@ -991,18 +1024,22 @@ export namespace LightDM {
 
         /**
          * @construct-only
+         * @default null
          */
         get description(): string;
         /**
          * @construct-only
+         * @default null
          */
         get name(): string;
         /**
          * @construct-only
+         * @default null
          */
         get short_description(): string;
         /**
          * @construct-only
+         * @default null
          */
         get shortDescription(): string;
 
@@ -1090,14 +1127,17 @@ export namespace LightDM {
 
         /**
          * @read-only
+         * @default null
          */
         get comment(): string;
         /**
          * @read-only
+         * @default null
          */
         get key(): string;
         /**
          * @read-only
+         * @default null
          */
         get name(): string;
 
@@ -1189,25 +1229,25 @@ export namespace LightDM {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            background: string;
+            background: string | null;
             display_name: string;
             displayName: string;
             has_messages: boolean;
             hasMessages: boolean;
             home_directory: string;
             homeDirectory: string;
-            image: string;
+            image: string | null;
             is_locked: boolean;
             isLocked: boolean;
-            language: string;
-            layout: string;
+            language: string | null;
+            layout: string | null;
             layouts: string[];
             logged_in: boolean;
             loggedIn: boolean;
             name: string;
             real_name: string;
             realName: string;
-            session: string;
+            session: string | null;
             uid: bigint | number;
         }
     }
@@ -1224,82 +1264,101 @@ export namespace LightDM {
 
         /**
          * @read-only
+         * @default null
          */
-        get background(): string;
+        get background(): string | null;
         /**
          * @read-only
+         * @default null
          */
         get display_name(): string;
         /**
          * @read-only
+         * @default null
          */
         get displayName(): string;
         /**
          * @read-only
+         * @default false
          */
         get has_messages(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get hasMessages(): boolean;
         /**
          * @read-only
+         * @default null
          */
         get home_directory(): string;
         /**
          * @read-only
+         * @default null
          */
         get homeDirectory(): string;
         /**
          * @read-only
+         * @default null
          */
-        get image(): string;
+        get image(): string | null;
         /**
          * @read-only
+         * @default false
          */
         get is_locked(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get isLocked(): boolean;
         /**
          * @read-only
+         * @default null
          */
-        get language(): string;
+        get language(): string | null;
         /**
          * @read-only
+         * @default null
          */
-        get layout(): string;
+        get layout(): string | null;
         /**
          * @read-only
          */
         get layouts(): string[];
         /**
          * @read-only
+         * @default false
          */
         get logged_in(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get loggedIn(): boolean;
         /**
          * @read-only
+         * @default null
          */
         get name(): string;
         /**
          * @read-only
+         * @default null
          */
         get real_name(): string;
         /**
          * @read-only
+         * @default null
          */
         get realName(): string;
         /**
          * @read-only
+         * @default null
          */
-        get session(): string;
+        get session(): string | null;
         /**
          * @read-only
+         * @default 0
          */
         get uid(): number;
 
@@ -1466,14 +1525,17 @@ export namespace LightDM {
 
         /**
          * @read-only
+         * @default 0
          */
         get length(): number;
         /**
          * @read-only
+         * @default 0
          */
         get num_users(): number;
         /**
          * @read-only
+         * @default 0
          */
         get numUsers(): number;
 

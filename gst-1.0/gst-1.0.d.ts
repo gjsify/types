@@ -2991,8 +2991,8 @@ export namespace Gst {
      * @since 1.16
      */
     function buffer_list_replace(
-        old_list?: BufferList | null,
-        new_list?: BufferList | null,
+        old_list: BufferList | null,
+        new_list: BufferList | null,
     ): [boolean, BufferList | null];
     /**
      * Modifies a pointer to a {@link Gst.BufferList} to point to a different
@@ -3003,7 +3003,7 @@ export namespace Gst {
      * @returns `true` if `new_list` was different from `old_list`
      * @since 1.16
      */
-    function buffer_list_take(old_list: BufferList, new_list?: BufferList | null): [boolean, BufferList];
+    function buffer_list_take(old_list: BufferList, new_list: BufferList | null): [boolean, BufferList];
     /**
      * Calls `func` from another thread and passes `user_data` to it.
      * @param func function to call asynchronously from another thread
@@ -3048,7 +3048,7 @@ export namespace Gst {
      * @returns `true` if `new_context` was different from `old_context`
      * @since 1.2
      */
-    function context_replace(old_context: Context, new_context?: Context | null): [boolean, Context];
+    function context_replace(old_context: Context, new_context: Context | null): [boolean, Context];
     function core_error_quark(): GLib.Quark;
     /**
      * @returns `true` if NEON (32-bit) is supported by the CPU, `false` otherwise.
@@ -3244,7 +3244,7 @@ export namespace Gst {
         line: number,
         object: GObject.Object | null,
         message: DebugMessage,
-        user_data?: any | null,
+        user_data: any | null,
     ): void;
     /**
      * Returns the string representation for the specified debug log message
@@ -3371,7 +3371,7 @@ export namespace Gst {
      * @returns a string containing a string     representation of the object
      * @since 1.26
      */
-    function debug_print_object(ptr?: any | null): string;
+    function debug_print_object(ptr: any | null): string;
     /**
      * Returns a string that represents `segments`.
      *
@@ -3381,7 +3381,7 @@ export namespace Gst {
      * @returns a string containing a string     representation of the segment
      * @since 1.26
      */
-    function debug_print_segment(segment?: Segment | null): string;
+    function debug_print_segment(segment: Segment | null): string;
     /**
      * If libunwind, glibc backtrace or DbgHelp are present
      * a stack trace is printed.
@@ -3392,13 +3392,13 @@ export namespace Gst {
      * @param func the log function to remove, or `null` to     remove the default log function
      * @returns How many instances of the function were removed
      */
-    function debug_remove_log_function(func?: LogFunction | null): number;
+    function debug_remove_log_function(func: LogFunction | null): number;
     /**
      * Removes all registered instances of log functions with the given user data.
      * @param data user data of the log function to remove
      * @returns How many instances of the function were removed
      */
-    function debug_remove_log_function_by_data(data?: any | null): number;
+    function debug_remove_log_function_by_data(data: any | null): number;
     /**
      * Removes any previously added ring buffer logger with
      * `gst_debug_add_ring_buffer_logger()`.
@@ -3641,7 +3641,7 @@ export namespace Gst {
      * @param obj
      * @returns `true` if `obj` is a {@link Gst.CapsFeatures} `false` otherwise
      */
-    function is_caps_features(obj?: any | null): boolean;
+    function is_caps_features(obj: any | null): boolean;
     /**
      * Use this function to check if GStreamer has been initialized with `gst_init()`
      * or `gst_init_check()`.
@@ -3658,7 +3658,7 @@ export namespace Gst {
      * @returns `true` if `new_message` was different from `old_message`
      * @since 1.16
      */
-    function message_take(old_message: Message, new_message?: Message | null): [boolean, Message];
+    function message_take(old_message: Message, new_message: Message | null): [boolean, Message];
     /**
      * Get a printable name for the given message type. Do not modify or free.
      * @param type the message type
@@ -3771,7 +3771,7 @@ export namespace Gst {
     function meta_register_custom(
         name: string,
         tags: string[],
-        transform_func?: CustomMetaTransformFunction | null,
+        transform_func: CustomMetaTransformFunction | null,
     ): MetaInfo;
     /**
      * Simplified version of `gst_meta_register_custom()`, with no tags and no
@@ -3791,10 +3791,7 @@ export namespace Gst {
      * @param newdata pointer to new mini-object
      * @returns `true` if `newdata` was different from `olddata`
      */
-    function mini_object_replace(
-        olddata?: MiniObject | null,
-        newdata?: MiniObject | null,
-    ): [boolean, MiniObject | null];
+    function mini_object_replace(olddata: MiniObject | null, newdata: MiniObject | null): [boolean, MiniObject | null];
     /**
      * Modifies a pointer to point to a new mini-object. The modification
      * is done atomically. This version is similar to `gst_mini_object_replace()`
@@ -4004,7 +4001,7 @@ export namespace Gst {
      * @returns `true` if `new_query` was different from `old_query`
      * @since 1.16
      */
-    function query_take(old_query?: Query | null, new_query?: Query | null): [boolean, Query | null];
+    function query_take(old_query: Query | null, new_query: Query | null): [boolean, Query | null];
     /**
      * Gets the {@link Gst.QueryTypeFlags} associated with `type`.
      * @param type a {@link Gst.QueryType}
@@ -4091,7 +4088,7 @@ export namespace Gst {
      * @returns `true` if `newstr` was different from `oldstr_ptr`
      * @since 1.18
      */
-    function structure_take(oldstr_ptr?: Structure | null, newstr?: Structure | null): [boolean, Structure | null];
+    function structure_take(oldstr_ptr: Structure | null, newstr: Structure | null): [boolean, Structure | null];
     /**
      * Checks if the given type is already registered.
      * @param tag name of the tag
@@ -4154,7 +4151,7 @@ export namespace Gst {
      * @returns `true` if `new_taglist` was different from `old_taglist`
      * @since 1.16
      */
-    function tag_list_replace(old_taglist?: TagList | null, new_taglist?: TagList | null): [boolean, TagList | null];
+    function tag_list_replace(old_taglist: TagList | null, new_taglist: TagList | null): [boolean, TagList | null];
     /**
      * Modifies a pointer to a {@link Gst.TagList} to point to a different {@link Gst.TagList}.
      * This function is similar to `gst_tag_list_replace()` except that it takes
@@ -4164,7 +4161,7 @@ export namespace Gst {
      * @returns `true` if `new_taglist` was different from `old_taglist`
      * @since 1.16
      */
-    function tag_list_take(old_taglist: TagList, new_taglist?: TagList | null): [boolean, TagList];
+    function tag_list_take(old_taglist: TagList, new_taglist: TagList | null): [boolean, TagList];
     /**
      * This is a convenience function for the func argument of `gst_tag_register()`.
      * It concatenates all given strings using a comma. The tag must be registered
@@ -4217,8 +4214,8 @@ export namespace Gst {
         name: string,
         rank: number,
         func: TypeFindFunction,
-        extensions?: string | null,
-        possible_caps?: Caps | null,
+        extensions: string | null,
+        possible_caps: Caps | null,
     ): boolean;
     /**
      * Checks if `type` is plugin API. See `gst_type_mark_as_plugin_api()` for
@@ -4382,7 +4379,7 @@ export namespace Gst {
         element_size: bigint | number,
         search_func: GLib.CompareDataFunc,
         mode: SearchMode,
-        search_data?: any | null,
+        search_data: any | null,
     ): any | null;
     /**
      * Returns smallest integral value not less than log2(v).
@@ -4727,7 +4724,7 @@ export namespace Gst {
      * @returns `true` on success
      * @since 1.20
      */
-    function value_deserialize_with_pspec(src: string, pspec?: GObject.ParamSpec | null): [boolean, unknown];
+    function value_deserialize_with_pspec(src: string, pspec: GObject.ParamSpec | null): [boolean, unknown];
     /**
      * Fixate `src` into a new value `dest`.
      * For ranges, the first element is taken. For lists and arrays, the
@@ -5083,7 +5080,7 @@ export namespace Gst {
      * @gir-type Callback
      */
     interface BufferForeachMetaFunc {
-        (buffer: Buffer, meta?: Meta | null): boolean;
+        (buffer: Buffer, meta: Meta | null): boolean;
     }
     /**
      * @gir-type Callback
@@ -5107,7 +5104,7 @@ export namespace Gst {
      * @gir-type Callback
      */
     interface CallAsyncFunc {
-        (user_data?: any | null): void;
+        (user_data: any | null): void;
     }
     /**
      * @gir-type Callback
@@ -5155,7 +5152,7 @@ export namespace Gst {
      * @gir-type Callback
      */
     interface CustomMetaTransformFunction {
-        (transbuf: Buffer, meta: CustomMeta, buffer: Buffer, type: GLib.Quark, data?: any | null): boolean;
+        (transbuf: Buffer, meta: CustomMeta, buffer: Buffer, type: GLib.Quark, data: any | null): boolean;
     }
     /**
      * @gir-type Callback
@@ -5307,7 +5304,7 @@ export namespace Gst {
      * @gir-type Callback
      */
     interface MetaTransformFunction {
-        (transbuf: Buffer, meta: Meta, buffer: Buffer, type: GLib.Quark, data?: any | null): boolean;
+        (transbuf: Buffer, meta: Meta, buffer: Buffer, type: GLib.Quark, data: any | null): boolean;
     }
     /**
      * @gir-type Callback
@@ -5391,7 +5388,7 @@ export namespace Gst {
      * @gir-type Callback
      */
     interface PadIterIntLinkFunction {
-        (pad: Pad, parent?: Object | null): Iterator;
+        (pad: Pad, parent: Object | null): Iterator;
     }
     /**
      * @gir-type Callback
@@ -5415,13 +5412,13 @@ export namespace Gst {
      * @gir-type Callback
      */
     interface PadStickyEventsForeachFunction {
-        (pad: Pad, event?: Event | null): boolean;
+        (pad: Pad, event: Event | null): boolean;
     }
     /**
      * @gir-type Callback
      */
     interface PadUnlinkFunction {
-        (pad: Pad, parent?: Object | null): void;
+        (pad: Pad, parent: Object | null): void;
     }
     /**
      * @gir-type Callback
@@ -5505,13 +5502,13 @@ export namespace Gst {
      * @gir-type Callback
      */
     interface TaskFunction {
-        (user_data?: any | null): void;
+        (user_data: any | null): void;
     }
     /**
      * @gir-type Callback
      */
     interface TaskPoolFunction {
-        (user_data?: any | null): void;
+        (user_data: any | null): void;
     }
     /**
      * @gir-type Callback
@@ -7550,7 +7547,7 @@ export namespace Gst {
          * default allocator will be returned.
          * @param name the name of the allocator
          */
-        static find(name?: string | null): Allocator | null;
+        static find(name: string | null): Allocator | null;
         /**
          * Registers the memory `allocator` with `name`.
          * @param name the name of the allocator
@@ -7580,7 +7577,7 @@ export namespace Gst {
          * @param params optional parameters
          * @virtual
          */
-        vfunc_alloc(size: number, params?: AllocationParams | null): Memory | null;
+        vfunc_alloc(size: number, params: AllocationParams | null): Memory | null;
         /**
          * Free `memory` that was previously allocated with `gst_allocator_alloc()`.
          * @param memory the memory to free
@@ -7610,7 +7607,7 @@ export namespace Gst {
          * @param params optional parameters
          * @returns a new {@link Gst.Memory}.
          */
-        alloc(size: bigint | number, params?: AllocationParams | null): Memory | null;
+        alloc(size: bigint | number, params: AllocationParams | null): Memory | null;
         /**
          * Free `memory` that was previously allocated with `gst_allocator_alloc()`.
          * @param memory the memory to free
@@ -7799,6 +7796,7 @@ export namespace Gst {
          * If set to `true`, the bin will handle asynchronous state changes.
          * This should be used only if the bin subclass is modifying the state
          * of its children on its own.
+         * @default false
          */
         get async_handling(): boolean;
         set async_handling(val: boolean);
@@ -7806,6 +7804,7 @@ export namespace Gst {
          * If set to `true`, the bin will handle asynchronous state changes.
          * This should be used only if the bin subclass is modifying the state
          * of its children on its own.
+         * @default false
          */
         get asyncHandling(): boolean;
         set asyncHandling(val: boolean);
@@ -7817,6 +7816,7 @@ export namespace Gst {
          * The messages are converted to an ELEMENT message with the bin as the
          * source. The structure of the message is named `GstBinForwarded` and contains
          * a field named `message` that contains the original forwarded {@link Gst.Message}.
+         * @default false
          */
         get message_forward(): boolean;
         set message_forward(val: boolean);
@@ -7828,6 +7828,7 @@ export namespace Gst {
          * The messages are converted to an ELEMENT message with the bin as the
          * source. The structure of the message is named `GstBinForwarded` and contains
          * a field named `message` that contains the original forwarded {@link Gst.Message}.
+         * @default false
          */
         get messageForward(): boolean;
         set messageForward(val: boolean);
@@ -7860,7 +7861,7 @@ export namespace Gst {
 
         _init(...args: any[]): void;
 
-        static ['new'](name?: string | null): Bin;
+        static ['new'](name: string | null): Bin;
 
         // Signals
 
@@ -8231,38 +8232,19 @@ export namespace Gst {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -8270,15 +8252,9 @@ export namespace Gst {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -8435,7 +8411,7 @@ export namespace Gst {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -8811,8 +8787,8 @@ export namespace Gst {
          */
         static config_set_allocator(
             config: Structure,
-            allocator?: Allocator | null,
-            params?: AllocationParams | null,
+            allocator: Allocator | null,
+            params: AllocationParams | null,
         ): void;
         /**
          * Configures `config` with the given parameters.
@@ -8864,7 +8840,7 @@ export namespace Gst {
          * @param params parameters.
          * @virtual
          */
-        vfunc_acquire_buffer(params?: BufferPoolAcquireParams | null): [FlowReturn, Buffer | null];
+        vfunc_acquire_buffer(params: BufferPoolAcquireParams | null): [FlowReturn, Buffer | null];
         /**
          * Allocate a buffer. the default implementation allocates
          * buffers from the configured memory allocator and with the configured
@@ -8875,7 +8851,7 @@ export namespace Gst {
          * @param params parameters.
          * @virtual
          */
-        vfunc_alloc_buffer(params?: BufferPoolAcquireParams | null): [FlowReturn, Buffer | null];
+        vfunc_alloc_buffer(params: BufferPoolAcquireParams | null): [FlowReturn, Buffer | null];
         /**
          * Enter the flushing state.
          * @virtual
@@ -8970,7 +8946,7 @@ export namespace Gst {
          * @param params parameters.
          * @returns a {@link Gst.FlowReturn} such as {@link Gst.FlowReturn.FLUSHING} when the pool is inactive.
          */
-        acquire_buffer(params?: BufferPoolAcquireParams | null): [FlowReturn, Buffer | null];
+        acquire_buffer(params: BufferPoolAcquireParams | null): [FlowReturn, Buffer | null];
         /**
          * Gets a copy of the current configuration of the pool. This configuration
          * can be modified and used for the `gst_buffer_pool_set_config()` call.
@@ -9201,6 +9177,7 @@ export namespace Gst {
          * This property is used to create the child element buses
          * in {@link Gst.Bin}.
          * @construct-only
+         * @default true
          */
         set enable_async(val: boolean);
         /**
@@ -9211,6 +9188,7 @@ export namespace Gst {
          * This property is used to create the child element buses
          * in {@link Gst.Bin}.
          * @construct-only
+         * @default true
          */
         set enableAsync(val: boolean);
 
@@ -9341,7 +9319,7 @@ export namespace Gst {
          * @param data user data
          * @returns `true`
          */
-        async_signal_func(message: Message, data?: any | null): boolean;
+        async_signal_func(message: Message, data: any | null): boolean;
         /**
          * Create watch for this bus. The {@link GLib.Source} will be dispatched whenever
          * a message is on the bus. After the GSource is dispatched, the
@@ -9494,7 +9472,7 @@ export namespace Gst {
          * clearing an existing handler with `null` was not thread-safe.
          * @param func The handler function to install
          */
-        set_sync_handler(func?: BusSyncHandler | null): void;
+        set_sync_handler(func: BusSyncHandler | null): void;
         /**
          * A helper {@link Gst.BusSyncHandler} that can be used to convert all synchronous
          * messages into signals.
@@ -9502,7 +9480,7 @@ export namespace Gst {
          * @param data user data
          * @returns {@link Gst.BusSyncReply.PASS}
          */
-        sync_signal_handler(message: Message, data?: any | null): BusSyncReply;
+        sync_signal_handler(message: Message, data: any | null): BusSyncReply;
         /**
          * Gets a message from the bus, waiting up to the specified timeout.
          *
@@ -9641,14 +9619,29 @@ export namespace Gst {
 
         // Properties
 
+        /**
+         * @default 100000000
+         */
         get timeout(): number;
         set timeout(val: bigint | number);
+        /**
+         * @default 32
+         */
         get window_size(): number;
         set window_size(val: number);
+        /**
+         * @default 32
+         */
         get windowSize(): number;
         set windowSize(val: number);
+        /**
+         * @default 4
+         */
         get window_threshold(): number;
         set window_threshold(val: number);
+        /**
+         * @default 4
+         */
         get windowThreshold(): number;
         set windowThreshold(val: number);
 
@@ -9700,7 +9693,7 @@ export namespace Gst {
          * @param id1 A {@link Gst.ClockID}
          * @param id2 A {@link Gst.ClockID} to compare with
          */
-        static id_compare_func(id1?: any | null, id2?: any | null): number;
+        static id_compare_func(id1: any | null, id2: any | null): number;
         /**
          * This function returns the underlying clock.
          * @param id a {@link Gst.ClockID}
@@ -9995,7 +9988,7 @@ export namespace Gst {
          * @param master a master {@link Gst.Clock}
          * @returns `true` if the clock is capable of being slaved to a master clock. Trying to set a master on a clock without the #GST_CLOCK_FLAG_CAN_SET_MASTER flag will make this function return `false`.
          */
-        set_master(master?: Clock | null): boolean;
+        set_master(master: Clock | null): boolean;
         /**
          * Sets the accuracy of the clock. Some clocks have the possibility to operate
          * with different accuracy at the expense of more resource usage. There is
@@ -10087,7 +10080,7 @@ export namespace Gst {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
-            name: string;
+            name: string | any;
             object: Object | any;
         }
     }
@@ -10106,8 +10099,10 @@ export namespace Gst {
 
         /**
          * @construct-only
+         * @default null
          */
-        get name(): string;
+        // This accessor conflicts with another accessor's type in a parent class or interface.
+        get name(): string | any;
         /**
          * @construct-only
          */
@@ -10360,12 +10355,12 @@ export namespace Gst {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
-            caps: Caps;
+            caps: Caps | null;
             device_class: string;
             deviceClass: string;
             display_name: string;
             displayName: string;
-            properties: Structure;
+            properties: Structure | null;
         }
     }
 
@@ -10387,7 +10382,7 @@ export namespace Gst {
         /**
          * @construct-only
          */
-        get caps(): Caps;
+        get caps(): Caps | null;
         /**
          * @construct-only
          */
@@ -10407,7 +10402,7 @@ export namespace Gst {
         /**
          * @construct-only
          */
-        get properties(): Structure;
+        get properties(): Structure | null;
 
         /**
          * Compile-time signal type information.
@@ -10453,7 +10448,7 @@ export namespace Gst {
          * @param name name of new element, or `null` to automatically create a unique name.
          * @virtual
          */
-        vfunc_create_element(name?: string | null): Element | null;
+        vfunc_create_element(name: string | null): Element | null;
         /**
          * Tries to reconfigure an existing element to use the device. If this
          * function fails, then one must destroy the element and create a new one
@@ -10474,7 +10469,7 @@ export namespace Gst {
          * @param name name of new element, or `null` to automatically create a unique name.
          * @returns a new {@link Gst.Element} configured to use this device
          */
-        create_element(name?: string | null): Element | null;
+        create_element(name: string | null): Element | null;
         /**
          * Getter for the {@link Gst.Caps} that this device supports.
          * @returns The {@link Gst.Caps} supported by this device. Unref with `gst_caps_unref()` when done.
@@ -10610,8 +10605,14 @@ export namespace Gst {
 
         // Properties
 
+        /**
+         * @default false
+         */
         get show_all(): boolean;
         set show_all(val: boolean);
+        /**
+         * @default false
+         */
         get showAll(): boolean;
         set showAll(val: boolean);
 
@@ -10671,7 +10672,7 @@ export namespace Gst {
          * @param caps the {@link Gst.Caps} to filter or `null` for ANY
          * @returns The id of the new filter or 0 if no provider matched the filter's  classes.
          */
-        add_filter(classes?: string | null, caps?: Caps | null): number;
+        add_filter(classes: string | null, caps: Caps | null): number;
         /**
          * Gets the {@link Gst.Bus} of this {@link Gst.DeviceMonitor}
          * @returns a {@link Gst.Bus}
@@ -11102,13 +11103,13 @@ export namespace Gst {
          * @param classes a "/" separate list of classes to match, only match     if all classes are matched
          * @returns `true` if `factory` matches or if `classes` is `null`.
          */
-        has_classes(classes?: string | null): boolean;
+        has_classes(classes: string | null): boolean;
         /**
          * Check if `factory` matches all of the given classes
          * @param classes a `null` terminated array   of classes to match, only match if all classes are matched
          * @returns `true` if `factory` matches.
          */
-        has_classesv(classes?: string[] | null): boolean;
+        has_classesv(classes: string[] | null): boolean;
     }
 
     namespace DoubleRange {
@@ -11389,7 +11390,7 @@ export namespace Gst {
          * @param uri URI to create an element for
          * @param elementname Name of created element, can be `null`.
          */
-        static make_from_uri(type: URIType, uri: string, elementname?: string | null): Element;
+        static make_from_uri(type: URIType, uri: string, elementname: string | null): Element;
         /**
          * Create a new elementfactory capable of instantiating objects of the
          * `type` and add the factory to `plugin`.
@@ -11580,7 +11581,7 @@ export namespace Gst {
          * @param caps the caps of the pad we want to request. Can be `null`.
          * @virtual
          */
-        vfunc_request_new_pad(templ: PadTemplate, name?: string | null, caps?: Caps | null): Pad | null;
+        vfunc_request_new_pad(templ: PadTemplate, name: string | null, caps: Caps | null): Pad | null;
         /**
          * Sends an event to an element. If the element doesn't implement an
          * event handler, the event will be pushed on a random linked sink pad for
@@ -11602,7 +11603,7 @@ export namespace Gst {
          * @param bus the {@link Gst.Bus} to set.
          * @virtual
          */
-        vfunc_set_bus(bus?: Bus | null): void;
+        vfunc_set_bus(bus: Bus | null): void;
         /**
          * Sets the clock for the element. This function increases the
          * refcount on the clock. Any previously set clock on the object
@@ -11610,7 +11611,7 @@ export namespace Gst {
          * @param clock the {@link Gst.Clock} to set for the element.
          * @virtual
          */
-        vfunc_set_clock(clock?: Clock | null): boolean;
+        vfunc_set_clock(clock: Clock | null): boolean;
         /**
          * Sets the context of the element. Increases the refcount of the context.
          *
@@ -11822,7 +11823,7 @@ export namespace Gst {
          * @param caps the {@link Gst.Caps} to use as a filter.
          * @returns the {@link Gst.Pad} to which a link   can be made, or `null` if one cannot be found. `gst_object_unref()`   after usage.
          */
-        get_compatible_pad(pad: Pad, caps?: Caps | null): Pad | null;
+        get_compatible_pad(pad: Pad, caps: Caps | null): Pad | null;
         /**
          * Retrieves a pad template from `element` that is compatible with `compattempl`.
          * Pads from compatible templates can be linked together.
@@ -12001,7 +12002,7 @@ export namespace Gst {
          * @param filter the {@link Gst.Caps} to filter the link,     or `null` for no filter.
          * @returns `true` if the pads could be linked, `false` otherwise.
          */
-        link_filtered(dest: Element, filter?: Caps | null): boolean;
+        link_filtered(dest: Element, filter: Caps | null): boolean;
         /**
          * Links the two named pads of the source and destination elements.
          * Side effect is that if one of the pads has no parent, it becomes a
@@ -12012,7 +12013,7 @@ export namespace Gst {
          * @param destpadname the name of the {@link Gst.Pad} in destination element, or `null` for any pad.
          * @returns `true` if the pads could be linked, `false` otherwise.
          */
-        link_pads(srcpadname: string | null, dest: Element, destpadname?: string | null): boolean;
+        link_pads(srcpadname: string | null, dest: Element, destpadname: string | null): boolean;
         /**
          * Links the two named pads of the source and destination elements. Side effect
          * is that if one of the pads has no parent, it becomes a child of the parent of
@@ -12027,8 +12028,8 @@ export namespace Gst {
         link_pads_filtered(
             srcpadname: string | null,
             dest: Element,
-            destpadname?: string | null,
-            filter?: Caps | null,
+            destpadname: string | null,
+            filter: Caps | null,
         ): boolean;
         /**
          * Links the two named pads of the source and destination elements.
@@ -12246,7 +12247,7 @@ export namespace Gst {
          * @param caps the caps of the pad we want to request. Can be `null`.
          * @returns requested {@link Gst.Pad} if found,     otherwise `null`.  Release after usage.
          */
-        request_pad(templ: PadTemplate, name?: string | null, caps?: Caps | null): Pad | null;
+        request_pad(templ: PadTemplate, name: string | null, caps: Caps | null): Pad | null;
         /**
          * Retrieves a pad from the element by name (e.g. "src_\%d"). This version only
          * retrieves request pads. The pad should be released with
@@ -12336,7 +12337,7 @@ export namespace Gst {
          * MT safe.
          * @param bus the {@link Gst.Bus} to set.
          */
-        set_bus(bus?: Bus | null): void;
+        set_bus(bus: Bus | null): void;
         /**
          * Sets the clock for the element. This function increases the
          * refcount on the clock. Any previously set clock on the object
@@ -12344,7 +12345,7 @@ export namespace Gst {
          * @param clock the {@link Gst.Clock} to set for the element.
          * @returns `true` if the element accepted the clock. An element can refuse a clock when it, for example, is not able to slave its internal clock to the `clock` or when it requires a specific clock to operate. MT safe.
          */
-        set_clock(clock?: Clock | null): boolean;
+        set_clock(clock: Clock | null): boolean;
         /**
          * Sets the context of the element. Increases the refcount of the context.
          *
@@ -12548,7 +12549,7 @@ export namespace Gst {
          * @param factoryname a named factory to instantiate
          * @param name name of new element, or `null` to automatically create    a unique name
          */
-        static make(factoryname: string, name?: string | null): Element | null;
+        static make(factoryname: string, name: string | null): Element | null;
         /**
          * Create a new element of the type defined by the given elementfactory.
          * The supplied list of properties, will be passed at object construction.
@@ -12558,8 +12559,8 @@ export namespace Gst {
          */
         static make_with_properties(
             factoryname: string,
-            names?: string[] | null,
-            values?: GObject.Value[] | null,
+            names: string[] | null,
+            values: GObject.Value[] | null,
         ): Element | null;
 
         // Methods
@@ -12595,7 +12596,7 @@ export namespace Gst {
          * @param name name of new element, or `null` to automatically create    a unique name
          * @returns new {@link Gst.Element} or `null`     if the element couldn't be created
          */
-        create(name?: string | null): Element | null;
+        create(name: string | null): Element | null;
         /**
          * Create a new element of the type defined by the given elementfactory.
          * The supplied list of properties, will be passed at object construction.
@@ -12603,7 +12604,7 @@ export namespace Gst {
          * @param values array of associated properties values
          * @returns new {@link Gst.Element} or `null`     if the element couldn't be created
          */
-        create_with_properties(names?: string[] | null, values?: GObject.Value[] | null): Element | null;
+        create_with_properties(names: string[] | null, values: GObject.Value[] | null): Element | null;
         /**
          * Get the {@link GObject.GType} for elements managed by this factory. The type can
          * only be retrieved if the element factory is loaded, which can be
@@ -12924,7 +12925,7 @@ export namespace Gst {
          * @param newtarget the new pad target
          * @returns `true` if the new target could be set. This function     can return `false` when the internal pads could not be linked.
          */
-        set_target(newtarget?: Pad | null): boolean;
+        set_target(newtarget: Pad | null): boolean;
     }
 
     namespace Int64Range {
@@ -13131,8 +13132,8 @@ export namespace Gst {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
-            name: string;
-            parent: Object;
+            name: string | null;
+            parent: Object | null;
         }
     }
 
@@ -13193,8 +13194,11 @@ export namespace Gst {
 
         // Properties
 
-        get name(): string;
-        set name(val: string);
+        /**
+         * @default null
+         */
+        get name(): string | null;
+        set name(val: string | null);
         /**
          * The parent of the object. Please note, that when changing the 'parent'
          * property, we don't emit {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} and {@link Gst.Object.SignalSignatures.deep_notify | Gst.Object::deep-notify}
@@ -13202,8 +13206,8 @@ export namespace Gst {
          * {@link Gst.Bin.SignalSignatures.element_added | Gst.Bin::element-added} or {@link Gst.Bin.SignalSignatures.element_removed | Gst.Bin::element-removed} signals on the parent to
          * achieve a similar effect.
          */
-        get parent(): Object;
-        set parent(val: Object);
+        get parent(): Object | null;
+        set parent(val: Object | null);
 
         /**
          * Compile-time signal type information.
@@ -13275,7 +13279,7 @@ export namespace Gst {
             object: GObject.Object,
             orig: Object,
             pspec: GObject.ParamSpec,
-            excluded_props?: string[] | null,
+            excluded_props: string[] | null,
         ): void;
         /**
          * Atomically modifies a pointer to point to a new object.
@@ -13286,7 +13290,7 @@ export namespace Gst {
          * @param oldobj pointer to a place of     a {@link Gst.Object} to replace
          * @param newobj a new {@link Gst.Object}
          */
-        static replace(oldobj?: Object | null, newobj?: Object | null): [boolean, Object | null];
+        static replace(oldobj: Object | null, newobj: Object | null): [boolean, Object | null];
 
         // Virtual methods
 
@@ -13324,7 +13328,7 @@ export namespace Gst {
          * @param error the GError.
          * @param debug an additional debug information string, or `null`
          */
-        default_error(error: GLib.Error, debug?: string | null): void;
+        default_error(error: GLib.Error, debug: string | null): void;
         /**
          * Gets the corresponding {@link Gst.ControlBinding} for the property. This should be
          * unreferenced again after use.
@@ -13479,7 +13483,7 @@ export namespace Gst {
          * @param name new name of object
          * @returns `true` if the name could be set. Since Objects that have a parent cannot be renamed, this function returns `false` in those cases. MT safe.  This function grabs and releases `object`'s LOCK.
          */
-        set_name(name?: string | null): boolean;
+        set_name(name: string | null): boolean;
         /**
          * Sets the parent of `object` to `parent`. The object's reference count will
          * be incremented, and any floating reference will be removed (see `gst_object_ref_sink()`).
@@ -13627,11 +13631,13 @@ export namespace Gst {
         get caps(): Caps;
         /**
          * @construct-only
+         * @default Gst.PadDirection.UNKNOWN
          */
         get direction(): PadDirection;
         /**
          * The offset that will be applied to the running time of the pad.
          * @since 1.6
+         * @default 0
          */
         get offset(): number;
         set offset(val: bigint | number);
@@ -13663,7 +13669,7 @@ export namespace Gst {
 
         static new_from_static_template(templ: StaticPadTemplate, name: string): Pad;
 
-        static new_from_template(templ: PadTemplate, name?: string | null): Pad;
+        static new_from_template(templ: PadTemplate, name: string | null): Pad;
 
         // Signals
 
@@ -13810,7 +13816,7 @@ export namespace Gst {
          * @param stream_id The stream-id
          * @returns A stream-id for `pad`. `g_free()` after usage.
          */
-        create_stream_id(parent: Element, stream_id?: string | null): string;
+        create_stream_id(parent: Element, stream_id: string | null): string;
         /**
          * Invokes the default event handler for the given pad.
          *
@@ -14017,7 +14023,7 @@ export namespace Gst {
          * @param parent the parent of `pad` or `null`
          * @returns a {@link Gst.Iterator} of {@link Gst.Pad}, or `null` if `pad` has no parent. Unref each returned pad with `gst_object_unref()`.
          */
-        iterate_internal_links_default(parent?: Object | null): Iterator | null;
+        iterate_internal_links_default(parent: Object | null): Iterator | null;
         /**
          * Links the source pad and the sink pad.
          * @param sinkpad the sink {@link Gst.Pad} to link.
@@ -14114,7 +14120,7 @@ export namespace Gst {
          * @param filter a {@link Gst.Caps} filter, or `null`.
          * @returns the caps of the peer pad with incremented ref-count. When there is no peer pad, this function returns `filter` or, when `filter` is `null`, ANY caps.
          */
-        peer_query_caps(filter?: Caps | null): Caps;
+        peer_query_caps(filter: Caps | null): Caps;
         /**
          * Queries the peer pad of a given sink pad to convert `src_val` in `src_format`
          * to `dest_format`.
@@ -14274,7 +14280,7 @@ export namespace Gst {
          * @param filter suggested {@link Gst.Caps}, or `null`
          * @returns the caps of the pad with incremented ref-count.
          */
-        query_caps(filter?: Caps | null): Caps;
+        query_caps(filter: Caps | null): Caps;
         /**
          * Queries a pad to convert `src_val` in `src_format` to `dest_format`.
          * @param src_format a {@link Gst.Format} to convert from.
@@ -14386,7 +14392,7 @@ export namespace Gst {
          * No locking is performed in this function.
          * @param priv The private data to attach to the pad.
          */
-        set_element_private(priv?: any | null): void;
+        set_element_private(priv: any | null): void;
         /**
          * Sets the given event handler for the pad.
          * @param event the {@link Gst.PadEventFullFunction} to set.
@@ -14610,6 +14616,7 @@ export namespace Gst {
         /**
          * The direction of the pad described by the pad template.
          * @construct-only
+         * @default Gst.PadDirection.UNKNOWN
          */
         get direction(): PadDirection;
         /**
@@ -14621,16 +14628,19 @@ export namespace Gst {
         /**
          * The name template of the pad template.
          * @construct-only
+         * @default null
          */
         get name_template(): string;
         /**
          * The name template of the pad template.
          * @construct-only
+         * @default null
          */
         get nameTemplate(): string;
         /**
          * When the pad described by the pad template will become available.
          * @construct-only
+         * @default Gst.PadPresence.ALWAYS
          */
         get presence(): PadPresence;
 
@@ -14808,6 +14818,7 @@ export namespace Gst {
          * Whether or not to automatically flush all messages on the
          * pipeline's bus when going from READY to NULL state. Please see
          * `gst_pipeline_set_auto_flush_bus()` for more information on this option.
+         * @default true
          */
         get auto_flush_bus(): boolean;
         set auto_flush_bus(val: boolean);
@@ -14815,6 +14826,7 @@ export namespace Gst {
          * Whether or not to automatically flush all messages on the
          * pipeline's bus when going from READY to NULL state. Please see
          * `gst_pipeline_set_auto_flush_bus()` for more information on this option.
+         * @default true
          */
         get autoFlushBus(): boolean;
         set autoFlushBus(val: boolean);
@@ -14822,12 +14834,14 @@ export namespace Gst {
          * The expected delay needed for elements to spin up to the
          * PLAYING state expressed in nanoseconds.
          * see `gst_pipeline_set_delay()` for more information on this option.
+         * @default 0
          */
         get delay(): number;
         set delay(val: bigint | number);
         /**
          * Latency to configure on the pipeline. See `gst_pipeline_set_latency()`.
          * @since 1.6
+         * @default 18446744073709551615
          */
         get latency(): number;
         set latency(val: bigint | number);
@@ -14853,7 +14867,7 @@ export namespace Gst {
 
         _init(...args: any[]): void;
 
-        static ['new'](name?: string | null): Pipeline;
+        static ['new'](name: string | null): Pipeline;
 
         // Signals
 
@@ -14989,7 +15003,7 @@ export namespace Gst {
          * MT safe.
          * @param clock the clock to use
          */
-        use_clock(clock?: Clock | null): void;
+        use_clock(clock: Clock | null): void;
         /**
          * Emits the {@link Gst.ChildProxy.SignalSignatures.child_added | Gst.ChildProxy::child-added} signal.
          * @param child the newly added child
@@ -15141,38 +15155,19 @@ export namespace Gst {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -15180,15 +15175,9 @@ export namespace Gst {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -15345,7 +15334,7 @@ export namespace Gst {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -15927,7 +15916,7 @@ export namespace Gst {
          * @param p1 a {@link Gst.PluginFeature}
          * @param p2 a {@link Gst.PluginFeature}
          */
-        static rank_compare_func(p1?: any | null, p2?: any | null): number;
+        static rank_compare_func(p1: any | null, p2: any | null): number;
 
         // Methods
 
@@ -16077,7 +16066,7 @@ export namespace Gst {
          * @param pad the {@link Gst.Pad} to get the internal links of.
          * @param parent the parent of `pad` or `null`
          */
-        static iterate_internal_links_default(pad: Pad, parent?: Object | null): Iterator | null;
+        static iterate_internal_links_default(pad: Pad, parent: Object | null): Iterator | null;
 
         // Methods
 
@@ -16462,14 +16451,14 @@ export namespace Gst {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
-            caps: Caps;
+            caps: Caps | null;
             stream_flags: StreamFlags;
             streamFlags: StreamFlags;
-            stream_id: string;
-            streamId: string;
+            stream_id: string | null;
+            streamId: string | null;
             stream_type: StreamType;
             streamType: StreamType;
-            tags: TagList;
+            tags: TagList | null;
         }
     }
 
@@ -16497,39 +16486,49 @@ export namespace Gst {
         /**
          * The {@link Gst.Caps} of the {@link Gst.Stream}.
          */
-        get caps(): Caps;
-        set caps(val: Caps);
+        get caps(): Caps | null;
+        set caps(val: Caps | null);
+        /**
+         * @default Gst.StreamFlags.NONE
+         */
         get stream_flags(): StreamFlags;
         set stream_flags(val: StreamFlags);
+        /**
+         * @default Gst.StreamFlags.NONE
+         */
         get streamFlags(): StreamFlags;
         set streamFlags(val: StreamFlags);
         /**
          * The unique identifier of the {@link Gst.Stream}. Can only be set at construction
          * time.
          * @construct-only
+         * @default null
          */
-        get stream_id(): string;
+        get stream_id(): string | null;
         /**
          * The unique identifier of the {@link Gst.Stream}. Can only be set at construction
          * time.
          * @construct-only
+         * @default null
          */
-        get streamId(): string;
+        get streamId(): string | null;
         /**
          * The {@link Gst.StreamType} of the {@link Gst.Stream}. Can only be set at construction time.
+         * @default Gst.StreamType.UNKNOWN
          */
         get stream_type(): StreamType;
         set stream_type(val: StreamType);
         /**
          * The {@link Gst.StreamType} of the {@link Gst.Stream}. Can only be set at construction time.
+         * @default Gst.StreamType.UNKNOWN
          */
         get streamType(): StreamType;
         set streamType(val: StreamType);
         /**
          * The {@link Gst.TagList} of the {@link Gst.Stream}.
          */
-        get tags(): TagList;
-        set tags(val: TagList);
+        get tags(): TagList | null;
+        set tags(val: TagList | null);
 
         /**
          * Compile-time signal type information.
@@ -16600,7 +16599,7 @@ export namespace Gst {
          * Set the caps for the {@link Gst.Stream}
          * @param caps a {@link Gst.Caps}
          */
-        set_caps(caps?: Caps | null): void;
+        set_caps(caps: Caps | null): void;
         /**
          * Set the `flags` for the `stream`.
          * @param flags the flags to set on `stream`
@@ -16615,7 +16614,7 @@ export namespace Gst {
          * Set the tags for the {@link Gst.Stream}
          * @param tags a {@link Gst.TagList}
          */
-        set_tags(tags?: TagList | null): void;
+        set_tags(tags: TagList | null): void;
     }
 
     namespace StreamCollection {
@@ -16662,8 +16661,8 @@ export namespace Gst {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
-            upstream_id: string;
-            upstreamId: string;
+            upstream_id: string | null;
+            upstreamId: string | null;
         }
     }
 
@@ -16694,14 +16693,16 @@ export namespace Gst {
 
         /**
          * stream-id
+         * @default null
          */
-        get upstream_id(): string;
-        set upstream_id(val: string);
+        get upstream_id(): string | null;
+        set upstream_id(val: string | null);
         /**
          * stream-id
+         * @default null
          */
-        get upstreamId(): string;
-        set upstreamId(val: string);
+        get upstreamId(): string | null;
+        set upstreamId(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -16718,7 +16719,7 @@ export namespace Gst {
 
         _init(...args: any[]): void;
 
-        static ['new'](upstream_id?: string | null): StreamCollection;
+        static ['new'](upstream_id: string | null): StreamCollection;
 
         // Signals
 
@@ -16815,8 +16816,14 @@ export namespace Gst {
 
         // Properties
 
+        /**
+         * @default Gst.ClockType.MONOTONIC
+         */
         get clock_type(): ClockType;
         set clock_type(val: ClockType);
+        /**
+         * @default Gst.ClockType.MONOTONIC
+         */
         get clockType(): ClockType;
         set clockType(val: ClockType);
 
@@ -16879,7 +16886,7 @@ export namespace Gst {
          * MT safe.
          * @param new_clock a {@link Gst.Clock}
          */
-        static set_default(new_clock?: Clock | null): void;
+        static set_default(new_clock: Clock | null): void;
     }
 
     namespace Task {
@@ -17186,7 +17193,7 @@ export namespace Gst {
          * @param id the id
          * @virtual
          */
-        vfunc_dispose_handle(id?: any | null): void;
+        vfunc_dispose_handle(id: any | null): void;
         /**
          * Join a task and/or return it to the pool. `id` is the id obtained from
          * `gst_task_pool_push()`. The default implementation does nothing, as the
@@ -17197,7 +17204,7 @@ export namespace Gst {
          * @param id the id
          * @virtual
          */
-        vfunc_join(id?: any | null): void;
+        vfunc_join(id: any | null): void;
         /**
          * Prepare the taskpool for accepting `gst_task_pool_push()` operations.
          *
@@ -17233,7 +17240,7 @@ export namespace Gst {
          * `id`.
          * @param id the id
          */
-        dispose_handle(id?: any | null): void;
+        dispose_handle(id: any | null): void;
         /**
          * Join a task and/or return it to the pool. `id` is the id obtained from
          * `gst_task_pool_push()`. The default implementation does nothing, as the
@@ -17243,7 +17250,7 @@ export namespace Gst {
          * `id`.
          * @param id the id
          */
-        join(id?: any | null): void;
+        join(id: any | null): void;
         /**
          * Prepare the taskpool for accepting `gst_task_pool_push()` operations.
          *
@@ -17286,6 +17293,9 @@ export namespace Gst {
 
         // Properties
 
+        /**
+         * @default null
+         */
         get params(): string;
         set params(val: string);
 
@@ -17970,7 +17980,7 @@ export namespace Gst {
          * Append `data` to the tail of the queue.
          * @param data the data
          */
-        push(data?: any | null): void;
+        push(data: any | null): void;
         /**
          * Increase the refcount of `queue`.
          */
@@ -18114,7 +18124,7 @@ export namespace Gst {
         static new_allocate(
             allocator: Allocator | null,
             size: bigint | number,
-            params?: AllocationParams | null,
+            params: AllocationParams | null,
         ): Buffer;
 
         static new_memdup(data: Uint8Array | string): Buffer;
@@ -18128,7 +18138,7 @@ export namespace Gst {
             data: Uint8Array | string,
             maxsize: bigint | number,
             offset: bigint | number,
-            notify?: GLib.DestroyNotify | null,
+            notify: GLib.DestroyNotify | null,
         ): Buffer;
 
         // Static methods
@@ -18157,7 +18167,7 @@ export namespace Gst {
          * @param params params for `info`
          * @returns the metadata for the api in `info` on `buffer`.
          */
-        add_meta(info: MetaInfo, params?: any | null): Meta | null;
+        add_meta(info: MetaInfo, params: any | null): Meta | null;
         /**
          * Adds a {@link Gst.ParentBufferMeta} to `buffer` that holds a reference on
          * `ref` until the buffer is freed.
@@ -18358,7 +18368,7 @@ export namespace Gst {
          * @param reference a reference {@link Gst.Caps}
          * @returns the {@link Gst.ReferenceTimestampMeta} or `null` when there is no such metadata on `buffer`.
          */
-        get_reference_timestamp_meta(reference?: Caps | null): ReferenceTimestampMeta | null;
+        get_reference_timestamp_meta(reference: Caps | null): ReferenceTimestampMeta | null;
         /**
          * Gets the total size of the memory blocks in `buffer`.
          * @returns total size of the memory blocks in `buffer`.
@@ -18637,7 +18647,7 @@ export namespace Gst {
          * @param old_list pointer to a pointer to a     {@link Gst.BufferList} to be replaced.
          * @param new_list pointer to a {@link Gst.BufferList} that     will replace the buffer list pointed to by `old_list`.
          */
-        static replace(old_list?: BufferList | null, new_list?: BufferList | null): [boolean, BufferList | null];
+        static replace(old_list: BufferList | null, new_list: BufferList | null): [boolean, BufferList | null];
         /**
          * Modifies a pointer to a {@link Gst.BufferList} to point to a different
          * {@link Gst.BufferList}. This function is similar to `gst_buffer_list_replace()` except
@@ -18645,7 +18655,7 @@ export namespace Gst {
          * @param old_list pointer to a pointer to a {@link Gst.BufferList}     to be replaced.
          * @param new_list pointer to a {@link Gst.BufferList}     that will replace the bufferlist pointed to by `old_list`.
          */
-        static take(old_list: BufferList, new_list?: BufferList | null): [boolean, BufferList];
+        static take(old_list: BufferList, new_list: BufferList | null): [boolean, BufferList];
 
         // Methods
 
@@ -18907,7 +18917,7 @@ export namespace Gst {
          * @param structure the {@link Gst.Structure} to append
          * @param features the {@link Gst.CapsFeatures} to append
          */
-        append_structure_full(structure: Structure, features?: CapsFeatures | null): void;
+        append_structure_full(structure: Structure, features: CapsFeatures | null): void;
         /**
          * Tries intersecting `caps1` and `caps2` and reports whether the result would not
          * be empty
@@ -19089,7 +19099,7 @@ export namespace Gst {
          * @param features a {@link Gst.CapsFeatures} for `structure`
          * @returns `true` if `structure` is a subset of `caps`
          */
-        is_subset_structure_full(structure: Structure, features?: CapsFeatures | null): boolean;
+        is_subset_structure_full(structure: Structure, features: CapsFeatures | null): boolean;
         /**
          * Tests if you can safely modify `caps`. It is only safe to modify caps when
          * there is only one owner of the caps - ie, the object is writable.
@@ -19139,7 +19149,7 @@ export namespace Gst {
          * @param features the {@link Gst.CapsFeatures} to merge
          * @returns the merged caps.
          */
-        merge_structure_full(structure: Structure, features?: CapsFeatures | null): Caps;
+        merge_structure_full(structure: Structure, features: CapsFeatures | null): Caps;
         /**
          * Returns a {@link Gst.Caps} that represents the same set of formats as
          * `caps`, but contains no lists.  Each list is expanded into separate
@@ -19188,12 +19198,12 @@ export namespace Gst {
          * @param index the index of the structure
          * @param features the {@link Gst.CapsFeatures} to set
          */
-        set_features(index: number, features?: CapsFeatures | null): void;
+        set_features(index: number, features: CapsFeatures | null): void;
         /**
          * Sets the `features` for all the structures of `caps`.
          * @param features the {@link Gst.CapsFeatures} to set
          */
-        set_features_simple(features?: CapsFeatures | null): void;
+        set_features_simple(features: CapsFeatures | null): void;
         /**
          * Sets the given `field` on all structures of `caps` to the given `value`.
          * This is a convenience function for calling `gst_structure_set_value()` on
@@ -19526,7 +19536,7 @@ export namespace Gst {
          * @param old_context pointer to a pointer to a {@link Gst.Context}     to be replaced.
          * @param new_context pointer to a {@link Gst.Context} that will     replace the context pointed to by `old_context`.
          */
-        static replace(old_context: Context, new_context?: Context | null): [boolean, Context];
+        static replace(old_context: Context, new_context: Context | null): [boolean, Context];
 
         // Methods
 
@@ -19592,7 +19602,7 @@ export namespace Gst {
          * the context.
          * @param pool a {@link Gst.TaskPool} or `null` to unset
          */
-        set_task_pool(pool?: TaskPool | null): void;
+        set_task_pool(pool: TaskPool | null): void;
         /**
          * Convenience macro to decrease the reference count of the context, possibly
          * freeing it.
@@ -19677,7 +19687,7 @@ export namespace Gst {
             seconds: number,
         ): DateTime;
 
-        static new_from_g_date_time(dt?: GLib.DateTime | null): DateTime;
+        static new_from_g_date_time(dt: GLib.DateTime | null): DateTime;
 
         static new_from_iso8601_string(string: string): DateTime;
 
@@ -20840,7 +20850,7 @@ export namespace Gst {
             data: Uint8Array | string,
             maxsize: bigint | number,
             offset: bigint | number,
-            notify?: GLib.DestroyNotify | null,
+            notify: GLib.DestroyNotify | null,
         );
 
         static new_wrapped(
@@ -20848,7 +20858,7 @@ export namespace Gst {
             data: Uint8Array | string,
             maxsize: bigint | number,
             offset: bigint | number,
-            notify?: GLib.DestroyNotify | null,
+            notify: GLib.DestroyNotify | null,
         ): Memory;
 
         // Methods
@@ -21006,7 +21016,7 @@ export namespace Gst {
 
         static new_async_done(src: Object | null, running_time: ClockTime): Message;
 
-        static new_async_start(src?: Object | null): Message;
+        static new_async_start(src: Object | null): Message;
 
         static new_buffering(src: Object | null, percent: number): Message;
 
@@ -21014,7 +21024,7 @@ export namespace Gst {
 
         static new_clock_provide(src: Object | null, clock: Clock, ready: boolean): Message;
 
-        static new_custom(type: MessageType, src?: Object | null, structure?: Structure | null): Message;
+        static new_custom(type: MessageType, src: Object | null, structure: Structure | null): Message;
 
         static new_device_added(src: Object | null, device: Device): Message;
 
@@ -21024,35 +21034,35 @@ export namespace Gst {
 
         static new_device_removed(src: Object | null, device: Device): Message;
 
-        static new_duration_changed(src?: Object | null): Message;
+        static new_duration_changed(src: Object | null): Message;
 
         static new_element(src: Object | null, structure: Structure): Message;
 
-        static new_eos(src?: Object | null): Message;
+        static new_eos(src: Object | null): Message;
 
-        static new_error(src: Object | null, error: GLib.Error, debug?: string | null): Message;
+        static new_error(src: Object | null, error: GLib.Error, debug: string | null): Message;
 
         static new_error_with_details(
             src: Object | null,
             error: GLib.Error,
-            debug?: string | null,
-            details?: Structure | null,
+            debug: string | null,
+            details: Structure | null,
         ): Message;
 
         static new_have_context(src: Object | null, context: Context): Message;
 
-        static new_info(src: Object | null, error: GLib.Error, debug?: string | null): Message;
+        static new_info(src: Object | null, error: GLib.Error, debug: string | null): Message;
 
         static new_info_with_details(
             src: Object | null,
             error: GLib.Error,
-            debug?: string | null,
-            details?: Structure | null,
+            debug: string | null,
+            details: Structure | null,
         ): Message;
 
         static new_instant_rate_request(src: Object | null, rate_multiplier: number): Message;
 
-        static new_latency(src?: Object | null): Message;
+        static new_latency(src: Object | null): Message;
 
         static new_need_context(src: Object | null, context_type: string): Message;
 
@@ -21060,7 +21070,7 @@ export namespace Gst {
 
         static new_progress(src: Object | null, type: ProgressType, code: string, text: string): Message;
 
-        static new_property_notify(src: Object, property_name: string, val?: GObject.Value | null): Message;
+        static new_property_notify(src: Object, property_name: string, val: GObject.Value | null): Message;
 
         static new_qos(
             src: Object | null,
@@ -21074,8 +21084,8 @@ export namespace Gst {
         static new_redirect(
             src: Object | null,
             location: string,
-            tag_list?: TagList | null,
-            entry_struct?: Structure | null,
+            tag_list: TagList | null,
+            entry_struct: Structure | null,
         ): Message;
 
         static new_request_state(src: Object | null, state: State): Message;
@@ -21088,7 +21098,7 @@ export namespace Gst {
 
         static new_state_changed(src: Object | null, oldstate: State, newstate: State, pending: State): Message;
 
-        static new_state_dirty(src?: Object | null): Message;
+        static new_state_dirty(src: Object | null): Message;
 
         static new_step_done(
             src: Object | null,
@@ -21113,7 +21123,7 @@ export namespace Gst {
 
         static new_stream_collection(src: Object | null, collection: StreamCollection): Message;
 
-        static new_stream_start(src?: Object | null): Message;
+        static new_stream_start(src: Object | null): Message;
 
         static new_stream_status(src: Object | null, type: StreamStatusType, owner: Element): Message;
 
@@ -21130,13 +21140,13 @@ export namespace Gst {
 
         static new_toc(src: Object | null, toc: Toc, updated: boolean): Message;
 
-        static new_warning(src: Object | null, error: GLib.Error, debug?: string | null): Message;
+        static new_warning(src: Object | null, error: GLib.Error, debug: string | null): Message;
 
         static new_warning_with_details(
             src: Object | null,
             error: GLib.Error,
-            debug?: string | null,
-            details?: Structure | null,
+            debug: string | null,
+            details: Structure | null,
         ): Message;
 
         // Static methods
@@ -21148,7 +21158,7 @@ export namespace Gst {
          * @param old_message pointer to a pointer to a {@link Gst.Message}     to be replaced.
          * @param new_message pointer to a {@link Gst.Message} that     will replace the message pointed to by `old_message`.
          */
-        static take(old_message: Message, new_message?: Message | null): [boolean, Message];
+        static take(old_message: Message, new_message: Message | null): [boolean, Message];
 
         // Methods
 
@@ -21161,7 +21171,7 @@ export namespace Gst {
          * @param tag_list tag list for the new entry
          * @param entry_struct structure for the new entry
          */
-        add_redirect_entry(location: string, tag_list?: TagList | null, entry_struct?: Structure | null): void;
+        add_redirect_entry(location: string, tag_list: TagList | null, entry_struct: Structure | null): void;
         /**
          * Creates a copy of the message. Returns a copy of the message.
          * @returns a new copy of `msg`. MT safe
@@ -21574,7 +21584,7 @@ export namespace Gst {
          * it or if it is not writable.
          * @param details A GstStructure with details
          */
-        set_details(details?: Structure | null): void;
+        set_details(details: Structure | null): void;
         /**
          * Sets the group id on the stream-start message.
          *
@@ -21781,7 +21791,7 @@ export namespace Gst {
         static register_custom(
             name: string,
             tags: string[],
-            transform_func?: CustomMetaTransformFunction | null,
+            transform_func: CustomMetaTransformFunction | null,
         ): MetaInfo;
         /**
          * Simplified version of `gst_meta_register_custom()`, with no tags and no
@@ -21936,7 +21946,7 @@ export namespace Gst {
          * @param olddata pointer to a pointer to a     mini-object to be replaced
          * @param newdata pointer to new mini-object
          */
-        static replace(olddata?: MiniObject | null, newdata?: MiniObject | null): [boolean, MiniObject | null];
+        static replace(olddata: MiniObject | null, newdata: MiniObject | null): [boolean, MiniObject | null];
         /**
          * Modifies a pointer to point to a new mini-object. The modification
          * is done atomically. This version is similar to `gst_mini_object_replace()`
@@ -22031,7 +22041,7 @@ export namespace Gst {
          * @param quark A {@link GLib.Quark}, naming the user data pointer
          * @param data An opaque user data pointer
          */
-        set_qdata(quark: GLib.Quark, data?: any | null): void;
+        set_qdata(quark: GLib.Quark, data: any | null): void;
         /**
          * This function gets back user data pointers stored via `gst_mini_object_set_qdata()`
          * and removes the data from `object` without invoking its `destroy()` function (if
@@ -22124,17 +22134,17 @@ export namespace Gst {
          * Updates `info` with `buffer` or `null`.
          * @param buffer a {@link Gst.Buffer}
          */
-        set_buffer(buffer?: Buffer | null): void;
+        set_buffer(buffer: Buffer | null): void;
         /**
          * Updates `info` with `list` or `null`.
          * @param list a {@link Gst.BufferList}
          */
-        set_buffer_list(list?: BufferList | null): void;
+        set_buffer_list(list: BufferList | null): void;
         /**
          * Updates `info` with `event` or `null`.
          * @param event a {@link Gst.Event}
          */
-        set_event(event?: Event | null): void;
+        set_event(event: Event | null): void;
         /**
          * Updates `info` with `flow_ret`.
          * @param flow_ret A {@link Gst.FlowReturn}
@@ -22612,7 +22622,7 @@ export namespace Gst {
          * is not visible to the consumer.
          * @param s a {@link Gst.Structure} with the the reply contents
          */
-        reply(s?: Structure | null): void;
+        reply(s: Structure | null): void;
         /**
          * Decreases the refcount of the promise. If the refcount reaches 0, the
          * promise will be freed.
@@ -22710,7 +22720,7 @@ export namespace Gst {
 
         static new_convert(src_format: Format, value: bigint | number, dest_format: Format): Query;
 
-        static new_custom(type: QueryType, structure?: Structure | null): Query;
+        static new_custom(type: QueryType, structure: Structure | null): Query;
 
         static new_drain(): Query;
 
@@ -22743,7 +22753,7 @@ export namespace Gst {
          * @param old_query pointer to a     pointer to a {@link Gst.Query} to be stolen.
          * @param new_query pointer to a {@link Gst.Query} that will     replace the query pointed to by `old_query`.
          */
-        static take(old_query?: Query | null, new_query?: Query | null): [boolean, Query | null];
+        static take(old_query: Query | null, new_query: Query | null): [boolean, Query | null];
 
         // Methods
 
@@ -22752,13 +22762,13 @@ export namespace Gst {
          * @param api the metadata API
          * @param params API specific parameters
          */
-        add_allocation_meta(api: GObject.GType, params?: Structure | null): void;
+        add_allocation_meta(api: GObject.GType, params: Structure | null): void;
         /**
          * Add `allocator` and its `params` as a supported memory allocator.
          * @param allocator the memory allocator
          * @param params a {@link Gst.AllocationParams}
          */
-        add_allocation_param(allocator?: Allocator | null, params?: AllocationParams | null): void;
+        add_allocation_param(allocator: Allocator | null, params: AllocationParams | null): void;
         /**
          * Set the pool parameters in `query`.
          * @param pool the {@link Gst.BufferPool}
@@ -23105,12 +23115,12 @@ export namespace Gst {
          * Set the `caps` result in `query`.
          * @param caps A pointer to the caps
          */
-        set_caps_result(caps?: Caps | null): void;
+        set_caps_result(caps: Caps | null): void;
         /**
          * Answer a context query by setting the requested context.
          * @param context the requested {@link Gst.Context}
          */
-        set_context(context?: Context | null): void;
+        set_context(context: Context | null): void;
         /**
          * Answer a convert query by setting the requested values.
          * @param src_format the source {@link Gst.Format}
@@ -23150,7 +23160,7 @@ export namespace Gst {
          * @param allocator new allocator to set
          * @param params parameters for the allocator
          */
-        set_nth_allocation_param(index: number, allocator?: Allocator | null, params?: AllocationParams | null): void;
+        set_nth_allocation_param(index: number, allocator: Allocator | null, params: AllocationParams | null): void;
         /**
          * Set the pool parameters in `query`.
          * @param index index to modify
@@ -23221,12 +23231,12 @@ export namespace Gst {
          * Answer a URI query by setting the requested URI.
          * @param uri the URI to set
          */
-        set_uri(uri?: string | null): void;
+        set_uri(uri: string | null): void;
         /**
          * Answer a URI query by setting the requested URI redirection.
          * @param uri the URI to set
          */
-        set_uri_redirection(uri?: string | null): void;
+        set_uri_redirection(uri: string | null): void;
         /**
          * Answer a URI query by setting the requested URI redirection
          * to permanent or not.
@@ -23315,13 +23325,13 @@ export namespace Gst {
 
         // Constructors
 
-        constructor(buffer?: Buffer | null, caps?: Caps | null, segment?: Segment | null, info?: Structure | null);
+        constructor(buffer: Buffer | null, caps: Caps | null, segment: Segment | null, info: Structure | null);
 
         static ['new'](
-            buffer?: Buffer | null,
-            caps?: Caps | null,
-            segment?: Segment | null,
-            info?: Structure | null,
+            buffer: Buffer | null,
+            caps: Caps | null,
+            segment: Segment | null,
+            info: Structure | null,
         ): Sample;
 
         // Methods
@@ -23996,7 +24006,7 @@ export namespace Gst {
          * @param oldstr_ptr pointer to a place of     a {@link Gst.Structure} to take
          * @param newstr a new {@link Gst.Structure}
          */
-        static take(oldstr_ptr?: Structure | null, newstr?: Structure | null): [boolean, Structure | null];
+        static take(oldstr_ptr: Structure | null, newstr: Structure | null): [boolean, Structure | null];
 
         // Methods
 
@@ -24643,7 +24653,7 @@ export namespace Gst {
          * @param old_taglist pointer to a pointer to a     {@link Gst.TagList} to be replaced.
          * @param new_taglist pointer to a {@link Gst.TagList} that     will replace the tag list pointed to by `old_taglist`.
          */
-        static replace(old_taglist?: TagList | null, new_taglist?: TagList | null): [boolean, TagList | null];
+        static replace(old_taglist: TagList | null, new_taglist: TagList | null): [boolean, TagList | null];
         /**
          * Modifies a pointer to a {@link Gst.TagList} to point to a different {@link Gst.TagList}.
          * This function is similar to `gst_tag_list_replace()` except that it takes
@@ -24651,7 +24661,7 @@ export namespace Gst {
          * @param old_taglist pointer to a pointer to a {@link Gst.TagList}     to be replaced.
          * @param new_taglist pointer to a {@link Gst.TagList} that     will replace the taglist pointed to by `old_taglist`.
          */
-        static take(old_taglist: TagList, new_taglist?: TagList | null): [boolean, TagList];
+        static take(old_taglist: TagList, new_taglist: TagList | null): [boolean, TagList];
 
         // Methods
 
@@ -25147,7 +25157,7 @@ export namespace Gst {
          * Set a {@link Gst.TagList} with tags for the complete `toc`.
          * @param tags A {@link Gst.TagList} or `null`
          */
-        set_tags(tags?: TagList | null): void;
+        set_tags(tags: TagList | null): void;
     }
 
     /**
@@ -25242,7 +25252,7 @@ export namespace Gst {
          * Set a {@link Gst.TagList} with tags for the complete `entry`.
          * @param tags A {@link Gst.TagList} or `null`
          */
-        set_tags(tags?: TagList | null): void;
+        set_tags(tags: TagList | null): void;
     }
 
     /**
@@ -25306,8 +25316,8 @@ export namespace Gst {
             name: string,
             rank: number,
             func: TypeFindFunction,
-            extensions?: string | null,
-            possible_caps?: Caps | null,
+            extensions: string | null,
+            possible_caps: Caps | null,
         ): boolean;
 
         // Methods
@@ -25372,9 +25382,9 @@ export namespace Gst {
             userinfo: string | null,
             host: string | null,
             port: number,
-            path?: string | null,
-            query?: string | null,
-            fragment?: string | null,
+            path: string | null,
+            query: string | null,
+            fragment: string | null,
         );
 
         static ['new'](
@@ -25382,9 +25392,9 @@ export namespace Gst {
             userinfo: string | null,
             host: string | null,
             port: number,
-            path?: string | null,
-            query?: string | null,
-            fragment?: string | null,
+            path: string | null,
+            query: string | null,
+            fragment: string | null,
         ): Uri;
 
         // Static methods
@@ -25479,13 +25489,13 @@ export namespace Gst {
          * @param relative_path Relative path to append to the end of the current path.
          * @returns `true` if the path was appended successfully.
          */
-        append_path(relative_path?: string | null): boolean;
+        append_path(relative_path: string | null): boolean;
         /**
          * Append a single path segment onto the end of the URI path.
          * @param path_segment The path segment string to append to the URI path.
          * @returns `true` if the path was appended successfully.
          */
-        append_path_segment(path_segment?: string | null): boolean;
+        append_path_segment(path_segment: string | null): boolean;
         /**
          * Create a new {@link Gst.Uri} object with the same data as this {@link Gst.Uri} object.
          * If `uri` is `null` then returns `null`.
@@ -25572,7 +25582,7 @@ export namespace Gst {
          * @param keys A GList containing the   query argument key strings.
          * @returns A percent encoded query string. Use `g_free()` when no longer needed.
          */
-        get_query_string_ordered(keys?: string[] | null): string | null;
+        get_query_string_ordered(keys: string[] | null): string | null;
         /**
          * Get the query table from the URI. Keys and values in the table are freed
          * with g_free when they are deleted. A value may be `null` to indicate that
@@ -25629,7 +25639,7 @@ export namespace Gst {
          * @param ref_uri The reference URI to join onto the                                       base URI.
          * @returns A {@link Gst.Uri} which represents the base                                      with the reference URI joined on.
          */
-        join(ref_uri?: Uri | null): Uri | null;
+        join(ref_uri: Uri | null): Uri | null;
         /**
          * Make the {@link Gst.Uri} writable.
          *
@@ -25656,9 +25666,9 @@ export namespace Gst {
             userinfo: string | null,
             host: string | null,
             port: number,
-            path?: string | null,
-            query?: string | null,
-            fragment?: string | null,
+            path: string | null,
+            query: string | null,
+            fragment: string | null,
         ): Uri;
         /**
          * Normalization will remove extra path segments ("." and "..") from the URI. It
@@ -25694,7 +25704,7 @@ export namespace Gst {
          * @param fragment The fragment string to set.
          * @returns `true` if the fragment was set/unset successfully.
          */
-        set_fragment(fragment?: string | null): boolean;
+        set_fragment(fragment: string | null): boolean;
         /**
          * Set or unset the host for the URI.
          * @param host The new host string to set or `null` to unset.
@@ -25706,13 +25716,13 @@ export namespace Gst {
          * @param path The new path to set with path segments separated by '/', or use `null`        to unset the path.
          * @returns `true` if the path was set successfully.
          */
-        set_path(path?: string | null): boolean;
+        set_path(path: string | null): boolean;
         /**
          * Replace the path segments list in the URI.
          * @param path_segments The new                 path list to set.
          * @returns `true` if the path segments were set successfully.
          */
-        set_path_segments(path_segments?: string[] | null): boolean;
+        set_path_segments(path_segments: string[] | null): boolean;
         /**
          * Sets or unsets the path in the URI.
          * @param path The new percent encoded path to set with path segments separated by '/', or use `null` to unset the path.
@@ -25730,7 +25740,7 @@ export namespace Gst {
          * @param query The new percent encoded query string to use to populate the query        table, or use `null` to unset the query table.
          * @returns `true` if the query table was set successfully.
          */
-        set_query_string(query?: string | null): boolean;
+        set_query_string(query: string | null): boolean;
         /**
          * Set the query table to use in the URI. The old table is unreferenced and a
          * reference to the new one is used instead. A value if `null` for `query_table`
@@ -25738,7 +25748,7 @@ export namespace Gst {
          * @param query_table The new               query table to use.
          * @returns `true` if the new table was successfully used for the query table.
          */
-        set_query_table(query_table?: GLib.HashTable<string, string> | null): boolean;
+        set_query_table(query_table: GLib.HashTable<string, string> | null): boolean;
         /**
          * This inserts or replaces a key in the query table. A `query_value` of `null`
          * indicates that the key has no associated value, but will still be present in
@@ -25747,7 +25757,7 @@ export namespace Gst {
          * @param query_value The value for the key.
          * @returns `true` if the query table was successfully updated.
          */
-        set_query_value(query_key: string, query_value?: string | null): boolean;
+        set_query_value(query_key: string, query_value: string | null): boolean;
         /**
          * Set or unset the scheme for the URI.
          * @param scheme The new scheme to set or `null` to unset the scheme.
@@ -25779,7 +25789,7 @@ export namespace Gst {
          * @param keys A GList containing   the query argument key strings.
          * @returns The string version of the URI.
          */
-        to_string_with_keys(keys?: string[] | null): string;
+        to_string_with_keys(keys: string[] | null): string;
         /**
          * Decrement the reference count to this {@link Gst.Uri} object.
          *
@@ -26017,7 +26027,7 @@ export namespace Gst {
              * @param value new value
              * @virtual
              */
-            vfunc_set_meta(name: string, tag: string, value?: string | null): boolean;
+            vfunc_set_meta(name: string, tag: string, value: string | null): boolean;
         }
 
         // Constructor properties interface
@@ -26130,7 +26140,7 @@ export namespace Gst {
          * @param value new value
          * @returns `true` for success, `false` if e.g. there is no preset with that `name`
          */
-        set_meta(name: string, tag: string, value?: string | null): boolean;
+        set_meta(name: string, tag: string, value: string | null): boolean;
     }
 
     export const Preset: PresetNamespace & {
@@ -26286,7 +26296,7 @@ export namespace Gst {
          * unreffed before setting a new one.
          * @param toc a {@link Gst.Toc} to set.
          */
-        set_toc(toc?: Toc | null): void;
+        set_toc(toc: Toc | null): void;
     }
 
     export const TocSetter: TocSetterNamespace & {

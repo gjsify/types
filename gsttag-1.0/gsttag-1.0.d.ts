@@ -700,7 +700,7 @@ export namespace GstTag {
     function tag_list_to_vorbiscomment_buffer(
         list: Gst.TagList,
         id_data: Uint8Array | string,
-        vendor_string?: string | null,
+        vendor_string: string | null,
     ): Gst.Buffer;
     /**
      * Formats a taglist as a xmp packet using only the selected
@@ -1268,7 +1268,7 @@ export namespace GstTag {
          * @param caps the {@link Gst.Caps} to use as a filter.
          * @returns the {@link Gst.Pad} to which a link   can be made, or `null` if one cannot be found. `gst_object_unref()`   after usage.
          */
-        get_compatible_pad(pad: Gst.Pad, caps?: Gst.Caps | null): Gst.Pad | null;
+        get_compatible_pad(pad: Gst.Pad, caps: Gst.Caps | null): Gst.Pad | null;
         /**
          * Retrieves a pad template from `element` that is compatible with `compattempl`.
          * Pads from compatible templates can be linked together.
@@ -1447,7 +1447,7 @@ export namespace GstTag {
          * @param filter the {@link Gst.Caps} to filter the link,     or `null` for no filter.
          * @returns `true` if the pads could be linked, `false` otherwise.
          */
-        link_filtered(dest: Gst.Element, filter?: Gst.Caps | null): boolean;
+        link_filtered(dest: Gst.Element, filter: Gst.Caps | null): boolean;
         /**
          * Links the two named pads of the source and destination elements.
          * Side effect is that if one of the pads has no parent, it becomes a
@@ -1458,7 +1458,7 @@ export namespace GstTag {
          * @param destpadname the name of the {@link Gst.Pad} in destination element, or `null` for any pad.
          * @returns `true` if the pads could be linked, `false` otherwise.
          */
-        link_pads(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null): boolean;
+        link_pads(srcpadname: string | null, dest: Gst.Element, destpadname: string | null): boolean;
         /**
          * Links the two named pads of the source and destination elements. Side effect
          * is that if one of the pads has no parent, it becomes a child of the parent of
@@ -1473,8 +1473,8 @@ export namespace GstTag {
         link_pads_filtered(
             srcpadname: string | null,
             dest: Gst.Element,
-            destpadname?: string | null,
-            filter?: Gst.Caps | null,
+            destpadname: string | null,
+            filter: Gst.Caps | null,
         ): boolean;
         /**
          * Links the two named pads of the source and destination elements.
@@ -1692,7 +1692,7 @@ export namespace GstTag {
          * @param caps the caps of the pad we want to request. Can be `null`.
          * @returns requested {@link Gst.Pad} if found,     otherwise `null`.  Release after usage.
          */
-        request_pad(templ: Gst.PadTemplate, name?: string | null, caps?: Gst.Caps | null): Gst.Pad | null;
+        request_pad(templ: Gst.PadTemplate, name: string | null, caps: Gst.Caps | null): Gst.Pad | null;
         /**
          * Retrieves a pad from the element by name (e.g. "src_\%d"). This version only
          * retrieves request pads. The pad should be released with
@@ -1782,7 +1782,7 @@ export namespace GstTag {
          * MT safe.
          * @param bus the {@link Gst.Bus} to set.
          */
-        set_bus(bus?: Gst.Bus | null): void;
+        set_bus(bus: Gst.Bus | null): void;
         /**
          * Sets the clock for the element. This function increases the
          * refcount on the clock. Any previously set clock on the object
@@ -1790,7 +1790,7 @@ export namespace GstTag {
          * @param clock the {@link Gst.Clock} to set for the element.
          * @returns `true` if the element accepted the clock. An element can refuse a clock when it, for example, is not able to slave its internal clock to the `clock` or when it requires a specific clock to operate. MT safe.
          */
-        set_clock(clock?: Gst.Clock | null): boolean;
+        set_clock(clock: Gst.Clock | null): boolean;
         /**
          * Sets the context of the element. Increases the refcount of the context.
          *
@@ -1970,7 +1970,7 @@ export namespace GstTag {
          * @param caps the caps of the pad we want to request. Can be `null`.
          * @virtual
          */
-        vfunc_request_new_pad(templ: Gst.PadTemplate, name?: string | null, caps?: Gst.Caps | null): Gst.Pad | null;
+        vfunc_request_new_pad(templ: Gst.PadTemplate, name: string | null, caps: Gst.Caps | null): Gst.Pad | null;
         /**
          * Sends an event to an element. If the element doesn't implement an
          * event handler, the event will be pushed on a random linked sink pad for
@@ -1992,7 +1992,7 @@ export namespace GstTag {
          * @param bus the {@link Gst.Bus} to set.
          * @virtual
          */
-        vfunc_set_bus(bus?: Gst.Bus | null): void;
+        vfunc_set_bus(bus: Gst.Bus | null): void;
         /**
          * Sets the clock for the element. This function increases the
          * refcount on the clock. Any previously set clock on the object
@@ -2000,7 +2000,7 @@ export namespace GstTag {
          * @param clock the {@link Gst.Clock} to set for the element.
          * @virtual
          */
-        vfunc_set_clock(clock?: Gst.Clock | null): boolean;
+        vfunc_set_clock(clock: Gst.Clock | null): boolean;
         /**
          * Sets the context of the element. Increases the refcount of the context.
          *

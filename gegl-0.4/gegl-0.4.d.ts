@@ -402,7 +402,7 @@ export namespace Gegl {
      * by `gegl_get_option_group`(), you don't have to call `gegl_init`().
      * @param argv a pointer to the array of command line arguments.
      */
-    function init(argv?: string[] | null): string[] | null;
+    function init(argv: string[] | null): string[] | null;
     function is_main_thread(): boolean;
     /**
      * @returns An alphabetically sorted array of available operation names. This excludes any compat-name registered by operations. The list should be freed with g_free after use. --- gchar **operations; guint   n_operations; gint i; operations = gegl_list_operations (&n_operations); g_print ("Available operations:\n"); for (i=0; i < n_operations; i++)   {     g_print ("\t%s\n", operations[i]);   } g_free (operations);
@@ -717,7 +717,7 @@ export namespace Gegl {
      * @gir-type Callback
      */
     interface LookupFunction {
-        (value: number, data?: any | null): number;
+        (value: number, data: any | null): number;
     }
     /**
      * @gir-type Callback
@@ -765,7 +765,7 @@ export namespace Gegl {
             x: number,
             y: number,
             z: number,
-            data?: any | null,
+            data: any | null,
         ): any | null;
     }
     /**
@@ -988,34 +988,42 @@ export namespace Gegl {
 
         /**
          * @construct-only
+         * @default 0
          */
         get abyss_height(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get abyssHeight(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get abyss_width(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get abyssWidth(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get abyss_x(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get abyssX(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get abyss_y(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get abyssY(): number;
         /**
@@ -1024,64 +1032,89 @@ export namespace Gegl {
         get backend(): TileBackend;
         get format(): any;
         set format(val: any);
+        /**
+         * @default -1
+         */
         get height(): number;
         set height(val: number);
         /**
          * @construct-only
+         * @default true
          */
         get initialized(): boolean;
         /**
          * @construct-only
+         * @default null
          */
         get path(): string;
         /**
          * @read-only
+         * @default 0
          */
         get pixels(): number;
         /**
          * @read-only
+         * @default 0
          */
         get px_size(): number;
         /**
          * @read-only
+         * @default 0
          */
         get pxSize(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get shift_x(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get shiftX(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get shift_y(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get shiftY(): number;
         /**
          * @construct-only
+         * @default 128
          */
         get tile_height(): number;
         /**
          * @construct-only
+         * @default 128
          */
         get tileHeight(): number;
         /**
          * @construct-only
+         * @default 128
          */
         get tile_width(): number;
         /**
          * @construct-only
+         * @default 128
          */
         get tileWidth(): number;
+        /**
+         * @default -1
+         */
         get width(): number;
         set width(val: number);
+        /**
+         * @default 0
+         */
         get x(): number;
         set x(val: number);
+        /**
+         * @default 0
+         */
         get y(): number;
         set y(val: number);
 
@@ -1148,7 +1181,7 @@ export namespace Gegl {
          * removed when `gegl_exit()` is called.
          * @param suffix a string to suffix the filename with, for          identification purposes, or `null`.
          */
-        static swap_create_file(suffix?: string | null): string | null;
+        static swap_create_file(suffix: string | null): string | null;
         /**
          * Tests if `path` is a swap file, that is, if it has been created
          * with `gegl_buffer_swap_create_file()`, and hasn't been removed
@@ -1169,7 +1202,7 @@ export namespace Gegl {
          * Add a new tile handler in the existing chain of tile handler of a GeglBuffer.
          * @param handler a {@link Gegl.TileHandler}
          */
-        add_handler(handler?: any | null): void;
+        add_handler(handler: any | null): void;
         /**
          * Clears the provided rectangular region by setting all the associated memory
          * to 0.
@@ -1262,12 +1295,12 @@ export namespace Gegl {
          * the same buffer (both raw access and converted).
          * @param linear a previously returned buffer.
          */
-        linear_close(linear?: any | null): void;
+        linear_close(linear: any | null): void;
         /**
          * Remove the provided tile handler in the existing chain of tile handler of a GeglBuffer.
          * @param handler a {@link Gegl.TileHandler}
          */
-        remove_handler(handler?: any | null): void;
+        remove_handler(handler: any | null): void;
         /**
          * Clean up resources used by sampling framework of buffer.
          */
@@ -1424,7 +1457,7 @@ export namespace Gegl {
          * naive CMYK space.
          * @param space CMYK space.
          */
-        get_cmyk(space?: Babl.Object | null): [number, number, number, number, number];
+        get_cmyk(space: Babl.Object | null): [number, number, number, number, number];
         /**
          * Get the component values of the color in `format`.
          * @param format A Babl pointer
@@ -1441,14 +1474,14 @@ export namespace Gegl {
          * sRGB space.
          * @param space RGB space.
          */
-        get_hsla(space?: Babl.Object | null): [number, number, number, number];
+        get_hsla(space: Babl.Object | null): [number, number, number, number];
         /**
          * Retrieves the current set color stored as `space`.
          * If `space` is `null`, this is equivalent to requesting color in the default
          * sRGB space.
          * @param space RGB space.
          */
-        get_hsva(space?: Babl.Object | null): [number, number, number, number];
+        get_hsva(space: Babl.Object | null): [number, number, number, number];
         /**
          * Retrieves the current set color as linear light non premultipled RGBA data,
          * any of the return pointers can be omitted.
@@ -1482,7 +1515,7 @@ export namespace Gegl {
             yellow: number,
             key: number,
             alpha: number,
-            space?: Babl.Object | null,
+            space: Babl.Object | null,
         ): void;
         /**
          * Set the color using the component values as `format`.
@@ -1499,7 +1532,7 @@ export namespace Gegl {
          * @param alpha alpha value.
          * @param space RGB space.
          */
-        set_hsla(hue: number, saturation: number, lightness: number, alpha: number, space?: Babl.Object | null): void;
+        set_hsla(hue: number, saturation: number, lightness: number, alpha: number, space: Babl.Object | null): void;
         /**
          * Set color as HSVA data stored as `space`. If `space` is `null`, this is
          * equivalent to storing with the default sRGB space.
@@ -1509,7 +1542,7 @@ export namespace Gegl {
          * @param alpha alpha value.
          * @param space RGB space.
          */
-        set_hsva(hue: number, saturation: number, value: number, alpha: number, space?: Babl.Object | null): void;
+        set_hsva(hue: number, saturation: number, value: number, alpha: number, space: Babl.Object | null): void;
         /**
          * Set color as linear light non premultipled RGBA data
          * @param red red value
@@ -1586,42 +1619,99 @@ export namespace Gegl {
         set application_license(val: string);
         get applicationLicense(): string;
         set applicationLicense(val: string);
+        /**
+         * @default 1048576
+         */
         get chunk_size(): number;
         set chunk_size(val: number);
+        /**
+         * @default 1048576
+         */
         get chunkSize(): number;
         set chunkSize(val: number);
+        /**
+         * @default false
+         */
         get mipmap_rendering(): boolean;
         set mipmap_rendering(val: boolean);
+        /**
+         * @default false
+         */
         get mipmapRendering(): boolean;
         set mipmapRendering(val: boolean);
+        /**
+         * @default 1
+         */
         get quality(): number;
         set quality(val: number);
+        /**
+         * @default 52428800
+         */
         get queue_size(): number;
         set queue_size(val: number);
+        /**
+         * @default 52428800
+         */
         get queueSize(): number;
         set queueSize(val: number);
+        /**
+         * @default null
+         */
         get swap(): string;
         set swap(val: string);
+        /**
+         * @default null
+         */
         get swap_compression(): string;
         set swap_compression(val: string);
+        /**
+         * @default null
+         */
         get swapCompression(): string;
         set swapCompression(val: string);
+        /**
+         * @default 64
+         */
         get threads(): number;
         set threads(val: number);
+        /**
+         * @default 268435456
+         */
         get tile_cache_size(): number;
         set tile_cache_size(val: bigint | number);
+        /**
+         * @default 268435456
+         */
         get tileCacheSize(): number;
         set tileCacheSize(val: bigint | number);
+        /**
+         * @default 128
+         */
         get tile_height(): number;
         set tile_height(val: number);
+        /**
+         * @default 128
+         */
         get tileHeight(): number;
         set tileHeight(val: number);
+        /**
+         * @default 128
+         */
         get tile_width(): number;
         set tile_width(val: number);
+        /**
+         * @default 128
+         */
         get tileWidth(): number;
         set tileWidth(val: number);
+        /**
+         * @default false
+         */
         get use_opencl(): boolean;
         set use_opencl(val: boolean);
+        /**
+         * @default false
+         */
         get useOpencl(): boolean;
         set useOpencl(val: boolean);
 
@@ -2023,38 +2113,19 @@ export namespace Gegl {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -2062,15 +2133,9 @@ export namespace Gegl {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -2242,7 +2307,7 @@ export namespace Gegl {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -3001,26 +3066,31 @@ export namespace Gegl {
 
         /**
          * Name of image creator.
+         * @default null
          */
         get artist(): string;
         set artist(val: string);
         /**
          * Miscellaneous comment; conversion from GIF comment.
+         * @default null
          */
         get comment(): string;
         set comment(val: string);
         /**
          * Copyright notice.
+         * @default null
          */
         get copyright(): string;
         set copyright(val: string);
         /**
          * Description of image (possibly long).
+         * @default null
          */
         get description(): string;
         set description(val: string);
         /**
          * Legal disclaimer.
+         * @default null
          */
         get disclaimer(): string;
         set disclaimer(val: string);
@@ -3029,6 +3099,7 @@ export namespace Gegl {
          * mapping is registered. This property is mainly provided for use in signal
          * handlers.
          * @read-only
+         * @default null
          */
         get file_module_name(): string;
         /**
@@ -3036,45 +3107,54 @@ export namespace Gegl {
          * mapping is registered. This property is mainly provided for use in signal
          * handlers.
          * @read-only
+         * @default null
          */
         get fileModuleName(): string;
         /**
          * A {@link Gegl.ResolutionUnit} specifying units for the image resolution (density).
+         * @default Gegl.ResolutionUnit.DPI
          */
         get resolution_unit(): ResolutionUnit;
         set resolution_unit(val: ResolutionUnit);
         /**
          * A {@link Gegl.ResolutionUnit} specifying units for the image resolution (density).
+         * @default Gegl.ResolutionUnit.DPI
          */
         get resolutionUnit(): ResolutionUnit;
         set resolutionUnit(val: ResolutionUnit);
         /**
          * X resolution or density in dots per unit.
+         * @default 300
          */
         get resolution_x(): number;
         set resolution_x(val: number);
         /**
          * X resolution or density in dots per unit.
+         * @default 300
          */
         get resolutionX(): number;
         set resolutionX(val: number);
         /**
          * Y resolution or density in dots per unit.
+         * @default 300
          */
         get resolution_y(): number;
         set resolution_y(val: number);
         /**
          * Y resolution or density in dots per unit.
+         * @default 300
          */
         get resolutionY(): number;
         set resolutionY(val: number);
         /**
          * Software used to create the image.
+         * @default null
          */
         get software(): string;
         set software(val: string);
         /**
          * Device used to create the image.
+         * @default null
          */
         get source(): string;
         set source(val: string);
@@ -3085,11 +3165,13 @@ export namespace Gegl {
         set timestamp(val: GLib.DateTime);
         /**
          * Short (one line) title or caption for image.
+         * @default null
          */
         get title(): string;
         set title(val: string);
         /**
          * Warning of nature of content.
+         * @default null
          */
         get warning(): string;
         set warning(val: string);
@@ -3587,38 +3669,19 @@ export namespace Gegl {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -3626,15 +3689,9 @@ export namespace Gegl {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -3787,7 +3844,7 @@ export namespace Gegl {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -4011,8 +4068,8 @@ export namespace Gegl {
             cachePolicy: CachePolicy;
             dont_cache: boolean;
             dontCache: boolean;
-            gegl_operation: Operation;
-            geglOperation: Operation;
+            gegl_operation: Operation | null;
+            geglOperation: Operation | null;
             name: string;
             operation: string;
             passthrough: boolean;
@@ -4029,26 +4086,47 @@ export namespace Gegl {
 
         // Properties
 
+        /**
+         * @default Auto
+         */
         get cache_policy(): CachePolicy;
         set cache_policy(val: CachePolicy);
+        /**
+         * @default Auto
+         */
         get cachePolicy(): CachePolicy;
         set cachePolicy(val: CachePolicy);
+        /**
+         * @default false
+         */
         get dont_cache(): boolean;
         set dont_cache(val: boolean);
+        /**
+         * @default false
+         */
         get dontCache(): boolean;
         set dontCache(val: boolean);
-        get gegl_operation(): Operation;
-        set gegl_operation(val: Operation);
-        get geglOperation(): Operation;
-        set geglOperation(val: Operation);
+        get gegl_operation(): Operation | null;
+        set gegl_operation(val: Operation | null);
+        get geglOperation(): Operation | null;
+        set geglOperation(val: Operation | null);
         get name(): string;
         set name(val: string);
         get operation(): string;
         set operation(val: string);
+        /**
+         * @default false
+         */
         get passthrough(): boolean;
         set passthrough(val: boolean);
+        /**
+         * @default true
+         */
         get use_opencl(): boolean;
         set use_opencl(val: boolean);
+        /**
+         * @default true
+         */
         get useOpencl(): boolean;
         set useOpencl(val: boolean);
 
@@ -4238,7 +4316,7 @@ export namespace Gegl {
          * @param output_pad_name optional pointer to a location where we can store a                   freshly allocated string with the name of the output pad.
          * @returns the node providing data or NULL if no node is connected to the input_pad.
          */
-        get_producer(input_pad_name: string, output_pad_name?: string | null): Node;
+        get_producer(input_pad_name: string, output_pad_name: string | null): Node;
         /**
          * Returns TRUE if the node has a pad with the specified name
          * @param pad_name the pad name we are looking for
@@ -4697,12 +4775,16 @@ export namespace Gegl {
 
         /**
          * @construct-only
+         * @default 1048576
          */
         get chunksize(): number;
         /**
          * @write-only
          */
         set node(val: Node);
+        /**
+         * @default 0
+         */
         get progress(): number;
         set progress(val: number);
         get rectangle(): any;
@@ -4866,170 +4948,212 @@ export namespace Gegl {
 
         /**
          * @read-only
+         * @default 0
          */
         get active_threads(): number;
         /**
          * @read-only
+         * @default 0
          */
         get activeThreads(): number;
         /**
          * @read-only
+         * @default 0
          */
         get assigned_threads(): number;
         /**
          * @read-only
+         * @default 0
          */
         get assignedThreads(): number;
         /**
          * @read-only
+         * @default 0
          */
         get scratch_total(): number;
         /**
          * @read-only
+         * @default 0
          */
         get scratchTotal(): number;
         /**
          * @read-only
+         * @default false
          */
         get swap_busy(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get swapBusy(): boolean;
         /**
          * @read-only
+         * @default 0
          */
         get swap_file_size(): number;
         /**
          * @read-only
+         * @default 0
          */
         get swapFileSize(): number;
         /**
          * @read-only
+         * @default false
          */
         get swap_queue_full(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get swapQueueFull(): boolean;
         /**
          * @read-only
+         * @default 0
          */
         get swap_queue_stalls(): number;
         /**
          * @read-only
+         * @default 0
          */
         get swapQueueStalls(): number;
         /**
          * @read-only
+         * @default 0
          */
         get swap_queued_total(): number;
         /**
          * @read-only
+         * @default 0
          */
         get swapQueuedTotal(): number;
         /**
          * @read-only
+         * @default 0
          */
         get swap_read_total(): number;
         /**
          * @read-only
+         * @default 0
          */
         get swapReadTotal(): number;
         /**
          * @read-only
+         * @default false
          */
         get swap_reading(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get swapReading(): boolean;
         /**
          * @read-only
+         * @default 0
          */
         get swap_total(): number;
         /**
          * @read-only
+         * @default 0
          */
         get swapTotal(): number;
         /**
          * @read-only
+         * @default 0
          */
         get swap_total_uncompressed(): number;
         /**
          * @read-only
+         * @default 0
          */
         get swapTotalUncompressed(): number;
         /**
          * @read-only
+         * @default 0
          */
         get swap_write_total(): number;
         /**
          * @read-only
+         * @default 0
          */
         get swapWriteTotal(): number;
         /**
          * @read-only
+         * @default false
          */
         get swap_writing(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get swapWriting(): boolean;
         /**
          * @read-only
+         * @default 0
          */
         get tile_alloc_total(): number;
         /**
          * @read-only
+         * @default 0
          */
         get tileAllocTotal(): number;
         /**
          * @read-only
+         * @default 0
          */
         get tile_cache_hits(): number;
         /**
          * @read-only
+         * @default 0
          */
         get tileCacheHits(): number;
         /**
          * @read-only
+         * @default 0
          */
         get tile_cache_misses(): number;
         /**
          * @read-only
+         * @default 0
          */
         get tileCacheMisses(): number;
         /**
          * @read-only
+         * @default 0
          */
         get tile_cache_total(): number;
         /**
          * @read-only
+         * @default 0
          */
         get tileCacheTotal(): number;
         /**
          * @read-only
+         * @default 0
          */
         get tile_cache_total_max(): number;
         /**
          * @read-only
+         * @default 0
          */
         get tileCacheTotalMax(): number;
         /**
          * @read-only
+         * @default 0
          */
         get tile_cache_total_uncompressed(): number;
         /**
          * @read-only
+         * @default 0
          */
         get tileCacheTotalUncompressed(): number;
         /**
          * @read-only
+         * @default 0
          */
         get zoom_total(): number;
         /**
          * @read-only
+         * @default 0
          */
         get zoomTotal(): number;
 
@@ -5106,8 +5230,14 @@ export namespace Gegl {
 
         // Properties
 
+        /**
+         * @default true
+         */
         get flush_on_destroy(): boolean;
         set flush_on_destroy(val: boolean);
+        /**
+         * @default true
+         */
         get flushOnDestroy(): boolean;
         set flushOnDestroy(val: boolean);
         /**
@@ -5116,34 +5246,42 @@ export namespace Gegl {
         get format(): any;
         /**
          * @read-only
+         * @default 0
          */
         get px_size(): number;
         /**
          * @read-only
+         * @default 0
          */
         get pxSize(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get tile_height(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get tileHeight(): number;
         /**
          * @read-only
+         * @default 0
          */
         get tile_size(): number;
         /**
          * @read-only
+         * @default 0
          */
         get tileSize(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get tile_width(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get tileWidth(): number;
 

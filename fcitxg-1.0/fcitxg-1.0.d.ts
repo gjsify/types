@@ -183,7 +183,7 @@ export namespace FcitxG {
             isRelease: boolean,
             t: number,
             timeout_msec: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * use this function with `fcitx_g_client_process_key_finish`
@@ -224,7 +224,7 @@ export namespace FcitxG {
             isRelease: boolean,
             t: number,
             timeout_msec: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**

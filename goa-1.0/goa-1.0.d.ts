@@ -499,7 +499,7 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): AccountProxy;
         // Conflicted with Gio.DBusProxy.new_for_bus_sync
 
@@ -510,7 +510,7 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): AccountProxy;
         // Conflicted with Gio.DBusProxy.new_sync
 
@@ -558,8 +558,8 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<AccountProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<AccountProxy> | null,
         ): void;
         /**
          * @param args
@@ -585,8 +585,8 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<AccountProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<AccountProxy> | null,
         ): void;
         /**
          * @param args
@@ -597,6 +597,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.AttentionNeeded">"AttentionNeeded"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get attention_needed(): boolean;
@@ -605,6 +606,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.AttentionNeeded">"AttentionNeeded"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get attentionNeeded(): boolean;
@@ -613,6 +615,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.CalendarDisabled">"CalendarDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get calendar_disabled(): boolean;
@@ -621,6 +624,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.CalendarDisabled">"CalendarDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get calendarDisabled(): boolean;
@@ -629,6 +633,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.ChatDisabled">"ChatDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get chat_disabled(): boolean;
@@ -637,6 +642,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.ChatDisabled">"ChatDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get chatDisabled(): boolean;
@@ -645,6 +651,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.ContactsDisabled">"ContactsDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get contacts_disabled(): boolean;
@@ -653,6 +660,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.ContactsDisabled">"ContactsDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get contactsDisabled(): boolean;
@@ -662,6 +670,7 @@ export namespace Goa {
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          * @deprecated The D-Bus property has been deprecated.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get documents_disabled(): boolean;
@@ -671,6 +680,7 @@ export namespace Goa {
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          * @deprecated The D-Bus property has been deprecated.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get documentsDisabled(): boolean;
@@ -679,6 +689,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.FilesDisabled">"FilesDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get files_disabled(): boolean;
@@ -687,6 +698,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.FilesDisabled">"FilesDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get filesDisabled(): boolean;
@@ -695,22 +707,25 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.Id">"Id"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.Account
          */
-        get id(): string;
-        set id(val: string);
+        get id(): string | null;
+        set id(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.Identity">"Identity"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.Account
          */
-        get identity(): string;
-        set identity(val: string);
+        get identity(): string | null;
+        set identity(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.IsLocked">"IsLocked"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get is_locked(): boolean;
@@ -719,6 +734,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.IsLocked">"IsLocked"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get isLocked(): boolean;
@@ -727,6 +743,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.IsTemporary">"IsTemporary"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get is_temporary(): boolean;
@@ -735,6 +752,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.IsTemporary">"IsTemporary"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get isTemporary(): boolean;
@@ -743,6 +761,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.MailDisabled">"MailDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get mail_disabled(): boolean;
@@ -751,6 +770,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.MailDisabled">"MailDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get mailDisabled(): boolean;
@@ -760,6 +780,7 @@ export namespace Goa {
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          * @deprecated The D-Bus property has been deprecated.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get maps_disabled(): boolean;
@@ -769,6 +790,7 @@ export namespace Goa {
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          * @deprecated The D-Bus property has been deprecated.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get mapsDisabled(): boolean;
@@ -777,6 +799,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.MusicDisabled">"MusicDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get music_disabled(): boolean;
@@ -785,6 +808,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.MusicDisabled">"MusicDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get musicDisabled(): boolean;
@@ -793,6 +817,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.PhotosDisabled">"PhotosDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get photos_disabled(): boolean;
@@ -801,6 +826,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.PhotosDisabled">"PhotosDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get photosDisabled(): boolean;
@@ -809,23 +835,26 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.PresentationIdentity">"PresentationIdentity"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.Account
          */
-        get presentation_identity(): string;
-        set presentation_identity(val: string);
+        get presentation_identity(): string | null;
+        set presentation_identity(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.PresentationIdentity">"PresentationIdentity"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.Account
          */
-        get presentationIdentity(): string;
-        set presentationIdentity(val: string);
+        get presentationIdentity(): string | null;
+        set presentationIdentity(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.PrintersDisabled">"PrintersDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          * @deprecated The D-Bus property has been deprecated.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get printers_disabled(): boolean;
@@ -835,6 +864,7 @@ export namespace Goa {
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          * @deprecated The D-Bus property has been deprecated.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get printersDisabled(): boolean;
@@ -843,55 +873,62 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.ProviderIcon">"ProviderIcon"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.Account
          */
-        get provider_icon(): string;
-        set provider_icon(val: string);
+        get provider_icon(): string | null;
+        set provider_icon(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.ProviderIcon">"ProviderIcon"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.Account
          */
-        get providerIcon(): string;
-        set providerIcon(val: string);
+        get providerIcon(): string | null;
+        set providerIcon(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.ProviderName">"ProviderName"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.Account
          */
-        get provider_name(): string;
-        set provider_name(val: string);
+        get provider_name(): string | null;
+        set provider_name(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.ProviderName">"ProviderName"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.Account
          */
-        get providerName(): string;
-        set providerName(val: string);
+        get providerName(): string | null;
+        set providerName(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.ProviderType">"ProviderType"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.Account
          */
-        get provider_type(): string;
-        set provider_type(val: string);
+        get provider_type(): string | null;
+        set provider_type(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.ProviderType">"ProviderType"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.Account
          */
-        get providerType(): string;
-        set providerType(val: string);
+        get providerType(): string | null;
+        set providerType(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.ReadLaterDisabled">"ReadLaterDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          * @deprecated The D-Bus property has been deprecated.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get read_later_disabled(): boolean;
@@ -901,6 +938,7 @@ export namespace Goa {
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          * @deprecated The D-Bus property has been deprecated.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get readLaterDisabled(): boolean;
@@ -909,6 +947,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.TicketingDisabled">"TicketingDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get ticketing_disabled(): boolean;
@@ -917,6 +956,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.TicketingDisabled">"TicketingDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get ticketingDisabled(): boolean;
@@ -926,6 +966,7 @@ export namespace Goa {
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          * @deprecated The D-Bus property has been deprecated.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get todo_disabled(): boolean;
@@ -935,6 +976,7 @@ export namespace Goa {
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          * @deprecated The D-Bus property has been deprecated.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get todoDisabled(): boolean;
@@ -979,7 +1021,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -1069,7 +1111,7 @@ export namespace Goa {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1135,8 +1177,8 @@ export namespace Goa {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -1162,7 +1204,7 @@ export namespace Goa {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -1181,7 +1223,7 @@ export namespace Goa {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Initializes the object implementing the interface.
          *
@@ -1224,7 +1266,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -1267,7 +1309,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Account.EnsureCredentials">EnsureCredentials()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -1276,7 +1318,7 @@ export namespace Goa {
          * See `goa_account_call_ensure_credentials_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_ensure_credentials(cancellable?: Gio.Cancellable | null): globalThis.Promise<number>;
+        call_ensure_credentials(cancellable: Gio.Cancellable | null): globalThis.Promise<number>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Account.EnsureCredentials">EnsureCredentials()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -1300,7 +1342,7 @@ export namespace Goa {
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_ensure_credentials(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<number> | void;
         /**
@@ -1316,7 +1358,7 @@ export namespace Goa {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_ensure_credentials_sync(cancellable?: Gio.Cancellable | null): [boolean, number];
+        call_ensure_credentials_sync(cancellable: Gio.Cancellable | null): [boolean, number];
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Account.Remove">Remove()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -1325,7 +1367,7 @@ export namespace Goa {
          * See `goa_account_call_remove_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_remove(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_remove(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Account.Remove">Remove()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -1346,7 +1388,7 @@ export namespace Goa {
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_remove(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1362,7 +1404,7 @@ export namespace Goa {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_remove_sync(cancellable?: Gio.Cancellable | null): boolean;
+        call_remove_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Account.EnsureCredentials">EnsureCredentials()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
          *
@@ -1437,38 +1479,19 @@ export namespace Goa {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1476,15 +1499,9 @@ export namespace Goa {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1651,7 +1668,7 @@ export namespace Goa {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1926,6 +1943,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.AttentionNeeded">"AttentionNeeded"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get attention_needed(): boolean;
@@ -1934,6 +1952,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.AttentionNeeded">"AttentionNeeded"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get attentionNeeded(): boolean;
@@ -1942,6 +1961,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.CalendarDisabled">"CalendarDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get calendar_disabled(): boolean;
@@ -1950,6 +1970,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.CalendarDisabled">"CalendarDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get calendarDisabled(): boolean;
@@ -1958,6 +1979,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.ChatDisabled">"ChatDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get chat_disabled(): boolean;
@@ -1966,6 +1988,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.ChatDisabled">"ChatDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get chatDisabled(): boolean;
@@ -1974,6 +1997,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.ContactsDisabled">"ContactsDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get contacts_disabled(): boolean;
@@ -1982,6 +2006,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.ContactsDisabled">"ContactsDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get contactsDisabled(): boolean;
@@ -1991,6 +2016,7 @@ export namespace Goa {
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          * @deprecated The D-Bus property has been deprecated.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get documents_disabled(): boolean;
@@ -2000,6 +2026,7 @@ export namespace Goa {
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          * @deprecated The D-Bus property has been deprecated.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get documentsDisabled(): boolean;
@@ -2008,6 +2035,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.FilesDisabled">"FilesDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get files_disabled(): boolean;
@@ -2016,6 +2044,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.FilesDisabled">"FilesDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get filesDisabled(): boolean;
@@ -2024,22 +2053,25 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.Id">"Id"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.Account
          */
-        get id(): string;
-        set id(val: string);
+        get id(): string | null;
+        set id(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.Identity">"Identity"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.Account
          */
-        get identity(): string;
-        set identity(val: string);
+        get identity(): string | null;
+        set identity(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.IsLocked">"IsLocked"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get is_locked(): boolean;
@@ -2048,6 +2080,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.IsLocked">"IsLocked"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get isLocked(): boolean;
@@ -2056,6 +2089,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.IsTemporary">"IsTemporary"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get is_temporary(): boolean;
@@ -2064,6 +2098,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.IsTemporary">"IsTemporary"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get isTemporary(): boolean;
@@ -2072,6 +2107,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.MailDisabled">"MailDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get mail_disabled(): boolean;
@@ -2080,6 +2116,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.MailDisabled">"MailDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get mailDisabled(): boolean;
@@ -2089,6 +2126,7 @@ export namespace Goa {
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          * @deprecated The D-Bus property has been deprecated.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get maps_disabled(): boolean;
@@ -2098,6 +2136,7 @@ export namespace Goa {
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          * @deprecated The D-Bus property has been deprecated.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get mapsDisabled(): boolean;
@@ -2106,6 +2145,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.MusicDisabled">"MusicDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get music_disabled(): boolean;
@@ -2114,6 +2154,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.MusicDisabled">"MusicDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get musicDisabled(): boolean;
@@ -2122,6 +2163,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.PhotosDisabled">"PhotosDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get photos_disabled(): boolean;
@@ -2130,6 +2172,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.PhotosDisabled">"PhotosDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get photosDisabled(): boolean;
@@ -2138,23 +2181,26 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.PresentationIdentity">"PresentationIdentity"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.Account
          */
-        get presentation_identity(): string;
-        set presentation_identity(val: string);
+        get presentation_identity(): string | null;
+        set presentation_identity(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.PresentationIdentity">"PresentationIdentity"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.Account
          */
-        get presentationIdentity(): string;
-        set presentationIdentity(val: string);
+        get presentationIdentity(): string | null;
+        set presentationIdentity(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.PrintersDisabled">"PrintersDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          * @deprecated The D-Bus property has been deprecated.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get printers_disabled(): boolean;
@@ -2164,6 +2210,7 @@ export namespace Goa {
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          * @deprecated The D-Bus property has been deprecated.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get printersDisabled(): boolean;
@@ -2172,55 +2219,62 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.ProviderIcon">"ProviderIcon"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.Account
          */
-        get provider_icon(): string;
-        set provider_icon(val: string);
+        get provider_icon(): string | null;
+        set provider_icon(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.ProviderIcon">"ProviderIcon"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.Account
          */
-        get providerIcon(): string;
-        set providerIcon(val: string);
+        get providerIcon(): string | null;
+        set providerIcon(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.ProviderName">"ProviderName"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.Account
          */
-        get provider_name(): string;
-        set provider_name(val: string);
+        get provider_name(): string | null;
+        set provider_name(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.ProviderName">"ProviderName"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.Account
          */
-        get providerName(): string;
-        set providerName(val: string);
+        get providerName(): string | null;
+        set providerName(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.ProviderType">"ProviderType"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.Account
          */
-        get provider_type(): string;
-        set provider_type(val: string);
+        get provider_type(): string | null;
+        set provider_type(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.ProviderType">"ProviderType"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.Account
          */
-        get providerType(): string;
-        set providerType(val: string);
+        get providerType(): string | null;
+        set providerType(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.ReadLaterDisabled">"ReadLaterDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          * @deprecated The D-Bus property has been deprecated.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get read_later_disabled(): boolean;
@@ -2230,6 +2284,7 @@ export namespace Goa {
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          * @deprecated The D-Bus property has been deprecated.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get readLaterDisabled(): boolean;
@@ -2238,6 +2293,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.TicketingDisabled">"TicketingDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get ticketing_disabled(): boolean;
@@ -2246,6 +2302,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.TicketingDisabled">"TicketingDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get ticketingDisabled(): boolean;
@@ -2255,6 +2312,7 @@ export namespace Goa {
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          * @deprecated The D-Bus property has been deprecated.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get todo_disabled(): boolean;
@@ -2264,6 +2322,7 @@ export namespace Goa {
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          * @deprecated The D-Bus property has been deprecated.
+         * @default false
          * @category Inherited from Goa.Account
          */
         get todoDisabled(): boolean;
@@ -2285,7 +2344,7 @@ export namespace Goa {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -2304,7 +2363,7 @@ export namespace Goa {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Account.EnsureCredentials">EnsureCredentials()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -2313,7 +2372,7 @@ export namespace Goa {
          * See `goa_account_call_ensure_credentials_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_ensure_credentials(cancellable?: Gio.Cancellable | null): globalThis.Promise<number>;
+        call_ensure_credentials(cancellable: Gio.Cancellable | null): globalThis.Promise<number>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Account.EnsureCredentials">EnsureCredentials()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -2337,7 +2396,7 @@ export namespace Goa {
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_ensure_credentials(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<number> | void;
         /**
@@ -2353,7 +2412,7 @@ export namespace Goa {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_ensure_credentials_sync(cancellable?: Gio.Cancellable | null): [boolean, number];
+        call_ensure_credentials_sync(cancellable: Gio.Cancellable | null): [boolean, number];
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Account.Remove">Remove()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -2362,7 +2421,7 @@ export namespace Goa {
          * See `goa_account_call_remove_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_remove(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_remove(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Account.Remove">Remove()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -2383,7 +2442,7 @@ export namespace Goa {
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_remove(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2399,7 +2458,7 @@ export namespace Goa {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_remove_sync(cancellable?: Gio.Cancellable | null): boolean;
+        call_remove_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Account.EnsureCredentials">EnsureCredentials()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
          *
@@ -2474,38 +2533,19 @@ export namespace Goa {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -2513,15 +2553,9 @@ export namespace Goa {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -2688,7 +2722,7 @@ export namespace Goa {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -2942,7 +2976,7 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): CalendarProxy;
         // Conflicted with Gio.DBusProxy.new_for_bus_sync
 
@@ -2953,7 +2987,7 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): CalendarProxy;
         // Conflicted with Gio.DBusProxy.new_sync
 
@@ -3001,8 +3035,8 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<CalendarProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<CalendarProxy> | null,
         ): void;
         /**
          * @param args
@@ -3028,8 +3062,8 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<CalendarProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<CalendarProxy> | null,
         ): void;
         /**
          * @param args
@@ -3040,6 +3074,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Calendar.AcceptSslErrors">"AcceptSslErrors"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Calendar
          */
         get accept_ssl_errors(): boolean;
@@ -3048,6 +3083,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Calendar.AcceptSslErrors">"AcceptSslErrors"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Calendar
          */
         get acceptSslErrors(): boolean;
@@ -3056,10 +3092,11 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Calendar.Uri">"Uri"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.Calendar
          */
-        get uri(): string;
-        set uri(val: string);
+        get uri(): string | null;
+        set uri(val: string | null);
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -3100,7 +3137,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -3190,7 +3227,7 @@ export namespace Goa {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -3256,8 +3293,8 @@ export namespace Goa {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -3283,7 +3320,7 @@ export namespace Goa {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -3302,7 +3339,7 @@ export namespace Goa {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Initializes the object implementing the interface.
          *
@@ -3345,7 +3382,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -3388,7 +3425,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -3436,38 +3473,19 @@ export namespace Goa {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -3475,15 +3493,9 @@ export namespace Goa {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -3650,7 +3662,7 @@ export namespace Goa {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -3905,6 +3917,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Calendar.AcceptSslErrors">"AcceptSslErrors"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Calendar
          */
         get accept_ssl_errors(): boolean;
@@ -3913,6 +3926,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Calendar.AcceptSslErrors">"AcceptSslErrors"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Calendar
          */
         get acceptSslErrors(): boolean;
@@ -3921,10 +3935,11 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Calendar.Uri">"Uri"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.Calendar
          */
-        get uri(): string;
-        set uri(val: string);
+        get uri(): string | null;
+        set uri(val: string | null);
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
@@ -3942,7 +3957,7 @@ export namespace Goa {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -3961,7 +3976,7 @@ export namespace Goa {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -4009,38 +4024,19 @@ export namespace Goa {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -4048,15 +4044,9 @@ export namespace Goa {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -4223,7 +4213,7 @@ export namespace Goa {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -4475,7 +4465,7 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): ChatProxy;
         // Conflicted with Gio.DBusProxy.new_for_bus_sync
 
@@ -4486,7 +4476,7 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): ChatProxy;
         // Conflicted with Gio.DBusProxy.new_sync
 
@@ -4534,8 +4524,8 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<ChatProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<ChatProxy> | null,
         ): void;
         /**
          * @param args
@@ -4561,8 +4551,8 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<ChatProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<ChatProxy> | null,
         ): void;
         /**
          * @param args
@@ -4609,7 +4599,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -4699,7 +4689,7 @@ export namespace Goa {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -4765,8 +4755,8 @@ export namespace Goa {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -4792,7 +4782,7 @@ export namespace Goa {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -4811,7 +4801,7 @@ export namespace Goa {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Initializes the object implementing the interface.
          *
@@ -4854,7 +4844,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -4897,7 +4887,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -4945,38 +4935,19 @@ export namespace Goa {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -4984,15 +4955,9 @@ export namespace Goa {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -5159,7 +5124,7 @@ export namespace Goa {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -5425,7 +5390,7 @@ export namespace Goa {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -5444,7 +5409,7 @@ export namespace Goa {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -5492,38 +5457,19 @@ export namespace Goa {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -5531,15 +5477,9 @@ export namespace Goa {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -5706,7 +5646,7 @@ export namespace Goa {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -5971,7 +5911,7 @@ export namespace Goa {
 
         static new_finish(...args: never[]): any;
 
-        static new_sync(cancellable?: Gio.Cancellable | null): Client;
+        static new_sync(cancellable: Gio.Cancellable | null): Client;
 
         // Signals
 
@@ -6005,7 +5945,7 @@ export namespace Goa {
          * @param cancellable A {@link Gio.Cancellable}
          * @param callback A callback to call when the operation is complete
          */
-        static ['new'](cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<Client> | null): void;
+        static ['new'](cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Client> | null): void;
 
         // Methods
 
@@ -6076,7 +6016,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -6166,7 +6106,7 @@ export namespace Goa {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -6227,8 +6167,8 @@ export namespace Goa {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -6279,7 +6219,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -6322,7 +6262,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -6370,38 +6310,19 @@ export namespace Goa {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -6409,15 +6330,9 @@ export namespace Goa {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -6584,7 +6499,7 @@ export namespace Goa {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -6838,7 +6753,7 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): ContactsProxy;
         // Conflicted with Gio.DBusProxy.new_for_bus_sync
 
@@ -6849,7 +6764,7 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): ContactsProxy;
         // Conflicted with Gio.DBusProxy.new_sync
 
@@ -6897,8 +6812,8 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<ContactsProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<ContactsProxy> | null,
         ): void;
         /**
          * @param args
@@ -6924,8 +6839,8 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<ContactsProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<ContactsProxy> | null,
         ): void;
         /**
          * @param args
@@ -6936,6 +6851,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Contacts.AcceptSslErrors">"AcceptSslErrors"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Contacts
          */
         get accept_ssl_errors(): boolean;
@@ -6944,6 +6860,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Contacts.AcceptSslErrors">"AcceptSslErrors"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Contacts
          */
         get acceptSslErrors(): boolean;
@@ -6952,10 +6869,11 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Contacts.Uri">"Uri"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.Contacts
          */
-        get uri(): string;
-        set uri(val: string);
+        get uri(): string | null;
+        set uri(val: string | null);
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -6996,7 +6914,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -7086,7 +7004,7 @@ export namespace Goa {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -7152,8 +7070,8 @@ export namespace Goa {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -7179,7 +7097,7 @@ export namespace Goa {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -7198,7 +7116,7 @@ export namespace Goa {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Initializes the object implementing the interface.
          *
@@ -7241,7 +7159,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -7284,7 +7202,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -7332,38 +7250,19 @@ export namespace Goa {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -7371,15 +7270,9 @@ export namespace Goa {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -7546,7 +7439,7 @@ export namespace Goa {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -7801,6 +7694,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Contacts.AcceptSslErrors">"AcceptSslErrors"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Contacts
          */
         get accept_ssl_errors(): boolean;
@@ -7809,6 +7703,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Contacts.AcceptSslErrors">"AcceptSslErrors"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Contacts
          */
         get acceptSslErrors(): boolean;
@@ -7817,10 +7712,11 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Contacts.Uri">"Uri"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.Contacts
          */
-        get uri(): string;
-        set uri(val: string);
+        get uri(): string | null;
+        set uri(val: string | null);
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
@@ -7838,7 +7734,7 @@ export namespace Goa {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -7857,7 +7753,7 @@ export namespace Goa {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -7905,38 +7801,19 @@ export namespace Goa {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -7944,15 +7821,9 @@ export namespace Goa {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -8119,7 +7990,7 @@ export namespace Goa {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -8372,7 +8243,7 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): DocumentsProxy;
         // Conflicted with Gio.DBusProxy.new_for_bus_sync
 
@@ -8383,7 +8254,7 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): DocumentsProxy;
         // Conflicted with Gio.DBusProxy.new_sync
 
@@ -8431,8 +8302,8 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<DocumentsProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<DocumentsProxy> | null,
         ): void;
         /**
          * @param args
@@ -8458,8 +8329,8 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<DocumentsProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<DocumentsProxy> | null,
         ): void;
         /**
          * @param args
@@ -8506,7 +8377,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -8596,7 +8467,7 @@ export namespace Goa {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -8662,8 +8533,8 @@ export namespace Goa {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -8689,7 +8560,7 @@ export namespace Goa {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -8708,7 +8579,7 @@ export namespace Goa {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Initializes the object implementing the interface.
          *
@@ -8751,7 +8622,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -8794,7 +8665,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -8842,38 +8713,19 @@ export namespace Goa {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -8881,15 +8733,9 @@ export namespace Goa {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -9056,7 +8902,7 @@ export namespace Goa {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -9323,7 +9169,7 @@ export namespace Goa {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -9342,7 +9188,7 @@ export namespace Goa {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -9390,38 +9236,19 @@ export namespace Goa {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -9429,15 +9256,9 @@ export namespace Goa {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -9604,7 +9425,7 @@ export namespace Goa {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -9859,7 +9680,7 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): ExchangeProxy;
         // Conflicted with Gio.DBusProxy.new_for_bus_sync
 
@@ -9870,7 +9691,7 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): ExchangeProxy;
         // Conflicted with Gio.DBusProxy.new_sync
 
@@ -9918,8 +9739,8 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<ExchangeProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<ExchangeProxy> | null,
         ): void;
         /**
          * @param args
@@ -9945,8 +9766,8 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<ExchangeProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<ExchangeProxy> | null,
         ): void;
         /**
          * @param args
@@ -9958,6 +9779,7 @@ export namespace Goa {
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          * @since 3.6.0
+         * @default false
          * @category Inherited from Goa.Exchange
          */
         get accept_ssl_errors(): boolean;
@@ -9967,6 +9789,7 @@ export namespace Goa {
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          * @since 3.6.0
+         * @default false
          * @category Inherited from Goa.Exchange
          */
         get acceptSslErrors(): boolean;
@@ -9976,10 +9799,11 @@ export namespace Goa {
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          * @since 3.6.0
+         * @default null
          * @category Inherited from Goa.Exchange
          */
-        get host(): string;
-        set host(val: string);
+        get host(): string | null;
+        set host(val: string | null);
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -10020,7 +9844,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -10110,7 +9934,7 @@ export namespace Goa {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -10176,8 +10000,8 @@ export namespace Goa {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -10203,7 +10027,7 @@ export namespace Goa {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -10222,7 +10046,7 @@ export namespace Goa {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Initializes the object implementing the interface.
          *
@@ -10265,7 +10089,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -10308,7 +10132,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -10356,38 +10180,19 @@ export namespace Goa {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -10395,15 +10200,9 @@ export namespace Goa {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -10570,7 +10369,7 @@ export namespace Goa {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -10827,6 +10626,7 @@ export namespace Goa {
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          * @since 3.6.0
+         * @default false
          * @category Inherited from Goa.Exchange
          */
         get accept_ssl_errors(): boolean;
@@ -10836,6 +10636,7 @@ export namespace Goa {
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          * @since 3.6.0
+         * @default false
          * @category Inherited from Goa.Exchange
          */
         get acceptSslErrors(): boolean;
@@ -10845,10 +10646,11 @@ export namespace Goa {
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          * @since 3.6.0
+         * @default null
          * @category Inherited from Goa.Exchange
          */
-        get host(): string;
-        set host(val: string);
+        get host(): string | null;
+        set host(val: string | null);
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
@@ -10866,7 +10668,7 @@ export namespace Goa {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -10885,7 +10687,7 @@ export namespace Goa {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -10933,38 +10735,19 @@ export namespace Goa {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -10972,15 +10755,9 @@ export namespace Goa {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -11147,7 +10924,7 @@ export namespace Goa {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -11402,7 +11179,7 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): FilesProxy;
         // Conflicted with Gio.DBusProxy.new_for_bus_sync
 
@@ -11413,7 +11190,7 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): FilesProxy;
         // Conflicted with Gio.DBusProxy.new_sync
 
@@ -11461,8 +11238,8 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<FilesProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<FilesProxy> | null,
         ): void;
         /**
          * @param args
@@ -11488,8 +11265,8 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<FilesProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<FilesProxy> | null,
         ): void;
         /**
          * @param args
@@ -11501,6 +11278,7 @@ export namespace Goa {
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          * @since 3.8.0
+         * @default false
          * @category Inherited from Goa.Files
          */
         get accept_ssl_errors(): boolean;
@@ -11510,6 +11288,7 @@ export namespace Goa {
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          * @since 3.8.0
+         * @default false
          * @category Inherited from Goa.Files
          */
         get acceptSslErrors(): boolean;
@@ -11519,10 +11298,11 @@ export namespace Goa {
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          * @since 3.8.0
+         * @default null
          * @category Inherited from Goa.Files
          */
-        get uri(): string;
-        set uri(val: string);
+        get uri(): string | null;
+        set uri(val: string | null);
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -11563,7 +11343,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -11653,7 +11433,7 @@ export namespace Goa {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -11719,8 +11499,8 @@ export namespace Goa {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -11746,7 +11526,7 @@ export namespace Goa {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -11765,7 +11545,7 @@ export namespace Goa {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Initializes the object implementing the interface.
          *
@@ -11808,7 +11588,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -11851,7 +11631,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -11899,38 +11679,19 @@ export namespace Goa {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -11938,15 +11699,9 @@ export namespace Goa {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -12113,7 +11868,7 @@ export namespace Goa {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -12370,6 +12125,7 @@ export namespace Goa {
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          * @since 3.8.0
+         * @default false
          * @category Inherited from Goa.Files
          */
         get accept_ssl_errors(): boolean;
@@ -12379,6 +12135,7 @@ export namespace Goa {
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          * @since 3.8.0
+         * @default false
          * @category Inherited from Goa.Files
          */
         get acceptSslErrors(): boolean;
@@ -12388,10 +12145,11 @@ export namespace Goa {
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          * @since 3.8.0
+         * @default null
          * @category Inherited from Goa.Files
          */
-        get uri(): string;
-        set uri(val: string);
+        get uri(): string | null;
+        set uri(val: string | null);
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
@@ -12409,7 +12167,7 @@ export namespace Goa {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -12428,7 +12186,7 @@ export namespace Goa {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -12476,38 +12234,19 @@ export namespace Goa {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -12515,15 +12254,9 @@ export namespace Goa {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -12690,7 +12423,7 @@ export namespace Goa {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -12960,7 +12693,7 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): MailProxy;
         // Conflicted with Gio.DBusProxy.new_for_bus_sync
 
@@ -12971,7 +12704,7 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): MailProxy;
         // Conflicted with Gio.DBusProxy.new_sync
 
@@ -13019,8 +12752,8 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<MailProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<MailProxy> | null,
         ): void;
         /**
          * @param args
@@ -13046,8 +12779,8 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<MailProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<MailProxy> | null,
         ): void;
         /**
          * @param args
@@ -13058,22 +12791,25 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.EmailAddress">"EmailAddress"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.Mail
          */
-        get email_address(): string;
-        set email_address(val: string);
+        get email_address(): string | null;
+        set email_address(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.EmailAddress">"EmailAddress"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.Mail
          */
-        get emailAddress(): string;
-        set emailAddress(val: string);
+        get emailAddress(): string | null;
+        set emailAddress(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.ImapAcceptSslErrors">"ImapAcceptSslErrors"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Mail
          */
         get imap_accept_ssl_errors(): boolean;
@@ -13082,6 +12818,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.ImapAcceptSslErrors">"ImapAcceptSslErrors"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Mail
          */
         get imapAcceptSslErrors(): boolean;
@@ -13090,22 +12827,25 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.ImapHost">"ImapHost"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.Mail
          */
-        get imap_host(): string;
-        set imap_host(val: string);
+        get imap_host(): string | null;
+        set imap_host(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.ImapHost">"ImapHost"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.Mail
          */
-        get imapHost(): string;
-        set imapHost(val: string);
+        get imapHost(): string | null;
+        set imapHost(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.ImapSupported">"ImapSupported"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Mail
          */
         get imap_supported(): boolean;
@@ -13114,6 +12854,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.ImapSupported">"ImapSupported"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Mail
          */
         get imapSupported(): boolean;
@@ -13122,6 +12863,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.ImapUseSsl">"ImapUseSsl"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Mail
          */
         get imap_use_ssl(): boolean;
@@ -13130,6 +12872,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.ImapUseSsl">"ImapUseSsl"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Mail
          */
         get imapUseSsl(): boolean;
@@ -13138,6 +12881,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.ImapUseTls">"ImapUseTls"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Mail
          */
         get imap_use_tls(): boolean;
@@ -13146,6 +12890,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.ImapUseTls">"ImapUseTls"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Mail
          */
         get imapUseTls(): boolean;
@@ -13154,30 +12899,34 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.ImapUserName">"ImapUserName"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.Mail
          */
-        get imap_user_name(): string;
-        set imap_user_name(val: string);
+        get imap_user_name(): string | null;
+        set imap_user_name(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.ImapUserName">"ImapUserName"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.Mail
          */
-        get imapUserName(): string;
-        set imapUserName(val: string);
+        get imapUserName(): string | null;
+        set imapUserName(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.Name">"Name"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.Mail
          */
-        get name(): string;
-        set name(val: string);
+        get name(): string | null;
+        set name(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpAcceptSslErrors">"SmtpAcceptSslErrors"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Mail
          */
         get smtp_accept_ssl_errors(): boolean;
@@ -13186,6 +12935,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpAcceptSslErrors">"SmtpAcceptSslErrors"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Mail
          */
         get smtpAcceptSslErrors(): boolean;
@@ -13194,6 +12944,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpAuthLogin">"SmtpAuthLogin"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Mail
          */
         get smtp_auth_login(): boolean;
@@ -13202,6 +12953,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpAuthLogin">"SmtpAuthLogin"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Mail
          */
         get smtpAuthLogin(): boolean;
@@ -13210,6 +12962,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpAuthPlain">"SmtpAuthPlain"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Mail
          */
         get smtp_auth_plain(): boolean;
@@ -13218,6 +12971,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpAuthPlain">"SmtpAuthPlain"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Mail
          */
         get smtpAuthPlain(): boolean;
@@ -13226,6 +12980,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpAuthXoauth2">"SmtpAuthXoauth2"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Mail
          */
         get smtp_auth_xoauth2(): boolean;
@@ -13234,6 +12989,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpAuthXoauth2">"SmtpAuthXoauth2"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Mail
          */
         get smtpAuthXoauth2(): boolean;
@@ -13242,22 +12998,25 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpHost">"SmtpHost"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.Mail
          */
-        get smtp_host(): string;
-        set smtp_host(val: string);
+        get smtp_host(): string | null;
+        set smtp_host(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpHost">"SmtpHost"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.Mail
          */
-        get smtpHost(): string;
-        set smtpHost(val: string);
+        get smtpHost(): string | null;
+        set smtpHost(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpSupported">"SmtpSupported"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Mail
          */
         get smtp_supported(): boolean;
@@ -13266,6 +13025,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpSupported">"SmtpSupported"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Mail
          */
         get smtpSupported(): boolean;
@@ -13274,6 +13034,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpUseAuth">"SmtpUseAuth"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Mail
          */
         get smtp_use_auth(): boolean;
@@ -13282,6 +13043,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpUseAuth">"SmtpUseAuth"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Mail
          */
         get smtpUseAuth(): boolean;
@@ -13290,6 +13052,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpUseSsl">"SmtpUseSsl"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Mail
          */
         get smtp_use_ssl(): boolean;
@@ -13298,6 +13061,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpUseSsl">"SmtpUseSsl"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Mail
          */
         get smtpUseSsl(): boolean;
@@ -13306,6 +13070,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpUseTls">"SmtpUseTls"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Mail
          */
         get smtp_use_tls(): boolean;
@@ -13314,6 +13079,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpUseTls">"SmtpUseTls"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Mail
          */
         get smtpUseTls(): boolean;
@@ -13322,18 +13088,20 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpUserName">"SmtpUserName"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.Mail
          */
-        get smtp_user_name(): string;
-        set smtp_user_name(val: string);
+        get smtp_user_name(): string | null;
+        set smtp_user_name(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpUserName">"SmtpUserName"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.Mail
          */
-        get smtpUserName(): string;
-        set smtpUserName(val: string);
+        get smtpUserName(): string | null;
+        set smtpUserName(val: string | null);
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -13374,7 +13142,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -13464,7 +13232,7 @@ export namespace Goa {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -13530,8 +13298,8 @@ export namespace Goa {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -13557,7 +13325,7 @@ export namespace Goa {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -13576,7 +13344,7 @@ export namespace Goa {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Initializes the object implementing the interface.
          *
@@ -13619,7 +13387,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -13662,7 +13430,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -13710,38 +13478,19 @@ export namespace Goa {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -13749,15 +13498,9 @@ export namespace Goa {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -13924,7 +13667,7 @@ export namespace Goa {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -14195,22 +13938,25 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.EmailAddress">"EmailAddress"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.Mail
          */
-        get email_address(): string;
-        set email_address(val: string);
+        get email_address(): string | null;
+        set email_address(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.EmailAddress">"EmailAddress"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.Mail
          */
-        get emailAddress(): string;
-        set emailAddress(val: string);
+        get emailAddress(): string | null;
+        set emailAddress(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.ImapAcceptSslErrors">"ImapAcceptSslErrors"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Mail
          */
         get imap_accept_ssl_errors(): boolean;
@@ -14219,6 +13965,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.ImapAcceptSslErrors">"ImapAcceptSslErrors"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Mail
          */
         get imapAcceptSslErrors(): boolean;
@@ -14227,22 +13974,25 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.ImapHost">"ImapHost"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.Mail
          */
-        get imap_host(): string;
-        set imap_host(val: string);
+        get imap_host(): string | null;
+        set imap_host(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.ImapHost">"ImapHost"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.Mail
          */
-        get imapHost(): string;
-        set imapHost(val: string);
+        get imapHost(): string | null;
+        set imapHost(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.ImapSupported">"ImapSupported"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Mail
          */
         get imap_supported(): boolean;
@@ -14251,6 +14001,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.ImapSupported">"ImapSupported"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Mail
          */
         get imapSupported(): boolean;
@@ -14259,6 +14010,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.ImapUseSsl">"ImapUseSsl"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Mail
          */
         get imap_use_ssl(): boolean;
@@ -14267,6 +14019,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.ImapUseSsl">"ImapUseSsl"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Mail
          */
         get imapUseSsl(): boolean;
@@ -14275,6 +14028,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.ImapUseTls">"ImapUseTls"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Mail
          */
         get imap_use_tls(): boolean;
@@ -14283,6 +14037,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.ImapUseTls">"ImapUseTls"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Mail
          */
         get imapUseTls(): boolean;
@@ -14291,30 +14046,34 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.ImapUserName">"ImapUserName"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.Mail
          */
-        get imap_user_name(): string;
-        set imap_user_name(val: string);
+        get imap_user_name(): string | null;
+        set imap_user_name(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.ImapUserName">"ImapUserName"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.Mail
          */
-        get imapUserName(): string;
-        set imapUserName(val: string);
+        get imapUserName(): string | null;
+        set imapUserName(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.Name">"Name"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.Mail
          */
-        get name(): string;
-        set name(val: string);
+        get name(): string | null;
+        set name(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpAcceptSslErrors">"SmtpAcceptSslErrors"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Mail
          */
         get smtp_accept_ssl_errors(): boolean;
@@ -14323,6 +14082,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpAcceptSslErrors">"SmtpAcceptSslErrors"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Mail
          */
         get smtpAcceptSslErrors(): boolean;
@@ -14331,6 +14091,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpAuthLogin">"SmtpAuthLogin"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Mail
          */
         get smtp_auth_login(): boolean;
@@ -14339,6 +14100,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpAuthLogin">"SmtpAuthLogin"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Mail
          */
         get smtpAuthLogin(): boolean;
@@ -14347,6 +14109,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpAuthPlain">"SmtpAuthPlain"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Mail
          */
         get smtp_auth_plain(): boolean;
@@ -14355,6 +14118,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpAuthPlain">"SmtpAuthPlain"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Mail
          */
         get smtpAuthPlain(): boolean;
@@ -14363,6 +14127,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpAuthXoauth2">"SmtpAuthXoauth2"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Mail
          */
         get smtp_auth_xoauth2(): boolean;
@@ -14371,6 +14136,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpAuthXoauth2">"SmtpAuthXoauth2"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Mail
          */
         get smtpAuthXoauth2(): boolean;
@@ -14379,22 +14145,25 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpHost">"SmtpHost"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.Mail
          */
-        get smtp_host(): string;
-        set smtp_host(val: string);
+        get smtp_host(): string | null;
+        set smtp_host(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpHost">"SmtpHost"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.Mail
          */
-        get smtpHost(): string;
-        set smtpHost(val: string);
+        get smtpHost(): string | null;
+        set smtpHost(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpSupported">"SmtpSupported"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Mail
          */
         get smtp_supported(): boolean;
@@ -14403,6 +14172,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpSupported">"SmtpSupported"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Mail
          */
         get smtpSupported(): boolean;
@@ -14411,6 +14181,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpUseAuth">"SmtpUseAuth"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Mail
          */
         get smtp_use_auth(): boolean;
@@ -14419,6 +14190,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpUseAuth">"SmtpUseAuth"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Mail
          */
         get smtpUseAuth(): boolean;
@@ -14427,6 +14199,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpUseSsl">"SmtpUseSsl"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Mail
          */
         get smtp_use_ssl(): boolean;
@@ -14435,6 +14208,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpUseSsl">"SmtpUseSsl"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Mail
          */
         get smtpUseSsl(): boolean;
@@ -14443,6 +14217,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpUseTls">"SmtpUseTls"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Mail
          */
         get smtp_use_tls(): boolean;
@@ -14451,6 +14226,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpUseTls">"SmtpUseTls"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          * @category Inherited from Goa.Mail
          */
         get smtpUseTls(): boolean;
@@ -14459,18 +14235,20 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpUserName">"SmtpUserName"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.Mail
          */
-        get smtp_user_name(): string;
-        set smtp_user_name(val: string);
+        get smtp_user_name(): string | null;
+        set smtp_user_name(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpUserName">"SmtpUserName"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.Mail
          */
-        get smtpUserName(): string;
-        set smtpUserName(val: string);
+        get smtpUserName(): string | null;
+        set smtpUserName(val: string | null);
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
@@ -14488,7 +14266,7 @@ export namespace Goa {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -14507,7 +14285,7 @@ export namespace Goa {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -14555,38 +14333,19 @@ export namespace Goa {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -14594,15 +14353,9 @@ export namespace Goa {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -14769,7 +14522,7 @@ export namespace Goa {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -15021,7 +14774,7 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): ManagerProxy;
         // Conflicted with Gio.DBusProxy.new_for_bus_sync
 
@@ -15032,7 +14785,7 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): ManagerProxy;
         // Conflicted with Gio.DBusProxy.new_sync
 
@@ -15080,8 +14833,8 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<ManagerProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<ManagerProxy> | null,
         ): void;
         /**
          * @param args
@@ -15107,8 +14860,8 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<ManagerProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<ManagerProxy> | null,
         ): void;
         /**
          * @param args
@@ -15155,7 +14908,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -15245,7 +14998,7 @@ export namespace Goa {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -15311,8 +15064,8 @@ export namespace Goa {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -15338,7 +15091,7 @@ export namespace Goa {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -15357,7 +15110,7 @@ export namespace Goa {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Initializes the object implementing the interface.
          *
@@ -15400,7 +15153,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -15443,7 +15196,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Manager.AddAccount">AddAccount()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -15463,7 +15216,7 @@ export namespace Goa {
             arg_presentation_identity: string,
             arg_credentials: GLib.Variant,
             arg_details: GLib.Variant,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<string>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Manager.AddAccount">AddAccount()</link> D-Bus method on `proxy`.
@@ -15508,7 +15261,7 @@ export namespace Goa {
             arg_presentation_identity: string,
             arg_credentials: GLib.Variant,
             arg_details: GLib.Variant,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
         /**
@@ -15535,7 +15288,7 @@ export namespace Goa {
             arg_presentation_identity: string,
             arg_credentials: GLib.Variant,
             arg_details: GLib.Variant,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, string];
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Manager.IsSupportedProvider">IsSupportedProvider()</link> D-Bus method on `proxy`.
@@ -15548,7 +15301,7 @@ export namespace Goa {
          */
         call_is_supported_provider(
             arg_provider_type: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Manager.IsSupportedProvider">IsSupportedProvider()</link> D-Bus method on `proxy`.
@@ -15577,7 +15330,7 @@ export namespace Goa {
          */
         call_is_supported_provider(
             arg_provider_type: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -15596,7 +15349,7 @@ export namespace Goa {
          */
         call_is_supported_provider_sync(
             arg_provider_type: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, boolean];
         /**
          * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Manager.AddAccount">AddAccount()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
@@ -15686,38 +15439,19 @@ export namespace Goa {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -15725,15 +15459,9 @@ export namespace Goa {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -15900,7 +15628,7 @@ export namespace Goa {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -16166,7 +15894,7 @@ export namespace Goa {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -16185,7 +15913,7 @@ export namespace Goa {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Manager.AddAccount">AddAccount()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -16205,7 +15933,7 @@ export namespace Goa {
             arg_presentation_identity: string,
             arg_credentials: GLib.Variant,
             arg_details: GLib.Variant,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<string>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Manager.AddAccount">AddAccount()</link> D-Bus method on `proxy`.
@@ -16250,7 +15978,7 @@ export namespace Goa {
             arg_presentation_identity: string,
             arg_credentials: GLib.Variant,
             arg_details: GLib.Variant,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
         /**
@@ -16277,7 +16005,7 @@ export namespace Goa {
             arg_presentation_identity: string,
             arg_credentials: GLib.Variant,
             arg_details: GLib.Variant,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, string];
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Manager.IsSupportedProvider">IsSupportedProvider()</link> D-Bus method on `proxy`.
@@ -16290,7 +16018,7 @@ export namespace Goa {
          */
         call_is_supported_provider(
             arg_provider_type: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Manager.IsSupportedProvider">IsSupportedProvider()</link> D-Bus method on `proxy`.
@@ -16319,7 +16047,7 @@ export namespace Goa {
          */
         call_is_supported_provider(
             arg_provider_type: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -16338,7 +16066,7 @@ export namespace Goa {
          */
         call_is_supported_provider_sync(
             arg_provider_type: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, boolean];
         /**
          * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Manager.AddAccount">AddAccount()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
@@ -16428,38 +16156,19 @@ export namespace Goa {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -16467,15 +16176,9 @@ export namespace Goa {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -16642,7 +16345,7 @@ export namespace Goa {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -16896,7 +16599,7 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): MapsProxy;
         // Conflicted with Gio.DBusProxy.new_for_bus_sync
 
@@ -16907,7 +16610,7 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): MapsProxy;
         // Conflicted with Gio.DBusProxy.new_sync
 
@@ -16955,8 +16658,8 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<MapsProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<MapsProxy> | null,
         ): void;
         /**
          * @param args
@@ -16982,8 +16685,8 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<MapsProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<MapsProxy> | null,
         ): void;
         /**
          * @param args
@@ -17030,7 +16733,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -17120,7 +16823,7 @@ export namespace Goa {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -17186,8 +16889,8 @@ export namespace Goa {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -17213,7 +16916,7 @@ export namespace Goa {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -17232,7 +16935,7 @@ export namespace Goa {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Initializes the object implementing the interface.
          *
@@ -17275,7 +16978,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -17318,7 +17021,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -17366,38 +17069,19 @@ export namespace Goa {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -17405,15 +17089,9 @@ export namespace Goa {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -17580,7 +17258,7 @@ export namespace Goa {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -17848,7 +17526,7 @@ export namespace Goa {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -17867,7 +17545,7 @@ export namespace Goa {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -17915,38 +17593,19 @@ export namespace Goa {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -17954,15 +17613,9 @@ export namespace Goa {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -18129,7 +17782,7 @@ export namespace Goa {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -18385,7 +18038,7 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): MediaServerProxy;
         // Conflicted with Gio.DBusProxy.new_for_bus_sync
 
@@ -18396,7 +18049,7 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): MediaServerProxy;
         // Conflicted with Gio.DBusProxy.new_sync
 
@@ -18444,8 +18097,8 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<MediaServerProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<MediaServerProxy> | null,
         ): void;
         /**
          * @param args
@@ -18471,8 +18124,8 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<MediaServerProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<MediaServerProxy> | null,
         ): void;
         /**
          * @param args
@@ -18485,6 +18138,7 @@ export namespace Goa {
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          * @since 3.14
          * @deprecated The D-Bus property has been deprecated.
+         * @default false
          * @category Inherited from Goa.MediaServer
          */
         get dlna_supported(): boolean;
@@ -18495,6 +18149,7 @@ export namespace Goa {
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          * @since 3.14
          * @deprecated The D-Bus property has been deprecated.
+         * @default false
          * @category Inherited from Goa.MediaServer
          */
         get dlnaSupported(): boolean;
@@ -18505,10 +18160,11 @@ export namespace Goa {
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          * @since 3.14
          * @deprecated The D-Bus property has been deprecated.
+         * @default null
          * @category Inherited from Goa.MediaServer
          */
-        get udn(): string;
-        set udn(val: string);
+        get udn(): string | null;
+        set udn(val: string | null);
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -18549,7 +18205,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -18639,7 +18295,7 @@ export namespace Goa {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -18705,8 +18361,8 @@ export namespace Goa {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -18732,7 +18388,7 @@ export namespace Goa {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -18751,7 +18407,7 @@ export namespace Goa {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Initializes the object implementing the interface.
          *
@@ -18794,7 +18450,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -18837,7 +18493,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -18885,38 +18541,19 @@ export namespace Goa {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -18924,15 +18561,9 @@ export namespace Goa {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -19099,7 +18730,7 @@ export namespace Goa {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -19360,6 +18991,7 @@ export namespace Goa {
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          * @since 3.14
          * @deprecated The D-Bus property has been deprecated.
+         * @default false
          * @category Inherited from Goa.MediaServer
          */
         get dlna_supported(): boolean;
@@ -19370,6 +19002,7 @@ export namespace Goa {
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          * @since 3.14
          * @deprecated The D-Bus property has been deprecated.
+         * @default false
          * @category Inherited from Goa.MediaServer
          */
         get dlnaSupported(): boolean;
@@ -19380,10 +19013,11 @@ export namespace Goa {
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          * @since 3.14
          * @deprecated The D-Bus property has been deprecated.
+         * @default null
          * @category Inherited from Goa.MediaServer
          */
-        get udn(): string;
-        set udn(val: string);
+        get udn(): string | null;
+        set udn(val: string | null);
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
@@ -19401,7 +19035,7 @@ export namespace Goa {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -19420,7 +19054,7 @@ export namespace Goa {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -19468,38 +19102,19 @@ export namespace Goa {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -19507,15 +19122,9 @@ export namespace Goa {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -19682,7 +19291,7 @@ export namespace Goa {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -19935,7 +19544,7 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): MusicProxy;
         // Conflicted with Gio.DBusProxy.new_for_bus_sync
 
@@ -19946,7 +19555,7 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): MusicProxy;
         // Conflicted with Gio.DBusProxy.new_sync
 
@@ -19994,8 +19603,8 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<MusicProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<MusicProxy> | null,
         ): void;
         /**
          * @param args
@@ -20021,8 +19630,8 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<MusicProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<MusicProxy> | null,
         ): void;
         /**
          * @param args
@@ -20069,7 +19678,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -20159,7 +19768,7 @@ export namespace Goa {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -20225,8 +19834,8 @@ export namespace Goa {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -20252,7 +19861,7 @@ export namespace Goa {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -20271,7 +19880,7 @@ export namespace Goa {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Initializes the object implementing the interface.
          *
@@ -20314,7 +19923,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -20357,7 +19966,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -20405,38 +20014,19 @@ export namespace Goa {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -20444,15 +20034,9 @@ export namespace Goa {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -20619,7 +20203,7 @@ export namespace Goa {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -20886,7 +20470,7 @@ export namespace Goa {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -20905,7 +20489,7 @@ export namespace Goa {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -20953,38 +20537,19 @@ export namespace Goa {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -20992,15 +20557,9 @@ export namespace Goa {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -21167,7 +20726,7 @@ export namespace Goa {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -21421,7 +20980,7 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): OAuth2BasedProxy;
         // Conflicted with Gio.DBusProxy.new_for_bus_sync
 
@@ -21432,7 +20991,7 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): OAuth2BasedProxy;
         // Conflicted with Gio.DBusProxy.new_sync
 
@@ -21480,8 +21039,8 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<OAuth2BasedProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<OAuth2BasedProxy> | null,
         ): void;
         /**
          * @param args
@@ -21507,8 +21066,8 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<OAuth2BasedProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<OAuth2BasedProxy> | null,
         ): void;
         /**
          * @param args
@@ -21519,34 +21078,38 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-OAuth2Based.ClientId">"ClientId"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.OAuth2Based
          */
-        get client_id(): string;
-        set client_id(val: string);
+        get client_id(): string | null;
+        set client_id(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-OAuth2Based.ClientId">"ClientId"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.OAuth2Based
          */
-        get clientId(): string;
-        set clientId(val: string);
+        get clientId(): string | null;
+        set clientId(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-OAuth2Based.ClientSecret">"ClientSecret"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.OAuth2Based
          */
-        get client_secret(): string;
-        set client_secret(val: string);
+        get client_secret(): string | null;
+        set client_secret(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-OAuth2Based.ClientSecret">"ClientSecret"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.OAuth2Based
          */
-        get clientSecret(): string;
-        set clientSecret(val: string);
+        get clientSecret(): string | null;
+        set clientSecret(val: string | null);
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -21587,7 +21150,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -21677,7 +21240,7 @@ export namespace Goa {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -21743,8 +21306,8 @@ export namespace Goa {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -21770,7 +21333,7 @@ export namespace Goa {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -21789,7 +21352,7 @@ export namespace Goa {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Initializes the object implementing the interface.
          *
@@ -21832,7 +21395,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -21875,7 +21438,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-OAuth2Based.GetAccessToken">GetAccessToken()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -21884,7 +21447,7 @@ export namespace Goa {
          * See `goa_oauth2_based_call_get_access_token_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_get_access_token(cancellable?: Gio.Cancellable | null): globalThis.Promise<[string, number]>;
+        call_get_access_token(cancellable: Gio.Cancellable | null): globalThis.Promise<[string, number]>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-OAuth2Based.GetAccessToken">GetAccessToken()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -21905,7 +21468,7 @@ export namespace Goa {
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_get_access_token(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[string, number]> | void;
         /**
@@ -21921,7 +21484,7 @@ export namespace Goa {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_get_access_token_sync(cancellable?: Gio.Cancellable | null): [boolean, string, number];
+        call_get_access_token_sync(cancellable: Gio.Cancellable | null): [boolean, string, number];
         /**
          * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-OnlineAccounts-OAuth2Based.GetAccessToken">GetAccessToken()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
          *
@@ -21984,38 +21547,19 @@ export namespace Goa {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -22023,15 +21567,9 @@ export namespace Goa {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -22198,7 +21736,7 @@ export namespace Goa {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -22455,34 +21993,38 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-OAuth2Based.ClientId">"ClientId"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.OAuth2Based
          */
-        get client_id(): string;
-        set client_id(val: string);
+        get client_id(): string | null;
+        set client_id(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-OAuth2Based.ClientId">"ClientId"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.OAuth2Based
          */
-        get clientId(): string;
-        set clientId(val: string);
+        get clientId(): string | null;
+        set clientId(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-OAuth2Based.ClientSecret">"ClientSecret"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.OAuth2Based
          */
-        get client_secret(): string;
-        set client_secret(val: string);
+        get client_secret(): string | null;
+        set client_secret(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-OAuth2Based.ClientSecret">"ClientSecret"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.OAuth2Based
          */
-        get clientSecret(): string;
-        set clientSecret(val: string);
+        get clientSecret(): string | null;
+        set clientSecret(val: string | null);
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
@@ -22500,7 +22042,7 @@ export namespace Goa {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -22519,7 +22061,7 @@ export namespace Goa {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-OAuth2Based.GetAccessToken">GetAccessToken()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -22528,7 +22070,7 @@ export namespace Goa {
          * See `goa_oauth2_based_call_get_access_token_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_get_access_token(cancellable?: Gio.Cancellable | null): globalThis.Promise<[string, number]>;
+        call_get_access_token(cancellable: Gio.Cancellable | null): globalThis.Promise<[string, number]>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-OAuth2Based.GetAccessToken">GetAccessToken()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -22549,7 +22091,7 @@ export namespace Goa {
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_get_access_token(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[string, number]> | void;
         /**
@@ -22565,7 +22107,7 @@ export namespace Goa {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_get_access_token_sync(cancellable?: Gio.Cancellable | null): [boolean, string, number];
+        call_get_access_token_sync(cancellable: Gio.Cancellable | null): [boolean, string, number];
         /**
          * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-OnlineAccounts-OAuth2Based.GetAccessToken">GetAccessToken()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
          *
@@ -22628,38 +22170,19 @@ export namespace Goa {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -22667,15 +22190,9 @@ export namespace Goa {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -22842,7 +22359,7 @@ export namespace Goa {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -23096,7 +22613,7 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): OAuthBasedProxy;
         // Conflicted with Gio.DBusProxy.new_for_bus_sync
 
@@ -23107,7 +22624,7 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): OAuthBasedProxy;
         // Conflicted with Gio.DBusProxy.new_sync
 
@@ -23155,8 +22672,8 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<OAuthBasedProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<OAuthBasedProxy> | null,
         ): void;
         /**
          * @param args
@@ -23182,8 +22699,8 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<OAuthBasedProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<OAuthBasedProxy> | null,
         ): void;
         /**
          * @param args
@@ -23194,34 +22711,38 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-OAuthBased.ConsumerKey">"ConsumerKey"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.OAuthBased
          */
-        get consumer_key(): string;
-        set consumer_key(val: string);
+        get consumer_key(): string | null;
+        set consumer_key(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-OAuthBased.ConsumerKey">"ConsumerKey"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.OAuthBased
          */
-        get consumerKey(): string;
-        set consumerKey(val: string);
+        get consumerKey(): string | null;
+        set consumerKey(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-OAuthBased.ConsumerSecret">"ConsumerSecret"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.OAuthBased
          */
-        get consumer_secret(): string;
-        set consumer_secret(val: string);
+        get consumer_secret(): string | null;
+        set consumer_secret(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-OAuthBased.ConsumerSecret">"ConsumerSecret"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.OAuthBased
          */
-        get consumerSecret(): string;
-        set consumerSecret(val: string);
+        get consumerSecret(): string | null;
+        set consumerSecret(val: string | null);
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -23262,7 +22783,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -23352,7 +22873,7 @@ export namespace Goa {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -23418,8 +22939,8 @@ export namespace Goa {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -23445,7 +22966,7 @@ export namespace Goa {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -23464,7 +22985,7 @@ export namespace Goa {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Initializes the object implementing the interface.
          *
@@ -23507,7 +23028,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -23550,7 +23071,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-OAuthBased.GetAccessToken">GetAccessToken()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -23559,7 +23080,7 @@ export namespace Goa {
          * See `goa_oauth_based_call_get_access_token_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_get_access_token(cancellable?: Gio.Cancellable | null): globalThis.Promise<[string, string, number]>;
+        call_get_access_token(cancellable: Gio.Cancellable | null): globalThis.Promise<[string, string, number]>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-OAuthBased.GetAccessToken">GetAccessToken()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -23580,7 +23101,7 @@ export namespace Goa {
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_get_access_token(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[string, string, number]> | void;
         /**
@@ -23596,7 +23117,7 @@ export namespace Goa {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_get_access_token_sync(cancellable?: Gio.Cancellable | null): [boolean, string, string, number];
+        call_get_access_token_sync(cancellable: Gio.Cancellable | null): [boolean, string, string, number];
         /**
          * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-OnlineAccounts-OAuthBased.GetAccessToken">GetAccessToken()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
          *
@@ -23665,38 +23186,19 @@ export namespace Goa {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -23704,15 +23206,9 @@ export namespace Goa {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -23879,7 +23375,7 @@ export namespace Goa {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -24134,34 +23630,38 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-OAuthBased.ConsumerKey">"ConsumerKey"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.OAuthBased
          */
-        get consumer_key(): string;
-        set consumer_key(val: string);
+        get consumer_key(): string | null;
+        set consumer_key(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-OAuthBased.ConsumerKey">"ConsumerKey"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.OAuthBased
          */
-        get consumerKey(): string;
-        set consumerKey(val: string);
+        get consumerKey(): string | null;
+        set consumerKey(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-OAuthBased.ConsumerSecret">"ConsumerSecret"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.OAuthBased
          */
-        get consumer_secret(): string;
-        set consumer_secret(val: string);
+        get consumer_secret(): string | null;
+        set consumer_secret(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-OAuthBased.ConsumerSecret">"ConsumerSecret"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          * @category Inherited from Goa.OAuthBased
          */
-        get consumerSecret(): string;
-        set consumerSecret(val: string);
+        get consumerSecret(): string | null;
+        set consumerSecret(val: string | null);
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
@@ -24179,7 +23679,7 @@ export namespace Goa {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -24198,7 +23698,7 @@ export namespace Goa {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-OAuthBased.GetAccessToken">GetAccessToken()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -24207,7 +23707,7 @@ export namespace Goa {
          * See `goa_oauth_based_call_get_access_token_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_get_access_token(cancellable?: Gio.Cancellable | null): globalThis.Promise<[string, string, number]>;
+        call_get_access_token(cancellable: Gio.Cancellable | null): globalThis.Promise<[string, string, number]>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-OAuthBased.GetAccessToken">GetAccessToken()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -24228,7 +23728,7 @@ export namespace Goa {
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_get_access_token(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[string, string, number]> | void;
         /**
@@ -24244,7 +23744,7 @@ export namespace Goa {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_get_access_token_sync(cancellable?: Gio.Cancellable | null): [boolean, string, string, number];
+        call_get_access_token_sync(cancellable: Gio.Cancellable | null): [boolean, string, string, number];
         /**
          * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-OnlineAccounts-OAuthBased.GetAccessToken">GetAccessToken()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
          *
@@ -24313,38 +23813,19 @@ export namespace Goa {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -24352,15 +23833,9 @@ export namespace Goa {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -24527,7 +24002,7 @@ export namespace Goa {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -24778,7 +24253,7 @@ export namespace Goa {
             flags: Gio.DBusObjectManagerClientFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): ObjectManagerClient;
         // Conflicted with Gio.DBusObjectManagerClient.new_for_bus_sync
 
@@ -24789,7 +24264,7 @@ export namespace Goa {
             flags: Gio.DBusObjectManagerClientFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): ObjectManagerClient;
         // Conflicted with Gio.DBusObjectManagerClient.new_sync
 
@@ -24830,8 +24305,8 @@ export namespace Goa {
         static get_proxy_type(
             manager: Gio.DBusObjectManagerClient,
             object_path: string,
-            interface_name?: string | null,
-            user_data?: any | null,
+            interface_name: string | null,
+            user_data: any | null,
         ): GObject.GType;
         /**
          * Asynchronously creates {@link Gio.DBusObjectManagerClient} using `goa_object_manager_client_get_proxy_type()` as the {@link Gio.DBusProxyTypeFunc}. See `g_dbus_object_manager_client_new()` for more details.
@@ -24852,8 +24327,8 @@ export namespace Goa {
             flags: Gio.DBusObjectManagerClientFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<ObjectManagerClient> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<ObjectManagerClient> | null,
         ): void;
         /**
          * @param args
@@ -24879,8 +24354,8 @@ export namespace Goa {
             flags: Gio.DBusObjectManagerClientFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<ObjectManagerClient> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<ObjectManagerClient> | null,
         ): void;
         /**
          * @param args
@@ -24927,7 +24402,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -25017,7 +24492,7 @@ export namespace Goa {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -25083,8 +24558,8 @@ export namespace Goa {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -25209,7 +24684,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -25252,7 +24727,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -25300,38 +24775,19 @@ export namespace Goa {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -25339,15 +24795,9 @@ export namespace Goa {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -25514,7 +24964,7 @@ export namespace Goa {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -25787,32 +25237,32 @@ export namespace Goa {
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
          * @category Inherited from Goa.Object
          */
-        get account(): Account;
-        set account(val: Account);
+        get account(): Account | null;
+        set account(val: Account | null);
         /**
          * The {@link Goa.Calendar} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Calendar.top_of_page">org.gnome.OnlineAccounts.Calendar</link>, if any.
          *
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
          * @category Inherited from Goa.Object
          */
-        get calendar(): Calendar;
-        set calendar(val: Calendar);
+        get calendar(): Calendar | null;
+        set calendar(val: Calendar | null);
         /**
          * The {@link Goa.Chat} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Chat.top_of_page">org.gnome.OnlineAccounts.Chat</link>, if any.
          *
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
          * @category Inherited from Goa.Object
          */
-        get chat(): Chat;
-        set chat(val: Chat);
+        get chat(): Chat | null;
+        set chat(val: Chat | null);
         /**
          * The {@link Goa.Contacts} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Contacts.top_of_page">org.gnome.OnlineAccounts.Contacts</link>, if any.
          *
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
          * @category Inherited from Goa.Object
          */
-        get contacts(): Contacts;
-        set contacts(val: Contacts);
+        get contacts(): Contacts | null;
+        set contacts(val: Contacts | null);
         /**
          * The {@link Goa.Documents} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Documents.top_of_page">org.gnome.OnlineAccounts.Documents</link>, if any.
          *
@@ -25820,8 +25270,8 @@ export namespace Goa {
          * @deprecated The D-Bus interface has been deprecated.
          * @category Inherited from Goa.Object
          */
-        get documents(): Documents;
-        set documents(val: Documents);
+        get documents(): Documents | null;
+        set documents(val: Documents | null);
         /**
          * The {@link Goa.Exchange} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Exchange.top_of_page">org.gnome.OnlineAccounts.Exchange</link>, if any.
          *
@@ -25829,8 +25279,8 @@ export namespace Goa {
          * @since 3.6.0
          * @category Inherited from Goa.Object
          */
-        get exchange(): Exchange;
-        set exchange(val: Exchange);
+        get exchange(): Exchange | null;
+        set exchange(val: Exchange | null);
         /**
          * The {@link Goa.Files} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Files.top_of_page">org.gnome.OnlineAccounts.Files</link>, if any.
          *
@@ -25838,24 +25288,24 @@ export namespace Goa {
          * @since 3.8.0
          * @category Inherited from Goa.Object
          */
-        get files(): Files;
-        set files(val: Files);
+        get files(): Files | null;
+        set files(val: Files | null);
         /**
          * The {@link Goa.Mail} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Mail.top_of_page">org.gnome.OnlineAccounts.Mail</link>, if any.
          *
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
          * @category Inherited from Goa.Object
          */
-        get mail(): Mail;
-        set mail(val: Mail);
+        get mail(): Mail | null;
+        set mail(val: Mail | null);
         /**
          * The {@link Goa.Manager} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Manager.top_of_page">org.gnome.OnlineAccounts.Manager</link>, if any.
          *
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
          * @category Inherited from Goa.Object
          */
-        get manager(): Manager;
-        set manager(val: Manager);
+        get manager(): Manager | null;
+        set manager(val: Manager | null);
         /**
          * The {@link Goa.Maps} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Maps.top_of_page">org.gnome.OnlineAccounts.Maps</link>, if any.
          *
@@ -25864,8 +25314,8 @@ export namespace Goa {
          * @deprecated The D-Bus interface has been deprecated.
          * @category Inherited from Goa.Object
          */
-        get maps(): Maps;
-        set maps(val: Maps);
+        get maps(): Maps | null;
+        set maps(val: Maps | null);
         /**
          * The {@link Goa.MediaServer} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-MediaServer.top_of_page">org.gnome.OnlineAccounts.MediaServer</link>, if any.
          *
@@ -25874,8 +25324,8 @@ export namespace Goa {
          * @deprecated The D-Bus interface has been deprecated.
          * @category Inherited from Goa.Object
          */
-        get media_server(): MediaServer;
-        set media_server(val: MediaServer);
+        get media_server(): MediaServer | null;
+        set media_server(val: MediaServer | null);
         /**
          * The {@link Goa.MediaServer} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-MediaServer.top_of_page">org.gnome.OnlineAccounts.MediaServer</link>, if any.
          *
@@ -25884,8 +25334,8 @@ export namespace Goa {
          * @deprecated The D-Bus interface has been deprecated.
          * @category Inherited from Goa.Object
          */
-        get mediaServer(): MediaServer;
-        set mediaServer(val: MediaServer);
+        get mediaServer(): MediaServer | null;
+        set mediaServer(val: MediaServer | null);
         /**
          * The {@link Goa.Music} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Music.top_of_page">org.gnome.OnlineAccounts.Music</link>, if any.
          *
@@ -25893,40 +25343,40 @@ export namespace Goa {
          * @since 3.18.0
          * @category Inherited from Goa.Object
          */
-        get music(): Music;
-        set music(val: Music);
+        get music(): Music | null;
+        set music(val: Music | null);
         /**
          * The {@link Goa.OAuthBased} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-OAuthBased.top_of_page">org.gnome.OnlineAccounts.OAuthBased</link>, if any.
          *
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
          * @category Inherited from Goa.Object
          */
-        get oauth_based(): OAuthBased;
-        set oauth_based(val: OAuthBased);
+        get oauth_based(): OAuthBased | null;
+        set oauth_based(val: OAuthBased | null);
         /**
          * The {@link Goa.OAuthBased} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-OAuthBased.top_of_page">org.gnome.OnlineAccounts.OAuthBased</link>, if any.
          *
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
          * @category Inherited from Goa.Object
          */
-        get oauthBased(): OAuthBased;
-        set oauthBased(val: OAuthBased);
+        get oauthBased(): OAuthBased | null;
+        set oauthBased(val: OAuthBased | null);
         /**
          * The {@link Goa.OAuth2Based} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-OAuth2Based.top_of_page">org.gnome.OnlineAccounts.OAuth2Based</link>, if any.
          *
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
          * @category Inherited from Goa.Object
          */
-        get oauth2_based(): OAuth2Based;
-        set oauth2_based(val: OAuth2Based);
+        get oauth2_based(): OAuth2Based | null;
+        set oauth2_based(val: OAuth2Based | null);
         /**
          * The {@link Goa.OAuth2Based} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-OAuth2Based.top_of_page">org.gnome.OnlineAccounts.OAuth2Based</link>, if any.
          *
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
          * @category Inherited from Goa.Object
          */
-        get oauth2Based(): OAuth2Based;
-        set oauth2Based(val: OAuth2Based);
+        get oauth2Based(): OAuth2Based | null;
+        set oauth2Based(val: OAuth2Based | null);
         /**
          * The {@link Goa.PasswordBased} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-PasswordBased.top_of_page">org.gnome.OnlineAccounts.PasswordBased</link>, if any.
          *
@@ -25934,8 +25384,8 @@ export namespace Goa {
          * @since 3.6.0
          * @category Inherited from Goa.Object
          */
-        get password_based(): PasswordBased;
-        set password_based(val: PasswordBased);
+        get password_based(): PasswordBased | null;
+        set password_based(val: PasswordBased | null);
         /**
          * The {@link Goa.PasswordBased} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-PasswordBased.top_of_page">org.gnome.OnlineAccounts.PasswordBased</link>, if any.
          *
@@ -25943,8 +25393,8 @@ export namespace Goa {
          * @since 3.6.0
          * @category Inherited from Goa.Object
          */
-        get passwordBased(): PasswordBased;
-        set passwordBased(val: PasswordBased);
+        get passwordBased(): PasswordBased | null;
+        set passwordBased(val: PasswordBased | null);
         /**
          * The {@link Goa.Photos} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Photos.top_of_page">org.gnome.OnlineAccounts.Photos</link>, if any.
          *
@@ -25952,8 +25402,8 @@ export namespace Goa {
          * @since 3.8.0
          * @category Inherited from Goa.Object
          */
-        get photos(): Photos;
-        set photos(val: Photos);
+        get photos(): Photos | null;
+        set photos(val: Photos | null);
         /**
          * The {@link Goa.Printers} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Printers.top_of_page">org.gnome.OnlineAccounts.Printers</link>, if any.
          *
@@ -25962,8 +25412,8 @@ export namespace Goa {
          * @deprecated The D-Bus interface has been deprecated.
          * @category Inherited from Goa.Object
          */
-        get printers(): Printers;
-        set printers(val: Printers);
+        get printers(): Printers | null;
+        set printers(val: Printers | null);
         /**
          * The {@link Goa.ReadLater} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-ReadLater.top_of_page">org.gnome.OnlineAccounts.ReadLater</link>, if any.
          *
@@ -25972,8 +25422,8 @@ export namespace Goa {
          * @deprecated The D-Bus interface has been deprecated.
          * @category Inherited from Goa.Object
          */
-        get read_later(): ReadLater;
-        set read_later(val: ReadLater);
+        get read_later(): ReadLater | null;
+        set read_later(val: ReadLater | null);
         /**
          * The {@link Goa.ReadLater} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-ReadLater.top_of_page">org.gnome.OnlineAccounts.ReadLater</link>, if any.
          *
@@ -25982,8 +25432,8 @@ export namespace Goa {
          * @deprecated The D-Bus interface has been deprecated.
          * @category Inherited from Goa.Object
          */
-        get readLater(): ReadLater;
-        set readLater(val: ReadLater);
+        get readLater(): ReadLater | null;
+        set readLater(val: ReadLater | null);
         /**
          * The {@link Goa.Ticketing} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Ticketing.top_of_page">org.gnome.OnlineAccounts.Ticketing</link>, if any.
          *
@@ -25991,8 +25441,8 @@ export namespace Goa {
          * @since 3.6.0
          * @category Inherited from Goa.Object
          */
-        get ticketing(): Ticketing;
-        set ticketing(val: Ticketing);
+        get ticketing(): Ticketing | null;
+        set ticketing(val: Ticketing | null);
         /**
          * The {@link Goa.Todo} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Todo.top_of_page">org.gnome.OnlineAccounts.Todo</link>, if any.
          *
@@ -26001,8 +25451,8 @@ export namespace Goa {
          * @deprecated The D-Bus interface has been deprecated.
          * @category Inherited from Goa.Object
          */
-        get todo(): Todo;
-        set todo(val: Todo);
+        get todo(): Todo | null;
+        set todo(val: Todo | null);
         /**
          * Gets the D-Bus interface with name `interface_name` associated with
          * `object`, if any.
@@ -26196,38 +25646,19 @@ export namespace Goa {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -26235,15 +25666,9 @@ export namespace Goa {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -26410,7 +25835,7 @@ export namespace Goa {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -26683,134 +26108,134 @@ export namespace Goa {
          * Sets the {@link Goa.Account} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Account.top_of_page">org.gnome.OnlineAccounts.Account</link> on `object`.
          * @param interface_ A {@link Goa.Account} or `null` to clear the interface.
          */
-        set_account(interface_?: Account | null): void;
+        set_account(interface_: Account | null): void;
         /**
          * Sets the {@link Goa.Calendar} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Calendar.top_of_page">org.gnome.OnlineAccounts.Calendar</link> on `object`.
          * @param interface_ A {@link Goa.Calendar} or `null` to clear the interface.
          */
-        set_calendar(interface_?: Calendar | null): void;
+        set_calendar(interface_: Calendar | null): void;
         /**
          * Sets the {@link Goa.Chat} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Chat.top_of_page">org.gnome.OnlineAccounts.Chat</link> on `object`.
          * @param interface_ A {@link Goa.Chat} or `null` to clear the interface.
          */
-        set_chat(interface_?: Chat | null): void;
+        set_chat(interface_: Chat | null): void;
         /**
          * Sets the {@link Goa.Contacts} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Contacts.top_of_page">org.gnome.OnlineAccounts.Contacts</link> on `object`.
          * @param interface_ A {@link Goa.Contacts} or `null` to clear the interface.
          */
-        set_contacts(interface_?: Contacts | null): void;
+        set_contacts(interface_: Contacts | null): void;
         /**
          * Sets the {@link Goa.Documents} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Documents.top_of_page">org.gnome.OnlineAccounts.Documents</link> on `object`.
          * @param interface_ A {@link Goa.Documents} or `null` to clear the interface.
          */
-        set_documents(interface_?: Documents | null): void;
+        set_documents(interface_: Documents | null): void;
         /**
          * Sets the {@link Goa.Exchange} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Exchange.top_of_page">org.gnome.OnlineAccounts.Exchange</link> on `object`.
          * @param interface_ A {@link Goa.Exchange} or `null` to clear the interface.
          */
-        set_exchange(interface_?: Exchange | null): void;
+        set_exchange(interface_: Exchange | null): void;
         /**
          * Sets the {@link Goa.Files} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Files.top_of_page">org.gnome.OnlineAccounts.Files</link> on `object`.
          * @param interface_ A {@link Goa.Files} or `null` to clear the interface.
          */
-        set_files(interface_?: Files | null): void;
+        set_files(interface_: Files | null): void;
         /**
          * Sets the {@link Goa.Mail} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Mail.top_of_page">org.gnome.OnlineAccounts.Mail</link> on `object`.
          * @param interface_ A {@link Goa.Mail} or `null` to clear the interface.
          */
-        set_mail(interface_?: Mail | null): void;
+        set_mail(interface_: Mail | null): void;
         /**
          * Sets the {@link Goa.Manager} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Manager.top_of_page">org.gnome.OnlineAccounts.Manager</link> on `object`.
          * @param interface_ A {@link Goa.Manager} or `null` to clear the interface.
          */
-        set_manager(interface_?: Manager | null): void;
+        set_manager(interface_: Manager | null): void;
         /**
          * Sets the {@link Goa.Maps} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Maps.top_of_page">org.gnome.OnlineAccounts.Maps</link> on `object`.
          * @param interface_ A {@link Goa.Maps} or `null` to clear the interface.
          */
-        set_maps(interface_?: Maps | null): void;
+        set_maps(interface_: Maps | null): void;
         /**
          * Sets the {@link Goa.MediaServer} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-MediaServer.top_of_page">org.gnome.OnlineAccounts.MediaServer</link> on `object`.
          * @param interface_ A {@link Goa.MediaServer} or `null` to clear the interface.
          */
-        set_media_server(interface_?: MediaServer | null): void;
+        set_media_server(interface_: MediaServer | null): void;
         /**
          * Sets the {@link Goa.Music} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Music.top_of_page">org.gnome.OnlineAccounts.Music</link> on `object`.
          * @param interface_ A {@link Goa.Music} or `null` to clear the interface.
          */
-        set_music(interface_?: Music | null): void;
+        set_music(interface_: Music | null): void;
         /**
          * Sets the {@link Goa.OAuth2Based} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-OAuth2Based.top_of_page">org.gnome.OnlineAccounts.OAuth2Based</link> on `object`.
          * @param interface_ A {@link Goa.OAuth2Based} or `null` to clear the interface.
          */
-        set_oauth2_based(interface_?: OAuth2Based | null): void;
+        set_oauth2_based(interface_: OAuth2Based | null): void;
         /**
          * Sets the {@link Goa.OAuthBased} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-OAuthBased.top_of_page">org.gnome.OnlineAccounts.OAuthBased</link> on `object`.
          * @param interface_ A {@link Goa.OAuthBased} or `null` to clear the interface.
          */
-        set_oauth_based(interface_?: OAuthBased | null): void;
+        set_oauth_based(interface_: OAuthBased | null): void;
         /**
          * Sets the {@link Goa.PasswordBased} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-PasswordBased.top_of_page">org.gnome.OnlineAccounts.PasswordBased</link> on `object`.
          * @param interface_ A {@link Goa.PasswordBased} or `null` to clear the interface.
          */
-        set_password_based(interface_?: PasswordBased | null): void;
+        set_password_based(interface_: PasswordBased | null): void;
         /**
          * Sets the {@link Goa.Photos} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Photos.top_of_page">org.gnome.OnlineAccounts.Photos</link> on `object`.
          * @param interface_ A {@link Goa.Photos} or `null` to clear the interface.
          */
-        set_photos(interface_?: Photos | null): void;
+        set_photos(interface_: Photos | null): void;
         /**
          * Sets the {@link Goa.Printers} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Printers.top_of_page">org.gnome.OnlineAccounts.Printers</link> on `object`.
          * @param interface_ A {@link Goa.Printers} or `null` to clear the interface.
          */
-        set_printers(interface_?: Printers | null): void;
+        set_printers(interface_: Printers | null): void;
         /**
          * Sets the {@link Goa.ReadLater} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-ReadLater.top_of_page">org.gnome.OnlineAccounts.ReadLater</link> on `object`.
          * @param interface_ A {@link Goa.ReadLater} or `null` to clear the interface.
          */
-        set_read_later(interface_?: ReadLater | null): void;
+        set_read_later(interface_: ReadLater | null): void;
         /**
          * Sets the {@link Goa.Ticketing} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Ticketing.top_of_page">org.gnome.OnlineAccounts.Ticketing</link> on `object`.
          * @param interface_ A {@link Goa.Ticketing} or `null` to clear the interface.
          */
-        set_ticketing(interface_?: Ticketing | null): void;
+        set_ticketing(interface_: Ticketing | null): void;
         /**
          * Sets the {@link Goa.Todo} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Todo.top_of_page">org.gnome.OnlineAccounts.Todo</link> on `object`.
          * @param interface_ A {@link Goa.Todo} or `null` to clear the interface.
          */
-        set_todo(interface_?: Todo | null): void;
+        set_todo(interface_: Todo | null): void;
         /**
          * The {@link Goa.Account} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Account.top_of_page">org.gnome.OnlineAccounts.Account</link>, if any.
          *
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
          * @category Inherited from Goa.Object
          */
-        get account(): Account;
-        set account(val: Account);
+        get account(): Account | null;
+        set account(val: Account | null);
         /**
          * The {@link Goa.Calendar} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Calendar.top_of_page">org.gnome.OnlineAccounts.Calendar</link>, if any.
          *
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
          * @category Inherited from Goa.Object
          */
-        get calendar(): Calendar;
-        set calendar(val: Calendar);
+        get calendar(): Calendar | null;
+        set calendar(val: Calendar | null);
         /**
          * The {@link Goa.Chat} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Chat.top_of_page">org.gnome.OnlineAccounts.Chat</link>, if any.
          *
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
          * @category Inherited from Goa.Object
          */
-        get chat(): Chat;
-        set chat(val: Chat);
+        get chat(): Chat | null;
+        set chat(val: Chat | null);
         /**
          * The {@link Goa.Contacts} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Contacts.top_of_page">org.gnome.OnlineAccounts.Contacts</link>, if any.
          *
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
          * @category Inherited from Goa.Object
          */
-        get contacts(): Contacts;
-        set contacts(val: Contacts);
+        get contacts(): Contacts | null;
+        set contacts(val: Contacts | null);
         /**
          * The {@link Goa.Documents} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Documents.top_of_page">org.gnome.OnlineAccounts.Documents</link>, if any.
          *
@@ -26818,8 +26243,8 @@ export namespace Goa {
          * @deprecated The D-Bus interface has been deprecated.
          * @category Inherited from Goa.Object
          */
-        get documents(): Documents;
-        set documents(val: Documents);
+        get documents(): Documents | null;
+        set documents(val: Documents | null);
         /**
          * The {@link Goa.Exchange} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Exchange.top_of_page">org.gnome.OnlineAccounts.Exchange</link>, if any.
          *
@@ -26827,8 +26252,8 @@ export namespace Goa {
          * @since 3.6.0
          * @category Inherited from Goa.Object
          */
-        get exchange(): Exchange;
-        set exchange(val: Exchange);
+        get exchange(): Exchange | null;
+        set exchange(val: Exchange | null);
         /**
          * The {@link Goa.Files} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Files.top_of_page">org.gnome.OnlineAccounts.Files</link>, if any.
          *
@@ -26836,24 +26261,24 @@ export namespace Goa {
          * @since 3.8.0
          * @category Inherited from Goa.Object
          */
-        get files(): Files;
-        set files(val: Files);
+        get files(): Files | null;
+        set files(val: Files | null);
         /**
          * The {@link Goa.Mail} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Mail.top_of_page">org.gnome.OnlineAccounts.Mail</link>, if any.
          *
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
          * @category Inherited from Goa.Object
          */
-        get mail(): Mail;
-        set mail(val: Mail);
+        get mail(): Mail | null;
+        set mail(val: Mail | null);
         /**
          * The {@link Goa.Manager} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Manager.top_of_page">org.gnome.OnlineAccounts.Manager</link>, if any.
          *
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
          * @category Inherited from Goa.Object
          */
-        get manager(): Manager;
-        set manager(val: Manager);
+        get manager(): Manager | null;
+        set manager(val: Manager | null);
         /**
          * The {@link Goa.Maps} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Maps.top_of_page">org.gnome.OnlineAccounts.Maps</link>, if any.
          *
@@ -26862,8 +26287,8 @@ export namespace Goa {
          * @deprecated The D-Bus interface has been deprecated.
          * @category Inherited from Goa.Object
          */
-        get maps(): Maps;
-        set maps(val: Maps);
+        get maps(): Maps | null;
+        set maps(val: Maps | null);
         /**
          * The {@link Goa.MediaServer} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-MediaServer.top_of_page">org.gnome.OnlineAccounts.MediaServer</link>, if any.
          *
@@ -26872,8 +26297,8 @@ export namespace Goa {
          * @deprecated The D-Bus interface has been deprecated.
          * @category Inherited from Goa.Object
          */
-        get media_server(): MediaServer;
-        set media_server(val: MediaServer);
+        get media_server(): MediaServer | null;
+        set media_server(val: MediaServer | null);
         /**
          * The {@link Goa.MediaServer} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-MediaServer.top_of_page">org.gnome.OnlineAccounts.MediaServer</link>, if any.
          *
@@ -26882,8 +26307,8 @@ export namespace Goa {
          * @deprecated The D-Bus interface has been deprecated.
          * @category Inherited from Goa.Object
          */
-        get mediaServer(): MediaServer;
-        set mediaServer(val: MediaServer);
+        get mediaServer(): MediaServer | null;
+        set mediaServer(val: MediaServer | null);
         /**
          * The {@link Goa.Music} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Music.top_of_page">org.gnome.OnlineAccounts.Music</link>, if any.
          *
@@ -26891,40 +26316,40 @@ export namespace Goa {
          * @since 3.18.0
          * @category Inherited from Goa.Object
          */
-        get music(): Music;
-        set music(val: Music);
+        get music(): Music | null;
+        set music(val: Music | null);
         /**
          * The {@link Goa.OAuthBased} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-OAuthBased.top_of_page">org.gnome.OnlineAccounts.OAuthBased</link>, if any.
          *
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
          * @category Inherited from Goa.Object
          */
-        get oauth_based(): OAuthBased;
-        set oauth_based(val: OAuthBased);
+        get oauth_based(): OAuthBased | null;
+        set oauth_based(val: OAuthBased | null);
         /**
          * The {@link Goa.OAuthBased} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-OAuthBased.top_of_page">org.gnome.OnlineAccounts.OAuthBased</link>, if any.
          *
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
          * @category Inherited from Goa.Object
          */
-        get oauthBased(): OAuthBased;
-        set oauthBased(val: OAuthBased);
+        get oauthBased(): OAuthBased | null;
+        set oauthBased(val: OAuthBased | null);
         /**
          * The {@link Goa.OAuth2Based} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-OAuth2Based.top_of_page">org.gnome.OnlineAccounts.OAuth2Based</link>, if any.
          *
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
          * @category Inherited from Goa.Object
          */
-        get oauth2_based(): OAuth2Based;
-        set oauth2_based(val: OAuth2Based);
+        get oauth2_based(): OAuth2Based | null;
+        set oauth2_based(val: OAuth2Based | null);
         /**
          * The {@link Goa.OAuth2Based} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-OAuth2Based.top_of_page">org.gnome.OnlineAccounts.OAuth2Based</link>, if any.
          *
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
          * @category Inherited from Goa.Object
          */
-        get oauth2Based(): OAuth2Based;
-        set oauth2Based(val: OAuth2Based);
+        get oauth2Based(): OAuth2Based | null;
+        set oauth2Based(val: OAuth2Based | null);
         /**
          * The {@link Goa.PasswordBased} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-PasswordBased.top_of_page">org.gnome.OnlineAccounts.PasswordBased</link>, if any.
          *
@@ -26932,8 +26357,8 @@ export namespace Goa {
          * @since 3.6.0
          * @category Inherited from Goa.Object
          */
-        get password_based(): PasswordBased;
-        set password_based(val: PasswordBased);
+        get password_based(): PasswordBased | null;
+        set password_based(val: PasswordBased | null);
         /**
          * The {@link Goa.PasswordBased} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-PasswordBased.top_of_page">org.gnome.OnlineAccounts.PasswordBased</link>, if any.
          *
@@ -26941,8 +26366,8 @@ export namespace Goa {
          * @since 3.6.0
          * @category Inherited from Goa.Object
          */
-        get passwordBased(): PasswordBased;
-        set passwordBased(val: PasswordBased);
+        get passwordBased(): PasswordBased | null;
+        set passwordBased(val: PasswordBased | null);
         /**
          * The {@link Goa.Photos} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Photos.top_of_page">org.gnome.OnlineAccounts.Photos</link>, if any.
          *
@@ -26950,8 +26375,8 @@ export namespace Goa {
          * @since 3.8.0
          * @category Inherited from Goa.Object
          */
-        get photos(): Photos;
-        set photos(val: Photos);
+        get photos(): Photos | null;
+        set photos(val: Photos | null);
         /**
          * The {@link Goa.Printers} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Printers.top_of_page">org.gnome.OnlineAccounts.Printers</link>, if any.
          *
@@ -26960,8 +26385,8 @@ export namespace Goa {
          * @deprecated The D-Bus interface has been deprecated.
          * @category Inherited from Goa.Object
          */
-        get printers(): Printers;
-        set printers(val: Printers);
+        get printers(): Printers | null;
+        set printers(val: Printers | null);
         /**
          * The {@link Goa.ReadLater} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-ReadLater.top_of_page">org.gnome.OnlineAccounts.ReadLater</link>, if any.
          *
@@ -26970,8 +26395,8 @@ export namespace Goa {
          * @deprecated The D-Bus interface has been deprecated.
          * @category Inherited from Goa.Object
          */
-        get read_later(): ReadLater;
-        set read_later(val: ReadLater);
+        get read_later(): ReadLater | null;
+        set read_later(val: ReadLater | null);
         /**
          * The {@link Goa.ReadLater} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-ReadLater.top_of_page">org.gnome.OnlineAccounts.ReadLater</link>, if any.
          *
@@ -26980,8 +26405,8 @@ export namespace Goa {
          * @deprecated The D-Bus interface has been deprecated.
          * @category Inherited from Goa.Object
          */
-        get readLater(): ReadLater;
-        set readLater(val: ReadLater);
+        get readLater(): ReadLater | null;
+        set readLater(val: ReadLater | null);
         /**
          * The {@link Goa.Ticketing} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Ticketing.top_of_page">org.gnome.OnlineAccounts.Ticketing</link>, if any.
          *
@@ -26989,8 +26414,8 @@ export namespace Goa {
          * @since 3.6.0
          * @category Inherited from Goa.Object
          */
-        get ticketing(): Ticketing;
-        set ticketing(val: Ticketing);
+        get ticketing(): Ticketing | null;
+        set ticketing(val: Ticketing | null);
         /**
          * The {@link Goa.Todo} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Todo.top_of_page">org.gnome.OnlineAccounts.Todo</link>, if any.
          *
@@ -26999,8 +26424,8 @@ export namespace Goa {
          * @deprecated The D-Bus interface has been deprecated.
          * @category Inherited from Goa.Object
          */
-        get todo(): Todo;
-        set todo(val: Todo);
+        get todo(): Todo | null;
+        set todo(val: Todo | null);
         /**
          * Gets the D-Bus interface with name `interface_name` associated with
          * `object`, if any.
@@ -27194,38 +26619,19 @@ export namespace Goa {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -27233,15 +26639,9 @@ export namespace Goa {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -27408,7 +26808,7 @@ export namespace Goa {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -27661,7 +27061,7 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): PasswordBasedProxy;
         // Conflicted with Gio.DBusProxy.new_for_bus_sync
 
@@ -27672,7 +27072,7 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): PasswordBasedProxy;
         // Conflicted with Gio.DBusProxy.new_sync
 
@@ -27720,8 +27120,8 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<PasswordBasedProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<PasswordBasedProxy> | null,
         ): void;
         /**
          * @param args
@@ -27747,8 +27147,8 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<PasswordBasedProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<PasswordBasedProxy> | null,
         ): void;
         /**
          * @param args
@@ -27795,7 +27195,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -27885,7 +27285,7 @@ export namespace Goa {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -27951,8 +27351,8 @@ export namespace Goa {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -27978,7 +27378,7 @@ export namespace Goa {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -27997,7 +27397,7 @@ export namespace Goa {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Initializes the object implementing the interface.
          *
@@ -28040,7 +27440,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -28083,7 +27483,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-PasswordBased.GetPassword">GetPassword()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -28093,7 +27493,7 @@ export namespace Goa {
          * @param arg_id Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_get_password(arg_id: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
+        call_get_password(arg_id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-PasswordBased.GetPassword">GetPassword()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -28121,7 +27521,7 @@ export namespace Goa {
          */
         call_get_password(
             arg_id: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
         /**
@@ -28138,7 +27538,7 @@ export namespace Goa {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_get_password_sync(arg_id: string, cancellable?: Gio.Cancellable | null): [boolean, string];
+        call_get_password_sync(arg_id: string, cancellable: Gio.Cancellable | null): [boolean, string];
         /**
          * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-OnlineAccounts-PasswordBased.GetPassword">GetPassword()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
          *
@@ -28201,38 +27601,19 @@ export namespace Goa {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -28240,15 +27621,9 @@ export namespace Goa {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -28415,7 +27790,7 @@ export namespace Goa {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -28684,7 +28059,7 @@ export namespace Goa {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -28703,7 +28078,7 @@ export namespace Goa {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-PasswordBased.GetPassword">GetPassword()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -28713,7 +28088,7 @@ export namespace Goa {
          * @param arg_id Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_get_password(arg_id: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
+        call_get_password(arg_id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-PasswordBased.GetPassword">GetPassword()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -28741,7 +28116,7 @@ export namespace Goa {
          */
         call_get_password(
             arg_id: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
         /**
@@ -28758,7 +28133,7 @@ export namespace Goa {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_get_password_sync(arg_id: string, cancellable?: Gio.Cancellable | null): [boolean, string];
+        call_get_password_sync(arg_id: string, cancellable: Gio.Cancellable | null): [boolean, string];
         /**
          * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-OnlineAccounts-PasswordBased.GetPassword">GetPassword()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
          *
@@ -28821,38 +28196,19 @@ export namespace Goa {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -28860,15 +28216,9 @@ export namespace Goa {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -29035,7 +28385,7 @@ export namespace Goa {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -29288,7 +28638,7 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): PhotosProxy;
         // Conflicted with Gio.DBusProxy.new_for_bus_sync
 
@@ -29299,7 +28649,7 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): PhotosProxy;
         // Conflicted with Gio.DBusProxy.new_sync
 
@@ -29347,8 +28697,8 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<PhotosProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<PhotosProxy> | null,
         ): void;
         /**
          * @param args
@@ -29374,8 +28724,8 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<PhotosProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<PhotosProxy> | null,
         ): void;
         /**
          * @param args
@@ -29422,7 +28772,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -29512,7 +28862,7 @@ export namespace Goa {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -29578,8 +28928,8 @@ export namespace Goa {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -29605,7 +28955,7 @@ export namespace Goa {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -29624,7 +28974,7 @@ export namespace Goa {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Initializes the object implementing the interface.
          *
@@ -29667,7 +29017,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -29710,7 +29060,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -29758,38 +29108,19 @@ export namespace Goa {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -29797,15 +29128,9 @@ export namespace Goa {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -29972,7 +29297,7 @@ export namespace Goa {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -30239,7 +29564,7 @@ export namespace Goa {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -30258,7 +29583,7 @@ export namespace Goa {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -30306,38 +29631,19 @@ export namespace Goa {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -30345,15 +29651,9 @@ export namespace Goa {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -30520,7 +29820,7 @@ export namespace Goa {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -30774,7 +30074,7 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): PrintersProxy;
         // Conflicted with Gio.DBusProxy.new_for_bus_sync
 
@@ -30785,7 +30085,7 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): PrintersProxy;
         // Conflicted with Gio.DBusProxy.new_sync
 
@@ -30833,8 +30133,8 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<PrintersProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<PrintersProxy> | null,
         ): void;
         /**
          * @param args
@@ -30860,8 +30160,8 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<PrintersProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<PrintersProxy> | null,
         ): void;
         /**
          * @param args
@@ -30908,7 +30208,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -30998,7 +30298,7 @@ export namespace Goa {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -31064,8 +30364,8 @@ export namespace Goa {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -31091,7 +30391,7 @@ export namespace Goa {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -31110,7 +30410,7 @@ export namespace Goa {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Initializes the object implementing the interface.
          *
@@ -31153,7 +30453,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -31196,7 +30496,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -31244,38 +30544,19 @@ export namespace Goa {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -31283,15 +30564,9 @@ export namespace Goa {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -31458,7 +30733,7 @@ export namespace Goa {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -31726,7 +31001,7 @@ export namespace Goa {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -31745,7 +31020,7 @@ export namespace Goa {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -31793,38 +31068,19 @@ export namespace Goa {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -31832,15 +31088,9 @@ export namespace Goa {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -32007,7 +31257,7 @@ export namespace Goa {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -32261,7 +31511,7 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): ReadLaterProxy;
         // Conflicted with Gio.DBusProxy.new_for_bus_sync
 
@@ -32272,7 +31522,7 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): ReadLaterProxy;
         // Conflicted with Gio.DBusProxy.new_sync
 
@@ -32320,8 +31570,8 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<ReadLaterProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<ReadLaterProxy> | null,
         ): void;
         /**
          * @param args
@@ -32347,8 +31597,8 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<ReadLaterProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<ReadLaterProxy> | null,
         ): void;
         /**
          * @param args
@@ -32395,7 +31645,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -32485,7 +31735,7 @@ export namespace Goa {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -32551,8 +31801,8 @@ export namespace Goa {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -32578,7 +31828,7 @@ export namespace Goa {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -32597,7 +31847,7 @@ export namespace Goa {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Initializes the object implementing the interface.
          *
@@ -32640,7 +31890,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -32683,7 +31933,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -32731,38 +31981,19 @@ export namespace Goa {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -32770,15 +32001,9 @@ export namespace Goa {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -32945,7 +32170,7 @@ export namespace Goa {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -33213,7 +32438,7 @@ export namespace Goa {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -33232,7 +32457,7 @@ export namespace Goa {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -33280,38 +32505,19 @@ export namespace Goa {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -33319,15 +32525,9 @@ export namespace Goa {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -33494,7 +32694,7 @@ export namespace Goa {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -33748,7 +32948,7 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): TicketingProxy;
         // Conflicted with Gio.DBusProxy.new_for_bus_sync
 
@@ -33759,7 +32959,7 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): TicketingProxy;
         // Conflicted with Gio.DBusProxy.new_sync
 
@@ -33807,8 +33007,8 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<TicketingProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<TicketingProxy> | null,
         ): void;
         /**
          * @param args
@@ -33834,8 +33034,8 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<TicketingProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<TicketingProxy> | null,
         ): void;
         /**
          * @param args
@@ -33849,8 +33049,8 @@ export namespace Goa {
          * @since 3.18
          * @category Inherited from Goa.Ticketing
          */
-        get details(): GLib.Variant;
-        set details(val: GLib.Variant);
+        get details(): GLib.Variant | null;
+        set details(val: GLib.Variant | null);
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -33891,7 +33091,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -33981,7 +33181,7 @@ export namespace Goa {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -34047,8 +33247,8 @@ export namespace Goa {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -34074,7 +33274,7 @@ export namespace Goa {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -34093,7 +33293,7 @@ export namespace Goa {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Initializes the object implementing the interface.
          *
@@ -34136,7 +33336,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -34179,7 +33379,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Ticketing.GetTicket">GetTicket()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -34188,7 +33388,7 @@ export namespace Goa {
          * See `goa_ticketing_call_get_ticket_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_get_ticket(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_get_ticket(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Ticketing.GetTicket">GetTicket()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -34209,7 +33409,7 @@ export namespace Goa {
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_get_ticket(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -34225,7 +33425,7 @@ export namespace Goa {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_get_ticket_sync(cancellable?: Gio.Cancellable | null): boolean;
+        call_get_ticket_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Ticketing.GetTicket">GetTicket()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
          *
@@ -34286,38 +33486,19 @@ export namespace Goa {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -34325,15 +33506,9 @@ export namespace Goa {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -34500,7 +33675,7 @@ export namespace Goa {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -34758,8 +33933,8 @@ export namespace Goa {
          * @since 3.18
          * @category Inherited from Goa.Ticketing
          */
-        get details(): GLib.Variant;
-        set details(val: GLib.Variant);
+        get details(): GLib.Variant | null;
+        set details(val: GLib.Variant | null);
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
@@ -34777,7 +33952,7 @@ export namespace Goa {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -34796,7 +33971,7 @@ export namespace Goa {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Ticketing.GetTicket">GetTicket()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -34805,7 +33980,7 @@ export namespace Goa {
          * See `goa_ticketing_call_get_ticket_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_get_ticket(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_get_ticket(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Ticketing.GetTicket">GetTicket()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -34826,7 +34001,7 @@ export namespace Goa {
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_get_ticket(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -34842,7 +34017,7 @@ export namespace Goa {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_get_ticket_sync(cancellable?: Gio.Cancellable | null): boolean;
+        call_get_ticket_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Ticketing.GetTicket">GetTicket()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
          *
@@ -34903,38 +34078,19 @@ export namespace Goa {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -34942,15 +34098,9 @@ export namespace Goa {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -35117,7 +34267,7 @@ export namespace Goa {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -35371,7 +34521,7 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): TodoProxy;
         // Conflicted with Gio.DBusProxy.new_for_bus_sync
 
@@ -35382,7 +34532,7 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): TodoProxy;
         // Conflicted with Gio.DBusProxy.new_sync
 
@@ -35430,8 +34580,8 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string | null,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<TodoProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<TodoProxy> | null,
         ): void;
         /**
          * @param args
@@ -35457,8 +34607,8 @@ export namespace Goa {
             flags: Gio.DBusProxyFlags,
             name: string,
             object_path: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<TodoProxy> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<TodoProxy> | null,
         ): void;
         /**
          * @param args
@@ -35505,7 +34655,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -35595,7 +34745,7 @@ export namespace Goa {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -35661,8 +34811,8 @@ export namespace Goa {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -35688,7 +34838,7 @@ export namespace Goa {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -35707,7 +34857,7 @@ export namespace Goa {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Initializes the object implementing the interface.
          *
@@ -35750,7 +34900,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -35793,7 +34943,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -35841,38 +34991,19 @@ export namespace Goa {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -35880,15 +35011,9 @@ export namespace Goa {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -36055,7 +35180,7 @@ export namespace Goa {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -36323,7 +35448,7 @@ export namespace Goa {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -36342,7 +35467,7 @@ export namespace Goa {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -36390,38 +35515,19 @@ export namespace Goa {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -36429,15 +35535,9 @@ export namespace Goa {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -36604,7 +35704,7 @@ export namespace Goa {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -37392,8 +36492,8 @@ export namespace Goa {
             documentsDisabled: boolean;
             files_disabled: boolean;
             filesDisabled: boolean;
-            id: string;
-            identity: string;
+            id: string | null;
+            identity: string | null;
             is_locked: boolean;
             isLocked: boolean;
             is_temporary: boolean;
@@ -37406,16 +36506,16 @@ export namespace Goa {
             musicDisabled: boolean;
             photos_disabled: boolean;
             photosDisabled: boolean;
-            presentation_identity: string;
-            presentationIdentity: string;
+            presentation_identity: string | null;
+            presentationIdentity: string | null;
             printers_disabled: boolean;
             printersDisabled: boolean;
-            provider_icon: string;
-            providerIcon: string;
-            provider_name: string;
-            providerName: string;
-            provider_type: string;
-            providerType: string;
+            provider_icon: string | null;
+            providerIcon: string | null;
+            provider_name: string | null;
+            providerName: string | null;
+            provider_type: string | null;
+            providerType: string | null;
             read_later_disabled: boolean;
             readLaterDisabled: boolean;
             ticketing_disabled: boolean;
@@ -37452,6 +36552,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.AttentionNeeded">"AttentionNeeded"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          */
         get attention_needed(): boolean;
         set attention_needed(val: boolean);
@@ -37459,6 +36560,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.AttentionNeeded">"AttentionNeeded"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          */
         get attentionNeeded(): boolean;
         set attentionNeeded(val: boolean);
@@ -37466,6 +36568,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.CalendarDisabled">"CalendarDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          */
         get calendar_disabled(): boolean;
         set calendar_disabled(val: boolean);
@@ -37473,6 +36576,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.CalendarDisabled">"CalendarDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          */
         get calendarDisabled(): boolean;
         set calendarDisabled(val: boolean);
@@ -37480,6 +36584,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.ChatDisabled">"ChatDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          */
         get chat_disabled(): boolean;
         set chat_disabled(val: boolean);
@@ -37487,6 +36592,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.ChatDisabled">"ChatDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          */
         get chatDisabled(): boolean;
         set chatDisabled(val: boolean);
@@ -37494,6 +36600,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.ContactsDisabled">"ContactsDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          */
         get contacts_disabled(): boolean;
         set contacts_disabled(val: boolean);
@@ -37501,6 +36608,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.ContactsDisabled">"ContactsDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          */
         get contactsDisabled(): boolean;
         set contactsDisabled(val: boolean);
@@ -37509,6 +36617,7 @@ export namespace Goa {
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          * @deprecated The D-Bus property has been deprecated.
+         * @default false
          */
         get documents_disabled(): boolean;
         set documents_disabled(val: boolean);
@@ -37517,6 +36626,7 @@ export namespace Goa {
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          * @deprecated The D-Bus property has been deprecated.
+         * @default false
          */
         get documentsDisabled(): boolean;
         set documentsDisabled(val: boolean);
@@ -37524,6 +36634,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.FilesDisabled">"FilesDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          */
         get files_disabled(): boolean;
         set files_disabled(val: boolean);
@@ -37531,6 +36642,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.FilesDisabled">"FilesDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          */
         get filesDisabled(): boolean;
         set filesDisabled(val: boolean);
@@ -37538,20 +36650,23 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.Id">"Id"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          */
-        get id(): string;
-        set id(val: string);
+        get id(): string | null;
+        set id(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.Identity">"Identity"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          */
-        get identity(): string;
-        set identity(val: string);
+        get identity(): string | null;
+        set identity(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.IsLocked">"IsLocked"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          */
         get is_locked(): boolean;
         set is_locked(val: boolean);
@@ -37559,6 +36674,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.IsLocked">"IsLocked"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          */
         get isLocked(): boolean;
         set isLocked(val: boolean);
@@ -37566,6 +36682,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.IsTemporary">"IsTemporary"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          */
         get is_temporary(): boolean;
         set is_temporary(val: boolean);
@@ -37573,6 +36690,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.IsTemporary">"IsTemporary"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          */
         get isTemporary(): boolean;
         set isTemporary(val: boolean);
@@ -37580,6 +36698,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.MailDisabled">"MailDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          */
         get mail_disabled(): boolean;
         set mail_disabled(val: boolean);
@@ -37587,6 +36706,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.MailDisabled">"MailDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          */
         get mailDisabled(): boolean;
         set mailDisabled(val: boolean);
@@ -37595,6 +36715,7 @@ export namespace Goa {
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          * @deprecated The D-Bus property has been deprecated.
+         * @default false
          */
         get maps_disabled(): boolean;
         set maps_disabled(val: boolean);
@@ -37603,6 +36724,7 @@ export namespace Goa {
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          * @deprecated The D-Bus property has been deprecated.
+         * @default false
          */
         get mapsDisabled(): boolean;
         set mapsDisabled(val: boolean);
@@ -37610,6 +36732,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.MusicDisabled">"MusicDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          */
         get music_disabled(): boolean;
         set music_disabled(val: boolean);
@@ -37617,6 +36740,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.MusicDisabled">"MusicDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          */
         get musicDisabled(): boolean;
         set musicDisabled(val: boolean);
@@ -37624,6 +36748,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.PhotosDisabled">"PhotosDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          */
         get photos_disabled(): boolean;
         set photos_disabled(val: boolean);
@@ -37631,6 +36756,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.PhotosDisabled">"PhotosDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          */
         get photosDisabled(): boolean;
         set photosDisabled(val: boolean);
@@ -37638,21 +36764,24 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.PresentationIdentity">"PresentationIdentity"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          */
-        get presentation_identity(): string;
-        set presentation_identity(val: string);
+        get presentation_identity(): string | null;
+        set presentation_identity(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.PresentationIdentity">"PresentationIdentity"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          */
-        get presentationIdentity(): string;
-        set presentationIdentity(val: string);
+        get presentationIdentity(): string | null;
+        set presentationIdentity(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.PrintersDisabled">"PrintersDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          * @deprecated The D-Bus property has been deprecated.
+         * @default false
          */
         get printers_disabled(): boolean;
         set printers_disabled(val: boolean);
@@ -37661,6 +36790,7 @@ export namespace Goa {
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          * @deprecated The D-Bus property has been deprecated.
+         * @default false
          */
         get printersDisabled(): boolean;
         set printersDisabled(val: boolean);
@@ -37668,49 +36798,56 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.ProviderIcon">"ProviderIcon"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          */
-        get provider_icon(): string;
-        set provider_icon(val: string);
+        get provider_icon(): string | null;
+        set provider_icon(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.ProviderIcon">"ProviderIcon"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          */
-        get providerIcon(): string;
-        set providerIcon(val: string);
+        get providerIcon(): string | null;
+        set providerIcon(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.ProviderName">"ProviderName"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          */
-        get provider_name(): string;
-        set provider_name(val: string);
+        get provider_name(): string | null;
+        set provider_name(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.ProviderName">"ProviderName"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          */
-        get providerName(): string;
-        set providerName(val: string);
+        get providerName(): string | null;
+        set providerName(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.ProviderType">"ProviderType"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          */
-        get provider_type(): string;
-        set provider_type(val: string);
+        get provider_type(): string | null;
+        set provider_type(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.ProviderType">"ProviderType"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          */
-        get providerType(): string;
-        set providerType(val: string);
+        get providerType(): string | null;
+        set providerType(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.ReadLaterDisabled">"ReadLaterDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          * @deprecated The D-Bus property has been deprecated.
+         * @default false
          */
         get read_later_disabled(): boolean;
         set read_later_disabled(val: boolean);
@@ -37719,6 +36856,7 @@ export namespace Goa {
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          * @deprecated The D-Bus property has been deprecated.
+         * @default false
          */
         get readLaterDisabled(): boolean;
         set readLaterDisabled(val: boolean);
@@ -37726,6 +36864,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.TicketingDisabled">"TicketingDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          */
         get ticketing_disabled(): boolean;
         set ticketing_disabled(val: boolean);
@@ -37733,6 +36872,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.TicketingDisabled">"TicketingDisabled"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @default false
          */
         get ticketingDisabled(): boolean;
         set ticketingDisabled(val: boolean);
@@ -37741,6 +36881,7 @@ export namespace Goa {
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          * @deprecated The D-Bus property has been deprecated.
+         * @default false
          */
         get todo_disabled(): boolean;
         set todo_disabled(val: boolean);
@@ -37749,6 +36890,7 @@ export namespace Goa {
          *
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          * @deprecated The D-Bus property has been deprecated.
+         * @default false
          */
         get todoDisabled(): boolean;
         set todoDisabled(val: boolean);
@@ -37763,7 +36905,7 @@ export namespace Goa {
          * See `goa_account_call_ensure_credentials_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_ensure_credentials(cancellable?: Gio.Cancellable | null): globalThis.Promise<number>;
+        call_ensure_credentials(cancellable: Gio.Cancellable | null): globalThis.Promise<number>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Account.EnsureCredentials">EnsureCredentials()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -37787,7 +36929,7 @@ export namespace Goa {
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_ensure_credentials(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<number> | void;
         /**
@@ -37803,7 +36945,7 @@ export namespace Goa {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_ensure_credentials_sync(cancellable?: Gio.Cancellable | null): [boolean, number];
+        call_ensure_credentials_sync(cancellable: Gio.Cancellable | null): [boolean, number];
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Account.Remove">Remove()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -37812,7 +36954,7 @@ export namespace Goa {
          * See `goa_account_call_remove_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_remove(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_remove(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Account.Remove">Remove()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -37833,7 +36975,7 @@ export namespace Goa {
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_remove(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -37849,7 +36991,7 @@ export namespace Goa {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_remove_sync(cancellable?: Gio.Cancellable | null): boolean;
+        call_remove_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Account.EnsureCredentials">EnsureCredentials()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
          *
@@ -37877,7 +37019,7 @@ export namespace Goa {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             accept_ssl_errors: boolean;
             acceptSslErrors: boolean;
-            uri: string;
+            uri: string | null;
         }
     }
 
@@ -37908,6 +37050,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Calendar.AcceptSslErrors">"AcceptSslErrors"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          */
         get accept_ssl_errors(): boolean;
         set accept_ssl_errors(val: boolean);
@@ -37915,6 +37058,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Calendar.AcceptSslErrors">"AcceptSslErrors"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          */
         get acceptSslErrors(): boolean;
         set acceptSslErrors(val: boolean);
@@ -37922,9 +37066,10 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Calendar.Uri">"Uri"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          */
-        get uri(): string;
-        set uri(val: string);
+        get uri(): string | null;
+        set uri(val: string | null);
     }
 
     export const Calendar: CalendarNamespace & {
@@ -37969,7 +37114,7 @@ export namespace Goa {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             accept_ssl_errors: boolean;
             acceptSslErrors: boolean;
-            uri: string;
+            uri: string | null;
         }
     }
 
@@ -38000,6 +37145,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Contacts.AcceptSslErrors">"AcceptSslErrors"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          */
         get accept_ssl_errors(): boolean;
         set accept_ssl_errors(val: boolean);
@@ -38007,6 +37153,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Contacts.AcceptSslErrors">"AcceptSslErrors"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          */
         get acceptSslErrors(): boolean;
         set acceptSslErrors(val: boolean);
@@ -38014,9 +37161,10 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Contacts.Uri">"Uri"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          */
-        get uri(): string;
-        set uri(val: string);
+        get uri(): string | null;
+        set uri(val: string | null);
     }
 
     export const Contacts: ContactsNamespace & {
@@ -38062,7 +37210,7 @@ export namespace Goa {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             accept_ssl_errors: boolean;
             acceptSslErrors: boolean;
-            host: string;
+            host: string | null;
         }
     }
 
@@ -38095,6 +37243,7 @@ export namespace Goa {
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          * @since 3.6.0
+         * @default false
          */
         get accept_ssl_errors(): boolean;
         set accept_ssl_errors(val: boolean);
@@ -38103,6 +37252,7 @@ export namespace Goa {
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          * @since 3.6.0
+         * @default false
          */
         get acceptSslErrors(): boolean;
         set acceptSslErrors(val: boolean);
@@ -38111,9 +37261,10 @@ export namespace Goa {
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          * @since 3.6.0
+         * @default null
          */
-        get host(): string;
-        set host(val: string);
+        get host(): string | null;
+        set host(val: string | null);
     }
 
     export const Exchange: ExchangeNamespace & {
@@ -38126,7 +37277,7 @@ export namespace Goa {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             accept_ssl_errors: boolean;
             acceptSslErrors: boolean;
-            uri: string;
+            uri: string | null;
         }
     }
 
@@ -38159,6 +37310,7 @@ export namespace Goa {
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          * @since 3.8.0
+         * @default false
          */
         get accept_ssl_errors(): boolean;
         set accept_ssl_errors(val: boolean);
@@ -38167,6 +37319,7 @@ export namespace Goa {
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          * @since 3.8.0
+         * @default false
          */
         get acceptSslErrors(): boolean;
         set acceptSslErrors(val: boolean);
@@ -38175,9 +37328,10 @@ export namespace Goa {
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          * @since 3.8.0
+         * @default null
          */
-        get uri(): string;
-        set uri(val: string);
+        get uri(): string | null;
+        set uri(val: string | null);
     }
 
     export const Files: FilesNamespace & {
@@ -38188,21 +37342,21 @@ export namespace Goa {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            email_address: string;
-            emailAddress: string;
+            email_address: string | null;
+            emailAddress: string | null;
             imap_accept_ssl_errors: boolean;
             imapAcceptSslErrors: boolean;
-            imap_host: string;
-            imapHost: string;
+            imap_host: string | null;
+            imapHost: string | null;
             imap_supported: boolean;
             imapSupported: boolean;
             imap_use_ssl: boolean;
             imapUseSsl: boolean;
             imap_use_tls: boolean;
             imapUseTls: boolean;
-            imap_user_name: string;
-            imapUserName: string;
-            name: string;
+            imap_user_name: string | null;
+            imapUserName: string | null;
+            name: string | null;
             smtp_accept_ssl_errors: boolean;
             smtpAcceptSslErrors: boolean;
             smtp_auth_login: boolean;
@@ -38211,8 +37365,8 @@ export namespace Goa {
             smtpAuthPlain: boolean;
             smtp_auth_xoauth2: boolean;
             smtpAuthXoauth2: boolean;
-            smtp_host: string;
-            smtpHost: string;
+            smtp_host: string | null;
+            smtpHost: string | null;
             smtp_supported: boolean;
             smtpSupported: boolean;
             smtp_use_auth: boolean;
@@ -38221,8 +37375,8 @@ export namespace Goa {
             smtpUseSsl: boolean;
             smtp_use_tls: boolean;
             smtpUseTls: boolean;
-            smtp_user_name: string;
-            smtpUserName: string;
+            smtp_user_name: string | null;
+            smtpUserName: string | null;
         }
     }
 
@@ -38253,20 +37407,23 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.EmailAddress">"EmailAddress"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          */
-        get email_address(): string;
-        set email_address(val: string);
+        get email_address(): string | null;
+        set email_address(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.EmailAddress">"EmailAddress"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          */
-        get emailAddress(): string;
-        set emailAddress(val: string);
+        get emailAddress(): string | null;
+        set emailAddress(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.ImapAcceptSslErrors">"ImapAcceptSslErrors"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          */
         get imap_accept_ssl_errors(): boolean;
         set imap_accept_ssl_errors(val: boolean);
@@ -38274,6 +37431,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.ImapAcceptSslErrors">"ImapAcceptSslErrors"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          */
         get imapAcceptSslErrors(): boolean;
         set imapAcceptSslErrors(val: boolean);
@@ -38281,20 +37439,23 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.ImapHost">"ImapHost"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          */
-        get imap_host(): string;
-        set imap_host(val: string);
+        get imap_host(): string | null;
+        set imap_host(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.ImapHost">"ImapHost"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          */
-        get imapHost(): string;
-        set imapHost(val: string);
+        get imapHost(): string | null;
+        set imapHost(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.ImapSupported">"ImapSupported"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          */
         get imap_supported(): boolean;
         set imap_supported(val: boolean);
@@ -38302,6 +37463,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.ImapSupported">"ImapSupported"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          */
         get imapSupported(): boolean;
         set imapSupported(val: boolean);
@@ -38309,6 +37471,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.ImapUseSsl">"ImapUseSsl"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          */
         get imap_use_ssl(): boolean;
         set imap_use_ssl(val: boolean);
@@ -38316,6 +37479,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.ImapUseSsl">"ImapUseSsl"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          */
         get imapUseSsl(): boolean;
         set imapUseSsl(val: boolean);
@@ -38323,6 +37487,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.ImapUseTls">"ImapUseTls"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          */
         get imap_use_tls(): boolean;
         set imap_use_tls(val: boolean);
@@ -38330,6 +37495,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.ImapUseTls">"ImapUseTls"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          */
         get imapUseTls(): boolean;
         set imapUseTls(val: boolean);
@@ -38337,27 +37503,31 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.ImapUserName">"ImapUserName"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          */
-        get imap_user_name(): string;
-        set imap_user_name(val: string);
+        get imap_user_name(): string | null;
+        set imap_user_name(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.ImapUserName">"ImapUserName"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          */
-        get imapUserName(): string;
-        set imapUserName(val: string);
+        get imapUserName(): string | null;
+        set imapUserName(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.Name">"Name"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          */
-        get name(): string;
-        set name(val: string);
+        get name(): string | null;
+        set name(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpAcceptSslErrors">"SmtpAcceptSslErrors"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          */
         get smtp_accept_ssl_errors(): boolean;
         set smtp_accept_ssl_errors(val: boolean);
@@ -38365,6 +37535,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpAcceptSslErrors">"SmtpAcceptSslErrors"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          */
         get smtpAcceptSslErrors(): boolean;
         set smtpAcceptSslErrors(val: boolean);
@@ -38372,6 +37543,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpAuthLogin">"SmtpAuthLogin"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          */
         get smtp_auth_login(): boolean;
         set smtp_auth_login(val: boolean);
@@ -38379,6 +37551,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpAuthLogin">"SmtpAuthLogin"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          */
         get smtpAuthLogin(): boolean;
         set smtpAuthLogin(val: boolean);
@@ -38386,6 +37559,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpAuthPlain">"SmtpAuthPlain"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          */
         get smtp_auth_plain(): boolean;
         set smtp_auth_plain(val: boolean);
@@ -38393,6 +37567,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpAuthPlain">"SmtpAuthPlain"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          */
         get smtpAuthPlain(): boolean;
         set smtpAuthPlain(val: boolean);
@@ -38400,6 +37575,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpAuthXoauth2">"SmtpAuthXoauth2"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          */
         get smtp_auth_xoauth2(): boolean;
         set smtp_auth_xoauth2(val: boolean);
@@ -38407,6 +37583,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpAuthXoauth2">"SmtpAuthXoauth2"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          */
         get smtpAuthXoauth2(): boolean;
         set smtpAuthXoauth2(val: boolean);
@@ -38414,20 +37591,23 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpHost">"SmtpHost"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          */
-        get smtp_host(): string;
-        set smtp_host(val: string);
+        get smtp_host(): string | null;
+        set smtp_host(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpHost">"SmtpHost"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          */
-        get smtpHost(): string;
-        set smtpHost(val: string);
+        get smtpHost(): string | null;
+        set smtpHost(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpSupported">"SmtpSupported"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          */
         get smtp_supported(): boolean;
         set smtp_supported(val: boolean);
@@ -38435,6 +37615,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpSupported">"SmtpSupported"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          */
         get smtpSupported(): boolean;
         set smtpSupported(val: boolean);
@@ -38442,6 +37623,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpUseAuth">"SmtpUseAuth"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          */
         get smtp_use_auth(): boolean;
         set smtp_use_auth(val: boolean);
@@ -38449,6 +37631,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpUseAuth">"SmtpUseAuth"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          */
         get smtpUseAuth(): boolean;
         set smtpUseAuth(val: boolean);
@@ -38456,6 +37639,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpUseSsl">"SmtpUseSsl"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          */
         get smtp_use_ssl(): boolean;
         set smtp_use_ssl(val: boolean);
@@ -38463,6 +37647,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpUseSsl">"SmtpUseSsl"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          */
         get smtpUseSsl(): boolean;
         set smtpUseSsl(val: boolean);
@@ -38470,6 +37655,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpUseTls">"SmtpUseTls"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          */
         get smtp_use_tls(): boolean;
         set smtp_use_tls(val: boolean);
@@ -38477,6 +37663,7 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpUseTls">"SmtpUseTls"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default false
          */
         get smtpUseTls(): boolean;
         set smtpUseTls(val: boolean);
@@ -38484,16 +37671,18 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpUserName">"SmtpUserName"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          */
-        get smtp_user_name(): string;
-        set smtp_user_name(val: string);
+        get smtp_user_name(): string | null;
+        set smtp_user_name(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpUserName">"SmtpUserName"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          */
-        get smtpUserName(): string;
-        set smtpUserName(val: string);
+        get smtpUserName(): string | null;
+        set smtpUserName(val: string | null);
     }
 
     export const Mail: MailNamespace & {
@@ -38585,7 +37774,7 @@ export namespace Goa {
             arg_presentation_identity: string,
             arg_credentials: GLib.Variant,
             arg_details: GLib.Variant,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<string>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Manager.AddAccount">AddAccount()</link> D-Bus method on `proxy`.
@@ -38630,7 +37819,7 @@ export namespace Goa {
             arg_presentation_identity: string,
             arg_credentials: GLib.Variant,
             arg_details: GLib.Variant,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
         /**
@@ -38657,7 +37846,7 @@ export namespace Goa {
             arg_presentation_identity: string,
             arg_credentials: GLib.Variant,
             arg_details: GLib.Variant,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, string];
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Manager.IsSupportedProvider">IsSupportedProvider()</link> D-Bus method on `proxy`.
@@ -38670,7 +37859,7 @@ export namespace Goa {
          */
         call_is_supported_provider(
             arg_provider_type: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Manager.IsSupportedProvider">IsSupportedProvider()</link> D-Bus method on `proxy`.
@@ -38699,7 +37888,7 @@ export namespace Goa {
          */
         call_is_supported_provider(
             arg_provider_type: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -38718,7 +37907,7 @@ export namespace Goa {
          */
         call_is_supported_provider_sync(
             arg_provider_type: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, boolean];
         /**
          * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Manager.AddAccount">AddAccount()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
@@ -38782,7 +37971,7 @@ export namespace Goa {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             dlna_supported: boolean;
             dlnaSupported: boolean;
-            udn: string;
+            udn: string | null;
         }
     }
 
@@ -38817,6 +38006,7 @@ export namespace Goa {
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          * @since 3.14
          * @deprecated The D-Bus property has been deprecated.
+         * @default false
          */
         get dlna_supported(): boolean;
         set dlna_supported(val: boolean);
@@ -38826,6 +38016,7 @@ export namespace Goa {
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          * @since 3.14
          * @deprecated The D-Bus property has been deprecated.
+         * @default false
          */
         get dlnaSupported(): boolean;
         set dlnaSupported(val: boolean);
@@ -38835,9 +38026,10 @@ export namespace Goa {
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          * @since 3.14
          * @deprecated The D-Bus property has been deprecated.
+         * @default null
          */
-        get udn(): string;
-        set udn(val: string);
+        get udn(): string | null;
+        set udn(val: string | null);
     }
 
     export const MediaServer: MediaServerNamespace & {
@@ -38896,10 +38088,10 @@ export namespace Goa {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            client_id: string;
-            clientId: string;
-            client_secret: string;
-            clientSecret: string;
+            client_id: string | null;
+            clientId: string | null;
+            client_secret: string | null;
+            clientSecret: string | null;
         }
     }
 
@@ -38930,30 +38122,34 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-OAuth2Based.ClientId">"ClientId"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          */
-        get client_id(): string;
-        set client_id(val: string);
+        get client_id(): string | null;
+        set client_id(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-OAuth2Based.ClientId">"ClientId"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          */
-        get clientId(): string;
-        set clientId(val: string);
+        get clientId(): string | null;
+        set clientId(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-OAuth2Based.ClientSecret">"ClientSecret"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          */
-        get client_secret(): string;
-        set client_secret(val: string);
+        get client_secret(): string | null;
+        set client_secret(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-OAuth2Based.ClientSecret">"ClientSecret"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          */
-        get clientSecret(): string;
-        set clientSecret(val: string);
+        get clientSecret(): string | null;
+        set clientSecret(val: string | null);
 
         // Methods
 
@@ -38965,7 +38161,7 @@ export namespace Goa {
          * See `goa_oauth2_based_call_get_access_token_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_get_access_token(cancellable?: Gio.Cancellable | null): globalThis.Promise<[string, number]>;
+        call_get_access_token(cancellable: Gio.Cancellable | null): globalThis.Promise<[string, number]>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-OAuth2Based.GetAccessToken">GetAccessToken()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -38986,7 +38182,7 @@ export namespace Goa {
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_get_access_token(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[string, number]> | void;
         /**
@@ -39002,7 +38198,7 @@ export namespace Goa {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_get_access_token_sync(cancellable?: Gio.Cancellable | null): [boolean, string, number];
+        call_get_access_token_sync(cancellable: Gio.Cancellable | null): [boolean, string, number];
         /**
          * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-OnlineAccounts-OAuth2Based.GetAccessToken">GetAccessToken()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
          *
@@ -39037,10 +38233,10 @@ export namespace Goa {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            consumer_key: string;
-            consumerKey: string;
-            consumer_secret: string;
-            consumerSecret: string;
+            consumer_key: string | null;
+            consumerKey: string | null;
+            consumer_secret: string | null;
+            consumerSecret: string | null;
         }
     }
 
@@ -39071,30 +38267,34 @@ export namespace Goa {
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-OAuthBased.ConsumerKey">"ConsumerKey"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          */
-        get consumer_key(): string;
-        set consumer_key(val: string);
+        get consumer_key(): string | null;
+        set consumer_key(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-OAuthBased.ConsumerKey">"ConsumerKey"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          */
-        get consumerKey(): string;
-        set consumerKey(val: string);
+        get consumerKey(): string | null;
+        set consumerKey(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-OAuthBased.ConsumerSecret">"ConsumerSecret"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          */
-        get consumer_secret(): string;
-        set consumer_secret(val: string);
+        get consumer_secret(): string | null;
+        set consumer_secret(val: string | null);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-OAuthBased.ConsumerSecret">"ConsumerSecret"</link>.
          *
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @default null
          */
-        get consumerSecret(): string;
-        set consumerSecret(val: string);
+        get consumerSecret(): string | null;
+        set consumerSecret(val: string | null);
 
         // Methods
 
@@ -39106,7 +38306,7 @@ export namespace Goa {
          * See `goa_oauth_based_call_get_access_token_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_get_access_token(cancellable?: Gio.Cancellable | null): globalThis.Promise<[string, string, number]>;
+        call_get_access_token(cancellable: Gio.Cancellable | null): globalThis.Promise<[string, string, number]>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-OAuthBased.GetAccessToken">GetAccessToken()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -39127,7 +38327,7 @@ export namespace Goa {
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_get_access_token(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[string, string, number]> | void;
         /**
@@ -39143,7 +38343,7 @@ export namespace Goa {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_get_access_token_sync(cancellable?: Gio.Cancellable | null): [boolean, string, string, number];
+        call_get_access_token_sync(cancellable: Gio.Cancellable | null): [boolean, string, string, number];
         /**
          * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-OnlineAccounts-OAuthBased.GetAccessToken">GetAccessToken()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
          *
@@ -39169,31 +38369,31 @@ export namespace Goa {
         // Constructor properties interface
 
         interface ConstructorProps extends Gio.DBusObject.ConstructorProps {
-            account: Account;
-            calendar: Calendar;
-            chat: Chat;
-            contacts: Contacts;
-            documents: Documents;
-            exchange: Exchange;
-            files: Files;
-            mail: Mail;
-            manager: Manager;
-            maps: Maps;
-            media_server: MediaServer;
-            mediaServer: MediaServer;
-            music: Music;
-            oauth_based: OAuthBased;
-            oauthBased: OAuthBased;
-            oauth2_based: OAuth2Based;
-            oauth2Based: OAuth2Based;
-            password_based: PasswordBased;
-            passwordBased: PasswordBased;
-            photos: Photos;
-            printers: Printers;
-            read_later: ReadLater;
-            readLater: ReadLater;
-            ticketing: Ticketing;
-            todo: Todo;
+            account: Account | null;
+            calendar: Calendar | null;
+            chat: Chat | null;
+            contacts: Contacts | null;
+            documents: Documents | null;
+            exchange: Exchange | null;
+            files: Files | null;
+            mail: Mail | null;
+            manager: Manager | null;
+            maps: Maps | null;
+            media_server: MediaServer | null;
+            mediaServer: MediaServer | null;
+            music: Music | null;
+            oauth_based: OAuthBased | null;
+            oauthBased: OAuthBased | null;
+            oauth2_based: OAuth2Based | null;
+            oauth2Based: OAuth2Based | null;
+            password_based: PasswordBased | null;
+            passwordBased: PasswordBased | null;
+            photos: Photos | null;
+            printers: Printers | null;
+            read_later: ReadLater | null;
+            readLater: ReadLater | null;
+            ticketing: Ticketing | null;
+            todo: Todo | null;
         }
     }
 
@@ -39213,67 +38413,67 @@ export namespace Goa {
          *
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
          */
-        get account(): Account;
-        set account(val: Account);
+        get account(): Account | null;
+        set account(val: Account | null);
         /**
          * The {@link Goa.Calendar} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Calendar.top_of_page">org.gnome.OnlineAccounts.Calendar</link>, if any.
          *
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
          */
-        get calendar(): Calendar;
-        set calendar(val: Calendar);
+        get calendar(): Calendar | null;
+        set calendar(val: Calendar | null);
         /**
          * The {@link Goa.Chat} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Chat.top_of_page">org.gnome.OnlineAccounts.Chat</link>, if any.
          *
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
          */
-        get chat(): Chat;
-        set chat(val: Chat);
+        get chat(): Chat | null;
+        set chat(val: Chat | null);
         /**
          * The {@link Goa.Contacts} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Contacts.top_of_page">org.gnome.OnlineAccounts.Contacts</link>, if any.
          *
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
          */
-        get contacts(): Contacts;
-        set contacts(val: Contacts);
+        get contacts(): Contacts | null;
+        set contacts(val: Contacts | null);
         /**
          * The {@link Goa.Documents} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Documents.top_of_page">org.gnome.OnlineAccounts.Documents</link>, if any.
          *
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
          * @deprecated The D-Bus interface has been deprecated.
          */
-        get documents(): Documents;
-        set documents(val: Documents);
+        get documents(): Documents | null;
+        set documents(val: Documents | null);
         /**
          * The {@link Goa.Exchange} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Exchange.top_of_page">org.gnome.OnlineAccounts.Exchange</link>, if any.
          *
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
          * @since 3.6.0
          */
-        get exchange(): Exchange;
-        set exchange(val: Exchange);
+        get exchange(): Exchange | null;
+        set exchange(val: Exchange | null);
         /**
          * The {@link Goa.Files} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Files.top_of_page">org.gnome.OnlineAccounts.Files</link>, if any.
          *
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
          * @since 3.8.0
          */
-        get files(): Files;
-        set files(val: Files);
+        get files(): Files | null;
+        set files(val: Files | null);
         /**
          * The {@link Goa.Mail} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Mail.top_of_page">org.gnome.OnlineAccounts.Mail</link>, if any.
          *
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
          */
-        get mail(): Mail;
-        set mail(val: Mail);
+        get mail(): Mail | null;
+        set mail(val: Mail | null);
         /**
          * The {@link Goa.Manager} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Manager.top_of_page">org.gnome.OnlineAccounts.Manager</link>, if any.
          *
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
          */
-        get manager(): Manager;
-        set manager(val: Manager);
+        get manager(): Manager | null;
+        set manager(val: Manager | null);
         /**
          * The {@link Goa.Maps} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Maps.top_of_page">org.gnome.OnlineAccounts.Maps</link>, if any.
          *
@@ -39281,8 +38481,8 @@ export namespace Goa {
          * @since 3.14.0
          * @deprecated The D-Bus interface has been deprecated.
          */
-        get maps(): Maps;
-        set maps(val: Maps);
+        get maps(): Maps | null;
+        set maps(val: Maps | null);
         /**
          * The {@link Goa.MediaServer} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-MediaServer.top_of_page">org.gnome.OnlineAccounts.MediaServer</link>, if any.
          *
@@ -39290,8 +38490,8 @@ export namespace Goa {
          * @since 3.14
          * @deprecated The D-Bus interface has been deprecated.
          */
-        get media_server(): MediaServer;
-        set media_server(val: MediaServer);
+        get media_server(): MediaServer | null;
+        set media_server(val: MediaServer | null);
         /**
          * The {@link Goa.MediaServer} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-MediaServer.top_of_page">org.gnome.OnlineAccounts.MediaServer</link>, if any.
          *
@@ -39299,68 +38499,68 @@ export namespace Goa {
          * @since 3.14
          * @deprecated The D-Bus interface has been deprecated.
          */
-        get mediaServer(): MediaServer;
-        set mediaServer(val: MediaServer);
+        get mediaServer(): MediaServer | null;
+        set mediaServer(val: MediaServer | null);
         /**
          * The {@link Goa.Music} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Music.top_of_page">org.gnome.OnlineAccounts.Music</link>, if any.
          *
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
          * @since 3.18.0
          */
-        get music(): Music;
-        set music(val: Music);
+        get music(): Music | null;
+        set music(val: Music | null);
         /**
          * The {@link Goa.OAuthBased} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-OAuthBased.top_of_page">org.gnome.OnlineAccounts.OAuthBased</link>, if any.
          *
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
          */
-        get oauth_based(): OAuthBased;
-        set oauth_based(val: OAuthBased);
+        get oauth_based(): OAuthBased | null;
+        set oauth_based(val: OAuthBased | null);
         /**
          * The {@link Goa.OAuthBased} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-OAuthBased.top_of_page">org.gnome.OnlineAccounts.OAuthBased</link>, if any.
          *
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
          */
-        get oauthBased(): OAuthBased;
-        set oauthBased(val: OAuthBased);
+        get oauthBased(): OAuthBased | null;
+        set oauthBased(val: OAuthBased | null);
         /**
          * The {@link Goa.OAuth2Based} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-OAuth2Based.top_of_page">org.gnome.OnlineAccounts.OAuth2Based</link>, if any.
          *
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
          */
-        get oauth2_based(): OAuth2Based;
-        set oauth2_based(val: OAuth2Based);
+        get oauth2_based(): OAuth2Based | null;
+        set oauth2_based(val: OAuth2Based | null);
         /**
          * The {@link Goa.OAuth2Based} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-OAuth2Based.top_of_page">org.gnome.OnlineAccounts.OAuth2Based</link>, if any.
          *
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
          */
-        get oauth2Based(): OAuth2Based;
-        set oauth2Based(val: OAuth2Based);
+        get oauth2Based(): OAuth2Based | null;
+        set oauth2Based(val: OAuth2Based | null);
         /**
          * The {@link Goa.PasswordBased} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-PasswordBased.top_of_page">org.gnome.OnlineAccounts.PasswordBased</link>, if any.
          *
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
          * @since 3.6.0
          */
-        get password_based(): PasswordBased;
-        set password_based(val: PasswordBased);
+        get password_based(): PasswordBased | null;
+        set password_based(val: PasswordBased | null);
         /**
          * The {@link Goa.PasswordBased} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-PasswordBased.top_of_page">org.gnome.OnlineAccounts.PasswordBased</link>, if any.
          *
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
          * @since 3.6.0
          */
-        get passwordBased(): PasswordBased;
-        set passwordBased(val: PasswordBased);
+        get passwordBased(): PasswordBased | null;
+        set passwordBased(val: PasswordBased | null);
         /**
          * The {@link Goa.Photos} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Photos.top_of_page">org.gnome.OnlineAccounts.Photos</link>, if any.
          *
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
          * @since 3.8.0
          */
-        get photos(): Photos;
-        set photos(val: Photos);
+        get photos(): Photos | null;
+        set photos(val: Photos | null);
         /**
          * The {@link Goa.Printers} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Printers.top_of_page">org.gnome.OnlineAccounts.Printers</link>, if any.
          *
@@ -39368,8 +38568,8 @@ export namespace Goa {
          * @since 3.12.0
          * @deprecated The D-Bus interface has been deprecated.
          */
-        get printers(): Printers;
-        set printers(val: Printers);
+        get printers(): Printers | null;
+        set printers(val: Printers | null);
         /**
          * The {@link Goa.ReadLater} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-ReadLater.top_of_page">org.gnome.OnlineAccounts.ReadLater</link>, if any.
          *
@@ -39377,8 +38577,8 @@ export namespace Goa {
          * @since 3.12.0
          * @deprecated The D-Bus interface has been deprecated.
          */
-        get read_later(): ReadLater;
-        set read_later(val: ReadLater);
+        get read_later(): ReadLater | null;
+        set read_later(val: ReadLater | null);
         /**
          * The {@link Goa.ReadLater} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-ReadLater.top_of_page">org.gnome.OnlineAccounts.ReadLater</link>, if any.
          *
@@ -39386,16 +38586,16 @@ export namespace Goa {
          * @since 3.12.0
          * @deprecated The D-Bus interface has been deprecated.
          */
-        get readLater(): ReadLater;
-        set readLater(val: ReadLater);
+        get readLater(): ReadLater | null;
+        set readLater(val: ReadLater | null);
         /**
          * The {@link Goa.Ticketing} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Ticketing.top_of_page">org.gnome.OnlineAccounts.Ticketing</link>, if any.
          *
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
          * @since 3.6.0
          */
-        get ticketing(): Ticketing;
-        set ticketing(val: Ticketing);
+        get ticketing(): Ticketing | null;
+        set ticketing(val: Ticketing | null);
         /**
          * The {@link Goa.Todo} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Todo.top_of_page">org.gnome.OnlineAccounts.Todo</link>, if any.
          *
@@ -39403,8 +38603,8 @@ export namespace Goa {
          * @since 3.26.0
          * @deprecated The D-Bus interface has been deprecated.
          */
-        get todo(): Todo;
-        set todo(val: Todo);
+        get todo(): Todo | null;
+        set todo(val: Todo | null);
 
         // Methods
 
@@ -39569,7 +38769,7 @@ export namespace Goa {
          * @param arg_id Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_get_password(arg_id: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
+        call_get_password(arg_id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-PasswordBased.GetPassword">GetPassword()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -39597,7 +38797,7 @@ export namespace Goa {
          */
         call_get_password(
             arg_id: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
         /**
@@ -39614,7 +38814,7 @@ export namespace Goa {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_get_password_sync(arg_id: string, cancellable?: Gio.Cancellable | null): [boolean, string];
+        call_get_password_sync(arg_id: string, cancellable: Gio.Cancellable | null): [boolean, string];
         /**
          * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-OnlineAccounts-PasswordBased.GetPassword">GetPassword()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
          *
@@ -39749,7 +38949,7 @@ export namespace Goa {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            details: GLib.Variant;
+            details: GLib.Variant | null;
         }
     }
 
@@ -39783,8 +38983,8 @@ export namespace Goa {
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          * @since 3.18
          */
-        get details(): GLib.Variant;
-        set details(val: GLib.Variant);
+        get details(): GLib.Variant | null;
+        set details(val: GLib.Variant | null);
 
         // Methods
 
@@ -39796,7 +38996,7 @@ export namespace Goa {
          * See `goa_ticketing_call_get_ticket_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_get_ticket(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_get_ticket(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Ticketing.GetTicket">GetTicket()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
@@ -39817,7 +39017,7 @@ export namespace Goa {
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_get_ticket(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -39833,7 +39033,7 @@ export namespace Goa {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_get_ticket_sync(cancellable?: Gio.Cancellable | null): boolean;
+        call_get_ticket_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Ticketing.GetTicket">GetTicket()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
          *

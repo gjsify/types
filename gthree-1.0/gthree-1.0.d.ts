@@ -1110,8 +1110,14 @@ export namespace Gthree {
 
         // Properties
 
+        /**
+         * @default 2000
+         */
         get far(): number;
         set far(val: number);
+        /**
+         * @default 30
+         */
         get near(): number;
         set near(val: number);
 
@@ -2426,6 +2432,9 @@ export namespace Gthree {
 
         get color(): Graphene.Vec3;
         set color(val: Graphene.Vec3);
+        /**
+         * @default 1
+         */
         get intensity(): number;
         set intensity(val: number);
 
@@ -2674,8 +2683,14 @@ export namespace Gthree {
 
         get color(): Graphene.Vec3;
         set color(val: Graphene.Vec3);
+        /**
+         * @default 1
+         */
         get line_width(): number;
         set line_width(val: number);
+        /**
+         * @default 1
+         */
         get lineWidth(): number;
         set lineWidth(val: number);
 
@@ -2947,22 +2962,49 @@ export namespace Gthree {
 
         // Properties
 
+        /**
+         * @default 0
+         */
         get alpha_test(): number;
         set alpha_test(val: number);
+        /**
+         * @default 0
+         */
         get alphaTest(): number;
         set alphaTest(val: number);
+        /**
+         * @default false
+         */
         get clip_intersection(): boolean;
         set clip_intersection(val: boolean);
+        /**
+         * @default false
+         */
         get clipIntersection(): boolean;
         set clipIntersection(val: boolean);
+        /**
+         * @default true
+         */
         get fog(): boolean;
         set fog(val: boolean);
+        /**
+         * @default 1
+         */
         get opacity(): number;
         set opacity(val: number);
+        /**
+         * @default false
+         */
         get transparent(): boolean;
         set transparent(val: boolean);
+        /**
+         * @default false
+         */
         get vertex_colors(): boolean;
         set vertex_colors(val: boolean);
+        /**
+         * @default false
+         */
         get vertexColors(): boolean;
         set vertexColors(val: boolean);
 
@@ -3295,10 +3337,19 @@ export namespace Gthree {
         set envMap(val: Texture);
         get map(): Texture;
         set map(val: Texture);
+        /**
+         * @default 1
+         */
         get reflectivity(): number;
         set reflectivity(val: number);
+        /**
+         * @default 0.98
+         */
         get refraction_ratio(): number;
         set refraction_ratio(val: number);
+        /**
+         * @default 0.98
+         */
         get refractionRatio(): number;
         set refractionRatio(val: number);
 
@@ -3589,10 +3640,19 @@ export namespace Gthree {
         set envMap(val: Texture);
         get map(): Texture;
         set map(val: Texture);
+        /**
+         * @default 1
+         */
         get reflectivity(): number;
         set reflectivity(val: number);
+        /**
+         * @default 0.98
+         */
         get refraction_ratio(): number;
         set refraction_ratio(val: number);
+        /**
+         * @default 0.98
+         */
         get refractionRatio(): number;
         set refractionRatio(val: number);
 
@@ -3711,20 +3771,44 @@ export namespace Gthree {
 
         // Properties
 
+        /**
+         * @default false
+         */
         get morph_normals(): boolean;
         set morph_normals(val: boolean);
+        /**
+         * @default false
+         */
         get morphNormals(): boolean;
         set morphNormals(val: boolean);
+        /**
+         * @default false
+         */
         get morph_targets(): boolean;
         set morph_targets(val: boolean);
+        /**
+         * @default false
+         */
         get morphTargets(): boolean;
         set morphTargets(val: boolean);
+        /**
+         * @default false
+         */
         get skinning(): boolean;
         set skinning(val: boolean);
+        /**
+         * @default false
+         */
         get wireframe(): boolean;
         set wireframe(val: boolean);
+        /**
+         * @default 1
+         */
         get wireframe_line_width(): number;
         set wireframe_line_width(val: number);
+        /**
+         * @default 1
+         */
         get wireframeLineWidth(): number;
         set wireframeLineWidth(val: number);
 
@@ -3939,8 +4023,14 @@ export namespace Gthree {
         set env_map(val: Texture);
         get envMap(): Texture;
         set envMap(val: Texture);
+        /**
+         * @default false
+         */
         get flat_shading(): boolean;
         set flat_shading(val: boolean);
+        /**
+         * @default false
+         */
         get flatShading(): boolean;
         set flatShading(val: boolean);
         get map(): Texture;
@@ -3953,12 +4043,24 @@ export namespace Gthree {
         set normal_scale(val: Graphene.Vec2);
         get normalScale(): Graphene.Vec2;
         set normalScale(val: Graphene.Vec2);
+        /**
+         * @default 1
+         */
         get reflectivity(): number;
         set reflectivity(val: number);
+        /**
+         * @default 0.98
+         */
         get refraction_ratio(): number;
         set refraction_ratio(val: number);
+        /**
+         * @default 0.98
+         */
         get refractionRatio(): number;
         set refractionRatio(val: number);
+        /**
+         * @default 30
+         */
         get shininess(): number;
         set shininess(val: number);
         get specular_color(): Graphene.Vec3;
@@ -4185,38 +4287,68 @@ export namespace Gthree {
         set ao_map(val: Texture);
         get aoMap(): Texture;
         set aoMap(val: Texture);
+        /**
+         * @default 1
+         */
         get ao_map_intensity(): number;
         set ao_map_intensity(val: number);
+        /**
+         * @default 1
+         */
         get aoMapIntensity(): number;
         set aoMapIntensity(val: number);
         get bump_map(): Texture;
         set bump_map(val: Texture);
         get bumpMap(): Texture;
         set bumpMap(val: Texture);
+        /**
+         * @default 1
+         */
         get bump_scale(): number;
         set bump_scale(val: number);
+        /**
+         * @default 1
+         */
         get bumpScale(): number;
         set bumpScale(val: number);
         get color(): Graphene.Vec3;
         set color(val: Graphene.Vec3);
+        /**
+         * @default 1
+         */
         get displacement_bias(): number;
         set displacement_bias(val: number);
+        /**
+         * @default 1
+         */
         get displacementBias(): number;
         set displacementBias(val: number);
         get displacement_map(): Texture;
         set displacement_map(val: Texture);
         get displacementMap(): Texture;
         set displacementMap(val: Texture);
+        /**
+         * @default 1
+         */
         get displacement_scale(): number;
         set displacement_scale(val: number);
+        /**
+         * @default 1
+         */
         get displacementScale(): number;
         set displacementScale(val: number);
         get emissive_color(): Graphene.Vec3;
         set emissive_color(val: Graphene.Vec3);
         get emissiveColor(): Graphene.Vec3;
         set emissiveColor(val: Graphene.Vec3);
+        /**
+         * @default 1
+         */
         get emissive_intensity(): number;
         set emissive_intensity(val: number);
+        /**
+         * @default 1
+         */
         get emissiveIntensity(): number;
         set emissiveIntensity(val: number);
         get emissive_map(): Texture;
@@ -4227,10 +4359,19 @@ export namespace Gthree {
         set env_map(val: Texture);
         get envMap(): Texture;
         set envMap(val: Texture);
+        /**
+         * @default 1
+         */
         get env_map_intensity(): number;
         set env_map_intensity(val: number);
+        /**
+         * @default 1
+         */
         get envMapIntensity(): number;
         set envMapIntensity(val: number);
+        /**
+         * @default 1
+         */
         get glossiness(): number;
         set glossiness(val: number);
         get glossiness_map(): Texture;
@@ -4241,8 +4382,14 @@ export namespace Gthree {
         set light_map(val: Texture);
         get lightMap(): Texture;
         set lightMap(val: Texture);
+        /**
+         * @default 1
+         */
         get light_map_intensity(): number;
         set light_map_intensity(val: number);
+        /**
+         * @default 1
+         */
         get lightMapIntensity(): number;
         set lightMapIntensity(val: number);
         get map(): Texture;
@@ -4255,8 +4402,14 @@ export namespace Gthree {
         set normal_scale(val: Graphene.Vec2);
         get normalScale(): Graphene.Vec2;
         set normalScale(val: Graphene.Vec2);
+        /**
+         * @default 0.98
+         */
         get refraction_ratio(): number;
         set refraction_ratio(val: number);
+        /**
+         * @default 0.98
+         */
         get refractionRatio(): number;
         set refractionRatio(val: number);
         get specular_factor(): Graphene.Vec3;
@@ -4532,38 +4685,68 @@ export namespace Gthree {
         set ao_map(val: Texture);
         get aoMap(): Texture;
         set aoMap(val: Texture);
+        /**
+         * @default 1
+         */
         get ao_map_intensity(): number;
         set ao_map_intensity(val: number);
+        /**
+         * @default 1
+         */
         get aoMapIntensity(): number;
         set aoMapIntensity(val: number);
         get bump_map(): Texture;
         set bump_map(val: Texture);
         get bumpMap(): Texture;
         set bumpMap(val: Texture);
+        /**
+         * @default 1
+         */
         get bump_scale(): number;
         set bump_scale(val: number);
+        /**
+         * @default 1
+         */
         get bumpScale(): number;
         set bumpScale(val: number);
         get color(): Graphene.Vec3;
         set color(val: Graphene.Vec3);
+        /**
+         * @default 1
+         */
         get displacement_bias(): number;
         set displacement_bias(val: number);
+        /**
+         * @default 1
+         */
         get displacementBias(): number;
         set displacementBias(val: number);
         get displacement_map(): Texture;
         set displacement_map(val: Texture);
         get displacementMap(): Texture;
         set displacementMap(val: Texture);
+        /**
+         * @default 1
+         */
         get displacement_scale(): number;
         set displacement_scale(val: number);
+        /**
+         * @default 1
+         */
         get displacementScale(): number;
         set displacementScale(val: number);
         get emissive_color(): Graphene.Vec3;
         set emissive_color(val: Graphene.Vec3);
         get emissiveColor(): Graphene.Vec3;
         set emissiveColor(val: Graphene.Vec3);
+        /**
+         * @default 1
+         */
         get emissive_intensity(): number;
         set emissive_intensity(val: number);
+        /**
+         * @default 1
+         */
         get emissiveIntensity(): number;
         set emissiveIntensity(val: number);
         get emissive_map(): Texture;
@@ -4574,20 +4757,35 @@ export namespace Gthree {
         set env_map(val: Texture);
         get envMap(): Texture;
         set envMap(val: Texture);
+        /**
+         * @default 1
+         */
         get env_map_intensity(): number;
         set env_map_intensity(val: number);
+        /**
+         * @default 1
+         */
         get envMapIntensity(): number;
         set envMapIntensity(val: number);
         get light_map(): Texture;
         set light_map(val: Texture);
         get lightMap(): Texture;
         set lightMap(val: Texture);
+        /**
+         * @default 1
+         */
         get light_map_intensity(): number;
         set light_map_intensity(val: number);
+        /**
+         * @default 1
+         */
         get lightMapIntensity(): number;
         set lightMapIntensity(val: number);
         get map(): Texture;
         set map(val: Texture);
+        /**
+         * @default 1
+         */
         get metalness(): number;
         set metalness(val: number);
         get metalness_map(): Texture;
@@ -4602,10 +4800,19 @@ export namespace Gthree {
         set normal_scale(val: Graphene.Vec2);
         get normalScale(): Graphene.Vec2;
         set normalScale(val: Graphene.Vec2);
+        /**
+         * @default 0.98
+         */
         get refraction_ratio(): number;
         set refraction_ratio(val: number);
+        /**
+         * @default 0.98
+         */
         get refractionRatio(): number;
         set refractionRatio(val: number);
+        /**
+         * @default 1
+         */
         get roughness(): number;
         set roughness(val: number);
         get roughness_map(): Texture;
@@ -4861,38 +5068,68 @@ export namespace Gthree {
         set ao_map(val: Texture);
         get aoMap(): Texture;
         set aoMap(val: Texture);
+        /**
+         * @default 1
+         */
         get ao_map_intensity(): number;
         set ao_map_intensity(val: number);
+        /**
+         * @default 1
+         */
         get aoMapIntensity(): number;
         set aoMapIntensity(val: number);
         get bump_map(): Texture;
         set bump_map(val: Texture);
         get bumpMap(): Texture;
         set bumpMap(val: Texture);
+        /**
+         * @default 1
+         */
         get bump_scale(): number;
         set bump_scale(val: number);
+        /**
+         * @default 1
+         */
         get bumpScale(): number;
         set bumpScale(val: number);
         get color(): Graphene.Vec3;
         set color(val: Graphene.Vec3);
+        /**
+         * @default 1
+         */
         get displacement_bias(): number;
         set displacement_bias(val: number);
+        /**
+         * @default 1
+         */
         get displacementBias(): number;
         set displacementBias(val: number);
         get displacement_map(): Texture;
         set displacement_map(val: Texture);
         get displacementMap(): Texture;
         set displacementMap(val: Texture);
+        /**
+         * @default 1
+         */
         get displacement_scale(): number;
         set displacement_scale(val: number);
+        /**
+         * @default 1
+         */
         get displacementScale(): number;
         set displacementScale(val: number);
         get emissive_color(): Graphene.Vec3;
         set emissive_color(val: Graphene.Vec3);
         get emissiveColor(): Graphene.Vec3;
         set emissiveColor(val: Graphene.Vec3);
+        /**
+         * @default 1
+         */
         get emissive_intensity(): number;
         set emissive_intensity(val: number);
+        /**
+         * @default 1
+         */
         get emissiveIntensity(): number;
         set emissiveIntensity(val: number);
         get emissive_map(): Texture;
@@ -4907,8 +5144,14 @@ export namespace Gthree {
         set light_map(val: Texture);
         get lightMap(): Texture;
         set lightMap(val: Texture);
+        /**
+         * @default 1
+         */
         get light_map_intensity(): number;
         set light_map_intensity(val: number);
+        /**
+         * @default 1
+         */
         get lightMapIntensity(): number;
         set lightMapIntensity(val: number);
         get map(): Texture;
@@ -5187,6 +5430,9 @@ export namespace Gthree {
          * @read-only
          */
         get previousSibling(): Object;
+        /**
+         * @default true
+         */
         get visible(): boolean;
         set visible(val: boolean);
 
@@ -5506,12 +5752,24 @@ export namespace Gthree {
 
         // Properties
 
+        /**
+         * @default -1
+         */
         get bottom(): number;
         set bottom(val: number);
+        /**
+         * @default -1
+         */
         get left(): number;
         set left(val: number);
+        /**
+         * @default 1
+         */
         get right(): number;
         set right(val: number);
+        /**
+         * @default 1
+         */
         get top(): number;
         set top(val: number);
 
@@ -5737,8 +5995,14 @@ export namespace Gthree {
 
         // Properties
 
+        /**
+         * @default 1
+         */
         get aspect(): number;
         set aspect(val: number);
+        /**
+         * @default 50
+         */
         get fov(): number;
         set fov(val: number);
 
@@ -5832,6 +6096,9 @@ export namespace Gthree {
         set color(val: Graphene.Vec3);
         get plane(): Graphene.Plane;
         set plane(val: Graphene.Plane);
+        /**
+         * @default 1
+         */
         get size(): number;
         set size(val: number);
 
@@ -5926,8 +6193,14 @@ export namespace Gthree {
 
         // Properties
 
+        /**
+         * @default 1
+         */
         get decay(): number;
         set decay(val: number);
+        /**
+         * @default 0
+         */
         get distance(): number;
         set distance(val: number);
 
@@ -6109,10 +6382,19 @@ export namespace Gthree {
         set color(val: Graphene.Vec3);
         get map(): Texture;
         set map(val: Texture);
+        /**
+         * @default 0
+         */
         get size(): number;
         set size(val: number);
+        /**
+         * @default false
+         */
         get size_attenuation(): boolean;
         set size_attenuation(val: boolean);
+        /**
+         * @default false
+         */
         get sizeAttenuation(): boolean;
         set sizeAttenuation(val: boolean);
 
@@ -7045,12 +7327,24 @@ export namespace Gthree {
          * @construct-only
          */
         get shader(): Shader;
+        /**
+         * @default false
+         */
         get use_lights(): boolean;
         set use_lights(val: boolean);
+        /**
+         * @default false
+         */
         get useLights(): boolean;
         set useLights(val: boolean);
+        /**
+         * @default false
+         */
         get vertex_colors(): boolean;
         set vertex_colors(val: boolean);
+        /**
+         * @default false
+         */
         get vertexColors(): boolean;
         set vertexColors(val: boolean);
 
@@ -7420,12 +7714,24 @@ export namespace Gthree {
 
         // Properties
 
+        /**
+         * @default 1.047198
+         */
         get angle(): number;
         set angle(val: number);
+        /**
+         * @default 1
+         */
         get decay(): number;
         set decay(val: number);
+        /**
+         * @default 0
+         */
         get distance(): number;
         set distance(val: number);
+        /**
+         * @default 0
+         */
         get penumbra(): number;
         set penumbra(val: number);
         get target(): Object;
@@ -7680,10 +7986,19 @@ export namespace Gthree {
         set color(val: Graphene.Vec3);
         get map(): Texture;
         set map(val: Texture);
+        /**
+         * @default 0
+         */
         get rotation(): number;
         set rotation(val: number);
+        /**
+         * @default false
+         */
         get size_attenuation(): boolean;
         set size_attenuation(val: boolean);
+        /**
+         * @default false
+         */
         get sizeAttenuation(): boolean;
         set sizeAttenuation(val: boolean);
 

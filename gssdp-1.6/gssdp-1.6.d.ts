@@ -156,6 +156,7 @@ export namespace GSSDP {
          * Whether this client is active or not (passive). When active
          * (default), the client sends messages on the network, otherwise
          * not. In most cases, you don't want to touch this property.
+         * @default true
          */
         get active(): boolean;
         set active(val: boolean);
@@ -175,6 +176,7 @@ export namespace GSSDP {
          * to specifiy using the default socket family (legacy IP)
          * @since 1.2.0
          * @construct-only
+         * @default Gio.SocketFamily.INVALID
          */
         get address_family(): Gio.SocketFamily;
         /**
@@ -187,12 +189,14 @@ export namespace GSSDP {
          * to specifiy using the default socket family (legacy IP)
          * @since 1.2.0
          * @construct-only
+         * @default Gio.SocketFamily.INVALID
          */
         get addressFamily(): Gio.SocketFamily;
         /**
          * The value of the BOOTID.UPNP.ORG header
          *
          * Since 1.2.0
+         * @default -1
          */
         get boot_id(): number;
         set boot_id(val: number);
@@ -200,6 +204,7 @@ export namespace GSSDP {
          * The value of the BOOTID.UPNP.ORG header
          *
          * Since 1.2.0
+         * @default -1
          */
         get bootId(): number;
         set bootId(val: number);
@@ -207,6 +212,7 @@ export namespace GSSDP {
          * The value of the CONFIGID.UPNP.ORG header
          *
          * Since 1.2.0
+         * @default -1
          */
         get config_id(): number;
         set config_id(val: number);
@@ -214,6 +220,7 @@ export namespace GSSDP {
          * The value of the CONFIGID.UPNP.ORG header
          *
          * Since 1.2.0
+         * @default -1
          */
         get configId(): number;
         set configId(val: number);
@@ -221,12 +228,14 @@ export namespace GSSDP {
          * The IP address of the assoicated network interface.
          * @deprecated since 1.6.: Use {@link GSSDP.Client.address} instead.
          * @construct-only
+         * @default null
          */
         get host_ip(): string;
         /**
          * The IP address of the assoicated network interface.
          * @deprecated since 1.6.: Use {@link GSSDP.Client.address} instead.
          * @construct-only
+         * @default null
          */
         get hostIp(): string;
         /**
@@ -243,6 +252,7 @@ export namespace GSSDP {
          * The name of the network interface this client is associated with.
          * Set to NULL to autodetect.
          * @construct-only
+         * @default null
          */
         get interface(): string;
         /**
@@ -251,6 +261,7 @@ export namespace GSSDP {
          * This property can be only set during object construction.
          * @deprecated since 1.6.0: Use {@link GSSDP.Client.port} instead
          * @construct-only
+         * @default 0
          */
         get msearch_port(): number;
         /**
@@ -259,6 +270,7 @@ export namespace GSSDP {
          * This property can be only set during object construction.
          * @deprecated since 1.6.0: Use {@link GSSDP.Client.port} instead
          * @construct-only
+         * @default 0
          */
         get msearchPort(): number;
         /**
@@ -269,6 +281,7 @@ export namespace GSSDP {
          * the network. Otherwise, expect this to be the network IP address by
          * default.
          * @construct-only
+         * @default null
          */
         get network(): string;
         /**
@@ -277,15 +290,18 @@ export namespace GSSDP {
          * This property can be only set during object construction.
          * @since 1.6.0
          * @construct-only
+         * @default 0
          */
         get port(): number;
         /**
          * The SSDP server's identifier.
+         * @default null
          */
         get server_id(): string;
         set server_id(val: string);
         /**
          * The SSDP server's identifier.
+         * @default null
          */
         get serverId(): string;
         set serverId(val: string);
@@ -294,6 +310,7 @@ export namespace GSSDP {
          * If not set (or set to 0) the value recommended by UPnP will be used.
          * This property can only be set during object construction.
          * @construct-only
+         * @default 0
          */
         get socket_ttl(): number;
         /**
@@ -301,18 +318,21 @@ export namespace GSSDP {
          * If not set (or set to 0) the value recommended by UPnP will be used.
          * This property can only be set during object construction.
          * @construct-only
+         * @default 0
          */
         get socketTtl(): number;
         /**
          * The UPnP version the client adheres to.
          * @since 1.2.0
          * @construct-only
+         * @default GSSDP.UDAVersion.VERSION_1_0
          */
         get uda_version(): UDAVersion;
         /**
          * The UPnP version the client adheres to.
          * @since 1.2.0
          * @construct-only
+         * @default GSSDP.UDAVersion.VERSION_1_0
          */
         get udaVersion(): UDAVersion;
 
@@ -331,7 +351,7 @@ export namespace GSSDP {
 
         _init(...args: any[]): void;
 
-        static ['new'](iface?: string | null): Client;
+        static ['new'](iface: string | null): Client;
 
         static new_for_address(addr: Gio.InetAddress | null, port: number, uda_version: UDAVersion): Client;
 
@@ -387,7 +407,7 @@ export namespace GSSDP {
          * @param name Header name
          * @param value Header value
          */
-        append_header(name: string, value?: string | null): void;
+        append_header(name: string, value: string | null): void;
         /**
          * Check if the peer at `address` is reachable using this `client`.
          * @param address A {@link Gio.InetSocketAddress} of the target. The port part of the address may be 0
@@ -529,7 +549,7 @@ export namespace GSSDP {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -572,7 +592,7 @@ export namespace GSSDP {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -620,38 +640,19 @@ export namespace GSSDP {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -659,15 +660,9 @@ export namespace GSSDP {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -834,7 +829,7 @@ export namespace GSSDP {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1086,6 +1081,7 @@ export namespace GSSDP {
 
         /**
          * Whether this browser is active or not.
+         * @default false
          */
         get active(): boolean;
         set active(val: boolean);
@@ -1097,11 +1093,13 @@ export namespace GSSDP {
         /**
          * The maximum number of seconds in which to request other parties
          * to respond.
+         * @default 3
          */
         get mx(): number;
         set mx(val: number);
         /**
          * The discovery target this resource browser is looking for.
+         * @default null
          */
         get target(): string;
         set target(val: string);
@@ -1240,6 +1238,7 @@ export namespace GSSDP {
 
         /**
          * Whether this group of resources is available or not.
+         * @default false
          */
         get available(): boolean;
         set available(val: boolean);
@@ -1250,23 +1249,27 @@ export namespace GSSDP {
         get client(): Client;
         /**
          * The number of seconds our advertisements are valid.
+         * @default 1800
          */
         get max_age(): number;
         set max_age(val: number);
         /**
          * The number of seconds our advertisements are valid.
+         * @default 1800
          */
         get maxAge(): number;
         set maxAge(val: number);
         /**
          * The minimum number of milliseconds between SSDP messages.
          * The default is 120 based on DLNA specification.
+         * @default 120
          */
         get message_delay(): number;
         set message_delay(val: number);
         /**
          * The minimum number of milliseconds between SSDP messages.
          * The default is 120 based on DLNA specification.
+         * @default 120
          */
         get messageDelay(): number;
         set messageDelay(val: number);

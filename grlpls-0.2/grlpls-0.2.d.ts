@@ -100,7 +100,7 @@ export namespace GrlPls {
         playlist: Grl.Media,
         keys: Grl.KeyID[],
         options: Grl.OperationOptions,
-        filter_func?: FilterFunc | null,
+        filter_func: FilterFunc | null,
     ): Grl.Media[];
     /**
      * This function will update (if `content` is non-`null`) or create a

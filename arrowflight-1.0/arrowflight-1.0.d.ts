@@ -116,7 +116,7 @@ export namespace ArrowFlight {
 
         _init(...args: any[]): void;
 
-        static ['new'](location: Location, options?: ClientOptions | null): Client;
+        static ['new'](location: Location, options: ClientOptions | null): Client;
 
         // Signals
 
@@ -146,13 +146,13 @@ export namespace ArrowFlight {
          * @param options A {@link ArrowFlight.CallOptions}.
          * @returns The {@link ArrowFlight.StreamReader} to read record batched from the server   on success, `null` on error.
          */
-        do_get(ticket: Ticket, options?: CallOptions | null): StreamReader | null;
+        do_get(ticket: Ticket, options: CallOptions | null): StreamReader | null;
         /**
          * @param criteria A {@link ArrowFlight.Criteria}.
          * @param options A {@link ArrowFlight.CallOptions}.
          * @returns The returned list of {@link ArrowFlight.Info} on success, `null` on error.
          */
-        list_flights(criteria?: Criteria | null, options?: CallOptions | null): Info[] | null;
+        list_flights(criteria: Criteria | null, options: CallOptions | null): Info[] | null;
     }
 
     namespace ClientOptions {
@@ -645,7 +645,7 @@ export namespace ArrowFlight {
          * @param options A {@link Arrow.ReadOptions}.
          * @returns Deserialized {@link Arrow.Schema}, `null` on error.
          */
-        get_schema(options?: Arrow.ReadOptions | null): Arrow.Schema;
+        get_schema(options: Arrow.ReadOptions | null): Arrow.Schema;
         /**
          * @returns The number of total bytes of the information.
          */
@@ -907,7 +907,7 @@ export namespace ArrowFlight {
 
         _init(...args: any[]): void;
 
-        static ['new'](reader: Arrow.RecordBatchReader, options?: Arrow.WriteOptions | null): RecordBatchStream;
+        static ['new'](reader: Arrow.RecordBatchReader, options: Arrow.WriteOptions | null): RecordBatchStream;
 
         // Signals
 
@@ -995,7 +995,7 @@ export namespace ArrowFlight {
          * @param criteria A {@link ArrowFlight.Criteria}.
          * @virtual
          */
-        vfunc_list_flights(context: ServerCallContext, criteria?: Criteria | null): Info[];
+        vfunc_list_flights(context: ServerCallContext, criteria: Criteria | null): Info[];
 
         // Methods
 
@@ -1011,7 +1011,7 @@ export namespace ArrowFlight {
          * @param criteria A {@link ArrowFlight.Criteria}.
          * @returns {@link GLib.List} of {@link ArrowFlight.Info} on success, `null` on error.
          */
-        list_flights(context: ServerCallContext, criteria?: Criteria | null): Info[];
+        list_flights(context: ServerCallContext, criteria: Criteria | null): Info[];
         /**
          * @param options A {@link ArrowFlight.ServerOptions}.
          * @returns `true` on success, `false` on error.

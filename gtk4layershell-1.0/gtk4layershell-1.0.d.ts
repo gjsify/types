@@ -268,7 +268,7 @@ export namespace Gtk4LayerShell {
      * @param window A layer surface.
      * @param monitor The output this layer surface will be placed on (`null` to let the compositor decide).
      */
-    function set_monitor(window: Gtk.Window, monitor?: Gdk.Monitor | null): void;
+    function set_monitor(window: Gtk.Window, monitor: Gdk.Monitor | null): void;
     /**
      * Set the "namespace" of the surface.
      *
@@ -281,7 +281,7 @@ export namespace Gtk4LayerShell {
      * @param window A layer surface.
      * @param name_space The namespace of this layer surface.
      */
-    function set_namespace(window: Gtk.Window, name_space?: string | null): void;
+    function set_namespace(window: Gtk.Window, name_space: string | null): void;
     /**
      * Compositors may send the `zwlr_layer_surface_v1.closed` event in some cases (such as
      * when an output is destroyed). Prior to v1.3 this always triggered a GTK `close-request`

@@ -586,7 +586,7 @@ export namespace AppStreamCompose {
          * @param cancellable a {@link Gio.Cancellable}.
          * @returns The results, or `null` on error
          */
-        run(cancellable?: Gio.Cancellable | null): Result[];
+        run(cancellable: Gio.Cancellable | null): Result[];
         /**
          * Set a CA file holding one or more certificates to verify peers with
          * for download operations performed by this {@link AppStreamCompose.Compose}.
@@ -656,7 +656,7 @@ export namespace AppStreamCompose {
          * should be cached and the original URLs should be kept.
          * @param url the media base URL.
          */
-        set_media_baseurl(url?: string | null): void;
+        set_media_baseurl(url: string | null): void;
         /**
          * Set an output location to store media (screenshots, icons, ...) that
          * will be served on a webserver via the URL set as media baseurl.
@@ -1268,7 +1268,7 @@ export namespace AppStreamCompose {
          * @param bytes The data to include in the global component ID, or `null`
          * @returns `true` if the component existed and was updated.
          */
-        update_component_gcid(cpt: AppStream.Component, bytes?: GLib.Bytes | null): boolean;
+        update_component_gcid(cpt: AppStream.Component, bytes: GLib.Bytes | null): boolean;
         /**
          * Update the global component ID for the given component.
          * This is a convenience method for %asc_result_update_component_gcid
@@ -1276,7 +1276,7 @@ export namespace AppStreamCompose {
          * @param data The data as string to include in the global component ID, or `null`
          * @returns `true` if the component existed and was updated.
          */
-        update_component_gcid_with_string(cpt: AppStream.Component, data?: string | null): boolean;
+        update_component_gcid_with_string(cpt: AppStream.Component, data: string | null): boolean;
     }
 
     namespace Unit {
@@ -1446,7 +1446,7 @@ export namespace AppStreamCompose {
          * function for bindings.
          * @param user_data the user data
          */
-        set_user_data(user_data?: any | null): void;
+        set_user_data(user_data: any | null): void;
     }
 
     /**

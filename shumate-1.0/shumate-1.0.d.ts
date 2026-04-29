@@ -392,7 +392,7 @@ export namespace Shumate {
      * This API is not thread-safe and should only be called from the main thread.
      * @param new_user_agent the new user agent, or `null` to reset to the default
      */
-    function set_user_agent(new_user_agent?: string | null): void;
+    function set_user_agent(new_user_agent: string | null): void;
     /**
      * @returns a {@link GLib.Quark}
      */
@@ -458,7 +458,7 @@ export namespace Shumate {
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps {
-            viewport: Viewport;
+            viewport: Viewport | null;
         }
     }
 
@@ -485,8 +485,8 @@ export namespace Shumate {
         /**
          * The viewport to use.
          */
-        get viewport(): Viewport;
-        set viewport(val: Viewport);
+        get viewport(): Viewport | null;
+        set viewport(val: Viewport | null);
 
         /**
          * Compile-time signal type information.
@@ -503,7 +503,7 @@ export namespace Shumate {
 
         _init(...args: any[]): void;
 
-        static ['new'](viewport?: Viewport | null): Compass;
+        static ['new'](viewport: Viewport | null): Compass;
 
         // Signals
 
@@ -537,11 +537,12 @@ export namespace Shumate {
          * Sets the compass viewport.
          * @param viewport a {@link Viewport}
          */
-        set_viewport(viewport?: Viewport | null): void;
+        set_viewport(viewport: Viewport | null): void;
         /**
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
@@ -550,6 +551,7 @@ export namespace Shumate {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
@@ -653,7 +655,7 @@ export namespace Shumate {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent?: Gtk.Accessible | null, next_sibling?: Gtk.Accessible | null): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
         /**
          * Updates the next accessible sibling.
          *
@@ -661,7 +663,7 @@ export namespace Shumate {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling?: Gtk.Accessible | null): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
         /**
          * Informs ATs that the platform state has changed.
          *
@@ -772,7 +774,7 @@ export namespace Shumate {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -786,7 +788,7 @@ export namespace Shumate {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called at the end of each custom element handled by
@@ -801,7 +803,7 @@ export namespace Shumate {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called for each unknown element under `<child>`.
@@ -905,38 +907,19 @@ export namespace Shumate {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -944,15 +927,9 @@ export namespace Shumate {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1119,7 +1096,7 @@ export namespace Shumate {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1369,12 +1346,14 @@ export namespace Shumate {
         emit(signal: string, ...args: any[]): void;
         /**
          * The latitude coordonate in degrees
+         * @default 0
          * @category Inherited from Shumate.Location
          */
         get latitude(): number;
         set latitude(val: number);
         /**
          * The longitude coordonate in degrees
+         * @default 0
          * @category Inherited from Shumate.Location
          */
         get longitude(): number;
@@ -1469,38 +1448,19 @@ export namespace Shumate {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1508,15 +1468,9 @@ export namespace Shumate {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1683,7 +1637,7 @@ export namespace Shumate {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1910,24 +1864,28 @@ export namespace Shumate {
         /**
          * The maximum zoom level
          * @since 1.1
+         * @default 30
          */
         get max_zoom_level(): number;
         set max_zoom_level(val: number);
         /**
          * The maximum zoom level
          * @since 1.1
+         * @default 30
          */
         get maxZoomLevel(): number;
         set maxZoomLevel(val: number);
         /**
          * The minimum zoom level
          * @since 1.1
+         * @default 0
          */
         get min_zoom_level(): number;
         set min_zoom_level(val: number);
         /**
          * The minimum zoom level
          * @since 1.1
+         * @default 0
          */
         get minZoomLevel(): number;
         set minZoomLevel(val: number);
@@ -1988,8 +1946,8 @@ export namespace Shumate {
             x: number,
             y: number,
             zoom_level: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Gets the final result of a request started with
@@ -2010,7 +1968,7 @@ export namespace Shumate {
             x: number,
             y: number,
             zoom_level: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): DataSourceRequest;
 
         // Methods
@@ -2041,7 +1999,7 @@ export namespace Shumate {
             x: number,
             y: number,
             zoom_level: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<GLib.Bytes | null>;
         /**
          * Gets the data for the tile at the given coordinates.
@@ -2080,7 +2038,7 @@ export namespace Shumate {
             x: number,
             y: number,
             zoom_level: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GLib.Bytes | null> | void;
         /**
@@ -2108,12 +2066,7 @@ export namespace Shumate {
          * @param cancellable for cancelling the request
          * @returns a {@link DataSourceRequest} object for tracking the request.
          */
-        start_request(
-            x: number,
-            y: number,
-            zoom_level: number,
-            cancellable?: Gio.Cancellable | null,
-        ): DataSourceRequest;
+        start_request(x: number, y: number, zoom_level: number, cancellable: Gio.Cancellable | null): DataSourceRequest;
     }
 
     namespace DataSourceRequest {
@@ -2131,8 +2084,8 @@ export namespace Shumate {
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             completed: boolean;
-            data: GLib.Bytes | Uint8Array;
-            error: GLib.Error;
+            data: GLib.Bytes | null;
+            error: GLib.Error | null;
             x: number;
             y: number;
             zoom_level: number;
@@ -2173,6 +2126,7 @@ export namespace Shumate {
          * {@link DataSourceRequest.data} or {@link DataSourceRequest.error}.
          * @since 1.1
          * @read-only
+         * @default false
          */
         get completed(): boolean;
         /**
@@ -2181,35 +2135,39 @@ export namespace Shumate {
          * @since 1.1
          * @read-only
          */
-        get data(): GLib.Bytes;
+        get data(): GLib.Bytes | null;
         /**
          * The error that occurred during the request, if any.
          * @since 1.1
          * @read-only
          */
-        get error(): GLib.Error;
+        get error(): GLib.Error | null;
         /**
          * The X coordinate of the requested tile.
          * @since 1.1
          * @construct-only
+         * @default 0
          */
         get x(): number;
         /**
          * The Y coordinate of the requested tile.
          * @since 1.1
          * @construct-only
+         * @default 0
          */
         get y(): number;
         /**
          * The zoom level of the requested tile.
          * @since 1.1
          * @construct-only
+         * @default 0
          */
         get zoom_level(): number;
         /**
          * The zoom level of the requested tile.
          * @since 1.1
          * @construct-only
+         * @default 0
          */
         get zoomLevel(): number;
 
@@ -2362,29 +2320,34 @@ export namespace Shumate {
         /**
          * The directory where the tile database is stored.
          * @construct-only
+         * @default null
          */
         get cache_dir(): string;
         /**
          * The directory where the tile database is stored.
          * @construct-only
+         * @default null
          */
         get cacheDir(): string;
         /**
          * The key used to store and retrieve tiles from the cache. Different keys
          * can be used to store multiple tilesets in the same cache directory.
          * @construct-only
+         * @default null
          */
         get cache_key(): string;
         /**
          * The key used to store and retrieve tiles from the cache. Different keys
          * can be used to store multiple tilesets in the same cache directory.
          * @construct-only
+         * @default null
          */
         get cacheKey(): string;
         /**
          * The cache size limit in bytes.
          *
          * Note: this new value will not be applied until you call `shumate_file_cache_purge()`
+         * @default 100000000
          */
         get size_limit(): number;
         set size_limit(val: number);
@@ -2392,6 +2355,7 @@ export namespace Shumate {
          * The cache size limit in bytes.
          *
          * Note: this new value will not be applied until you call `shumate_file_cache_purge()`
+         * @default 100000000
          */
         get sizeLimit(): number;
         set sizeLimit(val: number);
@@ -2411,7 +2375,7 @@ export namespace Shumate {
 
         _init(...args: any[]): void;
 
-        static new_full(size_limit: number, cache_key: string, cache_dir?: string | null): FileCache;
+        static new_full(size_limit: number, cache_key: string, cache_dir: string | null): FileCache;
 
         // Signals
 
@@ -2463,7 +2427,7 @@ export namespace Shumate {
             x: number,
             y: number,
             zoom_level: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<[GLib.Bytes, string, GLib.DateTime | null]>;
         /**
          * Gets tile data from the cache, if it is available.
@@ -2492,7 +2456,7 @@ export namespace Shumate {
             x: number,
             y: number,
             zoom_level: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[GLib.Bytes, string, GLib.DateTime | null]> | void;
         /**
@@ -2522,7 +2486,7 @@ export namespace Shumate {
          * the size limit.
          * @param cancellable a {@link Gio.Cancellable}
          */
-        purge_cache_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        purge_cache_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Removes less used tiles from the cache, if necessary, until it fits in
          * the size limit.
@@ -2537,7 +2501,7 @@ export namespace Shumate {
          * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
         purge_cache_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2566,8 +2530,8 @@ export namespace Shumate {
             y: number,
             zoom_level: number,
             bytes: GLib.Bytes | Uint8Array,
-            etag?: string | null,
-            cancellable?: Gio.Cancellable | null,
+            etag: string | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Stores a tile in the cache.
@@ -2603,8 +2567,8 @@ export namespace Shumate {
             y: number,
             zoom_level: number,
             bytes: GLib.Bytes | Uint8Array,
-            etag?: string | null,
-            cancellable?: Gio.Cancellable | null,
+            etag: string | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2745,6 +2709,7 @@ export namespace Shumate {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
@@ -2753,6 +2718,7 @@ export namespace Shumate {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
@@ -2856,7 +2822,7 @@ export namespace Shumate {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent?: Gtk.Accessible | null, next_sibling?: Gtk.Accessible | null): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
         /**
          * Updates the next accessible sibling.
          *
@@ -2864,7 +2830,7 @@ export namespace Shumate {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling?: Gtk.Accessible | null): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
         /**
          * Informs ATs that the platform state has changed.
          *
@@ -2975,7 +2941,7 @@ export namespace Shumate {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -2989,7 +2955,7 @@ export namespace Shumate {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called at the end of each custom element handled by
@@ -3004,7 +2970,7 @@ export namespace Shumate {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called for each unknown element under `<child>`.
@@ -3108,38 +3074,19 @@ export namespace Shumate {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -3147,15 +3094,9 @@ export namespace Shumate {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -3322,7 +3263,7 @@ export namespace Shumate {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -3582,6 +3523,7 @@ export namespace Shumate {
          * Sets additional text to be displayed in the license area.  The map's
          * license will be added below it. Your text can have multiple lines, just use
          * "\n" in between.
+         * @default null
          */
         get extra_text(): string;
         set extra_text(val: string);
@@ -3589,11 +3531,13 @@ export namespace Shumate {
          * Sets additional text to be displayed in the license area.  The map's
          * license will be added below it. Your text can have multiple lines, just use
          * "\n" in between.
+         * @default null
          */
         get extraText(): string;
         set extraText(val: string);
         /**
          * The license's horizontal alignment
+         * @default 0.5
          */
         get xalign(): number;
         set xalign(val: number);
@@ -3675,6 +3619,7 @@ export namespace Shumate {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
@@ -3683,6 +3628,7 @@ export namespace Shumate {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
@@ -3786,7 +3732,7 @@ export namespace Shumate {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent?: Gtk.Accessible | null, next_sibling?: Gtk.Accessible | null): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
         /**
          * Updates the next accessible sibling.
          *
@@ -3794,7 +3740,7 @@ export namespace Shumate {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling?: Gtk.Accessible | null): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
         /**
          * Informs ATs that the platform state has changed.
          *
@@ -3905,7 +3851,7 @@ export namespace Shumate {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -3919,7 +3865,7 @@ export namespace Shumate {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called at the end of each custom element handled by
@@ -3934,7 +3880,7 @@ export namespace Shumate {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called for each unknown element under `<child>`.
@@ -4038,38 +3984,19 @@ export namespace Shumate {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -4077,15 +4004,9 @@ export namespace Shumate {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -4252,7 +4173,7 @@ export namespace Shumate {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -4955,11 +4876,13 @@ export namespace Shumate {
 
         /**
          * Animate zoom change when zooming in/out.
+         * @default true
          */
         get animate_zoom(): boolean;
         set animate_zoom(val: boolean);
         /**
          * Animate zoom change when zooming in/out.
+         * @default true
          */
         get animateZoom(): boolean;
         set animateZoom(val: boolean);
@@ -4969,6 +4892,7 @@ export namespace Shumate {
          *
          * Please note that animation of `shumate_map_ensure_visible` also
          * involves a 'go-to' animation.
+         * @default 0
          */
         get go_to_duration(): number;
         set go_to_duration(val: number);
@@ -4978,6 +4902,7 @@ export namespace Shumate {
          *
          * Please note that animation of `shumate_map_ensure_visible` also
          * involves a 'go-to' animation.
+         * @default 0
          */
         get goToDuration(): number;
         set goToDuration(val: number);
@@ -4985,6 +4910,7 @@ export namespace Shumate {
          * The view's global state. Useful to inform using if the view is busy loading
          * tiles or not.
          * @read-only
+         * @default Shumate.State.NONE
          */
         get state(): State;
         /**
@@ -4995,11 +4921,13 @@ export namespace Shumate {
         get viewport(): Viewport;
         /**
          * Should the view zoom in and recenter when the user double click on the map.
+         * @default true
          */
         get zoom_on_double_click(): boolean;
         set zoom_on_double_click(val: boolean);
         /**
          * Should the view zoom in and recenter when the user double click on the map.
+         * @default true
          */
         get zoomOnDoubleClick(): boolean;
         set zoomOnDoubleClick(val: boolean);
@@ -5113,14 +5041,14 @@ export namespace Shumate {
          * @param layer a {@link Shumate.Layer}
          * @param next_sibling a {@link Shumate.Layer} that is a child of `self`, or `null`
          */
-        insert_layer_above(layer: Layer, next_sibling?: Layer | null): void;
+        insert_layer_above(layer: Layer, next_sibling: Layer | null): void;
         /**
          * Adds `layer` to `self` behind `next_sibling` or, if `next_sibling` is `null`, at
          * the top of the layer list.
          * @param layer a {@link Shumate.Layer}
          * @param next_sibling a {@link Shumate.Layer} that is a child of `self`, or `null`
          */
-        insert_layer_behind(layer: Layer, next_sibling?: Layer | null): void;
+        insert_layer_behind(layer: Layer, next_sibling: Layer | null): void;
         /**
          * Removes the given layer from the view
          * @param layer a {@link Shumate.Layer}
@@ -5167,6 +5095,7 @@ export namespace Shumate {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
@@ -5175,6 +5104,7 @@ export namespace Shumate {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
@@ -5278,7 +5208,7 @@ export namespace Shumate {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent?: Gtk.Accessible | null, next_sibling?: Gtk.Accessible | null): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
         /**
          * Updates the next accessible sibling.
          *
@@ -5286,7 +5216,7 @@ export namespace Shumate {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling?: Gtk.Accessible | null): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
         /**
          * Informs ATs that the platform state has changed.
          *
@@ -5397,7 +5327,7 @@ export namespace Shumate {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -5411,7 +5341,7 @@ export namespace Shumate {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called at the end of each custom element handled by
@@ -5426,7 +5356,7 @@ export namespace Shumate {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called for each unknown element under `<child>`.
@@ -5530,38 +5460,19 @@ export namespace Shumate {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -5569,15 +5480,9 @@ export namespace Shumate {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -5744,7 +5649,7 @@ export namespace Shumate {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -6119,38 +6024,19 @@ export namespace Shumate {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -6158,15 +6044,9 @@ export namespace Shumate {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -6333,7 +6213,7 @@ export namespace Shumate {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -6570,61 +6450,73 @@ export namespace Shumate {
 
         /**
          * The id of the map source
+         * @default null
          */
         get id(): string;
         set id(val: string);
         /**
          * The usage license of the map source
+         * @default null
          */
         get license(): string;
         set license(val: string);
         /**
          * The usage license's uri for more information
+         * @default null
          */
         get license_uri(): string;
         set license_uri(val: string);
         /**
          * The usage license's uri for more information
+         * @default null
          */
         get licenseUri(): string;
         set licenseUri(val: string);
         /**
          * The maximum zoom level
+         * @default 18
          */
         get max_zoom_level(): number;
         set max_zoom_level(val: number);
         /**
          * The maximum zoom level
+         * @default 18
          */
         get maxZoomLevel(): number;
         set maxZoomLevel(val: number);
         /**
          * The minimum zoom level
+         * @default 0
          */
         get min_zoom_level(): number;
         set min_zoom_level(val: number);
         /**
          * The minimum zoom level
+         * @default 0
          */
         get minZoomLevel(): number;
         set minZoomLevel(val: number);
         /**
          * The name of the map source
+         * @default null
          */
         get name(): string;
         set name(val: string);
         /**
          * The map projection of the map source
+         * @default Shumate.MapProjection.MERCATOR
          */
         get projection(): MapProjection;
         set projection(val: MapProjection);
         /**
          * The tile size of the map source
+         * @default 256
          */
         get tile_size(): number;
         set tile_size(val: number);
         /**
          * The tile size of the map source
+         * @default 256
          */
         get tileSize(): number;
         set tileSize(val: number);
@@ -6676,8 +6568,8 @@ export namespace Shumate {
          */
         vfunc_fill_tile_async(
             tile: Tile,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Gets the success value of a completed `shumate_map_source_fill_tile_async()`
@@ -6694,7 +6586,7 @@ export namespace Shumate {
          * @param tile a {@link Shumate.Tile}
          * @param cancellable a {@link Gio.Cancellable}
          */
-        fill_tile_async(tile: Tile, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        fill_tile_async(tile: Tile, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronous version of `shumate_map_source_fill_tile()`.
          * @param tile a {@link Shumate.Tile}
@@ -6714,7 +6606,7 @@ export namespace Shumate {
          */
         fill_tile_async(
             tile: Tile,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -7099,38 +6991,19 @@ export namespace Shumate {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -7138,15 +7011,9 @@ export namespace Shumate {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -7313,7 +7180,7 @@ export namespace Shumate {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -7559,7 +7426,7 @@ export namespace Shumate {
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps,
                 Location.ConstructorProps {
-            child: Gtk.Widget;
+            child: Gtk.Widget | null;
             selectable: boolean;
             x_hotspot: number;
             xHotspot: number;
@@ -7595,10 +7462,11 @@ export namespace Shumate {
         /**
          * The child widget of the marker
          */
-        get child(): Gtk.Widget;
-        set child(val: Gtk.Widget);
+        get child(): Gtk.Widget | null;
+        set child(val: Gtk.Widget | null);
         /**
          * The selectable state of the marker
+         * @default false
          */
         get selectable(): boolean;
         set selectable(val: boolean);
@@ -7607,6 +7475,7 @@ export namespace Shumate {
          * x hotspot is calculated with the {@link Gtk.Widget.halign} property.
          * The x hotspot should not be more than the width of the widget.
          * @since 1.5
+         * @default -1
          */
         get x_hotspot(): number;
         set x_hotspot(val: number);
@@ -7615,6 +7484,7 @@ export namespace Shumate {
          * x hotspot is calculated with the {@link Gtk.Widget.halign} property.
          * The x hotspot should not be more than the width of the widget.
          * @since 1.5
+         * @default -1
          */
         get xHotspot(): number;
         set xHotspot(val: number);
@@ -7623,6 +7493,7 @@ export namespace Shumate {
          * y hotspot is calculated with the {@link Gtk.Widget.valign} property.
          * The y hotspot should not be more than the height of the widget.
          * @since 1.5
+         * @default -1
          */
         get y_hotspot(): number;
         set y_hotspot(val: number);
@@ -7631,6 +7502,7 @@ export namespace Shumate {
          * y hotspot is calculated with the {@link Gtk.Widget.valign} property.
          * The y hotspot should not be more than the height of the widget.
          * @since 1.5
+         * @default -1
          */
         get yHotspot(): number;
         set yHotspot(val: number);
@@ -7712,7 +7584,7 @@ export namespace Shumate {
          * Sets the child widget of `marker`.
          * @param child a {@link Gtk.Widget}
          */
-        set_child(child?: Gtk.Widget | null): void;
+        set_child(child: Gtk.Widget | null): void;
         /**
          * @param value
          */
@@ -7734,6 +7606,7 @@ export namespace Shumate {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
@@ -7742,18 +7615,21 @@ export namespace Shumate {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
         set accessibleRole(val: Gtk.AccessibleRole);
         /**
          * The latitude coordonate in degrees
+         * @default 0
          * @category Inherited from Shumate.Location
          */
         get latitude(): number;
         set latitude(val: number);
         /**
          * The longitude coordonate in degrees
+         * @default 0
          * @category Inherited from Shumate.Location
          */
         get longitude(): number;
@@ -7857,7 +7733,7 @@ export namespace Shumate {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent?: Gtk.Accessible | null, next_sibling?: Gtk.Accessible | null): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
         /**
          * Updates the next accessible sibling.
          *
@@ -7865,7 +7741,7 @@ export namespace Shumate {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling?: Gtk.Accessible | null): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
         /**
          * Informs ATs that the platform state has changed.
          *
@@ -7976,7 +7852,7 @@ export namespace Shumate {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -7990,7 +7866,7 @@ export namespace Shumate {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called at the end of each custom element handled by
@@ -8005,7 +7881,7 @@ export namespace Shumate {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called for each unknown element under `<child>`.
@@ -8152,38 +8028,19 @@ export namespace Shumate {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -8191,15 +8048,9 @@ export namespace Shumate {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -8366,7 +8217,7 @@ export namespace Shumate {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -8635,11 +8486,13 @@ export namespace Shumate {
 
         /**
          * Determines the type of selection that will be performed.
+         * @default Gtk.SelectionMode.NONE
          */
         get selection_mode(): Gtk.SelectionMode;
         set selection_mode(val: Gtk.SelectionMode);
         /**
          * Determines the type of selection that will be performed.
+         * @default Gtk.SelectionMode.NONE
          */
         get selectionMode(): Gtk.SelectionMode;
         set selectionMode(val: Gtk.SelectionMode);
@@ -8798,38 +8651,19 @@ export namespace Shumate {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -8837,15 +8671,9 @@ export namespace Shumate {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -9012,7 +8840,7 @@ export namespace Shumate {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -9292,11 +9120,13 @@ export namespace Shumate {
 
         /**
          * The shape is a closed path
+         * @default false
          */
         get closed(): boolean;
         set closed(val: boolean);
         /**
          * The shape should be filled
+         * @default false
          */
         get fill(): boolean;
         set fill(val: boolean);
@@ -9322,16 +9152,19 @@ export namespace Shumate {
         set outlineColor(val: Gdk.RGBA);
         /**
          * The path's outline width (in pixels)
+         * @default 0
          */
         get outline_width(): number;
         set outline_width(val: number);
         /**
          * The path's outline width (in pixels)
+         * @default 0
          */
         get outlineWidth(): number;
         set outlineWidth(val: number);
         /**
          * The shape should be stroked
+         * @default true
          */
         get stroke(): boolean;
         set stroke(val: boolean);
@@ -9347,11 +9180,13 @@ export namespace Shumate {
         set strokeColor(val: Gdk.RGBA);
         /**
          * The path's stroke width (in pixels)
+         * @default 2
          */
         get stroke_width(): number;
         set stroke_width(val: number);
         /**
          * The path's stroke width (in pixels)
+         * @default 2
          */
         get strokeWidth(): number;
         set strokeWidth(val: number);
@@ -9491,12 +9326,12 @@ export namespace Shumate {
          * Set the path's fill color.
          * @param color The path's fill color or `null` to reset to the         default color. The color parameter is copied.
          */
-        set_fill_color(color?: Gdk.RGBA | null): void;
+        set_fill_color(color: Gdk.RGBA | null): void;
         /**
          * Set the path's outline color.
          * @param color The path's outline color or `null` to reset to the         default color. The color parameter is copied.
          */
-        set_outline_color(color?: Gdk.RGBA | null): void;
+        set_outline_color(color: Gdk.RGBA | null): void;
         /**
          * Sets the width of the outline
          * @param value the width of the outline (in pixels)
@@ -9511,7 +9346,7 @@ export namespace Shumate {
          * Set the path's stroke color.
          * @param color The path's stroke color or `null` to reset to the         default color. The color parameter is copied.
          */
-        set_stroke_color(color?: Gdk.RGBA | null): void;
+        set_stroke_color(color: Gdk.RGBA | null): void;
         /**
          * Sets the width of the stroke
          * @param value the width of the stroke (in pixels)
@@ -9564,38 +9399,19 @@ export namespace Shumate {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -9603,15 +9419,9 @@ export namespace Shumate {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -9778,7 +9588,7 @@ export namespace Shumate {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -10076,12 +9886,14 @@ export namespace Shumate {
         emit(signal: string, ...args: any[]): void;
         /**
          * The latitude coordonate in degrees
+         * @default 0
          * @category Inherited from Shumate.Location
          */
         get latitude(): number;
         set latitude(val: number);
         /**
          * The longitude coordonate in degrees
+         * @default 0
          * @category Inherited from Shumate.Location
          */
         get longitude(): number;
@@ -10176,38 +9988,19 @@ export namespace Shumate {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -10215,15 +10008,9 @@ export namespace Shumate {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -10390,7 +10177,7 @@ export namespace Shumate {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -10743,7 +10530,7 @@ export namespace Shumate {
             max_width: number;
             maxWidth: number;
             unit: Unit;
-            viewport: Viewport;
+            viewport: Viewport | null;
         }
     }
 
@@ -10768,24 +10555,27 @@ export namespace Shumate {
 
         /**
          * The size of the map scale on screen in pixels.
+         * @default 150
          */
         get max_width(): number;
         set max_width(val: number);
         /**
          * The size of the map scale on screen in pixels.
+         * @default 150
          */
         get maxWidth(): number;
         set maxWidth(val: number);
         /**
          * The scale's units.
+         * @default Shumate.Unit.BOTH
          */
         get unit(): Unit;
         set unit(val: Unit);
         /**
          * The viewport to use.
          */
-        get viewport(): Viewport;
-        set viewport(val: Viewport);
+        get viewport(): Viewport | null;
+        set viewport(val: Viewport | null);
 
         /**
          * Compile-time signal type information.
@@ -10802,7 +10592,7 @@ export namespace Shumate {
 
         _init(...args: any[]): void;
 
-        static ['new'](viewport?: Viewport | null): Scale;
+        static ['new'](viewport: Viewport | null): Scale;
 
         // Signals
 
@@ -10856,11 +10646,12 @@ export namespace Shumate {
          * Sets the scale viewport.
          * @param viewport a {@link Shumate.Viewport}
          */
-        set_viewport(viewport?: Viewport | null): void;
+        set_viewport(viewport: Viewport | null): void;
         /**
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
@@ -10869,6 +10660,7 @@ export namespace Shumate {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
@@ -10972,7 +10764,7 @@ export namespace Shumate {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent?: Gtk.Accessible | null, next_sibling?: Gtk.Accessible | null): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
         /**
          * Updates the next accessible sibling.
          *
@@ -10980,7 +10772,7 @@ export namespace Shumate {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling?: Gtk.Accessible | null): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
         /**
          * Informs ATs that the platform state has changed.
          *
@@ -11091,7 +10883,7 @@ export namespace Shumate {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -11105,7 +10897,7 @@ export namespace Shumate {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called at the end of each custom element handled by
@@ -11120,7 +10912,7 @@ export namespace Shumate {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called for each unknown element under `<child>`.
@@ -11224,38 +11016,19 @@ export namespace Shumate {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -11263,15 +11036,9 @@ export namespace Shumate {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -11438,7 +11205,7 @@ export namespace Shumate {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -11759,8 +11526,14 @@ export namespace Shumate {
          * @read-only
          */
         get scale(): Scale;
+        /**
+         * @default true
+         */
         get show_zoom_buttons(): boolean;
         set show_zoom_buttons(val: boolean);
+        /**
+         * @default true
+         */
         get showZoomButtons(): boolean;
         set showZoomButtons(val: boolean);
         /**
@@ -11878,7 +11651,7 @@ export namespace Shumate {
          * Sets the source for the base map.
          * @param map_source a {@link MapSource}
          */
-        set_map_source(map_source?: MapSource | null): void;
+        set_map_source(map_source: MapSource | null): void;
         /**
          * Sets whether or not the zoom buttons are shown.
          * @param show_zoom_buttons `true` to show the zoom buttons, `false` to hide them
@@ -11888,6 +11661,7 @@ export namespace Shumate {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
@@ -11896,6 +11670,7 @@ export namespace Shumate {
          * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
          * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
@@ -11999,7 +11774,7 @@ export namespace Shumate {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent?: Gtk.Accessible | null, next_sibling?: Gtk.Accessible | null): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
         /**
          * Updates the next accessible sibling.
          *
@@ -12007,7 +11782,7 @@ export namespace Shumate {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling?: Gtk.Accessible | null): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
         /**
          * Informs ATs that the platform state has changed.
          *
@@ -12118,7 +11893,7 @@ export namespace Shumate {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -12132,7 +11907,7 @@ export namespace Shumate {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called at the end of each custom element handled by
@@ -12147,7 +11922,7 @@ export namespace Shumate {
             builder: Gtk.Builder,
             child: GObject.Object | null,
             tagname: string,
-            data?: any | null,
+            data: any | null,
         ): void;
         /**
          * Called for each unknown element under `<child>`.
@@ -12251,38 +12026,19 @@ export namespace Shumate {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -12290,15 +12046,9 @@ export namespace Shumate {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -12465,7 +12215,7 @@ export namespace Shumate {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -12703,6 +12453,7 @@ export namespace Shumate {
          * data source.
          * @since 1.1
          * @read-only
+         * @default null
          */
         get feature_id(): string;
         /**
@@ -12710,34 +12461,40 @@ export namespace Shumate {
          * data source.
          * @since 1.1
          * @read-only
+         * @default null
          */
         get featureId(): string;
         /**
          * The ID of the style layer of the symbol that this event pertains to.
          * @since 1.1
          * @read-only
+         * @default null
          */
         get layer(): string;
         /**
          * The number of clicks/presses triggering the symbol event.
          * @since 1.5
+         * @default 1
          */
         get n_press(): number;
         set n_press(val: number);
         /**
          * The number of clicks/presses triggering the symbol event.
          * @since 1.5
+         * @default 1
          */
         get nPress(): number;
         set nPress(val: number);
         /**
          * The ID of the source layer of the symbol that this event pertains to.
          * @read-only
+         * @default null
          */
         get source_layer(): string;
         /**
          * The ID of the source layer of the symbol that this event pertains to.
          * @read-only
+         * @default null
          */
         get sourceLayer(): string;
 
@@ -12826,12 +12583,14 @@ export namespace Shumate {
         get_tag(tag_name: string): string;
         /**
          * The latitude coordonate in degrees
+         * @default 0
          * @category Inherited from Shumate.Location
          */
         get latitude(): number;
         set latitude(val: number);
         /**
          * The longitude coordonate in degrees
+         * @default 0
          * @category Inherited from Shumate.Location
          */
         get longitude(): number;
@@ -12926,38 +12685,19 @@ export namespace Shumate {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -12965,15 +12705,9 @@ export namespace Shumate {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -13140,7 +12874,7 @@ export namespace Shumate {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -13348,7 +13082,7 @@ export namespace Shumate {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             fade_in: boolean;
             fadeIn: boolean;
-            paintable: Gdk.Paintable;
+            paintable: Gdk.Paintable | null;
             scale_factor: number;
             scaleFactor: number;
             size: number;
@@ -13371,58 +13105,68 @@ export namespace Shumate {
 
         /**
          * Specifies whether the tile should fade in when loading
+         * @default false
          */
         get fade_in(): boolean;
         set fade_in(val: boolean);
         /**
          * Specifies whether the tile should fade in when loading
+         * @default false
          */
         get fadeIn(): boolean;
         set fadeIn(val: boolean);
         /**
          * The {@link Gdk.Paintable} backing the tile
          */
-        get paintable(): Gdk.Paintable;
-        set paintable(val: Gdk.Paintable);
+        get paintable(): Gdk.Paintable | null;
+        set paintable(val: Gdk.Paintable | null);
         /**
          * The scale factor of the widget the tile will be displayed in.
          * @since 1.1
+         * @default 1
          */
         get scale_factor(): number;
         set scale_factor(val: number);
         /**
          * The scale factor of the widget the tile will be displayed in.
          * @since 1.1
+         * @default 1
          */
         get scaleFactor(): number;
         set scaleFactor(val: number);
         /**
          * The size of the tile in pixels
+         * @default 256
          */
         get size(): number;
         set size(val: number);
         /**
          * The state of the tile
+         * @default Shumate.State.NONE
          */
         get state(): State;
         set state(val: State);
         /**
          * The x position of the tile
+         * @default 0
          */
         get x(): number;
         set x(val: number);
         /**
          * The y position of the tile
+         * @default 0
          */
         get y(): number;
         set y(val: number);
         /**
          * The zoom level of the tile
+         * @default 0
          */
         get zoom_level(): number;
         set zoom_level(val: number);
         /**
          * The zoom level of the tile
+         * @default 0
          */
         get zoomLevel(): number;
         set zoomLevel(val: number);
@@ -13589,6 +13333,7 @@ export namespace Shumate {
          * - "{tmsy}": The inverted Y coordinate (i.e. tile numbering starts with 0 at
          * the bottom, rather than top, of the map)
          * @construct-only
+         * @default null
          */
         get url_template(): string;
         /**
@@ -13601,6 +13346,7 @@ export namespace Shumate {
          * - "{tmsy}": The inverted Y coordinate (i.e. tile numbering starts with 0 at
          * the bottom, rather than top, of the map)
          * @construct-only
+         * @default null
          */
         get urlTemplate(): string;
 
@@ -13975,6 +13721,7 @@ export namespace Shumate {
          *
          * Note that not all features of the specification are supported.
          * @construct-only
+         * @default null
          */
         get style_json(): string;
         /**
@@ -13983,6 +13730,7 @@ export namespace Shumate {
          *
          * Note that not all features of the specification are supported.
          * @construct-only
+         * @default null
          */
         get styleJson(): string;
 
@@ -14138,7 +13886,7 @@ export namespace Shumate {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -14181,7 +13929,7 @@ export namespace Shumate {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -14229,38 +13977,19 @@ export namespace Shumate {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -14268,15 +13997,9 @@ export namespace Shumate {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -14443,7 +14166,7 @@ export namespace Shumate {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -14655,8 +14378,8 @@ export namespace Shumate {
             scaleFactor: number;
             source_paintable: Gdk.Paintable;
             sourcePaintable: Gdk.Paintable;
-            source_rect: Gdk.Rectangle;
-            sourceRect: Gdk.Rectangle;
+            source_rect: Gdk.Rectangle | null;
+            sourceRect: Gdk.Rectangle | null;
             width: number;
         }
     }
@@ -14682,18 +14405,21 @@ export namespace Shumate {
          * The height at which the sprite should be drawn, in pixels.
          * @since 1.1
          * @construct-only
+         * @default 0
          */
         get height(): number;
         /**
          * The intended scale factor of the sprite.
          * @since 1.1
          * @construct-only
+         * @default 1
          */
         get scale_factor(): number;
         /**
          * The intended scale factor of the sprite.
          * @since 1.1
          * @construct-only
+         * @default 1
          */
         get scaleFactor(): number;
         /**
@@ -14713,17 +14439,18 @@ export namespace Shumate {
          * @since 1.1
          * @construct-only
          */
-        get source_rect(): Gdk.Rectangle;
+        get source_rect(): Gdk.Rectangle | null;
         /**
          * The area of the source rectangle to draw, or `null` to use the entire paintable.
          * @since 1.1
          * @construct-only
          */
-        get sourceRect(): Gdk.Rectangle;
+        get sourceRect(): Gdk.Rectangle | null;
         /**
          * The width at which the sprite should be drawn, in pixels.
          * @since 1.1
          * @construct-only
+         * @default 0
          */
         get width(): number;
 
@@ -14749,7 +14476,7 @@ export namespace Shumate {
             width: number,
             height: number,
             scale_factor: number,
-            source_rect?: Gdk.Rectangle | null,
+            source_rect: Gdk.Rectangle | null,
         ): VectorSprite;
 
         // Signals
@@ -15117,38 +14844,19 @@ export namespace Shumate {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -15156,15 +14864,9 @@ export namespace Shumate {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -15331,7 +15033,7 @@ export namespace Shumate {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -15654,7 +15356,7 @@ export namespace Shumate {
          * `fallback` may be `null` to clear the fallback function.
          * @param fallback a {@link ShumateVectorSpriteFallbackFunc} or `null`
          */
-        set_fallback(fallback?: VectorSpriteFallbackFunc | null): void;
+        set_fallback(fallback: VectorSpriteFallbackFunc | null): void;
     }
 
     namespace Viewport {
@@ -15684,8 +15386,8 @@ export namespace Shumate {
             maxZoomLevel: number;
             min_zoom_level: number;
             minZoomLevel: number;
-            reference_map_source: MapSource;
-            referenceMapSource: MapSource;
+            reference_map_source: MapSource | null;
+            referenceMapSource: MapSource | null;
             rotation: number;
             zoom_level: number;
             zoomLevel: number;
@@ -15706,46 +15408,53 @@ export namespace Shumate {
 
         /**
          * The highest allowed level of zoom of the content.
+         * @default 20
          */
         get max_zoom_level(): number;
         set max_zoom_level(val: number);
         /**
          * The highest allowed level of zoom of the content.
+         * @default 20
          */
         get maxZoomLevel(): number;
         set maxZoomLevel(val: number);
         /**
          * The lowest allowed level of zoom of the content.
+         * @default 0
          */
         get min_zoom_level(): number;
         set min_zoom_level(val: number);
         /**
          * The lowest allowed level of zoom of the content.
+         * @default 0
          */
         get minZoomLevel(): number;
         set minZoomLevel(val: number);
         /**
          * The reference {@link Shumate.MapSource} being displayed
          */
-        get reference_map_source(): MapSource;
-        set reference_map_source(val: MapSource);
+        get reference_map_source(): MapSource | null;
+        set reference_map_source(val: MapSource | null);
         /**
          * The reference {@link Shumate.MapSource} being displayed
          */
-        get referenceMapSource(): MapSource;
-        set referenceMapSource(val: MapSource);
+        get referenceMapSource(): MapSource | null;
+        set referenceMapSource(val: MapSource | null);
         /**
          * The rotation of the map view, in radians clockwise from up being due north
+         * @default 0
          */
         get rotation(): number;
         set rotation(val: number);
         /**
          * The level of zoom of the content.
+         * @default 3
          */
         get zoom_level(): number;
         set zoom_level(val: number);
         /**
          * The level of zoom of the content.
+         * @default 3
          */
         get zoomLevel(): number;
         set zoomLevel(val: number);
@@ -15837,7 +15546,7 @@ export namespace Shumate {
          * Set the reference map source
          * @param map_source a {@link Shumate.MapSource} or `null` to set none.
          */
-        set_reference_map_source(map_source?: MapSource | null): void;
+        set_reference_map_source(map_source: MapSource | null): void;
         /**
          * Sets the rotation
          * @param rotation the rotation
@@ -15857,12 +15566,14 @@ export namespace Shumate {
         widget_coords_to_location(widget: Gtk.Widget, x: number, y: number): [number, number];
         /**
          * The latitude coordonate in degrees
+         * @default 0
          * @category Inherited from Shumate.Location
          */
         get latitude(): number;
         set latitude(val: number);
         /**
          * The longitude coordonate in degrees
+         * @default 0
          * @category Inherited from Shumate.Location
          */
         get longitude(): number;
@@ -15957,38 +15668,19 @@ export namespace Shumate {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -15996,15 +15688,9 @@ export namespace Shumate {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -16171,7 +15857,7 @@ export namespace Shumate {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -16637,11 +16323,13 @@ export namespace Shumate {
 
         /**
          * The latitude coordonate in degrees
+         * @default 0
          */
         get latitude(): number;
         set latitude(val: number);
         /**
          * The longitude coordonate in degrees
+         * @default 0
          */
         get longitude(): number;
         set longitude(val: number);

@@ -245,7 +245,7 @@ export namespace Shell {
     function util_start_systemd_unit(
         unit: string,
         mode: string,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): globalThis.Promise<boolean>;
     /**
      * @param unit
@@ -268,8 +268,8 @@ export namespace Shell {
     function util_start_systemd_unit(
         unit: string,
         mode: string,
-        cancellable?: Gio.Cancellable | null,
-        callback?: Gio.AsyncReadyCallback<string> | null,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<string> | null,
     ): globalThis.Promise<boolean> | void;
     /**
      * @param res
@@ -283,7 +283,7 @@ export namespace Shell {
     function util_stop_systemd_unit(
         unit: string,
         mode: string,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): globalThis.Promise<boolean>;
     /**
      * @param unit
@@ -306,8 +306,8 @@ export namespace Shell {
     function util_stop_systemd_unit(
         unit: string,
         mode: string,
-        cancellable?: Gio.Cancellable | null,
-        callback?: Gio.AsyncReadyCallback<string> | null,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<string> | null,
     ): globalThis.Promise<boolean> | void;
     /**
      * @param res
@@ -317,7 +317,7 @@ export namespace Shell {
      * @param unit
      * @param cancellable
      */
-    function util_systemd_unit_exists(unit: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+    function util_systemd_unit_exists(unit: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
     /**
      * @param unit
      * @param cancellable
@@ -335,8 +335,8 @@ export namespace Shell {
      */
     function util_systemd_unit_exists(
         unit: string,
-        cancellable?: Gio.Cancellable | null,
-        callback?: Gio.AsyncReadyCallback<string> | null,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<string> | null,
     ): globalThis.Promise<boolean> | void;
     /**
      * @param res
@@ -357,7 +357,7 @@ export namespace Shell {
      */
     function util_touch_file_async(
         file: Gio.File,
-        callback?: Gio.AsyncReadyCallback<Gio.File> | null,
+        callback: Gio.AsyncReadyCallback<Gio.File> | null,
     ): globalThis.Promise<boolean> | void;
     /**
      * @param file
@@ -391,7 +391,7 @@ export namespace Shell {
      * @gir-type Callback
      */
     interface LeisureFunction {
-        (data?: any | null): void;
+        (data: any | null): void;
     }
     /**
      * @gir-type Callback
@@ -403,7 +403,7 @@ export namespace Shell {
      * @gir-type Callback
      */
     interface PerfStatisticsCallback {
-        (perf_log: PerfLog, data?: any | null): void;
+        (perf_log: PerfLog, data: any | null): void;
     }
     /**
      * @gir-type Flags
@@ -815,7 +815,7 @@ export namespace Shell {
          * @param wmclass A WM_CLASS value
          * @returns A {@link Shell.App} for `wmclass`
          */
-        lookup_desktop_wmclass(wmclass?: string | null): App;
+        lookup_desktop_wmclass(wmclass: string | null): App;
         /**
          * Find a valid application corresponding to a given
          * heuristically determined application identifier
@@ -830,7 +830,7 @@ export namespace Shell {
          * @param wmclass A WM_CLASS value
          * @returns A {@link Shell.App} for `wmclass`
          */
-        lookup_startup_wmclass(wmclass?: string | null): App;
+        lookup_startup_wmclass(wmclass: string | null): App;
     }
 
     namespace AppUsage {
@@ -1174,38 +1174,19 @@ export namespace Shell {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1213,15 +1194,9 @@ export namespace Shell {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1388,7 +1363,7 @@ export namespace Shell {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -2019,13 +1994,13 @@ export namespace Shell {
          * @param property_name Name of the property
          * @param variant A {@link GLib.Variant}, or `null` to unset
          */
-        set_persistent_state(property_name: string, variant?: GLib.Variant | null): void;
+        set_persistent_state(property_name: string, variant: GLib.Variant | null): void;
         /**
          * Change the value of serialized runtime state.
          * @param property_name Name of the property
          * @param variant A {@link GLib.Variant}, or `null` to unset
          */
-        set_runtime_state(property_name: string, variant?: GLib.Variant | null): void;
+        set_runtime_state(property_name: string, variant: GLib.Variant | null): void;
         /**
          * Sets the area of the stage that is responsive to mouse clicks when
          * we don't have a modal or grab.
@@ -2398,38 +2373,19 @@ export namespace Shell {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -2437,15 +2393,9 @@ export namespace Shell {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -2612,7 +2562,7 @@ export namespace Shell {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -2897,12 +2847,12 @@ export namespace Shell {
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gcr.Prompt.ConstructorProps {
             choice_visible: boolean;
             choiceVisible: boolean;
-            confirm_actor: Clutter.Text;
-            confirmActor: Clutter.Text;
+            confirm_actor: Clutter.Text | null;
+            confirmActor: Clutter.Text | null;
             confirm_visible: boolean;
             confirmVisible: boolean;
-            password_actor: Clutter.Text;
-            passwordActor: Clutter.Text;
+            password_actor: Clutter.Text | null;
+            passwordActor: Clutter.Text | null;
             password_visible: boolean;
             passwordVisible: boolean;
             warning_visible: boolean;
@@ -2931,13 +2881,13 @@ export namespace Shell {
         /**
          * Text field for confirmation password
          */
-        get confirm_actor(): Clutter.Text;
-        set confirm_actor(val: Clutter.Text);
+        get confirm_actor(): Clutter.Text | null;
+        set confirm_actor(val: Clutter.Text | null);
         /**
          * Text field for confirmation password
          */
-        get confirmActor(): Clutter.Text;
-        set confirmActor(val: Clutter.Text);
+        get confirmActor(): Clutter.Text | null;
+        set confirmActor(val: Clutter.Text | null);
         /**
          * Whether the password confirm entry is visible or not.
          * @read-only
@@ -2951,13 +2901,13 @@ export namespace Shell {
         /**
          * Text field for password
          */
-        get password_actor(): Clutter.Text;
-        set password_actor(val: Clutter.Text);
+        get password_actor(): Clutter.Text | null;
+        set password_actor(val: Clutter.Text | null);
         /**
          * Text field for password
          */
-        get passwordActor(): Clutter.Text;
-        set passwordActor(val: Clutter.Text);
+        get passwordActor(): Clutter.Text | null;
+        set passwordActor(val: Clutter.Text | null);
         /**
          * Whether the password entry is visible or not.
          * @read-only
@@ -3043,12 +2993,12 @@ export namespace Shell {
          * Set the prompt password confirmation text actor
          * @param confirm_actor the confirm password actor
          */
-        set_confirm_actor(confirm_actor?: Clutter.Text | null): void;
+        set_confirm_actor(confirm_actor: Clutter.Text | null): void;
         /**
          * Set the prompt password text actor
          * @param password_actor the password actor
          */
-        set_password_actor(password_actor?: Clutter.Text | null): void;
+        set_password_actor(password_actor: Clutter.Text | null): void;
         /**
          * The string handle of the caller's window.
          *
@@ -3059,6 +3009,7 @@ export namespace Shell {
          * In X11, this will be a stringified version of the XWindow handle; in
          * Wayland this is the result of an export using the XDG foreign
          * protocol.
+         * @default null
          * @category Inherited from Gcr.Prompt
          */
         get caller_window(): string;
@@ -3073,18 +3024,21 @@ export namespace Shell {
          * In X11, this will be a stringified version of the XWindow handle; in
          * Wayland this is the result of an export using the XDG foreign
          * protocol.
+         * @default null
          * @category Inherited from Gcr.Prompt
          */
         get callerWindow(): string;
         set callerWindow(val: string);
         /**
          * The label for the cancel button in the prompt.
+         * @default Cancel
          * @category Inherited from Gcr.Prompt
          */
         get cancel_label(): string;
         set cancel_label(val: string);
         /**
          * The label for the cancel button in the prompt.
+         * @default Cancel
          * @category Inherited from Gcr.Prompt
          */
         get cancelLabel(): string;
@@ -3093,6 +3047,7 @@ export namespace Shell {
          * Whether the additional choice is chosen or not.
          *
          * The additional choice would have been setup using {@link Gcr.Prompt.choice_label}.
+         * @default false
          * @category Inherited from Gcr.Prompt
          */
         get choice_chosen(): boolean;
@@ -3101,6 +3056,7 @@ export namespace Shell {
          * Whether the additional choice is chosen or not.
          *
          * The additional choice would have been setup using {@link Gcr.Prompt.choice_label}.
+         * @default false
          * @category Inherited from Gcr.Prompt
          */
         get choiceChosen(): boolean;
@@ -3114,6 +3070,7 @@ export namespace Shell {
          * If `null`, then no additional choice is displayed.
          *
          * The initial value of the choice can be set with {@link Gcr.Prompt.choice_chosen}.
+         * @default null
          * @category Inherited from Gcr.Prompt
          */
         get choice_label(): string;
@@ -3127,18 +3084,21 @@ export namespace Shell {
          * If `null`, then no additional choice is displayed.
          *
          * The initial value of the choice can be set with {@link Gcr.Prompt.choice_chosen}.
+         * @default null
          * @category Inherited from Gcr.Prompt
          */
         get choiceLabel(): string;
         set choiceLabel(val: string);
         /**
          * The label for the continue button in the prompt.
+         * @default Continue
          * @category Inherited from Gcr.Prompt
          */
         get continue_label(): string;
         set continue_label(val: string);
         /**
          * The label for the continue button in the prompt.
+         * @default Continue
          * @category Inherited from Gcr.Prompt
          */
         get continueLabel(): string;
@@ -3148,6 +3108,7 @@ export namespace Shell {
          *
          * A prompt implementation may choose not to display this detailed description.
          * The prompt message should contain relevant information.
+         * @default null
          * @category Inherited from Gcr.Prompt
          */
         get description(): string;
@@ -3156,6 +3117,7 @@ export namespace Shell {
          * The prompt message for the user.
          *
          * A prompt implementation should always display this message.
+         * @default null
          * @category Inherited from Gcr.Prompt
          */
         get message(): string;
@@ -3166,6 +3128,7 @@ export namespace Shell {
          * This will cause the prompt implementation to ask the user to confirm the
          * password and/or display other relevant user interface for creating a new
          * password.
+         * @default false
          * @category Inherited from Gcr.Prompt
          */
         get password_new(): boolean;
@@ -3176,6 +3139,7 @@ export namespace Shell {
          * This will cause the prompt implementation to ask the user to confirm the
          * password and/or display other relevant user interface for creating a new
          * password.
+         * @default false
          * @category Inherited from Gcr.Prompt
          */
         get passwordNew(): boolean;
@@ -3188,6 +3152,7 @@ export namespace Shell {
          *
          * This is only valid after a successful prompt for a password.
          * @read-only
+         * @default 0
          * @category Inherited from Gcr.Prompt
          */
         get password_strength(): number;
@@ -3199,6 +3164,7 @@ export namespace Shell {
          *
          * This is only valid after a successful prompt for a password.
          * @read-only
+         * @default 0
          * @category Inherited from Gcr.Prompt
          */
         get passwordStrength(): number;
@@ -3207,6 +3173,7 @@ export namespace Shell {
          *
          * A prompt implementation may choose not to display the prompt title. The
          * {@link Gcr.Prompt.message} should contain relevant information.
+         * @default null
          * @category Inherited from Gcr.Prompt
          */
         get title(): string;
@@ -3216,6 +3183,7 @@ export namespace Shell {
          *
          * This is a warning like "The password is incorrect." usually displayed to the
          * user about a previous 'unsuccessful' prompt.
+         * @default null
          * @category Inherited from Gcr.Prompt
          */
         get warning(): string;
@@ -3242,7 +3210,7 @@ export namespace Shell {
          * @param cancellable optional cancellation object
          * @returns the reply from the prompt
          */
-        confirm(cancellable?: Gio.Cancellable | null): Gcr.PromptReply;
+        confirm(cancellable: Gio.Cancellable | null): Gcr.PromptReply;
         /**
          * Prompts for confirmation asking a cancel/continue style question.
          * Set the various properties on the prompt before calling this method to
@@ -3251,7 +3219,7 @@ export namespace Shell {
          * This method will return immediately and complete asynchronously.
          * @param cancellable optional cancellation object
          */
-        confirm_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<Gcr.PromptReply>;
+        confirm_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Gcr.PromptReply>;
         /**
          * Prompts for confirmation asking a cancel/continue style question.
          * Set the various properties on the prompt before calling this method to
@@ -3272,7 +3240,7 @@ export namespace Shell {
          * @param callback called when the operation completes
          */
         confirm_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Gcr.PromptReply> | void;
         /**
@@ -3300,7 +3268,7 @@ export namespace Shell {
          * @param cancellable optional cancellation object
          * @returns the reply from the prompt
          */
-        confirm_run(cancellable?: Gio.Cancellable | null): Gcr.PromptReply;
+        confirm_run(cancellable: Gio.Cancellable | null): Gcr.PromptReply;
         /**
          * Get the string handle of the caller's window.
          *
@@ -3408,7 +3376,7 @@ export namespace Shell {
          * @param cancellable optional cancellation object
          * @returns the password owned by the prompt, or `null`
          */
-        password(cancellable?: Gio.Cancellable | null): string;
+        password(cancellable: Gio.Cancellable | null): string;
         /**
          * Prompts for password. Set the various properties on the prompt before calling
          * this method to explain which password should be entered.
@@ -3416,7 +3384,7 @@ export namespace Shell {
          * This method will return immediately and complete asynchronously.
          * @param cancellable optional cancellation object
          */
-        password_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
+        password_async(cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * Prompts for password. Set the various properties on the prompt before calling
          * this method to explain which password should be entered.
@@ -3435,7 +3403,7 @@ export namespace Shell {
          * @param callback called when the operation completes
          */
         password_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
         /**
@@ -3468,7 +3436,7 @@ export namespace Shell {
          * @param cancellable optional cancellation object
          * @returns the password owned by the prompt, or `null`
          */
-        password_run(cancellable?: Gio.Cancellable | null): string;
+        password_run(cancellable: Gio.Cancellable | null): string;
         /**
          * Reset the contents and properties of the prompt.
          */
@@ -3509,7 +3477,7 @@ export namespace Shell {
          * If this is `null`, then no additional choice is being displayed.
          * @param choice_label the additional choice or `null`
          */
-        set_choice_label(choice_label?: string | null): void;
+        set_choice_label(choice_label: string | null): void;
         /**
          * Set the label for the continue button.
          *
@@ -3560,7 +3528,7 @@ export namespace Shell {
          * If this string is `null` then no warning is displayed.
          * @param warning the warning or `null`
          */
-        set_warning(warning?: string | null): void;
+        set_warning(warning: string | null): void;
         /**
          * close a prompt
          * @virtual
@@ -3577,8 +3545,8 @@ export namespace Shell {
          * @virtual
          */
         vfunc_prompt_confirm_async(
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Complete an operation to prompt for confirmation.
@@ -3600,8 +3568,8 @@ export namespace Shell {
          * @virtual
          */
         vfunc_prompt_password_async(
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Complete an operation to prompt for a password.
@@ -3663,38 +3631,19 @@ export namespace Shell {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -3702,15 +3651,9 @@ export namespace Shell {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -3877,7 +3820,7 @@ export namespace Shell {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -4295,7 +4238,7 @@ export namespace Shell {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -4385,7 +4328,7 @@ export namespace Shell {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -4446,8 +4389,8 @@ export namespace Shell {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -4498,7 +4441,7 @@ export namespace Shell {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -4541,7 +4484,7 @@ export namespace Shell {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -4589,38 +4532,19 @@ export namespace Shell {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -4628,15 +4552,9 @@ export namespace Shell {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -4803,7 +4721,7 @@ export namespace Shell {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -5332,7 +5250,7 @@ export namespace Shell {
             cursor_y: number,
             cursor_scale: number,
             stream: Gio.OutputStream,
-            callback?: Gio.AsyncReadyCallback<Screenshot> | null,
+            callback: Gio.AsyncReadyCallback<Screenshot> | null,
         ): void;
         /**
          * Finish the asynchronous operation started by
@@ -5963,38 +5881,19 @@ export namespace Shell {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -6002,15 +5901,9 @@ export namespace Shell {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -6177,7 +6070,7 @@ export namespace Shell {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -6724,38 +6617,19 @@ export namespace Shell {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -6763,15 +6637,9 @@ export namespace Shell {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -6938,7 +6806,7 @@ export namespace Shell {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -7522,38 +7390,19 @@ export namespace Shell {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -7561,15 +7410,9 @@ export namespace Shell {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -7736,7 +7579,7 @@ export namespace Shell {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -8561,38 +8404,19 @@ export namespace Shell {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -8600,15 +8424,9 @@ export namespace Shell {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -8775,7 +8593,7 @@ export namespace Shell {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -9541,38 +9359,19 @@ export namespace Shell {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -9580,15 +9379,9 @@ export namespace Shell {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -9755,7 +9548,7 @@ export namespace Shell {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set

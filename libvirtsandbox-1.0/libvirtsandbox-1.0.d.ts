@@ -27,11 +27,11 @@ export namespace LibvirtSandbox {
     /**
      * @param argv pointer to application's argv
      */
-    function init(argv?: string[] | null): string[] | null;
+    function init(argv: string[] | null): string[] | null;
     /**
      * @param argv pointer to application's argv
      */
-    function init_check(argv?: string[] | null): [boolean, string[] | null];
+    function init_check(argv: string[] | null): [boolean, string[] | null];
     /**
      * @param value
      */
@@ -438,40 +438,84 @@ export namespace LibvirtSandbox {
 
         // Properties
 
+        /**
+         * @default null
+         */
         get arch(): string;
         set arch(val: string);
+        /**
+         * @default 425
+         */
         get gid(): number;
         set gid(val: number);
+        /**
+         * @default /builddir
+         */
         get homedir(): string;
         set homedir(val: string);
+        /**
+         * @default null
+         */
         get kernpath(): string;
         set kernpath(val: string);
+        /**
+         * @default null
+         */
         get kernrelease(): string;
         set kernrelease(val: string);
+        /**
+         * @default null
+         */
         get kmodpath(): string;
         set kmodpath(val: string);
         /**
          * @construct-only
+         * @default null
          */
         get name(): string;
+        /**
+         * @default null
+         */
         get root(): string;
         set root(val: string);
+        /**
+         * @default true
+         */
         get security_dynamic(): boolean;
         set security_dynamic(val: boolean);
+        /**
+         * @default true
+         */
         get securityDynamic(): boolean;
         set securityDynamic(val: boolean);
+        /**
+         * @default null
+         */
         get security_label(): string;
         set security_label(val: string);
+        /**
+         * @default null
+         */
         get securityLabel(): string;
         set securityLabel(val: string);
+        /**
+         * @default null
+         */
         get shell(): string;
         set shell(val: string);
+        /**
+         * @default 1000
+         */
         get uid(): number;
         set uid(val: number);
+        /**
+         * @default mockbuild
+         */
         get username(): string;
         set username(val: string);
         /**
          * @construct-only
+         * @default null
          */
         get uuid(): string;
 
@@ -911,18 +955,22 @@ export namespace LibvirtSandbox {
 
         /**
          * @construct-only
+         * @default LibvirtGConfig.DomainDiskFormat.RAW
          */
         get format(): LibvirtGConfig.DomainDiskFormat;
         /**
          * @construct-only
+         * @default null
          */
         get source(): string;
         /**
          * @construct-only
+         * @default null
          */
         get tag(): string;
         /**
          * @construct-only
+         * @default LibvirtGConfig.DomainDiskType.FILE
          */
         get type(): LibvirtGConfig.DomainDiskType;
 
@@ -1011,10 +1059,19 @@ export namespace LibvirtSandbox {
 
         // Properties
 
+        /**
+         * @default null
+         */
         get init(): string;
         set init(val: string);
+        /**
+         * @default null
+         */
         get kmoddir(): string;
         set kmoddir(val: string);
+        /**
+         * @default null
+         */
         get kver(): string;
         set kver(val: string);
 
@@ -1138,6 +1195,9 @@ export namespace LibvirtSandbox {
 
         // Properties
 
+        /**
+         * @default null
+         */
         get tty(): string;
         set tty(val: string);
 
@@ -1222,6 +1282,7 @@ export namespace LibvirtSandbox {
 
         /**
          * @construct-only
+         * @default null
          */
         get target(): string;
 
@@ -1304,6 +1365,9 @@ export namespace LibvirtSandbox {
 
         // Properties
 
+        /**
+         * @default null
+         */
         get source(): string;
         set source(val: string);
 
@@ -1502,6 +1566,7 @@ export namespace LibvirtSandbox {
 
         /**
          * @construct-only
+         * @default LibvirtGConfig.DomainDiskFormat.RAW
          */
         get format(): LibvirtGConfig.DomainDiskFormat;
 
@@ -1582,6 +1647,7 @@ export namespace LibvirtSandbox {
 
         /**
          * @construct-only
+         * @default 10240
          */
         get usage(): number;
 
@@ -1662,10 +1728,19 @@ export namespace LibvirtSandbox {
 
         // Properties
 
+        /**
+         * @default true
+         */
         get dhcp(): boolean;
         set dhcp(val: boolean);
+        /**
+         * @default null
+         */
         get mac(): string;
         set mac(val: string);
+        /**
+         * @default null
+         */
         get source(): string;
         set source(val: string);
 
@@ -1789,6 +1864,7 @@ export namespace LibvirtSandbox {
         get broadcast(): Gio.InetAddress;
         /**
          * @construct-only
+         * @default 24
          */
         get prefix(): number;
         /**
@@ -1891,6 +1967,9 @@ export namespace LibvirtSandbox {
 
         // Properties
 
+        /**
+         * @default null
+         */
         get name(): string;
         set name(val: string);
 
@@ -1980,8 +2059,14 @@ export namespace LibvirtSandbox {
 
         // Properties
 
+        /**
+         * @default null
+         */
         get name(): string;
         set name(val: string);
+        /**
+         * @default null
+         */
         get value(): string;
         set value(val: string);
 
@@ -2073,6 +2158,7 @@ export namespace LibvirtSandbox {
         get gateway(): Gio.InetAddress;
         /**
          * @construct-only
+         * @default 24
          */
         get prefix(): number;
         /**
@@ -2421,10 +2507,12 @@ export namespace LibvirtSandbox {
         get connection(): LibvirtGObject.Connection;
         /**
          * @construct-only
+         * @default null
          */
         get devname(): string;
         /**
          * @construct-only
+         * @default false
          */
         get direct(): boolean;
         /**
@@ -2433,6 +2521,7 @@ export namespace LibvirtSandbox {
         get domain(): LibvirtGObject.Domain;
         /**
          * @construct-only
+         * @default 93
          */
         get escape(): number;
 

@@ -170,7 +170,7 @@ export namespace FolksTelepathy {
                 Folks.UrlDetails.ConstructorProps {
             is_in_contact_list: boolean;
             isInContactList: boolean;
-            contact: TelepathyGLib.Contact;
+            contact: TelepathyGLib.Contact | null;
         }
     }
 
@@ -204,7 +204,7 @@ export namespace FolksTelepathy {
         /**
          * @construct-only
          */
-        get contact(): TelepathyGLib.Contact;
+        get contact(): TelepathyGLib.Contact | null;
 
         /**
          * Compile-time signal type information.
@@ -263,14 +263,14 @@ export namespace FolksTelepathy {
         get alias(): string;
         set alias(val: string);
         /** @category Inherited from Folks.AvatarDetails */
-        get avatar(): Gio.LoadableIcon;
-        set avatar(val: Gio.LoadableIcon);
+        get avatar(): Gio.LoadableIcon | null;
+        set avatar(val: Gio.LoadableIcon | null);
         /** @category Inherited from Folks.BirthdayDetails */
-        get birthday(): GLib.DateTime;
-        set birthday(val: GLib.DateTime);
+        get birthday(): GLib.DateTime | null;
+        set birthday(val: GLib.DateTime | null);
         /** @category Inherited from Folks.BirthdayDetails */
-        get calendar_event_id(): string;
-        set calendar_event_id(val: string);
+        get calendar_event_id(): string | null;
+        set calendar_event_id(val: string | null);
         /** @category Inherited from Folks.BirthdayDetails */
         get calendarEventId(): string;
         set calendarEventId(val: string);
@@ -303,7 +303,7 @@ export namespace FolksTelepathy {
          * @read-only
          * @category Inherited from Folks.InteractionDetails
          */
-        get last_im_interaction_datetime(): GLib.DateTime;
+        get last_im_interaction_datetime(): GLib.DateTime | null;
         /**
          * @read-only
          * @category Inherited from Folks.InteractionDetails
@@ -323,7 +323,7 @@ export namespace FolksTelepathy {
          * @read-only
          * @category Inherited from Folks.InteractionDetails
          */
-        get last_call_interaction_datetime(): GLib.DateTime;
+        get last_call_interaction_datetime(): GLib.DateTime | null;
         /**
          * @read-only
          * @category Inherited from Folks.InteractionDetails
@@ -336,8 +336,8 @@ export namespace FolksTelepathy {
         get imAddresses(): Gee.MultiMap;
         set imAddresses(val: Gee.MultiMap);
         /** @category Inherited from Folks.NameDetails */
-        get structured_name(): Folks.StructuredName;
-        set structured_name(val: Folks.StructuredName);
+        get structured_name(): Folks.StructuredName | null;
+        set structured_name(val: Folks.StructuredName | null);
         /** @category Inherited from Folks.NameDetails */
         get structuredName(): Folks.StructuredName;
         set structuredName(val: Folks.StructuredName);
@@ -411,7 +411,7 @@ export namespace FolksTelepathy {
          * @param _callback_
          * @virtual
          */
-        vfunc_change_alias(alias: string, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_change_alias(alias: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -429,7 +429,7 @@ export namespace FolksTelepathy {
         /**
          * @param avatar
          */
-        change_avatar(avatar?: Gio.LoadableIcon | null): globalThis.Promise<void>;
+        change_avatar(avatar: Gio.LoadableIcon | null): globalThis.Promise<void>;
         /**
          * @param avatar
          * @param _callback_
@@ -440,7 +440,7 @@ export namespace FolksTelepathy {
          * @param _callback_
          */
         change_avatar(
-            avatar?: Gio.LoadableIcon | null,
+            avatar: Gio.LoadableIcon | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -451,13 +451,13 @@ export namespace FolksTelepathy {
         /**
          * @param value
          */
-        set_avatar(value?: Gio.LoadableIcon | null): void;
+        set_avatar(value: Gio.LoadableIcon | null): void;
         /**
          * @param avatar
          * @param _callback_
          * @virtual
          */
-        vfunc_change_avatar(avatar?: Gio.LoadableIcon | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_change_avatar(avatar: Gio.LoadableIcon | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -471,11 +471,11 @@ export namespace FolksTelepathy {
          * @param value
          * @virtual
          */
-        vfunc_set_avatar(value?: Gio.LoadableIcon | null): void;
+        vfunc_set_avatar(value: Gio.LoadableIcon | null): void;
         /**
          * @param birthday
          */
-        change_birthday(birthday?: GLib.DateTime | null): globalThis.Promise<void>;
+        change_birthday(birthday: GLib.DateTime | null): globalThis.Promise<void>;
         /**
          * @param birthday
          * @param _callback_
@@ -486,7 +486,7 @@ export namespace FolksTelepathy {
          * @param _callback_
          */
         change_birthday(
-            birthday?: GLib.DateTime | null,
+            birthday: GLib.DateTime | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -496,7 +496,7 @@ export namespace FolksTelepathy {
         /**
          * @param event_id
          */
-        change_calendar_event_id(event_id?: string | null): globalThis.Promise<void>;
+        change_calendar_event_id(event_id: string | null): globalThis.Promise<void>;
         /**
          * @param event_id
          * @param _callback_
@@ -507,7 +507,7 @@ export namespace FolksTelepathy {
          * @param _callback_
          */
         change_calendar_event_id(
-            event_id?: string | null,
+            event_id: string | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -518,18 +518,18 @@ export namespace FolksTelepathy {
         /**
          * @param value
          */
-        set_birthday(value?: GLib.DateTime | null): void;
+        set_birthday(value: GLib.DateTime | null): void;
         get_calendar_event_id(): string | null;
         /**
          * @param value
          */
-        set_calendar_event_id(value?: string | null): void;
+        set_calendar_event_id(value: string | null): void;
         /**
          * @param birthday
          * @param _callback_
          * @virtual
          */
-        vfunc_change_birthday(birthday?: GLib.DateTime | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_change_birthday(birthday: GLib.DateTime | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -540,10 +540,7 @@ export namespace FolksTelepathy {
          * @param _callback_
          * @virtual
          */
-        vfunc_change_calendar_event_id(
-            event_id?: string | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_change_calendar_event_id(event_id: string | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -557,7 +554,7 @@ export namespace FolksTelepathy {
          * @param value
          * @virtual
          */
-        vfunc_set_birthday(value?: GLib.DateTime | null): void;
+        vfunc_set_birthday(value: GLib.DateTime | null): void;
         /**
          * @virtual
          */
@@ -566,7 +563,7 @@ export namespace FolksTelepathy {
          * @param value
          * @virtual
          */
-        vfunc_set_calendar_event_id(value?: string | null): void;
+        vfunc_set_calendar_event_id(value: string | null): void;
         /**
          * @param email_addresses
          */
@@ -598,7 +595,7 @@ export namespace FolksTelepathy {
          * @param _callback_
          * @virtual
          */
-        vfunc_change_email_addresses(email_addresses: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_change_email_addresses(email_addresses: Gee.Set, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -644,7 +641,7 @@ export namespace FolksTelepathy {
          * @param _callback_
          * @virtual
          */
-        vfunc_change_is_favourite(is_favourite: boolean, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_change_is_favourite(is_favourite: boolean, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -716,7 +713,7 @@ export namespace FolksTelepathy {
          * @param _callback_
          * @virtual
          */
-        vfunc_change_group(group: string, is_member: boolean, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_change_group(group: string, is_member: boolean, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -727,7 +724,7 @@ export namespace FolksTelepathy {
          * @param _callback_
          * @virtual
          */
-        vfunc_change_groups(groups: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_change_groups(groups: Gee.Set, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -793,7 +790,7 @@ export namespace FolksTelepathy {
          * @param _callback_
          * @virtual
          */
-        vfunc_change_im_addresses(im_addresses: Gee.MultiMap, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_change_im_addresses(im_addresses: Gee.MultiMap, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -811,7 +808,7 @@ export namespace FolksTelepathy {
         /**
          * @param name
          */
-        change_structured_name(name?: Folks.StructuredName | null): globalThis.Promise<void>;
+        change_structured_name(name: Folks.StructuredName | null): globalThis.Promise<void>;
         /**
          * @param name
          * @param _callback_
@@ -825,7 +822,7 @@ export namespace FolksTelepathy {
          * @param _callback_
          */
         change_structured_name(
-            name?: Folks.StructuredName | null,
+            name: Folks.StructuredName | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -878,7 +875,7 @@ export namespace FolksTelepathy {
         /**
          * @param value
          */
-        set_structured_name(value?: Folks.StructuredName | null): void;
+        set_structured_name(value: Folks.StructuredName | null): void;
         get_full_name(): string;
         /**
          * @param value
@@ -895,8 +892,8 @@ export namespace FolksTelepathy {
          * @virtual
          */
         vfunc_change_structured_name(
-            name?: Folks.StructuredName | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
+            name: Folks.StructuredName | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param _res_
@@ -908,7 +905,7 @@ export namespace FolksTelepathy {
          * @param _callback_
          * @virtual
          */
-        vfunc_change_full_name(full_name: string, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_change_full_name(full_name: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -919,7 +916,7 @@ export namespace FolksTelepathy {
          * @param _callback_
          * @virtual
          */
-        vfunc_change_nickname(nickname: string, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_change_nickname(nickname: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -933,7 +930,7 @@ export namespace FolksTelepathy {
          * @param value
          * @virtual
          */
-        vfunc_set_structured_name(value?: Folks.StructuredName | null): void;
+        vfunc_set_structured_name(value: Folks.StructuredName | null): void;
         /**
          * @virtual
          */
@@ -983,7 +980,7 @@ export namespace FolksTelepathy {
          * @param _callback_
          * @virtual
          */
-        vfunc_change_phone_numbers(phone_numbers: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_change_phone_numbers(phone_numbers: Gee.Set, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -1083,7 +1080,7 @@ export namespace FolksTelepathy {
          * @param _callback_
          * @virtual
          */
-        vfunc_change_urls(urls: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_change_urls(urls: Gee.Set, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -1145,38 +1142,19 @@ export namespace FolksTelepathy {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1184,15 +1162,9 @@ export namespace FolksTelepathy {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1359,7 +1331,7 @@ export namespace FolksTelepathy {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set

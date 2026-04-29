@@ -678,6 +678,7 @@ export namespace GWeather {
          * for the application that is querying the weather information.
          *
          * Weather providers require this information.
+         * @default null
          */
         get application_id(): string;
         set application_id(val: string);
@@ -686,6 +687,7 @@ export namespace GWeather {
          * for the application that is querying the weather information.
          *
          * Weather providers require this information.
+         * @default null
          */
         get applicationId(): string;
         set applicationId(val: string);
@@ -693,6 +695,7 @@ export namespace GWeather {
          * An email address or any other contact form URL.
          *
          * Weather providers require this information.
+         * @default null
          */
         get contact_info(): string;
         set contact_info(val: string);
@@ -700,16 +703,19 @@ export namespace GWeather {
          * An email address or any other contact form URL.
          *
          * Weather providers require this information.
+         * @default null
          */
         get contactInfo(): string;
         set contactInfo(val: string);
         /**
          * The enabled weather providers.
+         * @default GWeather.Provider.NONE
          */
         get enabled_providers(): Provider;
         set enabled_providers(val: Provider);
         /**
          * The enabled weather providers.
+         * @default GWeather.Provider.NONE
          */
         get enabledProviders(): Provider;
         set enabledProviders(val: Provider);
@@ -734,7 +740,7 @@ export namespace GWeather {
 
         _init(...args: any[]): void;
 
-        static ['new'](location?: Location | null): Info;
+        static ['new'](location: Location | null): Info;
 
         // Signals
 
@@ -941,7 +947,7 @@ export namespace GWeather {
          * you must call {@link GWeather.Info.update} to obtain the new data.
          * @param location a location for which weather is desired
          */
-        set_location(location?: Location | null): void;
+        set_location(location: Location | null): void;
         /**
          * Requests a reload of weather conditions and forecast data from
          * enabled network services.
@@ -1053,8 +1059,8 @@ export namespace GWeather {
         detect_nearest_city(
             lat: number,
             lon: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Compares two {@link GWeather.Location} and sees if they represent the same
@@ -1118,7 +1124,7 @@ export namespace GWeather {
          * @param func a function to iterate   over the locations; the function must return `TRUE` to continue checking   for the location, and `FALSE` to filter the location out
          * @returns the city closest to (`lat`, `lon`), in the   region or administrative district of `loc` with validation of   filter function
          */
-        find_nearest_city_full(lat: number, lon: number, func?: FilterFunc | null): Location;
+        find_nearest_city_full(lat: number, lon: number, func: FilterFunc | null): Location;
         /**
          * Frees the array of timezones returned by
          * `gweather_location_get_timezones()`.
@@ -1267,7 +1273,7 @@ export namespace GWeather {
          * @param child the next child
          * @returns The next child, if one exists
          */
-        next_child(child?: Location | null): Location | null;
+        next_child(child: Location | null): Location | null;
         /**
          * Transforms a {@link GWeather.Location} into a {@link GLib.Variant}, in a way that
          * calling `gweather_location_deserialize()` will hold an equivalent

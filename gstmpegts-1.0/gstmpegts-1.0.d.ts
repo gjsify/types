@@ -1407,8 +1407,8 @@ export namespace GstMpegts {
      */
     function descriptor_from_dvb_service(
         service_type: DVBServiceType,
-        service_name?: string | null,
-        service_provider?: string | null,
+        service_name: string | null,
+        service_provider: string | null,
     ): Descriptor;
     /**
      * @param lang a string containing the ISO639 language
@@ -1435,7 +1435,7 @@ export namespace GstMpegts {
      * @param additional_info pointer to optional additional info
      * @returns {@link GstMpegts.Descriptor}, `null` on failure
      */
-    function descriptor_from_registration(format_identifier: string, additional_info?: Uint8Array | null): Descriptor;
+    function descriptor_from_registration(format_identifier: string, additional_info: Uint8Array | null): Descriptor;
     /**
      * @param source
      * @since 1.20
@@ -2487,8 +2487,8 @@ export namespace GstMpegts {
          */
         static from_dvb_service(
             service_type: DVBServiceType,
-            service_name?: string | null,
-            service_provider?: string | null,
+            service_name: string | null,
+            service_provider: string | null,
         ): Descriptor;
         /**
          * @param lang a string containing the ISO639 language
@@ -2508,7 +2508,7 @@ export namespace GstMpegts {
          * @param format_identifier a 4 character format identifier string
          * @param additional_info pointer to optional additional info
          */
-        static from_registration(format_identifier: string, additional_info?: Uint8Array | null): Descriptor;
+        static from_registration(format_identifier: string, additional_info: Uint8Array | null): Descriptor;
         /**
          * @param source
          */

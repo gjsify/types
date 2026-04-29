@@ -303,7 +303,7 @@ export namespace GstApp {
         interface ConstructorProps extends GstBase.BaseSink.ConstructorProps, Gst.URIHandler.ConstructorProps {
             buffer_list: boolean;
             bufferList: boolean;
-            caps: Gst.Caps;
+            caps: Gst.Caps | null;
             drop: boolean;
             emit_signals: boolean;
             emitSignals: boolean;
@@ -359,29 +359,57 @@ export namespace GstApp {
 
         // Properties
 
+        /**
+         * @default false
+         */
         get buffer_list(): boolean;
         set buffer_list(val: boolean);
+        /**
+         * @default false
+         */
         get bufferList(): boolean;
         set bufferList(val: boolean);
-        get caps(): Gst.Caps;
-        set caps(val: Gst.Caps);
+        get caps(): Gst.Caps | null;
+        set caps(val: Gst.Caps | null);
+        /**
+         * @default false
+         */
         get drop(): boolean;
         set drop(val: boolean);
+        /**
+         * @default false
+         */
         get emit_signals(): boolean;
         set emit_signals(val: boolean);
+        /**
+         * @default false
+         */
         get emitSignals(): boolean;
         set emitSignals(val: boolean);
         /**
          * @read-only
+         * @default true
          */
         // This accessor conflicts with a property or field in a parent class or interface.
         eos: boolean | any;
+        /**
+         * @default 0
+         */
         get max_buffers(): number;
         set max_buffers(val: number);
+        /**
+         * @default 0
+         */
         get maxBuffers(): number;
         set maxBuffers(val: number);
+        /**
+         * @default true
+         */
         get wait_on_eos(): boolean;
         set wait_on_eos(val: boolean);
+        /**
+         * @default true
+         */
         get waitOnEos(): boolean;
         set waitOnEos(val: boolean);
 
@@ -613,7 +641,7 @@ export namespace GstApp {
          * you must check the caps on the samples to get the actual used caps.
          * @param caps caps to set
          */
-        set_caps(caps?: Gst.Caps | null): void;
+        set_caps(caps: Gst.Caps | null): void;
         /**
          * Instruct `appsink` to drop old buffers when the maximum amount of queued
          * buffers is reached.
@@ -760,38 +788,19 @@ export namespace GstApp {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -799,15 +808,9 @@ export namespace GstApp {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -979,7 +982,7 @@ export namespace GstApp {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1291,7 +1294,7 @@ export namespace GstApp {
 
         interface ConstructorProps extends GstBase.BaseSrc.ConstructorProps, Gst.URIHandler.ConstructorProps {
             block: boolean;
-            caps: Gst.Caps;
+            caps: Gst.Caps | null;
             current_level_buffers: bigint | number;
             currentLevelBuffers: bigint | number;
             current_level_bytes: bigint | number;
@@ -1403,6 +1406,7 @@ export namespace GstApp {
          * When max-bytes are queued and after the enough-data signal has been emitted,
          * block any further push-buffer calls until the amount of queued bytes drops
          * below the max-bytes limit.
+         * @default false
          */
         get block(): boolean;
         set block(val: boolean);
@@ -1410,48 +1414,55 @@ export namespace GstApp {
          * The GstCaps that will negotiated downstream and will be put
          * on outgoing buffers.
          */
-        get caps(): Gst.Caps;
-        set caps(val: Gst.Caps);
+        get caps(): Gst.Caps | null;
+        set caps(val: Gst.Caps | null);
         /**
          * The number of currently queued buffers inside appsrc.
          * @since 1.20
          * @read-only
+         * @default 0
          */
         get current_level_buffers(): number;
         /**
          * The number of currently queued buffers inside appsrc.
          * @since 1.20
          * @read-only
+         * @default 0
          */
         get currentLevelBuffers(): number;
         /**
          * The number of currently queued bytes inside appsrc.
          * @since 1.2
          * @read-only
+         * @default 0
          */
         get current_level_bytes(): number;
         /**
          * The number of currently queued bytes inside appsrc.
          * @since 1.2
          * @read-only
+         * @default 0
          */
         get currentLevelBytes(): number;
         /**
          * The amount of currently queued time inside appsrc.
          * @since 1.20
          * @read-only
+         * @default 0
          */
         get current_level_time(): number;
         /**
          * The amount of currently queued time inside appsrc.
          * @since 1.20
          * @read-only
+         * @default 0
          */
         get currentLevelTime(): number;
         /**
          * The total duration in nanoseconds of the data stream. If the total duration is known, it
          * is recommended to configure it with this property.
          * @since 1.10
+         * @default 18446744073709551615
          */
         get duration(): number;
         set duration(val: bigint | number);
@@ -1459,6 +1470,7 @@ export namespace GstApp {
          * Make appsrc emit the "need-data", "enough-data" and "seek-data" signals.
          * This option is by default enabled for backwards compatibility reasons but
          * can disabled when needed because signal emission is expensive.
+         * @default true
          */
         get emit_signals(): boolean;
         set emit_signals(val: boolean);
@@ -1466,12 +1478,14 @@ export namespace GstApp {
          * Make appsrc emit the "need-data", "enough-data" and "seek-data" signals.
          * This option is by default enabled for backwards compatibility reasons but
          * can disabled when needed because signal emission is expensive.
+         * @default true
          */
         get emitSignals(): boolean;
         set emitSignals(val: boolean);
         /**
          * The format to use for segment events. When the source is producing
          * timestamped buffers this property should be set to GST_FORMAT_TIME.
+         * @default Gst.Format.BYTES
          */
         get format(): Gst.Format;
         set format(val: Gst.Format);
@@ -1485,6 +1499,7 @@ export namespace GstApp {
          * GstAppSrc::format should be time. However, possibly {@link GstApp.AppSrc} can support
          * other formats.
          * @since 1.18
+         * @default false
          */
         get handle_segment_change(): boolean;
         set handle_segment_change(val: boolean);
@@ -1498,18 +1513,21 @@ export namespace GstApp {
          * GstAppSrc::format should be time. However, possibly {@link GstApp.AppSrc} can support
          * other formats.
          * @since 1.18
+         * @default false
          */
         get handleSegmentChange(): boolean;
         set handleSegmentChange(val: boolean);
         /**
          * Instruct the source to behave like a live source. This includes that it
          * will only push out buffers in the PLAYING state.
+         * @default false
          */
         // This accessor conflicts with a field or function name in a parent class or interface.
         is_live: boolean | any;
         /**
          * Instruct the source to behave like a live source. This includes that it
          * will only push out buffers in the PLAYING state.
+         * @default false
          */
         get isLive(): boolean;
         set isLive(val: boolean);
@@ -1519,6 +1537,7 @@ export namespace GstApp {
          * full. The selected type defines whether to drop the oldest or new
          * buffers.
          * @since 1.20
+         * @default GstApp.AppLeakyType.NONE
          */
         get leaky_type(): AppLeakyType;
         set leaky_type(val: AppLeakyType);
@@ -1528,6 +1547,7 @@ export namespace GstApp {
          * full. The selected type defines whether to drop the oldest or new
          * buffers.
          * @since 1.20
+         * @default GstApp.AppLeakyType.NONE
          */
         get leakyType(): AppLeakyType;
         set leakyType(val: AppLeakyType);
@@ -1536,6 +1556,7 @@ export namespace GstApp {
          * After the maximum amount of buffers are queued, appsrc will emit the
          * "enough-data" signal.
          * @since 1.20
+         * @default 0
          */
         get max_buffers(): number;
         set max_buffers(val: bigint | number);
@@ -1544,6 +1565,7 @@ export namespace GstApp {
          * After the maximum amount of buffers are queued, appsrc will emit the
          * "enough-data" signal.
          * @since 1.20
+         * @default 0
          */
         get maxBuffers(): number;
         set maxBuffers(val: bigint | number);
@@ -1551,6 +1573,7 @@ export namespace GstApp {
          * The maximum amount of bytes that can be queued internally.
          * After the maximum amount of bytes are queued, appsrc will emit the
          * "enough-data" signal.
+         * @default 200000
          */
         get max_bytes(): number;
         set max_bytes(val: bigint | number);
@@ -1558,11 +1581,18 @@ export namespace GstApp {
          * The maximum amount of bytes that can be queued internally.
          * After the maximum amount of bytes are queued, appsrc will emit the
          * "enough-data" signal.
+         * @default 200000
          */
         get maxBytes(): number;
         set maxBytes(val: bigint | number);
+        /**
+         * @default -1
+         */
         get max_latency(): number;
         set max_latency(val: bigint | number);
+        /**
+         * @default -1
+         */
         get maxLatency(): number;
         set maxLatency(val: bigint | number);
         /**
@@ -1570,6 +1600,7 @@ export namespace GstApp {
          * After the maximum amount of time are queued, appsrc will emit the
          * "enough-data" signal.
          * @since 1.20
+         * @default 0
          */
         get max_time(): number;
         set max_time(val: bigint | number);
@@ -1578,48 +1609,56 @@ export namespace GstApp {
          * After the maximum amount of time are queued, appsrc will emit the
          * "enough-data" signal.
          * @since 1.20
+         * @default 0
          */
         get maxTime(): number;
         set maxTime(val: bigint | number);
         /**
          * The minimum latency of the source. A value of -1 will use the default
          * latency calculations of {@link GstBase.BaseSrc}.
+         * @default -1
          */
         get min_latency(): number;
         set min_latency(val: bigint | number);
         /**
          * The minimum latency of the source. A value of -1 will use the default
          * latency calculations of {@link GstBase.BaseSrc}.
+         * @default -1
          */
         get minLatency(): number;
         set minLatency(val: bigint | number);
         /**
          * Make appsrc emit the "need-data" signal when the amount of bytes in the
          * queue drops below this percentage of max-bytes.
+         * @default 0
          */
         get min_percent(): number;
         set min_percent(val: number);
         /**
          * Make appsrc emit the "need-data" signal when the amount of bytes in the
          * queue drops below this percentage of max-bytes.
+         * @default 0
          */
         get minPercent(): number;
         set minPercent(val: number);
         /**
          * The total size in bytes of the data stream. If the total size is known, it
          * is recommended to configure it with this property.
+         * @default -1
          */
         get size(): number;
         set size(val: bigint | number);
         /**
          * The type of stream that this source is producing.  For seekable streams the
          * application should connect to the seek-data signal.
+         * @default GstApp.AppStreamType.STREAM
          */
         get stream_type(): AppStreamType;
         set stream_type(val: AppStreamType);
         /**
          * The type of stream that this source is producing.  For seekable streams the
          * application should connect to the seek-data signal.
+         * @default GstApp.AppStreamType.STREAM
          */
         get streamType(): AppStreamType;
         set streamType(val: AppStreamType);
@@ -1842,7 +1881,7 @@ export namespace GstApp {
          * buffers must match the caps or left NULL.
          * @param caps caps to set
          */
-        set_caps(caps?: Gst.Caps | null): void;
+        set_caps(caps: Gst.Caps | null): void;
         /**
          * @param args
          */
@@ -1991,38 +2030,19 @@ export namespace GstApp {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -2030,15 +2050,9 @@ export namespace GstApp {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -2210,7 +2224,7 @@ export namespace GstApp {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set

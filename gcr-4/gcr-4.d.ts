@@ -438,7 +438,7 @@ export namespace Gcr {
      * Unreferences a parsed item which was referenced with `gcr_parsed_ref()`
      * @param parsed a parsed item
      */
-    function parsed_unref(parsed?: any | null): void;
+    function parsed_unref(parsed: any | null): void;
     /**
      * Add a {@link Gck.Module} to the list of PKCS#11 modules that are used by the
      * GCR library.
@@ -461,7 +461,7 @@ export namespace Gcr {
      * @param unused unused
      * @returns whether the module was sucessfully added.
      */
-    function pkcs11_add_module_from_file(module_path: string, unused?: any | null): boolean;
+    function pkcs11_add_module_from_file(module_path: string, unused: any | null): boolean;
     /**
      * List all the PKCS#11 modules that are used by the GCR library.
      * Each module is a {@link Gck.Module} object.
@@ -508,12 +508,12 @@ export namespace Gcr {
      * @param cancellable optional cancellable used to cancel the operation
      * @returns whether the operation was successful or not.
      */
-    function pkcs11_initialize(cancellable?: Gio.Cancellable | null): boolean;
+    function pkcs11_initialize(cancellable: Gio.Cancellable | null): boolean;
     /**
      * Asynchronously initialize the registered PKCS#11 modules.
      * @param cancellable optional cancellable used to cancel the operation
      */
-    function pkcs11_initialize_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+    function pkcs11_initialize_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
     /**
      * Asynchronously initialize the registered PKCS#11 modules.
      * @param cancellable optional cancellable used to cancel the operation
@@ -529,8 +529,8 @@ export namespace Gcr {
      * @param callback callback which will be called when the operation completes
      */
     function pkcs11_initialize_async(
-        cancellable?: Gio.Cancellable | null,
-        callback?: Gio.AsyncReadyCallback<Gio.Cancellable | null> | null,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<Gio.Cancellable | null> | null,
     ): globalThis.Promise<boolean> | void;
     /**
      * Complete the asynchronous operation to initialize the registered PKCS#11
@@ -557,7 +557,7 @@ export namespace Gcr {
      * PKCS#11 slots are automatically configured by the GCR library.
      * @param pkcs11_uris the uris which identifies trust lookup slots
      */
-    function pkcs11_set_trust_lookup_uris(pkcs11_uris?: string | null): void;
+    function pkcs11_set_trust_lookup_uris(pkcs11_uris: string | null): void;
     /**
      * Set the PKCS#11 URI that is used to identify which slot to use for
      * storing trust assertions.
@@ -566,7 +566,7 @@ export namespace Gcr {
      * PKCS#11 slot is automatically configured by the GCR library.
      * @param pkcs11_uri the uri which identifies trust storage slot
      */
-    function pkcs11_set_trust_store_uri(pkcs11_uri?: string | null): void;
+    function pkcs11_set_trust_store_uri(pkcs11_uri: string | null): void;
     /**
      * Add a pinned `certificate` for connections to `peer` for `purpose`. A pinned
      * certificate overrides all other certificate verification and should be
@@ -587,7 +587,7 @@ export namespace Gcr {
         certificate: Certificate,
         purpose: string,
         peer: string,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): boolean;
     /**
      * Add a pinned certificate for communication with `peer` for `purpose`. A pinned
@@ -609,7 +609,7 @@ export namespace Gcr {
         certificate: Certificate,
         purpose: string,
         peer: string,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): globalThis.Promise<boolean>;
     /**
      * Add a pinned certificate for communication with `peer` for `purpose`. A pinned
@@ -656,8 +656,8 @@ export namespace Gcr {
         certificate: Certificate,
         purpose: string,
         peer: string,
-        cancellable?: Gio.Cancellable | null,
-        callback?: Gio.AsyncReadyCallback<Certificate> | null,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<Certificate> | null,
     ): globalThis.Promise<boolean> | void;
     /**
      * Finishes an asynchronous operation started by
@@ -684,7 +684,7 @@ export namespace Gcr {
     function trust_is_certificate_anchored(
         certificate: Certificate,
         purpose: string,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): boolean;
     /**
      * Check if the `certificate` is a trust anchor for the given `purpose`. A trust
@@ -701,7 +701,7 @@ export namespace Gcr {
     function trust_is_certificate_anchored_async(
         certificate: Certificate,
         purpose: string,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): globalThis.Promise<boolean>;
     /**
      * Check if the `certificate` is a trust anchor for the given `purpose`. A trust
@@ -738,8 +738,8 @@ export namespace Gcr {
     function trust_is_certificate_anchored_async(
         certificate: Certificate,
         purpose: string,
-        cancellable?: Gio.Cancellable | null,
-        callback?: Gio.AsyncReadyCallback<Certificate> | null,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<Certificate> | null,
     ): globalThis.Promise<boolean> | void;
     /**
      * Finishes an asynchronous operation started by
@@ -767,7 +767,7 @@ export namespace Gcr {
     function trust_is_certificate_distrusted(
         serial_nr: Uint8Array | string,
         issuer: Uint8Array | string,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): boolean;
     /**
      * Asynchronously checks whether the certificate that can be uniquely
@@ -788,7 +788,7 @@ export namespace Gcr {
     function trust_is_certificate_distrusted_async(
         serial_nr: Uint8Array | string,
         issuer: Uint8Array | string,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): globalThis.Promise<boolean>;
     /**
      * Asynchronously checks whether the certificate that can be uniquely
@@ -833,8 +833,8 @@ export namespace Gcr {
     function trust_is_certificate_distrusted_async(
         serial_nr: Uint8Array | string,
         issuer: Uint8Array | string,
-        cancellable?: Gio.Cancellable | null,
-        callback?: Gio.AsyncReadyCallback<Uint8Array> | null,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<Uint8Array> | null,
     ): globalThis.Promise<boolean> | void;
     /**
      * Finishes an asynchronous operation started by
@@ -865,7 +865,7 @@ export namespace Gcr {
         certificate: Certificate,
         purpose: string,
         peer: string,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): boolean;
     /**
      * Check if `certificate` is pinned for `purpose` to communicate with `peer`. A
@@ -883,7 +883,7 @@ export namespace Gcr {
         certificate: Certificate,
         purpose: string,
         peer: string,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): globalThis.Promise<boolean>;
     /**
      * Check if `certificate` is pinned for `purpose` to communicate with `peer`. A
@@ -922,8 +922,8 @@ export namespace Gcr {
         certificate: Certificate,
         purpose: string,
         peer: string,
-        cancellable?: Gio.Cancellable | null,
-        callback?: Gio.AsyncReadyCallback<Certificate> | null,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<Certificate> | null,
     ): globalThis.Promise<boolean> | void;
     /**
      * Finishes an asynchronous operation started by
@@ -953,7 +953,7 @@ export namespace Gcr {
         certificate: Certificate,
         purpose: string,
         peer: string,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): boolean;
     /**
      * Remove a pinned certificate for communication with `peer` for `purpose`.
@@ -973,7 +973,7 @@ export namespace Gcr {
         certificate: Certificate,
         purpose: string,
         peer: string,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): globalThis.Promise<boolean>;
     /**
      * Remove a pinned certificate for communication with `peer` for `purpose`.
@@ -1016,8 +1016,8 @@ export namespace Gcr {
         certificate: Certificate,
         purpose: string,
         peer: string,
-        cancellable?: Gio.Cancellable | null,
-        callback?: Gio.AsyncReadyCallback<Certificate> | null,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<Certificate> | null,
     ): globalThis.Promise<boolean> | void;
     /**
      * Finishes an asynchronous operation started by
@@ -1181,6 +1181,7 @@ export namespace Gcr {
         /**
          * The length of the certificate chain.
          * @read-only
+         * @default 0
          */
         get length(): number;
 
@@ -1276,7 +1277,7 @@ export namespace Gcr {
             purpose: string,
             peer: string | null,
             flags: CertificateChainFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Complete a certificate chain. Once a certificate chain has been built
@@ -1317,7 +1318,7 @@ export namespace Gcr {
             purpose: string,
             peer: string | null,
             flags: CertificateChainFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Complete a certificate chain. Once a certificate chain has been built
@@ -1402,7 +1403,7 @@ export namespace Gcr {
             purpose: string,
             peer: string | null,
             flags: CertificateChainFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1492,11 +1493,13 @@ export namespace Gcr {
         /**
          * Whether this certificate is critical.
          * @construct-only
+         * @default false
          */
         get critical(): boolean;
         /**
          * The Object Identifier (OID) that identifies the extension.
          * @read-only
+         * @default null
          */
         get oid(): string;
         /**
@@ -1608,11 +1611,13 @@ export namespace Gcr {
         /**
          * The number of items. See {@link Gio.ListModel.get_n_items}.
          * @read-only
+         * @default 0
          */
         get n_items(): number;
         /**
          * The number of items. See {@link Gio.ListModel.get_n_items}.
          * @read-only
+         * @default 0
          */
         get nItems(): number;
 
@@ -1814,38 +1819,19 @@ export namespace Gcr {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1853,15 +1839,9 @@ export namespace Gcr {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -2028,7 +2008,7 @@ export namespace Gcr {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -2427,11 +2407,13 @@ export namespace Gcr {
         /**
          * The number of items. See {@link Gio.ListModel.get_n_items}.
          * @read-only
+         * @default 0
          */
         get n_items(): number;
         /**
          * The number of items. See {@link Gio.ListModel.get_n_items}.
          * @read-only
+         * @default 0
          */
         get nItems(): number;
 
@@ -2628,38 +2610,19 @@ export namespace Gcr {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -2667,15 +2630,9 @@ export namespace Gcr {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -2842,7 +2799,7 @@ export namespace Gcr {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -3069,11 +3026,13 @@ export namespace Gcr {
         /**
          * The number of items. See {@link Gio.ListModel.get_n_items}.
          * @read-only
+         * @default 0
          */
         get n_items(): number;
         /**
          * The number of items. See {@link Gio.ListModel.get_n_items}.
          * @read-only
+         * @default 0
          */
         get nItems(): number;
 
@@ -3272,38 +3231,19 @@ export namespace Gcr {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -3311,15 +3251,9 @@ export namespace Gcr {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -3486,7 +3420,7 @@ export namespace Gcr {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -3862,10 +3796,12 @@ export namespace Gcr {
 
         /**
          * @read-only
+         * @default 0
          */
         get n_items(): number;
         /**
          * @read-only
+         * @default 0
          */
         get nItems(): number;
 
@@ -4067,38 +4003,19 @@ export namespace Gcr {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -4106,15 +4023,9 @@ export namespace Gcr {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -4281,7 +4192,7 @@ export namespace Gcr {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -4694,38 +4605,19 @@ export namespace Gcr {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -4733,15 +4625,9 @@ export namespace Gcr {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -4908,7 +4794,7 @@ export namespace Gcr {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -5196,6 +5082,7 @@ export namespace Gcr {
 
         /**
          * @construct-only
+         * @default null
          */
         get label(): string;
         /**
@@ -5489,38 +5376,19 @@ export namespace Gcr {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -5528,15 +5396,9 @@ export namespace Gcr {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -5703,7 +5565,7 @@ export namespace Gcr {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -6049,7 +5911,7 @@ export namespace Gcr {
          * @param private_key a private key
          * @param cancellable cancellation object
          */
-        static capable(private_key: Gck.Object, cancellable?: Gio.Cancellable | null): boolean;
+        static capable(private_key: Gck.Object, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously check whether {@link CertificateRequest} is capable of
          * creating a request for the given `private_key`.
@@ -6059,8 +5921,8 @@ export namespace Gcr {
          */
         static capable_async(
             private_key: Gck.Object,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<CertificateRequest> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<CertificateRequest> | null,
         ): void;
         /**
          * Get the result for asynchronously check whether {@link CertificateRequest} is
@@ -6085,7 +5947,7 @@ export namespace Gcr {
          * @param cancellable a cancellation object
          * @returns whether certificate request was successfully completed or not
          */
-        complete(cancellable?: Gio.Cancellable | null): boolean;
+        complete(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously complete and sign a certificate request, so that it can
          * be encoded and sent to a certificate authority.
@@ -6093,7 +5955,7 @@ export namespace Gcr {
          * This call will return immediately and complete later.
          * @param cancellable a cancellation object
          */
-        complete_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        complete_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously complete and sign a certificate request, so that it can
          * be encoded and sent to a certificate authority.
@@ -6112,7 +5974,7 @@ export namespace Gcr {
          * @param callback called when the operation completes
          */
         complete_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -6181,6 +6043,7 @@ export namespace Gcr {
         get fields(): Gio.ListModel;
         /**
          * @construct-only
+         * @default null
          */
         get label(): string;
 
@@ -6597,38 +6460,19 @@ export namespace Gcr {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -6636,15 +6480,9 @@ export namespace Gcr {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -6811,7 +6649,7 @@ export namespace Gcr {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -7037,12 +6875,12 @@ export namespace Gcr {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            parsed_attributes: Gck.Attributes;
-            parsedAttributes: Gck.Attributes;
-            parsed_description: string;
-            parsedDescription: string;
-            parsed_label: string;
-            parsedLabel: string;
+            parsed_attributes: Gck.Attributes | null;
+            parsedAttributes: Gck.Attributes | null;
+            parsed_description: string | null;
+            parsedDescription: string | null;
+            parsed_label: string | null;
+            parsedLabel: string | null;
         }
     }
 
@@ -7073,37 +6911,37 @@ export namespace Gcr {
          * generally only valid during a `Gcr.Parser::parsed` signal.
          * @read-only
          */
-        get parsed_attributes(): Gck.Attributes;
+        get parsed_attributes(): Gck.Attributes | null;
         /**
          * Get the attributes that make up the currently parsed item. This is
          * generally only valid during a `Gcr.Parser::parsed` signal.
          * @read-only
          */
-        get parsedAttributes(): Gck.Attributes;
+        get parsedAttributes(): Gck.Attributes | null;
         /**
          * The description of the type of the currently parsed item. This is generally
          * only valid during a `Gcr.Parser::parsed` signal.
          * @read-only
          */
-        get parsed_description(): string;
+        get parsed_description(): string | null;
         /**
          * The description of the type of the currently parsed item. This is generally
          * only valid during a `Gcr.Parser::parsed` signal.
          * @read-only
          */
-        get parsedDescription(): string;
+        get parsedDescription(): string | null;
         /**
          * The label of the currently parsed item. This is generally
          * only valid during a `Gcr.Parser::parsed` signal.
          * @read-only
          */
-        get parsed_label(): string;
+        get parsed_label(): string | null;
         /**
          * The label of the currently parsed item. This is generally
          * only valid during a `Gcr.Parser::parsed` signal.
          * @read-only
          */
-        get parsedLabel(): string;
+        get parsedLabel(): string | null;
 
         /**
          * Compile-time signal type information.
@@ -7164,7 +7002,7 @@ export namespace Gcr {
          * items. This is usually called from the `Gcr.Parser::authenticate` signal.
          * @param password a password to try
          */
-        add_password(password?: string | null): void;
+        add_password(password: string | null): void;
         /**
          * Disable parsing of the given format. Use {@link Gcr.DataFormat.ALL} to disable all the formats.
          * @param format The format identifier
@@ -7258,7 +7096,7 @@ export namespace Gcr {
          * @param cancellable An optional cancellation object
          * @returns Whether the parsing completed successfully or not.
          */
-        parse_stream(input: Gio.InputStream, cancellable?: Gio.Cancellable | null): boolean;
+        parse_stream(input: Gio.InputStream, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Parse items from the data in a {@link Gio.InputStream}. This function completes
          * asyncronously and doesn't block.
@@ -7268,7 +7106,7 @@ export namespace Gcr {
          * @param input The input stream
          * @param cancellable An optional cancellation object
          */
-        parse_stream_async(input: Gio.InputStream, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        parse_stream_async(input: Gio.InputStream, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Parse items from the data in a {@link Gio.InputStream}. This function completes
          * asyncronously and doesn't block.
@@ -7296,7 +7134,7 @@ export namespace Gcr {
          */
         parse_stream_async(
             input: Gio.InputStream,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -7309,7 +7147,7 @@ export namespace Gcr {
          * Sets the filename of the parser item.
          * @param filename a string of the filename of the parser item
          */
-        set_filename(filename?: string | null): void;
+        set_filename(filename: string | null): void;
     }
 
     namespace Pkcs11Certificate {
@@ -7406,7 +7244,7 @@ export namespace Gcr {
          * @param certificate a {@link Gcr.Certificate}
          * @param cancellable a cancellable
          */
-        static lookup_issuer(certificate: Certificate, cancellable?: Gio.Cancellable | null): Certificate | null;
+        static lookup_issuer(certificate: Certificate, cancellable: Gio.Cancellable | null): Certificate | null;
         /**
          * Lookup a the issuer of a `certificate` in the PKCS#11 storage. The
          * lookup is done using the issuer DN of the certificate. No certificate chain
@@ -7421,8 +7259,8 @@ export namespace Gcr {
          */
         static lookup_issuer_async(
             certificate: Certificate,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<Pkcs11Certificate> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<Pkcs11Certificate> | null,
         ): void;
         /**
          * Finishes an asynchronous operation started by
@@ -7444,7 +7282,7 @@ export namespace Gcr {
          * @param pkcs11_uri a A PKCS \#11 URI
          * @param cancellable a {@link Gio.Cancellable}
          */
-        static new_from_uri(pkcs11_uri: string, cancellable?: Gio.Cancellable | null): Certificate | null;
+        static new_from_uri(pkcs11_uri: string, cancellable: Gio.Cancellable | null): Certificate | null;
         /**
          * Lookup a certificate in the PKCS#11 storage by the given URI.
          *
@@ -7457,8 +7295,8 @@ export namespace Gcr {
          */
         static new_from_uri_async(
             pkcs11_uri: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<Pkcs11Certificate> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<Pkcs11Certificate> | null,
         ): void;
         /**
          * Finishes an asynchronous operation started by
@@ -7488,25 +7326,25 @@ export namespace Gcr {
          * @read-only
          * @category Inherited from Gcr.Certificate
          */
-        get expiry_date(): GLib.DateTime;
+        get expiry_date(): GLib.DateTime | null;
         /**
          * The expiry date of the certificate
          * @read-only
          * @category Inherited from Gcr.Certificate
          */
-        get expiryDate(): GLib.DateTime;
+        get expiryDate(): GLib.DateTime | null;
         /**
          * Common name part of the certificate issuer
          * @read-only
          * @category Inherited from Gcr.Certificate
          */
-        get issuer_name(): string;
+        get issuer_name(): string | null;
         /**
          * Common name part of the certificate issuer
          * @read-only
          * @category Inherited from Gcr.Certificate
          */
-        get issuerName(): string;
+        get issuerName(): string | null;
         /**
          * A readable label for this certificate.
          * @read-only
@@ -7517,12 +7355,12 @@ export namespace Gcr {
          * @read-only
          * @category Inherited from Gcr.Certificate
          */
-        get subject_name(): string;
+        get subject_name(): string | null;
         /**
          * @read-only
          * @category Inherited from Gcr.Certificate
          */
-        get subjectName(): string;
+        get subjectName(): string | null;
         /**
          * Get the basic constraints for the certificate if present. If `false` is
          * returned then no basic constraints are present and the `is_ca` and
@@ -7765,38 +7603,19 @@ export namespace Gcr {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -7804,15 +7623,9 @@ export namespace Gcr {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -7984,7 +7797,7 @@ export namespace Gcr {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -8229,6 +8042,7 @@ export namespace Gcr {
          * and either {@link SecretExchange.begin} or {@link SecretExchange.receive}
          * have not been called successfully.
          * @construct-only
+         * @default sx-aes-1
          */
         get protocol(): string;
 
@@ -8247,7 +8061,7 @@ export namespace Gcr {
 
         _init(...args: any[]): void;
 
-        static ['new'](protocol?: string | null): SecretExchange;
+        static ['new'](protocol: string | null): SecretExchange;
 
         // Signals
 
@@ -8414,25 +8228,25 @@ export namespace Gcr {
          * @read-only
          * @category Inherited from Gcr.Certificate
          */
-        get expiry_date(): GLib.DateTime;
+        get expiry_date(): GLib.DateTime | null;
         /**
          * The expiry date of the certificate
          * @read-only
          * @category Inherited from Gcr.Certificate
          */
-        get expiryDate(): GLib.DateTime;
+        get expiryDate(): GLib.DateTime | null;
         /**
          * Common name part of the certificate issuer
          * @read-only
          * @category Inherited from Gcr.Certificate
          */
-        get issuer_name(): string;
+        get issuer_name(): string | null;
         /**
          * Common name part of the certificate issuer
          * @read-only
          * @category Inherited from Gcr.Certificate
          */
-        get issuerName(): string;
+        get issuerName(): string | null;
         /**
          * A readable label for this certificate.
          * @read-only
@@ -8443,12 +8257,12 @@ export namespace Gcr {
          * @read-only
          * @category Inherited from Gcr.Certificate
          */
-        get subject_name(): string;
+        get subject_name(): string | null;
         /**
          * @read-only
          * @category Inherited from Gcr.Certificate
          */
-        get subjectName(): string;
+        get subjectName(): string | null;
         /**
          * Get the basic constraints for the certificate if present. If `false` is
          * returned then no basic constraints are present and the `is_ca` and
@@ -8691,38 +8505,19 @@ export namespace Gcr {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -8730,15 +8525,9 @@ export namespace Gcr {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -8905,7 +8694,7 @@ export namespace Gcr {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -9169,7 +8958,7 @@ export namespace Gcr {
          * `g_spawn_async()`, `g_spawn_async_with_pipes()`.
          * @param askpass a {@link Gcr.SshAskpass} object
          */
-        static child_setup(askpass?: any | null): void;
+        static child_setup(askpass: any | null): void;
 
         // Methods
 
@@ -9239,12 +9028,14 @@ export namespace Gcr {
          * The DBus bus name of the prompter to use for prompting, or `null`
          * for the default prompter.
          * @construct-only
+         * @default null
          */
         get bus_name(): string;
         /**
          * The DBus bus name of the prompter to use for prompting, or `null`
          * for the default prompter.
          * @construct-only
+         * @default null
          */
         get busName(): string;
         /**
@@ -9262,11 +9053,13 @@ export namespace Gcr {
         /**
          * The timeout in seconds to wait when opening the prompt.
          * @construct-only
+         * @default -1
          */
         set timeout_seconds(val: number);
         /**
          * The timeout in seconds to wait when opening the prompt.
          * @construct-only
+         * @default -1
          */
         set timeoutSeconds(val: number);
 
@@ -9321,7 +9114,7 @@ export namespace Gcr {
          * @param timeout_seconds the number of seconds to wait to access the prompt, or -1
          * @param cancellable optional cancellation object
          */
-        static open(timeout_seconds: number, cancellable?: Gio.Cancellable | null): SystemPrompt;
+        static open(timeout_seconds: number, cancellable: Gio.Cancellable | null): SystemPrompt;
         /**
          * Asynchronously open a system prompt with the default system prompter.
          *
@@ -9337,8 +9130,8 @@ export namespace Gcr {
          */
         static open_async(
             timeout_seconds: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<SystemPrompt> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<SystemPrompt> | null,
         ): void;
         /**
          * Complete an operation to asynchronously open a system prompt.
@@ -9362,7 +9155,7 @@ export namespace Gcr {
         static open_for_prompter(
             prompter_name: string | null,
             timeout_seconds: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): SystemPrompt;
         /**
          * Opens a system prompt asynchronously. If prompter_name is `null`, then the
@@ -9382,8 +9175,8 @@ export namespace Gcr {
         static open_for_prompter_async(
             prompter_name: string | null,
             timeout_seconds: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<SystemPrompt> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<SystemPrompt> | null,
         ): void;
 
         // Methods
@@ -9401,7 +9194,7 @@ export namespace Gcr {
          * @param cancellable an optional cancellation object
          * @returns whether close was cleanly completed
          */
-        close(cancellable?: Gio.Cancellable | null): boolean;
+        close(cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param args
          */
@@ -9415,7 +9208,7 @@ export namespace Gcr {
          * This call returns immediately and completes asynchronously.
          * @param cancellable an optional cancellation object
          */
-        close_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        close_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Close this prompt asynchronously. After calling this function, no further
          * methods may be called on this object. The prompt object is not unreferenced
@@ -9436,7 +9229,7 @@ export namespace Gcr {
          * @param callback called when the operation completes
          */
         close_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -9463,6 +9256,7 @@ export namespace Gcr {
          * In X11, this will be a stringified version of the XWindow handle; in
          * Wayland this is the result of an export using the XDG foreign
          * protocol.
+         * @default null
          * @category Inherited from Gcr.Prompt
          */
         get caller_window(): string;
@@ -9477,18 +9271,21 @@ export namespace Gcr {
          * In X11, this will be a stringified version of the XWindow handle; in
          * Wayland this is the result of an export using the XDG foreign
          * protocol.
+         * @default null
          * @category Inherited from Gcr.Prompt
          */
         get callerWindow(): string;
         set callerWindow(val: string);
         /**
          * The label for the cancel button in the prompt.
+         * @default Cancel
          * @category Inherited from Gcr.Prompt
          */
         get cancel_label(): string;
         set cancel_label(val: string);
         /**
          * The label for the cancel button in the prompt.
+         * @default Cancel
          * @category Inherited from Gcr.Prompt
          */
         get cancelLabel(): string;
@@ -9497,6 +9294,7 @@ export namespace Gcr {
          * Whether the additional choice is chosen or not.
          *
          * The additional choice would have been setup using {@link Gcr.Prompt.choice_label}.
+         * @default false
          * @category Inherited from Gcr.Prompt
          */
         get choice_chosen(): boolean;
@@ -9505,6 +9303,7 @@ export namespace Gcr {
          * Whether the additional choice is chosen or not.
          *
          * The additional choice would have been setup using {@link Gcr.Prompt.choice_label}.
+         * @default false
          * @category Inherited from Gcr.Prompt
          */
         get choiceChosen(): boolean;
@@ -9518,6 +9317,7 @@ export namespace Gcr {
          * If `null`, then no additional choice is displayed.
          *
          * The initial value of the choice can be set with {@link Gcr.Prompt.choice_chosen}.
+         * @default null
          * @category Inherited from Gcr.Prompt
          */
         get choice_label(): string;
@@ -9531,18 +9331,21 @@ export namespace Gcr {
          * If `null`, then no additional choice is displayed.
          *
          * The initial value of the choice can be set with {@link Gcr.Prompt.choice_chosen}.
+         * @default null
          * @category Inherited from Gcr.Prompt
          */
         get choiceLabel(): string;
         set choiceLabel(val: string);
         /**
          * The label for the continue button in the prompt.
+         * @default Continue
          * @category Inherited from Gcr.Prompt
          */
         get continue_label(): string;
         set continue_label(val: string);
         /**
          * The label for the continue button in the prompt.
+         * @default Continue
          * @category Inherited from Gcr.Prompt
          */
         get continueLabel(): string;
@@ -9552,6 +9355,7 @@ export namespace Gcr {
          *
          * A prompt implementation may choose not to display this detailed description.
          * The prompt message should contain relevant information.
+         * @default null
          * @category Inherited from Gcr.Prompt
          */
         get description(): string;
@@ -9560,6 +9364,7 @@ export namespace Gcr {
          * The prompt message for the user.
          *
          * A prompt implementation should always display this message.
+         * @default null
          * @category Inherited from Gcr.Prompt
          */
         get message(): string;
@@ -9570,6 +9375,7 @@ export namespace Gcr {
          * This will cause the prompt implementation to ask the user to confirm the
          * password and/or display other relevant user interface for creating a new
          * password.
+         * @default false
          * @category Inherited from Gcr.Prompt
          */
         get password_new(): boolean;
@@ -9580,6 +9386,7 @@ export namespace Gcr {
          * This will cause the prompt implementation to ask the user to confirm the
          * password and/or display other relevant user interface for creating a new
          * password.
+         * @default false
          * @category Inherited from Gcr.Prompt
          */
         get passwordNew(): boolean;
@@ -9592,6 +9399,7 @@ export namespace Gcr {
          *
          * This is only valid after a successful prompt for a password.
          * @read-only
+         * @default 0
          * @category Inherited from Gcr.Prompt
          */
         get password_strength(): number;
@@ -9603,6 +9411,7 @@ export namespace Gcr {
          *
          * This is only valid after a successful prompt for a password.
          * @read-only
+         * @default 0
          * @category Inherited from Gcr.Prompt
          */
         get passwordStrength(): number;
@@ -9611,6 +9420,7 @@ export namespace Gcr {
          *
          * A prompt implementation may choose not to display the prompt title. The
          * {@link Gcr.Prompt.message} should contain relevant information.
+         * @default null
          * @category Inherited from Gcr.Prompt
          */
         get title(): string;
@@ -9620,6 +9430,7 @@ export namespace Gcr {
          *
          * This is a warning like "The password is incorrect." usually displayed to the
          * user about a previous 'unsuccessful' prompt.
+         * @default null
          * @category Inherited from Gcr.Prompt
          */
         get warning(): string;
@@ -9637,7 +9448,7 @@ export namespace Gcr {
          * @param cancellable optional cancellation object
          * @returns the reply from the prompt
          */
-        confirm(cancellable?: Gio.Cancellable | null): PromptReply;
+        confirm(cancellable: Gio.Cancellable | null): PromptReply;
         /**
          * Prompts for confirmation asking a cancel/continue style question.
          * Set the various properties on the prompt before calling this method to
@@ -9646,7 +9457,7 @@ export namespace Gcr {
          * This method will return immediately and complete asynchronously.
          * @param cancellable optional cancellation object
          */
-        confirm_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<PromptReply>;
+        confirm_async(cancellable: Gio.Cancellable | null): globalThis.Promise<PromptReply>;
         /**
          * Prompts for confirmation asking a cancel/continue style question.
          * Set the various properties on the prompt before calling this method to
@@ -9667,7 +9478,7 @@ export namespace Gcr {
          * @param callback called when the operation completes
          */
         confirm_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<PromptReply> | void;
         /**
@@ -9695,7 +9506,7 @@ export namespace Gcr {
          * @param cancellable optional cancellation object
          * @returns the reply from the prompt
          */
-        confirm_run(cancellable?: Gio.Cancellable | null): PromptReply;
+        confirm_run(cancellable: Gio.Cancellable | null): PromptReply;
         /**
          * Get the string handle of the caller's window.
          *
@@ -9803,7 +9614,7 @@ export namespace Gcr {
          * @param cancellable optional cancellation object
          * @returns the password owned by the prompt, or `null`
          */
-        password(cancellable?: Gio.Cancellable | null): string;
+        password(cancellable: Gio.Cancellable | null): string;
         /**
          * Prompts for password. Set the various properties on the prompt before calling
          * this method to explain which password should be entered.
@@ -9811,7 +9622,7 @@ export namespace Gcr {
          * This method will return immediately and complete asynchronously.
          * @param cancellable optional cancellation object
          */
-        password_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
+        password_async(cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * Prompts for password. Set the various properties on the prompt before calling
          * this method to explain which password should be entered.
@@ -9830,7 +9641,7 @@ export namespace Gcr {
          * @param callback called when the operation completes
          */
         password_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
         /**
@@ -9863,7 +9674,7 @@ export namespace Gcr {
          * @param cancellable optional cancellation object
          * @returns the password owned by the prompt, or `null`
          */
-        password_run(cancellable?: Gio.Cancellable | null): string;
+        password_run(cancellable: Gio.Cancellable | null): string;
         /**
          * Reset the contents and properties of the prompt.
          */
@@ -9904,7 +9715,7 @@ export namespace Gcr {
          * If this is `null`, then no additional choice is being displayed.
          * @param choice_label the additional choice or `null`
          */
-        set_choice_label(choice_label?: string | null): void;
+        set_choice_label(choice_label: string | null): void;
         /**
          * Set the label for the continue button.
          *
@@ -9955,7 +9766,7 @@ export namespace Gcr {
          * If this string is `null` then no warning is displayed.
          * @param warning the warning or `null`
          */
-        set_warning(warning?: string | null): void;
+        set_warning(warning: string | null): void;
         /**
          * close a prompt
          * @virtual
@@ -9972,8 +9783,8 @@ export namespace Gcr {
          * @virtual
          */
         vfunc_prompt_confirm_async(
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Complete an operation to prompt for confirmation.
@@ -9995,8 +9806,8 @@ export namespace Gcr {
          * @virtual
          */
         vfunc_prompt_password_async(
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Complete an operation to prompt for a password.
@@ -10051,7 +9862,7 @@ export namespace Gcr {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -10141,7 +9952,7 @@ export namespace Gcr {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -10202,8 +10013,8 @@ export namespace Gcr {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -10254,7 +10065,7 @@ export namespace Gcr {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -10297,7 +10108,7 @@ export namespace Gcr {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -10345,38 +10156,19 @@ export namespace Gcr {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -10384,15 +10176,9 @@ export namespace Gcr {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -10559,7 +10345,7 @@ export namespace Gcr {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -10807,6 +10593,7 @@ export namespace Gcr {
         /**
          * Whether the prompter is prompting or not.
          * @read-only
+         * @default false
          */
         get prompting(): boolean;
 
@@ -11007,7 +10794,7 @@ export namespace Gcr {
          * Unreferences a parsed item which was referenced with `gcr_parsed_ref()`
          * @param parsed a parsed item
          */
-        static unref(parsed?: any | null): void;
+        static unref(parsed: any | null): void;
 
         // Methods
 
@@ -11183,13 +10970,13 @@ export namespace Gcr {
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             description: string;
-            expiry_date: GLib.DateTime;
-            expiryDate: GLib.DateTime;
-            issuer_name: string;
-            issuerName: string;
+            expiry_date: GLib.DateTime | null;
+            expiryDate: GLib.DateTime | null;
+            issuer_name: string | null;
+            issuerName: string | null;
             label: string;
-            subject_name: string;
-            subjectName: string;
+            subject_name: string | null;
+            subjectName: string | null;
         }
     }
 
@@ -11228,22 +11015,22 @@ export namespace Gcr {
          * The expiry date of the certificate
          * @read-only
          */
-        get expiry_date(): GLib.DateTime;
+        get expiry_date(): GLib.DateTime | null;
         /**
          * The expiry date of the certificate
          * @read-only
          */
-        get expiryDate(): GLib.DateTime;
+        get expiryDate(): GLib.DateTime | null;
         /**
          * Common name part of the certificate issuer
          * @read-only
          */
-        get issuer_name(): string;
+        get issuer_name(): string | null;
         /**
          * Common name part of the certificate issuer
          * @read-only
          */
-        get issuerName(): string;
+        get issuerName(): string | null;
         /**
          * A readable label for this certificate.
          * @read-only
@@ -11252,11 +11039,11 @@ export namespace Gcr {
         /**
          * @read-only
          */
-        get subject_name(): string;
+        get subject_name(): string | null;
         /**
          * @read-only
          */
-        get subjectName(): string;
+        get subjectName(): string | null;
 
         // Methods
 
@@ -11475,7 +11262,7 @@ export namespace Gcr {
              * @param cancellable optional cancellable object
              * @virtual
              */
-            vfunc_supplement(builder: Gck.Builder, cancellable?: Gio.Cancellable | null): Gio.TlsInteractionResult;
+            vfunc_supplement(builder: Gck.Builder, cancellable: Gio.Cancellable | null): Gio.TlsInteractionResult;
             /**
              * Asynchronously supplement attributes before import. This means prompting the
              * user for things like labels and the like. The needed attributes will have
@@ -11489,8 +11276,8 @@ export namespace Gcr {
              */
             vfunc_supplement_async(
                 builder: Gck.Builder,
-                cancellable?: Gio.Cancellable | null,
-                callback?: Gio.AsyncReadyCallback<this> | null,
+                cancellable: Gio.Cancellable | null,
+                callback: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * Complete operation to asynchronously supplement attributes before import.
@@ -11545,7 +11332,7 @@ export namespace Gcr {
          * @param cancellable optional cancellable object
          * @returns {@link Gio.TlsInteractionResult.HANDLED} if successful or {@link Gio.TlsInteractionResult.FAILED}
          */
-        supplement(builder: Gck.Builder, cancellable?: Gio.Cancellable | null): Gio.TlsInteractionResult;
+        supplement(builder: Gck.Builder, cancellable: Gio.Cancellable | null): Gio.TlsInteractionResult;
         /**
          * Asynchronously supplement attributes before import. This means prompting the
          * user for things like labels and the like. The needed attributes will have
@@ -11557,7 +11344,7 @@ export namespace Gcr {
          */
         supplement_async(
             builder: Gck.Builder,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<Gio.TlsInteractionResult>;
         /**
          * Asynchronously supplement attributes before import. This means prompting the
@@ -11586,7 +11373,7 @@ export namespace Gcr {
          */
         supplement_async(
             builder: Gck.Builder,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Gio.TlsInteractionResult> | void;
         /**
@@ -11631,8 +11418,8 @@ export namespace Gcr {
              * @virtual
              */
             vfunc_import_async(
-                cancellable?: Gio.Cancellable | null,
-                callback?: Gio.AsyncReadyCallback<this> | null,
+                cancellable: Gio.Cancellable | null,
+                callback: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * Complete an asynchronous operation to import queued items.
@@ -11655,7 +11442,7 @@ export namespace Gcr {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            interaction: Gio.TlsInteraction;
+            interaction: Gio.TlsInteraction | null;
             label: string;
             uri: string;
         }
@@ -11719,8 +11506,8 @@ export namespace Gcr {
         /**
          * The interaction for the importer.
          */
-        get interaction(): Gio.TlsInteraction;
-        set interaction(val: Gio.TlsInteraction);
+        get interaction(): Gio.TlsInteraction | null;
+        set interaction(val: Gio.TlsInteraction | null);
         /**
          * The label for the importer.
          * @read-only
@@ -11729,6 +11516,7 @@ export namespace Gcr {
         /**
          * The URI of the location imported to.
          * @read-only
+         * @default null
          */
         get uri(): string;
 
@@ -11745,7 +11533,7 @@ export namespace Gcr {
          * and completes asynchronously.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        import_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        import_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Import the queued items in the importer. This function returns immediately
          * and completes asynchronously.
@@ -11760,7 +11548,7 @@ export namespace Gcr {
          * @param callback called when the operation completes
          */
         import_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -11815,8 +11603,8 @@ export namespace Gcr {
              * @virtual
              */
             vfunc_prompt_confirm_async(
-                cancellable?: Gio.Cancellable | null,
-                callback?: Gio.AsyncReadyCallback<this> | null,
+                cancellable: Gio.Cancellable | null,
+                callback: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * Complete an operation to prompt for confirmation.
@@ -11838,8 +11626,8 @@ export namespace Gcr {
              * @virtual
              */
             vfunc_prompt_password_async(
-                cancellable?: Gio.Cancellable | null,
-                callback?: Gio.AsyncReadyCallback<this> | null,
+                cancellable: Gio.Cancellable | null,
+                callback: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * Complete an operation to prompt for a password.
@@ -11918,6 +11706,7 @@ export namespace Gcr {
          * In X11, this will be a stringified version of the XWindow handle; in
          * Wayland this is the result of an export using the XDG foreign
          * protocol.
+         * @default null
          */
         get caller_window(): string;
         set caller_window(val: string);
@@ -11931,16 +11720,19 @@ export namespace Gcr {
          * In X11, this will be a stringified version of the XWindow handle; in
          * Wayland this is the result of an export using the XDG foreign
          * protocol.
+         * @default null
          */
         get callerWindow(): string;
         set callerWindow(val: string);
         /**
          * The label for the cancel button in the prompt.
+         * @default Cancel
          */
         get cancel_label(): string;
         set cancel_label(val: string);
         /**
          * The label for the cancel button in the prompt.
+         * @default Cancel
          */
         get cancelLabel(): string;
         set cancelLabel(val: string);
@@ -11948,6 +11740,7 @@ export namespace Gcr {
          * Whether the additional choice is chosen or not.
          *
          * The additional choice would have been setup using {@link Gcr.Prompt.choice_label}.
+         * @default false
          */
         get choice_chosen(): boolean;
         set choice_chosen(val: boolean);
@@ -11955,6 +11748,7 @@ export namespace Gcr {
          * Whether the additional choice is chosen or not.
          *
          * The additional choice would have been setup using {@link Gcr.Prompt.choice_label}.
+         * @default false
          */
         get choiceChosen(): boolean;
         set choiceChosen(val: boolean);
@@ -11967,6 +11761,7 @@ export namespace Gcr {
          * If `null`, then no additional choice is displayed.
          *
          * The initial value of the choice can be set with {@link Gcr.Prompt.choice_chosen}.
+         * @default null
          */
         get choice_label(): string;
         set choice_label(val: string);
@@ -11979,16 +11774,19 @@ export namespace Gcr {
          * If `null`, then no additional choice is displayed.
          *
          * The initial value of the choice can be set with {@link Gcr.Prompt.choice_chosen}.
+         * @default null
          */
         get choiceLabel(): string;
         set choiceLabel(val: string);
         /**
          * The label for the continue button in the prompt.
+         * @default Continue
          */
         get continue_label(): string;
         set continue_label(val: string);
         /**
          * The label for the continue button in the prompt.
+         * @default Continue
          */
         get continueLabel(): string;
         set continueLabel(val: string);
@@ -11997,6 +11795,7 @@ export namespace Gcr {
          *
          * A prompt implementation may choose not to display this detailed description.
          * The prompt message should contain relevant information.
+         * @default null
          */
         get description(): string;
         set description(val: string);
@@ -12004,6 +11803,7 @@ export namespace Gcr {
          * The prompt message for the user.
          *
          * A prompt implementation should always display this message.
+         * @default null
          */
         get message(): string;
         set message(val: string);
@@ -12013,6 +11813,7 @@ export namespace Gcr {
          * This will cause the prompt implementation to ask the user to confirm the
          * password and/or display other relevant user interface for creating a new
          * password.
+         * @default false
          */
         get password_new(): boolean;
         set password_new(val: boolean);
@@ -12022,6 +11823,7 @@ export namespace Gcr {
          * This will cause the prompt implementation to ask the user to confirm the
          * password and/or display other relevant user interface for creating a new
          * password.
+         * @default false
          */
         get passwordNew(): boolean;
         set passwordNew(val: boolean);
@@ -12033,6 +11835,7 @@ export namespace Gcr {
          *
          * This is only valid after a successful prompt for a password.
          * @read-only
+         * @default 0
          */
         get password_strength(): number;
         /**
@@ -12043,6 +11846,7 @@ export namespace Gcr {
          *
          * This is only valid after a successful prompt for a password.
          * @read-only
+         * @default 0
          */
         get passwordStrength(): number;
         /**
@@ -12050,6 +11854,7 @@ export namespace Gcr {
          *
          * A prompt implementation may choose not to display the prompt title. The
          * {@link Gcr.Prompt.message} should contain relevant information.
+         * @default null
          */
         get title(): string;
         set title(val: string);
@@ -12058,6 +11863,7 @@ export namespace Gcr {
          *
          * This is a warning like "The password is incorrect." usually displayed to the
          * user about a previous 'unsuccessful' prompt.
+         * @default null
          */
         get warning(): string;
         set warning(val: string);
@@ -12086,7 +11892,7 @@ export namespace Gcr {
          * @param cancellable optional cancellation object
          * @returns the reply from the prompt
          */
-        confirm(cancellable?: Gio.Cancellable | null): PromptReply;
+        confirm(cancellable: Gio.Cancellable | null): PromptReply;
         /**
          * Prompts for confirmation asking a cancel/continue style question.
          * Set the various properties on the prompt before calling this method to
@@ -12095,7 +11901,7 @@ export namespace Gcr {
          * This method will return immediately and complete asynchronously.
          * @param cancellable optional cancellation object
          */
-        confirm_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<PromptReply>;
+        confirm_async(cancellable: Gio.Cancellable | null): globalThis.Promise<PromptReply>;
         /**
          * Prompts for confirmation asking a cancel/continue style question.
          * Set the various properties on the prompt before calling this method to
@@ -12116,7 +11922,7 @@ export namespace Gcr {
          * @param callback called when the operation completes
          */
         confirm_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<PromptReply> | void;
         /**
@@ -12144,7 +11950,7 @@ export namespace Gcr {
          * @param cancellable optional cancellation object
          * @returns the reply from the prompt
          */
-        confirm_run(cancellable?: Gio.Cancellable | null): PromptReply;
+        confirm_run(cancellable: Gio.Cancellable | null): PromptReply;
         /**
          * Get the string handle of the caller's window.
          *
@@ -12252,7 +12058,7 @@ export namespace Gcr {
          * @param cancellable optional cancellation object
          * @returns the password owned by the prompt, or `null`
          */
-        password(cancellable?: Gio.Cancellable | null): string;
+        password(cancellable: Gio.Cancellable | null): string;
         /**
          * Prompts for password. Set the various properties on the prompt before calling
          * this method to explain which password should be entered.
@@ -12260,7 +12066,7 @@ export namespace Gcr {
          * This method will return immediately and complete asynchronously.
          * @param cancellable optional cancellation object
          */
-        password_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
+        password_async(cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * Prompts for password. Set the various properties on the prompt before calling
          * this method to explain which password should be entered.
@@ -12279,7 +12085,7 @@ export namespace Gcr {
          * @param callback called when the operation completes
          */
         password_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
         /**
@@ -12312,7 +12118,7 @@ export namespace Gcr {
          * @param cancellable optional cancellation object
          * @returns the password owned by the prompt, or `null`
          */
-        password_run(cancellable?: Gio.Cancellable | null): string;
+        password_run(cancellable: Gio.Cancellable | null): string;
         /**
          * Reset the contents and properties of the prompt.
          */
@@ -12353,7 +12159,7 @@ export namespace Gcr {
          * If this is `null`, then no additional choice is being displayed.
          * @param choice_label the additional choice or `null`
          */
-        set_choice_label(choice_label?: string | null): void;
+        set_choice_label(choice_label: string | null): void;
         /**
          * Set the label for the continue button.
          *
@@ -12404,7 +12210,7 @@ export namespace Gcr {
          * If this string is `null` then no warning is displayed.
          * @param warning the warning or `null`
          */
-        set_warning(warning?: string | null): void;
+        set_warning(warning: string | null): void;
     }
 
     export const Prompt: PromptNamespace & {

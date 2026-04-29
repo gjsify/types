@@ -359,7 +359,7 @@ export namespace GdkWin32 {
          * @param icon2 pointer to the second {@link Gio.Icon}.
          * @returns `true` if `icon1` is equal to `icon2`. `false` otherwise.
          */
-        equal(icon2?: Gio.Icon | null): boolean;
+        equal(icon2: Gio.Icon | null): boolean;
         /**
          * Gets a hash for an icon.
          * @returns a `guint` containing a hash for the `icon`, suitable for   use in a {@link GLib.HashTable} or similar data structure.
@@ -399,7 +399,7 @@ export namespace GdkWin32 {
          * @param icon2 pointer to the second {@link Gio.Icon}.
          * @virtual
          */
-        vfunc_equal(icon2?: Gio.Icon | null): boolean;
+        vfunc_equal(icon2: Gio.Icon | null): boolean;
         /**
          * Gets a hash for an icon.
          * @virtual
@@ -427,7 +427,7 @@ export namespace GdkWin32 {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns a {@link Gio.InputStream} to read the icon from.
          */
-        load(size: number, cancellable?: Gio.Cancellable | null): [Gio.InputStream, string];
+        load(size: number, cancellable: Gio.Cancellable | null): [Gio.InputStream, string];
         /**
          * Loads an icon asynchronously. To finish this function, see
          * `g_loadable_icon_load_finish()`. For the synchronous, blocking
@@ -435,7 +435,7 @@ export namespace GdkWin32 {
          * @param size an integer.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        load_async(size: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<[Gio.InputStream, string]>;
+        load_async(size: number, cancellable: Gio.Cancellable | null): globalThis.Promise<[Gio.InputStream, string]>;
         /**
          * Loads an icon asynchronously. To finish this function, see
          * `g_loadable_icon_load_finish()`. For the synchronous, blocking
@@ -459,7 +459,7 @@ export namespace GdkWin32 {
          */
         load_async(
             size: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[Gio.InputStream, string]> | void;
         /**
@@ -475,7 +475,7 @@ export namespace GdkWin32 {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_load(size: number, cancellable?: Gio.Cancellable | null): [Gio.InputStream, string];
+        vfunc_load(size: number, cancellable: Gio.Cancellable | null): [Gio.InputStream, string];
         /**
          * Loads an icon asynchronously. To finish this function, see
          * `g_loadable_icon_load_finish()`. For the synchronous, blocking
@@ -487,8 +487,8 @@ export namespace GdkWin32 {
          */
         vfunc_load_async(
             size: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes an asynchronous icon load started in `g_loadable_icon_load_async()`.
@@ -543,38 +543,19 @@ export namespace GdkWin32 {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -582,15 +563,9 @@ export namespace GdkWin32 {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -757,7 +732,7 @@ export namespace GdkWin32 {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -962,17 +937,17 @@ export namespace GdkWin32 {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            color_state: Gdk.ColorState;
-            colorState: Gdk.ColorState;
-            fence: any;
+            color_state: Gdk.ColorState | null;
+            colorState: Gdk.ColorState | null;
+            fence: any | null;
             fence_wait: bigint | number;
             fenceWait: bigint | number;
             premultiplied: boolean;
-            resource: any;
-            update_region: cairo.Region;
-            updateRegion: cairo.Region;
-            update_texture: Gdk.Texture;
-            updateTexture: Gdk.Texture;
+            resource: any | null;
+            update_region: cairo.Region | null;
+            updateRegion: cairo.Region | null;
+            update_texture: Gdk.Texture | null;
+            updateTexture: Gdk.Texture | null;
         }
     }
 
@@ -1001,29 +976,31 @@ export namespace GdkWin32 {
          * The color state of the texture.
          * @since 4.20
          */
-        get color_state(): Gdk.ColorState;
-        set color_state(val: Gdk.ColorState);
+        get color_state(): Gdk.ColorState | null;
+        set color_state(val: Gdk.ColorState | null);
         /**
          * The color state of the texture.
          * @since 4.20
          */
-        get colorState(): Gdk.ColorState;
-        set colorState(val: Gdk.ColorState);
+        get colorState(): Gdk.ColorState | null;
+        set colorState(val: Gdk.ColorState | null);
         /**
          * The optional `ID3D12Fence` to wait on before using the resource.
          * @since 4.20
          */
-        get fence(): any;
-        set fence(val: any);
+        get fence(): any | null;
+        set fence(val: any | null);
         /**
          * The value the fence should wait on
          * @since 4.20
+         * @default 0
          */
         get fence_wait(): number;
         set fence_wait(val: bigint | number);
         /**
          * The value the fence should wait on
          * @since 4.20
+         * @default 0
          */
         get fenceWait(): number;
         set fenceWait(val: bigint | number);
@@ -1032,6 +1009,7 @@ export namespace GdkWin32 {
          *
          * Only relevant if the format has alpha.
          * @since 4.20
+         * @default true
          */
         get premultiplied(): boolean;
         set premultiplied(val: boolean);
@@ -1039,32 +1017,32 @@ export namespace GdkWin32 {
          * The `ID3D12Resource`
          * @since 4.20
          */
-        get resource(): any;
-        set resource(val: any);
+        get resource(): any | null;
+        set resource(val: any | null);
         /**
          * The update region for {@link Gdk.D3d12TextureBuilder.update_texture}.
          * @since 4.20
          */
-        get update_region(): cairo.Region;
-        set update_region(val: cairo.Region);
+        get update_region(): cairo.Region | null;
+        set update_region(val: cairo.Region | null);
         /**
          * The update region for {@link Gdk.D3d12TextureBuilder.update_texture}.
          * @since 4.20
          */
-        get updateRegion(): cairo.Region;
-        set updateRegion(val: cairo.Region);
+        get updateRegion(): cairo.Region | null;
+        set updateRegion(val: cairo.Region | null);
         /**
          * The texture {@link Gdk.D3d12TextureBuilder.update_region} is an update for.
          * @since 4.20
          */
-        get update_texture(): Gdk.Texture;
-        set update_texture(val: Gdk.Texture);
+        get update_texture(): Gdk.Texture | null;
+        set update_texture(val: Gdk.Texture | null);
         /**
          * The texture {@link Gdk.D3d12TextureBuilder.update_region} is an update for.
          * @since 4.20
          */
-        get updateTexture(): Gdk.Texture;
-        set updateTexture(val: Gdk.Texture);
+        get updateTexture(): Gdk.Texture | null;
+        set updateTexture(val: Gdk.Texture | null);
 
         /**
          * Compile-time signal type information.
@@ -1129,7 +1107,7 @@ export namespace GdkWin32 {
          * @param data user data to pass to the destroy function
          * @returns a newly built {@link Gdk.Texture} or `NULL`   if the format is not supported
          */
-        build(destroy?: GLib.DestroyNotify | null, data?: any | null): Gdk.Texture | null;
+        build(destroy: GLib.DestroyNotify | null, data: any | null): Gdk.Texture | null;
         /**
          * Gets the color state previously set via `gdk_d3d12_texture_builder_set_color_state()`.
          * @returns the color state
@@ -1166,7 +1144,7 @@ export namespace GdkWin32 {
          * If you don't know what colorstates are, this is probably the right thing.
          * @param color_state a {@link Gdk.ColorState} or `NULL` to unset the colorstate.
          */
-        set_color_state(color_state?: Gdk.ColorState | null): void;
+        set_color_state(color_state: Gdk.ColorState | null): void;
         /**
          * Sets the value that GTK should wait on on the given fence before using the
          * resource.
@@ -1196,13 +1174,13 @@ export namespace GdkWin32 {
          * An example would be a screen recording where only the mouse pointer moves.
          * @param region the region to update
          */
-        set_update_region(region?: cairo.Region | null): void;
+        set_update_region(region: cairo.Region | null): void;
         /**
          * Sets the texture to be updated by this texture. See
          * {@link Gdk.D3d12TextureBuilder.set_update_region} for an explanation.
          * @param texture the texture to update
          */
-        set_update_texture(texture?: Gdk.Texture | null): void;
+        set_update_texture(texture: Gdk.Texture | null): void;
     }
 
     namespace Win32Display {
@@ -1507,6 +1485,7 @@ export namespace GdkWin32 {
 
         /**
          * @construct-only
+         * @default true
          */
         get destroyable(): boolean;
         /**

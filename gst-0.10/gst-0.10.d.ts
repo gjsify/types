@@ -1286,7 +1286,7 @@ export namespace Gst {
     /**
      * @param argv arguments
      */
-    function init(argv?: string[] | null): string[] | null;
+    function init(argv: string[] | null): string[] | null;
     /**
      * @param argv
      */

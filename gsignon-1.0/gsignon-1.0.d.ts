@@ -613,7 +613,7 @@ export namespace gSignon {
         process_async(
             session_data: GLib.Variant,
             mechanism: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<GLib.Variant>;
         /**
          * Performs one step of the authentication process.
@@ -662,7 +662,7 @@ export namespace gSignon {
         process_async(
             session_data: GLib.Variant,
             mechanism: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GLib.Variant> | void;
         /**

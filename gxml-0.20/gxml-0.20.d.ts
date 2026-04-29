@@ -528,38 +528,19 @@ export namespace GXml {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -567,15 +548,9 @@ export namespace GXml {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -742,7 +717,7 @@ export namespace GXml {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1030,7 +1005,7 @@ export namespace GXml {
          * @read-only
          * @category Inherited from GXml.DomAttr
          */
-        get namespace_uri(): string;
+        get namespace_uri(): string | null;
         /**
          * @read-only
          * @category Inherited from GXml.DomAttr
@@ -1040,7 +1015,7 @@ export namespace GXml {
          * @read-only
          * @category Inherited from GXml.DomAttr
          */
-        get prefix(): string;
+        get prefix(): string | null;
         /**
          * @read-only
          * @category Inherited from GXml.DomAttr
@@ -1145,38 +1120,19 @@ export namespace GXml {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -1184,15 +1140,9 @@ export namespace GXml {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -1359,7 +1309,7 @@ export namespace GXml {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1736,7 +1686,7 @@ export namespace GXml {
         /**
          * @param compare
          */
-        order_by(compare?: GLib.CompareDataFunc | null): Gee.Iterator;
+        order_by(compare: GLib.CompareDataFunc | null): Gee.Iterator;
         get_element_type(): GObject.GType;
         /**
          * @param f
@@ -1825,7 +1775,7 @@ export namespace GXml {
          * @param compare
          * @virtual
          */
-        vfunc_order_by(compare?: GLib.CompareDataFunc | null): Gee.Iterator;
+        vfunc_order_by(compare: GLib.CompareDataFunc | null): Gee.Iterator;
         /**
          * @virtual
          */
@@ -1962,38 +1912,19 @@ export namespace GXml {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -2001,15 +1932,9 @@ export namespace GXml {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -2176,7 +2101,7 @@ export namespace GXml {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -2485,7 +2410,7 @@ export namespace GXml {
 
         interface ConstructorProps extends CssSelector.ConstructorProps {
             prefixed: boolean;
-            prefix: string;
+            prefix: string | null;
             local_name: string;
             localName: string;
         }
@@ -2503,8 +2428,8 @@ export namespace GXml {
          * @read-only
          */
         get prefixed(): boolean;
-        get prefix(): string;
-        set prefix(val: string);
+        get prefix(): string | null;
+        set prefix(val: string | null);
         get local_name(): string;
         set local_name(val: string);
         get localName(): string;
@@ -2558,7 +2483,7 @@ export namespace GXml {
         /**
          * @param value
          */
-        set_prefix(value?: string | null): void;
+        set_prefix(value: string | null): void;
         get_local_name(): string;
         /**
          * @param value
@@ -2580,7 +2505,7 @@ export namespace GXml {
         // Constructor properties interface
 
         interface ConstructorProps extends CssSelector.ConstructorProps {
-            prefix: string;
+            prefix: string | null;
             local_name: string;
             localName: string;
         }
@@ -2594,8 +2519,8 @@ export namespace GXml {
 
         // Properties
 
-        get prefix(): string;
-        set prefix(val: string);
+        get prefix(): string | null;
+        set prefix(val: string | null);
         get local_name(): string;
         set local_name(val: string);
         get localName(): string;
@@ -2650,7 +2575,7 @@ export namespace GXml {
         /**
          * @param value
          */
-        set_prefix(value?: string | null): void;
+        set_prefix(value: string | null): void;
         get_local_name(): string;
         /**
          * @param value
@@ -2907,7 +2832,7 @@ export namespace GXml {
          * @read-only
          * @category Inherited from GXml.DomParentNode
          */
-        get first_element_child(): DomElement;
+        get first_element_child(): DomElement | null;
         /**
          * @read-only
          * @category Inherited from GXml.DomParentNode
@@ -2917,7 +2842,7 @@ export namespace GXml {
          * @read-only
          * @category Inherited from GXml.DomParentNode
          */
-        get last_element_child(): DomElement;
+        get last_element_child(): DomElement | null;
         /**
          * @read-only
          * @category Inherited from GXml.DomParentNode
@@ -2992,12 +2917,12 @@ export namespace GXml {
          * @read-only
          * @category Inherited from GXml.DomDocument
          */
-        get doctype(): DomDocumentType;
+        get doctype(): DomDocumentType | null;
         /**
          * @read-only
          * @category Inherited from GXml.DomDocument
          */
-        get document_element(): DomElement;
+        get document_element(): DomElement | null;
         /**
          * @read-only
          * @category Inherited from GXml.DomDocument
@@ -3134,12 +3059,12 @@ export namespace GXml {
          * @param file
          * @param cancellable
          */
-        write_file(file: Gio.File, cancellable?: Gio.Cancellable | null): void;
+        write_file(file: Gio.File, cancellable: Gio.Cancellable | null): void;
         /**
          * @param file
          * @param cancellable
          */
-        write_file_async(file: Gio.File, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
+        write_file_async(file: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * @param file
          * @param cancellable
@@ -3157,7 +3082,7 @@ export namespace GXml {
          */
         write_file_async(
             file: Gio.File,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -3168,12 +3093,12 @@ export namespace GXml {
          * @param stream
          * @param cancellable
          */
-        write_stream(stream: Gio.OutputStream, cancellable?: Gio.Cancellable | null): void;
+        write_stream(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null): void;
         /**
          * @param stream
          * @param cancellable
          */
-        write_stream_async(stream: Gio.OutputStream, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
+        write_stream_async(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * @param stream
          * @param cancellable
@@ -3191,7 +3116,7 @@ export namespace GXml {
          */
         write_stream_async(
             stream: Gio.OutputStream,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -3202,7 +3127,7 @@ export namespace GXml {
         /**
          * @param cancellable
          */
-        create_stream_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>;
+        create_stream_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>;
         /**
          * @param cancellable
          * @param _callback_
@@ -3213,7 +3138,7 @@ export namespace GXml {
          * @param _callback_
          */
         create_stream_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Gio.InputStream> | void;
         /**
@@ -3223,11 +3148,11 @@ export namespace GXml {
         /**
          * @param cancellable
          */
-        write_string(cancellable?: Gio.Cancellable | null): string;
+        write_string(cancellable: Gio.Cancellable | null): string;
         /**
          * @param cancellable
          */
-        write_string_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
+        write_string_async(cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * @param cancellable
          * @param _callback_
@@ -3238,7 +3163,7 @@ export namespace GXml {
          * @param _callback_
          */
         write_string_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
         /**
@@ -3249,12 +3174,12 @@ export namespace GXml {
          * @param file
          * @param cancellable
          */
-        read_from_file(file: Gio.File, cancellable?: Gio.Cancellable | null): void;
+        read_from_file(file: Gio.File, cancellable: Gio.Cancellable | null): void;
         /**
          * @param file
          * @param cancellable
          */
-        read_from_file_async(file: Gio.File, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
+        read_from_file_async(file: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * @param file
          * @param cancellable
@@ -3272,7 +3197,7 @@ export namespace GXml {
          */
         read_from_file_async(
             file: Gio.File,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -3283,12 +3208,12 @@ export namespace GXml {
          * @param str
          * @param cancellable
          */
-        read_from_string(str: string, cancellable?: Gio.Cancellable | null): void;
+        read_from_string(str: string, cancellable: Gio.Cancellable | null): void;
         /**
          * @param str
          * @param cancellable
          */
-        read_from_string_async(str: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
+        read_from_string_async(str: string, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * @param str
          * @param cancellable
@@ -3306,7 +3231,7 @@ export namespace GXml {
          */
         read_from_string_async(
             str: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -3317,12 +3242,12 @@ export namespace GXml {
          * @param stream
          * @param cancellable
          */
-        read_from_stream(stream: Gio.InputStream, cancellable?: Gio.Cancellable | null): void;
+        read_from_stream(stream: Gio.InputStream, cancellable: Gio.Cancellable | null): void;
         /**
          * @param stream
          * @param cancellable
          */
-        read_from_stream_async(stream: Gio.InputStream, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
+        read_from_stream_async(stream: Gio.InputStream, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * @param stream
          * @param cancellable
@@ -3340,7 +3265,7 @@ export namespace GXml {
          */
         read_from_stream_async(
             stream: Gio.InputStream,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -3472,7 +3397,7 @@ export namespace GXml {
          * @param cancellable
          * @virtual
          */
-        vfunc_write_file(file: Gio.File, cancellable?: Gio.Cancellable | null): void;
+        vfunc_write_file(file: Gio.File, cancellable: Gio.Cancellable | null): void;
         /**
          * @param file
          * @param cancellable
@@ -3481,8 +3406,8 @@ export namespace GXml {
          */
         vfunc_write_file_async(
             file: Gio.File,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param _res_
@@ -3494,7 +3419,7 @@ export namespace GXml {
          * @param cancellable
          * @virtual
          */
-        vfunc_write_stream(stream: Gio.OutputStream, cancellable?: Gio.Cancellable | null): void;
+        vfunc_write_stream(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null): void;
         /**
          * @param stream
          * @param cancellable
@@ -3503,8 +3428,8 @@ export namespace GXml {
          */
         vfunc_write_stream_async(
             stream: Gio.OutputStream,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param _res_
@@ -3521,8 +3446,8 @@ export namespace GXml {
          * @virtual
          */
         vfunc_create_stream_async(
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param _res_
@@ -3533,15 +3458,15 @@ export namespace GXml {
          * @param cancellable
          * @virtual
          */
-        vfunc_write_string(cancellable?: Gio.Cancellable | null): string;
+        vfunc_write_string(cancellable: Gio.Cancellable | null): string;
         /**
          * @param cancellable
          * @param _callback_
          * @virtual
          */
         vfunc_write_string_async(
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param _res_
@@ -3553,7 +3478,7 @@ export namespace GXml {
          * @param cancellable
          * @virtual
          */
-        vfunc_read_from_file(file: Gio.File, cancellable?: Gio.Cancellable | null): void;
+        vfunc_read_from_file(file: Gio.File, cancellable: Gio.Cancellable | null): void;
         /**
          * @param file
          * @param cancellable
@@ -3562,8 +3487,8 @@ export namespace GXml {
          */
         vfunc_read_from_file_async(
             file: Gio.File,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param _res_
@@ -3575,7 +3500,7 @@ export namespace GXml {
          * @param cancellable
          * @virtual
          */
-        vfunc_read_from_string(str: string, cancellable?: Gio.Cancellable | null): void;
+        vfunc_read_from_string(str: string, cancellable: Gio.Cancellable | null): void;
         /**
          * @param str
          * @param cancellable
@@ -3584,8 +3509,8 @@ export namespace GXml {
          */
         vfunc_read_from_string_async(
             str: string,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param _res_
@@ -3597,7 +3522,7 @@ export namespace GXml {
          * @param cancellable
          * @virtual
          */
-        vfunc_read_from_stream(stream: Gio.InputStream, cancellable?: Gio.Cancellable | null): void;
+        vfunc_read_from_stream(stream: Gio.InputStream, cancellable: Gio.Cancellable | null): void;
         /**
          * @param stream
          * @param cancellable
@@ -3606,8 +3531,8 @@ export namespace GXml {
          */
         vfunc_read_from_stream_async(
             stream: Gio.InputStream,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param _res_
@@ -3670,38 +3595,19 @@ export namespace GXml {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -3709,15 +3615,9 @@ export namespace GXml {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -3884,7 +3784,7 @@ export namespace GXml {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -4138,9 +4038,9 @@ export namespace GXml {
          * @param doctype
          */
         create_document(
-            nspace?: string | null,
-            qualified_name?: string | null,
-            doctype?: DomDocumentType | null,
+            nspace: string | null,
+            qualified_name: string | null,
+            doctype: DomDocumentType | null,
         ): DomXMLDocument;
         /**
          * @param title
@@ -4161,9 +4061,9 @@ export namespace GXml {
          * @virtual
          */
         vfunc_create_document(
-            nspace?: string | null,
-            qualified_name?: string | null,
-            doctype?: DomDocumentType | null,
+            nspace: string | null,
+            qualified_name: string | null,
+            doctype: DomDocumentType | null,
         ): DomXMLDocument;
         /**
          * @param title
@@ -4221,38 +4121,19 @@ export namespace GXml {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -4260,15 +4141,9 @@ export namespace GXml {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -4435,7 +4310,7 @@ export namespace GXml {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -4663,8 +4538,8 @@ export namespace GXml {
         static ['new'](
             doc: DomDocument,
             name: string,
-            public_id?: string | null,
-            system_id?: string | null,
+            public_id: string | null,
+            system_id: string | null,
         ): DocumentType;
         // Conflicted with GXml.Node.new
 
@@ -4786,38 +4661,19 @@ export namespace GXml {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -4825,15 +4681,9 @@ export namespace GXml {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -5000,7 +4850,7 @@ export namespace GXml {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -5264,7 +5114,7 @@ export namespace GXml {
          * @read-only
          * @category Inherited from GXml.DomParentNode
          */
-        get first_element_child(): DomElement;
+        get first_element_child(): DomElement | null;
         /**
          * @read-only
          * @category Inherited from GXml.DomParentNode
@@ -5274,7 +5124,7 @@ export namespace GXml {
          * @read-only
          * @category Inherited from GXml.DomParentNode
          */
-        get last_element_child(): DomElement;
+        get last_element_child(): DomElement | null;
         /**
          * @read-only
          * @category Inherited from GXml.DomParentNode
@@ -5395,38 +5245,19 @@ export namespace GXml {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -5434,15 +5265,9 @@ export namespace GXml {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -5609,7 +5434,7 @@ export namespace GXml {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -6007,38 +5832,19 @@ export namespace GXml {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -6046,15 +5852,9 @@ export namespace GXml {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -6221,7 +6021,7 @@ export namespace GXml {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -6950,11 +6750,11 @@ export namespace GXml {
         /**
          * @param nspace
          */
-        lookup_prefix(nspace?: string | null): string | null;
+        lookup_prefix(nspace: string | null): string | null;
         /**
          * @param prefix
          */
-        lookup_namespace_uri(prefix?: string | null): string | null;
+        lookup_namespace_uri(prefix: string | null): string | null;
         /**
          * @param local_name
          */
@@ -7017,7 +6817,7 @@ export namespace GXml {
          * @read-only
          * @category Inherited from GXml.DomNonDocumentTypeChildNode
          */
-        get previous_element_sibling(): DomElement;
+        get previous_element_sibling(): DomElement | null;
         /**
          * @read-only
          * @category Inherited from GXml.DomNonDocumentTypeChildNode
@@ -7027,7 +6827,7 @@ export namespace GXml {
          * @read-only
          * @category Inherited from GXml.DomNonDocumentTypeChildNode
          */
-        get next_element_sibling(): DomElement;
+        get next_element_sibling(): DomElement | null;
         /**
          * @read-only
          * @category Inherited from GXml.DomNonDocumentTypeChildNode
@@ -7042,7 +6842,7 @@ export namespace GXml {
          * @read-only
          * @category Inherited from GXml.DomParentNode
          */
-        get first_element_child(): DomElement;
+        get first_element_child(): DomElement | null;
         /**
          * @read-only
          * @category Inherited from GXml.DomParentNode
@@ -7052,7 +6852,7 @@ export namespace GXml {
          * @read-only
          * @category Inherited from GXml.DomParentNode
          */
-        get last_element_child(): DomElement;
+        get last_element_child(): DomElement | null;
         /**
          * @read-only
          * @category Inherited from GXml.DomParentNode
@@ -7072,7 +6872,7 @@ export namespace GXml {
          * @read-only
          * @category Inherited from GXml.DomElement
          */
-        get namespace_uri(): string;
+        get namespace_uri(): string | null;
         /**
          * @read-only
          * @category Inherited from GXml.DomElement
@@ -7082,7 +6882,7 @@ export namespace GXml {
          * @read-only
          * @category Inherited from GXml.DomElement
          */
-        get prefix(): string;
+        get prefix(): string | null;
         /**
          * @read-only
          * @category Inherited from GXml.DomElement
@@ -7104,11 +6904,11 @@ export namespace GXml {
          */
         get tagName(): string;
         /** @category Inherited from GXml.DomElement */
-        get id(): string;
-        set id(val: string);
+        get id(): string | null;
+        set id(val: string | null);
         /** @category Inherited from GXml.DomElement */
-        get class_name(): string;
-        set class_name(val: string);
+        get class_name(): string | null;
+        set class_name(val: string | null);
         /** @category Inherited from GXml.DomElement */
         get className(): string;
         set className(val: string);
@@ -7199,12 +6999,12 @@ export namespace GXml {
         /**
          * @param value
          */
-        set_id(value?: string | null): void;
+        set_id(value: string | null): void;
         get_class_name(): string | null;
         /**
          * @param value
          */
-        set_class_name(value?: string | null): void;
+        set_class_name(value: string | null): void;
         get_class_list(): DomTokenList;
         get_attributes(): DomNamedNodeMap;
         /**
@@ -7280,7 +7080,7 @@ export namespace GXml {
          * @param uri
          * @param cancellable
          */
-        read_from_uri_async(uri: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
+        read_from_uri_async(uri: string, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * @param uri
          * @param cancellable
@@ -7298,7 +7098,7 @@ export namespace GXml {
          */
         read_from_uri_async(
             uri: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -7309,12 +7109,12 @@ export namespace GXml {
          * @param f
          * @param cancellable
          */
-        read_from_file(f: Gio.File, cancellable?: Gio.Cancellable | null): void;
+        read_from_file(f: Gio.File, cancellable: Gio.Cancellable | null): void;
         /**
          * @param f
          * @param cancellable
          */
-        read_from_file_async(f: Gio.File, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
+        read_from_file_async(f: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * @param f
          * @param cancellable
@@ -7332,7 +7132,7 @@ export namespace GXml {
          */
         read_from_file_async(
             f: Gio.File,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -7343,15 +7143,12 @@ export namespace GXml {
          * @param istream
          * @param cancellable
          */
-        read_from_stream(istream: Gio.InputStream, cancellable?: Gio.Cancellable | null): void;
+        read_from_stream(istream: Gio.InputStream, cancellable: Gio.Cancellable | null): void;
         /**
          * @param istream
          * @param cancellable
          */
-        read_from_stream_async(
-            istream: Gio.InputStream,
-            cancellable?: Gio.Cancellable | null,
-        ): globalThis.Promise<void>;
+        read_from_stream_async(istream: Gio.InputStream, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * @param istream
          * @param cancellable
@@ -7369,7 +7166,7 @@ export namespace GXml {
          */
         read_from_stream_async(
             istream: Gio.InputStream,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -7380,12 +7177,12 @@ export namespace GXml {
          * @param str
          * @param cancellable
          */
-        read_from_string(str: string, cancellable?: Gio.Cancellable | null): void;
+        read_from_string(str: string, cancellable: Gio.Cancellable | null): void;
         /**
          * @param str
          * @param cancellable
          */
-        read_from_string_async(str: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
+        read_from_string_async(str: string, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * @param str
          * @param cancellable
@@ -7403,7 +7200,7 @@ export namespace GXml {
          */
         read_from_string_async(
             str: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -7413,11 +7210,11 @@ export namespace GXml {
         /**
          * @param cancellable
          */
-        write_string(cancellable?: Gio.Cancellable | null): string;
+        write_string(cancellable: Gio.Cancellable | null): string;
         /**
          * @param cancellable
          */
-        write_string_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
+        write_string_async(cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * @param cancellable
          * @param _callback_
@@ -7428,7 +7225,7 @@ export namespace GXml {
          * @param _callback_
          */
         write_string_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
         /**
@@ -7439,12 +7236,12 @@ export namespace GXml {
          * @param f
          * @param cancellable
          */
-        write_file(f: Gio.File, cancellable?: Gio.Cancellable | null): void;
+        write_file(f: Gio.File, cancellable: Gio.Cancellable | null): void;
         /**
          * @param f
          * @param cancellable
          */
-        write_file_async(f: Gio.File, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
+        write_file_async(f: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * @param f
          * @param cancellable
@@ -7462,7 +7259,7 @@ export namespace GXml {
          */
         write_file_async(
             f: Gio.File,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -7477,7 +7274,7 @@ export namespace GXml {
          * @param stream
          * @param cancellable
          */
-        write_stream_async(stream: Gio.OutputStream, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
+        write_stream_async(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * @param stream
          * @param cancellable
@@ -7495,7 +7292,7 @@ export namespace GXml {
          */
         write_stream_async(
             stream: Gio.OutputStream,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -7506,7 +7303,7 @@ export namespace GXml {
         /**
          * @param cancellable
          */
-        create_stream_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>;
+        create_stream_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>;
         /**
          * @param cancellable
          * @param _callback_
@@ -7517,7 +7314,7 @@ export namespace GXml {
          * @param _callback_
          */
         create_stream_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Gio.InputStream> | void;
         /**
@@ -7548,7 +7345,7 @@ export namespace GXml {
          * @param value
          * @virtual
          */
-        vfunc_set_id(value?: string | null): void;
+        vfunc_set_id(value: string | null): void;
         /**
          * @virtual
          */
@@ -7557,7 +7354,7 @@ export namespace GXml {
          * @param value
          * @virtual
          */
-        vfunc_set_class_name(value?: string | null): void;
+        vfunc_set_class_name(value: string | null): void;
         /**
          * @virtual
          */
@@ -7658,8 +7455,8 @@ export namespace GXml {
          */
         vfunc_read_from_uri_async(
             uri: string,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param _res_
@@ -7671,7 +7468,7 @@ export namespace GXml {
          * @param cancellable
          * @virtual
          */
-        vfunc_read_from_file(f: Gio.File, cancellable?: Gio.Cancellable | null): void;
+        vfunc_read_from_file(f: Gio.File, cancellable: Gio.Cancellable | null): void;
         /**
          * @param f
          * @param cancellable
@@ -7680,8 +7477,8 @@ export namespace GXml {
          */
         vfunc_read_from_file_async(
             f: Gio.File,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param _res_
@@ -7693,7 +7490,7 @@ export namespace GXml {
          * @param cancellable
          * @virtual
          */
-        vfunc_read_from_stream(istream: Gio.InputStream, cancellable?: Gio.Cancellable | null): void;
+        vfunc_read_from_stream(istream: Gio.InputStream, cancellable: Gio.Cancellable | null): void;
         /**
          * @param istream
          * @param cancellable
@@ -7702,8 +7499,8 @@ export namespace GXml {
          */
         vfunc_read_from_stream_async(
             istream: Gio.InputStream,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param _res_
@@ -7715,7 +7512,7 @@ export namespace GXml {
          * @param cancellable
          * @virtual
          */
-        vfunc_read_from_string(str: string, cancellable?: Gio.Cancellable | null): void;
+        vfunc_read_from_string(str: string, cancellable: Gio.Cancellable | null): void;
         /**
          * @param str
          * @param cancellable
@@ -7724,8 +7521,8 @@ export namespace GXml {
          */
         vfunc_read_from_string_async(
             str: string,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param _res_
@@ -7736,15 +7533,15 @@ export namespace GXml {
          * @param cancellable
          * @virtual
          */
-        vfunc_write_string(cancellable?: Gio.Cancellable | null): string;
+        vfunc_write_string(cancellable: Gio.Cancellable | null): string;
         /**
          * @param cancellable
          * @param _callback_
          * @virtual
          */
         vfunc_write_string_async(
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param _res_
@@ -7756,7 +7553,7 @@ export namespace GXml {
          * @param cancellable
          * @virtual
          */
-        vfunc_write_file(f: Gio.File, cancellable?: Gio.Cancellable | null): void;
+        vfunc_write_file(f: Gio.File, cancellable: Gio.Cancellable | null): void;
         /**
          * @param f
          * @param cancellable
@@ -7765,8 +7562,8 @@ export namespace GXml {
          */
         vfunc_write_file_async(
             f: Gio.File,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param _res_
@@ -7786,8 +7583,8 @@ export namespace GXml {
          */
         vfunc_write_stream_async(
             stream: Gio.OutputStream,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param _res_
@@ -7804,8 +7601,8 @@ export namespace GXml {
          * @virtual
          */
         vfunc_create_stream_async(
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param _res_
@@ -7941,38 +7738,19 @@ export namespace GXml {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -7980,15 +7758,9 @@ export namespace GXml {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -8155,7 +7927,7 @@ export namespace GXml {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -8545,38 +8317,19 @@ export namespace GXml {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -8584,15 +8337,9 @@ export namespace GXml {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -8759,7 +8506,7 @@ export namespace GXml {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -9106,7 +8853,7 @@ export namespace GXml {
          * @read-only
          * @category Inherited from GXml.DomEvent
          */
-        get event_target(): DomEventTarget;
+        get event_target(): DomEventTarget | null;
         /**
          * @read-only
          * @category Inherited from GXml.DomEvent
@@ -9116,7 +8863,7 @@ export namespace GXml {
          * @read-only
          * @category Inherited from GXml.DomEvent
          */
-        get current_target(): DomEventTarget;
+        get current_target(): DomEventTarget | null;
         /**
          * @read-only
          * @category Inherited from GXml.DomEvent
@@ -9292,38 +9039,19 @@ export namespace GXml {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -9331,15 +9059,9 @@ export namespace GXml {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -9506,7 +9228,7 @@ export namespace GXml {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -9769,7 +9491,7 @@ export namespace GXml {
          * @param cancelable
          * @param detail
          */
-        init_custom_event(type: string, bubbles: boolean, cancelable: boolean, detail?: GObject.Value | null): void;
+        init_custom_event(type: string, bubbles: boolean, cancelable: boolean, detail: GObject.Value | null): void;
     }
 
     namespace HashMap {
@@ -9946,38 +9668,19 @@ export namespace GXml {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -9985,15 +9688,9 @@ export namespace GXml {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -10160,7 +9857,7 @@ export namespace GXml {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -10583,38 +10280,19 @@ export namespace GXml {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -10622,15 +10300,9 @@ export namespace GXml {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -10797,7 +10469,7 @@ export namespace GXml {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -11277,38 +10949,19 @@ export namespace GXml {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -11316,15 +10969,9 @@ export namespace GXml {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -11491,7 +11138,7 @@ export namespace GXml {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -11835,38 +11482,19 @@ export namespace GXml {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -11874,15 +11502,9 @@ export namespace GXml {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -12049,7 +11671,7 @@ export namespace GXml {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -12409,7 +12031,7 @@ export namespace GXml {
 
         _init(...args: any[]): void;
 
-        static ['new'](document: XDocument, pointer?: any | null): LXPathObject;
+        static ['new'](document: XDocument, pointer: any | null): LXPathObject;
 
         // Signals
 
@@ -12548,38 +12170,19 @@ export namespace GXml {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -12587,15 +12190,9 @@ export namespace GXml {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -12762,7 +12359,7 @@ export namespace GXml {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -13043,15 +12640,15 @@ export namespace GXml {
          * @read-only
          * @category Inherited from GXml.DomNode
          */
-        get base_uri(): string;
+        get base_uri(): string | null;
         /**
          * @read-only
          * @category Inherited from GXml.DomNode
          */
         get baseUri(): string;
         /** @category Inherited from GXml.DomNode */
-        get owner_document(): DomDocument;
-        set owner_document(val: DomDocument);
+        get owner_document(): DomDocument | null;
+        set owner_document(val: DomDocument | null);
         /** @category Inherited from GXml.DomNode */
         get ownerDocument(): DomDocument;
         set ownerDocument(val: DomDocument);
@@ -13059,7 +12656,7 @@ export namespace GXml {
          * @read-only
          * @category Inherited from GXml.DomNode
          */
-        get parent_node(): DomNode;
+        get parent_node(): DomNode | null;
         /**
          * @read-only
          * @category Inherited from GXml.DomNode
@@ -13069,7 +12666,7 @@ export namespace GXml {
          * @read-only
          * @category Inherited from GXml.DomNode
          */
-        get parent_element(): DomElement;
+        get parent_element(): DomElement | null;
         /**
          * @read-only
          * @category Inherited from GXml.DomNode
@@ -13089,7 +12686,7 @@ export namespace GXml {
          * @read-only
          * @category Inherited from GXml.DomNode
          */
-        get first_child(): DomNode;
+        get first_child(): DomNode | null;
         /**
          * @read-only
          * @category Inherited from GXml.DomNode
@@ -13099,7 +12696,7 @@ export namespace GXml {
          * @read-only
          * @category Inherited from GXml.DomNode
          */
-        get last_child(): DomNode;
+        get last_child(): DomNode | null;
         /**
          * @read-only
          * @category Inherited from GXml.DomNode
@@ -13109,7 +12706,7 @@ export namespace GXml {
          * @read-only
          * @category Inherited from GXml.DomNode
          */
-        get previous_sibling(): DomNode;
+        get previous_sibling(): DomNode | null;
         /**
          * @read-only
          * @category Inherited from GXml.DomNode
@@ -13119,21 +12716,21 @@ export namespace GXml {
          * @read-only
          * @category Inherited from GXml.DomNode
          */
-        get next_sibling(): DomNode;
+        get next_sibling(): DomNode | null;
         /**
          * @read-only
          * @category Inherited from GXml.DomNode
          */
         get nextSibling(): DomNode;
         /** @category Inherited from GXml.DomNode */
-        get node_value(): string;
-        set node_value(val: string);
+        get node_value(): string | null;
+        set node_value(val: string | null);
         /** @category Inherited from GXml.DomNode */
         get nodeValue(): string;
         set nodeValue(val: string);
         /** @category Inherited from GXml.DomNode */
-        get text_content(): string;
-        set text_content(val: string);
+        get text_content(): string | null;
+        set text_content(val: string | null);
         /** @category Inherited from GXml.DomNode */
         get textContent(): string;
         set textContent(val: string);
@@ -13179,7 +12776,7 @@ export namespace GXml {
         /**
          * @param value
          */
-        set_owner_document(value?: DomDocument | null): void;
+        set_owner_document(value: DomDocument | null): void;
         get_parent_node(): DomNode | null;
         get_parent_element(): DomElement | null;
         get_child_nodes(): DomNodeList;
@@ -13191,18 +12788,18 @@ export namespace GXml {
         /**
          * @param value
          */
-        set_node_value(value?: string | null): void;
+        set_node_value(value: string | null): void;
         get_text_content(): string | null;
         /**
          * @param value
          */
-        set_text_content(value?: string | null): void;
+        set_text_content(value: string | null): void;
         has_child_nodes(): boolean;
         normalize(): void;
         /**
          * @param node
          */
-        is_equal_node(node?: DomNode | null): boolean;
+        is_equal_node(node: DomNode | null): boolean;
         /**
          * @param other
          */
@@ -13210,24 +12807,24 @@ export namespace GXml {
         /**
          * @param other
          */
-        contains(other?: DomNode | null): boolean;
+        contains(other: DomNode | null): boolean;
         /**
          * @param nspace
          */
-        lookup_prefix(nspace?: string | null): string | null;
+        lookup_prefix(nspace: string | null): string | null;
         /**
          * @param prefix
          */
-        lookup_namespace_uri(prefix?: string | null): string | null;
+        lookup_namespace_uri(prefix: string | null): string | null;
         /**
          * @param nspace
          */
-        is_default_namespace(nspace?: string | null): boolean;
+        is_default_namespace(nspace: string | null): boolean;
         /**
          * @param node
          * @param child
          */
-        insert_before(node: DomNode, child?: DomNode | null): DomNode;
+        insert_before(node: DomNode, child: DomNode | null): DomNode;
         /**
          * @param node
          */
@@ -13261,7 +12858,7 @@ export namespace GXml {
          * @param value
          * @virtual
          */
-        vfunc_set_owner_document(value?: DomDocument | null): void;
+        vfunc_set_owner_document(value: DomDocument | null): void;
         /**
          * @virtual
          */
@@ -13298,7 +12895,7 @@ export namespace GXml {
          * @param value
          * @virtual
          */
-        vfunc_set_node_value(value?: string | null): void;
+        vfunc_set_node_value(value: string | null): void;
         /**
          * @virtual
          */
@@ -13307,7 +12904,7 @@ export namespace GXml {
          * @param value
          * @virtual
          */
-        vfunc_set_text_content(value?: string | null): void;
+        vfunc_set_text_content(value: string | null): void;
         /**
          * @virtual
          */
@@ -13320,7 +12917,7 @@ export namespace GXml {
          * @param node
          * @virtual
          */
-        vfunc_is_equal_node(node?: DomNode | null): boolean;
+        vfunc_is_equal_node(node: DomNode | null): boolean;
         /**
          * @param other
          * @virtual
@@ -13330,28 +12927,28 @@ export namespace GXml {
          * @param other
          * @virtual
          */
-        vfunc_contains(other?: DomNode | null): boolean;
+        vfunc_contains(other: DomNode | null): boolean;
         /**
          * @param nspace
          * @virtual
          */
-        vfunc_lookup_prefix(nspace?: string | null): string | null;
+        vfunc_lookup_prefix(nspace: string | null): string | null;
         /**
          * @param prefix
          * @virtual
          */
-        vfunc_lookup_namespace_uri(prefix?: string | null): string | null;
+        vfunc_lookup_namespace_uri(prefix: string | null): string | null;
         /**
          * @param nspace
          * @virtual
          */
-        vfunc_is_default_namespace(nspace?: string | null): boolean;
+        vfunc_is_default_namespace(nspace: string | null): boolean;
         /**
          * @param node
          * @param child
          * @virtual
          */
-        vfunc_insert_before(node: DomNode, child?: DomNode | null): DomNode;
+        vfunc_insert_before(node: DomNode, child: DomNode | null): DomNode;
         /**
          * @param node
          * @virtual
@@ -13415,38 +13012,19 @@ export namespace GXml {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -13454,15 +13032,9 @@ export namespace GXml {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -13629,7 +13201,7 @@ export namespace GXml {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -13945,38 +13517,19 @@ export namespace GXml {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -13984,15 +13537,9 @@ export namespace GXml {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -14159,7 +13706,7 @@ export namespace GXml {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -14528,38 +14075,19 @@ export namespace GXml {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -14567,15 +14095,9 @@ export namespace GXml {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -14742,7 +14264,7 @@ export namespace GXml {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -14941,7 +14463,7 @@ export namespace GXml {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Property.ConstructorProps {
-            value: string;
+            value: string | null;
         }
     }
 
@@ -14953,8 +14475,8 @@ export namespace GXml {
 
         // Properties
 
-        get value(): string;
-        set value(val: string);
+        get value(): string | null;
+        set value(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -15002,12 +14524,12 @@ export namespace GXml {
          * @param value
          * @virtual
          */
-        vfunc_set_value(value?: string | null): void;
+        vfunc_set_value(value: string | null): void;
         /**
          * @param val
          * @virtual
          */
-        vfunc_validate_value(val?: string | null): boolean;
+        vfunc_validate_value(val: string | null): boolean;
 
         // Methods
 
@@ -15015,11 +14537,11 @@ export namespace GXml {
         /**
          * @param value
          */
-        set_value(value?: string | null): void;
+        set_value(value: string | null): void;
         /**
          * @param val
          */
-        validate_value(val?: string | null): boolean;
+        validate_value(val: string | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -15067,38 +14589,19 @@ export namespace GXml {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -15106,15 +14609,9 @@ export namespace GXml {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -15281,7 +14778,7 @@ export namespace GXml {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -16585,38 +16082,19 @@ export namespace GXml {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -16624,15 +16102,9 @@ export namespace GXml {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -16799,7 +16271,7 @@ export namespace GXml {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -17027,7 +16499,7 @@ export namespace GXml {
 
         _init(...args: any[]): void;
 
-        static ['new'](e: DomElement, attr?: string | null): SettableTokenList;
+        static ['new'](e: DomElement, attr: string | null): SettableTokenList;
         // Conflicted with Gee.ArrayList.new
 
         static ['new'](...args: never[]): any;
@@ -17116,38 +16588,19 @@ export namespace GXml {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -17155,15 +16608,9 @@ export namespace GXml {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -17330,7 +16777,7 @@ export namespace GXml {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -17580,17 +17027,17 @@ export namespace GXml {
         ): void;
         emit(signal: string, ...args: any[]): void;
         /** @category Inherited from GXml.Property */
-        get value(): string;
-        set value(val: string);
+        get value(): string | null;
+        set value(val: string | null);
         get_value(): string | null;
         /**
          * @param value
          */
-        set_value(value?: string | null): void;
+        set_value(value: string | null): void;
         /**
          * @param val
          */
-        validate_value(val?: string | null): boolean;
+        validate_value(val: string | null): boolean;
         /**
          * @virtual
          */
@@ -17599,12 +17046,12 @@ export namespace GXml {
          * @param value
          * @virtual
          */
-        vfunc_set_value(value?: string | null): void;
+        vfunc_set_value(value: string | null): void;
         /**
          * @param val
          * @virtual
          */
-        vfunc_validate_value(val?: string | null): boolean;
+        vfunc_validate_value(val: string | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -17652,38 +17099,19 @@ export namespace GXml {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -17691,15 +17119,9 @@ export namespace GXml {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -17866,7 +17288,7 @@ export namespace GXml {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -18121,7 +17543,7 @@ export namespace GXml {
          * @read-only
          * @category Inherited from GXml.DomNonDocumentTypeChildNode
          */
-        get previous_element_sibling(): DomElement;
+        get previous_element_sibling(): DomElement | null;
         /**
          * @read-only
          * @category Inherited from GXml.DomNonDocumentTypeChildNode
@@ -18131,7 +17553,7 @@ export namespace GXml {
          * @read-only
          * @category Inherited from GXml.DomNonDocumentTypeChildNode
          */
-        get next_element_sibling(): DomElement;
+        get next_element_sibling(): DomElement | null;
         /**
          * @read-only
          * @category Inherited from GXml.DomNonDocumentTypeChildNode
@@ -18281,38 +17703,19 @@ export namespace GXml {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -18320,15 +17723,9 @@ export namespace GXml {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -19152,7 +18549,7 @@ export namespace GXml {
 
         _init(...args: any[]): void;
 
-        static ['new'](e: DomElement, attr?: string | null): TokenList;
+        static ['new'](e: DomElement, attr: string | null): TokenList;
         // Conflicted with Gee.ArrayList.new
 
         static ['new'](...args: never[]): any;
@@ -19325,38 +18722,19 @@ export namespace GXml {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -19364,15 +18742,9 @@ export namespace GXml {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -19539,7 +18911,7 @@ export namespace GXml {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -19912,38 +19284,19 @@ export namespace GXml {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -19951,15 +19304,9 @@ export namespace GXml {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -20126,7 +19473,7 @@ export namespace GXml {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -20357,7 +19704,7 @@ export namespace GXml {
 
         _init(...args: any[]): void;
 
-        static ['new'](doc: XDocument, node?: any | null): XAttribute;
+        static ['new'](doc: XDocument, node: any | null): XAttribute;
 
         // Signals
 
@@ -20383,7 +19730,7 @@ export namespace GXml {
          * @read-only
          * @category Inherited from GXml.DomAttr
          */
-        get namespace_uri(): string;
+        get namespace_uri(): string | null;
         /**
          * @read-only
          * @category Inherited from GXml.DomAttr
@@ -20393,7 +19740,7 @@ export namespace GXml {
          * @read-only
          * @category Inherited from GXml.DomAttr
          */
-        get prefix(): string;
+        get prefix(): string | null;
         /**
          * @read-only
          * @category Inherited from GXml.DomAttr
@@ -20498,38 +19845,19 @@ export namespace GXml {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -20537,15 +19865,9 @@ export namespace GXml {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -20712,7 +20034,7 @@ export namespace GXml {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -21108,38 +20430,19 @@ export namespace GXml {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -21147,15 +20450,9 @@ export namespace GXml {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -21603,38 +20900,19 @@ export namespace GXml {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -21642,15 +20920,9 @@ export namespace GXml {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -21817,7 +21089,7 @@ export namespace GXml {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -22075,7 +21347,7 @@ export namespace GXml {
          * @read-only
          * @category Inherited from GXml.DomNonDocumentTypeChildNode
          */
-        get previous_element_sibling(): DomElement;
+        get previous_element_sibling(): DomElement | null;
         /**
          * @read-only
          * @category Inherited from GXml.DomNonDocumentTypeChildNode
@@ -22085,7 +21357,7 @@ export namespace GXml {
          * @read-only
          * @category Inherited from GXml.DomNonDocumentTypeChildNode
          */
-        get next_element_sibling(): DomElement;
+        get next_element_sibling(): DomElement | null;
         /**
          * @read-only
          * @category Inherited from GXml.DomNonDocumentTypeChildNode
@@ -22148,38 +21420,19 @@ export namespace GXml {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -22187,15 +21440,9 @@ export namespace GXml {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -22362,7 +21609,7 @@ export namespace GXml {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -22592,7 +21839,7 @@ export namespace GXml {
 
         _init(...args: any[]): void;
 
-        static ['new'](doc: XDocument, node?: any | null): XComment;
+        static ['new'](doc: XDocument, node: any | null): XComment;
         // Conflicted with GXml.XCharacterData.new
 
         static ['new'](...args: never[]): any;
@@ -22808,7 +22055,7 @@ export namespace GXml {
 
         static from_uri(uri: string, options: number): XDocument;
 
-        static from_file(file: Gio.File, options: number, cancel?: Gio.Cancellable | null): XDocument;
+        static from_file(file: Gio.File, options: number, cancel: Gio.Cancellable | null): XDocument;
 
         static from_string(str: string, options: number): XDocument;
 
@@ -22843,13 +22090,13 @@ export namespace GXml {
          * @param cancellable
          * @virtual
          */
-        vfunc_save(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_save(cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param f
          * @param cancellable
          * @virtual
          */
-        vfunc_save_as(f: Gio.File, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_save_as(f: Gio.File, cancellable: Gio.Cancellable | null): boolean;
 
         // Methods
 
@@ -22892,12 +22139,12 @@ export namespace GXml {
         /**
          * @param cancellable
          */
-        save(cancellable?: Gio.Cancellable | null): boolean;
+        save(cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param f
          * @param cancellable
          */
-        save_as(f: Gio.File, cancellable?: Gio.Cancellable | null): boolean;
+        save_as(f: Gio.File, cancellable: Gio.Cancellable | null): boolean;
         /**
          * @read-only
          * @category Inherited from GXml.DomParentNode
@@ -22907,7 +22154,7 @@ export namespace GXml {
          * @read-only
          * @category Inherited from GXml.DomParentNode
          */
-        get first_element_child(): DomElement;
+        get first_element_child(): DomElement | null;
         /**
          * @read-only
          * @category Inherited from GXml.DomParentNode
@@ -22917,7 +22164,7 @@ export namespace GXml {
          * @read-only
          * @category Inherited from GXml.DomParentNode
          */
-        get last_element_child(): DomElement;
+        get last_element_child(): DomElement | null;
         /**
          * @read-only
          * @category Inherited from GXml.DomParentNode
@@ -22992,12 +22239,12 @@ export namespace GXml {
          * @read-only
          * @category Inherited from GXml.DomDocument
          */
-        get doctype(): DomDocumentType;
+        get doctype(): DomDocumentType | null;
         /**
          * @read-only
          * @category Inherited from GXml.DomDocument
          */
-        get document_element(): DomElement;
+        get document_element(): DomElement | null;
         /**
          * @read-only
          * @category Inherited from GXml.DomDocument
@@ -23134,12 +22381,12 @@ export namespace GXml {
          * @param file
          * @param cancellable
          */
-        write_file(file: Gio.File, cancellable?: Gio.Cancellable | null): void;
+        write_file(file: Gio.File, cancellable: Gio.Cancellable | null): void;
         /**
          * @param file
          * @param cancellable
          */
-        write_file_async(file: Gio.File, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
+        write_file_async(file: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * @param file
          * @param cancellable
@@ -23157,7 +22404,7 @@ export namespace GXml {
          */
         write_file_async(
             file: Gio.File,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -23168,12 +22415,12 @@ export namespace GXml {
          * @param stream
          * @param cancellable
          */
-        write_stream(stream: Gio.OutputStream, cancellable?: Gio.Cancellable | null): void;
+        write_stream(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null): void;
         /**
          * @param stream
          * @param cancellable
          */
-        write_stream_async(stream: Gio.OutputStream, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
+        write_stream_async(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * @param stream
          * @param cancellable
@@ -23191,7 +22438,7 @@ export namespace GXml {
          */
         write_stream_async(
             stream: Gio.OutputStream,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -23202,7 +22449,7 @@ export namespace GXml {
         /**
          * @param cancellable
          */
-        create_stream_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>;
+        create_stream_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>;
         /**
          * @param cancellable
          * @param _callback_
@@ -23213,7 +22460,7 @@ export namespace GXml {
          * @param _callback_
          */
         create_stream_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Gio.InputStream> | void;
         /**
@@ -23223,11 +22470,11 @@ export namespace GXml {
         /**
          * @param cancellable
          */
-        write_string(cancellable?: Gio.Cancellable | null): string;
+        write_string(cancellable: Gio.Cancellable | null): string;
         /**
          * @param cancellable
          */
-        write_string_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
+        write_string_async(cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * @param cancellable
          * @param _callback_
@@ -23238,7 +22485,7 @@ export namespace GXml {
          * @param _callback_
          */
         write_string_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
         /**
@@ -23249,12 +22496,12 @@ export namespace GXml {
          * @param file
          * @param cancellable
          */
-        read_from_file(file: Gio.File, cancellable?: Gio.Cancellable | null): void;
+        read_from_file(file: Gio.File, cancellable: Gio.Cancellable | null): void;
         /**
          * @param file
          * @param cancellable
          */
-        read_from_file_async(file: Gio.File, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
+        read_from_file_async(file: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * @param file
          * @param cancellable
@@ -23272,7 +22519,7 @@ export namespace GXml {
          */
         read_from_file_async(
             file: Gio.File,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -23283,12 +22530,12 @@ export namespace GXml {
          * @param str
          * @param cancellable
          */
-        read_from_string(str: string, cancellable?: Gio.Cancellable | null): void;
+        read_from_string(str: string, cancellable: Gio.Cancellable | null): void;
         /**
          * @param str
          * @param cancellable
          */
-        read_from_string_async(str: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
+        read_from_string_async(str: string, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * @param str
          * @param cancellable
@@ -23306,7 +22553,7 @@ export namespace GXml {
          */
         read_from_string_async(
             str: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -23317,12 +22564,12 @@ export namespace GXml {
          * @param stream
          * @param cancellable
          */
-        read_from_stream(stream: Gio.InputStream, cancellable?: Gio.Cancellable | null): void;
+        read_from_stream(stream: Gio.InputStream, cancellable: Gio.Cancellable | null): void;
         /**
          * @param stream
          * @param cancellable
          */
-        read_from_stream_async(stream: Gio.InputStream, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
+        read_from_stream_async(stream: Gio.InputStream, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * @param stream
          * @param cancellable
@@ -23340,7 +22587,7 @@ export namespace GXml {
          */
         read_from_stream_async(
             stream: Gio.InputStream,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -23472,7 +22719,7 @@ export namespace GXml {
          * @param cancellable
          * @virtual
          */
-        vfunc_write_file(file: Gio.File, cancellable?: Gio.Cancellable | null): void;
+        vfunc_write_file(file: Gio.File, cancellable: Gio.Cancellable | null): void;
         /**
          * @param file
          * @param cancellable
@@ -23481,8 +22728,8 @@ export namespace GXml {
          */
         vfunc_write_file_async(
             file: Gio.File,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param _res_
@@ -23494,7 +22741,7 @@ export namespace GXml {
          * @param cancellable
          * @virtual
          */
-        vfunc_write_stream(stream: Gio.OutputStream, cancellable?: Gio.Cancellable | null): void;
+        vfunc_write_stream(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null): void;
         /**
          * @param stream
          * @param cancellable
@@ -23503,8 +22750,8 @@ export namespace GXml {
          */
         vfunc_write_stream_async(
             stream: Gio.OutputStream,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param _res_
@@ -23521,8 +22768,8 @@ export namespace GXml {
          * @virtual
          */
         vfunc_create_stream_async(
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param _res_
@@ -23533,15 +22780,15 @@ export namespace GXml {
          * @param cancellable
          * @virtual
          */
-        vfunc_write_string(cancellable?: Gio.Cancellable | null): string;
+        vfunc_write_string(cancellable: Gio.Cancellable | null): string;
         /**
          * @param cancellable
          * @param _callback_
          * @virtual
          */
         vfunc_write_string_async(
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param _res_
@@ -23553,7 +22800,7 @@ export namespace GXml {
          * @param cancellable
          * @virtual
          */
-        vfunc_read_from_file(file: Gio.File, cancellable?: Gio.Cancellable | null): void;
+        vfunc_read_from_file(file: Gio.File, cancellable: Gio.Cancellable | null): void;
         /**
          * @param file
          * @param cancellable
@@ -23562,8 +22809,8 @@ export namespace GXml {
          */
         vfunc_read_from_file_async(
             file: Gio.File,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param _res_
@@ -23575,7 +22822,7 @@ export namespace GXml {
          * @param cancellable
          * @virtual
          */
-        vfunc_read_from_string(str: string, cancellable?: Gio.Cancellable | null): void;
+        vfunc_read_from_string(str: string, cancellable: Gio.Cancellable | null): void;
         /**
          * @param str
          * @param cancellable
@@ -23584,8 +22831,8 @@ export namespace GXml {
          */
         vfunc_read_from_string_async(
             str: string,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param _res_
@@ -23597,7 +22844,7 @@ export namespace GXml {
          * @param cancellable
          * @virtual
          */
-        vfunc_read_from_stream(stream: Gio.InputStream, cancellable?: Gio.Cancellable | null): void;
+        vfunc_read_from_stream(stream: Gio.InputStream, cancellable: Gio.Cancellable | null): void;
         /**
          * @param stream
          * @param cancellable
@@ -23606,8 +22853,8 @@ export namespace GXml {
          */
         vfunc_read_from_stream_async(
             stream: Gio.InputStream,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param _res_
@@ -23627,13 +22874,13 @@ export namespace GXml {
          * @param expression
          * @param resolver
          */
-        evaluate(expression: string, resolver?: Gee.Map | null): XPathObject;
+        evaluate(expression: string, resolver: Gee.Map | null): XPathObject;
         /**
          * @param expression
          * @param resolver
          * @virtual
          */
-        vfunc_evaluate(expression: string, resolver?: Gee.Map | null): XPathObject;
+        vfunc_evaluate(expression: string, resolver: Gee.Map | null): XPathObject;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -23681,38 +22928,19 @@ export namespace GXml {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -23720,15 +22948,9 @@ export namespace GXml {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -23895,7 +23117,7 @@ export namespace GXml {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -24148,7 +23370,7 @@ export namespace GXml {
 
         _init(...args: any[]): void;
 
-        static ['new'](doc: XDocument, node?: any | null): XElement;
+        static ['new'](doc: XDocument, node: any | null): XElement;
         // Conflicted with GXml.XNonDocumentChildNode.new
 
         static ['new'](...args: never[]): any;
@@ -24220,7 +23442,7 @@ export namespace GXml {
          * @read-only
          * @category Inherited from GXml.DomParentNode
          */
-        get first_element_child(): DomElement;
+        get first_element_child(): DomElement | null;
         /**
          * @read-only
          * @category Inherited from GXml.DomParentNode
@@ -24230,7 +23452,7 @@ export namespace GXml {
          * @read-only
          * @category Inherited from GXml.DomParentNode
          */
-        get last_element_child(): DomElement;
+        get last_element_child(): DomElement | null;
         /**
          * @read-only
          * @category Inherited from GXml.DomParentNode
@@ -24250,7 +23472,7 @@ export namespace GXml {
          * @read-only
          * @category Inherited from GXml.DomElement
          */
-        get namespace_uri(): string;
+        get namespace_uri(): string | null;
         /**
          * @read-only
          * @category Inherited from GXml.DomElement
@@ -24260,7 +23482,7 @@ export namespace GXml {
          * @read-only
          * @category Inherited from GXml.DomElement
          */
-        get prefix(): string;
+        get prefix(): string | null;
         /**
          * @read-only
          * @category Inherited from GXml.DomElement
@@ -24282,11 +23504,11 @@ export namespace GXml {
          */
         get tagName(): string;
         /** @category Inherited from GXml.DomElement */
-        get id(): string;
-        set id(val: string);
+        get id(): string | null;
+        set id(val: string | null);
         /** @category Inherited from GXml.DomElement */
-        get class_name(): string;
-        set class_name(val: string);
+        get class_name(): string | null;
+        set class_name(val: string | null);
         /** @category Inherited from GXml.DomElement */
         get className(): string;
         set className(val: string);
@@ -24362,12 +23584,12 @@ export namespace GXml {
         /**
          * @param value
          */
-        set_id(value?: string | null): void;
+        set_id(value: string | null): void;
         get_class_name(): string | null;
         /**
          * @param value
          */
-        set_class_name(value?: string | null): void;
+        set_class_name(value: string | null): void;
         get_class_list(): DomTokenList;
         get_attributes(): DomNamedNodeMap;
         /**
@@ -24433,7 +23655,7 @@ export namespace GXml {
          * @param uri
          * @param cancellable
          */
-        read_from_uri_async(uri: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
+        read_from_uri_async(uri: string, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * @param uri
          * @param cancellable
@@ -24451,7 +23673,7 @@ export namespace GXml {
          */
         read_from_uri_async(
             uri: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -24462,12 +23684,12 @@ export namespace GXml {
          * @param f
          * @param cancellable
          */
-        read_from_file(f: Gio.File, cancellable?: Gio.Cancellable | null): void;
+        read_from_file(f: Gio.File, cancellable: Gio.Cancellable | null): void;
         /**
          * @param f
          * @param cancellable
          */
-        read_from_file_async(f: Gio.File, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
+        read_from_file_async(f: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * @param f
          * @param cancellable
@@ -24485,7 +23707,7 @@ export namespace GXml {
          */
         read_from_file_async(
             f: Gio.File,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -24496,15 +23718,12 @@ export namespace GXml {
          * @param istream
          * @param cancellable
          */
-        read_from_stream(istream: Gio.InputStream, cancellable?: Gio.Cancellable | null): void;
+        read_from_stream(istream: Gio.InputStream, cancellable: Gio.Cancellable | null): void;
         /**
          * @param istream
          * @param cancellable
          */
-        read_from_stream_async(
-            istream: Gio.InputStream,
-            cancellable?: Gio.Cancellable | null,
-        ): globalThis.Promise<void>;
+        read_from_stream_async(istream: Gio.InputStream, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * @param istream
          * @param cancellable
@@ -24522,7 +23741,7 @@ export namespace GXml {
          */
         read_from_stream_async(
             istream: Gio.InputStream,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -24533,12 +23752,12 @@ export namespace GXml {
          * @param str
          * @param cancellable
          */
-        read_from_string(str: string, cancellable?: Gio.Cancellable | null): void;
+        read_from_string(str: string, cancellable: Gio.Cancellable | null): void;
         /**
          * @param str
          * @param cancellable
          */
-        read_from_string_async(str: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
+        read_from_string_async(str: string, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * @param str
          * @param cancellable
@@ -24556,7 +23775,7 @@ export namespace GXml {
          */
         read_from_string_async(
             str: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -24566,11 +23785,11 @@ export namespace GXml {
         /**
          * @param cancellable
          */
-        write_string(cancellable?: Gio.Cancellable | null): string;
+        write_string(cancellable: Gio.Cancellable | null): string;
         /**
          * @param cancellable
          */
-        write_string_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
+        write_string_async(cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * @param cancellable
          * @param _callback_
@@ -24581,7 +23800,7 @@ export namespace GXml {
          * @param _callback_
          */
         write_string_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
         /**
@@ -24592,12 +23811,12 @@ export namespace GXml {
          * @param f
          * @param cancellable
          */
-        write_file(f: Gio.File, cancellable?: Gio.Cancellable | null): void;
+        write_file(f: Gio.File, cancellable: Gio.Cancellable | null): void;
         /**
          * @param f
          * @param cancellable
          */
-        write_file_async(f: Gio.File, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
+        write_file_async(f: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * @param f
          * @param cancellable
@@ -24615,7 +23834,7 @@ export namespace GXml {
          */
         write_file_async(
             f: Gio.File,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -24630,7 +23849,7 @@ export namespace GXml {
          * @param stream
          * @param cancellable
          */
-        write_stream_async(stream: Gio.OutputStream, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
+        write_stream_async(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * @param stream
          * @param cancellable
@@ -24648,7 +23867,7 @@ export namespace GXml {
          */
         write_stream_async(
             stream: Gio.OutputStream,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -24659,7 +23878,7 @@ export namespace GXml {
         /**
          * @param cancellable
          */
-        create_stream_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>;
+        create_stream_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>;
         /**
          * @param cancellable
          * @param _callback_
@@ -24670,7 +23889,7 @@ export namespace GXml {
          * @param _callback_
          */
         create_stream_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Gio.InputStream> | void;
         /**
@@ -24701,7 +23920,7 @@ export namespace GXml {
          * @param value
          * @virtual
          */
-        vfunc_set_id(value?: string | null): void;
+        vfunc_set_id(value: string | null): void;
         /**
          * @virtual
          */
@@ -24710,7 +23929,7 @@ export namespace GXml {
          * @param value
          * @virtual
          */
-        vfunc_set_class_name(value?: string | null): void;
+        vfunc_set_class_name(value: string | null): void;
         /**
          * @virtual
          */
@@ -24799,8 +24018,8 @@ export namespace GXml {
          */
         vfunc_read_from_uri_async(
             uri: string,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param _res_
@@ -24812,7 +24031,7 @@ export namespace GXml {
          * @param cancellable
          * @virtual
          */
-        vfunc_read_from_file(f: Gio.File, cancellable?: Gio.Cancellable | null): void;
+        vfunc_read_from_file(f: Gio.File, cancellable: Gio.Cancellable | null): void;
         /**
          * @param f
          * @param cancellable
@@ -24821,8 +24040,8 @@ export namespace GXml {
          */
         vfunc_read_from_file_async(
             f: Gio.File,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param _res_
@@ -24834,7 +24053,7 @@ export namespace GXml {
          * @param cancellable
          * @virtual
          */
-        vfunc_read_from_stream(istream: Gio.InputStream, cancellable?: Gio.Cancellable | null): void;
+        vfunc_read_from_stream(istream: Gio.InputStream, cancellable: Gio.Cancellable | null): void;
         /**
          * @param istream
          * @param cancellable
@@ -24843,8 +24062,8 @@ export namespace GXml {
          */
         vfunc_read_from_stream_async(
             istream: Gio.InputStream,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param _res_
@@ -24856,7 +24075,7 @@ export namespace GXml {
          * @param cancellable
          * @virtual
          */
-        vfunc_read_from_string(str: string, cancellable?: Gio.Cancellable | null): void;
+        vfunc_read_from_string(str: string, cancellable: Gio.Cancellable | null): void;
         /**
          * @param str
          * @param cancellable
@@ -24865,8 +24084,8 @@ export namespace GXml {
          */
         vfunc_read_from_string_async(
             str: string,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param _res_
@@ -24877,15 +24096,15 @@ export namespace GXml {
          * @param cancellable
          * @virtual
          */
-        vfunc_write_string(cancellable?: Gio.Cancellable | null): string;
+        vfunc_write_string(cancellable: Gio.Cancellable | null): string;
         /**
          * @param cancellable
          * @param _callback_
          * @virtual
          */
         vfunc_write_string_async(
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param _res_
@@ -24897,7 +24116,7 @@ export namespace GXml {
          * @param cancellable
          * @virtual
          */
-        vfunc_write_file(f: Gio.File, cancellable?: Gio.Cancellable | null): void;
+        vfunc_write_file(f: Gio.File, cancellable: Gio.Cancellable | null): void;
         /**
          * @param f
          * @param cancellable
@@ -24906,8 +24125,8 @@ export namespace GXml {
          */
         vfunc_write_file_async(
             f: Gio.File,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param _res_
@@ -24927,8 +24146,8 @@ export namespace GXml {
          */
         vfunc_write_stream_async(
             stream: Gio.OutputStream,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param _res_
@@ -24945,8 +24164,8 @@ export namespace GXml {
          * @virtual
          */
         vfunc_create_stream_async(
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param _res_
@@ -24957,13 +24176,13 @@ export namespace GXml {
          * @param expression
          * @param resolver
          */
-        evaluate(expression: string, resolver?: Gee.Map | null): XPathObject;
+        evaluate(expression: string, resolver: Gee.Map | null): XPathObject;
         /**
          * @param expression
          * @param resolver
          * @virtual
          */
-        vfunc_evaluate(expression: string, resolver?: Gee.Map | null): XPathObject;
+        vfunc_evaluate(expression: string, resolver: Gee.Map | null): XPathObject;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -25011,38 +24230,19 @@ export namespace GXml {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -25050,15 +24250,9 @@ export namespace GXml {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -25225,7 +24419,7 @@ export namespace GXml {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -25459,7 +24653,7 @@ export namespace GXml {
 
         _init(...args: any[]): void;
 
-        static ['new'](doc: XDocument, node?: any | null): XHashMapAttr;
+        static ['new'](doc: XDocument, node: any | null): XHashMapAttr;
 
         // Signals
 
@@ -25605,38 +24799,19 @@ export namespace GXml {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -25644,15 +24819,9 @@ export namespace GXml {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -25819,7 +24988,7 @@ export namespace GXml {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -26054,7 +25223,7 @@ export namespace GXml {
 
         _init(...args: any[]): void;
 
-        static ['new'](doc: XDocument, attr?: any | null): XHashMapAttrEntry;
+        static ['new'](doc: XDocument, attr: any | null): XHashMapAttrEntry;
 
         // Signals
 
@@ -26112,7 +25281,7 @@ export namespace GXml {
 
         _init(...args: any[]): void;
 
-        static ['new'](doc: XDocument, node?: any | null): XHashMapAttrIterator;
+        static ['new'](doc: XDocument, node: any | null): XHashMapAttrIterator;
 
         // Signals
 
@@ -26276,38 +25445,19 @@ export namespace GXml {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -26315,15 +25465,9 @@ export namespace GXml {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -26490,7 +25634,7 @@ export namespace GXml {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -26728,7 +25872,7 @@ export namespace GXml {
 
         static from_uri(uri: string, options: number): XHtmlDocument;
 
-        static from_file(file: Gio.File, options: number, cancel?: Gio.Cancellable | null): XHtmlDocument;
+        static from_file(file: Gio.File, options: number, cancel: Gio.Cancellable | null): XHtmlDocument;
 
         static from_string(html: string, options: number): XHtmlDocument;
 
@@ -26832,38 +25976,19 @@ export namespace GXml {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -26871,15 +25996,9 @@ export namespace GXml {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -27046,7 +26165,7 @@ export namespace GXml {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -27278,7 +26397,7 @@ export namespace GXml {
 
         _init(...args: any[]): void;
 
-        static ['new'](doc: XDocument, node?: any | null): XListChildren;
+        static ['new'](doc: XDocument, node: any | null): XListChildren;
 
         // Signals
 
@@ -27411,38 +26530,19 @@ export namespace GXml {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -27450,15 +26550,9 @@ export namespace GXml {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -27625,7 +26719,7 @@ export namespace GXml {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -27863,7 +26957,7 @@ export namespace GXml {
 
         _init(...args: any[]): void;
 
-        static ['new'](doc: XDocument, node?: any | null): XListChildrenIterator;
+        static ['new'](doc: XDocument, node: any | null): XListChildrenIterator;
 
         // Signals
 
@@ -27974,7 +27068,7 @@ export namespace GXml {
         /**
          * @param compare
          */
-        order_by(compare?: GLib.CompareDataFunc | null): Gee.Iterator;
+        order_by(compare: GLib.CompareDataFunc | null): Gee.Iterator;
         get_element_type(): GObject.GType;
         /**
          * @param f
@@ -28063,7 +27157,7 @@ export namespace GXml {
          * @param compare
          * @virtual
          */
-        vfunc_order_by(compare?: GLib.CompareDataFunc | null): Gee.Iterator;
+        vfunc_order_by(compare: GLib.CompareDataFunc | null): Gee.Iterator;
         /**
          * @virtual
          */
@@ -28202,38 +27296,19 @@ export namespace GXml {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -28241,15 +27316,9 @@ export namespace GXml {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -28416,7 +27485,7 @@ export namespace GXml {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -28741,7 +27810,7 @@ export namespace GXml {
          * @param prefix
          * @virtual
          */
-        vfunc_set_namespace(uri: string, prefix?: string | null): boolean;
+        vfunc_set_namespace(uri: string, prefix: string | null): boolean;
         /**
          * @virtual
          */
@@ -28786,7 +27855,7 @@ export namespace GXml {
          * @param uri
          * @param prefix
          */
-        set_namespace(uri: string, prefix?: string | null): boolean;
+        set_namespace(uri: string, prefix: string | null): boolean;
         get_attrs(): Gee.Map;
         get_children_nodes(): Gee.BidirList;
         get_document(): DomDocument;
@@ -28828,15 +27897,15 @@ export namespace GXml {
          * @read-only
          * @category Inherited from GXml.DomNode
          */
-        get base_uri(): string;
+        get base_uri(): string | null;
         /**
          * @read-only
          * @category Inherited from GXml.DomNode
          */
         get baseUri(): string;
         /** @category Inherited from GXml.DomNode */
-        get owner_document(): DomDocument;
-        set owner_document(val: DomDocument);
+        get owner_document(): DomDocument | null;
+        set owner_document(val: DomDocument | null);
         /** @category Inherited from GXml.DomNode */
         get ownerDocument(): DomDocument;
         set ownerDocument(val: DomDocument);
@@ -28844,7 +27913,7 @@ export namespace GXml {
          * @read-only
          * @category Inherited from GXml.DomNode
          */
-        get parent_node(): DomNode;
+        get parent_node(): DomNode | null;
         /**
          * @read-only
          * @category Inherited from GXml.DomNode
@@ -28854,7 +27923,7 @@ export namespace GXml {
          * @read-only
          * @category Inherited from GXml.DomNode
          */
-        get parent_element(): DomElement;
+        get parent_element(): DomElement | null;
         /**
          * @read-only
          * @category Inherited from GXml.DomNode
@@ -28874,7 +27943,7 @@ export namespace GXml {
          * @read-only
          * @category Inherited from GXml.DomNode
          */
-        get first_child(): DomNode;
+        get first_child(): DomNode | null;
         /**
          * @read-only
          * @category Inherited from GXml.DomNode
@@ -28884,7 +27953,7 @@ export namespace GXml {
          * @read-only
          * @category Inherited from GXml.DomNode
          */
-        get last_child(): DomNode;
+        get last_child(): DomNode | null;
         /**
          * @read-only
          * @category Inherited from GXml.DomNode
@@ -28894,7 +27963,7 @@ export namespace GXml {
          * @read-only
          * @category Inherited from GXml.DomNode
          */
-        get previous_sibling(): DomNode;
+        get previous_sibling(): DomNode | null;
         /**
          * @read-only
          * @category Inherited from GXml.DomNode
@@ -28904,21 +27973,21 @@ export namespace GXml {
          * @read-only
          * @category Inherited from GXml.DomNode
          */
-        get next_sibling(): DomNode;
+        get next_sibling(): DomNode | null;
         /**
          * @read-only
          * @category Inherited from GXml.DomNode
          */
         get nextSibling(): DomNode;
         /** @category Inherited from GXml.DomNode */
-        get node_value(): string;
-        set node_value(val: string);
+        get node_value(): string | null;
+        set node_value(val: string | null);
         /** @category Inherited from GXml.DomNode */
         get nodeValue(): string;
         set nodeValue(val: string);
         /** @category Inherited from GXml.DomNode */
-        get text_content(): string;
-        set text_content(val: string);
+        get text_content(): string | null;
+        set text_content(val: string | null);
         /** @category Inherited from GXml.DomNode */
         get textContent(): string;
         set textContent(val: string);
@@ -28964,7 +28033,7 @@ export namespace GXml {
         /**
          * @param value
          */
-        set_owner_document(value?: DomDocument | null): void;
+        set_owner_document(value: DomDocument | null): void;
         get_parent_node(): DomNode | null;
         get_parent_element(): DomElement | null;
         get_child_nodes(): DomNodeList;
@@ -28976,18 +28045,18 @@ export namespace GXml {
         /**
          * @param value
          */
-        set_node_value(value?: string | null): void;
+        set_node_value(value: string | null): void;
         get_text_content(): string | null;
         /**
          * @param value
          */
-        set_text_content(value?: string | null): void;
+        set_text_content(value: string | null): void;
         has_child_nodes(): boolean;
         normalize(): void;
         /**
          * @param node
          */
-        is_equal_node(node?: DomNode | null): boolean;
+        is_equal_node(node: DomNode | null): boolean;
         /**
          * @param other
          */
@@ -28995,24 +28064,24 @@ export namespace GXml {
         /**
          * @param other
          */
-        contains(other?: DomNode | null): boolean;
+        contains(other: DomNode | null): boolean;
         /**
          * @param nspace
          */
-        lookup_prefix(nspace?: string | null): string | null;
+        lookup_prefix(nspace: string | null): string | null;
         /**
          * @param prefix
          */
-        lookup_namespace_uri(prefix?: string | null): string | null;
+        lookup_namespace_uri(prefix: string | null): string | null;
         /**
          * @param nspace
          */
-        is_default_namespace(nspace?: string | null): boolean;
+        is_default_namespace(nspace: string | null): boolean;
         /**
          * @param node
          * @param child
          */
-        insert_before(node: DomNode, child?: DomNode | null): DomNode;
+        insert_before(node: DomNode, child: DomNode | null): DomNode;
         /**
          * @param node
          */
@@ -29046,7 +28115,7 @@ export namespace GXml {
          * @param value
          * @virtual
          */
-        vfunc_set_owner_document(value?: DomDocument | null): void;
+        vfunc_set_owner_document(value: DomDocument | null): void;
         /**
          * @virtual
          */
@@ -29083,7 +28152,7 @@ export namespace GXml {
          * @param value
          * @virtual
          */
-        vfunc_set_node_value(value?: string | null): void;
+        vfunc_set_node_value(value: string | null): void;
         /**
          * @virtual
          */
@@ -29092,7 +28161,7 @@ export namespace GXml {
          * @param value
          * @virtual
          */
-        vfunc_set_text_content(value?: string | null): void;
+        vfunc_set_text_content(value: string | null): void;
         /**
          * @virtual
          */
@@ -29105,7 +28174,7 @@ export namespace GXml {
          * @param node
          * @virtual
          */
-        vfunc_is_equal_node(node?: DomNode | null): boolean;
+        vfunc_is_equal_node(node: DomNode | null): boolean;
         /**
          * @param other
          * @virtual
@@ -29115,28 +28184,28 @@ export namespace GXml {
          * @param other
          * @virtual
          */
-        vfunc_contains(other?: DomNode | null): boolean;
+        vfunc_contains(other: DomNode | null): boolean;
         /**
          * @param nspace
          * @virtual
          */
-        vfunc_lookup_prefix(nspace?: string | null): string | null;
+        vfunc_lookup_prefix(nspace: string | null): string | null;
         /**
          * @param prefix
          * @virtual
          */
-        vfunc_lookup_namespace_uri(prefix?: string | null): string | null;
+        vfunc_lookup_namespace_uri(prefix: string | null): string | null;
         /**
          * @param nspace
          * @virtual
          */
-        vfunc_is_default_namespace(nspace?: string | null): boolean;
+        vfunc_is_default_namespace(nspace: string | null): boolean;
         /**
          * @param node
          * @param child
          * @virtual
          */
-        vfunc_insert_before(node: DomNode, child?: DomNode | null): DomNode;
+        vfunc_insert_before(node: DomNode, child: DomNode | null): DomNode;
         /**
          * @param node
          * @virtual
@@ -29200,38 +28269,19 @@ export namespace GXml {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -29239,15 +28289,9 @@ export namespace GXml {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -29414,7 +28458,7 @@ export namespace GXml {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -29697,8 +28741,8 @@ export namespace GXml {
         get indent(): boolean;
         set indent(val: boolean);
         /** @category Inherited from GXml.Parser */
-        get cancellable(): Gio.Cancellable;
-        set cancellable(val: Gio.Cancellable);
+        get cancellable(): Gio.Cancellable | null;
+        set cancellable(val: Gio.Cancellable | null);
         /**
          * @read-only
          * @category Inherited from GXml.Parser
@@ -29723,7 +28767,7 @@ export namespace GXml {
         /**
          * @param value
          */
-        set_cancellable(value?: Gio.Cancellable | null): void;
+        set_cancellable(value: Gio.Cancellable | null): void;
         get_node(): DomNode;
         get_types(): GLib.HashTable<GObject.GType, GLib.HashTable>;
         /**
@@ -29970,7 +29014,7 @@ export namespace GXml {
          * @param value
          * @virtual
          */
-        vfunc_set_cancellable(value?: Gio.Cancellable | null): void;
+        vfunc_set_cancellable(value: Gio.Cancellable | null): void;
         /**
          * @virtual
          */
@@ -29989,7 +29033,7 @@ export namespace GXml {
          * @param _callback_
          * @virtual
          */
-        vfunc_write_file_async(file: Gio.File, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_write_file_async(file: Gio.File, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -30003,7 +29047,7 @@ export namespace GXml {
          * @param _callback_
          * @virtual
          */
-        vfunc_write_string_async(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_write_string_async(_callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -30019,7 +29063,7 @@ export namespace GXml {
          * @param _callback_
          * @virtual
          */
-        vfunc_write_stream_async(stream: Gio.OutputStream, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_write_stream_async(stream: Gio.OutputStream, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -30035,7 +29079,7 @@ export namespace GXml {
          * @param _callback_
          * @virtual
          */
-        vfunc_read_file_async(file: Gio.File, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_read_file_async(file: Gio.File, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -30051,7 +29095,7 @@ export namespace GXml {
          * @param _callback_
          * @virtual
          */
-        vfunc_read_stream_async(stream: Gio.InputStream, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_read_stream_async(stream: Gio.InputStream, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -30067,7 +29111,7 @@ export namespace GXml {
          * @param _callback_
          * @virtual
          */
-        vfunc_read_string_async(str: string, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_read_string_async(str: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -30081,7 +29125,7 @@ export namespace GXml {
          * @param _callback_
          * @virtual
          */
-        vfunc_create_stream_async(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_create_stream_async(_callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -30097,7 +29141,7 @@ export namespace GXml {
          * @param _callback_
          * @virtual
          */
-        vfunc_read_child_nodes_async(parent: DomNode, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_read_child_nodes_async(parent: DomNode, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -30214,38 +29258,19 @@ export namespace GXml {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -30253,15 +29278,9 @@ export namespace GXml {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -30428,7 +29447,7 @@ export namespace GXml {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -30666,7 +29685,7 @@ export namespace GXml {
 
         _init(...args: any[]): void;
 
-        static ['new'](doc: XDocument, node?: any | null): XProcessingInstruction;
+        static ['new'](doc: XDocument, node: any | null): XProcessingInstruction;
         // Conflicted with GXml.XCharacterData.new
 
         static ['new'](...args: never[]): any;
@@ -33801,7 +32820,7 @@ export namespace GXml {
 
         _init(...args: any[]): void;
 
-        static ['new'](doc: XDocument, node?: any | null): XText;
+        static ['new'](doc: XDocument, node: any | null): XText;
         // Conflicted with GXml.XCharacterData.new
 
         static ['new'](...args: never[]): any;
@@ -36284,9 +35303,9 @@ export namespace GXml {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            namespace_uri: string;
+            namespace_uri: string | null;
             namespaceUri: string;
-            prefix: string;
+            prefix: string | null;
             local_name: string;
             localName: string;
             name: string;
@@ -36307,7 +35326,7 @@ export namespace GXml {
         /**
          * @read-only
          */
-        get namespace_uri(): string;
+        get namespace_uri(): string | null;
         /**
          * @read-only
          */
@@ -36315,7 +35334,7 @@ export namespace GXml {
         /**
          * @read-only
          */
-        get prefix(): string;
+        get prefix(): string | null;
         /**
          * @read-only
          */
@@ -36661,9 +35680,9 @@ export namespace GXml {
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             children: DomHTMLCollection;
-            first_element_child: DomElement;
+            first_element_child: DomElement | null;
             firstElementChild: DomElement;
-            last_element_child: DomElement;
+            last_element_child: DomElement | null;
             lastElementChild: DomElement;
             child_element_count: number;
             childElementCount: number;
@@ -36687,7 +35706,7 @@ export namespace GXml {
         /**
          * @read-only
          */
-        get first_element_child(): DomElement;
+        get first_element_child(): DomElement | null;
         /**
          * @read-only
          */
@@ -36695,7 +35714,7 @@ export namespace GXml {
         /**
          * @read-only
          */
-        get last_element_child(): DomElement;
+        get last_element_child(): DomElement | null;
         /**
          * @read-only
          */
@@ -36755,9 +35774,9 @@ export namespace GXml {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            previous_element_sibling: DomElement;
+            previous_element_sibling: DomElement | null;
             previousElementSibling: DomElement;
-            next_element_sibling: DomElement;
+            next_element_sibling: DomElement | null;
             nextElementSibling: DomElement;
         }
     }
@@ -36775,7 +35794,7 @@ export namespace GXml {
         /**
          * @read-only
          */
-        get previous_element_sibling(): DomElement;
+        get previous_element_sibling(): DomElement | null;
         /**
          * @read-only
          */
@@ -36783,7 +35802,7 @@ export namespace GXml {
         /**
          * @read-only
          */
-        get next_element_sibling(): DomElement;
+        get next_element_sibling(): DomElement | null;
         /**
          * @read-only
          */
@@ -37563,7 +36582,7 @@ export namespace GXml {
              * @param cancellable
              * @virtual
              */
-            vfunc_write_file(file: Gio.File, cancellable?: Gio.Cancellable | null): void;
+            vfunc_write_file(file: Gio.File, cancellable: Gio.Cancellable | null): void;
             /**
              * @param file
              * @param cancellable
@@ -37572,8 +36591,8 @@ export namespace GXml {
              */
             vfunc_write_file_async(
                 file: Gio.File,
-                cancellable?: Gio.Cancellable | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
+                cancellable: Gio.Cancellable | null,
+                _callback_: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * @param _res_
@@ -37585,7 +36604,7 @@ export namespace GXml {
              * @param cancellable
              * @virtual
              */
-            vfunc_write_stream(stream: Gio.OutputStream, cancellable?: Gio.Cancellable | null): void;
+            vfunc_write_stream(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null): void;
             /**
              * @param stream
              * @param cancellable
@@ -37594,8 +36613,8 @@ export namespace GXml {
              */
             vfunc_write_stream_async(
                 stream: Gio.OutputStream,
-                cancellable?: Gio.Cancellable | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
+                cancellable: Gio.Cancellable | null,
+                _callback_: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * @param _res_
@@ -37612,8 +36631,8 @@ export namespace GXml {
              * @virtual
              */
             vfunc_create_stream_async(
-                cancellable?: Gio.Cancellable | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
+                cancellable: Gio.Cancellable | null,
+                _callback_: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * @param _res_
@@ -37624,15 +36643,15 @@ export namespace GXml {
              * @param cancellable
              * @virtual
              */
-            vfunc_write_string(cancellable?: Gio.Cancellable | null): string;
+            vfunc_write_string(cancellable: Gio.Cancellable | null): string;
             /**
              * @param cancellable
              * @param _callback_
              * @virtual
              */
             vfunc_write_string_async(
-                cancellable?: Gio.Cancellable | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
+                cancellable: Gio.Cancellable | null,
+                _callback_: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * @param _res_
@@ -37644,7 +36663,7 @@ export namespace GXml {
              * @param cancellable
              * @virtual
              */
-            vfunc_read_from_file(file: Gio.File, cancellable?: Gio.Cancellable | null): void;
+            vfunc_read_from_file(file: Gio.File, cancellable: Gio.Cancellable | null): void;
             /**
              * @param file
              * @param cancellable
@@ -37653,8 +36672,8 @@ export namespace GXml {
              */
             vfunc_read_from_file_async(
                 file: Gio.File,
-                cancellable?: Gio.Cancellable | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
+                cancellable: Gio.Cancellable | null,
+                _callback_: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * @param _res_
@@ -37666,7 +36685,7 @@ export namespace GXml {
              * @param cancellable
              * @virtual
              */
-            vfunc_read_from_string(str: string, cancellable?: Gio.Cancellable | null): void;
+            vfunc_read_from_string(str: string, cancellable: Gio.Cancellable | null): void;
             /**
              * @param str
              * @param cancellable
@@ -37675,8 +36694,8 @@ export namespace GXml {
              */
             vfunc_read_from_string_async(
                 str: string,
-                cancellable?: Gio.Cancellable | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
+                cancellable: Gio.Cancellable | null,
+                _callback_: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * @param _res_
@@ -37688,7 +36707,7 @@ export namespace GXml {
              * @param cancellable
              * @virtual
              */
-            vfunc_read_from_stream(stream: Gio.InputStream, cancellable?: Gio.Cancellable | null): void;
+            vfunc_read_from_stream(stream: Gio.InputStream, cancellable: Gio.Cancellable | null): void;
             /**
              * @param stream
              * @param cancellable
@@ -37697,8 +36716,8 @@ export namespace GXml {
              */
             vfunc_read_from_stream_async(
                 stream: Gio.InputStream,
-                cancellable?: Gio.Cancellable | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
+                cancellable: Gio.Cancellable | null,
+                _callback_: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * @param _res_
@@ -37730,8 +36749,8 @@ export namespace GXml {
             characterSet: string;
             content_type: string;
             contentType: string;
-            doctype: DomDocumentType;
-            document_element: DomElement;
+            doctype: DomDocumentType | null;
+            document_element: DomElement | null;
             documentElement: DomElement;
         }
     }
@@ -37793,11 +36812,11 @@ export namespace GXml {
         /**
          * @read-only
          */
-        get doctype(): DomDocumentType;
+        get doctype(): DomDocumentType | null;
         /**
          * @read-only
          */
-        get document_element(): DomElement;
+        get document_element(): DomElement | null;
         /**
          * @read-only
          */
@@ -37878,12 +36897,12 @@ export namespace GXml {
          * @param file
          * @param cancellable
          */
-        write_file(file: Gio.File, cancellable?: Gio.Cancellable | null): void;
+        write_file(file: Gio.File, cancellable: Gio.Cancellable | null): void;
         /**
          * @param file
          * @param cancellable
          */
-        write_file_async(file: Gio.File, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
+        write_file_async(file: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * @param file
          * @param cancellable
@@ -37901,7 +36920,7 @@ export namespace GXml {
          */
         write_file_async(
             file: Gio.File,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -37912,12 +36931,12 @@ export namespace GXml {
          * @param stream
          * @param cancellable
          */
-        write_stream(stream: Gio.OutputStream, cancellable?: Gio.Cancellable | null): void;
+        write_stream(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null): void;
         /**
          * @param stream
          * @param cancellable
          */
-        write_stream_async(stream: Gio.OutputStream, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
+        write_stream_async(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * @param stream
          * @param cancellable
@@ -37935,7 +36954,7 @@ export namespace GXml {
          */
         write_stream_async(
             stream: Gio.OutputStream,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -37946,7 +36965,7 @@ export namespace GXml {
         /**
          * @param cancellable
          */
-        create_stream_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>;
+        create_stream_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>;
         /**
          * @param cancellable
          * @param _callback_
@@ -37957,7 +36976,7 @@ export namespace GXml {
          * @param _callback_
          */
         create_stream_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Gio.InputStream> | void;
         /**
@@ -37967,11 +36986,11 @@ export namespace GXml {
         /**
          * @param cancellable
          */
-        write_string(cancellable?: Gio.Cancellable | null): string;
+        write_string(cancellable: Gio.Cancellable | null): string;
         /**
          * @param cancellable
          */
-        write_string_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
+        write_string_async(cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * @param cancellable
          * @param _callback_
@@ -37982,7 +37001,7 @@ export namespace GXml {
          * @param _callback_
          */
         write_string_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
         /**
@@ -37993,12 +37012,12 @@ export namespace GXml {
          * @param file
          * @param cancellable
          */
-        read_from_file(file: Gio.File, cancellable?: Gio.Cancellable | null): void;
+        read_from_file(file: Gio.File, cancellable: Gio.Cancellable | null): void;
         /**
          * @param file
          * @param cancellable
          */
-        read_from_file_async(file: Gio.File, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
+        read_from_file_async(file: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * @param file
          * @param cancellable
@@ -38016,7 +37035,7 @@ export namespace GXml {
          */
         read_from_file_async(
             file: Gio.File,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -38027,12 +37046,12 @@ export namespace GXml {
          * @param str
          * @param cancellable
          */
-        read_from_string(str: string, cancellable?: Gio.Cancellable | null): void;
+        read_from_string(str: string, cancellable: Gio.Cancellable | null): void;
         /**
          * @param str
          * @param cancellable
          */
-        read_from_string_async(str: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
+        read_from_string_async(str: string, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * @param str
          * @param cancellable
@@ -38050,7 +37069,7 @@ export namespace GXml {
          */
         read_from_string_async(
             str: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -38061,12 +37080,12 @@ export namespace GXml {
          * @param stream
          * @param cancellable
          */
-        read_from_stream(stream: Gio.InputStream, cancellable?: Gio.Cancellable | null): void;
+        read_from_stream(stream: Gio.InputStream, cancellable: Gio.Cancellable | null): void;
         /**
          * @param stream
          * @param cancellable
          */
-        read_from_stream_async(stream: Gio.InputStream, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
+        read_from_stream_async(stream: Gio.InputStream, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * @param stream
          * @param cancellable
@@ -38084,7 +37103,7 @@ export namespace GXml {
          */
         read_from_stream_async(
             stream: Gio.InputStream,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -38143,9 +37162,9 @@ export namespace GXml {
              * @virtual
              */
             vfunc_create_document(
-                nspace?: string | null,
-                qualified_name?: string | null,
-                doctype?: DomDocumentType | null,
+                nspace: string | null,
+                qualified_name: string | null,
+                doctype: DomDocumentType | null,
             ): DomXMLDocument;
             /**
              * @param title
@@ -38185,9 +37204,9 @@ export namespace GXml {
          * @param doctype
          */
         create_document(
-            nspace?: string | null,
-            qualified_name?: string | null,
-            doctype?: DomDocumentType | null,
+            nspace: string | null,
+            qualified_name: string | null,
+            doctype: DomDocumentType | null,
         ): DomXMLDocument;
         /**
          * @param title
@@ -38380,7 +37399,7 @@ export namespace GXml {
              * @param value
              * @virtual
              */
-            vfunc_set_id(value?: string | null): void;
+            vfunc_set_id(value: string | null): void;
             /**
              * @virtual
              */
@@ -38389,7 +37408,7 @@ export namespace GXml {
              * @param value
              * @virtual
              */
-            vfunc_set_class_name(value?: string | null): void;
+            vfunc_set_class_name(value: string | null): void;
             /**
              * @virtual
              */
@@ -38478,8 +37497,8 @@ export namespace GXml {
              */
             vfunc_read_from_uri_async(
                 uri: string,
-                cancellable?: Gio.Cancellable | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
+                cancellable: Gio.Cancellable | null,
+                _callback_: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * @param _res_
@@ -38491,7 +37510,7 @@ export namespace GXml {
              * @param cancellable
              * @virtual
              */
-            vfunc_read_from_file(f: Gio.File, cancellable?: Gio.Cancellable | null): void;
+            vfunc_read_from_file(f: Gio.File, cancellable: Gio.Cancellable | null): void;
             /**
              * @param f
              * @param cancellable
@@ -38500,8 +37519,8 @@ export namespace GXml {
              */
             vfunc_read_from_file_async(
                 f: Gio.File,
-                cancellable?: Gio.Cancellable | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
+                cancellable: Gio.Cancellable | null,
+                _callback_: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * @param _res_
@@ -38513,7 +37532,7 @@ export namespace GXml {
              * @param cancellable
              * @virtual
              */
-            vfunc_read_from_stream(istream: Gio.InputStream, cancellable?: Gio.Cancellable | null): void;
+            vfunc_read_from_stream(istream: Gio.InputStream, cancellable: Gio.Cancellable | null): void;
             /**
              * @param istream
              * @param cancellable
@@ -38522,8 +37541,8 @@ export namespace GXml {
              */
             vfunc_read_from_stream_async(
                 istream: Gio.InputStream,
-                cancellable?: Gio.Cancellable | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
+                cancellable: Gio.Cancellable | null,
+                _callback_: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * @param _res_
@@ -38535,7 +37554,7 @@ export namespace GXml {
              * @param cancellable
              * @virtual
              */
-            vfunc_read_from_string(str: string, cancellable?: Gio.Cancellable | null): void;
+            vfunc_read_from_string(str: string, cancellable: Gio.Cancellable | null): void;
             /**
              * @param str
              * @param cancellable
@@ -38544,8 +37563,8 @@ export namespace GXml {
              */
             vfunc_read_from_string_async(
                 str: string,
-                cancellable?: Gio.Cancellable | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
+                cancellable: Gio.Cancellable | null,
+                _callback_: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * @param _res_
@@ -38556,15 +37575,15 @@ export namespace GXml {
              * @param cancellable
              * @virtual
              */
-            vfunc_write_string(cancellable?: Gio.Cancellable | null): string;
+            vfunc_write_string(cancellable: Gio.Cancellable | null): string;
             /**
              * @param cancellable
              * @param _callback_
              * @virtual
              */
             vfunc_write_string_async(
-                cancellable?: Gio.Cancellable | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
+                cancellable: Gio.Cancellable | null,
+                _callback_: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * @param _res_
@@ -38576,7 +37595,7 @@ export namespace GXml {
              * @param cancellable
              * @virtual
              */
-            vfunc_write_file(f: Gio.File, cancellable?: Gio.Cancellable | null): void;
+            vfunc_write_file(f: Gio.File, cancellable: Gio.Cancellable | null): void;
             /**
              * @param f
              * @param cancellable
@@ -38585,8 +37604,8 @@ export namespace GXml {
              */
             vfunc_write_file_async(
                 f: Gio.File,
-                cancellable?: Gio.Cancellable | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
+                cancellable: Gio.Cancellable | null,
+                _callback_: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * @param _res_
@@ -38606,8 +37625,8 @@ export namespace GXml {
              */
             vfunc_write_stream_async(
                 stream: Gio.OutputStream,
-                cancellable?: Gio.Cancellable | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
+                cancellable: Gio.Cancellable | null,
+                _callback_: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * @param _res_
@@ -38624,8 +37643,8 @@ export namespace GXml {
              * @virtual
              */
             vfunc_create_stream_async(
-                cancellable?: Gio.Cancellable | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
+                cancellable: Gio.Cancellable | null,
+                _callback_: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
              * @param _res_
@@ -38637,15 +37656,15 @@ export namespace GXml {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            namespace_uri: string;
+            namespace_uri: string | null;
             namespaceUri: string;
-            prefix: string;
+            prefix: string | null;
             local_name: string;
             localName: string;
             tag_name: string;
             tagName: string;
-            id: string;
-            class_name: string;
+            id: string | null;
+            class_name: string | null;
             className: string;
             class_list: DomTokenList;
             classList: DomTokenList;
@@ -38666,7 +37685,7 @@ export namespace GXml {
         /**
          * @read-only
          */
-        get namespace_uri(): string;
+        get namespace_uri(): string | null;
         /**
          * @read-only
          */
@@ -38674,7 +37693,7 @@ export namespace GXml {
         /**
          * @read-only
          */
-        get prefix(): string;
+        get prefix(): string | null;
         /**
          * @read-only
          */
@@ -38691,10 +37710,10 @@ export namespace GXml {
          * @read-only
          */
         get tagName(): string;
-        get id(): string;
-        set id(val: string);
-        get class_name(): string;
-        set class_name(val: string);
+        get id(): string | null;
+        set id(val: string | null);
+        get class_name(): string | null;
+        set class_name(val: string | null);
         get className(): string;
         set className(val: string);
         /**
@@ -38720,12 +37739,12 @@ export namespace GXml {
         /**
          * @param value
          */
-        set_id(value?: string | null): void;
+        set_id(value: string | null): void;
         get_class_name(): string | null;
         /**
          * @param value
          */
-        set_class_name(value?: string | null): void;
+        set_class_name(value: string | null): void;
         get_class_list(): DomTokenList;
         get_attributes(): DomNamedNodeMap;
         /**
@@ -38791,7 +37810,7 @@ export namespace GXml {
          * @param uri
          * @param cancellable
          */
-        read_from_uri_async(uri: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
+        read_from_uri_async(uri: string, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * @param uri
          * @param cancellable
@@ -38809,7 +37828,7 @@ export namespace GXml {
          */
         read_from_uri_async(
             uri: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -38820,12 +37839,12 @@ export namespace GXml {
          * @param f
          * @param cancellable
          */
-        read_from_file(f: Gio.File, cancellable?: Gio.Cancellable | null): void;
+        read_from_file(f: Gio.File, cancellable: Gio.Cancellable | null): void;
         /**
          * @param f
          * @param cancellable
          */
-        read_from_file_async(f: Gio.File, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
+        read_from_file_async(f: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * @param f
          * @param cancellable
@@ -38843,7 +37862,7 @@ export namespace GXml {
          */
         read_from_file_async(
             f: Gio.File,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -38854,15 +37873,12 @@ export namespace GXml {
          * @param istream
          * @param cancellable
          */
-        read_from_stream(istream: Gio.InputStream, cancellable?: Gio.Cancellable | null): void;
+        read_from_stream(istream: Gio.InputStream, cancellable: Gio.Cancellable | null): void;
         /**
          * @param istream
          * @param cancellable
          */
-        read_from_stream_async(
-            istream: Gio.InputStream,
-            cancellable?: Gio.Cancellable | null,
-        ): globalThis.Promise<void>;
+        read_from_stream_async(istream: Gio.InputStream, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * @param istream
          * @param cancellable
@@ -38880,7 +37896,7 @@ export namespace GXml {
          */
         read_from_stream_async(
             istream: Gio.InputStream,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -38891,12 +37907,12 @@ export namespace GXml {
          * @param str
          * @param cancellable
          */
-        read_from_string(str: string, cancellable?: Gio.Cancellable | null): void;
+        read_from_string(str: string, cancellable: Gio.Cancellable | null): void;
         /**
          * @param str
          * @param cancellable
          */
-        read_from_string_async(str: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
+        read_from_string_async(str: string, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * @param str
          * @param cancellable
@@ -38914,7 +37930,7 @@ export namespace GXml {
          */
         read_from_string_async(
             str: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -38924,11 +37940,11 @@ export namespace GXml {
         /**
          * @param cancellable
          */
-        write_string(cancellable?: Gio.Cancellable | null): string;
+        write_string(cancellable: Gio.Cancellable | null): string;
         /**
          * @param cancellable
          */
-        write_string_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
+        write_string_async(cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * @param cancellable
          * @param _callback_
@@ -38939,7 +37955,7 @@ export namespace GXml {
          * @param _callback_
          */
         write_string_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
         /**
@@ -38950,12 +37966,12 @@ export namespace GXml {
          * @param f
          * @param cancellable
          */
-        write_file(f: Gio.File, cancellable?: Gio.Cancellable | null): void;
+        write_file(f: Gio.File, cancellable: Gio.Cancellable | null): void;
         /**
          * @param f
          * @param cancellable
          */
-        write_file_async(f: Gio.File, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
+        write_file_async(f: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * @param f
          * @param cancellable
@@ -38973,7 +37989,7 @@ export namespace GXml {
          */
         write_file_async(
             f: Gio.File,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -38988,7 +38004,7 @@ export namespace GXml {
          * @param stream
          * @param cancellable
          */
-        write_stream_async(stream: Gio.OutputStream, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
+        write_stream_async(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * @param stream
          * @param cancellable
@@ -39006,7 +38022,7 @@ export namespace GXml {
          */
         write_stream_async(
             stream: Gio.OutputStream,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -39017,7 +38033,7 @@ export namespace GXml {
         /**
          * @param cancellable
          */
-        create_stream_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>;
+        create_stream_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>;
         /**
          * @param cancellable
          * @param _callback_
@@ -39028,7 +38044,7 @@ export namespace GXml {
          * @param _callback_
          */
         create_stream_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Gio.InputStream> | void;
         /**
@@ -39216,9 +38232,9 @@ export namespace GXml {
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             etype: string;
-            event_target: DomEventTarget;
+            event_target: DomEventTarget | null;
             eventTarget: DomEventTarget;
-            current_target: DomEventTarget;
+            current_target: DomEventTarget | null;
             currentTarget: DomEventTarget;
             bubbles: boolean;
             cancelable: boolean;
@@ -39250,7 +38266,7 @@ export namespace GXml {
         /**
          * @read-only
          */
-        get event_target(): DomEventTarget;
+        get event_target(): DomEventTarget | null;
         /**
          * @read-only
          */
@@ -39258,7 +38274,7 @@ export namespace GXml {
         /**
          * @read-only
          */
-        get current_target(): DomEventTarget;
+        get current_target(): DomEventTarget | null;
         /**
          * @read-only
          */
@@ -39507,15 +38523,15 @@ export namespace GXml {
             addedNodes: DomNodeList;
             removed_nodes: DomNodeList;
             removedNodes: DomNodeList;
-            previous_sibling: DomNode;
+            previous_sibling: DomNode | null;
             previousSibling: DomNode;
-            next_sibling: DomNode;
+            next_sibling: DomNode | null;
             nextSibling: DomNode;
-            attribute_name: string;
+            attribute_name: string | null;
             attributeName: string;
-            attribute_namespace: string;
+            attribute_namespace: string | null;
             attributeNamespace: string;
-            old_value: string;
+            old_value: string | null;
             oldValue: string;
         }
     }
@@ -39549,7 +38565,7 @@ export namespace GXml {
         /**
          * @read-only
          */
-        get previous_sibling(): DomNode;
+        get previous_sibling(): DomNode | null;
         /**
          * @read-only
          */
@@ -39557,7 +38573,7 @@ export namespace GXml {
         /**
          * @read-only
          */
-        get next_sibling(): DomNode;
+        get next_sibling(): DomNode | null;
         /**
          * @read-only
          */
@@ -39565,7 +38581,7 @@ export namespace GXml {
         /**
          * @read-only
          */
-        get attribute_name(): string;
+        get attribute_name(): string | null;
         /**
          * @read-only
          */
@@ -39573,7 +38589,7 @@ export namespace GXml {
         /**
          * @read-only
          */
-        get attribute_namespace(): string;
+        get attribute_namespace(): string | null;
         /**
          * @read-only
          */
@@ -39581,7 +38597,7 @@ export namespace GXml {
         /**
          * @read-only
          */
-        get old_value(): string;
+        get old_value(): string | null;
         /**
          * @read-only
          */
@@ -39640,7 +38656,7 @@ export namespace GXml {
              * @param value
              * @virtual
              */
-            vfunc_set_owner_document(value?: DomDocument | null): void;
+            vfunc_set_owner_document(value: DomDocument | null): void;
             /**
              * @virtual
              */
@@ -39677,7 +38693,7 @@ export namespace GXml {
              * @param value
              * @virtual
              */
-            vfunc_set_node_value(value?: string | null): void;
+            vfunc_set_node_value(value: string | null): void;
             /**
              * @virtual
              */
@@ -39686,7 +38702,7 @@ export namespace GXml {
              * @param value
              * @virtual
              */
-            vfunc_set_text_content(value?: string | null): void;
+            vfunc_set_text_content(value: string | null): void;
             /**
              * @virtual
              */
@@ -39699,7 +38715,7 @@ export namespace GXml {
              * @param node
              * @virtual
              */
-            vfunc_is_equal_node(node?: DomNode | null): boolean;
+            vfunc_is_equal_node(node: DomNode | null): boolean;
             /**
              * @param other
              * @virtual
@@ -39709,28 +38725,28 @@ export namespace GXml {
              * @param other
              * @virtual
              */
-            vfunc_contains(other?: DomNode | null): boolean;
+            vfunc_contains(other: DomNode | null): boolean;
             /**
              * @param nspace
              * @virtual
              */
-            vfunc_lookup_prefix(nspace?: string | null): string | null;
+            vfunc_lookup_prefix(nspace: string | null): string | null;
             /**
              * @param prefix
              * @virtual
              */
-            vfunc_lookup_namespace_uri(prefix?: string | null): string | null;
+            vfunc_lookup_namespace_uri(prefix: string | null): string | null;
             /**
              * @param nspace
              * @virtual
              */
-            vfunc_is_default_namespace(nspace?: string | null): boolean;
+            vfunc_is_default_namespace(nspace: string | null): boolean;
             /**
              * @param node
              * @param child
              * @virtual
              */
-            vfunc_insert_before(node: DomNode, child?: DomNode | null): DomNode;
+            vfunc_insert_before(node: DomNode, child: DomNode | null): DomNode;
             /**
              * @param node
              * @virtual
@@ -39756,27 +38772,27 @@ export namespace GXml {
             nodeType: DomNodeNodeType;
             node_name: string;
             nodeName: string;
-            base_uri: string;
+            base_uri: string | null;
             baseUri: string;
-            owner_document: DomDocument;
+            owner_document: DomDocument | null;
             ownerDocument: DomDocument;
-            parent_node: DomNode;
+            parent_node: DomNode | null;
             parentNode: DomNode;
-            parent_element: DomElement;
+            parent_element: DomElement | null;
             parentElement: DomElement;
             child_nodes: DomNodeList;
             childNodes: DomNodeList;
-            first_child: DomNode;
+            first_child: DomNode | null;
             firstChild: DomNode;
-            last_child: DomNode;
+            last_child: DomNode | null;
             lastChild: DomNode;
-            previous_sibling: DomNode;
+            previous_sibling: DomNode | null;
             previousSibling: DomNode;
-            next_sibling: DomNode;
+            next_sibling: DomNode | null;
             nextSibling: DomNode;
-            node_value: string;
+            node_value: string | null;
             nodeValue: string;
-            text_content: string;
+            text_content: string | null;
             textContent: string;
         }
     }
@@ -39818,19 +38834,19 @@ export namespace GXml {
         /**
          * @read-only
          */
-        get base_uri(): string;
+        get base_uri(): string | null;
         /**
          * @read-only
          */
         get baseUri(): string;
-        get owner_document(): DomDocument;
-        set owner_document(val: DomDocument);
+        get owner_document(): DomDocument | null;
+        set owner_document(val: DomDocument | null);
         get ownerDocument(): DomDocument;
         set ownerDocument(val: DomDocument);
         /**
          * @read-only
          */
-        get parent_node(): DomNode;
+        get parent_node(): DomNode | null;
         /**
          * @read-only
          */
@@ -39838,7 +38854,7 @@ export namespace GXml {
         /**
          * @read-only
          */
-        get parent_element(): DomElement;
+        get parent_element(): DomElement | null;
         /**
          * @read-only
          */
@@ -39854,7 +38870,7 @@ export namespace GXml {
         /**
          * @read-only
          */
-        get first_child(): DomNode;
+        get first_child(): DomNode | null;
         /**
          * @read-only
          */
@@ -39862,7 +38878,7 @@ export namespace GXml {
         /**
          * @read-only
          */
-        get last_child(): DomNode;
+        get last_child(): DomNode | null;
         /**
          * @read-only
          */
@@ -39870,7 +38886,7 @@ export namespace GXml {
         /**
          * @read-only
          */
-        get previous_sibling(): DomNode;
+        get previous_sibling(): DomNode | null;
         /**
          * @read-only
          */
@@ -39878,17 +38894,17 @@ export namespace GXml {
         /**
          * @read-only
          */
-        get next_sibling(): DomNode;
+        get next_sibling(): DomNode | null;
         /**
          * @read-only
          */
         get nextSibling(): DomNode;
-        get node_value(): string;
-        set node_value(val: string);
+        get node_value(): string | null;
+        set node_value(val: string | null);
         get nodeValue(): string;
         set nodeValue(val: string);
-        get text_content(): string;
-        set text_content(val: string);
+        get text_content(): string | null;
+        set text_content(val: string | null);
         get textContent(): string;
         set textContent(val: string);
 
@@ -39901,7 +38917,7 @@ export namespace GXml {
         /**
          * @param value
          */
-        set_owner_document(value?: DomDocument | null): void;
+        set_owner_document(value: DomDocument | null): void;
         get_parent_node(): DomNode | null;
         get_parent_element(): DomElement | null;
         get_child_nodes(): DomNodeList;
@@ -39913,18 +38929,18 @@ export namespace GXml {
         /**
          * @param value
          */
-        set_node_value(value?: string | null): void;
+        set_node_value(value: string | null): void;
         get_text_content(): string | null;
         /**
          * @param value
          */
-        set_text_content(value?: string | null): void;
+        set_text_content(value: string | null): void;
         has_child_nodes(): boolean;
         normalize(): void;
         /**
          * @param node
          */
-        is_equal_node(node?: DomNode | null): boolean;
+        is_equal_node(node: DomNode | null): boolean;
         /**
          * @param other
          */
@@ -39932,24 +38948,24 @@ export namespace GXml {
         /**
          * @param other
          */
-        contains(other?: DomNode | null): boolean;
+        contains(other: DomNode | null): boolean;
         /**
          * @param nspace
          */
-        lookup_prefix(nspace?: string | null): string | null;
+        lookup_prefix(nspace: string | null): string | null;
         /**
          * @param prefix
          */
-        lookup_namespace_uri(prefix?: string | null): string | null;
+        lookup_namespace_uri(prefix: string | null): string | null;
         /**
          * @param nspace
          */
-        is_default_namespace(nspace?: string | null): boolean;
+        is_default_namespace(nspace: string | null): boolean;
         /**
          * @param node
          * @param child
          */
-        insert_before(node: DomNode, child?: DomNode | null): DomNode;
+        insert_before(node: DomNode, child: DomNode | null): DomNode;
         /**
          * @param node
          */
@@ -41495,7 +40511,7 @@ export namespace GXml {
              * @param value
              * @virtual
              */
-            vfunc_set_id(value?: string | null): void;
+            vfunc_set_id(value: string | null): void;
             /**
              * @virtual
              */
@@ -41606,7 +40622,7 @@ export namespace GXml {
             final: string;
             fixed: string;
             form: string;
-            id: string;
+            id: string | null;
             maxOccurs: string;
             minOccurs: string;
             name: string;
@@ -41648,8 +40664,8 @@ export namespace GXml {
         set fixed(val: string);
         get form(): string;
         set form(val: string);
-        get id(): string;
-        set id(val: string);
+        get id(): string | null;
+        set id(val: string | null);
         get maxOccurs(): string;
         set maxOccurs(val: string);
         get minOccurs(): string;
@@ -41719,7 +40735,7 @@ export namespace GXml {
         /**
          * @param value
          */
-        set_id(value?: string | null): void;
+        set_id(value: string | null): void;
         get_maxOccurs(): string;
         /**
          * @param value
@@ -42446,7 +41462,7 @@ export namespace GXml {
              * @param value
              * @virtual
              */
-            vfunc_set_cancellable(value?: Gio.Cancellable | null): void;
+            vfunc_set_cancellable(value: Gio.Cancellable | null): void;
             /**
              * @virtual
              */
@@ -42465,7 +41481,7 @@ export namespace GXml {
              * @param _callback_
              * @virtual
              */
-            vfunc_write_file_async(file: Gio.File, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+            vfunc_write_file_async(file: Gio.File, _callback_: Gio.AsyncReadyCallback<this> | null): void;
             /**
              * @param _res_
              * @virtual
@@ -42479,7 +41495,7 @@ export namespace GXml {
              * @param _callback_
              * @virtual
              */
-            vfunc_write_string_async(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
+            vfunc_write_string_async(_callback_: Gio.AsyncReadyCallback<this> | null): void;
             /**
              * @param _res_
              * @virtual
@@ -42495,7 +41511,7 @@ export namespace GXml {
              * @param _callback_
              * @virtual
              */
-            vfunc_write_stream_async(stream: Gio.OutputStream, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+            vfunc_write_stream_async(stream: Gio.OutputStream, _callback_: Gio.AsyncReadyCallback<this> | null): void;
             /**
              * @param _res_
              * @virtual
@@ -42511,7 +41527,7 @@ export namespace GXml {
              * @param _callback_
              * @virtual
              */
-            vfunc_read_file_async(file: Gio.File, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+            vfunc_read_file_async(file: Gio.File, _callback_: Gio.AsyncReadyCallback<this> | null): void;
             /**
              * @param _res_
              * @virtual
@@ -42527,7 +41543,7 @@ export namespace GXml {
              * @param _callback_
              * @virtual
              */
-            vfunc_read_stream_async(stream: Gio.InputStream, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+            vfunc_read_stream_async(stream: Gio.InputStream, _callback_: Gio.AsyncReadyCallback<this> | null): void;
             /**
              * @param _res_
              * @virtual
@@ -42543,7 +41559,7 @@ export namespace GXml {
              * @param _callback_
              * @virtual
              */
-            vfunc_read_string_async(str: string, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+            vfunc_read_string_async(str: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
             /**
              * @param _res_
              * @virtual
@@ -42557,7 +41573,7 @@ export namespace GXml {
              * @param _callback_
              * @virtual
              */
-            vfunc_create_stream_async(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
+            vfunc_create_stream_async(_callback_: Gio.AsyncReadyCallback<this> | null): void;
             /**
              * @param _res_
              * @virtual
@@ -42573,7 +41589,7 @@ export namespace GXml {
              * @param _callback_
              * @virtual
              */
-            vfunc_read_child_nodes_async(parent: DomNode, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+            vfunc_read_child_nodes_async(parent: DomNode, _callback_: Gio.AsyncReadyCallback<this> | null): void;
             /**
              * @param _res_
              * @virtual
@@ -42650,7 +41666,7 @@ export namespace GXml {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             backup: boolean;
             indent: boolean;
-            cancellable: Gio.Cancellable;
+            cancellable: Gio.Cancellable | null;
             node: DomNode;
             types: { [key: string]: any } | GLib.HashTable<GObject.GType, GLib.HashTable>;
         }
@@ -42670,8 +41686,8 @@ export namespace GXml {
         set backup(val: boolean);
         get indent(): boolean;
         set indent(val: boolean);
-        get cancellable(): Gio.Cancellable;
-        set cancellable(val: Gio.Cancellable);
+        get cancellable(): Gio.Cancellable | null;
+        set cancellable(val: Gio.Cancellable | null);
         /**
          * @read-only
          */
@@ -42697,7 +41713,7 @@ export namespace GXml {
         /**
          * @param value
          */
-        set_cancellable(value?: Gio.Cancellable | null): void;
+        set_cancellable(value: Gio.Cancellable | null): void;
         get_node(): DomNode;
         get_types(): GLib.HashTable<GObject.GType, GLib.HashTable>;
         /**
@@ -42940,18 +41956,18 @@ export namespace GXml {
              * @param value
              * @virtual
              */
-            vfunc_set_value(value?: string | null): void;
+            vfunc_set_value(value: string | null): void;
             /**
              * @param val
              * @virtual
              */
-            vfunc_validate_value(val?: string | null): boolean;
+            vfunc_validate_value(val: string | null): boolean;
         }
 
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            value: string;
+            value: string | null;
         }
     }
 
@@ -42965,8 +41981,8 @@ export namespace GXml {
     interface Property extends GObject.Object, Property.Interface {
         // Properties
 
-        get value(): string;
-        set value(val: string);
+        get value(): string | null;
+        set value(val: string | null);
 
         // Methods
 
@@ -42974,11 +41990,11 @@ export namespace GXml {
         /**
          * @param value
          */
-        set_value(value?: string | null): void;
+        set_value(value: string | null): void;
         /**
          * @param val
          */
-        validate_value(val?: string | null): boolean;
+        validate_value(val: string | null): boolean;
     }
 
     export const Property: PropertyNamespace & {
@@ -42998,7 +42014,7 @@ export namespace GXml {
              * @param resolver
              * @virtual
              */
-            vfunc_evaluate(expression: string, resolver?: Gee.Map | null): XPathObject;
+            vfunc_evaluate(expression: string, resolver: Gee.Map | null): XPathObject;
         }
 
         // Constructor properties interface
@@ -43020,7 +42036,7 @@ export namespace GXml {
          * @param expression
          * @param resolver
          */
-        evaluate(expression: string, resolver?: Gee.Map | null): XPathObject;
+        evaluate(expression: string, resolver: Gee.Map | null): XPathObject;
     }
 
     export const XPathContext: XPathContextNamespace & {

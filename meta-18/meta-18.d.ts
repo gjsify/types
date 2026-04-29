@@ -1566,7 +1566,7 @@ export namespace Meta {
      * @param handler The new handler function
      * @returns `true` if the binding known as `name` was found, `false` otherwise.
      */
-    function keybindings_set_custom_handler(name: string, handler?: KeyHandlerFunc | null): boolean;
+    function keybindings_set_custom_handler(name: string, handler: KeyHandlerFunc | null): boolean;
     /**
      * @param orientation
      */
@@ -1668,7 +1668,7 @@ export namespace Meta {
         fd: number,
         offset: number,
         length: number,
-        callback?: Gio.AsyncReadyCallback<number> | null,
+        callback: Gio.AsyncReadyCallback<number> | null,
     ): globalThis.Promise<boolean> | void;
     /**
      * @param result
@@ -1698,11 +1698,11 @@ export namespace Meta {
      * @param v1
      * @param v2
      */
-    function unsigned_long_equal(v1?: any | null, v2?: any | null): number;
+    function unsigned_long_equal(v1: any | null, v2: any | null): number;
     /**
      * @param v
      */
-    function unsigned_long_hash(v?: any | null): number;
+    function unsigned_long_hash(v: any | null): number;
     /**
      * @gir-type Callback
      */
@@ -2227,6 +2227,7 @@ export namespace Meta {
 
         /**
          * @read-only
+         * @default Meta.BackendCapabilities.NONE
          */
         get capabilities(): BackendCapabilities;
         /**
@@ -2331,7 +2332,7 @@ export namespace Meta {
         set_keymap_async(
             description: KeymapDescription,
             layout_index: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * @param description
@@ -2354,7 +2355,7 @@ export namespace Meta {
         set_keymap_async(
             description: KeymapDescription,
             layout_index: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2403,7 +2404,7 @@ export namespace Meta {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -2446,7 +2447,7 @@ export namespace Meta {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -2494,38 +2495,19 @@ export namespace Meta {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -2533,15 +2515,9 @@ export namespace Meta {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -2708,7 +2684,7 @@ export namespace Meta {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -3131,6 +3107,7 @@ export namespace Meta {
         get metaDisplay(): Display;
         /**
          * @construct-only
+         * @default 0
          */
         get monitor(): number;
 
@@ -3301,38 +3278,19 @@ export namespace Meta {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -3340,15 +3298,9 @@ export namespace Meta {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -3515,7 +3467,7 @@ export namespace Meta {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -3799,16 +3751,34 @@ export namespace Meta {
 
         get background(): Background;
         set background(val: Background);
+        /**
+         * @default 1
+         */
         get brightness(): number;
         set brightness(val: number);
+        /**
+         * @default false
+         */
         get gradient(): boolean;
         set gradient(val: boolean);
+        /**
+         * @default 0
+         */
         get gradient_height(): number;
         set gradient_height(val: number);
+        /**
+         * @default 0
+         */
         get gradientHeight(): number;
         set gradientHeight(val: number);
+        /**
+         * @default 0
+         */
         get gradient_max_darkness(): number;
         set gradient_max_darkness(val: number);
+        /**
+         * @default 0
+         */
         get gradientMaxDarkness(): number;
         set gradientMaxDarkness(val: number);
         /**
@@ -3821,16 +3791,32 @@ export namespace Meta {
         get metaDisplay(): Display;
         /**
          * @construct-only
+         * @default 0
          */
         get monitor(): number;
+        /**
+         * @default 0
+         */
         get rounded_clip_radius(): number;
         set rounded_clip_radius(val: number);
+        /**
+         * @default 0
+         */
         get roundedClipRadius(): number;
         set roundedClipRadius(val: number);
+        /**
+         * @default false
+         */
         get vignette(): boolean;
         set vignette(val: boolean);
+        /**
+         * @default 0
+         */
         get vignette_sharpness(): number;
         set vignette_sharpness(val: number);
+        /**
+         * @default 0
+         */
         get vignetteSharpness(): number;
         set vignetteSharpness(val: number);
 
@@ -3898,7 +3884,7 @@ export namespace Meta {
          * of the full texture.
          * @param bounds The new bounding clip rectangle, or `null`
          */
-        set_rounded_clip_bounds(bounds?: Graphene.Rect | null): void;
+        set_rounded_clip_bounds(bounds: Graphene.Rect | null): void;
         /**
          * @param radius
          */
@@ -4031,38 +4017,19 @@ export namespace Meta {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -4070,15 +4037,9 @@ export namespace Meta {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -4245,7 +4206,7 @@ export namespace Meta {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -4703,38 +4664,19 @@ export namespace Meta {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -4742,15 +4684,9 @@ export namespace Meta {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -4917,7 +4853,7 @@ export namespace Meta {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -5303,26 +5239,34 @@ export namespace Meta {
          * @construct-only
          */
         get backend(): Backend;
+        /**
+         * @default 0
+         */
         get brightness(): number;
         set brightness(val: number);
         /**
          * @construct-only
+         * @default 0
          */
         get brightness_max(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get brightnessMax(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get brightness_min(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get brightnessMin(): number;
         /**
          * @construct-only
+         * @default unknown
          */
         get name(): string;
 
@@ -5436,26 +5380,32 @@ export namespace Meta {
         get backend(): Backend;
         /**
          * @construct-only
+         * @default 0
          */
         get directions(): BarrierDirection;
         /**
          * @construct-only
+         * @default Meta.BarrierFlags.NONE
          */
         get flags(): BarrierFlags;
         /**
          * @construct-only
+         * @default 0
          */
         get x1(): number;
         /**
          * @construct-only
+         * @default 32767
          */
         get x2(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get y1(): number;
         /**
          * @construct-only
+         * @default 32767
          */
         get y2(): number;
 
@@ -5559,7 +5509,7 @@ export namespace Meta {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -5602,7 +5552,7 @@ export namespace Meta {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -5650,38 +5600,19 @@ export namespace Meta {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -5689,15 +5620,9 @@ export namespace Meta {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -5864,7 +5789,7 @@ export namespace Meta {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -6246,14 +6171,22 @@ export namespace Meta {
 
         /**
          * @construct-only
+         * @default null
          */
         get name(): string;
         /**
          * @construct-only
+         * @default null
          */
         get nick(): string;
+        /**
+         * @default false
+         */
         get unsafe_mode(): boolean;
         set unsafe_mode(val: boolean);
+        /**
+         * @default false
+         */
         get unsafeMode(): boolean;
         set unsafeMode(val: boolean);
 
@@ -6300,7 +6233,7 @@ export namespace Meta {
          * @param entries a `null`-terminated array of `GOptionEntrys`
          * @param translation_domain a translation domain to use, or `null`
          */
-        add_option_entries(entries: GLib.OptionEntry[], translation_domain?: string | null): void;
+        add_option_entries(entries: GLib.OptionEntry[], translation_domain: string | null): void;
         /**
          * See `g_option_context_add_group()` for more details.
          * @param group the group to add
@@ -6310,7 +6243,7 @@ export namespace Meta {
          * @param argv Address of the`argv` parameter of `main()`, or `null`.
          * @returns `true` if the commandline arguments (if any) were valid and if the configuration has been successful, `false` otherwise
          */
-        configure(argv?: string[] | null): [boolean, string[] | null];
+        configure(argv: string[] | null): [boolean, string[] | null];
         destroy(): void;
         /**
          * @returns the {@link Meta.Backend}
@@ -6498,6 +6431,9 @@ export namespace Meta {
          * @construct-only
          */
         get context(): Context;
+        /**
+         * @default false
+         */
         get exported(): boolean;
         set exported(val: boolean);
 
@@ -6560,7 +6496,7 @@ export namespace Meta {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object?: Gio.DBusObject | null): void;
+        set_object(object: Gio.DBusObject | null): void;
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
@@ -6579,7 +6515,7 @@ export namespace Meta {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -6627,38 +6563,19 @@ export namespace Meta {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -6666,15 +6583,9 @@ export namespace Meta {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -6841,7 +6752,7 @@ export namespace Meta {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -7205,10 +7116,12 @@ export namespace Meta {
 
         /**
          * @read-only
+         * @default 0
          */
         get compositor_modifiers(): Clutter.ModifierType;
         /**
          * @read-only
+         * @default 0
          */
         get compositorModifiers(): Clutter.ModifierType;
         /**
@@ -7414,7 +7327,7 @@ export namespace Meta {
          * @param workspace origin workspace
          * @returns List of windows
          */
-        get_tab_list(type: TabList, workspace?: Workspace | null): Window[];
+        get_tab_list(type: TabList, workspace: Workspace | null): Window[];
         /**
          * Determine the next window that should be displayed for Alt-TAB
          * functionality.
@@ -7628,7 +7541,7 @@ export namespace Meta {
          * @param callback The callback to call when the user has     accumulated `interval_msec` milliseconds of idle time.
          * @returns a watch id Adds a watch for a specific idle time. The callback will be called when the user has accumulated `interval_msec` milliseconds of idle time. This function will return an ID that can either be passed to `meta_idle_monitor_remove_watch()`, or can be used to tell idle time watches apart if you have more than one. The idle watch is affected by idle inhibitors and takes into account the idle time from before the watch was added. `meta_idle_monitor_add_idle_watch_full()` allows creating idle watches with different behavior. Also note that this function will only care about positive transitions (user's idle time exceeding a certain time). If you want to know about when the user has become active, use `meta_idle_monitor_add_user_active_watch()`.
          */
-        add_idle_watch(interval_msec: bigint | number, callback?: IdleMonitorWatchFunc | null): number;
+        add_idle_watch(interval_msec: bigint | number, callback: IdleMonitorWatchFunc | null): number;
         /**
          * @param interval_msec The idletime interval, in milliseconds
          * @param callback The callback to call when the user has     accumulated `interval_msec` milliseconds of idle time.
@@ -7644,7 +7557,7 @@ export namespace Meta {
          * @param callback The callback to call when the user is     active again.
          * @returns a watch id Add a one-time watch to know when the user is active again. Note that this watch is one-time and will de-activate after the function is called, for efficiency purposes. It's most convenient to call this when an idle watch, as added by `meta_idle_monitor_add_idle_watch()`, has triggered.
          */
-        add_user_active_watch(callback?: IdleMonitorWatchFunc | null): number;
+        add_user_active_watch(callback: IdleMonitorWatchFunc | null): number;
         /**
          * @returns The current idle time, in milliseconds, or -1 for not supported
          */
@@ -7759,6 +7672,9 @@ export namespace Meta {
          * @construct-only
          */
         get display(): Display;
+        /**
+         * @default 0
+         */
         get timestamp(): number;
         set timestamp(val: number);
         get workspace(): Workspace;
@@ -8073,26 +7989,32 @@ export namespace Meta {
         get backend(): Backend;
         /**
          * @read-only
+         * @default false
          */
         get has_builtin_panel(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get hasBuiltinPanel(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get night_light_supported(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get nightLightSupported(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get panel_orientation_managed(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get panelOrientationManaged(): boolean;
 
@@ -8342,10 +8264,12 @@ export namespace Meta {
 
         /**
          * @read-only
+         * @default false
          */
         get has_accelerometer(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get hasAccelerometer(): boolean;
 
@@ -8719,10 +8643,12 @@ export namespace Meta {
 
         /**
          * @construct-only
+         * @default false
          */
         get is_recording(): boolean;
         /**
          * @construct-only
+         * @default false
          */
         get isRecording(): boolean;
 
@@ -8867,7 +8793,7 @@ export namespace Meta {
             mimetype: string,
             size: bigint | number,
             output: Gio.OutputStream,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Requests a transfer of `mimetype` on the selection given by
@@ -8902,7 +8828,7 @@ export namespace Meta {
             mimetype: string,
             size: bigint | number,
             output: Gio.OutputStream,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -9007,8 +8933,8 @@ export namespace Meta {
          */
         vfunc_read_async(
             mimetype: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes a read from the selection source.
@@ -9033,7 +8959,7 @@ export namespace Meta {
          * @param mimetype
          * @param cancellable
          */
-        read_async(mimetype: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>;
+        read_async(mimetype: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>;
         /**
          * @param mimetype
          * @param cancellable
@@ -9051,7 +8977,7 @@ export namespace Meta {
          */
         read_async(
             mimetype: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Gio.InputStream> | void;
         /**
@@ -9216,7 +9142,7 @@ export namespace Meta {
          * @param clip A clipping rectangle, to help prevent extra processing. In the case that the clipping rectangle is partially or fully outside the bounds of the texture, the rectangle will be clipped.
          * @returns a new cairo surface to be freed with `cairo_surface_destroy()`.
          */
-        get_image(clip?: Mtk.Rectangle | null): cairo.Surface | null;
+        get_image(clip: Mtk.Rectangle | null): cairo.Surface | null;
         /**
          * @returns the unshaped texture
          */
@@ -9351,38 +9277,19 @@ export namespace Meta {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -9390,15 +9297,9 @@ export namespace Meta {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -9565,7 +9466,7 @@ export namespace Meta {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -9814,14 +9715,14 @@ export namespace Meta {
          * @param description description of the played sound
          * @param cancellable cancellable for the request
          */
-        play_from_file(file: Gio.File, description: string, cancellable?: Gio.Cancellable | null): void;
+        play_from_file(file: Gio.File, description: string, cancellable: Gio.Cancellable | null): void;
         /**
          * Plays a sound from the sound theme.
          * @param name sound theme name of the event
          * @param description description of the event
          * @param cancellable cancellable for the request
          */
-        play_from_theme(name: string, description: string, cancellable?: Gio.Cancellable | null): void;
+        play_from_theme(name: string, description: string, cancellable: Gio.Cancellable | null): void;
     }
 
     namespace Stage {
@@ -10004,38 +9905,19 @@ export namespace Meta {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -10043,15 +9925,9 @@ export namespace Meta {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -10218,7 +10094,7 @@ export namespace Meta {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -10517,15 +10393,15 @@ export namespace Meta {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            application_id: string;
-            applicationId: string;
+            application_id: string | null;
+            applicationId: string | null;
             display: Display;
-            icon_name: string;
-            iconName: string;
+            icon_name: string | null;
+            iconName: string | null;
             id: string;
             name: string;
             timestamp: bigint | number;
-            wmclass: string;
+            wmclass: string | null;
             workspace: number;
         }
     }
@@ -10540,42 +10416,51 @@ export namespace Meta {
 
         /**
          * @construct-only
+         * @default null
          */
-        get application_id(): string;
+        get application_id(): string | null;
         /**
          * @construct-only
+         * @default null
          */
-        get applicationId(): string;
+        get applicationId(): string | null;
         /**
          * @construct-only
          */
         get display(): Display;
         /**
          * @construct-only
+         * @default null
          */
-        get icon_name(): string;
+        get icon_name(): string | null;
         /**
          * @construct-only
+         * @default null
          */
-        get iconName(): string;
+        get iconName(): string | null;
         /**
          * @construct-only
+         * @default null
          */
         get id(): string;
         /**
          * @construct-only
+         * @default null
          */
         get name(): string;
         /**
          * @construct-only
+         * @default 0
          */
         get timestamp(): number;
         /**
          * @construct-only
+         * @default null
          */
-        get wmclass(): string;
+        get wmclass(): string | null;
         /**
          * @construct-only
+         * @default -1
          */
         get workspace(): number;
 
@@ -10836,7 +10721,7 @@ export namespace Meta {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             main_monitor: LogicalMonitor;
             mainMonitor: LogicalMonitor;
-            window: Window;
+            window: Window | null;
         }
     }
 
@@ -10855,7 +10740,7 @@ export namespace Meta {
         /**
          * @read-only
          */
-        get window(): Window;
+        get window(): Window | null;
 
         /**
          * Compile-time signal type information.
@@ -11019,18 +10904,18 @@ export namespace Meta {
             display: Display;
             effect: number;
             fullscreen: boolean;
-            gtk_app_menu_object_path: string;
-            gtkAppMenuObjectPath: string;
-            gtk_application_id: string;
-            gtkApplicationId: string;
-            gtk_application_object_path: string;
-            gtkApplicationObjectPath: string;
-            gtk_menubar_object_path: string;
-            gtkMenubarObjectPath: string;
-            gtk_unique_bus_name: string;
-            gtkUniqueBusName: string;
-            gtk_window_object_path: string;
-            gtkWindowObjectPath: string;
+            gtk_app_menu_object_path: string | null;
+            gtkAppMenuObjectPath: string | null;
+            gtk_application_id: string | null;
+            gtkApplicationId: string | null;
+            gtk_application_object_path: string | null;
+            gtkApplicationObjectPath: string | null;
+            gtk_menubar_object_path: string | null;
+            gtkMenubarObjectPath: string | null;
+            gtk_unique_bus_name: string | null;
+            gtkUniqueBusName: string | null;
+            gtk_window_object_path: string | null;
+            gtkWindowObjectPath: string | null;
             is_alive: boolean;
             isAlive: boolean;
             main_monitor: LogicalMonitor;
@@ -11041,22 +10926,22 @@ export namespace Meta {
             maximized_vertically: boolean;
             maximizedVertically: boolean;
             minimized: boolean;
-            mutter_hints: string;
-            mutterHints: string;
+            mutter_hints: string | null;
+            mutterHints: string | null;
             on_all_workspaces: boolean;
             onAllWorkspaces: boolean;
             resizeable: boolean;
             skip_taskbar: boolean;
             skipTaskbar: boolean;
-            tag: string;
+            tag: string | null;
             title: string;
             urgent: boolean;
             user_time: number;
             userTime: number;
             window_type: WindowType;
             windowType: WindowType;
-            wm_class: string;
-            wmClass: string;
+            wm_class: string | null;
+            wmClass: string | null;
         }
     }
 
@@ -11102,42 +10987,52 @@ export namespace Meta {
 
         /**
          * @read-only
+         * @default null
          */
         get a11y_dbus_name(): string;
         /**
          * @read-only
+         * @default null
          */
         get a11yDbusName(): string;
         /**
          * @read-only
+         * @default null
          */
         get a11y_object_path(): string;
         /**
          * @read-only
+         * @default null
          */
         get a11yObjectPath(): string;
         /**
          * @read-only
+         * @default false
          */
         get above(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get appears_focused(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get appearsFocused(): boolean;
         /**
          * @read-only
+         * @default true
          */
         get decorated(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get demands_attention(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get demandsAttention(): boolean;
         /**
@@ -11146,66 +11041,82 @@ export namespace Meta {
         get display(): Display;
         /**
          * @construct-only
+         * @default 4
          */
         get effect(): number;
         /**
          * @read-only
+         * @default false
          */
         get fullscreen(): boolean;
         /**
          * @read-only
+         * @default null
          */
-        get gtk_app_menu_object_path(): string;
+        get gtk_app_menu_object_path(): string | null;
         /**
          * @read-only
+         * @default null
          */
-        get gtkAppMenuObjectPath(): string;
+        get gtkAppMenuObjectPath(): string | null;
         /**
          * @read-only
+         * @default null
          */
-        get gtk_application_id(): string;
+        get gtk_application_id(): string | null;
         /**
          * @read-only
+         * @default null
          */
-        get gtkApplicationId(): string;
+        get gtkApplicationId(): string | null;
         /**
          * @read-only
+         * @default null
          */
-        get gtk_application_object_path(): string;
+        get gtk_application_object_path(): string | null;
         /**
          * @read-only
+         * @default null
          */
-        get gtkApplicationObjectPath(): string;
+        get gtkApplicationObjectPath(): string | null;
         /**
          * @read-only
+         * @default null
          */
-        get gtk_menubar_object_path(): string;
+        get gtk_menubar_object_path(): string | null;
         /**
          * @read-only
+         * @default null
          */
-        get gtkMenubarObjectPath(): string;
+        get gtkMenubarObjectPath(): string | null;
         /**
          * @read-only
+         * @default null
          */
-        get gtk_unique_bus_name(): string;
+        get gtk_unique_bus_name(): string | null;
         /**
          * @read-only
+         * @default null
          */
-        get gtkUniqueBusName(): string;
+        get gtkUniqueBusName(): string | null;
         /**
          * @read-only
+         * @default null
          */
-        get gtk_window_object_path(): string;
+        get gtk_window_object_path(): string | null;
         /**
          * @read-only
+         * @default null
          */
-        get gtkWindowObjectPath(): string;
+        get gtkWindowObjectPath(): string | null;
         /**
          * @read-only
+         * @default true
          */
         get is_alive(): boolean;
         /**
          * @read-only
+         * @default true
          */
         get isAlive(): boolean;
         /**
@@ -11218,92 +11129,114 @@ export namespace Meta {
         get mainMonitor(): LogicalMonitor;
         /**
          * @read-only
+         * @default false
          */
         get mapped(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get maximized_horizontally(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get maximizedHorizontally(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get maximized_vertically(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get maximizedVertically(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get minimized(): boolean;
         /**
          * @read-only
+         * @default null
          */
-        get mutter_hints(): string;
+        get mutter_hints(): string | null;
         /**
          * @read-only
+         * @default null
          */
-        get mutterHints(): string;
+        get mutterHints(): string | null;
         /**
          * @read-only
+         * @default false
          */
         get on_all_workspaces(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get onAllWorkspaces(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get resizeable(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get skip_taskbar(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get skipTaskbar(): boolean;
         /**
          * @read-only
+         * @default null
          */
-        get tag(): string;
+        get tag(): string | null;
         /**
          * @read-only
+         * @default null
          */
         get title(): string;
         /**
          * @read-only
+         * @default false
          */
         get urgent(): boolean;
         /**
          * @read-only
+         * @default 0
          */
         get user_time(): number;
         /**
          * @read-only
+         * @default 0
          */
         get userTime(): number;
         /**
          * @read-only
+         * @default Meta.WindowType.NORMAL
          */
         get window_type(): WindowType;
         /**
          * @read-only
+         * @default Meta.WindowType.NORMAL
          */
         get windowType(): WindowType;
         /**
          * @read-only
+         * @default null
          */
-        get wm_class(): string;
+        get wm_class(): string | null;
         /**
          * @read-only
+         * @default null
          */
-        get wmClass(): string;
+        get wmClass(): string | null;
 
         /**
          * Compile-time signal type information.
@@ -11372,7 +11305,7 @@ export namespace Meta {
             op: GrabOp,
             sprite: Clutter.Sprite | null,
             timestamp: number,
-            pos_hint?: Graphene.Point | null,
+            pos_hint: Graphene.Point | null,
         ): boolean;
         can_close(): boolean;
         can_maximize(): boolean;
@@ -11813,7 +11746,7 @@ export namespace Meta {
          * interface element displaying the icon, and is relative to the root window.
          * @param rect rectangle with the desired geometry or `null`.
          */
-        set_icon_geometry(rect?: Mtk.Rectangle | null): void;
+        set_icon_geometry(rect: Mtk.Rectangle | null): void;
         /**
          * @param directions
          */
@@ -11893,7 +11826,7 @@ export namespace Meta {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -11936,7 +11869,7 @@ export namespace Meta {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -11984,38 +11917,19 @@ export namespace Meta {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -12023,15 +11937,9 @@ export namespace Meta {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -12198,7 +12106,7 @@ export namespace Meta {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -12511,8 +12419,8 @@ export namespace Meta {
                 Clutter.Actor.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps {
-            meta_window: Window;
-            metaWindow: Window;
+            meta_window: Window | null;
+            metaWindow: Window | null;
         }
     }
 
@@ -12540,11 +12448,11 @@ export namespace Meta {
         /**
          * @construct-only
          */
-        get meta_window(): Window;
+        get meta_window(): Window | null;
         /**
          * @construct-only
          */
-        get metaWindow(): Window;
+        get metaWindow(): Window | null;
 
         /**
          * Compile-time signal type information.
@@ -12597,7 +12505,7 @@ export namespace Meta {
          * @param clip A clipping rectangle, to help prevent extra processing. In the case that the clipping rectangle is partially or fully outside the bounds of the actor, the rectangle will be clipped.
          * @returns a new cairo surface to be freed with `cairo_surface_destroy()`.
          */
-        get_image(clip?: Mtk.Rectangle | null): cairo.Surface | null;
+        get_image(clip: Mtk.Rectangle | null): cairo.Surface | null;
         /**
          * Gets the {@link Meta.Window} object that the the {@link Meta.WindowActor} is displaying
          * @returns the displayed {@link Meta.Window}
@@ -12618,7 +12526,7 @@ export namespace Meta {
          * @param clip A clipping rectangle, in actor coordinates, to help prevent extra processing. In the case that the clipping rectangle is partially or fully outside the bounds of the actor, the rectangle will be clipped.
          * @returns a new {@link Clutter.Content}
          */
-        paint_to_content(clip?: Mtk.Rectangle | null): Clutter.Content | null;
+        paint_to_content(clip: Mtk.Rectangle | null): Clutter.Content | null;
         sync_visibility(): void;
         /**
          * Thaws/unfreezes the {@link Meta.WindowActor} to allow updates and geometry
@@ -12752,38 +12660,19 @@ export namespace Meta {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -12791,15 +12680,9 @@ export namespace Meta {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -12966,7 +12849,7 @@ export namespace Meta {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -13181,8 +13064,14 @@ export namespace Meta {
 
         // Properties
 
+        /**
+         * @default false
+         */
         get is_fullscreen(): boolean;
         set is_fullscreen(val: boolean);
+        /**
+         * @default false
+         */
         get isFullscreen(): boolean;
         set isFullscreen(val: boolean);
         get rect(): Mtk.Rectangle;
@@ -13518,38 +13407,19 @@ export namespace Meta {
             flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of `g_object_bind_property()`.
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
          * @param source_property the property on `source` to bind
          * @param target the target {@link GObject.Object}
          * @param target_property the property on `target` to bind
          * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
          * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
@@ -13557,15 +13427,9 @@ export namespace Meta {
             target: GObject.Object,
             target_property: string,
             flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
@@ -13732,7 +13596,7 @@ export namespace Meta {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -13968,22 +13832,27 @@ export namespace Meta {
 
         /**
          * @read-only
+         * @default false
          */
         get active(): boolean;
         /**
          * @read-only
+         * @default 0
          */
         get n_windows(): number;
         /**
          * @read-only
+         * @default 0
          */
         get nWindows(): number;
         /**
          * @read-only
+         * @default 0
          */
         get workspace_index(): number;
         /**
          * @read-only
+         * @default 0
          */
         get workspaceIndex(): number;
 
@@ -14145,26 +14014,32 @@ export namespace Meta {
 
         /**
          * @read-only
+         * @default 1
          */
         get layout_columns(): number;
         /**
          * @read-only
+         * @default 1
          */
         get layoutColumns(): number;
         /**
          * @read-only
+         * @default -1
          */
         get layout_rows(): number;
         /**
          * @read-only
+         * @default -1
          */
         get layoutRows(): number;
         /**
          * @read-only
+         * @default 1
          */
         get n_workspaces(): number;
         /**
          * @read-only
+         * @default 1
          */
         get nWorkspaces(): number;
 
