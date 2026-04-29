@@ -28544,6 +28544,12 @@ export namespace Camel {
          */
         static name(summary: StoreSummary, info: StoreInfo): string;
         /**
+         * Returns the path string from `info`.
+         * @param summary a {@link Camel.StoreSummary}
+         * @param info a {@link Camel.StoreInfo}
+         */
+        static path(summary: StoreSummary, info: StoreInfo): string;
+        /**
          * Set a specific string on the `info`.
          * @param summary a {@link Camel.StoreSummary} object
          * @param info a {@link Camel.StoreInfo}

@@ -19072,6 +19072,12 @@ export namespace GLib {
         // Static methods
 
         /**
+         * Destroys a {@link GLib.Hook}, given its ID.
+         * @param hook_list a {@link GLib.HookList}
+         * @param hook_id a hook ID
+         */
+        static destroy(hook_list: HookList, hook_id: bigint | number): boolean;
+        /**
          * Removes one {@link GLib.Hook} from a {@link GLib.HookList}, marking it
          * inactive and calling `g_hook_unref()` on it.
          * @param hook_list a {@link GLib.HookList}

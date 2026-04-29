@@ -4598,6 +4598,23 @@ export namespace GObject {
             defaultValue?: boolean,
         ): ParamSpec<boolean>;
         /**
+         * Creates a new GParamSpecFlags instance specifying a G_TYPE_FLAGS property.
+         * @param name The name of the property
+         * @param nick A human readable name for the property (can be null)
+         * @param blurb A longer description of the property (can be null)
+         * @param flags The flags for this property (e.g. READABLE, WRITABLE)
+         * @param flagsType The GType for this property
+         * @param defaultValue The default value for this property (optional)
+         */
+        static flags(
+            name: string,
+            nick: string | null,
+            blurb: string | null,
+            flags: ParamFlags | number,
+            flagsType: any,
+            defaultValue?: any,
+        ): ParamSpec<number>;
+        /**
          * Creates a new GParamSpecEnum instance specifying a G_TYPE_ENUM property.
          * @param name The name of the property
          * @param nick A human readable name for the property (can be null)

@@ -2554,6 +2554,21 @@ export namespace GstVulkan {
          * multiple times.  This must be called before any other {@link GstVulkan.VulkanBufferMemory} operation.
          */
         static init_once(): void;
+        /**
+         * Allocated a new wrapped {@link GstVulkan.VulkanBufferMemory} with `buffer`.
+         * @param device a {@link GstVulkan.VulkanDevice}
+         * @param buffer a {@link Vulkan.Buffer}
+         * @param usage usage flags of `buffer`
+         * @param user_data user data to call `notify` with
+         * @param notify a {@link GLib.DestroyNotify} called when `buffer` is no longer in use
+         */
+        static wrapped(
+            device: VulkanDevice,
+            buffer: Vulkan.Buffer,
+            usage: Vulkan.BufferUsageFlags,
+            user_data: any | null,
+            notify: GLib.DestroyNotify | null,
+        ): Gst.Memory;
     }
 
     /**
@@ -2949,6 +2964,26 @@ export namespace GstVulkan {
          * multiple times.  This must be called before any other {@link GstVulkan.VulkanImageMemory} operation.
          */
         static init_once(): void;
+        /**
+         * @param device a {@link GstVulkan.VulkanDevice}
+         * @param image a VkImage
+         * @param format the VkFormat for `image`
+         * @param width width of `image`
+         * @param height height of `image`
+         * @param tiling tiling of `image`
+         * @param usage usage flags of `image`
+         * @param user_data user data for `notify`
+         */
+        static wrapped(
+            device: VulkanDevice,
+            image: Vulkan.Image,
+            format: Vulkan.Format,
+            width: bigint | number,
+            height: bigint | number,
+            tiling: Vulkan.ImageTiling,
+            usage: Vulkan.ImageUsageFlags,
+            user_data: any | null,
+        ): Gst.Memory;
 
         // Methods
 
