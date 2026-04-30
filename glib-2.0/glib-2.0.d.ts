@@ -4886,7 +4886,7 @@ export namespace GLib {
      * @param mem the memory to deallocate
      * @since 2.72
      */
-    function aligned_free(mem?: any | null): void;
+    function aligned_free(mem: any | null): void;
     /**
      * Frees the memory pointed to by `mem`, assuming it is has the given `size` and
      * `alignment`.
@@ -5321,7 +5321,7 @@ export namespace GLib {
      * @returns a new {@link GLib.AsyncQueue}. Free with `g_async_queue_unref()`
      * @since 2.16
      */
-    function async_queue_new_full(item_free_func?: DestroyNotify | null): AsyncQueue;
+    function async_queue_new_full(item_free_func: DestroyNotify | null): AsyncQueue;
     /**
      * Specifies a function to be called at normal program termination.
      *
@@ -5451,7 +5451,7 @@ export namespace GLib {
      * @returns `true` if the resultant value is zero
      * @since 2.4
      */
-    function atomic_int_dec_and_test(atomic?: any | null): boolean;
+    function atomic_int_dec_and_test(atomic: any | null): boolean;
     /**
      * Sets the `atomic` to `newval` and returns the old value from `atomic`.
      *
@@ -5490,7 +5490,7 @@ export namespace GLib {
      * @returns the value of the integer
      * @since 2.4
      */
-    function atomic_int_get(atomic?: any | null): number;
+    function atomic_int_get(atomic: any | null): number;
     /**
      * Increments the value of `atomic` by 1.
      *
@@ -5503,7 +5503,7 @@ export namespace GLib {
      * @param atomic a pointer to a `gint` or `guint`
      * @since 2.4
      */
-    function atomic_int_inc(atomic?: any | null): void;
+    function atomic_int_inc(atomic: any | null): void;
     /**
      * Performs an atomic bitwise 'or' of the value of `atomic` and `val`,
      * storing the result back in `atomic`.
@@ -5611,7 +5611,7 @@ export namespace GLib {
      * @returns `true` if the exchange took place
      * @since 2.4
      */
-    function atomic_pointer_compare_and_exchange(atomic: any, oldval?: any | null, newval?: any | null): boolean;
+    function atomic_pointer_compare_and_exchange(atomic: any, oldval: any | null, newval: any | null): boolean;
     /**
      * Compares `atomic` to `oldval` and, if equal, sets it to `newval`.
      * If `atomic` was not equal to `oldval` then no change occurs.
@@ -5650,7 +5650,7 @@ export namespace GLib {
      * @returns the value of `atomic` before the exchange
      * @since 2.74
      */
-    function atomic_pointer_exchange(atomic?: any | null, newval?: any | null): any | null;
+    function atomic_pointer_exchange(atomic: any | null, newval: any | null): any | null;
     /**
      * Gets the current value of `atomic`.
      *
@@ -5697,7 +5697,7 @@ export namespace GLib {
      * @param newval a new value to store
      * @since 2.4
      */
-    function atomic_pointer_set(atomic: any, newval?: any | null): void;
+    function atomic_pointer_set(atomic: any, newval: any | null): void;
     /**
      * Performs an atomic bitwise 'xor' of the value of `atomic` and `val`,
      * storing the result back in `atomic`.
@@ -5851,7 +5851,7 @@ export namespace GLib {
      * @returns a newly allocated, zero-terminated Base-64               encoded string representing `data`. The returned string must               be freed with `g_free()`.
      * @since 2.12
      */
-    function base64_encode(data?: Uint8Array | null): string;
+    function base64_encode(data: Uint8Array | null): string;
     /**
      * Flush the status from a sequence of calls to `g_base64_encode_step()`.
      *
@@ -6225,7 +6225,7 @@ export namespace GLib {
      * @returns a newly allocated string with the   canonical file path
      * @since 2.58
      */
-    function canonicalize_filename(filename: string, relative_to?: string | null): string;
+    function canonicalize_filename(filename: string, relative_to: string | null): string;
     /**
      * A wrapper for the POSIX `chdir()` function. The function changes the
      * current directory of the process to `path`.
@@ -6303,7 +6303,7 @@ export namespace GLib {
         priority: number,
         pid: Pid,
         _function: ChildWatchFunc,
-        notify?: DestroyNotify | null,
+        notify: DestroyNotify | null,
     ): number;
     /**
      * Creates a new child watch source.
@@ -6852,7 +6852,7 @@ export namespace GLib {
      * @returns The actual name used. This string   should be freed with `g_free()` when not needed any longer and is   is in the GLib file name encoding. In case of errors, `null` is   returned and `error` will be set.
      * @since 2.30
      */
-    function dir_make_tmp(tmpl?: string | null): string;
+    function dir_make_tmp(tmpl: string | null): string;
     /**
      * Compares two `gpointer` arguments and returns `true` if they are equal.
      * It can be passed to `g_hash_table_new()` as the `key_equal_func`
@@ -6865,7 +6865,7 @@ export namespace GLib {
      * @param v2 a key to compare with `v1`
      * @returns `true` if the two keys match.
      */
-    function direct_equal(v1?: any | null, v2?: any | null): boolean;
+    function direct_equal(v1: any | null, v2: any | null): boolean;
     /**
      * Converts a gpointer to a hash value.
      * It can be passed to `g_hash_table_new()` as the `hash_func` parameter,
@@ -6877,7 +6877,7 @@ export namespace GLib {
      * @param v a `gpointer` key
      * @returns a hash value corresponding to the key.
      */
-    function direct_hash(v?: any | null): number;
+    function direct_hash(v: any | null): number;
     /**
      * This function is a wrapper of `dngettext()` which does not translate
      * the message if the default domain as set with `textdomain()` has no
@@ -7341,7 +7341,7 @@ export namespace GLib {
      * @param hostname A UTF-8 encoded hostname, or `null` for none.
      * @returns a newly-allocated string holding the resulting               URI, or `null` on an error.
      */
-    function filename_to_uri(filename: string, hostname?: string | null): string;
+    function filename_to_uri(filename: string, hostname: string | null): string;
     /**
      * Converts a string which is in the encoding used by GLib for
      * filenames into a UTF-8 string. Note that on Windows GLib uses UTF-8
@@ -7474,7 +7474,7 @@ export namespace GLib {
      * against `null` before calling this function.
      * @param mem the memory to free
      */
-    function free(mem?: any | null): void;
+    function free(mem: any | null): void;
     /**
      * Frees the memory pointed to by `mem`, assuming it is has the given `size`.
      *
@@ -7506,7 +7506,7 @@ export namespace GLib {
      * @returns A FILE* if the file was successfully opened, or `null` if     an error occurred.
      * @since 2.6
      */
-    function freopen(filename: string, mode: string, stream?: any | null): any | null;
+    function freopen(filename: string, mode: string, stream: any | null): any | null;
     /**
      * A wrapper for the POSIX `fsync()` function. On Windows, `_commit()` will be
      * used. On macOS, `fcntl(F_FULLFSYNC)` will be used.
@@ -8090,7 +8090,7 @@ export namespace GLib {
      * @returns `true` if the key did not exist yet
      * @since 2.32
      */
-    function hash_table_add(hash_table: { [key: string]: any } | HashTable<any, any>, key?: any | null): boolean;
+    function hash_table_add(hash_table: { [key: string]: any } | HashTable<any, any>, key: any | null): boolean;
     /**
      * Checks if `key` is in `hash_table`.
      * @param hash_table a {@link GLib.HashTable}
@@ -8098,7 +8098,7 @@ export namespace GLib {
      * @returns `true` if `key` is in `hash_table`, `false` otherwise.
      * @since 2.32
      */
-    function hash_table_contains(hash_table: { [key: string]: any } | HashTable<any, any>, key?: any | null): boolean;
+    function hash_table_contains(hash_table: { [key: string]: any } | HashTable<any, any>, key: any | null): boolean;
     /**
      * Destroys all keys and values in the {@link GLib.HashTable} and decrements its
      * reference count by 1. If keys and/or values are dynamically allocated,
@@ -8193,8 +8193,8 @@ export namespace GLib {
      */
     function hash_table_insert(
         hash_table: { [key: string]: any } | HashTable<any, any>,
-        key?: any | null,
-        value?: any | null,
+        key: any | null,
+        value: any | null,
     ): boolean;
     /**
      * Looks up a key in a {@link GLib.HashTable}. Note that this function cannot
@@ -8205,7 +8205,7 @@ export namespace GLib {
      * @param key the key to look up
      * @returns the associated value, or `null` if the key is not found
      */
-    function hash_table_lookup(hash_table: { [key: string]: any } | HashTable<any, any>, key?: any | null): any | null;
+    function hash_table_lookup(hash_table: { [key: string]: any } | HashTable<any, any>, key: any | null): any | null;
     /**
      * Looks up a key in the {@link GLib.HashTable}, returning the original key and the
      * associated value and a `gboolean` which is `true` if the key was found. This
@@ -8258,7 +8258,7 @@ export namespace GLib {
      * @param key the key to remove
      * @returns `true` if the key was found and removed from the {@link GLib.HashTable}
      */
-    function hash_table_remove(hash_table: { [key: string]: any } | HashTable<any, any>, key?: any | null): boolean;
+    function hash_table_remove(hash_table: { [key: string]: any } | HashTable<any, any>, key: any | null): boolean;
     /**
      * Removes all keys and their associated values from a {@link GLib.HashTable}.
      *
@@ -8289,8 +8289,8 @@ export namespace GLib {
      */
     function hash_table_replace(
         hash_table: { [key: string]: any } | HashTable<any, any>,
-        key?: any | null,
-        value?: any | null,
+        key: any | null,
+        value: any | null,
     ): boolean;
     /**
      * Returns the number of elements contained in the {@link GLib.HashTable}.
@@ -8305,7 +8305,7 @@ export namespace GLib {
      * @param key the key to remove
      * @returns `true` if the key was found and removed from the {@link GLib.HashTable}
      */
-    function hash_table_steal(hash_table: { [key: string]: any } | HashTable<any, any>, key?: any | null): boolean;
+    function hash_table_steal(hash_table: { [key: string]: any } | HashTable<any, any>, key: any | null): boolean;
     /**
      * Removes all keys and their associated values from a {@link GLib.HashTable}
      * without calling the key and value destroy functions.
@@ -8477,13 +8477,13 @@ export namespace GLib {
      * @param notify function to call when the idle is removed
      * @returns the ID (greater than 0) of the event source
      */
-    function idle_add(priority: number, _function: SourceFunc, notify?: DestroyNotify | null): number;
+    function idle_add(priority: number, _function: SourceFunc, notify: DestroyNotify | null): number;
     /**
      * Removes the idle function with the given data.
      * @param data the data for the idle source’s callback.
      * @returns true if an idle source was found and removed, false otherwise
      */
-    function idle_remove_by_data(data?: any | null): boolean;
+    function idle_remove_by_data(data: any | null): boolean;
     /**
      * Creates a new idle source.
      *
@@ -8559,7 +8559,7 @@ export namespace GLib {
      * @returns a canonical representation for the string
      * @since 2.10
      */
-    function intern_static_string(string?: string | null): string;
+    function intern_static_string(string: string | null): string;
     /**
      * Returns a canonical representation for `string`. Interned strings
      * can be compared for equality by comparing the pointers, instead of
@@ -8572,7 +8572,7 @@ export namespace GLib {
      * @returns a canonical representation for the string
      * @since 2.10
      */
-    function intern_string(string?: string | null): string;
+    function intern_string(string: string | null): string;
     /**
      * Adds the {@link GLib.IOChannel} into the default main loop context
      * with the given priority.
@@ -8708,8 +8708,8 @@ export namespace GLib {
     function log_default_handler(
         log_domain: string | null,
         log_level: LogLevelFlags,
-        message?: string | null,
-        unused_data?: any | null,
+        message: string | null,
+        unused_data: any | null,
     ): void;
     /**
      * Gets the current fatal mask.
@@ -8921,7 +8921,7 @@ export namespace GLib {
      * @returns {@link GLib.LogWriterOutput.HANDLED} on success,   {@link GLib.LogWriterOutput.UNHANDLED} otherwise
      * @since 2.50
      */
-    function log_writer_default(log_level: LogLevelFlags, fields: LogField[], user_data?: any | null): LogWriterOutput;
+    function log_writer_default(log_level: LogLevelFlags, fields: LogField[], user_data: any | null): LogWriterOutput;
     /**
      * Reset the list of domains to be logged, that might be initially set by the
      * `G_MESSAGES_DEBUG` or `DEBUG_INVOCATION` environment variables.
@@ -8930,7 +8930,7 @@ export namespace GLib {
      * @param domains `NULL`-terminated array with domains to be printed.   `NULL` or an array with no values means none. Array with a single value `"all"` means all.
      * @since 2.80
      */
-    function log_writer_default_set_debug_domains(domains?: string | null): void;
+    function log_writer_default_set_debug_domains(domains: string | null): void;
     /**
      * Configure whether the built-in log functions will output all log messages to
      * `stderr`.
@@ -8985,7 +8985,7 @@ export namespace GLib {
      * @returns `TRUE` if the log message would be dropped by GLib’s   default log handlers
      * @since 2.68
      */
-    function log_writer_default_would_drop(log_level: LogLevelFlags, log_domain?: string | null): boolean;
+    function log_writer_default_would_drop(log_level: LogLevelFlags, log_domain: string | null): boolean;
     /**
      * Format a structured log message as a string suitable for outputting to the
      * terminal (or elsewhere).
@@ -9038,7 +9038,7 @@ export namespace GLib {
      * @returns {@link GLib.LogWriterOutput.HANDLED} on success, {@link GLib.LogWriterOutput.UNHANDLED} otherwise
      * @since 2.50
      */
-    function log_writer_journald(log_level: LogLevelFlags, fields: LogField[], user_data?: any | null): LogWriterOutput;
+    function log_writer_journald(log_level: LogLevelFlags, fields: LogField[], user_data: any | null): LogWriterOutput;
     /**
      * Format a structured log message and print it to either `stdout` or `stderr`,
      * depending on its log level.
@@ -9066,7 +9066,7 @@ export namespace GLib {
     function log_writer_standard_streams(
         log_level: LogLevelFlags,
         fields: LogField[],
-        user_data?: any | null,
+        user_data: any | null,
     ): LogWriterOutput;
     /**
      * Check whether the given `output_fd` file descriptor supports
@@ -9097,7 +9097,7 @@ export namespace GLib {
      * @returns {@link GLib.LogWriterOutput.HANDLED} on success, {@link GLib.LogWriterOutput.UNHANDLED} otherwise
      * @since 2.80
      */
-    function log_writer_syslog(log_level: LogLevelFlags, fields: LogField[], user_data?: any | null): LogWriterOutput;
+    function log_writer_syslog(log_level: LogLevelFlags, fields: LogField[], user_data: any | null): LogWriterOutput;
     /**
      * A wrapper for the POSIX `lstat()` function. The `lstat()` function is
      * like `stat()` except that in the case of symbolic links, it returns
@@ -9486,7 +9486,7 @@ export namespace GLib {
      * handle that exception (see [Running GLib Applications](https://docs.gtk.org/glib/running.html)).
      * @param prg_name the program name, needed by gdb for the   "[S]tack trace" option, or `NULL` to use a default string
      */
-    function on_error_stack_trace(prg_name?: string | null): void;
+    function on_error_stack_trace(prg_name: string | null): void;
     /**
      * Function to be called when starting a critical initialization
      * section. The argument `location` must point to a static
@@ -9574,7 +9574,7 @@ export namespace GLib {
      * @param result new non-`NULL` value for `*location`
      * @since 2.80
      */
-    function once_init_leave_pointer(location: any, result?: any | null): void;
+    function once_init_leave_pointer(location: any, result: any | null): void;
     /**
      * A wrapper for the POSIX `open()` function. The `open()` function is
      * used to convert a pathname into a file descriptor.
@@ -9748,7 +9748,7 @@ export namespace GLib {
         lock_bit: number,
         set: boolean,
         preserve_mask: bigint | number,
-        preserve_ptr?: any | null,
+        preserve_ptr: any | null,
     ): any | null;
     /**
      * This is equivalent to `g_bit_trylock()`, but working on pointers (or
@@ -9882,7 +9882,7 @@ export namespace GLib {
      * @param string a string
      * @returns the {@link GLib.Quark} identifying the string, or 0 if `string` is `null`
      */
-    function quark_from_static_string(string?: string | null): Quark;
+    function quark_from_static_string(string: string | null): Quark;
     /**
      * Gets the {@link GLib.Quark} identifying the given string. If the string does
      * not currently have an associated {@link GLib.Quark}, a new {@link GLib.Quark} is created,
@@ -9894,7 +9894,7 @@ export namespace GLib {
      * @param string a string
      * @returns the {@link GLib.Quark} identifying the string, or 0 if `string` is `null`
      */
-    function quark_from_string(string?: string | null): Quark;
+    function quark_from_string(string: string | null): Quark;
     /**
      * Gets the string associated with the given {@link GLib.Quark}.
      * @param quark a {@link GLib.Quark}.
@@ -9913,7 +9913,7 @@ export namespace GLib {
      * @param string a string
      * @returns the {@link GLib.Quark} associated with the string, or 0 if `string` is     `null` or there is no {@link GLib.Quark} associated with it
      */
-    function quark_try_string(string?: string | null): Quark;
+    function quark_try_string(string: string | null): Quark;
     /**
      * Returns a random `gdouble` equally distributed over the range [0..1).
      * @returns a random number
@@ -10332,7 +10332,7 @@ export namespace GLib {
      * @returns an iterator pointing to the new item
      * @since 2.14
      */
-    function sequence_insert_before(iter: SequenceIter, data?: any | null): SequenceIter;
+    function sequence_insert_before(iter: SequenceIter, data: any | null): SequenceIter;
     /**
      * Moves the item pointed to by `src` to the position indicated by `dest`.
      * After calling this function `dest` will point to the position immediately
@@ -10399,7 +10399,7 @@ export namespace GLib {
      * @param data new data for the item
      * @since 2.14
      */
-    function sequence_set(iter: SequenceIter, data?: any | null): void;
+    function sequence_set(iter: SequenceIter, data: any | null): void;
     /**
      * Moves the data pointed to by `iter` to a new position as indicated by
      * `cmp_func`. This
@@ -10621,7 +10621,7 @@ export namespace GLib {
      * @returns a pointer to the allocated memory block,    which will be `null` if and only if `mem_size` is 0
      * @since 2.14
      */
-    function slice_copy(block_size: bigint | number, mem_block?: any | null): any | null;
+    function slice_copy(block_size: bigint | number, mem_block: any | null): any | null;
     /**
      * Frees a block of memory.
      *
@@ -10639,7 +10639,7 @@ export namespace GLib {
      * @param mem_block a pointer to the block to free
      * @since 2.10
      */
-    function slice_free1(block_size: bigint | number, mem_block?: any | null): void;
+    function slice_free1(block_size: bigint | number, mem_block: any | null): void;
     /**
      * Frees a linked list of memory blocks of structure type `type`.
      *
@@ -10725,7 +10725,7 @@ export namespace GLib {
      * @param user_data the user data for the callback
      * @returns true if a source was found and removed, false otherwise
      */
-    function source_remove_by_funcs_user_data(funcs: SourceFuncs, user_data?: any | null): boolean;
+    function source_remove_by_funcs_user_data(funcs: SourceFuncs, user_data: any | null): boolean;
     /**
      * Removes a source from the default main loop context given the user
      * data for the callback.
@@ -10734,7 +10734,7 @@ export namespace GLib {
      * @param user_data the user_data for the callback
      * @returns true if a source was found and removed, false otherwise
      */
-    function source_remove_by_user_data(user_data?: any | null): boolean;
+    function source_remove_by_user_data(user_data: any | null): boolean;
     /**
      * Sets the name of a source using its ID.
      *
@@ -10798,7 +10798,7 @@ export namespace GLib {
         argv: string[],
         envp: string[] | null,
         flags: SpawnFlags,
-        child_setup?: SpawnChildSetupFunc | null,
+        child_setup: SpawnChildSetupFunc | null,
     ): [boolean, Pid | null];
     /**
      * Executes a child program asynchronously.
@@ -11368,7 +11368,7 @@ export namespace GLib {
      * @returns a string in plain ASCII
      * @since 2.40
      */
-    function str_to_ascii(str: string, from_locale?: string | null): string;
+    function str_to_ascii(str: string, from_locale: string | null): string;
     /**
      * Tokenizes `string` and performs folding on each token.
      *
@@ -11390,7 +11390,7 @@ export namespace GLib {
      * @returns the folded tokens
      * @since 2.40
      */
-    function str_tokenize_and_fold(string: string, translit_locale?: string | null): [string[], string[] | null];
+    function str_tokenize_and_fold(string: string, translit_locale: string | null): [string[], string[] | null];
     /**
      * For each character in `string`, if the character is not in `valid_chars`,
      * replaces the character with `substitutor`.
@@ -11461,7 +11461,7 @@ export namespace GLib {
      * @returns an integer less than, equal to, or greater than zero,   if `str1` is <, == or > than `str2`
      * @since 2.16
      */
-    function strcmp0(str1?: string | null, str2?: string | null): number;
+    function strcmp0(str1: string | null, str2: string | null): number;
     /**
      * Makes a copy of a string replacing C string-style escape
      * sequences with their one byte equivalent:
@@ -11517,7 +11517,7 @@ export namespace GLib {
      * @param str the string to duplicate
      * @returns a newly-allocated copy of `str`
      */
-    function strdup(str?: string | null): string;
+    function strdup(str: string | null): string;
     /**
      * Copies an array of strings. The copy is a deep copy; each string is also
      * copied.
@@ -11526,7 +11526,7 @@ export namespace GLib {
      * @param str_array an array of strings to copy
      * @returns a   newly-allocated array of strings. Use {@link GLib.strfreev} to free it.
      */
-    function strdupv(str_array?: string[] | null): string[] | null;
+    function strdupv(str_array: string[] | null): string[] | null;
     /**
      * Returns a string corresponding to the given error code, e.g. "no
      * such process".
@@ -11577,14 +11577,14 @@ export namespace GLib {
      * @param exceptions a string of characters not to escape in `source`
      * @returns a newly-allocated copy of `source` with special characters escaped
      */
-    function strescape(source: string, exceptions?: string | null): string;
+    function strescape(source: string, exceptions: string | null): string;
     /**
      * Frees an array of strings, as well as each string it contains.
      *
      * If `str_array` is `NULL`, this function simply returns.
      * @param str_array an   array of strings to free
      */
-    function strfreev(str_array?: string[] | null): void;
+    function strfreev(str_array: string[] | null): void;
     /**
      * An auxiliary function for `gettext()` support (see Q_()).
      * @param msgid a string
@@ -12073,7 +12073,7 @@ export namespace GLib {
      * @param msg explanation
      * @since 2.38
      */
-    function test_incomplete(msg?: string | null): void;
+    function test_incomplete(msg: string | null): void;
     /**
      * @param log_type
      */
@@ -12089,7 +12089,7 @@ export namespace GLib {
      * @param destroy_data destroy callback data
      * @since 2.16
      */
-    function test_queue_destroy(destroy_data?: any | null): void;
+    function test_queue_destroy(destroy_data: any | null): void;
     /**
      * Enqueues a pointer to be released with {@link GLib.free}
      * during the next teardown phase.
@@ -12099,7 +12099,7 @@ export namespace GLib {
      * @param gfree_pointer the pointer to be stored
      * @since 2.16
      */
-    function test_queue_free(gfree_pointer?: any | null): void;
+    function test_queue_free(gfree_pointer: any | null): void;
     /**
      * Gets a reproducible random floating point number.
      *
@@ -12227,7 +12227,7 @@ export namespace GLib {
      * @param msg explanation
      * @since 2.38
      */
-    function test_skip(msg?: string | null): void;
+    function test_skip(msg: string | null): void;
     /**
      * Returns true if the test program is running under {@link GLib.test_trap_subprocess}.
      * @returns true if the test program is running under {@link GLib.test_trap_subprocess}
@@ -12490,7 +12490,7 @@ export namespace GLib {
      * or or from within a {@link GLib.ThreadPool}.
      * @param retval the return value of this thread
      */
-    function thread_exit(retval?: any | null): void;
+    function thread_exit(retval: any | null): void;
     /**
      * This function will return the maximum `interval` that a
      * thread will wait in the thread pool for new tasks before
@@ -12626,7 +12626,7 @@ export namespace GLib {
         priority: number,
         interval: number,
         _function: SourceFunc,
-        notify?: DestroyNotify | null,
+        notify: DestroyNotify | null,
     ): number;
     /**
      * Sets a function to be called at regular intervals, with `priority`.
@@ -12680,7 +12680,7 @@ export namespace GLib {
         priority: number,
         interval: number,
         _function: SourceFunc,
-        notify?: DestroyNotify | null,
+        notify: DestroyNotify | null,
     ): number;
     /**
      * Creates a new timeout source.
@@ -13260,8 +13260,8 @@ export namespace GLib {
         host: string | null,
         port: number,
         path: string,
-        query?: string | null,
-        fragment?: string | null,
+        query: string | null,
+        fragment: string | null,
     ): Uri;
     /**
      * Creates a new {@link GLib.Uri} from the given components according to `flags`
@@ -13294,8 +13294,8 @@ export namespace GLib {
         host: string | null,
         port: number,
         path: string,
-        query?: string | null,
-        fragment?: string | null,
+        query: string | null,
+        fragment: string | null,
     ): Uri;
     function uri_error_quark(): Quark;
     /**
@@ -13315,7 +13315,7 @@ export namespace GLib {
      * @returns an escaped version of `unescaped`.     The returned string should be freed when no longer needed.
      * @since 2.66
      */
-    function uri_escape_bytes(unescaped: Uint8Array | string, reserved_chars_allowed?: string | null): string;
+    function uri_escape_bytes(unescaped: Uint8Array | string, reserved_chars_allowed: string | null): string;
     /**
      * Escapes a string for use in a URI.
      *
@@ -13380,8 +13380,8 @@ export namespace GLib {
         host: string | null,
         port: number,
         path: string,
-        query?: string | null,
-        fragment?: string | null,
+        query: string | null,
+        fragment: string | null,
     ): string;
     /**
      * Joins the given components together according to `flags` to create
@@ -13415,8 +13415,8 @@ export namespace GLib {
         host: string | null,
         port: number,
         path: string,
-        query?: string | null,
-        fragment?: string | null,
+        query: string | null,
+        fragment: string | null,
     ): string;
     /**
      * Splits an URI list conforming to the text/uri-list
@@ -13603,7 +13603,7 @@ export namespace GLib {
     function uri_unescape_bytes(
         escaped_string: string,
         length: bigint | number,
-        illegal_characters?: string | null,
+        illegal_characters: string | null,
     ): Bytes;
     /**
      * Unescapes a segment of an escaped string.
@@ -13623,9 +13623,9 @@ export namespace GLib {
      * @since 2.16
      */
     function uri_unescape_segment(
-        escaped_string?: string | null,
-        escaped_string_end?: string | null,
-        illegal_characters?: string | null,
+        escaped_string: string | null,
+        escaped_string_end: string | null,
+        illegal_characters: string | null,
     ): string | null;
     /**
      * Unescapes a whole escaped string.
@@ -13640,7 +13640,7 @@ export namespace GLib {
      * @returns an unescaped version of `escaped_string`. The returned string should be freed when no longer needed.
      * @since 2.16
      */
-    function uri_unescape_string(escaped_string: string, illegal_characters?: string | null): string | null;
+    function uri_unescape_string(escaped_string: string, illegal_characters: string | null): string | null;
     /**
      * Pauses the current thread for the given number of microseconds.
      *
@@ -13767,7 +13767,7 @@ export namespace GLib {
      * @param end a pointer to the byte following the end of the string,     or `NULL` to indicate that the string is nul-terminated
      * @returns a pointer to the found character or `NULL` if `end` is    set and is reached
      */
-    function utf8_find_next_char(p: string, end?: string | null): string | null;
+    function utf8_find_next_char(p: string, end: string | null): string | null;
     /**
      * Given a position `p` with a UTF-8 encoded string `str`, find the start
      * of the previous UTF-8 character starting before `p`. Returns `NULL` if no
@@ -14085,7 +14085,7 @@ export namespace GLib {
      * @returns 0 if the operation was successful, -1 if an error occurred
      * @since 2.18
      */
-    function utime(filename: string, utb?: any | null): number;
+    function utime(filename: string, utb: any | null): number;
     /**
      * Parses the string `str` and verify if it is a UUID.
      *
@@ -14181,8 +14181,8 @@ export namespace GLib {
     function variant_parse(
         type: VariantType | null,
         text: string,
-        limit?: string | null,
-        endptr?: string | null,
+        limit: string | null,
+        endptr: string | null,
     ): Variant;
     /**
      * Pretty-prints a message showing the context of a {@link GLib.Variant} parse
@@ -14273,19 +14273,19 @@ export namespace GLib {
      * @gir-type Callback
      */
     interface CacheDestroyFunc {
-        (value?: any | null): void;
+        (value: any | null): void;
     }
     /**
      * @gir-type Callback
      */
     interface CacheDupFunc {
-        (value?: any | null): any | null;
+        (value: any | null): any | null;
     }
     /**
      * @gir-type Callback
      */
     interface CacheNewFunc {
-        (key?: any | null): any | null;
+        (key: any | null): any | null;
     }
     /**
      * @gir-type Callback
@@ -14303,19 +14303,19 @@ export namespace GLib {
      * @gir-type Callback
      */
     interface CompareDataFunc {
-        (a?: any | null, b?: any | null): number;
+        (a: any | null, b: any | null): number;
     }
     /**
      * @gir-type Callback
      */
     interface CompareFunc {
-        (a?: any | null, b?: any | null): number;
+        (a: any | null, b: any | null): number;
     }
     /**
      * @gir-type Callback
      */
     interface CompletionFunc {
-        (item?: any | null): string;
+        (item: any | null): string;
     }
     /**
      * @gir-type Callback
@@ -14327,37 +14327,37 @@ export namespace GLib {
      * @gir-type Callback
      */
     interface CopyFunc {
-        (src: any, data?: any | null): any;
+        (src: any, data: any | null): any;
     }
     /**
      * @gir-type Callback
      */
     interface DataForeachFunc {
-        (key_id: Quark, data?: any | null): void;
+        (key_id: Quark, data: any | null): void;
     }
     /**
      * @gir-type Callback
      */
     interface DestroyNotify {
-        (data?: any | null): void;
+        (data: any | null): void;
     }
     /**
      * @gir-type Callback
      */
     interface DuplicateFunc {
-        (data?: any | null): any | null;
+        (data: any | null): any | null;
     }
     /**
      * @gir-type Callback
      */
     interface EqualFunc {
-        (a?: any | null, b?: any | null): boolean;
+        (a: any | null, b: any | null): boolean;
     }
     /**
      * @gir-type Callback
      */
     interface EqualFuncFull {
-        (a?: any | null, b?: any | null): boolean;
+        (a: any | null, b: any | null): boolean;
     }
     /**
      * @gir-type Callback
@@ -14381,43 +14381,43 @@ export namespace GLib {
      * @gir-type Callback
      */
     interface FreeFunc {
-        (data?: any | null): void;
+        (data: any | null): void;
     }
     /**
      * @gir-type Callback
      */
     interface Func {
-        (data?: any | null): void;
+        (data: any | null): void;
     }
     /**
      * @gir-type Callback
      */
     interface HFunc {
-        (key?: any | null, value?: any | null): void;
+        (key: any | null, value: any | null): void;
     }
     /**
      * @gir-type Callback
      */
     interface HRFunc {
-        (key?: any | null, value?: any | null): boolean;
+        (key: any | null, value: any | null): boolean;
     }
     /**
      * @gir-type Callback
      */
     interface HashFunc {
-        (key?: any | null): number;
+        (key: any | null): number;
     }
     /**
      * @gir-type Callback
      */
     interface HookCheckFunc {
-        (data?: any | null): boolean;
+        (data: any | null): boolean;
     }
     /**
      * @gir-type Callback
      */
     interface HookCheckMarshaller {
-        (hook: Hook, marshal_data?: any | null): boolean;
+        (hook: Hook, marshal_data: any | null): boolean;
     }
     /**
      * @gir-type Callback
@@ -14435,25 +14435,25 @@ export namespace GLib {
      * @gir-type Callback
      */
     interface HookFindFunc {
-        (hook: Hook, data?: any | null): boolean;
+        (hook: Hook, data: any | null): boolean;
     }
     /**
      * @gir-type Callback
      */
     interface HookFunc {
-        (data?: any | null): void;
+        (data: any | null): void;
     }
     /**
      * @gir-type Callback
      */
     interface HookMarshaller {
-        (hook: Hook, marshal_data?: any | null): void;
+        (hook: Hook, marshal_data: any | null): void;
     }
     /**
      * @gir-type Callback
      */
     interface IOFunc {
-        (source: IOChannel, condition: IOCondition, data?: any | null): boolean;
+        (source: IOChannel, condition: IOCondition, data: any | null): boolean;
     }
     /**
      * @gir-type Callback
@@ -14471,31 +14471,31 @@ export namespace GLib {
      * @gir-type Callback
      */
     interface NodeForeachFunc {
-        (node: Node, data?: any | null): void;
+        (node: Node, data: any | null): void;
     }
     /**
      * @gir-type Callback
      */
     interface NodeTraverseFunc {
-        (node: Node, data?: any | null): boolean;
+        (node: Node, data: any | null): boolean;
     }
     /**
      * @gir-type Callback
      */
     interface OptionArgFunc {
-        (option_name: string, value: string, data?: any | null): boolean;
+        (option_name: string, value: string, data: any | null): boolean;
     }
     /**
      * @gir-type Callback
      */
     interface OptionErrorFunc {
-        (context: OptionContext, group: OptionGroup, data?: any | null): void;
+        (context: OptionContext, group: OptionGroup, data: any | null): void;
     }
     /**
      * @gir-type Callback
      */
     interface OptionParseFunc {
-        (context: OptionContext, group: OptionGroup, data?: any | null): boolean;
+        (context: OptionContext, group: OptionGroup, data: any | null): boolean;
     }
     /**
      * @gir-type Callback
@@ -14525,7 +14525,7 @@ export namespace GLib {
      * @gir-type Callback
      */
     interface SequenceIterCompareFunc {
-        (a: SequenceIter, b: SequenceIter, data?: any | null): number;
+        (a: SequenceIter, b: SequenceIter, data: any | null): number;
     }
     /**
      * @gir-type Callback
@@ -14543,7 +14543,7 @@ export namespace GLib {
      * @gir-type Callback
      */
     interface SourceFunc {
-        (user_data?: any | null): boolean;
+        (user_data: any | null): boolean;
     }
     /**
      * @gir-type Callback
@@ -14567,19 +14567,19 @@ export namespace GLib {
      * @gir-type Callback
      */
     interface SourceOnceFunc {
-        (user_data?: any | null): void;
+        (user_data: any | null): void;
     }
     /**
      * @gir-type Callback
      */
     interface SpawnChildSetupFunc {
-        (data?: any | null): void;
+        (data: any | null): void;
     }
     /**
      * @gir-type Callback
      */
     interface TestDataFunc {
-        (user_data?: any | null): void;
+        (user_data: any | null): void;
     }
     /**
      * @gir-type Callback
@@ -14603,25 +14603,25 @@ export namespace GLib {
      * @gir-type Callback
      */
     interface ThreadFunc {
-        (data?: any | null): any | null;
+        (data: any | null): any | null;
     }
     /**
      * @gir-type Callback
      */
     interface TranslateFunc {
-        (str: string, data?: any | null): string;
+        (str: string, data: any | null): string;
     }
     /**
      * @gir-type Callback
      */
     interface TraverseFunc {
-        (key?: any | null, value?: any | null, data?: any | null): boolean;
+        (key: any | null, value: any | null, data: any | null): boolean;
     }
     /**
      * @gir-type Callback
      */
     interface TraverseNodeFunc {
-        (node: TreeNode, data?: any | null): boolean;
+        (node: TreeNode, data: any | null): boolean;
     }
     /**
      * @gir-type Callback
@@ -15759,7 +15759,7 @@ export namespace GLib {
          * the queue is destroyed after the final unref.
          * @param item_free_func function to free queue elements
          */
-        static new_full(item_free_func?: DestroyNotify | null): AsyncQueue;
+        static new_full(item_free_func: DestroyNotify | null): AsyncQueue;
 
         // Methods
 
@@ -16118,7 +16118,7 @@ export namespace GLib {
          * @param name the name of the application registering the bookmark   or `null`
          * @param exec command line to be used to launch the bookmark or `null`
          */
-        add_application(uri: string, name?: string | null, exec?: string | null): void;
+        add_application(uri: string, name: string | null, exec: string | null): void;
         /**
          * Adds `group` to the list of groups to which the bookmark for `uri`
          * belongs to.
@@ -16288,7 +16288,7 @@ export namespace GLib {
          * @param uri a valid URI or `null`
          * @returns a newly allocated string or `null` if the specified   URI cannot be found.
          */
-        get_title(uri?: string | null): string;
+        get_title(uri: string | null): string;
         /**
          * Returns all URIs of the bookmarks in the bookmark file `bookmark`.
          * The array of returned URIs will be `null`-terminated, so `length` may
@@ -16379,7 +16379,7 @@ export namespace GLib {
          * @param new_uri a valid URI, or `null`
          * @returns `true` if the URI was successfully changed
          */
-        move_item(old_uri: string, new_uri?: string | null): boolean;
+        move_item(old_uri: string, new_uri: string | null): boolean;
         /**
          * Removes application registered with `name` from the list of applications
          * that have registered a bookmark for `uri` inside `bookmark`.
@@ -16501,7 +16501,7 @@ export namespace GLib {
          * @param stamp the time of the last registration for this application,    which may be `null` if `count` is 0
          * @returns `true` if the application's meta-data was successfully   changed.
          */
-        set_application_info(uri: string, name: string, exec: string, count: number, stamp?: DateTime | null): boolean;
+        set_application_info(uri: string, name: string, exec: string, count: number, stamp: DateTime | null): boolean;
         /**
          * Sets `description` as the description of the bookmark for `uri`.
          *
@@ -16520,7 +16520,7 @@ export namespace GLib {
          * @param uri an item's URI
          * @param groups an array of    group names, or `null` to remove all groups
          */
-        set_groups(uri: string, groups?: string[] | null): void;
+        set_groups(uri: string, groups: string[] | null): void;
         /**
          * Sets the icon for the bookmark for `uri`. If `href` is `null`, unsets
          * the currently set icon. `href` can either be a full URL for the icon
@@ -16821,13 +16821,13 @@ export namespace GLib {
 
         // Constructors
 
-        constructor(data?: Uint8Array | null);
+        constructor(data: Uint8Array | null);
 
-        static ['new'](data?: Uint8Array | null): Bytes;
+        static ['new'](data: Uint8Array | null): Bytes;
 
         static new_from_bytes(bytes: Bytes | Uint8Array, offset: bigint | number, length: bigint | number): Bytes;
 
-        static new_take(data?: Uint8Array | null): Bytes;
+        static new_take(data: Uint8Array | null): Bytes;
 
         // Methods
 
@@ -16994,7 +16994,7 @@ export namespace GLib {
          * @param key a key describing a {@link GLib.Cache} object
          * @returns a pointer to a {@link GLib.Cache} value
          */
-        insert(key?: any | null): any | null;
+        insert(key: any | null): any | null;
         /**
          * Calls the given function for each of the keys in the {@link GLib.Cache}.
          *
@@ -17011,7 +17011,7 @@ export namespace GLib {
          * `value_destroy_func` and `key_destroy_func` passed to `g_cache_new()`.
          * @param value the value to remove
          */
-        remove(value?: any | null): void;
+        remove(value: any | null): void;
         /**
          * Calls the given function for each of the values in the {@link GLib.Cache}.
          * @param func the function to call with each {@link GLib.Cache} value
@@ -17875,7 +17875,7 @@ export namespace GLib {
             seconds: number,
         ): DateTime;
 
-        static new_from_iso8601(text: string, default_tz?: TimeZone | null): DateTime;
+        static new_from_iso8601(text: string, default_tz: TimeZone | null): DateTime;
 
         static new_from_timeval_local(tv: TimeVal): DateTime;
 
@@ -18440,7 +18440,7 @@ export namespace GLib {
          * modified, and might thus be a read-only literal string.
          * @param tmpl Template for directory name,   as in `g_mkdtemp()`, basename only, or `null` for a default template
          */
-        static make_tmp(tmpl?: string | null): string;
+        static make_tmp(tmpl: string | null): string;
 
         // Methods
 
@@ -18637,13 +18637,13 @@ export namespace GLib {
          * @param hash_table a {@link GLib.HashTable}
          * @param key a key to insert
          */
-        static add(hash_table: { [key: string]: any } | HashTable<any, any>, key?: any | null): boolean;
+        static add(hash_table: { [key: string]: any } | HashTable<any, any>, key: any | null): boolean;
         /**
          * Checks if `key` is in `hash_table`.
          * @param hash_table a {@link GLib.HashTable}
          * @param key a key to check
          */
-        static contains(hash_table: { [key: string]: any } | HashTable<any, any>, key?: any | null): boolean;
+        static contains(hash_table: { [key: string]: any } | HashTable<any, any>, key: any | null): boolean;
         /**
          * Destroys all keys and values in the {@link GLib.HashTable} and decrements its
          * reference count by 1. If keys and/or values are dynamically allocated,
@@ -18733,8 +18733,8 @@ export namespace GLib {
          */
         static insert(
             hash_table: { [key: string]: any } | HashTable<any, any>,
-            key?: any | null,
-            value?: any | null,
+            key: any | null,
+            value: any | null,
         ): boolean;
         /**
          * Looks up a key in a {@link GLib.HashTable}. Note that this function cannot
@@ -18744,7 +18744,7 @@ export namespace GLib {
          * @param hash_table a {@link GLib.HashTable}
          * @param key the key to look up
          */
-        static lookup(hash_table: { [key: string]: any } | HashTable<any, any>, key?: any | null): any | null;
+        static lookup(hash_table: { [key: string]: any } | HashTable<any, any>, key: any | null): any | null;
         /**
          * Looks up a key in the {@link GLib.HashTable}, returning the original key and the
          * associated value and a `gboolean` which is `true` if the key was found. This
@@ -18789,7 +18789,7 @@ export namespace GLib {
          * @param hash_table a {@link GLib.HashTable}
          * @param key the key to remove
          */
-        static remove(hash_table: { [key: string]: any } | HashTable<any, any>, key?: any | null): boolean;
+        static remove(hash_table: { [key: string]: any } | HashTable<any, any>, key: any | null): boolean;
         /**
          * Removes all keys and their associated values from a {@link GLib.HashTable}.
          *
@@ -18818,8 +18818,8 @@ export namespace GLib {
          */
         static replace(
             hash_table: { [key: string]: any } | HashTable<any, any>,
-            key?: any | null,
-            value?: any | null,
+            key: any | null,
+            value: any | null,
         ): boolean;
         /**
          * Returns the number of elements contained in the {@link GLib.HashTable}.
@@ -18832,7 +18832,7 @@ export namespace GLib {
          * @param hash_table a {@link GLib.HashTable}
          * @param key the key to remove
          */
-        static steal(hash_table: { [key: string]: any } | HashTable<any, any>, key?: any | null): boolean;
+        static steal(hash_table: { [key: string]: any } | HashTable<any, any>, key: any | null): boolean;
         /**
          * Removes all keys and their associated values from a {@link GLib.HashTable}
          * without calling the key and value destroy functions.
@@ -18960,7 +18960,7 @@ export namespace GLib {
          * {@link GLib.HashTable}, the old value is freed using that function.
          * @param value the value to replace with
          */
-        replace(value?: any | null): void;
+        replace(value: any | null): void;
         /**
          * Removes the key/value pair currently pointed to by the
          * iterator from its associated {@link GLib.HashTable}, without calling
@@ -19071,6 +19071,12 @@ export namespace GLib {
 
         // Static methods
 
+        /**
+         * Destroys a {@link GLib.Hook}, given its ID.
+         * @param hook_list a {@link GLib.HookList}
+         * @param hook_id a hook ID
+         */
+        static destroy(hook_list: HookList, hook_id: bigint | number): boolean;
         /**
          * Removes one {@link GLib.Hook} from a {@link GLib.HookList}, marking it
          * inactive and calling `g_hook_unref()` on it.
@@ -19345,7 +19351,7 @@ export namespace GLib {
          * @param terminator_pos location to store position of line terminator, or `null`
          * @returns the status of the operation.
          */
-        read_line_string(buffer: String, terminator_pos?: (bigint | number) | null): IOStatus;
+        read_line_string(buffer: String, terminator_pos: (bigint | number) | null): IOStatus;
         /**
          * Reads all the remaining data from the file.
          * @returns {@link GLib.IOStatus.NORMAL} on success.     This function never returns {@link GLib.IOStatus.EOF}.
@@ -19453,7 +19459,7 @@ export namespace GLib {
          * @param encoding the encoding type
          * @returns {@link GLib.IOStatus.NORMAL} if the encoding was successfully set
          */
-        set_encoding(encoding?: string | null): IOStatus;
+        set_encoding(encoding: string | null): IOStatus;
         /**
          * Sets the (writeable) flags in `channel` to (`flags` & {@link GLib.IOFlags.SET_MASK}).
          * @param flags the flags to set on the IO channel
@@ -19722,7 +19728,7 @@ export namespace GLib {
          * @param key a key, or `NULL` to get a group comment
          * @returns a comment that should be freed with {@link GLib.free}
          */
-        get_comment(group_name?: string | null, key?: string | null): string;
+        get_comment(group_name: string | null, key: string | null): string;
         /**
          * Returns the value associated with `key` under `group_name` as a double.
          *
@@ -19816,7 +19822,7 @@ export namespace GLib {
          * @param locale a locale identifier or `NULL` to use the current locale
          * @returns the locale from the file, or `NULL` if the key was not   found or the entry in the file was was untranslated
          */
-        get_locale_for_key(group_name: string, key: string, locale?: string | null): string | null;
+        get_locale_for_key(group_name: string, key: string, locale: string | null): string | null;
         /**
          * Returns the value associated with `key` under `group_name`
          * translated in the given `locale` if available.
@@ -19839,7 +19845,7 @@ export namespace GLib {
          * @param locale a locale identifier or `NULL` to use the current locale
          * @returns a newly allocated string or `NULL` if the specified   key cannot be found.
          */
-        get_locale_string(group_name: string, key: string, locale?: string | null): string;
+        get_locale_string(group_name: string, key: string, locale: string | null): string;
         /**
          * Returns the values associated with `key` under `group_name`
          * translated in the given `locale` if available.
@@ -19864,7 +19870,7 @@ export namespace GLib {
          * @param locale a locale identifier or `NULL` to use the current locale
          * @returns a newly allocated `NULL`-terminated string array or `NULL` if the key    isn’t found. The string array should be freed with {@link GLib.strfreev}.
          */
-        get_locale_string_list(group_name: string, key: string, locale?: string | null): string[];
+        get_locale_string_list(group_name: string, key: string, locale: string | null): string[];
         /**
          * Returns the name of the start group of the file.
          * @returns The start group of the key file.
@@ -20011,7 +20017,7 @@ export namespace GLib {
          * @param key a key, or `NULL` to get a group comment
          * @returns true if the comment was removed, false otherwise
          */
-        remove_comment(group_name?: string | null, key?: string | null): boolean;
+        remove_comment(group_name: string | null, key: string | null): boolean;
         /**
          * Removes the specified group, `group_name`,
          * from the key file.
@@ -20419,7 +20425,7 @@ export namespace GLib {
          * @param user_data the user data from the callback
          * @returns the source, if one was found,   otherwise `NULL`
          */
-        find_source_by_funcs_user_data(funcs: SourceFuncs, user_data?: any | null): Source | null;
+        find_source_by_funcs_user_data(funcs: SourceFuncs, user_data: any | null): Source | null;
         /**
          * Finds a {@link GLib.Source} given a pair of context and ID.
          *
@@ -20445,7 +20451,7 @@ export namespace GLib {
          * @param user_data the user_data for the callback
          * @returns the source, if one was found,   otherwise `NULL`
          */
-        find_source_by_user_data(user_data?: any | null): Source | null;
+        find_source_by_user_data(user_data: any | null): Source | null;
         /**
          * Invokes a function in such a way that `context` is owned during the
          * invocation of `function`.
@@ -20461,7 +20467,7 @@ export namespace GLib {
          * @param _function function to call
          * @param notify a function to call when `data` is no longer in use
          */
-        invoke_full(priority: number, _function: SourceFunc, notify?: DestroyNotify | null): void;
+        invoke_full(priority: number, _function: SourceFunc, notify: DestroyNotify | null): void;
         /**
          * Determines whether this thread holds the (recursive)
          * ownership of this {@link GLib.MainContext}.
@@ -20825,9 +20831,9 @@ export namespace GLib {
 
         // Constructors
 
-        constructor(parser: MarkupParser, flags: MarkupParseFlags, user_data?: any | null);
+        constructor(parser: MarkupParser, flags: MarkupParseFlags, user_data: any | null);
 
-        static ['new'](parser: MarkupParser, flags: MarkupParseFlags, user_data?: any | null): MarkupParseContext;
+        static ['new'](parser: MarkupParser, flags: MarkupParseFlags, user_data: any | null): MarkupParseContext;
 
         // Methods
 
@@ -21070,7 +21076,7 @@ export namespace GLib {
          * @param parser a {@link GLib.MarkupParser}
          * @param user_data user data to pass to {@link GLib.MarkupParser} functions
          */
-        push(parser: MarkupParser, user_data?: any | null): void;
+        push(parser: MarkupParser, user_data: any | null): void;
         /**
          * Increases the reference count of `context`.
          * @returns the same `context`
@@ -21523,7 +21529,7 @@ export namespace GLib {
         /**
          * @param mem
          */
-        free(mem?: any | null): void;
+        free(mem: any | null): void;
         print(): void;
         reset(): void;
     }
@@ -21567,7 +21573,7 @@ export namespace GLib {
          * @param data the data to find
          * @returns the index of the child of `node` which contains     `data`, or -1 if the data is not found
          */
-        child_index(data?: any | null): number;
+        child_index(data: any | null): number;
         /**
          * Gets the position of a {@link GLib.Node} with respect to its siblings.
          * `child` must be a child of `node`. The first child is numbered 0,
@@ -21751,7 +21757,7 @@ export namespace GLib {
          * @param location location of a static initializable variable    containing `NULL`
          * @param result new non-`NULL` value for `*location`
          */
-        static init_leave_pointer(location: any, result?: any | null): void;
+        static init_leave_pointer(location: any, result: any | null): void;
     }
 
     /**
@@ -21778,7 +21784,7 @@ export namespace GLib {
          * @param entries a `null`-terminated array of `GOptionEntrys`
          * @param translation_domain a translation domain to use for translating    the `--help` output for the options in `entries`    with `gettext()`, or `null`
          */
-        add_main_entries(entries: OptionEntry[], translation_domain?: string | null): void;
+        add_main_entries(entries: OptionEntry[], translation_domain: string | null): void;
         /**
          * Frees context and all the groups which have been
          * added to it.
@@ -21804,7 +21810,7 @@ export namespace GLib {
          * @param group the {@link GLib.OptionGroup} to create help for, or `null`
          * @returns A newly allocated string containing the help text
          */
-        get_help(main_help: boolean, group?: OptionGroup | null): string;
+        get_help(main_help: boolean, group: OptionGroup | null): string;
         /**
          * Returns whether automatic `--help` generation
          * is turned on for `context`. See `g_option_context_set_help_enabled()`.
@@ -21889,7 +21895,7 @@ export namespace GLib {
          * `g_option_context_set_translate_func()`).
          * @param description a string to be shown in `--help` output   after the list of options, or `null`
          */
-        set_description(description?: string | null): void;
+        set_description(description: string | null): void;
         /**
          * Enables or disables automatic generation of `--help` output.
          * By default, `g_option_context_parse()` recognizes `--help`, `-h`,
@@ -21954,7 +21960,7 @@ export namespace GLib {
          * `g_option_context_set_translation_domain()`).
          * @param summary a string to be shown in `--help` output  before the list of options, or `null`
          */
-        set_summary(summary?: string | null): void;
+        set_summary(summary: string | null): void;
         /**
          * Sets the function which is used to translate the contexts
          * user-visible strings, for `--help` output. If `func` is `null`,
@@ -21970,7 +21976,7 @@ export namespace GLib {
          * @param func the {@link GLib.TranslateFunc}, or `null`
          * @param destroy_notify a function which gets called to free `data`, or `null`
          */
-        set_translate_func(func?: TranslateFunc | null, destroy_notify?: DestroyNotify | null): void;
+        set_translate_func(func: TranslateFunc | null, destroy_notify: DestroyNotify | null): void;
         /**
          * A convenience function to use `gettext()` for translating
          * user-visible strings.
@@ -22031,16 +22037,16 @@ export namespace GLib {
             name: string,
             description: string,
             help_description: string,
-            user_data?: any | null,
-            destroy?: DestroyNotify | null,
+            user_data: any | null,
+            destroy: DestroyNotify | null,
         );
 
         static ['new'](
             name: string,
             description: string,
             help_description: string,
-            user_data?: any | null,
-            destroy?: DestroyNotify | null,
+            user_data: any | null,
+            destroy: DestroyNotify | null,
         ): OptionGroup;
 
         // Methods
@@ -22070,7 +22076,7 @@ export namespace GLib {
          * @param func the {@link GLib.TranslateFunc}, or `null`
          * @param destroy_notify a function which gets called to free `data`, or `null`
          */
-        set_translate_func(func?: TranslateFunc | null, destroy_notify?: DestroyNotify | null): void;
+        set_translate_func(func: TranslateFunc | null, destroy_notify: DestroyNotify | null): void;
         /**
          * A convenience function to use `gettext()` for translating
          * user-visible strings.
@@ -22191,7 +22197,7 @@ export namespace GLib {
          * @param path a file system path
          * @returns the initialized path builder
          */
-        init_from_path(path?: string | null): PathBuf;
+        init_from_path(path: string | null): PathBuf;
         /**
          * Removes the last element of the path buffer.
          *
@@ -22265,7 +22271,7 @@ export namespace GLib {
          * @param extension the file extension
          * @returns `TRUE` if the extension was replaced, and `FALSE` otherwise
          */
-        set_extension(extension?: string | null): boolean;
+        set_extension(extension: string | null): boolean;
         /**
          * Sets the file name of the path.
          *
@@ -22386,7 +22392,7 @@ export namespace GLib {
          * @param string_reversed the reverse of `string`
          * @returns `true` if `string` matches `pspec`
          */
-        match(string_length: bigint | number, string: string, string_reversed?: string | null): boolean;
+        match(string_length: bigint | number, string: string, string_reversed: string | null): boolean;
         /**
          * Matches a string against a compiled pattern.
          *
@@ -22467,7 +22473,7 @@ export namespace GLib {
          * `key` is run on it.
          * @param value the new value
          */
-        replace(value?: any | null): void;
+        replace(value: any | null): void;
         /**
          * Sets the thread local variable `key` to have the value `value` in the
          * current thread.
@@ -22476,7 +22482,7 @@ export namespace GLib {
          * the {@link GLib.DestroyNotify} for `key` is not called on the old value.
          * @param value the new value
          */
-        set(value?: any | null): void;
+        set(value: any | null): void;
     }
 
     /**
@@ -22522,7 +22528,7 @@ export namespace GLib {
          * @param array a pointer array to duplicate
          * @param func a copy function used to copy every element in the array
          */
-        static copy(array: any[], func?: CopyFunc | null): any[];
+        static copy(array: any[], func: CopyFunc | null): any[];
         /**
          * Frees the memory allocated for the {@link GLib.PtrArray}. If `free_segment` is true
          * it frees the memory block holding the elements as well. Pass false
@@ -22596,7 +22602,7 @@ export namespace GLib {
          * and calls the provided `free_func` on each item in the {@link GLib.Queue}.
          * @param free_func the function to be called to free memory allocated
          */
-        clear_full(free_func?: DestroyNotify | null): void;
+        clear_full(free_func: DestroyNotify | null): void;
         /**
          * Copies a `queue`. Note that is a shallow copy. If the elements in the
          * queue consist of pointers to data, the pointers are copied, but the
@@ -22640,7 +22646,7 @@ export namespace GLib {
          * @param data the data to find
          * @returns the position of the first element in `queue` which     contains `data`, or -1 if no element in `queue` contains `data`
          */
-        index(data?: any | null): number;
+        index(data: any | null): number;
         /**
          * A statically-allocated {@link GLib.Queue} must be initialized with this function
          * before it can be used. Alternatively you can initialize it with
@@ -22695,7 +22701,7 @@ export namespace GLib {
          * Adds a new element at the head of the queue.
          * @param data the data for the new element.
          */
-        push_head(data?: any | null): void;
+        push_head(data: any | null): void;
         /**
          * Inserts a new element into `queue` at the given position.
          * @param data the data for the new element
@@ -22706,19 +22712,19 @@ export namespace GLib {
          * Adds a new element at the tail of the queue.
          * @param data the data for the new element
          */
-        push_tail(data?: any | null): void;
+        push_tail(data: any | null): void;
         /**
          * Removes the first element in `queue` that contains `data`.
          * @param data the data to remove
          * @returns `true` if `data` was found and removed from `queue`
          */
-        remove(data?: any | null): boolean;
+        remove(data: any | null): boolean;
         /**
          * Remove all elements whose data equals `data` from `queue`.
          * @param data the data to remove
          * @returns the number of elements removed from `queue`
          */
-        remove_all(data?: any | null): number;
+        remove_all(data: any | null): number;
         /**
          * Reverses the order of the items in `queue`.
          */
@@ -23984,7 +23990,7 @@ export namespace GLib {
          * @param symbol the symbol to add
          * @param value the value of the symbol
          */
-        scope_add_symbol(scope_id: number, symbol: string, value?: any | null): void;
+        scope_add_symbol(scope_id: number, symbol: string, value: any | null): void;
         /**
          * Calls the given function for each of the symbol/value pairs
          * in the given scope of the {@link GLib.Scanner}. The function is passed
@@ -24147,7 +24153,7 @@ export namespace GLib {
          * @param iter a {@link GLib.SequenceIter}
          * @param data the data for the new item
          */
-        static insert_before(iter: SequenceIter, data?: any | null): SequenceIter;
+        static insert_before(iter: SequenceIter, data: any | null): SequenceIter;
         /**
          * Moves the item pointed to by `src` to the position indicated by `dest`.
          * After calling this function `dest` will point to the position immediately
@@ -24207,7 +24213,7 @@ export namespace GLib {
          * @param iter a {@link GLib.SequenceIter}
          * @param data new data for the item
          */
-        static set(iter: SequenceIter, data?: any | null): void;
+        static set(iter: SequenceIter, data: any | null): void;
         /**
          * Moves the data pointed to by `iter` to a new position as indicated by
          * `cmp_func`. This
@@ -24252,7 +24258,7 @@ export namespace GLib {
          * @param data the data for the new item
          * @returns an iterator pointing to the new item
          */
-        append(data?: any | null): SequenceIter;
+        append(data: any | null): SequenceIter;
         /**
          * Calls `func` for each item in the sequence passing `user_data`
          * to the function. `func` must not modify the sequence itself.
@@ -24374,7 +24380,7 @@ export namespace GLib {
          * @param data the data for the new item
          * @returns an iterator pointing to the new item
          */
-        prepend(data?: any | null): SequenceIter;
+        prepend(data: any | null): SequenceIter;
         /**
          * Returns an iterator pointing to the position where `data` would
          * be inserted according to `cmp_func` and `cmp_data`.
@@ -24549,7 +24555,7 @@ export namespace GLib {
          * @param funcs the `source_funcs` passed to {@link GLib.Source.new}
          * @param user_data the user data for the callback
          */
-        static remove_by_funcs_user_data(funcs: SourceFuncs, user_data?: any | null): boolean;
+        static remove_by_funcs_user_data(funcs: SourceFuncs, user_data: any | null): boolean;
         /**
          * Removes a source from the default main loop context given the user
          * data for the callback.
@@ -24557,7 +24563,7 @@ export namespace GLib {
          * If multiple sources exist with the same user data, only one will be destroyed.
          * @param user_data the user_data for the callback
          */
-        static remove_by_user_data(user_data?: any | null): boolean;
+        static remove_by_user_data(user_data: any | null): boolean;
         /**
          * Sets the name of a source using its ID.
          *
@@ -24653,7 +24659,7 @@ export namespace GLib {
          * @param context a main context (if `NULL`, the global-default   main context will be used)
          * @returns the ID (greater than 0) for the source within the   {@link GLib.MainContext}
          */
-        attach(context?: MainContext | null): number;
+        attach(context: MainContext | null): number;
         /**
          * Removes a source from its {@link GLib.MainContext}, if any, and marks it as
          * destroyed.
@@ -24938,7 +24944,7 @@ export namespace GLib {
          * @param func a callback function
          * @param notify a function to call when `data` is no longer in use
          */
-        set_callback(func: SourceFunc, notify?: DestroyNotify | null): void;
+        set_callback(func: SourceFunc, notify: DestroyNotify | null): void;
         /**
          * Sets the callback function storing the data as a reference counted callback
          * ‘object’.
@@ -25139,13 +25145,13 @@ export namespace GLib {
 
         // Constructors
 
-        constructor(init?: string | null);
+        constructor(init: string | null);
 
-        static ['new'](init?: string | null): String;
+        static ['new'](init: string | null): String;
 
         static new_len(init: string, len: bigint | number): String;
 
-        static new_take(init?: string | null): String;
+        static new_take(init: string | null): String;
 
         static sized_new(dfl_size: bigint | number): String;
 
@@ -25758,7 +25764,7 @@ export namespace GLib {
          * or or from within a {@link GLib.ThreadPool}.
          * @param retval the return value of this thread
          */
-        static exit(retval?: any | null): void;
+        static exit(retval: any | null): void;
         /**
          * This function returns the {@link GLib.Thread} corresponding to the
          * current thread. Note that this function does not increase
@@ -25947,7 +25953,7 @@ export namespace GLib {
          * @param data an unprocessed item in the pool
          * @returns `true` if the item was found and moved
          */
-        move_to_front(data?: any | null): boolean;
+        move_to_front(data: any | null): boolean;
         /**
          * Inserts `data` into the list of tasks to be executed by `pool`.
          *
@@ -25966,7 +25972,7 @@ export namespace GLib {
          * @param data a new task for `pool`
          * @returns `true` on success, `false` if an error occurred
          */
-        push(data?: any | null): boolean;
+        push(data: any | null): boolean;
         /**
          * Sets the maximal allowed number of threads for `pool`.
          * A value of -1 means that the maximal number of threads
@@ -26134,9 +26140,9 @@ export namespace GLib {
 
         constructor(properties?: Partial<{}>);
 
-        static ['new'](identifier?: string | null): TimeZone;
+        static ['new'](identifier: string | null): TimeZone;
 
-        static new_identifier(identifier?: string | null): TimeZone;
+        static new_identifier(identifier: string | null): TimeZone;
 
         static new_local(): TimeZone;
 
@@ -26419,7 +26425,7 @@ export namespace GLib {
          * @param key the key to insert
          * @param value the value corresponding to the key
          */
-        insert(key?: any | null, value?: any | null): void;
+        insert(key: any | null, value: any | null): void;
         /**
          * Inserts a key/value pair into a {@link GLib.Tree}.
          *
@@ -26438,7 +26444,7 @@ export namespace GLib {
          * @param value the value corresponding to the key
          * @returns the inserted (or set) node or `null` if insertion would overflow the tree node counter.
          */
-        insert_node(key?: any | null, value?: any | null): TreeNode | null;
+        insert_node(key: any | null, value: any | null): TreeNode | null;
         /**
          * Gets the value corresponding to the given key. Since a {@link GLib.Tree} is
          * automatically balanced as key/value pairs are added, key lookup
@@ -26446,7 +26452,7 @@ export namespace GLib {
          * @param key the key to look up
          * @returns the value corresponding to the key, or `null`     if the key was not found
          */
-        lookup(key?: any | null): any | null;
+        lookup(key: any | null): any | null;
         /**
          * Looks up a key in the {@link GLib.Tree}, returning the original key and the
          * associated value. This is useful if you need to free the memory
@@ -26463,7 +26469,7 @@ export namespace GLib {
          * @param key the key to look up
          * @returns the tree node corresponding to          the key, or `null` if the key was not found
          */
-        lookup_node(key?: any | null): TreeNode | null;
+        lookup_node(key: any | null): TreeNode | null;
         /**
          * Gets the lower bound node corresponding to the given key,
          * or `null` if the tree is empty or all the nodes in the tree
@@ -26474,7 +26480,7 @@ export namespace GLib {
          * @param key the key to calculate the lower bound for
          * @returns the tree node corresponding to          the lower bound, or `null` if the tree is empty or has only          keys strictly lower than the searched key.
          */
-        lower_bound(key?: any | null): TreeNode | null;
+        lower_bound(key: any | null): TreeNode | null;
         /**
          * Gets the number of nodes in a {@link GLib.Tree}.
          * @returns the number of nodes in `tree` The node counter value type is really a `guint`, but it is returned as a `gint` due to backward compatibility issues (can be cast back to `guint` to support its full range of values).
@@ -26513,7 +26519,7 @@ export namespace GLib {
          * @param key the key to remove
          * @returns `true` if the key was found (prior to 2.8, this function     returned nothing)
          */
-        remove(key?: any | null): boolean;
+        remove(key: any | null): boolean;
         /**
          * Removes all nodes from a {@link GLib.Tree} and destroys their keys and values,
          * then resets the {@link GLib.Tree}’s root to `null`.
@@ -26525,7 +26531,7 @@ export namespace GLib {
          * @param key the key to insert
          * @param value the value corresponding to the key
          */
-        replace(key?: any | null, value?: any | null): void;
+        replace(key: any | null, value: any | null): void;
         /**
          * Inserts a new key and value into a {@link GLib.Tree} similar to `g_tree_insert_node()`.
          * The difference is that if the key already exists in the {@link GLib.Tree}, it gets
@@ -26540,7 +26546,7 @@ export namespace GLib {
          * @param value the value corresponding to the key
          * @returns the inserted (or set) node or `null` if insertion would overflow the tree node counter.
          */
-        replace_node(key?: any | null, value?: any | null): TreeNode | null;
+        replace_node(key: any | null, value: any | null): TreeNode | null;
         /**
          * Searches a {@link GLib.Tree} using `search_func`.
          *
@@ -26577,7 +26583,7 @@ export namespace GLib {
          * @param key the key to remove
          * @returns `true` if the key was found (prior to 2.8, this function     returned nothing)
          */
-        steal(key?: any | null): boolean;
+        steal(key: any | null): boolean;
         /**
          * Calls the given function for each node in the {@link GLib.Tree}.
          * @param traverse_func the function to call for each node visited. If this   function returns `true`, the traversal is stopped.
@@ -26603,7 +26609,7 @@ export namespace GLib {
          * @param key the key to calculate the upper bound for
          * @returns the tree node corresponding to the          upper bound, or `null` if the tree is empty or has only keys          lower than or equal to the searched key.
          */
-        upper_bound(key?: any | null): TreeNode | null;
+        upper_bound(key: any | null): TreeNode | null;
     }
 
     /**
@@ -26874,8 +26880,8 @@ export namespace GLib {
             host: string | null,
             port: number,
             path: string,
-            query?: string | null,
-            fragment?: string | null,
+            query: string | null,
+            fragment: string | null,
         ): Uri;
         /**
          * Creates a new {@link GLib.Uri} from the given components according to `flags`
@@ -26906,8 +26912,8 @@ export namespace GLib {
             host: string | null,
             port: number,
             path: string,
-            query?: string | null,
-            fragment?: string | null,
+            query: string | null,
+            fragment: string | null,
         ): Uri;
         static error_quark(): Quark;
         /**
@@ -26925,7 +26931,7 @@ export namespace GLib {
          * @param unescaped the unescaped input data.
          * @param reserved_chars_allowed a string of reserved   characters that are allowed to be used, or `null`.
          */
-        static escape_bytes(unescaped: Uint8Array | string, reserved_chars_allowed?: string | null): string;
+        static escape_bytes(unescaped: Uint8Array | string, reserved_chars_allowed: string | null): string;
         /**
          * Escapes a string for use in a URI.
          *
@@ -26984,8 +26990,8 @@ export namespace GLib {
             host: string | null,
             port: number,
             path: string,
-            query?: string | null,
-            fragment?: string | null,
+            query: string | null,
+            fragment: string | null,
         ): string;
         /**
          * Joins the given components together according to `flags` to create
@@ -27017,8 +27023,8 @@ export namespace GLib {
             host: string | null,
             port: number,
             path: string,
-            query?: string | null,
-            fragment?: string | null,
+            query: string | null,
+            fragment: string | null,
         ): string;
         /**
          * Splits an URI list conforming to the text/uri-list
@@ -27185,7 +27191,7 @@ export namespace GLib {
         static unescape_bytes(
             escaped_string: string,
             length: bigint | number,
-            illegal_characters?: string | null,
+            illegal_characters: string | null,
         ): Bytes;
         /**
          * Unescapes a segment of an escaped string.
@@ -27203,9 +27209,9 @@ export namespace GLib {
          * @param illegal_characters An optional string of illegal   characters not to be allowed, may be `null`
          */
         static unescape_segment(
-            escaped_string?: string | null,
-            escaped_string_end?: string | null,
-            illegal_characters?: string | null,
+            escaped_string: string | null,
+            escaped_string_end: string | null,
+            illegal_characters: string | null,
         ): string | null;
         /**
          * Unescapes a whole escaped string.
@@ -27218,7 +27224,7 @@ export namespace GLib {
          * @param escaped_string an escaped string to be unescaped.
          * @param illegal_characters a string of illegal characters   not to be allowed, or `null`.
          */
-        static unescape_string(escaped_string: string, illegal_characters?: string | null): string | null;
+        static unescape_string(escaped_string: string, illegal_characters: string | null): string | null;
 
         // Methods
 

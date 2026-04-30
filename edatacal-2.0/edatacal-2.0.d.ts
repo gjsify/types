@@ -46,21 +46,21 @@ export namespace EDataCal {
      * @param change an {@link EDataCal.CalCacheOfflineChange}
      * @since 3.26
      */
-    function cal_cache_offline_change_free(change?: any | null): void;
+    function cal_cache_offline_change_free(change: any | null): void;
     /**
      * Frees the `ptr` structure, previously allocated with `e_cal_cache_search_data_new()`
      * or `e_cal_cache_search_data_copy()`.
      * @param ptr an {@link EDataCal.CalCacheSearchData}
      * @since 3.26
      */
-    function cal_cache_search_data_free(ptr?: any | null): void;
+    function cal_cache_search_data_free(ptr: any | null): void;
     /**
      * Frees the `ptr` structure, previously allocated with `e_cal_meta_backend_info_new()`
      * or `e_cal_meta_backend_info_copy()`.
      * @param ptr an {@link EDataCal.CalMetaBackendInfo}
      * @since 3.26
      */
-    function cal_meta_backend_info_free(ptr?: any | null): void;
+    function cal_meta_backend_info_free(ptr: any | null): void;
     /**
      * @param queue
      */
@@ -69,7 +69,7 @@ export namespace EDataCal {
      * @gir-type Callback
      */
     interface CalBackendCustomOpFunc {
-        (cal_backend: CalBackend, cancellable?: Gio.Cancellable | null): void;
+        (cal_backend: CalBackend, cancellable: Gio.Cancellable | null): void;
     }
     /**
      * @gir-type Callback
@@ -148,17 +148,20 @@ export namespace EDataCal {
 
         /**
          * The backend's cache directory
+         * @default null
          */
         get cache_dir(): string;
         set cache_dir(val: string);
         /**
          * The backend's cache directory
+         * @default null
          */
         get cacheDir(): string;
         set cacheDir(val: string);
         /**
          * The kind of iCalendar components this backend manages
          * @construct-only
+         * @default 0
          */
         get kind(): number;
         /**
@@ -178,6 +181,7 @@ export namespace EDataCal {
         get registry(): EDataServer.SourceRegistry;
         /**
          * Whether the backend will accept changes
+         * @default false
          */
         get writable(): boolean;
         set writable(val: boolean);
@@ -345,7 +349,7 @@ export namespace EDataCal {
          * @param cancellable
          * @virtual
          */
-        vfunc_impl_open(cal: DataCal, opid: number, cancellable?: Gio.Cancellable | null): void;
+        vfunc_impl_open(cal: DataCal, opid: number, cancellable: Gio.Cancellable | null): void;
         /**
          * FIXME: Document me
          * @param cal
@@ -369,7 +373,7 @@ export namespace EDataCal {
          * @param cancellable
          * @virtual
          */
-        vfunc_impl_refresh(cal: DataCal, opid: number, cancellable?: Gio.Cancellable | null): void;
+        vfunc_impl_refresh(cal: DataCal, opid: number, cancellable: Gio.Cancellable | null): void;
         /**
          * FIXME: Document me
          * @param cal
@@ -415,7 +419,7 @@ export namespace EDataCal {
          * @param tzobject an iCalendar VTIMEZONE string
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        add_timezone(tzobject: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        add_timezone(tzobject: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously adds the timezone described by `tzobject` to `backend`.
          *
@@ -443,7 +447,7 @@ export namespace EDataCal {
          */
         add_timezone(
             tzobject: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -467,7 +471,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          */
-        add_timezone_sync(tzobject: string, cancellable?: Gio.Cancellable | null): boolean;
+        add_timezone_sync(tzobject: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Adds a view to the list of live views being run by the given backend.
          * Doing so means that any listener on the view will get notified of any
@@ -495,7 +499,7 @@ export namespace EDataCal {
         create_objects(
             calobjs: string,
             opflags: ECal.OperationFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously creates one or more new iCalendar objects from `calobjs`.
@@ -528,7 +532,7 @@ export namespace EDataCal {
         create_objects(
             calobjs: string,
             opflags: ECal.OperationFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -560,7 +564,7 @@ export namespace EDataCal {
             calobjs: string,
             opflags: ECal.OperationFlags,
             out_uids: GLib.Queue,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Asynchronously discards the VALARM object with a unique ID of `alarm_uid`
@@ -580,7 +584,7 @@ export namespace EDataCal {
             rid: string | null,
             alarm_uid: string,
             opflags: ECal.OperationFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously discards the VALARM object with a unique ID of `alarm_uid`
@@ -623,7 +627,7 @@ export namespace EDataCal {
             rid: string | null,
             alarm_uid: string,
             opflags: ECal.OperationFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -651,7 +655,7 @@ export namespace EDataCal {
             rid: string | null,
             alarm_uid: string,
             opflags: ECal.OperationFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Thread-safe variation of `e_cal_backend_get_cache_dir()`.
@@ -675,7 +679,7 @@ export namespace EDataCal {
          * @param percent percent complete
          * @param message message describing the operation in progress, or `null`
          */
-        foreach_view_notify_progress(only_completed_views: boolean, percent: number, message?: string | null): void;
+        foreach_view_notify_progress(only_completed_views: boolean, percent: number, message: string | null): void;
         /**
          * Asynchronously inspects the iCalendar object specified by `uid` and,
          * optionally, `rid` for attachments.
@@ -689,8 +693,8 @@ export namespace EDataCal {
          */
         get_attachment_uris(
             uid: string,
-            rid?: string | null,
-            cancellable?: Gio.Cancellable | null,
+            rid: string | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously inspects the iCalendar object specified by `uid` and,
@@ -724,8 +728,8 @@ export namespace EDataCal {
          */
         get_attachment_uris(
             uid: string,
-            rid?: string | null,
-            cancellable?: Gio.Cancellable | null,
+            rid: string | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -759,7 +763,7 @@ export namespace EDataCal {
             uid: string,
             rid: string | null,
             out_attachment_uris: GLib.Queue,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Obtains the value of the backend property named `prop_name`.
@@ -789,7 +793,7 @@ export namespace EDataCal {
             start: bigint | number,
             end: bigint | number,
             users: string[],
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously obtains a free/busy object for the list of `users` in the
@@ -828,7 +832,7 @@ export namespace EDataCal {
             start: bigint | number,
             end: bigint | number,
             users: string[],
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -867,7 +871,7 @@ export namespace EDataCal {
             end: bigint | number,
             users: string[],
             out_freebusy: string[],
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Gets the kind of components the given backend stores.
@@ -883,7 +887,7 @@ export namespace EDataCal {
          * @param rid a recurrence ID, or `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        get_object(uid: string, rid?: string | null, cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
+        get_object(uid: string, rid: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * Asynchronously obtains an {@link ECal.Component} by its `uid` and, optionally, `rid`.
          *
@@ -912,8 +916,8 @@ export namespace EDataCal {
          */
         get_object(
             uid: string,
-            rid?: string | null,
-            cancellable?: Gio.Cancellable | null,
+            rid: string | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
         /**
@@ -938,7 +942,7 @@ export namespace EDataCal {
          * @param query a search query in S-expression format
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        get_object_list(query: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        get_object_list(query: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously obtains a set of iCalendar instances which satisfy
          * the criteria specified in `query`.
@@ -968,7 +972,7 @@ export namespace EDataCal {
          */
         get_object_list(
             query: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -997,7 +1001,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          */
-        get_object_list_sync(query: string, out_objects: GLib.Queue, cancellable?: Gio.Cancellable | null): boolean;
+        get_object_list_sync(query: string, out_objects: GLib.Queue, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Obtains an iCalendar string for an object identified by its `uid` and,
          * optionally, `rid`.
@@ -1010,7 +1014,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns an {@link ECal.Component}, or `null` on error
          */
-        get_object_sync(uid: string, rid?: string | null, cancellable?: Gio.Cancellable | null): string;
+        get_object_sync(uid: string, rid: string | null, cancellable: Gio.Cancellable | null): string;
         /**
          * Returns the data source registry to which {@link EBackend.Backend.source} belongs.
          * @returns an {@link EDataServer.SourceRegistry}
@@ -1025,7 +1029,7 @@ export namespace EDataCal {
          * @param tzid a unique ID for an iCalendar VTIMEZONE object
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        get_timezone(tzid: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
+        get_timezone(tzid: string, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * Asynchronously obtains the VTIMEZONE object identified by `tzid`.
          *
@@ -1053,7 +1057,7 @@ export namespace EDataCal {
          */
         get_timezone(
             tzid: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
         /**
@@ -1080,7 +1084,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns an iCalendar string, or `null` on error
          */
-        get_timezone_sync(tzid: string, cancellable?: Gio.Cancellable | null): string;
+        get_timezone_sync(tzid: string, cancellable: Gio.Cancellable | null): string;
         /**
          * Returns whether `backend` will accept changes to its data content.
          * @returns whether `backend` is writable
@@ -1132,7 +1136,7 @@ export namespace EDataCal {
             calobjs: string,
             mod: ECal.ObjModType,
             opflags: ECal.OperationFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously modifies one or more iCalendar objects according to
@@ -1171,7 +1175,7 @@ export namespace EDataCal {
             calobjs: string,
             mod: ECal.ObjModType,
             opflags: ECal.OperationFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1196,7 +1200,7 @@ export namespace EDataCal {
             calobjs: string,
             mod: ECal.ObjModType,
             opflags: ECal.OperationFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Notifies each of the backend's listeners about a new object.
@@ -1239,7 +1243,7 @@ export namespace EDataCal {
          * @param prop_name property name, which changed
          * @param prop_value new property value
          */
-        notify_property_changed(prop_name: string, prop_value?: string | null): void;
+        notify_property_changed(prop_name: string, prop_value: string | null): void;
         /**
          * Asynchronously "opens" the `backend`.  Opening a backend is something of
          * an outdated concept, but the operation is hanging around for a little
@@ -1250,7 +1254,7 @@ export namespace EDataCal {
          * call `e_cal_backend_open_finish()` to get the result of the operation.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        open(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        open(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously "opens" the `backend`.  Opening a backend is something of
          * an outdated concept, but the operation is hanging around for a little
@@ -1275,7 +1279,7 @@ export namespace EDataCal {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         open(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1296,7 +1300,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          */
-        open_sync(cancellable?: Gio.Cancellable | null): boolean;
+        open_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Obtains the {@link Gio.Task} for `opid`.
          *
@@ -1326,7 +1330,7 @@ export namespace EDataCal {
         receive_objects(
             calobj: string,
             opflags: ECal.OperationFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously receives the set of iCalendar objects specified by
@@ -1363,7 +1367,7 @@ export namespace EDataCal {
         receive_objects(
             calobj: string,
             opflags: ECal.OperationFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1387,7 +1391,7 @@ export namespace EDataCal {
         receive_objects_sync(
             calobj: string,
             opflags: ECal.OperationFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Returns the {@link EDataCal.DataCal} for `backend`.  The {@link EDataCal.DataCal} is essentially
@@ -1421,7 +1425,7 @@ export namespace EDataCal {
          * call `e_cal_backend_refresh_finish()` to get the result of the initiation.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        refresh(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        refresh(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously initiates a refresh for `backend`, if the `backend` supports
          * refreshing.  The actual refresh operation completes on its own time.  This
@@ -1446,7 +1450,7 @@ export namespace EDataCal {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         refresh(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1472,7 +1476,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          */
-        refresh_sync(cancellable?: Gio.Cancellable | null): boolean;
+        refresh_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously removes one or more iCalendar objects according to
          * `component_ids` and `mod`.
@@ -1489,7 +1493,7 @@ export namespace EDataCal {
             component_ids: ECal.ComponentId[],
             mod: ECal.ObjModType,
             opflags: ECal.OperationFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously removes one or more iCalendar objects according to
@@ -1528,7 +1532,7 @@ export namespace EDataCal {
             component_ids: ECal.ComponentId[],
             mod: ECal.ObjModType,
             opflags: ECal.OperationFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1553,7 +1557,7 @@ export namespace EDataCal {
             component_ids: ECal.ComponentId[],
             mod: ECal.ObjModType,
             opflags: ECal.OperationFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Removes view from the list of live views for the backend.
@@ -1576,7 +1580,7 @@ export namespace EDataCal {
         schedule_custom_operation(
             use_cancellable: Gio.Cancellable | null,
             func: CalBackendCustomOpFunc,
-            user_data_free?: GLib.DestroyNotify | null,
+            user_data_free: GLib.DestroyNotify | null,
         ): void;
         /**
          * Asynchronously sends meeting information in `calobj`.  The `backend` may
@@ -1591,7 +1595,7 @@ export namespace EDataCal {
         send_objects(
             calobj: string,
             opflags: ECal.OperationFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<string>;
         /**
          * Asynchronously sends meeting information in `calobj`.  The `backend` may
@@ -1624,7 +1628,7 @@ export namespace EDataCal {
         send_objects(
             calobj: string,
             opflags: ECal.OperationFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
         /**
@@ -1661,7 +1665,7 @@ export namespace EDataCal {
             calobj: string,
             opflags: ECal.OperationFlags,
             out_users: GLib.Queue,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): string;
         /**
          * Sets the cache directory path for use by `backend`.
@@ -1718,455 +1722,6 @@ export namespace EDataCal {
          * @virtual
          */
         vfunc_tzcache_add_timezone(zone: ICalGLib.Timezone): void;
-        /**
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`.
-         *
-         * Whenever the `source_property` is changed the `target_property` is
-         * updated using the same value. For instance:
-         *
-         *
-         * ```c
-         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-         * ```
-         *
-         *
-         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
-         * updated with the same value of the "active" property of the action {@link GObject.Object}
-         * instance.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well.
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call `g_object_unref()` on the returned
-         * {@link GObject.Binding} instance.
-         *
-         * Removing the binding by calling `g_object_unref()` on it must only be done if
-         * the binding, `source` and `target` are only used from a single thread and it
-         * is clear that both `source` and `target` outlive the binding. Especially it
-         * is not safe to rely on this if the binding, `source` or `target` can be
-         * finalized from different threads. Keep another reference to the binding and
-         * use `g_binding_unbind()` instead to be on the safe side.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-        ): GObject.Binding;
-        /**
-         * Complete version of `g_object_bind_property()`.
-         *
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`, allowing you to set the transformation functions to be used by
-         * the binding.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property_full(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
-        ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
-        /**
-         * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all `GInitiallyUnowneds` are created with a floating reference
-         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
-         */
-        force_floating(): void;
-        /**
-         * Increases the freeze count on `object`. If the freeze count is
-         * non-zero, the emission of "notify" signals on `object` is
-         * stopped. The signals are queued until the freeze count is decreased
-         * to zero. Duplicate notifications are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
-         * object is frozen.
-         *
-         * This is necessary for accessors that modify multiple properties to prevent
-         * premature notification while the object is still being modified.
-         */
-        freeze_notify(): void;
-        /**
-         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
-         * @param key name of the key for that association
-         * @returns the data if found,          or `null` if no such data exists.
-         */
-        get_data(key: string): any | null;
-        /**
-         * Gets a property of an object.
-         *
-         * The value can be:
-         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
-         * - a GObject.Value initialized with the expected type of the property
-         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
-         *
-         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
-         *
-         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
-         * @param property_name The name of the property to get
-         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
-         */
-        get_property(property_name: string, value: GObject.Value | any): any;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        get_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Gets `n_properties` properties for an `object`.
-         * Obtained properties will be set to `values`. All properties must be valid.
-         * Warnings will be emitted and undefined behaviour may result if invalid
-         * properties are passed in.
-         * @param names the names of each property to get
-         * @param values the values of each property to get
-         */
-        getv(names: string[], values: (GObject.Value | any)[]): void;
-        /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns `true` if `object` has a floating reference
-         */
-        is_floating(): boolean;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param property_name the name of a property installed on the class of `object`.
-         */
-        notify(property_name: string): void;
-        /**
-         * Emits a "notify" signal for the property specified by `pspec` on `object`.
-         *
-         * This function omits the property name lookup, hence it is faster than
-         * `g_object_notify()`.
-         *
-         * One way to avoid using `g_object_notify()` from within the
-         * class that registered the properties, and using `g_object_notify_by_pspec()`
-         * instead, is to store the GParamSpec used with
-         * `g_object_class_install_property()` inside a static array, e.g.:
-         *
-         *
-         * ```c
-         *   typedef enum
-         *   {
-         *     PROP_FOO = 1,
-         *     PROP_LAST
-         *   } MyObjectProperty;
-         *
-         *   static GParamSpec *properties[PROP_LAST];
-         *
-         *   static void
-         *   my_object_class_init (MyObjectClass *klass)
-         *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
-         *                                              0, 100,
-         *                                              50,
-         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-         *     g_object_class_install_property (gobject_class,
-         *                                      PROP_FOO,
-         *                                      properties[PROP_FOO]);
-         *   }
-         * ```
-         *
-         *
-         * and then notify a change on the "foo" property with:
-         *
-         *
-         * ```c
-         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-         * ```
-         *
-         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
-         */
-        notify_by_pspec(pspec: GObject.ParamSpec): void;
-        /**
-         * Increases the reference count of `object`.
-         *
-         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC `typeof()`
-         * extension), so any casting the caller needs to do on the return type must be
-         * explicit.
-         * @returns the same `object`
-         */
-        ref(): GObject.Object;
-        /**
-         * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
-         *
-         * In other words, if the object is floating, then this call "assumes
-         * ownership" of the floating reference, converting it to a normal
-         * reference by clearing the floating flag while leaving the reference
-         * count unchanged.  If the object is not floating, then this call
-         * adds a new normal reference increasing the reference count by one.
-         *
-         * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for `g_object_ref()`.
-         * @returns `object`
-         */
-        ref_sink(): GObject.Object;
-        /**
-         * Releases all references to other objects. This can be used to break
-         * reference cycles.
-         *
-         * This function should only be called from object system implementations.
-         */
-        run_dispose(): void;
-        /**
-         * Each object carries around a table of associations from
-         * strings to pointers.  This function lets you set an association.
-         *
-         * If the object already had an association with that name,
-         * the old association will be destroyed.
-         *
-         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
-         * This means a copy of `key` is kept permanently (even after `object` has been
-         * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
-         * @param key name of the key
-         * @param data data to associate with that key
-         */
-        set_data(key: string, data?: any | null): void;
-        /**
-         * Sets a property on an object.
-         * @param property_name The name of the property to set
-         * @param value The value to set the property to
-         */
-        set_property(property_name: string, value: GObject.Value | any): void;
-        /**
-         * Remove a specified datum from the object's data associations,
-         * without invoking the association's destroy handler.
-         * @param key name of the key
-         * @returns the data if found, or `null`          if no such data exists.
-         */
-        steal_data(key: string): any | null;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()` and removes the `data` from object
-         * without invoking its `destroy()` function (if any was
-         * set).
-         * Usually, calling this function is only required to update
-         * user data pointers with a destroy notifier, for example:
-         *
-         * ```c
-         * void
-         * object_add_to_user_list (GObject     *object,
-         *                          const gchar *new_string)
-         * {
-         *   // the quark, naming the object data
-         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-         *   // retrieve the old string list
-         *   GList *list = g_object_steal_qdata (object, quark_string_list);
-         *
-         *   // prepend new string
-         *   list = g_list_prepend (list, g_strdup (new_string));
-         *   // this changed 'list', so we need to set it again
-         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-         * }
-         * static void
-         * free_string_list (gpointer data)
-         * {
-         *   GList *node, *list = data;
-         *
-         *   for (node = list; node; node = node->next)
-         *     g_free (node->data);
-         *   g_list_free (list);
-         * }
-         * ```
-         *
-         * Using `g_object_get_qdata()` in the above example, instead of
-         * `g_object_steal_qdata()` would have left the destroy function set,
-         * and thus the partial string list would have been freed upon
-         * `g_object_set_qdata_full()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        steal_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Reverts the effect of a previous call to
-         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
-         * and when it reaches zero, queued "notify" signals are emitted.
-         *
-         * Duplicate notifications for each property are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
-         * in which they have been queued.
-         *
-         * It is an error to call this function when the freeze count is zero.
-         */
-        thaw_notify(): void;
-        /**
-         * Decreases the reference count of `object`. When its reference count
-         * drops to 0, the object is finalized (i.e. its memory is freed).
-         *
-         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
-         * an instance variable of another object), it is recommended to clear the
-         * pointer to `null` rather than retain a dangling pointer to a potentially
-         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
-         */
-        unref(): void;
-        /**
-         * This function essentially limits the life time of the `closure` to
-         * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling `g_closure_invalidate()` on
-         * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
-         * added as marshal guards to the `closure`, to ensure that an extra
-         * reference count is held on `object` during invocation of the
-         * `closure`.  Usually, this function will be called on closures that
-         * use this `object` as closure data.
-         * @param closure {@link GObject.Closure} to watch
-         */
-        watch_closure(closure: GObject.Closure): void;
-        /**
-         * the `constructed` function is called by `g_object_new()` as the
-         *  final step of the object creation process.  At the point of the call, all
-         *  construction properties have been set on the object.  The purpose of this
-         *  call is to allow for object initialisation steps that can only be performed
-         *  after construction properties have been set.  `constructed` implementors
-         *  should chain up to the `constructed` call of their parent class to allow it
-         *  to complete its initialisation.
-         * @virtual
-         */
-        vfunc_constructed(): void;
-        /**
-         * emits property change notification for a bunch
-         *  of properties. Overriding `dispatch_properties_changed` should be rarely
-         *  needed.
-         * @param n_pspecs
-         * @param pspecs
-         * @virtual
-         */
-        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
-        /**
-         * the `dispose` function is supposed to drop all references to other
-         *  objects, but keep the instance otherwise intact, so that client method
-         *  invocations still work. It may be run multiple times (due to reference
-         *  loops). Before returning, `dispose` should chain up to the `dispose` method
-         *  of the parent class.
-         * @virtual
-         */
-        vfunc_dispose(): void;
-        /**
-         * instance finalization function, should finish the finalization of
-         *  the instance begun in `dispose` and chain up to the `finalize` method of the
-         *  parent class.
-         * @virtual
-         */
-        vfunc_finalize(): void;
-        /**
-         * the generic getter for all properties of this type. Should be
-         *  overridden for every type with properties.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param pspec
-         * @virtual
-         */
-        vfunc_notify(pspec: GObject.ParamSpec): void;
-        /**
-         * the generic setter for all properties of this type. Should be
-         *  overridden for every type with properties. If implementations of
-         *  `set_property` don't emit property change notification explicitly, this will
-         *  be done implicitly by the type system. However, if the notify signal is
-         *  emitted explicitly, the type system will not emit it a second time.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
-         * @param id Handler ID of the handler to be disconnected
-         */
-        disconnect(id: number): void;
-        /**
-         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
-         * @param properties Object containing the properties to set
-         */
-        set(properties: { [key: string]: any }): void;
-        /**
-         * Blocks a handler of an instance so it will not be called during any signal emissions
-         * @param id Handler ID of the handler to be blocked
-         */
-        block_signal_handler(id: number): void;
-        /**
-         * Unblocks a handler so it will be called again during any signal emissions
-         * @param id Handler ID of the handler to be unblocked
-         */
-        unblock_signal_handler(id: number): void;
-        /**
-         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
-         * @param detailedName Name of the signal to stop emission of
-         */
-        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace CalBackendFactory {
@@ -2445,7 +2000,7 @@ export namespace EDataCal {
          * @param cancellable
          * @virtual
          */
-        vfunc_open_sync(cal: DataCal, cancellable?: Gio.Cancellable | null): void;
+        vfunc_open_sync(cal: DataCal, cancellable: Gio.Cancellable | null): void;
         /**
          * Receive objects
          * @param cal
@@ -2466,7 +2021,7 @@ export namespace EDataCal {
          * @param cancellable
          * @virtual
          */
-        vfunc_refresh_sync(cal: DataCal, cancellable?: Gio.Cancellable | null): void;
+        vfunc_refresh_sync(cal: DataCal, cancellable: Gio.Cancellable | null): void;
 
         // Methods
 
@@ -2631,7 +2186,7 @@ export namespace EDataCal {
          * @param cal An EDataCal object.
          * @param cancellable a {@link Gio.Cancellable} for the operation or just create it when it does not exist.
          */
-        open(cal: DataCal, cancellable?: Gio.Cancellable | null): void;
+        open(cal: DataCal, cancellable: Gio.Cancellable | null): void;
         /**
          * @param args
          */
@@ -2660,7 +2215,7 @@ export namespace EDataCal {
          * @param cal An EDataCal object.
          * @param cancellable a {@link Gio.Cancellable} for the operation
          */
-        refresh(cal: DataCal, cancellable?: Gio.Cancellable | null): void;
+        refresh(cal: DataCal, cancellable: Gio.Cancellable | null): void;
         /**
          * @param args
          */
@@ -2727,455 +2282,6 @@ export namespace EDataCal {
          * @virtual
          */
         vfunc_tzcache_add_timezone(zone: ICalGLib.Timezone): void;
-        /**
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`.
-         *
-         * Whenever the `source_property` is changed the `target_property` is
-         * updated using the same value. For instance:
-         *
-         *
-         * ```c
-         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-         * ```
-         *
-         *
-         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
-         * updated with the same value of the "active" property of the action {@link GObject.Object}
-         * instance.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well.
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call `g_object_unref()` on the returned
-         * {@link GObject.Binding} instance.
-         *
-         * Removing the binding by calling `g_object_unref()` on it must only be done if
-         * the binding, `source` and `target` are only used from a single thread and it
-         * is clear that both `source` and `target` outlive the binding. Especially it
-         * is not safe to rely on this if the binding, `source` or `target` can be
-         * finalized from different threads. Keep another reference to the binding and
-         * use `g_binding_unbind()` instead to be on the safe side.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-        ): GObject.Binding;
-        /**
-         * Complete version of `g_object_bind_property()`.
-         *
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`, allowing you to set the transformation functions to be used by
-         * the binding.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property_full(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
-        ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
-        /**
-         * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all `GInitiallyUnowneds` are created with a floating reference
-         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
-         */
-        force_floating(): void;
-        /**
-         * Increases the freeze count on `object`. If the freeze count is
-         * non-zero, the emission of "notify" signals on `object` is
-         * stopped. The signals are queued until the freeze count is decreased
-         * to zero. Duplicate notifications are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
-         * object is frozen.
-         *
-         * This is necessary for accessors that modify multiple properties to prevent
-         * premature notification while the object is still being modified.
-         */
-        freeze_notify(): void;
-        /**
-         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
-         * @param key name of the key for that association
-         * @returns the data if found,          or `null` if no such data exists.
-         */
-        get_data(key: string): any | null;
-        /**
-         * Gets a property of an object.
-         *
-         * The value can be:
-         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
-         * - a GObject.Value initialized with the expected type of the property
-         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
-         *
-         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
-         *
-         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
-         * @param property_name The name of the property to get
-         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
-         */
-        get_property(property_name: string, value: GObject.Value | any): any;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        get_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Gets `n_properties` properties for an `object`.
-         * Obtained properties will be set to `values`. All properties must be valid.
-         * Warnings will be emitted and undefined behaviour may result if invalid
-         * properties are passed in.
-         * @param names the names of each property to get
-         * @param values the values of each property to get
-         */
-        getv(names: string[], values: (GObject.Value | any)[]): void;
-        /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns `true` if `object` has a floating reference
-         */
-        is_floating(): boolean;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param property_name the name of a property installed on the class of `object`.
-         */
-        notify(property_name: string): void;
-        /**
-         * Emits a "notify" signal for the property specified by `pspec` on `object`.
-         *
-         * This function omits the property name lookup, hence it is faster than
-         * `g_object_notify()`.
-         *
-         * One way to avoid using `g_object_notify()` from within the
-         * class that registered the properties, and using `g_object_notify_by_pspec()`
-         * instead, is to store the GParamSpec used with
-         * `g_object_class_install_property()` inside a static array, e.g.:
-         *
-         *
-         * ```c
-         *   typedef enum
-         *   {
-         *     PROP_FOO = 1,
-         *     PROP_LAST
-         *   } MyObjectProperty;
-         *
-         *   static GParamSpec *properties[PROP_LAST];
-         *
-         *   static void
-         *   my_object_class_init (MyObjectClass *klass)
-         *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
-         *                                              0, 100,
-         *                                              50,
-         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-         *     g_object_class_install_property (gobject_class,
-         *                                      PROP_FOO,
-         *                                      properties[PROP_FOO]);
-         *   }
-         * ```
-         *
-         *
-         * and then notify a change on the "foo" property with:
-         *
-         *
-         * ```c
-         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-         * ```
-         *
-         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
-         */
-        notify_by_pspec(pspec: GObject.ParamSpec): void;
-        /**
-         * Increases the reference count of `object`.
-         *
-         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC `typeof()`
-         * extension), so any casting the caller needs to do on the return type must be
-         * explicit.
-         * @returns the same `object`
-         */
-        ref(): GObject.Object;
-        /**
-         * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
-         *
-         * In other words, if the object is floating, then this call "assumes
-         * ownership" of the floating reference, converting it to a normal
-         * reference by clearing the floating flag while leaving the reference
-         * count unchanged.  If the object is not floating, then this call
-         * adds a new normal reference increasing the reference count by one.
-         *
-         * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for `g_object_ref()`.
-         * @returns `object`
-         */
-        ref_sink(): GObject.Object;
-        /**
-         * Releases all references to other objects. This can be used to break
-         * reference cycles.
-         *
-         * This function should only be called from object system implementations.
-         */
-        run_dispose(): void;
-        /**
-         * Each object carries around a table of associations from
-         * strings to pointers.  This function lets you set an association.
-         *
-         * If the object already had an association with that name,
-         * the old association will be destroyed.
-         *
-         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
-         * This means a copy of `key` is kept permanently (even after `object` has been
-         * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
-         * @param key name of the key
-         * @param data data to associate with that key
-         */
-        set_data(key: string, data?: any | null): void;
-        /**
-         * Sets a property on an object.
-         * @param property_name The name of the property to set
-         * @param value The value to set the property to
-         */
-        set_property(property_name: string, value: GObject.Value | any): void;
-        /**
-         * Remove a specified datum from the object's data associations,
-         * without invoking the association's destroy handler.
-         * @param key name of the key
-         * @returns the data if found, or `null`          if no such data exists.
-         */
-        steal_data(key: string): any | null;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()` and removes the `data` from object
-         * without invoking its `destroy()` function (if any was
-         * set).
-         * Usually, calling this function is only required to update
-         * user data pointers with a destroy notifier, for example:
-         *
-         * ```c
-         * void
-         * object_add_to_user_list (GObject     *object,
-         *                          const gchar *new_string)
-         * {
-         *   // the quark, naming the object data
-         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-         *   // retrieve the old string list
-         *   GList *list = g_object_steal_qdata (object, quark_string_list);
-         *
-         *   // prepend new string
-         *   list = g_list_prepend (list, g_strdup (new_string));
-         *   // this changed 'list', so we need to set it again
-         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-         * }
-         * static void
-         * free_string_list (gpointer data)
-         * {
-         *   GList *node, *list = data;
-         *
-         *   for (node = list; node; node = node->next)
-         *     g_free (node->data);
-         *   g_list_free (list);
-         * }
-         * ```
-         *
-         * Using `g_object_get_qdata()` in the above example, instead of
-         * `g_object_steal_qdata()` would have left the destroy function set,
-         * and thus the partial string list would have been freed upon
-         * `g_object_set_qdata_full()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        steal_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Reverts the effect of a previous call to
-         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
-         * and when it reaches zero, queued "notify" signals are emitted.
-         *
-         * Duplicate notifications for each property are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
-         * in which they have been queued.
-         *
-         * It is an error to call this function when the freeze count is zero.
-         */
-        thaw_notify(): void;
-        /**
-         * Decreases the reference count of `object`. When its reference count
-         * drops to 0, the object is finalized (i.e. its memory is freed).
-         *
-         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
-         * an instance variable of another object), it is recommended to clear the
-         * pointer to `null` rather than retain a dangling pointer to a potentially
-         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
-         */
-        unref(): void;
-        /**
-         * This function essentially limits the life time of the `closure` to
-         * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling `g_closure_invalidate()` on
-         * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
-         * added as marshal guards to the `closure`, to ensure that an extra
-         * reference count is held on `object` during invocation of the
-         * `closure`.  Usually, this function will be called on closures that
-         * use this `object` as closure data.
-         * @param closure {@link GObject.Closure} to watch
-         */
-        watch_closure(closure: GObject.Closure): void;
-        /**
-         * the `constructed` function is called by `g_object_new()` as the
-         *  final step of the object creation process.  At the point of the call, all
-         *  construction properties have been set on the object.  The purpose of this
-         *  call is to allow for object initialisation steps that can only be performed
-         *  after construction properties have been set.  `constructed` implementors
-         *  should chain up to the `constructed` call of their parent class to allow it
-         *  to complete its initialisation.
-         * @virtual
-         */
-        vfunc_constructed(): void;
-        /**
-         * emits property change notification for a bunch
-         *  of properties. Overriding `dispatch_properties_changed` should be rarely
-         *  needed.
-         * @param n_pspecs
-         * @param pspecs
-         * @virtual
-         */
-        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
-        /**
-         * the `dispose` function is supposed to drop all references to other
-         *  objects, but keep the instance otherwise intact, so that client method
-         *  invocations still work. It may be run multiple times (due to reference
-         *  loops). Before returning, `dispose` should chain up to the `dispose` method
-         *  of the parent class.
-         * @virtual
-         */
-        vfunc_dispose(): void;
-        /**
-         * instance finalization function, should finish the finalization of
-         *  the instance begun in `dispose` and chain up to the `finalize` method of the
-         *  parent class.
-         * @virtual
-         */
-        vfunc_finalize(): void;
-        /**
-         * the generic getter for all properties of this type. Should be
-         *  overridden for every type with properties.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param pspec
-         * @virtual
-         */
-        vfunc_notify(pspec: GObject.ParamSpec): void;
-        /**
-         * the generic setter for all properties of this type. Should be
-         *  overridden for every type with properties. If implementations of
-         *  `set_property` don't emit property change notification explicitly, this will
-         *  be done implicitly by the type system. However, if the notify signal is
-         *  emitted explicitly, the type system will not emit it a second time.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
-         * @param id Handler ID of the handler to be disconnected
-         */
-        disconnect(id: number): void;
-        /**
-         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
-         * @param properties Object containing the properties to set
-         */
-        set(properties: { [key: string]: any }): void;
-        /**
-         * Blocks a handler of an instance so it will not be called during any signal emissions
-         * @param id Handler ID of the handler to be blocked
-         */
-        block_signal_handler(id: number): void;
-        /**
-         * Unblocks a handler so it will be called again during any signal emissions
-         * @param id Handler ID of the handler to be unblocked
-         */
-        unblock_signal_handler(id: number): void;
-        /**
-         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
-         * @param detailedName Name of the signal to stop emission of
-         */
-        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace CalCache {
@@ -3233,7 +2339,7 @@ export namespace EDataCal {
 
         _init(...args: any[]): void;
 
-        static ['new'](filename: string, cancellable?: Gio.Cancellable | null): CalCache;
+        static ['new'](filename: string, cancellable: Gio.Cancellable | null): CalCache;
 
         // Signals
 
@@ -3268,8 +2374,8 @@ export namespace EDataCal {
          */
         static resolve_timezone_cb(
             tzid: string,
-            cal_cache?: any | null,
-            cancellable?: Gio.Cancellable | null,
+            cal_cache: any | null,
+            cancellable: Gio.Cancellable | null,
         ): ICalGLib.Timezone | null;
 
         // Virtual methods
@@ -3309,7 +2415,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        delete_attachments(component: ICalGLib.Component, cancellable?: Gio.Cancellable | null): boolean;
+        delete_attachments(component: ICalGLib.Component, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Returns the `icomp` revision, used to detect changes.
          * The returned string should be freed with `g_free()`, when
@@ -3327,7 +2433,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        dup_timezone_as_string(tzid: string, cancellable?: Gio.Cancellable | null): [boolean, string];
+        dup_timezone_as_string(tzid: string, cancellable: Gio.Cancellable | null): [boolean, string];
         /**
          * Gets a component identified by `uid`, and optionally by the `rid`,
          * from the `cal_cache`. The returned `out_component` should be freed with
@@ -3337,7 +2443,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        get_component(uid: string, rid: string | null, cancellable?: Gio.Cancellable | null): [boolean, ECal.Component];
+        get_component(uid: string, rid: string | null, cancellable: Gio.Cancellable | null): [boolean, ECal.Component];
         /**
          * Gets a component identified by `uid`, and optionally by the `rid`,
          * from the `cal_cache`. The returned `out_icalstring` should be freed with
@@ -3350,7 +2456,7 @@ export namespace EDataCal {
         get_component_as_string(
             uid: string,
             rid: string | null,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, string];
         /**
          * Gets the custom flags previously set for `uid` and `rid`, either with
@@ -3364,7 +2470,7 @@ export namespace EDataCal {
         get_component_custom_flags(
             uid: string,
             rid: string | null,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, number];
         /**
          * Gets the extra data previously set for `uid` and `rid`, either with
@@ -3374,7 +2480,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        get_component_extra(uid: string, rid: string | null, cancellable?: Gio.Cancellable | null): [boolean, string];
+        get_component_extra(uid: string, rid: string | null, cancellable: Gio.Cancellable | null): [boolean, string];
         /**
          * Gets the master object and all detached instances for a component
          * identified by the `uid`. Free the returned {@link GLib.SList} with
@@ -3384,7 +2490,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        get_components_by_uid(uid: string, cancellable?: Gio.Cancellable | null): [boolean, ECal.Component[]];
+        get_components_by_uid(uid: string, cancellable: Gio.Cancellable | null): [boolean, ECal.Component[]];
         /**
          * Gets the master object and all detached instances as string
          * for a component identified by the `uid`. Free the returned {@link GLib.SList}
@@ -3393,7 +2499,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        get_components_by_uid_as_string(uid: string, cancellable?: Gio.Cancellable | null): [boolean, string[]];
+        get_components_by_uid_as_string(uid: string, cancellable: Gio.Cancellable | null): [boolean, string[]];
         /**
          * Gets a list of components which occur in the given time range.
          * It's not an error if none is found.
@@ -3405,7 +2511,7 @@ export namespace EDataCal {
         get_components_in_range(
             range_start: bigint | number,
             range_end: bigint | number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, ECal.Component[]];
         /**
          * Gets a list of components, as iCal strings, which occur in the given time range.
@@ -3417,7 +2523,7 @@ export namespace EDataCal {
         get_components_in_range_as_strings(
             range_start: bigint | number,
             range_end: bigint | number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, string[]];
         /**
          * Gets all the ID-s the `extra` data is set for.
@@ -3429,14 +2535,14 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        get_ids_with_extra(extra: string, cancellable?: Gio.Cancellable | null): [boolean, ECal.ComponentId[]];
+        get_ids_with_extra(extra: string, cancellable: Gio.Cancellable | null): [boolean, ECal.ComponentId[]];
         /**
          * The same as `e_cache_get_offline_changes()`, only splits the saved UID
          * into UID and RID and saved the data into {@link EDataCal.CalCacheOfflineChange} structure.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns A newly allocated list of all    offline changes. Free it with g_slist_free_full (slist, e_cal_cache_offline_change_free);    when no longer needed.
          */
-        get_offline_changes(cancellable?: Gio.Cancellable | null): CalCacheOfflineChange[];
+        get_offline_changes(cancellable: Gio.Cancellable | null): CalCacheOfflineChange[];
         /**
          * @param args
          */
@@ -3450,11 +2556,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Current offline state {@link EBackend.OfflineState} for the given component.    It returns {@link EBackend.OfflineState.UNKNOWN} when the component could not be    found or other error happened.
          */
-        get_offline_state(
-            uid: string,
-            rid?: string | null,
-            cancellable?: Gio.Cancellable | null,
-        ): EBackend.OfflineState;
+        get_offline_state(uid: string, rid: string | null, cancellable: Gio.Cancellable | null): EBackend.OfflineState;
         /**
          * @param args
          */
@@ -3469,7 +2571,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        get_timezone(tzid: string, cancellable?: Gio.Cancellable | null): [boolean, ICalGLib.Timezone];
+        get_timezone(tzid: string, cancellable: Gio.Cancellable | null): [boolean, ICalGLib.Timezone];
         /**
          * @param args
          */
@@ -3487,7 +2589,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        list_timezones(cancellable?: Gio.Cancellable | null): [boolean, ICalGLib.Timezone[]];
+        list_timezones(cancellable: Gio.Cancellable | null): [boolean, ICalGLib.Timezone[]];
         /**
          * @param args
          */
@@ -3508,7 +2610,7 @@ export namespace EDataCal {
             extra: string | null,
             custom_flags: number,
             offline_flag: EBackend.CacheOfflineFlag,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Adds a list of `components` into the `cal_cache`. Any existing with the same UID
@@ -3529,7 +2631,7 @@ export namespace EDataCal {
             extras: string[] | null,
             custom_flags: number[] | null,
             offline_flag: EBackend.CacheOfflineFlag,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Puts the `zone` into the `cal_cache` using its timezone ID as
@@ -3542,7 +2644,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        put_timezone(zone: ICalGLib.Timezone, inc_ref_counts: number, cancellable?: Gio.Cancellable | null): boolean;
+        put_timezone(zone: ICalGLib.Timezone, inc_ref_counts: number, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Removes a component identified by `uid` and `rid` from the `cal_cache`.
          * When the `rid` is `null`, or an empty string, then removes the master
@@ -3559,7 +2661,7 @@ export namespace EDataCal {
             rid: string | null,
             custom_flags: number,
             offline_flag: EBackend.CacheOfflineFlag,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Removes components identified by `uid` and `rid` from the `cal_cache`
@@ -3578,7 +2680,7 @@ export namespace EDataCal {
             ids: ECal.ComponentId[],
             custom_flags: number[] | null,
             offline_flag: EBackend.CacheOfflineFlag,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Dereferences use count of the time zone with ID `tzid` by `dec_ref_counts`
@@ -3593,13 +2695,13 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        remove_timezone(tzid: string, dec_ref_counts: number, cancellable?: Gio.Cancellable | null): boolean;
+        remove_timezone(tzid: string, dec_ref_counts: number, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Removes all stored timezones from the `cal_cache`.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        remove_timezones(cancellable?: Gio.Cancellable | null): boolean;
+        remove_timezones(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Searches the `cal_cache` with the given `sexp` and
          * returns those components which satisfy the search
@@ -3611,7 +2713,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        search(sexp: string | null, cancellable?: Gio.Cancellable | null): [boolean, CalCacheSearchData[]];
+        search(sexp: string | null, cancellable: Gio.Cancellable | null): [boolean, CalCacheSearchData[]];
         /**
          * Searches the `cal_cache` with the given `sexp` and
          * returns those components which satisfy the search
@@ -3622,7 +2724,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        search_components(sexp: string | null, cancellable?: Gio.Cancellable | null): [boolean, ECal.Component[]];
+        search_components(sexp: string | null, cancellable: Gio.Cancellable | null): [boolean, ECal.Component[]];
         /**
          * Searches the `cal_cache` with the given `sexp` and returns ECalComponentId
          * for those components which satisfy the search expression.
@@ -3633,7 +2735,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        search_ids(sexp: string | null, cancellable?: Gio.Cancellable | null): [boolean, ECal.ComponentId[]];
+        search_ids(sexp: string | null, cancellable: Gio.Cancellable | null): [boolean, ECal.ComponentId[]];
         /**
          * Searches the `cal_cache` with the given `sexp` and calls `func` for each
          * row which satisfy the search expression.
@@ -3645,7 +2747,7 @@ export namespace EDataCal {
         search_with_callback(
             sexp: string | null,
             func: CalCacheSearchFunc,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Sets or replaces the custom flags associated with a component
@@ -3660,7 +2762,7 @@ export namespace EDataCal {
             uid: string,
             rid: string | null,
             custom_flags: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Sets or replaces the extra data associated with a component
@@ -3673,9 +2775,9 @@ export namespace EDataCal {
          */
         set_component_extra(
             uid: string,
-            rid?: string | null,
-            extra?: string | null,
-            cancellable?: Gio.Cancellable | null,
+            rid: string | null,
+            extra: string | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Adds a copy of `zone` to `cache` and emits an
@@ -3724,455 +2826,6 @@ export namespace EDataCal {
          * to the process, which provides the extensions for the `extensible`.
          */
         reload_extensions(): void;
-        /**
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`.
-         *
-         * Whenever the `source_property` is changed the `target_property` is
-         * updated using the same value. For instance:
-         *
-         *
-         * ```c
-         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-         * ```
-         *
-         *
-         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
-         * updated with the same value of the "active" property of the action {@link GObject.Object}
-         * instance.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well.
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call `g_object_unref()` on the returned
-         * {@link GObject.Binding} instance.
-         *
-         * Removing the binding by calling `g_object_unref()` on it must only be done if
-         * the binding, `source` and `target` are only used from a single thread and it
-         * is clear that both `source` and `target` outlive the binding. Especially it
-         * is not safe to rely on this if the binding, `source` or `target` can be
-         * finalized from different threads. Keep another reference to the binding and
-         * use `g_binding_unbind()` instead to be on the safe side.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-        ): GObject.Binding;
-        /**
-         * Complete version of `g_object_bind_property()`.
-         *
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`, allowing you to set the transformation functions to be used by
-         * the binding.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property_full(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
-        ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
-        /**
-         * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all `GInitiallyUnowneds` are created with a floating reference
-         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
-         */
-        force_floating(): void;
-        /**
-         * Increases the freeze count on `object`. If the freeze count is
-         * non-zero, the emission of "notify" signals on `object` is
-         * stopped. The signals are queued until the freeze count is decreased
-         * to zero. Duplicate notifications are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
-         * object is frozen.
-         *
-         * This is necessary for accessors that modify multiple properties to prevent
-         * premature notification while the object is still being modified.
-         */
-        freeze_notify(): void;
-        /**
-         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
-         * @param key name of the key for that association
-         * @returns the data if found,          or `null` if no such data exists.
-         */
-        get_data(key: string): any | null;
-        /**
-         * Gets a property of an object.
-         *
-         * The value can be:
-         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
-         * - a GObject.Value initialized with the expected type of the property
-         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
-         *
-         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
-         *
-         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
-         * @param property_name The name of the property to get
-         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
-         */
-        get_property(property_name: string, value: GObject.Value | any): any;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        get_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Gets `n_properties` properties for an `object`.
-         * Obtained properties will be set to `values`. All properties must be valid.
-         * Warnings will be emitted and undefined behaviour may result if invalid
-         * properties are passed in.
-         * @param names the names of each property to get
-         * @param values the values of each property to get
-         */
-        getv(names: string[], values: (GObject.Value | any)[]): void;
-        /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns `true` if `object` has a floating reference
-         */
-        is_floating(): boolean;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param property_name the name of a property installed on the class of `object`.
-         */
-        notify(property_name: string): void;
-        /**
-         * Emits a "notify" signal for the property specified by `pspec` on `object`.
-         *
-         * This function omits the property name lookup, hence it is faster than
-         * `g_object_notify()`.
-         *
-         * One way to avoid using `g_object_notify()` from within the
-         * class that registered the properties, and using `g_object_notify_by_pspec()`
-         * instead, is to store the GParamSpec used with
-         * `g_object_class_install_property()` inside a static array, e.g.:
-         *
-         *
-         * ```c
-         *   typedef enum
-         *   {
-         *     PROP_FOO = 1,
-         *     PROP_LAST
-         *   } MyObjectProperty;
-         *
-         *   static GParamSpec *properties[PROP_LAST];
-         *
-         *   static void
-         *   my_object_class_init (MyObjectClass *klass)
-         *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
-         *                                              0, 100,
-         *                                              50,
-         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-         *     g_object_class_install_property (gobject_class,
-         *                                      PROP_FOO,
-         *                                      properties[PROP_FOO]);
-         *   }
-         * ```
-         *
-         *
-         * and then notify a change on the "foo" property with:
-         *
-         *
-         * ```c
-         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-         * ```
-         *
-         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
-         */
-        notify_by_pspec(pspec: GObject.ParamSpec): void;
-        /**
-         * Increases the reference count of `object`.
-         *
-         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC `typeof()`
-         * extension), so any casting the caller needs to do on the return type must be
-         * explicit.
-         * @returns the same `object`
-         */
-        ref(): GObject.Object;
-        /**
-         * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
-         *
-         * In other words, if the object is floating, then this call "assumes
-         * ownership" of the floating reference, converting it to a normal
-         * reference by clearing the floating flag while leaving the reference
-         * count unchanged.  If the object is not floating, then this call
-         * adds a new normal reference increasing the reference count by one.
-         *
-         * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for `g_object_ref()`.
-         * @returns `object`
-         */
-        ref_sink(): GObject.Object;
-        /**
-         * Releases all references to other objects. This can be used to break
-         * reference cycles.
-         *
-         * This function should only be called from object system implementations.
-         */
-        run_dispose(): void;
-        /**
-         * Each object carries around a table of associations from
-         * strings to pointers.  This function lets you set an association.
-         *
-         * If the object already had an association with that name,
-         * the old association will be destroyed.
-         *
-         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
-         * This means a copy of `key` is kept permanently (even after `object` has been
-         * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
-         * @param key name of the key
-         * @param data data to associate with that key
-         */
-        set_data(key: string, data?: any | null): void;
-        /**
-         * Sets a property on an object.
-         * @param property_name The name of the property to set
-         * @param value The value to set the property to
-         */
-        set_property(property_name: string, value: GObject.Value | any): void;
-        /**
-         * Remove a specified datum from the object's data associations,
-         * without invoking the association's destroy handler.
-         * @param key name of the key
-         * @returns the data if found, or `null`          if no such data exists.
-         */
-        steal_data(key: string): any | null;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()` and removes the `data` from object
-         * without invoking its `destroy()` function (if any was
-         * set).
-         * Usually, calling this function is only required to update
-         * user data pointers with a destroy notifier, for example:
-         *
-         * ```c
-         * void
-         * object_add_to_user_list (GObject     *object,
-         *                          const gchar *new_string)
-         * {
-         *   // the quark, naming the object data
-         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-         *   // retrieve the old string list
-         *   GList *list = g_object_steal_qdata (object, quark_string_list);
-         *
-         *   // prepend new string
-         *   list = g_list_prepend (list, g_strdup (new_string));
-         *   // this changed 'list', so we need to set it again
-         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-         * }
-         * static void
-         * free_string_list (gpointer data)
-         * {
-         *   GList *node, *list = data;
-         *
-         *   for (node = list; node; node = node->next)
-         *     g_free (node->data);
-         *   g_list_free (list);
-         * }
-         * ```
-         *
-         * Using `g_object_get_qdata()` in the above example, instead of
-         * `g_object_steal_qdata()` would have left the destroy function set,
-         * and thus the partial string list would have been freed upon
-         * `g_object_set_qdata_full()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        steal_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Reverts the effect of a previous call to
-         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
-         * and when it reaches zero, queued "notify" signals are emitted.
-         *
-         * Duplicate notifications for each property are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
-         * in which they have been queued.
-         *
-         * It is an error to call this function when the freeze count is zero.
-         */
-        thaw_notify(): void;
-        /**
-         * Decreases the reference count of `object`. When its reference count
-         * drops to 0, the object is finalized (i.e. its memory is freed).
-         *
-         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
-         * an instance variable of another object), it is recommended to clear the
-         * pointer to `null` rather than retain a dangling pointer to a potentially
-         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
-         */
-        unref(): void;
-        /**
-         * This function essentially limits the life time of the `closure` to
-         * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling `g_closure_invalidate()` on
-         * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
-         * added as marshal guards to the `closure`, to ensure that an extra
-         * reference count is held on `object` during invocation of the
-         * `closure`.  Usually, this function will be called on closures that
-         * use this `object` as closure data.
-         * @param closure {@link GObject.Closure} to watch
-         */
-        watch_closure(closure: GObject.Closure): void;
-        /**
-         * the `constructed` function is called by `g_object_new()` as the
-         *  final step of the object creation process.  At the point of the call, all
-         *  construction properties have been set on the object.  The purpose of this
-         *  call is to allow for object initialisation steps that can only be performed
-         *  after construction properties have been set.  `constructed` implementors
-         *  should chain up to the `constructed` call of their parent class to allow it
-         *  to complete its initialisation.
-         * @virtual
-         */
-        vfunc_constructed(): void;
-        /**
-         * emits property change notification for a bunch
-         *  of properties. Overriding `dispatch_properties_changed` should be rarely
-         *  needed.
-         * @param n_pspecs
-         * @param pspecs
-         * @virtual
-         */
-        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
-        /**
-         * the `dispose` function is supposed to drop all references to other
-         *  objects, but keep the instance otherwise intact, so that client method
-         *  invocations still work. It may be run multiple times (due to reference
-         *  loops). Before returning, `dispose` should chain up to the `dispose` method
-         *  of the parent class.
-         * @virtual
-         */
-        vfunc_dispose(): void;
-        /**
-         * instance finalization function, should finish the finalization of
-         *  the instance begun in `dispose` and chain up to the `finalize` method of the
-         *  parent class.
-         * @virtual
-         */
-        vfunc_finalize(): void;
-        /**
-         * the generic getter for all properties of this type. Should be
-         *  overridden for every type with properties.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param pspec
-         * @virtual
-         */
-        vfunc_notify(pspec: GObject.ParamSpec): void;
-        /**
-         * the generic setter for all properties of this type. Should be
-         *  overridden for every type with properties. If implementations of
-         *  `set_property` don't emit property change notification explicitly, this will
-         *  be done implicitly by the type system. However, if the notify signal is
-         *  emitted explicitly, the type system will not emit it a second time.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
-         * @param id Handler ID of the handler to be disconnected
-         */
-        disconnect(id: number): void;
-        /**
-         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
-         * @param properties Object containing the properties to set
-         */
-        set(properties: { [key: string]: any }): void;
-        /**
-         * Blocks a handler of an instance so it will not be called during any signal emissions
-         * @param id Handler ID of the handler to be blocked
-         */
-        block_signal_handler(id: number): void;
-        /**
-         * Unblocks a handler so it will be called again during any signal emissions
-         * @param id Handler ID of the handler to be unblocked
-         */
-        unblock_signal_handler(id: number): void;
-        /**
-         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
-         * @param detailedName Name of the signal to stop emission of
-         */
-        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace CalMetaBackend {
@@ -4301,7 +2954,7 @@ export namespace EDataCal {
          */
         vfunc_connect_sync(
             credentials: EDataServer.NamedParameters | null,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, EDataServer.SourceAuthenticationResult, string, Gio.TlsCertificateFlags];
         /**
          * This is called when the backend goes into offline mode or
@@ -4313,7 +2966,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_disconnect_sync(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_disconnect_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Gathers the changes since the last check which had been done
          * on the remote side.
@@ -4349,7 +3002,7 @@ export namespace EDataCal {
         vfunc_get_changes_sync(
             last_sync_tag: string | null,
             is_repeat: boolean,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, string, boolean, CalMetaBackendInfo[], CalMetaBackendInfo[], CalMetaBackendInfo[]];
         /**
          * It is optional to implement this virtual method by the descendants.
@@ -4374,7 +3027,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_list_existing_sync(cancellable?: Gio.Cancellable | null): [boolean, string, CalMetaBackendInfo[]];
+        vfunc_list_existing_sync(cancellable: Gio.Cancellable | null): [boolean, string, CalMetaBackendInfo[]];
         /**
          * Loads a component from the remote side. Any detached instances should be
          * returned together with the master object. The `out_component` can be either
@@ -4397,7 +3050,7 @@ export namespace EDataCal {
         vfunc_load_component_sync(
             uid: string,
             extra: string | null,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, ICalGLib.Component, string];
         /**
          * Removes a component from the remote side, with all its detached instances.
@@ -4420,7 +3073,7 @@ export namespace EDataCal {
             extra: string | null,
             object: string | null,
             opflags: ECal.OperationFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Determines, whether current source content requires reconnect of the backend.
@@ -4478,7 +3131,7 @@ export namespace EDataCal {
             instances: ECal.Component[],
             extra: string | null,
             opflags: ECal.OperationFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, string, string];
         /**
          * Searches `meta_backend` with given expression `expr` and returns
@@ -4498,7 +3151,7 @@ export namespace EDataCal {
          */
         vfunc_search_components_sync(
             expr: string | null,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, ECal.Component[]];
         /**
          * Searches `meta_backend` with given expression `expr` and returns
@@ -4516,7 +3169,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_search_sync(expr: string | null, cancellable?: Gio.Cancellable | null): [boolean, string[]];
+        vfunc_search_sync(expr: string | null, cancellable: Gio.Cancellable | null): [boolean, string[]];
         /**
          * @virtual
          */
@@ -4557,7 +3210,7 @@ export namespace EDataCal {
          */
         connect_sync(
             credentials: EDataServer.NamedParameters | null,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, EDataServer.SourceAuthenticationResult, string, Gio.TlsCertificateFlags];
         /**
          * This is called when the backend goes into offline mode or
@@ -4569,7 +3222,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        disconnect_sync(cancellable?: Gio.Cancellable | null): boolean;
+        disconnect_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Returns the last known synchronization tag, the same as used to
          * call `e_cal_meta_backend_get_changes_sync()`.
@@ -4585,13 +3238,13 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        empty_cache_sync(cancellable?: Gio.Cancellable | null): boolean;
+        empty_cache_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Ensures that the `meta_backend` is connected to its destination.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        ensure_connected_sync(cancellable?: Gio.Cancellable | null): boolean;
+        ensure_connected_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Extracts all VTIMEZONE components from the `vcalendar` and adds them
          * to the memory cache, thus they are available when needed. The function does
@@ -4608,7 +3261,7 @@ export namespace EDataCal {
         gather_timezones_sync(
             vcalendar: ICalGLib.Component,
             remove_existing: boolean,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * @returns an {@link EDataCal.CalBackend.SignalSignatures.capabilities | EDataCal.CalBackend::capabilities} property to be used by    the descendant in conjunction to the descendant's capabilities    in the result of `e_cal_backend_get_backend_property()` with    #CLIENT_BACKEND_PROPERTY_CAPABILITIES.
@@ -4649,7 +3302,7 @@ export namespace EDataCal {
         get_changes_sync(
             last_sync_tag: string | null,
             is_repeat: boolean,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, string, boolean, CalMetaBackendInfo[], CalMetaBackendInfo[], CalMetaBackendInfo[]];
         /**
          * This value has meaning only if `e_cal_meta_backend_get_ever_connected()`
@@ -4679,7 +3332,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        inline_local_attachments_sync(component: ICalGLib.Component, cancellable?: Gio.Cancellable | null): boolean;
+        inline_local_attachments_sync(component: ICalGLib.Component, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Used to get list of all existing objects on the remote side. The descendant
          * can optionally provide `out_new_sync_tag`, which will be stored on success, if
@@ -4696,7 +3349,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        list_existing_sync(cancellable?: Gio.Cancellable | null): [boolean, string, CalMetaBackendInfo[]];
+        list_existing_sync(cancellable: Gio.Cancellable | null): [boolean, string, CalMetaBackendInfo[]];
         /**
          * Loads a component from the remote side. Any detached instances should be
          * returned together with the master object. The `out_component` can be either
@@ -4719,7 +3372,7 @@ export namespace EDataCal {
         load_component_sync(
             uid: string,
             extra: string | null,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, ICalGLib.Component, string];
         /**
          * Merges all the instances provided in `instances` list into one VCALENDAR
@@ -4745,10 +3398,10 @@ export namespace EDataCal {
          * @returns Whether succeeded.
          */
         process_changes_sync(
-            created_objects?: CalMetaBackendInfo[] | null,
-            modified_objects?: CalMetaBackendInfo[] | null,
-            removed_objects?: CalMetaBackendInfo[] | null,
-            cancellable?: Gio.Cancellable | null,
+            created_objects: CalMetaBackendInfo[] | null,
+            modified_objects: CalMetaBackendInfo[] | null,
+            removed_objects: CalMetaBackendInfo[] | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * @returns Referenced {@link EDataCal.CalCache}, which is used by `meta_backend`.    Unref it with `g_object_unref()` when no longer needed.
@@ -4760,7 +3413,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        refresh_sync(cancellable?: Gio.Cancellable | null): boolean;
+        refresh_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Removes a component from the remote side, with all its detached instances.
          * The `object` is not `null` when it's removing locally deleted object
@@ -4782,7 +3435,7 @@ export namespace EDataCal {
             extra: string | null,
             object: string | null,
             opflags: ECal.OperationFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Determines, whether current source content requires reconnect of the backend.
@@ -4840,7 +3493,7 @@ export namespace EDataCal {
             instances: ECal.Component[],
             extra: string | null,
             opflags: ECal.OperationFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, string, string];
         /**
          * Schedules refresh of the content of the `meta_backend`. If there's any
@@ -4866,7 +3519,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        search_components_sync(expr: string | null, cancellable?: Gio.Cancellable | null): [boolean, ECal.Component[]];
+        search_components_sync(expr: string | null, cancellable: Gio.Cancellable | null): [boolean, ECal.Component[]];
         /**
          * Searches `meta_backend` with given expression `expr` and returns
          * found components as a {@link GLib.SList} of iCal strings `out_icalstrings`.
@@ -4883,7 +3536,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        search_sync(expr: string | null, cancellable?: Gio.Cancellable | null): [boolean, string[]];
+        search_sync(expr: string | null, cancellable: Gio.Cancellable | null): [boolean, string[]];
         /**
          * Sets the `cache` as the cache to be used by the `meta_backend`.
          * By default, a cache.db in ECalBackend::cache-dir is created
@@ -4918,7 +3571,7 @@ export namespace EDataCal {
          * Sets the `sync_tag` for the `meta_backend`.
          * @param sync_tag a sync tag to set, or `null` to unset the old one
          */
-        set_sync_tag(sync_tag?: string | null): void;
+        set_sync_tag(sync_tag: string | null): void;
         /**
          * Splits `objects` into created/modified/removed lists according to current local
          * cache content. Only the `out_removed_objects` can be `null`, others cannot.
@@ -4936,7 +3589,7 @@ export namespace EDataCal {
          */
         split_changes_sync(
             objects: CalMetaBackendInfo[],
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, CalMetaBackendInfo[], CalMetaBackendInfo[], CalMetaBackendInfo[], CalMetaBackendInfo[] | null];
         /**
          * Changes all inline attachments to URL attachments in `component`, which
@@ -4949,456 +3602,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        store_inline_attachments_sync(component: ICalGLib.Component, cancellable?: Gio.Cancellable | null): boolean;
-        /**
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`.
-         *
-         * Whenever the `source_property` is changed the `target_property` is
-         * updated using the same value. For instance:
-         *
-         *
-         * ```c
-         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-         * ```
-         *
-         *
-         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
-         * updated with the same value of the "active" property of the action {@link GObject.Object}
-         * instance.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well.
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call `g_object_unref()` on the returned
-         * {@link GObject.Binding} instance.
-         *
-         * Removing the binding by calling `g_object_unref()` on it must only be done if
-         * the binding, `source` and `target` are only used from a single thread and it
-         * is clear that both `source` and `target` outlive the binding. Especially it
-         * is not safe to rely on this if the binding, `source` or `target` can be
-         * finalized from different threads. Keep another reference to the binding and
-         * use `g_binding_unbind()` instead to be on the safe side.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-        ): GObject.Binding;
-        /**
-         * Complete version of `g_object_bind_property()`.
-         *
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`, allowing you to set the transformation functions to be used by
-         * the binding.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property_full(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
-        ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
-        /**
-         * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all `GInitiallyUnowneds` are created with a floating reference
-         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
-         */
-        force_floating(): void;
-        /**
-         * Increases the freeze count on `object`. If the freeze count is
-         * non-zero, the emission of "notify" signals on `object` is
-         * stopped. The signals are queued until the freeze count is decreased
-         * to zero. Duplicate notifications are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
-         * object is frozen.
-         *
-         * This is necessary for accessors that modify multiple properties to prevent
-         * premature notification while the object is still being modified.
-         */
-        freeze_notify(): void;
-        /**
-         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
-         * @param key name of the key for that association
-         * @returns the data if found,          or `null` if no such data exists.
-         */
-        get_data(key: string): any | null;
-        /**
-         * Gets a property of an object.
-         *
-         * The value can be:
-         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
-         * - a GObject.Value initialized with the expected type of the property
-         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
-         *
-         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
-         *
-         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
-         * @param property_name The name of the property to get
-         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
-         */
-        get_property(property_name: string, value: GObject.Value | any): any;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        get_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Gets `n_properties` properties for an `object`.
-         * Obtained properties will be set to `values`. All properties must be valid.
-         * Warnings will be emitted and undefined behaviour may result if invalid
-         * properties are passed in.
-         * @param names the names of each property to get
-         * @param values the values of each property to get
-         */
-        getv(names: string[], values: (GObject.Value | any)[]): void;
-        /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns `true` if `object` has a floating reference
-         */
-        is_floating(): boolean;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param property_name the name of a property installed on the class of `object`.
-         */
-        notify(property_name: string): void;
-        /**
-         * Emits a "notify" signal for the property specified by `pspec` on `object`.
-         *
-         * This function omits the property name lookup, hence it is faster than
-         * `g_object_notify()`.
-         *
-         * One way to avoid using `g_object_notify()` from within the
-         * class that registered the properties, and using `g_object_notify_by_pspec()`
-         * instead, is to store the GParamSpec used with
-         * `g_object_class_install_property()` inside a static array, e.g.:
-         *
-         *
-         * ```c
-         *   typedef enum
-         *   {
-         *     PROP_FOO = 1,
-         *     PROP_LAST
-         *   } MyObjectProperty;
-         *
-         *   static GParamSpec *properties[PROP_LAST];
-         *
-         *   static void
-         *   my_object_class_init (MyObjectClass *klass)
-         *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
-         *                                              0, 100,
-         *                                              50,
-         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-         *     g_object_class_install_property (gobject_class,
-         *                                      PROP_FOO,
-         *                                      properties[PROP_FOO]);
-         *   }
-         * ```
-         *
-         *
-         * and then notify a change on the "foo" property with:
-         *
-         *
-         * ```c
-         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-         * ```
-         *
-         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
-         */
-        notify_by_pspec(pspec: GObject.ParamSpec): void;
-        /**
-         * Increases the reference count of `object`.
-         *
-         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC `typeof()`
-         * extension), so any casting the caller needs to do on the return type must be
-         * explicit.
-         * @returns the same `object`
-         */
-        ref(): GObject.Object;
-        /**
-         * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
-         *
-         * In other words, if the object is floating, then this call "assumes
-         * ownership" of the floating reference, converting it to a normal
-         * reference by clearing the floating flag while leaving the reference
-         * count unchanged.  If the object is not floating, then this call
-         * adds a new normal reference increasing the reference count by one.
-         *
-         * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for `g_object_ref()`.
-         * @returns `object`
-         */
-        ref_sink(): GObject.Object;
-        /**
-         * Releases all references to other objects. This can be used to break
-         * reference cycles.
-         *
-         * This function should only be called from object system implementations.
-         */
-        run_dispose(): void;
-        /**
-         * Each object carries around a table of associations from
-         * strings to pointers.  This function lets you set an association.
-         *
-         * If the object already had an association with that name,
-         * the old association will be destroyed.
-         *
-         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
-         * This means a copy of `key` is kept permanently (even after `object` has been
-         * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
-         * @param key name of the key
-         * @param data data to associate with that key
-         */
-        set_data(key: string, data?: any | null): void;
-        /**
-         * Sets a property on an object.
-         * @param property_name The name of the property to set
-         * @param value The value to set the property to
-         */
-        set_property(property_name: string, value: GObject.Value | any): void;
-        /**
-         * Remove a specified datum from the object's data associations,
-         * without invoking the association's destroy handler.
-         * @param key name of the key
-         * @returns the data if found, or `null`          if no such data exists.
-         */
-        steal_data(key: string): any | null;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()` and removes the `data` from object
-         * without invoking its `destroy()` function (if any was
-         * set).
-         * Usually, calling this function is only required to update
-         * user data pointers with a destroy notifier, for example:
-         *
-         * ```c
-         * void
-         * object_add_to_user_list (GObject     *object,
-         *                          const gchar *new_string)
-         * {
-         *   // the quark, naming the object data
-         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-         *   // retrieve the old string list
-         *   GList *list = g_object_steal_qdata (object, quark_string_list);
-         *
-         *   // prepend new string
-         *   list = g_list_prepend (list, g_strdup (new_string));
-         *   // this changed 'list', so we need to set it again
-         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-         * }
-         * static void
-         * free_string_list (gpointer data)
-         * {
-         *   GList *node, *list = data;
-         *
-         *   for (node = list; node; node = node->next)
-         *     g_free (node->data);
-         *   g_list_free (list);
-         * }
-         * ```
-         *
-         * Using `g_object_get_qdata()` in the above example, instead of
-         * `g_object_steal_qdata()` would have left the destroy function set,
-         * and thus the partial string list would have been freed upon
-         * `g_object_set_qdata_full()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        steal_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Reverts the effect of a previous call to
-         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
-         * and when it reaches zero, queued "notify" signals are emitted.
-         *
-         * Duplicate notifications for each property are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
-         * in which they have been queued.
-         *
-         * It is an error to call this function when the freeze count is zero.
-         */
-        thaw_notify(): void;
-        /**
-         * Decreases the reference count of `object`. When its reference count
-         * drops to 0, the object is finalized (i.e. its memory is freed).
-         *
-         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
-         * an instance variable of another object), it is recommended to clear the
-         * pointer to `null` rather than retain a dangling pointer to a potentially
-         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
-         */
-        unref(): void;
-        /**
-         * This function essentially limits the life time of the `closure` to
-         * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling `g_closure_invalidate()` on
-         * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
-         * added as marshal guards to the `closure`, to ensure that an extra
-         * reference count is held on `object` during invocation of the
-         * `closure`.  Usually, this function will be called on closures that
-         * use this `object` as closure data.
-         * @param closure {@link GObject.Closure} to watch
-         */
-        watch_closure(closure: GObject.Closure): void;
-        /**
-         * the `constructed` function is called by `g_object_new()` as the
-         *  final step of the object creation process.  At the point of the call, all
-         *  construction properties have been set on the object.  The purpose of this
-         *  call is to allow for object initialisation steps that can only be performed
-         *  after construction properties have been set.  `constructed` implementors
-         *  should chain up to the `constructed` call of their parent class to allow it
-         *  to complete its initialisation.
-         * @virtual
-         */
-        vfunc_constructed(): void;
-        /**
-         * emits property change notification for a bunch
-         *  of properties. Overriding `dispatch_properties_changed` should be rarely
-         *  needed.
-         * @param n_pspecs
-         * @param pspecs
-         * @virtual
-         */
-        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
-        /**
-         * the `dispose` function is supposed to drop all references to other
-         *  objects, but keep the instance otherwise intact, so that client method
-         *  invocations still work. It may be run multiple times (due to reference
-         *  loops). Before returning, `dispose` should chain up to the `dispose` method
-         *  of the parent class.
-         * @virtual
-         */
-        vfunc_dispose(): void;
-        /**
-         * instance finalization function, should finish the finalization of
-         *  the instance begun in `dispose` and chain up to the `finalize` method of the
-         *  parent class.
-         * @virtual
-         */
-        vfunc_finalize(): void;
-        /**
-         * the generic getter for all properties of this type. Should be
-         *  overridden for every type with properties.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param pspec
-         * @virtual
-         */
-        vfunc_notify(pspec: GObject.ParamSpec): void;
-        /**
-         * the generic setter for all properties of this type. Should be
-         *  overridden for every type with properties. If implementations of
-         *  `set_property` don't emit property change notification explicitly, this will
-         *  be done implicitly by the type system. However, if the notify signal is
-         *  emitted explicitly, the type system will not emit it a second time.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
-         * @param id Handler ID of the handler to be disconnected
-         */
-        disconnect(id: number): void;
-        /**
-         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
-         * @param properties Object containing the properties to set
-         */
-        set(properties: { [key: string]: any }): void;
-        /**
-         * Blocks a handler of an instance so it will not be called during any signal emissions
-         * @param id Handler ID of the handler to be blocked
-         */
-        block_signal_handler(id: number): void;
-        /**
-         * Unblocks a handler so it will be called again during any signal emissions
-         * @param id Handler ID of the handler to be unblocked
-         */
-        unblock_signal_handler(id: number): void;
-        /**
-         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
-         * @param detailedName Name of the signal to stop emission of
-         */
-        stop_emission_by_name(detailedName: string): void;
+        store_inline_attachments_sync(component: ICalGLib.Component, cancellable: Gio.Cancellable | null): boolean;
     }
 
     namespace DataCal {
@@ -5440,11 +3644,13 @@ export namespace EDataCal {
         /**
          * The object path at which to export the calendar interface
          * @construct-only
+         * @default null
          */
         get object_path(): string;
         /**
          * The object path at which to export the calendar interface
          * @construct-only
+         * @default null
          */
         get objectPath(): string;
 
@@ -5530,7 +3736,7 @@ export namespace EDataCal {
          * @param opid associated operation id
          * @param error Operation error, if any, automatically freed if passed it.
          */
-        respond_add_timezone(opid: number, error?: GLib.Error | null): void;
+        respond_add_timezone(opid: number, error: GLib.Error | null): void;
         /**
          * Notifies listeners of the completion of the create_objects method call.
          * @param opid associated operation id
@@ -5549,7 +3755,7 @@ export namespace EDataCal {
          * @param opid associated operation id
          * @param error Operation error, if any, automatically freed if passed it.
          */
-        respond_discard_alarm(opid: number, error?: GLib.Error | null): void;
+        respond_discard_alarm(opid: number, error: GLib.Error | null): void;
         /**
          * Notifies listeners of the completion of the get_attachment_uris method call.
          * @param opid associated operation id
@@ -5606,19 +3812,19 @@ export namespace EDataCal {
          * @param opid associated operation id
          * @param error Operation error, if any, automatically freed if passed it.
          */
-        respond_open(opid: number, error?: GLib.Error | null): void;
+        respond_open(opid: number, error: GLib.Error | null): void;
         /**
          * Notifies listeners of the completion of the receive_objects method call.
          * @param opid associated operation id
          * @param error Operation error, if any, automatically freed if passed it.
          */
-        respond_receive_objects(opid: number, error?: GLib.Error | null): void;
+        respond_receive_objects(opid: number, error: GLib.Error | null): void;
         /**
          * Notifies listeners of the completion of the refresh method call.
          * @param opid associated operation id
          * @param error Operation error, if any, automatically freed if passed it.
          */
-        respond_refresh(opid: number, error?: GLib.Error | null): void;
+        respond_refresh(opid: number, error: GLib.Error | null): void;
         /**
          * Notifies listeners of the completion of the remove_objects method call.
          * @param opid associated operation id
@@ -5684,7 +3890,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -5727,456 +3933,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
-        /**
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`.
-         *
-         * Whenever the `source_property` is changed the `target_property` is
-         * updated using the same value. For instance:
-         *
-         *
-         * ```c
-         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-         * ```
-         *
-         *
-         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
-         * updated with the same value of the "active" property of the action {@link GObject.Object}
-         * instance.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well.
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call `g_object_unref()` on the returned
-         * {@link GObject.Binding} instance.
-         *
-         * Removing the binding by calling `g_object_unref()` on it must only be done if
-         * the binding, `source` and `target` are only used from a single thread and it
-         * is clear that both `source` and `target` outlive the binding. Especially it
-         * is not safe to rely on this if the binding, `source` or `target` can be
-         * finalized from different threads. Keep another reference to the binding and
-         * use `g_binding_unbind()` instead to be on the safe side.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-        ): GObject.Binding;
-        /**
-         * Complete version of `g_object_bind_property()`.
-         *
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`, allowing you to set the transformation functions to be used by
-         * the binding.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property_full(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
-        ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
-        /**
-         * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all `GInitiallyUnowneds` are created with a floating reference
-         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
-         */
-        force_floating(): void;
-        /**
-         * Increases the freeze count on `object`. If the freeze count is
-         * non-zero, the emission of "notify" signals on `object` is
-         * stopped. The signals are queued until the freeze count is decreased
-         * to zero. Duplicate notifications are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
-         * object is frozen.
-         *
-         * This is necessary for accessors that modify multiple properties to prevent
-         * premature notification while the object is still being modified.
-         */
-        freeze_notify(): void;
-        /**
-         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
-         * @param key name of the key for that association
-         * @returns the data if found,          or `null` if no such data exists.
-         */
-        get_data(key: string): any | null;
-        /**
-         * Gets a property of an object.
-         *
-         * The value can be:
-         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
-         * - a GObject.Value initialized with the expected type of the property
-         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
-         *
-         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
-         *
-         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
-         * @param property_name The name of the property to get
-         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
-         */
-        get_property(property_name: string, value: GObject.Value | any): any;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        get_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Gets `n_properties` properties for an `object`.
-         * Obtained properties will be set to `values`. All properties must be valid.
-         * Warnings will be emitted and undefined behaviour may result if invalid
-         * properties are passed in.
-         * @param names the names of each property to get
-         * @param values the values of each property to get
-         */
-        getv(names: string[], values: (GObject.Value | any)[]): void;
-        /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns `true` if `object` has a floating reference
-         */
-        is_floating(): boolean;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param property_name the name of a property installed on the class of `object`.
-         */
-        notify(property_name: string): void;
-        /**
-         * Emits a "notify" signal for the property specified by `pspec` on `object`.
-         *
-         * This function omits the property name lookup, hence it is faster than
-         * `g_object_notify()`.
-         *
-         * One way to avoid using `g_object_notify()` from within the
-         * class that registered the properties, and using `g_object_notify_by_pspec()`
-         * instead, is to store the GParamSpec used with
-         * `g_object_class_install_property()` inside a static array, e.g.:
-         *
-         *
-         * ```c
-         *   typedef enum
-         *   {
-         *     PROP_FOO = 1,
-         *     PROP_LAST
-         *   } MyObjectProperty;
-         *
-         *   static GParamSpec *properties[PROP_LAST];
-         *
-         *   static void
-         *   my_object_class_init (MyObjectClass *klass)
-         *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
-         *                                              0, 100,
-         *                                              50,
-         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-         *     g_object_class_install_property (gobject_class,
-         *                                      PROP_FOO,
-         *                                      properties[PROP_FOO]);
-         *   }
-         * ```
-         *
-         *
-         * and then notify a change on the "foo" property with:
-         *
-         *
-         * ```c
-         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-         * ```
-         *
-         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
-         */
-        notify_by_pspec(pspec: GObject.ParamSpec): void;
-        /**
-         * Increases the reference count of `object`.
-         *
-         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC `typeof()`
-         * extension), so any casting the caller needs to do on the return type must be
-         * explicit.
-         * @returns the same `object`
-         */
-        ref(): GObject.Object;
-        /**
-         * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
-         *
-         * In other words, if the object is floating, then this call "assumes
-         * ownership" of the floating reference, converting it to a normal
-         * reference by clearing the floating flag while leaving the reference
-         * count unchanged.  If the object is not floating, then this call
-         * adds a new normal reference increasing the reference count by one.
-         *
-         * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for `g_object_ref()`.
-         * @returns `object`
-         */
-        ref_sink(): GObject.Object;
-        /**
-         * Releases all references to other objects. This can be used to break
-         * reference cycles.
-         *
-         * This function should only be called from object system implementations.
-         */
-        run_dispose(): void;
-        /**
-         * Each object carries around a table of associations from
-         * strings to pointers.  This function lets you set an association.
-         *
-         * If the object already had an association with that name,
-         * the old association will be destroyed.
-         *
-         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
-         * This means a copy of `key` is kept permanently (even after `object` has been
-         * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
-         * @param key name of the key
-         * @param data data to associate with that key
-         */
-        set_data(key: string, data?: any | null): void;
-        /**
-         * Sets a property on an object.
-         * @param property_name The name of the property to set
-         * @param value The value to set the property to
-         */
-        set_property(property_name: string, value: GObject.Value | any): void;
-        /**
-         * Remove a specified datum from the object's data associations,
-         * without invoking the association's destroy handler.
-         * @param key name of the key
-         * @returns the data if found, or `null`          if no such data exists.
-         */
-        steal_data(key: string): any | null;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()` and removes the `data` from object
-         * without invoking its `destroy()` function (if any was
-         * set).
-         * Usually, calling this function is only required to update
-         * user data pointers with a destroy notifier, for example:
-         *
-         * ```c
-         * void
-         * object_add_to_user_list (GObject     *object,
-         *                          const gchar *new_string)
-         * {
-         *   // the quark, naming the object data
-         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-         *   // retrieve the old string list
-         *   GList *list = g_object_steal_qdata (object, quark_string_list);
-         *
-         *   // prepend new string
-         *   list = g_list_prepend (list, g_strdup (new_string));
-         *   // this changed 'list', so we need to set it again
-         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-         * }
-         * static void
-         * free_string_list (gpointer data)
-         * {
-         *   GList *node, *list = data;
-         *
-         *   for (node = list; node; node = node->next)
-         *     g_free (node->data);
-         *   g_list_free (list);
-         * }
-         * ```
-         *
-         * Using `g_object_get_qdata()` in the above example, instead of
-         * `g_object_steal_qdata()` would have left the destroy function set,
-         * and thus the partial string list would have been freed upon
-         * `g_object_set_qdata_full()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        steal_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Reverts the effect of a previous call to
-         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
-         * and when it reaches zero, queued "notify" signals are emitted.
-         *
-         * Duplicate notifications for each property are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
-         * in which they have been queued.
-         *
-         * It is an error to call this function when the freeze count is zero.
-         */
-        thaw_notify(): void;
-        /**
-         * Decreases the reference count of `object`. When its reference count
-         * drops to 0, the object is finalized (i.e. its memory is freed).
-         *
-         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
-         * an instance variable of another object), it is recommended to clear the
-         * pointer to `null` rather than retain a dangling pointer to a potentially
-         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
-         */
-        unref(): void;
-        /**
-         * This function essentially limits the life time of the `closure` to
-         * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling `g_closure_invalidate()` on
-         * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
-         * added as marshal guards to the `closure`, to ensure that an extra
-         * reference count is held on `object` during invocation of the
-         * `closure`.  Usually, this function will be called on closures that
-         * use this `object` as closure data.
-         * @param closure {@link GObject.Closure} to watch
-         */
-        watch_closure(closure: GObject.Closure): void;
-        /**
-         * the `constructed` function is called by `g_object_new()` as the
-         *  final step of the object creation process.  At the point of the call, all
-         *  construction properties have been set on the object.  The purpose of this
-         *  call is to allow for object initialisation steps that can only be performed
-         *  after construction properties have been set.  `constructed` implementors
-         *  should chain up to the `constructed` call of their parent class to allow it
-         *  to complete its initialisation.
-         * @virtual
-         */
-        vfunc_constructed(): void;
-        /**
-         * emits property change notification for a bunch
-         *  of properties. Overriding `dispatch_properties_changed` should be rarely
-         *  needed.
-         * @param n_pspecs
-         * @param pspecs
-         * @virtual
-         */
-        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
-        /**
-         * the `dispose` function is supposed to drop all references to other
-         *  objects, but keep the instance otherwise intact, so that client method
-         *  invocations still work. It may be run multiple times (due to reference
-         *  loops). Before returning, `dispose` should chain up to the `dispose` method
-         *  of the parent class.
-         * @virtual
-         */
-        vfunc_dispose(): void;
-        /**
-         * instance finalization function, should finish the finalization of
-         *  the instance begun in `dispose` and chain up to the `finalize` method of the
-         *  parent class.
-         * @virtual
-         */
-        vfunc_finalize(): void;
-        /**
-         * the generic getter for all properties of this type. Should be
-         *  overridden for every type with properties.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param pspec
-         * @virtual
-         */
-        vfunc_notify(pspec: GObject.ParamSpec): void;
-        /**
-         * the generic setter for all properties of this type. Should be
-         *  overridden for every type with properties. If implementations of
-         *  `set_property` don't emit property change notification explicitly, this will
-         *  be done implicitly by the type system. However, if the notify signal is
-         *  emitted explicitly, the type system will not emit it a second time.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
-         * @param id Handler ID of the handler to be disconnected
-         */
-        disconnect(id: number): void;
-        /**
-         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
-         * @param properties Object containing the properties to set
-         */
-        set(properties: { [key: string]: any }): void;
-        /**
-         * Blocks a handler of an instance so it will not be called during any signal emissions
-         * @param id Handler ID of the handler to be blocked
-         */
-        block_signal_handler(id: number): void;
-        /**
-         * Unblocks a handler so it will be called again during any signal emissions
-         * @param id Handler ID of the handler to be unblocked
-         */
-        unblock_signal_handler(id: number): void;
-        /**
-         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
-         * @param detailedName Name of the signal to stop emission of
-         */
-        stop_emission_by_name(detailedName: string): void;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
     namespace DataCalFactory {
@@ -6217,7 +3974,7 @@ export namespace EDataCal {
 
         _init(...args: any[]): void;
 
-        static ['new'](backend_per_process: number, cancellable?: Gio.Cancellable | null): DataCalFactory;
+        static ['new'](backend_per_process: number, cancellable: Gio.Cancellable | null): DataCalFactory;
 
         // Signals
 
@@ -6281,7 +4038,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -6324,456 +4081,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
-        /**
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`.
-         *
-         * Whenever the `source_property` is changed the `target_property` is
-         * updated using the same value. For instance:
-         *
-         *
-         * ```c
-         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-         * ```
-         *
-         *
-         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
-         * updated with the same value of the "active" property of the action {@link GObject.Object}
-         * instance.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well.
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call `g_object_unref()` on the returned
-         * {@link GObject.Binding} instance.
-         *
-         * Removing the binding by calling `g_object_unref()` on it must only be done if
-         * the binding, `source` and `target` are only used from a single thread and it
-         * is clear that both `source` and `target` outlive the binding. Especially it
-         * is not safe to rely on this if the binding, `source` or `target` can be
-         * finalized from different threads. Keep another reference to the binding and
-         * use `g_binding_unbind()` instead to be on the safe side.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-        ): GObject.Binding;
-        /**
-         * Complete version of `g_object_bind_property()`.
-         *
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`, allowing you to set the transformation functions to be used by
-         * the binding.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property_full(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
-        ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
-        /**
-         * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all `GInitiallyUnowneds` are created with a floating reference
-         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
-         */
-        force_floating(): void;
-        /**
-         * Increases the freeze count on `object`. If the freeze count is
-         * non-zero, the emission of "notify" signals on `object` is
-         * stopped. The signals are queued until the freeze count is decreased
-         * to zero. Duplicate notifications are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
-         * object is frozen.
-         *
-         * This is necessary for accessors that modify multiple properties to prevent
-         * premature notification while the object is still being modified.
-         */
-        freeze_notify(): void;
-        /**
-         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
-         * @param key name of the key for that association
-         * @returns the data if found,          or `null` if no such data exists.
-         */
-        get_data(key: string): any | null;
-        /**
-         * Gets a property of an object.
-         *
-         * The value can be:
-         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
-         * - a GObject.Value initialized with the expected type of the property
-         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
-         *
-         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
-         *
-         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
-         * @param property_name The name of the property to get
-         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
-         */
-        get_property(property_name: string, value: GObject.Value | any): any;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        get_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Gets `n_properties` properties for an `object`.
-         * Obtained properties will be set to `values`. All properties must be valid.
-         * Warnings will be emitted and undefined behaviour may result if invalid
-         * properties are passed in.
-         * @param names the names of each property to get
-         * @param values the values of each property to get
-         */
-        getv(names: string[], values: (GObject.Value | any)[]): void;
-        /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns `true` if `object` has a floating reference
-         */
-        is_floating(): boolean;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param property_name the name of a property installed on the class of `object`.
-         */
-        notify(property_name: string): void;
-        /**
-         * Emits a "notify" signal for the property specified by `pspec` on `object`.
-         *
-         * This function omits the property name lookup, hence it is faster than
-         * `g_object_notify()`.
-         *
-         * One way to avoid using `g_object_notify()` from within the
-         * class that registered the properties, and using `g_object_notify_by_pspec()`
-         * instead, is to store the GParamSpec used with
-         * `g_object_class_install_property()` inside a static array, e.g.:
-         *
-         *
-         * ```c
-         *   typedef enum
-         *   {
-         *     PROP_FOO = 1,
-         *     PROP_LAST
-         *   } MyObjectProperty;
-         *
-         *   static GParamSpec *properties[PROP_LAST];
-         *
-         *   static void
-         *   my_object_class_init (MyObjectClass *klass)
-         *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
-         *                                              0, 100,
-         *                                              50,
-         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-         *     g_object_class_install_property (gobject_class,
-         *                                      PROP_FOO,
-         *                                      properties[PROP_FOO]);
-         *   }
-         * ```
-         *
-         *
-         * and then notify a change on the "foo" property with:
-         *
-         *
-         * ```c
-         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-         * ```
-         *
-         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
-         */
-        notify_by_pspec(pspec: GObject.ParamSpec): void;
-        /**
-         * Increases the reference count of `object`.
-         *
-         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC `typeof()`
-         * extension), so any casting the caller needs to do on the return type must be
-         * explicit.
-         * @returns the same `object`
-         */
-        ref(): GObject.Object;
-        /**
-         * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
-         *
-         * In other words, if the object is floating, then this call "assumes
-         * ownership" of the floating reference, converting it to a normal
-         * reference by clearing the floating flag while leaving the reference
-         * count unchanged.  If the object is not floating, then this call
-         * adds a new normal reference increasing the reference count by one.
-         *
-         * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for `g_object_ref()`.
-         * @returns `object`
-         */
-        ref_sink(): GObject.Object;
-        /**
-         * Releases all references to other objects. This can be used to break
-         * reference cycles.
-         *
-         * This function should only be called from object system implementations.
-         */
-        run_dispose(): void;
-        /**
-         * Each object carries around a table of associations from
-         * strings to pointers.  This function lets you set an association.
-         *
-         * If the object already had an association with that name,
-         * the old association will be destroyed.
-         *
-         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
-         * This means a copy of `key` is kept permanently (even after `object` has been
-         * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
-         * @param key name of the key
-         * @param data data to associate with that key
-         */
-        set_data(key: string, data?: any | null): void;
-        /**
-         * Sets a property on an object.
-         * @param property_name The name of the property to set
-         * @param value The value to set the property to
-         */
-        set_property(property_name: string, value: GObject.Value | any): void;
-        /**
-         * Remove a specified datum from the object's data associations,
-         * without invoking the association's destroy handler.
-         * @param key name of the key
-         * @returns the data if found, or `null`          if no such data exists.
-         */
-        steal_data(key: string): any | null;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()` and removes the `data` from object
-         * without invoking its `destroy()` function (if any was
-         * set).
-         * Usually, calling this function is only required to update
-         * user data pointers with a destroy notifier, for example:
-         *
-         * ```c
-         * void
-         * object_add_to_user_list (GObject     *object,
-         *                          const gchar *new_string)
-         * {
-         *   // the quark, naming the object data
-         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-         *   // retrieve the old string list
-         *   GList *list = g_object_steal_qdata (object, quark_string_list);
-         *
-         *   // prepend new string
-         *   list = g_list_prepend (list, g_strdup (new_string));
-         *   // this changed 'list', so we need to set it again
-         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-         * }
-         * static void
-         * free_string_list (gpointer data)
-         * {
-         *   GList *node, *list = data;
-         *
-         *   for (node = list; node; node = node->next)
-         *     g_free (node->data);
-         *   g_list_free (list);
-         * }
-         * ```
-         *
-         * Using `g_object_get_qdata()` in the above example, instead of
-         * `g_object_steal_qdata()` would have left the destroy function set,
-         * and thus the partial string list would have been freed upon
-         * `g_object_set_qdata_full()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        steal_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Reverts the effect of a previous call to
-         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
-         * and when it reaches zero, queued "notify" signals are emitted.
-         *
-         * Duplicate notifications for each property are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
-         * in which they have been queued.
-         *
-         * It is an error to call this function when the freeze count is zero.
-         */
-        thaw_notify(): void;
-        /**
-         * Decreases the reference count of `object`. When its reference count
-         * drops to 0, the object is finalized (i.e. its memory is freed).
-         *
-         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
-         * an instance variable of another object), it is recommended to clear the
-         * pointer to `null` rather than retain a dangling pointer to a potentially
-         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
-         */
-        unref(): void;
-        /**
-         * This function essentially limits the life time of the `closure` to
-         * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling `g_closure_invalidate()` on
-         * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
-         * added as marshal guards to the `closure`, to ensure that an extra
-         * reference count is held on `object` during invocation of the
-         * `closure`.  Usually, this function will be called on closures that
-         * use this `object` as closure data.
-         * @param closure {@link GObject.Closure} to watch
-         */
-        watch_closure(closure: GObject.Closure): void;
-        /**
-         * the `constructed` function is called by `g_object_new()` as the
-         *  final step of the object creation process.  At the point of the call, all
-         *  construction properties have been set on the object.  The purpose of this
-         *  call is to allow for object initialisation steps that can only be performed
-         *  after construction properties have been set.  `constructed` implementors
-         *  should chain up to the `constructed` call of their parent class to allow it
-         *  to complete its initialisation.
-         * @virtual
-         */
-        vfunc_constructed(): void;
-        /**
-         * emits property change notification for a bunch
-         *  of properties. Overriding `dispatch_properties_changed` should be rarely
-         *  needed.
-         * @param n_pspecs
-         * @param pspecs
-         * @virtual
-         */
-        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
-        /**
-         * the `dispose` function is supposed to drop all references to other
-         *  objects, but keep the instance otherwise intact, so that client method
-         *  invocations still work. It may be run multiple times (due to reference
-         *  loops). Before returning, `dispose` should chain up to the `dispose` method
-         *  of the parent class.
-         * @virtual
-         */
-        vfunc_dispose(): void;
-        /**
-         * instance finalization function, should finish the finalization of
-         *  the instance begun in `dispose` and chain up to the `finalize` method of the
-         *  parent class.
-         * @virtual
-         */
-        vfunc_finalize(): void;
-        /**
-         * the generic getter for all properties of this type. Should be
-         *  overridden for every type with properties.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param pspec
-         * @virtual
-         */
-        vfunc_notify(pspec: GObject.ParamSpec): void;
-        /**
-         * the generic setter for all properties of this type. Should be
-         *  overridden for every type with properties. If implementations of
-         *  `set_property` don't emit property change notification explicitly, this will
-         *  be done implicitly by the type system. However, if the notify signal is
-         *  emitted explicitly, the type system will not emit it a second time.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
-         * @param id Handler ID of the handler to be disconnected
-         */
-        disconnect(id: number): void;
-        /**
-         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
-         * @param properties Object containing the properties to set
-         */
-        set(properties: { [key: string]: any }): void;
-        /**
-         * Blocks a handler of an instance so it will not be called during any signal emissions
-         * @param id Handler ID of the handler to be blocked
-         */
-        block_signal_handler(id: number): void;
-        /**
-         * Unblocks a handler so it will be called again during any signal emissions
-         * @param id Handler ID of the handler to be unblocked
-         */
-        unblock_signal_handler(id: number): void;
-        /**
-         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
-         * @param detailedName Name of the signal to stop emission of
-         */
-        stop_emission_by_name(detailedName: string): void;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
     namespace DataCalView {
@@ -6792,7 +4100,7 @@ export namespace EDataCal {
             connection: Gio.DBusConnection;
             object_path: string;
             objectPath: string;
-            sexp: CalBackendSExp;
+            sexp: CalBackendSExp | null;
         }
     }
 
@@ -6817,18 +4125,20 @@ export namespace EDataCal {
         /**
          * The object path at which to export the view interface
          * @construct-only
+         * @default null
          */
         get object_path(): string;
         /**
          * The object path at which to export the view interface
          * @construct-only
+         * @default null
          */
         get objectPath(): string;
         /**
          * The query expression for this view
          * @construct-only
          */
-        get sexp(): CalBackendSExp;
+        get sexp(): CalBackendSExp | null;
 
         /**
          * Compile-time signal type information.
@@ -7043,7 +4353,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -7086,456 +4396,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
-        /**
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`.
-         *
-         * Whenever the `source_property` is changed the `target_property` is
-         * updated using the same value. For instance:
-         *
-         *
-         * ```c
-         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-         * ```
-         *
-         *
-         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
-         * updated with the same value of the "active" property of the action {@link GObject.Object}
-         * instance.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well.
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call `g_object_unref()` on the returned
-         * {@link GObject.Binding} instance.
-         *
-         * Removing the binding by calling `g_object_unref()` on it must only be done if
-         * the binding, `source` and `target` are only used from a single thread and it
-         * is clear that both `source` and `target` outlive the binding. Especially it
-         * is not safe to rely on this if the binding, `source` or `target` can be
-         * finalized from different threads. Keep another reference to the binding and
-         * use `g_binding_unbind()` instead to be on the safe side.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-        ): GObject.Binding;
-        /**
-         * Complete version of `g_object_bind_property()`.
-         *
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`, allowing you to set the transformation functions to be used by
-         * the binding.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property_full(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
-        ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
-        /**
-         * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all `GInitiallyUnowneds` are created with a floating reference
-         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
-         */
-        force_floating(): void;
-        /**
-         * Increases the freeze count on `object`. If the freeze count is
-         * non-zero, the emission of "notify" signals on `object` is
-         * stopped. The signals are queued until the freeze count is decreased
-         * to zero. Duplicate notifications are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
-         * object is frozen.
-         *
-         * This is necessary for accessors that modify multiple properties to prevent
-         * premature notification while the object is still being modified.
-         */
-        freeze_notify(): void;
-        /**
-         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
-         * @param key name of the key for that association
-         * @returns the data if found,          or `null` if no such data exists.
-         */
-        get_data(key: string): any | null;
-        /**
-         * Gets a property of an object.
-         *
-         * The value can be:
-         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
-         * - a GObject.Value initialized with the expected type of the property
-         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
-         *
-         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
-         *
-         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
-         * @param property_name The name of the property to get
-         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
-         */
-        get_property(property_name: string, value: GObject.Value | any): any;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        get_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Gets `n_properties` properties for an `object`.
-         * Obtained properties will be set to `values`. All properties must be valid.
-         * Warnings will be emitted and undefined behaviour may result if invalid
-         * properties are passed in.
-         * @param names the names of each property to get
-         * @param values the values of each property to get
-         */
-        getv(names: string[], values: (GObject.Value | any)[]): void;
-        /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns `true` if `object` has a floating reference
-         */
-        is_floating(): boolean;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param property_name the name of a property installed on the class of `object`.
-         */
-        notify(property_name: string): void;
-        /**
-         * Emits a "notify" signal for the property specified by `pspec` on `object`.
-         *
-         * This function omits the property name lookup, hence it is faster than
-         * `g_object_notify()`.
-         *
-         * One way to avoid using `g_object_notify()` from within the
-         * class that registered the properties, and using `g_object_notify_by_pspec()`
-         * instead, is to store the GParamSpec used with
-         * `g_object_class_install_property()` inside a static array, e.g.:
-         *
-         *
-         * ```c
-         *   typedef enum
-         *   {
-         *     PROP_FOO = 1,
-         *     PROP_LAST
-         *   } MyObjectProperty;
-         *
-         *   static GParamSpec *properties[PROP_LAST];
-         *
-         *   static void
-         *   my_object_class_init (MyObjectClass *klass)
-         *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
-         *                                              0, 100,
-         *                                              50,
-         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-         *     g_object_class_install_property (gobject_class,
-         *                                      PROP_FOO,
-         *                                      properties[PROP_FOO]);
-         *   }
-         * ```
-         *
-         *
-         * and then notify a change on the "foo" property with:
-         *
-         *
-         * ```c
-         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-         * ```
-         *
-         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
-         */
-        notify_by_pspec(pspec: GObject.ParamSpec): void;
-        /**
-         * Increases the reference count of `object`.
-         *
-         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC `typeof()`
-         * extension), so any casting the caller needs to do on the return type must be
-         * explicit.
-         * @returns the same `object`
-         */
-        ref(): GObject.Object;
-        /**
-         * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
-         *
-         * In other words, if the object is floating, then this call "assumes
-         * ownership" of the floating reference, converting it to a normal
-         * reference by clearing the floating flag while leaving the reference
-         * count unchanged.  If the object is not floating, then this call
-         * adds a new normal reference increasing the reference count by one.
-         *
-         * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for `g_object_ref()`.
-         * @returns `object`
-         */
-        ref_sink(): GObject.Object;
-        /**
-         * Releases all references to other objects. This can be used to break
-         * reference cycles.
-         *
-         * This function should only be called from object system implementations.
-         */
-        run_dispose(): void;
-        /**
-         * Each object carries around a table of associations from
-         * strings to pointers.  This function lets you set an association.
-         *
-         * If the object already had an association with that name,
-         * the old association will be destroyed.
-         *
-         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
-         * This means a copy of `key` is kept permanently (even after `object` has been
-         * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
-         * @param key name of the key
-         * @param data data to associate with that key
-         */
-        set_data(key: string, data?: any | null): void;
-        /**
-         * Sets a property on an object.
-         * @param property_name The name of the property to set
-         * @param value The value to set the property to
-         */
-        set_property(property_name: string, value: GObject.Value | any): void;
-        /**
-         * Remove a specified datum from the object's data associations,
-         * without invoking the association's destroy handler.
-         * @param key name of the key
-         * @returns the data if found, or `null`          if no such data exists.
-         */
-        steal_data(key: string): any | null;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()` and removes the `data` from object
-         * without invoking its `destroy()` function (if any was
-         * set).
-         * Usually, calling this function is only required to update
-         * user data pointers with a destroy notifier, for example:
-         *
-         * ```c
-         * void
-         * object_add_to_user_list (GObject     *object,
-         *                          const gchar *new_string)
-         * {
-         *   // the quark, naming the object data
-         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-         *   // retrieve the old string list
-         *   GList *list = g_object_steal_qdata (object, quark_string_list);
-         *
-         *   // prepend new string
-         *   list = g_list_prepend (list, g_strdup (new_string));
-         *   // this changed 'list', so we need to set it again
-         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-         * }
-         * static void
-         * free_string_list (gpointer data)
-         * {
-         *   GList *node, *list = data;
-         *
-         *   for (node = list; node; node = node->next)
-         *     g_free (node->data);
-         *   g_list_free (list);
-         * }
-         * ```
-         *
-         * Using `g_object_get_qdata()` in the above example, instead of
-         * `g_object_steal_qdata()` would have left the destroy function set,
-         * and thus the partial string list would have been freed upon
-         * `g_object_set_qdata_full()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        steal_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Reverts the effect of a previous call to
-         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
-         * and when it reaches zero, queued "notify" signals are emitted.
-         *
-         * Duplicate notifications for each property are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
-         * in which they have been queued.
-         *
-         * It is an error to call this function when the freeze count is zero.
-         */
-        thaw_notify(): void;
-        /**
-         * Decreases the reference count of `object`. When its reference count
-         * drops to 0, the object is finalized (i.e. its memory is freed).
-         *
-         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
-         * an instance variable of another object), it is recommended to clear the
-         * pointer to `null` rather than retain a dangling pointer to a potentially
-         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
-         */
-        unref(): void;
-        /**
-         * This function essentially limits the life time of the `closure` to
-         * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling `g_closure_invalidate()` on
-         * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
-         * added as marshal guards to the `closure`, to ensure that an extra
-         * reference count is held on `object` during invocation of the
-         * `closure`.  Usually, this function will be called on closures that
-         * use this `object` as closure data.
-         * @param closure {@link GObject.Closure} to watch
-         */
-        watch_closure(closure: GObject.Closure): void;
-        /**
-         * the `constructed` function is called by `g_object_new()` as the
-         *  final step of the object creation process.  At the point of the call, all
-         *  construction properties have been set on the object.  The purpose of this
-         *  call is to allow for object initialisation steps that can only be performed
-         *  after construction properties have been set.  `constructed` implementors
-         *  should chain up to the `constructed` call of their parent class to allow it
-         *  to complete its initialisation.
-         * @virtual
-         */
-        vfunc_constructed(): void;
-        /**
-         * emits property change notification for a bunch
-         *  of properties. Overriding `dispatch_properties_changed` should be rarely
-         *  needed.
-         * @param n_pspecs
-         * @param pspecs
-         * @virtual
-         */
-        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
-        /**
-         * the `dispose` function is supposed to drop all references to other
-         *  objects, but keep the instance otherwise intact, so that client method
-         *  invocations still work. It may be run multiple times (due to reference
-         *  loops). Before returning, `dispose` should chain up to the `dispose` method
-         *  of the parent class.
-         * @virtual
-         */
-        vfunc_dispose(): void;
-        /**
-         * instance finalization function, should finish the finalization of
-         *  the instance begun in `dispose` and chain up to the `finalize` method of the
-         *  parent class.
-         * @virtual
-         */
-        vfunc_finalize(): void;
-        /**
-         * the generic getter for all properties of this type. Should be
-         *  overridden for every type with properties.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param pspec
-         * @virtual
-         */
-        vfunc_notify(pspec: GObject.ParamSpec): void;
-        /**
-         * the generic setter for all properties of this type. Should be
-         *  overridden for every type with properties. If implementations of
-         *  `set_property` don't emit property change notification explicitly, this will
-         *  be done implicitly by the type system. However, if the notify signal is
-         *  emitted explicitly, the type system will not emit it a second time.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
-         * @param id Handler ID of the handler to be disconnected
-         */
-        disconnect(id: number): void;
-        /**
-         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
-         * @param properties Object containing the properties to set
-         */
-        set(properties: { [key: string]: any }): void;
-        /**
-         * Blocks a handler of an instance so it will not be called during any signal emissions
-         * @param id Handler ID of the handler to be blocked
-         */
-        block_signal_handler(id: number): void;
-        /**
-         * Unblocks a handler so it will be called again during any signal emissions
-         * @param id Handler ID of the handler to be unblocked
-         */
-        unblock_signal_handler(id: number): void;
-        /**
-         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
-         * @param detailedName Name of the signal to stop emission of
-         */
-        stop_emission_by_name(detailedName: string): void;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
     namespace IntervalTree {
@@ -7649,7 +4510,7 @@ export namespace EDataCal {
 
         _init(...args: any[]): void;
 
-        static ['new'](cancellable?: Gio.Cancellable | null): SubprocessCalFactory;
+        static ['new'](cancellable: Gio.Cancellable | null): SubprocessCalFactory;
 
         // Signals
 
@@ -7715,7 +4576,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -7758,456 +4619,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
-        /**
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`.
-         *
-         * Whenever the `source_property` is changed the `target_property` is
-         * updated using the same value. For instance:
-         *
-         *
-         * ```c
-         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-         * ```
-         *
-         *
-         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
-         * updated with the same value of the "active" property of the action {@link GObject.Object}
-         * instance.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well.
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call `g_object_unref()` on the returned
-         * {@link GObject.Binding} instance.
-         *
-         * Removing the binding by calling `g_object_unref()` on it must only be done if
-         * the binding, `source` and `target` are only used from a single thread and it
-         * is clear that both `source` and `target` outlive the binding. Especially it
-         * is not safe to rely on this if the binding, `source` or `target` can be
-         * finalized from different threads. Keep another reference to the binding and
-         * use `g_binding_unbind()` instead to be on the safe side.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-        ): GObject.Binding;
-        /**
-         * Complete version of `g_object_bind_property()`.
-         *
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`, allowing you to set the transformation functions to be used by
-         * the binding.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property_full(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
-        ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
-        /**
-         * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all `GInitiallyUnowneds` are created with a floating reference
-         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
-         */
-        force_floating(): void;
-        /**
-         * Increases the freeze count on `object`. If the freeze count is
-         * non-zero, the emission of "notify" signals on `object` is
-         * stopped. The signals are queued until the freeze count is decreased
-         * to zero. Duplicate notifications are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
-         * object is frozen.
-         *
-         * This is necessary for accessors that modify multiple properties to prevent
-         * premature notification while the object is still being modified.
-         */
-        freeze_notify(): void;
-        /**
-         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
-         * @param key name of the key for that association
-         * @returns the data if found,          or `null` if no such data exists.
-         */
-        get_data(key: string): any | null;
-        /**
-         * Gets a property of an object.
-         *
-         * The value can be:
-         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
-         * - a GObject.Value initialized with the expected type of the property
-         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
-         *
-         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
-         *
-         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
-         * @param property_name The name of the property to get
-         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
-         */
-        get_property(property_name: string, value: GObject.Value | any): any;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        get_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Gets `n_properties` properties for an `object`.
-         * Obtained properties will be set to `values`. All properties must be valid.
-         * Warnings will be emitted and undefined behaviour may result if invalid
-         * properties are passed in.
-         * @param names the names of each property to get
-         * @param values the values of each property to get
-         */
-        getv(names: string[], values: (GObject.Value | any)[]): void;
-        /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns `true` if `object` has a floating reference
-         */
-        is_floating(): boolean;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param property_name the name of a property installed on the class of `object`.
-         */
-        notify(property_name: string): void;
-        /**
-         * Emits a "notify" signal for the property specified by `pspec` on `object`.
-         *
-         * This function omits the property name lookup, hence it is faster than
-         * `g_object_notify()`.
-         *
-         * One way to avoid using `g_object_notify()` from within the
-         * class that registered the properties, and using `g_object_notify_by_pspec()`
-         * instead, is to store the GParamSpec used with
-         * `g_object_class_install_property()` inside a static array, e.g.:
-         *
-         *
-         * ```c
-         *   typedef enum
-         *   {
-         *     PROP_FOO = 1,
-         *     PROP_LAST
-         *   } MyObjectProperty;
-         *
-         *   static GParamSpec *properties[PROP_LAST];
-         *
-         *   static void
-         *   my_object_class_init (MyObjectClass *klass)
-         *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
-         *                                              0, 100,
-         *                                              50,
-         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-         *     g_object_class_install_property (gobject_class,
-         *                                      PROP_FOO,
-         *                                      properties[PROP_FOO]);
-         *   }
-         * ```
-         *
-         *
-         * and then notify a change on the "foo" property with:
-         *
-         *
-         * ```c
-         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-         * ```
-         *
-         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
-         */
-        notify_by_pspec(pspec: GObject.ParamSpec): void;
-        /**
-         * Increases the reference count of `object`.
-         *
-         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC `typeof()`
-         * extension), so any casting the caller needs to do on the return type must be
-         * explicit.
-         * @returns the same `object`
-         */
-        ref(): GObject.Object;
-        /**
-         * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
-         *
-         * In other words, if the object is floating, then this call "assumes
-         * ownership" of the floating reference, converting it to a normal
-         * reference by clearing the floating flag while leaving the reference
-         * count unchanged.  If the object is not floating, then this call
-         * adds a new normal reference increasing the reference count by one.
-         *
-         * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for `g_object_ref()`.
-         * @returns `object`
-         */
-        ref_sink(): GObject.Object;
-        /**
-         * Releases all references to other objects. This can be used to break
-         * reference cycles.
-         *
-         * This function should only be called from object system implementations.
-         */
-        run_dispose(): void;
-        /**
-         * Each object carries around a table of associations from
-         * strings to pointers.  This function lets you set an association.
-         *
-         * If the object already had an association with that name,
-         * the old association will be destroyed.
-         *
-         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
-         * This means a copy of `key` is kept permanently (even after `object` has been
-         * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
-         * @param key name of the key
-         * @param data data to associate with that key
-         */
-        set_data(key: string, data?: any | null): void;
-        /**
-         * Sets a property on an object.
-         * @param property_name The name of the property to set
-         * @param value The value to set the property to
-         */
-        set_property(property_name: string, value: GObject.Value | any): void;
-        /**
-         * Remove a specified datum from the object's data associations,
-         * without invoking the association's destroy handler.
-         * @param key name of the key
-         * @returns the data if found, or `null`          if no such data exists.
-         */
-        steal_data(key: string): any | null;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()` and removes the `data` from object
-         * without invoking its `destroy()` function (if any was
-         * set).
-         * Usually, calling this function is only required to update
-         * user data pointers with a destroy notifier, for example:
-         *
-         * ```c
-         * void
-         * object_add_to_user_list (GObject     *object,
-         *                          const gchar *new_string)
-         * {
-         *   // the quark, naming the object data
-         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-         *   // retrieve the old string list
-         *   GList *list = g_object_steal_qdata (object, quark_string_list);
-         *
-         *   // prepend new string
-         *   list = g_list_prepend (list, g_strdup (new_string));
-         *   // this changed 'list', so we need to set it again
-         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-         * }
-         * static void
-         * free_string_list (gpointer data)
-         * {
-         *   GList *node, *list = data;
-         *
-         *   for (node = list; node; node = node->next)
-         *     g_free (node->data);
-         *   g_list_free (list);
-         * }
-         * ```
-         *
-         * Using `g_object_get_qdata()` in the above example, instead of
-         * `g_object_steal_qdata()` would have left the destroy function set,
-         * and thus the partial string list would have been freed upon
-         * `g_object_set_qdata_full()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        steal_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Reverts the effect of a previous call to
-         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
-         * and when it reaches zero, queued "notify" signals are emitted.
-         *
-         * Duplicate notifications for each property are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
-         * in which they have been queued.
-         *
-         * It is an error to call this function when the freeze count is zero.
-         */
-        thaw_notify(): void;
-        /**
-         * Decreases the reference count of `object`. When its reference count
-         * drops to 0, the object is finalized (i.e. its memory is freed).
-         *
-         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
-         * an instance variable of another object), it is recommended to clear the
-         * pointer to `null` rather than retain a dangling pointer to a potentially
-         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
-         */
-        unref(): void;
-        /**
-         * This function essentially limits the life time of the `closure` to
-         * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling `g_closure_invalidate()` on
-         * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
-         * added as marshal guards to the `closure`, to ensure that an extra
-         * reference count is held on `object` during invocation of the
-         * `closure`.  Usually, this function will be called on closures that
-         * use this `object` as closure data.
-         * @param closure {@link GObject.Closure} to watch
-         */
-        watch_closure(closure: GObject.Closure): void;
-        /**
-         * the `constructed` function is called by `g_object_new()` as the
-         *  final step of the object creation process.  At the point of the call, all
-         *  construction properties have been set on the object.  The purpose of this
-         *  call is to allow for object initialisation steps that can only be performed
-         *  after construction properties have been set.  `constructed` implementors
-         *  should chain up to the `constructed` call of their parent class to allow it
-         *  to complete its initialisation.
-         * @virtual
-         */
-        vfunc_constructed(): void;
-        /**
-         * emits property change notification for a bunch
-         *  of properties. Overriding `dispatch_properties_changed` should be rarely
-         *  needed.
-         * @param n_pspecs
-         * @param pspecs
-         * @virtual
-         */
-        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
-        /**
-         * the `dispose` function is supposed to drop all references to other
-         *  objects, but keep the instance otherwise intact, so that client method
-         *  invocations still work. It may be run multiple times (due to reference
-         *  loops). Before returning, `dispose` should chain up to the `dispose` method
-         *  of the parent class.
-         * @virtual
-         */
-        vfunc_dispose(): void;
-        /**
-         * instance finalization function, should finish the finalization of
-         *  the instance begun in `dispose` and chain up to the `finalize` method of the
-         *  parent class.
-         * @virtual
-         */
-        vfunc_finalize(): void;
-        /**
-         * the generic getter for all properties of this type. Should be
-         *  overridden for every type with properties.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param pspec
-         * @virtual
-         */
-        vfunc_notify(pspec: GObject.ParamSpec): void;
-        /**
-         * the generic setter for all properties of this type. Should be
-         *  overridden for every type with properties. If implementations of
-         *  `set_property` don't emit property change notification explicitly, this will
-         *  be done implicitly by the type system. However, if the notify signal is
-         *  emitted explicitly, the type system will not emit it a second time.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
-         * @param id Handler ID of the handler to be disconnected
-         */
-        disconnect(id: number): void;
-        /**
-         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
-         * @param properties Object containing the properties to set
-         */
-        set(properties: { [key: string]: any }): void;
-        /**
-         * Blocks a handler of an instance so it will not be called during any signal emissions
-         * @param id Handler ID of the handler to be blocked
-         */
-        block_signal_handler(id: number): void;
-        /**
-         * Unblocks a handler so it will be called again during any signal emissions
-         * @param id Handler ID of the handler to be unblocked
-         */
-        unblock_signal_handler(id: number): void;
-        /**
-         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
-         * @param detailedName Name of the signal to stop emission of
-         */
-        stop_emission_by_name(detailedName: string): void;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
     /**
@@ -8299,7 +4711,7 @@ export namespace EDataCal {
          * or `e_cal_cache_offline_change_copy()`.
          * @param change an {@link EDataCal.CalCacheOfflineChange}
          */
-        static free(change?: any | null): void;
+        static free(change: any | null): void;
 
         // Methods
 
@@ -8350,7 +4762,7 @@ export namespace EDataCal {
             }>,
         );
 
-        static ['new'](uid: string, rid: string | null, object: string, extra?: string | null): CalCacheSearchData;
+        static ['new'](uid: string, rid: string | null, object: string, extra: string | null): CalCacheSearchData;
 
         // Static methods
 
@@ -8359,7 +4771,7 @@ export namespace EDataCal {
          * or `e_cal_cache_search_data_copy()`.
          * @param ptr an {@link EDataCal.CalCacheSearchData}
          */
-        static free(ptr?: any | null): void;
+        static free(ptr: any | null): void;
 
         // Methods
 
@@ -8399,9 +4811,9 @@ export namespace EDataCal {
 
         static ['new'](
             uid: string,
-            revision?: string | null,
-            object?: string | null,
-            extra?: string | null,
+            revision: string | null,
+            object: string | null,
+            extra: string | null,
         ): CalMetaBackendInfo;
 
         // Static methods
@@ -8411,7 +4823,7 @@ export namespace EDataCal {
          * or `e_cal_meta_backend_info_copy()`.
          * @param ptr an {@link EDataCal.CalMetaBackendInfo}
          */
-        static free(ptr?: any | null): void;
+        static free(ptr: any | null): void;
 
         // Methods
 

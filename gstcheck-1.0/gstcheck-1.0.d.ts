@@ -163,7 +163,7 @@ export namespace GstCheck {
      * @param object_to_unref The {@link GObject.Object} to unref
      * @since 1.6
      */
-    function check_object_destroyed_on_unref(object_to_unref?: any | null): void;
+    function check_object_destroyed_on_unref(object_to_unref: any | null): void;
     /**
      * Remove a filter that has been added by `gst_check_add_log_filter`.
      *
@@ -363,13 +363,13 @@ export namespace GstCheck {
      * @gir-type Callback
      */
     interface HarnessPrepareBufferFunc {
-        (h: Harness, data?: any | null): Gst.Buffer;
+        (h: Harness, data: any | null): Gst.Buffer;
     }
     /**
      * @gir-type Callback
      */
     interface HarnessPrepareEventFunc {
-        (h: Harness, data?: any | null): Gst.Event;
+        (h: Harness, data: any | null): Gst.Event;
     }
     namespace TestClock {
         // Signal signatures
@@ -550,8 +550,14 @@ export namespace GstCheck {
 
         // Properties
 
+        /**
+         * @default Gst.ClockType.MONOTONIC
+         */
         get clock_type(): Gst.ClockType;
         set clock_type(val: Gst.ClockType);
+        /**
+         * @default Gst.ClockType.MONOTONIC
+         */
         get clockType(): Gst.ClockType;
         set clockType(val: Gst.ClockType);
         /**
@@ -561,6 +567,7 @@ export namespace GstCheck {
          * `gst_test_clock_new()` was called the clock started at time zero, and thus
          * this property contains the value 0.
          * @construct-only
+         * @default 0
          */
         get start_time(): number;
         /**
@@ -570,6 +577,7 @@ export namespace GstCheck {
          * `gst_test_clock_new()` was called the clock started at time zero, and thus
          * this property contains the value 0.
          * @construct-only
+         * @default 0
          */
         get startTime(): number;
 
@@ -621,7 +629,7 @@ export namespace GstCheck {
          * MT safe.
          * @param pending_list List     of of pending `GstClockIDs`
          */
-        static id_list_get_latest_time(pending_list?: Gst.ClockID[] | null): Gst.ClockTime;
+        static id_list_get_latest_time(pending_list: Gst.ClockID[] | null): Gst.ClockTime;
 
         // Methods
 
@@ -690,7 +698,7 @@ export namespace GstCheck {
          * MT safe.
          * @param pending_list List     of pending `GstClockIDs`
          */
-        process_id_list(pending_list?: Gst.ClockID[] | null): number;
+        process_id_list(pending_list: Gst.ClockID[] | null): number;
         /**
          * MT safe.
          * @returns a {@link Gst.ClockID} containing the next pending clock notification.
@@ -933,7 +941,7 @@ export namespace GstCheck {
          * @param api a metadata API
          * @param params API specific parameters
          */
-        add_propose_allocation_meta(api: GObject.GType, params?: Gst.Structure | null): void;
+        add_propose_allocation_meta(api: GObject.GType, params: Gst.Structure | null): void;
         /**
          * Similar to gst_harness_add_sink_harness, this is a convenience to
          * directly create a sink-harness using the `sink_element_name` name specified.
@@ -1284,7 +1292,7 @@ export namespace GstCheck {
          * @param allocator a {@link Gst.Allocator}
          * @param params a {@link Gst.AllocationParams}
          */
-        set_propose_allocator(allocator?: Gst.Allocator | null, params?: Gst.AllocationParams | null): void;
+        set_propose_allocator(allocator: Gst.Allocator | null, params: Gst.AllocationParams | null): void;
         /**
          * Sets the `GstHarness` sinkpad caps.
          *

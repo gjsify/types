@@ -999,12 +999,12 @@ export namespace Ipuz {
         // Constructor properties interface
 
         interface ConstructorProps extends Crossword.ConstructorProps, Clues.ConstructorProps {
-            normalized_quote: string;
-            normalizedQuote: string;
-            normalized_source: string;
-            normalizedSource: string;
-            quote: string;
-            source: string;
+            normalized_quote: string | null;
+            normalizedQuote: string | null;
+            normalized_source: string | null;
+            normalizedSource: string | null;
+            quote: string | null;
+            source: string | null;
         }
     }
 
@@ -1178,49 +1178,55 @@ export namespace Ipuz {
          * the grid and contains no punctuation. Every character in this
          * string is also in the {@link Ipuz.Puzzle.charset}.
          * @read-only
+         * @default null
          */
-        get normalized_quote(): string;
+        get normalized_quote(): string | null;
         /**
          * String representing the quote of the puzzle. This is built from
          * the grid and contains no punctuation. Every character in this
          * string is also in the {@link Ipuz.Puzzle.charset}.
          * @read-only
+         * @default null
          */
-        get normalizedQuote(): string;
+        get normalizedQuote(): string | null;
         /**
          * String representing the author and/or title of the quote. It is
          * built from the clues and contains no punctuation or
          * spacing. Every character in this string is also in the
          * {@link Ipuz.Puzzle.charset}.
          * @read-only
+         * @default null
          */
-        get normalized_source(): string;
+        get normalized_source(): string | null;
         /**
          * String representing the author and/or title of the quote. It is
          * built from the clues and contains no punctuation or
          * spacing. Every character in this string is also in the
          * {@link Ipuz.Puzzle.charset}.
          * @read-only
+         * @default null
          */
-        get normalizedSource(): string;
+        get normalizedSource(): string | null;
         /**
          * Human readable string representing the quote of the puzzle.
          *
          * ::: note
          *     This string has to be set by the puzzle author and is stored
          *     in a libipuz extension to the ipuz file format.
+         * @default null
          */
-        get quote(): string;
-        set quote(val: string);
+        get quote(): string | null;
+        set quote(val: string | null);
         /**
          * Human readable string representing the author and/or title of the quote.
          *
          * ::: note
          *     This string has to be set by the puzzle author and is stored
          *     in a libipuz extension to the ipuz file format.
+         * @default null
          */
-        get source(): string;
-        set source(val: string);
+        get source(): string | null;
+        set source(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -1449,24 +1455,6 @@ export namespace Ipuz {
          */
         set_source(source_str: string): void;
         /**
-         * The {@link Ipuz.Guesses} associated with the grid.
-         * @category Inherited from Ipuz.Grid
-         */
-        get guesses(): Guesses;
-        set guesses(val: Guesses);
-        /**
-         * Number of rows in the grid.
-         * @category Inherited from Ipuz.Grid
-         */
-        get height(): number;
-        set height(val: number);
-        /**
-         * Number of columns in the grid.
-         * @category Inherited from Ipuz.Grid
-         */
-        get width(): number;
-        set width(val: number);
-        /**
          * Adds a new clue set to `clues`. This clue set will be in the
          * direction of `direction`, and will be empty. If `label` is set, then
          * it will set the label of the newly created clue set.
@@ -1485,7 +1473,7 @@ export namespace Ipuz {
          * @param label an optional label for the newly added clue set
          * @returns the direction of the newly created clue set, or {@link Ipuz.ClueDirection.NONE}
          */
-        add_clue_set(direction: ClueDirection, label?: string | null): ClueDirection;
+        add_clue_set(direction: ClueDirection, label: string | null): ClueDirection;
         /**
          * Removes all the clues and clue sets of `clues`.
          */
@@ -1666,7 +1654,7 @@ export namespace Ipuz {
          * @param label an optional label for the newly added clue set
          * @virtual
          */
-        vfunc_add_clue_set(direction: ClueDirection, label?: string | null): ClueDirection;
+        vfunc_add_clue_set(direction: ClueDirection, label: string | null): ClueDirection;
         /**
          * Removes all the clues and clue sets of `clues`.
          * @virtual
@@ -1798,201 +1786,6 @@ export namespace Ipuz {
          * @virtual
          */
         vfunc_unlink_clue(clue: Clue): void;
-        /**
-         * Invokes the operation determined by `check_type` on `cell` and
-         * `guesses` at `coord`.
-         *
-         * This function allows subclasses to specify puzzle-specific
-         * behavior. For example, if `check_type` is `IPUZ_GRID_GUESSABLE`, then
-         * it will return `true` if the cell can accept a users's guess (eg. is
-         * not a block or null with crosswords, etc).
-         *
-         * This function is used by {@link Ipuz.Grid} to maintain consistency
-         * of the puzzle in its operations. Subclasses should implement this
-         * method in order to define their behavior. It is not expected that
-         * most users will ever need to call this function.
-         *
-         * See {@link Ipuz.GridCheckType} for more information on the specific
-         * operations.
-         *
-         * ::: note
-         *     Some of the operation types can modify either guesses or cell.
-         * @param cell A cell to check
-         * @param coord The coordinate of `cell`
-         * @param guesses The guesses to check
-         * @param check_type The operation to perform at `coord`
-         * @returns `true`, if the condition determined by %check_type is met
-         */
-        check_cell(cell: Cell, coord: CellCoord, guesses: Guesses, check_type: GridCheckType): boolean;
-        /**
-         * Invokes the operation determined by `check_type` on the stride guess
-         * determined by `direction` and `index`.
-         *
-         * This function allows subclasses to specify puzzle-specific
-         * behavior. Unlike {@link Ipuz.Grid.check_cell}, this function is
-         * optional for puzzles as most puzzles don't use stride guesses. A
-         * default handler is provided that just returns `false`.
-         *
-         * This function is used by {@link Ipuz.Grid} to maintain consistency
-         * of the puzzle in its operations. Subclasses should implement this
-         * method in order to define their behavior. It is not expected that
-         * most users will ever need to call this function.
-         *
-         * See {@link Ipuz.GridCheckType} for more information on the specific
-         * operations.
-         *
-         * ::: note
-         *     Some of the operation types can modify either guesses or cell.
-         * @param direction
-         * @param index
-         * @param guesses The guesses to check
-         * @param check_type The operation to perform at `coord`
-         * @returns `true`, if the condition determined by %check_type is met
-         */
-        check_stride(direction: ClueDirection, index: number, guesses: Guesses, check_type: GridCheckType): boolean;
-        /**
-         * Creates a fresh {@link Ipuz.Guesses}. It will be initialized to
-         * the current state of the grid.
-         *
-         * The guessses can be used to solve the puzzle, and as such, its
-         * format is puzzle-type dependent. See each puzzle's *Guesses*
-         * section for more information on the format.
-         *
-         * Note that this method won't change the internal guesses of self. If
-         * that is desired, you should pair this with
-         * {@link Ipuz.Grid.set_guesses}. As an example:
-         *
-         * ```C
-         * g_autoptr (IpuzGuesses) guesses;
-         *
-         * guesses = ipuz_grid_create_guesses (grid);
-         * ipuz_grid_set_guesses (grid, guesses);
-         * ```
-         * @returns A new {@link Ipuz.Guesses} matching `self`
-         */
-        create_guesses(): Guesses;
-        /**
-         * Fixes the guesses associated with `self`. The result will be a
-         * playable {@link Ipuz.Guesses} struct.
-         *
-         * ::: note
-         *     This method will try to keep any guesses on cells intact. If a
-         *     fresh playing grid is desired, then it's recommended to call
-         *     {@link Ipuz.Grid.create_guesses}, and then attach it to `self`
-         *     with {@link IpuzGrid.set_guesses}.
-         */
-        fix_guesses(): void;
-        /**
-         * Calls `func` for each {@link Ipuz.Cell} in `self`.
-         * @param func The function to call for each cell
-         */
-        foreach_cell(func: GridForeachCellFunc): void;
-        /**
-         * Retrieves the cell at `coord`. If the coordinates are
-         * outside the bounds of the grid then `null` will be returned.
-         *
-         * The coordinate system of the `self` is similar to that of a spreadsheet. The
-         * origin is the upper left corner. Row's increase vertically downward, and
-         * columns increase horizontally.
-         * @param coord Coordinates for the cell.
-         * @returns The cell at `coord`.
-         */
-        get_cell(coord: CellCoord): Cell | null;
-        /**
-         * Returns the {@link Ipuz.Guesses} associated with `self`.
-         * @returns The {@link Ipuz.Guesses} associated with `self`
-         */
-        get_guesses(): Guesses;
-        /**
-         * Returns the number of rows in `self`.
-         * @returns The height of `self`
-         */
-        get_height(): number;
-        /**
-         * Returns the number of columns in `self`.
-         * @returns The width of `self`
-         */
-        get_width(): number;
-        /**
-         * Resizes `self` to the new size.
-         *
-         * If one of the dimensions is larger than before, the new cells will
-         * be filled in with puzzle-appropriate default values.
-         *
-         * This function will not adjust its internal {@link Ipuz.Guesses}
-         * object to match the new size. That can be done by a separate call
-         * to {@link Ipuz.Grid.fix_guesses}.
-         * @param new_width The new width
-         * @param new_height The new height
-         */
-        resize(new_width: number, new_height: number): void;
-        /**
-         * Sets `guesses` for `self`. If there's a mismatch in the cell types
-         * between `guesses` and `self` then `false` is returned. `guesses` will
-         * be set regardless of the return value.
-         *
-         * Mismatches can be fixed by calling {@link Ipuz.Grid.fix_guesses}.
-         * @param guesses The {@link Ipuz.Guesses} to set on self
-         * @returns `true`, if guesses matches `self`
-         */
-        set_guesses(guesses?: Guesses | null): boolean;
-        /**
-         * Invokes the operation determined by `check_type` on `cell` and
-         * `guesses` at `coord`.
-         *
-         * This function allows subclasses to specify puzzle-specific
-         * behavior. For example, if `check_type` is `IPUZ_GRID_GUESSABLE`, then
-         * it will return `true` if the cell can accept a users's guess (eg. is
-         * not a block or null with crosswords, etc).
-         *
-         * This function is used by {@link Ipuz.Grid} to maintain consistency
-         * of the puzzle in its operations. Subclasses should implement this
-         * method in order to define their behavior. It is not expected that
-         * most users will ever need to call this function.
-         *
-         * See {@link Ipuz.GridCheckType} for more information on the specific
-         * operations.
-         *
-         * ::: note
-         *     Some of the operation types can modify either guesses or cell.
-         * @param cell A cell to check
-         * @param coord The coordinate of `cell`
-         * @param guesses The guesses to check
-         * @param check_type The operation to perform at `coord`
-         * @virtual
-         */
-        vfunc_check_cell(cell: Cell, coord: CellCoord, guesses: Guesses, check_type: GridCheckType): boolean;
-        /**
-         * Invokes the operation determined by `check_type` on the stride guess
-         * determined by `direction` and `index`.
-         *
-         * This function allows subclasses to specify puzzle-specific
-         * behavior. Unlike {@link Ipuz.Grid.check_cell}, this function is
-         * optional for puzzles as most puzzles don't use stride guesses. A
-         * default handler is provided that just returns `false`.
-         *
-         * This function is used by {@link Ipuz.Grid} to maintain consistency
-         * of the puzzle in its operations. Subclasses should implement this
-         * method in order to define their behavior. It is not expected that
-         * most users will ever need to call this function.
-         *
-         * See {@link Ipuz.GridCheckType} for more information on the specific
-         * operations.
-         *
-         * ::: note
-         *     Some of the operation types can modify either guesses or cell.
-         * @param direction
-         * @param index
-         * @param guesses The guesses to check
-         * @param check_type The operation to perform at `coord`
-         * @virtual
-         */
-        vfunc_check_stride(
-            direction: ClueDirection,
-            index: number,
-            guesses: Guesses,
-            check_type: GridCheckType,
-        ): boolean;
     }
 
     namespace Arrowword {
@@ -2085,24 +1878,6 @@ export namespace Ipuz {
         foreach_blocks(func: ArrowwordForeachBlocksFunc): void;
         print(): void;
         /**
-         * The {@link Ipuz.Guesses} associated with the grid.
-         * @category Inherited from Ipuz.Grid
-         */
-        get guesses(): Guesses;
-        set guesses(val: Guesses);
-        /**
-         * Number of rows in the grid.
-         * @category Inherited from Ipuz.Grid
-         */
-        get height(): number;
-        set height(val: number);
-        /**
-         * Number of columns in the grid.
-         * @category Inherited from Ipuz.Grid
-         */
-        get width(): number;
-        set width(val: number);
-        /**
          * Adds a new clue set to `clues`. This clue set will be in the
          * direction of `direction`, and will be empty. If `label` is set, then
          * it will set the label of the newly created clue set.
@@ -2121,7 +1896,7 @@ export namespace Ipuz {
          * @param label an optional label for the newly added clue set
          * @returns the direction of the newly created clue set, or {@link Ipuz.ClueDirection.NONE}
          */
-        add_clue_set(direction: ClueDirection, label?: string | null): ClueDirection;
+        add_clue_set(direction: ClueDirection, label: string | null): ClueDirection;
         /**
          * Removes all the clues and clue sets of `clues`.
          */
@@ -2302,7 +2077,7 @@ export namespace Ipuz {
          * @param label an optional label for the newly added clue set
          * @virtual
          */
-        vfunc_add_clue_set(direction: ClueDirection, label?: string | null): ClueDirection;
+        vfunc_add_clue_set(direction: ClueDirection, label: string | null): ClueDirection;
         /**
          * Removes all the clues and clue sets of `clues`.
          * @virtual
@@ -2434,201 +2209,6 @@ export namespace Ipuz {
          * @virtual
          */
         vfunc_unlink_clue(clue: Clue): void;
-        /**
-         * Invokes the operation determined by `check_type` on `cell` and
-         * `guesses` at `coord`.
-         *
-         * This function allows subclasses to specify puzzle-specific
-         * behavior. For example, if `check_type` is `IPUZ_GRID_GUESSABLE`, then
-         * it will return `true` if the cell can accept a users's guess (eg. is
-         * not a block or null with crosswords, etc).
-         *
-         * This function is used by {@link Ipuz.Grid} to maintain consistency
-         * of the puzzle in its operations. Subclasses should implement this
-         * method in order to define their behavior. It is not expected that
-         * most users will ever need to call this function.
-         *
-         * See {@link Ipuz.GridCheckType} for more information on the specific
-         * operations.
-         *
-         * ::: note
-         *     Some of the operation types can modify either guesses or cell.
-         * @param cell A cell to check
-         * @param coord The coordinate of `cell`
-         * @param guesses The guesses to check
-         * @param check_type The operation to perform at `coord`
-         * @returns `true`, if the condition determined by %check_type is met
-         */
-        check_cell(cell: Cell, coord: CellCoord, guesses: Guesses, check_type: GridCheckType): boolean;
-        /**
-         * Invokes the operation determined by `check_type` on the stride guess
-         * determined by `direction` and `index`.
-         *
-         * This function allows subclasses to specify puzzle-specific
-         * behavior. Unlike {@link Ipuz.Grid.check_cell}, this function is
-         * optional for puzzles as most puzzles don't use stride guesses. A
-         * default handler is provided that just returns `false`.
-         *
-         * This function is used by {@link Ipuz.Grid} to maintain consistency
-         * of the puzzle in its operations. Subclasses should implement this
-         * method in order to define their behavior. It is not expected that
-         * most users will ever need to call this function.
-         *
-         * See {@link Ipuz.GridCheckType} for more information on the specific
-         * operations.
-         *
-         * ::: note
-         *     Some of the operation types can modify either guesses or cell.
-         * @param direction
-         * @param index
-         * @param guesses The guesses to check
-         * @param check_type The operation to perform at `coord`
-         * @returns `true`, if the condition determined by %check_type is met
-         */
-        check_stride(direction: ClueDirection, index: number, guesses: Guesses, check_type: GridCheckType): boolean;
-        /**
-         * Creates a fresh {@link Ipuz.Guesses}. It will be initialized to
-         * the current state of the grid.
-         *
-         * The guessses can be used to solve the puzzle, and as such, its
-         * format is puzzle-type dependent. See each puzzle's *Guesses*
-         * section for more information on the format.
-         *
-         * Note that this method won't change the internal guesses of self. If
-         * that is desired, you should pair this with
-         * {@link Ipuz.Grid.set_guesses}. As an example:
-         *
-         * ```C
-         * g_autoptr (IpuzGuesses) guesses;
-         *
-         * guesses = ipuz_grid_create_guesses (grid);
-         * ipuz_grid_set_guesses (grid, guesses);
-         * ```
-         * @returns A new {@link Ipuz.Guesses} matching `self`
-         */
-        create_guesses(): Guesses;
-        /**
-         * Fixes the guesses associated with `self`. The result will be a
-         * playable {@link Ipuz.Guesses} struct.
-         *
-         * ::: note
-         *     This method will try to keep any guesses on cells intact. If a
-         *     fresh playing grid is desired, then it's recommended to call
-         *     {@link Ipuz.Grid.create_guesses}, and then attach it to `self`
-         *     with {@link IpuzGrid.set_guesses}.
-         */
-        fix_guesses(): void;
-        /**
-         * Calls `func` for each {@link Ipuz.Cell} in `self`.
-         * @param func The function to call for each cell
-         */
-        foreach_cell(func: GridForeachCellFunc): void;
-        /**
-         * Retrieves the cell at `coord`. If the coordinates are
-         * outside the bounds of the grid then `null` will be returned.
-         *
-         * The coordinate system of the `self` is similar to that of a spreadsheet. The
-         * origin is the upper left corner. Row's increase vertically downward, and
-         * columns increase horizontally.
-         * @param coord Coordinates for the cell.
-         * @returns The cell at `coord`.
-         */
-        get_cell(coord: CellCoord): Cell | null;
-        /**
-         * Returns the {@link Ipuz.Guesses} associated with `self`.
-         * @returns The {@link Ipuz.Guesses} associated with `self`
-         */
-        get_guesses(): Guesses;
-        /**
-         * Returns the number of rows in `self`.
-         * @returns The height of `self`
-         */
-        get_height(): number;
-        /**
-         * Returns the number of columns in `self`.
-         * @returns The width of `self`
-         */
-        get_width(): number;
-        /**
-         * Resizes `self` to the new size.
-         *
-         * If one of the dimensions is larger than before, the new cells will
-         * be filled in with puzzle-appropriate default values.
-         *
-         * This function will not adjust its internal {@link Ipuz.Guesses}
-         * object to match the new size. That can be done by a separate call
-         * to {@link Ipuz.Grid.fix_guesses}.
-         * @param new_width The new width
-         * @param new_height The new height
-         */
-        resize(new_width: number, new_height: number): void;
-        /**
-         * Sets `guesses` for `self`. If there's a mismatch in the cell types
-         * between `guesses` and `self` then `false` is returned. `guesses` will
-         * be set regardless of the return value.
-         *
-         * Mismatches can be fixed by calling {@link Ipuz.Grid.fix_guesses}.
-         * @param guesses The {@link Ipuz.Guesses} to set on self
-         * @returns `true`, if guesses matches `self`
-         */
-        set_guesses(guesses?: Guesses | null): boolean;
-        /**
-         * Invokes the operation determined by `check_type` on `cell` and
-         * `guesses` at `coord`.
-         *
-         * This function allows subclasses to specify puzzle-specific
-         * behavior. For example, if `check_type` is `IPUZ_GRID_GUESSABLE`, then
-         * it will return `true` if the cell can accept a users's guess (eg. is
-         * not a block or null with crosswords, etc).
-         *
-         * This function is used by {@link Ipuz.Grid} to maintain consistency
-         * of the puzzle in its operations. Subclasses should implement this
-         * method in order to define their behavior. It is not expected that
-         * most users will ever need to call this function.
-         *
-         * See {@link Ipuz.GridCheckType} for more information on the specific
-         * operations.
-         *
-         * ::: note
-         *     Some of the operation types can modify either guesses or cell.
-         * @param cell A cell to check
-         * @param coord The coordinate of `cell`
-         * @param guesses The guesses to check
-         * @param check_type The operation to perform at `coord`
-         * @virtual
-         */
-        vfunc_check_cell(cell: Cell, coord: CellCoord, guesses: Guesses, check_type: GridCheckType): boolean;
-        /**
-         * Invokes the operation determined by `check_type` on the stride guess
-         * determined by `direction` and `index`.
-         *
-         * This function allows subclasses to specify puzzle-specific
-         * behavior. Unlike {@link Ipuz.Grid.check_cell}, this function is
-         * optional for puzzles as most puzzles don't use stride guesses. A
-         * default handler is provided that just returns `false`.
-         *
-         * This function is used by {@link Ipuz.Grid} to maintain consistency
-         * of the puzzle in its operations. Subclasses should implement this
-         * method in order to define their behavior. It is not expected that
-         * most users will ever need to call this function.
-         *
-         * See {@link Ipuz.GridCheckType} for more information on the specific
-         * operations.
-         *
-         * ::: note
-         *     Some of the operation types can modify either guesses or cell.
-         * @param direction
-         * @param index
-         * @param guesses The guesses to check
-         * @param check_type The operation to perform at `coord`
-         * @virtual
-         */
-        vfunc_check_stride(
-            direction: ClueDirection,
-            index: number,
-            guesses: Guesses,
-            check_type: GridCheckType,
-        ): boolean;
     }
 
     namespace Barred {
@@ -2834,24 +2414,6 @@ export namespace Ipuz {
          */
         set_cell_bars(coord: CellCoord, sides: StyleSides): boolean;
         /**
-         * The {@link Ipuz.Guesses} associated with the grid.
-         * @category Inherited from Ipuz.Grid
-         */
-        get guesses(): Guesses;
-        set guesses(val: Guesses);
-        /**
-         * Number of rows in the grid.
-         * @category Inherited from Ipuz.Grid
-         */
-        get height(): number;
-        set height(val: number);
-        /**
-         * Number of columns in the grid.
-         * @category Inherited from Ipuz.Grid
-         */
-        get width(): number;
-        set width(val: number);
-        /**
          * Adds a new clue set to `clues`. This clue set will be in the
          * direction of `direction`, and will be empty. If `label` is set, then
          * it will set the label of the newly created clue set.
@@ -2870,7 +2432,7 @@ export namespace Ipuz {
          * @param label an optional label for the newly added clue set
          * @returns the direction of the newly created clue set, or {@link Ipuz.ClueDirection.NONE}
          */
-        add_clue_set(direction: ClueDirection, label?: string | null): ClueDirection;
+        add_clue_set(direction: ClueDirection, label: string | null): ClueDirection;
         /**
          * Removes all the clues and clue sets of `clues`.
          */
@@ -3051,7 +2613,7 @@ export namespace Ipuz {
          * @param label an optional label for the newly added clue set
          * @virtual
          */
-        vfunc_add_clue_set(direction: ClueDirection, label?: string | null): ClueDirection;
+        vfunc_add_clue_set(direction: ClueDirection, label: string | null): ClueDirection;
         /**
          * Removes all the clues and clue sets of `clues`.
          * @virtual
@@ -3183,201 +2745,6 @@ export namespace Ipuz {
          * @virtual
          */
         vfunc_unlink_clue(clue: Clue): void;
-        /**
-         * Invokes the operation determined by `check_type` on `cell` and
-         * `guesses` at `coord`.
-         *
-         * This function allows subclasses to specify puzzle-specific
-         * behavior. For example, if `check_type` is `IPUZ_GRID_GUESSABLE`, then
-         * it will return `true` if the cell can accept a users's guess (eg. is
-         * not a block or null with crosswords, etc).
-         *
-         * This function is used by {@link Ipuz.Grid} to maintain consistency
-         * of the puzzle in its operations. Subclasses should implement this
-         * method in order to define their behavior. It is not expected that
-         * most users will ever need to call this function.
-         *
-         * See {@link Ipuz.GridCheckType} for more information on the specific
-         * operations.
-         *
-         * ::: note
-         *     Some of the operation types can modify either guesses or cell.
-         * @param cell A cell to check
-         * @param coord The coordinate of `cell`
-         * @param guesses The guesses to check
-         * @param check_type The operation to perform at `coord`
-         * @returns `true`, if the condition determined by %check_type is met
-         */
-        check_cell(cell: Cell, coord: CellCoord, guesses: Guesses, check_type: GridCheckType): boolean;
-        /**
-         * Invokes the operation determined by `check_type` on the stride guess
-         * determined by `direction` and `index`.
-         *
-         * This function allows subclasses to specify puzzle-specific
-         * behavior. Unlike {@link Ipuz.Grid.check_cell}, this function is
-         * optional for puzzles as most puzzles don't use stride guesses. A
-         * default handler is provided that just returns `false`.
-         *
-         * This function is used by {@link Ipuz.Grid} to maintain consistency
-         * of the puzzle in its operations. Subclasses should implement this
-         * method in order to define their behavior. It is not expected that
-         * most users will ever need to call this function.
-         *
-         * See {@link Ipuz.GridCheckType} for more information on the specific
-         * operations.
-         *
-         * ::: note
-         *     Some of the operation types can modify either guesses or cell.
-         * @param direction
-         * @param index
-         * @param guesses The guesses to check
-         * @param check_type The operation to perform at `coord`
-         * @returns `true`, if the condition determined by %check_type is met
-         */
-        check_stride(direction: ClueDirection, index: number, guesses: Guesses, check_type: GridCheckType): boolean;
-        /**
-         * Creates a fresh {@link Ipuz.Guesses}. It will be initialized to
-         * the current state of the grid.
-         *
-         * The guessses can be used to solve the puzzle, and as such, its
-         * format is puzzle-type dependent. See each puzzle's *Guesses*
-         * section for more information on the format.
-         *
-         * Note that this method won't change the internal guesses of self. If
-         * that is desired, you should pair this with
-         * {@link Ipuz.Grid.set_guesses}. As an example:
-         *
-         * ```C
-         * g_autoptr (IpuzGuesses) guesses;
-         *
-         * guesses = ipuz_grid_create_guesses (grid);
-         * ipuz_grid_set_guesses (grid, guesses);
-         * ```
-         * @returns A new {@link Ipuz.Guesses} matching `self`
-         */
-        create_guesses(): Guesses;
-        /**
-         * Fixes the guesses associated with `self`. The result will be a
-         * playable {@link Ipuz.Guesses} struct.
-         *
-         * ::: note
-         *     This method will try to keep any guesses on cells intact. If a
-         *     fresh playing grid is desired, then it's recommended to call
-         *     {@link Ipuz.Grid.create_guesses}, and then attach it to `self`
-         *     with {@link IpuzGrid.set_guesses}.
-         */
-        fix_guesses(): void;
-        /**
-         * Calls `func` for each {@link Ipuz.Cell} in `self`.
-         * @param func The function to call for each cell
-         */
-        foreach_cell(func: GridForeachCellFunc): void;
-        /**
-         * Retrieves the cell at `coord`. If the coordinates are
-         * outside the bounds of the grid then `null` will be returned.
-         *
-         * The coordinate system of the `self` is similar to that of a spreadsheet. The
-         * origin is the upper left corner. Row's increase vertically downward, and
-         * columns increase horizontally.
-         * @param coord Coordinates for the cell.
-         * @returns The cell at `coord`.
-         */
-        get_cell(coord: CellCoord): Cell | null;
-        /**
-         * Returns the {@link Ipuz.Guesses} associated with `self`.
-         * @returns The {@link Ipuz.Guesses} associated with `self`
-         */
-        get_guesses(): Guesses;
-        /**
-         * Returns the number of rows in `self`.
-         * @returns The height of `self`
-         */
-        get_height(): number;
-        /**
-         * Returns the number of columns in `self`.
-         * @returns The width of `self`
-         */
-        get_width(): number;
-        /**
-         * Resizes `self` to the new size.
-         *
-         * If one of the dimensions is larger than before, the new cells will
-         * be filled in with puzzle-appropriate default values.
-         *
-         * This function will not adjust its internal {@link Ipuz.Guesses}
-         * object to match the new size. That can be done by a separate call
-         * to {@link Ipuz.Grid.fix_guesses}.
-         * @param new_width The new width
-         * @param new_height The new height
-         */
-        resize(new_width: number, new_height: number): void;
-        /**
-         * Sets `guesses` for `self`. If there's a mismatch in the cell types
-         * between `guesses` and `self` then `false` is returned. `guesses` will
-         * be set regardless of the return value.
-         *
-         * Mismatches can be fixed by calling {@link Ipuz.Grid.fix_guesses}.
-         * @param guesses The {@link Ipuz.Guesses} to set on self
-         * @returns `true`, if guesses matches `self`
-         */
-        set_guesses(guesses?: Guesses | null): boolean;
-        /**
-         * Invokes the operation determined by `check_type` on `cell` and
-         * `guesses` at `coord`.
-         *
-         * This function allows subclasses to specify puzzle-specific
-         * behavior. For example, if `check_type` is `IPUZ_GRID_GUESSABLE`, then
-         * it will return `true` if the cell can accept a users's guess (eg. is
-         * not a block or null with crosswords, etc).
-         *
-         * This function is used by {@link Ipuz.Grid} to maintain consistency
-         * of the puzzle in its operations. Subclasses should implement this
-         * method in order to define their behavior. It is not expected that
-         * most users will ever need to call this function.
-         *
-         * See {@link Ipuz.GridCheckType} for more information on the specific
-         * operations.
-         *
-         * ::: note
-         *     Some of the operation types can modify either guesses or cell.
-         * @param cell A cell to check
-         * @param coord The coordinate of `cell`
-         * @param guesses The guesses to check
-         * @param check_type The operation to perform at `coord`
-         * @virtual
-         */
-        vfunc_check_cell(cell: Cell, coord: CellCoord, guesses: Guesses, check_type: GridCheckType): boolean;
-        /**
-         * Invokes the operation determined by `check_type` on the stride guess
-         * determined by `direction` and `index`.
-         *
-         * This function allows subclasses to specify puzzle-specific
-         * behavior. Unlike {@link Ipuz.Grid.check_cell}, this function is
-         * optional for puzzles as most puzzles don't use stride guesses. A
-         * default handler is provided that just returns `false`.
-         *
-         * This function is used by {@link Ipuz.Grid} to maintain consistency
-         * of the puzzle in its operations. Subclasses should implement this
-         * method in order to define their behavior. It is not expected that
-         * most users will ever need to call this function.
-         *
-         * See {@link Ipuz.GridCheckType} for more information on the specific
-         * operations.
-         *
-         * ::: note
-         *     Some of the operation types can modify either guesses or cell.
-         * @param direction
-         * @param index
-         * @param guesses The guesses to check
-         * @param check_type The operation to perform at `coord`
-         * @virtual
-         */
-        vfunc_check_stride(
-            direction: ClueDirection,
-            index: number,
-            guesses: Guesses,
-            check_type: GridCheckType,
-        ): boolean;
     }
 
     namespace Crossword {
@@ -3522,21 +2889,25 @@ export namespace Ipuz {
 
         /**
          * An indication of how to display the clues relative to the grid.
+         * @default Ipuz.CluePlacement.NULL
          */
         get clue_placement(): CluePlacement;
         set clue_placement(val: CluePlacement);
         /**
          * An indication of how to display the clues relative to the grid.
+         * @default Ipuz.CluePlacement.NULL
          */
         get cluePlacement(): CluePlacement;
         set cluePlacement(val: CluePlacement);
         /**
          * Whether the puzzle should be displayed with enumerations.
+         * @default false
          */
         get show_enumerations(): boolean;
         set show_enumerations(val: boolean);
         /**
          * Whether the puzzle should be displayed with enumerations.
+         * @default false
          */
         get showEnumerations(): boolean;
         set showEnumerations(val: boolean);
@@ -3897,24 +3268,6 @@ export namespace Ipuz {
          */
         set_show_enumerations(show_enumerations: boolean): void;
         /**
-         * The {@link Ipuz.Guesses} associated with the grid.
-         * @category Inherited from Ipuz.Grid
-         */
-        get guesses(): Guesses;
-        set guesses(val: Guesses);
-        /**
-         * Number of rows in the grid.
-         * @category Inherited from Ipuz.Grid
-         */
-        get height(): number;
-        set height(val: number);
-        /**
-         * Number of columns in the grid.
-         * @category Inherited from Ipuz.Grid
-         */
-        get width(): number;
-        set width(val: number);
-        /**
          * Adds a new clue set to `clues`. This clue set will be in the
          * direction of `direction`, and will be empty. If `label` is set, then
          * it will set the label of the newly created clue set.
@@ -3933,7 +3286,7 @@ export namespace Ipuz {
          * @param label an optional label for the newly added clue set
          * @returns the direction of the newly created clue set, or {@link Ipuz.ClueDirection.NONE}
          */
-        add_clue_set(direction: ClueDirection, label?: string | null): ClueDirection;
+        add_clue_set(direction: ClueDirection, label: string | null): ClueDirection;
         /**
          * Removes all the clues and clue sets of `clues`.
          */
@@ -4114,7 +3467,7 @@ export namespace Ipuz {
          * @param label an optional label for the newly added clue set
          * @virtual
          */
-        vfunc_add_clue_set(direction: ClueDirection, label?: string | null): ClueDirection;
+        vfunc_add_clue_set(direction: ClueDirection, label: string | null): ClueDirection;
         /**
          * Removes all the clues and clue sets of `clues`.
          * @virtual
@@ -4246,201 +3599,6 @@ export namespace Ipuz {
          * @virtual
          */
         vfunc_unlink_clue(clue: Clue): void;
-        /**
-         * Invokes the operation determined by `check_type` on `cell` and
-         * `guesses` at `coord`.
-         *
-         * This function allows subclasses to specify puzzle-specific
-         * behavior. For example, if `check_type` is `IPUZ_GRID_GUESSABLE`, then
-         * it will return `true` if the cell can accept a users's guess (eg. is
-         * not a block or null with crosswords, etc).
-         *
-         * This function is used by {@link Ipuz.Grid} to maintain consistency
-         * of the puzzle in its operations. Subclasses should implement this
-         * method in order to define their behavior. It is not expected that
-         * most users will ever need to call this function.
-         *
-         * See {@link Ipuz.GridCheckType} for more information on the specific
-         * operations.
-         *
-         * ::: note
-         *     Some of the operation types can modify either guesses or cell.
-         * @param cell A cell to check
-         * @param coord The coordinate of `cell`
-         * @param guesses The guesses to check
-         * @param check_type The operation to perform at `coord`
-         * @returns `true`, if the condition determined by %check_type is met
-         */
-        check_cell(cell: Cell, coord: CellCoord, guesses: Guesses, check_type: GridCheckType): boolean;
-        /**
-         * Invokes the operation determined by `check_type` on the stride guess
-         * determined by `direction` and `index`.
-         *
-         * This function allows subclasses to specify puzzle-specific
-         * behavior. Unlike {@link Ipuz.Grid.check_cell}, this function is
-         * optional for puzzles as most puzzles don't use stride guesses. A
-         * default handler is provided that just returns `false`.
-         *
-         * This function is used by {@link Ipuz.Grid} to maintain consistency
-         * of the puzzle in its operations. Subclasses should implement this
-         * method in order to define their behavior. It is not expected that
-         * most users will ever need to call this function.
-         *
-         * See {@link Ipuz.GridCheckType} for more information on the specific
-         * operations.
-         *
-         * ::: note
-         *     Some of the operation types can modify either guesses or cell.
-         * @param direction
-         * @param index
-         * @param guesses The guesses to check
-         * @param check_type The operation to perform at `coord`
-         * @returns `true`, if the condition determined by %check_type is met
-         */
-        check_stride(direction: ClueDirection, index: number, guesses: Guesses, check_type: GridCheckType): boolean;
-        /**
-         * Creates a fresh {@link Ipuz.Guesses}. It will be initialized to
-         * the current state of the grid.
-         *
-         * The guessses can be used to solve the puzzle, and as such, its
-         * format is puzzle-type dependent. See each puzzle's *Guesses*
-         * section for more information on the format.
-         *
-         * Note that this method won't change the internal guesses of self. If
-         * that is desired, you should pair this with
-         * {@link Ipuz.Grid.set_guesses}. As an example:
-         *
-         * ```C
-         * g_autoptr (IpuzGuesses) guesses;
-         *
-         * guesses = ipuz_grid_create_guesses (grid);
-         * ipuz_grid_set_guesses (grid, guesses);
-         * ```
-         * @returns A new {@link Ipuz.Guesses} matching `self`
-         */
-        create_guesses(): Guesses;
-        /**
-         * Fixes the guesses associated with `self`. The result will be a
-         * playable {@link Ipuz.Guesses} struct.
-         *
-         * ::: note
-         *     This method will try to keep any guesses on cells intact. If a
-         *     fresh playing grid is desired, then it's recommended to call
-         *     {@link Ipuz.Grid.create_guesses}, and then attach it to `self`
-         *     with {@link IpuzGrid.set_guesses}.
-         */
-        fix_guesses(): void;
-        /**
-         * Calls `func` for each {@link Ipuz.Cell} in `self`.
-         * @param func The function to call for each cell
-         */
-        foreach_cell(func: GridForeachCellFunc): void;
-        /**
-         * Retrieves the cell at `coord`. If the coordinates are
-         * outside the bounds of the grid then `null` will be returned.
-         *
-         * The coordinate system of the `self` is similar to that of a spreadsheet. The
-         * origin is the upper left corner. Row's increase vertically downward, and
-         * columns increase horizontally.
-         * @param coord Coordinates for the cell.
-         * @returns The cell at `coord`.
-         */
-        get_cell(coord: CellCoord): Cell | null;
-        /**
-         * Returns the {@link Ipuz.Guesses} associated with `self`.
-         * @returns The {@link Ipuz.Guesses} associated with `self`
-         */
-        get_guesses(): Guesses;
-        /**
-         * Returns the number of rows in `self`.
-         * @returns The height of `self`
-         */
-        get_height(): number;
-        /**
-         * Returns the number of columns in `self`.
-         * @returns The width of `self`
-         */
-        get_width(): number;
-        /**
-         * Resizes `self` to the new size.
-         *
-         * If one of the dimensions is larger than before, the new cells will
-         * be filled in with puzzle-appropriate default values.
-         *
-         * This function will not adjust its internal {@link Ipuz.Guesses}
-         * object to match the new size. That can be done by a separate call
-         * to {@link Ipuz.Grid.fix_guesses}.
-         * @param new_width The new width
-         * @param new_height The new height
-         */
-        resize(new_width: number, new_height: number): void;
-        /**
-         * Sets `guesses` for `self`. If there's a mismatch in the cell types
-         * between `guesses` and `self` then `false` is returned. `guesses` will
-         * be set regardless of the return value.
-         *
-         * Mismatches can be fixed by calling {@link Ipuz.Grid.fix_guesses}.
-         * @param guesses The {@link Ipuz.Guesses} to set on self
-         * @returns `true`, if guesses matches `self`
-         */
-        set_guesses(guesses?: Guesses | null): boolean;
-        /**
-         * Invokes the operation determined by `check_type` on `cell` and
-         * `guesses` at `coord`.
-         *
-         * This function allows subclasses to specify puzzle-specific
-         * behavior. For example, if `check_type` is `IPUZ_GRID_GUESSABLE`, then
-         * it will return `true` if the cell can accept a users's guess (eg. is
-         * not a block or null with crosswords, etc).
-         *
-         * This function is used by {@link Ipuz.Grid} to maintain consistency
-         * of the puzzle in its operations. Subclasses should implement this
-         * method in order to define their behavior. It is not expected that
-         * most users will ever need to call this function.
-         *
-         * See {@link Ipuz.GridCheckType} for more information on the specific
-         * operations.
-         *
-         * ::: note
-         *     Some of the operation types can modify either guesses or cell.
-         * @param cell A cell to check
-         * @param coord The coordinate of `cell`
-         * @param guesses The guesses to check
-         * @param check_type The operation to perform at `coord`
-         * @virtual
-         */
-        vfunc_check_cell(cell: Cell, coord: CellCoord, guesses: Guesses, check_type: GridCheckType): boolean;
-        /**
-         * Invokes the operation determined by `check_type` on the stride guess
-         * determined by `direction` and `index`.
-         *
-         * This function allows subclasses to specify puzzle-specific
-         * behavior. Unlike {@link Ipuz.Grid.check_cell}, this function is
-         * optional for puzzles as most puzzles don't use stride guesses. A
-         * default handler is provided that just returns `false`.
-         *
-         * This function is used by {@link Ipuz.Grid} to maintain consistency
-         * of the puzzle in its operations. Subclasses should implement this
-         * method in order to define their behavior. It is not expected that
-         * most users will ever need to call this function.
-         *
-         * See {@link Ipuz.GridCheckType} for more information on the specific
-         * operations.
-         *
-         * ::: note
-         *     Some of the operation types can modify either guesses or cell.
-         * @param direction
-         * @param index
-         * @param guesses The guesses to check
-         * @param check_type The operation to perform at `coord`
-         * @virtual
-         */
-        vfunc_check_stride(
-            direction: ClueDirection,
-            index: number,
-            guesses: Guesses,
-            check_type: GridCheckType,
-        ): boolean;
     }
 
     namespace Cryptic {
@@ -4580,24 +3738,6 @@ export namespace Ipuz {
         ): void;
         emit(signal: string, ...args: any[]): void;
         /**
-         * The {@link Ipuz.Guesses} associated with the grid.
-         * @category Inherited from Ipuz.Grid
-         */
-        get guesses(): Guesses;
-        set guesses(val: Guesses);
-        /**
-         * Number of rows in the grid.
-         * @category Inherited from Ipuz.Grid
-         */
-        get height(): number;
-        set height(val: number);
-        /**
-         * Number of columns in the grid.
-         * @category Inherited from Ipuz.Grid
-         */
-        get width(): number;
-        set width(val: number);
-        /**
          * Adds a new clue set to `clues`. This clue set will be in the
          * direction of `direction`, and will be empty. If `label` is set, then
          * it will set the label of the newly created clue set.
@@ -4616,7 +3756,7 @@ export namespace Ipuz {
          * @param label an optional label for the newly added clue set
          * @returns the direction of the newly created clue set, or {@link Ipuz.ClueDirection.NONE}
          */
-        add_clue_set(direction: ClueDirection, label?: string | null): ClueDirection;
+        add_clue_set(direction: ClueDirection, label: string | null): ClueDirection;
         /**
          * Removes all the clues and clue sets of `clues`.
          */
@@ -4797,7 +3937,7 @@ export namespace Ipuz {
          * @param label an optional label for the newly added clue set
          * @virtual
          */
-        vfunc_add_clue_set(direction: ClueDirection, label?: string | null): ClueDirection;
+        vfunc_add_clue_set(direction: ClueDirection, label: string | null): ClueDirection;
         /**
          * Removes all the clues and clue sets of `clues`.
          * @virtual
@@ -4929,201 +4069,6 @@ export namespace Ipuz {
          * @virtual
          */
         vfunc_unlink_clue(clue: Clue): void;
-        /**
-         * Invokes the operation determined by `check_type` on `cell` and
-         * `guesses` at `coord`.
-         *
-         * This function allows subclasses to specify puzzle-specific
-         * behavior. For example, if `check_type` is `IPUZ_GRID_GUESSABLE`, then
-         * it will return `true` if the cell can accept a users's guess (eg. is
-         * not a block or null with crosswords, etc).
-         *
-         * This function is used by {@link Ipuz.Grid} to maintain consistency
-         * of the puzzle in its operations. Subclasses should implement this
-         * method in order to define their behavior. It is not expected that
-         * most users will ever need to call this function.
-         *
-         * See {@link Ipuz.GridCheckType} for more information on the specific
-         * operations.
-         *
-         * ::: note
-         *     Some of the operation types can modify either guesses or cell.
-         * @param cell A cell to check
-         * @param coord The coordinate of `cell`
-         * @param guesses The guesses to check
-         * @param check_type The operation to perform at `coord`
-         * @returns `true`, if the condition determined by %check_type is met
-         */
-        check_cell(cell: Cell, coord: CellCoord, guesses: Guesses, check_type: GridCheckType): boolean;
-        /**
-         * Invokes the operation determined by `check_type` on the stride guess
-         * determined by `direction` and `index`.
-         *
-         * This function allows subclasses to specify puzzle-specific
-         * behavior. Unlike {@link Ipuz.Grid.check_cell}, this function is
-         * optional for puzzles as most puzzles don't use stride guesses. A
-         * default handler is provided that just returns `false`.
-         *
-         * This function is used by {@link Ipuz.Grid} to maintain consistency
-         * of the puzzle in its operations. Subclasses should implement this
-         * method in order to define their behavior. It is not expected that
-         * most users will ever need to call this function.
-         *
-         * See {@link Ipuz.GridCheckType} for more information on the specific
-         * operations.
-         *
-         * ::: note
-         *     Some of the operation types can modify either guesses or cell.
-         * @param direction
-         * @param index
-         * @param guesses The guesses to check
-         * @param check_type The operation to perform at `coord`
-         * @returns `true`, if the condition determined by %check_type is met
-         */
-        check_stride(direction: ClueDirection, index: number, guesses: Guesses, check_type: GridCheckType): boolean;
-        /**
-         * Creates a fresh {@link Ipuz.Guesses}. It will be initialized to
-         * the current state of the grid.
-         *
-         * The guessses can be used to solve the puzzle, and as such, its
-         * format is puzzle-type dependent. See each puzzle's *Guesses*
-         * section for more information on the format.
-         *
-         * Note that this method won't change the internal guesses of self. If
-         * that is desired, you should pair this with
-         * {@link Ipuz.Grid.set_guesses}. As an example:
-         *
-         * ```C
-         * g_autoptr (IpuzGuesses) guesses;
-         *
-         * guesses = ipuz_grid_create_guesses (grid);
-         * ipuz_grid_set_guesses (grid, guesses);
-         * ```
-         * @returns A new {@link Ipuz.Guesses} matching `self`
-         */
-        create_guesses(): Guesses;
-        /**
-         * Fixes the guesses associated with `self`. The result will be a
-         * playable {@link Ipuz.Guesses} struct.
-         *
-         * ::: note
-         *     This method will try to keep any guesses on cells intact. If a
-         *     fresh playing grid is desired, then it's recommended to call
-         *     {@link Ipuz.Grid.create_guesses}, and then attach it to `self`
-         *     with {@link IpuzGrid.set_guesses}.
-         */
-        fix_guesses(): void;
-        /**
-         * Calls `func` for each {@link Ipuz.Cell} in `self`.
-         * @param func The function to call for each cell
-         */
-        foreach_cell(func: GridForeachCellFunc): void;
-        /**
-         * Retrieves the cell at `coord`. If the coordinates are
-         * outside the bounds of the grid then `null` will be returned.
-         *
-         * The coordinate system of the `self` is similar to that of a spreadsheet. The
-         * origin is the upper left corner. Row's increase vertically downward, and
-         * columns increase horizontally.
-         * @param coord Coordinates for the cell.
-         * @returns The cell at `coord`.
-         */
-        get_cell(coord: CellCoord): Cell | null;
-        /**
-         * Returns the {@link Ipuz.Guesses} associated with `self`.
-         * @returns The {@link Ipuz.Guesses} associated with `self`
-         */
-        get_guesses(): Guesses;
-        /**
-         * Returns the number of rows in `self`.
-         * @returns The height of `self`
-         */
-        get_height(): number;
-        /**
-         * Returns the number of columns in `self`.
-         * @returns The width of `self`
-         */
-        get_width(): number;
-        /**
-         * Resizes `self` to the new size.
-         *
-         * If one of the dimensions is larger than before, the new cells will
-         * be filled in with puzzle-appropriate default values.
-         *
-         * This function will not adjust its internal {@link Ipuz.Guesses}
-         * object to match the new size. That can be done by a separate call
-         * to {@link Ipuz.Grid.fix_guesses}.
-         * @param new_width The new width
-         * @param new_height The new height
-         */
-        resize(new_width: number, new_height: number): void;
-        /**
-         * Sets `guesses` for `self`. If there's a mismatch in the cell types
-         * between `guesses` and `self` then `false` is returned. `guesses` will
-         * be set regardless of the return value.
-         *
-         * Mismatches can be fixed by calling {@link Ipuz.Grid.fix_guesses}.
-         * @param guesses The {@link Ipuz.Guesses} to set on self
-         * @returns `true`, if guesses matches `self`
-         */
-        set_guesses(guesses?: Guesses | null): boolean;
-        /**
-         * Invokes the operation determined by `check_type` on `cell` and
-         * `guesses` at `coord`.
-         *
-         * This function allows subclasses to specify puzzle-specific
-         * behavior. For example, if `check_type` is `IPUZ_GRID_GUESSABLE`, then
-         * it will return `true` if the cell can accept a users's guess (eg. is
-         * not a block or null with crosswords, etc).
-         *
-         * This function is used by {@link Ipuz.Grid} to maintain consistency
-         * of the puzzle in its operations. Subclasses should implement this
-         * method in order to define their behavior. It is not expected that
-         * most users will ever need to call this function.
-         *
-         * See {@link Ipuz.GridCheckType} for more information on the specific
-         * operations.
-         *
-         * ::: note
-         *     Some of the operation types can modify either guesses or cell.
-         * @param cell A cell to check
-         * @param coord The coordinate of `cell`
-         * @param guesses The guesses to check
-         * @param check_type The operation to perform at `coord`
-         * @virtual
-         */
-        vfunc_check_cell(cell: Cell, coord: CellCoord, guesses: Guesses, check_type: GridCheckType): boolean;
-        /**
-         * Invokes the operation determined by `check_type` on the stride guess
-         * determined by `direction` and `index`.
-         *
-         * This function allows subclasses to specify puzzle-specific
-         * behavior. Unlike {@link Ipuz.Grid.check_cell}, this function is
-         * optional for puzzles as most puzzles don't use stride guesses. A
-         * default handler is provided that just returns `false`.
-         *
-         * This function is used by {@link Ipuz.Grid} to maintain consistency
-         * of the puzzle in its operations. Subclasses should implement this
-         * method in order to define their behavior. It is not expected that
-         * most users will ever need to call this function.
-         *
-         * See {@link Ipuz.GridCheckType} for more information on the specific
-         * operations.
-         *
-         * ::: note
-         *     Some of the operation types can modify either guesses or cell.
-         * @param direction
-         * @param index
-         * @param guesses The guesses to check
-         * @param check_type The operation to perform at `coord`
-         * @virtual
-         */
-        vfunc_check_stride(
-            direction: ClueDirection,
-            index: number,
-            guesses: Guesses,
-            check_type: GridCheckType,
-        ): boolean;
     }
 
     namespace Filippine {
@@ -5207,24 +4152,6 @@ export namespace Ipuz {
         ): void;
         emit(signal: string, ...args: any[]): void;
         /**
-         * The {@link Ipuz.Guesses} associated with the grid.
-         * @category Inherited from Ipuz.Grid
-         */
-        get guesses(): Guesses;
-        set guesses(val: Guesses);
-        /**
-         * Number of rows in the grid.
-         * @category Inherited from Ipuz.Grid
-         */
-        get height(): number;
-        set height(val: number);
-        /**
-         * Number of columns in the grid.
-         * @category Inherited from Ipuz.Grid
-         */
-        get width(): number;
-        set width(val: number);
-        /**
          * Adds a new clue set to `clues`. This clue set will be in the
          * direction of `direction`, and will be empty. If `label` is set, then
          * it will set the label of the newly created clue set.
@@ -5243,7 +4170,7 @@ export namespace Ipuz {
          * @param label an optional label for the newly added clue set
          * @returns the direction of the newly created clue set, or {@link Ipuz.ClueDirection.NONE}
          */
-        add_clue_set(direction: ClueDirection, label?: string | null): ClueDirection;
+        add_clue_set(direction: ClueDirection, label: string | null): ClueDirection;
         /**
          * Removes all the clues and clue sets of `clues`.
          */
@@ -5424,7 +4351,7 @@ export namespace Ipuz {
          * @param label an optional label for the newly added clue set
          * @virtual
          */
-        vfunc_add_clue_set(direction: ClueDirection, label?: string | null): ClueDirection;
+        vfunc_add_clue_set(direction: ClueDirection, label: string | null): ClueDirection;
         /**
          * Removes all the clues and clue sets of `clues`.
          * @virtual
@@ -5556,201 +4483,6 @@ export namespace Ipuz {
          * @virtual
          */
         vfunc_unlink_clue(clue: Clue): void;
-        /**
-         * Invokes the operation determined by `check_type` on `cell` and
-         * `guesses` at `coord`.
-         *
-         * This function allows subclasses to specify puzzle-specific
-         * behavior. For example, if `check_type` is `IPUZ_GRID_GUESSABLE`, then
-         * it will return `true` if the cell can accept a users's guess (eg. is
-         * not a block or null with crosswords, etc).
-         *
-         * This function is used by {@link Ipuz.Grid} to maintain consistency
-         * of the puzzle in its operations. Subclasses should implement this
-         * method in order to define their behavior. It is not expected that
-         * most users will ever need to call this function.
-         *
-         * See {@link Ipuz.GridCheckType} for more information on the specific
-         * operations.
-         *
-         * ::: note
-         *     Some of the operation types can modify either guesses or cell.
-         * @param cell A cell to check
-         * @param coord The coordinate of `cell`
-         * @param guesses The guesses to check
-         * @param check_type The operation to perform at `coord`
-         * @returns `true`, if the condition determined by %check_type is met
-         */
-        check_cell(cell: Cell, coord: CellCoord, guesses: Guesses, check_type: GridCheckType): boolean;
-        /**
-         * Invokes the operation determined by `check_type` on the stride guess
-         * determined by `direction` and `index`.
-         *
-         * This function allows subclasses to specify puzzle-specific
-         * behavior. Unlike {@link Ipuz.Grid.check_cell}, this function is
-         * optional for puzzles as most puzzles don't use stride guesses. A
-         * default handler is provided that just returns `false`.
-         *
-         * This function is used by {@link Ipuz.Grid} to maintain consistency
-         * of the puzzle in its operations. Subclasses should implement this
-         * method in order to define their behavior. It is not expected that
-         * most users will ever need to call this function.
-         *
-         * See {@link Ipuz.GridCheckType} for more information on the specific
-         * operations.
-         *
-         * ::: note
-         *     Some of the operation types can modify either guesses or cell.
-         * @param direction
-         * @param index
-         * @param guesses The guesses to check
-         * @param check_type The operation to perform at `coord`
-         * @returns `true`, if the condition determined by %check_type is met
-         */
-        check_stride(direction: ClueDirection, index: number, guesses: Guesses, check_type: GridCheckType): boolean;
-        /**
-         * Creates a fresh {@link Ipuz.Guesses}. It will be initialized to
-         * the current state of the grid.
-         *
-         * The guessses can be used to solve the puzzle, and as such, its
-         * format is puzzle-type dependent. See each puzzle's *Guesses*
-         * section for more information on the format.
-         *
-         * Note that this method won't change the internal guesses of self. If
-         * that is desired, you should pair this with
-         * {@link Ipuz.Grid.set_guesses}. As an example:
-         *
-         * ```C
-         * g_autoptr (IpuzGuesses) guesses;
-         *
-         * guesses = ipuz_grid_create_guesses (grid);
-         * ipuz_grid_set_guesses (grid, guesses);
-         * ```
-         * @returns A new {@link Ipuz.Guesses} matching `self`
-         */
-        create_guesses(): Guesses;
-        /**
-         * Fixes the guesses associated with `self`. The result will be a
-         * playable {@link Ipuz.Guesses} struct.
-         *
-         * ::: note
-         *     This method will try to keep any guesses on cells intact. If a
-         *     fresh playing grid is desired, then it's recommended to call
-         *     {@link Ipuz.Grid.create_guesses}, and then attach it to `self`
-         *     with {@link IpuzGrid.set_guesses}.
-         */
-        fix_guesses(): void;
-        /**
-         * Calls `func` for each {@link Ipuz.Cell} in `self`.
-         * @param func The function to call for each cell
-         */
-        foreach_cell(func: GridForeachCellFunc): void;
-        /**
-         * Retrieves the cell at `coord`. If the coordinates are
-         * outside the bounds of the grid then `null` will be returned.
-         *
-         * The coordinate system of the `self` is similar to that of a spreadsheet. The
-         * origin is the upper left corner. Row's increase vertically downward, and
-         * columns increase horizontally.
-         * @param coord Coordinates for the cell.
-         * @returns The cell at `coord`.
-         */
-        get_cell(coord: CellCoord): Cell | null;
-        /**
-         * Returns the {@link Ipuz.Guesses} associated with `self`.
-         * @returns The {@link Ipuz.Guesses} associated with `self`
-         */
-        get_guesses(): Guesses;
-        /**
-         * Returns the number of rows in `self`.
-         * @returns The height of `self`
-         */
-        get_height(): number;
-        /**
-         * Returns the number of columns in `self`.
-         * @returns The width of `self`
-         */
-        get_width(): number;
-        /**
-         * Resizes `self` to the new size.
-         *
-         * If one of the dimensions is larger than before, the new cells will
-         * be filled in with puzzle-appropriate default values.
-         *
-         * This function will not adjust its internal {@link Ipuz.Guesses}
-         * object to match the new size. That can be done by a separate call
-         * to {@link Ipuz.Grid.fix_guesses}.
-         * @param new_width The new width
-         * @param new_height The new height
-         */
-        resize(new_width: number, new_height: number): void;
-        /**
-         * Sets `guesses` for `self`. If there's a mismatch in the cell types
-         * between `guesses` and `self` then `false` is returned. `guesses` will
-         * be set regardless of the return value.
-         *
-         * Mismatches can be fixed by calling {@link Ipuz.Grid.fix_guesses}.
-         * @param guesses The {@link Ipuz.Guesses} to set on self
-         * @returns `true`, if guesses matches `self`
-         */
-        set_guesses(guesses?: Guesses | null): boolean;
-        /**
-         * Invokes the operation determined by `check_type` on `cell` and
-         * `guesses` at `coord`.
-         *
-         * This function allows subclasses to specify puzzle-specific
-         * behavior. For example, if `check_type` is `IPUZ_GRID_GUESSABLE`, then
-         * it will return `true` if the cell can accept a users's guess (eg. is
-         * not a block or null with crosswords, etc).
-         *
-         * This function is used by {@link Ipuz.Grid} to maintain consistency
-         * of the puzzle in its operations. Subclasses should implement this
-         * method in order to define their behavior. It is not expected that
-         * most users will ever need to call this function.
-         *
-         * See {@link Ipuz.GridCheckType} for more information on the specific
-         * operations.
-         *
-         * ::: note
-         *     Some of the operation types can modify either guesses or cell.
-         * @param cell A cell to check
-         * @param coord The coordinate of `cell`
-         * @param guesses The guesses to check
-         * @param check_type The operation to perform at `coord`
-         * @virtual
-         */
-        vfunc_check_cell(cell: Cell, coord: CellCoord, guesses: Guesses, check_type: GridCheckType): boolean;
-        /**
-         * Invokes the operation determined by `check_type` on the stride guess
-         * determined by `direction` and `index`.
-         *
-         * This function allows subclasses to specify puzzle-specific
-         * behavior. Unlike {@link Ipuz.Grid.check_cell}, this function is
-         * optional for puzzles as most puzzles don't use stride guesses. A
-         * default handler is provided that just returns `false`.
-         *
-         * This function is used by {@link Ipuz.Grid} to maintain consistency
-         * of the puzzle in its operations. Subclasses should implement this
-         * method in order to define their behavior. It is not expected that
-         * most users will ever need to call this function.
-         *
-         * See {@link Ipuz.GridCheckType} for more information on the specific
-         * operations.
-         *
-         * ::: note
-         *     Some of the operation types can modify either guesses or cell.
-         * @param direction
-         * @param index
-         * @param guesses The guesses to check
-         * @param check_type The operation to perform at `coord`
-         * @virtual
-         */
-        vfunc_check_stride(
-            direction: ClueDirection,
-            index: number,
-            guesses: Guesses,
-            check_type: GridCheckType,
-        ): boolean;
     }
 
     namespace Grid {
@@ -5848,11 +4580,13 @@ export namespace Ipuz {
         set guesses(val: Guesses);
         /**
          * Number of rows in the grid.
+         * @default 0
          */
         get height(): number;
         set height(val: number);
         /**
          * Number of columns in the grid.
+         * @default 0
          */
         get width(): number;
         set width(val: number);
@@ -6092,7 +4826,7 @@ export namespace Ipuz {
          * @param guesses The {@link Ipuz.Guesses} to set on self
          * @returns `true`, if guesses matches `self`
          */
-        set_guesses(guesses?: Guesses | null): boolean;
+        set_guesses(guesses: Guesses | null): boolean;
     }
 
     namespace Nonogram {
@@ -6249,6 +4983,7 @@ export namespace Ipuz {
          * this value, as it is written to the save file.
          *
          * This string must be only be one unicode character long, and defaults to `"."`
+         * @default .
          */
         get space(): string;
         set space(val: string);
@@ -6774,6 +5509,7 @@ export namespace Ipuz {
 
         /**
          * Non-displayed annotation.
+         * @default null
          */
         get annotation(): string;
         set annotation(val: string);
@@ -6784,6 +5520,7 @@ export namespace Ipuz {
          * [PangoMarkup](https://docs.gtk.org/Pango/pango_markup.html). See
          * the [Text Handling](text-handling.html) section for additional
          * information.
+         * @default null
          */
         get author(): string;
         set author(val: string);
@@ -6795,6 +5532,7 @@ export namespace Ipuz {
          * implementations may expect it to be `#`.
          *
          * This must be only be one unicode character long.
+         * @default #
          */
         get block(): string;
         set block(val: string);
@@ -6823,6 +5561,7 @@ export namespace Ipuz {
          *
          * Updating this value will also keep {@link Ipuz.Puzzle.charset}
          * in sync.
+         * @default null
          */
         get charset_str(): string;
         set charset_str(val: string);
@@ -6837,6 +5576,7 @@ export namespace Ipuz {
          *
          * Updating this value will also keep {@link Ipuz.Puzzle.charset}
          * in sync.
+         * @default null
          */
         get charsetStr(): string;
         set charsetStr(val: string);
@@ -6847,16 +5587,19 @@ export namespace Ipuz {
          *
          * Additional licence information can be included in the
          * {@link Ipuz.Puzzle.license} property.
+         * @default null
          */
         get copyright(): string;
         set copyright(val: string);
         /**
          * Date of puzzle or publication date.
+         * @default null
          */
         get date(): string;
         set date(val: string);
         /**
          * Difficulty of the puzzle. Advisory only, as there is no standard for difficulty.
+         * @default null
          */
         get difficulty(): string;
         set difficulty(val: string);
@@ -6867,6 +5610,7 @@ export namespace Ipuz {
          * [PangoMarkup](https://docs.gtk.org/Pango/pango_markup.html). See
          * the [Text Handling](text-handling.html) section for additional
          * information.
+         * @default null
          */
         get editor(): string;
         set editor(val: string);
@@ -6875,6 +5619,7 @@ export namespace Ipuz {
          *
          * This value is used to indicate empty cells when saving the
          * puzzle. It is not recommended to change this value.
+         * @default 0
          */
         get empty(): string;
         set empty(val: string);
@@ -6885,6 +5630,7 @@ export namespace Ipuz {
          * [PangoMarkup](https://docs.gtk.org/Pango/pango_markup.html). See
          * the [Text Handling](text-handling.html) section for additional
          * information.
+         * @default null
          */
         get explanation(): string;
         set explanation(val: string);
@@ -6895,6 +5641,7 @@ export namespace Ipuz {
          * [PangoMarkup](https://docs.gtk.org/Pango/pango_markup.html). See
          * the [Text Handling](text-handling.html) section for additional
          * information.
+         * @default null
          */
         get intro(): string;
         set intro(val: string);
@@ -6916,6 +5663,7 @@ export namespace Ipuz {
          *
          *
          * This is a libipuz-only extension to the ipuz spec.
+         * @default null
          */
         get license(): string;
         set license(val: string);
@@ -6940,6 +5688,7 @@ export namespace Ipuz {
          *
          *
          * This is a libipuz-only extension to the ipuz spec.
+         * @default C
          */
         get locale(): string;
         set locale(val: string);
@@ -6950,6 +5699,7 @@ export namespace Ipuz {
          * [PangoMarkup](https://docs.gtk.org/Pango/pango_markup.html). See
          * the [Text Handling](text-handling.html) section for additional
          * information.
+         * @default null
          */
         get notes(): string;
         set notes(val: string);
@@ -6962,6 +5712,7 @@ export namespace Ipuz {
          * "Created by Yoyodyne Crossword Editor Version 1.0"
          * ```
          *
+         * @default null
          */
         get origin(): string;
         set origin(val: string);
@@ -6972,6 +5723,7 @@ export namespace Ipuz {
          * [PangoMarkup](https://docs.gtk.org/Pango/pango_markup.html). See
          * the [Text Handling](text-handling.html) section for additional
          * information.
+         * @default null
          */
         get publication(): string;
         set publication(val: string);
@@ -6982,6 +5734,7 @@ export namespace Ipuz {
          * [PangoMarkup](https://docs.gtk.org/Pango/pango_markup.html). See
          * the [Text Handling](text-handling.html) section for additional
          * information.
+         * @default null
          */
         get publisher(): string;
         set publisher(val: string);
@@ -6995,6 +5748,7 @@ export namespace Ipuz {
          * crossword will return {@link Ipuz.PuzzleKind.CRYPTIC}, and not
          * {@link Ipuz.PuzzleKind.CROSSWORD}.
          * @read-only
+         * @default Ipuz.PuzzleKind.UNKNOWN
          */
         get puzzle_kind(): PuzzleKind;
         /**
@@ -7007,6 +5761,7 @@ export namespace Ipuz {
          * crossword will return {@link Ipuz.PuzzleKind.CRYPTIC}, and not
          * {@link Ipuz.PuzzleKind.CROSSWORD}.
          * @read-only
+         * @default Ipuz.PuzzleKind.UNKNOWN
          */
         get puzzleKind(): PuzzleKind;
         /**
@@ -7021,22 +5776,26 @@ export namespace Ipuz {
          * [PangoMarkup](https://docs.gtk.org/Pango/pango_markup.html). See
          * the [Text Handling](text-handling.html) section for additional
          * information.
+         * @default null
          */
         get title(): string;
         set title(val: string);
         /**
          * Globally unique identifier for the puzzle.
+         * @default null
          */
         get uniqueid(): string;
         set uniqueid(val: string);
         /**
          * Permanent URL for the puzzle.
+         * @default null
          */
         get url(): string;
         set url(val: string);
         /**
          * Version of the ipuz spec used for the puzzle.
          * @construct-only
+         * @default http://ipuz.org/v2
          */
         get version(): string;
 
@@ -7059,7 +5818,7 @@ export namespace Ipuz {
 
         static new_from_file(filename: string): Puzzle;
 
-        static new_from_stream(stream: Gio.InputStream, cancellable?: Gio.Cancellable | null): Puzzle;
+        static new_from_stream(stream: Gio.InputStream, cancellable: Gio.Cancellable | null): Puzzle;
 
         // Signals
 
@@ -7456,7 +6215,7 @@ export namespace Ipuz {
          * @param cancellable An optional {@link Gio.Cancellable}
          * @returns `true` if saving was successful.
          */
-        save_to_stream(stream: Gio.OutputStream, cancellable?: Gio.Cancellable | null): boolean;
+        save_to_stream(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Sets a non-displayed annotation.
          * @param annotation A non-displayed annotation.
@@ -8005,7 +6764,7 @@ export namespace Ipuz {
          * `clue` is `null`, then the clue is cleared in that direction.
          * @param clue
          */
-        set_clue(clue?: Clue | null): void;
+        set_clue(clue: Clue | null): void;
         /**
          * Sets the initial value of `cell`.
          *
@@ -8069,7 +6828,7 @@ export namespace Ipuz {
          * @param style An {@link Ipuz.Style}
          * @param style_name The name of the style, or `null`
          */
-        set_style(style: Style, style_name?: string | null): void;
+        set_style(style: Style, style_name: string | null): void;
         /**
          * Sets the style_name of `cell`.
          * @param style_name The style_name of cell
@@ -8116,7 +6875,7 @@ export namespace Ipuz {
          * @param coord2 An {@link Ipuz.CellCoord}
          * @returns `true`, if `coord1` and `coord2` are identical
          */
-        equal(coord2?: CellCoord | null): boolean;
+        equal(coord2: CellCoord | null): boolean;
         /**
          * Frees `coord`.
          */
@@ -8154,7 +6913,7 @@ export namespace Ipuz {
          * @param coord A coordinate to determine the index of
          * @returns The index of `coord`, or -1
          */
-        coord_index(coord?: CellCoord | null): number;
+        coord_index(coord: CellCoord | null): number;
         /**
          * Returns a newly allocated {@link Ipuz.CellCoordArray}. This will
          * be a copy of `self`.
@@ -8372,7 +7131,7 @@ export namespace Ipuz {
          * @param charset2 an {@link Ipuz.Charset}
          * @returns `true`, if the charsets have identical characters and character counts.
          */
-        equal(charset2?: Charset | null): boolean;
+        equal(charset2: Charset | null): boolean;
         /**
          * Returns the count of `c`. If `c` is not in `self`, then 0 is returned.
          * @param c a character to search for
@@ -8426,7 +7185,7 @@ export namespace Ipuz {
          * @param subset an {@link Ipuz.Charset}
          * @returns `true`, if `subset` is a subset of `charset`.
          */
-        subset(subset?: Charset | null): boolean;
+        subset(subset: Charset | null): boolean;
         /**
          * Unrefs a charset, which will be freed when the reference count becomes 0.
          */
@@ -8482,7 +7241,7 @@ export namespace Ipuz {
 
         static new_for_language(lang: string): CharsetBuilder;
 
-        static new_from_text(text?: string | null): CharsetBuilder;
+        static new_from_text(text: string | null): CharsetBuilder;
 
         // Methods
 
@@ -8750,7 +7509,7 @@ export namespace Ipuz {
          * Sets the enumeration of `clue` to be `enumeration`.
          * @param enumeration The enumeration of `clue`
          */
-        set_enumeration(enumeration?: Enumeration | null): void;
+        set_enumeration(enumeration: Enumeration | null): void;
         /**
          * Sets the text to display in the list of clues instead of the clue
          * number.
@@ -8764,7 +7523,7 @@ export namespace Ipuz {
          * The location can be unset by passing in `null` to `location`.
          * @param location Location to set the coord of the clue to
          */
-        set_location(location?: CellCoord | null): void;
+        set_location(location: CellCoord | null): void;
         /**
          * Sets the clue number of `clue` to `number`.
          * @param number The number to set
@@ -8826,7 +7585,7 @@ export namespace Ipuz {
          * @param clue_id2 An {@link Ipuz.ClueId}
          * @returns `true`, if `clue_id1` and `clue_id2` are identical
          */
-        equal(clue_id2?: ClueId | null): boolean;
+        equal(clue_id2: ClueId | null): boolean;
         /**
          * Frees `clue_id`.
          */
@@ -8951,7 +7710,7 @@ export namespace Ipuz {
          * @param enumeration2 An {@link Ipuz.Enumeration} to compare with `enumeration1`
          * @returns `true` if the two enumerations match
          */
-        equal(enumeration2?: Enumeration | null): boolean;
+        equal(enumeration2: Enumeration | null): boolean;
         /**
          * Calls `func` for each deliminator in `self`.
          *
@@ -9041,7 +7800,7 @@ export namespace Ipuz {
 
         static new_from_file(filename: string): Guesses;
 
-        static new_from_stream(stream: Gio.InputStream, cancellable?: Gio.Cancellable | null): Guesses;
+        static new_from_stream(stream: Gio.InputStream, cancellable: Gio.Cancellable | null): Guesses;
 
         // Methods
 
@@ -9076,7 +7835,7 @@ export namespace Ipuz {
          * Returns (transfer full): a newly allocated checksum of the solution
          * @param salt used to seed the checksum, or `null`
          */
-        get_checksum(salt?: string | null): string;
+        get_checksum(salt: string | null): string;
         /**
          * Returns the guess in the cell at `coord`. If the user hasn't guessed
          * a value there then `null` is returned
@@ -9148,7 +7907,7 @@ export namespace Ipuz {
          * @param coord the coordinate at which to set the guess
          * @param guess A guess, or `null`
          */
-        set_guess(coord: CellCoord, guess?: string | null): void;
+        set_guess(coord: CellCoord, guess: string | null): void;
         /**
          * Sets a `data` string to be associated to a certain row or column.  The
          * interpretation of this string is left up to the application.  For example,
@@ -9161,7 +7920,7 @@ export namespace Ipuz {
          * @param index index of the row (IPUZ_CLUE_DIRECTION_ACROSS) or column (IPUZ_CLUE_DIRECTION_DOWN) with which to associate the data.
          * @param data string that will be associated to the row or column.
          */
-        set_stride_guess(direction: ClueDirection, index: number, data?: string | null): void;
+        set_stride_guess(direction: ClueDirection, index: number, data: string | null): void;
         /**
          * Unrefs `guesses`, which will be freed when the reference count reaches 0.
          */
@@ -9209,7 +7968,7 @@ export namespace Ipuz {
          * @param clue2 An {@link Ipuz.NonogramClue} to compare with `clue1`
          * @returns `true`, if the two clues match
          */
-        equal(clue2?: NonogramClue | null): boolean;
+        equal(clue2: NonogramClue | null): boolean;
         /**
          * clue: An {@link Ipuz.NonogramClue}
          * Frees `clue`.
@@ -9473,7 +8232,7 @@ export namespace Ipuz {
              * @param label an optional label for the newly added clue set
              * @virtual
              */
-            vfunc_add_clue_set(direction: ClueDirection, label?: string | null): ClueDirection;
+            vfunc_add_clue_set(direction: ClueDirection, label: string | null): ClueDirection;
             /**
              * Removes all the clues and clue sets of `clues`.
              * @virtual
@@ -9729,7 +8488,7 @@ export namespace Ipuz {
          * @param label an optional label for the newly added clue set
          * @returns the direction of the newly created clue set, or {@link Ipuz.ClueDirection.NONE}
          */
-        add_clue_set(direction: ClueDirection, label?: string | null): ClueDirection;
+        add_clue_set(direction: ClueDirection, label: string | null): ClueDirection;
         /**
          * Removes all the clues and clue sets of `clues`.
          */

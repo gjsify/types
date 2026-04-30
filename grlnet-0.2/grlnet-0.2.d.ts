@@ -166,7 +166,7 @@ export namespace GrlNet {
          * @param uri The URI of the resource to request
          * @param cancellable a {@link Gio.Cancellable} instance or `null` to ignore
          */
-        request_async(uri: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<[string, bigint | number]>;
+        request_async(uri: string, cancellable: Gio.Cancellable | null): globalThis.Promise<[string, bigint | number]>;
         /**
          * Request the fetching of a web resource given the `uri`. This request is
          * asynchronous, thus the result will be returned within the `callback`.
@@ -188,7 +188,7 @@ export namespace GrlNet {
          */
         request_async(
             uri: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[string, bigint | number]> | void;
         /**
@@ -212,9 +212,9 @@ export namespace GrlNet {
          */
         request_with_headers_async(
             uri: string,
-            headers?: GLib.HashTable<string, string> | null,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            headers: GLib.HashTable<string, string> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Sets if cache must be used. Note that this will only work if caching is

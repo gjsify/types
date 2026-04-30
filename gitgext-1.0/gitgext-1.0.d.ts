@@ -867,7 +867,7 @@ export namespace GitgExt {
              * @param _callback_
              * @virtual
              */
-            vfunc_fetch(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
+            vfunc_fetch(_callback_: Gio.AsyncReadyCallback<this> | null): void;
             /**
              * @param _res_
              * @virtual
@@ -994,7 +994,7 @@ export namespace GitgExt {
              * @param _callback_
              * @virtual
              */
-            vfunc_user_query_async(query: UserQuery, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+            vfunc_user_query_async(query: UserQuery, _callback_: Gio.AsyncReadyCallback<this> | null): void;
             /**
              * @param _res_
              * @virtual
@@ -1012,7 +1012,7 @@ export namespace GitgExt {
              * @param hint
              * @virtual
              */
-            vfunc_open_new(repository: Ggit.Repository, hint?: string | null): Application;
+            vfunc_open_new(repository: Ggit.Repository, hint: string | null): Application;
             /**
              * @param path
              * @virtual
@@ -1026,7 +1026,7 @@ export namespace GitgExt {
              * @param value
              * @virtual
              */
-            vfunc_set_repository(value?: Gitg.Repository | null): void;
+            vfunc_set_repository(value: Gitg.Repository | null): void;
             /**
              * @virtual
              */
@@ -1061,10 +1061,10 @@ export namespace GitgExt {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            repository: Gitg.Repository;
+            repository: Gitg.Repository | null;
             message_bus: MessageBus;
             messageBus: MessageBus;
-            current_activity: Activity;
+            current_activity: Activity | null;
             currentActivity: Activity;
             environment: Gee.Map;
             notifications: Notifications;
@@ -1084,8 +1084,8 @@ export namespace GitgExt {
     interface Application extends GObject.Object, Application.Interface {
         // Properties
 
-        get repository(): Gitg.Repository;
-        set repository(val: Gitg.Repository);
+        get repository(): Gitg.Repository | null;
+        set repository(val: Gitg.Repository | null);
         /**
          * @read-only
          */
@@ -1097,7 +1097,7 @@ export namespace GitgExt {
         /**
          * @read-only
          */
-        get current_activity(): Activity;
+        get current_activity(): Activity | null;
         /**
          * @read-only
          */
@@ -1167,7 +1167,7 @@ export namespace GitgExt {
          * @param repository
          * @param hint
          */
-        open_new(repository: Ggit.Repository, hint?: string | null): Application;
+        open_new(repository: Ggit.Repository, hint: string | null): Application;
         /**
          * @param path
          */
@@ -1176,7 +1176,7 @@ export namespace GitgExt {
         /**
          * @param value
          */
-        set_repository(value?: Gitg.Repository | null): void;
+        set_repository(value: Gitg.Repository | null): void;
         get_message_bus(): MessageBus;
         get_current_activity(): Activity | null;
         get_environment(): Gee.Map;
@@ -1331,13 +1331,13 @@ export namespace GitgExt {
              * @param value
              * @virtual
              */
-            vfunc_set_history(value?: History | null): void;
+            vfunc_set_history(value: History | null): void;
         }
 
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            history: History;
+            history: History | null;
         }
     }
 
@@ -1351,8 +1351,8 @@ export namespace GitgExt {
     interface HistoryPanel extends GObject.Object, HistoryPanel.Interface {
         // Properties
 
-        get history(): History;
-        set history(val: History);
+        get history(): History | null;
+        set history(val: History | null);
 
         // Methods
 
@@ -1360,7 +1360,7 @@ export namespace GitgExt {
         /**
          * @param value
          */
-        set_history(value?: History | null): void;
+        set_history(value: History | null): void;
     }
 
     export const HistoryPanel: HistoryPanelNamespace & {
@@ -1433,7 +1433,7 @@ export namespace GitgExt {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            widget: Gtk.Widget;
+            widget: Gtk.Widget | null;
         }
     }
 
@@ -1450,7 +1450,7 @@ export namespace GitgExt {
         /**
          * @read-only
          */
-        get widget(): Gtk.Widget;
+        get widget(): Gtk.Widget | null;
 
         // Methods
 
@@ -1784,7 +1784,7 @@ export namespace GitgExt {
              * @param name
              * @virtual
              */
-            vfunc_lookup(name?: string | null): Gitg.Remote | null;
+            vfunc_lookup(name: string | null): Gitg.Remote | null;
         }
 
         // Constructor properties interface
@@ -1805,7 +1805,7 @@ export namespace GitgExt {
         /**
          * @param name
          */
-        lookup(name?: string | null): Gitg.Remote | null;
+        lookup(name: string | null): Gitg.Remote | null;
     }
 
     export const RemoteLookup: RemoteLookupNamespace & {
@@ -1856,7 +1856,7 @@ export namespace GitgExt {
              * @param value
              * @virtual
              */
-            vfunc_set_search_entry(value?: Gtk.Entry | null): void;
+            vfunc_set_search_entry(value: Gtk.Entry | null): void;
         }
 
         // Constructor properties interface
@@ -1930,7 +1930,7 @@ export namespace GitgExt {
         /**
          * @param value
          */
-        set_search_entry(value?: Gtk.Entry | null): void;
+        set_search_entry(value: Gtk.Entry | null): void;
     }
 
     export const Searchable: SearchableNamespace & {
@@ -1977,7 +1977,7 @@ export namespace GitgExt {
             selectableAvailable: boolean;
             selectable_mode_tooltip: string;
             selectableModeTooltip: string;
-            action_widget: Gtk.Widget;
+            action_widget: Gtk.Widget | null;
             actionWidget: Gtk.Widget;
         }
     }
@@ -2015,7 +2015,7 @@ export namespace GitgExt {
         /**
          * @read-only
          */
-        get action_widget(): Gtk.Widget;
+        get action_widget(): Gtk.Widget | null;
         /**
          * @read-only
          */
@@ -2058,7 +2058,7 @@ export namespace GitgExt {
              * @param value
              * @virtual
              */
-            vfunc_set_application(value?: Application | null): void;
+            vfunc_set_application(value: Application | null): void;
             /**
              * @virtual
              */
@@ -2100,7 +2100,7 @@ export namespace GitgExt {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            application: Application;
+            application: Application | null;
             id: string;
             display_name: string;
             displayName: string;
@@ -2118,8 +2118,8 @@ export namespace GitgExt {
     interface UIElement extends GObject.Object, UIElement.Interface {
         // Properties
 
-        get application(): Application;
-        set application(val: Application);
+        get application(): Application | null;
+        set application(val: Application | null);
         /**
          * @read-only
          */
@@ -2147,7 +2147,7 @@ export namespace GitgExt {
         /**
          * @param value
          */
-        set_application(value?: Application | null): void;
+        set_application(value: Application | null): void;
         get_id(): string;
         get_display_name(): string;
         get_description(): string;

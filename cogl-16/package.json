@@ -1,6 +1,6 @@
 {
     "name": "@girs/cogl-16",
-    "version": "16.0.0-4.0.0-rc.6",
+    "version": "16.0.0-4.0.0-rc.7",
     "description": "GJS TypeScript type definitions for Cogl-16, generated from library version 16.0.0",
     "type": "module",
     "module": "cogl-16.js",
@@ -31,13 +31,13 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "4.0.0-rc.6",
-      "@girs/xlib-2.0": "2.0.0-4.0.0-rc.6",
-      "@girs/mtk-16": "16.0.0-4.0.0-rc.6",
-      "@girs/graphene-1.0": "1.0.0-4.0.0-rc.6",
-      "@girs/gobject-2.0": "2.88.0-4.0.0-rc.6",
-      "@girs/glib-2.0": "2.88.0-4.0.0-rc.6",
-      "@girs/gl-1.0": "1.0.0-4.0.0-rc.6"    },
+      "@girs/gjs": "4.0.0-rc.7",
+      "@girs/xlib-2.0": "2.0.0-4.0.0-rc.7",
+      "@girs/mtk-16": "16.0.0-4.0.0-rc.7",
+      "@girs/graphene-1.0": "1.0.0-4.0.0-rc.7",
+      "@girs/gobject-2.0": "2.88.0-4.0.0-rc.7",
+      "@girs/glib-2.0": "2.88.0-4.0.0-rc.7",
+      "@girs/gl-1.0": "1.0.0-4.0.0-rc.7"    },
     "devDependencies": {
       "typescript": "*"
     },

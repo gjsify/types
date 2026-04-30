@@ -227,26 +227,32 @@ export namespace GnomeBG {
         get file(): Gio.File;
         /**
          * @read-only
+         * @default false
          */
         get has_multiple_sizes(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get hasMultipleSizes(): boolean;
         /**
          * @read-only
+         * @default 0
          */
         get start_time(): number;
         /**
          * @read-only
+         * @default 0
          */
         get startTime(): number;
         /**
          * @read-only
+         * @default 0
          */
         get total_duration(): number;
         /**
          * @read-only
+         * @default 0
          */
         get totalDuration(): number;
 
@@ -341,7 +347,7 @@ export namespace GnomeBG {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback the callback
          */
-        load_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        load_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
     }
 
     /**

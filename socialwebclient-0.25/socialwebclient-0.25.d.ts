@@ -36,7 +36,7 @@ export namespace SocialWebClient {
      * @gir-type Callback
      */
     interface ClientServiceContactsQueryOpenViewCallback {
-        (query: ClientService, contact_view?: ClientContactView | null): void;
+        (query: ClientService, contact_view: ClientContactView | null): void;
     }
     /**
      * @gir-type Callback
@@ -48,7 +48,7 @@ export namespace SocialWebClient {
      * @gir-type Callback
      */
     interface ClientServiceQueryOpenViewCallback {
-        (query: ClientService, item_view?: ClientItemView | null): void;
+        (query: ClientService, item_view: ClientItemView | null): void;
     }
     /**
      * @gir-type Callback

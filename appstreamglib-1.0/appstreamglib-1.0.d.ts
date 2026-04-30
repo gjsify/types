@@ -2971,7 +2971,7 @@ export namespace AppStreamGlib {
          * @param locale the locale. e.g. "en_GB"
          * @returns a string, e.g. "GDPR", or NULL
          */
-        get_description(locale?: string | null): string;
+        get_description(locale: string | null): string;
         /**
          * Gets the agreement section kind.
          * @returns a string, e.g. "GDPR", or NULL
@@ -2982,7 +2982,7 @@ export namespace AppStreamGlib {
          * @param locale the locale. e.g. "en_GB"
          * @returns a string, e.g. "GDPR", or NULL
          */
-        get_name(locale?: string | null): string;
+        get_name(locale: string | null): string;
         /**
          * Sets the agreement section description.
          * @param locale the locale. e.g. "en_GB"
@@ -3182,7 +3182,7 @@ export namespace AppStreamGlib {
          * @param percentage the percentage completion of the translation, or 0 for unknown
          * @param locale the locale. e.g. "en_GB"
          */
-        add_language(percentage: number, locale?: string | null): void;
+        add_language(percentage: number, locale: string | null): void;
         /**
          * Adds a launchable to an application.
          * @param launchable a {@link AppStreamGlib.Launchable} instance.
@@ -3193,7 +3193,7 @@ export namespace AppStreamGlib {
          * @param key the metadata key.
          * @param value the value to store.
          */
-        add_metadata(key: string, value?: string | null): void;
+        add_metadata(key: string, value: string | null): void;
         /**
          * Adds a mimetype the application can process.
          * @param mimetype the mimetype.
@@ -3322,7 +3322,7 @@ export namespace AppStreamGlib {
          * @param locale the locale. e.g. "en_GB"
          * @returns string, or `null` if unset
          */
-        get_comment(locale?: string | null): string;
+        get_comment(locale: string | null): string;
         /**
          * Gets the comments set for the application.
          * @returns hash table of comments
@@ -3349,7 +3349,7 @@ export namespace AppStreamGlib {
          * @param locale the locale. e.g. "en_GB"
          * @returns string, or `null` if unset
          */
-        get_description(locale?: string | null): string;
+        get_description(locale: string | null): string;
         /**
          * Gets the descriptions set for the application.
          * @returns hash table of descriptions
@@ -3360,7 +3360,7 @@ export namespace AppStreamGlib {
          * @param locale the locale. e.g. "en_GB"
          * @returns string, or `null` if unset
          */
-        get_developer_name(locale?: string | null): string;
+        get_developer_name(locale: string | null): string;
         /**
          * Gets the developer_names set for the application.
          * @returns hash table of developer_names
@@ -3441,7 +3441,7 @@ export namespace AppStreamGlib {
          * @param locale the locale. e.g. "en_GB"
          * @returns an array, or `null`
          */
-        get_keywords(locale?: string | null): string[];
+        get_keywords(locale: string | null): string[];
         /**
          * Gets the ID kind.
          * @returns enumerated value
@@ -3457,7 +3457,7 @@ export namespace AppStreamGlib {
          * @param locale the locale. e.g. "en_GB"
          * @returns a percentage value where 0 is unspecified, or -1 for not found
          */
-        get_language(locale?: string | null): number;
+        get_language(locale: string | null): number;
         /**
          * Get a list of all languages.
          * @returns list of language values
@@ -3510,7 +3510,7 @@ export namespace AppStreamGlib {
          * @param locale the locale. e.g. "en_GB"
          * @returns string, or `null` if unset
          */
-        get_name(locale?: string | null): string;
+        get_name(locale: string | null): string;
         /**
          * Gets the names set for the application.
          * @returns hash table of names
@@ -3909,7 +3909,7 @@ export namespace AppStreamGlib {
          * @param cancellable A {@link Gio.Cancellable}
          * @returns `true` for success
          */
-        to_file(file: Gio.File, cancellable?: Gio.Cancellable | null): boolean;
+        to_file(file: Gio.File, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Exports a DOM tree to an XML string.
          * @returns an XML string, or `null`
@@ -5176,7 +5176,7 @@ export namespace AppStreamGlib {
          * @param locale the locale. e.g. "en_GB"
          * @returns markup, or `null` for not set or invalid
          */
-        get_description(locale?: string | null): string;
+        get_description(locale: string | null): string;
         /**
          * Gets the typical install duration.
          * @returns install duration in seconds, or 0 for unset
@@ -5473,56 +5473,67 @@ export namespace AppStreamGlib {
         set date(val: Review);
         /**
          * @since 0.6.1
+         * @default null
          */
         get description(): string;
         set description(val: string);
         /**
          * @since 0.6.1
+         * @default 0
          */
         get flags(): number;
         set flags(val: bigint | number);
         /**
          * @since 0.6.1
+         * @default null
          */
         get id(): string;
         set id(val: string);
         /**
          * @since 0.6.1
+         * @default null
          */
         get locale(): string;
         set locale(val: string);
         /**
          * @since 0.6.1
+         * @default 0
          */
         get rating(): number;
         set rating(val: number);
         /**
          * @since 0.6.1
+         * @default null
          */
         get reviewer_id(): string;
         set reviewer_id(val: string);
         /**
          * @since 0.6.1
+         * @default null
          */
         get reviewerId(): string;
         set reviewerId(val: string);
         /**
          * @since 0.6.1
+         * @default null
          */
         get reviewer_name(): string;
         set reviewer_name(val: string);
         /**
          * @since 0.6.1
+         * @default null
          */
         get reviewerName(): string;
         set reviewerName(val: string);
         /**
          * @since 0.6.1
+         * @default null
          */
         get summary(): string;
         set summary(val: string);
         /**
          * @since 0.6.1
+         * @default null
          */
         get version(): string;
         set version(val: string);
@@ -5794,7 +5805,7 @@ export namespace AppStreamGlib {
          * @param locale the locale, or `null`. e.g. "en_GB"
          * @returns the caption
          */
-        get_caption(locale?: string | null): string;
+        get_caption(locale: string | null): string;
         /**
          * Gets the AsImage closest to the target size. The {@link AppStreamGlib.Image} may not actually
          * be the requested size, and the application may have to pad / rescale the
@@ -6032,7 +6043,7 @@ export namespace AppStreamGlib {
          * @param cancellable a {@link Gio.Cancellable}.
          * @returns `true` for success
          */
-        from_bytes(bytes: GLib.Bytes | Uint8Array, cancellable?: Gio.Cancellable | null): boolean;
+        from_bytes(bytes: GLib.Bytes | Uint8Array, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Parses an AppStream XML or DEP-11 YAML file and adds any valid applications
          * to the store.
@@ -6048,7 +6059,7 @@ export namespace AppStreamGlib {
          * @param cancellable a {@link Gio.Cancellable}.
          * @returns `true` for success
          */
-        from_file(file: Gio.File, icon_root?: string | null, cancellable?: Gio.Cancellable | null): boolean;
+        from_file(file: Gio.File, icon_root: string | null, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Parses AppStream XML file and adds any valid applications to the store.
          *
@@ -6059,7 +6070,7 @@ export namespace AppStreamGlib {
          * @param icon_root the icon path, or `null` for the default.
          * @returns `true` for success
          */
-        from_xml(data: string, icon_root?: string | null): boolean;
+        from_xml(data: string, icon_root: string | null): boolean;
         /**
          * Gets the flags used for adding applications to the store.
          * @returns the {@link AppStreamGlib.StoreAddFlags}, or 0 if unset
@@ -6203,13 +6214,13 @@ export namespace AppStreamGlib {
          * @param cancellable a {@link Gio.Cancellable}.
          * @returns `true` for success
          */
-        load(flags: number, cancellable?: Gio.Cancellable | null): boolean;
+        load(flags: number, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously loads the store from the default locations.
          * @param flags {@link AppStreamGlib.StoreLoadFlags}, e.g. {@link AppStreamGlib.StoreLoadFlags.APP_INFO_SYSTEM}
          * @param cancellable a {@link Gio.Cancellable}.
          */
-        load_async(flags: StoreLoadFlags, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        load_async(flags: StoreLoadFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously loads the store from the default locations.
          * @param flags {@link AppStreamGlib.StoreLoadFlags}, e.g. {@link AppStreamGlib.StoreLoadFlags.APP_INFO_SYSTEM}
@@ -6229,7 +6240,7 @@ export namespace AppStreamGlib {
          */
         load_async(
             flags: StoreLoadFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -6244,13 +6255,13 @@ export namespace AppStreamGlib {
          * @param cancellable a {@link Gio.Cancellable}.
          * @returns `true` for success
          */
-        load_path(path: string, cancellable?: Gio.Cancellable | null): boolean;
+        load_path(path: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously loads the store from a specific path.
          * @param path A path to load
          * @param cancellable a {@link Gio.Cancellable}.
          */
-        load_path_async(path: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        load_path_async(path: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously loads the store from a specific path.
          * @param path A path to load
@@ -6270,7 +6281,7 @@ export namespace AppStreamGlib {
          */
         load_path_async(
             path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -6367,7 +6378,7 @@ export namespace AppStreamGlib {
          * @param cancellable A {@link Gio.Cancellable}, or `null`
          * @returns A {@link GLib.String}
          */
-        to_file(file: Gio.File, flags: number, cancellable?: Gio.Cancellable | null): boolean;
+        to_file(file: Gio.File, flags: number, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Outputs an XML representation of all the applications in the store.
          * @param flags the AsNodeToXmlFlags, e.g. {@link AppStreamGlib.NodeToXmlFlags.NONE}.

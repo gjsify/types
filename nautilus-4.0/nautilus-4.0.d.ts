@@ -137,53 +137,63 @@ export namespace Nautilus {
 
         /**
          * The file attribute to be displayed in the column.
+         * @default null
          */
         get attribute(): string;
         set attribute(val: string);
         /**
          * @read-only
+         * @default 0
          */
         get attribute_q(): number;
         /**
          * @read-only
+         * @default 0
          */
         get attributeQ(): number;
         /**
          * Actually meant to store the enum values of GtkSortType, but we don't want
          * extensions to depend on GTK. Also, this is for internal consumption only.
+         * @default 0
          */
         get default_sort_order(): boolean;
         set default_sort_order(val: boolean);
         /**
          * Actually meant to store the enum values of GtkSortType, but we don't want
          * extensions to depend on GTK. Also, this is for internal consumption only.
+         * @default 0
          */
         get defaultSortOrder(): boolean;
         set defaultSortOrder(val: boolean);
         /**
          * The user-visible description of the column.
+         * @default null
          */
         get description(): string;
         set description(val: string);
         /**
          * The label to display in the column.
+         * @default null
          */
         get label(): string;
         set label(val: string);
         /**
          * The identifier for the column.
          * @construct-only
+         * @default null
          */
         get name(): string;
         /**
          * Whether to show the NautilusColumn in a ColumnChooser.
          * This is not meant to be used by extensions. The value may be changed
          * over the life of the NautilusColumn.
+         * @default false
          */
         get visible(): boolean;
         set visible(val: boolean);
         /**
          * The x-alignment of the column.
+         * @default 0
          */
         get xalign(): number;
         set xalign(val: number);
@@ -331,20 +341,36 @@ export namespace Nautilus {
 
         // Properties
 
+        /**
+         * @default null
+         */
         get icon(): string;
         set icon(val: string);
+        /**
+         * @default null
+         */
         get label(): string;
         set label(val: string);
         get menu(): Menu;
         set menu(val: Menu);
         /**
          * @construct-only
+         * @default null
          */
         get name(): string;
+        /**
+         * @default true
+         */
         get priority(): boolean;
         set priority(val: boolean);
+        /**
+         * @default true
+         */
         get sensitive(): boolean;
         set sensitive(val: boolean);
+        /**
+         * @default null
+         */
         get tip(): string;
         set tip(val: string);
 
@@ -363,7 +389,7 @@ export namespace Nautilus {
 
         _init(...args: any[]): void;
 
-        static ['new'](name: string, label: string, tip?: string | null, icon?: string | null): MenuItem;
+        static ['new'](name: string, label: string, tip: string | null, icon: string | null): MenuItem;
 
         // Signals
 
@@ -439,10 +465,12 @@ export namespace Nautilus {
 
         /**
          * @construct-only
+         * @default null
          */
         get name(): string;
         /**
          * @construct-only
+         * @default null
          */
         get value(): string;
 
@@ -523,6 +551,9 @@ export namespace Nautilus {
          * @construct-only
          */
         get model(): Gio.ListModel;
+        /**
+         * @default null
+         */
         get title(): string;
         set title(val: string);
 

@@ -468,6 +468,7 @@ export namespace GstAnalytics {
 
         // Fields
 
+        streams: BatchStream[];
         n_streams: number;
     }
 
@@ -481,7 +482,9 @@ export namespace GstAnalytics {
         // Fields
 
         index: number;
+        sticky_events: Gst.Event[];
         n_sticky_events: number;
+        objects: Gst.MiniObject[];
         n_objects: number;
 
         // Methods
@@ -1267,7 +1270,7 @@ export namespace GstAnalytics {
          * @param dims An optional array of dimensions, where G_MAXSIZE means ANY.
          * @returns TRUE if the {@link GstAnalytics.Tensor} has the reading order from the memory matching `order`, dimensions matching `num_dims`, data type matching `data_type` Otherwise FALSE will be returned.
          */
-        check_type(data_type: TensorDataType, order: TensorDimOrder, dims?: (bigint | number)[] | null): boolean;
+        check_type(data_type: TensorDataType, order: TensorDimOrder, dims: (bigint | number)[] | null): boolean;
         /**
          * Create a copy of `tensor`.
          * @returns a new {@link GstAnalytics.Tensor}
@@ -1351,7 +1354,7 @@ export namespace GstAnalytics {
             tensor_id: GLib.Quark,
             data_type: TensorDataType,
             order: TensorDimOrder,
-            dims?: (bigint | number)[] | null,
+            dims: (bigint | number)[] | null,
         ): Tensor | null;
         /**
          * Sets tensors into the {@link GstAnalytics.TensorMeta}

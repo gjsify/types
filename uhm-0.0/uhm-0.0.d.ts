@@ -170,17 +170,17 @@ export namespace Uhm {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            address: string;
+            address: string | null;
             enable_logging: boolean;
             enableLogging: boolean;
             enable_online: boolean;
             enableOnline: boolean;
             port: number;
-            resolver: Resolver;
-            tls_certificate: Gio.TlsCertificate;
-            tlsCertificate: Gio.TlsCertificate;
-            trace_directory: Gio.File;
-            traceDirectory: Gio.File;
+            resolver: Resolver | null;
+            tls_certificate: Gio.TlsCertificate | null;
+            tlsCertificate: Gio.TlsCertificate | null;
+            trace_directory: Gio.File | null;
+            traceDirectory: Gio.File | null;
         }
     }
 
@@ -202,13 +202,15 @@ export namespace Uhm {
          * runs a DNS resolver which automatically redirects client requests for known domain names to this address ({@link Uhm.Server.resolver}).
          * @since 0.1.0
          * @read-only
+         * @default null
          */
-        get address(): string;
+        get address(): string | null;
         /**
          * `true` if network traffic should be logged to a trace file (specified by calling `uhm_server_start_trace()`). This operates independently
          * of whether traffic is online or being handled locally by the mock server.
          * Use this in conjunction with {@link Uhm.Server.enable_online} to either log online traffic, or replay logged traffic locally.
          * @since 0.1.0
+         * @default false
          */
         get enable_logging(): boolean;
         set enable_logging(val: boolean);
@@ -217,6 +219,7 @@ export namespace Uhm {
          * of whether traffic is online or being handled locally by the mock server.
          * Use this in conjunction with {@link Uhm.Server.enable_online} to either log online traffic, or replay logged traffic locally.
          * @since 0.1.0
+         * @default false
          */
         get enableLogging(): boolean;
         set enableLogging(val: boolean);
@@ -224,6 +227,7 @@ export namespace Uhm {
          * `true` if network traffic should reach the Internet as normal; `false` to redirect it to the local mock server.
          * Use this in conjunction with {@link Uhm.Server.enable_logging} to either log online traffic, or replay logged traffic locally.
          * @since 0.1.0
+         * @default false
          */
         get enable_online(): boolean;
         set enable_online(val: boolean);
@@ -231,6 +235,7 @@ export namespace Uhm {
          * `true` if network traffic should reach the Internet as normal; `false` to redirect it to the local mock server.
          * Use this in conjunction with {@link Uhm.Server.enable_logging} to either log online traffic, or replay logged traffic locally.
          * @since 0.1.0
+         * @default false
          */
         get enableOnline(): boolean;
         set enableOnline(val: boolean);
@@ -242,6 +247,7 @@ export namespace Uhm {
          * use.
          * @since 0.1.0
          * @read-only
+         * @default 0
          */
         get port(): number;
         /**
@@ -254,7 +260,7 @@ export namespace Uhm {
          * @since 0.1.0
          * @read-only
          */
-        get resolver(): Resolver;
+        get resolver(): Resolver | null;
         /**
          * TLS certificate for the mock server to use when serving HTTPS pages. If this is non-`null`, the server will always use HTTPS. If it is `null`,
          * the server will always use HTTP. The TLS certificate may be changed after constructing the {@link Uhm.Server}, but changes to the property will not
@@ -269,8 +275,8 @@ export namespace Uhm {
          * requirements of the certificate used by the mock server it's tested against.
          * @since 0.1.0
          */
-        get tls_certificate(): Gio.TlsCertificate;
-        set tls_certificate(val: Gio.TlsCertificate);
+        get tls_certificate(): Gio.TlsCertificate | null;
+        set tls_certificate(val: Gio.TlsCertificate | null);
         /**
          * TLS certificate for the mock server to use when serving HTTPS pages. If this is non-`null`, the server will always use HTTPS. If it is `null`,
          * the server will always use HTTP. The TLS certificate may be changed after constructing the {@link Uhm.Server}, but changes to the property will not
@@ -285,22 +291,22 @@ export namespace Uhm {
          * requirements of the certificate used by the mock server it's tested against.
          * @since 0.1.0
          */
-        get tlsCertificate(): Gio.TlsCertificate;
-        set tlsCertificate(val: Gio.TlsCertificate);
+        get tlsCertificate(): Gio.TlsCertificate | null;
+        set tlsCertificate(val: Gio.TlsCertificate | null);
         /**
          * Directory relative to which all trace files specified in calls to `uhm_server_start_trace()` will be resolved.
          * This is not used for any other methods, but must be non-`null` if `uhm_server_start_trace()` is called.
          * @since 0.1.0
          */
-        get trace_directory(): Gio.File;
-        set trace_directory(val: Gio.File);
+        get trace_directory(): Gio.File | null;
+        set trace_directory(val: Gio.File | null);
         /**
          * Directory relative to which all trace files specified in calls to `uhm_server_start_trace()` will be resolved.
          * This is not used for any other methods, but must be non-`null` if `uhm_server_start_trace()` is called.
          * @since 0.1.0
          */
-        get traceDirectory(): Gio.File;
-        set traceDirectory(val: Gio.File);
+        get traceDirectory(): Gio.File | null;
+        set traceDirectory(val: Gio.File | null);
 
         /**
          * Compile-time signal type information.
@@ -374,7 +380,7 @@ export namespace Uhm {
             level: Soup.LoggerLogLevel,
             direction: number,
             data: string,
-            user_data?: any | null,
+            user_data: any | null,
         ): void;
 
         // Virtual methods
@@ -477,13 +483,13 @@ export namespace Uhm {
          * @param trace_file trace file to load
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        load_trace(trace_file: Gio.File, cancellable?: Gio.Cancellable | null): void;
+        load_trace(trace_file: Gio.File, cancellable: Gio.Cancellable | null): void;
         /**
          * Asynchronous version of `uhm_server_load_trace()`. In `callback`, call `uhm_server_load_trace_finish()` to complete the operation.
          * @param trace_file trace file to load
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        load_trace_async(trace_file: Gio.File, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
+        load_trace_async(trace_file: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * Asynchronous version of `uhm_server_load_trace()`. In `callback`, call `uhm_server_load_trace_finish()` to complete the operation.
          * @param trace_file trace file to load
@@ -503,7 +509,7 @@ export namespace Uhm {
          */
         load_trace_async(
             trace_file: Gio.File,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -606,17 +612,17 @@ export namespace Uhm {
          * that signal is emitted after the resolver is cleared and these `domain_names` are added.
          * @param domain_names `null`-terminated array of domain names to expect, or `null` to not expect any
          */
-        set_expected_domain_names(domain_names?: string[] | null): void;
+        set_expected_domain_names(domain_names: string[] | null): void;
         /**
          * Sets the value of the {@link Uhm.Server.tls_certificate} property.
          * @param tls_certificate TLS certificate for the server to use; or `null` to serve HTTP only
          */
-        set_tls_certificate(tls_certificate?: Gio.TlsCertificate | null): void;
+        set_tls_certificate(tls_certificate: Gio.TlsCertificate | null): void;
         /**
          * Sets the value of the {@link Uhm.Server.trace_directory} property.
          * @param trace_directory a directory to load/store trace files from, or `null` to unset it
          */
-        set_trace_directory(trace_directory?: Gio.File | null): void;
+        set_trace_directory(trace_directory: Gio.File | null): void;
         /**
          * Starts a mock server which follows the trace file of filename `trace_name` in the {@link Uhm.Server.trace_directory} directory.
          * See `uhm_server_start_trace_full()` for further documentation.

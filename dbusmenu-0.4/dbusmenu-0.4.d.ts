@@ -368,7 +368,7 @@ export namespace Dbusmenu {
      * @gir-type Callback
      */
     interface menuitem_buildvariant_slot_t {
-        (mi: Menuitem, properties?: string | null): GLib.Variant;
+        (mi: Menuitem, properties: string | null): GLib.Variant;
     }
     namespace Client {
         // Signal signatures
@@ -765,7 +765,7 @@ export namespace Dbusmenu {
          * @param cb_data
          * @virtual
          */
-        vfunc_show_to_user(timestamp: number, cb_data?: any | null): void;
+        vfunc_show_to_user(timestamp: number, cb_data: any | null): void;
 
         // Methods
 
@@ -831,7 +831,7 @@ export namespace Dbusmenu {
          * @param func Function to call on every node in the tree
          * @param data User data to pass to the function
          */
-        foreach(func?: any | null, data?: any | null): void;
+        foreach(func: any | null, data: any | null): void;
         /**
          * Returns simply the list of children that this menu item
          * has.  The list is valid until another child related function
@@ -1024,7 +1024,7 @@ export namespace Dbusmenu {
          * @param cb Callback to call when the call has returned.
          * @param cb_data Data to pass to the callback.
          */
-        send_about_to_show(cb?: any | null, cb_data?: any | null): void;
+        send_about_to_show(cb: any | null, cb_data: any | null): void;
         /**
          * Sets the parent of `mi` to `parent`. If `mi` already
          * has a parent, then this call will fail. The parent will

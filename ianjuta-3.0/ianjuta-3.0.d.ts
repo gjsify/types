@@ -1417,6 +1417,7 @@ export namespace IAnjuta {
         // Fields
 
         size: number;
+        data: DebuggerInstructionALine[];
     }
 
     /**
@@ -5733,7 +5734,7 @@ export namespace IAnjuta {
              * @param tooltip optional tooltip displayed with the marker
              * @virtual
              */
-            vfunc_mark(location: number, marker: MarkableMarker, tooltip?: string | null): number;
+            vfunc_mark(location: number, marker: MarkableMarker, tooltip: string | null): number;
             /**
              * @param double_click
              * @param location
@@ -5794,7 +5795,7 @@ export namespace IAnjuta {
          * @param tooltip optional tooltip displayed with the marker
          * @returns Handle of the location marked. Can be used later to obtain new location, if it has been moved due to addetions/deletions in the implementor object.
          */
-        mark(location: number, marker: MarkableMarker, tooltip?: string | null): number;
+        mark(location: number, marker: MarkableMarker, tooltip: string | null): number;
         /**
          * Clears the `marker` at given `location`.
          * @param location Location where the marker is set.
@@ -6156,8 +6157,8 @@ export namespace IAnjuta {
                 parent: Anjuta.ProjectNode,
                 sibling: Anjuta.ProjectNode | null,
                 type: Anjuta.ProjectNodeType,
-                file?: Gio.File | null,
-                name?: string | null,
+                file: Gio.File | null,
+                name: string | null,
             ): Anjuta.ProjectNode;
             /**
              * Create a new node and insert it before sibling
@@ -6172,14 +6173,14 @@ export namespace IAnjuta {
                 parent: Anjuta.ProjectNode,
                 sibling: Anjuta.ProjectNode | null,
                 type: Anjuta.ProjectNodeType,
-                file?: Gio.File | null,
-                name?: string | null,
+                file: Gio.File | null,
+                name: string | null,
             ): Anjuta.ProjectNode;
             /**
              * @param node
              * @virtual
              */
-            vfunc_file_changed(node?: any | null): void;
+            vfunc_file_changed(node: any | null): void;
             /**
              * Return a list of possible node;
              * @virtual
@@ -6232,7 +6233,7 @@ export namespace IAnjuta {
              * @param name Name for map property
              * @virtual
              */
-            vfunc_remove_property(node: Anjuta.ProjectNode, id: string, name?: string | null): boolean;
+            vfunc_remove_property(node: Anjuta.ProjectNode, id: string, name: string | null): boolean;
             /**
              * Save a project node
              * @param node Project node to save
@@ -6288,8 +6289,8 @@ export namespace IAnjuta {
             parent: Anjuta.ProjectNode,
             sibling: Anjuta.ProjectNode | null,
             type: Anjuta.ProjectNodeType,
-            file?: Gio.File | null,
-            name?: string | null,
+            file: Gio.File | null,
+            name: string | null,
         ): Anjuta.ProjectNode;
         /**
          * Create a new node and insert it before sibling
@@ -6304,8 +6305,8 @@ export namespace IAnjuta {
             parent: Anjuta.ProjectNode,
             sibling: Anjuta.ProjectNode | null,
             type: Anjuta.ProjectNodeType,
-            file?: Gio.File | null,
-            name?: string | null,
+            file: Gio.File | null,
+            name: string | null,
         ): Anjuta.ProjectNode;
         /**
          * Return a list of possible node;
@@ -6341,7 +6342,7 @@ export namespace IAnjuta {
          * @param name Name for map property
          * @returns TRUE if the node is removed
          */
-        remove_property(node: Anjuta.ProjectNode, id: string, name?: string | null): boolean;
+        remove_property(node: Anjuta.ProjectNode, id: string, name: string | null): boolean;
         /**
          * Save a project node
          * @param node Project node to save
@@ -6387,8 +6388,8 @@ export namespace IAnjuta {
             parent: Anjuta.ProjectNode,
             sibling: Anjuta.ProjectNode | null,
             type: Anjuta.ProjectNodeType,
-            file?: Gio.File | null,
-            name?: string | null,
+            file: Gio.File | null,
+            name: string | null,
         ): Anjuta.ProjectNode;
         /**
          * Create a new node and insert it before sibling
@@ -6407,15 +6408,15 @@ export namespace IAnjuta {
             parent: Anjuta.ProjectNode,
             sibling: Anjuta.ProjectNode | null,
             type: Anjuta.ProjectNodeType,
-            file?: Gio.File | null,
-            name?: string | null,
+            file: Gio.File | null,
+            name: string | null,
         ): Anjuta.ProjectNode;
         /** @ignore */
         /**
          * @param node
          * @virtual
          */
-        vfunc_file_changed(node?: any | null): void;
+        vfunc_file_changed(node: any | null): void;
         /**
          * Return a list of possible node;
          * @ignore
@@ -6495,7 +6496,7 @@ export namespace IAnjuta {
          * @param name Name for map property
          * @virtual
          */
-        vfunc_remove_property(node: Anjuta.ProjectNode, id: string, name?: string | null): boolean;
+        vfunc_remove_property(node: Anjuta.ProjectNode, id: string, name: string | null): boolean;
         /**
          * Save a project node
          * @ignore
@@ -6713,7 +6714,7 @@ export namespace IAnjuta {
              * @param default_group A {@link Gio.File} corresponding to the default parent group or 				`null` if don't care.
              * @virtual
              */
-            vfunc_add_group(name: string, default_group?: Gio.File | null): Gio.File;
+            vfunc_add_group(name: string, default_group: Gio.File | null): Gio.File;
             /**
              * Prompts the user to add a file to the project. If the user selects
              * multiple files only the first source file is returned.
@@ -6726,7 +6727,7 @@ export namespace IAnjuta {
              * @param default_target A {@link Gio.File} corresponding to the default target or group or 				`null` if you don't care.
              * @virtual
              */
-            vfunc_add_source(name: string, default_target?: Gio.File | null): Gio.File;
+            vfunc_add_source(name: string, default_target: Gio.File | null): Gio.File;
             /**
              * Adds a file to the project without prompting the user.
              *
@@ -6752,7 +6753,7 @@ export namespace IAnjuta {
              * @param default_target A {@link Gio.File} corresponding to the default target or group or 				`null` if don't care.
              * @virtual
              */
-            vfunc_add_sources(names: string[], default_target?: Gio.File | null): Gio.File[];
+            vfunc_add_sources(names: string[], default_target: Gio.File | null): Gio.File[];
             /**
              * Prompts the user to add a new target to the project. The user can select
              * a parent group different from the one set as default.
@@ -6760,7 +6761,7 @@ export namespace IAnjuta {
              * @param default_group A {@link Gio.File} corresponding to the default parent group or 				`null` if don't care.
              * @virtual
              */
-            vfunc_add_target(name: string, default_group?: Gio.File | null): Gio.File;
+            vfunc_add_target(name: string, default_group: Gio.File | null): Gio.File;
             /**
              * @param element
              * @virtual
@@ -6866,7 +6867,7 @@ export namespace IAnjuta {
          * @param default_group A {@link Gio.File} corresponding to the default parent group or 				`null` if don't care.
          * @returns A {@link Gio.File} corresponding to the new group added in the project. You own the returned file; use `g_object_unref()` to release it.
          */
-        add_group(name: string, default_group?: Gio.File | null): Gio.File;
+        add_group(name: string, default_group: Gio.File | null): Gio.File;
         /**
          * Prompts the user to add a file to the project. If the user selects
          * multiple files only the first source file is returned.
@@ -6879,7 +6880,7 @@ export namespace IAnjuta {
          * @param default_target A {@link Gio.File} corresponding to the default target or group or 				`null` if you don't care.
          * @returns A {@link Gio.File} corresponding to the new source file in the project view. You own the returned file; use `g_object_unref()` to release it.
          */
-        add_source(name: string, default_target?: Gio.File | null): Gio.File;
+        add_source(name: string, default_target: Gio.File | null): Gio.File;
         /**
          * Adds a file to the project without prompting the user.
          *
@@ -6905,7 +6906,7 @@ export namespace IAnjuta {
          * @param default_target A {@link Gio.File} corresponding to the default target or group or 				`null` if don't care.
          * @returns A list of {@link Gio.File} corresponding to all new source files added in the project. You own the list with the the returned files; use `g_list_free()` and `g_object_unref()` on each file to release them.
          */
-        add_sources(names: string[], default_target?: Gio.File | null): Gio.File[];
+        add_sources(names: string[], default_target: Gio.File | null): Gio.File[];
         /**
          * Prompts the user to add a new target to the project. The user can select
          * a parent group different from the one set as default.
@@ -6913,7 +6914,7 @@ export namespace IAnjuta {
          * @param default_group A {@link Gio.File} corresponding to the default parent group or 				`null` if don't care.
          * @returns A {@link Gio.File} corresponding to the new target added in the project. You own the returned file; use `g_object_unref()` to release it.
          */
-        add_target(name: string, default_group?: Gio.File | null): Gio.File;
+        add_target(name: string, default_group: Gio.File | null): Gio.File;
         /**
          * Gets the capabilites of project whether it can add group, target
          * sources etc.
@@ -6993,7 +6994,7 @@ export namespace IAnjuta {
              * @param data data assigned to the proposal
              * @virtual
              */
-            vfunc_activate(iter: Iterable, data?: any | null): void;
+            vfunc_activate(iter: Iterable, data: any | null): void;
             /**
              * Return a (translatable) name for the provider
              * @virtual
@@ -7038,7 +7039,7 @@ export namespace IAnjuta {
          * @param iter position where the completion occurs
          * @param data data assigned to the proposal
          */
-        activate(iter: Iterable, data?: any | null): void;
+        activate(iter: Iterable, data: any | null): void;
         /**
          * Return a (translatable) name for the provider
          */
@@ -7122,7 +7123,7 @@ export namespace IAnjuta {
              * @param stream Stream to open from.
              * @virtual
              */
-            vfunc_open(stream?: any | null): void;
+            vfunc_open(stream: any | null): void;
         }
 
         // Constructor properties interface
@@ -7146,7 +7147,7 @@ export namespace IAnjuta {
          * The implementor opens the given stream.
          * @param stream Stream to open from.
          */
-        open(stream?: any | null): void;
+        open(stream: any | null): void;
     }
 
     export const Stream: StreamNamespace & {
@@ -7167,7 +7168,7 @@ export namespace IAnjuta {
              * @param stream Stream to load
              * @virtual
              */
-            vfunc_peek_interface(stream?: any | null): string;
+            vfunc_peek_interface(stream: any | null): string;
         }
 
         // Constructor properties interface
@@ -7193,7 +7194,7 @@ export namespace IAnjuta {
          * @param stream Stream to load
          * @returns Plugin interface name that can load the stream.
          */
-        peek_interface(stream?: any | null): string;
+        peek_interface(stream: any | null): string;
     }
 
     export const StreamLoader: StreamLoaderNamespace & {
@@ -7212,7 +7213,7 @@ export namespace IAnjuta {
              * @param stream
              * @virtual
              */
-            vfunc_save(stream?: any | null): void;
+            vfunc_save(stream: any | null): void;
         }
 
         // Constructor properties interface
@@ -7235,7 +7236,7 @@ export namespace IAnjuta {
         /**
          * @param stream
          */
-        save(stream?: any | null): void;
+        save(stream: any | null): void;
     }
 
     export const StreamSavable: StreamSavableNamespace & {

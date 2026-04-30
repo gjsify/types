@@ -745,6 +745,7 @@ export namespace Nice {
          * </para>
          * @since 0.1.8
          * @read-only
+         * @default false
          */
         get bytestream_tcp(): boolean;
         /**
@@ -769,6 +770,7 @@ export namespace Nice {
          * </para>
          * @since 0.1.8
          * @read-only
+         * @default false
          */
         get bytestreamTcp(): boolean;
         /**
@@ -776,6 +778,7 @@ export namespace Nice {
          * what the application/peer needs.
          * <para> See also: {@link Nice.Compatibility}</para>
          * @construct-only
+         * @default 0
          */
         get compatibility(): number;
         /**
@@ -789,6 +792,7 @@ export namespace Nice {
          * be `true` as well.
          * @since 0.1.19
          * @construct-only
+         * @default false
          */
         get consent_freshness(): boolean;
         /**
@@ -802,12 +806,14 @@ export namespace Nice {
          * be `true` as well.
          * @since 0.1.19
          * @construct-only
+         * @default false
          */
         get consentFreshness(): boolean;
         /**
          * Whether the agent has the controlling role. This property should
          * be modified before gathering candidates, any modification occuring
          * later will be hold until ICE is restarted.
+         * @default false
          */
         get controlling_mode(): boolean;
         set controlling_mode(val: boolean);
@@ -815,6 +821,7 @@ export namespace Nice {
          * Whether the agent has the controlling role. This property should
          * be modified before gathering candidates, any modification occuring
          * later will be hold until ICE is restarted.
+         * @default false
          */
         get controllingMode(): boolean;
         set controllingMode(val: boolean);
@@ -824,6 +831,7 @@ export namespace Nice {
          * local candidates are available before relay servers have been set
          * with `nice_agent_set_relay_info()`.
          * @since 0.1.14
+         * @default false
          */
         get force_relay(): boolean;
         set force_relay(val: boolean);
@@ -833,15 +841,18 @@ export namespace Nice {
          * local candidates are available before relay servers have been set
          * with `nice_agent_set_relay_info()`.
          * @since 0.1.14
+         * @default false
          */
         get forceRelay(): boolean;
         set forceRelay(val: boolean);
         /**
          * @construct-only
+         * @default true
          */
         get full_mode(): boolean;
         /**
          * @construct-only
+         * @default true
          */
         get fullMode(): boolean;
         /**
@@ -865,6 +876,7 @@ export namespace Nice {
          *    </para>
          * </note>
          * @since 0.1.8
+         * @default true
          */
         get ice_tcp(): boolean;
         set ice_tcp(val: boolean);
@@ -889,6 +901,7 @@ export namespace Nice {
          *    </para>
          * </note>
          * @since 0.1.8
+         * @default true
          */
         get iceTcp(): boolean;
         set iceTcp(val: boolean);
@@ -898,6 +911,7 @@ export namespace Nice {
          * {@link Nice.ComponentState.FAILED} until `nice_agent_peer_candidate_gathering_done()`
          * has been called with the ID of the component's stream.
          * @since 0.1.16
+         * @default false
          */
         get ice_trickle(): boolean;
         set ice_trickle(val: boolean);
@@ -907,6 +921,7 @@ export namespace Nice {
          * {@link Nice.ComponentState.FAILED} until `nice_agent_peer_candidate_gathering_done()`
          * has been called with the ID of the component's stream.
          * @since 0.1.16
+         * @default false
          */
         get iceTrickle(): boolean;
         set iceTrickle(val: boolean);
@@ -924,6 +939,7 @@ export namespace Nice {
          * If {@link Nice.Agent.ice_tcp} is set to `false`, then this property cannot be set
          * to `false` as well.
          * @since 0.1.8
+         * @default true
          */
         get ice_udp(): boolean;
         set ice_udp(val: boolean);
@@ -941,6 +957,7 @@ export namespace Nice {
          * If {@link Nice.Agent.ice_tcp} is set to `false`, then this property cannot be set
          * to `false` as well.
          * @since 0.1.8
+         * @default true
          */
         get iceUdp(): boolean;
         set iceUdp(val: boolean);
@@ -973,6 +990,7 @@ export namespace Nice {
          * slow down the behaviour of the agent when the peer agent works
          * in a timely manner.
          * @since 0.1.17
+         * @default 5000
          */
         get idle_timeout(): number;
         set idle_timeout(val: number);
@@ -1005,6 +1023,7 @@ export namespace Nice {
          * slow down the behaviour of the agent when the peer agent works
          * in a timely manner.
          * @since 0.1.17
+         * @default 5000
          */
         get idleTimeout(): number;
         set idleTimeout(val: number);
@@ -1021,6 +1040,7 @@ export namespace Nice {
          *
          * This is always enabled if the 'consent-freshness' property is `true`
          * @since 0.1.8
+         * @default false
          */
         get keepalive_conncheck(): boolean;
         set keepalive_conncheck(val: boolean);
@@ -1037,6 +1057,7 @@ export namespace Nice {
          *
          * This is always enabled if the 'consent-freshness' property is `true`
          * @since 0.1.8
+         * @default false
          */
         get keepaliveConncheck(): boolean;
         set keepaliveConncheck(val: boolean);
@@ -1052,67 +1073,83 @@ export namespace Nice {
          * @construct-only
          */
         get mainContext(): any;
+        /**
+         * @default 0
+         */
         get max_connectivity_checks(): number;
         set max_connectivity_checks(val: number);
+        /**
+         * @default 0
+         */
         get maxConnectivityChecks(): number;
         set maxConnectivityChecks(val: number);
         /**
          * The proxy server IP used to bypass a proxy firewall
          * @since 0.0.4
+         * @default null
          */
         get proxy_ip(): string;
         set proxy_ip(val: string);
         /**
          * The proxy server IP used to bypass a proxy firewall
          * @since 0.0.4
+         * @default null
          */
         get proxyIp(): string;
         set proxyIp(val: string);
         /**
          * The password used to authenticate with the proxy
          * @since 0.0.4
+         * @default null
          */
         get proxy_password(): string;
         set proxy_password(val: string);
         /**
          * The password used to authenticate with the proxy
          * @since 0.0.4
+         * @default null
          */
         get proxyPassword(): string;
         set proxyPassword(val: string);
         /**
          * The proxy server port used to bypass a proxy firewall
          * @since 0.0.4
+         * @default 1
          */
         get proxy_port(): number;
         set proxy_port(val: number);
         /**
          * The proxy server port used to bypass a proxy firewall
          * @since 0.0.4
+         * @default 1
          */
         get proxyPort(): number;
         set proxyPort(val: number);
         /**
          * The type of proxy set in the proxy-ip property
          * @since 0.0.4
+         * @default 0
          */
         get proxy_type(): number;
         set proxy_type(val: number);
         /**
          * The type of proxy set in the proxy-ip property
          * @since 0.0.4
+         * @default 0
          */
         get proxyType(): number;
         set proxyType(val: number);
         /**
          * The username used to authenticate with the proxy
          * @since 0.0.4
+         * @default null
          */
         get proxy_username(): string;
         set proxy_username(val: string);
         /**
          * The username used to authenticate with the proxy
          * @since 0.0.4
+         * @default null
          */
         get proxyUsername(): string;
         set proxyUsername(val: string);
@@ -1121,6 +1158,7 @@ export namespace Nice {
          * ICE-TCP or PseudoTCP over ICE-UDP)
          * @since 0.0.11
          * @construct-only
+         * @default false
          */
         get reliable(): boolean;
         /**
@@ -1133,6 +1171,7 @@ export namespace Nice {
          * divided by two instead (RFC 5389 indicates that a customisable
          * multiplier 'Rm' to 'RTO' should be used).
          * @since 0.1.15
+         * @default 500
          */
         get stun_initial_timeout(): number;
         set stun_initial_timeout(val: number);
@@ -1146,6 +1185,7 @@ export namespace Nice {
          * divided by two instead (RFC 5389 indicates that a customisable
          * multiplier 'Rm' to 'RTO' should be used).
          * @since 0.1.15
+         * @default 500
          */
         get stunInitialTimeout(): number;
         set stunInitialTimeout(val: number);
@@ -1160,6 +1200,7 @@ export namespace Nice {
          * to the READY state, and on the time needed to complete the GATHERING
          * state.
          * @since 0.1.15
+         * @default 3
          */
         get stun_max_retransmissions(): number;
         set stun_max_retransmissions(val: number);
@@ -1174,17 +1215,25 @@ export namespace Nice {
          * to the READY state, and on the time needed to complete the GATHERING
          * state.
          * @since 0.1.15
+         * @default 3
          */
         get stunMaxRetransmissions(): number;
         set stunMaxRetransmissions(val: number);
+        /**
+         * @default 20
+         */
         get stun_pacing_timer(): number;
         set stun_pacing_timer(val: number);
+        /**
+         * @default 20
+         */
         get stunPacingTimer(): number;
         set stunPacingTimer(val: number);
         /**
          * The initial timeout of the STUN binding requests used
          * for a reliable timer.
          * @since 0.1.15
+         * @default 2000
          */
         get stun_reliable_timeout(): number;
         set stun_reliable_timeout(val: number);
@@ -1192,15 +1241,28 @@ export namespace Nice {
          * The initial timeout of the STUN binding requests used
          * for a reliable timer.
          * @since 0.1.15
+         * @default 2000
          */
         get stunReliableTimeout(): number;
         set stunReliableTimeout(val: number);
+        /**
+         * @default null
+         */
         get stun_server(): string;
         set stun_server(val: string);
+        /**
+         * @default null
+         */
         get stunServer(): string;
         set stunServer(val: string);
+        /**
+         * @default 1
+         */
         get stun_server_port(): number;
         set stun_server_port(val: number);
+        /**
+         * @default 1
+         */
         get stunServerPort(): number;
         set stunServerPort(val: number);
         /**
@@ -1209,6 +1271,7 @@ export namespace Nice {
          * soon as RENOMINATION attribute is received from remote
          * candidate's address, corresponding candidates pair gets
          * selected. This is specific to Google Chrome/libWebRTC.
+         * @default false
          */
         get support_renomination(): boolean;
         set support_renomination(val: boolean);
@@ -1218,6 +1281,7 @@ export namespace Nice {
          * soon as RENOMINATION attribute is received from remote
          * candidate's address, corresponding candidates pair gets
          * selected. This is specific to Google Chrome/libWebRTC.
+         * @default false
          */
         get supportRenomination(): boolean;
         set supportRenomination(val: boolean);
@@ -1225,6 +1289,7 @@ export namespace Nice {
          * Whether the agent should use UPnP to open a port in the router and
          * get the external IP
          * @since 0.0.7
+         * @default true
          */
         get upnp(): boolean;
         set upnp(val: boolean);
@@ -1232,6 +1297,7 @@ export namespace Nice {
          * The maximum amount of time (in milliseconds) to wait for UPnP discovery to
          * finish before signaling the {@link Nice.Agent.SignalSignatures.candidate_gathering_done | Nice.Agent::candidate-gathering-done} signal
          * @since 0.0.7
+         * @default 200
          */
         get upnp_timeout(): number;
         set upnp_timeout(val: number);
@@ -1239,6 +1305,7 @@ export namespace Nice {
          * The maximum amount of time (in milliseconds) to wait for UPnP discovery to
          * finish before signaling the {@link Nice.Agent.SignalSignatures.candidate_gathering_done | Nice.Agent::candidate-gathering-done} signal
          * @since 0.0.7
+         * @default 200
          */
         get upnpTimeout(): number;
         set upnpTimeout(val: number);
@@ -1318,7 +1385,7 @@ export namespace Nice {
          * ports aren't left behind on TURN server but properly removed.
          * @param callback A callback that will be called when the closing is  complete
          */
-        close_async(callback?: Gio.AsyncReadyCallback<this> | null): void;
+        close_async(callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Notifies the agent that consent to receive has been revoked.  This will
          * cause the component to fail with 403 'Forbidden' all incoming STUN binding
@@ -1618,7 +1685,7 @@ export namespace Nice {
          * @param cancellable a {@link Gio.Cancellable} to allow the operation to be cancelled from another thread, or `null`
          * @returns the number of bytes written to `buf` on success (guaranteed to be greater than 0 unless `buf_len` is 0), 0 if in reliable mode and the remote peer closed the stream, or -1 on error
          */
-        recv(stream_id: number, component_id: number, cancellable?: Gio.Cancellable | null): [number, Uint8Array];
+        recv(stream_id: number, component_id: number, cancellable: Gio.Cancellable | null): [number, Uint8Array];
         /**
          * Block on receiving data from the given stream/component combination on
          * `agent`, returning only once exactly `n_messages` messages have been received
@@ -1661,7 +1728,7 @@ export namespace Nice {
         recv_messages(
             stream_id: number,
             component_id: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [number, InputMessage[]];
         /**
          * Try to receive data from the given stream/component combination on `agent`,
@@ -1697,7 +1764,7 @@ export namespace Nice {
         recv_messages_nonblocking(
             stream_id: number,
             component_id: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [number, InputMessage[]];
         /**
          * A single-message version of `nice_agent_recv_messages_nonblocking()`.
@@ -1709,7 +1776,7 @@ export namespace Nice {
         recv_nonblocking(
             stream_id: number,
             component_id: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [number, Uint8Array];
         /**
          * Remove and free a previously created data stream from `agent`. If any I/O
@@ -1815,7 +1882,7 @@ export namespace Nice {
             stream_id: number,
             component_id: number,
             messages: OutputMessage[],
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): number;
         /**
          * Sets the local credentials for stream `stream_id`.
@@ -2031,30 +2098,56 @@ export namespace Nice {
 
         // Properties
 
+        /**
+         * @default 100
+         */
         get ack_delay(): number;
         set ack_delay(val: number);
+        /**
+         * @default 100
+         */
         get ackDelay(): number;
         set ackDelay(val: number);
         get callbacks(): any;
         set callbacks(val: any);
         /**
          * @construct-only
+         * @default 0
          */
         get conversation(): number;
+        /**
+         * @default true
+         */
         get no_delay(): boolean;
         set no_delay(val: boolean);
+        /**
+         * @default true
+         */
         get noDelay(): boolean;
         set noDelay(val: boolean);
+        /**
+         * @default 61440
+         */
         get rcv_buf(): number;
         set rcv_buf(val: number);
+        /**
+         * @default 61440
+         */
         get rcvBuf(): number;
         set rcvBuf(val: number);
+        /**
+         * @default 92160
+         */
         get snd_buf(): number;
         set snd_buf(val: number);
+        /**
+         * @default 92160
+         */
         get sndBuf(): number;
         set sndBuf(val: number);
         /**
          * @read-only
+         * @default 0
          */
         get state(): number;
         /**
@@ -2068,6 +2161,7 @@ export namespace Nice {
          * Support is enabled by default.
          * @since 0.1.8
          * @construct-only
+         * @default true
          */
         get support_fin_ack(): boolean;
         /**
@@ -2081,6 +2175,7 @@ export namespace Nice {
          * Support is enabled by default.
          * @since 0.1.8
          * @construct-only
+         * @default true
          */
         get supportFinAck(): boolean;
 
@@ -2317,7 +2412,7 @@ export namespace Nice {
          * Fills the sockaddr structure `sin` with the address contained in `addr`
          * @param sin The sockaddr to fill
          */
-        copy_to_sockaddr(sin?: any | null): void;
+        copy_to_sockaddr(sin: any | null): void;
         /**
          * Compares two {@link Nice.Address} structures to see if they contain the same address
          * and the same port.
@@ -2364,7 +2459,7 @@ export namespace Nice {
          * Sets an IPv4 or IPv6 address from the sockaddr structure `sin`
          * @param sin The sockaddr to set
          */
-        set_from_sockaddr(sin?: any | null): void;
+        set_from_sockaddr(sin: any | null): void;
         /**
          * Sets an IPv4 or IPv6 address from the string `str`
          * @param str The string to set
@@ -2500,6 +2595,7 @@ export namespace Nice {
 
         // Fields
 
+        buffers: Gio.InputVector[];
         n_buffers: number;
         length: number;
     }
@@ -2526,6 +2622,7 @@ export namespace Nice {
 
         // Fields
 
+        buffers: Gio.OutputVector[];
         n_buffers: number;
     }
 

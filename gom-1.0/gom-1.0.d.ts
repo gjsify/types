@@ -267,6 +267,7 @@ export namespace Gom {
         get adapter(): Adapter;
         /**
          * @write-only
+         * @default null
          */
         set sql(val: string);
 
@@ -412,14 +413,19 @@ export namespace Gom {
         get adapter(): Adapter;
         get filter(): Filter;
         set filter(val: Filter);
+        /**
+         * @default 0
+         */
         get limit(): number;
         set limit(val: number);
         /**
          * @construct-only
+         * @default null
          */
         get m2m_table(): string;
         /**
          * @construct-only
+         * @default null
          */
         get m2mTable(): string;
         /**
@@ -430,6 +436,9 @@ export namespace Gom {
          * @construct-only
          */
         get m2mType(): GObject.GType;
+        /**
+         * @default 0
+         */
         get offset(): number;
         set offset(val: number);
         get resource_type(): GObject.GType;
@@ -652,10 +661,12 @@ export namespace Gom {
 
         /**
          * @construct-only
+         * @default Gom.FilterMode.SQL
          */
         get mode(): FilterMode;
         /**
          * @construct-only
+         * @default null
          */
         set sql(val: string);
 
@@ -924,7 +935,7 @@ export namespace Gom {
          * @param filter A {@link Gom.Filter} to apply to your search.
          * @returns A {@link Gom.Resource} or `null`.
          */
-        find_one_sync(resource_type: GObject.GType, filter?: Filter | null): Resource;
+        find_one_sync(resource_type: GObject.GType, filter: Filter | null): Resource;
         /**
          * @param resource_type
          * @param filter
@@ -935,7 +946,7 @@ export namespace Gom {
             resource_type: GObject.GType,
             filter: Filter,
             sorting: Sorting,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Synchronously queries the {@link Gom.Repository} for objects matching the
@@ -946,7 +957,7 @@ export namespace Gom {
          * @param sorting An optional {@link Gom.Sorting} to order the query                              results.
          * @returns A {@link Gom.ResourceGroup} or `null`.
          */
-        find_sorted_sync(resource_type: GObject.GType, filter?: Filter | null, sorting?: Sorting | null): ResourceGroup;
+        find_sorted_sync(resource_type: GObject.GType, filter: Filter | null, sorting: Sorting | null): ResourceGroup;
         /**
          * Synchronously queries the {@link Gom.Repository} for objects matching the
          * requested query. This must only be run from a callback provided to
@@ -955,7 +966,7 @@ export namespace Gom {
          * @param filter An optional filter for the query.
          * @returns A {@link Gom.ResourceGroup} or `null`.
          */
-        find_sync(resource_type: GObject.GType, filter?: Filter | null): ResourceGroup;
+        find_sync(resource_type: GObject.GType, filter: Filter | null): ResourceGroup;
         /**
          * Fetches the underlying adapter.
          * @returns A {@link Gom.Adapter}.
@@ -1250,6 +1261,7 @@ export namespace Gom {
 
         /**
          * @construct-only
+         * @default 0
          */
         get count(): number;
         /**
@@ -1258,18 +1270,22 @@ export namespace Gom {
         get filter(): Filter;
         /**
          * @construct-only
+         * @default false
          */
         get is_writable(): boolean;
         /**
          * @construct-only
+         * @default false
          */
         get isWritable(): boolean;
         /**
          * @construct-only
+         * @default null
          */
         get m2m_table(): string;
         /**
          * @construct-only
+         * @default null
          */
         get m2mTable(): string;
         /**

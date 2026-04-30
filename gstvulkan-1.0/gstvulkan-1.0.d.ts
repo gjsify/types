@@ -272,8 +272,8 @@ export namespace GstVulkan {
         device: VulkanDevice,
         buffer: Vulkan.Buffer,
         usage: Vulkan.BufferUsageFlags,
-        user_data?: any | null,
-        notify?: GLib.DestroyNotify | null,
+        user_data: any | null,
+        notify: GLib.DestroyNotify | null,
     ): Gst.Memory;
     /**
      * @param device
@@ -335,9 +335,9 @@ export namespace GstVulkan {
     function vulkan_handle_context_query(
         element: Gst.Element,
         query: Gst.Query,
-        display?: VulkanDisplay | null,
-        instance?: VulkanInstance | null,
-        device?: VulkanDevice | null,
+        display: VulkanDisplay | null,
+        instance: VulkanInstance | null,
+        device: VulkanDevice | null,
     ): boolean;
     /**
      * Helper function for implementing {@link Gst.ElementClass}.set_context() in
@@ -405,7 +405,7 @@ export namespace GstVulkan {
         height: bigint | number,
         tiling: Vulkan.ImageTiling,
         usage: Vulkan.ImageUsageFlags,
-        user_data?: any | null,
+        user_data: any | null,
     ): Gst.Memory;
     /**
      * Performs the steps necessary for executing a context query between only
@@ -476,12 +476,12 @@ export namespace GstVulkan {
      * @param device
      * @param user_data
      */
-    function vulkan_trash_mini_object_unref(device: VulkanDevice, user_data?: any | null): void;
+    function vulkan_trash_mini_object_unref(device: VulkanDevice, user_data: any | null): void;
     /**
      * @param device
      * @param user_data
      */
-    function vulkan_trash_object_unref(device: VulkanDevice, user_data?: any | null): void;
+    function vulkan_trash_object_unref(device: VulkanDevice, user_data: any | null): void;
     function vulkan_window_error_quark(): GLib.Quark;
     /**
      * @gir-type Callback
@@ -1055,7 +1055,7 @@ export namespace GstVulkan {
          * Iterate over each queue family available on {@link GstVulkan.VulkanDevice}
          * @param func a {@link GstVulkan.VulkanDeviceForEachQueueFunc} to run for each {@link GstVulkan.VulkanQueue}
          */
-        foreach_queue(func?: VulkanDeviceForEachQueueFunc | null): void;
+        foreach_queue(func: VulkanDeviceForEachQueueFunc | null): void;
         /**
          * @returns the {@link GstVulkan.VulkanInstance} used to create this `device`
          */
@@ -1156,7 +1156,7 @@ export namespace GstVulkan {
          * @param query a {@link Gst.Query} of type #GST_QUERY_CONTEXT
          * @param display the {@link GstVulkan.VulkanDisplay}
          */
-        static handle_context_query(element: Gst.Element, query: Gst.Query, display?: VulkanDisplay | null): boolean;
+        static handle_context_query(element: Gst.Element, query: Gst.Query, display: VulkanDisplay | null): boolean;
         /**
          * Attempt to retrieve a {@link GstVulkan.VulkanDisplay} using #GST_QUERY_CONTEXT from the
          * surrounding elements of `element`.
@@ -1455,12 +1455,12 @@ export namespace GstVulkan {
          * @param handle
          * @virtual
          */
-        vfunc_free(handle?: any | null): void;
+        vfunc_free(handle: any | null): void;
         /**
          * @param handle
          * @virtual
          */
-        vfunc_release(handle?: any | null): void;
+        vfunc_release(handle: any | null): void;
 
         // Methods
 
@@ -1469,7 +1469,7 @@ export namespace GstVulkan {
         /**
          * @param handle
          */
-        release(handle?: any | null): void;
+        release(handle: any | null): void;
     }
 
     namespace VulkanImageBufferPool {
@@ -1677,7 +1677,7 @@ export namespace GstVulkan {
          * @param query a {@link Gst.Query} of type #GST_QUERY_CONTEXT
          * @param instance the {@link GstVulkan.VulkanInstance}
          */
-        static handle_context_query(element: Gst.Element, query: Gst.Query, instance?: VulkanInstance | null): boolean;
+        static handle_context_query(element: Gst.Element, query: Gst.Query, instance: VulkanInstance | null): boolean;
         /**
          * Attempt to retrieve a {@link GstVulkan.VulkanInstance} using #GST_QUERY_CONTEXT from the
          * surrounding elements of `element`.
@@ -1777,7 +1777,7 @@ export namespace GstVulkan {
             device_index: number;
             deviceIndex: number;
             instance: VulkanInstance;
-            name: string;
+            name: string | any;
         }
     }
 
@@ -1804,7 +1804,8 @@ export namespace GstVulkan {
         /**
          * @read-only
          */
-        get name(): string;
+        // This accessor conflicts with another accessor's type in a parent class or interface.
+        get name(): string | any;
 
         /**
          * Compile-time signal type information.
@@ -1942,7 +1943,7 @@ export namespace GstVulkan {
          * @param query a {@link Gst.Query} of type #GST_QUERY_CONTEXT
          * @param queue the {@link GstVulkan.VulkanQueue}
          */
-        static handle_context_query(element: Gst.Element, query: Gst.Query, queue?: VulkanQueue | null): boolean;
+        static handle_context_query(element: Gst.Element, query: Gst.Query, queue: VulkanQueue | null): boolean;
         /**
          * Attempt to retrieve a {@link GstVulkan.VulkanQueue} using #GST_QUERY_CONTEXT from the
          * surrounding elements of `element`.
@@ -2553,6 +2554,21 @@ export namespace GstVulkan {
          * multiple times.  This must be called before any other {@link GstVulkan.VulkanBufferMemory} operation.
          */
         static init_once(): void;
+        /**
+         * Allocated a new wrapped {@link GstVulkan.VulkanBufferMemory} with `buffer`.
+         * @param device a {@link GstVulkan.VulkanDevice}
+         * @param buffer a {@link Vulkan.Buffer}
+         * @param usage usage flags of `buffer`
+         * @param user_data user data to call `notify` with
+         * @param notify a {@link GLib.DestroyNotify} called when `buffer` is no longer in use
+         */
+        static wrapped(
+            device: VulkanDevice,
+            buffer: Vulkan.Buffer,
+            usage: Vulkan.BufferUsageFlags,
+            user_data: any | null,
+            notify: GLib.DestroyNotify | null,
+        ): Gst.Memory;
     }
 
     /**
@@ -2814,9 +2830,9 @@ export namespace GstVulkan {
         static context_query(
             element: Gst.Element,
             query: Gst.Query,
-            display?: VulkanDisplay | null,
-            instance?: VulkanInstance | null,
-            device?: VulkanDevice | null,
+            display: VulkanDisplay | null,
+            instance: VulkanInstance | null,
+            device: VulkanDevice | null,
         ): boolean;
         /**
          * Helper function for implementing {@link Gst.ElementClass}.set_context() in
@@ -2842,37 +2858,37 @@ export namespace GstVulkan {
          * Frees the descriptor set layout in `handle`
          * @param user_data callback user data
          */
-        free_descriptor_set_layout(user_data?: any | null): void;
+        free_descriptor_set_layout(user_data: any | null): void;
         /**
          * Frees the framebuffer in `handle`
          * @param user_data callback user data
          */
-        free_framebuffer(user_data?: any | null): void;
+        free_framebuffer(user_data: any | null): void;
         /**
          * Frees the pipeline in `handle`
          * @param user_data callback user data
          */
-        free_pipeline(user_data?: any | null): void;
+        free_pipeline(user_data: any | null): void;
         /**
          * Frees the pipeline layout in `handle`
          * @param user_data callback user data
          */
-        free_pipeline_layout(user_data?: any | null): void;
+        free_pipeline_layout(user_data: any | null): void;
         /**
          * Frees the render pass in `handle`
          * @param user_data callback user data
          */
-        free_render_pass(user_data?: any | null): void;
+        free_render_pass(user_data: any | null): void;
         /**
          * Frees the sampler in `handle`
          * @param user_data callback user data
          */
-        free_sampler(user_data?: any | null): void;
+        free_sampler(user_data: any | null): void;
         /**
          * Frees the shader in `handle`
          * @param user_data callback user data
          */
-        free_shader(user_data?: any | null): void;
+        free_shader(user_data: any | null): void;
         /**
          * Increases the refcount of the given handle by one.
          * @returns `buf`
@@ -2948,6 +2964,26 @@ export namespace GstVulkan {
          * multiple times.  This must be called before any other {@link GstVulkan.VulkanImageMemory} operation.
          */
         static init_once(): void;
+        /**
+         * @param device a {@link GstVulkan.VulkanDevice}
+         * @param image a VkImage
+         * @param format the VkFormat for `image`
+         * @param width width of `image`
+         * @param height height of `image`
+         * @param tiling tiling of `image`
+         * @param usage usage flags of `image`
+         * @param user_data user data for `notify`
+         */
+        static wrapped(
+            device: VulkanDevice,
+            image: Vulkan.Image,
+            format: Vulkan.Format,
+            width: bigint | number,
+            height: bigint | number,
+            tiling: Vulkan.ImageTiling,
+            usage: Vulkan.ImageUsageFlags,
+            user_data: any | null,
+        ): Gst.Memory;
 
         // Methods
 
@@ -2984,7 +3020,7 @@ export namespace GstVulkan {
             usage: Vulkan.ImageUsageFlags,
             params: Gst.AllocationParams,
             size: bigint | number,
-            user_data?: any | null,
+            user_data: any | null,
         ): boolean;
     }
 
@@ -3151,12 +3187,12 @@ export namespace GstVulkan {
          * @param device
          * @param user_data
          */
-        static mini_object_unref(device: VulkanDevice, user_data?: any | null): void;
+        static mini_object_unref(device: VulkanDevice, user_data: any | null): void;
         /**
          * @param device
          * @param user_data
          */
-        static object_unref(device: VulkanDevice, user_data?: any | null): void;
+        static object_unref(device: VulkanDevice, user_data: any | null): void;
 
         // Methods
 

@@ -221,24 +221,37 @@ export namespace Cvc {
 
         /**
          * @read-only
+         * @default null
          */
         get human_profile(): string;
         /**
          * @read-only
+         * @default null
          */
         get humanProfile(): string;
+        /**
+         * @default null
+         */
         get icon_name(): string;
         set icon_name(val: string);
+        /**
+         * @default null
+         */
         get iconName(): string;
         set iconName(val: string);
         /**
          * @construct-only
+         * @default 0
          */
         get id(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get index(): number;
+        /**
+         * @default null
+         */
         get name(): string;
         set name(val: string);
         /**
@@ -249,6 +262,9 @@ export namespace Cvc {
          * @construct-only
          */
         get paContext(): any;
+        /**
+         * @default null
+         */
         get profile(): string;
         set profile(val: string);
 
@@ -295,7 +311,7 @@ export namespace Cvc {
          * @param profile the profile to change to or `null`.
          * @returns `true` if profile successfully changed or already using this profile.
          */
-        change_profile(profile?: string | null): boolean;
+        change_profile(profile: string | null): boolean;
         get_gicon(): Gio.Icon;
         get_icon_name(): string;
         get_id(): number;
@@ -423,6 +439,7 @@ export namespace Cvc {
 
         /**
          * @construct-only
+         * @default null
          */
         get name(): string;
 
@@ -559,7 +576,7 @@ export namespace Cvc {
          * @param profile Can be `null` if any profile present on this port is okay
          * @returns This method will attempt to swap the profile on the card of the device with given profile name.  If successful it will set the preferred profile on that device so as we know the next time the user moves to that device it should have this profile active.
          */
-        change_profile_on_selected_device(device: MixerUIDevice, profile?: string | null): boolean;
+        change_profile_on_selected_device(device: MixerUIDevice, profile: string | null): boolean;
         close(): boolean;
         get_cards(): MixerCard[];
         get_default_sink(): MixerStream;
@@ -654,6 +671,9 @@ export namespace Cvc {
 
         // Properties
 
+        /**
+         * @default null
+         */
         get device(): string;
         set device(val: string);
 
@@ -1060,54 +1080,113 @@ export namespace Cvc {
 
         // Properties
 
+        /**
+         * @default null
+         */
         get application_id(): string;
         set application_id(val: string);
+        /**
+         * @default null
+         */
         get applicationId(): string;
         set applicationId(val: string);
+        /**
+         * @default false
+         */
         get can_decibel(): boolean;
         set can_decibel(val: boolean);
+        /**
+         * @default false
+         */
         get canDecibel(): boolean;
         set canDecibel(val: boolean);
+        /**
+         * @default 4294967295
+         */
         get card_index(): number;
         set card_index(val: bigint | number);
+        /**
+         * @default 4294967295
+         */
         get cardIndex(): number;
         set cardIndex(val: bigint | number);
         get channel_map(): ChannelMap;
         set channel_map(val: ChannelMap);
         get channelMap(): ChannelMap;
         set channelMap(val: ChannelMap);
+        /**
+         * @default 0
+         */
         get decibel(): number;
         set decibel(val: number);
+        /**
+         * @default null
+         */
         get description(): string;
         set description(val: string);
+        /**
+         * @default null
+         */
         get form_factor(): string;
         set form_factor(val: string);
+        /**
+         * @default null
+         */
         get formFactor(): string;
         set formFactor(val: string);
+        /**
+         * @default null
+         */
         get icon_name(): string;
         set icon_name(val: string);
+        /**
+         * @default null
+         */
         get iconName(): string;
         set iconName(val: string);
         /**
          * @construct-only
+         * @default 0
          */
         get id(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get index(): number;
+        /**
+         * @default false
+         */
         get is_event_stream(): boolean;
         set is_event_stream(val: boolean);
+        /**
+         * @default false
+         */
         get isEventStream(): boolean;
         set isEventStream(val: boolean);
+        /**
+         * @default false
+         */
         get is_muted(): boolean;
         set is_muted(val: boolean);
+        /**
+         * @default false
+         */
         get isMuted(): boolean;
         set isMuted(val: boolean);
+        /**
+         * @default false
+         */
         get is_virtual(): boolean;
         set is_virtual(val: boolean);
+        /**
+         * @default false
+         */
         get isVirtual(): boolean;
         set isVirtual(val: boolean);
+        /**
+         * @default null
+         */
         get name(): string;
         set name(val: string);
         /**
@@ -1118,14 +1197,29 @@ export namespace Cvc {
          * @construct-only
          */
         get paContext(): any;
+        /**
+         * @default null
+         */
         get port(): string;
         set port(val: string);
+        /**
+         * @default Cvc.MixerStreamState.INVALID
+         */
         get state(): MixerStreamState;
         set state(val: MixerStreamState);
+        /**
+         * @default null
+         */
         get sysfs_path(): string;
         set sysfs_path(val: string);
+        /**
+         * @default null
+         */
         get sysfsPath(): string;
         set sysfsPath(val: string);
+        /**
+         * @default 0
+         */
         get volume(): number;
         set volume(val: bigint | number);
 
@@ -1190,7 +1284,7 @@ export namespace Cvc {
          * @param operation
          * @virtual
          */
-        vfunc_push_volume(operation?: any | null): boolean;
+        vfunc_push_volume(operation: any | null): boolean;
 
         // Methods
 
@@ -1337,26 +1431,59 @@ export namespace Cvc {
 
         get card(): any;
         set card(val: any);
+        /**
+         * @default no-name-set
+         */
         get description(): string;
         set description(val: string);
+        /**
+         * @default null
+         */
         get icon_name(): string;
         set icon_name(val: string);
+        /**
+         * @default null
+         */
         get iconName(): string;
         set iconName(val: string);
+        /**
+         * @default no-name-set
+         */
         get origin(): string;
         set origin(val: string);
+        /**
+         * @default false
+         */
         get port_available(): boolean;
         set port_available(val: boolean);
+        /**
+         * @default false
+         */
         get portAvailable(): boolean;
         set portAvailable(val: boolean);
+        /**
+         * @default null
+         */
         get port_name(): string;
         set port_name(val: string);
+        /**
+         * @default null
+         */
         get portName(): string;
         set portName(val: string);
+        /**
+         * @default 0
+         */
         get stream_id(): number;
         set stream_id(val: number);
+        /**
+         * @default 0
+         */
         get streamId(): number;
         set streamId(val: number);
+        /**
+         * @default 0
+         */
         get type(): number;
         set type(val: number);
 

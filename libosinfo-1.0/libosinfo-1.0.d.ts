@@ -532,11 +532,13 @@ export namespace Libosinfo {
         /**
          * Whether alpha channel is supported in the avatar.
          * @read-only
+         * @default true
          */
         get alpha(): boolean;
         /**
          * The required height (in pixels) of the avatar.
          * @read-only
+         * @default -1
          */
         get height(): number;
         /**
@@ -552,6 +554,7 @@ export namespace Libosinfo {
         /**
          * The required width (in pixels) of the avatar.
          * @read-only
+         * @default -1
          */
         get width(): number;
 
@@ -1085,14 +1088,14 @@ export namespace Libosinfo {
          * @param filter an optional filter
          * @returns a list of {@link Libosinfo.Device} entities
          */
-        get_device_links(filter?: Filter | null): DeviceLinkList;
+        get_device_links(filter: Filter | null): DeviceLinkList;
         /**
          * Retrieve all the associated devices matching the filter.
          * The filter matches against the device, not the link.
          * @param filter an optional filter
          * @returns a list of {@link Libosinfo.Device} entities
          */
-        get_devices(filter?: Filter | null): DeviceList;
+        get_devices(filter: Filter | null): DeviceList;
         /**
          * Get the operating system for the deployment
          * @returns an OS, or NULL
@@ -1108,14 +1111,14 @@ export namespace Libosinfo {
          * @param filter a device metadata filter
          * @returns a device, or NULL
          */
-        get_preferred_device(filter?: Filter | null): Device;
+        get_preferred_device(filter: Filter | null): Device;
         /**
          * Get the preferred device link matching a given filter and platform.
          * The filter matches against attributes on the link, not the device.
          * @param filter a device metadata filter
          * @returns a device, or NULL
          */
-        get_preferred_device_link(filter?: Filter | null): DeviceLink;
+        get_preferred_device_link(filter: Filter | null): DeviceLink;
     }
 
     namespace DeploymentList {
@@ -1645,7 +1648,7 @@ export namespace Libosinfo {
          * @param filter an optional device property filter
          * @returns A list of devices
          */
-        get_devices(filter?: Filter | null): DeviceList;
+        get_devices(filter: Filter | null): DeviceList;
         /**
          * Construct a new devicelink list that is filled with devicelinks
          * from `source`
@@ -1787,6 +1790,7 @@ export namespace Libosinfo {
          * is undefined, but the recommended practice is to use a URI.
          * This parameter must be set at time of construction as no
          * default value is provided.
+         * @default null
          */
         get id(): string;
         set id(val: string);
@@ -2080,9 +2084,13 @@ export namespace Libosinfo {
 
         /**
          * The target hardware architecture of this firmware.
+         * @default null
          */
         get architecture(): string;
         set architecture(val: string);
+        /**
+         * @default null
+         */
         get type(): string;
         set type(val: string);
 
@@ -2230,26 +2238,31 @@ export namespace Libosinfo {
 
         /**
          * The target hardware architecture of this image.
+         * @default null
          */
         get architecture(): string;
         set architecture(val: string);
         /**
          * Whether the image supports cloud-init customizations or not.
+         * @default null
          */
         get cloud_init(): string;
         set cloud_init(val: string);
         /**
          * Whether the image supports cloud-init customizations or not.
+         * @default null
          */
         get cloudInit(): string;
         set cloudInit(val: string);
         /**
          * The image format.
+         * @default null
          */
         get format(): string;
         set format(val: string);
         /**
          * The URL to this image.
+         * @default null
          */
         get url(): string;
         set url(val: string);
@@ -2771,11 +2784,13 @@ export namespace Libosinfo {
         /**
          * The name of the configuration parameter.
          * @construct-only
+         * @default null
          */
         get name(): string;
         /**
          * The policy of the configuration parameter.
          * @read-only
+         * @default Libosinfo.InstallConfigParamPolicy.OPTIONAL
          */
         get policy(): InstallConfigParamPolicy;
         /**
@@ -2971,50 +2986,67 @@ export namespace Libosinfo {
         get avatarFormat(): AvatarFormat;
         /**
          * @read-only
+         * @default Libosinfo.InstallScriptInstallationSource.MEDIA
          */
         get installation_source(): InstallScriptInstallationSource;
         /**
          * @read-only
+         * @default Libosinfo.InstallScriptInstallationSource.MEDIA
          */
         get installationSource(): InstallScriptInstallationSource;
         /**
          * @read-only
+         * @default Libosinfo.PathFormat.UNIX
          */
         get path_format(): PathFormat;
         /**
          * @read-only
+         * @default Libosinfo.PathFormat.UNIX
          */
         get pathFormat(): PathFormat;
+        /**
+         * @default Libosinfo.InstallScriptInjectionMethod.DISK
+         */
         get preferred_injection_method(): InstallScriptInjectionMethod;
         set preferred_injection_method(val: InstallScriptInjectionMethod);
+        /**
+         * @default Libosinfo.InstallScriptInjectionMethod.DISK
+         */
         get preferredInjectionMethod(): InstallScriptInjectionMethod;
         set preferredInjectionMethod(val: InstallScriptInjectionMethod);
         /**
          * @read-only
+         * @default null
          */
         get product_key_format(): string;
         /**
          * @read-only
+         * @default null
          */
         get productKeyFormat(): string;
         /**
          * @construct-only
+         * @default null
          */
         get profile(): string;
         /**
          * @construct-only
+         * @default null
          */
         get template_data(): string;
         /**
          * @construct-only
+         * @default null
          */
         get templateData(): string;
         /**
          * @construct-only
+         * @default null
          */
         get template_uri(): string;
         /**
          * @construct-only
+         * @default null
          */
         get templateUri(): string;
 
@@ -3069,7 +3101,7 @@ export namespace Libosinfo {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns the script as string. If you are generating the script for a specific media, it is recommended that you use `osinfo_install_script_generate_for_media`() instead. If you are generating the script for a specific tree, it is recommended that you use `osinfo_install_script_generate_for_tree`() in instead.
          */
-        generate(os: Os, config: InstallConfig, cancellable?: Gio.Cancellable | null): string;
+        generate(os: Os, config: InstallConfig, cancellable: Gio.Cancellable | null): string;
         /**
          * Asynchronous variant of `osinfo_install_script_generate`(). From the callback,
          * call `osinfo_install_script_generate_finish`() to conclude this call and get
@@ -3081,7 +3113,7 @@ export namespace Libosinfo {
          * @param config the install script config
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        generate_async(os: Os, config: InstallConfig, cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
+        generate_async(os: Os, config: InstallConfig, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * Asynchronous variant of `osinfo_install_script_generate`(). From the callback,
          * call `osinfo_install_script_generate_finish`() to conclude this call and get
@@ -3115,7 +3147,7 @@ export namespace Libosinfo {
         generate_async(
             os: Os,
             config: InstallConfig,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
         /**
@@ -3178,7 +3210,7 @@ export namespace Libosinfo {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns the script as string.
          */
-        generate_for_media(media: Media, config: InstallConfig, cancellable?: Gio.Cancellable | null): string;
+        generate_for_media(media: Media, config: InstallConfig, cancellable: Gio.Cancellable | null): string;
         /**
          * Asynchronous variant of `osinfo_install_script_generate_for_media`(). From the
          * callback, call `osinfo_install_script_generate_for_media_finish`() to
@@ -3190,7 +3222,7 @@ export namespace Libosinfo {
         generate_for_media_async(
             media: Media,
             config: InstallConfig,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<string>;
         /**
          * Asynchronous variant of `osinfo_install_script_generate_for_media`(). From the
@@ -3219,7 +3251,7 @@ export namespace Libosinfo {
         generate_for_media_async(
             media: Media,
             config: InstallConfig,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
         /**
@@ -3235,7 +3267,7 @@ export namespace Libosinfo {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns the script as string.
          */
-        generate_for_tree(tree: Tree, config: InstallConfig, cancellable?: Gio.Cancellable | null): string;
+        generate_for_tree(tree: Tree, config: InstallConfig, cancellable: Gio.Cancellable | null): string;
         /**
          * Asynchronous variant of `osinfo_install_script_generate_for_tree`(). From the
          * callback, call `osinfo_install_script_generate_for_tree_finish`() to
@@ -3247,7 +3279,7 @@ export namespace Libosinfo {
         generate_for_tree_async(
             tree: Tree,
             config: InstallConfig,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<string>;
         /**
          * Asynchronous variant of `osinfo_install_script_generate_for_tree`(). From the
@@ -3276,7 +3308,7 @@ export namespace Libosinfo {
         generate_for_tree_async(
             tree: Tree,
             config: InstallConfig,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
         /**
@@ -3296,7 +3328,7 @@ export namespace Libosinfo {
             os: Os,
             config: InstallConfig,
             output_dir: Gio.File,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): Gio.File;
         /**
          * Asynchronous variant of `osinfo_install_script_generate_output`(). From the
@@ -3314,7 +3346,7 @@ export namespace Libosinfo {
             os: Os,
             config: InstallConfig,
             output_dir: Gio.File,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<Gio.File>;
         /**
          * Asynchronous variant of `osinfo_install_script_generate_output`(). From the
@@ -3353,7 +3385,7 @@ export namespace Libosinfo {
             os: Os,
             config: InstallConfig,
             output_dir: Gio.File,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Gio.File> | void;
         /**
@@ -3373,7 +3405,7 @@ export namespace Libosinfo {
             media: Media,
             config: InstallConfig,
             output_dir: Gio.File,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): Gio.File;
         /**
          * Asynchronous variant of `osinfo_install_script_generate_output_for_media`().
@@ -3389,7 +3421,7 @@ export namespace Libosinfo {
             media: Media,
             config: InstallConfig,
             output_dir: Gio.File,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<Gio.File>;
         /**
          * Asynchronous variant of `osinfo_install_script_generate_output_for_media`().
@@ -3424,7 +3456,7 @@ export namespace Libosinfo {
             media: Media,
             config: InstallConfig,
             output_dir: Gio.File,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Gio.File> | void;
         /**
@@ -3444,7 +3476,7 @@ export namespace Libosinfo {
             tree: Tree,
             config: InstallConfig,
             output_dir: Gio.File,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): Gio.File;
         /**
          * Asynchronous variant of `osinfo_install_script_generate_output_for_tree`().
@@ -3460,7 +3492,7 @@ export namespace Libosinfo {
             tree: Tree,
             config: InstallConfig,
             output_dir: Gio.File,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<Gio.File>;
         /**
          * Asynchronous variant of `osinfo_install_script_generate_output_for_tree`().
@@ -3495,7 +3527,7 @@ export namespace Libosinfo {
             tree: Tree,
             config: InstallConfig,
             output_dir: Gio.File,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Gio.File> | void;
         /**
@@ -4074,16 +4106,19 @@ export namespace Libosinfo {
 
         /**
          * Expected application ID (regular expression) for ISO9660 image/device.
+         * @default null
          */
         get application_id(): string;
         set application_id(val: string);
         /**
          * Expected application ID (regular expression) for ISO9660 image/device.
+         * @default null
          */
         get applicationId(): string;
         set applicationId(val: string);
         /**
          * The target hardware architecture of this media.
+         * @default null
          */
         get architecture(): string;
         set architecture(val: string);
@@ -4094,6 +4129,7 @@ export namespace Libosinfo {
          * during its installation process as some packages are installed after the
          * reboot (which may cause the media to be ejected, depending on the
          * application).
+         * @default true
          */
         get eject_after_install(): boolean;
         set eject_after_install(val: boolean);
@@ -4104,21 +4140,25 @@ export namespace Libosinfo {
          * during its installation process as some packages are installed after the
          * reboot (which may cause the media to be ejected, depending on the
          * application).
+         * @default true
          */
         get ejectAfterInstall(): boolean;
         set ejectAfterInstall(val: boolean);
         /**
          * The path to the initrd image in the install tree.
+         * @default null
          */
         get initrd_path(): string;
         set initrd_path(val: string);
         /**
          * The path to the initrd image in the install tree.
+         * @default null
          */
         get initrdPath(): string;
         set initrdPath(val: string);
         /**
          * Whether media provides an installer for an OS.
+         * @default true
          */
         get installer(): boolean;
         set installer(val: boolean);
@@ -4133,6 +4173,7 @@ export namespace Libosinfo {
          * Warning: Some media allow you to install from live sessions, in which
          * case number of reboots *alone* is not a reliable method for tracking
          * installation.
+         * @default 1
          */
         get installer_reboots(): number;
         set installer_reboots(val: number);
@@ -4147,6 +4188,7 @@ export namespace Libosinfo {
          * Warning: Some media allow you to install from live sessions, in which
          * case number of reboots *alone* is not a reliable method for tracking
          * installation.
+         * @default 1
          */
         get installerReboots(): number;
         set installerReboots(val: number);
@@ -4155,6 +4197,7 @@ export namespace Libosinfo {
          *
          * Some distros provide a few different medias and not all the medias support
          * installation via an install script.
+         * @default true
          */
         get installer_script(): boolean;
         set installer_script(val: boolean);
@@ -4163,16 +4206,19 @@ export namespace Libosinfo {
          *
          * Some distros provide a few different medias and not all the medias support
          * installation via an install script.
+         * @default true
          */
         get installerScript(): boolean;
         set installerScript(val: boolean);
         /**
          * The path to the kernel image in the install tree.
+         * @default null
          */
         get kernel_path(): string;
         set kernel_path(val: string);
         /**
          * The path to the kernel image in the install tree.
+         * @default null
          */
         get kernelPath(): string;
         set kernelPath(val: string);
@@ -4189,6 +4235,7 @@ export namespace Libosinfo {
         get languages(): string[];
         /**
          * Whether media can boot directly an OS without any installations.
+         * @default false
          */
         get live(): boolean;
         set live(val: boolean);
@@ -4202,46 +4249,55 @@ export namespace Libosinfo {
         set os(val: Os);
         /**
          * Expected publisher ID (regular expression) for ISO9660 image/device.
+         * @default null
          */
         get publisher_id(): string;
         set publisher_id(val: string);
         /**
          * Expected publisher ID (regular expression) for ISO9660 image/device.
+         * @default null
          */
         get publisherId(): string;
         set publisherId(val: string);
         /**
          * Expected system ID (regular expression) for ISO9660 image/device.
+         * @default null
          */
         get system_id(): string;
         set system_id(val: string);
         /**
          * Expected system ID (regular expression) for ISO9660 image/device.
+         * @default null
          */
         get systemId(): string;
         set systemId(val: string);
         /**
          * The URL to this media.
+         * @default null
          */
         get url(): string;
         set url(val: string);
         /**
          * Expected volume ID (regular expression) for ISO9660 image/device.
+         * @default null
          */
         get volume_id(): string;
         set volume_id(val: string);
         /**
          * Expected volume ID (regular expression) for ISO9660 image/device.
+         * @default null
          */
         get volumeId(): string;
         set volumeId(val: string);
         /**
          * Expected volume size, in bytes for ISO9660 image/device.
+         * @default -1
          */
         get volume_size(): number;
         set volume_size(val: bigint | number);
         /**
          * Expected volume size, in bytes for ISO9660 image/device.
+         * @default -1
          */
         get volumeSize(): number;
         set volumeSize(val: bigint | number);
@@ -4294,7 +4350,7 @@ export namespace Libosinfo {
          * @param location the location of an installation media
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        static create_from_location(location: string, cancellable?: Gio.Cancellable | null): Media;
+        static create_from_location(location: string, cancellable: Gio.Cancellable | null): Media;
         /**
          * Asynchronous variant of `osinfo_media_create_from_location`.
          * @param location the location of an installation media
@@ -4305,8 +4361,8 @@ export namespace Libosinfo {
         static create_from_location_async(
             location: string,
             priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<Media> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<Media> | null,
         ): void;
         /**
          * Finishes an asynchronous media object creation process started with
@@ -4623,35 +4679,41 @@ export namespace Libosinfo {
         /**
          * The username to be passed to the cloud-init program.
          * @read-only
+         * @default null
          */
         get cloud_image_username(): string;
         /**
          * The username to be passed to the cloud-init program.
          * @read-only
+         * @default null
          */
         get cloudImageUsername(): string;
         /**
          * The generic distro this OS belongs to, for example fedora, windows,
          * solaris, freebsd etc.
          * @read-only
+         * @default null
          */
         get distro(): string;
         /**
          * The generic family this OS belongs to, based upon its kernel,
          * for example linux, winnt, solaris, freebsd etc.
          * @read-only
+         * @default null
          */
         get family(): string;
         /**
          * The argument to be passed to kernel command line when performing a
          * tree based installation of this OS.
          * @read-only
+         * @default null
          */
         get kernel_url_argument(): string;
         /**
          * The argument to be passed to kernel command line when performing a
          * tree based installation of this OS.
          * @read-only
+         * @default null
          */
         get kernelUrlArgument(): string;
 
@@ -4771,7 +4833,7 @@ export namespace Libosinfo {
          * @param filter an optional device property filter
          * @returns A list of OsinfoDeviceLink
          */
-        get_all_device_links(filter?: Filter | null): DeviceLinkList;
+        get_all_device_links(filter: Filter | null): DeviceLinkList;
         /**
          * Get all devices matching a given filter but unlike osinfo_os_get_devices
          * this function also retrieves devices from all derived and cloned operating
@@ -4779,7 +4841,7 @@ export namespace Libosinfo {
          * @param filter an optional device property filter
          * @returns A list of devices
          */
-        get_all_devices(filter?: Filter | null): DeviceList;
+        get_all_devices(filter: Filter | null): DeviceList;
         /**
          * Gets the username expected to be passed to the cloud image when performing
          * installation.
@@ -4791,7 +4853,7 @@ export namespace Libosinfo {
          * @param filter an optional firmware property filter
          * @returns A list of firmwares
          */
-        get_complete_firmware_list(filter?: Filter | null): FirmwareList;
+        get_complete_firmware_list(filter: Filter | null): FirmwareList;
         /**
          * Gets list of all available device drivers for OS `os`.
          * @returns A list of device drivers
@@ -4808,13 +4870,13 @@ export namespace Libosinfo {
          * @param filter an optional device property filter
          * @returns A list of device links
          */
-        get_device_links(filter?: Filter | null): DeviceLinkList;
+        get_device_links(filter: Filter | null): DeviceLinkList;
         /**
          * Get all devices matching a given filter
          * @param filter an optional device property filter
          * @returns A list of devices
          */
-        get_devices(filter?: Filter | null): DeviceList;
+        get_devices(filter: Filter | null): DeviceList;
         /**
          * A utility function that gets devices found from the list of devices
          * `os` supports, for which the value of `property` is `value`.
@@ -4841,7 +4903,7 @@ export namespace Libosinfo {
          * @param filter an optional firmware property filter
          * @returns A list of firmwares
          */
-        get_firmware_list(filter?: Filter | null): FirmwareList;
+        get_firmware_list(filter: Filter | null): FirmwareList;
         /**
          * Get all installed images associated with operating system `os`.
          * @returns A list of images
@@ -5010,6 +5072,7 @@ export namespace Libosinfo {
 
         /**
          * The name to this variant.
+         * @default null
          */
         get name(): string;
         set name(val: string);
@@ -5194,21 +5257,21 @@ export namespace Libosinfo {
          * @param filter an optional device property filter
          * @returns A list of devices
          */
-        get_all_devices(filter?: Filter | null): DeviceList;
+        get_all_devices(filter: Filter | null): DeviceList;
         /**
          * Retrieve all the associated devices matching the filter.
          * The filter matches against the link, not the device.
          * @param filter an optional filter
          * @returns a list of {@link Libosinfo.Device} entities
          */
-        get_device_links(filter?: Filter | null): DeviceLinkList;
+        get_device_links(filter: Filter | null): DeviceLinkList;
         /**
          * Retrieve all the associated devices matching the filter.
          * The filter matches against the device, not the link.
          * @param filter an optional filter
          * @returns a list of {@link Libosinfo.Device} entities
          */
-        get_devices(filter?: Filter | null): DeviceList;
+        get_devices(filter: Filter | null): DeviceList;
     }
 
     namespace PlatformList {
@@ -5333,36 +5396,43 @@ export namespace Libosinfo {
         /**
          * The codename of this product.
          * @read-only
+         * @default null
          */
         get codename(): string;
         /**
          * The URI of the logo of the product.
          * @read-only
+         * @default null
          */
         get logo(): string;
         /**
          * The name of this product.
          * @read-only
+         * @default null
          */
         get name(): string;
         /**
          * The short ID of this product.
          * @read-only
+         * @default null
          */
         get short_id(): string;
         /**
          * The short ID of this product.
          * @read-only
+         * @default null
          */
         get shortId(): string;
         /**
          * The Vendor of this product.
          * @read-only
+         * @default null
          */
         get vendor(): string;
         /**
          * The version of the product.
          * @read-only
+         * @default null
          */
         get version(): string;
 
@@ -5656,30 +5726,36 @@ export namespace Libosinfo {
         /**
          * The target hardware architecture to which these resources applies.
          * @construct-only
+         * @default null
          */
         get architecture(): string;
         /**
          * The CPU frequency in hertz (Hz).
+         * @default -1
          */
         get cpu(): number;
         set cpu(val: bigint | number);
         /**
          * The number of CPUs.
+         * @default -1
          */
         get n_cpus(): number;
         set n_cpus(val: number);
         /**
          * The number of CPUs.
+         * @default -1
          */
         get nCpus(): number;
         set nCpus(val: number);
         /**
          * The amount of Random Access Memory (RAM) in bytes.
+         * @default -1
          */
         get ram(): number;
         set ram(val: bigint | number);
         /**
          * The amount of storage space in bytes.
+         * @default -1
          */
         get storage(): number;
         set storage(val: bigint | number);
@@ -5915,46 +5991,55 @@ export namespace Libosinfo {
 
         /**
          * The target hardware architecture of this tree.
+         * @default null
          */
         get architecture(): string;
         set architecture(val: string);
         /**
          * The path to the boot ISO in the install tree
+         * @default null
          */
         get boot_iso_path(): string;
         set boot_iso_path(val: string);
         /**
          * The path to the boot ISO in the install tree
+         * @default null
          */
         get bootIsoPath(): string;
         set bootIsoPath(val: string);
         /**
          * Whether the tree has treeinfo or not
+         * @default false
          */
         get has_treeinfo(): boolean;
         set has_treeinfo(val: boolean);
         /**
          * Whether the tree has treeinfo or not
+         * @default false
          */
         get hasTreeinfo(): boolean;
         set hasTreeinfo(val: boolean);
         /**
          * The path to the initrd image in the install tree.
+         * @default null
          */
         get initrd_path(): string;
         set initrd_path(val: string);
         /**
          * The path to the initrd image in the install tree.
+         * @default null
          */
         get initrdPath(): string;
         set initrdPath(val: string);
         /**
          * The path to the kernel image in the install tree.
+         * @default null
          */
         get kernel_path(): string;
         set kernel_path(val: string);
         /**
          * The path to the kernel image in the install tree.
+         * @default null
          */
         get kernelPath(): string;
         set kernelPath(val: string);
@@ -5968,46 +6053,55 @@ export namespace Libosinfo {
         set os(val: Os);
         /**
          * The treeinfo arch
+         * @default null
          */
         get treeinfo_arch(): string;
         set treeinfo_arch(val: string);
         /**
          * The treeinfo arch
+         * @default null
          */
         get treeinfoArch(): string;
         set treeinfoArch(val: string);
         /**
          * The treeinfo family
+         * @default null
          */
         get treeinfo_family(): string;
         set treeinfo_family(val: string);
         /**
          * The treeinfo family
+         * @default null
          */
         get treeinfoFamily(): string;
         set treeinfoFamily(val: string);
         /**
          * The treeinfo variant
+         * @default null
          */
         get treeinfo_variant(): string;
         set treeinfo_variant(val: string);
         /**
          * The treeinfo variant
+         * @default null
          */
         get treeinfoVariant(): string;
         set treeinfoVariant(val: string);
         /**
          * The treeinfo version
+         * @default null
          */
         get treeinfo_version(): string;
         set treeinfo_version(val: string);
         /**
          * The treeinfo version
+         * @default null
          */
         get treeinfoVersion(): string;
         set treeinfoVersion(val: string);
         /**
          * The URL to this tree.
+         * @default null
          */
         get url(): string;
         set url(val: string);
@@ -6060,7 +6154,7 @@ export namespace Libosinfo {
          * @param location the location of an installation tree
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        static create_from_location(location: string, cancellable?: Gio.Cancellable | null): Tree;
+        static create_from_location(location: string, cancellable: Gio.Cancellable | null): Tree;
         /**
          * Asynchronous variant of `osinfo_tree_create_from_location`.
          * @param location the location of an installation tree
@@ -6071,8 +6165,8 @@ export namespace Libosinfo {
         static create_from_location_async(
             location: string,
             priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<Tree> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<Tree> | null,
         ): void;
         /**
          * Finishes an asynchronous tree object creation process started with

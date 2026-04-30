@@ -58,7 +58,7 @@ export namespace GstGLX11 {
 
         _init(...args: any[]): void;
 
-        static ['new'](name?: string | null): GLDisplayX11;
+        static ['new'](name: string | null): GLDisplayX11;
         // Conflicted with GstGL.GLDisplay.new
 
         static ['new'](...args: never[]): any;

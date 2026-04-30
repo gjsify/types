@@ -136,8 +136,14 @@ export namespace IMSettings {
 
         // Properties
 
+        /**
+         * @default null
+         */
         get desktop(): string;
         set desktop(val: string);
+        /**
+         * @default null
+         */
         get locale(): string;
         set locale(val: string);
 
@@ -198,7 +204,7 @@ export namespace IMSettings {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns if supported, returns `true` otherwise `false`.
          */
-        can_x_display_open(cancellable?: Gio.Cancellable | null): boolean;
+        can_x_display_open(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Obtains the result of the request from
          * `imsettings_client_can_x_display_open_start()`.
@@ -212,8 +218,8 @@ export namespace IMSettings {
          * @param callback a {@link Gio.AsyncReadyCallback}.
          */
         can_x_display_open_start(
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Obtains the Input Method information that is currently running on.
@@ -232,7 +238,7 @@ export namespace IMSettings {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns a {@link IMSettings.Info} for active Input Method. if not, `null` then.
          */
-        get_active_im_info(cancellable?: Gio.Cancellable | null): Info;
+        get_active_im_info(cancellable: Gio.Cancellable | null): Info;
         /**
          * Obtains current desktop information in `client`.
          * @returns a reference to the desktop name in `client`. it shouldn't be freed          in applications.
@@ -245,7 +251,7 @@ export namespace IMSettings {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns a {@link IMSettings.Info} or `null`.
          */
-        get_info_object(module: string, cancellable?: Gio.Cancellable | null): Info;
+        get_info_object(module: string, cancellable: Gio.Cancellable | null): Info;
         /**
          * Obtains the information for the specific Input Method in `module`.
          *
@@ -266,7 +272,7 @@ export namespace IMSettings {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns a {@link GLib.Variant} that can converts to {@link IMSettings.Info} through          `imsettings_info_new()`. otherwise `null`.
          */
-        get_info_variant(module: string, cancellable?: Gio.Cancellable | null): GLib.Variant;
+        get_info_variant(module: string, cancellable: Gio.Cancellable | null): GLib.Variant;
         /**
          * Obtains the result of the request from
          * `imsettings_client_get_info_variant_start()`.
@@ -282,8 +288,8 @@ export namespace IMSettings {
          */
         get_info_variant_start(
             module: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Obtains all of the Input Method information available on the system.
@@ -303,7 +309,7 @@ export namespace IMSettings {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns a {@link GLib.Variant} contains some pairs of an Input Method name and          a {@link GLib.Variant} that can converts to {@link IMSettings.Info} through          `imsettings_info_new()`. otherwise `null`.
          */
-        get_info_variants(cancellable?: Gio.Cancellable | null): GLib.Variant;
+        get_info_variants(cancellable: Gio.Cancellable | null): GLib.Variant;
         /**
          * Obtains the result of the request from
          * `imsettings_client_get_info_variants_start()`.
@@ -318,8 +324,8 @@ export namespace IMSettings {
          * @param callback a {@link Gio.AsyncReadyCallback}.
          */
         get_info_variants_start(
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Obtains current locale information in `client`.
@@ -343,7 +349,7 @@ export namespace IMSettings {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns a {@link GLib.Variant} that contains some pairs of the module name and          the Input Method name.
          */
-        get_module_settings(cancellable?: Gio.Cancellable | null): GLib.Variant;
+        get_module_settings(cancellable: Gio.Cancellable | null): GLib.Variant;
         /**
          * Obtains an Input Method name that currently is active for the system-wide.
          *
@@ -364,7 +370,7 @@ export namespace IMSettings {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns an Input Method name or `null`.
          */
-        get_system_im(cancellable?: Gio.Cancellable | null): string;
+        get_system_im(cancellable: Gio.Cancellable | null): string;
         /**
          * Obtains the result of the request from
          * `imsettings_client_get_system_im_start()`.
@@ -378,7 +384,7 @@ export namespace IMSettings {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @param callback a {@link Gio.AsyncReadyCallback}.
          */
-        get_system_im_start(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        get_system_im_start(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Obtains an Input Method name that currently is active for the user.
          * If one doesn't have the user xinputrc on their home, this simply returns the same
@@ -401,7 +407,7 @@ export namespace IMSettings {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns an Input Method name or `null`.
          */
-        get_user_im(cancellable?: Gio.Cancellable | null): string;
+        get_user_im(cancellable: Gio.Cancellable | null): string;
         /**
          * Obtains the result of the request from
          * `imsettings_client_get_user_im_start()`.
@@ -415,7 +421,7 @@ export namespace IMSettings {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @param callback a {@link Gio.AsyncReadyCallback}.
          */
-        get_user_im_start(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        get_user_im_start(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Obtains the version information of imsettings-daemon running.
          * This is expected to invoke at first if the return value is same to
@@ -437,7 +443,7 @@ export namespace IMSettings {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns a version number.
          */
-        get_version(cancellable?: Gio.Cancellable | null): number;
+        get_version(cancellable: Gio.Cancellable | null): number;
         /**
          * Checks whether `module` is the system default or not.
          *
@@ -458,7 +464,7 @@ export namespace IMSettings {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns `true` if it is, otherwise `false`.
          */
-        im_is_system_default(module: string, cancellable?: Gio.Cancellable | null): boolean;
+        im_is_system_default(module: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Checks whether `module` is the user default or not.
          *
@@ -479,7 +485,7 @@ export namespace IMSettings {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns `true` if it is, otherwise `false`.
          */
-        im_is_user_default(module: string, cancellable?: Gio.Cancellable | null): boolean;
+        im_is_user_default(module: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Checks whether `module` is the Input Method for XIM only or not.
          *
@@ -500,7 +506,7 @@ export namespace IMSettings {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns `true` if it is, otherwise `false`.
          */
-        im_is_xim(module: string, cancellable?: Gio.Cancellable | null): boolean;
+        im_is_xim(module: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Check if IMSettings is supposed to be taken any acttions.
          *
@@ -522,7 +528,7 @@ export namespace IMSettings {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns if any actions needed, returns `true` otherwise `false`.
          */
-        is_action_needed(module: string, cancellable?: Gio.Cancellable | null): boolean;
+        is_action_needed(module: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Obtains the result of the request from
          * `imsettings_client_is_action_needed_start()`.
@@ -538,8 +544,8 @@ export namespace IMSettings {
          */
         is_action_needed_start(
             module: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Check if current desktop is supported by IMSettings or not.
@@ -559,7 +565,7 @@ export namespace IMSettings {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns if supported, returns `true` otherwise `false`.
          */
-        is_supported_desktop(cancellable?: Gio.Cancellable | null): boolean;
+        is_supported_desktop(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Obtains the result of the request from
          * `imsettings_client_is_supported_desktop_start()`.
@@ -573,8 +579,8 @@ export namespace IMSettings {
          * @param callback a {@link Gio.AsyncReadyCallback}.
          */
         is_supported_desktop_start(
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Check whether the process is running.
@@ -616,7 +622,7 @@ export namespace IMSettings {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation is successfully done, otherwise `false`.
          */
-        reload(send_signal: boolean, cancellable?: Gio.Cancellable | null): boolean;
+        reload(send_signal: boolean, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Update the desktop name in `client` to `desktop`. if `desktop` is `null`,
          * the desktop detection will be done in the server side.
@@ -652,7 +658,7 @@ export namespace IMSettings {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns if the operation is successfully done, returns `true`          otherwise `false`.
          */
-        switch_im(module: string, update_xinputrc: boolean, cancellable?: Gio.Cancellable | null): boolean;
+        switch_im(module: string, update_xinputrc: boolean, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Obtains the result of the request from
          * `imsettings_client_switch_im_start()`.
@@ -670,8 +676,8 @@ export namespace IMSettings {
         switch_im_start(
             module: string,
             update_xinputrc: boolean,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
     }
 

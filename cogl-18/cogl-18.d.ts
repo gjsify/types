@@ -1454,7 +1454,7 @@ export namespace Cogl {
     /**
      * @param data
      */
-    function set_tracing_disabled_on_thread(data?: any | null): void;
+    function set_tracing_disabled_on_thread(data: any | null): void;
     /**
      * @param data
      * @param group
@@ -1700,7 +1700,7 @@ export namespace Cogl {
          * @param height
          * @param user_data
          */
-        reserve_space(width: number, height: number, user_data?: any | null): boolean;
+        reserve_space(width: number, height: number, user_data: any | null): boolean;
     }
 
     namespace AtlasTexture {
@@ -2078,22 +2078,27 @@ export namespace Cogl {
         set context(val: Context);
         /**
          * @construct-only
+         * @default Cogl.BufferBindTarget.PIXEL_PACK
          */
         set default_target(val: BufferBindTarget);
         /**
          * @construct-only
+         * @default Cogl.BufferBindTarget.PIXEL_PACK
          */
         set defaultTarget(val: BufferBindTarget);
         /**
          * @construct-only
+         * @default 0
          */
         set size(val: bigint | number);
         /**
          * @write-only
+         * @default Cogl.BufferUpdateHint.STATIC
          */
         set update_hint(val: BufferUpdateHint);
         /**
          * @write-only
+         * @default Cogl.BufferUpdateHint.STATIC
          */
         set updateHint(val: BufferUpdateHint);
 
@@ -2288,7 +2293,7 @@ export namespace Cogl {
 
         _init(...args: any[]): void;
 
-        static ['new'](display?: Display | null): Context;
+        static ['new'](display: Display | null): Context;
 
         // Signals
 
@@ -2388,7 +2393,7 @@ export namespace Cogl {
          * @param key a {@link Cogl.PipelineKey} pointer
          * @param pipeline a {@link Cogl.Pipeline} to associate with the `context` and            `key`
          */
-        set_named_pipeline(key: PipelineKey, pipeline?: Pipeline | null): void;
+        set_named_pipeline(key: PipelineKey, pipeline: Pipeline | null): void;
     }
 
     namespace Display {
@@ -2724,8 +2729,14 @@ export namespace Cogl {
          * @construct-only
          */
         get driverConfig(): any;
+        /**
+         * @default -1
+         */
         get height(): number;
         set height(val: number);
+        /**
+         * @default -1
+         */
         get width(): number;
         set width(val: number);
 
@@ -3986,7 +3997,7 @@ export namespace Cogl {
          * @param window_out
          * @virtual
          */
-        vfunc_get_window_handles(device_out?: any | null, window_out?: any | null): boolean;
+        vfunc_get_window_handles(device_out: any | null, window_out: any | null): boolean;
         /**
          * Implementation for https://www.khronos.org/registry/EGL/extensions/KHR/EGL_KHR_partial_update.txt
          * This immediately queues state to OpenGL that will be used for the
@@ -4085,7 +4096,7 @@ export namespace Cogl {
          * @param destroy An optional callback to destroy `user_data`           when the `callback` is removed or `onscreen` is freed.
          * @returns a {@link Cogl.FrameClosure} pointer that can be used to          remove the callback and associated `user_data` later.
          */
-        add_frame_callback(callback: FrameCallback, destroy?: GLib.DestroyNotify | null): FrameClosure;
+        add_frame_callback(callback: FrameCallback, destroy: GLib.DestroyNotify | null): FrameClosure;
         /**
          * @param info A {@link Cogl.FrameInfo}
          */
@@ -4095,7 +4106,7 @@ export namespace Cogl {
          * @param info
          * @param user_data
          */
-        direct_scanout(scanout: Scanout, info: FrameInfo, user_data?: any | null): boolean;
+        direct_scanout(scanout: Scanout, info: FrameInfo, user_data: any | null): boolean;
         /**
          * Gets the current age of the buffer contents.
          *
@@ -4145,7 +4156,7 @@ export namespace Cogl {
          * @param device_out
          * @param window_out
          */
-        get_window_handles(device_out?: any | null, window_out?: any | null): boolean;
+        get_window_handles(device_out: any | null, window_out: any | null): boolean;
         /**
          * Implementation for https://www.khronos.org/registry/EGL/extensions/KHR/EGL_KHR_partial_update.txt
          * This immediately queues state to OpenGL that will be used for the
@@ -4184,7 +4195,7 @@ export namespace Cogl {
          * @param frame_info
          * @param user_data
          */
-        swap_buffers(frame_info: FrameInfo, user_data?: any | null): void;
+        swap_buffers(frame_info: FrameInfo, user_data: any | null): void;
         /**
          * Swaps the current back buffer being rendered too, to the front for
          * display and provides information to any system compositor about
@@ -4225,7 +4236,7 @@ export namespace Cogl {
          * @param info
          * @param user_data
          */
-        swap_buffers_with_damage(region: Mtk.Region, info: FrameInfo, user_data?: any | null): void;
+        swap_buffers_with_damage(region: Mtk.Region, info: FrameInfo, user_data: any | null): void;
         /**
          * Swaps a region of the back buffer being rendered too, to the front for
          * display.
@@ -4239,7 +4250,7 @@ export namespace Cogl {
          * @param info
          * @param user_data
          */
-        swap_region(region: Mtk.Region, info: FrameInfo, user_data?: any | null): void;
+        swap_region(region: Mtk.Region, info: FrameInfo, user_data: any | null): void;
     }
 
     namespace OnscreenEgl {
@@ -5384,7 +5395,7 @@ export namespace Cogl {
         /**
          * @param winsys
          */
-        set_winsys_data(winsys?: any | null): void;
+        set_winsys_data(winsys: any | null): void;
     }
 
     namespace Scanout {
@@ -5823,7 +5834,7 @@ export namespace Cogl {
 
         _init(...args: any[]): void;
 
-        static ['new'](hook: SnippetHook, declarations?: string | null, post?: string | null): Snippet;
+        static ['new'](hook: SnippetHook, declarations: string | null, post: string | null): Snippet;
 
         // Signals
 
@@ -6035,10 +6046,12 @@ export namespace Cogl {
         set context(val: Context);
         /**
          * @construct-only
+         * @default Cogl.PixelFormat.ANY
          */
         set format(val: PixelFormat);
         /**
          * @construct-only
+         * @default -1
          */
         set height(val: number);
         /**
@@ -6047,6 +6060,7 @@ export namespace Cogl {
         set loader(val: any);
         /**
          * @construct-only
+         * @default -1
          */
         set width(val: number);
 
@@ -6174,7 +6188,7 @@ export namespace Cogl {
          * @param data memory location to write the `texture`'s contents, or `null` to only query the data size through the return value.
          * @returns the size of the texture data in bytes
          */
-        get_data(format: PixelFormat, rowstride: number, data?: Uint8Array | null): number;
+        get_data(format: PixelFormat, rowstride: number, data: Uint8Array | null): number;
         /**
          * @param args
          */
@@ -6576,6 +6590,7 @@ export namespace Cogl {
 
         /**
          * @construct-only
+         * @default null
          */
         get name(): string;
 
@@ -7082,7 +7097,7 @@ export namespace Cogl {
         /**
          * @param data
          */
-        munmap(data?: any | null): boolean;
+        munmap(data: any | null): boolean;
         sync_read_end(): boolean;
         sync_read_start(): boolean;
     }

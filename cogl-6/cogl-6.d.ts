@@ -888,7 +888,7 @@ export namespace Cogl {
      * @returns `true` if the two colors are the same.
      * @since 1.0
      */
-    function color_equal(v1?: any | null, v2?: any | null): boolean;
+    function color_equal(v1: any | null, v2: any | null): boolean;
     /**
      * Converts a color expressed in HLS (hue, luminance and saturation)
      * values into a {@link Cogl.Color}.
@@ -1046,42 +1046,42 @@ export namespace Cogl {
      * @returns `true` if the passed `object` represents a bitmap,   and `false` otherwise
      * @since 1.0
      */
-    function is_bitmap(object?: any | null): boolean;
+    function is_bitmap(object: any | null): boolean;
     /**
      * Gets whether the given object references an existing context object.
      * @param object An object or `null`
      * @returns `true` if the `object` references a {@link Cogl.Context},   `false` otherwise
      * @since 1.10
      */
-    function is_context(object?: any | null): boolean;
+    function is_context(object: any | null): boolean;
     /**
      * Gets whether the given object references a {@link Cogl.Framebuffer}.
      * @param object A {@link Cogl.Object} pointer
      * @returns `true` if the object references a {@link Cogl.Framebuffer}   and `false` otherwise.
      * @since 1.10
      */
-    function is_framebuffer(object?: any | null): boolean;
+    function is_framebuffer(object: any | null): boolean;
     /**
      * Determines whether the given {@link Cogl.Object} references an offscreen
      * framebuffer object.
      * @param object A pointer to a {@link Cogl.Object}
      * @returns `true` if `object` is a {@link Cogl.Offscreen} framebuffer,          `false` otherwise
      */
-    function is_offscreen(object?: any | null): boolean;
+    function is_offscreen(object: any | null): boolean;
     /**
      * Gets whether the given object references a {@link Cogl.Onscreen}.
      * @param object A {@link Cogl.Object} pointer
      * @returns `true` if the object references a {@link Cogl.Onscreen}   and `false` otherwise.
      * @since 1.10
      */
-    function is_onscreen(object?: any | null): boolean;
+    function is_onscreen(object: any | null): boolean;
     /**
      * Gets whether the given `object` references an existing pipeline object.
      * @param object A {@link Cogl.Object}
      * @returns `true` if the `object` references a {@link Cogl.Pipeline},   `false` otherwise
      * @since 2.0
      */
-    function is_pipeline(object?: any | null): boolean;
+    function is_pipeline(object: any | null): boolean;
     /**
      * Gets whether the given handle references an existing program object.
      * @param handle A CoglHandle
@@ -1101,21 +1101,21 @@ export namespace Cogl {
      * @param object A {@link Cogl.Object} pointer
      * @returns `true` if the `object` references a texture, and   `false` otherwise
      */
-    function is_texture(object?: any | null): boolean;
+    function is_texture(object: any | null): boolean;
     /**
      * Gets whether the given object references an existing {@link Cogl.Texture2D}
      * object.
      * @param object A {@link Cogl.Object}
      * @returns `true` if the object references a {@link Cogl.Texture2D},   `false` otherwise
      */
-    function is_texture_2d(object?: any | null): boolean;
+    function is_texture_2d(object: any | null): boolean;
     /**
      * Gets whether the given object references a {@link Cogl.Texture2DSliced}.
      * @param object A {@link Cogl.Object} pointer
      * @returns `true` if the object references a {@link Cogl.Texture2DSliced}   and `false` otherwise.
      * @since 1.10
      */
-    function is_texture_2d_sliced(object?: any | null): boolean;
+    function is_texture_2d_sliced(object: any | null): boolean;
     /**
      * Compares two matrices to see if they represent the same
      * transformation. Although internally the matrices may have different
@@ -1125,7 +1125,7 @@ export namespace Cogl {
      * @param v2 A 4x4 transformation matrix
      * @since 1.4
      */
-    function matrix_equal(v1?: any | null, v2?: any | null): boolean;
+    function matrix_equal(v1: any | null, v2: any | null): boolean;
     /**
      * Queries the number of bytes per pixel for a given format in the given plane.
      * @param format The pixel format
@@ -2600,7 +2600,7 @@ export namespace Cogl {
          */
         add_dirty_callback(
             callback: OnscreenDirtyCallback,
-            destroy?: UserDataDestroyCallback | null,
+            destroy: UserDataDestroyCallback | null,
         ): OnscreenDirtyClosure;
         /**
          * Registers a `callback` with `onscreen` that will be called whenever
@@ -2627,7 +2627,7 @@ export namespace Cogl {
          */
         add_resize_callback(
             callback: OnscreenResizeCallback,
-            destroy?: UserDataDestroyCallback | null,
+            destroy: UserDataDestroyCallback | null,
         ): OnscreenResizeClosure;
         /**
          * Gets the current age of the buffer contents.
@@ -4285,7 +4285,7 @@ export namespace Cogl {
         /**
          * @param user_data
          */
-        egl_image_external_alloc_finish(user_data?: any | null): void;
+        egl_image_external_alloc_finish(user_data: any | null): void;
         egl_image_external_bind(): void;
         /**
          * Explicitly allocates the storage for the given `texture` which
@@ -4321,7 +4321,7 @@ export namespace Cogl {
          * @param data memory location to write the `texture`'s contents, or `null` to only query the data size through the return value.
          * @returns the size of the texture data in bytes
          */
-        get_data(format: PixelFormat, rowstride: number, data?: Uint8Array | null): number;
+        get_data(format: PixelFormat, rowstride: number, data: Uint8Array | null): number;
         /**
          * Queries the GL handles for a GPU side texture through its {@link Cogl.Texture}.
          *
@@ -4608,7 +4608,7 @@ export namespace Cogl {
          * @param data memory location to write the `texture`'s contents, or `null` to only query the data size through the return value.
          * @returns the size of the texture data in bytes
          */
-        get_data(format: PixelFormat, rowstride: number, data?: Uint8Array | null): number;
+        get_data(format: PixelFormat, rowstride: number, data: Uint8Array | null): number;
         /**
          * Queries the GL handles for a GPU side texture through its {@link Cogl.Texture}.
          *
@@ -4847,7 +4847,7 @@ export namespace Cogl {
          * @param v1 a {@link Cogl.Color}
          * @param v2 a {@link Cogl.Color}
          */
-        static equal(v1?: any | null, v2?: any | null): boolean;
+        static equal(v1: any | null, v2: any | null): boolean;
         /**
          * Converts a color expressed in HLS (hue, luminance and saturation)
          * values into a {@link Cogl.Color}.
@@ -5446,7 +5446,7 @@ export namespace Cogl {
          * @param v1 A 4x4 transformation matrix
          * @param v2 A 4x4 transformation matrix
          */
-        static equal(v1?: any | null, v2?: any | null): boolean;
+        static equal(v1: any | null, v2: any | null): boolean;
 
         // Methods
 
@@ -6836,7 +6836,7 @@ export namespace Cogl {
          * @param data memory location to write the `texture`'s contents, or `null` to only query the data size through the return value.
          * @returns the size of the texture data in bytes
          */
-        get_data(format: PixelFormat, rowstride: number, data?: Uint8Array | null): number;
+        get_data(format: PixelFormat, rowstride: number, data: Uint8Array | null): number;
         /**
          * Queries the GL handles for a GPU side texture through its {@link Cogl.Texture}.
          *

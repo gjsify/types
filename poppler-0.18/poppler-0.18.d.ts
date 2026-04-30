@@ -2150,7 +2150,7 @@ export namespace Poppler {
          * Sets the color of `poppler_annot`.
          * @param poppler_color a {@link Poppler.Color}, or `null`
          */
-        set_color(poppler_color?: Color | null): void;
+        set_color(poppler_color: Color | null): void;
         /**
          * Sets the contents of `poppler_annot` to the given value,
          * replacing the current contents.
@@ -2238,7 +2238,7 @@ export namespace Poppler {
          * Sets the interior color of `poppler_annot`.
          * @param poppler_color a {@link Poppler.Color}, or `null`
          */
-        set_interior_color(poppler_color?: Color | null): void;
+        set_interior_color(poppler_color: Color | null): void;
     }
 
     namespace AnnotFileAttachment {
@@ -2659,7 +2659,7 @@ export namespace Poppler {
          * Sets the label text of `poppler_annot`, replacing the current one
          * @param label a text string containing the new label, or `null`
          */
-        set_label(label?: string | null): void;
+        set_label(label: string | null): void;
         /**
          * Sets the opacity of `poppler_annot`. This value applies to
          * all visible elements of `poppler_annot` in its closed state,
@@ -2886,7 +2886,7 @@ export namespace Poppler {
          * Sets the interior color of `poppler_annot`.
          * @param poppler_color a {@link Poppler.Color}, or `null`
          */
-        set_interior_color(poppler_color?: Color | null): void;
+        set_interior_color(poppler_color: Color | null): void;
     }
 
     namespace AnnotStamp {
@@ -3391,18 +3391,21 @@ export namespace Poppler {
 
         /**
          * The author of the document
+         * @default null
          */
         get author(): string;
         set author(val: string);
         /**
          * The date the document was created as seconds since the Epoch, or -1
          * @deprecated since 20.09.0: This will overflow in 2038. Use creation-datetime instead.
+         * @default -1
          */
         get creation_date(): number;
         set creation_date(val: number);
         /**
          * The date the document was created as seconds since the Epoch, or -1
          * @deprecated since 20.09.0: This will overflow in 2038. Use creation-datetime instead.
+         * @default -1
          */
         get creationDate(): number;
         set creationDate(val: number);
@@ -3420,58 +3423,69 @@ export namespace Poppler {
         set creationDatetime(val: GLib.DateTime);
         /**
          * The creator of the document. See also `poppler_document_get_creator()`
+         * @default null
          */
         get creator(): string;
         set creator(val: string);
         /**
          * The PDF version as string. See also `poppler_document_get_pdf_version_string()`
          * @read-only
+         * @default null
          */
         get format(): string;
         /**
          * The PDF major version number. See also `poppler_document_get_pdf_version()`
          * @read-only
+         * @default 1
          */
         get format_major(): number;
         /**
          * The PDF major version number. See also `poppler_document_get_pdf_version()`
          * @read-only
+         * @default 1
          */
         get formatMajor(): number;
         /**
          * The PDF minor version number. See also `poppler_document_get_pdf_version()`
          * @read-only
+         * @default 0
          */
         get format_minor(): number;
         /**
          * The PDF minor version number. See also `poppler_document_get_pdf_version()`
          * @read-only
+         * @default 0
          */
         get formatMinor(): number;
         /**
          * The keywords associated to the document
+         * @default null
          */
         get keywords(): string;
         set keywords(val: string);
         /**
          * Whether document is linearized. See also `poppler_document_is_linearized()`
          * @read-only
+         * @default false
          */
         get linearized(): boolean;
         /**
          * Document metadata in XML format, or `null`
          * @read-only
+         * @default null
          */
         get metadata(): string;
         /**
          * The date the document was most recently modified as seconds since the Epoch, or -1
          * @deprecated since 20.09.0: This will overflow in 2038. Use mod-datetime instead.
+         * @default -1
          */
         get mod_date(): number;
         set mod_date(val: number);
         /**
          * The date the document was most recently modified as seconds since the Epoch, or -1
          * @deprecated since 20.09.0: This will overflow in 2038. Use mod-datetime instead.
+         * @default -1
          */
         get modDate(): number;
         set modDate(val: number);
@@ -3490,116 +3504,139 @@ export namespace Poppler {
         /**
          * The page layout that should be used when the document is opened
          * @read-only
+         * @default Poppler.PageLayout.UNSET
          */
         get page_layout(): PageLayout;
         /**
          * The page layout that should be used when the document is opened
          * @read-only
+         * @default Poppler.PageLayout.UNSET
          */
         get pageLayout(): PageLayout;
         /**
          * The mode that should be used when the document is opened
          * @read-only
+         * @default Poppler.PageMode.UNSET
          */
         get page_mode(): PageMode;
         /**
          * The mode that should be used when the document is opened
          * @read-only
+         * @default Poppler.PageMode.UNSET
          */
         get pageMode(): PageMode;
         /**
          * Flags specifying which operations are permitted when the document is opened
          * @read-only
+         * @default Poppler.Permissions.OK_TO_PRINT | Poppler.Permissions.OK_TO_MODIFY | Poppler.Permissions.OK_TO_COPY | Poppler.Permissions.OK_TO_ADD_NOTES | Poppler.Permissions.OK_TO_FILL_FORM | Poppler.Permissions.OK_TO_EXTRACT_CONTENTS | Poppler.Permissions.OK_TO_ASSEMBLE | Poppler.Permissions.OK_TO_PRINT_HIGH_RESOLUTION
          */
         get permissions(): Permissions;
         /**
          * @since 0.80
          * @read-only
+         * @default Poppler.PrintDuplex.NONE
          */
         get print_duplex(): PrintDuplex;
         /**
          * @since 0.80
          * @read-only
+         * @default Poppler.PrintDuplex.NONE
          */
         get printDuplex(): PrintDuplex;
         /**
          * Suggested number of copies to be printed for this document
          * @since 0.80
          * @read-only
+         * @default 1
          */
         get print_n_copies(): number;
         /**
          * Suggested number of copies to be printed for this document
          * @since 0.80
          * @read-only
+         * @default 1
          */
         get printNCopies(): number;
         /**
          * @since 0.73
          * @read-only
+         * @default Poppler.PrintScaling.APP_DEFAULT
          */
         get print_scaling(): PrintScaling;
         /**
          * @since 0.73
          * @read-only
+         * @default Poppler.PrintScaling.APP_DEFAULT
          */
         get printScaling(): PrintScaling;
         /**
          * The producer of the document. See also `poppler_document_get_producer()`
+         * @default null
          */
         get producer(): string;
         set producer(val: string);
         /**
          * The subject of the document
+         * @default null
          */
         get subject(): string;
         set subject(val: string);
         /**
          * Document PDF subtype type
          * @read-only
+         * @default Poppler.PDFSubtype.UNSET
          */
         get subtype(): PDFSubtype;
         /**
          * Document PDF subtype conformance
          * @read-only
+         * @default Poppler.PDFConformance.UNSET
          */
         get subtype_conformance(): PDFConformance;
         /**
          * Document PDF subtype conformance
          * @read-only
+         * @default Poppler.PDFConformance.UNSET
          */
         get subtypeConformance(): PDFConformance;
         /**
          * Document PDF subtype part
          * @read-only
+         * @default Poppler.PDFPart.UNSET
          */
         get subtype_part(): PDFPart;
         /**
          * Document PDF subtype part
          * @read-only
+         * @default Poppler.PDFPart.UNSET
          */
         get subtypePart(): PDFPart;
         /**
          * Document PDF subtype. See also `poppler_document_get_pdf_subtype_string()`
          * @read-only
+         * @default null
          */
         get subtype_string(): string;
         /**
          * Document PDF subtype. See also `poppler_document_get_pdf_subtype_string()`
          * @read-only
+         * @default null
          */
         get subtypeString(): string;
         /**
          * The document's title or `null`
+         * @default null
          */
         get title(): string;
         set title(val: string);
         /**
          * @read-only
+         * @default Poppler.ViewerPreferences.UNSET
          */
         get viewer_preferences(): ViewerPreferences;
         /**
          * @read-only
+         * @default Poppler.ViewerPreferences.UNSET
          */
         get viewerPreferences(): ViewerPreferences;
 
@@ -3618,21 +3655,21 @@ export namespace Poppler {
 
         _init(...args: any[]): void;
 
-        static new_from_bytes(bytes: GLib.Bytes | Uint8Array, password?: string | null): Document;
+        static new_from_bytes(bytes: GLib.Bytes | Uint8Array, password: string | null): Document;
 
-        static new_from_data(data: Uint8Array | string, password?: string | null): Document;
+        static new_from_data(data: Uint8Array | string, password: string | null): Document;
 
-        static new_from_fd(fd: number, password?: string | null): Document;
+        static new_from_fd(fd: number, password: string | null): Document;
 
-        static new_from_file(uri: string, password?: string | null): Document;
+        static new_from_file(uri: string, password: string | null): Document;
 
-        static new_from_gfile(file: Gio.File, password?: string | null, cancellable?: Gio.Cancellable | null): Document;
+        static new_from_gfile(file: Gio.File, password: string | null, cancellable: Gio.Cancellable | null): Document;
 
         static new_from_stream(
             stream: Gio.InputStream,
             length: bigint | number,
-            password?: string | null,
-            cancellable?: Gio.Cancellable | null,
+            password: string | null,
+            cancellable: Gio.Cancellable | null,
         ): Document;
 
         // Signals
@@ -3959,7 +3996,7 @@ export namespace Poppler {
          * CreationDate entry is removed from the document's Info dictionary.
          * @param creation_datetime A new creation {@link GLib.DateTime}
          */
-        set_creation_date_time(creation_datetime?: GLib.DateTime | null): void;
+        set_creation_date_time(creation_datetime: GLib.DateTime | null): void;
         /**
          * Sets the document's creator. If `creator` is `null`, Creator
          * entry is removed from the document's Info dictionary.
@@ -3983,7 +4020,7 @@ export namespace Poppler {
          * ModDate entry is removed from the document's Info dictionary.
          * @param modification_datetime A new modification {@link GLib.DateTime}
          */
-        set_modification_date_time(modification_datetime?: GLib.DateTime | null): void;
+        set_modification_date_time(modification_datetime: GLib.DateTime | null): void;
         /**
          * Sets the document's producer. If `producer` is `null`,
          * Producer entry is removed from the document's Info dictionary.
@@ -4007,7 +4044,7 @@ export namespace Poppler {
          * @param signing_data a {@link Poppler.SigningData}
          * @param cancellable a {@link Gio.Cancellable}
          */
-        sign(signing_data: SigningData, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        sign(signing_data: SigningData, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Sign #document using `signing_data`.
          * @param signing_data a {@link Poppler.SigningData}
@@ -4027,7 +4064,7 @@ export namespace Poppler {
          */
         sign(
             signing_data: SigningData,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -4327,7 +4364,7 @@ export namespace Poppler {
          */
         signature_validate_async(
             flags: SignatureValidationFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<SignatureInfo>;
         /**
          * Asynchronously validates the cryptographic signature contained in `signature_field`.
@@ -4348,7 +4385,7 @@ export namespace Poppler {
          */
         signature_validate_async(
             flags: SignatureValidationFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<SignatureInfo> | void;
         /**
@@ -4364,7 +4401,7 @@ export namespace Poppler {
          * @param cancellable optional {@link Gio.Cancellable} object
          * @returns a {@link Poppler.SignatureInfo} structure containing signature metadata and validation status                                Free the returned structure with `poppler_signature_info_free()`.
          */
-        signature_validate_sync(flags: SignatureValidationFlags, cancellable?: Gio.Cancellable | null): SignatureInfo;
+        signature_validate_sync(flags: SignatureValidationFlags, cancellable: Gio.Cancellable | null): SignatureInfo;
         text_do_scroll(): boolean;
         /**
          * Checks whether spell checking should be done for the contents of `field`
@@ -4833,6 +4870,7 @@ export namespace Poppler {
         /**
          * The label of the page or `null`. See also `poppler_page_get_label()`
          * @read-only
+         * @default null
          */
         get label(): string;
 
@@ -5804,6 +5842,7 @@ export namespace Poppler {
 
         type: ActionType;
         title: string;
+        state_list: ActionLayer[];
     }
 
     /**

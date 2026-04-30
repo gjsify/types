@@ -27,7 +27,7 @@ export namespace GioWin32 {
      * @returns a registry-backed {@link Gio.SettingsBackend}
      * @since 2.78
      */
-    function registry_settings_backend_new(registry_key?: string | null): Gio.SettingsBackend;
+    function registry_settings_backend_new(registry_key: string | null): Gio.SettingsBackend;
     namespace InputStream {
         // Signal signatures
         interface SignalSignatures extends Gio.InputStream.SignalSignatures {
@@ -40,7 +40,7 @@ export namespace GioWin32 {
         interface ConstructorProps extends Gio.InputStream.ConstructorProps {
             close_handle: boolean;
             closeHandle: boolean;
-            handle: any;
+            handle: any | null;
         }
     }
 
@@ -61,12 +61,14 @@ export namespace GioWin32 {
         /**
          * Whether to close the file handle when the stream is closed.
          * @since 2.26
+         * @default true
          */
         get close_handle(): boolean;
         set close_handle(val: boolean);
         /**
          * Whether to close the file handle when the stream is closed.
          * @since 2.26
+         * @default true
          */
         get closeHandle(): boolean;
         set closeHandle(val: boolean);
@@ -75,7 +77,7 @@ export namespace GioWin32 {
          * @since 2.26
          * @construct-only
          */
-        get handle(): any;
+        get handle(): any | null;
 
         /**
          * Compile-time signal type information.
@@ -148,7 +150,7 @@ export namespace GioWin32 {
         interface ConstructorProps extends Gio.OutputStream.ConstructorProps {
             close_handle: boolean;
             closeHandle: boolean;
-            handle: any;
+            handle: any | null;
         }
     }
 
@@ -169,12 +171,14 @@ export namespace GioWin32 {
         /**
          * Whether to close the file handle when the stream is closed.
          * @since 2.26
+         * @default true
          */
         get close_handle(): boolean;
         set close_handle(val: boolean);
         /**
          * Whether to close the file handle when the stream is closed.
          * @since 2.26
+         * @default true
          */
         get closeHandle(): boolean;
         set closeHandle(val: boolean);
@@ -183,7 +187,7 @@ export namespace GioWin32 {
          * @since 2.26
          * @construct-only
          */
-        get handle(): any;
+        get handle(): any | null;
 
         /**
          * Compile-time signal type information.

@@ -626,7 +626,7 @@ export namespace GstGL {
      * @returns the {@link GstGL.GLSyncMeta} added to {@link Gst.Buffer}
      * @since 1.8
      */
-    function buffer_add_gl_sync_meta_full(context: GLContext, buffer: Gst.Buffer, data?: any | null): GLSyncMeta;
+    function buffer_add_gl_sync_meta_full(context: GLContext, buffer: Gst.Buffer, data: any | null): GLSyncMeta;
     /**
      * @param config a buffer pool config
      * @returns the currently set {@link GstGL.GLAllocationParams} or `null`
@@ -639,7 +639,7 @@ export namespace GstGL {
      */
     function buffer_pool_config_set_gl_allocation_params(
         config: Gst.Structure,
-        params?: GLAllocationParams | null,
+        params: GLAllocationParams | null,
     ): void;
     /**
      * @param context a {@link Gst.Context}
@@ -653,7 +653,7 @@ export namespace GstGL {
      * @param display resulting {@link GstGL.GLDisplay}
      * @since 1.4
      */
-    function context_set_gl_display(context: Gst.Context, display?: GLDisplay | null): void;
+    function context_set_gl_display(context: Gst.Context, display: GLDisplay | null): void;
     /**
      * @param api_s a space separated string of OpenGL apis
      * @returns The {@link GstGL.GLAPI} represented by `api_s`
@@ -805,9 +805,9 @@ export namespace GstGL {
     function gl_handle_context_query(
         element: Gst.Element,
         query: Gst.Query,
-        display?: GLDisplay | null,
-        context?: GLContext | null,
-        other_context?: GLContext | null,
+        display: GLDisplay | null,
+        context: GLContext | null,
+        other_context: GLContext | null,
     ): boolean;
     /**
      * Helper function for implementing {@link Gst.ElementClass}.set_context() in
@@ -1026,13 +1026,13 @@ export namespace GstGL {
      * @gir-type Callback
      */
     interface GLAllocationParamsFreeFunc {
-        (params?: any | null): void;
+        (params: any | null): void;
     }
     /**
      * @gir-type Callback
      */
     interface GLAsyncDebugLogGetMessage {
-        (user_data?: any | null): string;
+        (user_data: any | null): string;
     }
     /**
      * @gir-type Callback
@@ -1074,7 +1074,7 @@ export namespace GstGL {
      * @gir-type Callback
      */
     interface GLContextThreadFunc {
-        (context: GLContext, data?: any | null): void;
+        (context: GLContext, data: any | null): void;
     }
     /**
      * @gir-type Callback
@@ -1086,13 +1086,13 @@ export namespace GstGL {
      * @gir-type Callback
      */
     interface GLFramebufferFunc {
-        (stuff?: any | null): boolean;
+        (stuff: any | null): boolean;
     }
     /**
      * @gir-type Callback
      */
     interface GLWindowCB {
-        (data?: any | null): void;
+        (data: any | null): void;
     }
     /**
      * @gir-type Callback
@@ -1711,8 +1711,14 @@ export namespace GstGL {
 
         // Properties
 
+        /**
+         * @default 0
+         */
         get timestamp_offset(): number;
         set timestamp_offset(val: bigint | number);
+        /**
+         * @default 0
+         */
         get timestampOffset(): number;
         set timestampOffset(val: bigint | number);
 
@@ -2229,7 +2235,7 @@ export namespace GstGL {
          * @param gl_config a configuration structure for             configuring the OpenGL context
          * @virtual
          */
-        vfunc_request_config(gl_config?: Gst.Structure | null): boolean;
+        vfunc_request_config(gl_config: Gst.Structure | null): boolean;
         /**
          * Swap the front and back buffers on the window attached to `context`.
          * This will display the frame on the next refresh cycle.
@@ -2310,7 +2316,7 @@ export namespace GstGL {
          * @param other_context a {@link GstGL.GLContext} to share OpenGL objects with
          * @returns whether the context could successfully be created
          */
-        create(other_context?: GLContext | null): boolean;
+        create(other_context: GLContext | null): boolean;
         /**
          * Destroys an OpenGL context.
          *
@@ -2420,7 +2426,7 @@ export namespace GstGL {
          * @param gl_config a configuration structure for             configuring the OpenGL context
          * @returns whether `gl_config` could be successfully set on `context`
          */
-        request_config(gl_config?: Gst.Structure | null): boolean;
+        request_config(gl_config: Gst.Structure | null): boolean;
         /**
          * Will internally set `context` as shared with `share`
          * @param share another {@link GstGL.GLContext}
@@ -2587,7 +2593,7 @@ export namespace GstGL {
          * @param context the resulting {@link GstGL.GLContext}
          * @returns wether `context` contains a valid context.
          */
-        ensure_context(other_context?: GLContext | null, context?: GLContext | null): [boolean, GLContext | null];
+        ensure_context(other_context: GLContext | null, context: GLContext | null): [boolean, GLContext | null];
         /**
          * limit the use of OpenGL to the requested `gl_api`.  This is intended to allow
          * application and elements to request a specific set of OpenGL API's based on
@@ -3211,6 +3217,9 @@ export namespace GstGL {
 
         // Properties
 
+        /**
+         * @default false
+         */
         get yinvert(): boolean;
         set yinvert(val: boolean);
 
@@ -3462,6 +3471,7 @@ export namespace GstGL {
 
         /**
          * @read-only
+         * @default false
          */
         get linked(): boolean;
 
@@ -3960,24 +3970,54 @@ export namespace GstGL {
 
         // Properties
 
+        /**
+         * @default GstGL.GLStereoDownmix.GREEN_MAGENTA_DUBOIS
+         */
         get downmix_mode(): GLStereoDownmix;
         set downmix_mode(val: GLStereoDownmix);
+        /**
+         * @default GstGL.GLStereoDownmix.GREEN_MAGENTA_DUBOIS
+         */
         get downmixMode(): GLStereoDownmix;
         set downmixMode(val: GLStereoDownmix);
+        /**
+         * @default GstVideo.VideoMultiviewFlags.NONE
+         */
         get input_flags_override(): GstVideo.VideoMultiviewFlags;
         set input_flags_override(val: GstVideo.VideoMultiviewFlags);
+        /**
+         * @default GstVideo.VideoMultiviewFlags.NONE
+         */
         get inputFlagsOverride(): GstVideo.VideoMultiviewFlags;
         set inputFlagsOverride(val: GstVideo.VideoMultiviewFlags);
+        /**
+         * @default GstVideo.VideoMultiviewMode.NONE
+         */
         get input_mode_override(): GstVideo.VideoMultiviewMode;
         set input_mode_override(val: GstVideo.VideoMultiviewMode);
+        /**
+         * @default GstVideo.VideoMultiviewMode.NONE
+         */
         get inputModeOverride(): GstVideo.VideoMultiviewMode;
         set inputModeOverride(val: GstVideo.VideoMultiviewMode);
+        /**
+         * @default GstVideo.VideoMultiviewFlags.NONE
+         */
         get output_flags_override(): GstVideo.VideoMultiviewFlags;
         set output_flags_override(val: GstVideo.VideoMultiviewFlags);
+        /**
+         * @default GstVideo.VideoMultiviewFlags.NONE
+         */
         get outputFlagsOverride(): GstVideo.VideoMultiviewFlags;
         set outputFlagsOverride(val: GstVideo.VideoMultiviewFlags);
+        /**
+         * @default GstVideo.VideoMultiviewMode.NONE
+         */
         get output_mode_override(): GstVideo.VideoMultiviewMode;
         set output_mode_override(val: GstVideo.VideoMultiviewMode);
+        /**
+         * @default GstVideo.VideoMultiviewMode.NONE
+         */
         get outputModeOverride(): GstVideo.VideoMultiviewMode;
         set outputModeOverride(val: GstVideo.VideoMultiviewMode);
 
@@ -4559,8 +4599,8 @@ export namespace GstGL {
             context: GLContext,
             params: Gst.AllocationParams | null,
             size: bigint | number,
-            user_data?: any | null,
-            notify?: GLib.DestroyNotify | null,
+            user_data: any | null,
+            notify: GLib.DestroyNotify | null,
         ): void;
         /**
          * @param dest the destination {@link GstGL.GLBaseMemory}
@@ -4849,9 +4889,9 @@ export namespace GstGL {
             params: Gst.AllocationParams | null,
             info: GstVideo.VideoInfo,
             plane: number,
-            valign?: GstVideo.VideoAlignment | null,
-            user_data?: any | null,
-            notify?: GLib.DestroyNotify | null,
+            valign: GstVideo.VideoAlignment | null,
+            user_data: any | null,
+            notify: GLib.DestroyNotify | null,
         ): void;
         /**
          * Reads the texture in {@link GstGL.GLMemory} into `write_pointer` if no buffer is bound
@@ -4862,14 +4902,14 @@ export namespace GstGL {
          * @param write_pointer the data pointer to pass to glReadPixels
          * @returns whether theread operation succeeded
          */
-        read_pixels(write_pointer?: any | null): boolean;
+        read_pixels(write_pointer: any | null): boolean;
         /**
          * Reads the texture in `read_pointer` into `gl_mem`.
          *
          * See `gst_gl_memory_read_pixels()` for what `read_pointer` signifies.
          * @param read_pointer the data pointer to pass to glTexSubImage
          */
-        texsubimage(read_pointer?: any | null): void;
+        texsubimage(read_pointer: any | null): void;
     }
 
     /**
@@ -5100,9 +5140,9 @@ export namespace GstGL {
             renderbuffer_format: GLFormat,
             width: number,
             height: number,
-            gl_handle?: any | null,
-            user_data?: any | null,
-            notify?: GLib.DestroyNotify | null,
+            gl_handle: any | null,
+            user_data: any | null,
+            notify: GLib.DestroyNotify | null,
         ): GLRenderbufferAllocationParams;
     }
 
@@ -5225,9 +5265,9 @@ export namespace GstGL {
             valign: GstVideo.VideoAlignment | null,
             target: GLTextureTarget,
             tex_format: GLFormat,
-            wrapped_data?: any | null,
-            user_data?: any | null,
-            notify?: GLib.DestroyNotify | null,
+            wrapped_data: any | null,
+            user_data: any | null,
+            notify: GLib.DestroyNotify | null,
         ): GLVideoAllocationParams;
 
         static new_wrapped_gl_handle(
@@ -5238,9 +5278,9 @@ export namespace GstGL {
             valign: GstVideo.VideoAlignment | null,
             target: GLTextureTarget,
             tex_format: GLFormat,
-            gl_handle?: any | null,
-            user_data?: any | null,
-            notify?: GLib.DestroyNotify | null,
+            gl_handle: any | null,
+            user_data: any | null,
+            notify: GLib.DestroyNotify | null,
         ): GLVideoAllocationParams;
 
         static new_wrapped_texture(
@@ -5252,8 +5292,8 @@ export namespace GstGL {
             target: GLTextureTarget,
             tex_format: GLFormat,
             tex_id: number,
-            user_data?: any | null,
-            notify?: GLib.DestroyNotify | null,
+            user_data: any | null,
+            notify: GLib.DestroyNotify | null,
         ): GLVideoAllocationParams;
 
         // Methods

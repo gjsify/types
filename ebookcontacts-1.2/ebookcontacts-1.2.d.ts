@@ -856,14 +856,14 @@ export namespace EBookContacts {
      * @param in_address a string representing a mailing address
      * @returns A new {@link EBookContacts.AddressWestern} structure, or `null` if    the parsing failed or when the `in_address` was `null`.
      */
-    function address_western_parse(in_address?: string | null): AddressWestern | null;
+    function address_western_parse(in_address: string | null): AddressWestern | null;
     /**
      * @param code an {@link EBookContacts.BookClientError} code to create
      * @param custom_msg custom message to use for the error; can be `null`
      * @returns a new {@link GLib.Error} containing an E_BOOK_CLIENT_ERROR of the given `code`. If the `custom_msg` is NULL, then the error message is the one returned from `e_book_client_error_to_string()` for the `code`, otherwise the given message is used. Returned pointer should be freed with `g_error_free()`.
      * @since 3.2
      */
-    function book_client_error_create(code: BookClientError, custom_msg?: string | null): GLib.Error;
+    function book_client_error_create(code: BookClientError, custom_msg: string | null): GLib.Error;
     function book_client_error_quark(): GLib.Quark;
     /**
      * Get localized human readable description of the given error code.
@@ -1092,7 +1092,7 @@ export namespace EBookContacts {
     function phone_number_compare_strings_with_region(
         first_number: string,
         second_number: string,
-        region_code?: string | null,
+        region_code: string | null,
     ): PhoneNumberMatch;
     function phone_number_error_quark(): GLib.Quark;
     /**
@@ -1112,7 +1112,7 @@ export namespace EBookContacts {
      * @returns a new {@link EBookContacts.PhoneNumber} instance on success, or `null` on error. Call `e_phone_number_free()` to release this instance.
      * @since 3.8
      */
-    function phone_number_from_string(phone_number: string, region_code?: string | null): PhoneNumber;
+    function phone_number_from_string(phone_number: string, region_code: string | null): PhoneNumber;
     /**
      * Retrieves the preferred country calling code for `region_code`,
      * e.g. 358 for "fi" or 1 for "en_US@UTF-8".
@@ -1123,7 +1123,7 @@ export namespace EBookContacts {
      * @returns a valid country calling code, or zero if an unknown region code was passed.
      * @since 3.8
      */
-    function phone_number_get_country_code_for_region(region_code?: string | null): number;
+    function phone_number_get_country_code_for_region(region_code: string | null): number;
     /**
      * Retrieves the current two-letter country code that's used by default for
      * parsing phone numbers in `e_phone_number_from_string()`. It can be useful
@@ -1433,7 +1433,7 @@ export namespace EBookContacts {
          * @param indices an {@link EBookContacts.BookIndices}, or `null`
          * @returns whether the indices changed
          */
-        take_indices(indices?: BookIndices | null): boolean;
+        take_indices(indices: BookIndices | null): boolean;
     }
 
     namespace Contact {
@@ -1959,8 +1959,14 @@ export namespace EBookContacts {
 
         // Properties
 
+        /**
+         * @default null
+         */
         get Rev(): string;
         set Rev(val: string);
+        /**
+         * @default null
+         */
         get XML(): string;
         set XML(val: string);
         get address(): ContactAttrList;
@@ -1969,16 +1975,34 @@ export namespace EBookContacts {
         set address_home(val: ContactAddress);
         get addressHome(): ContactAddress;
         set addressHome(val: ContactAddress);
+        /**
+         * @default null
+         */
         get address_label_home(): string;
         set address_label_home(val: string);
+        /**
+         * @default null
+         */
         get addressLabelHome(): string;
         set addressLabelHome(val: string);
+        /**
+         * @default null
+         */
         get address_label_other(): string;
         set address_label_other(val: string);
+        /**
+         * @default null
+         */
         get addressLabelOther(): string;
         set addressLabelOther(val: string);
+        /**
+         * @default null
+         */
         get address_label_work(): string;
         set address_label_work(val: string);
+        /**
+         * @default null
+         */
         get addressLabelWork(): string;
         set addressLabelWork(val: string);
         get address_other(): ContactAddress;
@@ -1991,62 +2015,137 @@ export namespace EBookContacts {
         set addressWork(val: ContactAddress);
         get anniversary(): ContactDate;
         set anniversary(val: ContactDate);
+        /**
+         * @default null
+         */
         get assistant(): string;
         set assistant(val: string);
+        /**
+         * @default null
+         */
         get assistant_phone(): string;
         set assistant_phone(val: string);
+        /**
+         * @default null
+         */
         get assistantPhone(): string;
         set assistantPhone(val: string);
         get birth_date(): ContactDate;
         set birth_date(val: ContactDate);
         get birthDate(): ContactDate;
         set birthDate(val: ContactDate);
+        /**
+         * @default null
+         */
         get birth_place(): string;
         set birth_place(val: string);
+        /**
+         * @default null
+         */
         get birthPlace(): string;
         set birthPlace(val: string);
+        /**
+         * @default null
+         */
         get blog_url(): string;
         set blog_url(val: string);
+        /**
+         * @default null
+         */
         get blogUrl(): string;
         set blogUrl(val: string);
+        /**
+         * @default null
+         */
         get book_uid(): string;
         set book_uid(val: string);
+        /**
+         * @default null
+         */
         get bookUid(): string;
         set bookUid(val: string);
+        /**
+         * @default null
+         */
         get business_fax(): string;
         set business_fax(val: string);
+        /**
+         * @default null
+         */
         get businessFax(): string;
         set businessFax(val: string);
+        /**
+         * @default null
+         */
         get business_phone(): string;
         set business_phone(val: string);
+        /**
+         * @default null
+         */
         get businessPhone(): string;
         set businessPhone(val: string);
+        /**
+         * @default null
+         */
         get business_phone_2(): string;
         set business_phone_2(val: string);
+        /**
+         * @default null
+         */
         get businessPhone2(): string;
         set businessPhone2(val: string);
+        /**
+         * @default null
+         */
         get callback_phone(): string;
         set callback_phone(val: string);
+        /**
+         * @default null
+         */
         get callbackPhone(): string;
         set callbackPhone(val: string);
+        /**
+         * @default null
+         */
         get caluri(): string;
         set caluri(val: string);
+        /**
+         * @default null
+         */
         get car_phone(): string;
         set car_phone(val: string);
+        /**
+         * @default null
+         */
         get carPhone(): string;
         set carPhone(val: string);
+        /**
+         * @default null
+         */
         get categories(): string;
         set categories(val: string);
         get category_list(): any;
         set category_list(val: any);
         get categoryList(): any;
         set categoryList(val: any);
+        /**
+         * @default null
+         */
         get company_phone(): string;
         set company_phone(val: string);
+        /**
+         * @default null
+         */
         get companyPhone(): string;
         set companyPhone(val: string);
+        /**
+         * @default null
+         */
         get contact_uri(): string;
         set contact_uri(val: string);
+        /**
+         * @default null
+         */
         get contactUri(): string;
         set contactUri(val: string);
         get created(): ContactDateTime;
@@ -2055,324 +2154,735 @@ export namespace EBookContacts {
         set death_date(val: ContactDate);
         get deathDate(): ContactDate;
         set deathDate(val: ContactDate);
+        /**
+         * @default null
+         */
         get death_place(): string;
         set death_place(val: string);
+        /**
+         * @default null
+         */
         get deathPlace(): string;
         set deathPlace(val: string);
         get email(): ContactAttrList;
         set email(val: ContactAttrList);
+        /**
+         * @default null
+         */
         get email_1(): string;
         set email_1(val: string);
+        /**
+         * @default null
+         */
         get email1(): string;
         set email1(val: string);
+        /**
+         * @default null
+         */
         get email_2(): string;
         set email_2(val: string);
+        /**
+         * @default null
+         */
         get email2(): string;
         set email2(val: string);
+        /**
+         * @default null
+         */
         get email_3(): string;
         set email_3(val: string);
+        /**
+         * @default null
+         */
         get email3(): string;
         set email3(val: string);
+        /**
+         * @default null
+         */
         get email_4(): string;
         set email_4(val: string);
+        /**
+         * @default null
+         */
         get email4(): string;
         set email4(val: string);
         get expertise(): ContactAttrList;
         set expertise(val: ContactAttrList);
+        /**
+         * @default null
+         */
         get family_name(): string;
         set family_name(val: string);
+        /**
+         * @default null
+         */
         get familyName(): string;
         set familyName(val: string);
+        /**
+         * @default null
+         */
         get fburl(): string;
         set fburl(val: string);
+        /**
+         * @default null
+         */
         get file_as(): string;
         set file_as(val: string);
+        /**
+         * @default null
+         */
         get fileAs(): string;
         set fileAs(val: string);
+        /**
+         * @default null
+         */
         get full_name(): string;
         set full_name(val: string);
+        /**
+         * @default null
+         */
         get fullName(): string;
         set fullName(val: string);
         get gender(): ContactGender;
         set gender(val: ContactGender);
         get geo(): ContactGeo;
         set geo(val: ContactGeo);
+        /**
+         * @default null
+         */
         get given_name(): string;
         set given_name(val: string);
+        /**
+         * @default null
+         */
         get givenName(): string;
         set givenName(val: string);
         get hobby(): ContactAttrList;
         set hobby(val: ContactAttrList);
+        /**
+         * @default null
+         */
         get home_fax(): string;
         set home_fax(val: string);
+        /**
+         * @default null
+         */
         get homeFax(): string;
         set homeFax(val: string);
+        /**
+         * @default null
+         */
         get home_phone(): string;
         set home_phone(val: string);
+        /**
+         * @default null
+         */
         get homePhone(): string;
         set homePhone(val: string);
+        /**
+         * @default null
+         */
         get home_phone_2(): string;
         set home_phone_2(val: string);
+        /**
+         * @default null
+         */
         get homePhone2(): string;
         set homePhone2(val: string);
+        /**
+         * @default null
+         */
         get homepage_url(): string;
         set homepage_url(val: string);
+        /**
+         * @default null
+         */
         get homepageUrl(): string;
         set homepageUrl(val: string);
+        /**
+         * @default null
+         */
         get icscalendar(): string;
         set icscalendar(val: string);
+        /**
+         * @default null
+         */
         get id(): string;
         set id(val: string);
         get im_aim(): ContactAttrList;
         set im_aim(val: ContactAttrList);
         get imAim(): ContactAttrList;
         set imAim(val: ContactAttrList);
+        /**
+         * @default null
+         */
         get im_aim_home_1(): string;
         set im_aim_home_1(val: string);
+        /**
+         * @default null
+         */
         get imAimHome1(): string;
         set imAimHome1(val: string);
+        /**
+         * @default null
+         */
         get im_aim_home_2(): string;
         set im_aim_home_2(val: string);
+        /**
+         * @default null
+         */
         get imAimHome2(): string;
         set imAimHome2(val: string);
+        /**
+         * @default null
+         */
         get im_aim_home_3(): string;
         set im_aim_home_3(val: string);
+        /**
+         * @default null
+         */
         get imAimHome3(): string;
         set imAimHome3(val: string);
+        /**
+         * @default null
+         */
         get im_aim_work_1(): string;
         set im_aim_work_1(val: string);
+        /**
+         * @default null
+         */
         get imAimWork1(): string;
         set imAimWork1(val: string);
+        /**
+         * @default null
+         */
         get im_aim_work_2(): string;
         set im_aim_work_2(val: string);
+        /**
+         * @default null
+         */
         get imAimWork2(): string;
         set imAimWork2(val: string);
+        /**
+         * @default null
+         */
         get im_aim_work_3(): string;
         set im_aim_work_3(val: string);
+        /**
+         * @default null
+         */
         get imAimWork3(): string;
         set imAimWork3(val: string);
         get im_gadugadu(): ContactAttrList;
         set im_gadugadu(val: ContactAttrList);
         get imGadugadu(): ContactAttrList;
         set imGadugadu(val: ContactAttrList);
+        /**
+         * @default null
+         */
         get im_gadugadu_home_1(): string;
         set im_gadugadu_home_1(val: string);
+        /**
+         * @default null
+         */
         get imGadugaduHome1(): string;
         set imGadugaduHome1(val: string);
+        /**
+         * @default null
+         */
         get im_gadugadu_home_2(): string;
         set im_gadugadu_home_2(val: string);
+        /**
+         * @default null
+         */
         get imGadugaduHome2(): string;
         set imGadugaduHome2(val: string);
+        /**
+         * @default null
+         */
         get im_gadugadu_home_3(): string;
         set im_gadugadu_home_3(val: string);
+        /**
+         * @default null
+         */
         get imGadugaduHome3(): string;
         set imGadugaduHome3(val: string);
+        /**
+         * @default null
+         */
         get im_gadugadu_work_1(): string;
         set im_gadugadu_work_1(val: string);
+        /**
+         * @default null
+         */
         get imGadugaduWork1(): string;
         set imGadugaduWork1(val: string);
+        /**
+         * @default null
+         */
         get im_gadugadu_work_2(): string;
         set im_gadugadu_work_2(val: string);
+        /**
+         * @default null
+         */
         get imGadugaduWork2(): string;
         set imGadugaduWork2(val: string);
+        /**
+         * @default null
+         */
         get im_gadugadu_work_3(): string;
         set im_gadugadu_work_3(val: string);
+        /**
+         * @default null
+         */
         get imGadugaduWork3(): string;
         set imGadugaduWork3(val: string);
         get im_google_talk(): ContactAttrList;
         set im_google_talk(val: ContactAttrList);
         get imGoogleTalk(): ContactAttrList;
         set imGoogleTalk(val: ContactAttrList);
+        /**
+         * @default null
+         */
         get im_google_talk_home_1(): string;
         set im_google_talk_home_1(val: string);
+        /**
+         * @default null
+         */
         get imGoogleTalkHome1(): string;
         set imGoogleTalkHome1(val: string);
+        /**
+         * @default null
+         */
         get im_google_talk_home_2(): string;
         set im_google_talk_home_2(val: string);
+        /**
+         * @default null
+         */
         get imGoogleTalkHome2(): string;
         set imGoogleTalkHome2(val: string);
+        /**
+         * @default null
+         */
         get im_google_talk_home_3(): string;
         set im_google_talk_home_3(val: string);
+        /**
+         * @default null
+         */
         get imGoogleTalkHome3(): string;
         set imGoogleTalkHome3(val: string);
+        /**
+         * @default null
+         */
         get im_google_talk_work_1(): string;
         set im_google_talk_work_1(val: string);
+        /**
+         * @default null
+         */
         get imGoogleTalkWork1(): string;
         set imGoogleTalkWork1(val: string);
+        /**
+         * @default null
+         */
         get im_google_talk_work_2(): string;
         set im_google_talk_work_2(val: string);
+        /**
+         * @default null
+         */
         get imGoogleTalkWork2(): string;
         set imGoogleTalkWork2(val: string);
+        /**
+         * @default null
+         */
         get im_google_talk_work_3(): string;
         set im_google_talk_work_3(val: string);
+        /**
+         * @default null
+         */
         get imGoogleTalkWork3(): string;
         set imGoogleTalkWork3(val: string);
         get im_groupwise(): ContactAttrList;
         set im_groupwise(val: ContactAttrList);
         get imGroupwise(): ContactAttrList;
         set imGroupwise(val: ContactAttrList);
+        /**
+         * @default null
+         */
         get im_groupwise_home_1(): string;
         set im_groupwise_home_1(val: string);
+        /**
+         * @default null
+         */
         get imGroupwiseHome1(): string;
         set imGroupwiseHome1(val: string);
+        /**
+         * @default null
+         */
         get im_groupwise_home_2(): string;
         set im_groupwise_home_2(val: string);
+        /**
+         * @default null
+         */
         get imGroupwiseHome2(): string;
         set imGroupwiseHome2(val: string);
+        /**
+         * @default null
+         */
         get im_groupwise_home_3(): string;
         set im_groupwise_home_3(val: string);
+        /**
+         * @default null
+         */
         get imGroupwiseHome3(): string;
         set imGroupwiseHome3(val: string);
+        /**
+         * @default null
+         */
         get im_groupwise_work_1(): string;
         set im_groupwise_work_1(val: string);
+        /**
+         * @default null
+         */
         get imGroupwiseWork1(): string;
         set imGroupwiseWork1(val: string);
+        /**
+         * @default null
+         */
         get im_groupwise_work_2(): string;
         set im_groupwise_work_2(val: string);
+        /**
+         * @default null
+         */
         get imGroupwiseWork2(): string;
         set imGroupwiseWork2(val: string);
+        /**
+         * @default null
+         */
         get im_groupwise_work_3(): string;
         set im_groupwise_work_3(val: string);
+        /**
+         * @default null
+         */
         get imGroupwiseWork3(): string;
         set imGroupwiseWork3(val: string);
         get im_icq(): ContactAttrList;
         set im_icq(val: ContactAttrList);
         get imIcq(): ContactAttrList;
         set imIcq(val: ContactAttrList);
+        /**
+         * @default null
+         */
         get im_icq_home_1(): string;
         set im_icq_home_1(val: string);
+        /**
+         * @default null
+         */
         get imIcqHome1(): string;
         set imIcqHome1(val: string);
+        /**
+         * @default null
+         */
         get im_icq_home_2(): string;
         set im_icq_home_2(val: string);
+        /**
+         * @default null
+         */
         get imIcqHome2(): string;
         set imIcqHome2(val: string);
+        /**
+         * @default null
+         */
         get im_icq_home_3(): string;
         set im_icq_home_3(val: string);
+        /**
+         * @default null
+         */
         get imIcqHome3(): string;
         set imIcqHome3(val: string);
+        /**
+         * @default null
+         */
         get im_icq_work_1(): string;
         set im_icq_work_1(val: string);
+        /**
+         * @default null
+         */
         get imIcqWork1(): string;
         set imIcqWork1(val: string);
+        /**
+         * @default null
+         */
         get im_icq_work_2(): string;
         set im_icq_work_2(val: string);
+        /**
+         * @default null
+         */
         get imIcqWork2(): string;
         set imIcqWork2(val: string);
+        /**
+         * @default null
+         */
         get im_icq_work_3(): string;
         set im_icq_work_3(val: string);
+        /**
+         * @default null
+         */
         get imIcqWork3(): string;
         set imIcqWork3(val: string);
         get im_jabber(): ContactAttrList;
         set im_jabber(val: ContactAttrList);
         get imJabber(): ContactAttrList;
         set imJabber(val: ContactAttrList);
+        /**
+         * @default null
+         */
         get im_jabber_home_1(): string;
         set im_jabber_home_1(val: string);
+        /**
+         * @default null
+         */
         get imJabberHome1(): string;
         set imJabberHome1(val: string);
+        /**
+         * @default null
+         */
         get im_jabber_home_2(): string;
         set im_jabber_home_2(val: string);
+        /**
+         * @default null
+         */
         get imJabberHome2(): string;
         set imJabberHome2(val: string);
+        /**
+         * @default null
+         */
         get im_jabber_home_3(): string;
         set im_jabber_home_3(val: string);
+        /**
+         * @default null
+         */
         get imJabberHome3(): string;
         set imJabberHome3(val: string);
+        /**
+         * @default null
+         */
         get im_jabber_work_1(): string;
         set im_jabber_work_1(val: string);
+        /**
+         * @default null
+         */
         get imJabberWork1(): string;
         set imJabberWork1(val: string);
+        /**
+         * @default null
+         */
         get im_jabber_work_2(): string;
         set im_jabber_work_2(val: string);
+        /**
+         * @default null
+         */
         get imJabberWork2(): string;
         set imJabberWork2(val: string);
+        /**
+         * @default null
+         */
         get im_jabber_work_3(): string;
         set im_jabber_work_3(val: string);
+        /**
+         * @default null
+         */
         get imJabberWork3(): string;
         set imJabberWork3(val: string);
         get im_matrix(): ContactAttrList;
         set im_matrix(val: ContactAttrList);
         get imMatrix(): ContactAttrList;
         set imMatrix(val: ContactAttrList);
+        /**
+         * @default null
+         */
         get im_matrix_home_1(): string;
         set im_matrix_home_1(val: string);
+        /**
+         * @default null
+         */
         get imMatrixHome1(): string;
         set imMatrixHome1(val: string);
+        /**
+         * @default null
+         */
         get im_matrix_home_2(): string;
         set im_matrix_home_2(val: string);
+        /**
+         * @default null
+         */
         get imMatrixHome2(): string;
         set imMatrixHome2(val: string);
+        /**
+         * @default null
+         */
         get im_matrix_home_3(): string;
         set im_matrix_home_3(val: string);
+        /**
+         * @default null
+         */
         get imMatrixHome3(): string;
         set imMatrixHome3(val: string);
+        /**
+         * @default null
+         */
         get im_matrix_work_1(): string;
         set im_matrix_work_1(val: string);
+        /**
+         * @default null
+         */
         get imMatrixWork1(): string;
         set imMatrixWork1(val: string);
+        /**
+         * @default null
+         */
         get im_matrix_work_2(): string;
         set im_matrix_work_2(val: string);
+        /**
+         * @default null
+         */
         get imMatrixWork2(): string;
         set imMatrixWork2(val: string);
+        /**
+         * @default null
+         */
         get im_matrix_work_3(): string;
         set im_matrix_work_3(val: string);
+        /**
+         * @default null
+         */
         get imMatrixWork3(): string;
         set imMatrixWork3(val: string);
         get im_msn(): ContactAttrList;
         set im_msn(val: ContactAttrList);
         get imMsn(): ContactAttrList;
         set imMsn(val: ContactAttrList);
+        /**
+         * @default null
+         */
         get im_msn_home_1(): string;
         set im_msn_home_1(val: string);
+        /**
+         * @default null
+         */
         get imMsnHome1(): string;
         set imMsnHome1(val: string);
+        /**
+         * @default null
+         */
         get im_msn_home_2(): string;
         set im_msn_home_2(val: string);
+        /**
+         * @default null
+         */
         get imMsnHome2(): string;
         set imMsnHome2(val: string);
+        /**
+         * @default null
+         */
         get im_msn_home_3(): string;
         set im_msn_home_3(val: string);
+        /**
+         * @default null
+         */
         get imMsnHome3(): string;
         set imMsnHome3(val: string);
+        /**
+         * @default null
+         */
         get im_msn_work_1(): string;
         set im_msn_work_1(val: string);
+        /**
+         * @default null
+         */
         get imMsnWork1(): string;
         set imMsnWork1(val: string);
+        /**
+         * @default null
+         */
         get im_msn_work_2(): string;
         set im_msn_work_2(val: string);
+        /**
+         * @default null
+         */
         get imMsnWork2(): string;
         set imMsnWork2(val: string);
+        /**
+         * @default null
+         */
         get im_msn_work_3(): string;
         set im_msn_work_3(val: string);
+        /**
+         * @default null
+         */
         get imMsnWork3(): string;
         set imMsnWork3(val: string);
         get im_skype(): ContactAttrList;
         set im_skype(val: ContactAttrList);
         get imSkype(): ContactAttrList;
         set imSkype(val: ContactAttrList);
+        /**
+         * @default null
+         */
         get im_skype_home_1(): string;
         set im_skype_home_1(val: string);
+        /**
+         * @default null
+         */
         get imSkypeHome1(): string;
         set imSkypeHome1(val: string);
+        /**
+         * @default null
+         */
         get im_skype_home_2(): string;
         set im_skype_home_2(val: string);
+        /**
+         * @default null
+         */
         get imSkypeHome2(): string;
         set imSkypeHome2(val: string);
+        /**
+         * @default null
+         */
         get im_skype_home_3(): string;
         set im_skype_home_3(val: string);
+        /**
+         * @default null
+         */
         get imSkypeHome3(): string;
         set imSkypeHome3(val: string);
+        /**
+         * @default null
+         */
         get im_skype_work_1(): string;
         set im_skype_work_1(val: string);
+        /**
+         * @default null
+         */
         get imSkypeWork1(): string;
         set imSkypeWork1(val: string);
+        /**
+         * @default null
+         */
         get im_skype_work_2(): string;
         set im_skype_work_2(val: string);
+        /**
+         * @default null
+         */
         get imSkypeWork2(): string;
         set imSkypeWork2(val: string);
+        /**
+         * @default null
+         */
         get im_skype_work_3(): string;
         set im_skype_work_3(val: string);
+        /**
+         * @default null
+         */
         get imSkypeWork3(): string;
         set imSkypeWork3(val: string);
         get im_twitter(): ContactAttrList;
@@ -2383,94 +2893,195 @@ export namespace EBookContacts {
         set im_yahoo(val: ContactAttrList);
         get imYahoo(): ContactAttrList;
         set imYahoo(val: ContactAttrList);
+        /**
+         * @default null
+         */
         get im_yahoo_home_1(): string;
         set im_yahoo_home_1(val: string);
+        /**
+         * @default null
+         */
         get imYahooHome1(): string;
         set imYahooHome1(val: string);
+        /**
+         * @default null
+         */
         get im_yahoo_home_2(): string;
         set im_yahoo_home_2(val: string);
+        /**
+         * @default null
+         */
         get imYahooHome2(): string;
         set imYahooHome2(val: string);
+        /**
+         * @default null
+         */
         get im_yahoo_home_3(): string;
         set im_yahoo_home_3(val: string);
+        /**
+         * @default null
+         */
         get imYahooHome3(): string;
         set imYahooHome3(val: string);
+        /**
+         * @default null
+         */
         get im_yahoo_work_1(): string;
         set im_yahoo_work_1(val: string);
+        /**
+         * @default null
+         */
         get imYahooWork1(): string;
         set imYahooWork1(val: string);
+        /**
+         * @default null
+         */
         get im_yahoo_work_2(): string;
         set im_yahoo_work_2(val: string);
+        /**
+         * @default null
+         */
         get imYahooWork2(): string;
         set imYahooWork2(val: string);
+        /**
+         * @default null
+         */
         get im_yahoo_work_3(): string;
         set im_yahoo_work_3(val: string);
+        /**
+         * @default null
+         */
         get imYahooWork3(): string;
         set imYahooWork3(val: string);
         get impp(): ContactAttrList;
         set impp(val: ContactAttrList);
         get interest(): ContactAttrList;
         set interest(val: ContactAttrList);
+        /**
+         * @default null
+         */
         get isdn_phone(): string;
         set isdn_phone(val: string);
+        /**
+         * @default null
+         */
         get isdnPhone(): string;
         set isdnPhone(val: string);
+        /**
+         * @default null
+         */
         get kind(): string;
         set kind(val: string);
         get lang(): ContactAttrList;
         set lang(val: ContactAttrList);
+        /**
+         * @default false
+         */
         get list(): boolean;
         set list(val: boolean);
+        /**
+         * @default false
+         */
         get list_show_addresses(): boolean;
         set list_show_addresses(val: boolean);
+        /**
+         * @default false
+         */
         get listShowAddresses(): boolean;
         set listShowAddresses(val: boolean);
         get logo(): ContactPhoto;
         set logo(val: ContactPhoto);
+        /**
+         * @default null
+         */
         get mailer(): string;
         set mailer(val: string);
+        /**
+         * @default null
+         */
         get manager(): string;
         set manager(val: string);
         get member(): ContactAttrList;
         set member(val: ContactAttrList);
+        /**
+         * @default null
+         */
         get mobile_phone(): string;
         set mobile_phone(val: string);
+        /**
+         * @default null
+         */
         get mobilePhone(): string;
         set mobilePhone(val: string);
         get name(): ContactName;
         set name(val: ContactName);
         /**
          * @read-only
+         * @default null
          */
         get name_or_org(): string;
         /**
          * @read-only
+         * @default null
          */
         get nameOrOrg(): string;
+        /**
+         * @default null
+         */
         get nickname(): string;
         set nickname(val: string);
+        /**
+         * @default null
+         */
         get note(): string;
         set note(val: string);
+        /**
+         * @default null
+         */
         get office(): string;
         set office(val: string);
+        /**
+         * @default null
+         */
         get org(): string;
         set org(val: string);
         get org_directory(): ContactAttrList;
         set org_directory(val: ContactAttrList);
         get orgDirectory(): ContactAttrList;
         set orgDirectory(val: ContactAttrList);
+        /**
+         * @default null
+         */
         get org_unit(): string;
         set org_unit(val: string);
+        /**
+         * @default null
+         */
         get orgUnit(): string;
         set orgUnit(val: string);
+        /**
+         * @default null
+         */
         get other_fax(): string;
         set other_fax(val: string);
+        /**
+         * @default null
+         */
         get otherFax(): string;
         set otherFax(val: string);
+        /**
+         * @default null
+         */
         get other_phone(): string;
         set other_phone(val: string);
+        /**
+         * @default null
+         */
         get otherPhone(): string;
         set otherPhone(val: string);
+        /**
+         * @default null
+         */
         get pager(): string;
         set pager(val: string);
         get pgpCert(): ContactCert;
@@ -2479,40 +3090,88 @@ export namespace EBookContacts {
         set phone(val: ContactAttrList);
         get photo(): ContactPhoto;
         set photo(val: ContactPhoto);
+        /**
+         * @default null
+         */
         get primary_phone(): string;
         set primary_phone(val: string);
+        /**
+         * @default null
+         */
         get primaryPhone(): string;
         set primaryPhone(val: string);
+        /**
+         * @default null
+         */
         get radio(): string;
         set radio(val: string);
         get related(): ContactAttrList;
         set related(val: ContactAttrList);
+        /**
+         * @default null
+         */
         get role(): string;
         set role(val: string);
         get sip(): ContactAttrList;
         set sip(val: ContactAttrList);
+        /**
+         * @default null
+         */
         get social_profile(): string;
         set social_profile(val: string);
+        /**
+         * @default null
+         */
         get socialProfile(): string;
         set socialProfile(val: string);
+        /**
+         * @default null
+         */
         get source(): string;
         set source(val: string);
+        /**
+         * @default null
+         */
         get spouse(): string;
         set spouse(val: string);
+        /**
+         * @default null
+         */
         get telex(): string;
         set telex(val: string);
+        /**
+         * @default null
+         */
         get timezone(): string;
         set timezone(val: string);
+        /**
+         * @default null
+         */
         get title(): string;
         set title(val: string);
+        /**
+         * @default null
+         */
         get tty(): string;
         set tty(val: string);
+        /**
+         * @default null
+         */
         get video_url(): string;
         set video_url(val: string);
+        /**
+         * @default null
+         */
         get videoUrl(): string;
         set videoUrl(val: string);
+        /**
+         * @default false
+         */
         get wants_html(): boolean;
         set wants_html(val: boolean);
+        /**
+         * @default false
+         */
         get wantsHtml(): boolean;
         set wantsHtml(val: boolean);
         get x509Cert(): ContactCert;
@@ -2669,7 +3328,7 @@ export namespace EBookContacts {
          * @param field_id an {@link EBookContacts.ContactField}
          * @param value a value whose type depends on the `field_id`
          */
-        set(field_id: ContactField, value?: any | null): void;
+        set(field_id: ContactField, value: any | null): void;
         /**
          * @param args
          */
@@ -2708,21 +3367,25 @@ export namespace EBookContacts {
 
         /**
          * The list of summary fields which are to be given indexes in the underlying database
+         * @default null
          */
         get indexed_fields(): string;
         set indexed_fields(val: string);
         /**
          * The list of summary fields which are to be given indexes in the underlying database
+         * @default null
          */
         get indexedFields(): string;
         set indexedFields(val: string);
         /**
          * The list of quick reference summary fields
+         * @default null
          */
         get summary_fields(): string;
         set summary_fields(val: string);
         /**
          * The list of quick reference summary fields
+         * @default null
          */
         get summaryFields(): string;
         set summaryFields(val: string);
@@ -2970,7 +3633,7 @@ export namespace EBookContacts {
          * @param len length of `str`, or -1 if `str` is `null` terminated
          * @param uid a unique ID string
          */
-        construct_full(str: string, len: bigint | number, uid?: string | null): void;
+        construct_full(str: string, len: bigint | number, uid: string | null): void;
         /**
          * Constructs the existing {@link EBookContacts.VCard}, `evc`, setting its vCard data to `str`, and
          * adding a new UID attribute with the value given in `uid` (if `uid` is
@@ -2980,7 +3643,7 @@ export namespace EBookContacts {
          * @param str a vCard string
          * @param uid a unique ID string
          */
-        construct_with_uid(str: string, uid?: string | null): void;
+        construct_with_uid(str: string, uid: string | null): void;
         /**
          * Converts the `self` into the vCard version `to_version` and returns a converted
          * copy of the `self`. When the `to_version` matches the version of the `self`,
@@ -3101,7 +3764,7 @@ export namespace EBookContacts {
          * @param x_name the attribute name, which starts with "X-"
          * @param value the value to set, or `null` to unset
          */
-        util_set_x_attribute(x_name: string, value?: string | null): void;
+        util_set_x_attribute(x_name: string, value: string | null): void;
     }
 
     /**
@@ -3142,7 +3805,7 @@ export namespace EBookContacts {
          * structure of type {@link EBookContacts.AddressWestern}.
          * @param in_address a string representing a mailing address
          */
-        static parse(in_address?: string | null): AddressWestern | null;
+        static parse(in_address: string | null): AddressWestern | null;
 
         // Methods
 
@@ -3901,7 +4564,7 @@ export namespace EBookContacts {
         static compare_strings_with_region(
             first_number: string,
             second_number: string,
-            region_code?: string | null,
+            region_code: string | null,
         ): PhoneNumberMatch;
         static error_quark(): GLib.Quark;
         /**
@@ -3919,7 +4582,7 @@ export namespace EBookContacts {
          * @param phone_number the phone number to parse
          * @param region_code a two-letter country code, or `null`
          */
-        static from_string(phone_number: string, region_code?: string | null): PhoneNumber;
+        static from_string(phone_number: string, region_code: string | null): PhoneNumber;
         /**
          * Retrieves the preferred country calling code for `region_code`,
          * e.g. 358 for "fi" or 1 for "en_US@UTF-8".
@@ -3928,7 +4591,7 @@ export namespace EBookContacts {
          * `e_phone_number_get_default_region()` is used.
          * @param region_code a two-letter country code, a locale name, or `null`
          */
-        static get_country_code_for_region(region_code?: string | null): number;
+        static get_country_code_for_region(region_code: string | null): number;
         /**
          * Retrieves the current two-letter country code that's used by default for
          * parsing phone numbers in `e_phone_number_from_string()`. It can be useful
@@ -3972,7 +4635,7 @@ export namespace EBookContacts {
          * @param source an optional location for storing the phone number's origin, or `null`
          * @returns A valid country calling code, or zero if no code is known.
          */
-        get_country_code(source?: PhoneNumberCountrySource | null): number;
+        get_country_code(source: PhoneNumberCountrySource | null): number;
         /**
          * Queries the national portion of `phone_number` without any call-out
          * prefixes. For instance when parsing "+1-617-5423789" this function would

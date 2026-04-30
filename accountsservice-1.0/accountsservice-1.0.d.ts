@@ -161,7 +161,7 @@ export namespace AccountsService {
             iconFile: string;
             is_loaded: boolean;
             isLoaded: boolean;
-            language: string;
+            language: string | null;
             local_account: boolean;
             localAccount: boolean;
             location: string;
@@ -201,46 +201,57 @@ export namespace AccountsService {
 
         /**
          * @read-only
+         * @default 0
          */
         get account_type(): number;
         /**
          * @read-only
+         * @default 0
          */
         get accountType(): number;
         /**
          * @read-only
+         * @default false
          */
         get automatic_login(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get automaticLogin(): boolean;
         /**
          * @read-only
+         * @default null
          */
         get email(): string;
         /**
          * @read-only
+         * @default null
          */
         get home_directory(): string;
         /**
          * @read-only
+         * @default null
          */
         get homeDirectory(): string;
         /**
          * @read-only
+         * @default null
          */
         get icon_file(): string;
         /**
          * @read-only
+         * @default null
          */
         get iconFile(): string;
         /**
          * @read-only
+         * @default false
          */
         get is_loaded(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get isLoaded(): boolean;
         /**
@@ -256,30 +267,37 @@ export namespace AccountsService {
          * The property may be `null` if it wasn’t possible to load it from the
          * daemon.
          * @read-only
+         * @default null
          */
-        get language(): string;
+        get language(): string | null;
         /**
          * @read-only
+         * @default false
          */
         get local_account(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get localAccount(): boolean;
         /**
          * @read-only
+         * @default null
          */
         get location(): string;
         /**
          * @read-only
+         * @default false
          */
         get locked(): boolean;
         /**
          * @read-only
+         * @default 0
          */
         get login_frequency(): number;
         /**
          * @read-only
+         * @default 0
          */
         get loginFrequency(): number;
         /**
@@ -292,70 +310,87 @@ export namespace AccountsService {
         get loginHistory(): GLib.Variant;
         /**
          * @read-only
+         * @default 0
          */
         get login_time(): number;
         /**
          * @read-only
+         * @default 0
          */
         get loginTime(): number;
         /**
          * @read-only
+         * @default false
          */
         get nonexistent(): boolean;
         /**
          * @read-only
+         * @default null
          */
         get password_hint(): string;
         /**
          * @read-only
+         * @default null
          */
         get passwordHint(): string;
         /**
          * @read-only
+         * @default 0
          */
         get password_mode(): number;
         /**
          * @read-only
+         * @default 0
          */
         get passwordMode(): number;
         /**
          * @read-only
+         * @default null
          */
         get real_name(): string;
         /**
          * @read-only
+         * @default null
          */
         get realName(): string;
         /**
          * @read-only
+         * @default null
          */
         get shell(): string;
         /**
          * @read-only
+         * @default false
          */
         get system_account(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get systemAccount(): boolean;
         /**
          * @read-only
+         * @default 0
          */
         get uid(): number;
         /**
          * @read-only
+         * @default null
          */
         get user_name(): string;
         /**
          * @read-only
+         * @default null
          */
         get userName(): string;
         /**
          * @read-only
+         * @default null
          */
         get x_session(): string;
         /**
          * @read-only
+         * @default null
          */
         get xSession(): string;
 
@@ -781,8 +816,14 @@ export namespace AccountsService {
         set exclude_usernames_list(val: any);
         get excludeUsernamesList(): any;
         set excludeUsernamesList(val: any);
+        /**
+         * @default false
+         */
         get has_multiple_users(): boolean;
         set has_multiple_users(val: boolean);
+        /**
+         * @default false
+         */
         get hasMultipleUsers(): boolean;
         set hasMultipleUsers(val: boolean);
         get include_usernames_list(): any;
@@ -791,10 +832,12 @@ export namespace AccountsService {
         set includeUsernamesList(val: any);
         /**
          * @read-only
+         * @default false
          */
         get is_loaded(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get isLoaded(): boolean;
 
@@ -890,7 +933,7 @@ export namespace AccountsService {
          * @param username a unix user name
          * @param cancellable optional {@link Gio.Cancellable} object,     `null` to ignore
          */
-        cache_user_async(username: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<User>;
+        cache_user_async(username: string, cancellable: Gio.Cancellable | null): globalThis.Promise<User>;
         /**
          * Asynchronously caches a user account so it shows up via
          * `act_user_manager_list_users()`.
@@ -918,7 +961,7 @@ export namespace AccountsService {
          */
         cache_user_async(
             username: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<User> | void;
         /**
@@ -956,7 +999,7 @@ export namespace AccountsService {
             username: string,
             fullname: string,
             accounttype: UserAccountType,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<User>;
         /**
          * Asynchronously creates a user account on the system.
@@ -991,7 +1034,7 @@ export namespace AccountsService {
             username: string,
             fullname: string,
             accounttype: UserAccountType,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<User> | void;
         /**
@@ -1021,7 +1064,7 @@ export namespace AccountsService {
         delete_user_async(
             user: User,
             remove_files: boolean,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously deletes a user account from the system.
@@ -1052,7 +1095,7 @@ export namespace AccountsService {
         delete_user_async(
             user: User,
             remove_files: boolean,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1109,7 +1152,7 @@ export namespace AccountsService {
          * @param username
          * @param cancellable
          */
-        uncache_user_async(username: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        uncache_user_async(username: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * @param username
          * @param cancellable
@@ -1127,7 +1170,7 @@ export namespace AccountsService {
          */
         uncache_user_async(
             username: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**

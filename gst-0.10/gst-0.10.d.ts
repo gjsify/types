@@ -1286,7 +1286,7 @@ export namespace Gst {
     /**
      * @param argv arguments
      */
-    function init(argv?: string[] | null): string[] | null;
+    function init(argv: string[] | null): string[] | null;
     /**
      * @param argv
      */
@@ -3818,9 +3818,6 @@ export namespace Gst {
          * @param direction
          */
         find_unconnected_pad(direction: PadDirection): Pad;
-        /** @category Inherited from Gst.Object */
-        get name(): string;
-        set name(val: string);
         /**
          * @param name
          */
@@ -3839,54 +3836,6 @@ export namespace Gst {
          * @virtual
          */
         vfunc_get_children_count(): number;
-        /**
-         * @param name
-         */
-        set_name(name: string): boolean;
-        get_name(): string;
-        /**
-         * @param name_prefix
-         */
-        set_name_prefix(name_prefix: string): void;
-        get_name_prefix(): string;
-        /**
-         * @param parent
-         */
-        set_parent(parent: Object): boolean;
-        get_parent(): Object;
-        unparent(): void;
-        /**
-         * @param ancestor
-         */
-        has_ancestor(ancestor: Object): boolean;
-        /**
-         * @param newobj
-         */
-        replace(newobj: Object): void;
-        get_path_string(): string;
-        /**
-         * @param parent
-         */
-        save_thyself(parent: libxml2.NodePtr): libxml2.NodePtr;
-        /**
-         * @param self
-         */
-        restore_thyself(self: libxml2.NodePtr): void;
-        /**
-         * @param error
-         * @param debug
-         */
-        default_error(error: GLib.Error, debug: string): void;
-        /**
-         * @param parent
-         * @virtual
-         */
-        vfunc_save_thyself(parent: libxml2.NodePtr): libxml2.NodePtr;
-        /**
-         * @param self
-         * @virtual
-         */
-        vfunc_restore_thyself(self: libxml2.NodePtr): void;
     }
 
     namespace Buffer {
@@ -7034,9 +6983,6 @@ export namespace Gst {
          */
         set_auto_flush_bus(auto_flush: boolean): void;
         get_auto_flush_bus(): boolean;
-        /** @category Inherited from Gst.Object */
-        get name(): string;
-        set name(val: string);
         /**
          * @param name
          */
@@ -7055,54 +7001,6 @@ export namespace Gst {
          * @virtual
          */
         vfunc_get_children_count(): number;
-        /**
-         * @param name
-         */
-        set_name(name: string): boolean;
-        get_name(): string;
-        /**
-         * @param name_prefix
-         */
-        set_name_prefix(name_prefix: string): void;
-        get_name_prefix(): string;
-        /**
-         * @param parent
-         */
-        set_parent(parent: Object): boolean;
-        get_parent(): Object;
-        unparent(): void;
-        /**
-         * @param ancestor
-         */
-        has_ancestor(ancestor: Object): boolean;
-        /**
-         * @param newobj
-         */
-        replace(newobj: Object): void;
-        get_path_string(): string;
-        /**
-         * @param parent
-         */
-        save_thyself(parent: libxml2.NodePtr): libxml2.NodePtr;
-        /**
-         * @param self
-         */
-        restore_thyself(self: libxml2.NodePtr): void;
-        /**
-         * @param error
-         * @param debug
-         */
-        default_error(error: GLib.Error, debug: string): void;
-        /**
-         * @param parent
-         * @virtual
-         */
-        vfunc_save_thyself(parent: libxml2.NodePtr): libxml2.NodePtr;
-        /**
-         * @param self
-         * @virtual
-         */
-        vfunc_restore_thyself(self: libxml2.NodePtr): void;
     }
 
     namespace Plugin {

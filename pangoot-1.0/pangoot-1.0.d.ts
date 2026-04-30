@@ -86,7 +86,7 @@ export namespace PangoOT {
      * @returns {@link PangoOT.Tag} best matching `language` or `PANGO_OT_TAG_DEFAULT_LANGUAGE` if none found or if `language` is `null`.
      * @since 1.18
      */
-    function tag_from_language(language?: Pango.Language | null): Tag;
+    function tag_from_language(language: Pango.Language | null): Tag;
     /**
      * Finds the OpenType script tag corresponding to `script`.
      *

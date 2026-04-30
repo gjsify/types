@@ -501,7 +501,7 @@ export namespace WebKitWebExtension {
 
         _init(...args: any[]): void;
 
-        static new_from_gaction(action: Gio.Action, label: string, target?: GLib.Variant | null): ContextMenuItem;
+        static new_from_gaction(action: Gio.Action, label: string, target: GLib.Variant | null): ContextMenuItem;
 
         static new_from_stock_action(action: ContextMenuAction): ContextMenuItem;
 
@@ -566,7 +566,7 @@ export namespace WebKitWebExtension {
          * submenu of `item` is removed.
          * @param submenu a {@link WebKitWebExtension.ContextMenu}
          */
-        set_submenu(submenu?: ContextMenu | null): void;
+        set_submenu(submenu: ContextMenu | null): void;
     }
 
     namespace Frame {
@@ -718,66 +718,77 @@ export namespace WebKitWebExtension {
          * Bitmask of {@link WebKitWebExtension.HitTestResultContext} flags representing
          * the context of the {@link WebKitWebExtension.HitTestResult}.
          * @construct-only
+         * @default 0
          */
         get context(): number;
         /**
          * The URI of the image if flag {@link WebKitWebExtension.HitTestResultContext.IMAGE}
          * is present in {@link WebKitWebExtension.HitTestResult.context}
          * @construct-only
+         * @default null
          */
         get image_uri(): string;
         /**
          * The URI of the image if flag {@link WebKitWebExtension.HitTestResultContext.IMAGE}
          * is present in {@link WebKitWebExtension.HitTestResult.context}
          * @construct-only
+         * @default null
          */
         get imageUri(): string;
         /**
          * The label of the link if flag {@link WebKitWebExtension.HitTestResultContext.LINK}
          * is present in {@link WebKitWebExtension.HitTestResult.context}
          * @construct-only
+         * @default null
          */
         get link_label(): string;
         /**
          * The label of the link if flag {@link WebKitWebExtension.HitTestResultContext.LINK}
          * is present in {@link WebKitWebExtension.HitTestResult.context}
          * @construct-only
+         * @default null
          */
         get linkLabel(): string;
         /**
          * The title of the link if flag {@link WebKitWebExtension.HitTestResultContext.LINK}
          * is present in {@link WebKitWebExtension.HitTestResult.context}
          * @construct-only
+         * @default null
          */
         get link_title(): string;
         /**
          * The title of the link if flag {@link WebKitWebExtension.HitTestResultContext.LINK}
          * is present in {@link WebKitWebExtension.HitTestResult.context}
          * @construct-only
+         * @default null
          */
         get linkTitle(): string;
         /**
          * The URI of the link if flag {@link WebKitWebExtension.HitTestResultContext.LINK}
          * is present in {@link WebKitWebExtension.HitTestResult.context}
          * @construct-only
+         * @default null
          */
         get link_uri(): string;
         /**
          * The URI of the link if flag {@link WebKitWebExtension.HitTestResultContext.LINK}
          * is present in {@link WebKitWebExtension.HitTestResult.context}
          * @construct-only
+         * @default null
          */
         get linkUri(): string;
         /**
          * The URI of the media if flag {@link WebKitWebExtension.HitTestResultContext.MEDIA}
          * is present in {@link WebKitWebExtension.HitTestResult.context}
          * @construct-only
+         * @default null
          */
         get media_uri(): string;
         /**
          * The URI of the media if flag {@link WebKitWebExtension.HitTestResultContext.MEDIA}
          * is present in {@link WebKitWebExtension.HitTestResult.context}
          * @construct-only
+         * @default null
          */
         get mediaUri(): string;
 
@@ -1001,6 +1012,7 @@ export namespace WebKitWebExtension {
 
         /**
          * The URI to which the request will be made.
+         * @default about:blank
          */
         get uri(): string;
         set uri(val: string);
@@ -1111,11 +1123,13 @@ export namespace WebKitWebExtension {
         /**
          * The expected content length of the response.
          * @read-only
+         * @default 0
          */
         get content_length(): number;
         /**
          * The expected content length of the response.
          * @read-only
+         * @default 0
          */
         get contentLength(): number;
         /**
@@ -1133,36 +1147,43 @@ export namespace WebKitWebExtension {
         /**
          * The MIME type of the response.
          * @read-only
+         * @default null
          */
         get mime_type(): string;
         /**
          * The MIME type of the response.
          * @read-only
+         * @default null
          */
         get mimeType(): string;
         /**
          * The status code of the response as returned by the server.
          * @read-only
+         * @default 0
          */
         get status_code(): number;
         /**
          * The status code of the response as returned by the server.
          * @read-only
+         * @default 0
          */
         get statusCode(): number;
         /**
          * The suggested filename for the URI response.
          * @read-only
+         * @default null
          */
         get suggested_filename(): string;
         /**
          * The suggested filename for the URI response.
          * @read-only
+         * @default null
          */
         get suggestedFilename(): string;
         /**
          * The URI for which the response was made.
          * @read-only
+         * @default null
          */
         get uri(): string;
 
@@ -1258,10 +1279,10 @@ export namespace WebKitWebExtension {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
-            fd_list: Gio.UnixFDList;
-            fdList: Gio.UnixFDList;
+            fd_list: Gio.UnixFDList | null;
+            fdList: Gio.UnixFDList | null;
             name: string;
-            parameters: GLib.Variant;
+            parameters: GLib.Variant | null;
         }
     }
 
@@ -1287,17 +1308,18 @@ export namespace WebKitWebExtension {
          * @since 2.28
          * @construct-only
          */
-        get fd_list(): Gio.UnixFDList;
+        get fd_list(): Gio.UnixFDList | null;
         /**
          * The UNIX file descriptors of the user message.
          * @since 2.28
          * @construct-only
          */
-        get fdList(): Gio.UnixFDList;
+        get fdList(): Gio.UnixFDList | null;
         /**
          * The name of the user message.
          * @since 2.28
          * @construct-only
+         * @default null
          */
         get name(): string;
         /**
@@ -1307,7 +1329,7 @@ export namespace WebKitWebExtension {
          * @since 2.28
          * @construct-only
          */
-        get parameters(): GLib.Variant;
+        get parameters(): GLib.Variant | null;
 
         /**
          * Compile-time signal type information.
@@ -1324,12 +1346,12 @@ export namespace WebKitWebExtension {
 
         _init(...args: any[]): void;
 
-        static ['new'](name: string, parameters?: GLib.Variant | null): UserMessage;
+        static ['new'](name: string, parameters: GLib.Variant | null): UserMessage;
 
         static new_with_fd_list(
             name: string,
-            parameters?: GLib.Variant | null,
-            fd_list?: Gio.UnixFDList | null,
+            parameters: GLib.Variant | null,
+            fd_list: Gio.UnixFDList | null,
         ): UserMessage;
 
         // Signals
@@ -1623,7 +1645,7 @@ export namespace WebKitWebExtension {
          */
         send_message_to_context(
             message: UserMessage,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<UserMessage>;
         /**
          * Send `message` to the `WebKitWebContext` corresponding to `extension`. If `message` is floating, it's consumed.
@@ -1652,7 +1674,7 @@ export namespace WebKitWebExtension {
          */
         send_message_to_context(
             message: UserMessage,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<UserMessage> | void;
         /**
@@ -1904,7 +1926,7 @@ export namespace WebKitWebExtension {
          * @param world a {@link WebKitWebExtension.ScriptWorld}, or `null` to use the default
          * @returns a {@link JavaScriptCore.Value} for the DOM node, or `null`
          */
-        get_js_node(world?: ScriptWorld | null): JavaScriptCore.Value | null;
+        get_js_node(world: ScriptWorld | null): JavaScriptCore.Value | null;
         /**
          * Obtains the label associated with the link element at the hit test position.
          * @returns the label of the link element, or `null` if the hit test does not cover a link element    or the link element does not have a label.
@@ -2008,6 +2030,7 @@ export namespace WebKitWebExtension {
         /**
          * The current active URI of the {@link WebKitWebExtension.WebPage}.
          * @read-only
+         * @default null
          */
         get uri(): string;
 
@@ -2059,7 +2082,7 @@ export namespace WebKitWebExtension {
          * @param world a {@link WebKitWebExtension.ScriptWorld}
          * @returns a {@link WebKitWebExtension.WebFormManager}
          */
-        get_form_manager(world?: ScriptWorld | null): WebFormManager;
+        get_form_manager(world: ScriptWorld | null): WebFormManager;
         /**
          * Get the identifier of the {@link WebKitWebExtension.WebPage}
          * @returns the identifier of `web_page`
@@ -2089,7 +2112,7 @@ export namespace WebKitWebExtension {
          */
         send_message_to_view(
             message: UserMessage,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<UserMessage>;
         /**
          * Send `message` to the `WebKitWebView` corresponding to `web_page`. If `message` is floating, it's consumed.
@@ -2118,7 +2141,7 @@ export namespace WebKitWebExtension {
          */
         send_message_to_view(
             message: UserMessage,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<UserMessage> | void;
         /**

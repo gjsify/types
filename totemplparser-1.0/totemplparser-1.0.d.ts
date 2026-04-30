@@ -329,6 +329,7 @@ export namespace TotemPlParser {
 
         /**
          * If `true`, the parser will output debug information.
+         * @default false
          */
         get debug(): boolean;
         set debug(val: boolean);
@@ -336,6 +337,7 @@ export namespace TotemPlParser {
          * If `true`, the parser will not parse unsafe locations, such as local devices
          * and local files if the playlist isn't local. This is useful if the library
          * is parsing a playlist from a remote location such as a website.
+         * @default false
          */
         get disable_unsafe(): boolean;
         set disable_unsafe(val: boolean);
@@ -343,18 +345,21 @@ export namespace TotemPlParser {
          * If `true`, the parser will not parse unsafe locations, such as local devices
          * and local files if the playlist isn't local. This is useful if the library
          * is parsing a playlist from a remote location such as a website.
+         * @default false
          */
         get disableUnsafe(): boolean;
         set disableUnsafe(val: boolean);
         /**
          * If `true`, the parser will attempt to parse a playlist, even if it
          * appears to be unsupported (usually because of its filename extension).
+         * @default false
          */
         get force(): boolean;
         set force(val: boolean);
         /**
          * If `true`, the parser will recursively fetch playlists linked to by
          * the current one.
+         * @default true
          */
         get recurse(): boolean;
         set recurse(val: boolean);
@@ -505,7 +510,7 @@ export namespace TotemPlParser {
         parse_async(
             uri: string,
             fallback: boolean,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<ParserResult>;
         /**
          * Starts asynchronous parsing of a playlist given by the absolute URI `uri`. `parser` and `uri` are both reffed/copied
@@ -542,7 +547,7 @@ export namespace TotemPlParser {
         parse_async(
             uri: string,
             fallback: boolean,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<ParserResult> | void;
         /**
@@ -582,8 +587,8 @@ export namespace TotemPlParser {
             uri: string,
             base: string | null,
             fallback: boolean,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Writes the playlist held by `parser` and `playlist` out to the path
@@ -627,7 +632,7 @@ export namespace TotemPlParser {
             dest: Gio.File,
             title: string,
             type: ParserType,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous version of `totem_pl_parser_save()`. For more details
@@ -668,7 +673,7 @@ export namespace TotemPlParser {
             dest: Gio.File,
             title: string,
             type: ParserType,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**

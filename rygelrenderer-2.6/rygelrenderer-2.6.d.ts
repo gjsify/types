@@ -288,7 +288,7 @@ export namespace RygelRenderer {
              * @param value
              * @virtual
              */
-            vfunc_set_uri(value?: string | null): void;
+            vfunc_set_uri(value: string | null): void;
             /**
              * @virtual
              */
@@ -314,7 +314,7 @@ export namespace RygelRenderer {
              * @param value
              * @virtual
              */
-            vfunc_set_metadata(value?: string | null): void;
+            vfunc_set_metadata(value: string | null): void;
             /**
              * @virtual
              */
@@ -323,7 +323,7 @@ export namespace RygelRenderer {
              * @param value
              * @virtual
              */
-            vfunc_set_mime_type(value?: string | null): void;
+            vfunc_set_mime_type(value: string | null): void;
             /**
              * @virtual
              */
@@ -340,7 +340,7 @@ export namespace RygelRenderer {
              * @param value
              * @virtual
              */
-            vfunc_set_content_features(value?: string | null): void;
+            vfunc_set_content_features(value: string | null): void;
             /**
              * @virtual
              */
@@ -357,7 +357,7 @@ export namespace RygelRenderer {
              * @param value
              * @virtual
              */
-            vfunc_set_user_agent(value?: string | null): void;
+            vfunc_set_user_agent(value: string | null): void;
         }
 
         // Constructor properties interface
@@ -369,23 +369,23 @@ export namespace RygelRenderer {
             allowedPlaybackSpeeds: string[];
             playback_speed: string;
             playbackSpeed: string;
-            uri: string;
+            uri: string | null;
             volume: number;
             duration: bigint | number;
             size: bigint | number;
-            metadata: string;
-            mime_type: string;
+            metadata: string | null;
+            mime_type: string | null;
             mimeType: string;
             can_seek: boolean;
             canSeek: boolean;
             can_seek_bytes: boolean;
             canSeekBytes: boolean;
-            content_features: string;
+            content_features: string | null;
             contentFeatures: string;
             position: bigint | number;
             byte_position: bigint | number;
             bytePosition: bigint | number;
-            user_agent: string;
+            user_agent: string | null;
             userAgent: string;
         }
     }
@@ -416,8 +416,8 @@ export namespace RygelRenderer {
         set playback_speed(val: string);
         get playbackSpeed(): string;
         set playbackSpeed(val: string);
-        get uri(): string;
-        set uri(val: string);
+        get uri(): string | null;
+        set uri(val: string | null);
         get volume(): number;
         set volume(val: number);
         /**
@@ -428,10 +428,10 @@ export namespace RygelRenderer {
          * @read-only
          */
         get size(): number;
-        get metadata(): string;
-        set metadata(val: string);
-        get mime_type(): string;
-        set mime_type(val: string);
+        get metadata(): string | null;
+        set metadata(val: string | null);
+        get mime_type(): string | null;
+        set mime_type(val: string | null);
         get mimeType(): string;
         set mimeType(val: string);
         /**
@@ -450,8 +450,8 @@ export namespace RygelRenderer {
          * @read-only
          */
         get canSeekBytes(): boolean;
-        get content_features(): string;
-        set content_features(val: string);
+        get content_features(): string | null;
+        set content_features(val: string | null);
         get contentFeatures(): string;
         set contentFeatures(val: string);
         /**
@@ -466,8 +466,8 @@ export namespace RygelRenderer {
          * @read-only
          */
         get bytePosition(): number;
-        get user_agent(): string;
-        set user_agent(val: string);
+        get user_agent(): string | null;
+        set user_agent(val: string | null);
         get userAgent(): string;
         set userAgent(val: string);
 
@@ -502,7 +502,7 @@ export namespace RygelRenderer {
         /**
          * @param value
          */
-        set_uri(value?: string | null): void;
+        set_uri(value: string | null): void;
         get_volume(): number;
         /**
          * @param value
@@ -514,19 +514,19 @@ export namespace RygelRenderer {
         /**
          * @param value
          */
-        set_metadata(value?: string | null): void;
+        set_metadata(value: string | null): void;
         get_mime_type(): string | null;
         /**
          * @param value
          */
-        set_mime_type(value?: string | null): void;
+        set_mime_type(value: string | null): void;
         get_can_seek(): boolean;
         get_can_seek_bytes(): boolean;
         get_content_features(): string | null;
         /**
          * @param value
          */
-        set_content_features(value?: string | null): void;
+        set_content_features(value: string | null): void;
         get_duration_as_str(): string;
         get_position(): number;
         get_byte_position(): number;
@@ -535,7 +535,7 @@ export namespace RygelRenderer {
         /**
          * @param value
          */
-        set_user_agent(value?: string | null): void;
+        set_user_agent(value: string | null): void;
         get_protocol_info(): string;
     }
 
@@ -569,8 +569,8 @@ export namespace RygelRenderer {
             vfunc_set_single_play_uri(
                 uri: string,
                 metadata: string,
-                mime?: string | null,
-                features?: string | null,
+                mime: string | null,
+                features: string | null,
             ): void;
             /**
              * @param uri
@@ -589,8 +589,8 @@ export namespace RygelRenderer {
             vfunc_set_next_single_play_uri(
                 uri: string,
                 metadata: string,
-                mime?: string | null,
-                features?: string | null,
+                mime: string | null,
+                features: string | null,
             ): void;
             /**
              * @param uri
@@ -802,7 +802,7 @@ export namespace RygelRenderer {
          * @param mime
          * @param features
          */
-        set_single_play_uri(uri: string, metadata: string, mime?: string | null, features?: string | null): void;
+        set_single_play_uri(uri: string, metadata: string, mime: string | null, features: string | null): void;
         /**
          * @param uri
          * @param metadata
@@ -815,7 +815,7 @@ export namespace RygelRenderer {
          * @param mime
          * @param features
          */
-        set_next_single_play_uri(uri: string, metadata: string, mime?: string | null, features?: string | null): void;
+        set_next_single_play_uri(uri: string, metadata: string, mime: string | null, features: string | null): void;
         /**
          * @param uri
          * @param metadata

@@ -301,13 +301,13 @@ export namespace GstRtspServer {
      * @gir-type Callback
      */
     interface RTSPKeepAliveFunc {
-        (user_data?: any | null): void;
+        (user_data: any | null): void;
     }
     /**
      * @gir-type Callback
      */
     interface RTSPMessageSentFunc {
-        (user_data?: any | null): void;
+        (user_data: any | null): void;
     }
     /**
      * @gir-type Callback
@@ -714,12 +714,12 @@ export namespace GstRtspServer {
          * be used for unauthenticated users.
          * @param token a {@link GstRtspServer.RTSPToken}
          */
-        set_default_token(token?: RTSPToken | null): void;
+        set_default_token(token: RTSPToken | null): void;
         /**
          * Set the `realm` of `auth`
          * @param realm The realm to set
          */
-        set_realm(realm?: string | null): void;
+        set_realm(realm: string | null): void;
         /**
          * Sets the supported authentication `methods` for `auth`.
          * @param methods supported methods
@@ -737,14 +737,14 @@ export namespace GstRtspServer {
          * be accepted when TLS is negotiated.
          * @param cert a {@link Gio.TlsCertificate}
          */
-        set_tls_certificate(cert?: Gio.TlsCertificate | null): void;
+        set_tls_certificate(cert: Gio.TlsCertificate | null): void;
         /**
          * Sets the certificate database that is used to verify peer certificates.
          * If set to `null` (the default), then peer certificate validation will always
          * set the {@link Gio.TlsCertificateFlags.UNKNOWN_CA} error.
          * @param database a {@link Gio.TlsDatabase}
          */
-        set_tls_database(database?: Gio.TlsDatabase | null): void;
+        set_tls_database(database: Gio.TlsDatabase | null): void;
     }
 
     namespace RTSPClient {
@@ -897,12 +897,12 @@ export namespace GstRtspServer {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             drop_backlog: boolean;
             dropBacklog: boolean;
-            mount_points: RTSPMountPoints;
-            mountPoints: RTSPMountPoints;
+            mount_points: RTSPMountPoints | null;
+            mountPoints: RTSPMountPoints | null;
             post_session_timeout: number;
             postSessionTimeout: number;
-            session_pool: RTSPSessionPool;
-            sessionPool: RTSPSessionPool;
+            session_pool: RTSPSessionPool | null;
+            sessionPool: RTSPSessionPool | null;
         }
     }
 
@@ -915,22 +915,34 @@ export namespace GstRtspServer {
 
         // Properties
 
+        /**
+         * @default true
+         */
         get drop_backlog(): boolean;
         set drop_backlog(val: boolean);
+        /**
+         * @default true
+         */
         get dropBacklog(): boolean;
         set dropBacklog(val: boolean);
-        get mount_points(): RTSPMountPoints;
-        set mount_points(val: RTSPMountPoints);
-        get mountPoints(): RTSPMountPoints;
-        set mountPoints(val: RTSPMountPoints);
+        get mount_points(): RTSPMountPoints | null;
+        set mount_points(val: RTSPMountPoints | null);
+        get mountPoints(): RTSPMountPoints | null;
+        set mountPoints(val: RTSPMountPoints | null);
+        /**
+         * @default -1
+         */
         get post_session_timeout(): number;
         set post_session_timeout(val: number);
+        /**
+         * @default -1
+         */
         get postSessionTimeout(): number;
         set postSessionTimeout(val: number);
-        get session_pool(): RTSPSessionPool;
-        set session_pool(val: RTSPSessionPool);
-        get sessionPool(): RTSPSessionPool;
-        set sessionPool(val: RTSPSessionPool);
+        get session_pool(): RTSPSessionPool | null;
+        set session_pool(val: RTSPSessionPool | null);
+        get sessionPool(): RTSPSessionPool | null;
+        set sessionPool(val: RTSPSessionPool | null);
 
         /**
          * Compile-time signal type information.
@@ -1187,7 +1199,7 @@ export namespace GstRtspServer {
          * @param context a {@link GLib.MainContext}
          * @returns the ID (greater than 0) for the source within the GMainContext.
          */
-        attach(context?: GLib.MainContext | null): number;
+        attach(context: GLib.MainContext | null): number;
         /**
          * Close the connection of `client` and remove all media it was managing.
          */
@@ -1263,12 +1275,12 @@ export namespace GstRtspServer {
          * @param func a callback
          * @returns a {@link GLib.List} with all sessions for which `func` returned #GST_RTSP_FILTER_REF. After usage, each element in the {@link GLib.List} should be unreffed before the list is freed.
          */
-        session_filter(func?: RTSPClientSessionFilterFunc | null): RTSPSession[];
+        session_filter(func: RTSPClientSessionFilterFunc | null): RTSPSession[];
         /**
          * configure `auth` to be used as the authentication manager of `client`.
          * @param auth a {@link GstRtspServer.RTSPAuth}
          */
-        set_auth(auth?: RTSPAuth | null): void;
+        set_auth(auth: RTSPAuth | null): void;
         /**
          * Set the {@link GstRtsp.RTSPConnection} of `client`. This function takes ownership of
          * `conn`.
@@ -1290,7 +1302,7 @@ export namespace GstRtspServer {
          * created the client but can be overriden later.
          * @param mounts a {@link GstRtspServer.RTSPMountPoints}
          */
-        set_mount_points(mounts?: RTSPMountPoints | null): void;
+        set_mount_points(mounts: RTSPMountPoints | null): void;
         /**
          * Set `func` as the callback that will be called when a new message needs to be
          * sent to the client. `user_data` is passed to `func` and `notify` is called when
@@ -1304,7 +1316,7 @@ export namespace GstRtspServer {
          * @param func a {@link GstRtspServer.RTSPClientSendFunc}
          * @param notify called when `user_data` is no longer in use
          */
-        set_send_func(func: RTSPClientSendFunc, notify?: GLib.DestroyNotify | null): void;
+        set_send_func(func: RTSPClientSendFunc, notify: GLib.DestroyNotify | null): void;
         /**
          * Set `func` as the callback that will be called when new messages needs to be
          * sent to the client. `user_data` is passed to `func` and `notify` is called when
@@ -1318,19 +1330,19 @@ export namespace GstRtspServer {
          * @param func a {@link GstRtspServer.RTSPClientSendMessagesFunc}
          * @param notify called when `user_data` is no longer in use
          */
-        set_send_messages_func(func: RTSPClientSendMessagesFunc, notify?: GLib.DestroyNotify | null): void;
+        set_send_messages_func(func: RTSPClientSendMessagesFunc, notify: GLib.DestroyNotify | null): void;
         /**
          * Set `pool` as the sessionpool for `client` which it will use to find
          * or allocate sessions. the sessionpool is usually inherited from the server
          * that created the client but can be overridden later.
          * @param pool a {@link GstRtspServer.RTSPSessionPool}
          */
-        set_session_pool(pool?: RTSPSessionPool | null): void;
+        set_session_pool(pool: RTSPSessionPool | null): void;
         /**
          * configure `pool` to be used as the thread pool of `client`.
          * @param pool a {@link GstRtspServer.RTSPThreadPool}
          */
-        set_thread_pool(pool?: RTSPThreadPool | null): void;
+        set_thread_pool(pool: RTSPThreadPool | null): void;
     }
 
     namespace RTSPMedia {
@@ -1528,7 +1540,7 @@ export namespace GstRtspServer {
             bindMcastAddress: boolean;
             buffer_size: number;
             bufferSize: number;
-            clock: Gst.Clock;
+            clock: Gst.Clock | null;
             dscp_qos: number;
             dscpQos: number;
             element: Gst.Element;
@@ -1545,8 +1557,8 @@ export namespace GstRtspServer {
             stopOnDisconnect: boolean;
             suspend_mode: RTSPSuspendMode;
             suspendMode: RTSPSuspendMode;
-            time_provider: boolean;
-            timeProvider: boolean;
+            time_provider: boolean | null;
+            timeProvider: boolean | null;
             transport_mode: RTSPTransportMode;
             transportMode: RTSPTransportMode;
         }
@@ -1564,56 +1576,125 @@ export namespace GstRtspServer {
 
         // Properties
 
+        /**
+         * @default false
+         */
         get bind_mcast_address(): boolean;
         set bind_mcast_address(val: boolean);
+        /**
+         * @default false
+         */
         get bindMcastAddress(): boolean;
         set bindMcastAddress(val: boolean);
+        /**
+         * @default 524288
+         */
         get buffer_size(): number;
         set buffer_size(val: number);
+        /**
+         * @default 524288
+         */
         get bufferSize(): number;
         set bufferSize(val: number);
-        get clock(): Gst.Clock;
-        set clock(val: Gst.Clock);
+        get clock(): Gst.Clock | null;
+        set clock(val: Gst.Clock | null);
+        /**
+         * @default -1
+         */
         get dscp_qos(): number;
         set dscp_qos(val: number);
+        /**
+         * @default -1
+         */
         get dscpQos(): number;
         set dscpQos(val: number);
         /**
          * @construct-only
          */
         get element(): Gst.Element;
+        /**
+         * @default false
+         */
         get eos_shutdown(): boolean;
         set eos_shutdown(val: boolean);
+        /**
+         * @default false
+         */
         get eosShutdown(): boolean;
         set eosShutdown(val: boolean);
+        /**
+         * @default 200
+         */
         get latency(): number;
         set latency(val: number);
+        /**
+         * @default 255
+         */
         get max_mcast_ttl(): number;
         set max_mcast_ttl(val: number);
+        /**
+         * @default 255
+         */
         get maxMcastTtl(): number;
         set maxMcastTtl(val: number);
+        /**
+         * @default GstRtsp.RTSPProfile.AVP
+         */
         get profiles(): GstRtsp.RTSPProfile;
         set profiles(val: GstRtsp.RTSPProfile);
+        /**
+         * @default GstRtsp.RTSPLowerTrans.UDP | GstRtsp.RTSPLowerTrans.UDP_MCAST | GstRtsp.RTSPLowerTrans.TCP
+         */
         get protocols(): GstRtsp.RTSPLowerTrans;
         set protocols(val: GstRtsp.RTSPLowerTrans);
+        /**
+         * @default false
+         */
         get reusable(): boolean;
         set reusable(val: boolean);
+        /**
+         * @default false
+         */
         get shared(): boolean;
         set shared(val: boolean);
+        /**
+         * @default true
+         */
         get stop_on_disconnect(): boolean;
         set stop_on_disconnect(val: boolean);
+        /**
+         * @default true
+         */
         get stopOnDisconnect(): boolean;
         set stopOnDisconnect(val: boolean);
+        /**
+         * @default GstRtspServer.RTSPSuspendMode.NONE
+         */
         get suspend_mode(): RTSPSuspendMode;
         set suspend_mode(val: RTSPSuspendMode);
+        /**
+         * @default GstRtspServer.RTSPSuspendMode.NONE
+         */
         get suspendMode(): RTSPSuspendMode;
         set suspendMode(val: RTSPSuspendMode);
-        get time_provider(): boolean;
-        set time_provider(val: boolean);
-        get timeProvider(): boolean;
-        set timeProvider(val: boolean);
+        /**
+         * @default false
+         */
+        get time_provider(): boolean | null;
+        set time_provider(val: boolean | null);
+        /**
+         * @default false
+         */
+        get timeProvider(): boolean | null;
+        set timeProvider(val: boolean | null);
+        /**
+         * @default GstRtspServer.RTSPTransportMode.PLAY
+         */
         get transport_mode(): RTSPTransportMode;
         set transport_mode(val: RTSPTransportMode);
+        /**
+         * @default GstRtspServer.RTSPTransportMode.PLAY
+         */
         get transportMode(): RTSPTransportMode;
         set transportMode(val: RTSPTransportMode);
 
@@ -1694,7 +1775,7 @@ export namespace GstRtspServer {
          * @param thread a {@link GstRtspServer.RTSPThread} to run the   bus handler or `null`
          * @virtual
          */
-        vfunc_prepare(thread?: RTSPThread | null): boolean;
+        vfunc_prepare(thread: RTSPThread | null): boolean;
         /**
          * @virtual
          */
@@ -2009,7 +2090,7 @@ export namespace GstRtspServer {
          * @param thread a {@link GstRtspServer.RTSPThread} to run the   bus handler or `null`
          * @returns `true` on success.
          */
-        prepare(thread?: RTSPThread | null): boolean;
+        prepare(thread: RTSPThread | null): boolean;
         /**
          * Seek the pipeline of `media` to `range`. `media` must be prepared with
          * `gst_rtsp_media_prepare()`.
@@ -2053,7 +2134,7 @@ export namespace GstRtspServer {
          * configure `pool` to be used as the address pool of `media`.
          * @param pool a {@link GstRtspServer.RTSPAddressPool}
          */
-        set_address_pool(pool?: RTSPAddressPool | null): void;
+        set_address_pool(pool: RTSPAddressPool | null): void;
         /**
          * Decide whether the multicast socket should be bound to a multicast address or
          * INADDR_ANY.
@@ -2069,7 +2150,7 @@ export namespace GstRtspServer {
          * Configure the clock used for the media.
          * @param clock {@link Gst.Clock} to be used
          */
-        set_clock(clock?: Gst.Clock | null): void;
+        set_clock(clock: Gst.Clock | null): void;
         /**
          * Set whether retransmission requests will be sent
          * @param do_retransmission
@@ -2101,12 +2182,12 @@ export namespace GstRtspServer {
          * configure `multicast_iface` to be used for `media`.
          * @param multicast_iface a multicast interface name
          */
-        set_multicast_iface(multicast_iface?: string | null): void;
+        set_multicast_iface(multicast_iface: string | null): void;
         /**
          * Set `permissions` on `media`.
          * @param permissions a {@link GstRtspServer.RTSPPermissions}
          */
-        set_permissions(permissions?: RTSPPermissions | null): void;
+        set_permissions(permissions: RTSPPermissions | null): void;
         /**
          * Set the state of the pipeline managed by `media` to `state`
          * @param state the target state of the pipeline
@@ -2263,7 +2344,7 @@ export namespace GstRtspServer {
             bindMcastAddress: boolean;
             buffer_size: number;
             bufferSize: number;
-            clock: Gst.Clock;
+            clock: Gst.Clock | null;
             dscp_qos: number;
             dscpQos: number;
             enable_rtcp: boolean;
@@ -2271,7 +2352,7 @@ export namespace GstRtspServer {
             eos_shutdown: boolean;
             eosShutdown: boolean;
             latency: number;
-            launch: string;
+            launch: string | null;
             max_mcast_ttl: number;
             maxMcastTtl: number;
             profiles: GstRtsp.RTSPProfile;
@@ -2296,60 +2377,125 @@ export namespace GstRtspServer {
 
         // Properties
 
+        /**
+         * @default false
+         */
         get bind_mcast_address(): boolean;
         set bind_mcast_address(val: boolean);
+        /**
+         * @default false
+         */
         get bindMcastAddress(): boolean;
         set bindMcastAddress(val: boolean);
+        /**
+         * @default 524288
+         */
         get buffer_size(): number;
         set buffer_size(val: number);
+        /**
+         * @default 524288
+         */
         get bufferSize(): number;
         set bufferSize(val: number);
-        get clock(): Gst.Clock;
-        set clock(val: Gst.Clock);
+        get clock(): Gst.Clock | null;
+        set clock(val: Gst.Clock | null);
+        /**
+         * @default -1
+         */
         get dscp_qos(): number;
         set dscp_qos(val: number);
+        /**
+         * @default -1
+         */
         get dscpQos(): number;
         set dscpQos(val: number);
         /**
          * Whether the created media should send and receive RTCP
          * @since 1.20
+         * @default true
          */
         get enable_rtcp(): boolean;
         set enable_rtcp(val: boolean);
         /**
          * Whether the created media should send and receive RTCP
          * @since 1.20
+         * @default true
          */
         get enableRtcp(): boolean;
         set enableRtcp(val: boolean);
+        /**
+         * @default false
+         */
         get eos_shutdown(): boolean;
         set eos_shutdown(val: boolean);
+        /**
+         * @default false
+         */
         get eosShutdown(): boolean;
         set eosShutdown(val: boolean);
+        /**
+         * @default 200
+         */
         get latency(): number;
         set latency(val: number);
-        get launch(): string;
-        set launch(val: string);
+        /**
+         * @default null
+         */
+        get launch(): string | null;
+        set launch(val: string | null);
+        /**
+         * @default 255
+         */
         get max_mcast_ttl(): number;
         set max_mcast_ttl(val: number);
+        /**
+         * @default 255
+         */
         get maxMcastTtl(): number;
         set maxMcastTtl(val: number);
+        /**
+         * @default GstRtsp.RTSPProfile.AVP
+         */
         get profiles(): GstRtsp.RTSPProfile;
         set profiles(val: GstRtsp.RTSPProfile);
+        /**
+         * @default GstRtsp.RTSPLowerTrans.UDP | GstRtsp.RTSPLowerTrans.UDP_MCAST | GstRtsp.RTSPLowerTrans.TCP
+         */
         get protocols(): GstRtsp.RTSPLowerTrans;
         set protocols(val: GstRtsp.RTSPLowerTrans);
+        /**
+         * @default false
+         */
         get shared(): boolean;
         set shared(val: boolean);
+        /**
+         * @default true
+         */
         get stop_on_disconnect(): boolean;
         set stop_on_disconnect(val: boolean);
+        /**
+         * @default true
+         */
         get stopOnDisconnect(): boolean;
         set stopOnDisconnect(val: boolean);
+        /**
+         * @default GstRtspServer.RTSPSuspendMode.NONE
+         */
         get suspend_mode(): RTSPSuspendMode;
         set suspend_mode(val: RTSPSuspendMode);
+        /**
+         * @default GstRtspServer.RTSPSuspendMode.NONE
+         */
         get suspendMode(): RTSPSuspendMode;
         set suspendMode(val: RTSPSuspendMode);
+        /**
+         * @default GstRtspServer.RTSPTransportMode.PLAY
+         */
         get transport_mode(): RTSPTransportMode;
         set transport_mode(val: RTSPTransportMode);
+        /**
+         * @default GstRtspServer.RTSPTransportMode.PLAY
+         */
         get transportMode(): RTSPTransportMode;
         set transportMode(val: RTSPTransportMode);
 
@@ -2590,7 +2736,7 @@ export namespace GstRtspServer {
          * configure `pool` to be used as the address pool of `factory`.
          * @param pool a {@link GstRtspServer.RTSPAddressPool}
          */
-        set_address_pool(pool?: RTSPAddressPool | null): void;
+        set_address_pool(pool: RTSPAddressPool | null): void;
         /**
          * Decide whether the multicast socket should be bound to a multicast address or
          * INADDR_ANY.
@@ -2607,7 +2753,7 @@ export namespace GstRtspServer {
          * of all medias created from this factory.
          * @param clock the clock to be used by the media factory
          */
-        set_clock(clock?: Gst.Clock | null): void;
+        set_clock(clock: Gst.Clock | null): void;
         /**
          * Set whether retransmission requests will be sent for
          * receiving media
@@ -2665,12 +2811,12 @@ export namespace GstRtspServer {
          * configure `multicast_iface` to be used for `factory`.
          * @param multicast_iface a multicast interface name
          */
-        set_multicast_iface(multicast_iface?: string | null): void;
+        set_multicast_iface(multicast_iface: string | null): void;
         /**
          * Set `permissions` on `factory`.
          * @param permissions a {@link GstRtspServer.RTSPPermissions}
          */
-        set_permissions(permissions?: RTSPPermissions | null): void;
+        set_permissions(permissions: RTSPPermissions | null): void;
         /**
          * Configure the allowed profiles for `factory`.
          * @param profiles the new flags
@@ -2754,10 +2900,19 @@ export namespace GstRtspServer {
 
         // Properties
 
+        /**
+         * @default null
+         */
         get uri(): string;
         set uri(val: string);
+        /**
+         * @default false
+         */
         get use_gstpay(): boolean;
         set use_gstpay(val: boolean);
+        /**
+         * @default false
+         */
         get useGstpay(): boolean;
         set useGstpay(val: boolean);
 
@@ -3206,7 +3361,7 @@ export namespace GstRtspServer {
          * prepare.
          * @param launch the launch description
          */
-        set_backchannel_launch(launch?: string | null): void;
+        set_backchannel_launch(launch: string | null): void;
         /**
          * Set to `true` if ONVIF replay is supported by the media factory.
          * @param has_replay_support
@@ -3297,17 +3452,17 @@ export namespace GstRtspServer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            address: string;
+            address: string | null;
             backlog: number;
             bound_port: number;
             boundPort: number;
             content_length_limit: number;
             contentLengthLimit: number;
-            mount_points: RTSPMountPoints;
-            mountPoints: RTSPMountPoints;
+            mount_points: RTSPMountPoints | null;
+            mountPoints: RTSPMountPoints | null;
             service: string;
-            session_pool: RTSPSessionPool;
-            sessionPool: RTSPSessionPool;
+            session_pool: RTSPSessionPool | null;
+            sessionPool: RTSPSessionPool | null;
         }
     }
 
@@ -3321,32 +3476,49 @@ export namespace GstRtspServer {
 
         // Properties
 
-        get address(): string;
-        set address(val: string);
+        /**
+         * @default 0.0.0.0
+         */
+        get address(): string | null;
+        set address(val: string | null);
+        /**
+         * @default 5
+         */
         get backlog(): number;
         set backlog(val: number);
         /**
          * @read-only
+         * @default -1
          */
         get bound_port(): number;
         /**
          * @read-only
+         * @default -1
          */
         get boundPort(): number;
+        /**
+         * @default 4294967295
+         */
         get content_length_limit(): number;
         set content_length_limit(val: number);
+        /**
+         * @default 4294967295
+         */
         get contentLengthLimit(): number;
         set contentLengthLimit(val: number);
-        get mount_points(): RTSPMountPoints;
-        set mount_points(val: RTSPMountPoints);
-        get mountPoints(): RTSPMountPoints;
-        set mountPoints(val: RTSPMountPoints);
+        get mount_points(): RTSPMountPoints | null;
+        set mount_points(val: RTSPMountPoints | null);
+        get mountPoints(): RTSPMountPoints | null;
+        set mountPoints(val: RTSPMountPoints | null);
+        /**
+         * @default 8554
+         */
         get service(): string;
         set service(val: string);
-        get session_pool(): RTSPSessionPool;
-        set session_pool(val: RTSPSessionPool);
-        get sessionPool(): RTSPSessionPool;
-        set sessionPool(val: RTSPSessionPool);
+        get session_pool(): RTSPSessionPool | null;
+        set session_pool(val: RTSPSessionPool | null);
+        get sessionPool(): RTSPSessionPool | null;
+        set sessionPool(val: RTSPSessionPool | null);
 
         /**
          * Compile-time signal type information.
@@ -3423,7 +3595,7 @@ export namespace GstRtspServer {
          * @param context a {@link GLib.MainContext}
          * @returns the ID (greater than 0) for the source within the GMainContext.
          */
-        attach(context?: GLib.MainContext | null): number;
+        attach(context: GLib.MainContext | null): number;
         /**
          * Call `func` for each client managed by `server`. The result value of `func`
          * determines what happens to the client. `func` will be called with `server`
@@ -3442,14 +3614,14 @@ export namespace GstRtspServer {
          * @param func a callback
          * @returns a {@link GLib.List} with all clients for which `func` returned #GST_RTSP_FILTER_REF. After usage, each element in the {@link GLib.List} should be unreffed before the list is freed.
          */
-        client_filter(func?: RTSPServerClientFilterFunc | null): RTSPClient[];
+        client_filter(func: RTSPServerClientFilterFunc | null): RTSPClient[];
         /**
          * Create a {@link Gio.Socket} for `server`. The socket will listen on the
          * configured service.
          * @param cancellable a {@link Gio.Cancellable}
          * @returns the {@link Gio.Socket} for `server` or `null` when an error occurred.
          */
-        create_socket(cancellable?: Gio.Cancellable | null): Gio.Socket;
+        create_socket(cancellable: Gio.Cancellable | null): Gio.Socket;
         /**
          * Create a {@link GLib.Source} for `server`. The new source will have a default
          * {@link Gio.SocketSourceFunc} of `gst_rtsp_server_io_func()`.
@@ -3463,7 +3635,7 @@ export namespace GstRtspServer {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns the {@link GLib.Source} for `server` or `null` when an error occurred. Free with g_source_unref ()
          */
-        create_source(cancellable?: Gio.Cancellable | null): GLib.Source;
+        create_source(cancellable: Gio.Cancellable | null): GLib.Source;
         /**
          * Get the address on which the server will accept connections.
          * @returns the server address. `g_free()` after usage.
@@ -3520,7 +3692,7 @@ export namespace GstRtspServer {
          * configure `auth` to be used as the authentication manager of `server`.
          * @param auth a {@link GstRtspServer.RTSPAuth}
          */
-        set_auth(auth?: RTSPAuth | null): void;
+        set_auth(auth: RTSPAuth | null): void;
         /**
          * configure the maximum amount of requests that may be queued for the
          * server.
@@ -3539,7 +3711,7 @@ export namespace GstRtspServer {
          * configure `mounts` to be used as the mount points of `server`.
          * @param mounts a {@link GstRtspServer.RTSPMountPoints}
          */
-        set_mount_points(mounts?: RTSPMountPoints | null): void;
+        set_mount_points(mounts: RTSPMountPoints | null): void;
         /**
          * Configure `server` to accept connections on the given service.
          * `service` should be a string containing the service name (see services(5)) or
@@ -3557,12 +3729,12 @@ export namespace GstRtspServer {
          * configure `pool` to be used as the session pool of `server`.
          * @param pool a {@link GstRtspServer.RTSPSessionPool}
          */
-        set_session_pool(pool?: RTSPSessionPool | null): void;
+        set_session_pool(pool: RTSPSessionPool | null): void;
         /**
          * configure `pool` to be used as the thread pool of `server`.
          * @param pool a {@link GstRtspServer.RTSPThreadPool}
          */
-        set_thread_pool(pool?: RTSPThreadPool | null): void;
+        set_thread_pool(pool: RTSPThreadPool | null): void;
         /**
          * Take an existing network socket and use it for an RTSP connection. This
          * is used when transferring a socket from an HTTP server which should be used
@@ -3574,7 +3746,7 @@ export namespace GstRtspServer {
          * @param initial_buffer any initial data that was already read from the socket
          * @returns TRUE if all was ok, FALSE if an error occurred.
          */
-        transfer_connection(socket: Gio.Socket, ip: string, port: number, initial_buffer?: string | null): boolean;
+        transfer_connection(socket: Gio.Socket, ip: string, port: number, initial_buffer: string | null): boolean;
     }
 
     namespace RTSPSession {
@@ -3591,7 +3763,7 @@ export namespace GstRtspServer {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             extra_timeout: number;
             extraTimeout: number;
-            sessionid: string;
+            sessionid: string | null;
             timeout: number;
             timeout_always_visible: boolean;
             timeoutAlwaysVisible: boolean;
@@ -3609,18 +3781,34 @@ export namespace GstRtspServer {
 
         // Properties
 
+        /**
+         * @default 5
+         */
         get extra_timeout(): number;
         set extra_timeout(val: number);
+        /**
+         * @default 5
+         */
         get extraTimeout(): number;
         set extraTimeout(val: number);
         /**
          * @construct-only
+         * @default null
          */
-        get sessionid(): string;
+        get sessionid(): string | null;
+        /**
+         * @default 60
+         */
         get timeout(): number;
         set timeout(val: number);
+        /**
+         * @default false
+         */
         get timeout_always_visible(): boolean;
         set timeout_always_visible(val: boolean);
+        /**
+         * @default false
+         */
         get timeoutAlwaysVisible(): boolean;
         set timeoutAlwaysVisible(val: boolean);
 
@@ -3694,7 +3882,7 @@ export namespace GstRtspServer {
          * @param func a callback
          * @returns a GList with all media for which `func` returned #GST_RTSP_FILTER_REF. After usage, each element in the {@link GLib.List} should be unreffed before the list is freed.
          */
-        filter(func?: RTSPSessionFilterFunc | null): RTSPSessionMedia[];
+        filter(func: RTSPSessionFilterFunc | null): RTSPSessionMedia[];
         /**
          * Get the string that can be placed in the Session header field.
          * @returns the Session header of `session`. `g_free()` after usage.
@@ -3923,8 +4111,14 @@ export namespace GstRtspServer {
 
         // Properties
 
+        /**
+         * @default 0
+         */
         get max_sessions(): number;
         set max_sessions(val: number);
+        /**
+         * @default 0
+         */
         get maxSessions(): number;
         set maxSessions(val: number);
 
@@ -4015,7 +4209,7 @@ export namespace GstRtspServer {
          * @param func a callback
          * @returns a GList with all sessions for which `func` returned #GST_RTSP_FILTER_REF. After usage, each element in the GList should be unreffed before the list is freed.
          */
-        filter(func?: RTSPSessionPoolFilterFunc | null): RTSPSession[];
+        filter(func: RTSPSessionPoolFilterFunc | null): RTSPSession[];
         /**
          * Find the session with `sessionid` in `pool`. The access time of the session
          * will be updated with `gst_rtsp_session_touch()`.
@@ -4074,7 +4268,7 @@ export namespace GstRtspServer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            control: string;
+            control: string | null;
             profiles: GstRtsp.RTSPProfile;
             protocols: GstRtsp.RTSPLowerTrans;
         }
@@ -4089,10 +4283,19 @@ export namespace GstRtspServer {
 
         // Properties
 
-        get control(): string;
-        set control(val: string);
+        /**
+         * @default null
+         */
+        get control(): string | null;
+        set control(val: string | null);
+        /**
+         * @default GstRtsp.RTSPProfile.AVP
+         */
         get profiles(): GstRtsp.RTSPProfile;
         set profiles(val: GstRtsp.RTSPProfile);
+        /**
+         * @default GstRtsp.RTSPLowerTrans.UDP | GstRtsp.RTSPLowerTrans.UDP_MCAST | GstRtsp.RTSPLowerTrans.TCP
+         */
         get protocols(): GstRtsp.RTSPLowerTrans;
         set protocols(val: GstRtsp.RTSPLowerTrans);
 
@@ -4370,7 +4573,7 @@ export namespace GstRtspServer {
          * @param control a control string
          * @returns `true` is `stream` has `control` as the control string
          */
-        has_control(control?: string | null): boolean;
+        has_control(control: string | null): boolean;
         /**
          * Check if multicast sockets are configured to be bound to multicast addresses.
          * @returns `true` if multicast sockets are configured to be bound to multicast addresses.
@@ -4513,7 +4716,7 @@ export namespace GstRtspServer {
          * configure `pool` to be used as the address pool of `stream`.
          * @param pool a {@link GstRtspServer.RTSPAddressPool}
          */
-        set_address_pool(pool?: RTSPAddressPool | null): void;
+        set_address_pool(pool: RTSPAddressPool | null): void;
         /**
          * Decide whether the multicast socket should be bound to a multicast address or
          * INADDR_ANY.
@@ -4545,7 +4748,7 @@ export namespace GstRtspServer {
          * Set the control string in `stream`.
          * @param control a control string
          */
-        set_control(control?: string | null): void;
+        set_control(control: string | null): void;
         /**
          * Configure the dscp qos of the outgoing sockets to `dscp_qos`.
          * @param dscp_qos a new dscp qos value (0-63, or -1 to disable)
@@ -4566,7 +4769,7 @@ export namespace GstRtspServer {
          * configure `multicast_iface` to be used for `stream`.
          * @param multicast_iface a multicast interface name
          */
-        set_multicast_iface(multicast_iface?: string | null): void;
+        set_multicast_iface(multicast_iface: string | null): void;
         /**
          * Configure the allowed profiles for `stream`.
          * @param profiles the new profiles
@@ -4637,7 +4840,7 @@ export namespace GstRtspServer {
          * @param func a callback
          * @returns a {@link GLib.List} with all transports for which `func` returned #GST_RTSP_FILTER_REF. After usage, each element in the {@link GLib.List} should be unreffed before the list is freed.
          */
-        transport_filter(func?: RTSPStreamTransportFilterFunc | null): RTSPStreamTransport[];
+        transport_filter(func: RTSPStreamTransportFilterFunc | null): RTSPStreamTransport[];
         unblock_linked(): boolean;
         /**
          * Remove blocking probe from the RTCP source. When creating an UDP source for
@@ -4655,7 +4858,7 @@ export namespace GstRtspServer {
          * @param crypto a {@link Gst.Caps} with crypto info
          * @returns `true` if `crypto` could be updated
          */
-        update_crypto(ssrc: number, crypto?: Gst.Caps | null): boolean;
+        update_crypto(ssrc: number, crypto: Gst.Caps | null): boolean;
         /**
          * Check if the requested multicast ttl value is allowed.
          * @param ttl a requested multicast ttl
@@ -4800,14 +5003,14 @@ export namespace GstRtspServer {
          * @param send_rtcp a callback called when RTCP should be sent
          * @param notify called with the user_data when no longer needed.
          */
-        set_callbacks(send_rtp: RTSPSendFunc, send_rtcp: RTSPSendFunc, notify?: GLib.DestroyNotify | null): void;
+        set_callbacks(send_rtp: RTSPSendFunc, send_rtcp: RTSPSendFunc, notify: GLib.DestroyNotify | null): void;
         /**
          * Install callbacks that will be called when RTCP packets are received from the
          * receiver of `trans`.
          * @param keep_alive a callback called when the receiver is active
          * @param notify called with the user_data when no longer needed.
          */
-        set_keepalive(keep_alive: RTSPKeepAliveFunc, notify?: GLib.DestroyNotify | null): void;
+        set_keepalive(keep_alive: RTSPKeepAliveFunc, notify: GLib.DestroyNotify | null): void;
         /**
          * Install callbacks that will be called when data for a stream should be sent
          * to a client. This is usually used when sending RTP/RTCP over TCP.
@@ -4818,20 +5021,20 @@ export namespace GstRtspServer {
         set_list_callbacks(
             send_rtp_list: RTSPSendListFunc,
             send_rtcp_list: RTSPSendListFunc,
-            notify?: GLib.DestroyNotify | null,
+            notify: GLib.DestroyNotify | null,
         ): void;
         /**
          * Install a callback that will be called when a message has been sent on `trans`.
          * @param message_sent a callback called when a message has been sent
          * @param notify called with the user_data when no longer needed
          */
-        set_message_sent(message_sent: RTSPMessageSentFunc, notify?: GLib.DestroyNotify | null): void;
+        set_message_sent(message_sent: RTSPMessageSentFunc, notify: GLib.DestroyNotify | null): void;
         /**
          * Install a callback that will be called when a message has been sent on `trans`.
          * @param message_sent a callback called when a message has been sent
          * @param notify called with the user_data when no longer needed
          */
-        set_message_sent_full(message_sent: RTSPMessageSentFuncFull, notify?: GLib.DestroyNotify | null): void;
+        set_message_sent_full(message_sent: RTSPMessageSentFuncFull, notify: GLib.DestroyNotify | null): void;
         /**
          * Set the timed out state of `trans` to `timedout`
          * @param timedout timed out value
@@ -4847,7 +5050,7 @@ export namespace GstRtspServer {
          * Set `url` as the client url.
          * @param url a client {@link GstRtsp.RTSPUrl}
          */
-        set_url(url?: GstRtsp.RTSPUrl | null): void;
+        set_url(url: GstRtsp.RTSPUrl | null): void;
     }
 
     namespace RTSPThreadPool {
@@ -4873,8 +5076,14 @@ export namespace GstRtspServer {
 
         // Properties
 
+        /**
+         * @default 1
+         */
         get max_threads(): number;
         set max_threads(val: number);
+        /**
+         * @default 1
+         */
         get maxThreads(): number;
         set maxThreads(val: number);
 

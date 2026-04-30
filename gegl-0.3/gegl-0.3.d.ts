@@ -301,7 +301,7 @@ export namespace Gegl {
      * by `gegl_get_option_group`(), you don't have to call `gegl_init`().
      * @param argv a pointer to the array of command line arguments.
      */
-    function init(argv?: string[] | null): string[] | null;
+    function init(argv: string[] | null): string[] | null;
     function is_main_thread(): boolean;
     /**
      * @returns An alphabetically sorted array of available operation names. This excludes any compat-name registered by operations. The list should be freed with g_free after use. --- gchar **operations; guint   n_operations; gint i; operations = gegl_list_operations (&n_operations); g_print ("Available operations:\n"); for (i=0; i < n_operations; i++)   {     g_print ("\t%s\n", operations[i]);   } g_free (operations);
@@ -581,7 +581,7 @@ export namespace Gegl {
      * @gir-type Callback
      */
     interface LookupFunction {
-        (value: number, data?: any | null): number;
+        (value: number, data: any | null): number;
     }
     /**
      * @gir-type Callback
@@ -611,7 +611,7 @@ export namespace Gegl {
             x: number,
             y: number,
             z: number,
-            data?: any | null,
+            data: any | null,
         ): any | null;
     }
     /**
@@ -987,7 +987,7 @@ export namespace Gegl {
          * Add a new tile handler in the existing chain of tile handler of a GeglBuffer.
          * @param handler a {@link Gegl.TileHandler}
          */
-        add_handler(handler?: any | null): void;
+        add_handler(handler: any | null): void;
         /**
          * Clears the provided rectangular region by setting all the associated memory
          * to 0.
@@ -1064,12 +1064,12 @@ export namespace Gegl {
          * the same buffer (both raw access and converted).
          * @param linear a previously returned buffer.
          */
-        linear_close(linear?: any | null): void;
+        linear_close(linear: any | null): void;
         /**
          * Remove the provided tile handler in the existing chain of tile handler of a GeglBuffer.
          * @param handler a {@link Gegl.TileHandler}
          */
-        remove_handler(handler?: any | null): void;
+        remove_handler(handler: any | null): void;
         /**
          * Clean up resources used by sampling framework of buffer (will be freed
          * automatically later when the buffer is destroyed, for long lived buffers
@@ -1474,7 +1474,7 @@ export namespace Gegl {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             dont_cache: boolean;
             dontCache: boolean;
-            gegl_operation: Operation;
+            gegl_operation: Operation | null;
             geglOperation: Operation;
             name: string;
             operation: string;
@@ -1496,8 +1496,8 @@ export namespace Gegl {
         set dont_cache(val: boolean);
         get dontCache(): boolean;
         set dontCache(val: boolean);
-        get gegl_operation(): Operation;
-        set gegl_operation(val: Operation);
+        get gegl_operation(): Operation | null;
+        set gegl_operation(val: Operation | null);
         get geglOperation(): Operation;
         set geglOperation(val: Operation);
         get name(): string;
@@ -1673,7 +1673,7 @@ export namespace Gegl {
          * @param output_pad_name optional pointer to a location where we can store a                   freshly allocated string with the name of the output pad.
          * @returns the node providing data or NULL if no node is connected to the input_pad.
          */
-        get_producer(input_pad_name: string, output_pad_name?: string | null): Node;
+        get_producer(input_pad_name: string, output_pad_name: string | null): Node;
         /**
          * Returns TRUE if the node has a pad with the specified name
          * @param pad_name the pad name we are looking for

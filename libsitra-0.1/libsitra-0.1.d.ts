@@ -102,8 +102,8 @@ export namespace Libsitra {
             weights: Gee.List,
             subsets: Gee.List,
             styles: Gee.List,
-            files?: Gee.Map | null,
-            links?: Gee.Map | null,
+            files: Gee.Map | null,
+            links: Gee.Map | null,
         ): Font;
 
         // Signals

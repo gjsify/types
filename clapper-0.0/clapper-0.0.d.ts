@@ -483,13 +483,13 @@ export namespace Clapper {
         interface ConstructorProps extends Stream.ConstructorProps {
             bitrate: number;
             channels: number;
-            codec: string;
-            lang_code: string;
-            langCode: string;
-            lang_name: string;
-            langName: string;
-            sample_format: string;
-            sampleFormat: string;
+            codec: string | null;
+            lang_code: string | null;
+            langCode: string | null;
+            lang_name: string | null;
+            langName: string | null;
+            sample_format: string | null;
+            sampleFormat: string | null;
             sample_rate: number;
             sampleRate: number;
         }
@@ -507,56 +507,67 @@ export namespace Clapper {
         /**
          * Stream bitrate.
          * @read-only
+         * @default 0
          */
         get bitrate(): number;
         /**
          * Stream number of audio channels.
          * @read-only
+         * @default 0
          */
         get channels(): number;
         /**
          * Stream codec.
          * @read-only
+         * @default null
          */
-        get codec(): string;
+        get codec(): string | null;
         /**
          * Stream language code in ISO-639 format.
          * @read-only
+         * @default null
          */
-        get lang_code(): string;
+        get lang_code(): string | null;
         /**
          * Stream language code in ISO-639 format.
          * @read-only
+         * @default null
          */
-        get langCode(): string;
+        get langCode(): string | null;
         /**
          * Stream language name.
          * @read-only
+         * @default null
          */
-        get lang_name(): string;
+        get lang_name(): string | null;
         /**
          * Stream language name.
          * @read-only
+         * @default null
          */
-        get langName(): string;
+        get langName(): string | null;
         /**
          * Stream sample format.
          * @read-only
+         * @default null
          */
-        get sample_format(): string;
+        get sample_format(): string | null;
         /**
          * Stream sample format.
          * @read-only
+         * @default null
          */
-        get sampleFormat(): string;
+        get sampleFormat(): string | null;
         /**
          * Stream sample rate (in Hz).
          * @read-only
+         * @default 0
          */
         get sample_rate(): number;
         /**
          * Stream sample rate (in Hz).
          * @read-only
+         * @default 0
          */
         get sampleRate(): number;
 
@@ -683,12 +694,14 @@ export namespace Clapper {
         /**
          * Discoverer discovery mode.
          * @deprecated since 0.10: Use Media Scanner from `clapper-enhancers` repo instead.
+         * @default Clapper.DiscovererDiscoveryMode.NONCURRENT
          */
         get discovery_mode(): DiscovererDiscoveryMode;
         set discovery_mode(val: DiscovererDiscoveryMode);
         /**
          * Discoverer discovery mode.
          * @deprecated since 0.10: Use Media Scanner from `clapper-enhancers` repo instead.
+         * @default Clapper.DiscovererDiscoveryMode.NONCURRENT
          */
         get discoveryMode(): DiscovererDiscoveryMode;
         set discoveryMode(val: DiscovererDiscoveryMode);
@@ -761,7 +774,7 @@ export namespace Clapper {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {
-            description: string;
+            description: string | null;
             friendly_name: string;
             friendlyName: string;
             module_dir: string;
@@ -770,7 +783,7 @@ export namespace Clapper {
             moduleName: string;
             target_creation_allowed: boolean;
             targetCreationAllowed: boolean;
-            version: string;
+            version: string | null;
         }
     }
 
@@ -802,42 +815,49 @@ export namespace Clapper {
          * Description from enhancer plugin info file.
          * @since 0.10
          * @read-only
+         * @default null
          */
-        get description(): string;
+        get description(): string | null;
         /**
          * Name from enhancer plugin info file.
          * @since 0.10
          * @read-only
+         * @default null
          */
         get friendly_name(): string;
         /**
          * Name from enhancer plugin info file.
          * @since 0.10
          * @read-only
+         * @default null
          */
         get friendlyName(): string;
         /**
          * Module directory.
          * @since 0.10
          * @read-only
+         * @default null
          */
         get module_dir(): string;
         /**
          * Module directory.
          * @since 0.10
          * @read-only
+         * @default null
          */
         get moduleDir(): string;
         /**
          * Module name from enhancer plugin info file.
          * @since 0.10
          * @read-only
+         * @default null
          */
         get module_name(): string;
         /**
          * Module name from enhancer plugin info file.
          * @since 0.10
          * @read-only
+         * @default null
          */
         get moduleName(): string;
         /**
@@ -856,6 +876,7 @@ export namespace Clapper {
          * it is usually best practice to allow/disallow creation of given enhancer plugin
          * right after {@link Clapper.Player} is created (before it or its queue are used).
          * @since 0.10
+         * @default false
          */
         get target_creation_allowed(): boolean;
         set target_creation_allowed(val: boolean);
@@ -875,6 +896,7 @@ export namespace Clapper {
          * it is usually best practice to allow/disallow creation of given enhancer plugin
          * right after {@link Clapper.Player} is created (before it or its queue are used).
          * @since 0.10
+         * @default false
          */
         get targetCreationAllowed(): boolean;
         set targetCreationAllowed(val: boolean);
@@ -882,8 +904,9 @@ export namespace Clapper {
          * Version from enhancer plugin info file.
          * @since 0.10
          * @read-only
+         * @default null
          */
-        get version(): string;
+        get version(): string | null;
 
         /**
          * Compile-time signal type information.
@@ -1082,12 +1105,14 @@ export namespace Clapper {
          * Number of proxies in the list.
          * @since 0.10
          * @read-only
+         * @default 0
          */
         get n_proxies(): number;
         /**
          * Number of proxies in the list.
          * @since 0.10
          * @read-only
+         * @default 0
          */
         get nProxies(): number;
 
@@ -1253,221 +1278,6 @@ export namespace Clapper {
          */
         vfunc_get_n_items(): number;
         /**
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`.
-         *
-         * Whenever the `source_property` is changed the `target_property` is
-         * updated using the same value. For instance:
-         *
-         *
-         * ```c
-         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-         * ```
-         *
-         *
-         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
-         * updated with the same value of the "active" property of the action {@link GObject.Object}
-         * instance.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well.
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call `g_object_unref()` on the returned
-         * {@link GObject.Binding} instance.
-         *
-         * Removing the binding by calling `g_object_unref()` on it must only be done if
-         * the binding, `source` and `target` are only used from a single thread and it
-         * is clear that both `source` and `target` outlive the binding. Especially it
-         * is not safe to rely on this if the binding, `source` or `target` can be
-         * finalized from different threads. Keep another reference to the binding and
-         * use `g_binding_unbind()` instead to be on the safe side.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-        ): GObject.Binding;
-        /**
-         * Complete version of `g_object_bind_property()`.
-         *
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`, allowing you to set the transformation functions to be used by
-         * the binding.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property_full(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
-        ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
-        /**
-         * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all `GInitiallyUnowneds` are created with a floating reference
-         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
-         */
-        force_floating(): void;
-        /**
-         * Increases the freeze count on `object`. If the freeze count is
-         * non-zero, the emission of "notify" signals on `object` is
-         * stopped. The signals are queued until the freeze count is decreased
-         * to zero. Duplicate notifications are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
-         * object is frozen.
-         *
-         * This is necessary for accessors that modify multiple properties to prevent
-         * premature notification while the object is still being modified.
-         */
-        freeze_notify(): void;
-        /**
-         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
-         * @param key name of the key for that association
-         * @returns the data if found,          or `null` if no such data exists.
-         */
-        get_data(key: string): any | null;
-        /**
-         * Gets a property of an object.
-         *
-         * The value can be:
-         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
-         * - a GObject.Value initialized with the expected type of the property
-         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
-         *
-         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
-         *
-         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
-         * @param property_name The name of the property to get
-         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
-         */
-        get_property(property_name: string, value: GObject.Value | any): any;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        get_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Gets `n_properties` properties for an `object`.
-         * Obtained properties will be set to `values`. All properties must be valid.
-         * Warnings will be emitted and undefined behaviour may result if invalid
-         * properties are passed in.
-         * @param names the names of each property to get
-         * @param values the values of each property to get
-         */
-        getv(names: string[], values: (GObject.Value | any)[]): void;
-        /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns `true` if `object` has a floating reference
-         */
-        is_floating(): boolean;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param property_name the name of a property installed on the class of `object`.
-         */
-        notify(property_name: string): void;
-        /**
-         * Emits a "notify" signal for the property specified by `pspec` on `object`.
-         *
-         * This function omits the property name lookup, hence it is faster than
-         * `g_object_notify()`.
-         *
-         * One way to avoid using `g_object_notify()` from within the
-         * class that registered the properties, and using `g_object_notify_by_pspec()`
-         * instead, is to store the GParamSpec used with
-         * `g_object_class_install_property()` inside a static array, e.g.:
-         *
-         *
-         * ```c
-         *   typedef enum
-         *   {
-         *     PROP_FOO = 1,
-         *     PROP_LAST
-         *   } MyObjectProperty;
-         *
-         *   static GParamSpec *properties[PROP_LAST];
-         *
-         *   static void
-         *   my_object_class_init (MyObjectClass *klass)
-         *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
-         *                                              0, 100,
-         *                                              50,
-         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-         *     g_object_class_install_property (gobject_class,
-         *                                      PROP_FOO,
-         *                                      properties[PROP_FOO]);
-         *   }
-         * ```
-         *
-         *
-         * and then notify a change on the "foo" property with:
-         *
-         *
-         * ```c
-         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-         * ```
-         *
-         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
-         */
-        notify_by_pspec(pspec: GObject.ParamSpec): void;
-        /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
@@ -1483,110 +1293,6 @@ export namespace Clapper {
         // Conflicted with Gst.Object.ref
         ref(...args: never[]): any;
         /**
-         * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
-         *
-         * In other words, if the object is floating, then this call "assumes
-         * ownership" of the floating reference, converting it to a normal
-         * reference by clearing the floating flag while leaving the reference
-         * count unchanged.  If the object is not floating, then this call
-         * adds a new normal reference increasing the reference count by one.
-         *
-         * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for `g_object_ref()`.
-         * @returns `object`
-         */
-        ref_sink(): GObject.Object;
-        /**
-         * Releases all references to other objects. This can be used to break
-         * reference cycles.
-         *
-         * This function should only be called from object system implementations.
-         */
-        run_dispose(): void;
-        /**
-         * Each object carries around a table of associations from
-         * strings to pointers.  This function lets you set an association.
-         *
-         * If the object already had an association with that name,
-         * the old association will be destroyed.
-         *
-         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
-         * This means a copy of `key` is kept permanently (even after `object` has been
-         * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
-         * @param key name of the key
-         * @param data data to associate with that key
-         */
-        set_data(key: string, data?: any | null): void;
-        /**
-         * Sets a property on an object.
-         * @param property_name The name of the property to set
-         * @param value The value to set the property to
-         */
-        set_property(property_name: string, value: GObject.Value | any): void;
-        /**
-         * Remove a specified datum from the object's data associations,
-         * without invoking the association's destroy handler.
-         * @param key name of the key
-         * @returns the data if found, or `null`          if no such data exists.
-         */
-        steal_data(key: string): any | null;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()` and removes the `data` from object
-         * without invoking its `destroy()` function (if any was
-         * set).
-         * Usually, calling this function is only required to update
-         * user data pointers with a destroy notifier, for example:
-         *
-         * ```c
-         * void
-         * object_add_to_user_list (GObject     *object,
-         *                          const gchar *new_string)
-         * {
-         *   // the quark, naming the object data
-         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-         *   // retrieve the old string list
-         *   GList *list = g_object_steal_qdata (object, quark_string_list);
-         *
-         *   // prepend new string
-         *   list = g_list_prepend (list, g_strdup (new_string));
-         *   // this changed 'list', so we need to set it again
-         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-         * }
-         * static void
-         * free_string_list (gpointer data)
-         * {
-         *   GList *node, *list = data;
-         *
-         *   for (node = list; node; node = node->next)
-         *     g_free (node->data);
-         *   g_list_free (list);
-         * }
-         * ```
-         *
-         * Using `g_object_get_qdata()` in the above example, instead of
-         * `g_object_steal_qdata()` would have left the destroy function set,
-         * and thus the partial string list would have been freed upon
-         * `g_object_set_qdata_full()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        steal_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Reverts the effect of a previous call to
-         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
-         * and when it reaches zero, queued "notify" signals are emitted.
-         *
-         * Duplicate notifications for each property are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
-         * in which they have been queued.
-         *
-         * It is an error to call this function when the freeze count is zero.
-         */
-        thaw_notify(): void;
-        /**
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
@@ -1596,116 +1302,6 @@ export namespace Clapper {
          * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
-        /**
-         * This function essentially limits the life time of the `closure` to
-         * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling `g_closure_invalidate()` on
-         * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
-         * added as marshal guards to the `closure`, to ensure that an extra
-         * reference count is held on `object` during invocation of the
-         * `closure`.  Usually, this function will be called on closures that
-         * use this `object` as closure data.
-         * @param closure {@link GObject.Closure} to watch
-         */
-        watch_closure(closure: GObject.Closure): void;
-        /**
-         * the `constructed` function is called by `g_object_new()` as the
-         *  final step of the object creation process.  At the point of the call, all
-         *  construction properties have been set on the object.  The purpose of this
-         *  call is to allow for object initialisation steps that can only be performed
-         *  after construction properties have been set.  `constructed` implementors
-         *  should chain up to the `constructed` call of their parent class to allow it
-         *  to complete its initialisation.
-         * @virtual
-         */
-        vfunc_constructed(): void;
-        /**
-         * emits property change notification for a bunch
-         *  of properties. Overriding `dispatch_properties_changed` should be rarely
-         *  needed.
-         * @param n_pspecs
-         * @param pspecs
-         * @virtual
-         */
-        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
-        /**
-         * the `dispose` function is supposed to drop all references to other
-         *  objects, but keep the instance otherwise intact, so that client method
-         *  invocations still work. It may be run multiple times (due to reference
-         *  loops). Before returning, `dispose` should chain up to the `dispose` method
-         *  of the parent class.
-         * @virtual
-         */
-        vfunc_dispose(): void;
-        /**
-         * instance finalization function, should finish the finalization of
-         *  the instance begun in `dispose` and chain up to the `finalize` method of the
-         *  parent class.
-         * @virtual
-         */
-        vfunc_finalize(): void;
-        /**
-         * the generic getter for all properties of this type. Should be
-         *  overridden for every type with properties.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param pspec
-         * @virtual
-         */
-        vfunc_notify(pspec: GObject.ParamSpec): void;
-        /**
-         * the generic setter for all properties of this type. Should be
-         *  overridden for every type with properties. If implementations of
-         *  `set_property` don't emit property change notification explicitly, this will
-         *  be done implicitly by the type system. However, if the notify signal is
-         *  emitted explicitly, the type system will not emit it a second time.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
-         * @param id Handler ID of the handler to be disconnected
-         */
-        disconnect(id: number): void;
-        /**
-         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
-         * @param properties Object containing the properties to set
-         */
-        set(properties: { [key: string]: any }): void;
-        /**
-         * Blocks a handler of an instance so it will not be called during any signal emissions
-         * @param id Handler ID of the handler to be blocked
-         */
-        block_signal_handler(id: number): void;
-        /**
-         * Unblocks a handler so it will be called again during any signal emissions
-         * @param id Handler ID of the handler to be unblocked
-         */
-        unblock_signal_handler(id: number): void;
-        /**
-         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
-         * @param detailedName Name of the signal to stop emission of
-         */
-        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace Feature {
@@ -2042,7 +1638,7 @@ export namespace Clapper {
             marker_type: MarkerType;
             markerType: MarkerType;
             start: number;
-            title: string;
+            title: string | null;
         }
     }
 
@@ -2093,28 +1689,33 @@ export namespace Clapper {
         /**
          * Ending time of marker.
          * @construct-only
+         * @default -1
          */
         get end(): number;
         /**
          * Type of stream.
          * @construct-only
+         * @default Clapper.MarkerType.UNKNOWN
          */
         get marker_type(): MarkerType;
         /**
          * Type of stream.
          * @construct-only
+         * @default Clapper.MarkerType.UNKNOWN
          */
         get markerType(): MarkerType;
         /**
          * Starting time of marker.
          * @construct-only
+         * @default 0
          */
         get start(): number;
         /**
          * Title of marker.
          * @construct-only
+         * @default null
          */
-        get title(): string;
+        get title(): string | null;
 
         /**
          * Compile-time signal type information.
@@ -2198,18 +1799,18 @@ export namespace Clapper {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {
-            cache_location: string;
-            cacheLocation: string;
-            container_format: string;
-            containerFormat: string;
+            cache_location: string | null;
+            cacheLocation: string | null;
+            container_format: string | null;
+            containerFormat: string | null;
             duration: number;
             id: number;
-            redirect_uri: string;
-            redirectUri: string;
-            suburi: string;
+            redirect_uri: string | null;
+            redirectUri: string | null;
+            suburi: string | null;
             tags: Gst.TagList;
             timeline: Timeline;
-            title: string;
+            title: string | null;
             uri: string;
         }
     }
@@ -2237,8 +1838,9 @@ export namespace Clapper {
          * It can also be read only since Clapper 0.10.
          * @since 0.8
          * @construct-only
+         * @default null
          */
-        get cache_location(): string;
+        get cache_location(): string | null;
         /**
          * Media downloaded cache file location.
          *
@@ -2250,20 +1852,23 @@ export namespace Clapper {
          * It can also be read only since Clapper 0.10.
          * @since 0.8
          * @construct-only
+         * @default null
          */
-        get cacheLocation(): string;
+        get cacheLocation(): string | null;
         /**
          * Media container format.
          * @deprecated since 0.10: Get `container-format` from {@link Clapper.MediaItem.tags} instead.
          * @read-only
+         * @default null
          */
-        get container_format(): string;
+        get container_format(): string | null;
         /**
          * Media container format.
          * @deprecated since 0.10: Get `container-format` from {@link Clapper.MediaItem.tags} instead.
          * @read-only
+         * @default null
          */
-        get containerFormat(): string;
+        get containerFormat(): string | null;
         /**
          * Media duration as a decimal number in seconds.
          *
@@ -2271,11 +1876,13 @@ export namespace Clapper {
          * {@link Clapper.MediaItem.tags}, as this value is updated
          * during decoding instead of being a fixed value from metadata.
          * @read-only
+         * @default 0
          */
         get duration(): number;
         /**
          * Media Item ID.
          * @read-only
+         * @default 4294967295
          */
         get id(): number;
         /**
@@ -2290,8 +1897,9 @@ export namespace Clapper {
          * of the default one. Cache location takes precedence over both URIs through.
          * @since 0.10
          * @read-only
+         * @default null
          */
-        get redirect_uri(): string;
+        get redirect_uri(): string | null;
         /**
          * Media permanent redirect URI.
          *
@@ -2304,13 +1912,15 @@ export namespace Clapper {
          * of the default one. Cache location takes precedence over both URIs through.
          * @since 0.10
          * @read-only
+         * @default null
          */
-        get redirectUri(): string;
+        get redirectUri(): string | null;
         /**
          * Media additional URI.
+         * @default null
          */
-        get suburi(): string;
-        set suburi(val: string);
+        get suburi(): string | null;
+        set suburi(val: string | null);
         /**
          * A readable list of tags stored in media item.
          * @since 0.10
@@ -2329,11 +1939,13 @@ export namespace Clapper {
          * {@link Clapper.MediaItem.tags}, as this gives parsed
          * title from file name/URI as fallback when no `title` tag.
          * @read-only
+         * @default null
          */
-        get title(): string;
+        get title(): string | null;
         /**
          * Media URI.
          * @construct-only
+         * @default null
          */
         get uri(): string;
 
@@ -2354,7 +1966,7 @@ export namespace Clapper {
 
         static ['new'](uri: string): MediaItem;
 
-        static new_cached(uri: string, location?: string | null): MediaItem;
+        static new_cached(uri: string, location: string | null): MediaItem;
 
         static new_from_file(file: Gio.File): MediaItem;
 
@@ -2479,8 +2091,8 @@ export namespace Clapper {
         interface ConstructorProps extends Feature.ConstructorProps {
             desktop_entry: string;
             desktopEntry: string;
-            fallback_art_url: string;
-            fallbackArtUrl: string;
+            fallback_art_url: string | null;
+            fallbackArtUrl: string | null;
             identity: string;
             own_name: string;
             ownName: string;
@@ -2506,32 +2118,37 @@ export namespace Clapper {
          * The basename of an installed .desktop file with the ".desktop" extension stripped.
          * @deprecated since 0.10: Use MPRIS from `clapper-enhancers` repo instead.
          * @construct-only
+         * @default null
          */
         get desktop_entry(): string;
         /**
          * The basename of an installed .desktop file with the ".desktop" extension stripped.
          * @deprecated since 0.10: Use MPRIS from `clapper-enhancers` repo instead.
          * @construct-only
+         * @default null
          */
         get desktopEntry(): string;
         /**
          * Fallback artwork to show when media does not provide one.
          * @deprecated since 0.10: Use MPRIS from `clapper-enhancers` repo instead.
+         * @default null
          */
-        get fallback_art_url(): string;
-        set fallback_art_url(val: string);
+        get fallback_art_url(): string | null;
+        set fallback_art_url(val: string | null);
         /**
          * Fallback artwork to show when media does not provide one.
          * @deprecated since 0.10: Use MPRIS from `clapper-enhancers` repo instead.
+         * @default null
          */
-        get fallbackArtUrl(): string;
-        set fallbackArtUrl(val: string);
+        get fallbackArtUrl(): string | null;
+        set fallbackArtUrl(val: string | null);
         /**
          * A friendly name to identify the media player.
          *
          * Example: "My Player"
          * @deprecated since 0.10: Use MPRIS from `clapper-enhancers` repo instead.
          * @construct-only
+         * @default null
          */
         get identity(): string;
         /**
@@ -2543,6 +2160,7 @@ export namespace Clapper {
          * Example: "org.mpris.MediaPlayer2.MyPlayer.instance123"
          * @deprecated since 0.10: Use MPRIS from `clapper-enhancers` repo instead.
          * @construct-only
+         * @default null
          */
         get own_name(): string;
         /**
@@ -2554,17 +2172,20 @@ export namespace Clapper {
          * Example: "org.mpris.MediaPlayer2.MyPlayer.instance123"
          * @deprecated since 0.10: Use MPRIS from `clapper-enhancers` repo instead.
          * @construct-only
+         * @default null
          */
         get ownName(): string;
         /**
          * Whether remote MPRIS clients can control {@link Clapper.Queue}.
          * @deprecated since 0.10: Use MPRIS from `clapper-enhancers` repo instead.
+         * @default false
          */
         get queue_controllable(): boolean;
         set queue_controllable(val: boolean);
         /**
          * Whether remote MPRIS clients can control {@link Clapper.Queue}.
          * @deprecated since 0.10: Use MPRIS from `clapper-enhancers` repo instead.
+         * @default false
          */
         get queueControllable(): boolean;
         set queueControllable(val: boolean);
@@ -2584,7 +2205,7 @@ export namespace Clapper {
 
         _init(...args: any[]): void;
 
-        static ['new'](own_name: string, identity: string, desktop_entry?: string | null): Mpris;
+        static ['new'](own_name: string, identity: string, desktop_entry: string | null): Mpris;
 
         // Signals
 
@@ -2623,7 +2244,7 @@ export namespace Clapper {
          * Set fallback artwork to show when media does not provide one.
          * @param art_url an art URL
          */
-        set_fallback_art_url(art_url?: string | null): void;
+        set_fallback_art_url(art_url: string | null): void;
         /**
          * Set whether remote MPRIS clients can control {@link Clapper.Queue}.
          *
@@ -3286,8 +2907,8 @@ export namespace Clapper {
             currentAudioDecoder: Gst.Element;
             current_video_decoder: Gst.Element;
             currentVideoDecoder: Gst.Element;
-            download_dir: string;
-            downloadDir: string;
+            download_dir: string | null;
+            downloadDir: string | null;
             download_enabled: boolean;
             downloadEnabled: boolean;
             enhancer_proxies: EnhancerProxyList;
@@ -3349,6 +2970,7 @@ export namespace Clapper {
          * {@link Clapper.Player.adaptive_start_bitrate}.
          * @since 0.8
          * @read-only
+         * @default 0
          */
         get adaptive_bandwidth(): number;
         /**
@@ -3361,6 +2983,7 @@ export namespace Clapper {
          * {@link Clapper.Player.adaptive_start_bitrate}.
          * @since 0.8
          * @read-only
+         * @default 0
          */
         get adaptiveBandwidth(): number;
         /**
@@ -3372,6 +2995,7 @@ export namespace Clapper {
          * {@link Clapper.Player.adaptive_min_bitrate} it can be used to
          * enforce some specific quality.
          * @since 0.8
+         * @default 0
          */
         get adaptive_max_bitrate(): number;
         set adaptive_max_bitrate(val: number);
@@ -3384,6 +3008,7 @@ export namespace Clapper {
          * {@link Clapper.Player.adaptive_min_bitrate} it can be used to
          * enforce some specific quality.
          * @since 0.8
+         * @default 0
          */
         get adaptiveMaxBitrate(): number;
         set adaptiveMaxBitrate(val: number);
@@ -3396,6 +3021,7 @@ export namespace Clapper {
          * {@link Clapper.Player.adaptive_max_bitrate} it can be used to
          * enforce some specific quality.
          * @since 0.8
+         * @default 0
          */
         get adaptive_min_bitrate(): number;
         set adaptive_min_bitrate(val: number);
@@ -3408,6 +3034,7 @@ export namespace Clapper {
          * {@link Clapper.Player.adaptive_max_bitrate} it can be used to
          * enforce some specific quality.
          * @since 0.8
+         * @default 0
          */
         get adaptiveMinBitrate(): number;
         set adaptiveMinBitrate(val: number);
@@ -3418,6 +3045,7 @@ export namespace Clapper {
          * If value is lower than the lowest available bitrate in streaming
          * manifest, then lowest possible bitrate will be selected.
          * @since 0.8
+         * @default 1600000
          */
         get adaptive_start_bitrate(): number;
         set adaptive_start_bitrate(val: number);
@@ -3428,16 +3056,19 @@ export namespace Clapper {
          * If value is lower than the lowest available bitrate in streaming
          * manifest, then lowest possible bitrate will be selected.
          * @since 0.8
+         * @default 1600000
          */
         get adaptiveStartBitrate(): number;
         set adaptiveStartBitrate(val: number);
         /**
          * Whether audio stream is enabled.
+         * @default true
          */
         get audio_enabled(): boolean;
         set audio_enabled(val: boolean);
         /**
          * Whether audio stream is enabled.
+         * @default true
          */
         get audioEnabled(): boolean;
         set audioEnabled(val: boolean);
@@ -3453,11 +3084,13 @@ export namespace Clapper {
         set audioFilter(val: Gst.Element);
         /**
          * Audio stream offset relative to video.
+         * @default 0
          */
         get audio_offset(): number;
         set audio_offset(val: number);
         /**
          * Audio stream offset relative to video.
+         * @default 0
          */
         get audioOffset(): number;
         set audioOffset(val: number);
@@ -3483,6 +3116,7 @@ export namespace Clapper {
         get audioStreams(): StreamList;
         /**
          * Always try to start playback after media item changes.
+         * @default false
          */
         get autoplay(): boolean;
         set autoplay(val: boolean);
@@ -3512,18 +3146,20 @@ export namespace Clapper {
          *
          * If directory at `path` does not exist, it will be automatically created.
          * @since 0.8
+         * @default null
          */
-        get download_dir(): string;
-        set download_dir(val: string);
+        get download_dir(): string | null;
+        set download_dir(val: string | null);
         /**
          * A directory that `player` will use to download network content
          * when {@link Clapper.Player.download_enabled} is set to `true`.
          *
          * If directory at `path` does not exist, it will be automatically created.
          * @since 0.8
+         * @default null
          */
-        get downloadDir(): string;
-        set downloadDir(val: string);
+        get downloadDir(): string | null;
+        set downloadDir(val: string | null);
         /**
          * Whether progressive download buffering is enabled.
          *
@@ -3548,6 +3184,7 @@ export namespace Clapper {
          * (e.g. before app exits), in order to remove any downloads that app
          * is not going to use next time it is run and incomplete ones.
          * @since 0.8
+         * @default false
          */
         get download_enabled(): boolean;
         set download_enabled(val: boolean);
@@ -3575,6 +3212,7 @@ export namespace Clapper {
          * (e.g. before app exits), in order to remove any downloads that app
          * is not going to use next time it is run and incomplete ones.
          * @since 0.8
+         * @default false
          */
         get downloadEnabled(): boolean;
         set downloadEnabled(val: boolean);
@@ -3598,12 +3236,14 @@ export namespace Clapper {
         get enhancerProxies(): EnhancerProxyList;
         /**
          * Mute audio without changing volume.
+         * @default false
          */
         get mute(): boolean;
         set mute(val: boolean);
         /**
          * Current playback position as a decimal number in seconds.
          * @read-only
+         * @default 0
          */
         get position(): number;
         /**
@@ -3613,31 +3253,37 @@ export namespace Clapper {
         get queue(): Queue;
         /**
          * Current playback speed.
+         * @default 1
          */
         get speed(): number;
         set speed(val: number);
         /**
          * Current playback state.
          * @read-only
+         * @default Clapper.PlayerState.STOPPED
          */
         get state(): PlayerState;
         /**
          * Subtitle stream font description.
+         * @default null
          */
         get subtitle_font_desc(): string;
         set subtitle_font_desc(val: string);
         /**
          * Subtitle stream font description.
+         * @default null
          */
         get subtitleFontDesc(): string;
         set subtitleFontDesc(val: string);
         /**
          * Subtitle stream offset relative to video.
+         * @default 0
          */
         get subtitle_offset(): number;
         set subtitle_offset(val: number);
         /**
          * Subtitle stream offset relative to video.
+         * @default 0
          */
         get subtitleOffset(): number;
         set subtitleOffset(val: number);
@@ -3653,21 +3299,25 @@ export namespace Clapper {
         get subtitleStreams(): StreamList;
         /**
          * Whether subtitles stream is enabled.
+         * @default true
          */
         get subtitles_enabled(): boolean;
         set subtitles_enabled(val: boolean);
         /**
          * Whether subtitles stream is enabled.
+         * @default true
          */
         get subtitlesEnabled(): boolean;
         set subtitlesEnabled(val: boolean);
         /**
          * Whether video stream is enabled.
+         * @default true
          */
         get video_enabled(): boolean;
         set video_enabled(val: boolean);
         /**
          * Whether video stream is enabled.
+         * @default true
          */
         get videoEnabled(): boolean;
         set videoEnabled(val: boolean);
@@ -3707,6 +3357,7 @@ export namespace Clapper {
          * Note that {@link Clapper.Player} uses a CUBIC volume scale, meaning
          * that this property value reflects human hearing level and can
          * be easily bound to volume sliders as-is.
+         * @default 1
          */
         get volume(): number;
         set volume(val: number);
@@ -4007,7 +3658,7 @@ export namespace Clapper {
          * Set {@link Gst.Element} to be used as audio filter.
          * @param element a {@link Gst.Element} or `null` for none.
          */
-        set_audio_filter(element?: Gst.Element | null): void;
+        set_audio_filter(element: Gst.Element | null): void;
         /**
          * Set synchronisation offset between the audio stream and video.
          *
@@ -4020,7 +3671,7 @@ export namespace Clapper {
          * Set {@link Gst.Element} to be used as audio sink.
          * @param element a {@link Gst.Element} or `null` to use default.
          */
-        set_audio_sink(element?: Gst.Element | null): void;
+        set_audio_sink(element: Gst.Element | null): void;
         /**
          * Set the autoplay state of the player.
          *
@@ -4083,12 +3734,12 @@ export namespace Clapper {
          * Set {@link Gst.Element} to be used as video filter.
          * @param element a {@link Gst.Element} or `null` for none.
          */
-        set_video_filter(element?: Gst.Element | null): void;
+        set_video_filter(element: Gst.Element | null): void;
         /**
          * Set {@link Gst.Element} to be used as video sink.
          * @param element a {@link Gst.Element} or `null` to use default.
          */
-        set_video_sink(element?: Gst.Element | null): void;
+        set_video_sink(element: Gst.Element | null): void;
         /**
          * Set the volume of the player.
          *
@@ -4125,8 +3776,8 @@ export namespace Clapper {
             extends Gst.Object.ConstructorProps, Gio.ListModel.ConstructorProps {
             current_index: number;
             currentIndex: number;
-            current_item: MediaItem;
-            currentItem: MediaItem;
+            current_item: MediaItem | null;
+            currentItem: MediaItem | null;
             gapless: boolean;
             instant: boolean;
             n_items: number;
@@ -4147,11 +3798,13 @@ export namespace Clapper {
 
         /**
          * Index of currently selected media item for playback.
+         * @default 4294967295
          */
         get current_index(): number;
         set current_index(val: number);
         /**
          * Index of currently selected media item for playback.
+         * @default 4294967295
          */
         get currentIndex(): number;
         set currentIndex(val: number);
@@ -4159,39 +3812,45 @@ export namespace Clapper {
          * Currently selected media item for playback.
          * @read-only
          */
-        get current_item(): MediaItem;
+        get current_item(): MediaItem | null;
         /**
          * Currently selected media item for playback.
          * @read-only
          */
-        get currentItem(): MediaItem;
+        get currentItem(): MediaItem | null;
         /**
          * Use gapless progression.
+         * @default false
          */
         get gapless(): boolean;
         set gapless(val: boolean);
         /**
          * Use instant media item changes.
+         * @default false
          */
         get instant(): boolean;
         set instant(val: boolean);
         /**
          * Number of media items in the queue.
          * @read-only
+         * @default 0
          */
         get n_items(): number;
         /**
          * Number of media items in the queue.
          * @read-only
+         * @default 0
          */
         get nItems(): number;
         /**
          * Queue progression mode.
+         * @default Clapper.QueueProgressionMode.NONE
          */
         get progression_mode(): QueueProgressionMode;
         set progression_mode(val: QueueProgressionMode);
         /**
          * Queue progression mode.
+         * @default Clapper.QueueProgressionMode.NONE
          */
         get progressionMode(): QueueProgressionMode;
         set progressionMode(val: QueueProgressionMode);
@@ -4300,7 +3959,7 @@ export namespace Clapper {
          * @param item a {@link Clapper.MediaItem}
          * @param after_item a {@link Clapper.MediaItem} after which to   insert `item` or `null` to prepend
          */
-        insert_item_after(item: MediaItem, after_item?: MediaItem | null): void;
+        insert_item_after(item: MediaItem, after_item: MediaItem | null): void;
         /**
          * Checks if given {@link Clapper.MediaItem} is currently selected.
          * @param item a {@link Clapper.MediaItem} to check
@@ -4345,7 +4004,7 @@ export namespace Clapper {
          * @param item a {@link Clapper.MediaItem} or `null` to unselect
          * @returns `true` if item could be selected/unselected,   `false` if it was not in the queue.
          */
-        select_item(item?: MediaItem | null): boolean;
+        select_item(item: MediaItem | null): boolean;
         /**
          * Selects next {@link Clapper.MediaItem} from `queue` for playback.
          *
@@ -4503,221 +4162,6 @@ export namespace Clapper {
          */
         vfunc_get_n_items(): number;
         /**
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`.
-         *
-         * Whenever the `source_property` is changed the `target_property` is
-         * updated using the same value. For instance:
-         *
-         *
-         * ```c
-         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-         * ```
-         *
-         *
-         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
-         * updated with the same value of the "active" property of the action {@link GObject.Object}
-         * instance.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well.
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call `g_object_unref()` on the returned
-         * {@link GObject.Binding} instance.
-         *
-         * Removing the binding by calling `g_object_unref()` on it must only be done if
-         * the binding, `source` and `target` are only used from a single thread and it
-         * is clear that both `source` and `target` outlive the binding. Especially it
-         * is not safe to rely on this if the binding, `source` or `target` can be
-         * finalized from different threads. Keep another reference to the binding and
-         * use `g_binding_unbind()` instead to be on the safe side.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-        ): GObject.Binding;
-        /**
-         * Complete version of `g_object_bind_property()`.
-         *
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`, allowing you to set the transformation functions to be used by
-         * the binding.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property_full(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
-        ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
-        /**
-         * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all `GInitiallyUnowneds` are created with a floating reference
-         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
-         */
-        force_floating(): void;
-        /**
-         * Increases the freeze count on `object`. If the freeze count is
-         * non-zero, the emission of "notify" signals on `object` is
-         * stopped. The signals are queued until the freeze count is decreased
-         * to zero. Duplicate notifications are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
-         * object is frozen.
-         *
-         * This is necessary for accessors that modify multiple properties to prevent
-         * premature notification while the object is still being modified.
-         */
-        freeze_notify(): void;
-        /**
-         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
-         * @param key name of the key for that association
-         * @returns the data if found,          or `null` if no such data exists.
-         */
-        get_data(key: string): any | null;
-        /**
-         * Gets a property of an object.
-         *
-         * The value can be:
-         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
-         * - a GObject.Value initialized with the expected type of the property
-         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
-         *
-         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
-         *
-         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
-         * @param property_name The name of the property to get
-         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
-         */
-        get_property(property_name: string, value: GObject.Value | any): any;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        get_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Gets `n_properties` properties for an `object`.
-         * Obtained properties will be set to `values`. All properties must be valid.
-         * Warnings will be emitted and undefined behaviour may result if invalid
-         * properties are passed in.
-         * @param names the names of each property to get
-         * @param values the values of each property to get
-         */
-        getv(names: string[], values: (GObject.Value | any)[]): void;
-        /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns `true` if `object` has a floating reference
-         */
-        is_floating(): boolean;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param property_name the name of a property installed on the class of `object`.
-         */
-        notify(property_name: string): void;
-        /**
-         * Emits a "notify" signal for the property specified by `pspec` on `object`.
-         *
-         * This function omits the property name lookup, hence it is faster than
-         * `g_object_notify()`.
-         *
-         * One way to avoid using `g_object_notify()` from within the
-         * class that registered the properties, and using `g_object_notify_by_pspec()`
-         * instead, is to store the GParamSpec used with
-         * `g_object_class_install_property()` inside a static array, e.g.:
-         *
-         *
-         * ```c
-         *   typedef enum
-         *   {
-         *     PROP_FOO = 1,
-         *     PROP_LAST
-         *   } MyObjectProperty;
-         *
-         *   static GParamSpec *properties[PROP_LAST];
-         *
-         *   static void
-         *   my_object_class_init (MyObjectClass *klass)
-         *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
-         *                                              0, 100,
-         *                                              50,
-         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-         *     g_object_class_install_property (gobject_class,
-         *                                      PROP_FOO,
-         *                                      properties[PROP_FOO]);
-         *   }
-         * ```
-         *
-         *
-         * and then notify a change on the "foo" property with:
-         *
-         *
-         * ```c
-         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-         * ```
-         *
-         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
-         */
-        notify_by_pspec(pspec: GObject.ParamSpec): void;
-        /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
@@ -4733,110 +4177,6 @@ export namespace Clapper {
         // Conflicted with Gst.Object.ref
         ref(...args: never[]): any;
         /**
-         * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
-         *
-         * In other words, if the object is floating, then this call "assumes
-         * ownership" of the floating reference, converting it to a normal
-         * reference by clearing the floating flag while leaving the reference
-         * count unchanged.  If the object is not floating, then this call
-         * adds a new normal reference increasing the reference count by one.
-         *
-         * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for `g_object_ref()`.
-         * @returns `object`
-         */
-        ref_sink(): GObject.Object;
-        /**
-         * Releases all references to other objects. This can be used to break
-         * reference cycles.
-         *
-         * This function should only be called from object system implementations.
-         */
-        run_dispose(): void;
-        /**
-         * Each object carries around a table of associations from
-         * strings to pointers.  This function lets you set an association.
-         *
-         * If the object already had an association with that name,
-         * the old association will be destroyed.
-         *
-         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
-         * This means a copy of `key` is kept permanently (even after `object` has been
-         * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
-         * @param key name of the key
-         * @param data data to associate with that key
-         */
-        set_data(key: string, data?: any | null): void;
-        /**
-         * Sets a property on an object.
-         * @param property_name The name of the property to set
-         * @param value The value to set the property to
-         */
-        set_property(property_name: string, value: GObject.Value | any): void;
-        /**
-         * Remove a specified datum from the object's data associations,
-         * without invoking the association's destroy handler.
-         * @param key name of the key
-         * @returns the data if found, or `null`          if no such data exists.
-         */
-        steal_data(key: string): any | null;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()` and removes the `data` from object
-         * without invoking its `destroy()` function (if any was
-         * set).
-         * Usually, calling this function is only required to update
-         * user data pointers with a destroy notifier, for example:
-         *
-         * ```c
-         * void
-         * object_add_to_user_list (GObject     *object,
-         *                          const gchar *new_string)
-         * {
-         *   // the quark, naming the object data
-         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-         *   // retrieve the old string list
-         *   GList *list = g_object_steal_qdata (object, quark_string_list);
-         *
-         *   // prepend new string
-         *   list = g_list_prepend (list, g_strdup (new_string));
-         *   // this changed 'list', so we need to set it again
-         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-         * }
-         * static void
-         * free_string_list (gpointer data)
-         * {
-         *   GList *node, *list = data;
-         *
-         *   for (node = list; node; node = node->next)
-         *     g_free (node->data);
-         *   g_list_free (list);
-         * }
-         * ```
-         *
-         * Using `g_object_get_qdata()` in the above example, instead of
-         * `g_object_steal_qdata()` would have left the destroy function set,
-         * and thus the partial string list would have been freed upon
-         * `g_object_set_qdata_full()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        steal_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Reverts the effect of a previous call to
-         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
-         * and when it reaches zero, queued "notify" signals are emitted.
-         *
-         * Duplicate notifications for each property are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
-         * in which they have been queued.
-         *
-         * It is an error to call this function when the freeze count is zero.
-         */
-        thaw_notify(): void;
-        /**
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
@@ -4846,116 +4186,6 @@ export namespace Clapper {
          * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
-        /**
-         * This function essentially limits the life time of the `closure` to
-         * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling `g_closure_invalidate()` on
-         * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
-         * added as marshal guards to the `closure`, to ensure that an extra
-         * reference count is held on `object` during invocation of the
-         * `closure`.  Usually, this function will be called on closures that
-         * use this `object` as closure data.
-         * @param closure {@link GObject.Closure} to watch
-         */
-        watch_closure(closure: GObject.Closure): void;
-        /**
-         * the `constructed` function is called by `g_object_new()` as the
-         *  final step of the object creation process.  At the point of the call, all
-         *  construction properties have been set on the object.  The purpose of this
-         *  call is to allow for object initialisation steps that can only be performed
-         *  after construction properties have been set.  `constructed` implementors
-         *  should chain up to the `constructed` call of their parent class to allow it
-         *  to complete its initialisation.
-         * @virtual
-         */
-        vfunc_constructed(): void;
-        /**
-         * emits property change notification for a bunch
-         *  of properties. Overriding `dispatch_properties_changed` should be rarely
-         *  needed.
-         * @param n_pspecs
-         * @param pspecs
-         * @virtual
-         */
-        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
-        /**
-         * the `dispose` function is supposed to drop all references to other
-         *  objects, but keep the instance otherwise intact, so that client method
-         *  invocations still work. It may be run multiple times (due to reference
-         *  loops). Before returning, `dispose` should chain up to the `dispose` method
-         *  of the parent class.
-         * @virtual
-         */
-        vfunc_dispose(): void;
-        /**
-         * instance finalization function, should finish the finalization of
-         *  the instance begun in `dispose` and chain up to the `finalize` method of the
-         *  parent class.
-         * @virtual
-         */
-        vfunc_finalize(): void;
-        /**
-         * the generic getter for all properties of this type. Should be
-         *  overridden for every type with properties.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param pspec
-         * @virtual
-         */
-        vfunc_notify(pspec: GObject.ParamSpec): void;
-        /**
-         * the generic setter for all properties of this type. Should be
-         *  overridden for every type with properties. If implementations of
-         *  `set_property` don't emit property change notification explicitly, this will
-         *  be done implicitly by the type system. However, if the notify signal is
-         *  emitted explicitly, the type system will not emit it a second time.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
-         * @param id Handler ID of the handler to be disconnected
-         */
-        disconnect(id: number): void;
-        /**
-         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
-         * @param properties Object containing the properties to set
-         */
-        set(properties: { [key: string]: any }): void;
-        /**
-         * Blocks a handler of an instance so it will not be called during any signal emissions
-         * @param id Handler ID of the handler to be blocked
-         */
-        block_signal_handler(id: number): void;
-        /**
-         * Unblocks a handler so it will be called again during any signal emissions
-         * @param id Handler ID of the handler to be unblocked
-         */
-        unblock_signal_handler(id: number): void;
-        /**
-         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
-         * @param detailedName Name of the signal to stop emission of
-         */
-        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace Server {
@@ -5012,35 +4242,41 @@ export namespace Clapper {
          * Port on which server is currently listening on or 0 if not listening.
          * @deprecated since 0.10: Use Control Hub from `clapper-enhancers` repo instead.
          * @read-only
+         * @default 0
          */
         get current_port(): number;
         /**
          * Port on which server is currently listening on or 0 if not listening.
          * @deprecated since 0.10: Use Control Hub from `clapper-enhancers` repo instead.
          * @read-only
+         * @default 0
          */
         get currentPort(): number;
         /**
          * Whether server is enabled.
          * @deprecated since 0.10: Use Control Hub from `clapper-enhancers` repo instead.
+         * @default false
          */
         get enabled(): boolean;
         set enabled(val: boolean);
         /**
          * Port to listen on or 0 for using random unused port.
          * @deprecated since 0.10: Use Control Hub from `clapper-enhancers` repo instead.
+         * @default 0
          */
         get port(): number;
         set port(val: number);
         /**
          * Whether remote server clients can control {@link Clapper.Queue}.
          * @deprecated since 0.10: Use Control Hub from `clapper-enhancers` repo instead.
+         * @default false
          */
         get queue_controllable(): boolean;
         set queue_controllable(val: boolean);
         /**
          * Whether remote server clients can control {@link Clapper.Queue}.
          * @deprecated since 0.10: Use Control Hub from `clapper-enhancers` repo instead.
+         * @default false
          */
         get queueControllable(): boolean;
         set queueControllable(val: boolean);
@@ -5048,6 +4284,7 @@ export namespace Clapper {
          * Whether server is currently running.
          * @deprecated since 0.10: Use Control Hub from `clapper-enhancers` repo instead.
          * @read-only
+         * @default false
          */
         get running(): boolean;
 
@@ -5163,7 +4400,7 @@ export namespace Clapper {
         interface ConstructorProps extends Gst.Object.ConstructorProps {
             stream_type: StreamType;
             streamType: StreamType;
-            title: string;
+            title: string | null;
         }
     }
 
@@ -5179,18 +4416,21 @@ export namespace Clapper {
         /**
          * Type of stream.
          * @construct-only
+         * @default Clapper.StreamType.UNKNOWN
          */
         get stream_type(): StreamType;
         /**
          * Type of stream.
          * @construct-only
+         * @default Clapper.StreamType.UNKNOWN
          */
         get streamType(): StreamType;
         /**
          * Title of stream.
          * @read-only
+         * @default null
          */
-        get title(): string;
+        get title(): string | null;
 
         /**
          * Compile-time signal type information.
@@ -5240,7 +4480,7 @@ export namespace Clapper {
          * @param tags an updated {@link Gst.TagList} if changed
          * @virtual
          */
-        vfunc_internal_stream_updated(caps?: Gst.Caps | null, tags?: Gst.TagList | null): void;
+        vfunc_internal_stream_updated(caps: Gst.Caps | null, tags: Gst.TagList | null): void;
 
         // Methods
 
@@ -5272,8 +4512,8 @@ export namespace Clapper {
             extends Gst.Object.ConstructorProps, Gio.ListModel.ConstructorProps {
             current_index: number;
             currentIndex: number;
-            current_stream: Stream;
-            currentStream: Stream;
+            current_stream: Stream | null;
+            currentStream: Stream | null;
             n_streams: number;
             nStreams: number;
         }
@@ -5290,11 +4530,13 @@ export namespace Clapper {
 
         /**
          * Index of currently selected stream.
+         * @default 4294967295
          */
         get current_index(): number;
         set current_index(val: number);
         /**
          * Index of currently selected stream.
+         * @default 4294967295
          */
         get currentIndex(): number;
         set currentIndex(val: number);
@@ -5302,20 +4544,22 @@ export namespace Clapper {
          * Currently selected stream.
          * @read-only
          */
-        get current_stream(): Stream;
+        get current_stream(): Stream | null;
         /**
          * Currently selected stream.
          * @read-only
          */
-        get currentStream(): Stream;
+        get currentStream(): Stream | null;
         /**
          * Number of streams in the list.
          * @read-only
+         * @default 0
          */
         get n_streams(): number;
         /**
          * Number of streams in the list.
          * @read-only
+         * @default 0
          */
         get nStreams(): number;
 
@@ -5494,221 +4738,6 @@ export namespace Clapper {
          */
         vfunc_get_n_items(): number;
         /**
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`.
-         *
-         * Whenever the `source_property` is changed the `target_property` is
-         * updated using the same value. For instance:
-         *
-         *
-         * ```c
-         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-         * ```
-         *
-         *
-         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
-         * updated with the same value of the "active" property of the action {@link GObject.Object}
-         * instance.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well.
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call `g_object_unref()` on the returned
-         * {@link GObject.Binding} instance.
-         *
-         * Removing the binding by calling `g_object_unref()` on it must only be done if
-         * the binding, `source` and `target` are only used from a single thread and it
-         * is clear that both `source` and `target` outlive the binding. Especially it
-         * is not safe to rely on this if the binding, `source` or `target` can be
-         * finalized from different threads. Keep another reference to the binding and
-         * use `g_binding_unbind()` instead to be on the safe side.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-        ): GObject.Binding;
-        /**
-         * Complete version of `g_object_bind_property()`.
-         *
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`, allowing you to set the transformation functions to be used by
-         * the binding.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property_full(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
-        ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
-        /**
-         * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all `GInitiallyUnowneds` are created with a floating reference
-         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
-         */
-        force_floating(): void;
-        /**
-         * Increases the freeze count on `object`. If the freeze count is
-         * non-zero, the emission of "notify" signals on `object` is
-         * stopped. The signals are queued until the freeze count is decreased
-         * to zero. Duplicate notifications are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
-         * object is frozen.
-         *
-         * This is necessary for accessors that modify multiple properties to prevent
-         * premature notification while the object is still being modified.
-         */
-        freeze_notify(): void;
-        /**
-         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
-         * @param key name of the key for that association
-         * @returns the data if found,          or `null` if no such data exists.
-         */
-        get_data(key: string): any | null;
-        /**
-         * Gets a property of an object.
-         *
-         * The value can be:
-         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
-         * - a GObject.Value initialized with the expected type of the property
-         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
-         *
-         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
-         *
-         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
-         * @param property_name The name of the property to get
-         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
-         */
-        get_property(property_name: string, value: GObject.Value | any): any;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        get_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Gets `n_properties` properties for an `object`.
-         * Obtained properties will be set to `values`. All properties must be valid.
-         * Warnings will be emitted and undefined behaviour may result if invalid
-         * properties are passed in.
-         * @param names the names of each property to get
-         * @param values the values of each property to get
-         */
-        getv(names: string[], values: (GObject.Value | any)[]): void;
-        /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns `true` if `object` has a floating reference
-         */
-        is_floating(): boolean;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param property_name the name of a property installed on the class of `object`.
-         */
-        notify(property_name: string): void;
-        /**
-         * Emits a "notify" signal for the property specified by `pspec` on `object`.
-         *
-         * This function omits the property name lookup, hence it is faster than
-         * `g_object_notify()`.
-         *
-         * One way to avoid using `g_object_notify()` from within the
-         * class that registered the properties, and using `g_object_notify_by_pspec()`
-         * instead, is to store the GParamSpec used with
-         * `g_object_class_install_property()` inside a static array, e.g.:
-         *
-         *
-         * ```c
-         *   typedef enum
-         *   {
-         *     PROP_FOO = 1,
-         *     PROP_LAST
-         *   } MyObjectProperty;
-         *
-         *   static GParamSpec *properties[PROP_LAST];
-         *
-         *   static void
-         *   my_object_class_init (MyObjectClass *klass)
-         *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
-         *                                              0, 100,
-         *                                              50,
-         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-         *     g_object_class_install_property (gobject_class,
-         *                                      PROP_FOO,
-         *                                      properties[PROP_FOO]);
-         *   }
-         * ```
-         *
-         *
-         * and then notify a change on the "foo" property with:
-         *
-         *
-         * ```c
-         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-         * ```
-         *
-         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
-         */
-        notify_by_pspec(pspec: GObject.ParamSpec): void;
-        /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
@@ -5724,110 +4753,6 @@ export namespace Clapper {
         // Conflicted with Gst.Object.ref
         ref(...args: never[]): any;
         /**
-         * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
-         *
-         * In other words, if the object is floating, then this call "assumes
-         * ownership" of the floating reference, converting it to a normal
-         * reference by clearing the floating flag while leaving the reference
-         * count unchanged.  If the object is not floating, then this call
-         * adds a new normal reference increasing the reference count by one.
-         *
-         * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for `g_object_ref()`.
-         * @returns `object`
-         */
-        ref_sink(): GObject.Object;
-        /**
-         * Releases all references to other objects. This can be used to break
-         * reference cycles.
-         *
-         * This function should only be called from object system implementations.
-         */
-        run_dispose(): void;
-        /**
-         * Each object carries around a table of associations from
-         * strings to pointers.  This function lets you set an association.
-         *
-         * If the object already had an association with that name,
-         * the old association will be destroyed.
-         *
-         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
-         * This means a copy of `key` is kept permanently (even after `object` has been
-         * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
-         * @param key name of the key
-         * @param data data to associate with that key
-         */
-        set_data(key: string, data?: any | null): void;
-        /**
-         * Sets a property on an object.
-         * @param property_name The name of the property to set
-         * @param value The value to set the property to
-         */
-        set_property(property_name: string, value: GObject.Value | any): void;
-        /**
-         * Remove a specified datum from the object's data associations,
-         * without invoking the association's destroy handler.
-         * @param key name of the key
-         * @returns the data if found, or `null`          if no such data exists.
-         */
-        steal_data(key: string): any | null;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()` and removes the `data` from object
-         * without invoking its `destroy()` function (if any was
-         * set).
-         * Usually, calling this function is only required to update
-         * user data pointers with a destroy notifier, for example:
-         *
-         * ```c
-         * void
-         * object_add_to_user_list (GObject     *object,
-         *                          const gchar *new_string)
-         * {
-         *   // the quark, naming the object data
-         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-         *   // retrieve the old string list
-         *   GList *list = g_object_steal_qdata (object, quark_string_list);
-         *
-         *   // prepend new string
-         *   list = g_list_prepend (list, g_strdup (new_string));
-         *   // this changed 'list', so we need to set it again
-         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-         * }
-         * static void
-         * free_string_list (gpointer data)
-         * {
-         *   GList *node, *list = data;
-         *
-         *   for (node = list; node; node = node->next)
-         *     g_free (node->data);
-         *   g_list_free (list);
-         * }
-         * ```
-         *
-         * Using `g_object_get_qdata()` in the above example, instead of
-         * `g_object_steal_qdata()` would have left the destroy function set,
-         * and thus the partial string list would have been freed upon
-         * `g_object_set_qdata_full()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        steal_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Reverts the effect of a previous call to
-         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
-         * and when it reaches zero, queued "notify" signals are emitted.
-         *
-         * Duplicate notifications for each property are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
-         * in which they have been queued.
-         *
-         * It is an error to call this function when the freeze count is zero.
-         */
-        thaw_notify(): void;
-        /**
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
@@ -5837,116 +4762,6 @@ export namespace Clapper {
          * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
-        /**
-         * This function essentially limits the life time of the `closure` to
-         * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling `g_closure_invalidate()` on
-         * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
-         * added as marshal guards to the `closure`, to ensure that an extra
-         * reference count is held on `object` during invocation of the
-         * `closure`.  Usually, this function will be called on closures that
-         * use this `object` as closure data.
-         * @param closure {@link GObject.Closure} to watch
-         */
-        watch_closure(closure: GObject.Closure): void;
-        /**
-         * the `constructed` function is called by `g_object_new()` as the
-         *  final step of the object creation process.  At the point of the call, all
-         *  construction properties have been set on the object.  The purpose of this
-         *  call is to allow for object initialisation steps that can only be performed
-         *  after construction properties have been set.  `constructed` implementors
-         *  should chain up to the `constructed` call of their parent class to allow it
-         *  to complete its initialisation.
-         * @virtual
-         */
-        vfunc_constructed(): void;
-        /**
-         * emits property change notification for a bunch
-         *  of properties. Overriding `dispatch_properties_changed` should be rarely
-         *  needed.
-         * @param n_pspecs
-         * @param pspecs
-         * @virtual
-         */
-        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
-        /**
-         * the `dispose` function is supposed to drop all references to other
-         *  objects, but keep the instance otherwise intact, so that client method
-         *  invocations still work. It may be run multiple times (due to reference
-         *  loops). Before returning, `dispose` should chain up to the `dispose` method
-         *  of the parent class.
-         * @virtual
-         */
-        vfunc_dispose(): void;
-        /**
-         * instance finalization function, should finish the finalization of
-         *  the instance begun in `dispose` and chain up to the `finalize` method of the
-         *  parent class.
-         * @virtual
-         */
-        vfunc_finalize(): void;
-        /**
-         * the generic getter for all properties of this type. Should be
-         *  overridden for every type with properties.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param pspec
-         * @virtual
-         */
-        vfunc_notify(pspec: GObject.ParamSpec): void;
-        /**
-         * the generic setter for all properties of this type. Should be
-         *  overridden for every type with properties. If implementations of
-         *  `set_property` don't emit property change notification explicitly, this will
-         *  be done implicitly by the type system. However, if the notify signal is
-         *  emitted explicitly, the type system will not emit it a second time.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
-         * @param id Handler ID of the handler to be disconnected
-         */
-        disconnect(id: number): void;
-        /**
-         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
-         * @param properties Object containing the properties to set
-         */
-        set(properties: { [key: string]: any }): void;
-        /**
-         * Blocks a handler of an instance so it will not be called during any signal emissions
-         * @param id Handler ID of the handler to be blocked
-         */
-        block_signal_handler(id: number): void;
-        /**
-         * Unblocks a handler so it will be called again during any signal emissions
-         * @param id Handler ID of the handler to be unblocked
-         */
-        unblock_signal_handler(id: number): void;
-        /**
-         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
-         * @param detailedName Name of the signal to stop emission of
-         */
-        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace SubtitleStream {
@@ -5963,10 +4778,10 @@ export namespace Clapper {
         // Constructor properties interface
 
         interface ConstructorProps extends Stream.ConstructorProps {
-            lang_code: string;
-            langCode: string;
-            lang_name: string;
-            langName: string;
+            lang_code: string | null;
+            langCode: string | null;
+            lang_name: string | null;
+            langName: string | null;
         }
     }
 
@@ -5982,23 +4797,27 @@ export namespace Clapper {
         /**
          * Stream language code in ISO-639 format.
          * @read-only
+         * @default null
          */
-        get lang_code(): string;
+        get lang_code(): string | null;
         /**
          * Stream language code in ISO-639 format.
          * @read-only
+         * @default null
          */
-        get langCode(): string;
+        get langCode(): string | null;
         /**
          * Stream language name.
          * @read-only
+         * @default null
          */
-        get lang_name(): string;
+        get lang_name(): string | null;
         /**
          * Stream language name.
          * @read-only
+         * @default null
          */
-        get langName(): string;
+        get langName(): string | null;
 
         /**
          * Compile-time signal type information.
@@ -6166,11 +4985,13 @@ export namespace Clapper {
         /**
          * Number of markers in the timeline.
          * @read-only
+         * @default 0
          */
         get n_markers(): number;
         /**
          * Number of markers in the timeline.
          * @read-only
+         * @default 0
          */
         get nMarkers(): number;
 
@@ -6337,221 +5158,6 @@ export namespace Clapper {
          */
         vfunc_get_n_items(): number;
         /**
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`.
-         *
-         * Whenever the `source_property` is changed the `target_property` is
-         * updated using the same value. For instance:
-         *
-         *
-         * ```c
-         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-         * ```
-         *
-         *
-         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
-         * updated with the same value of the "active" property of the action {@link GObject.Object}
-         * instance.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well.
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call `g_object_unref()` on the returned
-         * {@link GObject.Binding} instance.
-         *
-         * Removing the binding by calling `g_object_unref()` on it must only be done if
-         * the binding, `source` and `target` are only used from a single thread and it
-         * is clear that both `source` and `target` outlive the binding. Especially it
-         * is not safe to rely on this if the binding, `source` or `target` can be
-         * finalized from different threads. Keep another reference to the binding and
-         * use `g_binding_unbind()` instead to be on the safe side.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-        ): GObject.Binding;
-        /**
-         * Complete version of `g_object_bind_property()`.
-         *
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`, allowing you to set the transformation functions to be used by
-         * the binding.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property_full(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
-        ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
-        /**
-         * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all `GInitiallyUnowneds` are created with a floating reference
-         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
-         */
-        force_floating(): void;
-        /**
-         * Increases the freeze count on `object`. If the freeze count is
-         * non-zero, the emission of "notify" signals on `object` is
-         * stopped. The signals are queued until the freeze count is decreased
-         * to zero. Duplicate notifications are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
-         * object is frozen.
-         *
-         * This is necessary for accessors that modify multiple properties to prevent
-         * premature notification while the object is still being modified.
-         */
-        freeze_notify(): void;
-        /**
-         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
-         * @param key name of the key for that association
-         * @returns the data if found,          or `null` if no such data exists.
-         */
-        get_data(key: string): any | null;
-        /**
-         * Gets a property of an object.
-         *
-         * The value can be:
-         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
-         * - a GObject.Value initialized with the expected type of the property
-         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
-         *
-         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
-         *
-         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
-         * @param property_name The name of the property to get
-         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
-         */
-        get_property(property_name: string, value: GObject.Value | any): any;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        get_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Gets `n_properties` properties for an `object`.
-         * Obtained properties will be set to `values`. All properties must be valid.
-         * Warnings will be emitted and undefined behaviour may result if invalid
-         * properties are passed in.
-         * @param names the names of each property to get
-         * @param values the values of each property to get
-         */
-        getv(names: string[], values: (GObject.Value | any)[]): void;
-        /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns `true` if `object` has a floating reference
-         */
-        is_floating(): boolean;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param property_name the name of a property installed on the class of `object`.
-         */
-        notify(property_name: string): void;
-        /**
-         * Emits a "notify" signal for the property specified by `pspec` on `object`.
-         *
-         * This function omits the property name lookup, hence it is faster than
-         * `g_object_notify()`.
-         *
-         * One way to avoid using `g_object_notify()` from within the
-         * class that registered the properties, and using `g_object_notify_by_pspec()`
-         * instead, is to store the GParamSpec used with
-         * `g_object_class_install_property()` inside a static array, e.g.:
-         *
-         *
-         * ```c
-         *   typedef enum
-         *   {
-         *     PROP_FOO = 1,
-         *     PROP_LAST
-         *   } MyObjectProperty;
-         *
-         *   static GParamSpec *properties[PROP_LAST];
-         *
-         *   static void
-         *   my_object_class_init (MyObjectClass *klass)
-         *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
-         *                                              0, 100,
-         *                                              50,
-         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-         *     g_object_class_install_property (gobject_class,
-         *                                      PROP_FOO,
-         *                                      properties[PROP_FOO]);
-         *   }
-         * ```
-         *
-         *
-         * and then notify a change on the "foo" property with:
-         *
-         *
-         * ```c
-         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-         * ```
-         *
-         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
-         */
-        notify_by_pspec(pspec: GObject.ParamSpec): void;
-        /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
@@ -6567,110 +5173,6 @@ export namespace Clapper {
         // Conflicted with Gst.Object.ref
         ref(...args: never[]): any;
         /**
-         * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
-         *
-         * In other words, if the object is floating, then this call "assumes
-         * ownership" of the floating reference, converting it to a normal
-         * reference by clearing the floating flag while leaving the reference
-         * count unchanged.  If the object is not floating, then this call
-         * adds a new normal reference increasing the reference count by one.
-         *
-         * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for `g_object_ref()`.
-         * @returns `object`
-         */
-        ref_sink(): GObject.Object;
-        /**
-         * Releases all references to other objects. This can be used to break
-         * reference cycles.
-         *
-         * This function should only be called from object system implementations.
-         */
-        run_dispose(): void;
-        /**
-         * Each object carries around a table of associations from
-         * strings to pointers.  This function lets you set an association.
-         *
-         * If the object already had an association with that name,
-         * the old association will be destroyed.
-         *
-         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
-         * This means a copy of `key` is kept permanently (even after `object` has been
-         * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
-         * @param key name of the key
-         * @param data data to associate with that key
-         */
-        set_data(key: string, data?: any | null): void;
-        /**
-         * Sets a property on an object.
-         * @param property_name The name of the property to set
-         * @param value The value to set the property to
-         */
-        set_property(property_name: string, value: GObject.Value | any): void;
-        /**
-         * Remove a specified datum from the object's data associations,
-         * without invoking the association's destroy handler.
-         * @param key name of the key
-         * @returns the data if found, or `null`          if no such data exists.
-         */
-        steal_data(key: string): any | null;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()` and removes the `data` from object
-         * without invoking its `destroy()` function (if any was
-         * set).
-         * Usually, calling this function is only required to update
-         * user data pointers with a destroy notifier, for example:
-         *
-         * ```c
-         * void
-         * object_add_to_user_list (GObject     *object,
-         *                          const gchar *new_string)
-         * {
-         *   // the quark, naming the object data
-         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-         *   // retrieve the old string list
-         *   GList *list = g_object_steal_qdata (object, quark_string_list);
-         *
-         *   // prepend new string
-         *   list = g_list_prepend (list, g_strdup (new_string));
-         *   // this changed 'list', so we need to set it again
-         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-         * }
-         * static void
-         * free_string_list (gpointer data)
-         * {
-         *   GList *node, *list = data;
-         *
-         *   for (node = list; node; node = node->next)
-         *     g_free (node->data);
-         *   g_list_free (list);
-         * }
-         * ```
-         *
-         * Using `g_object_get_qdata()` in the above example, instead of
-         * `g_object_steal_qdata()` would have left the destroy function set,
-         * and thus the partial string list would have been freed upon
-         * `g_object_set_qdata_full()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        steal_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Reverts the effect of a previous call to
-         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
-         * and when it reaches zero, queued "notify" signals are emitted.
-         *
-         * Duplicate notifications for each property are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
-         * in which they have been queued.
-         *
-         * It is an error to call this function when the freeze count is zero.
-         */
-        thaw_notify(): void;
-        /**
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
@@ -6680,116 +5182,6 @@ export namespace Clapper {
          * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
-        /**
-         * This function essentially limits the life time of the `closure` to
-         * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling `g_closure_invalidate()` on
-         * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
-         * added as marshal guards to the `closure`, to ensure that an extra
-         * reference count is held on `object` during invocation of the
-         * `closure`.  Usually, this function will be called on closures that
-         * use this `object` as closure data.
-         * @param closure {@link GObject.Closure} to watch
-         */
-        watch_closure(closure: GObject.Closure): void;
-        /**
-         * the `constructed` function is called by `g_object_new()` as the
-         *  final step of the object creation process.  At the point of the call, all
-         *  construction properties have been set on the object.  The purpose of this
-         *  call is to allow for object initialisation steps that can only be performed
-         *  after construction properties have been set.  `constructed` implementors
-         *  should chain up to the `constructed` call of their parent class to allow it
-         *  to complete its initialisation.
-         * @virtual
-         */
-        vfunc_constructed(): void;
-        /**
-         * emits property change notification for a bunch
-         *  of properties. Overriding `dispatch_properties_changed` should be rarely
-         *  needed.
-         * @param n_pspecs
-         * @param pspecs
-         * @virtual
-         */
-        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
-        /**
-         * the `dispose` function is supposed to drop all references to other
-         *  objects, but keep the instance otherwise intact, so that client method
-         *  invocations still work. It may be run multiple times (due to reference
-         *  loops). Before returning, `dispose` should chain up to the `dispose` method
-         *  of the parent class.
-         * @virtual
-         */
-        vfunc_dispose(): void;
-        /**
-         * instance finalization function, should finish the finalization of
-         *  the instance begun in `dispose` and chain up to the `finalize` method of the
-         *  parent class.
-         * @virtual
-         */
-        vfunc_finalize(): void;
-        /**
-         * the generic getter for all properties of this type. Should be
-         *  overridden for every type with properties.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param pspec
-         * @virtual
-         */
-        vfunc_notify(pspec: GObject.ParamSpec): void;
-        /**
-         * the generic setter for all properties of this type. Should be
-         *  overridden for every type with properties. If implementations of
-         *  `set_property` don't emit property change notification explicitly, this will
-         *  be done implicitly by the type system. However, if the notify signal is
-         *  emitted explicitly, the type system will not emit it a second time.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
-         * @param id Handler ID of the handler to be disconnected
-         */
-        disconnect(id: number): void;
-        /**
-         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
-         * @param properties Object containing the properties to set
-         */
-        set(properties: { [key: string]: any }): void;
-        /**
-         * Blocks a handler of an instance so it will not be called during any signal emissions
-         * @param id Handler ID of the handler to be blocked
-         */
-        block_signal_handler(id: number): void;
-        /**
-         * Unblocks a handler so it will be called again during any signal emissions
-         * @param id Handler ID of the handler to be unblocked
-         */
-        unblock_signal_handler(id: number): void;
-        /**
-         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
-         * @param detailedName Name of the signal to stop emission of
-         */
-        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace VideoStream {
@@ -6811,11 +5203,11 @@ export namespace Clapper {
 
         interface ConstructorProps extends Stream.ConstructorProps {
             bitrate: number;
-            codec: string;
+            codec: string | null;
             fps: number;
             height: number;
-            pixel_format: string;
-            pixelFormat: string;
+            pixel_format: string | null;
+            pixelFormat: string | null;
             width: number;
         }
     }
@@ -6832,36 +5224,43 @@ export namespace Clapper {
         /**
          * Stream bitrate.
          * @read-only
+         * @default 0
          */
         get bitrate(): number;
         /**
          * Stream codec.
          * @read-only
+         * @default null
          */
-        get codec(): string;
+        get codec(): string | null;
         /**
          * Stream FPS.
          * @read-only
+         * @default 0
          */
         get fps(): number;
         /**
          * Stream height.
          * @read-only
+         * @default 0
          */
         get height(): number;
         /**
          * Stream pixel format.
          * @read-only
+         * @default null
          */
-        get pixel_format(): string;
+        get pixel_format(): string | null;
         /**
          * Stream pixel format.
          * @read-only
+         * @default null
          */
-        get pixelFormat(): string;
+        get pixelFormat(): string | null;
         /**
          * Stream width.
          * @read-only
+         * @default 0
          */
         get width(): number;
 

@@ -83,8 +83,14 @@ export namespace GtkSpell {
 
         // Properties
 
+        /**
+         * @default false
+         */
         get decode_language_codes(): boolean;
         set decode_language_codes(val: boolean);
+        /**
+         * @default false
+         */
         get decodeLanguageCodes(): boolean;
         set decodeLanguageCodes(val: boolean);
 
@@ -220,7 +226,7 @@ export namespace GtkSpell {
          * @param lang The language to use, as a locale specifier (i.e. "en_US"). If `NULL`, attempt to use the default system locale (LANG).
          * @returns FALSE if there was an error.
          */
-        set_language(lang?: string | null): boolean;
+        set_language(lang: string | null): boolean;
     }
 
     /**

@@ -220,14 +220,17 @@ export namespace Libmsi {
 
         /**
          * @construct-only
+         * @default 0
          */
         get flags(): DbFlags;
         /**
          * @construct-only
+         * @default null
          */
         get outpath(): string;
         /**
          * @construct-only
+         * @default null
          */
         get path(): string;
 
@@ -246,7 +249,7 @@ export namespace Libmsi {
 
         _init(...args: any[]): void;
 
-        static ['new'](path: string, flags: number, persist?: string | null): Database;
+        static ['new'](path: string, flags: number, persist: string | null): Database;
 
         // Signals
 
@@ -322,7 +325,7 @@ export namespace Libmsi {
          * @param table an optionnal table name
          * @returns `true` on success
          */
-        merge(merge: Database, table?: string | null): boolean;
+        merge(merge: Database, table: string | null): boolean;
     }
 
     namespace Query {
@@ -354,6 +357,7 @@ export namespace Libmsi {
         get database(): Database;
         /**
          * @construct-only
+         * @default null
          */
         get query(): string;
 
@@ -407,7 +411,7 @@ export namespace Libmsi {
          * @param rec a {@link Libmsi.Record} containing query arguments, or     `null` if no arguments needed
          * @returns `true` on success
          */
-        execute(rec?: Record | null): boolean;
+        execute(rec: Record | null): boolean;
         /**
          * Return the next query result. `null` is returned when there
          * is no more results.
@@ -449,6 +453,7 @@ export namespace Libmsi {
 
         /**
          * @construct-only
+         * @default 0
          */
         get count(): number;
 
@@ -552,7 +557,7 @@ export namespace Libmsi {
             field: number,
             input: Gio.InputStream,
             count: bigint | number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Set the %field value to %val string.
@@ -593,10 +598,12 @@ export namespace Libmsi {
         get database(): Database;
         /**
          * @construct-only
+         * @default 0
          */
         get update_count(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get updateCount(): number;
 

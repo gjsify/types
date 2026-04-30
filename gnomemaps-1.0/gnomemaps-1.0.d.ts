@@ -435,7 +435,7 @@ export namespace GnomeMaps {
 
         _init(...args: any[]): void;
 
-        static ['new'](comment?: string | null, created_by?: string | null): OSMChangeset;
+        static ['new'](comment: string | null, created_by: string | null): OSMChangeset;
 
         // Signals
 

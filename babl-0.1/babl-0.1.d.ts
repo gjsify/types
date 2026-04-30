@@ -84,7 +84,7 @@ export namespace Babl {
      * @param source_format
      * @param destination_format
      */
-    function fish(source_format?: any | null, destination_format?: any | null): Object;
+    function fish(source_format: any | null, destination_format: any | null): Object;
     /**
      * Returns the babl object representing the color format given by
      * `name` such as for example "RGB u8", "CMYK float" or "CIE Lab u16",
@@ -393,8 +393,8 @@ export namespace Babl {
         gz: number,
         bz: number,
         trc_red: Object,
-        trc_green?: Object | null,
-        trc_blue?: Object | null,
+        trc_green: Object | null,
+        trc_blue: Object | null,
     ): Object;
     /**
      * query the chromaticities of white point and primaries as well as trcs
@@ -470,7 +470,7 @@ export namespace Babl {
      * @gir-type Callback
      */
     interface FishProcess {
-        (babl: Object, src: string, dst: string, n: number, data?: any | null): void;
+        (babl: Object, src: string, dst: string, n: number, data: any | null): void;
     }
     /**
      * @gir-type Callback

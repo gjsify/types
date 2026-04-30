@@ -580,13 +580,13 @@ export namespace Tracker {
          * @param cancellable Optional {@link Gio.Cancellable}
          * @returns `true` of there were no errors, `false` otherwise
          */
-        execute(cancellable?: Gio.Cancellable | null): boolean;
+        execute(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Executes the batch. This operation happens asynchronously, when
          * finished `callback` will be executed.
          * @param cancellable Optional {@link Gio.Cancellable}
          */
-        execute_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        execute_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Executes the batch. This operation happens asynchronously, when
          * finished `callback` will be executed.
@@ -601,7 +601,7 @@ export namespace Tracker {
          * @param callback User-defined {@link Gio.AsyncReadyCallback} to be called when            the asynchronous operation is finished.
          */
         execute_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -711,6 +711,7 @@ export namespace Tracker {
          * Whether the endpoint allows SPARQL updates or not. See
          * `tracker_endpoint_set_readonly()`.
          * @since 3.7
+         * @default false
          */
         get readonly(): boolean;
         set readonly(val: boolean);
@@ -923,11 +924,13 @@ export namespace Tracker {
         /**
          * The DBus object path that this endpoint manages.
          * @construct-only
+         * @default null
          */
         get object_path(): string;
         /**
          * The DBus object path that this endpoint manages.
          * @construct-only
+         * @default null
          */
         get objectPath(): string;
 
@@ -949,8 +952,8 @@ export namespace Tracker {
         static ['new'](
             sparql_connection: SparqlConnection,
             dbus_connection: Gio.DBusConnection,
-            object_path?: string | null,
-            cancellable?: Gio.Cancellable | null,
+            object_path: string | null,
+            cancellable: Gio.Cancellable | null,
         ): EndpointDBus;
 
         // Signals
@@ -1015,7 +1018,7 @@ export namespace Tracker {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -1058,456 +1061,7 @@ export namespace Tracker {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
-        /**
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`.
-         *
-         * Whenever the `source_property` is changed the `target_property` is
-         * updated using the same value. For instance:
-         *
-         *
-         * ```c
-         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-         * ```
-         *
-         *
-         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
-         * updated with the same value of the "active" property of the action {@link GObject.Object}
-         * instance.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well.
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call `g_object_unref()` on the returned
-         * {@link GObject.Binding} instance.
-         *
-         * Removing the binding by calling `g_object_unref()` on it must only be done if
-         * the binding, `source` and `target` are only used from a single thread and it
-         * is clear that both `source` and `target` outlive the binding. Especially it
-         * is not safe to rely on this if the binding, `source` or `target` can be
-         * finalized from different threads. Keep another reference to the binding and
-         * use `g_binding_unbind()` instead to be on the safe side.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-        ): GObject.Binding;
-        /**
-         * Complete version of `g_object_bind_property()`.
-         *
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`, allowing you to set the transformation functions to be used by
-         * the binding.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property_full(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
-        ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
-        /**
-         * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all `GInitiallyUnowneds` are created with a floating reference
-         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
-         */
-        force_floating(): void;
-        /**
-         * Increases the freeze count on `object`. If the freeze count is
-         * non-zero, the emission of "notify" signals on `object` is
-         * stopped. The signals are queued until the freeze count is decreased
-         * to zero. Duplicate notifications are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
-         * object is frozen.
-         *
-         * This is necessary for accessors that modify multiple properties to prevent
-         * premature notification while the object is still being modified.
-         */
-        freeze_notify(): void;
-        /**
-         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
-         * @param key name of the key for that association
-         * @returns the data if found,          or `null` if no such data exists.
-         */
-        get_data(key: string): any | null;
-        /**
-         * Gets a property of an object.
-         *
-         * The value can be:
-         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
-         * - a GObject.Value initialized with the expected type of the property
-         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
-         *
-         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
-         *
-         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
-         * @param property_name The name of the property to get
-         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
-         */
-        get_property(property_name: string, value: GObject.Value | any): any;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        get_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Gets `n_properties` properties for an `object`.
-         * Obtained properties will be set to `values`. All properties must be valid.
-         * Warnings will be emitted and undefined behaviour may result if invalid
-         * properties are passed in.
-         * @param names the names of each property to get
-         * @param values the values of each property to get
-         */
-        getv(names: string[], values: (GObject.Value | any)[]): void;
-        /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns `true` if `object` has a floating reference
-         */
-        is_floating(): boolean;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param property_name the name of a property installed on the class of `object`.
-         */
-        notify(property_name: string): void;
-        /**
-         * Emits a "notify" signal for the property specified by `pspec` on `object`.
-         *
-         * This function omits the property name lookup, hence it is faster than
-         * `g_object_notify()`.
-         *
-         * One way to avoid using `g_object_notify()` from within the
-         * class that registered the properties, and using `g_object_notify_by_pspec()`
-         * instead, is to store the GParamSpec used with
-         * `g_object_class_install_property()` inside a static array, e.g.:
-         *
-         *
-         * ```c
-         *   typedef enum
-         *   {
-         *     PROP_FOO = 1,
-         *     PROP_LAST
-         *   } MyObjectProperty;
-         *
-         *   static GParamSpec *properties[PROP_LAST];
-         *
-         *   static void
-         *   my_object_class_init (MyObjectClass *klass)
-         *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
-         *                                              0, 100,
-         *                                              50,
-         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-         *     g_object_class_install_property (gobject_class,
-         *                                      PROP_FOO,
-         *                                      properties[PROP_FOO]);
-         *   }
-         * ```
-         *
-         *
-         * and then notify a change on the "foo" property with:
-         *
-         *
-         * ```c
-         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-         * ```
-         *
-         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
-         */
-        notify_by_pspec(pspec: GObject.ParamSpec): void;
-        /**
-         * Increases the reference count of `object`.
-         *
-         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC `typeof()`
-         * extension), so any casting the caller needs to do on the return type must be
-         * explicit.
-         * @returns the same `object`
-         */
-        ref(): GObject.Object;
-        /**
-         * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
-         *
-         * In other words, if the object is floating, then this call "assumes
-         * ownership" of the floating reference, converting it to a normal
-         * reference by clearing the floating flag while leaving the reference
-         * count unchanged.  If the object is not floating, then this call
-         * adds a new normal reference increasing the reference count by one.
-         *
-         * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for `g_object_ref()`.
-         * @returns `object`
-         */
-        ref_sink(): GObject.Object;
-        /**
-         * Releases all references to other objects. This can be used to break
-         * reference cycles.
-         *
-         * This function should only be called from object system implementations.
-         */
-        run_dispose(): void;
-        /**
-         * Each object carries around a table of associations from
-         * strings to pointers.  This function lets you set an association.
-         *
-         * If the object already had an association with that name,
-         * the old association will be destroyed.
-         *
-         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
-         * This means a copy of `key` is kept permanently (even after `object` has been
-         * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
-         * @param key name of the key
-         * @param data data to associate with that key
-         */
-        set_data(key: string, data?: any | null): void;
-        /**
-         * Sets a property on an object.
-         * @param property_name The name of the property to set
-         * @param value The value to set the property to
-         */
-        set_property(property_name: string, value: GObject.Value | any): void;
-        /**
-         * Remove a specified datum from the object's data associations,
-         * without invoking the association's destroy handler.
-         * @param key name of the key
-         * @returns the data if found, or `null`          if no such data exists.
-         */
-        steal_data(key: string): any | null;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()` and removes the `data` from object
-         * without invoking its `destroy()` function (if any was
-         * set).
-         * Usually, calling this function is only required to update
-         * user data pointers with a destroy notifier, for example:
-         *
-         * ```c
-         * void
-         * object_add_to_user_list (GObject     *object,
-         *                          const gchar *new_string)
-         * {
-         *   // the quark, naming the object data
-         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-         *   // retrieve the old string list
-         *   GList *list = g_object_steal_qdata (object, quark_string_list);
-         *
-         *   // prepend new string
-         *   list = g_list_prepend (list, g_strdup (new_string));
-         *   // this changed 'list', so we need to set it again
-         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-         * }
-         * static void
-         * free_string_list (gpointer data)
-         * {
-         *   GList *node, *list = data;
-         *
-         *   for (node = list; node; node = node->next)
-         *     g_free (node->data);
-         *   g_list_free (list);
-         * }
-         * ```
-         *
-         * Using `g_object_get_qdata()` in the above example, instead of
-         * `g_object_steal_qdata()` would have left the destroy function set,
-         * and thus the partial string list would have been freed upon
-         * `g_object_set_qdata_full()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        steal_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Reverts the effect of a previous call to
-         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
-         * and when it reaches zero, queued "notify" signals are emitted.
-         *
-         * Duplicate notifications for each property are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
-         * in which they have been queued.
-         *
-         * It is an error to call this function when the freeze count is zero.
-         */
-        thaw_notify(): void;
-        /**
-         * Decreases the reference count of `object`. When its reference count
-         * drops to 0, the object is finalized (i.e. its memory is freed).
-         *
-         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
-         * an instance variable of another object), it is recommended to clear the
-         * pointer to `null` rather than retain a dangling pointer to a potentially
-         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
-         */
-        unref(): void;
-        /**
-         * This function essentially limits the life time of the `closure` to
-         * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling `g_closure_invalidate()` on
-         * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
-         * added as marshal guards to the `closure`, to ensure that an extra
-         * reference count is held on `object` during invocation of the
-         * `closure`.  Usually, this function will be called on closures that
-         * use this `object` as closure data.
-         * @param closure {@link GObject.Closure} to watch
-         */
-        watch_closure(closure: GObject.Closure): void;
-        /**
-         * the `constructed` function is called by `g_object_new()` as the
-         *  final step of the object creation process.  At the point of the call, all
-         *  construction properties have been set on the object.  The purpose of this
-         *  call is to allow for object initialisation steps that can only be performed
-         *  after construction properties have been set.  `constructed` implementors
-         *  should chain up to the `constructed` call of their parent class to allow it
-         *  to complete its initialisation.
-         * @virtual
-         */
-        vfunc_constructed(): void;
-        /**
-         * emits property change notification for a bunch
-         *  of properties. Overriding `dispatch_properties_changed` should be rarely
-         *  needed.
-         * @param n_pspecs
-         * @param pspecs
-         * @virtual
-         */
-        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
-        /**
-         * the `dispose` function is supposed to drop all references to other
-         *  objects, but keep the instance otherwise intact, so that client method
-         *  invocations still work. It may be run multiple times (due to reference
-         *  loops). Before returning, `dispose` should chain up to the `dispose` method
-         *  of the parent class.
-         * @virtual
-         */
-        vfunc_dispose(): void;
-        /**
-         * instance finalization function, should finish the finalization of
-         *  the instance begun in `dispose` and chain up to the `finalize` method of the
-         *  parent class.
-         * @virtual
-         */
-        vfunc_finalize(): void;
-        /**
-         * the generic getter for all properties of this type. Should be
-         *  overridden for every type with properties.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param pspec
-         * @virtual
-         */
-        vfunc_notify(pspec: GObject.ParamSpec): void;
-        /**
-         * the generic setter for all properties of this type. Should be
-         *  overridden for every type with properties. If implementations of
-         *  `set_property` don't emit property change notification explicitly, this will
-         *  be done implicitly by the type system. However, if the notify signal is
-         *  emitted explicitly, the type system will not emit it a second time.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
-         * @param id Handler ID of the handler to be disconnected
-         */
-        disconnect(id: number): void;
-        /**
-         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
-         * @param properties Object containing the properties to set
-         */
-        set(properties: { [key: string]: any }): void;
-        /**
-         * Blocks a handler of an instance so it will not be called during any signal emissions
-         * @param id Handler ID of the handler to be blocked
-         */
-        block_signal_handler(id: number): void;
-        /**
-         * Unblocks a handler so it will be called again during any signal emissions
-         * @param id Handler ID of the handler to be unblocked
-         */
-        unblock_signal_handler(id: number): void;
-        /**
-         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
-         * @param detailedName Name of the signal to stop emission of
-         */
-        stop_emission_by_name(detailedName: string): void;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
     namespace EndpointHttp {
@@ -1602,11 +1156,13 @@ export namespace Tracker {
         /**
          * HTTP port used to listen requests.
          * @construct-only
+         * @default 8080
          */
         get http_port(): number;
         /**
          * HTTP port used to listen requests.
          * @construct-only
+         * @default 8080
          */
         get httpPort(): number;
 
@@ -1628,8 +1184,8 @@ export namespace Tracker {
         static ['new'](
             sparql_connection: SparqlConnection,
             port: number,
-            certificate?: Gio.TlsCertificate | null,
-            cancellable?: Gio.Cancellable | null,
+            certificate: Gio.TlsCertificate | null,
+            cancellable: Gio.Cancellable | null,
         ): EndpointHttp;
 
         // Signals
@@ -1694,7 +1250,7 @@ export namespace Tracker {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -1737,456 +1293,7 @@ export namespace Tracker {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
-        /**
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`.
-         *
-         * Whenever the `source_property` is changed the `target_property` is
-         * updated using the same value. For instance:
-         *
-         *
-         * ```c
-         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-         * ```
-         *
-         *
-         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
-         * updated with the same value of the "active" property of the action {@link GObject.Object}
-         * instance.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well.
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call `g_object_unref()` on the returned
-         * {@link GObject.Binding} instance.
-         *
-         * Removing the binding by calling `g_object_unref()` on it must only be done if
-         * the binding, `source` and `target` are only used from a single thread and it
-         * is clear that both `source` and `target` outlive the binding. Especially it
-         * is not safe to rely on this if the binding, `source` or `target` can be
-         * finalized from different threads. Keep another reference to the binding and
-         * use `g_binding_unbind()` instead to be on the safe side.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-        ): GObject.Binding;
-        /**
-         * Complete version of `g_object_bind_property()`.
-         *
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`, allowing you to set the transformation functions to be used by
-         * the binding.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property_full(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
-        ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
-        /**
-         * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all `GInitiallyUnowneds` are created with a floating reference
-         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
-         */
-        force_floating(): void;
-        /**
-         * Increases the freeze count on `object`. If the freeze count is
-         * non-zero, the emission of "notify" signals on `object` is
-         * stopped. The signals are queued until the freeze count is decreased
-         * to zero. Duplicate notifications are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
-         * object is frozen.
-         *
-         * This is necessary for accessors that modify multiple properties to prevent
-         * premature notification while the object is still being modified.
-         */
-        freeze_notify(): void;
-        /**
-         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
-         * @param key name of the key for that association
-         * @returns the data if found,          or `null` if no such data exists.
-         */
-        get_data(key: string): any | null;
-        /**
-         * Gets a property of an object.
-         *
-         * The value can be:
-         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
-         * - a GObject.Value initialized with the expected type of the property
-         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
-         *
-         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
-         *
-         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
-         * @param property_name The name of the property to get
-         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
-         */
-        get_property(property_name: string, value: GObject.Value | any): any;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        get_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Gets `n_properties` properties for an `object`.
-         * Obtained properties will be set to `values`. All properties must be valid.
-         * Warnings will be emitted and undefined behaviour may result if invalid
-         * properties are passed in.
-         * @param names the names of each property to get
-         * @param values the values of each property to get
-         */
-        getv(names: string[], values: (GObject.Value | any)[]): void;
-        /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns `true` if `object` has a floating reference
-         */
-        is_floating(): boolean;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param property_name the name of a property installed on the class of `object`.
-         */
-        notify(property_name: string): void;
-        /**
-         * Emits a "notify" signal for the property specified by `pspec` on `object`.
-         *
-         * This function omits the property name lookup, hence it is faster than
-         * `g_object_notify()`.
-         *
-         * One way to avoid using `g_object_notify()` from within the
-         * class that registered the properties, and using `g_object_notify_by_pspec()`
-         * instead, is to store the GParamSpec used with
-         * `g_object_class_install_property()` inside a static array, e.g.:
-         *
-         *
-         * ```c
-         *   typedef enum
-         *   {
-         *     PROP_FOO = 1,
-         *     PROP_LAST
-         *   } MyObjectProperty;
-         *
-         *   static GParamSpec *properties[PROP_LAST];
-         *
-         *   static void
-         *   my_object_class_init (MyObjectClass *klass)
-         *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
-         *                                              0, 100,
-         *                                              50,
-         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-         *     g_object_class_install_property (gobject_class,
-         *                                      PROP_FOO,
-         *                                      properties[PROP_FOO]);
-         *   }
-         * ```
-         *
-         *
-         * and then notify a change on the "foo" property with:
-         *
-         *
-         * ```c
-         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-         * ```
-         *
-         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
-         */
-        notify_by_pspec(pspec: GObject.ParamSpec): void;
-        /**
-         * Increases the reference count of `object`.
-         *
-         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC `typeof()`
-         * extension), so any casting the caller needs to do on the return type must be
-         * explicit.
-         * @returns the same `object`
-         */
-        ref(): GObject.Object;
-        /**
-         * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
-         *
-         * In other words, if the object is floating, then this call "assumes
-         * ownership" of the floating reference, converting it to a normal
-         * reference by clearing the floating flag while leaving the reference
-         * count unchanged.  If the object is not floating, then this call
-         * adds a new normal reference increasing the reference count by one.
-         *
-         * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for `g_object_ref()`.
-         * @returns `object`
-         */
-        ref_sink(): GObject.Object;
-        /**
-         * Releases all references to other objects. This can be used to break
-         * reference cycles.
-         *
-         * This function should only be called from object system implementations.
-         */
-        run_dispose(): void;
-        /**
-         * Each object carries around a table of associations from
-         * strings to pointers.  This function lets you set an association.
-         *
-         * If the object already had an association with that name,
-         * the old association will be destroyed.
-         *
-         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
-         * This means a copy of `key` is kept permanently (even after `object` has been
-         * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
-         * @param key name of the key
-         * @param data data to associate with that key
-         */
-        set_data(key: string, data?: any | null): void;
-        /**
-         * Sets a property on an object.
-         * @param property_name The name of the property to set
-         * @param value The value to set the property to
-         */
-        set_property(property_name: string, value: GObject.Value | any): void;
-        /**
-         * Remove a specified datum from the object's data associations,
-         * without invoking the association's destroy handler.
-         * @param key name of the key
-         * @returns the data if found, or `null`          if no such data exists.
-         */
-        steal_data(key: string): any | null;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()` and removes the `data` from object
-         * without invoking its `destroy()` function (if any was
-         * set).
-         * Usually, calling this function is only required to update
-         * user data pointers with a destroy notifier, for example:
-         *
-         * ```c
-         * void
-         * object_add_to_user_list (GObject     *object,
-         *                          const gchar *new_string)
-         * {
-         *   // the quark, naming the object data
-         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-         *   // retrieve the old string list
-         *   GList *list = g_object_steal_qdata (object, quark_string_list);
-         *
-         *   // prepend new string
-         *   list = g_list_prepend (list, g_strdup (new_string));
-         *   // this changed 'list', so we need to set it again
-         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-         * }
-         * static void
-         * free_string_list (gpointer data)
-         * {
-         *   GList *node, *list = data;
-         *
-         *   for (node = list; node; node = node->next)
-         *     g_free (node->data);
-         *   g_list_free (list);
-         * }
-         * ```
-         *
-         * Using `g_object_get_qdata()` in the above example, instead of
-         * `g_object_steal_qdata()` would have left the destroy function set,
-         * and thus the partial string list would have been freed upon
-         * `g_object_set_qdata_full()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        steal_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Reverts the effect of a previous call to
-         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
-         * and when it reaches zero, queued "notify" signals are emitted.
-         *
-         * Duplicate notifications for each property are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
-         * in which they have been queued.
-         *
-         * It is an error to call this function when the freeze count is zero.
-         */
-        thaw_notify(): void;
-        /**
-         * Decreases the reference count of `object`. When its reference count
-         * drops to 0, the object is finalized (i.e. its memory is freed).
-         *
-         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
-         * an instance variable of another object), it is recommended to clear the
-         * pointer to `null` rather than retain a dangling pointer to a potentially
-         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
-         */
-        unref(): void;
-        /**
-         * This function essentially limits the life time of the `closure` to
-         * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling `g_closure_invalidate()` on
-         * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
-         * added as marshal guards to the `closure`, to ensure that an extra
-         * reference count is held on `object` during invocation of the
-         * `closure`.  Usually, this function will be called on closures that
-         * use this `object` as closure data.
-         * @param closure {@link GObject.Closure} to watch
-         */
-        watch_closure(closure: GObject.Closure): void;
-        /**
-         * the `constructed` function is called by `g_object_new()` as the
-         *  final step of the object creation process.  At the point of the call, all
-         *  construction properties have been set on the object.  The purpose of this
-         *  call is to allow for object initialisation steps that can only be performed
-         *  after construction properties have been set.  `constructed` implementors
-         *  should chain up to the `constructed` call of their parent class to allow it
-         *  to complete its initialisation.
-         * @virtual
-         */
-        vfunc_constructed(): void;
-        /**
-         * emits property change notification for a bunch
-         *  of properties. Overriding `dispatch_properties_changed` should be rarely
-         *  needed.
-         * @param n_pspecs
-         * @param pspecs
-         * @virtual
-         */
-        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
-        /**
-         * the `dispose` function is supposed to drop all references to other
-         *  objects, but keep the instance otherwise intact, so that client method
-         *  invocations still work. It may be run multiple times (due to reference
-         *  loops). Before returning, `dispose` should chain up to the `dispose` method
-         *  of the parent class.
-         * @virtual
-         */
-        vfunc_dispose(): void;
-        /**
-         * instance finalization function, should finish the finalization of
-         *  the instance begun in `dispose` and chain up to the `finalize` method of the
-         *  parent class.
-         * @virtual
-         */
-        vfunc_finalize(): void;
-        /**
-         * the generic getter for all properties of this type. Should be
-         *  overridden for every type with properties.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param pspec
-         * @virtual
-         */
-        vfunc_notify(pspec: GObject.ParamSpec): void;
-        /**
-         * the generic setter for all properties of this type. Should be
-         *  overridden for every type with properties. If implementations of
-         *  `set_property` don't emit property change notification explicitly, this will
-         *  be done implicitly by the type system. However, if the notify signal is
-         *  emitted explicitly, the type system will not emit it a second time.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
-         * @param id Handler ID of the handler to be disconnected
-         */
-        disconnect(id: number): void;
-        /**
-         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
-         * @param properties Object containing the properties to set
-         */
-        set(properties: { [key: string]: any }): void;
-        /**
-         * Blocks a handler of an instance so it will not be called during any signal emissions
-         * @param id Handler ID of the handler to be blocked
-         */
-        block_signal_handler(id: number): void;
-        /**
-         * Unblocks a handler so it will be called again during any signal emissions
-         * @param id Handler ID of the handler to be unblocked
-         */
-        unblock_signal_handler(id: number): void;
-        /**
-         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
-         * @param detailedName Name of the signal to stop emission of
-         */
-        stop_emission_by_name(detailedName: string): void;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
     namespace NamespaceManager {
@@ -2445,9 +1552,9 @@ export namespace Tracker {
          */
         signal_subscribe(
             connection: Gio.DBusConnection,
-            service?: string | null,
-            object_path?: string | null,
-            graph?: string | null,
+            service: string | null,
+            object_path: string | null,
+            graph: string | null,
         ): number;
         /**
          * Undoes a signal subscription done through {@link Notifier.signal_subscribe}.
@@ -2467,7 +1574,7 @@ export namespace Tracker {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            identifier: string;
+            identifier: string | null;
         }
     }
 
@@ -2511,9 +1618,10 @@ export namespace Tracker {
         /**
          * The URI identifier for this class, or `null` for a
          * blank node.
+         * @default null
          */
-        get identifier(): string;
-        set identifier(val: string);
+        get identifier(): string | null;
+        set identifier(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -2530,7 +1638,7 @@ export namespace Tracker {
 
         _init(...args: any[]): void;
 
-        static ['new'](identifier?: string | null): Resource;
+        static ['new'](identifier: string | null): Resource;
 
         // Signals
 
@@ -2787,7 +1895,7 @@ export namespace Tracker {
          * @param namespaces a set of prefixed URLs, or `null` to use the     Nepomuk set
          * @returns a newly-allocated string containing JSON-LD data.
          */
-        print_jsonld(namespaces?: NamespaceManager | null): string;
+        print_jsonld(namespaces: NamespaceManager | null): string;
         /**
          * Serialize all the information in `resource` into the selected RDF format.
          *
@@ -2799,7 +1907,7 @@ export namespace Tracker {
          * @param graph target graph of the resource RDF, or `null` for the default graph
          * @returns a newly-allocated string containing RDF data in the requested format.
          */
-        print_rdf(namespaces: NamespaceManager, format: RdfFormat, graph?: string | null): string;
+        print_rdf(namespaces: NamespaceManager, format: RdfFormat, graph: string | null): string;
         /**
          * Generates a SPARQL command to update a database with the information
          * stored in `resource`.
@@ -2811,7 +1919,7 @@ export namespace Tracker {
          * @param graph_id the URN of the graph the data should be added to,     or `null`
          * @returns a newly-allocated string containing a SPARQL update command.
          */
-        print_sparql_update(namespaces?: NamespaceManager | null, graph_id?: string | null): string;
+        print_sparql_update(namespaces: NamespaceManager | null, graph_id: string | null): string;
         /**
          * Serialize all the information in `resource` as a Turtle document.
          *
@@ -2824,7 +1932,7 @@ export namespace Tracker {
          * @param namespaces a set of prefixed URLs, or `null` to use the     Nepomuk set
          * @returns a newly-allocated string
          */
-        print_turtle(namespaces?: NamespaceManager | null): string;
+        print_turtle(namespaces: NamespaceManager | null): string;
         /**
          * Serializes a {@link Tracker.Resource} to a {@link GLib.Variant} in a lossless way.
          * All child resources are subsequently serialized. It is implied
@@ -2881,7 +1989,7 @@ export namespace Tracker {
          * `_:123` is assigned to the resource.
          * @param identifier a string identifying the resource
          */
-        set_identifier(identifier?: string | null): void;
+        set_identifier(identifier: string | null): void;
         /**
          * Sets a numeric property with integer precision. Replaces any previous value.
          *
@@ -3041,17 +2149,17 @@ export namespace Tracker {
 
         static bus_new(
             service_name: string,
-            object_path?: string | null,
-            dbus_connection?: Gio.DBusConnection | null,
+            object_path: string | null,
+            dbus_connection: Gio.DBusConnection | null,
         ): SparqlConnection;
 
         static bus_new_finish(result: Gio.AsyncResult): SparqlConnection;
 
         static ['new'](
             flags: SparqlConnectionFlags,
-            store?: Gio.File | null,
-            ontology?: Gio.File | null,
-            cancellable?: Gio.Cancellable | null,
+            store: Gio.File | null,
+            ontology: Gio.File | null,
+            cancellable: Gio.Cancellable | null,
         ): SparqlConnection;
 
         static new_finish(result: Gio.AsyncResult): SparqlConnection;
@@ -3062,7 +2170,7 @@ export namespace Tracker {
             deserialize_flags: DeserializeFlags,
             rdf_format: RdfFormat,
             rdf_stream: Gio.InputStream,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): SparqlConnection;
 
         static new_from_rdf_finish(result: Gio.AsyncResult): SparqlConnection;
@@ -3103,10 +2211,10 @@ export namespace Tracker {
          */
         static bus_new_async(
             service_name: string,
-            object_path?: string | null,
-            dbus_connection?: Gio.DBusConnection | null,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<SparqlConnection> | null,
+            object_path: string | null,
+            dbus_connection: Gio.DBusConnection | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<SparqlConnection> | null,
         ): void;
         /**
          * Creates or opens a process-local database asynchronously.
@@ -3120,10 +2228,10 @@ export namespace Tracker {
          */
         static new_async(
             flags: SparqlConnectionFlags,
-            store?: Gio.File | null,
-            ontology?: Gio.File | null,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<SparqlConnection> | null,
+            store: Gio.File | null,
+            ontology: Gio.File | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<SparqlConnection> | null,
         ): void;
         /**
          * Asynchronous version of {@link SparqlConnection.new_from_rdf}.
@@ -3141,8 +2249,8 @@ export namespace Tracker {
             deserialize_flags: DeserializeFlags,
             rdf_format: RdfFormat,
             rdf_stream: Gio.InputStream,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<SparqlConnection> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<SparqlConnection> | null,
         ): void;
 
         // Methods
@@ -3163,7 +2271,7 @@ export namespace Tracker {
          * No other API calls than `g_object_unref()` should happen after this call.
          * @param cancellable Optional {@link Gio.Cancellable}
          */
-        close_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        close_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Closes a SPARQL connection asynchronously.
          *
@@ -3180,7 +2288,7 @@ export namespace Tracker {
          * @param callback User-defined {@link Gio.AsyncReadyCallback} to be called when            the asynchronous operation is finished.
          */
         close_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -3230,7 +2338,7 @@ export namespace Tracker {
             format: RdfFormat,
             default_graph: string,
             stream: Gio.InputStream,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Loads the RDF data contained in `stream` into the given `connection`.
@@ -3285,7 +2393,7 @@ export namespace Tracker {
             format: RdfFormat,
             default_graph: string,
             stream: Gio.InputStream,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -3311,7 +2419,7 @@ export namespace Tracker {
          * @param cancellable Optional {@link Gio.Cancellable}
          * @returns A prepared statement
          */
-        load_statement_from_gresource(resource_path: string, cancellable?: Gio.Cancellable | null): SparqlStatement;
+        load_statement_from_gresource(resource_path: string, cancellable: Gio.Cancellable | null): SparqlStatement;
         /**
          * Maps a {@link Tracker.SparqlConnection} onto another through a `private:`handle_name`` URI.
          *
@@ -3359,7 +2467,7 @@ export namespace Tracker {
          * @param cancellable Optional {@link Gio.Cancellable}
          * @returns a {@link SparqlCursor} with the results.
          */
-        query(sparql: string, cancellable?: Gio.Cancellable | null): SparqlCursor;
+        query(sparql: string, cancellable: Gio.Cancellable | null): SparqlCursor;
         /**
          * Executes asynchronously a SPARQL query on `connection`
          *
@@ -3372,7 +2480,7 @@ export namespace Tracker {
          * @param sparql String containing the SPARQL query
          * @param cancellable Optional {@link Gio.Cancellable}
          */
-        query_async(sparql: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<SparqlCursor>;
+        query_async(sparql: string, cancellable: Gio.Cancellable | null): globalThis.Promise<SparqlCursor>;
         /**
          * Executes asynchronously a SPARQL query on `connection`
          *
@@ -3406,7 +2514,7 @@ export namespace Tracker {
          */
         query_async(
             sparql: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<SparqlCursor> | void;
         /**
@@ -3425,7 +2533,7 @@ export namespace Tracker {
          * @param cancellable Optional {@link Gio.Cancellable}
          * @returns A prepared statement
          */
-        query_statement(sparql: string, cancellable?: Gio.Cancellable | null): SparqlStatement;
+        query_statement(sparql: string, cancellable: Gio.Cancellable | null): SparqlStatement;
         /**
          * Serializes a `DESCRIBE` or `CONSTRUCT` query into the specified RDF format.
          *
@@ -3446,7 +2554,7 @@ export namespace Tracker {
             flags: SerializeFlags,
             format: RdfFormat,
             query: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<Gio.InputStream>;
         /**
          * Serializes a `DESCRIBE` or `CONSTRUCT` query into the specified RDF format.
@@ -3493,7 +2601,7 @@ export namespace Tracker {
             flags: SerializeFlags,
             format: RdfFormat,
             query: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Gio.InputStream> | void;
         /**
@@ -3523,7 +2631,7 @@ export namespace Tracker {
          * @param sparql String containing the SPARQL update query
          * @param cancellable Optional {@link Gio.Cancellable}
          */
-        update(sparql: string, cancellable?: Gio.Cancellable | null): void;
+        update(sparql: string, cancellable: Gio.Cancellable | null): void;
         /**
          * Executes asynchronously an array of SPARQL updates. All updates in the
          * array are handled within a single transaction.
@@ -3542,7 +2650,7 @@ export namespace Tracker {
         update_array_async(
             sparql: string,
             sparql_length: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Executes asynchronously an array of SPARQL updates. All updates in the
@@ -3585,7 +2693,7 @@ export namespace Tracker {
         update_array_async(
             sparql: string,
             sparql_length: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -3611,7 +2719,7 @@ export namespace Tracker {
          * @param sparql String containing the SPARQL update query
          * @param cancellable Optional {@link Gio.Cancellable}
          */
-        update_async(sparql: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
+        update_async(sparql: string, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * Executes asynchronously a SPARQL update.
          *
@@ -3655,7 +2763,7 @@ export namespace Tracker {
          */
         update_async(
             sparql: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -3679,7 +2787,7 @@ export namespace Tracker {
          * @param cancellable Optional {@link Gio.Cancellable}
          * @returns a {@link GLib.Variant} with the generated URNs.
          */
-        update_blank(sparql: string, cancellable?: Gio.Cancellable | null): GLib.Variant;
+        update_blank(sparql: string, cancellable: Gio.Cancellable | null): GLib.Variant;
         /**
          * Executes asynchronously a SPARQL update and returns the names of the generated blank nodes.
          *
@@ -3688,7 +2796,7 @@ export namespace Tracker {
          * @param sparql String containing the SPARQL update query
          * @param cancellable Optional {@link Gio.Cancellable}
          */
-        update_blank_async(sparql: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<GLib.Variant>;
+        update_blank_async(sparql: string, cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.Variant>;
         /**
          * Executes asynchronously a SPARQL update and returns the names of the generated blank nodes.
          *
@@ -3714,7 +2822,7 @@ export namespace Tracker {
          */
         update_blank_async(
             sparql: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GLib.Variant> | void;
         /**
@@ -3747,7 +2855,7 @@ export namespace Tracker {
          * @param cancellable Optional {@link Gio.Cancellable}
          * @returns `TRUE` if there were no errors.
          */
-        update_resource(graph: string | null, resource: Resource, cancellable?: Gio.Cancellable | null): boolean;
+        update_resource(graph: string | null, resource: Resource, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Inserts asynchronously a resource as described by `resource` on the given `graph`.
          *
@@ -3761,7 +2869,7 @@ export namespace Tracker {
         update_resource_async(
             graph: string | null,
             resource: Resource,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Inserts asynchronously a resource as described by `resource` on the given `graph`.
@@ -3794,7 +2902,7 @@ export namespace Tracker {
         update_resource_async(
             graph: string | null,
             resource: Resource,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -3812,7 +2920,7 @@ export namespace Tracker {
          * @param cancellable Optional {@link Gio.Cancellable}
          * @returns A prepared statement
          */
-        update_statement(sparql: string, cancellable?: Gio.Cancellable | null): SparqlStatement;
+        update_statement(sparql: string, cancellable: Gio.Cancellable | null): SparqlStatement;
     }
 
     namespace SparqlCursor {
@@ -3872,11 +2980,13 @@ export namespace Tracker {
         /**
          * Number of columns available in the result set.
          * @read-only
+         * @default 0
          */
         get n_columns(): number;
         /**
          * Number of columns available in the result set.
          * @read-only
+         * @default 0
          */
         get nColumns(): number;
 
@@ -4035,7 +3145,7 @@ export namespace Tracker {
          * @param cancellable Optional {@link Gio.Cancellable}
          * @returns `false` if there are no more results or if an error is found, otherwise `true`.
          */
-        next(cancellable?: Gio.Cancellable | null): boolean;
+        next(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Iterates the cursor asyncronously to the next result.
          *
@@ -4048,7 +3158,7 @@ export namespace Tracker {
          * be iterated once at a time.
          * @param cancellable Optional {@link Gio.Cancellable}
          */
-        next_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        next_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Iterates the cursor asyncronously to the next result.
          *
@@ -4077,7 +3187,7 @@ export namespace Tracker {
          * @param callback user-defined {@link Gio.AsyncReadyCallback} to be called when            asynchronous operation is finished.
          */
         next_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -4154,6 +3264,7 @@ export namespace Tracker {
         /**
          * SPARQL query stored in this statement.
          * @construct-only
+         * @default null
          */
         get sparql(): string;
 
@@ -4255,7 +3366,7 @@ export namespace Tracker {
          * @param cancellable Optional {@link Gio.Cancellable}
          * @returns A {@link Tracker.SparqlCursor} with the query results.
          */
-        execute(cancellable?: Gio.Cancellable | null): SparqlCursor;
+        execute(cancellable: Gio.Cancellable | null): SparqlCursor;
         /**
          * Executes asynchronously the `SELECT` or `ASK` SPARQL query with the currently bound values.
          *
@@ -4271,7 +3382,7 @@ export namespace Tracker {
          * SPARQL query.
          * @param cancellable Optional {@link Gio.Cancellable}
          */
-        execute_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<SparqlCursor>;
+        execute_async(cancellable: Gio.Cancellable | null): globalThis.Promise<SparqlCursor>;
         /**
          * Executes asynchronously the `SELECT` or `ASK` SPARQL query with the currently bound values.
          *
@@ -4306,7 +3417,7 @@ export namespace Tracker {
          * @param callback user-defined {@link Gio.AsyncReadyCallback} to be called when            the asynchronous operation is finished.
          */
         execute_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<SparqlCursor> | void;
         /**
@@ -4347,7 +3458,7 @@ export namespace Tracker {
         serialize_async(
             flags: SerializeFlags,
             format: RdfFormat,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<Gio.InputStream>;
         /**
          * Serializes a `DESCRIBE` or `CONSTRUCT` query into the given RDF `format`.
@@ -4396,7 +3507,7 @@ export namespace Tracker {
         serialize_async(
             flags: SerializeFlags,
             format: RdfFormat,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Gio.InputStream> | void;
         /**
@@ -4418,7 +3529,7 @@ export namespace Tracker {
          * @param cancellable Optional {@link Gio.Cancellable}
          * @returns `true` if the update finished with no errors, `false` otherwise
          */
-        update(cancellable?: Gio.Cancellable | null): boolean;
+        update(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Executes asynchronously the `INSERT`/`DELETE` SPARQL query series with the currently bound values.
          *
@@ -4430,7 +3541,7 @@ export namespace Tracker {
          * `SELECT`/`ASK`/`DESCRIBE`/`CONSTRUCT` SPARQL queries.
          * @param cancellable Optional {@link Gio.Cancellable}
          */
-        update_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        update_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Executes asynchronously the `INSERT`/`DELETE` SPARQL query series with the currently bound values.
          *
@@ -4457,7 +3568,7 @@ export namespace Tracker {
          * @param callback user-defined {@link Gio.AsyncReadyCallback} to be called when            the asynchronous operation is finished.
          */
         update_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**

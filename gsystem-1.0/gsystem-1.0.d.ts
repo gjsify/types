@@ -55,7 +55,7 @@ export namespace GSystem {
     function dfd_and_name_get_all_xattrs(
         dfd: number,
         name: string,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): [boolean, GLib.Variant];
     /**
      * @param dfd
@@ -67,7 +67,7 @@ export namespace GSystem {
         dfd: number,
         name: string,
         xattrs: GLib.Variant,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): boolean;
     /**
      * @param dfd_iter
@@ -94,7 +94,7 @@ export namespace GSystem {
      * @param fd a file descriptor
      * @param cancellable Cancellable
      */
-    function fd_get_all_xattrs(fd: number, cancellable?: Gio.Cancellable | null): [boolean, GLib.Variant];
+    function fd_get_all_xattrs(fd: number, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant];
     /**
      * For each attribute in `xattrs`, set its value on the file or
      * directory referred to by `fd`.  This function does not remove any
@@ -103,7 +103,7 @@ export namespace GSystem {
      * @param xattrs Extended attributes
      * @param cancellable Cancellable
      */
-    function fd_set_all_xattrs(fd: number, xattrs: GLib.Variant, cancellable?: Gio.Cancellable | null): boolean;
+    function fd_set_all_xattrs(fd: number, xattrs: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
     /**
      * Merely wraps UNIX `chmod()`.
      * @param path Path to file
@@ -111,7 +111,7 @@ export namespace GSystem {
      * @param cancellable a {@link Gio.Cancellable}
      * @returns `true` on success, `false` on error
      */
-    function file_chmod(path: Gio.File, mode: number, cancellable?: Gio.Cancellable | null): boolean;
+    function file_chmod(path: Gio.File, mode: number, cancellable: Gio.Cancellable | null): boolean;
     /**
      * Merely wraps UNIX `chown()`.
      * @param path Path to file
@@ -120,7 +120,7 @@ export namespace GSystem {
      * @param cancellable a {@link Gio.Cancellable}
      * @returns `true` on success, `false` on error
      */
-    function file_chown(path: Gio.File, owner: number, group: number, cancellable?: Gio.Cancellable | null): boolean;
+    function file_chown(path: Gio.File, owner: number, group: number, cancellable: Gio.Cancellable | null): boolean;
     /**
      * Like `g_file_create()`, except this function allows specifying the
      * access mode.  This allows atomically creating private files.
@@ -131,7 +131,7 @@ export namespace GSystem {
     function file_create(
         file: Gio.File,
         mode: number,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): [boolean, Gio.OutputStream | null];
     /**
      * Like `g_file_make_directory()`, except does not throw an error if the
@@ -140,7 +140,7 @@ export namespace GSystem {
      * @param with_parents Also create parent directories
      * @param cancellable a {@link Gio.Cancellable}
      */
-    function file_ensure_directory(dir: Gio.File, with_parents: boolean, cancellable?: Gio.Cancellable | null): boolean;
+    function file_ensure_directory(dir: Gio.File, with_parents: boolean, cancellable: Gio.Cancellable | null): boolean;
     /**
      * Wraps UNIX `mkdir()` function with support for `cancellable`, and
      * uses `error` instead of errno.
@@ -148,7 +148,7 @@ export namespace GSystem {
      * @param mode Create directory with these permissions
      * @param cancellable a {@link Gio.Cancellable}
      */
-    function file_ensure_directory_mode(dir: Gio.File, mode: number, cancellable?: Gio.Cancellable | null): boolean;
+    function file_ensure_directory_mode(dir: Gio.File, mode: number, cancellable: Gio.Cancellable | null): boolean;
     /**
      * This is a version of `g_file_enumerator_next_file()` that's easier to
      * use correctly from C programs.  With `g_file_enumerator_next_file()`,
@@ -193,7 +193,7 @@ export namespace GSystem {
      */
     function file_enumerator_iterate(
         direnum: Gio.FileEnumerator,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): [boolean, Gio.FileInfo | null, Gio.File | null];
     /**
      * Read all extended attributes of `f` in a canonical sorted order, and
@@ -204,7 +204,7 @@ export namespace GSystem {
      * @param f a {@link Gio.File}
      * @param cancellable Cancellable
      */
-    function file_get_all_xattrs(f: Gio.File, cancellable?: Gio.Cancellable | null): [boolean, GLib.Variant];
+    function file_get_all_xattrs(f: Gio.File, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant];
     /**
      * Like `g_file_get_basename()`, but returns a constant copy so callers
      * don't need to free the result.
@@ -234,7 +234,7 @@ export namespace GSystem {
      * @param cancellable a {@link Gio.Cancellable}
      * @returns `true` on success, `false` on error
      */
-    function file_lchown(path: Gio.File, owner: number, group: number, cancellable?: Gio.Cancellable | null): boolean;
+    function file_lchown(path: Gio.File, owner: number, group: number, cancellable: Gio.Cancellable | null): boolean;
     /**
      * First tries to use the UNIX `link()` call, but if the files are on
      * separate devices, fall back to copying via `g_file_copy()`.
@@ -260,7 +260,7 @@ export namespace GSystem {
         src: Gio.File,
         dest: Gio.File,
         flags: Gio.FileCopyFlags,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): boolean;
     /**
      * This function is similar to `gs_file_linkcopy()`, except it also uses
@@ -275,7 +275,7 @@ export namespace GSystem {
         src: Gio.File,
         dest: Gio.File,
         flags: Gio.FileCopyFlags,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): boolean;
     /**
      * Like `g_file_load_contents()`, except validates the contents are
@@ -283,7 +283,7 @@ export namespace GSystem {
      * @param file Path to file whose contents must be UTF-8
      * @param cancellable
      */
-    function file_load_contents_utf8(file: Gio.File, cancellable?: Gio.Cancellable | null): string;
+    function file_load_contents_utf8(file: Gio.File, cancellable: Gio.Cancellable | null): string;
     /**
      * Return a {@link GLib.Bytes} which references a readonly view of the contents of
      * `file`.  This function uses {@link GLib.MappedFile} internally.
@@ -291,14 +291,14 @@ export namespace GSystem {
      * @param cancellable
      * @returns a newly referenced {@link GLib.Bytes}
      */
-    function file_map_readonly(file: Gio.File, cancellable?: Gio.Cancellable | null): GLib.Bytes;
+    function file_map_readonly(file: Gio.File, cancellable: Gio.Cancellable | null): GLib.Bytes;
     /**
      * On success, sets `out_fd` to a file descriptor for the directory
      * that can be used with UNIX functions such as `openat()`.
      * @param path Directory name
      * @param cancellable Cancellable
      */
-    function file_open_dir_fd(path: Gio.File, cancellable?: Gio.Cancellable | null): [boolean, number];
+    function file_open_dir_fd(path: Gio.File, cancellable: Gio.Cancellable | null): [boolean, number];
     /**
      * On success, sets `out_fd` to a file descriptor for the directory
      * that can be used with UNIX functions such as `openat()`.
@@ -309,7 +309,7 @@ export namespace GSystem {
     function file_open_dir_fd_at(
         parent_dfd: number,
         name: string,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): [boolean, number];
     /**
      * Like `g_file_open_tmp()`, except the file will be created in the
@@ -323,7 +323,7 @@ export namespace GSystem {
     function file_open_in_tmpdir(
         tmpdir: Gio.File,
         mode: number,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): [boolean, Gio.File, Gio.OutputStream | null];
     /**
      * Like `g_file_open_tmp()`, except the file will be created in the
@@ -337,7 +337,7 @@ export namespace GSystem {
     function file_open_in_tmpdir_at(
         tmpdir_fd: number,
         mode: number,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): [boolean, string, Gio.OutputStream | null];
     /**
      * Wrapper for `openat()` using `O_RDONLY` with `O_NOATIME` if available.
@@ -345,7 +345,7 @@ export namespace GSystem {
      * @param name Pathname, relative to `dfd`
      * @param cancellable Cancellable
      */
-    function file_openat_noatime(dfd: number, name: string, cancellable?: Gio.Cancellable | null): [boolean, number];
+    function file_openat_noatime(dfd: number, name: string, cancellable: Gio.Cancellable | null): [boolean, number];
     /**
      * Like `g_file_read()`, but try to avoid updating the file's
      * access time.  This should be used by background scanning
@@ -354,7 +354,7 @@ export namespace GSystem {
      * @param cancellable a {@link Gio.Cancellable}
      * @returns A new input stream, or `null` on error
      */
-    function file_read_noatime(file: Gio.File, cancellable?: Gio.Cancellable | null): Gio.InputStream;
+    function file_read_noatime(file: Gio.File, cancellable: Gio.Cancellable | null): Gio.InputStream;
     /**
      * Return a {@link Gio.File} that contains the same path with symlinks
      * followed. That is, it's a {@link Gio.File} whose path is the result
@@ -370,7 +370,7 @@ export namespace GSystem {
      * @param cancellable a {@link Gio.Cancellable}
      * @returns `true` on success, `false` on error
      */
-    function file_rename(from: Gio.File, to: Gio.File, cancellable?: Gio.Cancellable | null): boolean;
+    function file_rename(from: Gio.File, to: Gio.File, cancellable: Gio.Cancellable | null): boolean;
     /**
      * For each attribute in `xattrs`, set its value on the file or
      * directory referred to by `file`.  This function does not remove any
@@ -379,14 +379,14 @@ export namespace GSystem {
      * @param xattrs Extended attributes
      * @param cancellable Cancellable
      */
-    function file_set_all_xattrs(file: Gio.File, xattrs: GLib.Variant, cancellable?: Gio.Cancellable | null): boolean;
+    function file_set_all_xattrs(file: Gio.File, xattrs: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
     /**
      * Wraps the UNIX `fsync()` function (or `fdatasync()`, if available), which
      * ensures that the data in `file` is on non-volatile storage.
      * @param file a {@link Gio.File}
      * @param cancellable
      */
-    function file_sync_data(file: Gio.File, cancellable?: Gio.Cancellable | null): boolean;
+    function file_sync_data(file: Gio.File, cancellable: Gio.Cancellable | null): boolean;
     /**
      * Like `g_file_delete()`, except this function does not follow Unix
      * symbolic links, and will delete a symbolic link even if it's
@@ -396,7 +396,7 @@ export namespace GSystem {
      * @param cancellable a {@link Gio.Cancellable}
      * @returns `true` on success, `false` on error
      */
-    function file_unlink(path: Gio.File, cancellable?: Gio.Cancellable | null): boolean;
+    function file_unlink(path: Gio.File, cancellable: Gio.Cancellable | null): boolean;
     /**
      * Generate a name suitable for use as a temporary file.  This
      * function does no I/O; it is not guaranteed that a file with that
@@ -404,7 +404,7 @@ export namespace GSystem {
      * @param prefix String prepended to the result
      * @param suffix String suffixed to the result
      */
-    function fileutil_gen_tmp_name(prefix?: string | null, suffix?: string | null): string;
+    function fileutil_gen_tmp_name(prefix: string | null, suffix: string | null): string;
     /**
      * Log structured data in an operating-system specific fashion.  The
      * parameter `opts` should be an array of UTF-8 KEY=VALUE strings.
@@ -415,14 +415,14 @@ export namespace GSystem {
      * @param message Text message to send
      * @param keys Optional structured data
      */
-    function log_structured(message: string, keys?: string[] | null): void;
+    function log_structured(message: string, keys: string[] | null): void;
     /**
      * Like `gs_log_structured()`, but also print to standard output (if it
      * is not already connected to the system log).
      * @param message A message to log
      * @param keys Optional structured data
      */
-    function log_structured_print(message: string, keys?: string[] | null): void;
+    function log_structured_print(message: string, keys: string[] | null): void;
     /**
      * Use `openat()` to open a directory, using a standard set of flags.
      * @param dfd File descriptor for origin directory
@@ -455,7 +455,7 @@ export namespace GSystem {
      * @param cancellable
      * @returns `true` on success
      */
-    function shutil_cp_a(src: Gio.File, dest: Gio.File, cancellable?: Gio.Cancellable | null): boolean;
+    function shutil_cp_a(src: Gio.File, dest: Gio.File, cancellable: Gio.Cancellable | null): boolean;
     /**
      * Recursively copy path `src` (which must be a directory) to the
      * target `dest`.  If possible, hardlinks are used; if a hardlink is
@@ -466,14 +466,14 @@ export namespace GSystem {
      * @param cancellable
      * @returns `true` on success
      */
-    function shutil_cp_al_or_fallback(src: Gio.File, dest: Gio.File, cancellable?: Gio.Cancellable | null): boolean;
+    function shutil_cp_al_or_fallback(src: Gio.File, dest: Gio.File, cancellable: Gio.Cancellable | null): boolean;
     /**
      * Recursively delete the filename referenced by `path`; it may be a
      * file or directory.  No error is thrown if `path` does not exist.
      * @param path A file or directory
      * @param cancellable
      */
-    function shutil_rm_rf(path: Gio.File, cancellable?: Gio.Cancellable | null): boolean;
+    function shutil_rm_rf(path: Gio.File, cancellable: Gio.Cancellable | null): boolean;
     /**
      * Recursively delete the filename referenced by the combination of
      * the directory fd@dfd and `path`; it may be a file or directory.  No
@@ -482,7 +482,7 @@ export namespace GSystem {
      * @param path Path
      * @param cancellable Cancellable
      */
-    function shutil_rm_rf_at(dfd: number, path: string, cancellable?: Gio.Cancellable | null): boolean;
+    function shutil_rm_rf_at(dfd: number, path: string, cancellable: Gio.Cancellable | null): boolean;
     /**
      * Use this function when you want your code to behave differently
      * depeneding on whether your program was started as a systemd unit,
@@ -576,7 +576,7 @@ export namespace GSystem {
          * @param line String to output
          * @param cancellable
          */
-        begin_status_line(line: string, cancellable?: Gio.Cancellable | null): boolean;
+        begin_status_line(line: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Complete a series of invocations of `gs_console_begin_status_line()`,
          * returning the stream to normal mode.  The last printed status line
@@ -584,7 +584,7 @@ export namespace GSystem {
          * string to clear it before invoking this function.
          * @param cancellable
          */
-        end_status_line(cancellable?: Gio.Cancellable | null): boolean;
+        end_status_line(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Write `prompt` to standard output, then switch output echo off, read
          * a result string, then switch output echo back on.
@@ -592,7 +592,7 @@ export namespace GSystem {
          * @param cancellable
          * @returns A string, or `null` on error
          */
-        read_password(prompt: string, cancellable?: Gio.Cancellable | null): string;
+        read_password(prompt: string, cancellable: Gio.Cancellable | null): string;
     }
 
     namespace Subprocess {
@@ -650,13 +650,13 @@ export namespace GSystem {
 
         _init(...args: any[]): void;
 
-        static ['new'](context: SubprocessContext, cancellable?: Gio.Cancellable | null): Subprocess;
+        static ['new'](context: SubprocessContext, cancellable: Gio.Cancellable | null): Subprocess;
 
         static new_simple_argv(
             argv: string[],
             stdout_disposition: SubprocessStreamDisposition,
             stderr_disposition: SubprocessStreamDisposition,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): Subprocess;
 
         // Signals
@@ -747,7 +747,7 @@ export namespace GSystem {
          * Start an asynchronous wait for the subprocess `self` to exit.
          * @param cancellable a {@link Gio.Cancellable}
          */
-        wait(cancellable?: Gio.Cancellable | null): globalThis.Promise<number>;
+        wait(cancellable: Gio.Cancellable | null): globalThis.Promise<number>;
         /**
          * Start an asynchronous wait for the subprocess `self` to exit.
          * @param cancellable a {@link Gio.Cancellable}
@@ -760,7 +760,7 @@ export namespace GSystem {
          * @param callback Invoked when process exits, or `cancellable` is cancelled
          */
         wait(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<number> | void;
         /**
@@ -781,13 +781,13 @@ export namespace GSystem {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` on success, `false` if `cancellable` was cancelled
          */
-        wait_sync(cancellable?: Gio.Cancellable | null): [boolean, number];
+        wait_sync(cancellable: Gio.Cancellable | null): [boolean, number];
         /**
          * Combines `gs_subprocess_wait_sync()` with `g_spawn_check_exit_status()`.
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` on success, `false` if process exited abnormally, or `cancellable` was cancelled
          */
-        wait_sync_check(cancellable?: Gio.Cancellable | null): boolean;
+        wait_sync_check(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -830,7 +830,7 @@ export namespace GSystem {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -873,456 +873,7 @@ export namespace GSystem {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
-        /**
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`.
-         *
-         * Whenever the `source_property` is changed the `target_property` is
-         * updated using the same value. For instance:
-         *
-         *
-         * ```c
-         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-         * ```
-         *
-         *
-         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
-         * updated with the same value of the "active" property of the action {@link GObject.Object}
-         * instance.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well.
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call `g_object_unref()` on the returned
-         * {@link GObject.Binding} instance.
-         *
-         * Removing the binding by calling `g_object_unref()` on it must only be done if
-         * the binding, `source` and `target` are only used from a single thread and it
-         * is clear that both `source` and `target` outlive the binding. Especially it
-         * is not safe to rely on this if the binding, `source` or `target` can be
-         * finalized from different threads. Keep another reference to the binding and
-         * use `g_binding_unbind()` instead to be on the safe side.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-        ): GObject.Binding;
-        /**
-         * Complete version of `g_object_bind_property()`.
-         *
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`, allowing you to set the transformation functions to be used by
-         * the binding.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property_full(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
-        ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
-        /**
-         * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all `GInitiallyUnowneds` are created with a floating reference
-         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
-         */
-        force_floating(): void;
-        /**
-         * Increases the freeze count on `object`. If the freeze count is
-         * non-zero, the emission of "notify" signals on `object` is
-         * stopped. The signals are queued until the freeze count is decreased
-         * to zero. Duplicate notifications are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
-         * object is frozen.
-         *
-         * This is necessary for accessors that modify multiple properties to prevent
-         * premature notification while the object is still being modified.
-         */
-        freeze_notify(): void;
-        /**
-         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
-         * @param key name of the key for that association
-         * @returns the data if found,          or `null` if no such data exists.
-         */
-        get_data(key: string): any | null;
-        /**
-         * Gets a property of an object.
-         *
-         * The value can be:
-         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
-         * - a GObject.Value initialized with the expected type of the property
-         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
-         *
-         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
-         *
-         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
-         * @param property_name The name of the property to get
-         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
-         */
-        get_property(property_name: string, value: GObject.Value | any): any;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        get_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Gets `n_properties` properties for an `object`.
-         * Obtained properties will be set to `values`. All properties must be valid.
-         * Warnings will be emitted and undefined behaviour may result if invalid
-         * properties are passed in.
-         * @param names the names of each property to get
-         * @param values the values of each property to get
-         */
-        getv(names: string[], values: (GObject.Value | any)[]): void;
-        /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns `true` if `object` has a floating reference
-         */
-        is_floating(): boolean;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param property_name the name of a property installed on the class of `object`.
-         */
-        notify(property_name: string): void;
-        /**
-         * Emits a "notify" signal for the property specified by `pspec` on `object`.
-         *
-         * This function omits the property name lookup, hence it is faster than
-         * `g_object_notify()`.
-         *
-         * One way to avoid using `g_object_notify()` from within the
-         * class that registered the properties, and using `g_object_notify_by_pspec()`
-         * instead, is to store the GParamSpec used with
-         * `g_object_class_install_property()` inside a static array, e.g.:
-         *
-         *
-         * ```c
-         *   typedef enum
-         *   {
-         *     PROP_FOO = 1,
-         *     PROP_LAST
-         *   } MyObjectProperty;
-         *
-         *   static GParamSpec *properties[PROP_LAST];
-         *
-         *   static void
-         *   my_object_class_init (MyObjectClass *klass)
-         *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
-         *                                              0, 100,
-         *                                              50,
-         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-         *     g_object_class_install_property (gobject_class,
-         *                                      PROP_FOO,
-         *                                      properties[PROP_FOO]);
-         *   }
-         * ```
-         *
-         *
-         * and then notify a change on the "foo" property with:
-         *
-         *
-         * ```c
-         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-         * ```
-         *
-         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
-         */
-        notify_by_pspec(pspec: GObject.ParamSpec): void;
-        /**
-         * Increases the reference count of `object`.
-         *
-         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC `typeof()`
-         * extension), so any casting the caller needs to do on the return type must be
-         * explicit.
-         * @returns the same `object`
-         */
-        ref(): GObject.Object;
-        /**
-         * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
-         *
-         * In other words, if the object is floating, then this call "assumes
-         * ownership" of the floating reference, converting it to a normal
-         * reference by clearing the floating flag while leaving the reference
-         * count unchanged.  If the object is not floating, then this call
-         * adds a new normal reference increasing the reference count by one.
-         *
-         * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for `g_object_ref()`.
-         * @returns `object`
-         */
-        ref_sink(): GObject.Object;
-        /**
-         * Releases all references to other objects. This can be used to break
-         * reference cycles.
-         *
-         * This function should only be called from object system implementations.
-         */
-        run_dispose(): void;
-        /**
-         * Each object carries around a table of associations from
-         * strings to pointers.  This function lets you set an association.
-         *
-         * If the object already had an association with that name,
-         * the old association will be destroyed.
-         *
-         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
-         * This means a copy of `key` is kept permanently (even after `object` has been
-         * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
-         * @param key name of the key
-         * @param data data to associate with that key
-         */
-        set_data(key: string, data?: any | null): void;
-        /**
-         * Sets a property on an object.
-         * @param property_name The name of the property to set
-         * @param value The value to set the property to
-         */
-        set_property(property_name: string, value: GObject.Value | any): void;
-        /**
-         * Remove a specified datum from the object's data associations,
-         * without invoking the association's destroy handler.
-         * @param key name of the key
-         * @returns the data if found, or `null`          if no such data exists.
-         */
-        steal_data(key: string): any | null;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()` and removes the `data` from object
-         * without invoking its `destroy()` function (if any was
-         * set).
-         * Usually, calling this function is only required to update
-         * user data pointers with a destroy notifier, for example:
-         *
-         * ```c
-         * void
-         * object_add_to_user_list (GObject     *object,
-         *                          const gchar *new_string)
-         * {
-         *   // the quark, naming the object data
-         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-         *   // retrieve the old string list
-         *   GList *list = g_object_steal_qdata (object, quark_string_list);
-         *
-         *   // prepend new string
-         *   list = g_list_prepend (list, g_strdup (new_string));
-         *   // this changed 'list', so we need to set it again
-         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-         * }
-         * static void
-         * free_string_list (gpointer data)
-         * {
-         *   GList *node, *list = data;
-         *
-         *   for (node = list; node; node = node->next)
-         *     g_free (node->data);
-         *   g_list_free (list);
-         * }
-         * ```
-         *
-         * Using `g_object_get_qdata()` in the above example, instead of
-         * `g_object_steal_qdata()` would have left the destroy function set,
-         * and thus the partial string list would have been freed upon
-         * `g_object_set_qdata_full()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        steal_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Reverts the effect of a previous call to
-         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
-         * and when it reaches zero, queued "notify" signals are emitted.
-         *
-         * Duplicate notifications for each property are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
-         * in which they have been queued.
-         *
-         * It is an error to call this function when the freeze count is zero.
-         */
-        thaw_notify(): void;
-        /**
-         * Decreases the reference count of `object`. When its reference count
-         * drops to 0, the object is finalized (i.e. its memory is freed).
-         *
-         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
-         * an instance variable of another object), it is recommended to clear the
-         * pointer to `null` rather than retain a dangling pointer to a potentially
-         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
-         */
-        unref(): void;
-        /**
-         * This function essentially limits the life time of the `closure` to
-         * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling `g_closure_invalidate()` on
-         * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
-         * added as marshal guards to the `closure`, to ensure that an extra
-         * reference count is held on `object` during invocation of the
-         * `closure`.  Usually, this function will be called on closures that
-         * use this `object` as closure data.
-         * @param closure {@link GObject.Closure} to watch
-         */
-        watch_closure(closure: GObject.Closure): void;
-        /**
-         * the `constructed` function is called by `g_object_new()` as the
-         *  final step of the object creation process.  At the point of the call, all
-         *  construction properties have been set on the object.  The purpose of this
-         *  call is to allow for object initialisation steps that can only be performed
-         *  after construction properties have been set.  `constructed` implementors
-         *  should chain up to the `constructed` call of their parent class to allow it
-         *  to complete its initialisation.
-         * @virtual
-         */
-        vfunc_constructed(): void;
-        /**
-         * emits property change notification for a bunch
-         *  of properties. Overriding `dispatch_properties_changed` should be rarely
-         *  needed.
-         * @param n_pspecs
-         * @param pspecs
-         * @virtual
-         */
-        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
-        /**
-         * the `dispose` function is supposed to drop all references to other
-         *  objects, but keep the instance otherwise intact, so that client method
-         *  invocations still work. It may be run multiple times (due to reference
-         *  loops). Before returning, `dispose` should chain up to the `dispose` method
-         *  of the parent class.
-         * @virtual
-         */
-        vfunc_dispose(): void;
-        /**
-         * instance finalization function, should finish the finalization of
-         *  the instance begun in `dispose` and chain up to the `finalize` method of the
-         *  parent class.
-         * @virtual
-         */
-        vfunc_finalize(): void;
-        /**
-         * the generic getter for all properties of this type. Should be
-         *  overridden for every type with properties.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param pspec
-         * @virtual
-         */
-        vfunc_notify(pspec: GObject.ParamSpec): void;
-        /**
-         * the generic setter for all properties of this type. Should be
-         *  overridden for every type with properties. If implementations of
-         *  `set_property` don't emit property change notification explicitly, this will
-         *  be done implicitly by the type system. However, if the notify signal is
-         *  emitted explicitly, the type system will not emit it a second time.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
-         * @param id Handler ID of the handler to be disconnected
-         */
-        disconnect(id: number): void;
-        /**
-         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
-         * @param properties Object containing the properties to set
-         */
-        set(properties: { [key: string]: any }): void;
-        /**
-         * Blocks a handler of an instance so it will not be called during any signal emissions
-         * @param id Handler ID of the handler to be blocked
-         */
-        block_signal_handler(id: number): void;
-        /**
-         * Unblocks a handler so it will be called again during any signal emissions
-         * @param id Handler ID of the handler to be unblocked
-         */
-        unblock_signal_handler(id: number): void;
-        /**
-         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
-         * @param detailedName Name of the signal to stop emission of
-         */
-        stop_emission_by_name(detailedName: string): void;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
     namespace SubprocessContext {

@@ -449,7 +449,7 @@ export namespace Malcontent {
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
          * @returns app filter for the queried user
          */
-        get_app_filter(user_id: never, flags: ManagerGetValueFlags, cancellable?: Gio.Cancellable | null): AppFilter;
+        get_app_filter(user_id: never, flags: ManagerGetValueFlags, cancellable: Gio.Cancellable | null): AppFilter;
         /**
          * Asynchronously get a snapshot of the app filter settings for the given
          * `user_id`.
@@ -463,7 +463,7 @@ export namespace Malcontent {
         get_app_filter_async(
             user_id: never,
             flags: ManagerGetValueFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<AppFilter>;
         /**
          * Asynchronously get a snapshot of the app filter settings for the given
@@ -496,7 +496,7 @@ export namespace Malcontent {
         get_app_filter_async(
             user_id: never,
             flags: ManagerGetValueFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<AppFilter> | void;
         /**
@@ -516,7 +516,7 @@ export namespace Malcontent {
         get_session_limits(
             user_id: never,
             flags: ManagerGetValueFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): SessionLimits;
         /**
          * Asynchronously get a snapshot of the session limit settings for the given
@@ -532,7 +532,7 @@ export namespace Malcontent {
         get_session_limits_async(
             user_id: never,
             flags: ManagerGetValueFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<SessionLimits>;
         /**
          * Asynchronously get a snapshot of the session limit settings for the given
@@ -567,7 +567,7 @@ export namespace Malcontent {
         get_session_limits_async(
             user_id: never,
             flags: ManagerGetValueFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<SessionLimits> | void;
         /**
@@ -584,7 +584,7 @@ export namespace Malcontent {
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
          * @returns web filter for the queried user
          */
-        get_web_filter(user_id: never, flags: ManagerGetValueFlags, cancellable?: Gio.Cancellable | null): WebFilter;
+        get_web_filter(user_id: never, flags: ManagerGetValueFlags, cancellable: Gio.Cancellable | null): WebFilter;
         /**
          * Asynchronously get a snapshot of the web filter settings for the given
          * `user_id`.
@@ -599,7 +599,7 @@ export namespace Malcontent {
         get_web_filter_async(
             user_id: never,
             flags: ManagerGetValueFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<WebFilter>;
         /**
          * Asynchronously get a snapshot of the web filter settings for the given
@@ -634,7 +634,7 @@ export namespace Malcontent {
         get_web_filter_async(
             user_id: never,
             flags: ManagerGetValueFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<WebFilter> | void;
         /**
@@ -656,7 +656,7 @@ export namespace Malcontent {
             user_id: never,
             app_filter: AppFilter,
             flags: ManagerSetValueFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Asynchronously set the app filter settings for the given `user_id` to the
@@ -676,7 +676,7 @@ export namespace Malcontent {
             user_id: never,
             app_filter: AppFilter,
             flags: ManagerSetValueFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously set the app filter settings for the given `user_id` to the
@@ -719,7 +719,7 @@ export namespace Malcontent {
             user_id: never,
             app_filter: AppFilter,
             flags: ManagerSetValueFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -741,7 +741,7 @@ export namespace Malcontent {
             user_id: never,
             session_limits: SessionLimits,
             flags: ManagerSetValueFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Asynchronously set the session limits settings for the given `user_id` to the
@@ -760,7 +760,7 @@ export namespace Malcontent {
             user_id: never,
             session_limits: SessionLimits,
             flags: ManagerSetValueFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously set the session limits settings for the given `user_id` to the
@@ -801,7 +801,7 @@ export namespace Malcontent {
             user_id: never,
             session_limits: SessionLimits,
             flags: ManagerSetValueFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -823,7 +823,7 @@ export namespace Malcontent {
             user_id: never,
             web_filter: WebFilter,
             flags: ManagerSetValueFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Asynchronously set the web filter settings for the given `user_id` to the
@@ -842,7 +842,7 @@ export namespace Malcontent {
             user_id: never,
             web_filter: WebFilter,
             flags: ManagerSetValueFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously set the web filter settings for the given `user_id` to the
@@ -883,7 +883,7 @@ export namespace Malcontent {
             user_id: never,
             web_filter: WebFilter,
             flags: ManagerSetValueFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -913,13 +913,13 @@ export namespace Malcontent {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             display_name: string;
             displayName: string;
-            icon_path: string;
-            iconPath: string;
-            locale: string;
+            icon_path: string | null;
+            iconPath: string | null;
+            locale: string | null;
             login_time: bigint | number;
             loginTime: bigint | number;
-            real_name: string;
-            realName: string;
+            real_name: string | null;
+            realName: string | null;
             uid: number;
             user_type: UserType;
             userType: UserType;
@@ -949,6 +949,7 @@ export namespace Malcontent {
          * when you need a non-`NULl` human readable name for a user.
          * @since 0.14.0
          * @read-only
+         * @default unknown
          */
         get display_name(): string;
         /**
@@ -958,6 +959,7 @@ export namespace Malcontent {
          * when you need a non-`NULl` human readable name for a user.
          * @since 0.14.0
          * @read-only
+         * @default unknown
          */
         get displayName(): string;
         /**
@@ -966,16 +968,18 @@ export namespace Malcontent {
          * This may be `NULL` if not set on the system.
          * @since 0.14.0
          * @read-only
+         * @default null
          */
-        get icon_path(): string;
+        get icon_path(): string | null;
         /**
          * Path to the user’s icon/avatar image.
          *
          * This may be `NULL` if not set on the system.
          * @since 0.14.0
          * @read-only
+         * @default null
          */
-        get iconPath(): string;
+        get iconPath(): string | null;
         /**
          * The user’s login locale.
          *
@@ -989,14 +993,16 @@ export namespace Malcontent {
          * (`""`) then the user is using the system default locale.
          * @since 0.14.0
          * @read-only
+         * @default null
          */
-        get locale(): string;
+        get locale(): string | null;
         /**
          * The last login time for this user, in seconds since the Unix epoch.
          *
          * If the user has never logged in, this will be zero.
          * @since 0.14.0
          * @read-only
+         * @default 0
          */
         get login_time(): number;
         /**
@@ -1005,6 +1011,7 @@ export namespace Malcontent {
          * If the user has never logged in, this will be zero.
          * @since 0.14.0
          * @read-only
+         * @default 0
          */
         get loginTime(): number;
         /**
@@ -1015,8 +1022,9 @@ export namespace Malcontent {
          * {@link Malcontent.User.display_name}.
          * @since 0.14.0
          * @read-only
+         * @default unknown
          */
-        get real_name(): string;
+        get real_name(): string | null;
         /**
          * The user’s real name.
          *
@@ -1025,26 +1033,30 @@ export namespace Malcontent {
          * {@link Malcontent.User.display_name}.
          * @since 0.14.0
          * @read-only
+         * @default unknown
          */
-        get realName(): string;
+        get realName(): string | null;
         /**
          * The user’s UID.
          *
          * This will not change after the {@link Malcontent.User} is constructed.
          * @since 0.14.0
          * @read-only
+         * @default 0
          */
         get uid(): number;
         /**
          * Type of the user.
          * @since 0.14.0
          * @read-only
+         * @default Malcontent.UserType.UNKNOWN
          */
         get user_type(): UserType;
         /**
          * Type of the user.
          * @since 0.14.0
          * @read-only
+         * @default Malcontent.UserType.UNKNOWN
          */
         get userType(): UserType;
         /**
@@ -1053,6 +1065,7 @@ export namespace Malcontent {
          * This will not change after the {@link Malcontent.User} is constructed.
          * @since 0.14.0
          * @read-only
+         * @default unknown
          */
         get username(): string;
 
@@ -1235,12 +1248,14 @@ export namespace Malcontent {
          * Whether the user manager has finished loading yet.
          * @since 0.14.0
          * @read-only
+         * @default false
          */
         get is_loaded(): boolean;
         /**
          * Whether the user manager has finished loading yet.
          * @since 0.14.0
          * @read-only
+         * @default false
          */
         get isLoaded(): boolean;
 
@@ -1288,7 +1303,7 @@ export namespace Malcontent {
          * Get all the non-system users on the system.
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
          */
-        get_all_users_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<User[]>;
+        get_all_users_async(cancellable: Gio.Cancellable | null): globalThis.Promise<User[]>;
         /**
          * Get all the non-system users on the system.
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
@@ -1301,7 +1316,7 @@ export namespace Malcontent {
          * @param callback callback for when the operation is complete
          */
         get_all_users_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<User[]> | void;
         /**
@@ -1318,7 +1333,7 @@ export namespace Malcontent {
          * @param user user to get the family members for
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
          */
-        get_family_members_for_user_async(user: User, cancellable?: Gio.Cancellable | null): globalThis.Promise<User[]>;
+        get_family_members_for_user_async(user: User, cancellable: Gio.Cancellable | null): globalThis.Promise<User[]>;
         /**
          * Get the members of the family containing `user`.
          *
@@ -1342,7 +1357,7 @@ export namespace Malcontent {
          */
         get_family_members_for_user_async(
             user: User,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<User[]> | void;
         /**
@@ -1368,7 +1383,7 @@ export namespace Malcontent {
          * @param uid user ID to fetch
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
          */
-        get_user_by_uid_async(uid: never, cancellable?: Gio.Cancellable | null): globalThis.Promise<User | null>;
+        get_user_by_uid_async(uid: never, cancellable: Gio.Cancellable | null): globalThis.Promise<User | null>;
         /**
          * Get the user with the given `uid`.
          *
@@ -1394,7 +1409,7 @@ export namespace Malcontent {
          */
         get_user_by_uid_async(
             uid: never,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<User | null> | void;
         /**
@@ -1414,7 +1429,7 @@ export namespace Malcontent {
          */
         get_user_by_username_async(
             username: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<User | null>;
         /**
          * Get the user with the given `username`.
@@ -1441,7 +1456,7 @@ export namespace Malcontent {
          */
         get_user_by_username_async(
             username: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<User | null> | void;
         /**
@@ -1459,7 +1474,7 @@ export namespace Malcontent {
          * It does not currently support being called more than once.
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`,
          */
-        load_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        load_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Load the user data from the system.
          *
@@ -1480,7 +1495,7 @@ export namespace Malcontent {
          * @param callback callback for when the operation is complete
          */
         load_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**

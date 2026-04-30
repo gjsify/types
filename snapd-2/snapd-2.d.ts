@@ -644,8 +644,8 @@ export namespace Snapd {
     function login_async(
         username: string,
         password: string,
-        otp?: string | null,
-        cancellable?: Gio.Cancellable | null,
+        otp: string | null,
+        cancellable: Gio.Cancellable | null,
     ): globalThis.Promise<AuthData>;
     /**
      * Asynchronously get authorization to install/remove snaps.
@@ -679,9 +679,9 @@ export namespace Snapd {
     function login_async(
         username: string,
         password: string,
-        otp?: string | null,
-        cancellable?: Gio.Cancellable | null,
-        callback?: Gio.AsyncReadyCallback<string> | null,
+        otp: string | null,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<string> | null,
     ): globalThis.Promise<AuthData> | void;
     /**
      * Complete login started with `snapd_login_async()`.
@@ -706,8 +706,8 @@ export namespace Snapd {
     function login_sync(
         username: string,
         password: string,
-        otp?: string | null,
-        cancellable?: Gio.Cancellable | null,
+        otp: string | null,
+        cancellable: Gio.Cancellable | null,
     ): AuthData;
     /**
      * @gir-type Callback
@@ -719,7 +719,7 @@ export namespace Snapd {
      * @gir-type Callback
      */
     interface ProgressCallback {
-        (client: Client, change: Change, deprecated?: any | null): void;
+        (client: Client, change: Change, deprecated: any | null): void;
     }
     /**
      * @gir-type Flags
@@ -968,10 +968,10 @@ export namespace Snapd {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            app_auto: string;
-            appAuto: string;
-            app_manual: string;
-            appManual: string;
+            app_auto: string | null;
+            appAuto: string | null;
+            app_manual: string | null;
+            appManual: string | null;
             command: string;
             name: string;
             snap: string;
@@ -993,34 +993,42 @@ export namespace Snapd {
 
         /**
          * @construct-only
+         * @default null
          */
-        get app_auto(): string;
+        get app_auto(): string | null;
         /**
          * @construct-only
+         * @default null
          */
-        get appAuto(): string;
+        get appAuto(): string | null;
         /**
          * @construct-only
+         * @default null
          */
-        get app_manual(): string;
+        get app_manual(): string | null;
         /**
          * @construct-only
+         * @default null
          */
-        get appManual(): string;
+        get appManual(): string | null;
         /**
          * @construct-only
+         * @default null
          */
         get command(): string;
         /**
          * @construct-only
+         * @default null
          */
         get name(): string;
         /**
          * @construct-only
+         * @default null
          */
         get snap(): string;
         /**
          * @construct-only
+         * @default Snapd.AliasStatus.UNKNOWN
          */
         get status(): AliasStatus;
 
@@ -1119,12 +1127,12 @@ export namespace Snapd {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             active: boolean;
             aliases: string[];
-            common_id: string;
-            commonId: string;
-            daemon_type: DaemonType;
-            daemonType: DaemonType;
-            desktop_file: string;
-            desktopFile: string;
+            common_id: string | null;
+            commonId: string | null;
+            daemon_type: DaemonType | null;
+            daemonType: DaemonType | null;
+            desktop_file: string | null;
+            desktopFile: string | null;
             enabled: boolean;
             name: string;
             snap: string;
@@ -1145,6 +1153,7 @@ export namespace Snapd {
 
         /**
          * @construct-only
+         * @default false
          */
         get active(): boolean;
         /**
@@ -1153,38 +1162,47 @@ export namespace Snapd {
         get aliases(): string[];
         /**
          * @construct-only
+         * @default null
          */
-        get common_id(): string;
+        get common_id(): string | null;
         /**
          * @construct-only
+         * @default null
          */
-        get commonId(): string;
+        get commonId(): string | null;
         /**
          * @construct-only
+         * @default Snapd.DaemonType.UNKNOWN
          */
-        get daemon_type(): DaemonType;
+        get daemon_type(): DaemonType | null;
         /**
          * @construct-only
+         * @default Snapd.DaemonType.UNKNOWN
          */
-        get daemonType(): DaemonType;
+        get daemonType(): DaemonType | null;
         /**
          * @construct-only
+         * @default null
          */
-        get desktop_file(): string;
+        get desktop_file(): string | null;
         /**
          * @construct-only
+         * @default null
          */
-        get desktopFile(): string;
+        get desktopFile(): string | null;
         /**
          * @construct-only
+         * @default false
          */
         get enabled(): boolean;
         /**
          * @construct-only
+         * @default null
          */
         get name(): string;
         /**
          * @construct-only
+         * @default null
          */
         get snap(): string;
 
@@ -1296,6 +1314,7 @@ export namespace Snapd {
 
         /**
          * @construct-only
+         * @default null
          */
         get content(): string;
 
@@ -1391,6 +1410,9 @@ export namespace Snapd {
 
         get discharges(): string[];
         set discharges(val: string[]);
+        /**
+         * @default null
+         */
         get macaroon(): string;
         set macaroon(val: string);
 
@@ -1566,10 +1588,12 @@ export namespace Snapd {
 
         /**
          * @construct-only
+         * @default false
          */
         get featured(): boolean;
         /**
          * @construct-only
+         * @default null
          */
         get name(): string;
 
@@ -1649,6 +1673,7 @@ export namespace Snapd {
 
         /**
          * @construct-only
+         * @default null
          */
         get name(): string;
 
@@ -1716,12 +1741,12 @@ export namespace Snapd {
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             data: ChangeData;
-            error: string;
+            error: string | null;
             id: string;
             kind: string;
             ready: boolean;
-            ready_time: GLib.DateTime;
-            readyTime: GLib.DateTime;
+            ready_time: GLib.DateTime | null;
+            readyTime: GLib.DateTime | null;
             spawn_time: GLib.DateTime;
             spawnTime: GLib.DateTime;
             status: string;
@@ -1746,28 +1771,32 @@ export namespace Snapd {
         get data(): ChangeData;
         /**
          * @construct-only
+         * @default null
          */
-        get error(): string;
+        get error(): string | null;
         /**
          * @construct-only
+         * @default null
          */
         get id(): string;
         /**
          * @construct-only
+         * @default null
          */
         get kind(): string;
         /**
          * @construct-only
+         * @default false
          */
         get ready(): boolean;
         /**
          * @construct-only
          */
-        get ready_time(): GLib.DateTime;
+        get ready_time(): GLib.DateTime | null;
         /**
          * @construct-only
          */
-        get readyTime(): GLib.DateTime;
+        get readyTime(): GLib.DateTime | null;
         /**
          * @construct-only
          */
@@ -1778,10 +1807,12 @@ export namespace Snapd {
         get spawnTime(): GLib.DateTime;
         /**
          * @construct-only
+         * @default null
          */
         get status(): string;
         /**
          * @construct-only
+         * @default null
          */
         get summary(): string;
         /**
@@ -1954,8 +1985,8 @@ export namespace Snapd {
             confinement: Confinement;
             epoch: string;
             name: string;
-            released_at: GLib.DateTime;
-            releasedAt: GLib.DateTime;
+            released_at: GLib.DateTime | null;
+            releasedAt: GLib.DateTime | null;
             revision: string;
             size: bigint | number;
             version: string;
@@ -1975,34 +2006,40 @@ export namespace Snapd {
 
         /**
          * @construct-only
+         * @default Snapd.Confinement.UNKNOWN
          */
         get confinement(): Confinement;
         /**
          * @construct-only
+         * @default null
          */
         get epoch(): string;
         /**
          * @construct-only
+         * @default null
          */
         get name(): string;
         /**
          * @construct-only
          */
-        get released_at(): GLib.DateTime;
+        get released_at(): GLib.DateTime | null;
         /**
          * @construct-only
          */
-        get releasedAt(): GLib.DateTime;
+        get releasedAt(): GLib.DateTime | null;
         /**
          * @construct-only
+         * @default null
          */
         get revision(): string;
         /**
          * @construct-only
+         * @default 0
          */
         get size(): number;
         /**
          * @construct-only
+         * @default null
          */
         get version(): string;
 
@@ -2175,7 +2212,7 @@ export namespace Snapd {
          * @param id a change ID to abort.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          */
-        abort_change_async(id: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<Change>;
+        abort_change_async(id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Change>;
         /**
          * Asynchronously abort a change.
          * See `snapd_client_abort_change_sync()` for more information.
@@ -2197,7 +2234,7 @@ export namespace Snapd {
          */
         abort_change_async(
             id: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Change> | void;
         /**
@@ -2213,14 +2250,14 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns a {@link Snapd.Change} or `null` on error.
          */
-        abort_change_sync(id: string, cancellable?: Gio.Cancellable | null): Change;
+        abort_change_sync(id: string, cancellable: Gio.Cancellable | null): Change;
         /**
          * Asynchronously add an assertion.
          * See `snapd_client_add_assertions_sync()` for more information.
          * @param assertions assertions to add.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          */
-        add_assertions_async(assertions: string[], cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        add_assertions_async(assertions: string[], cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously add an assertion.
          * See `snapd_client_add_assertions_sync()` for more information.
@@ -2242,7 +2279,7 @@ export namespace Snapd {
          */
         add_assertions_async(
             assertions: string[],
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2258,7 +2295,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns `true` on success or `false` on error.
          */
-        add_assertions_sync(assertions: string[], cancellable?: Gio.Cancellable | null): boolean;
+        add_assertions_sync(assertions: string[], cancellable: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously create an alias to an app.
          * See `snapd_client_alias_sync()` for more information.
@@ -2272,8 +2309,8 @@ export namespace Snapd {
             snap: string,
             app: string,
             alias: string,
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously create an alias to an app.
@@ -2307,8 +2344,8 @@ export namespace Snapd {
             snap: string,
             app: string,
             alias: string,
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2330,8 +2367,8 @@ export namespace Snapd {
             snap: string,
             app: string,
             alias: string,
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Asynchronously buy a snap from the store.
@@ -2345,7 +2382,7 @@ export namespace Snapd {
             id: string,
             amount: number,
             currency: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously buy a snap from the store.
@@ -2376,7 +2413,7 @@ export namespace Snapd {
             id: string,
             amount: number,
             currency: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2395,13 +2432,13 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns `true` on success or `false` on error.
          */
-        buy_sync(id: string, amount: number, currency: string, cancellable?: Gio.Cancellable | null): boolean;
+        buy_sync(id: string, amount: number, currency: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously check if able to buy snaps.
          * See `snapd_client_check_buy_sync()` for more information.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          */
-        check_buy_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        check_buy_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously check if able to buy snaps.
          * See `snapd_client_check_buy_sync()` for more information.
@@ -2416,7 +2453,7 @@ export namespace Snapd {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         check_buy_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2431,7 +2468,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns `true` if able to buy snaps or `false` on error.
          */
-        check_buy_sync(cancellable?: Gio.Cancellable | null): boolean;
+        check_buy_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously check for snaps providing the requested desktop themes.
          * See `snapd_client_check_themes_sync()` for more information.
@@ -2441,10 +2478,10 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          */
         check_themes_async(
-            gtk_theme_names?: string[] | null,
-            icon_theme_names?: string[] | null,
-            sound_theme_names?: string[] | null,
-            cancellable?: Gio.Cancellable | null,
+            gtk_theme_names: string[] | null,
+            icon_theme_names: string[] | null,
+            sound_theme_names: string[] | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<
             [
                 GLib.HashTable<string, ThemeStatus>,
@@ -2478,10 +2515,10 @@ export namespace Snapd {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         check_themes_async(
-            gtk_theme_names?: string[] | null,
-            icon_theme_names?: string[] | null,
-            sound_theme_names?: string[] | null,
-            cancellable?: Gio.Cancellable | null,
+            gtk_theme_names: string[] | null,
+            icon_theme_names: string[] | null,
+            sound_theme_names: string[] | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<
             [
@@ -2517,7 +2554,7 @@ export namespace Snapd {
             gtk_theme_names: string[] | null,
             icon_theme_names: string[] | null,
             sound_theme_names: string[] | null,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [
             boolean,
             GLib.HashTable<string, ThemeStatus>,
@@ -2528,7 +2565,7 @@ export namespace Snapd {
          * This method is no longer required and does nothing, snapd-glib now connects on demand.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        connect_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        connect_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * This method is no longer required and does nothing, snapd-glib now connects on demand.
          * @param cancellable a {@link Gio.Cancellable} or `null`
@@ -2541,7 +2578,7 @@ export namespace Snapd {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         connect_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2566,8 +2603,8 @@ export namespace Snapd {
             plug_name: string,
             slot_snap: string,
             slot_name: string,
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously connect two interfaces together.
@@ -2605,8 +2642,8 @@ export namespace Snapd {
             plug_name: string,
             slot_snap: string,
             slot_name: string,
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2632,15 +2669,15 @@ export namespace Snapd {
             plug_name: string,
             slot_snap: string,
             slot_name: string,
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * This method is no longer required and does nothing, snapd-glib now connects on demand.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` if successfully connected to snapd.
          */
-        connect_sync(cancellable?: Gio.Cancellable | null): boolean;
+        connect_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously create a local user account.
          * See `snapd_client_create_user_sync()` for more information.
@@ -2651,7 +2688,7 @@ export namespace Snapd {
         create_user_async(
             email: string,
             flags: CreateUserFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<UserInformation>;
         /**
          * Asynchronously create a local user account.
@@ -2678,7 +2715,7 @@ export namespace Snapd {
         create_user_async(
             email: string,
             flags: CreateUserFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<UserInformation> | void;
         /**
@@ -2695,13 +2732,13 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns a {@link Snapd.UserInformation} or `null` on error.
          */
-        create_user_sync(email: string, flags: CreateUserFlags, cancellable?: Gio.Cancellable | null): UserInformation;
+        create_user_sync(email: string, flags: CreateUserFlags, cancellable: Gio.Cancellable | null): UserInformation;
         /**
          * Asynchronously create local user accounts using the system-user assertions that are valid for this device.
          * See `snapd_client_create_users_sync()` for more information.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          */
-        create_users_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<UserInformation[]>;
+        create_users_async(cancellable: Gio.Cancellable | null): globalThis.Promise<UserInformation[]>;
         /**
          * Asynchronously create local user accounts using the system-user assertions that are valid for this device.
          * See `snapd_client_create_users_sync()` for more information.
@@ -2716,7 +2753,7 @@ export namespace Snapd {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         create_users_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<UserInformation[]> | void;
         /**
@@ -2731,7 +2768,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns an array of {@link Snapd.UserInformation} or `null` on error.
          */
-        create_users_sync(cancellable?: Gio.Cancellable | null): UserInformation[];
+        create_users_sync(cancellable: Gio.Cancellable | null): UserInformation[];
         /**
          * Asynchronously change the state of aliases.
          * See `snapd_client_disable_aliases_sync()` for more information.
@@ -2743,8 +2780,8 @@ export namespace Snapd {
         disable_aliases_async(
             snap: string,
             aliases: string[],
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously change the state of aliases.
@@ -2774,8 +2811,8 @@ export namespace Snapd {
         disable_aliases_async(
             snap: string,
             aliases: string[],
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2796,8 +2833,8 @@ export namespace Snapd {
         disable_aliases_sync(
             snap: string,
             aliases: string[],
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Asynchronously disable an installed snap.
@@ -2808,8 +2845,8 @@ export namespace Snapd {
          */
         disable_async(
             name: string,
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously disable an installed snap.
@@ -2835,8 +2872,8 @@ export namespace Snapd {
          */
         disable_async(
             name: string,
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2855,8 +2892,8 @@ export namespace Snapd {
          */
         disable_sync(
             name: string,
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Asynchronously disconnect two interfaces.
@@ -2873,8 +2910,8 @@ export namespace Snapd {
             plug_name: string,
             slot_snap: string,
             slot_name: string,
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously disconnect two interfaces.
@@ -2912,8 +2949,8 @@ export namespace Snapd {
             plug_name: string,
             slot_snap: string,
             slot_name: string,
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2938,8 +2975,8 @@ export namespace Snapd {
             plug_name: string,
             slot_snap: string,
             slot_name: string,
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Asynchronously download a snap.
@@ -2951,9 +2988,9 @@ export namespace Snapd {
          */
         download_async(
             name: string,
-            channel?: string | null,
-            revision?: string | null,
-            cancellable?: Gio.Cancellable | null,
+            channel: string | null,
+            revision: string | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<GLib.Bytes>;
         /**
          * Asynchronously download a snap.
@@ -2982,9 +3019,9 @@ export namespace Snapd {
          */
         download_async(
             name: string,
-            channel?: string | null,
-            revision?: string | null,
-            cancellable?: Gio.Cancellable | null,
+            channel: string | null,
+            revision: string | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GLib.Bytes> | void;
         /**
@@ -3004,9 +3041,9 @@ export namespace Snapd {
          */
         download_sync(
             name: string,
-            channel?: string | null,
-            revision?: string | null,
-            cancellable?: Gio.Cancellable | null,
+            channel: string | null,
+            revision: string | null,
+            cancellable: Gio.Cancellable | null,
         ): GLib.Bytes;
         /**
          * Asynchronously change the state of aliases.
@@ -3019,8 +3056,8 @@ export namespace Snapd {
         enable_aliases_async(
             snap: string,
             aliases: string[],
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously change the state of aliases.
@@ -3050,8 +3087,8 @@ export namespace Snapd {
         enable_aliases_async(
             snap: string,
             aliases: string[],
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -3072,8 +3109,8 @@ export namespace Snapd {
         enable_aliases_sync(
             snap: string,
             aliases: string[],
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Asynchronously enable an installed snap.
@@ -3084,8 +3121,8 @@ export namespace Snapd {
          */
         enable_async(
             name: string,
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously enable an installed snap.
@@ -3111,8 +3148,8 @@ export namespace Snapd {
          */
         enable_async(
             name: string,
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -3131,8 +3168,8 @@ export namespace Snapd {
          */
         enable_sync(
             name: string,
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Asynchronously find snaps in the store.
@@ -3143,8 +3180,8 @@ export namespace Snapd {
          */
         find_async(
             flags: FindFlags,
-            query?: string | null,
-            cancellable?: Gio.Cancellable | null,
+            query: string | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<[Snap[], string]>;
         /**
          * Asynchronously find snaps in the store.
@@ -3170,8 +3207,8 @@ export namespace Snapd {
          */
         find_async(
             flags: FindFlags,
-            query?: string | null,
-            cancellable?: Gio.Cancellable | null,
+            query: string | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[Snap[], string]> | void;
         /**
@@ -3184,9 +3221,9 @@ export namespace Snapd {
          */
         find_category_async(
             flags: FindFlags,
-            category?: string | null,
-            query?: string | null,
-            cancellable?: Gio.Cancellable | null,
+            category: string | null,
+            query: string | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<[Snap[], string]>;
         /**
          * Asynchronously find snaps in the store.
@@ -3215,9 +3252,9 @@ export namespace Snapd {
          */
         find_category_async(
             flags: FindFlags,
-            category?: string | null,
-            query?: string | null,
-            cancellable?: Gio.Cancellable | null,
+            category: string | null,
+            query: string | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[Snap[], string]> | void;
         /**
@@ -3239,7 +3276,7 @@ export namespace Snapd {
             flags: FindFlags,
             category: string | null,
             query: string | null,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [Snap[], string];
         /**
          * Complete request started with `snapd_client_find_async()`.
@@ -3253,7 +3290,7 @@ export namespace Snapd {
          * See `snapd_client_find_refreshable_sync()` for more information.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          */
-        find_refreshable_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<Snap[]>;
+        find_refreshable_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Snap[]>;
         /**
          * Asynchronously find snaps in store that are newer revisions than locally installed versions.
          * See `snapd_client_find_refreshable_sync()` for more information.
@@ -3271,7 +3308,7 @@ export namespace Snapd {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         find_refreshable_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Snap[]> | void;
         /**
@@ -3286,7 +3323,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns an array of {@link Snapd.Snap} or `null` on error.
          */
-        find_refreshable_sync(cancellable?: Gio.Cancellable | null): Snap[];
+        find_refreshable_sync(cancellable: Gio.Cancellable | null): Snap[];
         /**
          * Asynchronously find snaps in the store.
          * See `snapd_client_find_section_sync()` for more information.
@@ -3297,9 +3334,9 @@ export namespace Snapd {
          */
         find_section_async(
             flags: FindFlags,
-            section?: string | null,
-            query?: string | null,
-            cancellable?: Gio.Cancellable | null,
+            section: string | null,
+            query: string | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<[Snap[], string]>;
         /**
          * Asynchronously find snaps in the store.
@@ -3328,9 +3365,9 @@ export namespace Snapd {
          */
         find_section_async(
             flags: FindFlags,
-            section?: string | null,
-            query?: string | null,
-            cancellable?: Gio.Cancellable | null,
+            section: string | null,
+            query: string | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[Snap[], string]> | void;
         /**
@@ -3352,7 +3389,7 @@ export namespace Snapd {
             flags: FindFlags,
             section: string | null,
             query: string | null,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [Snap[], string];
         /**
          * Find snaps in the store.
@@ -3361,7 +3398,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns an array of {@link Snapd.Snap} or `null` on error.
          */
-        find_sync(flags: FindFlags, query: string | null, cancellable?: Gio.Cancellable | null): [Snap[], string];
+        find_sync(flags: FindFlags, query: string | null, cancellable: Gio.Cancellable | null): [Snap[], string];
         /**
          * Follow logs for snap services. This call will only complete if snapd closes the connection and will
          * stop any other request on this client from being sent.
@@ -3372,7 +3409,7 @@ export namespace Snapd {
         follow_logs_async(
             names: string[] | null,
             log_callback: LogCallback,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Follow logs for snap services. This call will only complete if snapd closes the connection and will
@@ -3399,7 +3436,7 @@ export namespace Snapd {
         follow_logs_async(
             names: string[] | null,
             log_callback: LogCallback,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -3420,14 +3457,14 @@ export namespace Snapd {
         follow_logs_sync(
             names: string[] | null,
             log_callback: LogCallback,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Asynchronously get the available aliases.
          * See `snapd_client_get_aliases_sync()` for more information.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          */
-        get_aliases_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<Alias[]>;
+        get_aliases_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Alias[]>;
         /**
          * Asynchronously get the available aliases.
          * See `snapd_client_get_aliases_sync()` for more information.
@@ -3442,7 +3479,7 @@ export namespace Snapd {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         get_aliases_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Alias[]> | void;
         /**
@@ -3457,7 +3494,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns an array of {@link Snapd.Alias} or `null` on error.
          */
-        get_aliases_sync(cancellable?: Gio.Cancellable | null): Alias[];
+        get_aliases_sync(cancellable: Gio.Cancellable | null): Alias[];
         /**
          * Get whether snapd operations are allowed to interact with the user.
          * @returns `true` if interaction is allowed.
@@ -3472,8 +3509,8 @@ export namespace Snapd {
          */
         get_apps2_async(
             flags: GetAppsFlags,
-            snaps?: string[] | null,
-            cancellable?: Gio.Cancellable | null,
+            snaps: string[] | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<App[]>;
         /**
          * Asynchronously get information on installed apps.
@@ -3499,8 +3536,8 @@ export namespace Snapd {
          */
         get_apps2_async(
             flags: GetAppsFlags,
-            snaps?: string[] | null,
-            cancellable?: Gio.Cancellable | null,
+            snaps: string[] | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<App[]> | void;
         /**
@@ -3517,14 +3554,14 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns an array of {@link Snapd.App} or `null` on error.
          */
-        get_apps2_sync(flags: GetAppsFlags, snaps?: string[] | null, cancellable?: Gio.Cancellable | null): App[];
+        get_apps2_sync(flags: GetAppsFlags, snaps: string[] | null, cancellable: Gio.Cancellable | null): App[];
         /**
          * Asynchronously get information on installed apps.
          * See `snapd_client_get_apps_sync()` for more information.
          * @param flags a set of {@link Snapd.GetAppsFlags} to control what results are returned.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          */
-        get_apps_async(flags: GetAppsFlags, cancellable?: Gio.Cancellable | null): globalThis.Promise<App[]>;
+        get_apps_async(flags: GetAppsFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<App[]>;
         /**
          * Asynchronously get information on installed apps.
          * See `snapd_client_get_apps_sync()` for more information.
@@ -3546,7 +3583,7 @@ export namespace Snapd {
          */
         get_apps_async(
             flags: GetAppsFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<App[]> | void;
         /**
@@ -3562,14 +3599,14 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns an array of {@link Snapd.App} or `null` on error.
          */
-        get_apps_sync(flags: GetAppsFlags, cancellable?: Gio.Cancellable | null): App[];
+        get_apps_sync(flags: GetAppsFlags, cancellable: Gio.Cancellable | null): App[];
         /**
          * Asynchronously get assertions.
          * See `snapd_client_get_assertions_sync()` for more information.
          * @param type assertion type to get.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          */
-        get_assertions_async(type: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<string[]>;
+        get_assertions_async(type: string, cancellable: Gio.Cancellable | null): globalThis.Promise<string[]>;
         /**
          * Asynchronously get assertions.
          * See `snapd_client_get_assertions_sync()` for more information.
@@ -3591,7 +3628,7 @@ export namespace Snapd {
          */
         get_assertions_async(
             type: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string[]> | void;
         /**
@@ -3607,7 +3644,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns an array of assertions or `null` on error.
          */
-        get_assertions_sync(type: string, cancellable?: Gio.Cancellable | null): string[];
+        get_assertions_sync(type: string, cancellable: Gio.Cancellable | null): string[];
         /**
          * Get the authorization data that is used for requests.
          * @returns a {@link Snapd.AuthData} or `null`.
@@ -3618,7 +3655,7 @@ export namespace Snapd {
          * See `snapd_client_get_categories_sync()` for more information.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          */
-        get_categories_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<CategoryDetails[]>;
+        get_categories_async(cancellable: Gio.Cancellable | null): globalThis.Promise<CategoryDetails[]>;
         /**
          * Asynchronously get the store categories.
          * See `snapd_client_get_categories_sync()` for more information.
@@ -3633,7 +3670,7 @@ export namespace Snapd {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         get_categories_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<CategoryDetails[]> | void;
         /**
@@ -3648,14 +3685,14 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns an array of {@link Snapd.CategoryDetails} or `null` on error.
          */
-        get_categories_sync(cancellable?: Gio.Cancellable | null): CategoryDetails[];
+        get_categories_sync(cancellable: Gio.Cancellable | null): CategoryDetails[];
         /**
          * Asynchronously get information on a change.
          * See `snapd_client_get_change_sync()` for more information.
          * @param id a change ID to get information on.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          */
-        get_change_async(id: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<Change>;
+        get_change_async(id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Change>;
         /**
          * Asynchronously get information on a change.
          * See `snapd_client_get_change_sync()` for more information.
@@ -3677,7 +3714,7 @@ export namespace Snapd {
          */
         get_change_async(
             id: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Change> | void;
         /**
@@ -3693,7 +3730,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns a {@link Snapd.Change} or `null` on error.
          */
-        get_change_sync(id: string, cancellable?: Gio.Cancellable | null): Change;
+        get_change_sync(id: string, cancellable: Gio.Cancellable | null): Change;
         /**
          * Asynchronously get changes that have occurred / are occurring on the snap daemon.
          * See `snapd_client_get_changes_sync()` for more information.
@@ -3703,8 +3740,8 @@ export namespace Snapd {
          */
         get_changes_async(
             filter: ChangeFilter,
-            snap_name?: string | null,
-            cancellable?: Gio.Cancellable | null,
+            snap_name: string | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<Change[]>;
         /**
          * Asynchronously get changes that have occurred / are occurring on the snap daemon.
@@ -3730,8 +3767,8 @@ export namespace Snapd {
          */
         get_changes_async(
             filter: ChangeFilter,
-            snap_name?: string | null,
-            cancellable?: Gio.Cancellable | null,
+            snap_name: string | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Change[]> | void;
         /**
@@ -3748,11 +3785,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns an array of {@link Snapd.Change} or `null` on error.
          */
-        get_changes_sync(
-            filter: ChangeFilter,
-            snap_name?: string | null,
-            cancellable?: Gio.Cancellable | null,
-        ): Change[];
+        get_changes_sync(filter: ChangeFilter, snap_name: string | null, cancellable: Gio.Cancellable | null): Change[];
         /**
          * Asynchronously get the installed snap connections.
          * See `snapd_client_get_connections_sync()` for more information.
@@ -3763,9 +3796,9 @@ export namespace Snapd {
          */
         get_connections2_async(
             flags: GetConnectionsFlags,
-            snap?: string | null,
-            _interface?: string | null,
-            cancellable?: Gio.Cancellable | null,
+            snap: string | null,
+            _interface: string | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<[Connection[] | null, Connection[] | null, Plug[] | null, Slot[] | null]>;
         /**
          * Asynchronously get the installed snap connections.
@@ -3794,9 +3827,9 @@ export namespace Snapd {
          */
         get_connections2_async(
             flags: GetConnectionsFlags,
-            snap?: string | null,
-            _interface?: string | null,
-            cancellable?: Gio.Cancellable | null,
+            snap: string | null,
+            _interface: string | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[Connection[] | null, Connection[] | null, Plug[] | null, Slot[] | null]> | void;
         /**
@@ -3818,9 +3851,9 @@ export namespace Snapd {
          */
         get_connections2_sync(
             flags: GetConnectionsFlags,
-            snap?: string | null,
-            _interface?: string | null,
-            cancellable?: Gio.Cancellable | null,
+            snap: string | null,
+            _interface: string | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, Connection[] | null, Connection[] | null, Plug[] | null, Slot[] | null];
         /**
          * Asynchronously get the installed snap connections.
@@ -3828,7 +3861,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          */
         get_connections_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<[Connection[] | null, Connection[] | null, Plug[] | null, Slot[] | null]>;
         /**
          * Asynchronously get the installed snap connections.
@@ -3844,7 +3877,7 @@ export namespace Snapd {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         get_connections_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[Connection[] | null, Connection[] | null, Plug[] | null, Slot[] | null]> | void;
         /**
@@ -3862,7 +3895,7 @@ export namespace Snapd {
          * @returns `true` on success or `false` on error.
          */
         get_connections_sync(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, Connection[] | null, Connection[] | null, Plug[] | null, Slot[] | null];
         /**
          * Asynchronously get the icon for an installed snap.
@@ -3870,7 +3903,7 @@ export namespace Snapd {
          * @param name name of snap to get icon for.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          */
-        get_icon_async(name: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<Icon>;
+        get_icon_async(name: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Icon>;
         /**
          * Asynchronously get the icon for an installed snap.
          * See `snapd_client_get_icon_sync()` for more information.
@@ -3892,7 +3925,7 @@ export namespace Snapd {
          */
         get_icon_async(
             name: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Icon> | void;
         /**
@@ -3908,7 +3941,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns a {@link Snapd.Icon} or `null` on error.
          */
-        get_icon_sync(name: string, cancellable?: Gio.Cancellable | null): Icon;
+        get_icon_sync(name: string, cancellable: Gio.Cancellable | null): Icon;
         /**
          * Asynchronously get the installed snap interfaces.
          * See `snapd_client_get_interfaces2_sync()` for more information.
@@ -3918,8 +3951,8 @@ export namespace Snapd {
          */
         get_interfaces2_async(
             flags: GetInterfacesFlags,
-            names?: string[] | null,
-            cancellable?: Gio.Cancellable | null,
+            names: string[] | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<Interface[]>;
         /**
          * Asynchronously get the installed snap interfaces.
@@ -3945,8 +3978,8 @@ export namespace Snapd {
          */
         get_interfaces2_async(
             flags: GetInterfacesFlags,
-            names?: string[] | null,
-            cancellable?: Gio.Cancellable | null,
+            names: string[] | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Interface[]> | void;
         /**
@@ -3965,15 +3998,15 @@ export namespace Snapd {
          */
         get_interfaces2_sync(
             flags: GetInterfacesFlags,
-            names?: string[] | null,
-            cancellable?: Gio.Cancellable | null,
+            names: string[] | null,
+            cancellable: Gio.Cancellable | null,
         ): Interface[];
         /**
          * Asynchronously get the installed snap interfaces.
          * See `snapd_client_get_interfaces_sync()` for more information.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          */
-        get_interfaces_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<[Plug[] | null, Slot[] | null]>;
+        get_interfaces_async(cancellable: Gio.Cancellable | null): globalThis.Promise<[Plug[] | null, Slot[] | null]>;
         /**
          * Asynchronously get the installed snap interfaces.
          * See `snapd_client_get_interfaces_sync()` for more information.
@@ -3988,7 +4021,7 @@ export namespace Snapd {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         get_interfaces_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[Plug[] | null, Slot[] | null]> | void;
         /**
@@ -4003,7 +4036,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns `true` on success or `false` on error.
          */
-        get_interfaces_sync(cancellable?: Gio.Cancellable | null): [boolean, Plug[] | null, Slot[] | null];
+        get_interfaces_sync(cancellable: Gio.Cancellable | null): [boolean, Plug[] | null, Slot[] | null];
         /**
          * Asynchronously get logs for snap services.
          * See `snapd_client_get_logs_sync()` for more information.
@@ -4014,7 +4047,7 @@ export namespace Snapd {
         get_logs_async(
             names: string[] | null,
             n: bigint | number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<Log[]>;
         /**
          * Asynchronously get logs for snap services.
@@ -4041,7 +4074,7 @@ export namespace Snapd {
         get_logs_async(
             names: string[] | null,
             n: bigint | number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Log[]> | void;
         /**
@@ -4058,7 +4091,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns an array of {@link Snapd.Log} or `null` on error.
          */
-        get_logs_sync(names: string[] | null, n: bigint | number, cancellable?: Gio.Cancellable | null): Log[];
+        get_logs_sync(names: string[] | null, n: bigint | number, cancellable: Gio.Cancellable | null): Log[];
         /**
          * Get the maintenance information reported by snapd or `null` if no maintenance is in progress.
          * This information is updated after every request.
@@ -4078,7 +4111,7 @@ export namespace Snapd {
         get_notices_async(
             since_date_time: GLib.DateTime,
             timeout: GLib.TimeSpan,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<Notice[]>;
         /**
          * Asynchronously get notifications that have occurred / are occurring on the snap daemon.
@@ -4111,7 +4144,7 @@ export namespace Snapd {
         get_notices_async(
             since_date_time: GLib.DateTime,
             timeout: GLib.TimeSpan,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Notice[]> | void;
         /**
@@ -4134,7 +4167,7 @@ export namespace Snapd {
         get_notices_sync(
             since_date_time: GLib.DateTime,
             timeout: GLib.TimeSpan,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): Notice[];
         /**
          * Asynchronously get notifications that have occurred / are occurring on the snap daemon,
@@ -4158,7 +4191,7 @@ export namespace Snapd {
             keys: string,
             since_date_time: GLib.DateTime,
             timeout: GLib.TimeSpan,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<Notice[]>;
         /**
          * Asynchronously get notifications that have occurred / are occurring on the snap daemon,
@@ -4209,7 +4242,7 @@ export namespace Snapd {
             keys: string,
             since_date_time: GLib.DateTime,
             timeout: GLib.TimeSpan,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Notice[]> | void;
         /**
@@ -4241,14 +4274,14 @@ export namespace Snapd {
             keys: string,
             since_date_time: GLib.DateTime,
             timeout: GLib.TimeSpan,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): Notice[];
         /**
          * Asynchronously get the store sections.
          * See `snapd_client_get_sections_sync()` for more information.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          */
-        get_sections_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<string[]>;
+        get_sections_async(cancellable: Gio.Cancellable | null): globalThis.Promise<string[]>;
         /**
          * Asynchronously get the store sections.
          * See `snapd_client_get_sections_sync()` for more information.
@@ -4263,7 +4296,7 @@ export namespace Snapd {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         get_sections_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string[]> | void;
         /**
@@ -4278,14 +4311,14 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns an array of section names or `null` on error.
          */
-        get_sections_sync(cancellable?: Gio.Cancellable | null): string[];
+        get_sections_sync(cancellable: Gio.Cancellable | null): string[];
         /**
          * Asynchronously get information of a single installed snap.
          * See `snapd_client_get_snap_sync()` for more information.
          * @param name name of snap to get.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          */
-        get_snap_async(name: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<Snap>;
+        get_snap_async(name: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Snap>;
         /**
          * Asynchronously get information of a single installed snap.
          * See `snapd_client_get_snap_sync()` for more information.
@@ -4307,7 +4340,7 @@ export namespace Snapd {
          */
         get_snap_async(
             name: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Snap> | void;
         /**
@@ -4319,8 +4352,8 @@ export namespace Snapd {
          */
         get_snap_conf_async(
             name: string,
-            keys?: string[] | null,
-            cancellable?: Gio.Cancellable | null,
+            keys: string[] | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<GLib.HashTable<string, GLib.Variant>>;
         /**
          * Asynchronously get configuration for a snap.
@@ -4346,8 +4379,8 @@ export namespace Snapd {
          */
         get_snap_conf_async(
             name: string,
-            keys?: string[] | null,
-            cancellable?: Gio.Cancellable | null,
+            keys: string[] | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GLib.HashTable<string, GLib.Variant>> | void;
         /**
@@ -4366,8 +4399,8 @@ export namespace Snapd {
          */
         get_snap_conf_sync(
             name: string,
-            keys?: string[] | null,
-            cancellable?: Gio.Cancellable | null,
+            keys: string[] | null,
+            cancellable: Gio.Cancellable | null,
         ): GLib.HashTable<string, GLib.Variant>;
         /**
          * Complete request started with `snapd_client_get_snap_async()`.
@@ -4382,7 +4415,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns a {@link Snapd.Snap} or `null` on error.
          */
-        get_snap_sync(name: string, cancellable?: Gio.Cancellable | null): Snap;
+        get_snap_sync(name: string, cancellable: Gio.Cancellable | null): Snap;
         /**
          * Asynchronously get information on installed snaps.
          * See `snapd_client_get_snaps_sync()` for more information.
@@ -4395,8 +4428,8 @@ export namespace Snapd {
          */
         get_snaps_async(
             flags: GetSnapsFlags,
-            names?: string[] | null,
-            cancellable?: Gio.Cancellable | null,
+            names: string[] | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<Snap[]>;
         /**
          * Asynchronously get information on installed snaps.
@@ -4428,8 +4461,8 @@ export namespace Snapd {
          */
         get_snaps_async(
             flags: GetSnapsFlags,
-            names?: string[] | null,
-            cancellable?: Gio.Cancellable | null,
+            names: string[] | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Snap[]> | void;
         /**
@@ -4455,7 +4488,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns an array of {@link Snapd.Snap} or `null` on error.
          */
-        get_snaps_sync(flags: GetSnapsFlags, names?: string[] | null, cancellable?: Gio.Cancellable | null): Snap[];
+        get_snaps_sync(flags: GetSnapsFlags, names: string[] | null, cancellable: Gio.Cancellable | null): Snap[];
         /**
          * Get the unix socket path to connect to snapd with.
          * @returns socket path.
@@ -4466,7 +4499,7 @@ export namespace Snapd {
          * See `snapd_client_get_system_information_sync()` for more information.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          */
-        get_system_information_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<SystemInformation>;
+        get_system_information_async(cancellable: Gio.Cancellable | null): globalThis.Promise<SystemInformation>;
         /**
          * Request system information asynchronously from snapd.
          * See `snapd_client_get_system_information_sync()` for more information.
@@ -4484,7 +4517,7 @@ export namespace Snapd {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         get_system_information_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<SystemInformation> | void;
         /**
@@ -4500,7 +4533,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns a {@link Snapd.SystemInformation} or `null` on error.
          */
-        get_system_information_sync(cancellable?: Gio.Cancellable | null): SystemInformation;
+        get_system_information_sync(cancellable: Gio.Cancellable | null): SystemInformation;
         /**
          * Get the HTTP user-agent that is sent with each request to snapd.
          * @returns user agent or `null` if none set.
@@ -4511,7 +4544,7 @@ export namespace Snapd {
          * See `snapd_client_get_users_sync()` for more information.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          */
-        get_users_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<UserInformation[]>;
+        get_users_async(cancellable: Gio.Cancellable | null): globalThis.Promise<UserInformation[]>;
         /**
          * Asynchronously get user accounts that are valid for this device.
          * See `snapd_client_get_users_sync()` for more information.
@@ -4526,7 +4559,7 @@ export namespace Snapd {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         get_users_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<UserInformation[]> | void;
         /**
@@ -4541,7 +4574,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns an array of {@link Snapd.UserInformation} or `null` on error.
          */
-        get_users_sync(cancellable?: Gio.Cancellable | null): UserInformation[];
+        get_users_sync(cancellable: Gio.Cancellable | null): UserInformation[];
         /**
          * Asynchronously install a snap from the store.
          * See `snapd_client_install2_sync()` for more information.
@@ -4555,10 +4588,10 @@ export namespace Snapd {
         install2_async(
             flags: InstallFlags,
             name: string,
-            channel?: string | null,
-            revision?: string | null,
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            channel: string | null,
+            revision: string | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously install a snap from the store.
@@ -4594,10 +4627,10 @@ export namespace Snapd {
         install2_async(
             flags: InstallFlags,
             name: string,
-            channel?: string | null,
-            revision?: string | null,
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            channel: string | null,
+            revision: string | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -4620,10 +4653,10 @@ export namespace Snapd {
         install2_sync(
             flags: InstallFlags,
             name: string,
-            channel?: string | null,
-            revision?: string | null,
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            channel: string | null,
+            revision: string | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Asynchronously install a snap from the store.
@@ -4635,9 +4668,9 @@ export namespace Snapd {
          */
         install_async(
             name: string,
-            channel?: string | null,
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            channel: string | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously install a snap from the store.
@@ -4666,9 +4699,9 @@ export namespace Snapd {
          */
         install_async(
             name: string,
-            channel?: string | null,
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            channel: string | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -4689,8 +4722,8 @@ export namespace Snapd {
         install_stream_async(
             flags: InstallFlags,
             stream: Gio.InputStream,
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously install a snap.
@@ -4720,8 +4753,8 @@ export namespace Snapd {
         install_stream_async(
             flags: InstallFlags,
             stream: Gio.InputStream,
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -4758,8 +4791,8 @@ export namespace Snapd {
         install_stream_sync(
             flags: InstallFlags,
             stream: Gio.InputStream,
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Install a snap from the store.
@@ -4771,9 +4804,9 @@ export namespace Snapd {
          */
         install_sync(
             name: string,
-            channel?: string | null,
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            channel: string | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Asynchronously install snaps that provide the requested desktop themes.
@@ -4785,11 +4818,11 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          */
         install_themes_async(
-            gtk_theme_names?: string[] | null,
-            icon_theme_names?: string[] | null,
-            sound_theme_names?: string[] | null,
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            gtk_theme_names: string[] | null,
+            icon_theme_names: string[] | null,
+            sound_theme_names: string[] | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously install snaps that provide the requested desktop themes.
@@ -4820,11 +4853,11 @@ export namespace Snapd {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         install_themes_async(
-            gtk_theme_names?: string[] | null,
-            icon_theme_names?: string[] | null,
-            sound_theme_names?: string[] | null,
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            gtk_theme_names: string[] | null,
+            icon_theme_names: string[] | null,
+            sound_theme_names: string[] | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -4845,18 +4878,18 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          */
         install_themes_sync(
-            gtk_theme_names?: string[] | null,
-            icon_theme_names?: string[] | null,
-            sound_theme_names?: string[] | null,
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            gtk_theme_names: string[] | null,
+            icon_theme_names: string[] | null,
+            sound_theme_names: string[] | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Asynchronously get information on all installed snaps.
          * See `snapd_client_list_sync()` for more information.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          */
-        list_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<Snap[]>;
+        list_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Snap[]>;
         /**
          * Asynchronously get information on all installed snaps.
          * See `snapd_client_list_sync()` for more information.
@@ -4871,7 +4904,7 @@ export namespace Snapd {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         list_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Snap[]> | void;
         /**
@@ -4887,7 +4920,7 @@ export namespace Snapd {
          * @param name name of snap to get.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          */
-        list_one_async(name: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<Snap>;
+        list_one_async(name: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Snap>;
         /**
          * Asynchronously get information of a single installed snap.
          * See `snapd_client_list_one_sync()` for more information.
@@ -4909,7 +4942,7 @@ export namespace Snapd {
          */
         list_one_async(
             name: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Snap> | void;
         /**
@@ -4925,13 +4958,13 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns a {@link Snapd.Snap} or `null` on error.
          */
-        list_one_sync(name: string, cancellable?: Gio.Cancellable | null): Snap;
+        list_one_sync(name: string, cancellable: Gio.Cancellable | null): Snap;
         /**
          * Get information on all installed snaps.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns an array of {@link Snapd.Snap} or `null` on error.
          */
-        list_sync(cancellable?: Gio.Cancellable | null): Snap[];
+        list_sync(cancellable: Gio.Cancellable | null): Snap[];
         /**
          * Asynchronously get authorization to install/remove snaps.
          * See `snapd_client_login2_sync()` for more information.
@@ -4943,8 +4976,8 @@ export namespace Snapd {
         login2_async(
             email: string,
             password: string,
-            otp?: string | null,
-            cancellable?: Gio.Cancellable | null,
+            otp: string | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<UserInformation>;
         /**
          * Asynchronously get authorization to install/remove snaps.
@@ -4974,8 +5007,8 @@ export namespace Snapd {
         login2_async(
             email: string,
             password: string,
-            otp?: string | null,
-            cancellable?: Gio.Cancellable | null,
+            otp: string | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<UserInformation> | void;
         /**
@@ -4996,8 +5029,8 @@ export namespace Snapd {
         login2_sync(
             email: string,
             password: string,
-            otp?: string | null,
-            cancellable?: Gio.Cancellable | null,
+            otp: string | null,
+            cancellable: Gio.Cancellable | null,
         ): UserInformation;
         /**
          * Asynchronously get authorization to install/remove snaps.
@@ -5010,8 +5043,8 @@ export namespace Snapd {
         login_async(
             email: string,
             password: string,
-            otp?: string | null,
-            cancellable?: Gio.Cancellable | null,
+            otp: string | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<AuthData>;
         /**
          * Asynchronously get authorization to install/remove snaps.
@@ -5041,8 +5074,8 @@ export namespace Snapd {
         login_async(
             email: string,
             password: string,
-            otp?: string | null,
-            cancellable?: Gio.Cancellable | null,
+            otp: string | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<AuthData> | void;
         /**
@@ -5060,19 +5093,14 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns a {@link Snapd.AuthData} or `null` on error.
          */
-        login_sync(
-            email: string,
-            password: string,
-            otp?: string | null,
-            cancellable?: Gio.Cancellable | null,
-        ): AuthData;
+        login_sync(email: string, password: string, otp: string | null, cancellable: Gio.Cancellable | null): AuthData;
         /**
          * Asynchronously log out from the snap store.
          * See `snapd_client_logout_sync()` for more information.
          * @param id login ID to use.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          */
-        logout_async(id: bigint | number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        logout_async(id: bigint | number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously log out from the snap store.
          * See `snapd_client_logout_sync()` for more information.
@@ -5094,7 +5122,7 @@ export namespace Snapd {
          */
         logout_async(
             id: bigint | number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -5110,7 +5138,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns `true` on success or `false` on error.
          */
-        logout_sync(id: bigint | number, cancellable?: Gio.Cancellable | null): boolean;
+        logout_sync(id: bigint | number, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Allows to set the "since" parameter with nanosecond accuracy when doing a call
          * to get the notices. This is currently needed because GDateTime has only an
@@ -5149,8 +5177,8 @@ export namespace Snapd {
          */
         prefer_async(
             snap: string,
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously ???.
@@ -5176,8 +5204,8 @@ export namespace Snapd {
          */
         prefer_async(
             snap: string,
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -5195,8 +5223,8 @@ export namespace Snapd {
          */
         prefer_sync(
             snap: string,
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Asynchronously ensure all snaps are updated to their latest versions.
@@ -5205,8 +5233,8 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          */
         refresh_all_async(
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<string[]>;
         /**
          * Asynchronously ensure all snaps are updated to their latest versions.
@@ -5228,8 +5256,8 @@ export namespace Snapd {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         refresh_all_async(
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string[]> | void;
         /**
@@ -5245,7 +5273,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns a `null`-terminated array of the snap names refreshed or `null` on error.
          */
-        refresh_all_sync(progress_callback?: ProgressCallback | null, cancellable?: Gio.Cancellable | null): string[];
+        refresh_all_sync(progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): string[];
         /**
          * Asynchronously ensure an installed snap is at the latest version.
          * See `snapd_client_refresh_sync()` for more information.
@@ -5256,9 +5284,9 @@ export namespace Snapd {
          */
         refresh_async(
             name: string,
-            channel?: string | null,
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            channel: string | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously ensure an installed snap is at the latest version.
@@ -5287,9 +5315,9 @@ export namespace Snapd {
          */
         refresh_async(
             name: string,
-            channel?: string | null,
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            channel: string | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -5309,9 +5337,9 @@ export namespace Snapd {
          */
         refresh_sync(
             name: string,
-            channel?: string | null,
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            channel: string | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Asynchronously uninstall a snap.
@@ -5324,8 +5352,8 @@ export namespace Snapd {
         remove2_async(
             flags: RemoveFlags,
             name: string,
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously uninstall a snap.
@@ -5355,8 +5383,8 @@ export namespace Snapd {
         remove2_async(
             flags: RemoveFlags,
             name: string,
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -5377,8 +5405,8 @@ export namespace Snapd {
         remove2_sync(
             flags: RemoveFlags,
             name: string,
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Asynchronously uninstall a snap.
@@ -5389,8 +5417,8 @@ export namespace Snapd {
          */
         remove_async(
             name: string,
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously uninstall a snap.
@@ -5416,8 +5444,8 @@ export namespace Snapd {
          */
         remove_async(
             name: string,
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -5436,8 +5464,8 @@ export namespace Snapd {
          */
         remove_sync(
             name: string,
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Asynchronously change the state of aliases.
@@ -5450,8 +5478,8 @@ export namespace Snapd {
         reset_aliases_async(
             snap: string,
             aliases: string[],
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously change the state of aliases.
@@ -5481,8 +5509,8 @@ export namespace Snapd {
         reset_aliases_async(
             snap: string,
             aliases: string[],
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -5503,8 +5531,8 @@ export namespace Snapd {
         reset_aliases_sync(
             snap: string,
             aliases: string[],
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Asynchronously run a snapctl command.
@@ -5516,7 +5544,7 @@ export namespace Snapd {
         run_snapctl2_async(
             context_id: string,
             args: string[],
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<[string, string, number]>;
         /**
          * Asynchronously run a snapctl command.
@@ -5543,7 +5571,7 @@ export namespace Snapd {
         run_snapctl2_async(
             context_id: string,
             args: string[],
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[string, string, number]> | void;
         /**
@@ -5563,7 +5591,7 @@ export namespace Snapd {
         run_snapctl2_sync(
             context_id: string,
             args: string[],
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, string, string, number];
         /**
          * Asynchronously run a snapctl command.
@@ -5575,7 +5603,7 @@ export namespace Snapd {
         run_snapctl_async(
             context_id: string,
             args: string[],
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<[string, string]>;
         /**
          * Asynchronously run a snapctl command.
@@ -5602,7 +5630,7 @@ export namespace Snapd {
         run_snapctl_async(
             context_id: string,
             args: string[],
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[string, string]> | void;
         /**
@@ -5622,7 +5650,7 @@ export namespace Snapd {
         run_snapctl_sync(
             context_id: string,
             args: string[],
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, string, string];
         /**
          * Set whether snapd operations are allowed to interact with the user.
@@ -5640,7 +5668,7 @@ export namespace Snapd {
          * - Using an existing authorization with `snapd_auth_data_new()`.
          * @param auth_data a {@link Snapd.AuthData} or `null`.
          */
-        set_auth_data(auth_data?: AuthData | null): void;
+        set_auth_data(auth_data: AuthData | null): void;
         /**
          * Asynchronously set configuration for a snap.
          * See `snapd_client_set_snap_conf_sync()` for more information.
@@ -5651,7 +5679,7 @@ export namespace Snapd {
         set_snap_conf_async(
             name: string,
             key_values: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously set configuration for a snap.
@@ -5678,7 +5706,7 @@ export namespace Snapd {
         set_snap_conf_async(
             name: string,
             key_values: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -5698,20 +5726,20 @@ export namespace Snapd {
         set_snap_conf_sync(
             name: string,
             key_values: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Set the Unix socket path to connect to snapd with.
          * Defaults to the system socket.
          * @param socket_path a socket path or `null` to reset to the default.
          */
-        set_socket_path(socket_path?: string | null): void;
+        set_socket_path(socket_path: string | null): void;
         /**
          * Set the HTTP user-agent that is sent with each request to snapd.
          * Defaults to "snapd-glib/VERSION".
          * @param user_agent a user agent or `null`.
          */
-        set_user_agent(user_agent?: string | null): void;
+        set_user_agent(user_agent: string | null): void;
         /**
          * Asynchronously set the tracking channel on an installed snap.
          * See `snapd_client_switch_sync()` for more information.
@@ -5723,8 +5751,8 @@ export namespace Snapd {
         switch_async(
             name: string,
             channel: string,
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously set the tracking channel on an installed snap.
@@ -5754,8 +5782,8 @@ export namespace Snapd {
         switch_async(
             name: string,
             channel: string,
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -5776,8 +5804,8 @@ export namespace Snapd {
         switch_sync(
             name: string,
             channel: string,
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Asynchronously try a snap.
@@ -5788,8 +5816,8 @@ export namespace Snapd {
          */
         try_async(
             path: string,
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously try a snap.
@@ -5815,8 +5843,8 @@ export namespace Snapd {
          */
         try_async(
             path: string,
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -5835,8 +5863,8 @@ export namespace Snapd {
          */
         try_sync(
             path: string,
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Asynchronously remove an alias from an app.
@@ -5847,10 +5875,10 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          */
         unalias_async(
-            snap?: string | null,
-            alias?: string | null,
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            snap: string | null,
+            alias: string | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously remove an alias from an app.
@@ -5878,10 +5906,10 @@ export namespace Snapd {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         unalias_async(
-            snap?: string | null,
-            alias?: string | null,
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            snap: string | null,
+            alias: string | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -5899,10 +5927,10 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          */
         unalias_sync(
-            snap?: string | null,
-            alias?: string | null,
-            progress_callback?: ProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
+            snap: string | null,
+            alias: string | null,
+            progress_callback: ProgressCallback | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
     }
 
@@ -5949,18 +5977,22 @@ export namespace Snapd {
 
         /**
          * @construct-only
+         * @default false
          */
         get gadget(): boolean;
         /**
          * @construct-only
+         * @default null
          */
         get interface(): string;
         /**
          * @construct-only
+         * @default false
          */
         get manual(): boolean;
         /**
          * @construct-only
+         * @default null
          */
         get name(): string;
         /**
@@ -5989,6 +6021,7 @@ export namespace Snapd {
         get slotAttrs(): GLib.HashTable<any, any>;
         /**
          * @construct-only
+         * @default null
          */
         get snap(): string;
 
@@ -6133,10 +6166,12 @@ export namespace Snapd {
         get data(): GLib.Bytes;
         /**
          * @construct-only
+         * @default null
          */
         get mime_type(): string;
         /**
          * @construct-only
+         * @default null
          */
         get mimeType(): string;
 
@@ -6229,14 +6264,17 @@ export namespace Snapd {
 
         /**
          * @construct-only
+         * @default null
          */
         get doc_url(): string;
         /**
          * @construct-only
+         * @default null
          */
         get docUrl(): string;
         /**
          * @construct-only
+         * @default null
          */
         get name(): string;
         /**
@@ -6249,6 +6287,7 @@ export namespace Snapd {
         get slots(): any[];
         /**
          * @construct-only
+         * @default null
          */
         get summary(): string;
 
@@ -6354,14 +6393,17 @@ export namespace Snapd {
 
         /**
          * @construct-only
+         * @default null
          */
         get message(): string;
         /**
          * @construct-only
+         * @default null
          */
         get pid(): string;
         /**
          * @construct-only
+         * @default null
          */
         get sid(): string;
         /**
@@ -6456,10 +6498,12 @@ export namespace Snapd {
 
         /**
          * @construct-only
+         * @default Snapd.MaintenanceKind.UNKNOWN
          */
         get kind(): MaintenanceKind;
         /**
          * @construct-only
+         * @default null
          */
         get message(): string;
 
@@ -6548,14 +6592,17 @@ export namespace Snapd {
         get children(): any[];
         /**
          * @construct-only
+         * @default Snapd.MarkdownNodeType.TEXT
          */
         get node_type(): MarkdownNodeType;
         /**
          * @construct-only
+         * @default Snapd.MarkdownNodeType.TEXT
          */
         get nodeType(): MarkdownNodeType;
         /**
          * @construct-only
+         * @default null
          */
         get text(): string;
 
@@ -6725,18 +6772,22 @@ export namespace Snapd {
 
         /**
          * @construct-only
+         * @default 0
          */
         get height(): number;
         /**
          * @construct-only
+         * @default null
          */
         get type(): string;
         /**
          * @construct-only
+         * @default null
          */
         get url(): string;
         /**
          * @construct-only
+         * @default 0
          */
         get width(): number;
 
@@ -6856,10 +6907,12 @@ export namespace Snapd {
 
         /**
          * @construct-only
+         * @default 0
          */
         get expire_after(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get expireAfter(): number;
         /**
@@ -6872,10 +6925,12 @@ export namespace Snapd {
         get firstOccurred(): GLib.DateTime;
         /**
          * @construct-only
+         * @default null
          */
         get id(): string;
         /**
          * @construct-only
+         * @default null
          */
         get key(): string;
         /**
@@ -6896,10 +6951,12 @@ export namespace Snapd {
         get lastOccurred(): GLib.DateTime;
         /**
          * @construct-only
+         * @default -1
          */
         get last_occurred_nanoseconds(): number;
         /**
          * @construct-only
+         * @default -1
          */
         get lastOccurredNanoseconds(): number;
         /**
@@ -6912,30 +6969,37 @@ export namespace Snapd {
         get lastRepeated(): GLib.DateTime;
         /**
          * @construct-only
+         * @default 0
          */
         get notice_type(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get noticeType(): number;
         /**
          * @construct-only
+         * @default -1
          */
         get occurrences(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get repeat_after(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get repeatAfter(): number;
         /**
          * @construct-only
+         * @default null
          */
         get user_id(): string;
         /**
          * @construct-only
+         * @default null
          */
         get userId(): string;
 
@@ -7205,18 +7269,22 @@ export namespace Snapd {
         get connections(): any[];
         /**
          * @construct-only
+         * @default null
          */
         get interface(): string;
         /**
          * @construct-only
+         * @default null
          */
         get label(): string;
         /**
          * @construct-only
+         * @default null
          */
         get name(): string;
         /**
          * @construct-only
+         * @default null
          */
         get snap(): string;
 
@@ -7334,10 +7402,12 @@ export namespace Snapd {
 
         /**
          * @construct-only
+         * @default null
          */
         get plug(): string;
         /**
          * @construct-only
+         * @default null
          */
         get snap(): string;
 
@@ -7418,10 +7488,12 @@ export namespace Snapd {
 
         /**
          * @construct-only
+         * @default 0
          */
         get amount(): number;
         /**
          * @construct-only
+         * @default null
          */
         get currency(): string;
 
@@ -7504,14 +7576,17 @@ export namespace Snapd {
 
         /**
          * @construct-only
+         * @default 0
          */
         get height(): number;
         /**
          * @construct-only
+         * @default null
          */
         get url(): string;
         /**
          * @construct-only
+         * @default 0
          */
         get width(): number;
 
@@ -7613,18 +7688,22 @@ export namespace Snapd {
         get connections(): any[];
         /**
          * @construct-only
+         * @default null
          */
         get interface(): string;
         /**
          * @construct-only
+         * @default null
          */
         get label(): string;
         /**
          * @construct-only
+         * @default null
          */
         get name(): string;
         /**
          * @construct-only
+         * @default null
          */
         get snap(): string;
 
@@ -7742,10 +7821,12 @@ export namespace Snapd {
 
         /**
          * @construct-only
+         * @default null
          */
         get slot(): string;
         /**
          * @construct-only
+         * @default null
          */
         get snap(): string;
 
@@ -7850,8 +7931,8 @@ export namespace Snapd {
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             apps: any[];
-            base: string;
-            broken: string;
+            base: string | null;
+            broken: string | null;
             categories: any[];
             channel: string;
             channels: any[];
@@ -7864,23 +7945,23 @@ export namespace Snapd {
             devmode: boolean;
             download_size: bigint | number;
             downloadSize: bigint | number;
-            hold: GLib.DateTime;
+            hold: GLib.DateTime | null;
             icon: string;
             id: string;
-            install_date: GLib.DateTime;
-            installDate: GLib.DateTime;
+            install_date: GLib.DateTime | null;
+            installDate: GLib.DateTime | null;
             installed_size: bigint | number;
             installedSize: bigint | number;
             jailmode: boolean;
-            license: string;
+            license: string | null;
             media: any[];
-            mounted_from: string;
-            mountedFrom: string;
+            mounted_from: string | null;
+            mountedFrom: string | null;
             name: string;
             prices: any[];
             private: boolean;
-            proceed_time: GLib.DateTime;
-            proceedTime: GLib.DateTime;
+            proceed_time: GLib.DateTime | null;
+            proceedTime: GLib.DateTime | null;
             publisher_display_name: string;
             publisherDisplayName: string;
             publisher_id: string;
@@ -7894,10 +7975,10 @@ export namespace Snapd {
             snap_type: SnapType;
             snapType: SnapType;
             status: SnapStatus;
-            store_url: string;
-            storeUrl: string;
+            store_url: string | null;
+            storeUrl: string | null;
             summary: string;
-            title: string;
+            title: string | null;
             tracking_channel: string;
             trackingChannel: string;
             tracks: string[];
@@ -7923,18 +8004,21 @@ export namespace Snapd {
         get apps(): any[];
         /**
          * @construct-only
+         * @default null
          */
-        get base(): string;
+        get base(): string | null;
         /**
          * @construct-only
+         * @default null
          */
-        get broken(): string;
+        get broken(): string | null;
         /**
          * @construct-only
          */
         get categories(): any[];
         /**
          * @construct-only
+         * @default null
          */
         get channel(): string;
         /**
@@ -7951,82 +8035,98 @@ export namespace Snapd {
         get commonIds(): string[];
         /**
          * @construct-only
+         * @default Snapd.Confinement.UNKNOWN
          */
         get confinement(): Confinement;
         /**
          * @construct-only
+         * @default null
          */
         get contact(): string;
         /**
          * @construct-only
+         * @default null
          */
         get description(): string;
         /**
          * @construct-only
+         * @default null
          */
         get developer(): string;
         /**
          * @construct-only
+         * @default false
          */
         get devmode(): boolean;
         /**
          * @construct-only
+         * @default 0
          */
         get download_size(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get downloadSize(): number;
         /**
          * @construct-only
          */
-        get hold(): GLib.DateTime;
+        get hold(): GLib.DateTime | null;
         /**
          * @construct-only
+         * @default null
          */
         get icon(): string;
         /**
          * @construct-only
+         * @default null
          */
         get id(): string;
         /**
          * @construct-only
          */
-        get install_date(): GLib.DateTime;
+        get install_date(): GLib.DateTime | null;
         /**
          * @construct-only
          */
-        get installDate(): GLib.DateTime;
+        get installDate(): GLib.DateTime | null;
         /**
          * @construct-only
+         * @default 0
          */
         get installed_size(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get installedSize(): number;
         /**
          * @construct-only
+         * @default false
          */
         get jailmode(): boolean;
         /**
          * @construct-only
+         * @default null
          */
-        get license(): string;
+        get license(): string | null;
         /**
          * @construct-only
          */
         get media(): any[];
         /**
          * @construct-only
+         * @default null
          */
-        get mounted_from(): string;
+        get mounted_from(): string | null;
         /**
          * @construct-only
+         * @default null
          */
-        get mountedFrom(): string;
+        get mountedFrom(): string | null;
         /**
          * @construct-only
+         * @default null
          */
         get name(): string;
         /**
@@ -8035,50 +8135,60 @@ export namespace Snapd {
         get prices(): any[];
         /**
          * @construct-only
+         * @default false
          */
         get private(): boolean;
         /**
          * @construct-only
          */
-        get proceed_time(): GLib.DateTime;
+        get proceed_time(): GLib.DateTime | null;
         /**
          * @construct-only
          */
-        get proceedTime(): GLib.DateTime;
+        get proceedTime(): GLib.DateTime | null;
         /**
          * @construct-only
+         * @default null
          */
         get publisher_display_name(): string;
         /**
          * @construct-only
+         * @default null
          */
         get publisherDisplayName(): string;
         /**
          * @construct-only
+         * @default null
          */
         get publisher_id(): string;
         /**
          * @construct-only
+         * @default null
          */
         get publisherId(): string;
         /**
          * @construct-only
+         * @default null
          */
         get publisher_username(): string;
         /**
          * @construct-only
+         * @default null
          */
         get publisherUsername(): string;
         /**
          * @construct-only
+         * @default Snapd.PublisherValidation.UNKNOWN
          */
         get publisher_validation(): PublisherValidation;
         /**
          * @construct-only
+         * @default Snapd.PublisherValidation.UNKNOWN
          */
         get publisherValidation(): PublisherValidation;
         /**
          * @construct-only
+         * @default null
          */
         get revision(): string;
         /**
@@ -8087,38 +8197,47 @@ export namespace Snapd {
         get screenshots(): any[];
         /**
          * @construct-only
+         * @default Snapd.SnapType.UNKNOWN
          */
         get snap_type(): SnapType;
         /**
          * @construct-only
+         * @default Snapd.SnapType.UNKNOWN
          */
         get snapType(): SnapType;
         /**
          * @construct-only
+         * @default Snapd.SnapStatus.UNKNOWN
          */
         get status(): SnapStatus;
         /**
          * @construct-only
+         * @default null
          */
-        get store_url(): string;
+        get store_url(): string | null;
         /**
          * @construct-only
+         * @default null
          */
-        get storeUrl(): string;
+        get storeUrl(): string | null;
         /**
          * @construct-only
+         * @default null
          */
         get summary(): string;
         /**
          * @construct-only
+         * @default null
          */
-        get title(): string;
+        get title(): string | null;
         /**
          * @construct-only
+         * @default null
          */
         get tracking_channel(): string;
         /**
          * @construct-only
+         * @default null
          */
         get trackingChannel(): string;
         /**
@@ -8127,14 +8246,17 @@ export namespace Snapd {
         get tracks(): string[];
         /**
          * @construct-only
+         * @default false
          */
         get trymode(): boolean;
         /**
          * @construct-only
+         * @default null
          */
         get version(): string;
         /**
          * @construct-only
+         * @default null
          */
         get website(): string;
 
@@ -8448,20 +8570,20 @@ export namespace Snapd {
             osId: string;
             os_version: string;
             osVersion: string;
-            refresh_hold: GLib.DateTime;
-            refreshHold: GLib.DateTime;
-            refresh_last: GLib.DateTime;
-            refreshLast: GLib.DateTime;
-            refresh_next: GLib.DateTime;
-            refreshNext: GLib.DateTime;
-            refresh_schedule: string;
-            refreshSchedule: string;
-            refresh_timer: string;
-            refreshTimer: string;
+            refresh_hold: GLib.DateTime | null;
+            refreshHold: GLib.DateTime | null;
+            refresh_last: GLib.DateTime | null;
+            refreshLast: GLib.DateTime | null;
+            refresh_next: GLib.DateTime | null;
+            refreshNext: GLib.DateTime | null;
+            refresh_schedule: string | null;
+            refreshSchedule: string | null;
+            refresh_timer: string | null;
+            refreshTimer: string | null;
             sandbox_features: any;
             sandboxFeatures: any;
             series: string;
-            store: string;
+            store: string | null;
             version: string;
         }
     }
@@ -8478,112 +8600,133 @@ export namespace Snapd {
 
         /**
          * @construct-only
+         * @default null
          */
         get architecture(): string;
         /**
          * @construct-only
+         * @default null
          */
         get binaries_directory(): string;
         /**
          * @construct-only
+         * @default null
          */
         get binariesDirectory(): string;
         /**
          * @construct-only
+         * @default null
          */
         get build_id(): string;
         /**
          * @construct-only
+         * @default null
          */
         get buildId(): string;
         /**
          * @construct-only
+         * @default Snapd.SystemConfinement.UNKNOWN
          */
         get confinement(): SystemConfinement;
         /**
          * @construct-only
+         * @default null
          */
         get kernel_version(): string;
         /**
          * @construct-only
+         * @default null
          */
         get kernelVersion(): string;
         /**
          * @construct-only
+         * @default false
          */
         get managed(): boolean;
         /**
          * @construct-only
+         * @default null
          */
         get mount_directory(): string;
         /**
          * @construct-only
+         * @default null
          */
         get mountDirectory(): string;
         /**
          * @construct-only
+         * @default false
          */
         get on_classic(): boolean;
         /**
          * @construct-only
+         * @default false
          */
         get onClassic(): boolean;
         /**
          * @construct-only
+         * @default null
          */
         get os_id(): string;
         /**
          * @construct-only
+         * @default null
          */
         get osId(): string;
         /**
          * @construct-only
+         * @default null
          */
         get os_version(): string;
         /**
          * @construct-only
+         * @default null
          */
         get osVersion(): string;
         /**
          * @construct-only
          */
-        get refresh_hold(): GLib.DateTime;
+        get refresh_hold(): GLib.DateTime | null;
         /**
          * @construct-only
          */
-        get refreshHold(): GLib.DateTime;
+        get refreshHold(): GLib.DateTime | null;
         /**
          * @construct-only
          */
-        get refresh_last(): GLib.DateTime;
+        get refresh_last(): GLib.DateTime | null;
         /**
          * @construct-only
          */
-        get refreshLast(): GLib.DateTime;
+        get refreshLast(): GLib.DateTime | null;
         /**
          * @construct-only
          */
-        get refresh_next(): GLib.DateTime;
+        get refresh_next(): GLib.DateTime | null;
         /**
          * @construct-only
          */
-        get refreshNext(): GLib.DateTime;
+        get refreshNext(): GLib.DateTime | null;
         /**
          * @construct-only
+         * @default null
          */
-        get refresh_schedule(): string;
+        get refresh_schedule(): string | null;
         /**
          * @construct-only
+         * @default null
          */
-        get refreshSchedule(): string;
+        get refreshSchedule(): string | null;
         /**
          * @construct-only
+         * @default null
          */
-        get refresh_timer(): string;
+        get refresh_timer(): string | null;
         /**
          * @construct-only
+         * @default null
          */
-        get refreshTimer(): string;
+        get refreshTimer(): string | null;
         /**
          * @construct-only
          */
@@ -8594,14 +8737,17 @@ export namespace Snapd {
         get sandboxFeatures(): any;
         /**
          * @construct-only
+         * @default null
          */
         get series(): string;
         /**
          * @construct-only
+         * @default null
          */
-        get store(): string;
+        get store(): string | null;
         /**
          * @construct-only
+         * @default null
          */
         get version(): string;
 
@@ -8761,7 +8907,7 @@ export namespace Snapd {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            data: TaskData;
+            data: TaskData | null;
             id: string;
             kind: string;
             progress_done: bigint | number;
@@ -8771,8 +8917,8 @@ export namespace Snapd {
             progress_total: bigint | number;
             progressTotal: bigint | number;
             ready: boolean;
-            ready_time: GLib.DateTime;
-            readyTime: GLib.DateTime;
+            ready_time: GLib.DateTime | null;
+            readyTime: GLib.DateTime | null;
             spawn_time: GLib.DateTime;
             spawnTime: GLib.DateTime;
             status: string;
@@ -8793,51 +8939,60 @@ export namespace Snapd {
         /**
          * @construct-only
          */
-        get data(): TaskData;
+        get data(): TaskData | null;
         /**
          * @construct-only
+         * @default null
          */
         get id(): string;
         /**
          * @construct-only
+         * @default null
          */
         get kind(): string;
         /**
          * @construct-only
+         * @default 0
          */
         get progress_done(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get progressDone(): number;
         /**
          * @construct-only
+         * @default null
          */
         get progress_label(): string;
         /**
          * @construct-only
+         * @default null
          */
         get progressLabel(): string;
         /**
          * @construct-only
+         * @default 0
          */
         get progress_total(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get progressTotal(): number;
         /**
          * @construct-only
+         * @default false
          */
         get ready(): boolean;
         /**
          * @construct-only
          */
-        get ready_time(): GLib.DateTime;
+        get ready_time(): GLib.DateTime | null;
         /**
          * @construct-only
          */
-        get readyTime(): GLib.DateTime;
+        get readyTime(): GLib.DateTime | null;
         /**
          * @construct-only
          */
@@ -8848,10 +9003,12 @@ export namespace Snapd {
         get spawnTime(): GLib.DateTime;
         /**
          * @construct-only
+         * @default null
          */
         get status(): string;
         /**
          * @construct-only
+         * @default null
          */
         get summary(): string;
 
@@ -8964,8 +9121,8 @@ export namespace Snapd {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            affected_snaps: string[];
-            affectedSnaps: string[];
+            affected_snaps: string[] | null;
+            affectedSnaps: string[] | null;
         }
     }
 
@@ -8982,11 +9139,11 @@ export namespace Snapd {
         /**
          * @construct-only
          */
-        get affected_snaps(): string[];
+        get affected_snaps(): string[] | null;
         /**
          * @construct-only
          */
-        get affectedSnaps(): string[];
+        get affectedSnaps(): string[] | null;
 
         /**
          * Compile-time signal type information.
@@ -9046,8 +9203,8 @@ export namespace Snapd {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            auth_data: AuthData;
-            authData: AuthData;
+            auth_data: AuthData | null;
+            authData: AuthData | null;
             email: string;
             id: bigint | number;
             ssh_keys: string[];
@@ -9070,17 +9227,19 @@ export namespace Snapd {
         /**
          * @construct-only
          */
-        get auth_data(): AuthData;
+        get auth_data(): AuthData | null;
         /**
          * @construct-only
          */
-        get authData(): AuthData;
+        get authData(): AuthData | null;
         /**
          * @construct-only
+         * @default null
          */
         get email(): string;
         /**
          * @construct-only
+         * @default -1
          */
         get id(): number;
         /**
@@ -9093,6 +9252,7 @@ export namespace Snapd {
         get sshKeys(): string[];
         /**
          * @construct-only
+         * @default null
          */
         get username(): string;
 

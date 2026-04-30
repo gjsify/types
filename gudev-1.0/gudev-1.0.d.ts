@@ -133,7 +133,7 @@ export namespace GUdev {
 
         _init(...args: any[]): void;
 
-        static ['new'](subsystems?: string[] | null): Client;
+        static ['new'](subsystems: string[] | null): Client;
 
         // Signals
 
@@ -185,7 +185,7 @@ export namespace GUdev {
          * @param subsystem The subsystem to get devices for or `null` to get all devices.
          * @returns A list of {@link GUdev.Device} objects. The caller should free the result by using `g_object_unref()` on each element in the list and then `g_list_free()` on the list.
          */
-        query_by_subsystem(subsystem?: string | null): Device[] | null;
+        query_by_subsystem(subsystem: string | null): Device[] | null;
         /**
          * Looks up a device for a subsystem and name.
          * @param subsystem A subsystem name.
@@ -370,7 +370,7 @@ export namespace GUdev {
          * @param devtype The devtype of the parent to get or `null`.
          * @returns A {@link GUdev.Device} or `null` if `device` has no parent with `subsystem` and `devtype`. Free with `g_object_unref()`.
          */
-        get_parent_with_subsystem(subsystem: string, devtype?: string | null): Device | null;
+        get_parent_with_subsystem(subsystem: string, devtype: string | null): Device | null;
         /**
          * Look up the value for `key` on `device`.
          * @param key Name of property.

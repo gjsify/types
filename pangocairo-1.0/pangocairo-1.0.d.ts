@@ -53,7 +53,7 @@ export namespace PangoCairo {
      * @param options a `cairo_font_options_t`, or `null` to unset   any previously set options. A copy is made.
      * @since 1.10
      */
-    function context_set_font_options(context: Pango.Context, options?: cairo.FontOptions | null): void;
+    function context_set_font_options(context: Pango.Context, options: cairo.FontOptions | null): void;
     /**
      * Sets the resolution for the context.
      *
@@ -77,8 +77,8 @@ export namespace PangoCairo {
      */
     function context_set_shape_renderer(
         context: Pango.Context,
-        func?: ShapeRendererFunc | null,
-        dnotify?: GLib.DestroyNotify | null,
+        func: ShapeRendererFunc | null,
+        dnotify: GLib.DestroyNotify | null,
     ): void;
     /**
      * Creates a context object set up to match the current transformation

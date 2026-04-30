@@ -433,6 +433,7 @@ export namespace GdkWayland {
         /**
          * Whether to hide on outside clicks.
          * @construct-only
+         * @default false
          * @category Inherited from Gdk.Popup
          */
         get autohide(): boolean;
@@ -441,74 +442,7 @@ export namespace GdkWayland {
          * @construct-only
          * @category Inherited from Gdk.Popup
          */
-        get parent(): Gdk.Surface;
-        /**
-         * The mouse pointer for the {@link Gdk.Surface}.
-         * @category Inherited from Gdk.Surface
-         */
-        get cursor(): Gdk.Cursor;
-        set cursor(val: Gdk.Cursor);
-        /**
-         * The {@link Gdk.Display} connection of the surface.
-         * @construct-only
-         * @category Inherited from Gdk.Surface
-         */
-        get display(): Gdk.Display;
-        /**
-         * The {@link Gdk.FrameClock} of the surface.
-         * @construct-only
-         * @category Inherited from Gdk.Surface
-         */
-        get frame_clock(): Gdk.FrameClock;
-        /**
-         * The {@link Gdk.FrameClock} of the surface.
-         * @construct-only
-         * @category Inherited from Gdk.Surface
-         */
-        get frameClock(): Gdk.FrameClock;
-        /**
-         * The height of the surface, in pixels.
-         * @read-only
-         * @category Inherited from Gdk.Surface
-         */
-        get height(): number;
-        /**
-         * Whether the surface is mapped.
-         * @read-only
-         * @category Inherited from Gdk.Surface
-         */
-        get mapped(): boolean;
-        /**
-         * The scale of the surface.
-         * @since 4.12
-         * @read-only
-         * @category Inherited from Gdk.Surface
-         */
-        get scale(): number;
-        /**
-         * The scale factor of the surface.
-         *
-         * The scale factor is the next larger integer,
-         * compared to {@link Gdk.Surface.scale}.
-         * @read-only
-         * @category Inherited from Gdk.Surface
-         */
-        get scale_factor(): number;
-        /**
-         * The scale factor of the surface.
-         *
-         * The scale factor is the next larger integer,
-         * compared to {@link Gdk.Surface.scale}.
-         * @read-only
-         * @category Inherited from Gdk.Surface
-         */
-        get scaleFactor(): number;
-        /**
-         * The width of the surface in pixels.
-         * @read-only
-         * @category Inherited from Gdk.Surface
-         */
-        get width(): number;
+        get parent(): Gdk.Surface | null;
         /**
          * Returns whether this popup is set to hide on outside clicks.
          * @returns `true` if `popup` will autohide
@@ -567,266 +501,6 @@ export namespace GdkWayland {
          * @returns `false` if it failed to be presented, otherwise `true`.
          */
         present(width: number, height: number, layout: Gdk.PopupLayout): boolean;
-        /**
-         * Emits a short beep associated to `surface`.
-         *
-         * If the display of `surface` does not support per-surface beeps,
-         * emits a short beep on the display just as {@link Gdk.Display.beep}.
-         */
-        beep(): void;
-        /**
-         * Creates a new {@link Gdk.CairoContext} for rendering on `surface`.
-         * @returns the newly created {@link Gdk.CairoContext}
-         */
-        create_cairo_context(): Gdk.CairoContext;
-        /**
-         * Creates a new {@link Gdk.GLContext} for the {@link Gdk.Surface}.
-         *
-         * The context is disconnected from any particular surface or surface.
-         * If the creation of the {@link Gdk.GLContext} failed, `error` will be set.
-         * Before using the returned {@link Gdk.GLContext}, you will need to
-         * call {@link Gdk.GLContext.make_current} or {@link Gdk.GLContext.realize}.
-         * @returns the newly created {@link Gdk.GLContext}
-         */
-        create_gl_context(): Gdk.GLContext;
-        /**
-         * Create a new Cairo surface that is as compatible as possible with the
-         * given `surface`.
-         *
-         * For example the new surface will have the same fallback resolution
-         * and font options as `surface`. Generally, the new surface will also
-         * use the same backend as `surface`, unless that is not possible for
-         * some reason. The type of the returned surface may be examined with
-         * `cairo_surface_get_type()`.
-         *
-         * Initially the surface contents are all 0 (transparent if contents
-         * have transparency, black otherwise.)
-         *
-         * This function always returns a valid pointer, but it will return a
-         * pointer to a &#x201C;nil&#x201D; surface if `other` is already in an error state
-         * or any other error occurs.
-         * @param content the content for the new surface
-         * @param width width of the new surface
-         * @param height height of the new surface
-         * @returns a pointer to the newly allocated surface. The caller   owns the surface and should call `cairo_surface_destroy()` when done   with it.
-         */
-        create_similar_surface(content: cairo.Content, width: number, height: number): cairo.Surface;
-        /**
-         * Sets an error and returns `null`.
-         * @returns `null`
-         */
-        create_vulkan_context(): Gdk.VulkanContext;
-        /**
-         * Destroys the window system resources associated with `surface` and
-         * decrements `surface`'s reference count.
-         *
-         * The window system resources for all children of `surface` are also
-         * destroyed, but the children&#x2019;s reference counts are not decremented.
-         *
-         * Note that a surface will not be destroyed automatically when its
-         * reference count reaches zero. You must call this function yourself
-         * before that happens.
-         */
-        destroy(): void;
-        /**
-         * Retrieves a {@link Gdk.Cursor} pointer for the cursor currently set on the
-         * {@link Gdk.Surface}.
-         *
-         * If the return value is `null` then there is no custom cursor set on
-         * the surface, and it is using the cursor for its parent surface.
-         *
-         * Use {@link Gdk.Surface.set_cursor} to unset the cursor of the surface.
-         * @returns a {@link Gdk.Cursor}
-         */
-        get_cursor(): Gdk.Cursor | null;
-        /**
-         * Retrieves a {@link Gdk.Cursor} pointer for the `device` currently set on the
-         * specified {@link Gdk.Surface}.
-         *
-         * If the return value is `null` then there is no custom cursor set on the
-         * specified surface, and it is using the cursor for its parent surface.
-         *
-         * Use {@link Gdk.Surface.set_cursor} to unset the cursor of the surface.
-         * @param device a pointer {@link Gdk.Device}
-         * @returns a {@link Gdk.Cursor}
-         */
-        get_device_cursor(device: Gdk.Device): Gdk.Cursor | null;
-        /**
-         * Obtains the current device position and modifier state.
-         *
-         * The position is given in coordinates relative to the upper
-         * left corner of `surface`.
-         * @param device pointer {@link Gdk.Device} to query to
-         * @returns `true` if the device is over the surface
-         */
-        get_device_position(device: Gdk.Device): [boolean, number, number, Gdk.ModifierType | null];
-        /**
-         * Gets the {@link Gdk.Display} associated with a {@link Gdk.Surface}.
-         * @returns the {@link Gdk.Display} associated with `surface`
-         */
-        get_display(): Gdk.Display;
-        /**
-         * Gets the frame clock for the surface.
-         *
-         * The frame clock for a surface never changes unless the surface is
-         * reparented to a new toplevel surface.
-         * @returns the frame clock
-         */
-        get_frame_clock(): Gdk.FrameClock;
-        /**
-         * Returns the height of the given `surface`.
-         *
-         * Surface size is reported in &#x201D;application pixels&#x201D;, not
-         * &#x201D;device pixels&#x201D; (see {@link Gdk.Surface.get_scale_factor}).
-         * @returns The height of `surface`
-         */
-        get_height(): number;
-        /**
-         * Checks whether the surface has been mapped.
-         *
-         * A surface is mapped with {@link Gdk.Toplevel.present}
-         * or {@link Gdk.Popup.present}.
-         * @returns `true` if the surface is mapped
-         */
-        get_mapped(): boolean;
-        /**
-         * Returns the internal scale that maps from surface coordinates
-         * to the actual device pixels.
-         *
-         * When the scale is bigger than 1, the windowing system prefers to get
-         * buffers with a resolution that is bigger than the surface size (e.g.
-         * to show the surface on a high-resolution display, or in a magnifier).
-         *
-         * Compare with {@link Gdk.Surface.get_scale_factor}, which returns the
-         * next larger integer.
-         *
-         * The scale may change during the lifetime of the surface.
-         * @returns the scale
-         */
-        get_scale(): number;
-        /**
-         * Returns the internal scale factor that maps from surface coordinates
-         * to the actual device pixels.
-         *
-         * On traditional systems this is 1, but on very high density outputs
-         * this can be a higher value (often 2). A higher value means that drawing
-         * is automatically scaled up to a higher resolution, so any code doing
-         * drawing will automatically look nicer. However, if you are supplying
-         * pixel-based data the scale value can be used to determine whether to
-         * use a pixel resource with higher resolution data.
-         *
-         * The scale factor may change during the lifetime of the surface.
-         * @returns the scale factor
-         */
-        get_scale_factor(): number;
-        /**
-         * Returns the width of the given `surface`.
-         *
-         * Surface size is reported in &#x201D;application pixels&#x201D;, not
-         * &#x201D;device pixels&#x201D; (see {@link Gdk.Surface.get_scale_factor}).
-         * @returns The width of `surface`
-         */
-        get_width(): number;
-        /**
-         * Hide the surface.
-         *
-         * For toplevel surfaces, withdraws them, so they will no longer be
-         * known to the window manager; for all surfaces, unmaps them, so
-         * they won&#x2019;t be displayed. Normally done automatically as
-         * part of [gtk_widget_hide()](../gtk4/method.Widget.hide.html).
-         */
-        hide(): void;
-        /**
-         * Check to see if a surface is destroyed.
-         * @returns `true` if the surface is destroyed
-         */
-        is_destroyed(): boolean;
-        /**
-         * Forces a `Gdk.Surface::render` signal emission for `surface`
-         * to be scheduled.
-         *
-         * This function is useful for implementations that track invalid
-         * regions on their own.
-         */
-        queue_render(): void;
-        /**
-         * Request a layout phase from the surface's frame clock.
-         *
-         * See {@link Gdk.FrameClock.request_phase}.
-         */
-        request_layout(): void;
-        /**
-         * Sets the default mouse pointer for a {@link Gdk.Surface}.
-         *
-         * Passing `null` for the `cursor` argument means that `surface` will use
-         * the cursor of its parent surface. Most surfaces should use this default.
-         * Note that `cursor` must be for the same display as `surface`.
-         *
-         * Use {@link Gdk.Cursor.new_from_name} or {@link Gdk.Cursor.new_from_texture}
-         * to create the cursor. To make the cursor invisible, use `GDK_BLANK_CURSOR`.
-         * @param cursor a {@link Gdk.Cursor}
-         */
-        set_cursor(cursor?: Gdk.Cursor | null): void;
-        /**
-         * Sets a specific {@link Gdk.Cursor} for a given device when it gets inside `surface`.
-         *
-         * Passing `null` for the `cursor` argument means that `surface` will use the
-         * cursor of its parent surface. Most surfaces should use this default.
-         *
-         * Use {@link Gdk.Cursor.new_from_name} or {@link Gdk.Cursor.new_from_texture}
-         * to create the cursor. To make the cursor invisible, use `GDK_BLANK_CURSOR`.
-         * @param device a pointer {@link Gdk.Device}
-         * @param cursor a {@link Gdk.Cursor}
-         */
-        set_device_cursor(device: Gdk.Device, cursor: Gdk.Cursor): void;
-        /**
-         * Apply the region to the surface for the purpose of event
-         * handling.
-         *
-         * Mouse events which happen while the pointer position corresponds
-         * to an unset bit in the mask will be passed on the surface below
-         * `surface`.
-         *
-         * An input region is typically used with RGBA surfaces. The alpha
-         * channel of the surface defines which pixels are invisible and
-         * allows for nicely antialiased borders, and the input region
-         * controls where the surface is &#x201C;clickable&#x201D;.
-         *
-         * Use {@link Gdk.Display.supports_input_shapes} to find out if
-         * a particular backend supports input regions.
-         * @param region region of surface to be reactive,   or `null` to make the entire surface reactive
-         */
-        set_input_region(region?: cairo.Region | null): void;
-        /**
-         * Marks a region of the {@link Gdk.Surface} as opaque.
-         *
-         * For optimisation purposes, compositing window managers may
-         * like to not draw obscured regions of surfaces, or turn off blending
-         * during for these regions. With RGB windows with no transparency,
-         * this is just the shape of the window, but with ARGB32 windows, the
-         * compositor does not know what regions of the window are transparent
-         * or not.
-         *
-         * This function only works for toplevel surfaces.
-         *
-         * GTK will update this property automatically if the `surface` background
-         * is opaque, as we know where the opaque regions are. If your surface
-         * background is not opaque, please update this property in your
-         * [GtkWidgetClass.css_changed](../gtk4/vfunc.Widget.css_changed.html) handler.
-         * @param region a region, or `null` to make the entire   surface opaque
-         */
-        set_opaque_region(region?: cairo.Region | null): void;
-        /**
-         * Translates coordinates between two surfaces.
-         *
-         * Note that this only works if `to` and `from` are popups or
-         * transient-for to the same toplevel (directly or indirectly).
-         * @param to the target surface
-         * @param x coordinates to translate
-         * @param y coordinates to translate
-         * @returns `true` if the coordinates were successfully translated
-         */
-        translate_coordinates(to: Gdk.Surface, x: number, y: number): [boolean, number, number];
     }
 
     namespace WaylandSeat {
@@ -1114,29 +788,34 @@ export namespace GdkWayland {
          * The capabilities that are available for this toplevel.
          * @since 4.20
          * @read-only
+         * @default 0
          * @category Inherited from Gdk.Toplevel
          */
         get capabilities(): Gdk.ToplevelCapabilities;
         /**
          * Whether the window manager should add decorations.
+         * @default false
          * @category Inherited from Gdk.Toplevel
          */
         get decorated(): boolean;
         set decorated(val: boolean);
         /**
          * Whether the window manager should allow to close the surface.
+         * @default false
          * @category Inherited from Gdk.Toplevel
          */
         get deletable(): boolean;
         set deletable(val: boolean);
         /**
          * The fullscreen mode of the surface.
+         * @default Gdk.FullscreenMode.CURRENT_MONITOR
          * @category Inherited from Gdk.Toplevel
          */
         get fullscreen_mode(): Gdk.FullscreenMode;
         set fullscreen_mode(val: Gdk.FullscreenMode);
         /**
          * The fullscreen mode of the surface.
+         * @default Gdk.FullscreenMode.CURRENT_MONITOR
          * @category Inherited from Gdk.Toplevel
          */
         get fullscreenMode(): Gdk.FullscreenMode;
@@ -1153,6 +832,7 @@ export namespace GdkWayland {
          * toplevel sizes with the windowing system. It does not affect interactive
          * resizes started with {@link Gdk.Toplevel.begin_resize}.
          * @since 4.20
+         * @default Gdk.Gravity.NORTH_EAST
          * @category Inherited from Gdk.Toplevel
          */
         get gravity(): Gdk.Gravity;
@@ -1171,6 +851,7 @@ export namespace GdkWayland {
         set iconList(val: any);
         /**
          * Whether the surface is modal.
+         * @default false
          * @category Inherited from Gdk.Toplevel
          */
         get modal(): boolean;
@@ -1178,12 +859,14 @@ export namespace GdkWayland {
         /**
          * Whether the surface should inhibit keyboard shortcuts.
          * @read-only
+         * @default false
          * @category Inherited from Gdk.Toplevel
          */
         get shortcuts_inhibited(): boolean;
         /**
          * Whether the surface should inhibit keyboard shortcuts.
          * @read-only
+         * @default false
          * @category Inherited from Gdk.Toplevel
          */
         get shortcutsInhibited(): boolean;
@@ -1192,6 +875,7 @@ export namespace GdkWayland {
          *
          * See {@link Gdk.AppLaunchContext} for more information about
          * startup feedback.
+         * @default null
          * @category Inherited from Gdk.Toplevel
          */
         get startup_id(): string;
@@ -1201,6 +885,7 @@ export namespace GdkWayland {
          *
          * See {@link Gdk.AppLaunchContext} for more information about
          * startup feedback.
+         * @default null
          * @category Inherited from Gdk.Toplevel
          */
         get startupId(): string;
@@ -1208,11 +893,13 @@ export namespace GdkWayland {
         /**
          * The state of the toplevel.
          * @read-only
+         * @default 0
          * @category Inherited from Gdk.Toplevel
          */
         get state(): Gdk.ToplevelState;
         /**
          * The title of the surface.
+         * @default null
          * @category Inherited from Gdk.Toplevel
          */
         get title(): string;
@@ -1229,73 +916,6 @@ export namespace GdkWayland {
          */
         get transientFor(): Gdk.Surface;
         set transientFor(val: Gdk.Surface);
-        /**
-         * The mouse pointer for the {@link Gdk.Surface}.
-         * @category Inherited from Gdk.Surface
-         */
-        get cursor(): Gdk.Cursor;
-        set cursor(val: Gdk.Cursor);
-        /**
-         * The {@link Gdk.Display} connection of the surface.
-         * @construct-only
-         * @category Inherited from Gdk.Surface
-         */
-        get display(): Gdk.Display;
-        /**
-         * The {@link Gdk.FrameClock} of the surface.
-         * @construct-only
-         * @category Inherited from Gdk.Surface
-         */
-        get frame_clock(): Gdk.FrameClock;
-        /**
-         * The {@link Gdk.FrameClock} of the surface.
-         * @construct-only
-         * @category Inherited from Gdk.Surface
-         */
-        get frameClock(): Gdk.FrameClock;
-        /**
-         * The height of the surface, in pixels.
-         * @read-only
-         * @category Inherited from Gdk.Surface
-         */
-        get height(): number;
-        /**
-         * Whether the surface is mapped.
-         * @read-only
-         * @category Inherited from Gdk.Surface
-         */
-        get mapped(): boolean;
-        /**
-         * The scale of the surface.
-         * @since 4.12
-         * @read-only
-         * @category Inherited from Gdk.Surface
-         */
-        get scale(): number;
-        /**
-         * The scale factor of the surface.
-         *
-         * The scale factor is the next larger integer,
-         * compared to {@link Gdk.Surface.scale}.
-         * @read-only
-         * @category Inherited from Gdk.Surface
-         */
-        get scale_factor(): number;
-        /**
-         * The scale factor of the surface.
-         *
-         * The scale factor is the next larger integer,
-         * compared to {@link Gdk.Surface.scale}.
-         * @read-only
-         * @category Inherited from Gdk.Surface
-         */
-        get scaleFactor(): number;
-        /**
-         * The width of the surface in pixels.
-         * @read-only
-         * @category Inherited from Gdk.Surface
-         */
-        get width(): number;
         /**
          * Begins an interactive move operation.
          *
@@ -1376,7 +996,7 @@ export namespace GdkWayland {
          * by listening to the {@link Gdk.Toplevel.shortcuts_inhibited} property.
          * @param event the {@link Gdk.Event} that is triggering the inhibit   request, or `null` if none is available
          */
-        inhibit_system_shortcuts(event?: Gdk.Event | null): void;
+        inhibit_system_shortcuts(event: Gdk.Event | null): void;
         /**
          * Asks to lower the `toplevel` below other windows.
          *
@@ -1515,266 +1135,6 @@ export namespace GdkWayland {
          * @returns whether the gesture was performed
          */
         titlebar_gesture(gesture: Gdk.TitlebarGesture): boolean;
-        /**
-         * Emits a short beep associated to `surface`.
-         *
-         * If the display of `surface` does not support per-surface beeps,
-         * emits a short beep on the display just as {@link Gdk.Display.beep}.
-         */
-        beep(): void;
-        /**
-         * Creates a new {@link Gdk.CairoContext} for rendering on `surface`.
-         * @returns the newly created {@link Gdk.CairoContext}
-         */
-        create_cairo_context(): Gdk.CairoContext;
-        /**
-         * Creates a new {@link Gdk.GLContext} for the {@link Gdk.Surface}.
-         *
-         * The context is disconnected from any particular surface or surface.
-         * If the creation of the {@link Gdk.GLContext} failed, `error` will be set.
-         * Before using the returned {@link Gdk.GLContext}, you will need to
-         * call {@link Gdk.GLContext.make_current} or {@link Gdk.GLContext.realize}.
-         * @returns the newly created {@link Gdk.GLContext}
-         */
-        create_gl_context(): Gdk.GLContext;
-        /**
-         * Create a new Cairo surface that is as compatible as possible with the
-         * given `surface`.
-         *
-         * For example the new surface will have the same fallback resolution
-         * and font options as `surface`. Generally, the new surface will also
-         * use the same backend as `surface`, unless that is not possible for
-         * some reason. The type of the returned surface may be examined with
-         * `cairo_surface_get_type()`.
-         *
-         * Initially the surface contents are all 0 (transparent if contents
-         * have transparency, black otherwise.)
-         *
-         * This function always returns a valid pointer, but it will return a
-         * pointer to a &#x201C;nil&#x201D; surface if `other` is already in an error state
-         * or any other error occurs.
-         * @param content the content for the new surface
-         * @param width width of the new surface
-         * @param height height of the new surface
-         * @returns a pointer to the newly allocated surface. The caller   owns the surface and should call `cairo_surface_destroy()` when done   with it.
-         */
-        create_similar_surface(content: cairo.Content, width: number, height: number): cairo.Surface;
-        /**
-         * Sets an error and returns `null`.
-         * @returns `null`
-         */
-        create_vulkan_context(): Gdk.VulkanContext;
-        /**
-         * Destroys the window system resources associated with `surface` and
-         * decrements `surface`'s reference count.
-         *
-         * The window system resources for all children of `surface` are also
-         * destroyed, but the children&#x2019;s reference counts are not decremented.
-         *
-         * Note that a surface will not be destroyed automatically when its
-         * reference count reaches zero. You must call this function yourself
-         * before that happens.
-         */
-        destroy(): void;
-        /**
-         * Retrieves a {@link Gdk.Cursor} pointer for the cursor currently set on the
-         * {@link Gdk.Surface}.
-         *
-         * If the return value is `null` then there is no custom cursor set on
-         * the surface, and it is using the cursor for its parent surface.
-         *
-         * Use {@link Gdk.Surface.set_cursor} to unset the cursor of the surface.
-         * @returns a {@link Gdk.Cursor}
-         */
-        get_cursor(): Gdk.Cursor | null;
-        /**
-         * Retrieves a {@link Gdk.Cursor} pointer for the `device` currently set on the
-         * specified {@link Gdk.Surface}.
-         *
-         * If the return value is `null` then there is no custom cursor set on the
-         * specified surface, and it is using the cursor for its parent surface.
-         *
-         * Use {@link Gdk.Surface.set_cursor} to unset the cursor of the surface.
-         * @param device a pointer {@link Gdk.Device}
-         * @returns a {@link Gdk.Cursor}
-         */
-        get_device_cursor(device: Gdk.Device): Gdk.Cursor | null;
-        /**
-         * Obtains the current device position and modifier state.
-         *
-         * The position is given in coordinates relative to the upper
-         * left corner of `surface`.
-         * @param device pointer {@link Gdk.Device} to query to
-         * @returns `true` if the device is over the surface
-         */
-        get_device_position(device: Gdk.Device): [boolean, number, number, Gdk.ModifierType | null];
-        /**
-         * Gets the {@link Gdk.Display} associated with a {@link Gdk.Surface}.
-         * @returns the {@link Gdk.Display} associated with `surface`
-         */
-        get_display(): Gdk.Display;
-        /**
-         * Gets the frame clock for the surface.
-         *
-         * The frame clock for a surface never changes unless the surface is
-         * reparented to a new toplevel surface.
-         * @returns the frame clock
-         */
-        get_frame_clock(): Gdk.FrameClock;
-        /**
-         * Returns the height of the given `surface`.
-         *
-         * Surface size is reported in &#x201D;application pixels&#x201D;, not
-         * &#x201D;device pixels&#x201D; (see {@link Gdk.Surface.get_scale_factor}).
-         * @returns The height of `surface`
-         */
-        get_height(): number;
-        /**
-         * Checks whether the surface has been mapped.
-         *
-         * A surface is mapped with {@link Gdk.Toplevel.present}
-         * or {@link Gdk.Popup.present}.
-         * @returns `true` if the surface is mapped
-         */
-        get_mapped(): boolean;
-        /**
-         * Returns the internal scale that maps from surface coordinates
-         * to the actual device pixels.
-         *
-         * When the scale is bigger than 1, the windowing system prefers to get
-         * buffers with a resolution that is bigger than the surface size (e.g.
-         * to show the surface on a high-resolution display, or in a magnifier).
-         *
-         * Compare with {@link Gdk.Surface.get_scale_factor}, which returns the
-         * next larger integer.
-         *
-         * The scale may change during the lifetime of the surface.
-         * @returns the scale
-         */
-        get_scale(): number;
-        /**
-         * Returns the internal scale factor that maps from surface coordinates
-         * to the actual device pixels.
-         *
-         * On traditional systems this is 1, but on very high density outputs
-         * this can be a higher value (often 2). A higher value means that drawing
-         * is automatically scaled up to a higher resolution, so any code doing
-         * drawing will automatically look nicer. However, if you are supplying
-         * pixel-based data the scale value can be used to determine whether to
-         * use a pixel resource with higher resolution data.
-         *
-         * The scale factor may change during the lifetime of the surface.
-         * @returns the scale factor
-         */
-        get_scale_factor(): number;
-        /**
-         * Returns the width of the given `surface`.
-         *
-         * Surface size is reported in &#x201D;application pixels&#x201D;, not
-         * &#x201D;device pixels&#x201D; (see {@link Gdk.Surface.get_scale_factor}).
-         * @returns The width of `surface`
-         */
-        get_width(): number;
-        /**
-         * Hide the surface.
-         *
-         * For toplevel surfaces, withdraws them, so they will no longer be
-         * known to the window manager; for all surfaces, unmaps them, so
-         * they won&#x2019;t be displayed. Normally done automatically as
-         * part of [gtk_widget_hide()](../gtk4/method.Widget.hide.html).
-         */
-        hide(): void;
-        /**
-         * Check to see if a surface is destroyed.
-         * @returns `true` if the surface is destroyed
-         */
-        is_destroyed(): boolean;
-        /**
-         * Forces a `Gdk.Surface::render` signal emission for `surface`
-         * to be scheduled.
-         *
-         * This function is useful for implementations that track invalid
-         * regions on their own.
-         */
-        queue_render(): void;
-        /**
-         * Request a layout phase from the surface's frame clock.
-         *
-         * See {@link Gdk.FrameClock.request_phase}.
-         */
-        request_layout(): void;
-        /**
-         * Sets the default mouse pointer for a {@link Gdk.Surface}.
-         *
-         * Passing `null` for the `cursor` argument means that `surface` will use
-         * the cursor of its parent surface. Most surfaces should use this default.
-         * Note that `cursor` must be for the same display as `surface`.
-         *
-         * Use {@link Gdk.Cursor.new_from_name} or {@link Gdk.Cursor.new_from_texture}
-         * to create the cursor. To make the cursor invisible, use `GDK_BLANK_CURSOR`.
-         * @param cursor a {@link Gdk.Cursor}
-         */
-        set_cursor(cursor?: Gdk.Cursor | null): void;
-        /**
-         * Sets a specific {@link Gdk.Cursor} for a given device when it gets inside `surface`.
-         *
-         * Passing `null` for the `cursor` argument means that `surface` will use the
-         * cursor of its parent surface. Most surfaces should use this default.
-         *
-         * Use {@link Gdk.Cursor.new_from_name} or {@link Gdk.Cursor.new_from_texture}
-         * to create the cursor. To make the cursor invisible, use `GDK_BLANK_CURSOR`.
-         * @param device a pointer {@link Gdk.Device}
-         * @param cursor a {@link Gdk.Cursor}
-         */
-        set_device_cursor(device: Gdk.Device, cursor: Gdk.Cursor): void;
-        /**
-         * Apply the region to the surface for the purpose of event
-         * handling.
-         *
-         * Mouse events which happen while the pointer position corresponds
-         * to an unset bit in the mask will be passed on the surface below
-         * `surface`.
-         *
-         * An input region is typically used with RGBA surfaces. The alpha
-         * channel of the surface defines which pixels are invisible and
-         * allows for nicely antialiased borders, and the input region
-         * controls where the surface is &#x201C;clickable&#x201D;.
-         *
-         * Use {@link Gdk.Display.supports_input_shapes} to find out if
-         * a particular backend supports input regions.
-         * @param region region of surface to be reactive,   or `null` to make the entire surface reactive
-         */
-        set_input_region(region?: cairo.Region | null): void;
-        /**
-         * Marks a region of the {@link Gdk.Surface} as opaque.
-         *
-         * For optimisation purposes, compositing window managers may
-         * like to not draw obscured regions of surfaces, or turn off blending
-         * during for these regions. With RGB windows with no transparency,
-         * this is just the shape of the window, but with ARGB32 windows, the
-         * compositor does not know what regions of the window are transparent
-         * or not.
-         *
-         * This function only works for toplevel surfaces.
-         *
-         * GTK will update this property automatically if the `surface` background
-         * is opaque, as we know where the opaque regions are. If your surface
-         * background is not opaque, please update this property in your
-         * [GtkWidgetClass.css_changed](../gtk4/vfunc.Widget.css_changed.html) handler.
-         * @param region a region, or `null` to make the entire   surface opaque
-         */
-        set_opaque_region(region?: cairo.Region | null): void;
-        /**
-         * Translates coordinates between two surfaces.
-         *
-         * Note that this only works if `to` and `from` are popups or
-         * transient-for to the same toplevel (directly or indirectly).
-         * @param to the target surface
-         * @param x coordinates to translate
-         * @param y coordinates to translate
-         * @returns `true` if the coordinates were successfully translated
-         */
-        translate_coordinates(to: Gdk.Surface, x: number, y: number): [boolean, number, number];
     }
 
     /**

@@ -133,7 +133,7 @@ export namespace Parquet {
          * @param column_indices Column indices to be read. `null` means that all columns are read.   If an index is negative, the index is counted backward from the   end of the columns. `-1` means the last column.
          * @returns A read {@link Arrow.Table}.
          */
-        read_row_group(row_group_index: number, column_indices?: number[] | null): Arrow.Table | null;
+        read_row_group(row_group_index: number, column_indices: number[] | null): Arrow.Table | null;
         /**
          * @returns A read {@link Arrow.Table}.
          */
@@ -193,13 +193,13 @@ export namespace Parquet {
         static new_arrow(
             schema: Arrow.Schema,
             sink: Arrow.OutputStream,
-            writer_properties?: WriterProperties | null,
+            writer_properties: WriterProperties | null,
         ): ArrowFileWriter;
 
         static new_path(
             schema: Arrow.Schema,
             path: string,
-            writer_properties?: WriterProperties | null,
+            writer_properties: WriterProperties | null,
         ): ArrowFileWriter;
 
         // Signals
@@ -295,11 +295,11 @@ export namespace Parquet {
         /**
          * @param path The column path as dot string.
          */
-        disable_dictionary(path?: string | null): void;
+        disable_dictionary(path: string | null): void;
         /**
          * @param path The column path as dot string.
          */
-        enable_dictionary(path?: string | null): void;
+        enable_dictionary(path: string | null): void;
         /**
          * @returns The batch size.
          */
@@ -334,7 +334,7 @@ export namespace Parquet {
          * @param compression_type A {@link Arrow.CompressionType}.
          * @param path The column path as dot string.
          */
-        set_compression(compression_type: Arrow.CompressionType, path?: string | null): void;
+        set_compression(compression_type: Arrow.CompressionType, path: string | null): void;
         /**
          * @param data_page_size The data page size.
          */

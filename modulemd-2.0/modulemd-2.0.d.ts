@@ -446,8 +446,8 @@ export namespace Modulemd {
      */
     function read_packager_file(
         yaml_path: string,
-        module_name?: string | null,
-        module_stream?: string | null,
+        module_name: string | null,
+        module_stream: string | null,
     ): [GObject.GType, GObject.Object];
     /**
      * @param yaml_string A YAML string containing a packager document.
@@ -458,8 +458,8 @@ export namespace Modulemd {
      */
     function read_packager_string(
         yaml_string: string,
-        module_name?: string | null,
-        module_stream?: string | null,
+        module_name: string | null,
+        module_stream: string | null,
     ): [GObject.GType, GObject.Object];
     /**
      * @returns A {@link GLib.Quark} used to identify an error in the modulemd yaml domain.
@@ -662,8 +662,14 @@ export namespace Modulemd {
 
         // Properties
 
+        /**
+         * @default __BUILDOPTS_RPM_MACROS_UNSET__
+         */
         get rpm_macros(): string;
         set rpm_macros(val: string);
+        /**
+         * @default __BUILDOPTS_RPM_MACROS_UNSET__
+         */
         get rpmMacros(): string;
         set rpmMacros(val: string);
 
@@ -790,14 +796,24 @@ export namespace Modulemd {
 
         // Properties
 
+        /**
+         * @default false
+         */
         get buildonly(): boolean;
         set buildonly(val: boolean);
+        /**
+         * @default 0
+         */
         get buildorder(): number;
         set buildorder(val: bigint | number);
         /**
          * @construct-only
+         * @default __UNSET__
          */
         get name(): string;
+        /**
+         * @default __UNSET__
+         */
         get rationale(): string;
         set rationale(val: string);
 
@@ -843,7 +859,7 @@ export namespace Modulemd {
          * @param key An optional new key for the copied component which is used as the lookup key when this component is attached to a {@link Modulemd.ModuleStream}.
          * @virtual
          */
-        vfunc_copy(key?: string | null): Component;
+        vfunc_copy(key: string | null): Component;
         /**
          * @param self_2 A {@link Modulemd.Component} object.
          * @virtual
@@ -857,7 +873,7 @@ export namespace Modulemd {
          * @param name The name of this component. Note that this is different from the key used to save this component to a {@link Modulemd.ModuleStream}. If this value is set, it adds a "name:" attribute to this component. This is used in bootstrapping cases where the key is a different name used to differentiate multiple ordered builds of the same component name. This function is currently only implemented for {@link Modulemd.ComponentRpm} and has no effect on other {@link Modulemd.Component} types.
          * @virtual
          */
-        vfunc_set_name(name?: string | null): void;
+        vfunc_set_name(name: string | null): void;
         /**
          * Verifies that all stored values are internally consistent and that the
          * component is sufficiently-complete for emitting. This function is called
@@ -881,7 +897,7 @@ export namespace Modulemd {
          * @param key An optional new key for the copied component which is used as the lookup key when this component is attached to a {@link Modulemd.ModuleStream}.
          * @returns A newly-allocated copy of `self`.
          */
-        copy(key?: string | null): Component;
+        copy(key: string | null): Component;
         /**
          * @param self_2 A {@link Modulemd.Component} object.
          * @returns TRUE, if both the objects are equal. FALSE, otherwise.
@@ -922,11 +938,11 @@ export namespace Modulemd {
         /**
          * @param name The name of this component. Note that this is different from the key used to save this component to a {@link Modulemd.ModuleStream}. If this value is set, it adds a "name:" attribute to this component. This is used in bootstrapping cases where the key is a different name used to differentiate multiple ordered builds of the same component name. This function is currently only implemented for {@link Modulemd.ComponentRpm} and has no effect on other {@link Modulemd.Component} types.
          */
-        set_name(name?: string | null): void;
+        set_name(name: string | null): void;
         /**
          * @param rationale The reason that this component is part of the stream.
          */
-        set_rationale(rationale?: string | null): void;
+        set_rationale(rationale: string | null): void;
         /**
          * Verifies that all stored values are internally consistent and that the
          * component is sufficiently-complete for emitting. This function is called
@@ -963,8 +979,14 @@ export namespace Modulemd {
 
         // Properties
 
+        /**
+         * @default __UNSET_COMPONENT_MODULE__
+         */
         // This accessor conflicts with a field or function name in a parent class or interface.
         ref: string | any;
+        /**
+         * @default __UNSET_COMPONENT_MODULE__
+         */
         get repository(): string;
         set repository(val: string);
 
@@ -1019,11 +1041,11 @@ export namespace Modulemd {
         /**
          * @param ref The commit ID in the SCM repository.
          */
-        set_ref(ref?: string | null): void;
+        set_ref(ref: string | null): void;
         /**
          * @param repository The URI of the SCM repository.
          */
-        set_repository(repository?: string | null): void;
+        set_repository(repository: string | null): void;
     }
 
     namespace ComponentRpm {
@@ -1060,16 +1082,34 @@ export namespace Modulemd {
 
         // Properties
 
+        /**
+         * @default false
+         */
         get buildroot(): boolean;
         set buildroot(val: boolean);
+        /**
+         * @default __UNSET_COMPONENT_RPM__
+         */
         get cache(): string;
         set cache(val: string);
+        /**
+         * @default __UNSET_COMPONENT_RPM__
+         */
         // This accessor conflicts with a field or function name in a parent class or interface.
         ref: string | any;
+        /**
+         * @default __UNSET_COMPONENT_RPM__
+         */
         get repository(): string;
         set repository(val: string);
+        /**
+         * @default false
+         */
         get srpm_buildroot(): boolean;
         set srpm_buildroot(val: boolean);
+        /**
+         * @default false
+         */
         get srpmBuildroot(): boolean;
         set srpmBuildroot(val: boolean);
 
@@ -1179,15 +1219,15 @@ export namespace Modulemd {
         /**
          * @param cache The lookaside cache URL.
          */
-        set_cache(cache?: string | null): void;
+        set_cache(cache: string | null): void;
         /**
          * @param ref The commit ID in the SCM repository.
          */
-        set_ref(ref?: string | null): void;
+        set_ref(ref: string | null): void;
         /**
          * @param repository The URI of the SCM repository.
          */
-        set_repository(repository?: string | null): void;
+        set_repository(repository: string | null): void;
         /**
          * @param srpm_buildroot The {@link Modulemd.ComponentRpm.srpm_buildroot} flag to set for `self`.
          */
@@ -1220,14 +1260,17 @@ export namespace Modulemd {
 
         /**
          * @read-only
+         * @default 0
          */
         get mdversion(): number;
         /**
          * @construct-only
+         * @default __NAME_UNSET__
          */
         get module_name(): string;
         /**
          * @construct-only
+         * @default __NAME_UNSET__
          */
         get moduleName(): string;
 
@@ -1396,43 +1439,43 @@ export namespace Modulemd {
          * @param profile_name The name of the default profile to add.
          * @param intent The name of the system intent to add profile defaults to. If NULL, this sets the generic fallback profiles for the stream. System intents are deprecated and calls with this non-NULL argument will become void in the future.
          */
-        add_default_profile_for_stream(stream_name: string, profile_name: string, intent?: string | null): void;
+        add_default_profile_for_stream(stream_name: string, profile_name: string, intent: string | null): void;
         /**
          * @param stream_name The name of the string to retrieve the default profiles for.
          * @param intent The name of the system intent for which to retrieve the profile defaults for this stream. System intents are deprecated and this argument will be ignored in the future.
          * @returns A sorted {@link GObject.Strv} list of unique profiles to be installed by default for this stream. NULL, if this stream_name is not present in the defaults.
          */
-        get_default_profiles_for_stream(stream_name: string, intent?: string | null): string[];
+        get_default_profiles_for_stream(stream_name: string, intent: string | null): string[];
         /**
          * @param intent The name of the system intent whose default stream will be retrieved. If left NULL or the specified intent has no different default, it will return the generic default stream for this module. System intents are deprecated and this argument will be ignored in the future.
          * @returns The name of the default stream for this module.
          */
-        get_default_stream(intent?: string | null): string;
+        get_default_stream(intent: string | null): string;
         /**
          * @param intent The name of the system intent whose stream profiles will be retrieved. If left NULL or the specified intent has no separate defaults for this module, it will return the generic stream profiles. System intents are deprecated and this argument will be ignored in the future.
          * @returns A sorted {@link GObject.Strv} list of unique stream names for which default profiles have been assigned.
          */
-        get_streams_with_default_profiles(intent?: string | null): string[];
+        get_streams_with_default_profiles(intent: string | null): string[];
         /**
          * Removes this stream from the list of profiles entirely. It will not appear
          * in the output document.
          * @param stream_name The name of the module stream from which to remove default profiles.
          * @param intent The name of the system intent from which to remove the profile defaults for this stream. System intents are deprecated and calls with this non-NULL arugment will become void in the future.
          */
-        remove_default_profiles_for_stream(stream_name: string, intent?: string | null): void;
+        remove_default_profiles_for_stream(stream_name: string, intent: string | null): void;
         /**
          * Set the default stream for this module.
          * @param default_stream The name of the default stream for this module. If NULL, it will remove the default stream.
          * @param intent If non-NULL, this indicates the system intent to apply this default stream. If NULL, it will be added as common defaults. System intents are deprecated and calls with this non-NULL argument will become void in the future.
          */
-        set_default_stream(default_stream?: string | null, intent?: string | null): void;
+        set_default_stream(default_stream: string | null, intent: string | null): void;
         /**
          * Sets the default profiles for `stream_name` to the empty set. When output to
          * a file, it will appear as `stream_name: []`.
          * @param stream_name The name of the module stream for which to empty default profiles.
          * @param intent The name of the system intent from which to clear the profile defaults for this stream. System intents are deprecated and calls with this non-NULL argument will become void in the future.
          */
-        set_empty_default_profiles_for_stream(stream_name: string, intent?: string | null): void;
+        set_empty_default_profiles_for_stream(stream_name: string, intent: string | null): void;
     }
 
     namespace Dependencies {
@@ -1581,10 +1624,12 @@ export namespace Modulemd {
 
         /**
          * @construct-only
+         * @default null
          */
         get module_name(): string;
         /**
          * @construct-only
+         * @default null
          */
         get moduleName(): string;
 
@@ -1654,7 +1699,7 @@ export namespace Modulemd {
          * @param context The stream context to look up obsoletes for.
          * @returns The newest active obsoletes attached to this module with specified stream and context (when eol_date is not set or it already occured the obsoletes is active). If no context is passed it matches obsoletes without context.
          */
-        get_newest_active_obsoletes(stream: string, context?: string | null): Obsoletes;
+        get_newest_active_obsoletes(stream: string, context: string | null): Obsoletes;
         /**
          * @returns A list of all obsoletes attached to this module. These are pointers to the internal memory objects and must not be modified or freed.
          */
@@ -1676,8 +1721,8 @@ export namespace Modulemd {
         get_stream_by_NSVCA(
             stream_name: string,
             version: bigint | number,
-            context?: string | null,
-            arch?: string | null,
+            context: string | null,
+            arch: string | null,
         ): ModuleStream;
         /**
          * @returns An ordered {@link GObject.Strv} list of stream names in this module.
@@ -1704,8 +1749,8 @@ export namespace Modulemd {
         remove_streams_by_NSVCA(
             stream_name: string,
             version: bigint | number,
-            context?: string | null,
-            arch?: string | null,
+            context: string | null,
+            arch: string | null,
         ): void;
         /**
          * @param stream_name The name of the stream to retrieve.
@@ -1717,8 +1762,8 @@ export namespace Modulemd {
         search_streams(
             stream_name: string,
             version: bigint | number,
-            context?: string | null,
-            arch?: string | null,
+            context: string | null,
+            arch: string | null,
         ): ModuleStream[];
         /**
          * All arguments to this method will be compared using
@@ -1730,16 +1775,16 @@ export namespace Modulemd {
          * @returns The list of stream objects matching all of the requested parameters. This function cannot fail, but it may return a zero-length list if no matches were found. The returned streams will be in a predictable order, sorted first by module name, then stream name, then by version (highest first), then by context and finally by architecture.
          */
         search_streams_by_glob(
-            stream_name?: string | null,
-            version?: string | null,
-            context?: string | null,
-            arch?: string | null,
+            stream_name: string | null,
+            version: string | null,
+            context: string | null,
+            arch: string | null,
         ): ModuleStream[];
         /**
          * @param nsvca_pattern A [glob](https://www.mankier.com/3/glob) pattern to match against the NSVCA strings of the {@link Modulemd.ModuleStream} objects in this module. If NULL, this will match all NSVCAs.
          * @returns An array of {@link Modulemd.ModuleStream} objects whose NSVCA string matches the provided pattern. This function cannot fail, but may return an array of zero entries if the pattern did not match any streams. The returned streams will be in a predictable order, sorted first by module name, then stream name, then by version (highest first), then by context and finally by architecture.
          */
-        search_streams_by_nsvca_glob(nsvca_pattern?: string | null): ModuleStream[];
+        search_streams_by_nsvca_glob(nsvca_pattern: string | null): ModuleStream[];
         /**
          * @returns TRUE if validation passed, FALSE and sets `error` if failed.
          */
@@ -1844,7 +1889,7 @@ export namespace Modulemd {
          * @param intent The name of the system intent whose default stream will be retrieved. If left NULL or the specified intent has no separate default, it will return the generic default stream for this module. System intents are deprecated and this argument will be ignored in the future.
          * @returns A {@link GLib.HashTable} with the module name as the key and the default stream as the value for all modules with a default stream in the index. Modules without a default stream will not appear in this table.
          */
-        get_default_streams(intent?: string | null): GLib.HashTable<string, string>;
+        get_default_streams(intent: string | null): GLib.HashTable<string, string>;
         /**
          * @returns The metadata version of {@link Modulemd.Defaults} in use for this index.
          */
@@ -1887,17 +1932,17 @@ export namespace Modulemd {
          * @returns The list of stream objects matching all of the requested parameters. This function cannot fail, but it may return a zero-length list if no matches were found. The returned streams will be in a predictable order, sorted first by module name, then stream name, then by version (highest first), then by context and finally by architecture.
          */
         search_streams(
-            module_name?: string | null,
-            stream_name?: string | null,
-            version?: string | null,
-            context?: string | null,
-            arch?: string | null,
+            module_name: string | null,
+            stream_name: string | null,
+            version: string | null,
+            context: string | null,
+            arch: string | null,
         ): ModuleStream[];
         /**
          * @param nsvca_pattern A [glob](https://www.mankier.com/3/glob) pattern to match against the NSVCA strings of the {@link Modulemd.ModuleStream} objects in this module. If NULL, this will match all NSVCAs.
          * @returns The list of stream objects matching all of the requested parameters. This function cannot fail, but it may return a zero-length list if no matches were found. The returned streams will be in a predictable order, sorted first by module name, then stream name, then by version (highest first), then by context and finally by architecture.
          */
-        search_streams_by_nsvca_glob(nsvca_pattern?: string | null): ModuleStream[];
+        search_streams_by_nsvca_glob(nsvca_pattern: string | null): ModuleStream[];
         /**
          * This function will open the directory at `path` and iterate through it,
          * adding any files with the suffix ".yaml" to `self`. If `overrides_path` is
@@ -1914,7 +1959,7 @@ export namespace Modulemd {
          * @param overrides_path If non-`null`, the path to a directory containing defaults documents that should override those in `path`.
          * @returns `true` if all ".yaml" files in the directory were imported successfully (this includes if no ".yaml" files were present). `false` if one or more files could not be read successfully and sets `error` appropriately.
          */
-        update_from_defaults_directory(path: string, strict: boolean, overrides_path?: string | null): boolean;
+        update_from_defaults_directory(path: string, strict: boolean, overrides_path: string | null): boolean;
         /**
          * @param yaml_file A name of a YAML file containing the module metadata and other related information such as default streams.
          * @param strict Whether the parser should return failure if it encounters an unknown mapping key or if it should ignore it.
@@ -2073,30 +2118,44 @@ export namespace Modulemd {
 
         // Properties
 
+        /**
+         * @default null
+         */
         get arch(): string;
         set arch(val: string);
+        /**
+         * @default null
+         */
         get context(): string;
         set context(val: string);
         /**
          * @read-only
+         * @default 0
          */
         get mdversion(): number;
         /**
          * @construct-only
+         * @default null
          */
         get module_name(): string;
         /**
          * @construct-only
+         * @default null
          */
         get moduleName(): string;
         /**
          * @construct-only
+         * @default null
          */
         get stream_name(): string;
         /**
          * @construct-only
+         * @default null
          */
         get streamName(): string;
+        /**
+         * @default 0
+         */
         get version(): number;
         set version(val: bigint | number);
 
@@ -2117,8 +2176,8 @@ export namespace Modulemd {
 
         static ['new'](
             mdversion: bigint | number,
-            module_name?: string | null,
-            module_stream?: string | null,
+            module_name: string | null,
+            module_stream: string | null,
         ): ModuleStream;
 
         // Signals
@@ -2161,8 +2220,8 @@ export namespace Modulemd {
         static read_file(
             path: string,
             strict: boolean,
-            module_name?: string | null,
-            module_stream?: string | null,
+            module_name: string | null,
+            module_stream: string | null,
         ): ModuleStream;
         /**
          * Create a {@link Modulemd.ModuleStream} object from a YAML string.
@@ -2181,8 +2240,8 @@ export namespace Modulemd {
         static read_string(
             yaml_string: string,
             strict: boolean,
-            module_name?: string | null,
-            module_stream?: string | null,
+            module_name: string | null,
+            module_stream: string | null,
         ): ModuleStream;
 
         // Virtual methods
@@ -2200,7 +2259,7 @@ export namespace Modulemd {
          * @param module_stream An optional new name for the copied stream.
          * @virtual
          */
-        vfunc_copy(module_name?: string | null, module_stream?: string | null): ModuleStream;
+        vfunc_copy(module_name: string | null, module_stream: string | null): ModuleStream;
         /**
          * @param module_name A module name.
          * @param stream_name The stream of the module.
@@ -2240,7 +2299,7 @@ export namespace Modulemd {
          * @param module_stream An optional new name for the copied stream.
          * @returns A newly-allocated {@link Modulemd.ModuleStream} object that is a complete copy of `self`, optionally with a new stream name.
          */
-        copy(module_name?: string | null, module_stream?: string | null): ModuleStream;
+        copy(module_name: string | null, module_stream: string | null): ModuleStream;
         /**
          * @param module_name A module name.
          * @param stream_name The stream of the module.
@@ -2293,11 +2352,11 @@ export namespace Modulemd {
         /**
          * @param arch Module architecture. Indicates to which processor architecture this {@link Modulemd.ModuleStream} applies.
          */
-        set_arch(arch?: string | null): void;
+        set_arch(arch: string | null): void;
         /**
          * @param context Module context flag. The context flag serves to distinguish module builds with the same name, stream and version and plays an important role in automatic module stream name expansion.
          */
-        set_context(context?: string | null): void;
+        set_context(context: string | null): void;
         /**
          * @param version The version of this {@link Modulemd.ModuleStream}.
          */
@@ -2357,14 +2416,26 @@ export namespace Modulemd {
 
         // Properties
 
+        /**
+         * @default null
+         */
         get arch(): string;
         set arch(val: string);
         get buildopts(): Buildopts;
         set buildopts(val: Buildopts);
+        /**
+         * @default null
+         */
         get community(): string;
         set community(val: string);
+        /**
+         * @default null
+         */
         get documentation(): string;
         set documentation(val: string);
+        /**
+         * @default null
+         */
         get tracker(): string;
         set tracker(val: string);
 
@@ -2383,7 +2454,7 @@ export namespace Modulemd {
 
         _init(...args: any[]): void;
 
-        static ['new'](module_name?: string | null, module_stream?: string | null): ModuleStreamV1;
+        static ['new'](module_name: string | null, module_stream: string | null): ModuleStreamV1;
         // Conflicted with Modulemd.ModuleStream.new
 
         static ['new'](...args: never[]): any;
@@ -2531,7 +2602,7 @@ export namespace Modulemd {
          * @param locale The name of the locale to use when translating the string. If NULL, it will determine the locale with a system call to `setlocale(LC_MESSAGES, NULL)` and return that. If the caller wants the untranslated string, they should pass `"C"` for the locale.
          * @returns The module description, translated to the requested locale if available. Translation information is managed by the {@link Modulemd.Translation} and {@link Modulemd.TranslationEntry} objects.
          */
-        get_description(locale?: string | null): string;
+        get_description(locale: string | null): string;
         /**
          * @returns The module documentation website address.
          */
@@ -2606,7 +2677,7 @@ export namespace Modulemd {
          * @param locale The name of the locale to use when translating the string. If NULL, it will determine the locale with a system call to `setlocale(LC_MESSAGES, NULL)` and return that. If the caller wants the untranslated string, they should pass `"C"` for the locale.
          * @returns The module summary, translated to the requested locale if available. Translation information is managed by the {@link Modulemd.Translation} and {@link Modulemd.TranslationEntry} objects.
          */
-        get_summary(locale?: string | null): string;
+        get_summary(locale: string | null): string;
         /**
          * @returns The module bug tracker website address.
          */
@@ -2679,7 +2750,7 @@ export namespace Modulemd {
          * Set the module description.
          * @param description The untranslated description of this module.
          */
-        set_description(description?: string | null): void;
+        set_description(description: string | null): void;
         /**
          * Set the module documentation website address.
          * @param documentation The upstream documentation website for this module.
@@ -2695,7 +2766,7 @@ export namespace Modulemd {
          * Set the module summary.
          * @param summary The untranslated summary of this module.
          */
-        set_summary(summary?: string | null): void;
+        set_summary(summary: string | null): void;
         /**
          * Set the module bug tracker website address.
          * @param tracker The upstream bug tracker website for this module.
@@ -2750,18 +2821,36 @@ export namespace Modulemd {
 
         // Properties
 
+        /**
+         * @default null
+         */
         get arch(): string;
         set arch(val: string);
         get buildopts(): Buildopts;
         set buildopts(val: Buildopts);
+        /**
+         * @default null
+         */
         get community(): string;
         set community(val: string);
+        /**
+         * @default null
+         */
         get documentation(): string;
         set documentation(val: string);
+        /**
+         * @default false
+         */
         get static_context(): boolean;
         set static_context(val: boolean);
+        /**
+         * @default false
+         */
         get staticContext(): boolean;
         set staticContext(val: boolean);
+        /**
+         * @default null
+         */
         get tracker(): string;
         set tracker(val: string);
 
@@ -2780,7 +2869,7 @@ export namespace Modulemd {
 
         _init(...args: any[]): void;
 
-        static ['new'](module_name?: string | null, module_stream?: string | null): ModuleStreamV2;
+        static ['new'](module_name: string | null, module_stream: string | null): ModuleStreamV2;
         // Conflicted with Modulemd.ModuleStream.new
 
         static ['new'](...args: never[]): any;
@@ -2931,7 +3020,7 @@ export namespace Modulemd {
          * @param locale The name of the locale to use when translating the string. If NULL, it will determine the locale with a system call to `setlocale(LC_MESSAGES, NULL)` and return that. If the caller wants the untranslated string, they should pass `"C"` for the locale.
          * @returns The module description, translated to the requested locale if available. Translation information is managed by the {@link Modulemd.Translation} and {@link Modulemd.TranslationEntry} objects.
          */
-        get_description(locale?: string | null): string;
+        get_description(locale: string | null): string;
         /**
          * @returns The module documentation website address.
          */
@@ -3002,7 +3091,7 @@ export namespace Modulemd {
          * @param locale The name of the locale to use when translating the string. If NULL, it will determine the locale with a system call to `setlocale(LC_MESSAGES, NULL)` and return that. If the caller wants the untranslated string, they should pass `"C"` for the locale.
          * @returns The module summary, translated to the requested locale if available. Translation information is managed by the {@link Modulemd.Translation} and {@link Modulemd.TranslationEntry} objects.
          */
-        get_summary(locale?: string | null): string;
+        get_summary(locale: string | null): string;
         /**
          * @returns The module bug tracker website address.
          */
@@ -3060,7 +3149,7 @@ export namespace Modulemd {
          * @param profile_pattern A globbing pattern to locate one or more profiles in this {@link Modulemd.ModuleStreamV2} object. The names will be compared using [fnmatch(3)](https://www.mankier.com/3/fnmatch).
          * @returns The list of {@link Modulemd.Profile} objects whose name matched `profile_pattern`. This function cannot fail, but it may return a zero-length list if no matches were found. The returned profiles will be sorted alphabetically by profile name.
          */
-        search_profiles(profile_pattern?: string | null): Profile[];
+        search_profiles(profile_pattern: string | null): Profile[];
         /**
          * Set the module artifact architecture.
          * @param arch The module artifact architecture.
@@ -3085,7 +3174,7 @@ export namespace Modulemd {
          * Set the module description.
          * @param description The untranslated description of this module.
          */
-        set_description(description?: string | null): void;
+        set_description(description: string | null): void;
         /**
          * Set the module documentation website address.
          * @param documentation The upstream documentation website for this module.
@@ -3106,7 +3195,7 @@ export namespace Modulemd {
          * Set the module summary.
          * @param summary The untranslated summary of this module.
          */
-        set_summary(summary?: string | null): void;
+        set_summary(summary: string | null): void;
         /**
          * Set the module bug tracker website address.
          * @param tracker The upstream bug tracker website for this module.
@@ -3175,50 +3264,89 @@ export namespace Modulemd {
 
         // Properties
 
+        /**
+         * @default 0
+         */
         get eol_date(): number;
         set eol_date(val: bigint | number);
+        /**
+         * @default 0
+         */
         get eolDate(): number;
         set eolDate(val: bigint | number);
         /**
          * @construct-only
+         * @default 0
          */
         get mdversion(): number;
         /**
          * @construct-only
+         * @default __obsoletes_VALUE_UNSET__
          */
         get message(): string;
+        /**
+         * @default 0
+         */
         get modified(): number;
         set modified(val: bigint | number);
+        /**
+         * @default null
+         */
         get module_context(): string;
         set module_context(val: string);
+        /**
+         * @default null
+         */
         get moduleContext(): string;
         set moduleContext(val: string);
         /**
          * @construct-only
+         * @default __obsoletes_VALUE_UNSET__
          */
         get module_name(): string;
         /**
          * @construct-only
+         * @default __obsoletes_VALUE_UNSET__
          */
         get moduleName(): string;
         /**
          * @construct-only
+         * @default __obsoletes_VALUE_UNSET__
          */
         get module_stream(): string;
         /**
          * @construct-only
+         * @default __obsoletes_VALUE_UNSET__
          */
         get moduleStream(): string;
+        /**
+         * @default null
+         */
         get obsoleted_by_module_name(): string;
         set obsoleted_by_module_name(val: string);
+        /**
+         * @default null
+         */
         get obsoletedByModuleName(): string;
         set obsoletedByModuleName(val: string);
+        /**
+         * @default null
+         */
         get obsoleted_by_module_stream(): string;
         set obsoleted_by_module_stream(val: string);
+        /**
+         * @default null
+         */
         get obsoletedByModuleStream(): string;
         set obsoletedByModuleStream(val: string);
+        /**
+         * @default false
+         */
         get override_previous(): boolean;
         set override_previous(val: boolean);
+        /**
+         * @default false
+         */
         get overridePrevious(): boolean;
         set overridePrevious(val: boolean);
 
@@ -3316,7 +3444,7 @@ export namespace Modulemd {
         /**
          * @param module_context The name of the module context to which this obsoletes applies.
          */
-        set_module_context(module_context?: string | null): void;
+        set_module_context(module_context: string | null): void;
         /**
          * Sets both obsoleted by module name and stream because having one without
          * the other is invalid.
@@ -3607,7 +3735,7 @@ export namespace Modulemd {
          * Sets the module's long description.
          * @param description A complete description of the module.
          */
-        set_description(description?: string | null): void;
+        set_description(description: string | null): void;
         /**
          * Set the module documentation website address.
          * @param documentation The upstream documentation website for this module.
@@ -3627,7 +3755,7 @@ export namespace Modulemd {
          * Sets the module's short description.
          * @param summary A short description of the module.
          */
-        set_summary(summary?: string | null): void;
+        set_summary(summary: string | null): void;
         /**
          * Set the module bug tracker website address.
          * @param tracker The upstream bug tracker website for this module.
@@ -3668,6 +3796,7 @@ export namespace Modulemd {
 
         /**
          * @construct-only
+         * @default __PROFILE_NAME_UNSET__
          */
         get name(): string;
 
@@ -3733,7 +3862,7 @@ export namespace Modulemd {
          * @param locale The name of the locale to use when translating the string. If NULL, it will determine the locale with a system call to `setlocale(LC_MESSAGES, NULL)` and return that. If the caller wants the untranslated string, they should pass `"C"` for the locale.
          * @returns The description of this profile translated into the language specified by the locale if it is available, otherwise it returns the C.UTF-8 original. Translation information is managed by the {@link Modulemd.Translation} and {@link Modulemd.TranslationEntry} objects.
          */
-        get_description(locale?: string | null): string;
+        get_description(locale: string | null): string;
         /**
          * @returns The name of this profile.
          */
@@ -3758,7 +3887,7 @@ export namespace Modulemd {
         /**
          * @param description The untranslated description of this profile.
          */
-        set_description(description?: string | null): void;
+        set_description(description: string | null): void;
         /**
          * Calling this function indicates that this profile should not be considered
          * one of the default profiles for this stream. This is the normal state of
@@ -3799,18 +3928,34 @@ export namespace Modulemd {
 
         // Properties
 
+        /**
+         * @default null
+         */
         get arch(): string;
         set arch(val: string);
+        /**
+         * @default 0
+         */
         get epoch(): number;
         set epoch(val: bigint | number);
+        /**
+         * @default null
+         */
         get name(): string;
         set name(val: string);
         /**
          * @read-only
+         * @default null
          */
         get nevra(): string;
+        /**
+         * @default null
+         */
         get release(): string;
         set release(val: string);
+        /**
+         * @default null
+         */
         get version(): string;
         set version(val: string);
 
@@ -3939,6 +4084,7 @@ export namespace Modulemd {
 
         /**
          * @construct-only
+         * @default __NAME_UNSET__
          */
         get name(): string;
 
@@ -4014,7 +4160,7 @@ export namespace Modulemd {
          * or NULL, the EOL will be unset.
          * @param date The date this service level ends.
          */
-        set_eol(date?: GLib.Date | null): void;
+        set_eol(date: GLib.Date | null): void;
         /**
          * @param year The year this service level ends.
          * @param month The month this service level ends.
@@ -4115,26 +4261,34 @@ export namespace Modulemd {
 
         // Properties
 
+        /**
+         * @default 0
+         */
         get modified(): number;
         set modified(val: bigint | number);
         /**
          * @construct-only
+         * @default __TRANSLATION_VALUE_UNSET__
          */
         get module_name(): string;
         /**
          * @construct-only
+         * @default __TRANSLATION_VALUE_UNSET__
          */
         get moduleName(): string;
         /**
          * @construct-only
+         * @default __TRANSLATION_VALUE_UNSET__
          */
         get module_stream(): string;
         /**
          * @construct-only
+         * @default __TRANSLATION_VALUE_UNSET__
          */
         get moduleStream(): string;
         /**
          * @construct-only
+         * @default 0
          */
         get version(): number;
 
@@ -4239,12 +4393,19 @@ export namespace Modulemd {
 
         // Properties
 
+        /**
+         * @default __LOCALE_UNSET__
+         */
         get description(): string;
         set description(val: string);
         /**
          * @construct-only
+         * @default __LOCALE_UNSET__
          */
         get locale(): string;
+        /**
+         * @default __LOCALE_UNSET__
+         */
         get summary(): string;
         set summary(val: string);
 
@@ -4320,17 +4481,17 @@ export namespace Modulemd {
         /**
          * @param description The description of this module stream translated into the language specified by locale.
          */
-        set_description(description?: string | null): void;
+        set_description(description: string | null): void;
         /**
          * Adds a profile name translation.
          * @param profile_name The name of the profile.
          * @param profile_description The translated description of the profile.
          */
-        set_profile_description(profile_name: string, profile_description?: string | null): void;
+        set_profile_description(profile_name: string, profile_description: string | null): void;
         /**
          * @param summary The summary of this module translated appropriately for this locale.
          */
-        set_summary(summary?: string | null): void;
+        set_summary(summary: string | null): void;
     }
 
     /**

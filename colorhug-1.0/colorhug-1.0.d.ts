@@ -1389,7 +1389,7 @@ export namespace ColorHug {
      */
     function device_get_adc_calibration_neg(
         device: GUsb.Device,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): [boolean, number];
     /**
      * Gets the ADC positive calibration value.
@@ -1400,7 +1400,7 @@ export namespace ColorHug {
      */
     function device_get_adc_calibration_pos(
         device: GUsb.Device,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): [boolean, number];
     /**
      * Gets any PCB wavelength_cal from the device.
@@ -1419,7 +1419,7 @@ export namespace ColorHug {
         c0: number,
         c1: number,
         c2: number,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): boolean;
     /**
      * Gets the status for the last operation.
@@ -1428,7 +1428,7 @@ export namespace ColorHug {
      * @returns `true` for success
      * @since 1.3.1
      */
-    function device_get_error(device: GUsb.Device, cancellable?: Gio.Cancellable | null): [boolean, Error, Cmd];
+    function device_get_error(device: GUsb.Device, cancellable: Gio.Cancellable | null): [boolean, Error, Cmd];
     /**
      * Returns the GUID for the connected ColorHug device.
      * @param device A {@link GUsb.Device}
@@ -1443,7 +1443,7 @@ export namespace ColorHug {
      * @returns `true` for success
      * @since 1.3.4
      */
-    function device_get_illuminants(device: GUsb.Device, cancellable?: Gio.Cancellable | null): [boolean, Illuminant];
+    function device_get_illuminants(device: GUsb.Device, cancellable: Gio.Cancellable | null): [boolean, Illuminant];
     /**
      * Gets the integration time used for taking the next samples.
      * @param device A {@link GUsb.Device}
@@ -1451,7 +1451,7 @@ export namespace ColorHug {
      * @returns `true` for success
      * @since 1.3.1
      */
-    function device_get_integral_time(device: GUsb.Device, cancellable?: Gio.Cancellable | null): [boolean, number];
+    function device_get_integral_time(device: GUsb.Device, cancellable: Gio.Cancellable | null): [boolean, number];
     /**
      * Gets the LEDs from the device.
      * @param device A {@link GUsb.Device}
@@ -1459,7 +1459,7 @@ export namespace ColorHug {
      * @returns `true` for success
      * @since 1.3.1
      */
-    function device_get_leds(device: GUsb.Device, cancellable?: Gio.Cancellable | null): [boolean, StatusLed];
+    function device_get_leds(device: GUsb.Device, cancellable: Gio.Cancellable | null): [boolean, StatusLed];
     /**
      * @param device
      * @since 0.1.29
@@ -1472,7 +1472,7 @@ export namespace ColorHug {
      * @returns `true` for success
      * @since 1.3.1
      */
-    function device_get_pcb_errata(device: GUsb.Device, cancellable?: Gio.Cancellable | null): [boolean, PcbErrata];
+    function device_get_pcb_errata(device: GUsb.Device, cancellable: Gio.Cancellable | null): [boolean, PcbErrata];
     /**
      * Returns the runcode address for the ColorHug device.
      * @param device A {@link GUsb.Device}
@@ -1487,7 +1487,7 @@ export namespace ColorHug {
      * @returns `true` for success
      * @since 1.3.1
      */
-    function device_get_serial_number(device: GUsb.Device, cancellable?: Gio.Cancellable | null): [boolean, number];
+    function device_get_serial_number(device: GUsb.Device, cancellable: Gio.Cancellable | null): [boolean, number];
     /**
      * Gets the spectrum from the device. This queries the device multiple times
      * until the spectrum has been populated.
@@ -1496,7 +1496,7 @@ export namespace ColorHug {
      * @returns a {@link Colord.Spectrum}, or `null` for error
      * @since 1.3.1
      */
-    function device_get_spectrum(device: GUsb.Device, cancellable?: Gio.Cancellable | null): Colord.Spectrum;
+    function device_get_spectrum(device: GUsb.Device, cancellable: Gio.Cancellable | null): Colord.Spectrum;
     /**
      * Gets the spectrum from the device. This queries the device multiple times
      * until the spectrum has been populated.
@@ -1509,7 +1509,7 @@ export namespace ColorHug {
     function device_get_spectrum_full(
         device: GUsb.Device,
         kind: SpectrumKind,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): Colord.Spectrum;
     /**
      * Gets the PCB board temperature from the device.
@@ -1518,7 +1518,7 @@ export namespace ColorHug {
      * @returns `true` for success
      * @since 1.3.1
      */
-    function device_get_temperature(device: GUsb.Device, cancellable?: Gio.Cancellable | null): [boolean, number];
+    function device_get_temperature(device: GUsb.Device, cancellable: Gio.Cancellable | null): [boolean, number];
     /**
      * @param device
      * @since 0.1.29
@@ -1531,7 +1531,7 @@ export namespace ColorHug {
      * @returns `true` for success
      * @since 1.3.4
      */
-    function device_load_sram(device: GUsb.Device, cancellable?: Gio.Cancellable | null): boolean;
+    function device_load_sram(device: GUsb.Device, cancellable: Gio.Cancellable | null): boolean;
     /**
      * Gets the device mode from the unique code stored in the firmware data.
      * The firmware identifier has been present since colorhug-1.2.2.bin for
@@ -1559,7 +1559,7 @@ export namespace ColorHug {
      * @returns `true` for success
      * @since 1.3.1
      */
-    function device_open_full(device: GUsb.Device, cancellable?: Gio.Cancellable | null): boolean;
+    function device_open_full(device: GUsb.Device, cancellable: Gio.Cancellable | null): boolean;
     /**
      * Reads a value from the SRAM.
      * @param device A {@link GUsb.Device}
@@ -1573,7 +1573,7 @@ export namespace ColorHug {
         device: GUsb.Device,
         addr: number,
         len: number,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): GLib.Bytes;
     /**
      * Saves the entire SRAM space into the device EEPROM.
@@ -1582,7 +1582,7 @@ export namespace ColorHug {
      * @returns `true` for success
      * @since 1.3.4
      */
-    function device_save_sram(device: GUsb.Device, cancellable?: Gio.Cancellable | null): boolean;
+    function device_save_sram(device: GUsb.Device, cancellable: Gio.Cancellable | null): boolean;
     /**
      * Performs a self test on the device
      * @param device A {@link GUsb.Device}
@@ -1590,7 +1590,7 @@ export namespace ColorHug {
      * @returns `true` for success
      * @since 1.3.1
      */
-    function device_self_test(device: GUsb.Device, cancellable?: Gio.Cancellable | null): boolean;
+    function device_self_test(device: GUsb.Device, cancellable: Gio.Cancellable | null): boolean;
     /**
      * Sets any PCB wavelength_cal on the device
      * @param device A {@link GUsb.Device}
@@ -1608,7 +1608,7 @@ export namespace ColorHug {
         c0: number,
         c1: number,
         c2: number,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): boolean;
     /**
      * Sets the firmware signing keys on the device.
@@ -1620,7 +1620,7 @@ export namespace ColorHug {
      * @returns `true` for success
      * @since 1.3.1
      */
-    function device_set_crypto_key(device: GUsb.Device, keys: number, cancellable?: Gio.Cancellable | null): boolean;
+    function device_set_crypto_key(device: GUsb.Device, keys: number, cancellable: Gio.Cancellable | null): boolean;
     /**
      * Sets the illuminants on the device
      * @param device A {@link GUsb.Device}
@@ -1632,7 +1632,7 @@ export namespace ColorHug {
     function device_set_illuminants(
         device: GUsb.Device,
         value: Illuminant,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): boolean;
     /**
      * Sets the integration value for the next sample.
@@ -1642,11 +1642,7 @@ export namespace ColorHug {
      * @returns `true` for success
      * @since 1.3.1
      */
-    function device_set_integral_time(
-        device: GUsb.Device,
-        value: number,
-        cancellable?: Gio.Cancellable | null,
-    ): boolean;
+    function device_set_integral_time(device: GUsb.Device, value: number, cancellable: Gio.Cancellable | null): boolean;
     /**
      * Sets the LEDs on the device
      * @param device A {@link GUsb.Device}
@@ -1655,7 +1651,7 @@ export namespace ColorHug {
      * @returns `true` for success
      * @since 1.3.1
      */
-    function device_set_leds(device: GUsb.Device, value: StatusLed, cancellable?: Gio.Cancellable | null): boolean;
+    function device_set_leds(device: GUsb.Device, value: StatusLed, cancellable: Gio.Cancellable | null): boolean;
     /**
      * Sets any PCB errata on the device
      * @param device A {@link GUsb.Device}
@@ -1664,11 +1660,7 @@ export namespace ColorHug {
      * @returns `true` for success
      * @since 1.3.1
      */
-    function device_set_pcb_errata(
-        device: GUsb.Device,
-        value: PcbErrata,
-        cancellable?: Gio.Cancellable | null,
-    ): boolean;
+    function device_set_pcb_errata(device: GUsb.Device, value: PcbErrata, cancellable: Gio.Cancellable | null): boolean;
     /**
      * Sets the serial number on the device
      * @param device A {@link GUsb.Device}
@@ -1677,11 +1669,7 @@ export namespace ColorHug {
      * @returns `true` for success
      * @since 1.3.1
      */
-    function device_set_serial_number(
-        device: GUsb.Device,
-        value: number,
-        cancellable?: Gio.Cancellable | null,
-    ): boolean;
+    function device_set_serial_number(device: GUsb.Device, value: number, cancellable: Gio.Cancellable | null): boolean;
     /**
      * Sets the spectrum from the device. This sends data multiple multiple times
      * until the spectrum has been populated.
@@ -1696,7 +1684,7 @@ export namespace ColorHug {
         device: GUsb.Device,
         kind: SpectrumKind,
         sp: Colord.Spectrum,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): boolean;
     /**
      * Takes a reading from the device.
@@ -1709,7 +1697,7 @@ export namespace ColorHug {
     function device_take_reading_spectral(
         device: GUsb.Device,
         value: SpectrumKind,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): boolean;
     /**
      * Takes a reading from the device and returns the XYZ value.
@@ -1722,7 +1710,7 @@ export namespace ColorHug {
     function device_take_reading_xyz(
         device: GUsb.Device,
         calibration_idx: number,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): Colord.ColorXYZ;
     /**
      * Sends a message to the device and waits for a reply.
@@ -1743,7 +1731,7 @@ export namespace ColorHug {
         buffer_in_len: bigint | number,
         buffer_out: number,
         buffer_out_len: bigint | number,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): boolean;
     /**
      * Sends a message to the device and waits for a reply.
@@ -1763,7 +1751,7 @@ export namespace ColorHug {
         buffer_in_len: bigint | number,
         buffer_out: number,
         buffer_out_len: bigint | number,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): globalThis.Promise<boolean>;
     /**
      * Sends a message to the device and waits for a reply.
@@ -1806,8 +1794,8 @@ export namespace ColorHug {
         buffer_in_len: bigint | number,
         buffer_out: number,
         buffer_out_len: bigint | number,
-        cancellable?: Gio.Cancellable | null,
-        callback?: Gio.AsyncReadyCallback<GUsb.Device> | null,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<GUsb.Device> | null,
     ): globalThis.Promise<boolean> | void;
     /**
      * Gets the result from the asynchronous function.
@@ -1830,7 +1818,7 @@ export namespace ColorHug {
         device: GUsb.Device,
         addr: number,
         data: GLib.Bytes | Uint8Array,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): boolean;
     /**
      * @param measure_mode
@@ -2224,7 +2212,7 @@ export namespace ColorHug {
          * @param cancellable {@link Gio.Cancellable} or `null`
          * @returns `true` if the commands were executed successfully.
          */
-        process(process_flags: DeviceQueueProcessFlags, cancellable?: Gio.Cancellable | null): boolean;
+        process(process_flags: DeviceQueueProcessFlags, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Processes all commands in the command queue.
          * @param process_flags
@@ -2232,7 +2220,7 @@ export namespace ColorHug {
          */
         process_async(
             process_flags: DeviceQueueProcessFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Processes all commands in the command queue.
@@ -2253,7 +2241,7 @@ export namespace ColorHug {
          */
         process_async(
             process_flags: DeviceQueueProcessFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**

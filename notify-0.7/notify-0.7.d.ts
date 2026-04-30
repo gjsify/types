@@ -284,7 +284,7 @@ export namespace Notify {
      * @param app_name The name of the application initializing libnotify.
      * @returns `true` if successful, or `false` on error.
      */
-    function init(app_name?: string | null): boolean;
+    function init(app_name: string | null): boolean;
     /**
      * Gets whether or not libnotify is initialized.
      * @returns `true` if libnotify is initialized, or `false` otherwise.
@@ -295,7 +295,7 @@ export namespace Notify {
      * @param app_icon The optional icon theme icon name or filename.
      * @since 0.8.4
      */
-    function set_app_icon(app_icon?: string | null): void;
+    function set_app_icon(app_icon: string | null): void;
     /**
      * Sets the application name.
      * @param app_name The name of the application
@@ -376,29 +376,34 @@ export namespace Notify {
         /**
          * The icon of the application for the notification.
          * @since 0.8.4
+         * @default null
          */
         get app_icon(): string;
         set app_icon(val: string);
         /**
          * The icon of the application for the notification.
          * @since 0.8.4
+         * @default null
          */
         get appIcon(): string;
         set appIcon(val: string);
         /**
          * The name of the application for the notification.
          * @since 0.7.3
+         * @default null
          */
         get app_name(): string;
         set app_name(val: string);
         /**
          * The name of the application for the notification.
          * @since 0.7.3
+         * @default null
          */
         get appName(): string;
         set appName(val: string);
         /**
          * The body of the notification.
+         * @default null
          */
         get body(): string;
         set body(val: string);
@@ -407,6 +412,7 @@ export namespace Notify {
          *
          * See `Notify.Notification::closed`.
          * @read-only
+         * @default -1
          */
         get closed_reason(): number;
         /**
@@ -414,25 +420,30 @@ export namespace Notify {
          *
          * See `Notify.Notification::closed`.
          * @read-only
+         * @default -1
          */
         get closedReason(): number;
         /**
          * The icon-name of the icon to be displayed on the notification.
+         * @default null
          */
         get icon_name(): string;
         set icon_name(val: string);
         /**
          * The icon-name of the icon to be displayed on the notification.
+         * @default null
          */
         get iconName(): string;
         set iconName(val: string);
         /**
          * The Id of the notification.
+         * @default 0
          */
         get id(): number;
         set id(val: number);
         /**
          * The summary of the notification.
+         * @default null
          */
         get summary(): string;
         set summary(val: string);
@@ -452,7 +463,7 @@ export namespace Notify {
 
         _init(...args: any[]): void;
 
-        static ['new'](summary: string, body?: string | null, icon?: string | null): Notification;
+        static ['new'](summary: string, body: string | null, icon: string | null): Notification;
 
         // Signals
 
@@ -547,7 +558,7 @@ export namespace Notify {
          * will be set from the value set via {@link set_app_icon}.
          * @param app_icon The optional icon theme icon name or filename.
          */
-        set_app_icon(app_icon?: string | null): void;
+        set_app_icon(app_icon: string | null): void;
         /**
          * Sets the application name for the notification.
          *
@@ -556,7 +567,7 @@ export namespace Notify {
          * {@link set_app_name}.
          * @param app_name the localised application name
          */
-        set_app_name(app_name?: string | null): void;
+        set_app_name(app_name: string | null): void;
         /**
          * Sets the category of this notification.
          *
@@ -574,7 +585,7 @@ export namespace Notify {
          * @param key the hint key
          * @param value the hint value
          */
-        set_hint(key: string, value?: GLib.Variant | null): void;
+        set_hint(key: string, value: GLib.Variant | null): void;
         /**
          * Sets a hint with a byte value.
          * @param key The hint.
@@ -653,7 +664,7 @@ export namespace Notify {
          * @param icon The optional icon theme icon name or filename.
          * @returns `true`, unless an invalid parameter was passed.
          */
-        update(summary: string, body?: string | null, icon?: string | null): boolean;
+        update(summary: string, body: string | null, icon: string | null): boolean;
     }
 
     /**

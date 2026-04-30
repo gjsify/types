@@ -74,20 +74,27 @@ export namespace RestExtras {
 
         /**
          * @construct-only
+         * @default null
          */
         get api_key(): string;
         /**
          * @construct-only
+         * @default null
          */
         get apiKey(): string;
         /**
          * @construct-only
+         * @default null
          */
         get shared_secret(): string;
         /**
          * @construct-only
+         * @default null
          */
         get sharedSecret(): string;
+        /**
+         * @default null
+         */
         get token(): string;
         set token(val: string);
 
@@ -224,6 +231,7 @@ export namespace RestExtras {
          * Set if the call should be sent to the photo upload endpoint and not the
          * general-purpose endpoint.
          * @construct-only
+         * @default false
          */
         // This accessor conflicts with a field or function name in a parent class or interface.
         upload: boolean | any;
@@ -303,18 +311,27 @@ export namespace RestExtras {
 
         /**
          * @construct-only
+         * @default null
          */
         get api_key(): string;
         /**
          * @construct-only
+         * @default null
          */
         get apiKey(): string;
         /**
          * @construct-only
+         * @default null
          */
         get secret(): string;
+        /**
+         * @default null
+         */
         get session_key(): string;
         set session_key(val: string);
+        /**
+         * @default null
+         */
         get sessionKey(): string;
         set sessionKey(val: string);
 
@@ -493,14 +510,22 @@ export namespace RestExtras {
 
         /**
          * @construct-only
+         * @default null
          */
         get developer_key(): string;
         /**
          * @construct-only
+         * @default null
          */
         get developerKey(): string;
+        /**
+         * @default null
+         */
         get user_auth(): string;
         set user_auth(val: string);
+        /**
+         * @default null
+         */
         get userAuth(): string;
         set userAuth(val: string);
 

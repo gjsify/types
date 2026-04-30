@@ -187,7 +187,7 @@ export namespace GstCuda {
      * @returns Whether the `query` was successfully responded to from the passed          `context`.
      * @since 1.22
      */
-    function cuda_handle_context_query(element: Gst.Element, query: Gst.Query, cuda_ctx?: CudaContext | null): boolean;
+    function cuda_handle_context_query(element: Gst.Element, query: Gst.Query, cuda_ctx: CudaContext | null): boolean;
     /**
      * Helper function for implementing {@link Gst.ElementClass}.set_context() in
      * CUDA capable elements.
@@ -373,7 +373,7 @@ export namespace GstCuda {
             stream: CudaStream | null,
             info: GstVideo.VideoInfo,
             dev_ptr: CudaGst.deviceptr,
-            notify?: GLib.DestroyNotify | null,
+            notify: GLib.DestroyNotify | null,
         ): Gst.Memory;
         /**
          * Controls the active state of `allocator`. Default {@link GstCuda.CudaAllocator} is
@@ -514,21 +514,25 @@ export namespace GstCuda {
 
         /**
          * @construct-only
+         * @default 0
          */
         get cuda_device_id(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get cudaDeviceId(): number;
         /**
          * The default stack size for each GPU thread.
          * @since 1.26
+         * @default 1024
          */
         get default_gpu_stack_size(): number;
         set default_gpu_stack_size(val: number);
         /**
          * The default stack size for each GPU thread.
          * @since 1.26
+         * @default 1024
          */
         get defaultGpuStackSize(): number;
         set defaultGpuStackSize(val: number);
@@ -536,56 +540,66 @@ export namespace GstCuda {
          * External resource interop API support
          * @since 1.26
          * @read-only
+         * @default false
          */
         get external_resource_interop(): boolean;
         /**
          * External resource interop API support
          * @since 1.26
          * @read-only
+         * @default false
          */
         get externalResourceInterop(): boolean;
         /**
          * OS handle supportability in virtual memory management
          * @since 1.24
          * @read-only
+         * @default false
          */
         get os_handle(): boolean;
         /**
          * OS handle supportability in virtual memory management
          * @since 1.24
          * @read-only
+         * @default false
          */
         get osHandle(): boolean;
         /**
          * @since 1.26
+         * @default false
          */
         get prefer_stream_ordered_alloc(): boolean;
         set prefer_stream_ordered_alloc(val: boolean);
         /**
          * @since 1.26
+         * @default false
          */
         get preferStreamOrderedAlloc(): boolean;
         set preferStreamOrderedAlloc(val: boolean);
         /**
          * @since 1.26
          * @read-only
+         * @default false
          */
         get stream_ordered_alloc(): boolean;
         /**
          * @since 1.26
          * @read-only
+         * @default false
          */
         get streamOrderedAlloc(): boolean;
         /**
          * Virtual memory management supportability
          * @since 1.24
          * @read-only
+         * @default false
          */
         get virtual_memory(): boolean;
         /**
          * Virtual memory management supportability
          * @since 1.24
          * @read-only
+         * @default false
          */
         get virtualMemory(): boolean;
 
@@ -722,7 +736,7 @@ export namespace GstCuda {
             context: CudaContext,
             stream: CudaStream | null,
             info: GstVideo.VideoInfo,
-            config?: Gst.Structure | null,
+            config: Gst.Structure | null,
         ): CudaPoolAllocator;
 
         // Signals
@@ -877,7 +891,7 @@ export namespace GstCuda {
          * @param token an user token
          * @param data an user data
          */
-        set_token_data(token: bigint | number, data?: any | null): void;
+        set_token_data(token: bigint | number, data: any | null): void;
         /**
          * Performs synchronization if needed
          */
@@ -897,9 +911,9 @@ export namespace GstCuda {
 
         // Constructors
 
-        constructor(context: CudaContext, props?: CudaGst.memPoolProps | null);
+        constructor(context: CudaContext, props: CudaGst.memPoolProps | null);
 
-        static ['new'](context: CudaContext, props?: CudaGst.memPoolProps | null): CudaMemoryPool;
+        static ['new'](context: CudaContext, props: CudaGst.memPoolProps | null): CudaMemoryPool;
 
         // Methods
 

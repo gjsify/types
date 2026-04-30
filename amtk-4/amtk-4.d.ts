@@ -49,7 +49,7 @@ export namespace Amtk {
     function action_map_add_action_entries_check_dups(
         action_map: Gio.ActionMap,
         entries: Gio.ActionEntry[],
-        user_data?: any | null,
+        user_data: any | null,
     ): void;
     /**
      * Free the resources allocated by Amtk. For example it unrefs the singleton
@@ -100,7 +100,7 @@ export namespace Amtk {
      * @param long_description the long description, or `null` to unset it.
      * @since 2.0
      */
-    function menu_item_set_long_description(menu_item: Gtk.MenuItem, long_description?: string | null): void;
+    function menu_item_set_long_description(menu_item: Gtk.MenuItem, long_description: string | null): void;
     /**
      * Utility function to be able to port an application gradually to {@link Gio.Action},
      * when {@link Gtk.UIManager} and {@link Gtk.Action} are still used. Porting to {@link Gio.Action} should
@@ -373,7 +373,7 @@ export namespace Amtk {
          * @param entries a pointer to the first item in an array of {@link Amtk.ActionInfoEntry} structs.
          * @param translation_domain a gettext domain, or `null`.
          */
-        add_entries(entries: ActionInfoEntry[], translation_domain?: string | null): void;
+        add_entries(entries: ActionInfoEntry[], translation_domain: string | null): void;
         /**
          * Checks for each {@link Amtk.ActionInfo} of `store` that it has been used (see
          * `amtk_action_info_has_been_used()`). If an {@link Amtk.ActionInfo} has not been used, a
@@ -403,7 +403,7 @@ export namespace Amtk {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             application_window: Gtk.ApplicationWindow;
             applicationWindow: Gtk.ApplicationWindow;
-            statusbar: Gtk.Statusbar;
+            statusbar: Gtk.Statusbar | null;
         }
     }
 
@@ -431,8 +431,8 @@ export namespace Amtk {
          * The {@link Gtk.Statusbar}. `null` by default.
          * @since 2.0
          */
-        get statusbar(): Gtk.Statusbar;
-        set statusbar(val: Gtk.Statusbar);
+        get statusbar(): Gtk.Statusbar | null;
+        set statusbar(val: Gtk.Statusbar | null);
 
         /**
          * Compile-time signal type information.
@@ -539,7 +539,7 @@ export namespace Amtk {
          * Sets the {@link Amtk.ApplicationWindow.statusbar} property.
          * @param statusbar a {@link Gtk.Statusbar}, or `null`.
          */
-        set_statusbar(statusbar?: Gtk.Statusbar | null): void;
+        set_statusbar(statusbar: Gtk.Statusbar | null): void;
     }
 
     namespace Factory {
@@ -552,7 +552,7 @@ export namespace Amtk {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            application: Gtk.Application;
+            application: Gtk.Application | null;
             default_flags: FactoryFlags;
             defaultFlags: FactoryFlags;
         }
@@ -572,7 +572,7 @@ export namespace Amtk {
          * @since 3.0
          * @construct-only
          */
-        get application(): Gtk.Application;
+        get application(): Gtk.Application | null;
         /**
          * The default {@link Amtk.FactoryFlags}.
          * @since 3.0
@@ -601,7 +601,7 @@ export namespace Amtk {
 
         _init(...args: any[]): void;
 
-        static ['new'](application?: Gtk.Application | null): Factory;
+        static ['new'](application: Gtk.Application | null): Factory;
 
         static new_with_default_application(): Factory;
 
@@ -849,7 +849,7 @@ export namespace Amtk {
 
         static ['new'](): ActionInfo;
 
-        static new_from_entry(info_entry: ActionInfoEntry, translation_domain?: string | null): ActionInfo;
+        static new_from_entry(info_entry: ActionInfoEntry, translation_domain: string | null): ActionInfo;
 
         // Methods
 
@@ -913,16 +913,16 @@ export namespace Amtk {
         /**
          * @param icon_name the icon name, or `null`.
          */
-        set_icon_name(icon_name?: string | null): void;
+        set_icon_name(icon_name: string | null): void;
         /**
          * Sets the label with a mnemonic.
          * @param label the label (i.e. a short description), or `null`.
          */
-        set_label(label?: string | null): void;
+        set_label(label: string | null): void;
         /**
          * @param tooltip the tooltip (i.e. a long description), or `null`.
          */
-        set_tooltip(tooltip?: string | null): void;
+        set_tooltip(tooltip: string | null): void;
         /**
          * Decrements the reference count of `info` by one. If the reference count drops
          * to 0, `info` is freed.

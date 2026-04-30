@@ -135,6 +135,7 @@ export namespace SugarGestures {
 
         /**
          * @read-only
+         * @default SugarGestures.EventControllerState.NONE
          */
         get state(): EventControllerState;
         get widget(): Gtk.Widget;
@@ -254,10 +255,19 @@ export namespace SugarGestures {
 
         // Properties
 
+        /**
+         * @default 32
+         */
         get threshold(): number;
         set threshold(val: number);
+        /**
+         * @default 600
+         */
         get trigger_delay(): number;
         set trigger_delay(val: number);
+        /**
+         * @default 600
+         */
         get triggerDelay(): number;
         set triggerDelay(val: number);
 
@@ -428,6 +438,7 @@ export namespace SugarGestures {
 
         /**
          * @construct-only
+         * @default 0
          */
         get directions(): SwipeDirectionFlags;
 
@@ -505,12 +516,24 @@ export namespace SugarGestures {
 
         // Properties
 
+        /**
+         * @default 1
+         */
         get max_touches(): number;
         set max_touches(val: number);
+        /**
+         * @default 1
+         */
         get maxTouches(): number;
         set maxTouches(val: number);
+        /**
+         * @default 1
+         */
         get min_touches(): number;
         set min_touches(val: number);
+        /**
+         * @default 1
+         */
         get minTouches(): number;
         set minTouches(val: number);
 

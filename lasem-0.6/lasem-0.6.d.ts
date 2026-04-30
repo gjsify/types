@@ -212,7 +212,7 @@ export namespace Lasem {
      * Free the buffer returned by `lsm_itex_to_mathml`.
      * @param mathml a mathml buffer
      */
-    function itex_free_mathml_buffer(mathml?: string | null): void;
+    function itex_free_mathml_buffer(mathml: string | null): void;
     /**
      * Converts an itex string to a Mathml representation.
      * @param itex an itex string
@@ -1252,7 +1252,7 @@ export namespace Lasem {
         /**
          * @param instance
          */
-        clean_attributes(instance?: any | null): void;
+        clean_attributes(instance: any | null): void;
         duplicate(): AttributeManager;
         /**
          * @param instance
@@ -1263,7 +1263,7 @@ export namespace Lasem {
         /**
          * @param instance
          */
-        serialize(instance?: any | null): string;
+        serialize(instance: any | null): string;
         /**
          * @param instance
          * @param name
@@ -1440,7 +1440,7 @@ export namespace Lasem {
          * @param style
          * @param parent_style
          */
-        apply_property_bag(property_bag: PropertyBag, style?: any | null, parent_style?: any | null): void;
+        apply_property_bag(property_bag: PropertyBag, style: any | null, parent_style: any | null): void;
         /**
          * @param property_bag
          */
@@ -1453,7 +1453,7 @@ export namespace Lasem {
         /**
          * @param style
          */
-        init_default_style(style?: any | null): void;
+        init_default_style(style: any | null): void;
         ref(): PropertyManager;
         /**
          * @param property_bag

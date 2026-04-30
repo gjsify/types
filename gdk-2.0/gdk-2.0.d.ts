@@ -3549,8 +3549,8 @@ export namespace Gdk {
         x: number,
         y: number,
         line: Pango.LayoutLine,
-        foreground?: Color | null,
-        background?: Color | null,
+        foreground: Color | null,
+        background: Color | null,
     ): void;
     /**
      * Render a {@link Pango.Layout} onto a {@link Gdk.Drawable}, overriding the
@@ -3577,8 +3577,8 @@ export namespace Gdk {
         x: number,
         y: number,
         layout: Pango.Layout,
-        foreground?: Color | null,
-        background?: Color | null,
+        foreground: Color | null,
+        background: Color | null,
     ): void;
     /**
      * Draws a line, using the foreground color and other attributes of
@@ -4991,7 +4991,7 @@ export namespace Gdk {
         format: number,
         text: number,
         length: number,
-        list?: string | null,
+        list: string | null,
     ): number;
     /**
      * Converts a text property in the given encoding to
@@ -5078,7 +5078,7 @@ export namespace Gdk {
     function threads_add_idle_full(
         priority: number,
         _function: GLib.SourceFunc,
-        notify?: GLib.DestroyNotify | null,
+        notify: GLib.DestroyNotify | null,
     ): number;
     /**
      * Sets a function to be called at regular intervals holding the GDK lock,
@@ -5137,7 +5137,7 @@ export namespace Gdk {
         priority: number,
         interval: number,
         _function: GLib.SourceFunc,
-        notify?: GLib.DestroyNotify | null,
+        notify: GLib.DestroyNotify | null,
     ): number;
     /**
      * A variant of `gdk_threads_add_timout_full()` with second-granularity.
@@ -5155,7 +5155,7 @@ export namespace Gdk {
         priority: number,
         interval: number,
         _function: GLib.SourceFunc,
-        notify?: GLib.DestroyNotify | null,
+        notify: GLib.DestroyNotify | null,
     ): number;
     function threads_enter(): void;
     /**
@@ -5274,19 +5274,19 @@ export namespace Gdk {
      * @gir-type Callback
      */
     interface DestroyNotify {
-        (data?: any | null): void;
+        (data: any | null): void;
     }
     /**
      * @gir-type Callback
      */
     interface EventFunc {
-        (event: Event, data?: any | null): void;
+        (event: Event, data: any | null): void;
     }
     /**
      * @gir-type Callback
      */
     interface FilterFunc {
-        (xevent: XEvent, event: Event, data?: any | null): FilterReturn;
+        (xevent: XEvent, event: Event, data: any | null): FilterReturn;
     }
     /**
      * @gir-type Callback
@@ -5298,7 +5298,7 @@ export namespace Gdk {
      * @gir-type Callback
      */
     interface SpanFunc {
-        (span: Span, data?: any | null): void;
+        (span: Span, data: any | null): void;
     }
     /**
      * @gir-type Flags
@@ -5619,7 +5619,7 @@ export namespace Gdk {
          * See also `gdk_app_launch_context_set_icon_name()`.
          * @param icon a {@link Gio.Icon}, or `null`
          */
-        set_icon(icon?: Gio.Icon | null): void;
+        set_icon(icon: Gio.Icon | null): void;
         /**
          * Sets the icon for applications that are launched with this context.
          * The `icon_name` will be interpreted in the same way as the Icon field
@@ -5631,7 +5631,7 @@ export namespace Gdk {
          * for the launched application itself.
          * @param icon_name an icon name, or `null`
          */
-        set_icon_name(icon_name?: string | null): void;
+        set_icon_name(icon_name: string | null): void;
         /**
          * Sets the screen on which applications will be launched when
          * using this context. See also `gdk_app_launch_context_set_display()`.
@@ -6814,7 +6814,7 @@ export namespace Gdk {
          * @param data arbitrary data
          * @param destroy_func function to free `data`, or `null`
          */
-        set_data(key: string, data?: any | null, destroy_func?: GLib.DestroyNotify | null): void;
+        set_data(key: string, data: any | null, destroy_func: GLib.DestroyNotify | null): void;
         /**
          * @param args
          */
@@ -7622,7 +7622,7 @@ export namespace Gdk {
          * Sets the drawable the renderer draws to.
          * @param drawable the new target drawable, or `null`
          */
-        set_drawable(drawable?: Drawable | null): void;
+        set_drawable(drawable: Drawable | null): void;
         /**
          * Sets the GC the renderer draws with. Note that the GC must not be
          * modified until it is unset by calling the function again with
@@ -7631,7 +7631,7 @@ export namespace Gdk {
          * original GC.
          * @param gc the new GC to use for drawing, or `null`
          */
-        set_gc(gc?: GC | null): void;
+        set_gc(gc: GC | null): void;
         /**
          * Sets the color for a particular render part (foreground,
          * background, underline, etc.), overriding any attributes on the layouts
@@ -7639,7 +7639,7 @@ export namespace Gdk {
          * @param part the part to render to set the color of
          * @param color the color to use, or `null` to unset a previously         set override color.
          */
-        set_override_color(part: Pango.RenderPart, color?: Color | null): void;
+        set_override_color(part: Pango.RenderPart, color: Color | null): void;
         /**
          * Sets the stipple for one render part (foreground, background, underline,
          * etc.) Note that this is overwritten when iterating through the individual
@@ -7831,6 +7831,9 @@ export namespace Gdk {
         set font_options(val: any);
         get fontOptions(): any;
         set fontOptions(val: any);
+        /**
+         * @default -1
+         */
         get resolution(): number;
         set resolution(val: number);
 
@@ -8162,7 +8165,7 @@ export namespace Gdk {
          * have already been created.
          * @param options a {@link cairo.FontOptions}, or `null` to unset any   previously set default font options.
          */
-        set_font_options(options?: cairo.FontOptions | null): void;
+        set_font_options(options: cairo.FontOptions | null): void;
         /**
          * Sets the resolution for font handling on the screen. This is a
          * scale factor between points specified in a {@link Pango.FontDescription}
@@ -9025,7 +9028,7 @@ export namespace Gdk {
          * @param child_func function to use to decide if to recurse to a child,              `null` means never recurse.
          * @param user_data data passed to `child_func`
          */
-        invalidate_maybe_recurse(region: Region, child_func?: any | null, user_data?: any | null): void;
+        invalidate_maybe_recurse(region: Region, child_func: any | null, user_data: any | null): void;
         /**
          * A convenience wrapper around `gdk_window_invalidate_region()` which
          * invalidates a rectangular region. See
@@ -9388,7 +9391,7 @@ export namespace Gdk {
          * parent window. Most windows should use this default.
          * @param cursor a cursor
          */
-        set_cursor(cursor?: Cursor | null): void;
+        set_cursor(cursor: Cursor | null): void;
         /**
          * "Decorations" are the features the window manager adds to a toplevel {@link Gdk.Window}.
          * This function sets the traditional Motif window manager hints that tell the
@@ -9706,7 +9709,7 @@ export namespace Gdk {
          * user data is a `GtkWidget`, and forward the event to that widget.
          * @param user_data user data
          */
-        set_user_data(user_data?: any | null): void;
+        set_user_data(user_data: any | null): void;
         /**
          * Applies a shape mask to `window`. Pixels in `window` corresponding to
          * set bits in the `mask` will be visible; pixels in `window`

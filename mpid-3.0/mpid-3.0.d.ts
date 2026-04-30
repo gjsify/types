@@ -186,36 +186,43 @@ export namespace MPID {
         /**
          * The device drive type
          * @read-only
+         * @default null
          */
         get drive_type(): string;
         /**
          * The device drive type
          * @read-only
+         * @default null
          */
         get driveType(): string;
         /**
          * MPID error code resulting from device detection (see {@link MPID.Error})
          * @read-only
+         * @default MPID.Error.OK
          */
         get error(): Error;
         /**
          * The folder nesting level supported by the device.  -1 indicates there is no limit.
          * @read-only
+         * @default -1
          */
         get folder_depth(): number;
         /**
          * The folder nesting level supported by the device.  -1 indicates there is no limit.
          * @read-only
+         * @default -1
          */
         get folderDepth(): number;
         /**
          * The device filesystem UUID
          * @read-only
+         * @default null
          */
         get fs_uuid(): string;
         /**
          * The device filesystem UUID
          * @read-only
+         * @default null
          */
         get fsUuid(): string;
         /**
@@ -231,26 +238,31 @@ export namespace MPID {
         /**
          * Either the device node path or the mount point path for the device.
          * @construct-only
+         * @default null
          */
         get input_path(): string;
         /**
          * Either the device node path or the mount point path for the device.
          * @construct-only
+         * @default null
          */
         get inputPath(): string;
         /**
          * The device model name
          * @read-only
+         * @default null
          */
         get model(): string;
         /**
          * Path to a .mpi file describing the device
          * @construct-only
+         * @default null
          */
         get mpi_file(): string;
         /**
          * Path to a .mpi file describing the device
          * @construct-only
+         * @default null
          */
         get mpiFile(): string;
         /**
@@ -277,37 +289,44 @@ export namespace MPID {
          * Path to playlist files on the device.  May include '%File' to indicate a directory
          * containing any number of playlist files.
          * @read-only
+         * @default null
          */
         get playlist_path(): string;
         /**
          * Path to playlist files on the device.  May include '%File' to indicate a directory
          * containing any number of playlist files.
          * @read-only
+         * @default null
          */
         get playlistPath(): string;
         /**
          * If `true`, the device must be ejected rather than unmounted
          * @read-only
+         * @default false
          */
         get requires_eject(): boolean;
         /**
          * If `true`, the device must be ejected rather than unmounted
          * @read-only
+         * @default false
          */
         get requiresEject(): boolean;
         /**
          * The device serial ID
          * @read-only
+         * @default null
          */
         get serial(): string;
         /**
          * The information source used to provide device information (see {@link MPID.Source})
          * @read-only
+         * @default MPID.SourceType.NO_DEVICE_INFO
          */
         get source(): SourceType;
         /**
          * The device vendor name
          * @read-only
+         * @default null
          */
         get vendor(): string;
 

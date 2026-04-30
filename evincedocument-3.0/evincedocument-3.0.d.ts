@@ -710,10 +710,19 @@ export namespace EvinceDocument {
          */
         get color(): any;
         set color(val: any);
+        /**
+         * @default null
+         */
         get contents(): string;
         set contents(val: string);
+        /**
+         * @default null
+         */
         get modified(): string;
         set modified(val: string);
+        /**
+         * @default null
+         */
         get name(): string;
         set name(val: string);
         /**
@@ -967,69 +976,57 @@ export namespace EvinceDocument {
          * @param attachment
          */
         set_attachment(attachment: Attachment): boolean;
-        /** @category Inherited from EvinceDocument.AnnotationMarkup */
+        /**
+         * @default false
+         * @category Inherited from EvinceDocument.AnnotationMarkup
+         */
         // This accessor conflicts with a field or function name in a parent class or interface.
         can_have_popup: boolean | any;
-        /** @category Inherited from EvinceDocument.AnnotationMarkup */
+        /**
+         * @default false
+         * @category Inherited from EvinceDocument.AnnotationMarkup
+         */
         get canHavePopup(): boolean;
         set canHavePopup(val: boolean);
-        /** @category Inherited from EvinceDocument.AnnotationMarkup */
+        /**
+         * @default true
+         * @category Inherited from EvinceDocument.AnnotationMarkup
+         */
         // This accessor conflicts with a field or function name in a parent class or interface.
         has_popup: boolean | any;
-        /** @category Inherited from EvinceDocument.AnnotationMarkup */
+        /**
+         * @default true
+         * @category Inherited from EvinceDocument.AnnotationMarkup
+         */
         get hasPopup(): boolean;
         set hasPopup(val: boolean);
-        /** @category Inherited from EvinceDocument.AnnotationMarkup */
+        /**
+         * @default null
+         * @category Inherited from EvinceDocument.AnnotationMarkup
+         */
         get label(): string;
         set label(val: string);
-        /** @category Inherited from EvinceDocument.AnnotationMarkup */
+        /**
+         * @default 1
+         * @category Inherited from EvinceDocument.AnnotationMarkup
+         */
         get opacity(): number;
         set opacity(val: number);
-        /** @category Inherited from EvinceDocument.AnnotationMarkup */
+        /**
+         * @default false
+         * @category Inherited from EvinceDocument.AnnotationMarkup
+         */
         get popup_is_open(): boolean;
         set popup_is_open(val: boolean);
-        /** @category Inherited from EvinceDocument.AnnotationMarkup */
+        /**
+         * @default false
+         * @category Inherited from EvinceDocument.AnnotationMarkup
+         */
         get popupIsOpen(): boolean;
         set popupIsOpen(val: boolean);
         /** @category Inherited from EvinceDocument.AnnotationMarkup */
         get rectangle(): Rectangle;
         set rectangle(val: Rectangle);
-        /**
-         * The area of the page where the annotation is placed.
-         *
-         * Since 3.18
-         * @category Inherited from EvinceDocument.Annotation
-         */
-        get area(): Rectangle;
-        set area(val: Rectangle);
-        /**
-         * The colour of the annotation as a {@link Gdk.Color}.
-         * @deprecated since 3.6: Use {@link EvinceDocument.Annotation.rgba} instead.
-         * @category Inherited from EvinceDocument.Annotation
-         */
-        get color(): any;
-        set color(val: any);
-        /** @category Inherited from EvinceDocument.Annotation */
-        get contents(): string;
-        set contents(val: string);
-        /** @category Inherited from EvinceDocument.Annotation */
-        get modified(): string;
-        set modified(val: string);
-        /** @category Inherited from EvinceDocument.Annotation */
-        get name(): string;
-        set name(val: string);
-        /**
-         * @construct-only
-         * @category Inherited from EvinceDocument.Annotation
-         */
-        set page(val: Page);
-        /**
-         * The colour of the annotation as a {@link Gdk.RGBA}.
-         * @since 3.6
-         * @category Inherited from EvinceDocument.Annotation
-         */
-        get rgba(): Gdk.RGBA;
-        set rgba(val: Gdk.RGBA);
         get_label(): string;
         get_opacity(): number;
         get_popup_is_open(): boolean;
@@ -1057,119 +1054,6 @@ export namespace EvinceDocument {
          * @param ev_rect
          */
         set_rectangle(ev_rect: Rectangle): boolean;
-        /**
-         * Compare `annot` and `other`.
-         * @param other another {@link EvinceDocument.Annotation}
-         * @returns `true` if `annot` is equal to `other`, `false` otherwise
-         */
-        equal(other: Annotation): boolean;
-        get_annotation_type(): AnnotationType;
-        /**
-         * Gets the area of `annot`.
-         */
-        get_area(): Rectangle;
-        /**
-         * Get the color of `annot`.
-         */
-        get_color(): Gdk.Color;
-        /**
-         * Get the contents of `annot`. The contents of
-         * `annot` is the text that is displayed in the annotation, or an
-         * alternate description of the annotation's content for non-text annotations
-         * @returns a string with the contents of the annotation or `null` if `annot` has no contents.
-         */
-        get_contents(): string;
-        /**
-         * Get the last modification date of `annot`.
-         * @returns A string containing the last modification date.
-         */
-        get_modified(): string;
-        /**
-         * Get the name of `annot`. The name of the annotation is a string
-         * that uniquely indenftifies `annot` amongs all the annotations
-         * in the same page.
-         * @returns the string with the annotation's name.
-         */
-        get_name(): string;
-        /**
-         * Get the page where `annot` appears.
-         * @returns the {@link EvinceDocument.Page} where `annot` appears
-         */
-        get_page(): Page;
-        /**
-         * Get the index of the page where `annot` appears. Note that the index
-         * is 0 based.
-         * @returns the page index.
-         */
-        get_page_index(): number;
-        /**
-         * Gets the color of `annot`.
-         */
-        get_rgba(): Gdk.RGBA;
-        /**
-         * Set the area of the annotation to `area`.
-         * @param area a {@link EvinceDocument.Rectangle}
-         * @returns `true` if the area has been changed, `false` otherwise
-         */
-        set_area(area: Rectangle): boolean;
-        /**
-         * Set the color of the annotation to `color`. You can monitor
-         * changes to the annotation's color by connecting to
-         * notify::color signal on `annot`.
-         * @param color a {@link Gdk.Color}
-         * @returns `true`  when the color has been changed, `false` otherwise.
-         */
-        set_color(color: Gdk.Color): boolean;
-        /**
-         * Set the contents of `annot`. You can monitor
-         * changes in the annotation's  contents by connecting to
-         * notify::contents signal of `annot`.
-         * @param contents
-         * @returns `true` if the contents have been changed, `false` otherwise.
-         */
-        set_contents(contents: string): boolean;
-        /**
-         * Set the last modification date of `annot` to `modified`. To
-         * set the last modification date using a `time_t`, use
-         * `ev_annotation_set_modified_from_time_t()` instead. You can monitor
-         * changes to the last modification date by connecting to the
-         * notify::modified signal on `annot`.
-         * @param modified string with the last modification date.
-         * @returns `true` if the last modification date has been updated, `false` otherwise.
-         */
-        set_modified(modified: string): boolean;
-        /**
-         * Set the last modification date of `annot` to `utime`.  You can
-         * monitor changes to the last modification date by connecting to the
-         * notify::modified sinal on `annot`.
-         * For the time-format used, see `ev_document_misc_format_date()`.
-         * @param utime a {@link GLib.Time}
-         * @returns `true` if the last modified date has been updated, `false` otherwise.
-         */
-        set_modified_from_time(utime: GLib.Time): boolean;
-        /**
-         * Set the last modification date of `annot` to `utime`.  You can
-         * monitor changes to the last modification date by connecting to the
-         * notify::modified sinal on `annot`.
-         * For the time-format used, see `ev_document_misc_format_datetime()`.
-         * @param utime a `time_t`
-         * @returns `true` if the last modified date has been updated, `false` otherwise.
-         */
-        set_modified_from_time_t(utime: bigint | number): boolean;
-        /**
-         * Set the name of `annot`.
-         * You can monitor changes of the annotation name by connecting
-         * to the notify::name signal on `annot`.
-         * @param name
-         * @returns `true` when the name has been changed, `false` otherwise.
-         */
-        set_name(name: string): boolean;
-        /**
-         * Set the color of the annotation to `rgba`.
-         * @param rgba a {@link Gdk.RGBA}
-         * @returns `true` if the color has been changed, `false` otherwise
-         */
-        set_rgba(rgba: Gdk.RGBA): boolean;
     }
 
     namespace AnnotationText {
@@ -1209,10 +1093,19 @@ export namespace EvinceDocument {
 
         // Properties
 
+        /**
+         * @default EvinceDocument.AnnotationTextIcon.NOTE
+         */
         get icon(): AnnotationTextIcon;
         set icon(val: AnnotationTextIcon);
+        /**
+         * @default false
+         */
         get is_open(): boolean;
         set is_open(val: boolean);
+        /**
+         * @default false
+         */
         get isOpen(): boolean;
         set isOpen(val: boolean);
 
@@ -1266,69 +1159,57 @@ export namespace EvinceDocument {
          * @param is_open
          */
         set_is_open(is_open: boolean): boolean;
-        /** @category Inherited from EvinceDocument.AnnotationMarkup */
+        /**
+         * @default false
+         * @category Inherited from EvinceDocument.AnnotationMarkup
+         */
         // This accessor conflicts with a field or function name in a parent class or interface.
         can_have_popup: boolean | any;
-        /** @category Inherited from EvinceDocument.AnnotationMarkup */
+        /**
+         * @default false
+         * @category Inherited from EvinceDocument.AnnotationMarkup
+         */
         get canHavePopup(): boolean;
         set canHavePopup(val: boolean);
-        /** @category Inherited from EvinceDocument.AnnotationMarkup */
+        /**
+         * @default true
+         * @category Inherited from EvinceDocument.AnnotationMarkup
+         */
         // This accessor conflicts with a field or function name in a parent class or interface.
         has_popup: boolean | any;
-        /** @category Inherited from EvinceDocument.AnnotationMarkup */
+        /**
+         * @default true
+         * @category Inherited from EvinceDocument.AnnotationMarkup
+         */
         get hasPopup(): boolean;
         set hasPopup(val: boolean);
-        /** @category Inherited from EvinceDocument.AnnotationMarkup */
+        /**
+         * @default null
+         * @category Inherited from EvinceDocument.AnnotationMarkup
+         */
         get label(): string;
         set label(val: string);
-        /** @category Inherited from EvinceDocument.AnnotationMarkup */
+        /**
+         * @default 1
+         * @category Inherited from EvinceDocument.AnnotationMarkup
+         */
         get opacity(): number;
         set opacity(val: number);
-        /** @category Inherited from EvinceDocument.AnnotationMarkup */
+        /**
+         * @default false
+         * @category Inherited from EvinceDocument.AnnotationMarkup
+         */
         get popup_is_open(): boolean;
         set popup_is_open(val: boolean);
-        /** @category Inherited from EvinceDocument.AnnotationMarkup */
+        /**
+         * @default false
+         * @category Inherited from EvinceDocument.AnnotationMarkup
+         */
         get popupIsOpen(): boolean;
         set popupIsOpen(val: boolean);
         /** @category Inherited from EvinceDocument.AnnotationMarkup */
         get rectangle(): Rectangle;
         set rectangle(val: Rectangle);
-        /**
-         * The area of the page where the annotation is placed.
-         *
-         * Since 3.18
-         * @category Inherited from EvinceDocument.Annotation
-         */
-        get area(): Rectangle;
-        set area(val: Rectangle);
-        /**
-         * The colour of the annotation as a {@link Gdk.Color}.
-         * @deprecated since 3.6: Use {@link EvinceDocument.Annotation.rgba} instead.
-         * @category Inherited from EvinceDocument.Annotation
-         */
-        get color(): any;
-        set color(val: any);
-        /** @category Inherited from EvinceDocument.Annotation */
-        get contents(): string;
-        set contents(val: string);
-        /** @category Inherited from EvinceDocument.Annotation */
-        get modified(): string;
-        set modified(val: string);
-        /** @category Inherited from EvinceDocument.Annotation */
-        get name(): string;
-        set name(val: string);
-        /**
-         * @construct-only
-         * @category Inherited from EvinceDocument.Annotation
-         */
-        set page(val: Page);
-        /**
-         * The colour of the annotation as a {@link Gdk.RGBA}.
-         * @since 3.6
-         * @category Inherited from EvinceDocument.Annotation
-         */
-        get rgba(): Gdk.RGBA;
-        set rgba(val: Gdk.RGBA);
         get_label(): string;
         get_opacity(): number;
         get_popup_is_open(): boolean;
@@ -1356,119 +1237,6 @@ export namespace EvinceDocument {
          * @param ev_rect
          */
         set_rectangle(ev_rect: Rectangle): boolean;
-        /**
-         * Compare `annot` and `other`.
-         * @param other another {@link EvinceDocument.Annotation}
-         * @returns `true` if `annot` is equal to `other`, `false` otherwise
-         */
-        equal(other: Annotation): boolean;
-        get_annotation_type(): AnnotationType;
-        /**
-         * Gets the area of `annot`.
-         */
-        get_area(): Rectangle;
-        /**
-         * Get the color of `annot`.
-         */
-        get_color(): Gdk.Color;
-        /**
-         * Get the contents of `annot`. The contents of
-         * `annot` is the text that is displayed in the annotation, or an
-         * alternate description of the annotation's content for non-text annotations
-         * @returns a string with the contents of the annotation or `null` if `annot` has no contents.
-         */
-        get_contents(): string;
-        /**
-         * Get the last modification date of `annot`.
-         * @returns A string containing the last modification date.
-         */
-        get_modified(): string;
-        /**
-         * Get the name of `annot`. The name of the annotation is a string
-         * that uniquely indenftifies `annot` amongs all the annotations
-         * in the same page.
-         * @returns the string with the annotation's name.
-         */
-        get_name(): string;
-        /**
-         * Get the page where `annot` appears.
-         * @returns the {@link EvinceDocument.Page} where `annot` appears
-         */
-        get_page(): Page;
-        /**
-         * Get the index of the page where `annot` appears. Note that the index
-         * is 0 based.
-         * @returns the page index.
-         */
-        get_page_index(): number;
-        /**
-         * Gets the color of `annot`.
-         */
-        get_rgba(): Gdk.RGBA;
-        /**
-         * Set the area of the annotation to `area`.
-         * @param area a {@link EvinceDocument.Rectangle}
-         * @returns `true` if the area has been changed, `false` otherwise
-         */
-        set_area(area: Rectangle): boolean;
-        /**
-         * Set the color of the annotation to `color`. You can monitor
-         * changes to the annotation's color by connecting to
-         * notify::color signal on `annot`.
-         * @param color a {@link Gdk.Color}
-         * @returns `true`  when the color has been changed, `false` otherwise.
-         */
-        set_color(color: Gdk.Color): boolean;
-        /**
-         * Set the contents of `annot`. You can monitor
-         * changes in the annotation's  contents by connecting to
-         * notify::contents signal of `annot`.
-         * @param contents
-         * @returns `true` if the contents have been changed, `false` otherwise.
-         */
-        set_contents(contents: string): boolean;
-        /**
-         * Set the last modification date of `annot` to `modified`. To
-         * set the last modification date using a `time_t`, use
-         * `ev_annotation_set_modified_from_time_t()` instead. You can monitor
-         * changes to the last modification date by connecting to the
-         * notify::modified signal on `annot`.
-         * @param modified string with the last modification date.
-         * @returns `true` if the last modification date has been updated, `false` otherwise.
-         */
-        set_modified(modified: string): boolean;
-        /**
-         * Set the last modification date of `annot` to `utime`.  You can
-         * monitor changes to the last modification date by connecting to the
-         * notify::modified sinal on `annot`.
-         * For the time-format used, see `ev_document_misc_format_date()`.
-         * @param utime a {@link GLib.Time}
-         * @returns `true` if the last modified date has been updated, `false` otherwise.
-         */
-        set_modified_from_time(utime: GLib.Time): boolean;
-        /**
-         * Set the last modification date of `annot` to `utime`.  You can
-         * monitor changes to the last modification date by connecting to the
-         * notify::modified sinal on `annot`.
-         * For the time-format used, see `ev_document_misc_format_datetime()`.
-         * @param utime a `time_t`
-         * @returns `true` if the last modified date has been updated, `false` otherwise.
-         */
-        set_modified_from_time_t(utime: bigint | number): boolean;
-        /**
-         * Set the name of `annot`.
-         * You can monitor changes of the annotation name by connecting
-         * to the notify::name signal on `annot`.
-         * @param name
-         * @returns `true` when the name has been changed, `false` otherwise.
-         */
-        set_name(name: string): boolean;
-        /**
-         * Set the color of the annotation to `rgba`.
-         * @param rgba a {@link Gdk.RGBA}
-         * @returns `true` if the color has been changed, `false` otherwise
-         */
-        set_rgba(rgba: Gdk.RGBA): boolean;
     }
 
     namespace AnnotationTextMarkup {
@@ -1505,6 +1273,9 @@ export namespace EvinceDocument {
 
         // Properties
 
+        /**
+         * @default EvinceDocument.AnnotationTextMarkupType.HIGHLIGHT
+         */
         get type(): AnnotationTextMarkupType;
         set type(val: AnnotationTextMarkupType);
 
@@ -1561,69 +1332,57 @@ export namespace EvinceDocument {
          * @param markup_type
          */
         set_markup_type(markup_type: AnnotationTextMarkupType): boolean;
-        /** @category Inherited from EvinceDocument.AnnotationMarkup */
+        /**
+         * @default false
+         * @category Inherited from EvinceDocument.AnnotationMarkup
+         */
         // This accessor conflicts with a field or function name in a parent class or interface.
         can_have_popup: boolean | any;
-        /** @category Inherited from EvinceDocument.AnnotationMarkup */
+        /**
+         * @default false
+         * @category Inherited from EvinceDocument.AnnotationMarkup
+         */
         get canHavePopup(): boolean;
         set canHavePopup(val: boolean);
-        /** @category Inherited from EvinceDocument.AnnotationMarkup */
+        /**
+         * @default true
+         * @category Inherited from EvinceDocument.AnnotationMarkup
+         */
         // This accessor conflicts with a field or function name in a parent class or interface.
         has_popup: boolean | any;
-        /** @category Inherited from EvinceDocument.AnnotationMarkup */
+        /**
+         * @default true
+         * @category Inherited from EvinceDocument.AnnotationMarkup
+         */
         get hasPopup(): boolean;
         set hasPopup(val: boolean);
-        /** @category Inherited from EvinceDocument.AnnotationMarkup */
+        /**
+         * @default null
+         * @category Inherited from EvinceDocument.AnnotationMarkup
+         */
         get label(): string;
         set label(val: string);
-        /** @category Inherited from EvinceDocument.AnnotationMarkup */
+        /**
+         * @default 1
+         * @category Inherited from EvinceDocument.AnnotationMarkup
+         */
         get opacity(): number;
         set opacity(val: number);
-        /** @category Inherited from EvinceDocument.AnnotationMarkup */
+        /**
+         * @default false
+         * @category Inherited from EvinceDocument.AnnotationMarkup
+         */
         get popup_is_open(): boolean;
         set popup_is_open(val: boolean);
-        /** @category Inherited from EvinceDocument.AnnotationMarkup */
+        /**
+         * @default false
+         * @category Inherited from EvinceDocument.AnnotationMarkup
+         */
         get popupIsOpen(): boolean;
         set popupIsOpen(val: boolean);
         /** @category Inherited from EvinceDocument.AnnotationMarkup */
         get rectangle(): Rectangle;
         set rectangle(val: Rectangle);
-        /**
-         * The area of the page where the annotation is placed.
-         *
-         * Since 3.18
-         * @category Inherited from EvinceDocument.Annotation
-         */
-        get area(): Rectangle;
-        set area(val: Rectangle);
-        /**
-         * The colour of the annotation as a {@link Gdk.Color}.
-         * @deprecated since 3.6: Use {@link EvinceDocument.Annotation.rgba} instead.
-         * @category Inherited from EvinceDocument.Annotation
-         */
-        get color(): any;
-        set color(val: any);
-        /** @category Inherited from EvinceDocument.Annotation */
-        get contents(): string;
-        set contents(val: string);
-        /** @category Inherited from EvinceDocument.Annotation */
-        get modified(): string;
-        set modified(val: string);
-        /** @category Inherited from EvinceDocument.Annotation */
-        get name(): string;
-        set name(val: string);
-        /**
-         * @construct-only
-         * @category Inherited from EvinceDocument.Annotation
-         */
-        set page(val: Page);
-        /**
-         * The colour of the annotation as a {@link Gdk.RGBA}.
-         * @since 3.6
-         * @category Inherited from EvinceDocument.Annotation
-         */
-        get rgba(): Gdk.RGBA;
-        set rgba(val: Gdk.RGBA);
         get_label(): string;
         get_opacity(): number;
         get_popup_is_open(): boolean;
@@ -1651,119 +1410,6 @@ export namespace EvinceDocument {
          * @param ev_rect
          */
         set_rectangle(ev_rect: Rectangle): boolean;
-        /**
-         * Compare `annot` and `other`.
-         * @param other another {@link EvinceDocument.Annotation}
-         * @returns `true` if `annot` is equal to `other`, `false` otherwise
-         */
-        equal(other: Annotation): boolean;
-        get_annotation_type(): AnnotationType;
-        /**
-         * Gets the area of `annot`.
-         */
-        get_area(): Rectangle;
-        /**
-         * Get the color of `annot`.
-         */
-        get_color(): Gdk.Color;
-        /**
-         * Get the contents of `annot`. The contents of
-         * `annot` is the text that is displayed in the annotation, or an
-         * alternate description of the annotation's content for non-text annotations
-         * @returns a string with the contents of the annotation or `null` if `annot` has no contents.
-         */
-        get_contents(): string;
-        /**
-         * Get the last modification date of `annot`.
-         * @returns A string containing the last modification date.
-         */
-        get_modified(): string;
-        /**
-         * Get the name of `annot`. The name of the annotation is a string
-         * that uniquely indenftifies `annot` amongs all the annotations
-         * in the same page.
-         * @returns the string with the annotation's name.
-         */
-        get_name(): string;
-        /**
-         * Get the page where `annot` appears.
-         * @returns the {@link EvinceDocument.Page} where `annot` appears
-         */
-        get_page(): Page;
-        /**
-         * Get the index of the page where `annot` appears. Note that the index
-         * is 0 based.
-         * @returns the page index.
-         */
-        get_page_index(): number;
-        /**
-         * Gets the color of `annot`.
-         */
-        get_rgba(): Gdk.RGBA;
-        /**
-         * Set the area of the annotation to `area`.
-         * @param area a {@link EvinceDocument.Rectangle}
-         * @returns `true` if the area has been changed, `false` otherwise
-         */
-        set_area(area: Rectangle): boolean;
-        /**
-         * Set the color of the annotation to `color`. You can monitor
-         * changes to the annotation's color by connecting to
-         * notify::color signal on `annot`.
-         * @param color a {@link Gdk.Color}
-         * @returns `true`  when the color has been changed, `false` otherwise.
-         */
-        set_color(color: Gdk.Color): boolean;
-        /**
-         * Set the contents of `annot`. You can monitor
-         * changes in the annotation's  contents by connecting to
-         * notify::contents signal of `annot`.
-         * @param contents
-         * @returns `true` if the contents have been changed, `false` otherwise.
-         */
-        set_contents(contents: string): boolean;
-        /**
-         * Set the last modification date of `annot` to `modified`. To
-         * set the last modification date using a `time_t`, use
-         * `ev_annotation_set_modified_from_time_t()` instead. You can monitor
-         * changes to the last modification date by connecting to the
-         * notify::modified signal on `annot`.
-         * @param modified string with the last modification date.
-         * @returns `true` if the last modification date has been updated, `false` otherwise.
-         */
-        set_modified(modified: string): boolean;
-        /**
-         * Set the last modification date of `annot` to `utime`.  You can
-         * monitor changes to the last modification date by connecting to the
-         * notify::modified sinal on `annot`.
-         * For the time-format used, see `ev_document_misc_format_date()`.
-         * @param utime a {@link GLib.Time}
-         * @returns `true` if the last modified date has been updated, `false` otherwise.
-         */
-        set_modified_from_time(utime: GLib.Time): boolean;
-        /**
-         * Set the last modification date of `annot` to `utime`.  You can
-         * monitor changes to the last modification date by connecting to the
-         * notify::modified sinal on `annot`.
-         * For the time-format used, see `ev_document_misc_format_datetime()`.
-         * @param utime a `time_t`
-         * @returns `true` if the last modified date has been updated, `false` otherwise.
-         */
-        set_modified_from_time_t(utime: bigint | number): boolean;
-        /**
-         * Set the name of `annot`.
-         * You can monitor changes of the annotation name by connecting
-         * to the notify::name signal on `annot`.
-         * @param name
-         * @returns `true` when the name has been changed, `false` otherwise.
-         */
-        set_name(name: string): boolean;
-        /**
-         * Set the color of the annotation to `rgba`.
-         * @param rgba a {@link Gdk.RGBA}
-         * @returns `true` if the color has been changed, `false` otherwise
-         */
-        set_rgba(rgba: Gdk.RGBA): boolean;
     }
 
     namespace Attachment {
@@ -1799,6 +1445,7 @@ export namespace EvinceDocument {
 
         /**
          * @construct-only
+         * @default 0
          */
         set ctime(val: bigint | number);
         /**
@@ -1807,18 +1454,22 @@ export namespace EvinceDocument {
         set data(val: any);
         /**
          * @construct-only
+         * @default null
          */
         set description(val: string);
         /**
          * @construct-only
+         * @default 0
          */
         set mtime(val: bigint | number);
         /**
          * @construct-only
+         * @default null
          */
         set name(val: string);
         /**
          * @construct-only
+         * @default 0
          */
         set size(val: number);
 
@@ -1847,7 +1498,7 @@ export namespace EvinceDocument {
             mtime: GLib.Time,
             ctime: GLib.Time,
             size: bigint | number,
-            data?: any | null,
+            data: any | null,
         ): Attachment;
 
         // Signals
@@ -1914,6 +1565,9 @@ export namespace EvinceDocument {
 
         // Properties
 
+        /**
+         * @default false
+         */
         get modified(): boolean;
         set modified(val: boolean);
 
@@ -2007,7 +1661,7 @@ export namespace EvinceDocument {
             fd: number,
             mime_type: string,
             flags: DocumentLoadFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): Document;
         /**
          * Synchronously creates a {@link EvinceDocument.Document} for the document at `file`; or, if no
@@ -2022,7 +1676,7 @@ export namespace EvinceDocument {
         static factory_get_document_for_gfile(
             file: Gio.File,
             flags: DocumentLoadFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): Document;
         /**
          * Synchronously creates a {@link EvinceDocument.Document} for the document from `stream`; or, if no
@@ -2043,7 +1697,7 @@ export namespace EvinceDocument {
             stream: Gio.InputStream,
             mime_type: string | null,
             flags: DocumentLoadFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): Document;
         /**
          * Creates a {@link EvinceDocument.Document} for the document at `uri`; or, if no backend handling
@@ -2261,7 +1915,7 @@ export namespace EvinceDocument {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @virtual
          */
-        vfunc_load_fd(fd: number, flags: DocumentLoadFlags, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_load_fd(fd: number, flags: DocumentLoadFlags, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Synchronously loads the document from `file`.
          * See `ev_document_load()` for more information.
@@ -2270,7 +1924,7 @@ export namespace EvinceDocument {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @virtual
          */
-        vfunc_load_gfile(file: Gio.File, flags: DocumentLoadFlags, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_load_gfile(file: Gio.File, flags: DocumentLoadFlags, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Synchronously loads the document from `stream`.
          * See `ev_document_load()` for more information.
@@ -2282,7 +1936,7 @@ export namespace EvinceDocument {
         vfunc_load_stream(
             stream: Gio.InputStream,
             flags: DocumentLoadFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * @param rc
@@ -2390,7 +2044,7 @@ export namespace EvinceDocument {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` if loading succeeded, or `false` on error with `error` filled in
          */
-        load_fd(fd: number, flags: DocumentLoadFlags, cancellable?: Gio.Cancellable | null): boolean;
+        load_fd(fd: number, flags: DocumentLoadFlags, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Loads `document` from `uri`.
          *
@@ -2413,7 +2067,7 @@ export namespace EvinceDocument {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` if loading succeeded, or `false` on error with `error` filled in
          */
-        load_gfile(file: Gio.File, flags: DocumentLoadFlags, cancellable?: Gio.Cancellable | null): boolean;
+        load_gfile(file: Gio.File, flags: DocumentLoadFlags, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Synchronously loads the document from `stream`.
          * See `ev_document_load()` for more information.
@@ -2422,7 +2076,7 @@ export namespace EvinceDocument {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` if loading succeeded, or `false` on error with `error` filled in
          */
-        load_stream(stream: Gio.InputStream, flags: DocumentLoadFlags, cancellable?: Gio.Cancellable | null): boolean;
+        load_stream(stream: Gio.InputStream, flags: DocumentLoadFlags, cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param rc
          */
@@ -2919,6 +2573,7 @@ export namespace EvinceDocument {
         get action(): LinkAction;
         /**
          * @construct-only
+         * @default null
          */
         get title(): string;
 
@@ -3021,14 +2676,17 @@ export namespace EvinceDocument {
         get dest(): LinkDest;
         /**
          * @construct-only
+         * @default false
          */
         get exclude_reset_fields(): boolean;
         /**
          * @construct-only
+         * @default false
          */
         get excludeResetFields(): boolean;
         /**
          * @construct-only
+         * @default null
          */
         get filename(): string;
         /**
@@ -3041,10 +2699,12 @@ export namespace EvinceDocument {
         get hideList(): any;
         /**
          * @construct-only
+         * @default null
          */
         get name(): string;
         /**
          * @construct-only
+         * @default null
          */
         get params(): string;
         /**
@@ -3073,10 +2733,12 @@ export namespace EvinceDocument {
         get toggleList(): any;
         /**
          * @construct-only
+         * @default EvinceDocument.LinkActionType.GOTO_DEST
          */
         get type(): LinkActionType;
         /**
          * @construct-only
+         * @default null
          */
         get uri(): string;
 
@@ -3211,46 +2873,57 @@ export namespace EvinceDocument {
 
         /**
          * @construct-only
+         * @default 0
          */
         get bottom(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get change(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get left(): number;
         /**
          * @construct-only
+         * @default null
          */
         get named(): string;
         /**
          * @construct-only
+         * @default 0
          */
         get page(): number;
         /**
          * @construct-only
+         * @default null
          */
         get page_label(): string;
         /**
          * @construct-only
+         * @default null
          */
         get pageLabel(): string;
         /**
          * @construct-only
+         * @default 0
          */
         get right(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get top(): number;
         /**
          * @construct-only
+         * @default EvinceDocument.LinkDestType.UNKNOWN
          */
         get type(): LinkDestType;
         /**
          * @construct-only
+         * @default 0
          */
         get zoom(): number;
 
@@ -3620,22 +3293,49 @@ export namespace EvinceDocument {
 
         // Properties
 
+        /**
+         * @default EvinceDocument.TransitionEffectAlignment.HORIZONTAL
+         */
         get alignment(): TransitionEffectAlignment;
         set alignment(val: TransitionEffectAlignment);
+        /**
+         * @default 0
+         */
         get angle(): number;
         set angle(val: number);
+        /**
+         * @default EvinceDocument.TransitionEffectDirection.INWARD
+         */
         get direction(): TransitionEffectDirection;
         set direction(val: TransitionEffectDirection);
+        /**
+         * @default 0
+         */
         get duration(): number;
         set duration(val: number);
+        /**
+         * @default 0
+         */
         get duration_real(): number;
         set duration_real(val: number);
+        /**
+         * @default 0
+         */
         get durationReal(): number;
         set durationReal(val: number);
+        /**
+         * @default false
+         */
         get rectangular(): boolean;
         set rectangular(val: boolean);
+        /**
+         * @default 1
+         */
         get scale(): number;
         set scale(val: number);
+        /**
+         * @default EvinceDocument.TransitionEffectType.REPLACE
+         */
         get type(): TransitionEffectType;
         set type(val: TransitionEffectType);
 
@@ -4100,7 +3800,7 @@ export namespace EvinceDocument {
          * @param data mapping data to find
          * @returns an {@link EvinceDocument.Mapping}
          */
-        find(data?: any | null): Mapping;
+        find(data: any | null): Mapping;
         /**
          * @param data mapping data to find
          * @param func function to use for equality check
@@ -4295,20 +3995,44 @@ export namespace EvinceDocument {
     interface AnnotationMarkup extends Annotation {
         // Properties
 
+        /**
+         * @default false
+         */
         get can_have_popup(): boolean;
         set can_have_popup(val: boolean);
+        /**
+         * @default false
+         */
         get canHavePopup(): boolean;
         set canHavePopup(val: boolean);
+        /**
+         * @default true
+         */
         get has_popup(): boolean;
         set has_popup(val: boolean);
+        /**
+         * @default true
+         */
         get hasPopup(): boolean;
         set hasPopup(val: boolean);
+        /**
+         * @default null
+         */
         get label(): string;
         set label(val: string);
+        /**
+         * @default 1
+         */
         get opacity(): number;
         set opacity(val: number);
+        /**
+         * @default false
+         */
         get popup_is_open(): boolean;
         set popup_is_open(val: boolean);
+        /**
+         * @default false
+         */
         get popupIsOpen(): boolean;
         set popupIsOpen(val: boolean);
         get rectangle(): Rectangle;

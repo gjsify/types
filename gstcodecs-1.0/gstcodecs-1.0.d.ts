@@ -521,6 +521,7 @@ export namespace GstCodecs {
          * mapping the baseline profile as the constrained-baseline profile,
          * etc.
          * @since 1.20
+         * @default GstCodecs.H264DecoderCompliance.AUTO
          */
         get compliance(): H264DecoderCompliance;
         set compliance(val: H264DecoderCompliance);
@@ -1169,6 +1170,10 @@ export namespace GstCodecs {
     class AV1Dpb {
         static $gtype: GObject.GType<AV1Dpb>;
 
+        // Fields
+
+        pic_list: AV1Picture[];
+
         // Methods
 
         /**
@@ -1215,7 +1220,7 @@ export namespace GstCodecs {
          * before the `user_data` is replaced.
          * @param user_data private data
          */
-        set_user_data(user_data?: any | null): void;
+        set_user_data(user_data: any | null): void;
     }
 
     /**
@@ -1401,7 +1406,7 @@ export namespace GstCodecs {
          * before the `user_data` is replaced.
          * @param user_data private data
          */
-        set_user_data(user_data?: any | null): void;
+        set_user_data(user_data: any | null): void;
     }
 
     /**
@@ -1556,7 +1561,7 @@ export namespace GstCodecs {
          * before the `user_data` is replaced.
          * @param user_data private data
          */
-        set_user_data(user_data?: any | null): void;
+        set_user_data(user_data: any | null): void;
     }
 
     /**
@@ -1653,7 +1658,7 @@ export namespace GstCodecs {
          * before the `user_data` is replaced.
          * @param user_data private data
          */
-        set_user_data(user_data?: any | null): void;
+        set_user_data(user_data: any | null): void;
     }
 
     /**
@@ -1707,7 +1712,7 @@ export namespace GstCodecs {
          * before the `user_data` is replaced.
          * @param user_data private data
          */
-        set_user_data(user_data?: any | null): void;
+        set_user_data(user_data: any | null): void;
     }
 
     /**
@@ -1740,6 +1745,10 @@ export namespace GstCodecs {
      */
     class Vp9Dpb {
         static $gtype: GObject.GType<Vp9Dpb>;
+
+        // Fields
+
+        pic_list: Vp9Picture[];
 
         // Methods
 
@@ -1888,7 +1897,7 @@ export namespace GstCodecs {
          * before the `user_data` is replaced.
          * @param user_data private data
          */
-        set_user_data(user_data?: any | null): void;
+        set_user_data(user_data: any | null): void;
     }
 
     /**

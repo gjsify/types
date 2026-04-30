@@ -220,7 +220,7 @@ export namespace GnomeKeyring {
      * @returns {@link GnomeKeyring.Result.OK} if the operation was succcessful or an error result otherwise.
      * @deprecated Not used with libsecret.
      */
-    function change_password_sync(keyring: string, original?: string | null, password?: string | null): Result;
+    function change_password_sync(keyring: string, original: string | null, password: string | null): Result;
     /**
      * Create a new keyring with the specified name. In most cases `null` will be
      * passed in as the `password`, which will prompt the user to enter a password
@@ -232,7 +232,7 @@ export namespace GnomeKeyring {
      * @returns {@link GnomeKeyring.Result.OK} if the operation was succcessful or an error result otherwise.
      * @deprecated Use `secret_collection_create_sync()` instead.
      */
-    function create_sync(keyring_name: string, password?: string | null): Result;
+    function create_sync(keyring_name: string, password: string | null): Result;
     /**
      * @returns GNOME_KEYRING_RESULT_OK
      * @deprecated No longer supported, call is ignored.
@@ -581,14 +581,14 @@ export namespace GnomeKeyring {
      * @returns {@link GnomeKeyring.Result.OK} if the operation was succcessful or an error result otherwise.
      * @deprecated Use `secret_service_lock_sync()` instead.
      */
-    function lock_sync(keyring?: string | null): Result;
+    function lock_sync(keyring: string | null): Result;
     /**
      * Free a network password data pointer. If `null` is passed in,
      * nothing happens.
      * @param data A {@link GnomeKeyring.NetworkPasswordData} pointer.
      * @deprecated Not used with libsecret.
      */
-    function network_password_free(data?: NetworkPasswordData | null): void;
+    function network_password_free(data: NetworkPasswordData | null): void;
     /**
      * Free a list of network password data.
      * @param list A list of        {@link GnomeKeyring.NetworkPasswordData} pointers.
@@ -679,7 +679,7 @@ export namespace GnomeKeyring {
      * @returns {@link GnomeKeyring.Result.OK} if the operation was succcessful or an error result otherwise.
      * @deprecated Use `secret_service_unlock_sync()` instead.
      */
-    function unlock_sync(keyring?: string | null, password?: string | null): Result;
+    function unlock_sync(keyring: string | null, password: string | null): Result;
     /**
      * @gir-type Callback
      */
@@ -714,7 +714,7 @@ export namespace GnomeKeyring {
      * @gir-type Callback
      */
     interface OperationGetStringCallback {
-        (result: Result, string?: string | null): void;
+        (result: Result, string: string | null): void;
     }
     /**
      * Type of access.
@@ -1114,6 +1114,7 @@ export namespace GnomeKeyring {
         // Fields
 
         item_type: ItemType;
+        attributes: PasswordSchemaAttribute[];
     }
 
     /**

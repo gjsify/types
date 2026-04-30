@@ -715,28 +715,39 @@ export namespace GstWebRTC {
 
         // Properties
 
+        /**
+         * @default null
+         */
         get certificate(): string;
         set certificate(val: string);
+        /**
+         * @default false
+         */
         get client(): boolean;
         set client(val: boolean);
         /**
          * @read-only
+         * @default null
          */
         get remote_certificate(): string;
         /**
          * @read-only
+         * @default null
          */
         get remoteCertificate(): string;
         /**
          * @construct-only
+         * @default 0
          */
         get session_id(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get sessionId(): number;
         /**
          * @read-only
+         * @default GstWebRTC.WebRTCDTLSTransportState.NEW
          */
         get state(): WebRTCDTLSTransportState;
         /**
@@ -881,50 +892,67 @@ export namespace GstWebRTC {
 
         /**
          * @read-only
+         * @default 0
          */
         get buffered_amount(): number;
         /**
          * @read-only
+         * @default 0
          */
         get bufferedAmount(): number;
+        /**
+         * @default 0
+         */
         get buffered_amount_low_threshold(): number;
         set buffered_amount_low_threshold(val: bigint | number);
+        /**
+         * @default 0
+         */
         get bufferedAmountLowThreshold(): number;
         set bufferedAmountLowThreshold(val: bigint | number);
         /**
          * @construct-only
+         * @default -1
          */
         get id(): number;
         /**
          * @construct-only
+         * @default null
          */
         get label(): string;
         /**
          * @construct-only
+         * @default -1
          */
         get max_packet_lifetime(): number;
         /**
          * @construct-only
+         * @default -1
          */
         get maxPacketLifetime(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get max_retransmits(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get maxRetransmits(): number;
         /**
          * @construct-only
+         * @default false
          */
         get negotiated(): boolean;
         /**
          * @construct-only
+         * @default false
          */
         get ordered(): boolean;
         /**
          * @construct-only
+         * @default GstWebRTC.WebRTCPriorityType.LOW
          */
         get priority(): WebRTCPriorityType;
         /**
@@ -933,10 +961,12 @@ export namespace GstWebRTC {
         get protocol(): string;
         /**
          * @read-only
+         * @default GstWebRTC.WebRTCDataChannelState.CONNECTING
          */
         get ready_state(): WebRTCDataChannelState;
         /**
          * @read-only
+         * @default GstWebRTC.WebRTCDataChannelState.CONNECTING
          */
         get readyState(): WebRTCDataChannelState;
 
@@ -986,24 +1016,24 @@ export namespace GstWebRTC {
          * Send `data` as a data message over `channel`.
          * @param data a {@link GLib.Bytes} or `null`
          */
-        send_data(data?: GLib.Bytes | null): void;
+        send_data(data: GLib.Bytes | null): void;
         /**
          * Send `data` as a data message over `channel`.
          * @param data a {@link GLib.Bytes} or `null`
          * @returns TRUE if `channel` is open and data could be queued
          */
-        send_data_full(data?: GLib.Bytes | null): boolean;
+        send_data_full(data: GLib.Bytes | null): boolean;
         /**
          * Send `str` as a string message over `channel`.
          * @param str a string or `null`
          */
-        send_string(str?: string | null): void;
+        send_string(str: string | null): void;
         /**
          * Send `str` as a string message over `channel`.
          * @param str a string or `null`
          * @returns TRUE if `channel` is open and data could be queued
          */
-        send_string_full(str?: string | null): boolean;
+        send_string_full(str: string | null): boolean;
     }
 
     namespace WebRTCICE {
@@ -1047,6 +1077,7 @@ export namespace GstWebRTC {
          * Maximum port for local rtp port range.
          * min-rtp-port must be <= max-rtp-port
          * @since 1.20
+         * @default 65535
          */
         get max_rtp_port(): number;
         set max_rtp_port(val: number);
@@ -1054,6 +1085,7 @@ export namespace GstWebRTC {
          * Maximum port for local rtp port range.
          * min-rtp-port must be <= max-rtp-port
          * @since 1.20
+         * @default 65535
          */
         get maxRtpPort(): number;
         set maxRtpPort(val: number);
@@ -1061,6 +1093,7 @@ export namespace GstWebRTC {
          * Minimum port for local rtp port range.
          * min-rtp-port must be <= max-rtp-port
          * @since 1.20
+         * @default 0
          */
         get min_rtp_port(): number;
         set min_rtp_port(val: number);
@@ -1068,6 +1101,7 @@ export namespace GstWebRTC {
          * Minimum port for local rtp port range.
          * min-rtp-port must be <= max-rtp-port
          * @since 1.20
+         * @default 0
          */
         get minRtpPort(): number;
         set minRtpPort(val: number);
@@ -1121,7 +1155,7 @@ export namespace GstWebRTC {
          * @param promise A {@link Gst.Promise} for task notifications (Since: 1.24)
          * @virtual
          */
-        vfunc_add_candidate(stream: WebRTCICEStream, candidate: string, promise?: Gst.Promise | null): void;
+        vfunc_add_candidate(stream: WebRTCICEStream, candidate: string, promise: Gst.Promise | null): void;
         /**
          * @param session_id The session id
          * @virtual
@@ -1214,7 +1248,7 @@ export namespace GstWebRTC {
          * @param uri URI of the STUN server
          * @virtual
          */
-        vfunc_set_stun_server(uri?: string | null): void;
+        vfunc_set_stun_server(uri: string | null): void;
         /**
          * @param stream The {@link GstWebRTC.WebRTCICEStream}
          * @param tos ToS to be set
@@ -1225,7 +1259,7 @@ export namespace GstWebRTC {
          * @param uri URI of the TURN sever
          * @virtual
          */
-        vfunc_set_turn_server(uri?: string | null): void;
+        vfunc_set_turn_server(uri: string | null): void;
 
         // Methods
 
@@ -1234,7 +1268,7 @@ export namespace GstWebRTC {
          * @param candidate The ICE candidate
          * @param promise A {@link Gst.Promise} for task notifications (Since: 1.24)
          */
-        add_candidate(stream: WebRTCICEStream, candidate: string, promise?: Gst.Promise | null): void;
+        add_candidate(stream: WebRTCICEStream, candidate: string, promise: Gst.Promise | null): void;
         /**
          * @param session_id The session id
          * @returns The {@link GstWebRTC.WebRTCICEStream}, or `null`
@@ -1321,7 +1355,7 @@ export namespace GstWebRTC {
         /**
          * @param uri URI of the STUN server
          */
-        set_stun_server(uri?: string | null): void;
+        set_stun_server(uri: string | null): void;
         /**
          * @param stream The {@link GstWebRTC.WebRTCICEStream}
          * @param tos ToS to be set
@@ -1330,7 +1364,7 @@ export namespace GstWebRTC {
         /**
          * @param uri URI of the TURN sever
          */
-        set_turn_server(uri?: string | null): void;
+        set_turn_server(uri: string | null): void;
     }
 
     namespace WebRTCICEStream {
@@ -1360,10 +1394,12 @@ export namespace GstWebRTC {
 
         /**
          * @construct-only
+         * @default 0
          */
         get stream_id(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get streamId(): number;
 
@@ -1468,18 +1504,22 @@ export namespace GstWebRTC {
 
         /**
          * @construct-only
+         * @default GstWebRTC.WebRTCICEComponent.RTP
          */
         get component(): WebRTCICEComponent;
         /**
          * @read-only
+         * @default GstWebRTC.WebRTCICEGatheringState.NEW
          */
         get gathering_state(): WebRTCICEGatheringState;
         /**
          * @read-only
+         * @default GstWebRTC.WebRTCICEGatheringState.NEW
          */
         get gatheringState(): WebRTCICEGatheringState;
         /**
          * @read-only
+         * @default GstWebRTC.WebRTCICEConnectionState.NEW
          */
         get state(): WebRTCICEConnectionState;
 
@@ -1652,6 +1692,7 @@ export namespace GstWebRTC {
         /**
          * The priority from which to set the DSCP field on packets
          * @since 1.20
+         * @default GstWebRTC.WebRTCPriorityType.LOW
          */
         get priority(): WebRTCPriorityType;
         set priority(val: WebRTCPriorityType);
@@ -1768,6 +1809,7 @@ export namespace GstWebRTC {
          * directionality, set the value of the direction property.
          * @since 1.20
          * @read-only
+         * @default GstWebRTC.WebRTCRTPTransceiverDirection.NONE
          */
         get current_direction(): WebRTCRTPTransceiverDirection;
         /**
@@ -1777,11 +1819,13 @@ export namespace GstWebRTC {
          * directionality, set the value of the direction property.
          * @since 1.20
          * @read-only
+         * @default GstWebRTC.WebRTCRTPTransceiverDirection.NONE
          */
         get currentDirection(): WebRTCRTPTransceiverDirection;
         /**
          * Direction of the transceiver.
          * @since 1.18
+         * @default GstWebRTC.WebRTCRTPTransceiverDirection.NONE
          */
         get direction(): WebRTCRTPTransceiverDirection;
         set direction(val: WebRTCRTPTransceiverDirection);
@@ -1789,6 +1833,7 @@ export namespace GstWebRTC {
          * The kind of media this transceiver transports
          * @since 1.20
          * @read-only
+         * @default GstWebRTC.WebRTCKind.UNKNOWN
          */
         get kind(): WebRTCKind;
         /**
@@ -1800,10 +1845,12 @@ export namespace GstWebRTC {
          * answer.
          * @since 1.20
          * @read-only
+         * @default null
          */
         get mid(): string;
         /**
          * @construct-only
+         * @default 0
          */
         get mlineindex(): number;
         /**
@@ -1887,22 +1934,27 @@ export namespace GstWebRTC {
 
         /**
          * @read-only
+         * @default 0
          */
         get max_channels(): number;
         /**
          * @read-only
+         * @default 0
          */
         get maxChannels(): number;
         /**
          * @read-only
+         * @default 0
          */
         get max_message_size(): number;
         /**
          * @read-only
+         * @default 0
          */
         get maxMessageSize(): number;
         /**
          * @read-only
+         * @default GstWebRTC.WebRTCSCTPTransportState.NEW
          */
         get state(): WebRTCSCTPTransportState;
         /**

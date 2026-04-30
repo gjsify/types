@@ -192,7 +192,7 @@ export namespace Govf {
          * @param save_path a file path
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        extract_disk(disk: Disk, save_path: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        extract_disk(disk: Disk, save_path: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Extracts a disk...
          * @param disk a {@link Govf.Disk}
@@ -216,7 +216,7 @@ export namespace Govf {
         extract_disk(
             disk: Disk,
             save_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -249,7 +249,7 @@ export namespace Govf {
          * @param filename an .ova file name
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        load_from_ova_file(filename: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        load_from_ova_file(filename: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Loads an OVF package from a compressed .ova file.
          *
@@ -275,7 +275,7 @@ export namespace Govf {
          */
         load_from_ova_file(
             filename: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**

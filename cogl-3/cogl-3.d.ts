@@ -736,7 +736,7 @@ export namespace Cogl {
      * @returns `true` if the two colors are the same.
      * @since 1.0
      */
-    function color_equal(v1?: any | null, v2?: any | null): Bool;
+    function color_equal(v1: any | null, v2: any | null): Bool;
     /**
      * Converts a color expressed in HLS (hue, luminance and saturation)
      * values into a {@link Cogl.Color}.
@@ -919,7 +919,7 @@ export namespace Cogl {
      * @returns `true` if the passed `object` represents a bitmap,   and `false` otherwise
      * @since 1.0
      */
-    function is_bitmap(object?: any | null): Bool;
+    function is_bitmap(object: any | null): Bool;
     /**
      * Gets whether the given handle references an existing material object.
      * @param handle A CoglHandle
@@ -933,7 +933,7 @@ export namespace Cogl {
      * @param object A pointer to a `CoglObject`
      * @returns `true` if `object` is a {@link Cogl.Offscreen} framebuffer,          `false` otherwise
      */
-    function is_offscreen(object?: any | null): Bool;
+    function is_offscreen(object: any | null): Bool;
     /**
      * Gets whether the given handle references an existing program object.
      * @param handle A CoglHandle
@@ -953,7 +953,7 @@ export namespace Cogl {
      * @param object A `CoglObject` pointer
      * @returns `true` if the `object` references a texture, and   `false` otherwise
      */
-    function is_texture(object?: any | null): Bool;
+    function is_texture(object: any | null): Bool;
     /**
      * Checks whether `handle` is a Vertex Buffer Object
      * @param handle a {@link Cogl.Handle} for a vertex buffer object
@@ -995,7 +995,7 @@ export namespace Cogl {
      * @param v2 A 4x4 transformation matrix
      * @since 1.4
      */
-    function matrix_equal(v1?: any | null, v2?: any | null): Bool;
+    function matrix_equal(v1: any | null, v2: any | null): Bool;
     /**
      * @param width
      * @param height
@@ -1261,7 +1261,7 @@ export namespace Cogl {
      * @since 1.6
      * @deprecated since 1.16: Latest drawing apis all take an explicit                   `CoglPipeline` argument so this stack of                   {@link Cogl.Material}<!-- -->s shouldn't be used.
      */
-    function push_source(material?: any | null): void;
+    function push_source(material: any | null): void;
     /**
      * Fills a rectangle at the given coordinates with the current source material
      * @param x_1 X coordinate of the top-left corner
@@ -1436,7 +1436,7 @@ export namespace Cogl {
      * @since 1.0
      * @deprecated since 1.16: Latest drawing apis all take an explicit                   `CoglPipeline` argument so this stack of                   {@link Cogl.Material}<!-- -->s shouldn't be used.
      */
-    function set_source(material?: any | null): void;
+    function set_source(material: any | null): void;
     /**
      * This is a convenience function for creating a solid fill source material
      * from the given color. This color will be used for any subsequent drawing
@@ -1725,7 +1725,7 @@ export namespace Cogl {
         type: AttributeType,
         normalized: Bool,
         stride: number,
-        pointer?: any | null,
+        pointer: any | null,
     ): void;
     /**
      * Deletes an attribute from a buffer. You will need to call
@@ -2381,13 +2381,13 @@ export namespace Cogl {
          * Increments the reference count on the `offscreen` framebuffer.
          * @param offscreen A pointer to a {@link Cogl.Offscreen} framebuffer
          */
-        static ref(offscreen?: any | null): any | null;
+        static ref(offscreen: any | null): any | null;
         /**
          * Decreases the reference count for the `offscreen` buffer and frees it when
          * the count reaches 0.
          * @param offscreen A pointer to a {@link Cogl.Offscreen} framebuffer
          */
-        static unref(offscreen?: any | null): void;
+        static unref(offscreen: any | null): void;
     }
 
     /**
@@ -2416,7 +2416,7 @@ export namespace Cogl {
          * @param v1 a {@link Cogl.Color}
          * @param v2 a {@link Cogl.Color}
          */
-        static equal(v1?: any | null, v2?: any | null): Bool;
+        static equal(v1: any | null, v2: any | null): Bool;
         /**
          * Converts a color expressed in HLS (hue, luminance and saturation)
          * values into a {@link Cogl.Color}.
@@ -3315,7 +3315,7 @@ export namespace Cogl {
          * @param v1 A 4x4 transformation matrix
          * @param v2 A 4x4 transformation matrix
          */
-        static equal(v1?: any | null, v2?: any | null): Bool;
+        static equal(v1: any | null, v2: any | null): Bool;
 
         // Methods
 

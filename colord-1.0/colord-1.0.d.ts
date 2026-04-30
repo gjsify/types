@@ -992,42 +992,49 @@ export namespace Colord {
          * The if the object path has been connected as is valid for use.
          * @since 0.1.9
          * @read-only
+         * @default null
          */
         get connected(): string;
         /**
          * The daemon version.
          * @since 0.1.0
          * @read-only
+         * @default null
          */
         get daemon_version(): string;
         /**
          * The daemon version.
          * @since 0.1.0
          * @read-only
+         * @default null
          */
         get daemonVersion(): string;
         /**
          * The system model.
          * @since 1.0.2
          * @read-only
+         * @default null
          */
         get system_model(): string;
         /**
          * The system model.
          * @since 1.0.2
          * @read-only
+         * @default null
          */
         get systemModel(): string;
         /**
          * The system vendor.
          * @since 1.0.2
          * @read-only
+         * @default null
          */
         get system_vendor(): string;
         /**
          * The system vendor.
          * @since 1.0.2
          * @read-only
+         * @default null
          */
         get systemVendor(): string;
 
@@ -1141,7 +1148,7 @@ export namespace Colord {
          * Connects to the colord daemon.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        connect(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        connect(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Connects to the colord daemon.
          * @param cancellable a {@link Gio.Cancellable} or `null`
@@ -1154,7 +1161,7 @@ export namespace Colord {
          * @param callback the function to run on completion
          */
         connect(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1175,7 +1182,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
          */
-        connect_sync(cancellable?: Gio.Cancellable | null): boolean;
+        connect_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a color device.
          * @param id identifier for the device
@@ -1186,8 +1193,8 @@ export namespace Colord {
         create_device(
             id: string,
             scope: ObjectScope,
-            properties?: GLib.HashTable<string, string> | null,
-            cancellable?: Gio.Cancellable | null,
+            properties: GLib.HashTable<string, string> | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<Device>;
         /**
          * Creates a color device.
@@ -1215,8 +1222,8 @@ export namespace Colord {
         create_device(
             id: string,
             scope: ObjectScope,
-            properties?: GLib.HashTable<string, string> | null,
-            cancellable?: Gio.Cancellable | null,
+            properties: GLib.HashTable<string, string> | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Device> | void;
         /**
@@ -1239,8 +1246,8 @@ export namespace Colord {
         create_device_sync(
             id: string,
             scope: ObjectScope,
-            properties?: GLib.HashTable<string, string> | null,
-            cancellable?: Gio.Cancellable | null,
+            properties: GLib.HashTable<string, string> | null,
+            cancellable: Gio.Cancellable | null,
         ): Device;
         /**
          * Creates a color profile.
@@ -1252,8 +1259,8 @@ export namespace Colord {
         create_profile(
             id: string,
             scope: ObjectScope,
-            properties?: GLib.HashTable<string, string> | null,
-            cancellable?: Gio.Cancellable | null,
+            properties: GLib.HashTable<string, string> | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<Profile>;
         /**
          * Creates a color profile.
@@ -1281,8 +1288,8 @@ export namespace Colord {
         create_profile(
             id: string,
             scope: ObjectScope,
-            properties?: GLib.HashTable<string, string> | null,
-            cancellable?: Gio.Cancellable | null,
+            properties: GLib.HashTable<string, string> | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Profile> | void;
         /**
@@ -1300,7 +1307,7 @@ export namespace Colord {
         create_profile_for_icc(
             icc: Icc,
             scope: ObjectScope,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<Profile>;
         /**
          * Creates a color profile for an {@link Colord.Icc} Object.
@@ -1325,7 +1332,7 @@ export namespace Colord {
         create_profile_for_icc(
             icc: Icc,
             scope: ObjectScope,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Profile> | void;
         /**
@@ -1344,7 +1351,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns A {@link Colord.Profile} object, or `null` for error
          */
-        create_profile_for_icc_sync(icc: Icc, scope: ObjectScope, cancellable?: Gio.Cancellable | null): Profile;
+        create_profile_for_icc_sync(icc: Icc, scope: ObjectScope, cancellable: Gio.Cancellable | null): Profile;
         /**
          * Creates a color profile.
          *
@@ -1359,15 +1366,15 @@ export namespace Colord {
         create_profile_sync(
             id: string,
             scope: ObjectScope,
-            properties?: GLib.HashTable<string, string> | null,
-            cancellable?: Gio.Cancellable | null,
+            properties: GLib.HashTable<string, string> | null,
+            cancellable: Gio.Cancellable | null,
         ): Profile;
         /**
          * Deletes a device.
          * @param device a {@link Colord.Device}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        delete_device(device: Device, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        delete_device(device: Device, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Deletes a device.
          * @param device a {@link Colord.Device}
@@ -1387,7 +1394,7 @@ export namespace Colord {
          */
         delete_device(
             device: Device,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1405,13 +1412,13 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` is the device was deleted
          */
-        delete_device_sync(device: Device, cancellable?: Gio.Cancellable | null): boolean;
+        delete_device_sync(device: Device, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Deletes a profile.
          * @param profile a {@link Colord.Profile}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        delete_profile(profile: Profile, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        delete_profile(profile: Profile, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Deletes a profile.
          * @param profile a {@link Colord.Profile}
@@ -1431,7 +1438,7 @@ export namespace Colord {
          */
         delete_profile(
             profile: Profile,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -1449,13 +1456,13 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` is the profile was deleted
          */
-        delete_profile_sync(profile: Profile, cancellable?: Gio.Cancellable | null): boolean;
+        delete_profile_sync(profile: Profile, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Finds a device by an ID.
          * @param id a device id
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        find_device(id: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<Device>;
+        find_device(id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Device>;
         /**
          * Finds a device by an ID.
          * @param id a device id
@@ -1475,7 +1482,7 @@ export namespace Colord {
          */
         find_device(
             id: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Device> | void;
         /**
@@ -1487,7 +1494,7 @@ export namespace Colord {
         find_device_by_property(
             key: string,
             value: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<Device>;
         /**
          * Finds a color device that has a property value.
@@ -1512,7 +1519,7 @@ export namespace Colord {
         find_device_by_property(
             key: string,
             value: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Device> | void;
         /**
@@ -1531,7 +1538,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns A {@link Colord.Device} object, or `null` for error
          */
-        find_device_by_property_sync(key: string, value: string, cancellable?: Gio.Cancellable | null): Device;
+        find_device_by_property_sync(key: string, value: string, cancellable: Gio.Cancellable | null): Device;
         /**
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
@@ -1547,13 +1554,13 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns A {@link Colord.Device} object, or `null` for error
          */
-        find_device_sync(id: string, cancellable?: Gio.Cancellable | null): Device;
+        find_device_sync(id: string, cancellable: Gio.Cancellable | null): Device;
         /**
          * Finds a profile by an ID.
          * @param id a profile id
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        find_profile(id: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<Profile>;
+        find_profile(id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Profile>;
         /**
          * Finds a profile by an ID.
          * @param id a profile id
@@ -1573,7 +1580,7 @@ export namespace Colord {
          */
         find_profile(
             id: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Profile> | void;
         /**
@@ -1581,7 +1588,7 @@ export namespace Colord {
          * @param filename a profile filename
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        find_profile_by_filename(filename: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<Profile>;
+        find_profile_by_filename(filename: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Profile>;
         /**
          * Finds a profile by a filename.
          * @param filename a profile filename
@@ -1601,7 +1608,7 @@ export namespace Colord {
          */
         find_profile_by_filename(
             filename: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Profile> | void;
         /**
@@ -1619,7 +1626,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns A {@link Colord.Profile} object, or `null` for error
          */
-        find_profile_by_filename_sync(filename: string, cancellable?: Gio.Cancellable | null): Profile;
+        find_profile_by_filename_sync(filename: string, cancellable: Gio.Cancellable | null): Profile;
         /**
          * Finds a color profile that has a property value.
          * @param key the profile property key
@@ -1629,7 +1636,7 @@ export namespace Colord {
         find_profile_by_property(
             key: string,
             value: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<Profile>;
         /**
          * Finds a color profile that has a property value.
@@ -1654,7 +1661,7 @@ export namespace Colord {
         find_profile_by_property(
             key: string,
             value: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Profile> | void;
         /**
@@ -1673,7 +1680,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns A {@link Colord.Profile} object, or `null` for error
          */
-        find_profile_by_property_sync(key: string, value: string, cancellable?: Gio.Cancellable | null): Profile;
+        find_profile_by_property_sync(key: string, value: string, cancellable: Gio.Cancellable | null): Profile;
         /**
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
@@ -1689,13 +1696,13 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns A {@link Colord.Profile} object, or `null` for error
          */
-        find_profile_sync(id: string, cancellable?: Gio.Cancellable | null): Profile;
+        find_profile_sync(id: string, cancellable: Gio.Cancellable | null): Profile;
         /**
          * Finds a sensor by an ID.
          * @param id a sensor id
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        find_sensor(id: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<Sensor>;
+        find_sensor(id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Sensor>;
         /**
          * Finds a sensor by an ID.
          * @param id a sensor id
@@ -1715,7 +1722,7 @@ export namespace Colord {
          */
         find_sensor(
             id: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Sensor> | void;
         /**
@@ -1733,7 +1740,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns A {@link Colord.Sensor} object, or `null` for error
          */
-        find_sensor_sync(id: string, cancellable?: Gio.Cancellable | null): Sensor;
+        find_sensor_sync(id: string, cancellable: Gio.Cancellable | null): Sensor;
         /**
          * Gets if the client has been connected.
          * @returns `true` if properties are valid
@@ -1748,7 +1755,7 @@ export namespace Colord {
          * Gets an array of color devices.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        get_devices(cancellable?: Gio.Cancellable | null): globalThis.Promise<Device[]>;
+        get_devices(cancellable: Gio.Cancellable | null): globalThis.Promise<Device[]>;
         /**
          * Gets an array of color devices.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
@@ -1761,7 +1768,7 @@ export namespace Colord {
          * @param callback the function to run on completion
          */
         get_devices(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Device[]> | void;
         /**
@@ -1769,7 +1776,7 @@ export namespace Colord {
          * @param kind the type of device.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        get_devices_by_kind(kind: DeviceKind, cancellable?: Gio.Cancellable | null): globalThis.Promise<Device[]>;
+        get_devices_by_kind(kind: DeviceKind, cancellable: Gio.Cancellable | null): globalThis.Promise<Device[]>;
         /**
          * Gets an array of color devices.
          * @param kind the type of device.
@@ -1789,7 +1796,7 @@ export namespace Colord {
          */
         get_devices_by_kind(
             kind: DeviceKind,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Device[]> | void;
         /**
@@ -1807,7 +1814,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns an array of 	 {@link Colord.Device} objects.
          */
-        get_devices_by_kind_sync(kind: DeviceKind, cancellable?: Gio.Cancellable | null): Device[];
+        get_devices_by_kind_sync(kind: DeviceKind, cancellable: Gio.Cancellable | null): Device[];
         /**
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
@@ -1822,7 +1829,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns an array of 	 {@link Colord.Device} objects.
          */
-        get_devices_sync(cancellable?: Gio.Cancellable | null): Device[];
+        get_devices_sync(cancellable: Gio.Cancellable | null): Device[];
         /**
          * Gets if the colord server is currently running.
          * WARNING: This function may block for up to 5 seconds waiting for the daemon
@@ -1834,7 +1841,7 @@ export namespace Colord {
          * Gets an array of color profiles.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        get_profiles(cancellable?: Gio.Cancellable | null): globalThis.Promise<Profile[]>;
+        get_profiles(cancellable: Gio.Cancellable | null): globalThis.Promise<Profile[]>;
         /**
          * Gets an array of color profiles.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
@@ -1847,7 +1854,7 @@ export namespace Colord {
          * @param callback the function to run on completion
          */
         get_profiles(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Profile[]> | void;
         /**
@@ -1864,12 +1871,12 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns an array of 	 {@link Colord.Profile} objects.
          */
-        get_profiles_sync(cancellable?: Gio.Cancellable | null): Profile[];
+        get_profiles_sync(cancellable: Gio.Cancellable | null): Profile[];
         /**
          * Gets an array of color sensors.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        get_sensors(cancellable?: Gio.Cancellable | null): globalThis.Promise<Sensor[]>;
+        get_sensors(cancellable: Gio.Cancellable | null): globalThis.Promise<Sensor[]>;
         /**
          * Gets an array of color sensors.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
@@ -1882,7 +1889,7 @@ export namespace Colord {
          * @param callback the function to run on completion
          */
         get_sensors(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Sensor[]> | void;
         /**
@@ -1899,7 +1906,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns an array of 	 {@link Colord.Sensor} objects.
          */
-        get_sensors_sync(cancellable?: Gio.Cancellable | null): Sensor[];
+        get_sensors_sync(cancellable: Gio.Cancellable | null): Sensor[];
         /**
          * Finds a standard profile space.
          * @param standard_space a profile id
@@ -1907,7 +1914,7 @@ export namespace Colord {
          */
         get_standard_space(
             standard_space: StandardSpace,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<Profile>;
         /**
          * Finds a standard profile space.
@@ -1928,7 +1935,7 @@ export namespace Colord {
          */
         get_standard_space(
             standard_space: StandardSpace,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Profile> | void;
         /**
@@ -1946,7 +1953,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns A {@link Colord.Profile} object, or `null` for error
          */
-        get_standard_space_sync(standard_space: StandardSpace, cancellable?: Gio.Cancellable | null): Profile;
+        get_standard_space_sync(standard_space: StandardSpace, cancellable: Gio.Cancellable | null): Profile;
         /**
          * Get system model.
          * @returns string containing the system model, e.g. "T61"
@@ -1965,7 +1972,7 @@ export namespace Colord {
          * @param file a {@link Gio.File}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        import_profile(file: Gio.File, cancellable?: Gio.Cancellable | null): globalThis.Promise<Profile>;
+        import_profile(file: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<Profile>;
         /**
          * Imports a color profile into the users home directory.
          *
@@ -1991,7 +1998,7 @@ export namespace Colord {
          */
         import_profile(
             file: Gio.File,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Profile> | void;
         /**
@@ -2009,7 +2016,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns A {@link Colord.Profile} object, or `null` for error
          */
-        import_profile_sync(file: Gio.File, cancellable?: Gio.Cancellable | null): Profile;
+        import_profile_sync(file: Gio.File, cancellable: Gio.Cancellable | null): Profile;
     }
 
     namespace Device {
@@ -2080,77 +2087,90 @@ export namespace Colord {
          * The device colorspace, e.g. {@link Colord.Colorspace.RGB}.
          * @since 0.1.1
          * @read-only
+         * @default 0
          */
         get colorspace(): number;
         /**
          * The if the object path has been connected as is valid for use.
          * @since 0.1.9
          * @read-only
+         * @default null
          */
         get connected(): string;
         /**
          * The time the device was created.
          * @since 0.1.0
          * @read-only
+         * @default 0
          */
         get created(): number;
         /**
          * If the device is embedded in the device and cannot be removed.
          * @since 0.1.27
          * @read-only
+         * @default null
          */
         get embedded(): string;
         /**
          * The device enabled state.
          * @since 0.1.26
          * @read-only
+         * @default false
          */
         get enabled(): boolean;
         /**
          * The device format.
          * @since 0.1.9
          * @read-only
+         * @default null
          */
         get format(): string;
         /**
          * The device ID.
          * @since 0.1.0
          * @read-only
+         * @default null
          */
         get id(): string;
         /**
          * The device kind, e.g. {@link Colord.DeviceKind.DISPLAY}.
          * @since 0.1.0
          * @read-only
+         * @default 0
          */
         get kind(): number;
         /**
          * The device colorspace, e.g. {@link Colord.DeviceMode.VIRTUAL}.
          * @since 0.1.2
          * @read-only
+         * @default 0
          */
         get mode(): number;
         /**
          * The device model.
          * @since 0.1.0
          * @read-only
+         * @default null
          */
         get model(): string;
         /**
          * The last time the device was modified.
          * @since 0.1.1
          * @read-only
+         * @default 0
          */
         get modified(): number;
         /**
          * The object path of the remote object
          * @since 0.1.8
+         * @default null
          */
         get object_path(): string;
         set object_path(val: string);
         /**
          * The object path of the remote object
          * @since 0.1.8
+         * @default null
          */
         get objectPath(): string;
         set objectPath(val: string);
@@ -2158,6 +2178,7 @@ export namespace Colord {
          * The device owner, e.g. 500.
          * @since 0.1.13
          * @read-only
+         * @default 0
          */
         get owner(): number;
         /**
@@ -2172,24 +2193,28 @@ export namespace Colord {
          * The device scope, e.g. {@link Colord.ObjectScope.TEMP}.
          * @since 0.1.10
          * @read-only
+         * @default 0
          */
         get scope(): number;
         /**
          * The device seat identifier.
          * @since 0.1.24
          * @read-only
+         * @default null
          */
         get seat(): string;
         /**
          * The device serial number.
          * @since 0.1.1
          * @read-only
+         * @default null
          */
         get serial(): string;
         /**
          * The device vendor.
          * @since 0.1.1
          * @read-only
+         * @default null
          */
         get vendor(): string;
 
@@ -2296,7 +2321,7 @@ export namespace Colord {
         add_profile(
             relation: DeviceRelation,
             profile: Profile,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Adds a profile to a device.
@@ -2321,7 +2346,7 @@ export namespace Colord {
         add_profile(
             relation: DeviceRelation,
             profile: Profile,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2340,12 +2365,12 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
          */
-        add_profile_sync(relation: DeviceRelation, profile: Profile, cancellable?: Gio.Cancellable | null): boolean;
+        add_profile_sync(relation: DeviceRelation, profile: Profile, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Connects to the object and fills up initial properties.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        connect(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        connect(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Connects to the object and fills up initial properties.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
@@ -2358,7 +2383,7 @@ export namespace Colord {
          * @param callback the function to run on completion
          */
         connect(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2379,7 +2404,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
          */
-        connect_sync(cancellable?: Gio.Cancellable | null): boolean;
+        connect_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Tests two devices for equality.
          * @param device2 another {@link Colord.Device} instance.
@@ -2476,7 +2501,7 @@ export namespace Colord {
          */
         get_profile_for_qualifiers(
             qualifiers: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<Profile>;
         /**
          * Gets the preferred profile for some qualifiers.
@@ -2497,7 +2522,7 @@ export namespace Colord {
          */
         get_profile_for_qualifiers(
             qualifiers: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Profile> | void;
         /**
@@ -2515,16 +2540,13 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns a {@link Colord.Profile} or `null`
          */
-        get_profile_for_qualifiers_sync(qualifiers: string, cancellable?: Gio.Cancellable | null): Profile;
+        get_profile_for_qualifiers_sync(qualifiers: string, cancellable: Gio.Cancellable | null): Profile;
         /**
          * Gets the property relationship to the device.
          * @param profile a {@link Colord.Profile} instance
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        get_profile_relation(
-            profile: Profile,
-            cancellable?: Gio.Cancellable | null,
-        ): globalThis.Promise<DeviceRelation>;
+        get_profile_relation(profile: Profile, cancellable: Gio.Cancellable | null): globalThis.Promise<DeviceRelation>;
         /**
          * Gets the property relationship to the device.
          * @param profile a {@link Colord.Profile} instance
@@ -2544,7 +2566,7 @@ export namespace Colord {
          */
         get_profile_relation(
             profile: Profile,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<DeviceRelation> | void;
         /**
@@ -2562,7 +2584,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
          */
-        get_profile_relation_sync(profile: Profile, cancellable?: Gio.Cancellable | null): DeviceRelation;
+        get_profile_relation_sync(profile: Profile, cancellable: Gio.Cancellable | null): DeviceRelation;
         /**
          * Gets the device profiles.
          * @returns An array of {@link Colord.Profile}'s
@@ -2598,7 +2620,7 @@ export namespace Colord {
          * @param profile a {@link Colord.Profile} instance
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        make_profile_default(profile: Profile, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        make_profile_default(profile: Profile, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Makes an already added profile default for a device.
          * @param profile a {@link Colord.Profile} instance
@@ -2618,7 +2640,7 @@ export namespace Colord {
          */
         make_profile_default(
             profile: Profile,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2636,13 +2658,13 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
          */
-        make_profile_default_sync(profile: Profile, cancellable?: Gio.Cancellable | null): boolean;
+        make_profile_default_sync(profile: Profile, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Sets up the device for profiling and causes no profiles to be
          * returned if `cd_device_get_profile_for_qualifiers_sync()` is used.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        profiling_inhibit(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        profiling_inhibit(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Sets up the device for profiling and causes no profiles to be
          * returned if `cd_device_get_profile_for_qualifiers_sync()` is used.
@@ -2657,7 +2679,7 @@ export namespace Colord {
          * @param callback the function to run on completion
          */
         profiling_inhibit(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2675,13 +2697,13 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
          */
-        profiling_inhibit_sync(cancellable?: Gio.Cancellable | null): boolean;
+        profiling_inhibit_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Restores the device after profiling and causes normal profiles to be
          * returned if `cd_device_get_profile_for_qualifiers_sync()` is used.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        profiling_uninhibit(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        profiling_uninhibit(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Restores the device after profiling and causes normal profiles to be
          * returned if `cd_device_get_profile_for_qualifiers_sync()` is used.
@@ -2696,7 +2718,7 @@ export namespace Colord {
          * @param callback the function to run on completion
          */
         profiling_uninhibit(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2714,13 +2736,13 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
          */
-        profiling_uninhibit_sync(cancellable?: Gio.Cancellable | null): boolean;
+        profiling_uninhibit_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Removes a profile from a device.
          * @param profile a {@link Colord.Profile} instance
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        remove_profile(profile: Profile, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        remove_profile(profile: Profile, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Removes a profile from a device.
          * @param profile a {@link Colord.Profile} instance
@@ -2740,7 +2762,7 @@ export namespace Colord {
          */
         remove_profile(
             profile: Profile,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2758,7 +2780,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
          */
-        remove_profile_sync(profile: Profile, cancellable?: Gio.Cancellable | null): boolean;
+        remove_profile_sync(profile: Profile, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Sets the device kind.
          *
@@ -2768,13 +2790,13 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `TRUE` for success, else `FALSE` and `error` is used
          */
-        set_colorspace_sync(colorspace: Colorspace, cancellable?: Gio.Cancellable | null): boolean;
+        set_colorspace_sync(colorspace: Colorspace, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Enables or disables a device.
          * @param enabled the enabled state
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        set_enabled(enabled: boolean, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        set_enabled(enabled: boolean, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Enables or disables a device.
          * @param enabled the enabled state
@@ -2794,7 +2816,7 @@ export namespace Colord {
          */
         set_enabled(
             enabled: boolean,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2812,7 +2834,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
          */
-        set_enabled_sync(enabled: boolean, cancellable?: Gio.Cancellable | null): boolean;
+        set_enabled_sync(enabled: boolean, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Sets the device kind.
          *
@@ -2822,7 +2844,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `TRUE` for success, else `FALSE` and `error` is used
          */
-        set_kind_sync(kind: DeviceKind, cancellable?: Gio.Cancellable | null): boolean;
+        set_kind_sync(kind: DeviceKind, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Sets the device mode.
          *
@@ -2832,7 +2854,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `TRUE` for success, else `FALSE` and `error` is used
          */
-        set_mode_sync(mode: DeviceMode, cancellable?: Gio.Cancellable | null): boolean;
+        set_mode_sync(mode: DeviceMode, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Sets the device model.
          *
@@ -2842,7 +2864,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `TRUE` for success, else `FALSE` and `error` is used
          */
-        set_model_sync(value: string, cancellable?: Gio.Cancellable | null): boolean;
+        set_model_sync(value: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Sets the object path of the device.
          * @param object_path The colord object path.
@@ -2854,7 +2876,7 @@ export namespace Colord {
          * @param value a property key
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        set_property(key: string, value: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        set_property(key: string, value: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Sets a property on the device.
          * @param key a property key
@@ -2878,7 +2900,7 @@ export namespace Colord {
         set_property(
             key: string,
             value: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2902,7 +2924,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
          */
-        set_property_sync(key: string, value: string, cancellable?: Gio.Cancellable | null): boolean;
+        set_property_sync(key: string, value: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Sets the device serial number.
          *
@@ -2912,7 +2934,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `TRUE` for success, else `FALSE` and `error` is used
          */
-        set_serial_sync(value: string, cancellable?: Gio.Cancellable | null): boolean;
+        set_serial_sync(value: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Sets the device vendor.
          *
@@ -2922,7 +2944,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `TRUE` for success, else `FALSE` and `error` is used
          */
-        set_vendor_sync(value: string, cancellable?: Gio.Cancellable | null): boolean;
+        set_vendor_sync(value: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Converts the device to a string description.
          * @returns text representation of {@link Colord.Device}
@@ -3119,26 +3141,36 @@ export namespace Colord {
         get blue(): ColorXYZ;
         /**
          * @read-only
+         * @default false
          */
         get can_delete(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get canDelete(): boolean;
         /**
          * @read-only
+         * @default null
          */
         get checksum(): string;
+        /**
+         * @default 0
+         */
         get colorspace(): number;
         set colorspace(val: number);
         /**
          * @read-only
+         * @default null
          */
         get filename(): string;
         /**
          * @read-only
          */
         get green(): ColorXYZ;
+        /**
+         * @default 0
+         */
         get kind(): number;
         set kind(val: number);
         /**
@@ -3147,12 +3179,17 @@ export namespace Colord {
         get red(): ColorXYZ;
         /**
          * @read-only
+         * @default 0
          */
         get size(): number;
         /**
          * @read-only
+         * @default 0
          */
         get temperature(): number;
+        /**
+         * @default 0
+         */
         get version(): number;
         set version(val: number);
         /**
@@ -3434,7 +3471,7 @@ export namespace Colord {
          * @param flags a set of {@link Colord.IccLoadFlags}
          * @param cancellable A {@link Gio.Cancellable} or `null`
          */
-        load_file(file: Gio.File, flags: IccLoadFlags, cancellable?: Gio.Cancellable | null): boolean;
+        load_file(file: Gio.File, flags: IccLoadFlags, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Set the internal cmsHPROFILE instance. This may be required if you create
          * the profile using cmsCreateRGBProfileTHR() and then want to use the
@@ -3473,7 +3510,7 @@ export namespace Colord {
          * @param flags a set of {@link Colord.IccSaveFlags}
          * @param cancellable A {@link Gio.Cancellable} or `null`
          */
-        save_default(flags: IccSaveFlags, cancellable?: Gio.Cancellable | null): boolean;
+        save_default(flags: IccSaveFlags, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Saves an ICC profile to a local or remote file.
          *
@@ -3482,7 +3519,7 @@ export namespace Colord {
          * @param flags a set of {@link Colord.IccSaveFlags}
          * @param cancellable A {@link Gio.Cancellable} or `null`
          */
-        save_file(file: Gio.File, flags: IccSaveFlags, cancellable?: Gio.Cancellable | null): boolean;
+        save_file(file: Gio.File, flags: IccSaveFlags, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Sets the characterization data used to build the profile.
          * @param data TI3 string data, or `null`
@@ -3498,7 +3535,7 @@ export namespace Colord {
          * @param locale A locale, e.g. "en_GB.UTF-8" or `null` for the profile default
          * @param value New UTF-8 string value
          */
-        set_copyright(locale: string, value?: string | null): void;
+        set_copyright(locale: string, value: string | null): void;
         /**
          * Sets the profile copyrights for specific locales.
          * @param values New translated values, with the key being the locale.
@@ -3514,7 +3551,7 @@ export namespace Colord {
          * @param locale A locale, e.g. "en_GB.UTF-8" or `null` for the profile default
          * @param value New UTF-8 string value
          */
-        set_description(locale: string, value?: string | null): void;
+        set_description(locale: string, value: string | null): void;
         /**
          * Sets the profile descriptions for specific locales.
          * @param values New translated values, with the key being the locale.
@@ -3536,7 +3573,7 @@ export namespace Colord {
          * @param locale A locale, e.g. "en_GB.UTF-8" or `null` for the profile default
          * @param value New UTF-8 string value
          */
-        set_manufacturer(locale: string, value?: string | null): void;
+        set_manufacturer(locale: string, value: string | null): void;
         /**
          * Sets the profile manufacturers for specific locales.
          * @param values New translated values, with the key being the locale.
@@ -3547,7 +3584,7 @@ export namespace Colord {
          * @param locale A locale, e.g. "en_GB.UTF-8" or `null` for the profile default
          * @param value New UTF-8 string value
          */
-        set_model(locale: string, value?: string | null): void;
+        set_model(locale: string, value: string | null): void;
         /**
          * Sets the profile models for specific locales.
          * @param values New translated values, with the key being the locale.
@@ -3616,11 +3653,13 @@ export namespace Colord {
          * The instrument that created the results, e.g. "huey"
          * @since 0.1.20
          * @read-only
+         * @default null
          */
         get instrument(): string;
         /**
          * The kind of IT8 file.
          * @since 0.1.20
+         * @default 0
          */
         get kind(): number;
         set kind(val: number);
@@ -3628,30 +3667,35 @@ export namespace Colord {
          * If the results file is normalized.
          * @since 0.1.20
          * @read-only
+         * @default false
          */
         get normalized(): boolean;
         /**
          * The framework that created the results, e.g. "cd-self-test"
          * @since 0.1.20
          * @read-only
+         * @default null
          */
         get originator(): string;
         /**
          * The reference that created the results, e.g. "colormunki"
          * @since 0.1.20
          * @read-only
+         * @default null
          */
         get reference(): string;
         /**
          * If the results file is spectral.
          * @since 0.1.20
          * @read-only
+         * @default false
          */
         get spectral(): boolean;
         /**
          * The file title, e.g. "Factor calibration".
          * @since 0.1.20
          * @read-only
+         * @default null
          */
         get title(): string;
 
@@ -3945,77 +3989,90 @@ export namespace Colord {
          * The profile colorspace.
          * @since 0.1.2
          * @read-only
+         * @default null
          */
         get colorspace(): string;
         /**
          * The if the object path has been connected as is valid for use.
          * @since 0.1.9
          * @read-only
+         * @default null
          */
         get connected(): string;
         /**
          * When the profile was created.
          * @since 0.1.8
          * @read-only
+         * @default 0
          */
         get created(): number;
         /**
          * The profile filename.
          * @since 0.1.0
          * @read-only
+         * @default null
          */
         get filename(): string;
         /**
          * The profile format.
          * @since 0.1.4
          * @read-only
+         * @default null
          */
         get format(): string;
         /**
          * If the profile has a VCGT table.
          * @since 0.1.2
          * @read-only
+         * @default null
          */
         get has_vcgt(): string;
         /**
          * If the profile has a VCGT table.
          * @since 0.1.2
          * @read-only
+         * @default null
          */
         get hasVcgt(): string;
         /**
          * The profile ID.
          * @since 0.1.0
          * @read-only
+         * @default null
          */
         get id(): string;
         /**
          * If the profile is installed system wide for all users.
          * @since 0.1.2
          * @read-only
+         * @default null
          */
         get is_system_wide(): string;
         /**
          * If the profile is installed system wide for all users.
          * @since 0.1.2
          * @read-only
+         * @default null
          */
         get isSystemWide(): string;
         /**
          * The profile kind.
          * @since 0.1.1
          * @read-only
+         * @default null
          */
         get kind(): string;
         /**
          * The object path of the remote object
          * @since 0.1.8
+         * @default null
          */
         get object_path(): string;
         set object_path(val: string);
         /**
          * The object path of the remote object
          * @since 0.1.8
+         * @default null
          */
         get objectPath(): string;
         set objectPath(val: string);
@@ -4023,24 +4080,28 @@ export namespace Colord {
          * The profile owner, e.g. %500.
          * @since 0.1.13
          * @read-only
+         * @default 0
          */
         get owner(): number;
         /**
          * The profile qualifier.
          * @since 0.1.0
          * @read-only
+         * @default null
          */
         get qualifier(): string;
         /**
          * The profile scope, e.g. {@link Colord.ObjectScope.TEMP}.
          * @since 0.1.10
          * @read-only
+         * @default 0
          */
         get scope(): number;
         /**
          * The profile title.
          * @since 0.1.0
          * @read-only
+         * @default null
          */
         get title(): string;
         /**
@@ -4145,7 +4206,7 @@ export namespace Colord {
          * Connects to the object and fills up initial properties.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        connect(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        connect(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Connects to the object and fills up initial properties.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
@@ -4158,7 +4219,7 @@ export namespace Colord {
          * @param callback the function to run on completion
          */
         connect(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -4179,7 +4240,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
          */
-        connect_sync(cancellable?: Gio.Cancellable | null): boolean;
+        connect_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Tests two profiles for equality.
          * @param profile2 another {@link Colord.Profile} instance.
@@ -4287,7 +4348,7 @@ export namespace Colord {
          * Sets the profile system wide.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        install_system_wide(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        install_system_wide(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Sets the profile system wide.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
@@ -4300,7 +4361,7 @@ export namespace Colord {
          * @param callback the function to run on completion
          */
         install_system_wide(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -4317,14 +4378,14 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
          */
-        install_system_wide_sync(cancellable?: Gio.Cancellable | null): boolean;
+        install_system_wide_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Loads a local ICC object from the abstract profile.
          * @param flags options for loading the profile
          * @param cancellable A {@link Gio.Cancellable}, or `null`
          * @returns A new {@link Colord.Icc} object, or `null` for error
          */
-        load_icc(flags: IccLoadFlags, cancellable?: Gio.Cancellable | null): Icc;
+        load_icc(flags: IccLoadFlags, cancellable: Gio.Cancellable | null): Icc;
         /**
          * Sets the object path of the profile.
          * @param object_path The colord object path.
@@ -4336,7 +4397,7 @@ export namespace Colord {
          * @param value a key value
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        set_property(key: string, value: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        set_property(key: string, value: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Deletes a color device.
          * @param key a key name
@@ -4360,7 +4421,7 @@ export namespace Colord {
         set_property(
             key: string,
             value: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -4384,7 +4445,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
          */
-        set_property_sync(key: string, value: string, cancellable?: Gio.Cancellable | null): boolean;
+        set_property_sync(key: string, value: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Converts the profile to a string description.
          * @returns text representation of {@link Colord.Profile}
@@ -4447,59 +4508,69 @@ export namespace Colord {
          * The if the object path has been connected as is valid for use.
          * @since 0.1.9
          * @read-only
+         * @default null
          */
         get connected(): string;
         /**
          * If the sensor has a native driver.
          * @since 0.1.26
          * @read-only
+         * @default null
          */
         get embedded(): string;
         /**
          * The object ID of the remote object
          * @since 0.1.26
          * @read-only
+         * @default null
          */
         get id(): string;
         /**
          * The sensor kind.
          * @since 0.1.6
          * @read-only
+         * @default null
          */
         get kind(): string;
         /**
          * If the sensor is locked.
          * @since 0.1.6
          * @read-only
+         * @default null
          */
         get locked(): string;
         /**
          * The sensor mode.
          * @since 0.1.6
          * @read-only
+         * @default null
          */
         get mode(): string;
         /**
          * The sensor model.
          * @since 0.1.6
          * @read-only
+         * @default null
          */
         get model(): string;
         /**
          * If the sensor has a native driver.
          * @since 0.1.6
          * @read-only
+         * @default null
          */
         get native(): string;
         /**
          * The object path of the remote object
          * @since 0.1.8
+         * @default null
          */
         get object_path(): string;
         set object_path(val: string);
         /**
          * The object path of the remote object
          * @since 0.1.8
+         * @default null
          */
         get objectPath(): string;
         set objectPath(val: string);
@@ -4507,18 +4578,21 @@ export namespace Colord {
          * The sensor ID.
          * @since 0.1.6
          * @read-only
+         * @default null
          */
         get serial(): string;
         /**
          * The sensor state.
          * @since 0.1.6
          * @read-only
+         * @default null
          */
         get state(): string;
         /**
          * The sensor vendor.
          * @since 0.1.6
          * @read-only
+         * @default null
          */
         get vendor(): string;
 
@@ -4619,7 +4693,7 @@ export namespace Colord {
          * Connects to the sensor.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        connect(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        connect(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Connects to the sensor.
          * @param cancellable a {@link Gio.Cancellable} or `null`
@@ -4632,7 +4706,7 @@ export namespace Colord {
          * @param callback the function to run on completion
          */
         connect(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -4653,7 +4727,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
          */
-        connect_sync(cancellable?: Gio.Cancellable | null): boolean;
+        connect_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Tests two sensors for equality.
          * @param sensor2 another {@link Colord.Sensor} instance.
@@ -4737,7 +4811,7 @@ export namespace Colord {
          * @param cap a {@link Colord.SensorCap}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        get_sample(cap: SensorCap, cancellable?: Gio.Cancellable | null): globalThis.Promise<ColorXYZ>;
+        get_sample(cap: SensorCap, cancellable: Gio.Cancellable | null): globalThis.Promise<ColorXYZ>;
         /**
          * Gets a color sample from a sensor
          * @param cap a {@link Colord.SensorCap}
@@ -4757,7 +4831,7 @@ export namespace Colord {
          */
         get_sample(
             cap: SensorCap,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<ColorXYZ> | void;
         /**
@@ -4775,7 +4849,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns the XYZ reading, with ambient levels in Lux encoded in X, or `null` for error.
          */
-        get_sample_sync(cap: SensorCap, cancellable?: Gio.Cancellable | null): ColorXYZ;
+        get_sample_sync(cap: SensorCap, cancellable: Gio.Cancellable | null): ColorXYZ;
         /**
          * Gets the sensor serial number.
          * @returns A string, or `null` for invalid
@@ -4786,7 +4860,7 @@ export namespace Colord {
          * @param cap a {@link Colord.SensorCap}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        get_spectrum(cap: SensorCap, cancellable?: Gio.Cancellable | null): globalThis.Promise<Spectrum>;
+        get_spectrum(cap: SensorCap, cancellable: Gio.Cancellable | null): globalThis.Promise<Spectrum>;
         /**
          * Gets a color spectrum from a sensor
          * @param cap a {@link Colord.SensorCap}
@@ -4806,7 +4880,7 @@ export namespace Colord {
          */
         get_spectrum(
             cap: SensorCap,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Spectrum> | void;
         /**
@@ -4824,7 +4898,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns the XYZ reading, with ambient levels in Lux encoded in X, or `null` for error.
          */
-        get_spectrum_sync(cap: SensorCap, cancellable?: Gio.Cancellable | null): Spectrum;
+        get_spectrum_sync(cap: SensorCap, cancellable: Gio.Cancellable | null): Spectrum;
         /**
          * Gets the sensor state.
          * @returns A {@link Colord.SensorState}, e.g. {@link Colord.SensorState.IDLE}
@@ -4845,7 +4919,7 @@ export namespace Colord {
          * Locks the device so we can use it.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        lock(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        lock(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Locks the device so we can use it.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
@@ -4858,7 +4932,7 @@ export namespace Colord {
          * @param callback the function to run on completion
          */
         lock(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -4875,7 +4949,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
          */
-        lock_sync(cancellable?: Gio.Cancellable | null): boolean;
+        lock_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Sets the object path of the sensor.
          * @param object_path The colord object path.
@@ -4888,7 +4962,7 @@ export namespace Colord {
          */
         set_options(
             values: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Sets options on the sensor device.
@@ -4909,7 +4983,7 @@ export namespace Colord {
          */
         set_options(
             values: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -4929,14 +5003,14 @@ export namespace Colord {
          */
         set_options_sync(
             values: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         to_string(): string;
         /**
          * Unlocks the sensor for use by other programs.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        unlock(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        unlock(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Unlocks the sensor for use by other programs.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
@@ -4949,7 +5023,7 @@ export namespace Colord {
          * @param callback the function to run on completion
          */
         unlock(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -4966,7 +5040,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
          */
-        unlock_sync(cancellable?: Gio.Cancellable | null): boolean;
+        unlock_sync(cancellable: Gio.Cancellable | null): boolean;
     }
 
     /**

@@ -2963,8 +2963,8 @@ export namespace Gimp {
     function brushes_popup(
         brush_callback: string,
         popup_title: string,
-        initial_brush?: Brush | null,
-        parent_window?: GLib.Bytes | null,
+        initial_brush: Brush | null,
+        parent_window: GLib.Bytes | null,
     ): boolean;
     /**
      * Refresh current brushes. This function always succeeds.
@@ -3047,7 +3047,7 @@ export namespace Gimp {
      * @returns The list of buffer names.          The returned value must be freed with `g_strfreev()`.
      * @since 2.4
      */
-    function buffers_get_name_list(filter?: string | null): string[];
+    function buffers_get_name_list(filter: string | null): string[];
     /**
      * Returns the default top directory for GIMP cached files. If the
      * environment variable GIMP3_CACHEDIR exists, that is used.  It
@@ -4990,8 +4990,8 @@ export namespace Gimp {
         callback: string,
         popup_title: string,
         drawable_type: string,
-        initial_drawable?: Drawable | null,
-        parent_window?: GLib.Bytes | null,
+        initial_drawable: Drawable | null,
+        parent_window: GLib.Bytes | null,
     ): boolean;
     /**
      * Sets the selected drawable in a drawable selection dialog.
@@ -5012,7 +5012,7 @@ export namespace Gimp {
      * @returns The list of paint dynamics names.          The returned value must be freed with `g_strfreev()`.
      * @since 2.8
      */
-    function dynamics_get_name_list(filter?: string | null): string[];
+    function dynamics_get_name_list(filter: string | null): string[];
     /**
      * Refresh current paint dynamics. This function always succeeds.
      *
@@ -5283,7 +5283,7 @@ export namespace Gimp {
      * @returns A (possibly escaped) copy of `str` which should be freed using `g_free()` when it is not needed any longer.
      * @since 2.2
      */
-    function escape_uline(str?: string | null): string;
+    function escape_uline(str: string | null): string;
     /**
      * Returns whether file plug-ins should default to exporting the
      * image's color profile.
@@ -5448,7 +5448,7 @@ export namespace Gimp {
      * @param options Export option settings.
      * @returns TRUE on success.
      */
-    function file_save(run_mode: RunMode, image: Image, file: Gio.File, options?: ExportOptions | null): boolean;
+    function file_save(run_mode: RunMode, image: Image, file: Gio.File, options: ExportOptions | null): boolean;
     /**
      * Shows `file` in the system file manager.
      * @param file a {@link Gio.File}
@@ -5592,7 +5592,7 @@ export namespace Gimp {
      * @param filter An optional regular expression used to filter the list.
      * @returns The list of fonts.          The returned value must be freed with `g_free()`.
      */
-    function fonts_get_list(filter?: string | null): Font[];
+    function fonts_get_list(filter: string | null): Font[];
     /**
      * Invokes the Gimp font selection dialog.
      *
@@ -5606,8 +5606,8 @@ export namespace Gimp {
     function fonts_popup(
         font_callback: string,
         popup_title: string,
-        initial_font?: Font | null,
-        parent_window?: GLib.Bytes | null,
+        initial_font: Font | null,
+        parent_window: GLib.Bytes | null,
     ): boolean;
     /**
      * Refresh current fonts. This function always succeeds.
@@ -5771,7 +5771,7 @@ export namespace Gimp {
      * @param filter An optional regular expression used to filter the list.
      * @returns The list of gradients.          The returned value must be freed with `g_free()`.
      */
-    function gradients_get_list(filter?: string | null): Gradient[];
+    function gradients_get_list(filter: string | null): Gradient[];
     /**
      * Invokes the Gimp gradients selection dialog.
      *
@@ -5785,8 +5785,8 @@ export namespace Gimp {
     function gradients_popup(
         gradient_callback: string,
         popup_title: string,
-        initial_gradient?: Gradient | null,
-        parent_window?: GLib.Bytes | null,
+        initial_gradient: Gradient | null,
+        parent_window: GLib.Bytes | null,
     ): boolean;
     /**
      * Refresh current gradients. This function always succeeds.
@@ -5881,8 +5881,8 @@ export namespace Gimp {
     function images_popup(
         callback: string,
         popup_title: string,
-        initial_image?: Image | null,
-        parent_window?: GLib.Bytes | null,
+        initial_image: Image | null,
+        parent_window: GLib.Bytes | null,
     ): boolean;
     /**
      * Sets the selected image in a image selection dialog.
@@ -5956,8 +5956,8 @@ export namespace Gimp {
         callback: string,
         popup_title: string,
         item_type: string,
-        initial_item?: Item | null,
-        parent_window?: GLib.Bytes | null,
+        initial_item: Item | null,
+        parent_window: GLib.Bytes | null,
     ): boolean;
     /**
      * Sets the selected item in a item selection dialog.
@@ -6106,7 +6106,7 @@ export namespace Gimp {
      * @param filter An optional regular expression used to filter the list.
      * @returns The list of palettes.          The returned value must be freed with `g_free()`.
      */
-    function palettes_get_list(filter?: string | null): Palette[];
+    function palettes_get_list(filter: string | null): Palette[];
     /**
      * Invokes the Gimp palette selection dialog.
      *
@@ -6120,8 +6120,8 @@ export namespace Gimp {
     function palettes_popup(
         palette_callback: string,
         popup_title: string,
-        initial_palette?: Palette | null,
-        parent_window?: GLib.Bytes | null,
+        initial_palette: Palette | null,
+        parent_window: GLib.Bytes | null,
     ): boolean;
     /**
      * Refreshes current palettes. This function always succeeds.
@@ -6787,7 +6787,7 @@ export namespace Gimp {
      * @param pspec a {@link GObject.Object} {@link GObject.ParamSpec}
      * @param default_value a default value.
      */
-    function param_spec_object_set_default(pspec: GObject.ParamSpec, default_value?: GObject.Object | null): void;
+    function param_spec_object_set_default(pspec: GObject.ParamSpec, default_value: GObject.Object | null): void;
     /**
      * Creates a new `GimpParamSpecPalette` specifying a
      * {@link Palette} property. See also {@link Gimp.param_spec_resource}.
@@ -7066,7 +7066,7 @@ export namespace Gimp {
      * @param filter An optional regular expression used to filter the list.
      * @returns The list of patterns.          The returned value must be freed with `g_free()`.
      */
-    function patterns_get_list(filter?: string | null): Pattern[];
+    function patterns_get_list(filter: string | null): Pattern[];
     /**
      * Invokes the Gimp pattern selection.
      *
@@ -7080,8 +7080,8 @@ export namespace Gimp {
     function patterns_popup(
         pattern_callback: string,
         popup_title: string,
-        initial_pattern?: Pattern | null,
-        parent_window?: GLib.Bytes | null,
+        initial_pattern: Pattern | null,
+        parent_window: GLib.Bytes | null,
     ): boolean;
     /**
      * Refresh current patterns. This function always succeeds.
@@ -7231,8 +7231,8 @@ export namespace Gimp {
      */
     function progress_install_vtable(
         vtable: ProgressVtable,
-        user_data?: any | null,
-        user_data_destroy?: GLib.DestroyNotify | null,
+        user_data: any | null,
+        user_data_destroy: GLib.DestroyNotify | null,
     ): string;
     /**
      * Pulses the progress bar for the current plug-in.
@@ -7256,7 +7256,7 @@ export namespace Gimp {
      * @returns TRUE on success.
      * @since 2.4
      */
-    function progress_set_text(message?: string | null): boolean;
+    function progress_set_text(message: string | null): boolean;
     /**
      * Uninstalls a temporary progress procedure that was installed using
      * `gimp_progress_install()`.
@@ -7438,7 +7438,7 @@ export namespace Gimp {
      * @param str underline infested string (or `null`)
      * @returns A (possibly stripped) copy of `str` which should be               freed using `g_free()` when it is not needed any longer.
      */
-    function strip_uline(str?: string | null): string;
+    function strip_uline(str: string | null): string;
     /**
      * Returns the top directory for GIMP config files. If the environment
      * variable GIMP3_SYSCONFDIR exists, that is used.  It should be an
@@ -7484,7 +7484,7 @@ export namespace Gimp {
      * @param extension The extension the file will have.
      * @returns The new temp file.
      */
-    function temp_file(extension?: string | null): Gio.File;
+    function temp_file(extension: string | null): Gio.File;
     /**
      * Add text at the specified location as a floating selection or a new
      * layer.
@@ -7859,19 +7859,19 @@ export namespace Gimp {
      * @gir-type Callback
      */
     interface ProgressVtableEndFunc {
-        (user_data?: any | null): void;
+        (user_data: any | null): void;
     }
     /**
      * @gir-type Callback
      */
     interface ProgressVtableGetWindowFunc {
-        (user_data?: any | null): GLib.Bytes;
+        (user_data: any | null): GLib.Bytes;
     }
     /**
      * @gir-type Callback
      */
     interface ProgressVtablePulseFunc {
-        (user_data?: any | null): void;
+        (user_data: any | null): void;
     }
     /**
      * @gir-type Callback
@@ -8190,7 +8190,7 @@ export namespace Gimp {
             interpreter_name: string,
             proc_type: PDBProcType,
             run_func: BatchFunc,
-            run_data_destroy?: GLib.DestroyNotify | null,
+            run_data_destroy: GLib.DestroyNotify | null,
         ): BatchProcedure;
         // Conflicted with Gimp.Procedure.new
 
@@ -8511,455 +8511,6 @@ export namespace Gimp {
          * @returns TRUE on success.
          */
         set_spikes(spikes_in: number): [boolean, number];
-        /**
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`.
-         *
-         * Whenever the `source_property` is changed the `target_property` is
-         * updated using the same value. For instance:
-         *
-         *
-         * ```c
-         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-         * ```
-         *
-         *
-         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
-         * updated with the same value of the "active" property of the action {@link GObject.Object}
-         * instance.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well.
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call `g_object_unref()` on the returned
-         * {@link GObject.Binding} instance.
-         *
-         * Removing the binding by calling `g_object_unref()` on it must only be done if
-         * the binding, `source` and `target` are only used from a single thread and it
-         * is clear that both `source` and `target` outlive the binding. Especially it
-         * is not safe to rely on this if the binding, `source` or `target` can be
-         * finalized from different threads. Keep another reference to the binding and
-         * use `g_binding_unbind()` instead to be on the safe side.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-        ): GObject.Binding;
-        /**
-         * Complete version of `g_object_bind_property()`.
-         *
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`, allowing you to set the transformation functions to be used by
-         * the binding.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property_full(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
-        ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
-        /**
-         * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all `GInitiallyUnowneds` are created with a floating reference
-         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
-         */
-        force_floating(): void;
-        /**
-         * Increases the freeze count on `object`. If the freeze count is
-         * non-zero, the emission of "notify" signals on `object` is
-         * stopped. The signals are queued until the freeze count is decreased
-         * to zero. Duplicate notifications are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
-         * object is frozen.
-         *
-         * This is necessary for accessors that modify multiple properties to prevent
-         * premature notification while the object is still being modified.
-         */
-        freeze_notify(): void;
-        /**
-         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
-         * @param key name of the key for that association
-         * @returns the data if found,          or `null` if no such data exists.
-         */
-        get_data(key: string): any | null;
-        /**
-         * Gets a property of an object.
-         *
-         * The value can be:
-         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
-         * - a GObject.Value initialized with the expected type of the property
-         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
-         *
-         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
-         *
-         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
-         * @param property_name The name of the property to get
-         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
-         */
-        get_property(property_name: string, value: GObject.Value | any): any;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        get_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Gets `n_properties` properties for an `object`.
-         * Obtained properties will be set to `values`. All properties must be valid.
-         * Warnings will be emitted and undefined behaviour may result if invalid
-         * properties are passed in.
-         * @param names the names of each property to get
-         * @param values the values of each property to get
-         */
-        getv(names: string[], values: (GObject.Value | any)[]): void;
-        /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns `true` if `object` has a floating reference
-         */
-        is_floating(): boolean;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param property_name the name of a property installed on the class of `object`.
-         */
-        notify(property_name: string): void;
-        /**
-         * Emits a "notify" signal for the property specified by `pspec` on `object`.
-         *
-         * This function omits the property name lookup, hence it is faster than
-         * `g_object_notify()`.
-         *
-         * One way to avoid using `g_object_notify()` from within the
-         * class that registered the properties, and using `g_object_notify_by_pspec()`
-         * instead, is to store the GParamSpec used with
-         * `g_object_class_install_property()` inside a static array, e.g.:
-         *
-         *
-         * ```c
-         *   typedef enum
-         *   {
-         *     PROP_FOO = 1,
-         *     PROP_LAST
-         *   } MyObjectProperty;
-         *
-         *   static GParamSpec *properties[PROP_LAST];
-         *
-         *   static void
-         *   my_object_class_init (MyObjectClass *klass)
-         *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
-         *                                              0, 100,
-         *                                              50,
-         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-         *     g_object_class_install_property (gobject_class,
-         *                                      PROP_FOO,
-         *                                      properties[PROP_FOO]);
-         *   }
-         * ```
-         *
-         *
-         * and then notify a change on the "foo" property with:
-         *
-         *
-         * ```c
-         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-         * ```
-         *
-         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
-         */
-        notify_by_pspec(pspec: GObject.ParamSpec): void;
-        /**
-         * Increases the reference count of `object`.
-         *
-         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC `typeof()`
-         * extension), so any casting the caller needs to do on the return type must be
-         * explicit.
-         * @returns the same `object`
-         */
-        ref(): GObject.Object;
-        /**
-         * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
-         *
-         * In other words, if the object is floating, then this call "assumes
-         * ownership" of the floating reference, converting it to a normal
-         * reference by clearing the floating flag while leaving the reference
-         * count unchanged.  If the object is not floating, then this call
-         * adds a new normal reference increasing the reference count by one.
-         *
-         * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for `g_object_ref()`.
-         * @returns `object`
-         */
-        ref_sink(): GObject.Object;
-        /**
-         * Releases all references to other objects. This can be used to break
-         * reference cycles.
-         *
-         * This function should only be called from object system implementations.
-         */
-        run_dispose(): void;
-        /**
-         * Each object carries around a table of associations from
-         * strings to pointers.  This function lets you set an association.
-         *
-         * If the object already had an association with that name,
-         * the old association will be destroyed.
-         *
-         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
-         * This means a copy of `key` is kept permanently (even after `object` has been
-         * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
-         * @param key name of the key
-         * @param data data to associate with that key
-         */
-        set_data(key: string, data?: any | null): void;
-        /**
-         * Sets a property on an object.
-         * @param property_name The name of the property to set
-         * @param value The value to set the property to
-         */
-        set_property(property_name: string, value: GObject.Value | any): void;
-        /**
-         * Remove a specified datum from the object's data associations,
-         * without invoking the association's destroy handler.
-         * @param key name of the key
-         * @returns the data if found, or `null`          if no such data exists.
-         */
-        steal_data(key: string): any | null;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()` and removes the `data` from object
-         * without invoking its `destroy()` function (if any was
-         * set).
-         * Usually, calling this function is only required to update
-         * user data pointers with a destroy notifier, for example:
-         *
-         * ```c
-         * void
-         * object_add_to_user_list (GObject     *object,
-         *                          const gchar *new_string)
-         * {
-         *   // the quark, naming the object data
-         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-         *   // retrieve the old string list
-         *   GList *list = g_object_steal_qdata (object, quark_string_list);
-         *
-         *   // prepend new string
-         *   list = g_list_prepend (list, g_strdup (new_string));
-         *   // this changed 'list', so we need to set it again
-         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-         * }
-         * static void
-         * free_string_list (gpointer data)
-         * {
-         *   GList *node, *list = data;
-         *
-         *   for (node = list; node; node = node->next)
-         *     g_free (node->data);
-         *   g_list_free (list);
-         * }
-         * ```
-         *
-         * Using `g_object_get_qdata()` in the above example, instead of
-         * `g_object_steal_qdata()` would have left the destroy function set,
-         * and thus the partial string list would have been freed upon
-         * `g_object_set_qdata_full()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        steal_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Reverts the effect of a previous call to
-         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
-         * and when it reaches zero, queued "notify" signals are emitted.
-         *
-         * Duplicate notifications for each property are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
-         * in which they have been queued.
-         *
-         * It is an error to call this function when the freeze count is zero.
-         */
-        thaw_notify(): void;
-        /**
-         * Decreases the reference count of `object`. When its reference count
-         * drops to 0, the object is finalized (i.e. its memory is freed).
-         *
-         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
-         * an instance variable of another object), it is recommended to clear the
-         * pointer to `null` rather than retain a dangling pointer to a potentially
-         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
-         */
-        unref(): void;
-        /**
-         * This function essentially limits the life time of the `closure` to
-         * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling `g_closure_invalidate()` on
-         * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
-         * added as marshal guards to the `closure`, to ensure that an extra
-         * reference count is held on `object` during invocation of the
-         * `closure`.  Usually, this function will be called on closures that
-         * use this `object` as closure data.
-         * @param closure {@link GObject.Closure} to watch
-         */
-        watch_closure(closure: GObject.Closure): void;
-        /**
-         * the `constructed` function is called by `g_object_new()` as the
-         *  final step of the object creation process.  At the point of the call, all
-         *  construction properties have been set on the object.  The purpose of this
-         *  call is to allow for object initialisation steps that can only be performed
-         *  after construction properties have been set.  `constructed` implementors
-         *  should chain up to the `constructed` call of their parent class to allow it
-         *  to complete its initialisation.
-         * @virtual
-         */
-        vfunc_constructed(): void;
-        /**
-         * emits property change notification for a bunch
-         *  of properties. Overriding `dispatch_properties_changed` should be rarely
-         *  needed.
-         * @param n_pspecs
-         * @param pspecs
-         * @virtual
-         */
-        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
-        /**
-         * the `dispose` function is supposed to drop all references to other
-         *  objects, but keep the instance otherwise intact, so that client method
-         *  invocations still work. It may be run multiple times (due to reference
-         *  loops). Before returning, `dispose` should chain up to the `dispose` method
-         *  of the parent class.
-         * @virtual
-         */
-        vfunc_dispose(): void;
-        /**
-         * instance finalization function, should finish the finalization of
-         *  the instance begun in `dispose` and chain up to the `finalize` method of the
-         *  parent class.
-         * @virtual
-         */
-        vfunc_finalize(): void;
-        /**
-         * the generic getter for all properties of this type. Should be
-         *  overridden for every type with properties.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param pspec
-         * @virtual
-         */
-        vfunc_notify(pspec: GObject.ParamSpec): void;
-        /**
-         * the generic setter for all properties of this type. Should be
-         *  overridden for every type with properties. If implementations of
-         *  `set_property` don't emit property change notification explicitly, this will
-         *  be done implicitly by the type system. However, if the notify signal is
-         *  emitted explicitly, the type system will not emit it a second time.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
-         * @param id Handler ID of the handler to be disconnected
-         */
-        disconnect(id: number): void;
-        /**
-         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
-         * @param properties Object containing the properties to set
-         */
-        set(properties: { [key: string]: any }): void;
-        /**
-         * Blocks a handler of an instance so it will not be called during any signal emissions
-         * @param id Handler ID of the handler to be blocked
-         */
-        block_signal_handler(id: number): void;
-        /**
-         * Unblocks a handler so it will be called again during any signal emissions
-         * @param id Handler ID of the handler to be unblocked
-         */
-        unblock_signal_handler(id: number): void;
-        /**
-         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
-         * @param detailedName Name of the signal to stop emission of
-         */
-        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace Channel {
@@ -9301,70 +8852,163 @@ export namespace Gimp {
 
         // Properties
 
+        /**
+         * @default null
+         */
         get cmyk_profile(): ConfigPath;
         set cmyk_profile(val: ConfigPath);
+        /**
+         * @default null
+         */
         get cmykProfile(): ConfigPath;
         set cmykProfile(val: ConfigPath);
+        /**
+         * @default true
+         */
         get display_optimize(): boolean;
         set display_optimize(val: boolean);
+        /**
+         * @default true
+         */
         get displayOptimize(): boolean;
         set displayOptimize(val: boolean);
+        /**
+         * @default null
+         */
         get display_profile(): ConfigPath;
         set display_profile(val: ConfigPath);
+        /**
+         * @default null
+         */
         get displayProfile(): ConfigPath;
         set displayProfile(val: ConfigPath);
+        /**
+         * @default false
+         */
         get display_profile_from_gdk(): boolean;
         set display_profile_from_gdk(val: boolean);
+        /**
+         * @default false
+         */
         get displayProfileFromGdk(): boolean;
         set displayProfileFromGdk(val: boolean);
+        /**
+         * @default Gimp.ColorRenderingIntent.RELATIVE_COLORIMETRIC
+         */
         get display_rendering_intent(): ColorRenderingIntent;
         set display_rendering_intent(val: ColorRenderingIntent);
+        /**
+         * @default Gimp.ColorRenderingIntent.RELATIVE_COLORIMETRIC
+         */
         get displayRenderingIntent(): ColorRenderingIntent;
         set displayRenderingIntent(val: ColorRenderingIntent);
+        /**
+         * @default true
+         */
         get display_use_black_point_compensation(): boolean;
         set display_use_black_point_compensation(val: boolean);
+        /**
+         * @default true
+         */
         get displayUseBlackPointCompensation(): boolean;
         set displayUseBlackPointCompensation(val: boolean);
+        /**
+         * @default null
+         */
         get gray_profile(): ConfigPath;
         set gray_profile(val: ConfigPath);
+        /**
+         * @default null
+         */
         get grayProfile(): ConfigPath;
         set grayProfile(val: ConfigPath);
+        /**
+         * @default Gimp.ColorManagementMode.DISPLAY
+         */
         get mode(): ColorManagementMode;
         set mode(val: ColorManagementMode);
         get out_of_gamut_color(): Gegl.Color;
         set out_of_gamut_color(val: Gegl.Color);
         get outOfGamutColor(): Gegl.Color;
         set outOfGamutColor(val: Gegl.Color);
+        /**
+         * @default null
+         */
         get rgb_profile(): ConfigPath;
         set rgb_profile(val: ConfigPath);
+        /**
+         * @default null
+         */
         get rgbProfile(): ConfigPath;
         set rgbProfile(val: ConfigPath);
+        /**
+         * @default false
+         */
         get show_hsv(): boolean;
         set show_hsv(val: boolean);
+        /**
+         * @default false
+         */
         get showHsv(): boolean;
         set showHsv(val: boolean);
+        /**
+         * @default false
+         */
         get show_rgb_u8(): boolean;
         set show_rgb_u8(val: boolean);
+        /**
+         * @default false
+         */
         get showRgbU8(): boolean;
         set showRgbU8(val: boolean);
+        /**
+         * @default false
+         */
         get simulation_gamut_check(): boolean;
         set simulation_gamut_check(val: boolean);
+        /**
+         * @default false
+         */
         get simulationGamutCheck(): boolean;
         set simulationGamutCheck(val: boolean);
+        /**
+         * @default true
+         */
         get simulation_optimize(): boolean;
         set simulation_optimize(val: boolean);
+        /**
+         * @default true
+         */
         get simulationOptimize(): boolean;
         set simulationOptimize(val: boolean);
+        /**
+         * @default null
+         */
         get simulation_profile(): ConfigPath;
         set simulation_profile(val: ConfigPath);
+        /**
+         * @default null
+         */
         get simulationProfile(): ConfigPath;
         set simulationProfile(val: ConfigPath);
+        /**
+         * @default Gimp.ColorRenderingIntent.PERCEPTUAL
+         */
         get simulation_rendering_intent(): ColorRenderingIntent;
         set simulation_rendering_intent(val: ColorRenderingIntent);
+        /**
+         * @default Gimp.ColorRenderingIntent.PERCEPTUAL
+         */
         get simulationRenderingIntent(): ColorRenderingIntent;
         set simulationRenderingIntent(val: ColorRenderingIntent);
+        /**
+         * @default false
+         */
         get simulation_use_black_point_compensation(): boolean;
         set simulation_use_black_point_compensation(val: boolean);
+        /**
+         * @default false
+         */
         get simulationUseBlackPointCompensation(): boolean;
         set simulationUseBlackPointCompensation(val: boolean);
 
@@ -9439,455 +9083,6 @@ export namespace Gimp {
         get_simulation_gamut_check(): boolean;
         get_simulation_intent(): ColorRenderingIntent;
         get_simulation_optimize(): boolean;
-        /**
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`.
-         *
-         * Whenever the `source_property` is changed the `target_property` is
-         * updated using the same value. For instance:
-         *
-         *
-         * ```c
-         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-         * ```
-         *
-         *
-         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
-         * updated with the same value of the "active" property of the action {@link GObject.Object}
-         * instance.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well.
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call `g_object_unref()` on the returned
-         * {@link GObject.Binding} instance.
-         *
-         * Removing the binding by calling `g_object_unref()` on it must only be done if
-         * the binding, `source` and `target` are only used from a single thread and it
-         * is clear that both `source` and `target` outlive the binding. Especially it
-         * is not safe to rely on this if the binding, `source` or `target` can be
-         * finalized from different threads. Keep another reference to the binding and
-         * use `g_binding_unbind()` instead to be on the safe side.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-        ): GObject.Binding;
-        /**
-         * Complete version of `g_object_bind_property()`.
-         *
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`, allowing you to set the transformation functions to be used by
-         * the binding.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property_full(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
-        ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
-        /**
-         * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all `GInitiallyUnowneds` are created with a floating reference
-         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
-         */
-        force_floating(): void;
-        /**
-         * Increases the freeze count on `object`. If the freeze count is
-         * non-zero, the emission of "notify" signals on `object` is
-         * stopped. The signals are queued until the freeze count is decreased
-         * to zero. Duplicate notifications are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
-         * object is frozen.
-         *
-         * This is necessary for accessors that modify multiple properties to prevent
-         * premature notification while the object is still being modified.
-         */
-        freeze_notify(): void;
-        /**
-         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
-         * @param key name of the key for that association
-         * @returns the data if found,          or `null` if no such data exists.
-         */
-        get_data(key: string): any | null;
-        /**
-         * Gets a property of an object.
-         *
-         * The value can be:
-         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
-         * - a GObject.Value initialized with the expected type of the property
-         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
-         *
-         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
-         *
-         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
-         * @param property_name The name of the property to get
-         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
-         */
-        get_property(property_name: string, value: GObject.Value | any): any;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        get_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Gets `n_properties` properties for an `object`.
-         * Obtained properties will be set to `values`. All properties must be valid.
-         * Warnings will be emitted and undefined behaviour may result if invalid
-         * properties are passed in.
-         * @param names the names of each property to get
-         * @param values the values of each property to get
-         */
-        getv(names: string[], values: (GObject.Value | any)[]): void;
-        /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns `true` if `object` has a floating reference
-         */
-        is_floating(): boolean;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param property_name the name of a property installed on the class of `object`.
-         */
-        notify(property_name: string): void;
-        /**
-         * Emits a "notify" signal for the property specified by `pspec` on `object`.
-         *
-         * This function omits the property name lookup, hence it is faster than
-         * `g_object_notify()`.
-         *
-         * One way to avoid using `g_object_notify()` from within the
-         * class that registered the properties, and using `g_object_notify_by_pspec()`
-         * instead, is to store the GParamSpec used with
-         * `g_object_class_install_property()` inside a static array, e.g.:
-         *
-         *
-         * ```c
-         *   typedef enum
-         *   {
-         *     PROP_FOO = 1,
-         *     PROP_LAST
-         *   } MyObjectProperty;
-         *
-         *   static GParamSpec *properties[PROP_LAST];
-         *
-         *   static void
-         *   my_object_class_init (MyObjectClass *klass)
-         *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
-         *                                              0, 100,
-         *                                              50,
-         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-         *     g_object_class_install_property (gobject_class,
-         *                                      PROP_FOO,
-         *                                      properties[PROP_FOO]);
-         *   }
-         * ```
-         *
-         *
-         * and then notify a change on the "foo" property with:
-         *
-         *
-         * ```c
-         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-         * ```
-         *
-         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
-         */
-        notify_by_pspec(pspec: GObject.ParamSpec): void;
-        /**
-         * Increases the reference count of `object`.
-         *
-         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC `typeof()`
-         * extension), so any casting the caller needs to do on the return type must be
-         * explicit.
-         * @returns the same `object`
-         */
-        ref(): GObject.Object;
-        /**
-         * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
-         *
-         * In other words, if the object is floating, then this call "assumes
-         * ownership" of the floating reference, converting it to a normal
-         * reference by clearing the floating flag while leaving the reference
-         * count unchanged.  If the object is not floating, then this call
-         * adds a new normal reference increasing the reference count by one.
-         *
-         * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for `g_object_ref()`.
-         * @returns `object`
-         */
-        ref_sink(): GObject.Object;
-        /**
-         * Releases all references to other objects. This can be used to break
-         * reference cycles.
-         *
-         * This function should only be called from object system implementations.
-         */
-        run_dispose(): void;
-        /**
-         * Each object carries around a table of associations from
-         * strings to pointers.  This function lets you set an association.
-         *
-         * If the object already had an association with that name,
-         * the old association will be destroyed.
-         *
-         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
-         * This means a copy of `key` is kept permanently (even after `object` has been
-         * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
-         * @param key name of the key
-         * @param data data to associate with that key
-         */
-        set_data(key: string, data?: any | null): void;
-        /**
-         * Sets a property on an object.
-         * @param property_name The name of the property to set
-         * @param value The value to set the property to
-         */
-        set_property(property_name: string, value: GObject.Value | any): void;
-        /**
-         * Remove a specified datum from the object's data associations,
-         * without invoking the association's destroy handler.
-         * @param key name of the key
-         * @returns the data if found, or `null`          if no such data exists.
-         */
-        steal_data(key: string): any | null;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()` and removes the `data` from object
-         * without invoking its `destroy()` function (if any was
-         * set).
-         * Usually, calling this function is only required to update
-         * user data pointers with a destroy notifier, for example:
-         *
-         * ```c
-         * void
-         * object_add_to_user_list (GObject     *object,
-         *                          const gchar *new_string)
-         * {
-         *   // the quark, naming the object data
-         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-         *   // retrieve the old string list
-         *   GList *list = g_object_steal_qdata (object, quark_string_list);
-         *
-         *   // prepend new string
-         *   list = g_list_prepend (list, g_strdup (new_string));
-         *   // this changed 'list', so we need to set it again
-         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-         * }
-         * static void
-         * free_string_list (gpointer data)
-         * {
-         *   GList *node, *list = data;
-         *
-         *   for (node = list; node; node = node->next)
-         *     g_free (node->data);
-         *   g_list_free (list);
-         * }
-         * ```
-         *
-         * Using `g_object_get_qdata()` in the above example, instead of
-         * `g_object_steal_qdata()` would have left the destroy function set,
-         * and thus the partial string list would have been freed upon
-         * `g_object_set_qdata_full()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        steal_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Reverts the effect of a previous call to
-         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
-         * and when it reaches zero, queued "notify" signals are emitted.
-         *
-         * Duplicate notifications for each property are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
-         * in which they have been queued.
-         *
-         * It is an error to call this function when the freeze count is zero.
-         */
-        thaw_notify(): void;
-        /**
-         * Decreases the reference count of `object`. When its reference count
-         * drops to 0, the object is finalized (i.e. its memory is freed).
-         *
-         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
-         * an instance variable of another object), it is recommended to clear the
-         * pointer to `null` rather than retain a dangling pointer to a potentially
-         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
-         */
-        unref(): void;
-        /**
-         * This function essentially limits the life time of the `closure` to
-         * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling `g_closure_invalidate()` on
-         * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
-         * added as marshal guards to the `closure`, to ensure that an extra
-         * reference count is held on `object` during invocation of the
-         * `closure`.  Usually, this function will be called on closures that
-         * use this `object` as closure data.
-         * @param closure {@link GObject.Closure} to watch
-         */
-        watch_closure(closure: GObject.Closure): void;
-        /**
-         * the `constructed` function is called by `g_object_new()` as the
-         *  final step of the object creation process.  At the point of the call, all
-         *  construction properties have been set on the object.  The purpose of this
-         *  call is to allow for object initialisation steps that can only be performed
-         *  after construction properties have been set.  `constructed` implementors
-         *  should chain up to the `constructed` call of their parent class to allow it
-         *  to complete its initialisation.
-         * @virtual
-         */
-        vfunc_constructed(): void;
-        /**
-         * emits property change notification for a bunch
-         *  of properties. Overriding `dispatch_properties_changed` should be rarely
-         *  needed.
-         * @param n_pspecs
-         * @param pspecs
-         * @virtual
-         */
-        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
-        /**
-         * the `dispose` function is supposed to drop all references to other
-         *  objects, but keep the instance otherwise intact, so that client method
-         *  invocations still work. It may be run multiple times (due to reference
-         *  loops). Before returning, `dispose` should chain up to the `dispose` method
-         *  of the parent class.
-         * @virtual
-         */
-        vfunc_dispose(): void;
-        /**
-         * instance finalization function, should finish the finalization of
-         *  the instance begun in `dispose` and chain up to the `finalize` method of the
-         *  parent class.
-         * @virtual
-         */
-        vfunc_finalize(): void;
-        /**
-         * the generic getter for all properties of this type. Should be
-         *  overridden for every type with properties.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param pspec
-         * @virtual
-         */
-        vfunc_notify(pspec: GObject.ParamSpec): void;
-        /**
-         * the generic setter for all properties of this type. Should be
-         *  overridden for every type with properties. If implementations of
-         *  `set_property` don't emit property change notification explicitly, this will
-         *  be done implicitly by the type system. However, if the notify signal is
-         *  emitted explicitly, the type system will not emit it a second time.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
-         * @param id Handler ID of the handler to be disconnected
-         */
-        disconnect(id: number): void;
-        /**
-         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
-         * @param properties Object containing the properties to set
-         */
-        set(properties: { [key: string]: any }): void;
-        /**
-         * Blocks a handler of an instance so it will not be called during any signal emissions
-         * @param id Handler ID of the handler to be blocked
-         */
-        block_signal_handler(id: number): void;
-        /**
-         * Unblocks a handler so it will be called again during any signal emissions
-         * @param id Handler ID of the handler to be unblocked
-         */
-        unblock_signal_handler(id: number): void;
-        /**
-         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
-         * @param detailedName Name of the signal to stop emission of
-         */
-        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ColorProfile {
@@ -9931,7 +9126,7 @@ export namespace Gimp {
 
         static new_from_icc_profile(data: Uint8Array | string): ColorProfile;
 
-        static new_from_lcms_profile(lcms_profile?: any | null): ColorProfile;
+        static new_from_lcms_profile(lcms_profile: any | null): ColorProfile;
 
         static new_rgb_adobe(): ColorProfile;
 
@@ -10335,12 +9530,14 @@ export namespace Gimp {
         /**
          * The curve type.
          * @since 3.2
+         * @default Gimp.CurveType.SMOOTH
          */
         get curve_type(): CurveType;
         set curve_type(val: CurveType);
         /**
          * The curve type.
          * @since 3.2
+         * @default Gimp.CurveType.SMOOTH
          */
         get curveType(): CurveType;
         set curveType(val: CurveType);
@@ -10348,6 +9545,7 @@ export namespace Gimp {
          * The number of samples this {@link Gimp.CurveType.FREE} curve is
          * split into.
          * @since 3.2
+         * @default 256
          */
         get n_samples(): number;
         set n_samples(val: number);
@@ -10355,6 +9553,7 @@ export namespace Gimp {
          * The number of samples this {@link Gimp.CurveType.FREE} curve is
          * split into.
          * @since 3.2
+         * @default 256
          */
         get nSamples(): number;
         set nSamples(val: number);
@@ -10571,6 +9770,7 @@ export namespace Gimp {
 
         /**
          * @construct-only
+         * @default 0
          */
         get id(): number;
 
@@ -11535,6 +10735,7 @@ export namespace Gimp {
 
         /**
          * @construct-only
+         * @default 0
          */
         get id(): number;
 
@@ -11553,7 +10754,7 @@ export namespace Gimp {
 
         _init(...args: any[]): void;
 
-        static ['new'](drawable: Drawable, operation_name: string, name?: string | null): DrawableFilter;
+        static ['new'](drawable: Drawable, operation_name: string, name: string | null): DrawableFilter;
 
         // Signals
 
@@ -11843,6 +11044,7 @@ export namespace Gimp {
         /**
          * What {@link ExportCapabilities} are supported.
          * @since 3.0.0
+         * @default 0
          */
         get capabilities(): ExportCapabilities;
         set capabilities(val: ExportCapabilities);
@@ -11960,78 +11162,91 @@ export namespace Gimp {
         /**
          * What {@link Gimp.ExportCapabilities} are supported
          * @since 3.0.0
+         * @default 0
          */
         get capabilities(): ExportCapabilities;
         set capabilities(val: ExportCapabilities);
         /**
          * Whether the export procedure supports storing a comment.
          * @since 3.0.0
+         * @default false
          */
         get supports_comment(): boolean;
         set supports_comment(val: boolean);
         /**
          * Whether the export procedure supports storing a comment.
          * @since 3.0.0
+         * @default false
          */
         get supportsComment(): boolean;
         set supportsComment(val: boolean);
         /**
          * Whether the export procedure supports EXIF.
          * @since 3.0.0
+         * @default false
          */
         get supports_exif(): boolean;
         set supports_exif(val: boolean);
         /**
          * Whether the export procedure supports EXIF.
          * @since 3.0.0
+         * @default false
          */
         get supportsExif(): boolean;
         set supportsExif(val: boolean);
         /**
          * Whether the export procedure supports IPTC.
          * @since 3.0.0
+         * @default false
          */
         get supports_iptc(): boolean;
         set supports_iptc(val: boolean);
         /**
          * Whether the export procedure supports IPTC.
          * @since 3.0.0
+         * @default false
          */
         get supportsIptc(): boolean;
         set supportsIptc(val: boolean);
         /**
          * Whether the export procedure supports ICC color profiles.
          * @since 3.0.0
+         * @default false
          */
         get supports_profile(): boolean;
         set supports_profile(val: boolean);
         /**
          * Whether the export procedure supports ICC color profiles.
          * @since 3.0.0
+         * @default false
          */
         get supportsProfile(): boolean;
         set supportsProfile(val: boolean);
         /**
          * Whether the export procedure supports storing a thumbnail.
          * @since 3.0.0
+         * @default false
          */
         get supports_thumbnail(): boolean;
         set supports_thumbnail(val: boolean);
         /**
          * Whether the export procedure supports storing a thumbnail.
          * @since 3.0.0
+         * @default false
          */
         get supportsThumbnail(): boolean;
         set supportsThumbnail(val: boolean);
         /**
          * Whether the export procedure supports XMP.
          * @since 3.0.0
+         * @default false
          */
         get supports_xmp(): boolean;
         set supports_xmp(val: boolean);
         /**
          * Whether the export procedure supports XMP.
          * @since 3.0.0
+         * @default false
          */
         get supportsXmp(): boolean;
         set supportsXmp(val: boolean);
@@ -12057,7 +11272,7 @@ export namespace Gimp {
             proc_type: PDBProcType,
             export_metadata: boolean,
             run_func: RunExportFunc,
-            run_data_destroy?: GLib.DestroyNotify | null,
+            run_data_destroy: GLib.DestroyNotify | null,
         ): ExportProcedure;
         // Conflicted with Gimp.Procedure.new
 
@@ -12127,8 +11342,8 @@ export namespace Gimp {
          */
         set_capabilities(
             capabilities: ExportCapabilities,
-            get_capabilities_func?: ExportGetCapabilitiesFunc | null,
-            get_capabilities_data_destroy?: GLib.DestroyNotify | null,
+            get_capabilities_func: ExportGetCapabilitiesFunc | null,
+            get_capabilities_data_destroy: GLib.DestroyNotify | null,
         ): void;
         /**
          * Determine whether `procedure` supports exporting a comment. By default,
@@ -12552,455 +11767,6 @@ export namespace Gimp {
          * @returns a %PangoFontDescription representing `font`.
          */
         get_pango_font_description(): Pango.FontDescription;
-        /**
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`.
-         *
-         * Whenever the `source_property` is changed the `target_property` is
-         * updated using the same value. For instance:
-         *
-         *
-         * ```c
-         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-         * ```
-         *
-         *
-         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
-         * updated with the same value of the "active" property of the action {@link GObject.Object}
-         * instance.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well.
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call `g_object_unref()` on the returned
-         * {@link GObject.Binding} instance.
-         *
-         * Removing the binding by calling `g_object_unref()` on it must only be done if
-         * the binding, `source` and `target` are only used from a single thread and it
-         * is clear that both `source` and `target` outlive the binding. Especially it
-         * is not safe to rely on this if the binding, `source` or `target` can be
-         * finalized from different threads. Keep another reference to the binding and
-         * use `g_binding_unbind()` instead to be on the safe side.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-        ): GObject.Binding;
-        /**
-         * Complete version of `g_object_bind_property()`.
-         *
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`, allowing you to set the transformation functions to be used by
-         * the binding.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property_full(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
-        ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
-        /**
-         * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all `GInitiallyUnowneds` are created with a floating reference
-         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
-         */
-        force_floating(): void;
-        /**
-         * Increases the freeze count on `object`. If the freeze count is
-         * non-zero, the emission of "notify" signals on `object` is
-         * stopped. The signals are queued until the freeze count is decreased
-         * to zero. Duplicate notifications are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
-         * object is frozen.
-         *
-         * This is necessary for accessors that modify multiple properties to prevent
-         * premature notification while the object is still being modified.
-         */
-        freeze_notify(): void;
-        /**
-         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
-         * @param key name of the key for that association
-         * @returns the data if found,          or `null` if no such data exists.
-         */
-        get_data(key: string): any | null;
-        /**
-         * Gets a property of an object.
-         *
-         * The value can be:
-         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
-         * - a GObject.Value initialized with the expected type of the property
-         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
-         *
-         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
-         *
-         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
-         * @param property_name The name of the property to get
-         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
-         */
-        get_property(property_name: string, value: GObject.Value | any): any;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        get_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Gets `n_properties` properties for an `object`.
-         * Obtained properties will be set to `values`. All properties must be valid.
-         * Warnings will be emitted and undefined behaviour may result if invalid
-         * properties are passed in.
-         * @param names the names of each property to get
-         * @param values the values of each property to get
-         */
-        getv(names: string[], values: (GObject.Value | any)[]): void;
-        /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns `true` if `object` has a floating reference
-         */
-        is_floating(): boolean;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param property_name the name of a property installed on the class of `object`.
-         */
-        notify(property_name: string): void;
-        /**
-         * Emits a "notify" signal for the property specified by `pspec` on `object`.
-         *
-         * This function omits the property name lookup, hence it is faster than
-         * `g_object_notify()`.
-         *
-         * One way to avoid using `g_object_notify()` from within the
-         * class that registered the properties, and using `g_object_notify_by_pspec()`
-         * instead, is to store the GParamSpec used with
-         * `g_object_class_install_property()` inside a static array, e.g.:
-         *
-         *
-         * ```c
-         *   typedef enum
-         *   {
-         *     PROP_FOO = 1,
-         *     PROP_LAST
-         *   } MyObjectProperty;
-         *
-         *   static GParamSpec *properties[PROP_LAST];
-         *
-         *   static void
-         *   my_object_class_init (MyObjectClass *klass)
-         *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
-         *                                              0, 100,
-         *                                              50,
-         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-         *     g_object_class_install_property (gobject_class,
-         *                                      PROP_FOO,
-         *                                      properties[PROP_FOO]);
-         *   }
-         * ```
-         *
-         *
-         * and then notify a change on the "foo" property with:
-         *
-         *
-         * ```c
-         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-         * ```
-         *
-         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
-         */
-        notify_by_pspec(pspec: GObject.ParamSpec): void;
-        /**
-         * Increases the reference count of `object`.
-         *
-         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC `typeof()`
-         * extension), so any casting the caller needs to do on the return type must be
-         * explicit.
-         * @returns the same `object`
-         */
-        ref(): GObject.Object;
-        /**
-         * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
-         *
-         * In other words, if the object is floating, then this call "assumes
-         * ownership" of the floating reference, converting it to a normal
-         * reference by clearing the floating flag while leaving the reference
-         * count unchanged.  If the object is not floating, then this call
-         * adds a new normal reference increasing the reference count by one.
-         *
-         * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for `g_object_ref()`.
-         * @returns `object`
-         */
-        ref_sink(): GObject.Object;
-        /**
-         * Releases all references to other objects. This can be used to break
-         * reference cycles.
-         *
-         * This function should only be called from object system implementations.
-         */
-        run_dispose(): void;
-        /**
-         * Each object carries around a table of associations from
-         * strings to pointers.  This function lets you set an association.
-         *
-         * If the object already had an association with that name,
-         * the old association will be destroyed.
-         *
-         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
-         * This means a copy of `key` is kept permanently (even after `object` has been
-         * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
-         * @param key name of the key
-         * @param data data to associate with that key
-         */
-        set_data(key: string, data?: any | null): void;
-        /**
-         * Sets a property on an object.
-         * @param property_name The name of the property to set
-         * @param value The value to set the property to
-         */
-        set_property(property_name: string, value: GObject.Value | any): void;
-        /**
-         * Remove a specified datum from the object's data associations,
-         * without invoking the association's destroy handler.
-         * @param key name of the key
-         * @returns the data if found, or `null`          if no such data exists.
-         */
-        steal_data(key: string): any | null;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()` and removes the `data` from object
-         * without invoking its `destroy()` function (if any was
-         * set).
-         * Usually, calling this function is only required to update
-         * user data pointers with a destroy notifier, for example:
-         *
-         * ```c
-         * void
-         * object_add_to_user_list (GObject     *object,
-         *                          const gchar *new_string)
-         * {
-         *   // the quark, naming the object data
-         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-         *   // retrieve the old string list
-         *   GList *list = g_object_steal_qdata (object, quark_string_list);
-         *
-         *   // prepend new string
-         *   list = g_list_prepend (list, g_strdup (new_string));
-         *   // this changed 'list', so we need to set it again
-         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-         * }
-         * static void
-         * free_string_list (gpointer data)
-         * {
-         *   GList *node, *list = data;
-         *
-         *   for (node = list; node; node = node->next)
-         *     g_free (node->data);
-         *   g_list_free (list);
-         * }
-         * ```
-         *
-         * Using `g_object_get_qdata()` in the above example, instead of
-         * `g_object_steal_qdata()` would have left the destroy function set,
-         * and thus the partial string list would have been freed upon
-         * `g_object_set_qdata_full()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        steal_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Reverts the effect of a previous call to
-         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
-         * and when it reaches zero, queued "notify" signals are emitted.
-         *
-         * Duplicate notifications for each property are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
-         * in which they have been queued.
-         *
-         * It is an error to call this function when the freeze count is zero.
-         */
-        thaw_notify(): void;
-        /**
-         * Decreases the reference count of `object`. When its reference count
-         * drops to 0, the object is finalized (i.e. its memory is freed).
-         *
-         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
-         * an instance variable of another object), it is recommended to clear the
-         * pointer to `null` rather than retain a dangling pointer to a potentially
-         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
-         */
-        unref(): void;
-        /**
-         * This function essentially limits the life time of the `closure` to
-         * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling `g_closure_invalidate()` on
-         * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
-         * added as marshal guards to the `closure`, to ensure that an extra
-         * reference count is held on `object` during invocation of the
-         * `closure`.  Usually, this function will be called on closures that
-         * use this `object` as closure data.
-         * @param closure {@link GObject.Closure} to watch
-         */
-        watch_closure(closure: GObject.Closure): void;
-        /**
-         * the `constructed` function is called by `g_object_new()` as the
-         *  final step of the object creation process.  At the point of the call, all
-         *  construction properties have been set on the object.  The purpose of this
-         *  call is to allow for object initialisation steps that can only be performed
-         *  after construction properties have been set.  `constructed` implementors
-         *  should chain up to the `constructed` call of their parent class to allow it
-         *  to complete its initialisation.
-         * @virtual
-         */
-        vfunc_constructed(): void;
-        /**
-         * emits property change notification for a bunch
-         *  of properties. Overriding `dispatch_properties_changed` should be rarely
-         *  needed.
-         * @param n_pspecs
-         * @param pspecs
-         * @virtual
-         */
-        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
-        /**
-         * the `dispose` function is supposed to drop all references to other
-         *  objects, but keep the instance otherwise intact, so that client method
-         *  invocations still work. It may be run multiple times (due to reference
-         *  loops). Before returning, `dispose` should chain up to the `dispose` method
-         *  of the parent class.
-         * @virtual
-         */
-        vfunc_dispose(): void;
-        /**
-         * instance finalization function, should finish the finalization of
-         *  the instance begun in `dispose` and chain up to the `finalize` method of the
-         *  parent class.
-         * @virtual
-         */
-        vfunc_finalize(): void;
-        /**
-         * the generic getter for all properties of this type. Should be
-         *  overridden for every type with properties.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param pspec
-         * @virtual
-         */
-        vfunc_notify(pspec: GObject.ParamSpec): void;
-        /**
-         * the generic setter for all properties of this type. Should be
-         *  overridden for every type with properties. If implementations of
-         *  `set_property` don't emit property change notification explicitly, this will
-         *  be done implicitly by the type system. However, if the notify signal is
-         *  emitted explicitly, the type system will not emit it a second time.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
-         * @param id Handler ID of the handler to be disconnected
-         */
-        disconnect(id: number): void;
-        /**
-         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
-         * @param properties Object containing the properties to set
-         */
-        set(properties: { [key: string]: any }): void;
-        /**
-         * Blocks a handler of an instance so it will not be called during any signal emissions
-         * @param id Handler ID of the handler to be blocked
-         */
-        block_signal_handler(id: number): void;
-        /**
-         * Unblocks a handler so it will be called again during any signal emissions
-         * @param id Handler ID of the handler to be unblocked
-         */
-        unblock_signal_handler(id: number): void;
-        /**
-         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
-         * @param detailedName Name of the signal to stop emission of
-         */
-        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace Gradient {
@@ -13391,455 +12157,6 @@ export namespace Gimp {
          * @returns TRUE on success.
          */
         segment_set_right_pos(segment: number, pos: number): [boolean, number];
-        /**
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`.
-         *
-         * Whenever the `source_property` is changed the `target_property` is
-         * updated using the same value. For instance:
-         *
-         *
-         * ```c
-         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-         * ```
-         *
-         *
-         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
-         * updated with the same value of the "active" property of the action {@link GObject.Object}
-         * instance.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well.
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call `g_object_unref()` on the returned
-         * {@link GObject.Binding} instance.
-         *
-         * Removing the binding by calling `g_object_unref()` on it must only be done if
-         * the binding, `source` and `target` are only used from a single thread and it
-         * is clear that both `source` and `target` outlive the binding. Especially it
-         * is not safe to rely on this if the binding, `source` or `target` can be
-         * finalized from different threads. Keep another reference to the binding and
-         * use `g_binding_unbind()` instead to be on the safe side.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-        ): GObject.Binding;
-        /**
-         * Complete version of `g_object_bind_property()`.
-         *
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`, allowing you to set the transformation functions to be used by
-         * the binding.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property_full(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
-        ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
-        /**
-         * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all `GInitiallyUnowneds` are created with a floating reference
-         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
-         */
-        force_floating(): void;
-        /**
-         * Increases the freeze count on `object`. If the freeze count is
-         * non-zero, the emission of "notify" signals on `object` is
-         * stopped. The signals are queued until the freeze count is decreased
-         * to zero. Duplicate notifications are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
-         * object is frozen.
-         *
-         * This is necessary for accessors that modify multiple properties to prevent
-         * premature notification while the object is still being modified.
-         */
-        freeze_notify(): void;
-        /**
-         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
-         * @param key name of the key for that association
-         * @returns the data if found,          or `null` if no such data exists.
-         */
-        get_data(key: string): any | null;
-        /**
-         * Gets a property of an object.
-         *
-         * The value can be:
-         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
-         * - a GObject.Value initialized with the expected type of the property
-         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
-         *
-         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
-         *
-         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
-         * @param property_name The name of the property to get
-         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
-         */
-        get_property(property_name: string, value: GObject.Value | any): any;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        get_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Gets `n_properties` properties for an `object`.
-         * Obtained properties will be set to `values`. All properties must be valid.
-         * Warnings will be emitted and undefined behaviour may result if invalid
-         * properties are passed in.
-         * @param names the names of each property to get
-         * @param values the values of each property to get
-         */
-        getv(names: string[], values: (GObject.Value | any)[]): void;
-        /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns `true` if `object` has a floating reference
-         */
-        is_floating(): boolean;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param property_name the name of a property installed on the class of `object`.
-         */
-        notify(property_name: string): void;
-        /**
-         * Emits a "notify" signal for the property specified by `pspec` on `object`.
-         *
-         * This function omits the property name lookup, hence it is faster than
-         * `g_object_notify()`.
-         *
-         * One way to avoid using `g_object_notify()` from within the
-         * class that registered the properties, and using `g_object_notify_by_pspec()`
-         * instead, is to store the GParamSpec used with
-         * `g_object_class_install_property()` inside a static array, e.g.:
-         *
-         *
-         * ```c
-         *   typedef enum
-         *   {
-         *     PROP_FOO = 1,
-         *     PROP_LAST
-         *   } MyObjectProperty;
-         *
-         *   static GParamSpec *properties[PROP_LAST];
-         *
-         *   static void
-         *   my_object_class_init (MyObjectClass *klass)
-         *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
-         *                                              0, 100,
-         *                                              50,
-         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-         *     g_object_class_install_property (gobject_class,
-         *                                      PROP_FOO,
-         *                                      properties[PROP_FOO]);
-         *   }
-         * ```
-         *
-         *
-         * and then notify a change on the "foo" property with:
-         *
-         *
-         * ```c
-         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-         * ```
-         *
-         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
-         */
-        notify_by_pspec(pspec: GObject.ParamSpec): void;
-        /**
-         * Increases the reference count of `object`.
-         *
-         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC `typeof()`
-         * extension), so any casting the caller needs to do on the return type must be
-         * explicit.
-         * @returns the same `object`
-         */
-        ref(): GObject.Object;
-        /**
-         * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
-         *
-         * In other words, if the object is floating, then this call "assumes
-         * ownership" of the floating reference, converting it to a normal
-         * reference by clearing the floating flag while leaving the reference
-         * count unchanged.  If the object is not floating, then this call
-         * adds a new normal reference increasing the reference count by one.
-         *
-         * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for `g_object_ref()`.
-         * @returns `object`
-         */
-        ref_sink(): GObject.Object;
-        /**
-         * Releases all references to other objects. This can be used to break
-         * reference cycles.
-         *
-         * This function should only be called from object system implementations.
-         */
-        run_dispose(): void;
-        /**
-         * Each object carries around a table of associations from
-         * strings to pointers.  This function lets you set an association.
-         *
-         * If the object already had an association with that name,
-         * the old association will be destroyed.
-         *
-         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
-         * This means a copy of `key` is kept permanently (even after `object` has been
-         * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
-         * @param key name of the key
-         * @param data data to associate with that key
-         */
-        set_data(key: string, data?: any | null): void;
-        /**
-         * Sets a property on an object.
-         * @param property_name The name of the property to set
-         * @param value The value to set the property to
-         */
-        set_property(property_name: string, value: GObject.Value | any): void;
-        /**
-         * Remove a specified datum from the object's data associations,
-         * without invoking the association's destroy handler.
-         * @param key name of the key
-         * @returns the data if found, or `null`          if no such data exists.
-         */
-        steal_data(key: string): any | null;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()` and removes the `data` from object
-         * without invoking its `destroy()` function (if any was
-         * set).
-         * Usually, calling this function is only required to update
-         * user data pointers with a destroy notifier, for example:
-         *
-         * ```c
-         * void
-         * object_add_to_user_list (GObject     *object,
-         *                          const gchar *new_string)
-         * {
-         *   // the quark, naming the object data
-         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-         *   // retrieve the old string list
-         *   GList *list = g_object_steal_qdata (object, quark_string_list);
-         *
-         *   // prepend new string
-         *   list = g_list_prepend (list, g_strdup (new_string));
-         *   // this changed 'list', so we need to set it again
-         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-         * }
-         * static void
-         * free_string_list (gpointer data)
-         * {
-         *   GList *node, *list = data;
-         *
-         *   for (node = list; node; node = node->next)
-         *     g_free (node->data);
-         *   g_list_free (list);
-         * }
-         * ```
-         *
-         * Using `g_object_get_qdata()` in the above example, instead of
-         * `g_object_steal_qdata()` would have left the destroy function set,
-         * and thus the partial string list would have been freed upon
-         * `g_object_set_qdata_full()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        steal_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Reverts the effect of a previous call to
-         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
-         * and when it reaches zero, queued "notify" signals are emitted.
-         *
-         * Duplicate notifications for each property are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
-         * in which they have been queued.
-         *
-         * It is an error to call this function when the freeze count is zero.
-         */
-        thaw_notify(): void;
-        /**
-         * Decreases the reference count of `object`. When its reference count
-         * drops to 0, the object is finalized (i.e. its memory is freed).
-         *
-         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
-         * an instance variable of another object), it is recommended to clear the
-         * pointer to `null` rather than retain a dangling pointer to a potentially
-         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
-         */
-        unref(): void;
-        /**
-         * This function essentially limits the life time of the `closure` to
-         * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling `g_closure_invalidate()` on
-         * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
-         * added as marshal guards to the `closure`, to ensure that an extra
-         * reference count is held on `object` during invocation of the
-         * `closure`.  Usually, this function will be called on closures that
-         * use this `object` as closure data.
-         * @param closure {@link GObject.Closure} to watch
-         */
-        watch_closure(closure: GObject.Closure): void;
-        /**
-         * the `constructed` function is called by `g_object_new()` as the
-         *  final step of the object creation process.  At the point of the call, all
-         *  construction properties have been set on the object.  The purpose of this
-         *  call is to allow for object initialisation steps that can only be performed
-         *  after construction properties have been set.  `constructed` implementors
-         *  should chain up to the `constructed` call of their parent class to allow it
-         *  to complete its initialisation.
-         * @virtual
-         */
-        vfunc_constructed(): void;
-        /**
-         * emits property change notification for a bunch
-         *  of properties. Overriding `dispatch_properties_changed` should be rarely
-         *  needed.
-         * @param n_pspecs
-         * @param pspecs
-         * @virtual
-         */
-        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
-        /**
-         * the `dispose` function is supposed to drop all references to other
-         *  objects, but keep the instance otherwise intact, so that client method
-         *  invocations still work. It may be run multiple times (due to reference
-         *  loops). Before returning, `dispose` should chain up to the `dispose` method
-         *  of the parent class.
-         * @virtual
-         */
-        vfunc_dispose(): void;
-        /**
-         * instance finalization function, should finish the finalization of
-         *  the instance begun in `dispose` and chain up to the `finalize` method of the
-         *  parent class.
-         * @virtual
-         */
-        vfunc_finalize(): void;
-        /**
-         * the generic getter for all properties of this type. Should be
-         *  overridden for every type with properties.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param pspec
-         * @virtual
-         */
-        vfunc_notify(pspec: GObject.ParamSpec): void;
-        /**
-         * the generic setter for all properties of this type. Should be
-         *  overridden for every type with properties. If implementations of
-         *  `set_property` don't emit property change notification explicitly, this will
-         *  be done implicitly by the type system. However, if the notify signal is
-         *  emitted explicitly, the type system will not emit it a second time.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
-         * @param id Handler ID of the handler to be disconnected
-         */
-        disconnect(id: number): void;
-        /**
-         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
-         * @param properties Object containing the properties to set
-         */
-        set(properties: { [key: string]: any }): void;
-        /**
-         * Blocks a handler of an instance so it will not be called during any signal emissions
-         * @param id Handler ID of the handler to be blocked
-         */
-        block_signal_handler(id: number): void;
-        /**
-         * Unblocks a handler so it will be called again during any signal emissions
-         * @param id Handler ID of the handler to be unblocked
-         */
-        unblock_signal_handler(id: number): void;
-        /**
-         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
-         * @param detailedName Name of the signal to stop emission of
-         */
-        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace GroupLayer {
@@ -13875,7 +12192,7 @@ export namespace Gimp {
 
         _init(...args: any[]): void;
 
-        static ['new'](image: Image, name?: string | null): GroupLayer;
+        static ['new'](image: Image, name: string | null): GroupLayer;
 
         // Signals
 
@@ -13946,6 +12263,7 @@ export namespace Gimp {
 
         /**
          * @construct-only
+         * @default 0
          */
         get id(): number;
 
@@ -14074,7 +12392,7 @@ export namespace Gimp {
          * @param drawable Input drawable.
          * @returns TRUE on success.
          */
-        autocrop(drawable?: Drawable | null): boolean;
+        autocrop(drawable: Drawable | null): boolean;
         /**
          * Crop the selected layers based on empty borders of the input
          * drawable
@@ -14089,7 +12407,7 @@ export namespace Gimp {
          * @param drawable Input drawable.
          * @returns TRUE on success.
          */
-        autocrop_selected_layers(drawable?: Drawable | null): boolean;
+        autocrop_selected_layers(drawable: Drawable | null): boolean;
         /**
          * Set the image dirty count to 0.
          *
@@ -14265,7 +12583,7 @@ export namespace Gimp {
          * @param path The path object to export, or `null` for all in the image.
          * @returns TRUE on success.
          */
-        export_path_to_file(file: Gio.File, path?: Path | null): boolean;
+        export_path_to_file(file: Gio.File, path: Path | null): boolean;
         /**
          * Save a path as an SVG string.
          *
@@ -14276,7 +12594,7 @@ export namespace Gimp {
          * @param path The path object to export, or `null` for all in the image.
          * @returns A string whose contents are a complete SVG document.          The returned value must be freed with `g_free()`.
          */
-        export_path_to_string(path?: Path | null): string;
+        export_path_to_string(path: Path | null): string;
         /**
          * Find next guide on an image.
          *
@@ -15451,7 +13769,7 @@ export namespace Gimp {
          * @param profile A {@link Gimp.ColorProfile}, or `null`.
          * @returns `true` on success.
          */
-        set_color_profile(profile?: ColorProfile | null): boolean;
+        set_color_profile(profile: ColorProfile | null): boolean;
         /**
          * Sets the image's color profile from an ICC file
          *
@@ -15586,7 +13904,7 @@ export namespace Gimp {
          * @param profile A {@link Gimp.ColorProfile}, or `null`.
          * @returns `true` on success.
          */
-        set_simulation_profile(profile?: ColorProfile | null): boolean;
+        set_simulation_profile(profile: ColorProfile | null): boolean;
         /**
          * Sets the image's simulation color profile from an ICC file
          *
@@ -15833,7 +14151,7 @@ export namespace Gimp {
             name: string,
             proc_type: PDBProcType,
             run_func: RunImageFunc,
-            run_data_destroy?: GLib.DestroyNotify | null,
+            run_data_destroy: GLib.DestroyNotify | null,
         ): ImageProcedure;
         // Conflicted with Gimp.Procedure.new
 
@@ -15885,6 +14203,7 @@ export namespace Gimp {
 
         /**
          * @construct-only
+         * @default 0
          */
         get id(): number;
 
@@ -16744,7 +15063,7 @@ export namespace Gimp {
             progress_end: number,
         ): Layer;
 
-        static new_from_visible(image: Image, dest_image: Image, name?: string | null): Layer;
+        static new_from_visible(image: Image, dest_image: Image, name: string | null): Layer;
 
         // Signals
 
@@ -17305,754 +15624,6 @@ export namespace Gimp {
          * @returns TRUE on success.
          */
         restore(): boolean;
-        /**
-         * This procedure appends the specified drawable effect at the top of the
-         * effect list of `drawable`.
-         *
-         * The `drawable` argument must be the same as the one used when you
-         * created the effect with {@link Gimp.DrawableFilter.new}.
-         * Some effects may be slower than others to render. In order to
-         * minimize processing time, it is preferred to customize the
-         * operation's arguments as received with
-         * {@link Gimp.DrawableFilter.get_config} before adding the effect.
-         * @param filter The drawable filter to append.
-         */
-        append_filter(filter: DrawableFilter): void;
-        /**
-         * Modify brightness/contrast in the specified drawable.
-         *
-         * This procedures allows the brightness and contrast of the specified
-         * drawable to be modified. Both 'brightness' and 'contrast' parameters
-         * are defined between -1.0 and 1.0.
-         * @param brightness Brightness adjustment.
-         * @param contrast Contrast adjustment.
-         * @returns TRUE on success.
-         */
-        brightness_contrast(brightness: number, contrast: number): boolean;
-        /**
-         * Modify the color balance of the specified drawable.
-         *
-         * Modify the color balance of the specified drawable. There are three
-         * axis which can be modified: cyan-red, magenta-green, and
-         * yellow-blue. Negative values increase the amount of the former,
-         * positive values increase the amount of the latter. Color balance can
-         * be controlled with the 'transfer_mode' setting, which allows
-         * shadows, mid-tones, and highlights in an image to be affected
-         * differently. The 'preserve-lum' parameter, if TRUE, ensures that the
-         * luminosity of each pixel remains fixed.
-         * @param transfer_mode Transfer mode.
-         * @param preserve_lum Preserve luminosity values at each pixel.
-         * @param cyan_red Cyan-Red color balance.
-         * @param magenta_green Magenta-Green color balance.
-         * @param yellow_blue Yellow-Blue color balance.
-         * @returns TRUE on success.
-         */
-        color_balance(
-            transfer_mode: TransferMode,
-            preserve_lum: boolean,
-            cyan_red: number,
-            magenta_green: number,
-            yellow_blue: number,
-        ): boolean;
-        /**
-         * Render the drawable as a grayscale image seen through a colored
-         * glass.
-         *
-         * Desaturates the drawable, then tints it with the specified color.
-         * This tool is only valid on RGB color images. It will not operate on
-         * grayscale drawables.
-         * @param hue Hue in degrees.
-         * @param saturation Saturation in percent.
-         * @param lightness Lightness in percent.
-         * @returns TRUE on success.
-         */
-        colorize_hsl(hue: number, saturation: number, lightness: number): boolean;
-        /**
-         * Modifies the intensity curve(s) for specified drawable.
-         *
-         * Modifies the intensity mapping for one channel in the specified
-         * drawable. The channel can be either an intensity component, or the
-         * value. The 'values' parameter is an array of doubles which
-         * explicitly defines how each pixel value in the drawable will be
-         * modified. Use the `gimp_drawable_curves_spline()` function to modify
-         * intensity levels with Catmull Rom splines.
-         * @param channel The channel to modify.
-         * @param values The explicit curve.
-         * @returns TRUE on success.
-         */
-        curves_explicit(channel: HistogramChannel, values: number[]): boolean;
-        /**
-         * Modifies the intensity curve(s) for specified drawable.
-         *
-         * Modifies the intensity mapping for one channel in the specified
-         * `drawable`. The `channel` can be either an intensity component, or the
-         * value.
-         *
-         * The `points` parameter is an array of doubles in the range `[0, 1]`
-         * which define a set of control points which describe a Catmull Rom
-         * spline which yields the final intensity curve. Since every point has
-         * 2 coordinates, the size of `points` (`num_coordinates`) must be a
-         * multiple of 2, equal or bigger than 4 (i.e. a minimum of 2 points).
-         *
-         * Use {@link Gimp.Drawable.curves_explicit} to explicitly modify
-         * intensity levels.
-         * @param channel The channel to modify.
-         * @param points The spline control points: { cp1.x, cp1.y, cp2.x, cp2.y, ... }.
-         * @returns TRUE on success.
-         */
-        curves_spline(channel: HistogramChannel, points: number[]): boolean;
-        /**
-         * Desaturate the contents of the specified drawable, with the
-         * specified formula.
-         *
-         * This procedure desaturates the contents of the specified drawable,
-         * with the specified formula. This procedure only works on drawables
-         * of type RGB color.
-         * @param desaturate_mode The formula to use to desaturate.
-         * @returns TRUE on success.
-         */
-        desaturate(desaturate_mode: DesaturateMode): boolean;
-        /**
-         * Fill the area by a seed fill starting at the specified coordinates.
-         *
-         * This procedure does a seed fill at the specified coordinates, using
-         * various parameters from the current context.
-         * In the case of merged sampling, the x and y coordinates are relative
-         * to the image's origin; otherwise, they are relative to the
-         * drawable's origin.
-         *
-         * This procedure is affected by the following context setters:
-         * `gimp_context_set_opacity()`, `gimp_context_set_paint_mode()`,
-         * `gimp_context_set_foreground()`, `gimp_context_set_background()`,
-         * `gimp_context_set_pattern()`, `gimp_context_set_sample_threshold()`,
-         * `gimp_context_set_sample_merged()`,
-         * `gimp_context_set_sample_criterion()`,
-         * `gimp_context_set_diagonal_neighbors()`, `gimp_context_set_antialias()`.
-         * @param fill_type The type of fill.
-         * @param x The x coordinate of this bucket fill's application.
-         * @param y The y coordinate of this bucket fill's application.
-         * @returns TRUE on success.
-         */
-        edit_bucket_fill(fill_type: FillType, x: number, y: number): boolean;
-        /**
-         * Clear selected area of drawable.
-         *
-         * This procedure clears the specified drawable. If the drawable has an
-         * alpha channel, the cleared pixels will become transparent. If the
-         * drawable does not have an alpha channel, cleared pixels will be set
-         * to the background color. This procedure only affects regions within
-         * a selection if there is a selection active.
-         *
-         * This procedure is affected by the following context setters:
-         * `gimp_context_set_background()`.
-         * @returns TRUE on success.
-         */
-        edit_clear(): boolean;
-        /**
-         * Fill selected area of drawable.
-         *
-         * This procedure fills the specified drawable according to fill mode.
-         * This procedure only affects regions within a selection if there is a
-         * selection active. If you want to fill the whole drawable, regardless
-         * of the selection, use `gimp_drawable_fill()`.
-         *
-         * This procedure is affected by the following context setters:
-         * `gimp_context_set_opacity()`, `gimp_context_set_paint_mode()`,
-         * `gimp_context_set_foreground()`, `gimp_context_set_background()`,
-         * `gimp_context_set_pattern()`.
-         * @param fill_type The type of fill.
-         * @returns TRUE on success.
-         */
-        edit_fill(fill_type: FillType): boolean;
-        /**
-         * Draw a gradient between the starting and ending coordinates with the
-         * specified gradient type.
-         *
-         * This tool requires information on the gradient type. It creates the
-         * specified variety of gradient using the starting and ending
-         * coordinates as defined for each gradient type. For shapeburst
-         * gradient types, the context's distance metric is also relevant and
-         * can be updated with `gimp_context_set_distance_metric()`.
-         *
-         * This procedure is affected by the following context setters:
-         * `gimp_context_set_opacity()`, `gimp_context_set_paint_mode()`,
-         * `gimp_context_set_foreground()`, `gimp_context_set_background()`,
-         * `gimp_context_set_gradient()` and all gradient property settings,
-         * `gimp_context_set_distance_metric()`.
-         * @param gradient_type The type of gradient.
-         * @param offset Offset relates to the starting and ending coordinates specified for the blend. This parameter is mode dependent.
-         * @param supersample Do adaptive supersampling.
-         * @param supersample_max_depth Maximum recursion levels for supersampling.
-         * @param supersample_threshold Supersampling threshold.
-         * @param dither Use dithering to reduce banding.
-         * @param x1 The x coordinate of this gradient's starting point.
-         * @param y1 The y coordinate of this gradient's starting point.
-         * @param x2 The x coordinate of this gradient's ending point.
-         * @param y2 The y coordinate of this gradient's ending point.
-         * @returns TRUE on success.
-         */
-        edit_gradient_fill(
-            gradient_type: GradientType,
-            offset: number,
-            supersample: boolean,
-            supersample_max_depth: number,
-            supersample_threshold: number,
-            dither: boolean,
-            x1: number,
-            y1: number,
-            x2: number,
-            y2: number,
-        ): boolean;
-        /**
-         * Stroke the specified item
-         *
-         * This procedure strokes the specified item, painting along its
-         * outline (e.g. along a path, or along a channel's boundary), with the
-         * active paint method and brush, or using a plain line with
-         * configurable properties.
-         *
-         * This procedure is affected by the following context setters:
-         * `gimp_context_set_opacity()`, `gimp_context_set_paint_mode()`,
-         * `gimp_context_set_paint_method()`, `gimp_context_set_stroke_method()`,
-         * `gimp_context_set_foreground()`, `gimp_context_set_brush()` and all
-         * brush property settings, `gimp_context_set_gradient()` and all
-         * gradient property settings, `gimp_context_set_line_width()` and all
-         * line property settings, `gimp_context_set_antialias()`.
-         * @param item The item to stroke.
-         * @returns TRUE on success.
-         */
-        edit_stroke_item(item: Item): boolean;
-        /**
-         * Stroke the current selection
-         *
-         * This procedure strokes the current selection, painting along the
-         * selection boundary with the active paint method and brush, or using
-         * a plain line with configurable properties. The paint is applied to
-         * the specified drawable regardless of the active selection.
-         *
-         * This procedure is affected by the following context setters:
-         * `gimp_context_set_opacity()`, `gimp_context_set_paint_mode()`,
-         * `gimp_context_set_paint_method()`, `gimp_context_set_stroke_method()`,
-         * `gimp_context_set_foreground()`, `gimp_context_set_brush()` and all
-         * brush property settings, `gimp_context_set_gradient()` and all
-         * gradient property settings, `gimp_context_set_line_width()` and all
-         * line property settings, `gimp_context_set_antialias()`.
-         * @returns TRUE on success.
-         */
-        edit_stroke_selection(): boolean;
-        /**
-         * Equalize the contents of the specified drawable.
-         *
-         * This procedure equalizes the contents of the specified drawable.
-         * Each intensity channel is equalized independently. The equalized
-         * intensity is given as inten' = (255 - inten). The 'mask_only' option
-         * specifies whether to adjust only the area of the image within the
-         * selection bounds, or the entire image based on the histogram of the
-         * selected area. If there is no selection, the entire image is
-         * adjusted based on the histogram for the entire image.
-         * @param mask_only Equalization option.
-         * @returns TRUE on success.
-         */
-        equalize(mask_only: boolean): boolean;
-        /**
-         * Extract a color model component.
-         *
-         * Extract a color model component.
-         * @param component Component (RGB Red (0), RGB Green (1), RGB Blue (2), Hue (3), HSV Saturation (4), HSV Value (5), HSL Saturation (6), HSL Lightness (7), CMYK Cyan (8), CMYK Magenta (9), CMYK Yellow (10), CMYK Key (11), Y'CbCr Y' (12), Y'CbCr Cb (13), Y'CbCr Cr (14), LAB L (15), LAB A (16), LAB B (17), LCH C(ab) (18), LCH H(ab) (19), Alpha (20)).
-         * @param invert Invert the extracted component.
-         * @param linear Use linear output instead of gamma corrected.
-         * @returns TRUE on success.
-         */
-        extract_component(component: number, invert: boolean, linear: boolean): boolean;
-        /**
-         * Fill the drawable with the specified fill mode.
-         *
-         * This procedure fills the drawable. If the fill mode is foreground
-         * the current foreground color is used. If the fill mode is
-         * background, the current background color is used. If the fill type
-         * is white, then white is used. Transparent fill only affects layers
-         * with an alpha channel, in which case the alpha channel is set to
-         * transparent. If the drawable has no alpha channel, it is filled to
-         * white. No fill leaves the drawable's contents undefined.
-         * This procedure is unlike `gimp_drawable_edit_fill()` or the bucket
-         * fill tool because it fills regardless of a selection. Its main
-         * purpose is to fill a newly created drawable before adding it to the
-         * image. This operation cannot be undone.
-         * @param fill_type The type of fill.
-         * @returns TRUE on success.
-         */
-        fill(fill_type: FillType): boolean;
-        /**
-         * Extract the foreground of a drawable using a given trimap.
-         *
-         * This procedure extracts the foreground from `drawable` using `mask` as
-         * a trimap. Set white as foreground, black as background and uncertain
-         * pixels as any other value, for the tri-map.
-         * @param mode The algorithm to use.
-         * @param mask Tri-Map.
-         * @returns TRUE on success.
-         */
-        foreground_extract(mode: ForegroundExtractMode, mask: Drawable): boolean;
-        /**
-         * Free the specified drawable's shadow data (if it exists).
-         *
-         * This procedure is intended as a memory saving device. If any shadow
-         * memory has been allocated, it will be freed automatically when the
-         * drawable is removed from the image, or when the plug-in procedure
-         * which allocated it returns.
-         * @returns TRUE on success.
-         */
-        free_shadow(): boolean;
-        /**
-         * Returns the bytes per pixel.
-         *
-         * This procedure returns the number of bytes per pixel.
-         * @returns Bytes per pixel.
-         */
-        get_bpp(): number;
-        /**
-         * Returns a {@link Gegl.Buffer} of a specified drawable. The buffer can be used
-         * like any other GEGL buffer. Its data will we synced back with the core
-         * drawable when the buffer gets destroyed, or when `gegl_buffer_flush()`
-         * is called.
-         * @returns The {@link Gegl.Buffer}. See Also: `gimp_drawable_get_shadow_buffer()`
-         */
-        get_buffer(): Gegl.Buffer;
-        /**
-         * Returns the list of filters applied to the drawable.
-         *
-         * This procedure returns the list of filters which are currently
-         * applied non-destructively to `drawable`. The order of filters is from
-         * topmost to bottommost.
-         * @returns The list of filters on the drawable.          The returned value must be freed with `g_free()`.
-         */
-        get_filters(): DrawableFilter[];
-        /**
-         * Returns the {@link Babl.Object} format of the drawable.
-         * @returns The {@link Babl.Object} format.
-         */
-        get_format(): Babl.Object;
-        /**
-         * Returns the height of the drawable.
-         *
-         * This procedure returns the specified drawable's height in pixels.
-         * @returns Height of drawable.
-         */
-        get_height(): number;
-        /**
-         * Returns the offsets for the drawable.
-         *
-         * This procedure returns the specified drawable's offsets. This only
-         * makes sense if the drawable is a layer since channels are anchored.
-         * The offsets of a channel will be returned as 0.
-         * @returns TRUE on success.
-         */
-        get_offsets(): [boolean, number, number];
-        /**
-         * Gets the value of the pixel at the specified coordinates.
-         *
-         * This procedure gets the pixel value at the specified coordinates.
-         * @param x_coord The x coordinate.
-         * @param y_coord The y coordinate.
-         * @returns The pixel color.
-         */
-        get_pixel(x_coord: number, y_coord: number): Gegl.Color;
-        /**
-         * Returns a {@link Gegl.Buffer} of a specified drawable's shadow tiles. The
-         * buffer can be used like any other GEGL buffer. Its data will we
-         * synced back with the core drawable's shadow tiles when the buffer
-         * gets destroyed, or when `gegl_buffer_flush()` is called.
-         * @returns The {@link Gegl.Buffer}.
-         */
-        get_shadow_buffer(): Gegl.Buffer;
-        /**
-         * Retrieves a thumbnail pixbuf for the drawable identified by
-         * `drawable`. The thumbnail will be not larger than the requested
-         * size.
-         * @param src_x the x coordinate of the area
-         * @param src_y the y coordinate of the area
-         * @param src_width the width of the area
-         * @param src_height the height of the area
-         * @param dest_width the requested thumbnail width  (<= 1024 pixels)
-         * @param dest_height the requested thumbnail height (<= 1024 pixels)
-         * @param alpha how to handle an alpha channel
-         * @returns a new {@link GdkPixbuf.Pixbuf}
-         */
-        get_sub_thumbnail(
-            src_x: number,
-            src_y: number,
-            src_width: number,
-            src_height: number,
-            dest_width: number,
-            dest_height: number,
-            alpha: PixbufTransparency,
-        ): GdkPixbuf.Pixbuf;
-        /**
-         * Retrieves thumbnail data for the drawable identified by `drawable`.
-         * The thumbnail will be not larger than the requested size.
-         * @param src_x the x coordinate of the area
-         * @param src_y the y coordinate of the area
-         * @param src_width the width of the area
-         * @param src_height the height of the area
-         * @param dest_width the requested thumbnail width  (<= 1024 pixels)
-         * @param dest_height the requested thumbnail height (<= 1024 pixels)
-         * @returns thumbnail data or `null` if          `drawable` is invalid.
-         */
-        get_sub_thumbnail_data(
-            src_x: number,
-            src_y: number,
-            src_width: number,
-            src_height: number,
-            dest_width: number,
-            dest_height: number,
-        ): [GLib.Bytes, number, number, number];
-        /**
-         * Retrieves a thumbnail pixbuf for the drawable identified by
-         * `drawable`. The thumbnail will be not larger than the requested
-         * size.
-         * @param width the requested thumbnail width  (<= 1024 pixels)
-         * @param height the requested thumbnail height (<= 1024 pixels)
-         * @param alpha how to handle an alpha channel
-         * @returns a new {@link GdkPixbuf.Pixbuf}
-         */
-        get_thumbnail(width: number, height: number, alpha: PixbufTransparency): GdkPixbuf.Pixbuf;
-        /**
-         * Retrieves thumbnail data for the drawable identified by `drawable`.
-         * The thumbnail will be not larger than the requested size.
-         * @param width the requested thumbnail width  (<= 1024 pixels)
-         * @param height the requested thumbnail height (<= 1024 pixels)
-         * @returns thumbnail data or `null` if          `drawable` is invalid.
-         */
-        get_thumbnail_data(width: number, height: number): [GLib.Bytes | null, number, number, number];
-        /**
-         * Returns the {@link Babl.Object} thumbnail format of the drawable.
-         * @returns The {@link Babl.Object} thumbnail format.
-         */
-        get_thumbnail_format(): Babl.Object;
-        /**
-         * Returns the width of the drawable.
-         *
-         * This procedure returns the specified drawable's width in pixels.
-         * @returns Width of drawable.
-         */
-        get_width(): number;
-        /**
-         * Returns TRUE if the drawable has an alpha channel.
-         *
-         * This procedure returns whether the specified drawable has an alpha
-         * channel. This can only be true for layers, and the associated type
-         * will be one of: { RGBA , GRAYA, INDEXEDA }.
-         * @returns Does the drawable have an alpha channel?
-         */
-        has_alpha(): boolean;
-        /**
-         * Returns information on the intensity histogram for the specified
-         * drawable.
-         *
-         * This tool makes it possible to gather information about the
-         * intensity histogram of a drawable. A channel to examine is first
-         * specified. This can be either value, red, green, or blue, depending
-         * on whether the drawable is of type color or grayscale. Second, a
-         * range of intensities are specified. The `gimp_drawable_histogram()`
-         * function returns statistics based on the pixels in the drawable that
-         * fall under this range of values. Mean, standard deviation, median,
-         * number of pixels, and percentile are all returned. Additionally, the
-         * total count of pixels in the image is returned. Counts of pixels are
-         * weighted by any associated alpha values and by the current selection
-         * mask. That is, pixels that lie outside an active selection mask will
-         * not be counted. Similarly, pixels with transparent alpha values will
-         * not be counted. The returned mean, std_dev and median are in the
-         * range (0..255) for 8-bit images or if the plug-in is not
-         * precision-aware, and in the range (0.0..1.0) otherwise.
-         * @param channel The channel to query.
-         * @param start_range Start of the intensity measurement range.
-         * @param end_range End of the intensity measurement range.
-         * @returns TRUE on success.
-         */
-        histogram(
-            channel: HistogramChannel,
-            start_range: number,
-            end_range: number,
-        ): [boolean, number, number, number, number, number, number];
-        /**
-         * Modify hue, lightness, and saturation in the specified drawable.
-         *
-         * This procedure allows the hue, lightness, and saturation in the
-         * specified drawable to be modified. The 'hue-range' parameter
-         * provides the capability to limit range of affected hues. The
-         * 'overlap' parameter provides blending into neighboring hue channels
-         * when rendering.
-         * @param hue_range Range of affected hues.
-         * @param hue_offset Hue offset in degrees.
-         * @param lightness Lightness modification.
-         * @param saturation Saturation modification.
-         * @param overlap Overlap other hue channels.
-         * @returns TRUE on success.
-         */
-        hue_saturation(
-            hue_range: HueRange,
-            hue_offset: number,
-            lightness: number,
-            saturation: number,
-            overlap: number,
-        ): boolean;
-        /**
-         * Invert the contents of the specified drawable.
-         *
-         * This procedure inverts the contents of the specified drawable. Each
-         * intensity channel is inverted independently. The inverted intensity
-         * is given as inten' = (255 - inten). If 'linear' is TRUE, the
-         * drawable is inverted in linear space.
-         * @param linear Whether to invert in linear space.
-         * @returns TRUE on success.
-         */
-        invert(linear: boolean): boolean;
-        /**
-         * Returns whether the drawable is a grayscale type.
-         *
-         * This procedure returns TRUE if the specified drawable is of type {
-         * Gray, GrayA }.
-         * @returns TRUE if the drawable is a grayscale type.
-         */
-        is_gray(): boolean;
-        /**
-         * Returns whether the drawable is an indexed type.
-         *
-         * This procedure returns TRUE if the specified drawable is of type {
-         * Indexed, IndexedA }.
-         * @returns TRUE if the drawable is an indexed type.
-         */
-        is_indexed(): boolean;
-        /**
-         * Returns whether the drawable is an RGB type.
-         *
-         * This procedure returns TRUE if the specified drawable is of type {
-         * RGB, RGBA }.
-         * @returns TRUE if the drawable is an RGB type.
-         */
-        is_rgb(): boolean;
-        /**
-         * Modifies intensity levels in the specified drawable.
-         *
-         * This tool allows intensity levels in the specified drawable to be
-         * remapped according to a set of parameters. The low/high input levels
-         * specify an initial mapping from the source intensities. The gamma
-         * value determines how intensities between the low and high input
-         * intensities are interpolated. A gamma value of 1.0 results in a
-         * linear interpolation. Higher gamma values result in more high-level
-         * intensities. Lower gamma values result in more low-level
-         * intensities. The low/high output levels constrain the final
-         * intensity mapping--that is, no final intensity will be lower than
-         * the low output level and no final intensity will be higher than the
-         * high output level. This tool is only valid on RGB color and
-         * grayscale images.
-         * @param channel The channel to modify.
-         * @param low_input Intensity of lowest input.
-         * @param high_input Intensity of highest input.
-         * @param clamp_input Clamp input values before applying output levels.
-         * @param gamma Gamma adjustment factor.
-         * @param low_output Intensity of lowest output.
-         * @param high_output Intensity of highest output.
-         * @param clamp_output Clamp final output values.
-         * @returns TRUE on success.
-         */
-        levels(
-            channel: HistogramChannel,
-            low_input: number,
-            high_input: number,
-            clamp_input: boolean,
-            gamma: number,
-            low_output: number,
-            high_output: number,
-            clamp_output: boolean,
-        ): boolean;
-        /**
-         * Automatically modifies intensity levels in the specified drawable.
-         *
-         * This procedure allows intensity levels in the specified drawable to
-         * be remapped according to a set of guessed parameters. It is
-         * equivalent to clicking the \"Auto\" button in the Levels tool.
-         * @returns TRUE on success.
-         */
-        levels_stretch(): boolean;
-        /**
-         * Find the bounding box of the current selection in relation to the
-         * specified drawable.
-         *
-         * This procedure returns whether there is a selection. If there is
-         * one, the upper left and lower right-hand corners of its bounding box
-         * are returned. These coordinates are specified relative to the
-         * drawable's origin, and bounded by the drawable's extents. Please
-         * note that the pixel specified by the lower right-hand coordinate of
-         * the bounding box is not part of the selection. The selection ends at
-         * the upper left corner of this pixel. This means the width of the
-         * selection can be calculated as (x2 - x1), its height as (y2 - y1).
-         * Note that the returned boolean does NOT correspond with the returned
-         * region being empty or not, it always returns whether the selection
-         * is non_empty. See `gimp_drawable_mask_intersect()` for a boolean
-         * return value which is more useful in most cases.
-         * @returns TRUE if there is a selection.
-         */
-        mask_bounds(): [boolean, number, number, number, number];
-        /**
-         * Find the bounding box of the current selection in relation to the
-         * specified drawable.
-         *
-         * This procedure returns whether there is an intersection between the
-         * drawable and the selection. Unlike `gimp_drawable_mask_bounds()`, the
-         * intersection's bounds are returned as x, y, width, height.
-         * If there is no selection this function returns TRUE and the returned
-         * bounds are the extents of the whole drawable.
-         * @returns TRUE if the returned area is not empty.
-         */
-        mask_intersect(): [boolean, number, number, number, number];
-        /**
-         * This procedure applies the specified drawable effect on `drawable`
-         * and merge it (therefore before any non-destructive effects are
-         * computed).
-         *
-         * The `drawable` argument must be the same as the one used when you
-         * created the effect with {@link Gimp.DrawableFilter.new}.
-         * Once this is run, `filter` is not valid anymore and you should not
-         * try to do anything with it. In particular, you must customize the
-         * operation's arguments as received with
-         * {@link Gimp.DrawableFilter.get_config} or set the filter's opacity
-         * and blend mode before merging the effect.
-         * @param filter The drawable filter to merge.
-         */
-        merge_filter(filter: DrawableFilter): void;
-        /**
-         * Merge the layer effect filters to the specified drawable.
-         *
-         * This procedure combines the contents of the drawable's filter stack
-         * (for export) with the specified drawable.
-         * @returns TRUE on success.
-         */
-        merge_filters(): boolean;
-        /**
-         * Merge the shadow buffer with the specified drawable.
-         *
-         * This procedure combines the contents of the drawable's shadow buffer
-         * (for temporary processing) with the specified drawable. The 'undo'
-         * parameter specifies whether to add an undo step for the operation.
-         * Requesting no undo is useful for such applications as 'auto-apply'.
-         * @param undo Push merge to undo stack?
-         * @returns TRUE on success.
-         */
-        merge_shadow(undo: boolean): boolean;
-        /**
-         * Offset the drawable by the specified amounts in the X and Y
-         * directions
-         *
-         * This procedure offsets the specified drawable by the amounts
-         * specified by 'offset_x' and 'offset_y'. If 'wrap_around' is set to
-         * TRUE, then portions of the drawable which are offset out of bounds
-         * are wrapped around. Alternatively, the undefined regions of the
-         * drawable can be filled with transparency or the background color, as
-         * specified by the 'fill-type' parameter.
-         * @param wrap_around wrap image around or fill vacated regions.
-         * @param fill_type fill vacated regions of drawable with background or transparent.
-         * @param color fills in the background color when fill_type is set to OFFSET-COLOR.
-         * @param offset_x offset by this amount in X direction.
-         * @param offset_y offset by this amount in Y direction.
-         * @returns TRUE on success.
-         */
-        offset(
-            wrap_around: boolean,
-            fill_type: OffsetType,
-            color: Gegl.Color,
-            offset_x: number,
-            offset_y: number,
-        ): boolean;
-        /**
-         * Posterize the specified drawable.
-         *
-         * This procedures reduces the number of shades allows in each
-         * intensity channel to the specified 'levels' parameter.
-         * @param levels Levels of posterization.
-         * @returns TRUE on success.
-         */
-        posterize(levels: number): boolean;
-        /**
-         * Sets the value of the pixel at the specified coordinates.
-         *
-         * This procedure sets the pixel value at the specified coordinates.
-         * Note that this function is not undoable, you should use it only on
-         * drawables you just created yourself.
-         * @param x_coord The x coordinate.
-         * @param y_coord The y coordinate.
-         * @param color The pixel color.
-         * @returns TRUE on success.
-         */
-        set_pixel(x_coord: number, y_coord: number, color: Gegl.Color): boolean;
-        /**
-         * Perform shadows and highlights correction.
-         *
-         * This filter allows adjusting shadows and highlights in the image
-         * separately. The implementation closely follow its counterpart in the
-         * Darktable photography software.
-         * @param shadows Adjust exposure of shadows.
-         * @param highlights Adjust exposure of highlights.
-         * @param whitepoint Shift white point.
-         * @param radius Spatial extent.
-         * @param compress Compress the effect on shadows/highlights and preserve midtones.
-         * @param shadows_ccorrect Adjust saturation of shadows.
-         * @param highlights_ccorrect Adjust saturation of highlights.
-         * @returns TRUE on success.
-         */
-        shadows_highlights(
-            shadows: number,
-            highlights: number,
-            whitepoint: number,
-            radius: number,
-            compress: number,
-            shadows_ccorrect: number,
-            highlights_ccorrect: number,
-        ): boolean;
-        /**
-         * Threshold the specified drawable.
-         *
-         * This procedures generates a threshold map of the specified drawable.
-         * All pixels between the values of 'low_threshold' and
-         * 'high_threshold', on the scale of 'channel' are replaced with white,
-         * and all other pixels with black.
-         * @param channel The channel to base the threshold on.
-         * @param low_threshold The low threshold value.
-         * @param high_threshold The high threshold value.
-         * @returns TRUE on success.
-         */
-        threshold(channel: HistogramChannel, low_threshold: number, high_threshold: number): boolean;
-        /**
-         * Returns the drawable's type.
-         *
-         * This procedure returns the drawable's type.
-         * @returns The drawable's type.
-         */
-        type(): ImageType;
-        /**
-         * Returns the drawable's type with alpha.
-         *
-         * This procedure returns the drawable's type as if had an alpha
-         * channel. If the type is currently Gray, for instance, the returned
-         * type would be GrayA. If the drawable already has an alpha channel,
-         * the drawable's type is simply returned.
-         * @returns The drawable's type with alpha.
-         */
-        type_with_alpha(): ImageType;
-        /**
-         * Update the specified region of the drawable.
-         *
-         * This procedure updates the specified region of the drawable. The (x,
-         * y) coordinate pair is relative to the drawable's origin, not to the
-         * image origin. Therefore, the entire drawable can be updated using
-         * (0, 0, width, height).
-         * @param x x coordinate of upper left corner of update region.
-         * @param y y coordinate of upper left corner of update region.
-         * @param width Width of update region.
-         * @param height Height of update region.
-         * @returns TRUE on success.
-         */
-        update(x: number, y: number, width: number, height: number): boolean;
     }
 
     namespace LoadProcedure {
@@ -18112,7 +15683,7 @@ export namespace Gimp {
             name: string,
             proc_type: PDBProcType,
             run_func: RunLoadFunc,
-            run_data_destroy?: GLib.DestroyNotify | null,
+            run_data_destroy: GLib.DestroyNotify | null,
         ): LoadProcedure;
         // Conflicted with Gimp.Procedure.new
 
@@ -18432,16 +16003,24 @@ export namespace Gimp {
 
         // Properties
 
+        /**
+         * @default false
+         */
         get auto_load(): boolean;
         set auto_load(val: boolean);
+        /**
+         * @default false
+         */
         get autoLoad(): boolean;
         set autoLoad(val: boolean);
         /**
          * @read-only
+         * @default false
          */
         get on_disk(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get onDisk(): boolean;
 
@@ -18588,455 +16167,6 @@ export namespace Gimp {
          */
         // Conflicted with GObject.TypeModule.use
         use(...args: never[]): any;
-        /**
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`.
-         *
-         * Whenever the `source_property` is changed the `target_property` is
-         * updated using the same value. For instance:
-         *
-         *
-         * ```c
-         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-         * ```
-         *
-         *
-         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
-         * updated with the same value of the "active" property of the action {@link GObject.Object}
-         * instance.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well.
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call `g_object_unref()` on the returned
-         * {@link GObject.Binding} instance.
-         *
-         * Removing the binding by calling `g_object_unref()` on it must only be done if
-         * the binding, `source` and `target` are only used from a single thread and it
-         * is clear that both `source` and `target` outlive the binding. Especially it
-         * is not safe to rely on this if the binding, `source` or `target` can be
-         * finalized from different threads. Keep another reference to the binding and
-         * use `g_binding_unbind()` instead to be on the safe side.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-        ): GObject.Binding;
-        /**
-         * Complete version of `g_object_bind_property()`.
-         *
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`, allowing you to set the transformation functions to be used by
-         * the binding.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property_full(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
-        ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
-        /**
-         * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all `GInitiallyUnowneds` are created with a floating reference
-         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
-         */
-        force_floating(): void;
-        /**
-         * Increases the freeze count on `object`. If the freeze count is
-         * non-zero, the emission of "notify" signals on `object` is
-         * stopped. The signals are queued until the freeze count is decreased
-         * to zero. Duplicate notifications are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
-         * object is frozen.
-         *
-         * This is necessary for accessors that modify multiple properties to prevent
-         * premature notification while the object is still being modified.
-         */
-        freeze_notify(): void;
-        /**
-         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
-         * @param key name of the key for that association
-         * @returns the data if found,          or `null` if no such data exists.
-         */
-        get_data(key: string): any | null;
-        /**
-         * Gets a property of an object.
-         *
-         * The value can be:
-         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
-         * - a GObject.Value initialized with the expected type of the property
-         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
-         *
-         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
-         *
-         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
-         * @param property_name The name of the property to get
-         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
-         */
-        get_property(property_name: string, value: GObject.Value | any): any;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        get_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Gets `n_properties` properties for an `object`.
-         * Obtained properties will be set to `values`. All properties must be valid.
-         * Warnings will be emitted and undefined behaviour may result if invalid
-         * properties are passed in.
-         * @param names the names of each property to get
-         * @param values the values of each property to get
-         */
-        getv(names: string[], values: (GObject.Value | any)[]): void;
-        /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns `true` if `object` has a floating reference
-         */
-        is_floating(): boolean;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param property_name the name of a property installed on the class of `object`.
-         */
-        notify(property_name: string): void;
-        /**
-         * Emits a "notify" signal for the property specified by `pspec` on `object`.
-         *
-         * This function omits the property name lookup, hence it is faster than
-         * `g_object_notify()`.
-         *
-         * One way to avoid using `g_object_notify()` from within the
-         * class that registered the properties, and using `g_object_notify_by_pspec()`
-         * instead, is to store the GParamSpec used with
-         * `g_object_class_install_property()` inside a static array, e.g.:
-         *
-         *
-         * ```c
-         *   typedef enum
-         *   {
-         *     PROP_FOO = 1,
-         *     PROP_LAST
-         *   } MyObjectProperty;
-         *
-         *   static GParamSpec *properties[PROP_LAST];
-         *
-         *   static void
-         *   my_object_class_init (MyObjectClass *klass)
-         *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
-         *                                              0, 100,
-         *                                              50,
-         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-         *     g_object_class_install_property (gobject_class,
-         *                                      PROP_FOO,
-         *                                      properties[PROP_FOO]);
-         *   }
-         * ```
-         *
-         *
-         * and then notify a change on the "foo" property with:
-         *
-         *
-         * ```c
-         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-         * ```
-         *
-         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
-         */
-        notify_by_pspec(pspec: GObject.ParamSpec): void;
-        /**
-         * Increases the reference count of `object`.
-         *
-         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC `typeof()`
-         * extension), so any casting the caller needs to do on the return type must be
-         * explicit.
-         * @returns the same `object`
-         */
-        ref(): GObject.Object;
-        /**
-         * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
-         *
-         * In other words, if the object is floating, then this call "assumes
-         * ownership" of the floating reference, converting it to a normal
-         * reference by clearing the floating flag while leaving the reference
-         * count unchanged.  If the object is not floating, then this call
-         * adds a new normal reference increasing the reference count by one.
-         *
-         * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for `g_object_ref()`.
-         * @returns `object`
-         */
-        ref_sink(): GObject.Object;
-        /**
-         * Releases all references to other objects. This can be used to break
-         * reference cycles.
-         *
-         * This function should only be called from object system implementations.
-         */
-        run_dispose(): void;
-        /**
-         * Each object carries around a table of associations from
-         * strings to pointers.  This function lets you set an association.
-         *
-         * If the object already had an association with that name,
-         * the old association will be destroyed.
-         *
-         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
-         * This means a copy of `key` is kept permanently (even after `object` has been
-         * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
-         * @param key name of the key
-         * @param data data to associate with that key
-         */
-        set_data(key: string, data?: any | null): void;
-        /**
-         * Sets a property on an object.
-         * @param property_name The name of the property to set
-         * @param value The value to set the property to
-         */
-        set_property(property_name: string, value: GObject.Value | any): void;
-        /**
-         * Remove a specified datum from the object's data associations,
-         * without invoking the association's destroy handler.
-         * @param key name of the key
-         * @returns the data if found, or `null`          if no such data exists.
-         */
-        steal_data(key: string): any | null;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()` and removes the `data` from object
-         * without invoking its `destroy()` function (if any was
-         * set).
-         * Usually, calling this function is only required to update
-         * user data pointers with a destroy notifier, for example:
-         *
-         * ```c
-         * void
-         * object_add_to_user_list (GObject     *object,
-         *                          const gchar *new_string)
-         * {
-         *   // the quark, naming the object data
-         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-         *   // retrieve the old string list
-         *   GList *list = g_object_steal_qdata (object, quark_string_list);
-         *
-         *   // prepend new string
-         *   list = g_list_prepend (list, g_strdup (new_string));
-         *   // this changed 'list', so we need to set it again
-         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-         * }
-         * static void
-         * free_string_list (gpointer data)
-         * {
-         *   GList *node, *list = data;
-         *
-         *   for (node = list; node; node = node->next)
-         *     g_free (node->data);
-         *   g_list_free (list);
-         * }
-         * ```
-         *
-         * Using `g_object_get_qdata()` in the above example, instead of
-         * `g_object_steal_qdata()` would have left the destroy function set,
-         * and thus the partial string list would have been freed upon
-         * `g_object_set_qdata_full()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        steal_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Reverts the effect of a previous call to
-         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
-         * and when it reaches zero, queued "notify" signals are emitted.
-         *
-         * Duplicate notifications for each property are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
-         * in which they have been queued.
-         *
-         * It is an error to call this function when the freeze count is zero.
-         */
-        thaw_notify(): void;
-        /**
-         * Decreases the reference count of `object`. When its reference count
-         * drops to 0, the object is finalized (i.e. its memory is freed).
-         *
-         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
-         * an instance variable of another object), it is recommended to clear the
-         * pointer to `null` rather than retain a dangling pointer to a potentially
-         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
-         */
-        unref(): void;
-        /**
-         * This function essentially limits the life time of the `closure` to
-         * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling `g_closure_invalidate()` on
-         * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
-         * added as marshal guards to the `closure`, to ensure that an extra
-         * reference count is held on `object` during invocation of the
-         * `closure`.  Usually, this function will be called on closures that
-         * use this `object` as closure data.
-         * @param closure {@link GObject.Closure} to watch
-         */
-        watch_closure(closure: GObject.Closure): void;
-        /**
-         * the `constructed` function is called by `g_object_new()` as the
-         *  final step of the object creation process.  At the point of the call, all
-         *  construction properties have been set on the object.  The purpose of this
-         *  call is to allow for object initialisation steps that can only be performed
-         *  after construction properties have been set.  `constructed` implementors
-         *  should chain up to the `constructed` call of their parent class to allow it
-         *  to complete its initialisation.
-         * @virtual
-         */
-        vfunc_constructed(): void;
-        /**
-         * emits property change notification for a bunch
-         *  of properties. Overriding `dispatch_properties_changed` should be rarely
-         *  needed.
-         * @param n_pspecs
-         * @param pspecs
-         * @virtual
-         */
-        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
-        /**
-         * the `dispose` function is supposed to drop all references to other
-         *  objects, but keep the instance otherwise intact, so that client method
-         *  invocations still work. It may be run multiple times (due to reference
-         *  loops). Before returning, `dispose` should chain up to the `dispose` method
-         *  of the parent class.
-         * @virtual
-         */
-        vfunc_dispose(): void;
-        /**
-         * instance finalization function, should finish the finalization of
-         *  the instance begun in `dispose` and chain up to the `finalize` method of the
-         *  parent class.
-         * @virtual
-         */
-        vfunc_finalize(): void;
-        /**
-         * the generic getter for all properties of this type. Should be
-         *  overridden for every type with properties.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param pspec
-         * @virtual
-         */
-        vfunc_notify(pspec: GObject.ParamSpec): void;
-        /**
-         * the generic setter for all properties of this type. Should be
-         *  overridden for every type with properties. If implementations of
-         *  `set_property` don't emit property change notification explicitly, this will
-         *  be done implicitly by the type system. However, if the notify signal is
-         *  emitted explicitly, the type system will not emit it a second time.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
-         * @param id Handler ID of the handler to be disconnected
-         */
-        disconnect(id: number): void;
-        /**
-         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
-         * @param properties Object containing the properties to set
-         */
-        set(properties: { [key: string]: any }): void;
-        /**
-         * Blocks a handler of an instance so it will not be called during any signal emissions
-         * @param id Handler ID of the handler to be blocked
-         */
-        block_signal_handler(id: number): void;
-        /**
-         * Unblocks a handler so it will be called again during any signal emissions
-         * @param id Handler ID of the handler to be unblocked
-         */
-        unblock_signal_handler(id: number): void;
-        /**
-         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
-         * @param detailedName Name of the signal to stop emission of
-         */
-        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ModuleDB {
@@ -19232,455 +16362,6 @@ export namespace Gimp {
          * @virtual
          */
         vfunc_get_n_items(): number;
-        /**
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`.
-         *
-         * Whenever the `source_property` is changed the `target_property` is
-         * updated using the same value. For instance:
-         *
-         *
-         * ```c
-         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-         * ```
-         *
-         *
-         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
-         * updated with the same value of the "active" property of the action {@link GObject.Object}
-         * instance.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well.
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call `g_object_unref()` on the returned
-         * {@link GObject.Binding} instance.
-         *
-         * Removing the binding by calling `g_object_unref()` on it must only be done if
-         * the binding, `source` and `target` are only used from a single thread and it
-         * is clear that both `source` and `target` outlive the binding. Especially it
-         * is not safe to rely on this if the binding, `source` or `target` can be
-         * finalized from different threads. Keep another reference to the binding and
-         * use `g_binding_unbind()` instead to be on the safe side.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-        ): GObject.Binding;
-        /**
-         * Complete version of `g_object_bind_property()`.
-         *
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`, allowing you to set the transformation functions to be used by
-         * the binding.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property_full(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
-        ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
-        /**
-         * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all `GInitiallyUnowneds` are created with a floating reference
-         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
-         */
-        force_floating(): void;
-        /**
-         * Increases the freeze count on `object`. If the freeze count is
-         * non-zero, the emission of "notify" signals on `object` is
-         * stopped. The signals are queued until the freeze count is decreased
-         * to zero. Duplicate notifications are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
-         * object is frozen.
-         *
-         * This is necessary for accessors that modify multiple properties to prevent
-         * premature notification while the object is still being modified.
-         */
-        freeze_notify(): void;
-        /**
-         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
-         * @param key name of the key for that association
-         * @returns the data if found,          or `null` if no such data exists.
-         */
-        get_data(key: string): any | null;
-        /**
-         * Gets a property of an object.
-         *
-         * The value can be:
-         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
-         * - a GObject.Value initialized with the expected type of the property
-         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
-         *
-         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
-         *
-         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
-         * @param property_name The name of the property to get
-         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
-         */
-        get_property(property_name: string, value: GObject.Value | any): any;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        get_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Gets `n_properties` properties for an `object`.
-         * Obtained properties will be set to `values`. All properties must be valid.
-         * Warnings will be emitted and undefined behaviour may result if invalid
-         * properties are passed in.
-         * @param names the names of each property to get
-         * @param values the values of each property to get
-         */
-        getv(names: string[], values: (GObject.Value | any)[]): void;
-        /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns `true` if `object` has a floating reference
-         */
-        is_floating(): boolean;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param property_name the name of a property installed on the class of `object`.
-         */
-        notify(property_name: string): void;
-        /**
-         * Emits a "notify" signal for the property specified by `pspec` on `object`.
-         *
-         * This function omits the property name lookup, hence it is faster than
-         * `g_object_notify()`.
-         *
-         * One way to avoid using `g_object_notify()` from within the
-         * class that registered the properties, and using `g_object_notify_by_pspec()`
-         * instead, is to store the GParamSpec used with
-         * `g_object_class_install_property()` inside a static array, e.g.:
-         *
-         *
-         * ```c
-         *   typedef enum
-         *   {
-         *     PROP_FOO = 1,
-         *     PROP_LAST
-         *   } MyObjectProperty;
-         *
-         *   static GParamSpec *properties[PROP_LAST];
-         *
-         *   static void
-         *   my_object_class_init (MyObjectClass *klass)
-         *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
-         *                                              0, 100,
-         *                                              50,
-         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-         *     g_object_class_install_property (gobject_class,
-         *                                      PROP_FOO,
-         *                                      properties[PROP_FOO]);
-         *   }
-         * ```
-         *
-         *
-         * and then notify a change on the "foo" property with:
-         *
-         *
-         * ```c
-         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-         * ```
-         *
-         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
-         */
-        notify_by_pspec(pspec: GObject.ParamSpec): void;
-        /**
-         * Increases the reference count of `object`.
-         *
-         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC `typeof()`
-         * extension), so any casting the caller needs to do on the return type must be
-         * explicit.
-         * @returns the same `object`
-         */
-        ref(): GObject.Object;
-        /**
-         * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
-         *
-         * In other words, if the object is floating, then this call "assumes
-         * ownership" of the floating reference, converting it to a normal
-         * reference by clearing the floating flag while leaving the reference
-         * count unchanged.  If the object is not floating, then this call
-         * adds a new normal reference increasing the reference count by one.
-         *
-         * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for `g_object_ref()`.
-         * @returns `object`
-         */
-        ref_sink(): GObject.Object;
-        /**
-         * Releases all references to other objects. This can be used to break
-         * reference cycles.
-         *
-         * This function should only be called from object system implementations.
-         */
-        run_dispose(): void;
-        /**
-         * Each object carries around a table of associations from
-         * strings to pointers.  This function lets you set an association.
-         *
-         * If the object already had an association with that name,
-         * the old association will be destroyed.
-         *
-         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
-         * This means a copy of `key` is kept permanently (even after `object` has been
-         * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
-         * @param key name of the key
-         * @param data data to associate with that key
-         */
-        set_data(key: string, data?: any | null): void;
-        /**
-         * Sets a property on an object.
-         * @param property_name The name of the property to set
-         * @param value The value to set the property to
-         */
-        set_property(property_name: string, value: GObject.Value | any): void;
-        /**
-         * Remove a specified datum from the object's data associations,
-         * without invoking the association's destroy handler.
-         * @param key name of the key
-         * @returns the data if found, or `null`          if no such data exists.
-         */
-        steal_data(key: string): any | null;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()` and removes the `data` from object
-         * without invoking its `destroy()` function (if any was
-         * set).
-         * Usually, calling this function is only required to update
-         * user data pointers with a destroy notifier, for example:
-         *
-         * ```c
-         * void
-         * object_add_to_user_list (GObject     *object,
-         *                          const gchar *new_string)
-         * {
-         *   // the quark, naming the object data
-         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-         *   // retrieve the old string list
-         *   GList *list = g_object_steal_qdata (object, quark_string_list);
-         *
-         *   // prepend new string
-         *   list = g_list_prepend (list, g_strdup (new_string));
-         *   // this changed 'list', so we need to set it again
-         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-         * }
-         * static void
-         * free_string_list (gpointer data)
-         * {
-         *   GList *node, *list = data;
-         *
-         *   for (node = list; node; node = node->next)
-         *     g_free (node->data);
-         *   g_list_free (list);
-         * }
-         * ```
-         *
-         * Using `g_object_get_qdata()` in the above example, instead of
-         * `g_object_steal_qdata()` would have left the destroy function set,
-         * and thus the partial string list would have been freed upon
-         * `g_object_set_qdata_full()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        steal_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Reverts the effect of a previous call to
-         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
-         * and when it reaches zero, queued "notify" signals are emitted.
-         *
-         * Duplicate notifications for each property are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
-         * in which they have been queued.
-         *
-         * It is an error to call this function when the freeze count is zero.
-         */
-        thaw_notify(): void;
-        /**
-         * Decreases the reference count of `object`. When its reference count
-         * drops to 0, the object is finalized (i.e. its memory is freed).
-         *
-         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
-         * an instance variable of another object), it is recommended to clear the
-         * pointer to `null` rather than retain a dangling pointer to a potentially
-         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
-         */
-        unref(): void;
-        /**
-         * This function essentially limits the life time of the `closure` to
-         * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling `g_closure_invalidate()` on
-         * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
-         * added as marshal guards to the `closure`, to ensure that an extra
-         * reference count is held on `object` during invocation of the
-         * `closure`.  Usually, this function will be called on closures that
-         * use this `object` as closure data.
-         * @param closure {@link GObject.Closure} to watch
-         */
-        watch_closure(closure: GObject.Closure): void;
-        /**
-         * the `constructed` function is called by `g_object_new()` as the
-         *  final step of the object creation process.  At the point of the call, all
-         *  construction properties have been set on the object.  The purpose of this
-         *  call is to allow for object initialisation steps that can only be performed
-         *  after construction properties have been set.  `constructed` implementors
-         *  should chain up to the `constructed` call of their parent class to allow it
-         *  to complete its initialisation.
-         * @virtual
-         */
-        vfunc_constructed(): void;
-        /**
-         * emits property change notification for a bunch
-         *  of properties. Overriding `dispatch_properties_changed` should be rarely
-         *  needed.
-         * @param n_pspecs
-         * @param pspecs
-         * @virtual
-         */
-        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
-        /**
-         * the `dispose` function is supposed to drop all references to other
-         *  objects, but keep the instance otherwise intact, so that client method
-         *  invocations still work. It may be run multiple times (due to reference
-         *  loops). Before returning, `dispose` should chain up to the `dispose` method
-         *  of the parent class.
-         * @virtual
-         */
-        vfunc_dispose(): void;
-        /**
-         * instance finalization function, should finish the finalization of
-         *  the instance begun in `dispose` and chain up to the `finalize` method of the
-         *  parent class.
-         * @virtual
-         */
-        vfunc_finalize(): void;
-        /**
-         * the generic getter for all properties of this type. Should be
-         *  overridden for every type with properties.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param pspec
-         * @virtual
-         */
-        vfunc_notify(pspec: GObject.ParamSpec): void;
-        /**
-         * the generic setter for all properties of this type. Should be
-         *  overridden for every type with properties. If implementations of
-         *  `set_property` don't emit property change notification explicitly, this will
-         *  be done implicitly by the type system. However, if the notify signal is
-         *  emitted explicitly, the type system will not emit it a second time.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
-         * @param id Handler ID of the handler to be disconnected
-         */
-        disconnect(id: number): void;
-        /**
-         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
-         * @param properties Object containing the properties to set
-         */
-        set(properties: { [key: string]: any }): void;
-        /**
-         * Blocks a handler of an instance so it will not be called during any signal emissions
-         * @param id Handler ID of the handler to be blocked
-         */
-        block_signal_handler(id: number): void;
-        /**
-         * Unblocks a handler so it will be called again during any signal emissions
-         * @param id Handler ID of the handler to be unblocked
-         */
-        unblock_signal_handler(id: number): void;
-        /**
-         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
-         * @param detailedName Name of the signal to stop emission of
-         */
-        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace PDB {
@@ -20031,456 +16712,7 @@ export namespace Gimp {
          * @param entry_name The new name.
          * @returns TRUE on success.
          */
-        set_entry_name(entry_num: number, entry_name?: string | null): boolean;
-        /**
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`.
-         *
-         * Whenever the `source_property` is changed the `target_property` is
-         * updated using the same value. For instance:
-         *
-         *
-         * ```c
-         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-         * ```
-         *
-         *
-         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
-         * updated with the same value of the "active" property of the action {@link GObject.Object}
-         * instance.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well.
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call `g_object_unref()` on the returned
-         * {@link GObject.Binding} instance.
-         *
-         * Removing the binding by calling `g_object_unref()` on it must only be done if
-         * the binding, `source` and `target` are only used from a single thread and it
-         * is clear that both `source` and `target` outlive the binding. Especially it
-         * is not safe to rely on this if the binding, `source` or `target` can be
-         * finalized from different threads. Keep another reference to the binding and
-         * use `g_binding_unbind()` instead to be on the safe side.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-        ): GObject.Binding;
-        /**
-         * Complete version of `g_object_bind_property()`.
-         *
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`, allowing you to set the transformation functions to be used by
-         * the binding.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property_full(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
-        ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
-        /**
-         * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all `GInitiallyUnowneds` are created with a floating reference
-         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
-         */
-        force_floating(): void;
-        /**
-         * Increases the freeze count on `object`. If the freeze count is
-         * non-zero, the emission of "notify" signals on `object` is
-         * stopped. The signals are queued until the freeze count is decreased
-         * to zero. Duplicate notifications are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
-         * object is frozen.
-         *
-         * This is necessary for accessors that modify multiple properties to prevent
-         * premature notification while the object is still being modified.
-         */
-        freeze_notify(): void;
-        /**
-         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
-         * @param key name of the key for that association
-         * @returns the data if found,          or `null` if no such data exists.
-         */
-        get_data(key: string): any | null;
-        /**
-         * Gets a property of an object.
-         *
-         * The value can be:
-         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
-         * - a GObject.Value initialized with the expected type of the property
-         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
-         *
-         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
-         *
-         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
-         * @param property_name The name of the property to get
-         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
-         */
-        get_property(property_name: string, value: GObject.Value | any): any;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        get_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Gets `n_properties` properties for an `object`.
-         * Obtained properties will be set to `values`. All properties must be valid.
-         * Warnings will be emitted and undefined behaviour may result if invalid
-         * properties are passed in.
-         * @param names the names of each property to get
-         * @param values the values of each property to get
-         */
-        getv(names: string[], values: (GObject.Value | any)[]): void;
-        /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns `true` if `object` has a floating reference
-         */
-        is_floating(): boolean;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param property_name the name of a property installed on the class of `object`.
-         */
-        notify(property_name: string): void;
-        /**
-         * Emits a "notify" signal for the property specified by `pspec` on `object`.
-         *
-         * This function omits the property name lookup, hence it is faster than
-         * `g_object_notify()`.
-         *
-         * One way to avoid using `g_object_notify()` from within the
-         * class that registered the properties, and using `g_object_notify_by_pspec()`
-         * instead, is to store the GParamSpec used with
-         * `g_object_class_install_property()` inside a static array, e.g.:
-         *
-         *
-         * ```c
-         *   typedef enum
-         *   {
-         *     PROP_FOO = 1,
-         *     PROP_LAST
-         *   } MyObjectProperty;
-         *
-         *   static GParamSpec *properties[PROP_LAST];
-         *
-         *   static void
-         *   my_object_class_init (MyObjectClass *klass)
-         *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
-         *                                              0, 100,
-         *                                              50,
-         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-         *     g_object_class_install_property (gobject_class,
-         *                                      PROP_FOO,
-         *                                      properties[PROP_FOO]);
-         *   }
-         * ```
-         *
-         *
-         * and then notify a change on the "foo" property with:
-         *
-         *
-         * ```c
-         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-         * ```
-         *
-         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
-         */
-        notify_by_pspec(pspec: GObject.ParamSpec): void;
-        /**
-         * Increases the reference count of `object`.
-         *
-         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC `typeof()`
-         * extension), so any casting the caller needs to do on the return type must be
-         * explicit.
-         * @returns the same `object`
-         */
-        ref(): GObject.Object;
-        /**
-         * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
-         *
-         * In other words, if the object is floating, then this call "assumes
-         * ownership" of the floating reference, converting it to a normal
-         * reference by clearing the floating flag while leaving the reference
-         * count unchanged.  If the object is not floating, then this call
-         * adds a new normal reference increasing the reference count by one.
-         *
-         * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for `g_object_ref()`.
-         * @returns `object`
-         */
-        ref_sink(): GObject.Object;
-        /**
-         * Releases all references to other objects. This can be used to break
-         * reference cycles.
-         *
-         * This function should only be called from object system implementations.
-         */
-        run_dispose(): void;
-        /**
-         * Each object carries around a table of associations from
-         * strings to pointers.  This function lets you set an association.
-         *
-         * If the object already had an association with that name,
-         * the old association will be destroyed.
-         *
-         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
-         * This means a copy of `key` is kept permanently (even after `object` has been
-         * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
-         * @param key name of the key
-         * @param data data to associate with that key
-         */
-        set_data(key: string, data?: any | null): void;
-        /**
-         * Sets a property on an object.
-         * @param property_name The name of the property to set
-         * @param value The value to set the property to
-         */
-        set_property(property_name: string, value: GObject.Value | any): void;
-        /**
-         * Remove a specified datum from the object's data associations,
-         * without invoking the association's destroy handler.
-         * @param key name of the key
-         * @returns the data if found, or `null`          if no such data exists.
-         */
-        steal_data(key: string): any | null;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()` and removes the `data` from object
-         * without invoking its `destroy()` function (if any was
-         * set).
-         * Usually, calling this function is only required to update
-         * user data pointers with a destroy notifier, for example:
-         *
-         * ```c
-         * void
-         * object_add_to_user_list (GObject     *object,
-         *                          const gchar *new_string)
-         * {
-         *   // the quark, naming the object data
-         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-         *   // retrieve the old string list
-         *   GList *list = g_object_steal_qdata (object, quark_string_list);
-         *
-         *   // prepend new string
-         *   list = g_list_prepend (list, g_strdup (new_string));
-         *   // this changed 'list', so we need to set it again
-         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-         * }
-         * static void
-         * free_string_list (gpointer data)
-         * {
-         *   GList *node, *list = data;
-         *
-         *   for (node = list; node; node = node->next)
-         *     g_free (node->data);
-         *   g_list_free (list);
-         * }
-         * ```
-         *
-         * Using `g_object_get_qdata()` in the above example, instead of
-         * `g_object_steal_qdata()` would have left the destroy function set,
-         * and thus the partial string list would have been freed upon
-         * `g_object_set_qdata_full()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        steal_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Reverts the effect of a previous call to
-         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
-         * and when it reaches zero, queued "notify" signals are emitted.
-         *
-         * Duplicate notifications for each property are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
-         * in which they have been queued.
-         *
-         * It is an error to call this function when the freeze count is zero.
-         */
-        thaw_notify(): void;
-        /**
-         * Decreases the reference count of `object`. When its reference count
-         * drops to 0, the object is finalized (i.e. its memory is freed).
-         *
-         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
-         * an instance variable of another object), it is recommended to clear the
-         * pointer to `null` rather than retain a dangling pointer to a potentially
-         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
-         */
-        unref(): void;
-        /**
-         * This function essentially limits the life time of the `closure` to
-         * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling `g_closure_invalidate()` on
-         * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
-         * added as marshal guards to the `closure`, to ensure that an extra
-         * reference count is held on `object` during invocation of the
-         * `closure`.  Usually, this function will be called on closures that
-         * use this `object` as closure data.
-         * @param closure {@link GObject.Closure} to watch
-         */
-        watch_closure(closure: GObject.Closure): void;
-        /**
-         * the `constructed` function is called by `g_object_new()` as the
-         *  final step of the object creation process.  At the point of the call, all
-         *  construction properties have been set on the object.  The purpose of this
-         *  call is to allow for object initialisation steps that can only be performed
-         *  after construction properties have been set.  `constructed` implementors
-         *  should chain up to the `constructed` call of their parent class to allow it
-         *  to complete its initialisation.
-         * @virtual
-         */
-        vfunc_constructed(): void;
-        /**
-         * emits property change notification for a bunch
-         *  of properties. Overriding `dispatch_properties_changed` should be rarely
-         *  needed.
-         * @param n_pspecs
-         * @param pspecs
-         * @virtual
-         */
-        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
-        /**
-         * the `dispose` function is supposed to drop all references to other
-         *  objects, but keep the instance otherwise intact, so that client method
-         *  invocations still work. It may be run multiple times (due to reference
-         *  loops). Before returning, `dispose` should chain up to the `dispose` method
-         *  of the parent class.
-         * @virtual
-         */
-        vfunc_dispose(): void;
-        /**
-         * instance finalization function, should finish the finalization of
-         *  the instance begun in `dispose` and chain up to the `finalize` method of the
-         *  parent class.
-         * @virtual
-         */
-        vfunc_finalize(): void;
-        /**
-         * the generic getter for all properties of this type. Should be
-         *  overridden for every type with properties.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param pspec
-         * @virtual
-         */
-        vfunc_notify(pspec: GObject.ParamSpec): void;
-        /**
-         * the generic setter for all properties of this type. Should be
-         *  overridden for every type with properties. If implementations of
-         *  `set_property` don't emit property change notification explicitly, this will
-         *  be done implicitly by the type system. However, if the notify signal is
-         *  emitted explicitly, the type system will not emit it a second time.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
-         * @param id Handler ID of the handler to be disconnected
-         */
-        disconnect(id: number): void;
-        /**
-         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
-         * @param properties Object containing the properties to set
-         */
-        set(properties: { [key: string]: any }): void;
-        /**
-         * Blocks a handler of an instance so it will not be called during any signal emissions
-         * @param id Handler ID of the handler to be blocked
-         */
-        block_signal_handler(id: number): void;
-        /**
-         * Unblocks a handler so it will be called again during any signal emissions
-         * @param id Handler ID of the handler to be unblocked
-         */
-        unblock_signal_handler(id: number): void;
-        /**
-         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
-         * @param detailedName Name of the signal to stop emission of
-         */
-        stop_emission_by_name(detailedName: string): void;
+        set_entry_name(entry_num: number, entry_name: string | null): boolean;
     }
 
     namespace ParamBrush {
@@ -21330,7 +17562,7 @@ export namespace Gimp {
 
         _init(...args: any[]): void;
 
-        static ['new'](image: Image, name?: string | null): Path;
+        static ['new'](image: Image, name: string | null): Path;
 
         static new_from_text_layer(image: Image, layer: Layer): Path;
 
@@ -21718,455 +17950,6 @@ export namespace Gimp {
          * @returns TRUE on success.
          */
         get_info(): [boolean, number, number, number];
-        /**
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`.
-         *
-         * Whenever the `source_property` is changed the `target_property` is
-         * updated using the same value. For instance:
-         *
-         *
-         * ```c
-         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-         * ```
-         *
-         *
-         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
-         * updated with the same value of the "active" property of the action {@link GObject.Object}
-         * instance.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well.
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call `g_object_unref()` on the returned
-         * {@link GObject.Binding} instance.
-         *
-         * Removing the binding by calling `g_object_unref()` on it must only be done if
-         * the binding, `source` and `target` are only used from a single thread and it
-         * is clear that both `source` and `target` outlive the binding. Especially it
-         * is not safe to rely on this if the binding, `source` or `target` can be
-         * finalized from different threads. Keep another reference to the binding and
-         * use `g_binding_unbind()` instead to be on the safe side.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-        ): GObject.Binding;
-        /**
-         * Complete version of `g_object_bind_property()`.
-         *
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`, allowing you to set the transformation functions to be used by
-         * the binding.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property_full(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
-        ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
-        /**
-         * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all `GInitiallyUnowneds` are created with a floating reference
-         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
-         */
-        force_floating(): void;
-        /**
-         * Increases the freeze count on `object`. If the freeze count is
-         * non-zero, the emission of "notify" signals on `object` is
-         * stopped. The signals are queued until the freeze count is decreased
-         * to zero. Duplicate notifications are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
-         * object is frozen.
-         *
-         * This is necessary for accessors that modify multiple properties to prevent
-         * premature notification while the object is still being modified.
-         */
-        freeze_notify(): void;
-        /**
-         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
-         * @param key name of the key for that association
-         * @returns the data if found,          or `null` if no such data exists.
-         */
-        get_data(key: string): any | null;
-        /**
-         * Gets a property of an object.
-         *
-         * The value can be:
-         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
-         * - a GObject.Value initialized with the expected type of the property
-         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
-         *
-         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
-         *
-         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
-         * @param property_name The name of the property to get
-         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
-         */
-        get_property(property_name: string, value: GObject.Value | any): any;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        get_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Gets `n_properties` properties for an `object`.
-         * Obtained properties will be set to `values`. All properties must be valid.
-         * Warnings will be emitted and undefined behaviour may result if invalid
-         * properties are passed in.
-         * @param names the names of each property to get
-         * @param values the values of each property to get
-         */
-        getv(names: string[], values: (GObject.Value | any)[]): void;
-        /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns `true` if `object` has a floating reference
-         */
-        is_floating(): boolean;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param property_name the name of a property installed on the class of `object`.
-         */
-        notify(property_name: string): void;
-        /**
-         * Emits a "notify" signal for the property specified by `pspec` on `object`.
-         *
-         * This function omits the property name lookup, hence it is faster than
-         * `g_object_notify()`.
-         *
-         * One way to avoid using `g_object_notify()` from within the
-         * class that registered the properties, and using `g_object_notify_by_pspec()`
-         * instead, is to store the GParamSpec used with
-         * `g_object_class_install_property()` inside a static array, e.g.:
-         *
-         *
-         * ```c
-         *   typedef enum
-         *   {
-         *     PROP_FOO = 1,
-         *     PROP_LAST
-         *   } MyObjectProperty;
-         *
-         *   static GParamSpec *properties[PROP_LAST];
-         *
-         *   static void
-         *   my_object_class_init (MyObjectClass *klass)
-         *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
-         *                                              0, 100,
-         *                                              50,
-         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-         *     g_object_class_install_property (gobject_class,
-         *                                      PROP_FOO,
-         *                                      properties[PROP_FOO]);
-         *   }
-         * ```
-         *
-         *
-         * and then notify a change on the "foo" property with:
-         *
-         *
-         * ```c
-         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-         * ```
-         *
-         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
-         */
-        notify_by_pspec(pspec: GObject.ParamSpec): void;
-        /**
-         * Increases the reference count of `object`.
-         *
-         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC `typeof()`
-         * extension), so any casting the caller needs to do on the return type must be
-         * explicit.
-         * @returns the same `object`
-         */
-        ref(): GObject.Object;
-        /**
-         * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
-         *
-         * In other words, if the object is floating, then this call "assumes
-         * ownership" of the floating reference, converting it to a normal
-         * reference by clearing the floating flag while leaving the reference
-         * count unchanged.  If the object is not floating, then this call
-         * adds a new normal reference increasing the reference count by one.
-         *
-         * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for `g_object_ref()`.
-         * @returns `object`
-         */
-        ref_sink(): GObject.Object;
-        /**
-         * Releases all references to other objects. This can be used to break
-         * reference cycles.
-         *
-         * This function should only be called from object system implementations.
-         */
-        run_dispose(): void;
-        /**
-         * Each object carries around a table of associations from
-         * strings to pointers.  This function lets you set an association.
-         *
-         * If the object already had an association with that name,
-         * the old association will be destroyed.
-         *
-         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
-         * This means a copy of `key` is kept permanently (even after `object` has been
-         * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
-         * @param key name of the key
-         * @param data data to associate with that key
-         */
-        set_data(key: string, data?: any | null): void;
-        /**
-         * Sets a property on an object.
-         * @param property_name The name of the property to set
-         * @param value The value to set the property to
-         */
-        set_property(property_name: string, value: GObject.Value | any): void;
-        /**
-         * Remove a specified datum from the object's data associations,
-         * without invoking the association's destroy handler.
-         * @param key name of the key
-         * @returns the data if found, or `null`          if no such data exists.
-         */
-        steal_data(key: string): any | null;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()` and removes the `data` from object
-         * without invoking its `destroy()` function (if any was
-         * set).
-         * Usually, calling this function is only required to update
-         * user data pointers with a destroy notifier, for example:
-         *
-         * ```c
-         * void
-         * object_add_to_user_list (GObject     *object,
-         *                          const gchar *new_string)
-         * {
-         *   // the quark, naming the object data
-         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-         *   // retrieve the old string list
-         *   GList *list = g_object_steal_qdata (object, quark_string_list);
-         *
-         *   // prepend new string
-         *   list = g_list_prepend (list, g_strdup (new_string));
-         *   // this changed 'list', so we need to set it again
-         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-         * }
-         * static void
-         * free_string_list (gpointer data)
-         * {
-         *   GList *node, *list = data;
-         *
-         *   for (node = list; node; node = node->next)
-         *     g_free (node->data);
-         *   g_list_free (list);
-         * }
-         * ```
-         *
-         * Using `g_object_get_qdata()` in the above example, instead of
-         * `g_object_steal_qdata()` would have left the destroy function set,
-         * and thus the partial string list would have been freed upon
-         * `g_object_set_qdata_full()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        steal_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Reverts the effect of a previous call to
-         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
-         * and when it reaches zero, queued "notify" signals are emitted.
-         *
-         * Duplicate notifications for each property are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
-         * in which they have been queued.
-         *
-         * It is an error to call this function when the freeze count is zero.
-         */
-        thaw_notify(): void;
-        /**
-         * Decreases the reference count of `object`. When its reference count
-         * drops to 0, the object is finalized (i.e. its memory is freed).
-         *
-         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
-         * an instance variable of another object), it is recommended to clear the
-         * pointer to `null` rather than retain a dangling pointer to a potentially
-         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
-         */
-        unref(): void;
-        /**
-         * This function essentially limits the life time of the `closure` to
-         * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling `g_closure_invalidate()` on
-         * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
-         * added as marshal guards to the `closure`, to ensure that an extra
-         * reference count is held on `object` during invocation of the
-         * `closure`.  Usually, this function will be called on closures that
-         * use this `object` as closure data.
-         * @param closure {@link GObject.Closure} to watch
-         */
-        watch_closure(closure: GObject.Closure): void;
-        /**
-         * the `constructed` function is called by `g_object_new()` as the
-         *  final step of the object creation process.  At the point of the call, all
-         *  construction properties have been set on the object.  The purpose of this
-         *  call is to allow for object initialisation steps that can only be performed
-         *  after construction properties have been set.  `constructed` implementors
-         *  should chain up to the `constructed` call of their parent class to allow it
-         *  to complete its initialisation.
-         * @virtual
-         */
-        vfunc_constructed(): void;
-        /**
-         * emits property change notification for a bunch
-         *  of properties. Overriding `dispatch_properties_changed` should be rarely
-         *  needed.
-         * @param n_pspecs
-         * @param pspecs
-         * @virtual
-         */
-        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
-        /**
-         * the `dispose` function is supposed to drop all references to other
-         *  objects, but keep the instance otherwise intact, so that client method
-         *  invocations still work. It may be run multiple times (due to reference
-         *  loops). Before returning, `dispose` should chain up to the `dispose` method
-         *  of the parent class.
-         * @virtual
-         */
-        vfunc_dispose(): void;
-        /**
-         * instance finalization function, should finish the finalization of
-         *  the instance begun in `dispose` and chain up to the `finalize` method of the
-         *  parent class.
-         * @virtual
-         */
-        vfunc_finalize(): void;
-        /**
-         * the generic getter for all properties of this type. Should be
-         *  overridden for every type with properties.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param pspec
-         * @virtual
-         */
-        vfunc_notify(pspec: GObject.ParamSpec): void;
-        /**
-         * the generic setter for all properties of this type. Should be
-         *  overridden for every type with properties. If implementations of
-         *  `set_property` don't emit property change notification explicitly, this will
-         *  be done implicitly by the type system. However, if the notify signal is
-         *  emitted explicitly, the type system will not emit it a second time.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
-         * @param id Handler ID of the handler to be disconnected
-         */
-        disconnect(id: number): void;
-        /**
-         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
-         * @param properties Object containing the properties to set
-         */
-        set(properties: { [key: string]: any }): void;
-        /**
-         * Blocks a handler of an instance so it will not be called during any signal emissions
-         * @param id Handler ID of the handler to be blocked
-         */
-        block_signal_handler(id: number): void;
-        /**
-         * Unblocks a handler so it will be called again during any signal emissions
-         * @param id Handler ID of the handler to be unblocked
-         */
-        unblock_signal_handler(id: number): void;
-        /**
-         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
-         * @param detailedName Name of the signal to stop emission of
-         */
-        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace PlugIn {
@@ -22252,11 +18035,13 @@ export namespace Gimp {
         /**
          * The program name as usually found on argv[0]
          * @construct-only
+         * @default null
          */
         set program_name(val: string);
         /**
          * The program name as usually found on argv[0]
          * @construct-only
+         * @default null
          */
         set programName(val: string);
         /**
@@ -22604,6 +18389,7 @@ export namespace Gimp {
 
         /**
          * @construct-only
+         * @default null
          */
         get name(): string;
         /**
@@ -22616,10 +18402,12 @@ export namespace Gimp {
         get plugIn(): PlugIn;
         /**
          * @construct-only
+         * @default Gimp.PDBProcType.PLUGIN
          */
         get procedure_type(): PDBProcType;
         /**
          * @construct-only
+         * @default Gimp.PDBProcType.PLUGIN
          */
         get procedureType(): PDBProcType;
 
@@ -22643,7 +18431,7 @@ export namespace Gimp {
             name: string,
             proc_type: PDBProcType,
             run_func: RunFunc,
-            run_data_destroy?: GLib.DestroyNotify | null,
+            run_data_destroy: GLib.DestroyNotify | null,
         ): Procedure;
 
         // Signals
@@ -24509,7 +20297,7 @@ export namespace Gimp {
          * @param error an optional {@link GLib.Error}. This parameter should be set if             `status` is either #GIMP_PDB_EXECUTION_ERROR or             #GIMP_PDB_CALLING_ERROR.
          * @returns the expected {@link Gimp.ValueArray} as could be returned by a {@link RunFunc}.
          */
-        new_return_values(status: PDBStatusType, error?: GLib.Error | null): ValueArray;
+        new_return_values(status: PDBStatusType, error: GLib.Error | null): ValueArray;
         /**
          * Notify the main GIMP application that the persistent procedure has
          * been properly initialized and is ready to run.
@@ -24535,7 +20323,7 @@ export namespace Gimp {
          * @param config the `procedure`'s arguments.
          * @returns The `procedure`'s return values.
          */
-        run(config?: ProcedureConfig | null): ValueArray;
+        run(config: ProcedureConfig | null): ValueArray;
         /**
          * When the procedure's `run()` function exits, a {@link Gimp.Procedure}'s arguments
          * or auxiliary arguments can be automatically synced with a {@link Gimp.Parasite} of
@@ -24575,22 +20363,22 @@ export namespace Gimp {
          * @param help The `procedure`'s help text.
          * @param help_id The `procedure`'s help ID.
          */
-        set_documentation(blurb: string, help?: string | null, help_id?: string | null): void;
+        set_documentation(blurb: string, help: string | null, help_id: string | null): void;
         /**
          * Sets the icon for `procedure` to the contents of an image file.
          * @param file a {@link Gio.File} pointing to an image file.
          */
-        set_icon_file(file?: Gio.File | null): void;
+        set_icon_file(file: Gio.File | null): void;
         /**
          * Sets the icon for `procedure` to the icon referenced by `icon_name`.
          * @param icon_name an icon name.
          */
-        set_icon_name(icon_name?: string | null): void;
+        set_icon_name(icon_name: string | null): void;
         /**
          * Sets the icon for `procedure` to `pixbuf`.
          * @param pixbuf a {@link GdkPixbuf.Pixbuf}.
          */
-        set_icon_pixbuf(pixbuf?: GdkPixbuf.Pixbuf | null): void;
+        set_icon_pixbuf(pixbuf: GdkPixbuf.Pixbuf | null): void;
         /**
          * This is a comma separated list of image types, or actually drawable
          * types, that this procedure can deal with. Wildcards are possible
@@ -24818,6 +20606,7 @@ export namespace Gimp {
 
         /**
          * @construct-only
+         * @default 0
          */
         get id(): number;
 
@@ -25020,455 +20809,6 @@ export namespace Gimp {
          * @returns TRUE on success.
          */
         rename(new_name: string): boolean;
-        /**
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`.
-         *
-         * Whenever the `source_property` is changed the `target_property` is
-         * updated using the same value. For instance:
-         *
-         *
-         * ```c
-         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-         * ```
-         *
-         *
-         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
-         * updated with the same value of the "active" property of the action {@link GObject.Object}
-         * instance.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well.
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call `g_object_unref()` on the returned
-         * {@link GObject.Binding} instance.
-         *
-         * Removing the binding by calling `g_object_unref()` on it must only be done if
-         * the binding, `source` and `target` are only used from a single thread and it
-         * is clear that both `source` and `target` outlive the binding. Especially it
-         * is not safe to rely on this if the binding, `source` or `target` can be
-         * finalized from different threads. Keep another reference to the binding and
-         * use `g_binding_unbind()` instead to be on the safe side.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-        ): GObject.Binding;
-        /**
-         * Complete version of `g_object_bind_property()`.
-         *
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`, allowing you to set the transformation functions to be used by
-         * the binding.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property_full(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
-        ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
-        /**
-         * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all `GInitiallyUnowneds` are created with a floating reference
-         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
-         */
-        force_floating(): void;
-        /**
-         * Increases the freeze count on `object`. If the freeze count is
-         * non-zero, the emission of "notify" signals on `object` is
-         * stopped. The signals are queued until the freeze count is decreased
-         * to zero. Duplicate notifications are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
-         * object is frozen.
-         *
-         * This is necessary for accessors that modify multiple properties to prevent
-         * premature notification while the object is still being modified.
-         */
-        freeze_notify(): void;
-        /**
-         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
-         * @param key name of the key for that association
-         * @returns the data if found,          or `null` if no such data exists.
-         */
-        get_data(key: string): any | null;
-        /**
-         * Gets a property of an object.
-         *
-         * The value can be:
-         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
-         * - a GObject.Value initialized with the expected type of the property
-         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
-         *
-         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
-         *
-         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
-         * @param property_name The name of the property to get
-         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
-         */
-        get_property(property_name: string, value: GObject.Value | any): any;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        get_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Gets `n_properties` properties for an `object`.
-         * Obtained properties will be set to `values`. All properties must be valid.
-         * Warnings will be emitted and undefined behaviour may result if invalid
-         * properties are passed in.
-         * @param names the names of each property to get
-         * @param values the values of each property to get
-         */
-        getv(names: string[], values: (GObject.Value | any)[]): void;
-        /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns `true` if `object` has a floating reference
-         */
-        is_floating(): boolean;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param property_name the name of a property installed on the class of `object`.
-         */
-        notify(property_name: string): void;
-        /**
-         * Emits a "notify" signal for the property specified by `pspec` on `object`.
-         *
-         * This function omits the property name lookup, hence it is faster than
-         * `g_object_notify()`.
-         *
-         * One way to avoid using `g_object_notify()` from within the
-         * class that registered the properties, and using `g_object_notify_by_pspec()`
-         * instead, is to store the GParamSpec used with
-         * `g_object_class_install_property()` inside a static array, e.g.:
-         *
-         *
-         * ```c
-         *   typedef enum
-         *   {
-         *     PROP_FOO = 1,
-         *     PROP_LAST
-         *   } MyObjectProperty;
-         *
-         *   static GParamSpec *properties[PROP_LAST];
-         *
-         *   static void
-         *   my_object_class_init (MyObjectClass *klass)
-         *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
-         *                                              0, 100,
-         *                                              50,
-         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-         *     g_object_class_install_property (gobject_class,
-         *                                      PROP_FOO,
-         *                                      properties[PROP_FOO]);
-         *   }
-         * ```
-         *
-         *
-         * and then notify a change on the "foo" property with:
-         *
-         *
-         * ```c
-         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-         * ```
-         *
-         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
-         */
-        notify_by_pspec(pspec: GObject.ParamSpec): void;
-        /**
-         * Increases the reference count of `object`.
-         *
-         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC `typeof()`
-         * extension), so any casting the caller needs to do on the return type must be
-         * explicit.
-         * @returns the same `object`
-         */
-        ref(): GObject.Object;
-        /**
-         * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
-         *
-         * In other words, if the object is floating, then this call "assumes
-         * ownership" of the floating reference, converting it to a normal
-         * reference by clearing the floating flag while leaving the reference
-         * count unchanged.  If the object is not floating, then this call
-         * adds a new normal reference increasing the reference count by one.
-         *
-         * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for `g_object_ref()`.
-         * @returns `object`
-         */
-        ref_sink(): GObject.Object;
-        /**
-         * Releases all references to other objects. This can be used to break
-         * reference cycles.
-         *
-         * This function should only be called from object system implementations.
-         */
-        run_dispose(): void;
-        /**
-         * Each object carries around a table of associations from
-         * strings to pointers.  This function lets you set an association.
-         *
-         * If the object already had an association with that name,
-         * the old association will be destroyed.
-         *
-         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
-         * This means a copy of `key` is kept permanently (even after `object` has been
-         * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
-         * @param key name of the key
-         * @param data data to associate with that key
-         */
-        set_data(key: string, data?: any | null): void;
-        /**
-         * Sets a property on an object.
-         * @param property_name The name of the property to set
-         * @param value The value to set the property to
-         */
-        set_property(property_name: string, value: GObject.Value | any): void;
-        /**
-         * Remove a specified datum from the object's data associations,
-         * without invoking the association's destroy handler.
-         * @param key name of the key
-         * @returns the data if found, or `null`          if no such data exists.
-         */
-        steal_data(key: string): any | null;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()` and removes the `data` from object
-         * without invoking its `destroy()` function (if any was
-         * set).
-         * Usually, calling this function is only required to update
-         * user data pointers with a destroy notifier, for example:
-         *
-         * ```c
-         * void
-         * object_add_to_user_list (GObject     *object,
-         *                          const gchar *new_string)
-         * {
-         *   // the quark, naming the object data
-         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-         *   // retrieve the old string list
-         *   GList *list = g_object_steal_qdata (object, quark_string_list);
-         *
-         *   // prepend new string
-         *   list = g_list_prepend (list, g_strdup (new_string));
-         *   // this changed 'list', so we need to set it again
-         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-         * }
-         * static void
-         * free_string_list (gpointer data)
-         * {
-         *   GList *node, *list = data;
-         *
-         *   for (node = list; node; node = node->next)
-         *     g_free (node->data);
-         *   g_list_free (list);
-         * }
-         * ```
-         *
-         * Using `g_object_get_qdata()` in the above example, instead of
-         * `g_object_steal_qdata()` would have left the destroy function set,
-         * and thus the partial string list would have been freed upon
-         * `g_object_set_qdata_full()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        steal_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Reverts the effect of a previous call to
-         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
-         * and when it reaches zero, queued "notify" signals are emitted.
-         *
-         * Duplicate notifications for each property are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
-         * in which they have been queued.
-         *
-         * It is an error to call this function when the freeze count is zero.
-         */
-        thaw_notify(): void;
-        /**
-         * Decreases the reference count of `object`. When its reference count
-         * drops to 0, the object is finalized (i.e. its memory is freed).
-         *
-         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
-         * an instance variable of another object), it is recommended to clear the
-         * pointer to `null` rather than retain a dangling pointer to a potentially
-         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
-         */
-        unref(): void;
-        /**
-         * This function essentially limits the life time of the `closure` to
-         * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling `g_closure_invalidate()` on
-         * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
-         * added as marshal guards to the `closure`, to ensure that an extra
-         * reference count is held on `object` during invocation of the
-         * `closure`.  Usually, this function will be called on closures that
-         * use this `object` as closure data.
-         * @param closure {@link GObject.Closure} to watch
-         */
-        watch_closure(closure: GObject.Closure): void;
-        /**
-         * the `constructed` function is called by `g_object_new()` as the
-         *  final step of the object creation process.  At the point of the call, all
-         *  construction properties have been set on the object.  The purpose of this
-         *  call is to allow for object initialisation steps that can only be performed
-         *  after construction properties have been set.  `constructed` implementors
-         *  should chain up to the `constructed` call of their parent class to allow it
-         *  to complete its initialisation.
-         * @virtual
-         */
-        vfunc_constructed(): void;
-        /**
-         * emits property change notification for a bunch
-         *  of properties. Overriding `dispatch_properties_changed` should be rarely
-         *  needed.
-         * @param n_pspecs
-         * @param pspecs
-         * @virtual
-         */
-        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
-        /**
-         * the `dispose` function is supposed to drop all references to other
-         *  objects, but keep the instance otherwise intact, so that client method
-         *  invocations still work. It may be run multiple times (due to reference
-         *  loops). Before returning, `dispose` should chain up to the `dispose` method
-         *  of the parent class.
-         * @virtual
-         */
-        vfunc_dispose(): void;
-        /**
-         * instance finalization function, should finish the finalization of
-         *  the instance begun in `dispose` and chain up to the `finalize` method of the
-         *  parent class.
-         * @virtual
-         */
-        vfunc_finalize(): void;
-        /**
-         * the generic getter for all properties of this type. Should be
-         *  overridden for every type with properties.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param pspec
-         * @virtual
-         */
-        vfunc_notify(pspec: GObject.ParamSpec): void;
-        /**
-         * the generic setter for all properties of this type. Should be
-         *  overridden for every type with properties. If implementations of
-         *  `set_property` don't emit property change notification explicitly, this will
-         *  be done implicitly by the type system. However, if the notify signal is
-         *  emitted explicitly, the type system will not emit it a second time.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
-         * @param id Handler ID of the handler to be disconnected
-         */
-        disconnect(id: number): void;
-        /**
-         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
-         * @param properties Object containing the properties to set
-         */
-        set(properties: { [key: string]: any }): void;
-        /**
-         * Blocks a handler of an instance so it will not be called during any signal emissions
-         * @param id Handler ID of the handler to be blocked
-         */
-        block_signal_handler(id: number): void;
-        /**
-         * Unblocks a handler so it will be called again during any signal emissions
-         * @param id Handler ID of the handler to be unblocked
-         */
-        unblock_signal_handler(id: number): void;
-        /**
-         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
-         * @param detailedName Name of the signal to stop emission of
-         */
-        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace Selection {
@@ -26203,754 +21543,6 @@ export namespace Gimp {
          * @returns TRUE on success.
          */
         restore(): boolean;
-        /**
-         * This procedure appends the specified drawable effect at the top of the
-         * effect list of `drawable`.
-         *
-         * The `drawable` argument must be the same as the one used when you
-         * created the effect with {@link Gimp.DrawableFilter.new}.
-         * Some effects may be slower than others to render. In order to
-         * minimize processing time, it is preferred to customize the
-         * operation's arguments as received with
-         * {@link Gimp.DrawableFilter.get_config} before adding the effect.
-         * @param filter The drawable filter to append.
-         */
-        append_filter(filter: DrawableFilter): void;
-        /**
-         * Modify brightness/contrast in the specified drawable.
-         *
-         * This procedures allows the brightness and contrast of the specified
-         * drawable to be modified. Both 'brightness' and 'contrast' parameters
-         * are defined between -1.0 and 1.0.
-         * @param brightness Brightness adjustment.
-         * @param contrast Contrast adjustment.
-         * @returns TRUE on success.
-         */
-        brightness_contrast(brightness: number, contrast: number): boolean;
-        /**
-         * Modify the color balance of the specified drawable.
-         *
-         * Modify the color balance of the specified drawable. There are three
-         * axis which can be modified: cyan-red, magenta-green, and
-         * yellow-blue. Negative values increase the amount of the former,
-         * positive values increase the amount of the latter. Color balance can
-         * be controlled with the 'transfer_mode' setting, which allows
-         * shadows, mid-tones, and highlights in an image to be affected
-         * differently. The 'preserve-lum' parameter, if TRUE, ensures that the
-         * luminosity of each pixel remains fixed.
-         * @param transfer_mode Transfer mode.
-         * @param preserve_lum Preserve luminosity values at each pixel.
-         * @param cyan_red Cyan-Red color balance.
-         * @param magenta_green Magenta-Green color balance.
-         * @param yellow_blue Yellow-Blue color balance.
-         * @returns TRUE on success.
-         */
-        color_balance(
-            transfer_mode: TransferMode,
-            preserve_lum: boolean,
-            cyan_red: number,
-            magenta_green: number,
-            yellow_blue: number,
-        ): boolean;
-        /**
-         * Render the drawable as a grayscale image seen through a colored
-         * glass.
-         *
-         * Desaturates the drawable, then tints it with the specified color.
-         * This tool is only valid on RGB color images. It will not operate on
-         * grayscale drawables.
-         * @param hue Hue in degrees.
-         * @param saturation Saturation in percent.
-         * @param lightness Lightness in percent.
-         * @returns TRUE on success.
-         */
-        colorize_hsl(hue: number, saturation: number, lightness: number): boolean;
-        /**
-         * Modifies the intensity curve(s) for specified drawable.
-         *
-         * Modifies the intensity mapping for one channel in the specified
-         * drawable. The channel can be either an intensity component, or the
-         * value. The 'values' parameter is an array of doubles which
-         * explicitly defines how each pixel value in the drawable will be
-         * modified. Use the `gimp_drawable_curves_spline()` function to modify
-         * intensity levels with Catmull Rom splines.
-         * @param channel The channel to modify.
-         * @param values The explicit curve.
-         * @returns TRUE on success.
-         */
-        curves_explicit(channel: HistogramChannel, values: number[]): boolean;
-        /**
-         * Modifies the intensity curve(s) for specified drawable.
-         *
-         * Modifies the intensity mapping for one channel in the specified
-         * `drawable`. The `channel` can be either an intensity component, or the
-         * value.
-         *
-         * The `points` parameter is an array of doubles in the range `[0, 1]`
-         * which define a set of control points which describe a Catmull Rom
-         * spline which yields the final intensity curve. Since every point has
-         * 2 coordinates, the size of `points` (`num_coordinates`) must be a
-         * multiple of 2, equal or bigger than 4 (i.e. a minimum of 2 points).
-         *
-         * Use {@link Gimp.Drawable.curves_explicit} to explicitly modify
-         * intensity levels.
-         * @param channel The channel to modify.
-         * @param points The spline control points: { cp1.x, cp1.y, cp2.x, cp2.y, ... }.
-         * @returns TRUE on success.
-         */
-        curves_spline(channel: HistogramChannel, points: number[]): boolean;
-        /**
-         * Desaturate the contents of the specified drawable, with the
-         * specified formula.
-         *
-         * This procedure desaturates the contents of the specified drawable,
-         * with the specified formula. This procedure only works on drawables
-         * of type RGB color.
-         * @param desaturate_mode The formula to use to desaturate.
-         * @returns TRUE on success.
-         */
-        desaturate(desaturate_mode: DesaturateMode): boolean;
-        /**
-         * Fill the area by a seed fill starting at the specified coordinates.
-         *
-         * This procedure does a seed fill at the specified coordinates, using
-         * various parameters from the current context.
-         * In the case of merged sampling, the x and y coordinates are relative
-         * to the image's origin; otherwise, they are relative to the
-         * drawable's origin.
-         *
-         * This procedure is affected by the following context setters:
-         * `gimp_context_set_opacity()`, `gimp_context_set_paint_mode()`,
-         * `gimp_context_set_foreground()`, `gimp_context_set_background()`,
-         * `gimp_context_set_pattern()`, `gimp_context_set_sample_threshold()`,
-         * `gimp_context_set_sample_merged()`,
-         * `gimp_context_set_sample_criterion()`,
-         * `gimp_context_set_diagonal_neighbors()`, `gimp_context_set_antialias()`.
-         * @param fill_type The type of fill.
-         * @param x The x coordinate of this bucket fill's application.
-         * @param y The y coordinate of this bucket fill's application.
-         * @returns TRUE on success.
-         */
-        edit_bucket_fill(fill_type: FillType, x: number, y: number): boolean;
-        /**
-         * Clear selected area of drawable.
-         *
-         * This procedure clears the specified drawable. If the drawable has an
-         * alpha channel, the cleared pixels will become transparent. If the
-         * drawable does not have an alpha channel, cleared pixels will be set
-         * to the background color. This procedure only affects regions within
-         * a selection if there is a selection active.
-         *
-         * This procedure is affected by the following context setters:
-         * `gimp_context_set_background()`.
-         * @returns TRUE on success.
-         */
-        edit_clear(): boolean;
-        /**
-         * Fill selected area of drawable.
-         *
-         * This procedure fills the specified drawable according to fill mode.
-         * This procedure only affects regions within a selection if there is a
-         * selection active. If you want to fill the whole drawable, regardless
-         * of the selection, use `gimp_drawable_fill()`.
-         *
-         * This procedure is affected by the following context setters:
-         * `gimp_context_set_opacity()`, `gimp_context_set_paint_mode()`,
-         * `gimp_context_set_foreground()`, `gimp_context_set_background()`,
-         * `gimp_context_set_pattern()`.
-         * @param fill_type The type of fill.
-         * @returns TRUE on success.
-         */
-        edit_fill(fill_type: FillType): boolean;
-        /**
-         * Draw a gradient between the starting and ending coordinates with the
-         * specified gradient type.
-         *
-         * This tool requires information on the gradient type. It creates the
-         * specified variety of gradient using the starting and ending
-         * coordinates as defined for each gradient type. For shapeburst
-         * gradient types, the context's distance metric is also relevant and
-         * can be updated with `gimp_context_set_distance_metric()`.
-         *
-         * This procedure is affected by the following context setters:
-         * `gimp_context_set_opacity()`, `gimp_context_set_paint_mode()`,
-         * `gimp_context_set_foreground()`, `gimp_context_set_background()`,
-         * `gimp_context_set_gradient()` and all gradient property settings,
-         * `gimp_context_set_distance_metric()`.
-         * @param gradient_type The type of gradient.
-         * @param offset Offset relates to the starting and ending coordinates specified for the blend. This parameter is mode dependent.
-         * @param supersample Do adaptive supersampling.
-         * @param supersample_max_depth Maximum recursion levels for supersampling.
-         * @param supersample_threshold Supersampling threshold.
-         * @param dither Use dithering to reduce banding.
-         * @param x1 The x coordinate of this gradient's starting point.
-         * @param y1 The y coordinate of this gradient's starting point.
-         * @param x2 The x coordinate of this gradient's ending point.
-         * @param y2 The y coordinate of this gradient's ending point.
-         * @returns TRUE on success.
-         */
-        edit_gradient_fill(
-            gradient_type: GradientType,
-            offset: number,
-            supersample: boolean,
-            supersample_max_depth: number,
-            supersample_threshold: number,
-            dither: boolean,
-            x1: number,
-            y1: number,
-            x2: number,
-            y2: number,
-        ): boolean;
-        /**
-         * Stroke the specified item
-         *
-         * This procedure strokes the specified item, painting along its
-         * outline (e.g. along a path, or along a channel's boundary), with the
-         * active paint method and brush, or using a plain line with
-         * configurable properties.
-         *
-         * This procedure is affected by the following context setters:
-         * `gimp_context_set_opacity()`, `gimp_context_set_paint_mode()`,
-         * `gimp_context_set_paint_method()`, `gimp_context_set_stroke_method()`,
-         * `gimp_context_set_foreground()`, `gimp_context_set_brush()` and all
-         * brush property settings, `gimp_context_set_gradient()` and all
-         * gradient property settings, `gimp_context_set_line_width()` and all
-         * line property settings, `gimp_context_set_antialias()`.
-         * @param item The item to stroke.
-         * @returns TRUE on success.
-         */
-        edit_stroke_item(item: Item): boolean;
-        /**
-         * Stroke the current selection
-         *
-         * This procedure strokes the current selection, painting along the
-         * selection boundary with the active paint method and brush, or using
-         * a plain line with configurable properties. The paint is applied to
-         * the specified drawable regardless of the active selection.
-         *
-         * This procedure is affected by the following context setters:
-         * `gimp_context_set_opacity()`, `gimp_context_set_paint_mode()`,
-         * `gimp_context_set_paint_method()`, `gimp_context_set_stroke_method()`,
-         * `gimp_context_set_foreground()`, `gimp_context_set_brush()` and all
-         * brush property settings, `gimp_context_set_gradient()` and all
-         * gradient property settings, `gimp_context_set_line_width()` and all
-         * line property settings, `gimp_context_set_antialias()`.
-         * @returns TRUE on success.
-         */
-        edit_stroke_selection(): boolean;
-        /**
-         * Equalize the contents of the specified drawable.
-         *
-         * This procedure equalizes the contents of the specified drawable.
-         * Each intensity channel is equalized independently. The equalized
-         * intensity is given as inten' = (255 - inten). The 'mask_only' option
-         * specifies whether to adjust only the area of the image within the
-         * selection bounds, or the entire image based on the histogram of the
-         * selected area. If there is no selection, the entire image is
-         * adjusted based on the histogram for the entire image.
-         * @param mask_only Equalization option.
-         * @returns TRUE on success.
-         */
-        equalize(mask_only: boolean): boolean;
-        /**
-         * Extract a color model component.
-         *
-         * Extract a color model component.
-         * @param component Component (RGB Red (0), RGB Green (1), RGB Blue (2), Hue (3), HSV Saturation (4), HSV Value (5), HSL Saturation (6), HSL Lightness (7), CMYK Cyan (8), CMYK Magenta (9), CMYK Yellow (10), CMYK Key (11), Y'CbCr Y' (12), Y'CbCr Cb (13), Y'CbCr Cr (14), LAB L (15), LAB A (16), LAB B (17), LCH C(ab) (18), LCH H(ab) (19), Alpha (20)).
-         * @param invert Invert the extracted component.
-         * @param linear Use linear output instead of gamma corrected.
-         * @returns TRUE on success.
-         */
-        extract_component(component: number, invert: boolean, linear: boolean): boolean;
-        /**
-         * Fill the drawable with the specified fill mode.
-         *
-         * This procedure fills the drawable. If the fill mode is foreground
-         * the current foreground color is used. If the fill mode is
-         * background, the current background color is used. If the fill type
-         * is white, then white is used. Transparent fill only affects layers
-         * with an alpha channel, in which case the alpha channel is set to
-         * transparent. If the drawable has no alpha channel, it is filled to
-         * white. No fill leaves the drawable's contents undefined.
-         * This procedure is unlike `gimp_drawable_edit_fill()` or the bucket
-         * fill tool because it fills regardless of a selection. Its main
-         * purpose is to fill a newly created drawable before adding it to the
-         * image. This operation cannot be undone.
-         * @param fill_type The type of fill.
-         * @returns TRUE on success.
-         */
-        fill(fill_type: FillType): boolean;
-        /**
-         * Extract the foreground of a drawable using a given trimap.
-         *
-         * This procedure extracts the foreground from `drawable` using `mask` as
-         * a trimap. Set white as foreground, black as background and uncertain
-         * pixels as any other value, for the tri-map.
-         * @param mode The algorithm to use.
-         * @param mask Tri-Map.
-         * @returns TRUE on success.
-         */
-        foreground_extract(mode: ForegroundExtractMode, mask: Drawable): boolean;
-        /**
-         * Free the specified drawable's shadow data (if it exists).
-         *
-         * This procedure is intended as a memory saving device. If any shadow
-         * memory has been allocated, it will be freed automatically when the
-         * drawable is removed from the image, or when the plug-in procedure
-         * which allocated it returns.
-         * @returns TRUE on success.
-         */
-        free_shadow(): boolean;
-        /**
-         * Returns the bytes per pixel.
-         *
-         * This procedure returns the number of bytes per pixel.
-         * @returns Bytes per pixel.
-         */
-        get_bpp(): number;
-        /**
-         * Returns a {@link Gegl.Buffer} of a specified drawable. The buffer can be used
-         * like any other GEGL buffer. Its data will we synced back with the core
-         * drawable when the buffer gets destroyed, or when `gegl_buffer_flush()`
-         * is called.
-         * @returns The {@link Gegl.Buffer}. See Also: `gimp_drawable_get_shadow_buffer()`
-         */
-        get_buffer(): Gegl.Buffer;
-        /**
-         * Returns the list of filters applied to the drawable.
-         *
-         * This procedure returns the list of filters which are currently
-         * applied non-destructively to `drawable`. The order of filters is from
-         * topmost to bottommost.
-         * @returns The list of filters on the drawable.          The returned value must be freed with `g_free()`.
-         */
-        get_filters(): DrawableFilter[];
-        /**
-         * Returns the {@link Babl.Object} format of the drawable.
-         * @returns The {@link Babl.Object} format.
-         */
-        get_format(): Babl.Object;
-        /**
-         * Returns the height of the drawable.
-         *
-         * This procedure returns the specified drawable's height in pixels.
-         * @returns Height of drawable.
-         */
-        get_height(): number;
-        /**
-         * Returns the offsets for the drawable.
-         *
-         * This procedure returns the specified drawable's offsets. This only
-         * makes sense if the drawable is a layer since channels are anchored.
-         * The offsets of a channel will be returned as 0.
-         * @returns TRUE on success.
-         */
-        get_offsets(): [boolean, number, number];
-        /**
-         * Gets the value of the pixel at the specified coordinates.
-         *
-         * This procedure gets the pixel value at the specified coordinates.
-         * @param x_coord The x coordinate.
-         * @param y_coord The y coordinate.
-         * @returns The pixel color.
-         */
-        get_pixel(x_coord: number, y_coord: number): Gegl.Color;
-        /**
-         * Returns a {@link Gegl.Buffer} of a specified drawable's shadow tiles. The
-         * buffer can be used like any other GEGL buffer. Its data will we
-         * synced back with the core drawable's shadow tiles when the buffer
-         * gets destroyed, or when `gegl_buffer_flush()` is called.
-         * @returns The {@link Gegl.Buffer}.
-         */
-        get_shadow_buffer(): Gegl.Buffer;
-        /**
-         * Retrieves a thumbnail pixbuf for the drawable identified by
-         * `drawable`. The thumbnail will be not larger than the requested
-         * size.
-         * @param src_x the x coordinate of the area
-         * @param src_y the y coordinate of the area
-         * @param src_width the width of the area
-         * @param src_height the height of the area
-         * @param dest_width the requested thumbnail width  (<= 1024 pixels)
-         * @param dest_height the requested thumbnail height (<= 1024 pixels)
-         * @param alpha how to handle an alpha channel
-         * @returns a new {@link GdkPixbuf.Pixbuf}
-         */
-        get_sub_thumbnail(
-            src_x: number,
-            src_y: number,
-            src_width: number,
-            src_height: number,
-            dest_width: number,
-            dest_height: number,
-            alpha: PixbufTransparency,
-        ): GdkPixbuf.Pixbuf;
-        /**
-         * Retrieves thumbnail data for the drawable identified by `drawable`.
-         * The thumbnail will be not larger than the requested size.
-         * @param src_x the x coordinate of the area
-         * @param src_y the y coordinate of the area
-         * @param src_width the width of the area
-         * @param src_height the height of the area
-         * @param dest_width the requested thumbnail width  (<= 1024 pixels)
-         * @param dest_height the requested thumbnail height (<= 1024 pixels)
-         * @returns thumbnail data or `null` if          `drawable` is invalid.
-         */
-        get_sub_thumbnail_data(
-            src_x: number,
-            src_y: number,
-            src_width: number,
-            src_height: number,
-            dest_width: number,
-            dest_height: number,
-        ): [GLib.Bytes, number, number, number];
-        /**
-         * Retrieves a thumbnail pixbuf for the drawable identified by
-         * `drawable`. The thumbnail will be not larger than the requested
-         * size.
-         * @param width the requested thumbnail width  (<= 1024 pixels)
-         * @param height the requested thumbnail height (<= 1024 pixels)
-         * @param alpha how to handle an alpha channel
-         * @returns a new {@link GdkPixbuf.Pixbuf}
-         */
-        get_thumbnail(width: number, height: number, alpha: PixbufTransparency): GdkPixbuf.Pixbuf;
-        /**
-         * Retrieves thumbnail data for the drawable identified by `drawable`.
-         * The thumbnail will be not larger than the requested size.
-         * @param width the requested thumbnail width  (<= 1024 pixels)
-         * @param height the requested thumbnail height (<= 1024 pixels)
-         * @returns thumbnail data or `null` if          `drawable` is invalid.
-         */
-        get_thumbnail_data(width: number, height: number): [GLib.Bytes | null, number, number, number];
-        /**
-         * Returns the {@link Babl.Object} thumbnail format of the drawable.
-         * @returns The {@link Babl.Object} thumbnail format.
-         */
-        get_thumbnail_format(): Babl.Object;
-        /**
-         * Returns the width of the drawable.
-         *
-         * This procedure returns the specified drawable's width in pixels.
-         * @returns Width of drawable.
-         */
-        get_width(): number;
-        /**
-         * Returns TRUE if the drawable has an alpha channel.
-         *
-         * This procedure returns whether the specified drawable has an alpha
-         * channel. This can only be true for layers, and the associated type
-         * will be one of: { RGBA , GRAYA, INDEXEDA }.
-         * @returns Does the drawable have an alpha channel?
-         */
-        has_alpha(): boolean;
-        /**
-         * Returns information on the intensity histogram for the specified
-         * drawable.
-         *
-         * This tool makes it possible to gather information about the
-         * intensity histogram of a drawable. A channel to examine is first
-         * specified. This can be either value, red, green, or blue, depending
-         * on whether the drawable is of type color or grayscale. Second, a
-         * range of intensities are specified. The `gimp_drawable_histogram()`
-         * function returns statistics based on the pixels in the drawable that
-         * fall under this range of values. Mean, standard deviation, median,
-         * number of pixels, and percentile are all returned. Additionally, the
-         * total count of pixels in the image is returned. Counts of pixels are
-         * weighted by any associated alpha values and by the current selection
-         * mask. That is, pixels that lie outside an active selection mask will
-         * not be counted. Similarly, pixels with transparent alpha values will
-         * not be counted. The returned mean, std_dev and median are in the
-         * range (0..255) for 8-bit images or if the plug-in is not
-         * precision-aware, and in the range (0.0..1.0) otherwise.
-         * @param channel The channel to query.
-         * @param start_range Start of the intensity measurement range.
-         * @param end_range End of the intensity measurement range.
-         * @returns TRUE on success.
-         */
-        histogram(
-            channel: HistogramChannel,
-            start_range: number,
-            end_range: number,
-        ): [boolean, number, number, number, number, number, number];
-        /**
-         * Modify hue, lightness, and saturation in the specified drawable.
-         *
-         * This procedure allows the hue, lightness, and saturation in the
-         * specified drawable to be modified. The 'hue-range' parameter
-         * provides the capability to limit range of affected hues. The
-         * 'overlap' parameter provides blending into neighboring hue channels
-         * when rendering.
-         * @param hue_range Range of affected hues.
-         * @param hue_offset Hue offset in degrees.
-         * @param lightness Lightness modification.
-         * @param saturation Saturation modification.
-         * @param overlap Overlap other hue channels.
-         * @returns TRUE on success.
-         */
-        hue_saturation(
-            hue_range: HueRange,
-            hue_offset: number,
-            lightness: number,
-            saturation: number,
-            overlap: number,
-        ): boolean;
-        /**
-         * Invert the contents of the specified drawable.
-         *
-         * This procedure inverts the contents of the specified drawable. Each
-         * intensity channel is inverted independently. The inverted intensity
-         * is given as inten' = (255 - inten). If 'linear' is TRUE, the
-         * drawable is inverted in linear space.
-         * @param linear Whether to invert in linear space.
-         * @returns TRUE on success.
-         */
-        invert(linear: boolean): boolean;
-        /**
-         * Returns whether the drawable is a grayscale type.
-         *
-         * This procedure returns TRUE if the specified drawable is of type {
-         * Gray, GrayA }.
-         * @returns TRUE if the drawable is a grayscale type.
-         */
-        is_gray(): boolean;
-        /**
-         * Returns whether the drawable is an indexed type.
-         *
-         * This procedure returns TRUE if the specified drawable is of type {
-         * Indexed, IndexedA }.
-         * @returns TRUE if the drawable is an indexed type.
-         */
-        is_indexed(): boolean;
-        /**
-         * Returns whether the drawable is an RGB type.
-         *
-         * This procedure returns TRUE if the specified drawable is of type {
-         * RGB, RGBA }.
-         * @returns TRUE if the drawable is an RGB type.
-         */
-        is_rgb(): boolean;
-        /**
-         * Modifies intensity levels in the specified drawable.
-         *
-         * This tool allows intensity levels in the specified drawable to be
-         * remapped according to a set of parameters. The low/high input levels
-         * specify an initial mapping from the source intensities. The gamma
-         * value determines how intensities between the low and high input
-         * intensities are interpolated. A gamma value of 1.0 results in a
-         * linear interpolation. Higher gamma values result in more high-level
-         * intensities. Lower gamma values result in more low-level
-         * intensities. The low/high output levels constrain the final
-         * intensity mapping--that is, no final intensity will be lower than
-         * the low output level and no final intensity will be higher than the
-         * high output level. This tool is only valid on RGB color and
-         * grayscale images.
-         * @param channel The channel to modify.
-         * @param low_input Intensity of lowest input.
-         * @param high_input Intensity of highest input.
-         * @param clamp_input Clamp input values before applying output levels.
-         * @param gamma Gamma adjustment factor.
-         * @param low_output Intensity of lowest output.
-         * @param high_output Intensity of highest output.
-         * @param clamp_output Clamp final output values.
-         * @returns TRUE on success.
-         */
-        levels(
-            channel: HistogramChannel,
-            low_input: number,
-            high_input: number,
-            clamp_input: boolean,
-            gamma: number,
-            low_output: number,
-            high_output: number,
-            clamp_output: boolean,
-        ): boolean;
-        /**
-         * Automatically modifies intensity levels in the specified drawable.
-         *
-         * This procedure allows intensity levels in the specified drawable to
-         * be remapped according to a set of guessed parameters. It is
-         * equivalent to clicking the \"Auto\" button in the Levels tool.
-         * @returns TRUE on success.
-         */
-        levels_stretch(): boolean;
-        /**
-         * Find the bounding box of the current selection in relation to the
-         * specified drawable.
-         *
-         * This procedure returns whether there is a selection. If there is
-         * one, the upper left and lower right-hand corners of its bounding box
-         * are returned. These coordinates are specified relative to the
-         * drawable's origin, and bounded by the drawable's extents. Please
-         * note that the pixel specified by the lower right-hand coordinate of
-         * the bounding box is not part of the selection. The selection ends at
-         * the upper left corner of this pixel. This means the width of the
-         * selection can be calculated as (x2 - x1), its height as (y2 - y1).
-         * Note that the returned boolean does NOT correspond with the returned
-         * region being empty or not, it always returns whether the selection
-         * is non_empty. See `gimp_drawable_mask_intersect()` for a boolean
-         * return value which is more useful in most cases.
-         * @returns TRUE if there is a selection.
-         */
-        mask_bounds(): [boolean, number, number, number, number];
-        /**
-         * Find the bounding box of the current selection in relation to the
-         * specified drawable.
-         *
-         * This procedure returns whether there is an intersection between the
-         * drawable and the selection. Unlike `gimp_drawable_mask_bounds()`, the
-         * intersection's bounds are returned as x, y, width, height.
-         * If there is no selection this function returns TRUE and the returned
-         * bounds are the extents of the whole drawable.
-         * @returns TRUE if the returned area is not empty.
-         */
-        mask_intersect(): [boolean, number, number, number, number];
-        /**
-         * This procedure applies the specified drawable effect on `drawable`
-         * and merge it (therefore before any non-destructive effects are
-         * computed).
-         *
-         * The `drawable` argument must be the same as the one used when you
-         * created the effect with {@link Gimp.DrawableFilter.new}.
-         * Once this is run, `filter` is not valid anymore and you should not
-         * try to do anything with it. In particular, you must customize the
-         * operation's arguments as received with
-         * {@link Gimp.DrawableFilter.get_config} or set the filter's opacity
-         * and blend mode before merging the effect.
-         * @param filter The drawable filter to merge.
-         */
-        merge_filter(filter: DrawableFilter): void;
-        /**
-         * Merge the layer effect filters to the specified drawable.
-         *
-         * This procedure combines the contents of the drawable's filter stack
-         * (for export) with the specified drawable.
-         * @returns TRUE on success.
-         */
-        merge_filters(): boolean;
-        /**
-         * Merge the shadow buffer with the specified drawable.
-         *
-         * This procedure combines the contents of the drawable's shadow buffer
-         * (for temporary processing) with the specified drawable. The 'undo'
-         * parameter specifies whether to add an undo step for the operation.
-         * Requesting no undo is useful for such applications as 'auto-apply'.
-         * @param undo Push merge to undo stack?
-         * @returns TRUE on success.
-         */
-        merge_shadow(undo: boolean): boolean;
-        /**
-         * Offset the drawable by the specified amounts in the X and Y
-         * directions
-         *
-         * This procedure offsets the specified drawable by the amounts
-         * specified by 'offset_x' and 'offset_y'. If 'wrap_around' is set to
-         * TRUE, then portions of the drawable which are offset out of bounds
-         * are wrapped around. Alternatively, the undefined regions of the
-         * drawable can be filled with transparency or the background color, as
-         * specified by the 'fill-type' parameter.
-         * @param wrap_around wrap image around or fill vacated regions.
-         * @param fill_type fill vacated regions of drawable with background or transparent.
-         * @param color fills in the background color when fill_type is set to OFFSET-COLOR.
-         * @param offset_x offset by this amount in X direction.
-         * @param offset_y offset by this amount in Y direction.
-         * @returns TRUE on success.
-         */
-        offset(
-            wrap_around: boolean,
-            fill_type: OffsetType,
-            color: Gegl.Color,
-            offset_x: number,
-            offset_y: number,
-        ): boolean;
-        /**
-         * Posterize the specified drawable.
-         *
-         * This procedures reduces the number of shades allows in each
-         * intensity channel to the specified 'levels' parameter.
-         * @param levels Levels of posterization.
-         * @returns TRUE on success.
-         */
-        posterize(levels: number): boolean;
-        /**
-         * Sets the value of the pixel at the specified coordinates.
-         *
-         * This procedure sets the pixel value at the specified coordinates.
-         * Note that this function is not undoable, you should use it only on
-         * drawables you just created yourself.
-         * @param x_coord The x coordinate.
-         * @param y_coord The y coordinate.
-         * @param color The pixel color.
-         * @returns TRUE on success.
-         */
-        set_pixel(x_coord: number, y_coord: number, color: Gegl.Color): boolean;
-        /**
-         * Perform shadows and highlights correction.
-         *
-         * This filter allows adjusting shadows and highlights in the image
-         * separately. The implementation closely follow its counterpart in the
-         * Darktable photography software.
-         * @param shadows Adjust exposure of shadows.
-         * @param highlights Adjust exposure of highlights.
-         * @param whitepoint Shift white point.
-         * @param radius Spatial extent.
-         * @param compress Compress the effect on shadows/highlights and preserve midtones.
-         * @param shadows_ccorrect Adjust saturation of shadows.
-         * @param highlights_ccorrect Adjust saturation of highlights.
-         * @returns TRUE on success.
-         */
-        shadows_highlights(
-            shadows: number,
-            highlights: number,
-            whitepoint: number,
-            radius: number,
-            compress: number,
-            shadows_ccorrect: number,
-            highlights_ccorrect: number,
-        ): boolean;
-        /**
-         * Threshold the specified drawable.
-         *
-         * This procedures generates a threshold map of the specified drawable.
-         * All pixels between the values of 'low_threshold' and
-         * 'high_threshold', on the scale of 'channel' are replaced with white,
-         * and all other pixels with black.
-         * @param channel The channel to base the threshold on.
-         * @param low_threshold The low threshold value.
-         * @param high_threshold The high threshold value.
-         * @returns TRUE on success.
-         */
-        threshold(channel: HistogramChannel, low_threshold: number, high_threshold: number): boolean;
-        /**
-         * Returns the drawable's type.
-         *
-         * This procedure returns the drawable's type.
-         * @returns The drawable's type.
-         */
-        type(): ImageType;
-        /**
-         * Returns the drawable's type with alpha.
-         *
-         * This procedure returns the drawable's type as if had an alpha
-         * channel. If the type is currently Gray, for instance, the returned
-         * type would be GrayA. If the drawable already has an alpha channel,
-         * the drawable's type is simply returned.
-         * @returns The drawable's type with alpha.
-         */
-        type_with_alpha(): ImageType;
-        /**
-         * Update the specified region of the drawable.
-         *
-         * This procedure updates the specified region of the drawable. The (x,
-         * y) coordinate pair is relative to the drawable's origin, not to the
-         * image origin. Therefore, the entire drawable can be updated using
-         * (0, 0, width, height).
-         * @param x x coordinate of upper left corner of update region.
-         * @param y y coordinate of upper left corner of update region.
-         * @param width Width of update region.
-         * @param height Height of update region.
-         * @returns TRUE on success.
-         */
-        update(x: number, y: number, width: number, height: number): boolean;
     }
 
     namespace ThumbnailProcedure {
@@ -26992,7 +21584,7 @@ export namespace Gimp {
             name: string,
             proc_type: PDBProcType,
             run_func: RunThumbnailFunc,
-            run_data_destroy?: GLib.DestroyNotify | null,
+            run_data_destroy: GLib.DestroyNotify | null,
         ): ThumbnailProcedure;
         // Conflicted with Gimp.Procedure.new
 
@@ -27055,26 +21647,32 @@ export namespace Gimp {
 
         /**
          * @construct-only
+         * @default null
          */
         get abbreviation(): string;
         /**
          * @construct-only
+         * @default 0
          */
         get digits(): number;
         /**
          * @construct-only
+         * @default 1
          */
         get factor(): number;
         /**
          * @construct-only
+         * @default 0
          */
         get id(): number;
         /**
          * @construct-only
+         * @default null
          */
         get name(): string;
         /**
          * @construct-only
+         * @default null
          */
         get symbol(): string;
 
@@ -27615,754 +22213,6 @@ export namespace Gimp {
          * @returns TRUE on success.
          */
         restore(): boolean;
-        /**
-         * This procedure appends the specified drawable effect at the top of the
-         * effect list of `drawable`.
-         *
-         * The `drawable` argument must be the same as the one used when you
-         * created the effect with {@link Gimp.DrawableFilter.new}.
-         * Some effects may be slower than others to render. In order to
-         * minimize processing time, it is preferred to customize the
-         * operation's arguments as received with
-         * {@link Gimp.DrawableFilter.get_config} before adding the effect.
-         * @param filter The drawable filter to append.
-         */
-        append_filter(filter: DrawableFilter): void;
-        /**
-         * Modify brightness/contrast in the specified drawable.
-         *
-         * This procedures allows the brightness and contrast of the specified
-         * drawable to be modified. Both 'brightness' and 'contrast' parameters
-         * are defined between -1.0 and 1.0.
-         * @param brightness Brightness adjustment.
-         * @param contrast Contrast adjustment.
-         * @returns TRUE on success.
-         */
-        brightness_contrast(brightness: number, contrast: number): boolean;
-        /**
-         * Modify the color balance of the specified drawable.
-         *
-         * Modify the color balance of the specified drawable. There are three
-         * axis which can be modified: cyan-red, magenta-green, and
-         * yellow-blue. Negative values increase the amount of the former,
-         * positive values increase the amount of the latter. Color balance can
-         * be controlled with the 'transfer_mode' setting, which allows
-         * shadows, mid-tones, and highlights in an image to be affected
-         * differently. The 'preserve-lum' parameter, if TRUE, ensures that the
-         * luminosity of each pixel remains fixed.
-         * @param transfer_mode Transfer mode.
-         * @param preserve_lum Preserve luminosity values at each pixel.
-         * @param cyan_red Cyan-Red color balance.
-         * @param magenta_green Magenta-Green color balance.
-         * @param yellow_blue Yellow-Blue color balance.
-         * @returns TRUE on success.
-         */
-        color_balance(
-            transfer_mode: TransferMode,
-            preserve_lum: boolean,
-            cyan_red: number,
-            magenta_green: number,
-            yellow_blue: number,
-        ): boolean;
-        /**
-         * Render the drawable as a grayscale image seen through a colored
-         * glass.
-         *
-         * Desaturates the drawable, then tints it with the specified color.
-         * This tool is only valid on RGB color images. It will not operate on
-         * grayscale drawables.
-         * @param hue Hue in degrees.
-         * @param saturation Saturation in percent.
-         * @param lightness Lightness in percent.
-         * @returns TRUE on success.
-         */
-        colorize_hsl(hue: number, saturation: number, lightness: number): boolean;
-        /**
-         * Modifies the intensity curve(s) for specified drawable.
-         *
-         * Modifies the intensity mapping for one channel in the specified
-         * drawable. The channel can be either an intensity component, or the
-         * value. The 'values' parameter is an array of doubles which
-         * explicitly defines how each pixel value in the drawable will be
-         * modified. Use the `gimp_drawable_curves_spline()` function to modify
-         * intensity levels with Catmull Rom splines.
-         * @param channel The channel to modify.
-         * @param values The explicit curve.
-         * @returns TRUE on success.
-         */
-        curves_explicit(channel: HistogramChannel, values: number[]): boolean;
-        /**
-         * Modifies the intensity curve(s) for specified drawable.
-         *
-         * Modifies the intensity mapping for one channel in the specified
-         * `drawable`. The `channel` can be either an intensity component, or the
-         * value.
-         *
-         * The `points` parameter is an array of doubles in the range `[0, 1]`
-         * which define a set of control points which describe a Catmull Rom
-         * spline which yields the final intensity curve. Since every point has
-         * 2 coordinates, the size of `points` (`num_coordinates`) must be a
-         * multiple of 2, equal or bigger than 4 (i.e. a minimum of 2 points).
-         *
-         * Use {@link Gimp.Drawable.curves_explicit} to explicitly modify
-         * intensity levels.
-         * @param channel The channel to modify.
-         * @param points The spline control points: { cp1.x, cp1.y, cp2.x, cp2.y, ... }.
-         * @returns TRUE on success.
-         */
-        curves_spline(channel: HistogramChannel, points: number[]): boolean;
-        /**
-         * Desaturate the contents of the specified drawable, with the
-         * specified formula.
-         *
-         * This procedure desaturates the contents of the specified drawable,
-         * with the specified formula. This procedure only works on drawables
-         * of type RGB color.
-         * @param desaturate_mode The formula to use to desaturate.
-         * @returns TRUE on success.
-         */
-        desaturate(desaturate_mode: DesaturateMode): boolean;
-        /**
-         * Fill the area by a seed fill starting at the specified coordinates.
-         *
-         * This procedure does a seed fill at the specified coordinates, using
-         * various parameters from the current context.
-         * In the case of merged sampling, the x and y coordinates are relative
-         * to the image's origin; otherwise, they are relative to the
-         * drawable's origin.
-         *
-         * This procedure is affected by the following context setters:
-         * `gimp_context_set_opacity()`, `gimp_context_set_paint_mode()`,
-         * `gimp_context_set_foreground()`, `gimp_context_set_background()`,
-         * `gimp_context_set_pattern()`, `gimp_context_set_sample_threshold()`,
-         * `gimp_context_set_sample_merged()`,
-         * `gimp_context_set_sample_criterion()`,
-         * `gimp_context_set_diagonal_neighbors()`, `gimp_context_set_antialias()`.
-         * @param fill_type The type of fill.
-         * @param x The x coordinate of this bucket fill's application.
-         * @param y The y coordinate of this bucket fill's application.
-         * @returns TRUE on success.
-         */
-        edit_bucket_fill(fill_type: FillType, x: number, y: number): boolean;
-        /**
-         * Clear selected area of drawable.
-         *
-         * This procedure clears the specified drawable. If the drawable has an
-         * alpha channel, the cleared pixels will become transparent. If the
-         * drawable does not have an alpha channel, cleared pixels will be set
-         * to the background color. This procedure only affects regions within
-         * a selection if there is a selection active.
-         *
-         * This procedure is affected by the following context setters:
-         * `gimp_context_set_background()`.
-         * @returns TRUE on success.
-         */
-        edit_clear(): boolean;
-        /**
-         * Fill selected area of drawable.
-         *
-         * This procedure fills the specified drawable according to fill mode.
-         * This procedure only affects regions within a selection if there is a
-         * selection active. If you want to fill the whole drawable, regardless
-         * of the selection, use `gimp_drawable_fill()`.
-         *
-         * This procedure is affected by the following context setters:
-         * `gimp_context_set_opacity()`, `gimp_context_set_paint_mode()`,
-         * `gimp_context_set_foreground()`, `gimp_context_set_background()`,
-         * `gimp_context_set_pattern()`.
-         * @param fill_type The type of fill.
-         * @returns TRUE on success.
-         */
-        edit_fill(fill_type: FillType): boolean;
-        /**
-         * Draw a gradient between the starting and ending coordinates with the
-         * specified gradient type.
-         *
-         * This tool requires information on the gradient type. It creates the
-         * specified variety of gradient using the starting and ending
-         * coordinates as defined for each gradient type. For shapeburst
-         * gradient types, the context's distance metric is also relevant and
-         * can be updated with `gimp_context_set_distance_metric()`.
-         *
-         * This procedure is affected by the following context setters:
-         * `gimp_context_set_opacity()`, `gimp_context_set_paint_mode()`,
-         * `gimp_context_set_foreground()`, `gimp_context_set_background()`,
-         * `gimp_context_set_gradient()` and all gradient property settings,
-         * `gimp_context_set_distance_metric()`.
-         * @param gradient_type The type of gradient.
-         * @param offset Offset relates to the starting and ending coordinates specified for the blend. This parameter is mode dependent.
-         * @param supersample Do adaptive supersampling.
-         * @param supersample_max_depth Maximum recursion levels for supersampling.
-         * @param supersample_threshold Supersampling threshold.
-         * @param dither Use dithering to reduce banding.
-         * @param x1 The x coordinate of this gradient's starting point.
-         * @param y1 The y coordinate of this gradient's starting point.
-         * @param x2 The x coordinate of this gradient's ending point.
-         * @param y2 The y coordinate of this gradient's ending point.
-         * @returns TRUE on success.
-         */
-        edit_gradient_fill(
-            gradient_type: GradientType,
-            offset: number,
-            supersample: boolean,
-            supersample_max_depth: number,
-            supersample_threshold: number,
-            dither: boolean,
-            x1: number,
-            y1: number,
-            x2: number,
-            y2: number,
-        ): boolean;
-        /**
-         * Stroke the specified item
-         *
-         * This procedure strokes the specified item, painting along its
-         * outline (e.g. along a path, or along a channel's boundary), with the
-         * active paint method and brush, or using a plain line with
-         * configurable properties.
-         *
-         * This procedure is affected by the following context setters:
-         * `gimp_context_set_opacity()`, `gimp_context_set_paint_mode()`,
-         * `gimp_context_set_paint_method()`, `gimp_context_set_stroke_method()`,
-         * `gimp_context_set_foreground()`, `gimp_context_set_brush()` and all
-         * brush property settings, `gimp_context_set_gradient()` and all
-         * gradient property settings, `gimp_context_set_line_width()` and all
-         * line property settings, `gimp_context_set_antialias()`.
-         * @param item The item to stroke.
-         * @returns TRUE on success.
-         */
-        edit_stroke_item(item: Item): boolean;
-        /**
-         * Stroke the current selection
-         *
-         * This procedure strokes the current selection, painting along the
-         * selection boundary with the active paint method and brush, or using
-         * a plain line with configurable properties. The paint is applied to
-         * the specified drawable regardless of the active selection.
-         *
-         * This procedure is affected by the following context setters:
-         * `gimp_context_set_opacity()`, `gimp_context_set_paint_mode()`,
-         * `gimp_context_set_paint_method()`, `gimp_context_set_stroke_method()`,
-         * `gimp_context_set_foreground()`, `gimp_context_set_brush()` and all
-         * brush property settings, `gimp_context_set_gradient()` and all
-         * gradient property settings, `gimp_context_set_line_width()` and all
-         * line property settings, `gimp_context_set_antialias()`.
-         * @returns TRUE on success.
-         */
-        edit_stroke_selection(): boolean;
-        /**
-         * Equalize the contents of the specified drawable.
-         *
-         * This procedure equalizes the contents of the specified drawable.
-         * Each intensity channel is equalized independently. The equalized
-         * intensity is given as inten' = (255 - inten). The 'mask_only' option
-         * specifies whether to adjust only the area of the image within the
-         * selection bounds, or the entire image based on the histogram of the
-         * selected area. If there is no selection, the entire image is
-         * adjusted based on the histogram for the entire image.
-         * @param mask_only Equalization option.
-         * @returns TRUE on success.
-         */
-        equalize(mask_only: boolean): boolean;
-        /**
-         * Extract a color model component.
-         *
-         * Extract a color model component.
-         * @param component Component (RGB Red (0), RGB Green (1), RGB Blue (2), Hue (3), HSV Saturation (4), HSV Value (5), HSL Saturation (6), HSL Lightness (7), CMYK Cyan (8), CMYK Magenta (9), CMYK Yellow (10), CMYK Key (11), Y'CbCr Y' (12), Y'CbCr Cb (13), Y'CbCr Cr (14), LAB L (15), LAB A (16), LAB B (17), LCH C(ab) (18), LCH H(ab) (19), Alpha (20)).
-         * @param invert Invert the extracted component.
-         * @param linear Use linear output instead of gamma corrected.
-         * @returns TRUE on success.
-         */
-        extract_component(component: number, invert: boolean, linear: boolean): boolean;
-        /**
-         * Fill the drawable with the specified fill mode.
-         *
-         * This procedure fills the drawable. If the fill mode is foreground
-         * the current foreground color is used. If the fill mode is
-         * background, the current background color is used. If the fill type
-         * is white, then white is used. Transparent fill only affects layers
-         * with an alpha channel, in which case the alpha channel is set to
-         * transparent. If the drawable has no alpha channel, it is filled to
-         * white. No fill leaves the drawable's contents undefined.
-         * This procedure is unlike `gimp_drawable_edit_fill()` or the bucket
-         * fill tool because it fills regardless of a selection. Its main
-         * purpose is to fill a newly created drawable before adding it to the
-         * image. This operation cannot be undone.
-         * @param fill_type The type of fill.
-         * @returns TRUE on success.
-         */
-        fill(fill_type: FillType): boolean;
-        /**
-         * Extract the foreground of a drawable using a given trimap.
-         *
-         * This procedure extracts the foreground from `drawable` using `mask` as
-         * a trimap. Set white as foreground, black as background and uncertain
-         * pixels as any other value, for the tri-map.
-         * @param mode The algorithm to use.
-         * @param mask Tri-Map.
-         * @returns TRUE on success.
-         */
-        foreground_extract(mode: ForegroundExtractMode, mask: Drawable): boolean;
-        /**
-         * Free the specified drawable's shadow data (if it exists).
-         *
-         * This procedure is intended as a memory saving device. If any shadow
-         * memory has been allocated, it will be freed automatically when the
-         * drawable is removed from the image, or when the plug-in procedure
-         * which allocated it returns.
-         * @returns TRUE on success.
-         */
-        free_shadow(): boolean;
-        /**
-         * Returns the bytes per pixel.
-         *
-         * This procedure returns the number of bytes per pixel.
-         * @returns Bytes per pixel.
-         */
-        get_bpp(): number;
-        /**
-         * Returns a {@link Gegl.Buffer} of a specified drawable. The buffer can be used
-         * like any other GEGL buffer. Its data will we synced back with the core
-         * drawable when the buffer gets destroyed, or when `gegl_buffer_flush()`
-         * is called.
-         * @returns The {@link Gegl.Buffer}. See Also: `gimp_drawable_get_shadow_buffer()`
-         */
-        get_buffer(): Gegl.Buffer;
-        /**
-         * Returns the list of filters applied to the drawable.
-         *
-         * This procedure returns the list of filters which are currently
-         * applied non-destructively to `drawable`. The order of filters is from
-         * topmost to bottommost.
-         * @returns The list of filters on the drawable.          The returned value must be freed with `g_free()`.
-         */
-        get_filters(): DrawableFilter[];
-        /**
-         * Returns the {@link Babl.Object} format of the drawable.
-         * @returns The {@link Babl.Object} format.
-         */
-        get_format(): Babl.Object;
-        /**
-         * Returns the height of the drawable.
-         *
-         * This procedure returns the specified drawable's height in pixels.
-         * @returns Height of drawable.
-         */
-        get_height(): number;
-        /**
-         * Returns the offsets for the drawable.
-         *
-         * This procedure returns the specified drawable's offsets. This only
-         * makes sense if the drawable is a layer since channels are anchored.
-         * The offsets of a channel will be returned as 0.
-         * @returns TRUE on success.
-         */
-        get_offsets(): [boolean, number, number];
-        /**
-         * Gets the value of the pixel at the specified coordinates.
-         *
-         * This procedure gets the pixel value at the specified coordinates.
-         * @param x_coord The x coordinate.
-         * @param y_coord The y coordinate.
-         * @returns The pixel color.
-         */
-        get_pixel(x_coord: number, y_coord: number): Gegl.Color;
-        /**
-         * Returns a {@link Gegl.Buffer} of a specified drawable's shadow tiles. The
-         * buffer can be used like any other GEGL buffer. Its data will we
-         * synced back with the core drawable's shadow tiles when the buffer
-         * gets destroyed, or when `gegl_buffer_flush()` is called.
-         * @returns The {@link Gegl.Buffer}.
-         */
-        get_shadow_buffer(): Gegl.Buffer;
-        /**
-         * Retrieves a thumbnail pixbuf for the drawable identified by
-         * `drawable`. The thumbnail will be not larger than the requested
-         * size.
-         * @param src_x the x coordinate of the area
-         * @param src_y the y coordinate of the area
-         * @param src_width the width of the area
-         * @param src_height the height of the area
-         * @param dest_width the requested thumbnail width  (<= 1024 pixels)
-         * @param dest_height the requested thumbnail height (<= 1024 pixels)
-         * @param alpha how to handle an alpha channel
-         * @returns a new {@link GdkPixbuf.Pixbuf}
-         */
-        get_sub_thumbnail(
-            src_x: number,
-            src_y: number,
-            src_width: number,
-            src_height: number,
-            dest_width: number,
-            dest_height: number,
-            alpha: PixbufTransparency,
-        ): GdkPixbuf.Pixbuf;
-        /**
-         * Retrieves thumbnail data for the drawable identified by `drawable`.
-         * The thumbnail will be not larger than the requested size.
-         * @param src_x the x coordinate of the area
-         * @param src_y the y coordinate of the area
-         * @param src_width the width of the area
-         * @param src_height the height of the area
-         * @param dest_width the requested thumbnail width  (<= 1024 pixels)
-         * @param dest_height the requested thumbnail height (<= 1024 pixels)
-         * @returns thumbnail data or `null` if          `drawable` is invalid.
-         */
-        get_sub_thumbnail_data(
-            src_x: number,
-            src_y: number,
-            src_width: number,
-            src_height: number,
-            dest_width: number,
-            dest_height: number,
-        ): [GLib.Bytes, number, number, number];
-        /**
-         * Retrieves a thumbnail pixbuf for the drawable identified by
-         * `drawable`. The thumbnail will be not larger than the requested
-         * size.
-         * @param width the requested thumbnail width  (<= 1024 pixels)
-         * @param height the requested thumbnail height (<= 1024 pixels)
-         * @param alpha how to handle an alpha channel
-         * @returns a new {@link GdkPixbuf.Pixbuf}
-         */
-        get_thumbnail(width: number, height: number, alpha: PixbufTransparency): GdkPixbuf.Pixbuf;
-        /**
-         * Retrieves thumbnail data for the drawable identified by `drawable`.
-         * The thumbnail will be not larger than the requested size.
-         * @param width the requested thumbnail width  (<= 1024 pixels)
-         * @param height the requested thumbnail height (<= 1024 pixels)
-         * @returns thumbnail data or `null` if          `drawable` is invalid.
-         */
-        get_thumbnail_data(width: number, height: number): [GLib.Bytes | null, number, number, number];
-        /**
-         * Returns the {@link Babl.Object} thumbnail format of the drawable.
-         * @returns The {@link Babl.Object} thumbnail format.
-         */
-        get_thumbnail_format(): Babl.Object;
-        /**
-         * Returns the width of the drawable.
-         *
-         * This procedure returns the specified drawable's width in pixels.
-         * @returns Width of drawable.
-         */
-        get_width(): number;
-        /**
-         * Returns TRUE if the drawable has an alpha channel.
-         *
-         * This procedure returns whether the specified drawable has an alpha
-         * channel. This can only be true for layers, and the associated type
-         * will be one of: { RGBA , GRAYA, INDEXEDA }.
-         * @returns Does the drawable have an alpha channel?
-         */
-        has_alpha(): boolean;
-        /**
-         * Returns information on the intensity histogram for the specified
-         * drawable.
-         *
-         * This tool makes it possible to gather information about the
-         * intensity histogram of a drawable. A channel to examine is first
-         * specified. This can be either value, red, green, or blue, depending
-         * on whether the drawable is of type color or grayscale. Second, a
-         * range of intensities are specified. The `gimp_drawable_histogram()`
-         * function returns statistics based on the pixels in the drawable that
-         * fall under this range of values. Mean, standard deviation, median,
-         * number of pixels, and percentile are all returned. Additionally, the
-         * total count of pixels in the image is returned. Counts of pixels are
-         * weighted by any associated alpha values and by the current selection
-         * mask. That is, pixels that lie outside an active selection mask will
-         * not be counted. Similarly, pixels with transparent alpha values will
-         * not be counted. The returned mean, std_dev and median are in the
-         * range (0..255) for 8-bit images or if the plug-in is not
-         * precision-aware, and in the range (0.0..1.0) otherwise.
-         * @param channel The channel to query.
-         * @param start_range Start of the intensity measurement range.
-         * @param end_range End of the intensity measurement range.
-         * @returns TRUE on success.
-         */
-        histogram(
-            channel: HistogramChannel,
-            start_range: number,
-            end_range: number,
-        ): [boolean, number, number, number, number, number, number];
-        /**
-         * Modify hue, lightness, and saturation in the specified drawable.
-         *
-         * This procedure allows the hue, lightness, and saturation in the
-         * specified drawable to be modified. The 'hue-range' parameter
-         * provides the capability to limit range of affected hues. The
-         * 'overlap' parameter provides blending into neighboring hue channels
-         * when rendering.
-         * @param hue_range Range of affected hues.
-         * @param hue_offset Hue offset in degrees.
-         * @param lightness Lightness modification.
-         * @param saturation Saturation modification.
-         * @param overlap Overlap other hue channels.
-         * @returns TRUE on success.
-         */
-        hue_saturation(
-            hue_range: HueRange,
-            hue_offset: number,
-            lightness: number,
-            saturation: number,
-            overlap: number,
-        ): boolean;
-        /**
-         * Invert the contents of the specified drawable.
-         *
-         * This procedure inverts the contents of the specified drawable. Each
-         * intensity channel is inverted independently. The inverted intensity
-         * is given as inten' = (255 - inten). If 'linear' is TRUE, the
-         * drawable is inverted in linear space.
-         * @param linear Whether to invert in linear space.
-         * @returns TRUE on success.
-         */
-        invert(linear: boolean): boolean;
-        /**
-         * Returns whether the drawable is a grayscale type.
-         *
-         * This procedure returns TRUE if the specified drawable is of type {
-         * Gray, GrayA }.
-         * @returns TRUE if the drawable is a grayscale type.
-         */
-        is_gray(): boolean;
-        /**
-         * Returns whether the drawable is an indexed type.
-         *
-         * This procedure returns TRUE if the specified drawable is of type {
-         * Indexed, IndexedA }.
-         * @returns TRUE if the drawable is an indexed type.
-         */
-        is_indexed(): boolean;
-        /**
-         * Returns whether the drawable is an RGB type.
-         *
-         * This procedure returns TRUE if the specified drawable is of type {
-         * RGB, RGBA }.
-         * @returns TRUE if the drawable is an RGB type.
-         */
-        is_rgb(): boolean;
-        /**
-         * Modifies intensity levels in the specified drawable.
-         *
-         * This tool allows intensity levels in the specified drawable to be
-         * remapped according to a set of parameters. The low/high input levels
-         * specify an initial mapping from the source intensities. The gamma
-         * value determines how intensities between the low and high input
-         * intensities are interpolated. A gamma value of 1.0 results in a
-         * linear interpolation. Higher gamma values result in more high-level
-         * intensities. Lower gamma values result in more low-level
-         * intensities. The low/high output levels constrain the final
-         * intensity mapping--that is, no final intensity will be lower than
-         * the low output level and no final intensity will be higher than the
-         * high output level. This tool is only valid on RGB color and
-         * grayscale images.
-         * @param channel The channel to modify.
-         * @param low_input Intensity of lowest input.
-         * @param high_input Intensity of highest input.
-         * @param clamp_input Clamp input values before applying output levels.
-         * @param gamma Gamma adjustment factor.
-         * @param low_output Intensity of lowest output.
-         * @param high_output Intensity of highest output.
-         * @param clamp_output Clamp final output values.
-         * @returns TRUE on success.
-         */
-        levels(
-            channel: HistogramChannel,
-            low_input: number,
-            high_input: number,
-            clamp_input: boolean,
-            gamma: number,
-            low_output: number,
-            high_output: number,
-            clamp_output: boolean,
-        ): boolean;
-        /**
-         * Automatically modifies intensity levels in the specified drawable.
-         *
-         * This procedure allows intensity levels in the specified drawable to
-         * be remapped according to a set of guessed parameters. It is
-         * equivalent to clicking the \"Auto\" button in the Levels tool.
-         * @returns TRUE on success.
-         */
-        levels_stretch(): boolean;
-        /**
-         * Find the bounding box of the current selection in relation to the
-         * specified drawable.
-         *
-         * This procedure returns whether there is a selection. If there is
-         * one, the upper left and lower right-hand corners of its bounding box
-         * are returned. These coordinates are specified relative to the
-         * drawable's origin, and bounded by the drawable's extents. Please
-         * note that the pixel specified by the lower right-hand coordinate of
-         * the bounding box is not part of the selection. The selection ends at
-         * the upper left corner of this pixel. This means the width of the
-         * selection can be calculated as (x2 - x1), its height as (y2 - y1).
-         * Note that the returned boolean does NOT correspond with the returned
-         * region being empty or not, it always returns whether the selection
-         * is non_empty. See `gimp_drawable_mask_intersect()` for a boolean
-         * return value which is more useful in most cases.
-         * @returns TRUE if there is a selection.
-         */
-        mask_bounds(): [boolean, number, number, number, number];
-        /**
-         * Find the bounding box of the current selection in relation to the
-         * specified drawable.
-         *
-         * This procedure returns whether there is an intersection between the
-         * drawable and the selection. Unlike `gimp_drawable_mask_bounds()`, the
-         * intersection's bounds are returned as x, y, width, height.
-         * If there is no selection this function returns TRUE and the returned
-         * bounds are the extents of the whole drawable.
-         * @returns TRUE if the returned area is not empty.
-         */
-        mask_intersect(): [boolean, number, number, number, number];
-        /**
-         * This procedure applies the specified drawable effect on `drawable`
-         * and merge it (therefore before any non-destructive effects are
-         * computed).
-         *
-         * The `drawable` argument must be the same as the one used when you
-         * created the effect with {@link Gimp.DrawableFilter.new}.
-         * Once this is run, `filter` is not valid anymore and you should not
-         * try to do anything with it. In particular, you must customize the
-         * operation's arguments as received with
-         * {@link Gimp.DrawableFilter.get_config} or set the filter's opacity
-         * and blend mode before merging the effect.
-         * @param filter The drawable filter to merge.
-         */
-        merge_filter(filter: DrawableFilter): void;
-        /**
-         * Merge the layer effect filters to the specified drawable.
-         *
-         * This procedure combines the contents of the drawable's filter stack
-         * (for export) with the specified drawable.
-         * @returns TRUE on success.
-         */
-        merge_filters(): boolean;
-        /**
-         * Merge the shadow buffer with the specified drawable.
-         *
-         * This procedure combines the contents of the drawable's shadow buffer
-         * (for temporary processing) with the specified drawable. The 'undo'
-         * parameter specifies whether to add an undo step for the operation.
-         * Requesting no undo is useful for such applications as 'auto-apply'.
-         * @param undo Push merge to undo stack?
-         * @returns TRUE on success.
-         */
-        merge_shadow(undo: boolean): boolean;
-        /**
-         * Offset the drawable by the specified amounts in the X and Y
-         * directions
-         *
-         * This procedure offsets the specified drawable by the amounts
-         * specified by 'offset_x' and 'offset_y'. If 'wrap_around' is set to
-         * TRUE, then portions of the drawable which are offset out of bounds
-         * are wrapped around. Alternatively, the undefined regions of the
-         * drawable can be filled with transparency or the background color, as
-         * specified by the 'fill-type' parameter.
-         * @param wrap_around wrap image around or fill vacated regions.
-         * @param fill_type fill vacated regions of drawable with background or transparent.
-         * @param color fills in the background color when fill_type is set to OFFSET-COLOR.
-         * @param offset_x offset by this amount in X direction.
-         * @param offset_y offset by this amount in Y direction.
-         * @returns TRUE on success.
-         */
-        offset(
-            wrap_around: boolean,
-            fill_type: OffsetType,
-            color: Gegl.Color,
-            offset_x: number,
-            offset_y: number,
-        ): boolean;
-        /**
-         * Posterize the specified drawable.
-         *
-         * This procedures reduces the number of shades allows in each
-         * intensity channel to the specified 'levels' parameter.
-         * @param levels Levels of posterization.
-         * @returns TRUE on success.
-         */
-        posterize(levels: number): boolean;
-        /**
-         * Sets the value of the pixel at the specified coordinates.
-         *
-         * This procedure sets the pixel value at the specified coordinates.
-         * Note that this function is not undoable, you should use it only on
-         * drawables you just created yourself.
-         * @param x_coord The x coordinate.
-         * @param y_coord The y coordinate.
-         * @param color The pixel color.
-         * @returns TRUE on success.
-         */
-        set_pixel(x_coord: number, y_coord: number, color: Gegl.Color): boolean;
-        /**
-         * Perform shadows and highlights correction.
-         *
-         * This filter allows adjusting shadows and highlights in the image
-         * separately. The implementation closely follow its counterpart in the
-         * Darktable photography software.
-         * @param shadows Adjust exposure of shadows.
-         * @param highlights Adjust exposure of highlights.
-         * @param whitepoint Shift white point.
-         * @param radius Spatial extent.
-         * @param compress Compress the effect on shadows/highlights and preserve midtones.
-         * @param shadows_ccorrect Adjust saturation of shadows.
-         * @param highlights_ccorrect Adjust saturation of highlights.
-         * @returns TRUE on success.
-         */
-        shadows_highlights(
-            shadows: number,
-            highlights: number,
-            whitepoint: number,
-            radius: number,
-            compress: number,
-            shadows_ccorrect: number,
-            highlights_ccorrect: number,
-        ): boolean;
-        /**
-         * Threshold the specified drawable.
-         *
-         * This procedures generates a threshold map of the specified drawable.
-         * All pixels between the values of 'low_threshold' and
-         * 'high_threshold', on the scale of 'channel' are replaced with white,
-         * and all other pixels with black.
-         * @param channel The channel to base the threshold on.
-         * @param low_threshold The low threshold value.
-         * @param high_threshold The high threshold value.
-         * @returns TRUE on success.
-         */
-        threshold(channel: HistogramChannel, low_threshold: number, high_threshold: number): boolean;
-        /**
-         * Returns the drawable's type.
-         *
-         * This procedure returns the drawable's type.
-         * @returns The drawable's type.
-         */
-        type(): ImageType;
-        /**
-         * Returns the drawable's type with alpha.
-         *
-         * This procedure returns the drawable's type as if had an alpha
-         * channel. If the type is currently Gray, for instance, the returned
-         * type would be GrayA. If the drawable already has an alpha channel,
-         * the drawable's type is simply returned.
-         * @returns The drawable's type with alpha.
-         */
-        type_with_alpha(): ImageType;
-        /**
-         * Update the specified region of the drawable.
-         *
-         * This procedure updates the specified region of the drawable. The (x,
-         * y) coordinate pair is relative to the drawable's origin, not to the
-         * image origin. Therefore, the entire drawable can be updated using
-         * (0, 0, width, height).
-         * @param x x coordinate of upper left corner of update region.
-         * @param y y coordinate of upper left corner of update region.
-         * @param width Width of update region.
-         * @param height Height of update region.
-         * @returns TRUE on success.
-         */
-        update(x: number, y: number, width: number, height: number): boolean;
     }
 
     namespace VectorLoadProcedure {
@@ -28419,7 +22269,7 @@ export namespace Gimp {
             proc_type: PDBProcType,
             extract_func: ExtractVectorFunc,
             run_func: RunVectorLoadFunc,
-            run_data_destroy?: GLib.DestroyNotify | null,
+            run_data_destroy: GLib.DestroyNotify | null,
         ): VectorLoadProcedure;
         // Conflicted with Gimp.LoadProcedure.new
 
@@ -28542,7 +22392,7 @@ export namespace Gimp {
          * @param data client data.
          * @returns Whether serialization succeeded.
          */
-        deserialize(scanner: GLib.Scanner, nest_level: number, data?: any | null): boolean;
+        deserialize(scanner: GLib.Scanner, nest_level: number, data: any | null): boolean;
         /**
          * Opens the file specified by `file`, reads configuration data from it
          * and configures `config` accordingly. Basically this function creates
@@ -28552,7 +22402,7 @@ export namespace Gimp {
          * @param data user data passed to the deserialize implementation.
          * @returns Whether deserialization succeeded.
          */
-        deserialize_file(file: Gio.File, data?: any | null): boolean;
+        deserialize_file(file: Gio.File, data: any | null): boolean;
         /**
          * Configures `config` from `parasite`. Basically this function creates
          * a properly configured {@link GLib.Scanner} for you and calls the deserialize
@@ -28561,7 +22411,7 @@ export namespace Gimp {
          * @param data client data
          * @returns `true` if deserialization succeeded, `false` otherwise.
          */
-        deserialize_parasite(parasite: Parasite, data?: any | null): boolean;
+        deserialize_parasite(parasite: Parasite, data: any | null): boolean;
         /**
          * This function uses the `scanner` to configure the properties of `config`.
          * @param scanner a {@link GLib.Scanner}.
@@ -28587,7 +22437,7 @@ export namespace Gimp {
          * @param data user data passed to the deserialize implementation.
          * @returns Whether deserialization succeeded.
          */
-        deserialize_stream(input: Gio.InputStream, data?: any | null): boolean;
+        deserialize_stream(input: Gio.InputStream, data: any | null): boolean;
         /**
          * Configures `config` from `text`. Basically this function creates a
          * properly configured {@link GLib.Scanner} for you and calls the deserialize
@@ -28596,7 +22446,7 @@ export namespace Gimp {
          * @param data client data
          * @returns `true` if deserialization succeeded, `false` otherwise.
          */
-        deserialize_string(text: string[], data?: any | null): boolean;
+        deserialize_string(text: string[], data: any | null): boolean;
         /**
          * Creates a copy of the passed object by copying all object
          * properties. The default implementation of the {@link Gimp.ConfigInterface}
@@ -28631,7 +22481,7 @@ export namespace Gimp {
          * @param data client data
          * @returns Whether serialization succeeded.
          */
-        serialize(writer: ConfigWriter, data?: any | null): boolean;
+        serialize(writer: ConfigWriter, data: any | null): boolean;
         /**
          * This function writes all object properties that have been changed from
          * their default values to the `writer`.
@@ -28666,7 +22516,7 @@ export namespace Gimp {
          * @param data user data passed to the serialize implementation.
          * @returns `true` if serialization succeeded, `false` otherwise.
          */
-        serialize_to_fd(fd: number, data?: any | null): boolean;
+        serialize_to_fd(fd: number, data: any | null): boolean;
         /**
          * Serializes the object properties of `config` to the file specified
          * by `file`. If a file with that name already exists, it is
@@ -28678,7 +22528,7 @@ export namespace Gimp {
          * @param data user data passed to the serialize implementation.
          * @returns `true` if serialization succeeded, `false` otherwise.
          */
-        serialize_to_file(file: Gio.File, header?: string | null, footer?: string | null, data?: any | null): boolean;
+        serialize_to_file(file: Gio.File, header: string | null, footer: string | null, data: any | null): boolean;
         /**
          * Serializes the object properties of `config` to a {@link Parasite}.
          * @param parasite_name the new parasite's name
@@ -28686,7 +22536,7 @@ export namespace Gimp {
          * @param data user data passed to the serialize implementation.
          * @returns the newly allocated parasite.
          */
-        serialize_to_parasite(parasite_name: string, parasite_flags: number, data?: any | null): Parasite;
+        serialize_to_parasite(parasite_name: string, parasite_flags: number, data: any | null): Parasite;
         /**
          * Serializes the object properties of `config` to the stream specified
          * by `output`.
@@ -28698,16 +22548,16 @@ export namespace Gimp {
          */
         serialize_to_stream(
             output: Gio.OutputStream,
-            header?: string | null,
-            footer?: string | null,
-            data?: any | null,
+            header: string | null,
+            footer: string | null,
+            data: any | null,
         ): boolean;
         /**
          * Serializes the object properties of `config` to a string.
          * @param data user data passed to the serialize implementation.
          * @returns a newly allocated NUL-terminated string.
          */
-        serialize_to_string(data?: any | null): string;
+        serialize_to_string(data: any | null): string;
         /**
          * Sets the current XCF version of the `config`. This information can be used
          * to adjust how properties are serialized depending on the version of the XCF
@@ -29245,7 +23095,7 @@ export namespace Gimp {
          * @param pspec a {@link GObject.Object} {@link GObject.ParamSpec}
          * @param default_value a default value.
          */
-        static set_default(pspec: GObject.ParamSpec, default_value?: GObject.Object | null): void;
+        static set_default(pspec: GObject.ParamSpec, default_value: GObject.Object | null): void;
     }
 
     /**
@@ -29280,7 +23130,7 @@ export namespace Gimp {
             }>,
         );
 
-        static ['new'](name: string, flags: number, data?: number[] | null): Parasite;
+        static ['new'](name: string, flags: number, data: number[] | null): Parasite;
 
         // Methods
 
@@ -29542,7 +23392,7 @@ export namespace Gimp {
          * @param value {@link GObject.Value} to copy into {@link Gimp.ValueArray}, or `null`
          * @returns the {@link Gimp.ValueArray} passed in as `value_array`
          */
-        append(value?: GObject.Value | null): ValueArray;
+        append(value: GObject.Value | null): ValueArray;
         /**
          * Return an exact copy of a {@link Gimp.ValueArray} by duplicating all its values.
          * @returns a newly allocated {@link Gimp.ValueArray}.
@@ -29597,7 +23447,7 @@ export namespace Gimp {
          * @param value {@link GObject.Value} to copy into {@link Gimp.ValueArray}, or `null`
          * @returns the {@link Gimp.ValueArray} passed in as `value_array`
          */
-        insert(index: number, value?: GObject.Value | null): ValueArray;
+        insert(index: number, value: GObject.Value | null): ValueArray;
         length(): number;
         /**
          * Insert a copy of `value` as first element of `value_array`. If `value` is
@@ -29605,7 +23455,7 @@ export namespace Gimp {
          * @param value {@link GObject.Value} to copy into {@link Gimp.ValueArray}, or `null`
          * @returns the {@link Gimp.ValueArray} passed in as `value_array`
          */
-        prepend(value?: GObject.Value | null): ValueArray;
+        prepend(value: GObject.Value | null): ValueArray;
         /**
          * Adds a reference to a {@link Gimp.ValueArray}.
          * @returns the same `value_array`

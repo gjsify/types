@@ -583,7 +583,7 @@ export namespace Graphene {
          * @param max the coordinates of the maximum vertex
          * @returns the initialized {@link Graphene.Box}
          */
-        init(min?: Point3D | null, max?: Point3D | null): Box;
+        init(min: Point3D | null, max: Point3D | null): Box;
         /**
          * Initializes the given {@link Graphene.Box} with the vertices of
          * another {@link Graphene.Box}.
@@ -608,7 +608,7 @@ export namespace Graphene {
          * @param max the coordinates of the maximum vertex
          * @returns the initialized {@link Graphene.Box}
          */
-        init_from_vec3(min?: Vec3 | null, max?: Vec3 | null): Box;
+        init_from_vec3(min: Vec3 | null, max: Vec3 | null): Box;
         /**
          * Initializes the given {@link Graphene.Box} with the given array
          * of vertices.
@@ -733,7 +733,7 @@ export namespace Graphene {
          * @param src a {@link Graphene.Euler}
          * @returns the initialized {@link Graphene.Euler}
          */
-        init_from_euler(src?: Euler | null): Euler;
+        init_from_euler(src: Euler | null): Euler;
         /**
          * Initializes a {@link Graphene.Euler} using the given rotation matrix.
          *
@@ -2116,7 +2116,7 @@ export namespace Graphene {
          * @param direction the direction vector
          * @returns the initialized ray
          */
-        init(origin?: Point3D | null, direction?: Vec3 | null): Ray;
+        init(origin: Point3D | null, direction: Vec3 | null): Ray;
         /**
          * Initializes the given {@link Graphene.Ray} using the origin and direction
          * values of another {@link Graphene.Ray}.
@@ -2130,7 +2130,7 @@ export namespace Graphene {
          * @param direction a {@link Graphene.Vec3}
          * @returns the initialized ray
          */
-        init_from_vec3(origin?: Vec3 | null, direction?: Vec3 | null): Ray;
+        init_from_vec3(origin: Vec3 | null, direction: Vec3 | null): Ray;
         /**
          * Intersects the given {@link Graphene.Ray} `r` with the given
          * {@link Graphene.Box} `b`.
@@ -2644,7 +2644,7 @@ export namespace Graphene {
          * @param center the center of the sphere
          * @returns the initialized {@link Graphene.Sphere}
          */
-        init_from_points(points: Point3D[], center?: Point3D | null): Sphere;
+        init_from_points(points: Point3D[], center: Point3D | null): Sphere;
         /**
          * Initializes the given {@link Graphene.Sphere} using the given array
          * of 3D coordinates so that the sphere includes them.
@@ -2655,7 +2655,7 @@ export namespace Graphene {
          * @param center the center of the sphere
          * @returns the initialized {@link Graphene.Sphere}
          */
-        init_from_vectors(vectors: Vec3[], center?: Point3D | null): Sphere;
+        init_from_vectors(vectors: Vec3[], center: Point3D | null): Sphere;
         /**
          * Checks whether the sphere has a zero radius.
          * @returns `true` if the sphere is empty
@@ -2792,7 +2792,7 @@ export namespace Graphene {
          * @param c a {@link Graphene.Point3D}
          * @returns the initialized {@link Graphene.Triangle}
          */
-        init_from_point3d(a?: Point3D | null, b?: Point3D | null, c?: Point3D | null): Triangle;
+        init_from_point3d(a: Point3D | null, b: Point3D | null, c: Point3D | null): Triangle;
         /**
          * Initializes a {@link Graphene.Triangle} using the three given vectors.
          * @param a a {@link Graphene.Vec3}
@@ -2800,7 +2800,7 @@ export namespace Graphene {
          * @param c a {@link Graphene.Vec3}
          * @returns the initialized {@link Graphene.Triangle}
          */
-        init_from_vec3(a?: Vec3 | null, b?: Vec3 | null, c?: Vec3 | null): Triangle;
+        init_from_vec3(a: Vec3 | null, b: Vec3 | null, c: Vec3 | null): Triangle;
     }
 
     /**

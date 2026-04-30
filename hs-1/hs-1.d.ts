@@ -1389,7 +1389,7 @@ export namespace Hs {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             current_media: number;
             currentMedia: number;
-            frontend: Frontend;
+            frontend: Frontend | null;
             name: string;
             platform: Platform;
         }
@@ -1624,6 +1624,7 @@ export namespace Hs {
          * {@link Core.set_current_media}. Otherwise, it's always set to 0.
          *
          * To notify this property, use {@link Core.notify_current_media}.
+         * @default 0
          */
         get current_media(): number;
         set current_media(val: number);
@@ -1634,6 +1635,7 @@ export namespace Hs {
          * {@link Core.set_current_media}. Otherwise, it's always set to 0.
          *
          * To notify this property, use {@link Core.notify_current_media}.
+         * @default 0
          */
         get currentMedia(): number;
         set currentMedia(val: number);
@@ -1643,13 +1645,14 @@ export namespace Hs {
          * Cores shouldn't touch this property directly, but instead use methods like
          * {@link Core.play_samples}.
          */
-        get frontend(): Frontend;
-        set frontend(val: Frontend);
+        get frontend(): Frontend | null;
+        set frontend(val: Frontend | null);
         /**
          * The core name, set by the frontend.
          *
          * Matches the `Name` key from the descriptor file.
          * @construct-only
+         * @default null
          */
         get name(): string;
         /**
@@ -1658,6 +1661,7 @@ export namespace Hs {
          * Cores that support multiple platforms can query it to determine the current
          * platform.
          * @construct-only
+         * @default Hs.Platform.UNKNOWN
          */
         get platform(): Platform;
 
@@ -1960,7 +1964,7 @@ export namespace Hs {
          * @param path path to the save state file
          * @param cancellable an optional cancellable object
          */
-        load_state(path: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        load_state(path: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Loads a save state from `path`.
          * @param path path to the save state file
@@ -1980,7 +1984,7 @@ export namespace Hs {
          */
         load_state(
             path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2082,7 +2086,7 @@ export namespace Hs {
          * @param path path to the save state location
          * @param cancellable an optional cancellable object
          */
-        save_state(path: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        save_state(path: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Saves the current state into `path`.
          * @param path path to the save state location
@@ -2102,7 +2106,7 @@ export namespace Hs {
          */
         save_state(
             path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -2126,7 +2130,7 @@ export namespace Hs {
          * Cores must never call this function.
          * @param frontend the new frontend instance
          */
-        set_frontend(frontend?: Frontend | null): void;
+        set_frontend(frontend: Frontend | null): void;
         /**
          * Starts the game.
          *

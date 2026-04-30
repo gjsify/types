@@ -69,7 +69,7 @@ export namespace RpmOstree {
         repo: OSTree.Repo,
         orig_ref: string,
         new_ref: string,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): [boolean, Package[] | null, Package[] | null, Package[] | null, Package[] | null];
     /**
      * This function is identical to `rpm_ostree_db_diff_ext()`, but supports a `flags` argument to
@@ -86,7 +86,7 @@ export namespace RpmOstree {
         orig_ref: string,
         new_ref: string,
         flags: DbDiffExtFlags,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): [boolean, Package[] | null, Package[] | null, Package[] | null, Package[] | null];
     /**
      * Return all of the RPM packages present in the `ref` branch or commit
@@ -96,7 +96,7 @@ export namespace RpmOstree {
      * @param cancellable Cancellable
      * @returns A query result, or `null` on error
      */
-    function db_query_all(repo: OSTree.Repo, ref: string, cancellable?: Gio.Cancellable | null): Package[];
+    function db_query_all(repo: OSTree.Repo, ref: string, cancellable: Gio.Cancellable | null): Package[];
     /**
      * @returns A string for RPM's architecture, commonly used for e.g. $basearch in URLs
      * @since 2017.8

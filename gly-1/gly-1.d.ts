@@ -401,7 +401,7 @@ export namespace Gly {
          * Asynchronous version of {@link Image.next_frame}.
          * @param cancellable A {@link Gio.Cancellable} to cancel the operation
          */
-        next_frame_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<Frame>;
+        next_frame_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Frame>;
         /**
          * Asynchronous version of {@link Image.next_frame}.
          * @param cancellable A {@link Gio.Cancellable} to cancel the operation
@@ -414,7 +414,7 @@ export namespace Gly {
          * @param callback A callback to call when the operation is complete
          */
         next_frame_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Frame> | void;
         /**
@@ -480,8 +480,14 @@ export namespace Gly {
          * @construct-only
          */
         get file(): Gio.File;
+        /**
+         * @default Auto
+         */
         get sandbox_selector(): SandboxSelector;
         set sandbox_selector(val: SandboxSelector);
+        /**
+         * @default Auto
+         */
         get sandboxSelector(): SandboxSelector;
         set sandboxSelector(val: SandboxSelector);
 
@@ -534,7 +540,7 @@ export namespace Gly {
          * Asynchronous version of {@link Loader.load}.
          * @param cancellable A {@link Gio.Cancellable} to cancel the operation
          */
-        load_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<Image>;
+        load_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Image>;
         /**
          * Asynchronous version of {@link Loader.load}.
          * @param cancellable A {@link Gio.Cancellable} to cancel the operation
@@ -547,7 +553,7 @@ export namespace Gly {
          * @param callback A callback to call when the operation is complete
          */
         load_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Image> | void;
         /**

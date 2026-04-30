@@ -4784,49 +4784,49 @@ export namespace NM {
      * @returns `true`, if `optname` is valid
      * @since 1.46
      */
-    function ethtool_optname_is_channels(optname?: string | null): boolean;
+    function ethtool_optname_is_channels(optname: string | null): boolean;
     /**
      * Checks whether `optname` is a valid option name for a coalesce setting.
      * @param optname the option name to check
      * @returns `true`, if `optname` is valid
      * @since 1.26
      */
-    function ethtool_optname_is_coalesce(optname?: string | null): boolean;
+    function ethtool_optname_is_coalesce(optname: string | null): boolean;
     /**
      * Checks whether `optname` is a valid option name for an eee setting.
      * @param optname the option name to check
      * @returns `true`, if `optname` is valid
      * @since 1.46
      */
-    function ethtool_optname_is_eee(optname?: string | null): boolean;
+    function ethtool_optname_is_eee(optname: string | null): boolean;
     /**
      * Checks whether `optname` is a valid option name for an offload feature.
      * @param optname the option name to check
      * @returns `true`, if `optname` is valid Note that `nm_ethtool_optname_is_feature()` was first added to the libnm header files in 1.14.0 but forgot to actually add to the library. This happened belatedly in 1.20.0 and the stable versions 1.18.2, 1.16.4 and 1.14.8 (with linker version "libnm_1_14_8").
      * @since 1.20
      */
-    function ethtool_optname_is_feature(optname?: string | null): boolean;
+    function ethtool_optname_is_feature(optname: string | null): boolean;
     /**
      * Checks whether `optname` is a valid option name for a fec setting.
      * @param optname the option name to check
      * @returns `true`, if `optname` is valid
      * @since 1.52
      */
-    function ethtool_optname_is_fec(optname?: string | null): boolean;
+    function ethtool_optname_is_fec(optname: string | null): boolean;
     /**
      * Checks whether `optname` is a valid option name for a pause setting.
      * @param optname the option name to check
      * @returns `true`, if `optname` is valid
      * @since 1.32
      */
-    function ethtool_optname_is_pause(optname?: string | null): boolean;
+    function ethtool_optname_is_pause(optname: string | null): boolean;
     /**
      * Checks whether `optname` is a valid option name for a ring setting.
      * @param optname the option name to check
      * @returns `true`, if `optname` is valid
      * @since 1.26
      */
-    function ethtool_optname_is_ring(optname?: string | null): boolean;
+    function ethtool_optname_is_ring(optname: string | null): boolean;
     /**
      * Validates a route attribute, i.e. checks that the attribute is a known one
      * and the value is of the correct type and well-formed.
@@ -4852,7 +4852,7 @@ export namespace NM {
     function ip_routing_rule_from_string(
         str: string,
         to_string_flags: IPRoutingRuleAsStringFlags,
-        extra_args?: GLib.HashTable<any, any> | null,
+        extra_args: GLib.HashTable<any, any> | null,
     ): IPRoutingRule;
     /**
      * Tries to create a NMConnection from a keyfile. The resulting keyfile is
@@ -4868,7 +4868,7 @@ export namespace NM {
         keyfile: GLib.KeyFile,
         base_dir: string,
         handler_flags: KeyfileHandlerFlags,
-        handler?: KeyfileReadHandler | null,
+        handler: KeyfileReadHandler | null,
     ): Connection;
     /**
      * `connection` should verify as a valid profile according to
@@ -4884,7 +4884,7 @@ export namespace NM {
     function keyfile_write(
         connection: Connection,
         handler_flags: KeyfileHandlerFlags,
-        handler?: KeyfileWriteHandler | null,
+        handler: KeyfileWriteHandler | null,
     ): GLib.KeyFile;
     function manager_error_quark(): GLib.Quark;
     /**
@@ -5196,7 +5196,7 @@ export namespace NM {
      * @returns `true` if interface name is valid, otherwise `false` is returned. Before 1.20, this function did not accept `null` as `name` argument. If you   want to run against older versions of libnm, don't pass `null`.
      * @deprecated since 1.6: Use `nm_utils_is_valid_iface_name()` instead, with better error reporting.
      */
-    function utils_iface_valid_name(name?: string | null): boolean;
+    function utils_iface_valid_name(name: string | null): boolean;
     /**
      * Utility function to convert a {@link GLib.Variant} of type 'aau' representing a list of
      * NetworkManager IPv4 addresses (which are tuples of address, prefix, and
@@ -5221,7 +5221,7 @@ export namespace NM {
      * @param gateway the gateway IP address
      * @returns a new floating {@link GLib.Variant} representing `addresses`.
      */
-    function utils_ip4_addresses_to_variant(addresses: IPAddress[], gateway?: string | null): GLib.Variant;
+    function utils_ip4_addresses_to_variant(addresses: IPAddress[], gateway: string | null): GLib.Variant;
     /**
      * Utility function to convert a {@link GLib.Variant} of type 'au' representing a list of
      * IPv4 addresses into an array of IP address strings.
@@ -5304,7 +5304,7 @@ export namespace NM {
      * @param gateway the gateway IP address
      * @returns a new floating {@link GLib.Variant} representing `addresses`.
      */
-    function utils_ip6_addresses_to_variant(addresses: IPAddress[], gateway?: string | null): GLib.Variant;
+    function utils_ip6_addresses_to_variant(addresses: IPAddress[], gateway: string | null): GLib.Variant;
     /**
      * Utility function to convert a {@link GLib.Variant} of type 'aay' representing a list of
      * IPv6 addresses into an array of IP address strings. Each "ay" entry must be
@@ -5427,7 +5427,7 @@ export namespace NM {
      * @returns `true` if `str` is a UUID, `false` if not In older versions, `nm_utils_is_uuid()` did not accept `null` as `str` argument. Don't pass `null` if you run against older versions of libnm.
      * @deprecated since 1.32: older versions of NetworkManager had a wrong   understanding of what makes a valid UUID. This function can thus   accept some inputs as valid, which in fact are not valid UUIDs.
      */
-    function utils_is_uuid(str?: string | null): boolean;
+    function utils_is_uuid(str: string | null): boolean;
     /**
      * Validate the network interface name.
      *
@@ -5437,7 +5437,7 @@ export namespace NM {
      * @returns `true` if interface name is valid, otherwise `false` is returned. Before 1.20, this function did not accept `null` as `name` argument. If you   want to run against older versions of libnm, don't pass `null`.
      * @since 1.6
      */
-    function utils_is_valid_iface_name(name?: string | null): boolean;
+    function utils_is_valid_iface_name(name: string | null): boolean;
     /**
      * Parse attributes from a string.
      * @param string the input string
@@ -5759,19 +5759,19 @@ export namespace NM {
      * @gir-type Callback
      */
     interface SecretAgentOldDeleteSecretsFunc {
-        (agent: SecretAgentOld, connection: Connection, error?: GLib.Error | null): void;
+        (agent: SecretAgentOld, connection: Connection, error: GLib.Error | null): void;
     }
     /**
      * @gir-type Callback
      */
     interface SecretAgentOldGetSecretsFunc {
-        (agent: SecretAgentOld, connection: Connection, secrets?: GLib.Variant | null, error?: GLib.Error | null): void;
+        (agent: SecretAgentOld, connection: Connection, secrets: GLib.Variant | null, error: GLib.Error | null): void;
     }
     /**
      * @gir-type Callback
      */
     interface SecretAgentOldSaveSecretsFunc {
-        (agent: SecretAgentOld, connection: Connection, error?: GLib.Error | null): void;
+        (agent: SecretAgentOld, connection: Connection, error: GLib.Error | null): void;
     }
     /**
      * @gir-type Callback
@@ -5789,7 +5789,7 @@ export namespace NM {
      * @gir-type Callback
      */
     interface UtilsCheckFilePredicate {
-        (filename: string, stat?: any | null): boolean;
+        (filename: string, stat: any | null): boolean;
     }
     /**
      * @gir-type Callback
@@ -7440,33 +7440,39 @@ export namespace NM {
          * The channel bandwidth announced by the AP in MHz.
          * @since 1.46
          * @read-only
+         * @default 0
          */
         get bandwidth(): number;
         /**
          * The BSSID of the access point.
          * @read-only
+         * @default null
          */
         get bssid(): string;
         /**
          * The flags of the access point.
          * @read-only
+         * @default NM.__80211ApFlags.NONE
          */
         get flags(): __80211ApFlags;
         /**
          * The frequency of the access point.
          * @read-only
+         * @default 0
          */
         get frequency(): number;
         /**
          * Alias for {@link NM.AccessPoint.bssid}.
          * @deprecated since 1.0: Use {@link NM.AccessPoint.bssid}.
          * @read-only
+         * @default null
          */
         get hw_address(): string;
         /**
          * Alias for {@link NM.AccessPoint.bssid}.
          * @deprecated since 1.0: Use {@link NM.AccessPoint.bssid}.
          * @read-only
+         * @default null
          */
         get hwAddress(): string;
         /**
@@ -7475,6 +7481,7 @@ export namespace NM {
          * access point has not been found in a scan.
          * @since 1.2
          * @read-only
+         * @default -1
          */
         get last_seen(): number;
         /**
@@ -7483,16 +7490,19 @@ export namespace NM {
          * access point has not been found in a scan.
          * @since 1.2
          * @read-only
+         * @default -1
          */
         get lastSeen(): number;
         /**
          * The maximum bit rate of the access point in kbit/s.
          * @read-only
+         * @default 0
          */
         get max_bitrate(): number;
         /**
          * The maximum bit rate of the access point in kbit/s.
          * @read-only
+         * @default 0
          */
         get maxBitrate(): number;
         /**
@@ -7500,16 +7510,19 @@ export namespace NM {
          * coordinator of the wireless network allowing clients to connect) or
          * "ad-hoc" (a network with no central controller).
          * @read-only
+         * @default NM.__80211Mode.UNKNOWN
          */
         get mode(): __80211Mode;
         /**
          * The RSN flags of the access point.
          * @read-only
+         * @default NM.__80211ApSecurityFlags.NONE
          */
         get rsn_flags(): __80211ApSecurityFlags;
         /**
          * The RSN flags of the access point.
          * @read-only
+         * @default NM.__80211ApSecurityFlags.NONE
          */
         get rsnFlags(): __80211ApSecurityFlags;
         /**
@@ -7520,16 +7533,19 @@ export namespace NM {
         /**
          * The current signal strength of the access point.
          * @read-only
+         * @default 0
          */
         get strength(): number;
         /**
          * The WPA flags of the access point.
          * @read-only
+         * @default NM.__80211ApSecurityFlags.NONE
          */
         get wpa_flags(): __80211ApSecurityFlags;
         /**
          * The WPA flags of the access point.
          * @read-only
+         * @default NM.__80211ApSecurityFlags.NONE
          */
         get wpaFlags(): __80211ApSecurityFlags;
 
@@ -7687,7 +7703,7 @@ export namespace NM {
 
         interface ConstructorProps extends Object.ConstructorProps {
             connection: RemoteConnection;
-            controller: Device;
+            controller: Device | null;
             default: boolean;
             default6: boolean;
             devices: Device[];
@@ -7700,7 +7716,7 @@ export namespace NM {
             ip4Config: IPConfig;
             ip6_config: IPConfig;
             ip6Config: IPConfig;
-            master: Device;
+            master: Device | null;
             specific_object_path: string;
             specificObjectPath: string;
             state: ActiveConnectionState;
@@ -7731,15 +7747,17 @@ export namespace NM {
          * @since 1.44
          * @read-only
          */
-        get controller(): Device;
+        get controller(): Device | null;
         /**
          * Whether the active connection is the default IPv4 one.
          * @read-only
+         * @default false
          */
         get default(): boolean;
         /**
          * Whether the active connection is the default IPv6 one.
          * @read-only
+         * @default false
          */
         get default6(): boolean;
         /**
@@ -7770,6 +7788,7 @@ export namespace NM {
         /**
          * The active connection's ID
          * @read-only
+         * @default null
          */
         get id(): string;
         /**
@@ -7797,49 +7816,57 @@ export namespace NM {
          * @deprecated since 1.44
          * @read-only
          */
-        get master(): Device;
+        get master(): Device | null;
         /**
          * The path to the "specific object" of the active connection; see
          * `nm_active_connection_get_specific_object_path()` for more details.
          * @read-only
+         * @default null
          */
         get specific_object_path(): string;
         /**
          * The path to the "specific object" of the active connection; see
          * `nm_active_connection_get_specific_object_path()` for more details.
          * @read-only
+         * @default null
          */
         get specificObjectPath(): string;
         /**
          * The state of the active connection.
          * @read-only
+         * @default NM.ActiveConnectionState.UNKNOWN
          */
         get state(): ActiveConnectionState;
         /**
          * The state flags of the active connection.
          * @since 1.10
          * @read-only
+         * @default 0
          */
         get state_flags(): number;
         /**
          * The state flags of the active connection.
          * @since 1.10
          * @read-only
+         * @default 0
          */
         get stateFlags(): number;
         /**
          * The active connection's type
          * @read-only
+         * @default null
          */
         get type(): string;
         /**
          * The active connection's UUID
          * @read-only
+         * @default null
          */
         get uuid(): string;
         /**
          * Whether the active connection is a VPN connection.
          * @read-only
+         * @default false
          */
         get vpn(): boolean;
 
@@ -8017,6 +8044,7 @@ export namespace NM {
          * The timestamp (in CLOCK_BOOTTIME milliseconds) of checkpoint creation.
          * @since 1.12
          * @read-only
+         * @default 0
          */
         get created(): number;
         /**
@@ -8029,12 +8057,14 @@ export namespace NM {
          * Timeout in seconds for automatic rollback, or zero.
          * @since 1.12
          * @read-only
+         * @default 0
          */
         get rollback_timeout(): number;
         /**
          * Timeout in seconds for automatic rollback, or zero.
          * @since 1.12
          * @read-only
+         * @default 0
          */
         get rollbackTimeout(): number;
 
@@ -8311,11 +8341,13 @@ export namespace NM {
         /**
          * If `true`, adding and modifying connections is supported.
          * @read-only
+         * @default false
          */
         get can_modify(): boolean;
         /**
          * If `true`, adding and modifying connections is supported.
          * @read-only
+         * @default false
          */
         get canModify(): boolean;
         /**
@@ -8343,30 +8375,41 @@ export namespace NM {
         /**
          * The network connectivity state.
          * @read-only
+         * @default NM.ConnectivityState.UNKNOWN
          */
         get connectivity(): ConnectivityState;
         /**
          * @read-only
+         * @default false
          */
         get connectivity_check_available(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get connectivityCheckAvailable(): boolean;
+        /**
+         * @default false
+         */
         get connectivity_check_enabled(): boolean;
         set connectivity_check_enabled(val: boolean);
+        /**
+         * @default false
+         */
         get connectivityCheckEnabled(): boolean;
         set connectivityCheckEnabled(val: boolean);
         /**
          * The used URI for connectivity checking.
          * @since 1.22
          * @read-only
+         * @default null
          */
         get connectivity_check_uri(): string;
         /**
          * The used URI for connectivity checking.
          * @since 1.22
          * @read-only
+         * @default null
          */
         get connectivityCheckUri(): string;
         /**
@@ -8391,12 +8434,14 @@ export namespace NM {
          * The name owner of the NetworkManager D-Bus service.
          * @since 1.22
          * @read-only
+         * @default null
          */
         get dbus_name_owner(): string;
         /**
          * The name owner of the NetworkManager D-Bus service.
          * @since 1.22
          * @read-only
+         * @default null
          */
         get dbusNameOwner(): string;
         /**
@@ -8422,30 +8467,35 @@ export namespace NM {
          * The current DNS processing mode.
          * @since 1.6
          * @read-only
+         * @default null
          */
         get dns_mode(): string;
         /**
          * The current DNS processing mode.
          * @since 1.6
          * @read-only
+         * @default null
          */
         get dnsMode(): string;
         /**
          * The current resolv.conf management mode.
          * @since 1.6
          * @read-only
+         * @default null
          */
         get dns_rc_manager(): string;
         /**
          * The current resolv.conf management mode.
          * @since 1.6
          * @read-only
+         * @default null
          */
         get dnsRcManager(): string;
         /**
          * The machine hostname stored in persistent configuration. This can be
          * modified by calling `nm_client_save_hostname()`.
          * @read-only
+         * @default null
          */
         get hostname(): string;
         /**
@@ -8461,6 +8511,7 @@ export namespace NM {
          * The flags {@link NM.ClientInstanceFlags.INITIALIZED_GOOD} and {@link NM.ClientInstanceFlags.INITIALIZED_BAD}
          * cannot be set, however they will be returned by the getter after initialization completes.
          * @since 1.24
+         * @default 0
          */
         get instance_flags(): number;
         set instance_flags(val: number);
@@ -8477,6 +8528,7 @@ export namespace NM {
          * The flags {@link NM.ClientInstanceFlags.INITIALIZED_GOOD} and {@link NM.ClientInstanceFlags.INITIALIZED_BAD}
          * cannot be set, however they will be returned by the getter after initialization completes.
          * @since 1.24
+         * @default 0
          */
         get instanceFlags(): number;
         set instanceFlags(val: number);
@@ -8484,12 +8536,14 @@ export namespace NM {
          * Whether the connectivity is metered.
          * @since 1.2
          * @read-only
+         * @default 0
          */
         get metered(): number;
         /**
          * Whether networking is enabled.
          *
          * The property setter is a synchronous D-Bus call. This is deprecated since 1.22.
+         * @default false
          */
         get networking_enabled(): boolean;
         set networking_enabled(val: boolean);
@@ -8497,17 +8551,20 @@ export namespace NM {
          * Whether networking is enabled.
          *
          * The property setter is a synchronous D-Bus call. This is deprecated since 1.22.
+         * @default false
          */
         get networkingEnabled(): boolean;
         set networkingEnabled(val: boolean);
         /**
          * Whether the daemon is running.
          * @read-only
+         * @default false
          */
         get nm_running(): boolean;
         /**
          * Whether the daemon is running.
          * @read-only
+         * @default false
          */
         get nmRunning(): boolean;
         /**
@@ -8526,6 +8583,7 @@ export namespace NM {
          * change).
          * @since 1.24
          * @read-only
+         * @default NM.Ternary.DEFAULT
          */
         get permissions_state(): Ternary;
         /**
@@ -8544,6 +8602,7 @@ export namespace NM {
          * change).
          * @since 1.24
          * @read-only
+         * @default NM.Ternary.DEFAULT
          */
         get permissionsState(): Ternary;
         /**
@@ -8562,27 +8621,32 @@ export namespace NM {
          * Flags for radio interfaces. See {@link NM.RadioFlags}.
          * @since 1.38
          * @read-only
+         * @default 0
          */
         get radio_flags(): number;
         /**
          * Flags for radio interfaces. See {@link NM.RadioFlags}.
          * @since 1.38
          * @read-only
+         * @default 0
          */
         get radioFlags(): number;
         /**
          * Whether the daemon is still starting up.
          * @read-only
+         * @default false
          */
         get startup(): boolean;
         /**
          * The current daemon state.
          * @read-only
+         * @default NM.State.UNKNOWN
          */
         get state(): State;
         /**
          * The NetworkManager version.
          * @read-only
+         * @default null
          */
         get version(): string;
         /**
@@ -8608,12 +8672,14 @@ export namespace NM {
         /**
          * Whether WiMAX functionality is enabled.
          * @deprecated since 1.22: WiMAX is no longer supported and this always returns FALSE. The setter has no effect.
+         * @default false
          */
         get wimax_enabled(): boolean;
         set wimax_enabled(val: boolean);
         /**
          * Whether WiMAX functionality is enabled.
          * @deprecated since 1.22: WiMAX is no longer supported and this always returns FALSE. The setter has no effect.
+         * @default false
          */
         get wimaxEnabled(): boolean;
         set wimaxEnabled(val: boolean);
@@ -8621,18 +8687,21 @@ export namespace NM {
          * Whether the WiMAX hardware is enabled.
          * @deprecated since 1.22: WiMAX is no longer supported and this always returns FALSE.
          * @read-only
+         * @default false
          */
         get wimax_hardware_enabled(): boolean;
         /**
          * Whether the WiMAX hardware is enabled.
          * @deprecated since 1.22: WiMAX is no longer supported and this always returns FALSE.
          * @read-only
+         * @default false
          */
         get wimaxHardwareEnabled(): boolean;
         /**
          * Whether wireless is enabled.
          *
          * The property setter is a synchronous D-Bus call. This is deprecated since 1.22.
+         * @default false
          */
         get wireless_enabled(): boolean;
         set wireless_enabled(val: boolean);
@@ -8640,23 +8709,27 @@ export namespace NM {
          * Whether wireless is enabled.
          *
          * The property setter is a synchronous D-Bus call. This is deprecated since 1.22.
+         * @default false
          */
         get wirelessEnabled(): boolean;
         set wirelessEnabled(val: boolean);
         /**
          * Whether the wireless hardware is enabled.
          * @read-only
+         * @default false
          */
         get wireless_hardware_enabled(): boolean;
         /**
          * Whether the wireless hardware is enabled.
          * @read-only
+         * @default false
          */
         get wirelessHardwareEnabled(): boolean;
         /**
          * Whether WWAN functionality is enabled.
          *
          * The property setter is a synchronous D-Bus call. This is deprecated since 1.22.
+         * @default false
          */
         get wwan_enabled(): boolean;
         set wwan_enabled(val: boolean);
@@ -8664,17 +8737,20 @@ export namespace NM {
          * Whether WWAN functionality is enabled.
          *
          * The property setter is a synchronous D-Bus call. This is deprecated since 1.22.
+         * @default false
          */
         get wwanEnabled(): boolean;
         set wwanEnabled(val: boolean);
         /**
          * Whether the WWAN hardware is enabled.
          * @read-only
+         * @default false
          */
         get wwan_hardware_enabled(): boolean;
         /**
          * Whether the WWAN hardware is enabled.
          * @read-only
+         * @default false
          */
         get wwanHardwareEnabled(): boolean;
 
@@ -8693,7 +8769,7 @@ export namespace NM {
 
         _init(...args: any[]): void;
 
-        static ['new'](cancellable?: Gio.Cancellable | null): Client;
+        static ['new'](cancellable: Gio.Cancellable | null): Client;
 
         static new_finish(result: Gio.AsyncResult): Client;
         // Conflicted with Gio.AsyncInitable.new_finish
@@ -8748,7 +8824,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to call when the client is created
          */
-        static new_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<Client> | null): void;
+        static new_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Client> | null): void;
         /**
          * @param result a {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `nm_client_wait_shutdown()`
          */
@@ -8779,10 +8855,10 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
         activate_connection_async(
-            connection?: Connection | null,
-            device?: Device | null,
-            specific_object?: string | null,
-            cancellable?: Gio.Cancellable | null,
+            connection: Connection | null,
+            device: Device | null,
+            specific_object: string | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<ActiveConnection>;
         /**
          * Asynchronously starts a connection to a particular network using the
@@ -8838,10 +8914,10 @@ export namespace NM {
          * @param callback callback to be called when the activation has started
          */
         activate_connection_async(
-            connection?: Connection | null,
-            device?: Device | null,
-            specific_object?: string | null,
-            cancellable?: Gio.Cancellable | null,
+            connection: Connection | null,
+            device: Device | null,
+            specific_object: string | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<ActiveConnection> | void;
         /**
@@ -8883,7 +8959,7 @@ export namespace NM {
             device: Device | null,
             specific_object: string | null,
             options: GLib.Variant,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<[ActiveConnection, GLib.Variant | null]>;
         /**
          * Adds a new connection using the given details (if any) as a template,
@@ -8956,7 +9032,7 @@ export namespace NM {
             device: Device | null,
             specific_object: string | null,
             options: GLib.Variant,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[ActiveConnection, GLib.Variant | null]> | void;
         /**
@@ -8985,10 +9061,10 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
         add_and_activate_connection_async(
-            partial?: Connection | null,
-            device?: Device | null,
-            specific_object?: string | null,
-            cancellable?: Gio.Cancellable | null,
+            partial: Connection | null,
+            device: Device | null,
+            specific_object: string | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<ActiveConnection>;
         /**
          * Adds a new connection using the given details (if any) as a template,
@@ -9032,10 +9108,10 @@ export namespace NM {
          * @param callback callback to be called when the activation has started
          */
         add_and_activate_connection_async(
-            partial?: Connection | null,
-            device?: Device | null,
-            specific_object?: string | null,
-            cancellable?: Gio.Cancellable | null,
+            partial: Connection | null,
+            device: Device | null,
+            specific_object: string | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<ActiveConnection> | void;
         /**
@@ -9060,7 +9136,7 @@ export namespace NM {
             flags: SettingsAddConnection2Flags,
             args: GLib.Variant | null,
             ignore_out_result: boolean,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<[RemoteConnection, GLib.Variant | null]>;
         /**
          * Call AddConnection2() D-Bus API asynchronously.
@@ -9093,7 +9169,7 @@ export namespace NM {
             flags: SettingsAddConnection2Flags,
             args: GLib.Variant | null,
             ignore_out_result: boolean,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[RemoteConnection, GLib.Variant | null]> | void;
         /**
@@ -9123,7 +9199,7 @@ export namespace NM {
         add_connection_async(
             connection: Connection,
             save_to_disk: boolean,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<RemoteConnection>;
         /**
          * Requests that the remote settings service add the given settings to a new
@@ -9174,7 +9250,7 @@ export namespace NM {
         add_connection_async(
             connection: Connection,
             save_to_disk: boolean,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<RemoteConnection> | void;
         /**
@@ -9193,7 +9269,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns the (new) current connectivity state
          */
-        check_connectivity(cancellable?: Gio.Cancellable | null): ConnectivityState;
+        check_connectivity(cancellable: Gio.Cancellable | null): ConnectivityState;
         /**
          * Asynchronously updates the network connectivity state and invokes
          * `callback` when complete. Contrast `nm_client_get_connectivity()`,
@@ -9201,7 +9277,7 @@ export namespace NM {
          * re-checking, and `nm_client_check_connectivity()`, which blocks.
          * @param cancellable a {@link Gio.Cancellable}
          */
-        check_connectivity_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<ConnectivityState>;
+        check_connectivity_async(cancellable: Gio.Cancellable | null): globalThis.Promise<ConnectivityState>;
         /**
          * Asynchronously updates the network connectivity state and invokes
          * `callback` when complete. Contrast `nm_client_get_connectivity()`,
@@ -9223,7 +9299,7 @@ export namespace NM {
          * @param callback callback to call with the result
          */
         check_connectivity_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<ConnectivityState> | void;
         /**
@@ -9243,7 +9319,7 @@ export namespace NM {
         checkpoint_adjust_rollback_timeout(
             checkpoint_path: string,
             add_timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Resets the timeout for the checkpoint with path `checkpoint_path`
@@ -9270,7 +9346,7 @@ export namespace NM {
         checkpoint_adjust_rollback_timeout(
             checkpoint_path: string,
             add_timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -9293,7 +9369,7 @@ export namespace NM {
             devices: Device[],
             rollback_timeout: number,
             flags: CheckpointCreateFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<Checkpoint>;
         /**
          * Creates a checkpoint of the current networking configuration
@@ -9328,7 +9404,7 @@ export namespace NM {
             devices: Device[],
             rollback_timeout: number,
             flags: CheckpointCreateFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Checkpoint> | void;
         /**
@@ -9342,7 +9418,7 @@ export namespace NM {
          * @param checkpoint_path the D-Bus path for the checkpoint
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        checkpoint_destroy(checkpoint_path: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        checkpoint_destroy(checkpoint_path: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Destroys an existing checkpoint without performing a rollback.
          * @param checkpoint_path the D-Bus path for the checkpoint
@@ -9362,7 +9438,7 @@ export namespace NM {
          */
         checkpoint_destroy(
             checkpoint_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -9378,7 +9454,7 @@ export namespace NM {
          */
         checkpoint_rollback(
             checkpoint_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<GLib.HashTable<string, number>>;
         /**
          * Performs the rollback of a checkpoint before the timeout is reached.
@@ -9399,7 +9475,7 @@ export namespace NM {
          */
         checkpoint_rollback(
             checkpoint_path: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GLib.HashTable<string, number>> | void;
         /**
@@ -9457,7 +9533,7 @@ export namespace NM {
             parameters: GLib.Variant | null,
             reply_type: GLib.VariantType | null,
             timeout_msec: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<GLib.Variant>;
         /**
          * Call `g_dbus_connection_call()` on the current name owner with the specified
@@ -9512,7 +9588,7 @@ export namespace NM {
             parameters: GLib.Variant | null,
             reply_type: GLib.VariantType | null,
             timeout_msec: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GLib.Variant> | void;
         /**
@@ -9537,7 +9613,7 @@ export namespace NM {
             property_name: string,
             value: GLib.Variant,
             timeout_msec: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Like `nm_client_dbus_call()` but calls "Set" on the standard "org.freedesktop.DBus.Properties"
@@ -9576,7 +9652,7 @@ export namespace NM {
             property_name: string,
             value: GLib.Variant,
             timeout_msec: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -9591,7 +9667,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns success or failure
          */
-        deactivate_connection(active: ActiveConnection, cancellable?: Gio.Cancellable | null): boolean;
+        deactivate_connection(active: ActiveConnection, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously deactivates an active {@link NM.ActiveConnection}.
          * @param active the {@link NM.ActiveConnection} to deactivate
@@ -9599,7 +9675,7 @@ export namespace NM {
          */
         deactivate_connection_async(
             active: ActiveConnection,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously deactivates an active {@link NM.ActiveConnection}.
@@ -9620,7 +9696,7 @@ export namespace NM {
          */
         deactivate_connection_async(
             active: ActiveConnection,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -9850,7 +9926,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success. Warning: before libnm 1.22, the boolean return value was inconsistent.   That is made worse, because when running against certain server versions   before 1.20, the server would return wrong values for success/failure.   This means, if you use this function in libnm before 1.22, you are advised   to ignore the boolean return value and only look at `failures` and `error`.   With libnm >= 1.22, the boolean return value corresponds to whether `error` was   set. Note that even in the success case, you might have individual `failures`.   With 1.22, the return value is consistent with `nm_client_load_connections_finish()`.
          */
-        load_connections(filenames: string[], cancellable?: Gio.Cancellable | null): [boolean, string];
+        load_connections(filenames: string[], cancellable: Gio.Cancellable | null): [boolean, string];
         /**
          * Requests that the remote settings service asynchronously load or reload the
          * given files, adding or updating the connections described within.
@@ -9859,7 +9935,7 @@ export namespace NM {
          * @param filenames `null`-terminated array of filenames to load
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        load_connections_async(filenames: string[], cancellable?: Gio.Cancellable | null): globalThis.Promise<string[]>;
+        load_connections_async(filenames: string[], cancellable: Gio.Cancellable | null): globalThis.Promise<string[]>;
         /**
          * Requests that the remote settings service asynchronously load or reload the
          * given files, adding or updating the connections described within.
@@ -9885,7 +9961,7 @@ export namespace NM {
          */
         load_connections_async(
             filenames: string[],
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string[]> | void;
         /**
@@ -9918,7 +9994,7 @@ export namespace NM {
          * @param flags flags indicating what to reload.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        reload(flags: ManagerReloadFlags, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        reload(flags: ManagerReloadFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Reload NetworkManager's configuration and perform certain updates, like
          * flushing caches or rewriting external state to disk. This is similar to
@@ -9946,7 +10022,7 @@ export namespace NM {
          */
         reload(
             flags: ManagerReloadFlags,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -9956,14 +10032,14 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success, `false` on failure
          */
-        reload_connections(cancellable?: Gio.Cancellable | null): boolean;
+        reload_connections(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Requests that the remote settings service begin reloading all connection
          * files from disk, adding, updating, and removing connections until the
          * in-memory state matches the on-disk state.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        reload_connections_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        reload_connections_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Requests that the remote settings service begin reloading all connection
          * files from disk, adding, updating, and removing connections until the
@@ -9983,7 +10059,7 @@ export namespace NM {
          * @param callback callback to be called when the reload operation completes
          */
         reload_connections_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -10005,17 +10081,14 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` if the request was successful, `false` if it failed
          */
-        save_hostname(hostname?: string | null, cancellable?: Gio.Cancellable | null): boolean;
+        save_hostname(hostname: string | null, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Requests that the machine's persistent hostname be set to the specified value
          * or cleared.
          * @param hostname the new persistent hostname to set, or `null` to   clear any existing persistent hostname
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        save_hostname_async(
-            hostname?: string | null,
-            cancellable?: Gio.Cancellable | null,
-        ): globalThis.Promise<boolean>;
+        save_hostname_async(hostname: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Requests that the machine's persistent hostname be set to the specified value
          * or cleared.
@@ -10036,8 +10109,8 @@ export namespace NM {
          * @param callback callback to be called when the operation completes
          */
         save_hostname_async(
-            hostname?: string | null,
-            cancellable?: Gio.Cancellable | null,
+            hostname: string | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -10052,7 +10125,7 @@ export namespace NM {
          * @param domains logging domains to set. The string should be a list of log   domains separated by ",". (`null` or an empty string for no change)
          * @returns `true` on success, `false` otherwise
          */
-        set_logging(level?: string | null, domains?: string | null): boolean;
+        set_logging(level: string | null, domains: string | null): boolean;
         /**
          * The way to stop {@link NM.Client} is by unrefing it. That will cancel all
          * internally pending async operations. However, as async operations in
@@ -10107,8 +10180,8 @@ export namespace NM {
          */
         wait_shutdown(
             integrate_maincontext: boolean,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Determines whether WiMAX is enabled.
@@ -10195,7 +10268,7 @@ export namespace NM {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -10285,7 +10358,7 @@ export namespace NM {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -10346,8 +10419,8 @@ export namespace NM {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -10398,7 +10471,7 @@ export namespace NM {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -10441,456 +10514,7 @@ export namespace NM {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
-        /**
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`.
-         *
-         * Whenever the `source_property` is changed the `target_property` is
-         * updated using the same value. For instance:
-         *
-         *
-         * ```c
-         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-         * ```
-         *
-         *
-         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
-         * updated with the same value of the "active" property of the action {@link GObject.Object}
-         * instance.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well.
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call `g_object_unref()` on the returned
-         * {@link GObject.Binding} instance.
-         *
-         * Removing the binding by calling `g_object_unref()` on it must only be done if
-         * the binding, `source` and `target` are only used from a single thread and it
-         * is clear that both `source` and `target` outlive the binding. Especially it
-         * is not safe to rely on this if the binding, `source` or `target` can be
-         * finalized from different threads. Keep another reference to the binding and
-         * use `g_binding_unbind()` instead to be on the safe side.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-        ): GObject.Binding;
-        /**
-         * Complete version of `g_object_bind_property()`.
-         *
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`, allowing you to set the transformation functions to be used by
-         * the binding.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property_full(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
-        ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
-        /**
-         * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all `GInitiallyUnowneds` are created with a floating reference
-         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
-         */
-        force_floating(): void;
-        /**
-         * Increases the freeze count on `object`. If the freeze count is
-         * non-zero, the emission of "notify" signals on `object` is
-         * stopped. The signals are queued until the freeze count is decreased
-         * to zero. Duplicate notifications are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
-         * object is frozen.
-         *
-         * This is necessary for accessors that modify multiple properties to prevent
-         * premature notification while the object is still being modified.
-         */
-        freeze_notify(): void;
-        /**
-         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
-         * @param key name of the key for that association
-         * @returns the data if found,          or `null` if no such data exists.
-         */
-        get_data(key: string): any | null;
-        /**
-         * Gets a property of an object.
-         *
-         * The value can be:
-         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
-         * - a GObject.Value initialized with the expected type of the property
-         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
-         *
-         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
-         *
-         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
-         * @param property_name The name of the property to get
-         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
-         */
-        get_property(property_name: string, value: GObject.Value | any): any;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        get_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Gets `n_properties` properties for an `object`.
-         * Obtained properties will be set to `values`. All properties must be valid.
-         * Warnings will be emitted and undefined behaviour may result if invalid
-         * properties are passed in.
-         * @param names the names of each property to get
-         * @param values the values of each property to get
-         */
-        getv(names: string[], values: (GObject.Value | any)[]): void;
-        /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns `true` if `object` has a floating reference
-         */
-        is_floating(): boolean;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param property_name the name of a property installed on the class of `object`.
-         */
-        notify(property_name: string): void;
-        /**
-         * Emits a "notify" signal for the property specified by `pspec` on `object`.
-         *
-         * This function omits the property name lookup, hence it is faster than
-         * `g_object_notify()`.
-         *
-         * One way to avoid using `g_object_notify()` from within the
-         * class that registered the properties, and using `g_object_notify_by_pspec()`
-         * instead, is to store the GParamSpec used with
-         * `g_object_class_install_property()` inside a static array, e.g.:
-         *
-         *
-         * ```c
-         *   typedef enum
-         *   {
-         *     PROP_FOO = 1,
-         *     PROP_LAST
-         *   } MyObjectProperty;
-         *
-         *   static GParamSpec *properties[PROP_LAST];
-         *
-         *   static void
-         *   my_object_class_init (MyObjectClass *klass)
-         *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
-         *                                              0, 100,
-         *                                              50,
-         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-         *     g_object_class_install_property (gobject_class,
-         *                                      PROP_FOO,
-         *                                      properties[PROP_FOO]);
-         *   }
-         * ```
-         *
-         *
-         * and then notify a change on the "foo" property with:
-         *
-         *
-         * ```c
-         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-         * ```
-         *
-         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
-         */
-        notify_by_pspec(pspec: GObject.ParamSpec): void;
-        /**
-         * Increases the reference count of `object`.
-         *
-         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC `typeof()`
-         * extension), so any casting the caller needs to do on the return type must be
-         * explicit.
-         * @returns the same `object`
-         */
-        ref(): GObject.Object;
-        /**
-         * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
-         *
-         * In other words, if the object is floating, then this call "assumes
-         * ownership" of the floating reference, converting it to a normal
-         * reference by clearing the floating flag while leaving the reference
-         * count unchanged.  If the object is not floating, then this call
-         * adds a new normal reference increasing the reference count by one.
-         *
-         * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for `g_object_ref()`.
-         * @returns `object`
-         */
-        ref_sink(): GObject.Object;
-        /**
-         * Releases all references to other objects. This can be used to break
-         * reference cycles.
-         *
-         * This function should only be called from object system implementations.
-         */
-        run_dispose(): void;
-        /**
-         * Each object carries around a table of associations from
-         * strings to pointers.  This function lets you set an association.
-         *
-         * If the object already had an association with that name,
-         * the old association will be destroyed.
-         *
-         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
-         * This means a copy of `key` is kept permanently (even after `object` has been
-         * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
-         * @param key name of the key
-         * @param data data to associate with that key
-         */
-        set_data(key: string, data?: any | null): void;
-        /**
-         * Sets a property on an object.
-         * @param property_name The name of the property to set
-         * @param value The value to set the property to
-         */
-        set_property(property_name: string, value: GObject.Value | any): void;
-        /**
-         * Remove a specified datum from the object's data associations,
-         * without invoking the association's destroy handler.
-         * @param key name of the key
-         * @returns the data if found, or `null`          if no such data exists.
-         */
-        steal_data(key: string): any | null;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()` and removes the `data` from object
-         * without invoking its `destroy()` function (if any was
-         * set).
-         * Usually, calling this function is only required to update
-         * user data pointers with a destroy notifier, for example:
-         *
-         * ```c
-         * void
-         * object_add_to_user_list (GObject     *object,
-         *                          const gchar *new_string)
-         * {
-         *   // the quark, naming the object data
-         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-         *   // retrieve the old string list
-         *   GList *list = g_object_steal_qdata (object, quark_string_list);
-         *
-         *   // prepend new string
-         *   list = g_list_prepend (list, g_strdup (new_string));
-         *   // this changed 'list', so we need to set it again
-         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-         * }
-         * static void
-         * free_string_list (gpointer data)
-         * {
-         *   GList *node, *list = data;
-         *
-         *   for (node = list; node; node = node->next)
-         *     g_free (node->data);
-         *   g_list_free (list);
-         * }
-         * ```
-         *
-         * Using `g_object_get_qdata()` in the above example, instead of
-         * `g_object_steal_qdata()` would have left the destroy function set,
-         * and thus the partial string list would have been freed upon
-         * `g_object_set_qdata_full()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        steal_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Reverts the effect of a previous call to
-         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
-         * and when it reaches zero, queued "notify" signals are emitted.
-         *
-         * Duplicate notifications for each property are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
-         * in which they have been queued.
-         *
-         * It is an error to call this function when the freeze count is zero.
-         */
-        thaw_notify(): void;
-        /**
-         * Decreases the reference count of `object`. When its reference count
-         * drops to 0, the object is finalized (i.e. its memory is freed).
-         *
-         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
-         * an instance variable of another object), it is recommended to clear the
-         * pointer to `null` rather than retain a dangling pointer to a potentially
-         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
-         */
-        unref(): void;
-        /**
-         * This function essentially limits the life time of the `closure` to
-         * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling `g_closure_invalidate()` on
-         * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
-         * added as marshal guards to the `closure`, to ensure that an extra
-         * reference count is held on `object` during invocation of the
-         * `closure`.  Usually, this function will be called on closures that
-         * use this `object` as closure data.
-         * @param closure {@link GObject.Closure} to watch
-         */
-        watch_closure(closure: GObject.Closure): void;
-        /**
-         * the `constructed` function is called by `g_object_new()` as the
-         *  final step of the object creation process.  At the point of the call, all
-         *  construction properties have been set on the object.  The purpose of this
-         *  call is to allow for object initialisation steps that can only be performed
-         *  after construction properties have been set.  `constructed` implementors
-         *  should chain up to the `constructed` call of their parent class to allow it
-         *  to complete its initialisation.
-         * @virtual
-         */
-        vfunc_constructed(): void;
-        /**
-         * emits property change notification for a bunch
-         *  of properties. Overriding `dispatch_properties_changed` should be rarely
-         *  needed.
-         * @param n_pspecs
-         * @param pspecs
-         * @virtual
-         */
-        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
-        /**
-         * the `dispose` function is supposed to drop all references to other
-         *  objects, but keep the instance otherwise intact, so that client method
-         *  invocations still work. It may be run multiple times (due to reference
-         *  loops). Before returning, `dispose` should chain up to the `dispose` method
-         *  of the parent class.
-         * @virtual
-         */
-        vfunc_dispose(): void;
-        /**
-         * instance finalization function, should finish the finalization of
-         *  the instance begun in `dispose` and chain up to the `finalize` method of the
-         *  parent class.
-         * @virtual
-         */
-        vfunc_finalize(): void;
-        /**
-         * the generic getter for all properties of this type. Should be
-         *  overridden for every type with properties.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param pspec
-         * @virtual
-         */
-        vfunc_notify(pspec: GObject.ParamSpec): void;
-        /**
-         * the generic setter for all properties of this type. Should be
-         *  overridden for every type with properties. If implementations of
-         *  `set_property` don't emit property change notification explicitly, this will
-         *  be done implicitly by the type system. However, if the notify signal is
-         *  emitted explicitly, the type system will not emit it a second time.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
-         * @param id Handler ID of the handler to be disconnected
-         */
-        disconnect(id: number): void;
-        /**
-         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
-         * @param properties Object containing the properties to set
-         */
-        set(properties: { [key: string]: any }): void;
-        /**
-         * Blocks a handler of an instance so it will not be called during any signal emissions
-         * @param id Handler ID of the handler to be blocked
-         */
-        block_signal_handler(id: number): void;
-        /**
-         * Unblocks a handler so it will be called again during any signal emissions
-         * @param id Handler ID of the handler to be unblocked
-         */
-        unblock_signal_handler(id: number): void;
-        /**
-         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
-         * @param detailedName Name of the signal to stop emission of
-         */
-        stop_emission_by_name(detailedName: string): void;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
     namespace Device {
@@ -11018,6 +10642,7 @@ export namespace NM {
          * Whether the device can auto-activate a connection.
          *
          * The property setter is a synchronous D-Bus call. This is deprecated since 1.22.
+         * @default false
          */
         get autoconnect(): boolean;
         set autoconnect(val: boolean);
@@ -11034,16 +10659,19 @@ export namespace NM {
         /**
          * The capabilities of the device.
          * @read-only
+         * @default NM.DeviceCapabilities.NONE
          */
         get capabilities(): DeviceCapabilities;
         /**
          * The numeric type of the device.
          * @read-only
+         * @default NM.DeviceType.UNKNOWN
          */
         get device_type(): DeviceType;
         /**
          * The numeric type of the device.
          * @read-only
+         * @default NM.DeviceType.UNKNOWN
          */
         get deviceType(): DeviceType;
         /**
@@ -11069,79 +10697,93 @@ export namespace NM {
         /**
          * The driver of the device.
          * @read-only
+         * @default null
          */
         get driver(): string;
         /**
          * The version of the device driver.
          * @read-only
+         * @default null
          */
         get driver_version(): string;
         /**
          * The version of the device driver.
          * @read-only
+         * @default null
          */
         get driverVersion(): string;
         /**
          * When `true` indicates the device is likely missing firmware required
          * for its operation.
          * @read-only
+         * @default false
          */
         get firmware_missing(): boolean;
         /**
          * When `true` indicates the device is likely missing firmware required
          * for its operation.
          * @read-only
+         * @default false
          */
         get firmwareMissing(): boolean;
         /**
          * The firmware version of the device.
          * @read-only
+         * @default null
          */
         get firmware_version(): string;
         /**
          * The firmware version of the device.
          * @read-only
+         * @default null
          */
         get firmwareVersion(): string;
         /**
          * The hardware address of the device.
          * @since 1.24
          * @read-only
+         * @default null
          */
         get hw_address(): string;
         /**
          * The hardware address of the device.
          * @since 1.24
          * @read-only
+         * @default null
          */
         get hwAddress(): string;
         /**
          * The interface of the device.
          * @read-only
+         * @default null
          */
         get interface(): string;
         /**
          * The interface flags.
          * @since 1.22
          * @read-only
+         * @default 0
          */
         get interface_flags(): number;
         /**
          * The interface flags.
          * @since 1.22
          * @read-only
+         * @default 0
          */
         get interfaceFlags(): number;
         /**
          * The IP interface of the device which should be used for all IP-related
          * operations like addressing and routing.
          * @read-only
+         * @default null
          */
         get ip_interface(): string;
         /**
          * The IP interface of the device which should be used for all IP-related
          * operations like addressing and routing.
          * @read-only
+         * @default null
          */
         get ipInterface(): string;
         /**
@@ -11158,12 +10800,14 @@ export namespace NM {
          * The IPv4 connectivity state of the device.
          * @since 1.16
          * @read-only
+         * @default NM.ConnectivityState.UNKNOWN
          */
         get ip4_connectivity(): ConnectivityState;
         /**
          * The IPv4 connectivity state of the device.
          * @since 1.16
          * @read-only
+         * @default NM.ConnectivityState.UNKNOWN
          */
         get ip4Connectivity(): ConnectivityState;
         /**
@@ -11180,12 +10824,14 @@ export namespace NM {
          * The IPv6 connectivity state of the device.
          * @since 1.16
          * @read-only
+         * @default NM.ConnectivityState.UNKNOWN
          */
         get ip6_connectivity(): ConnectivityState;
         /**
          * The IPv6 connectivity state of the device.
          * @since 1.16
          * @read-only
+         * @default NM.ConnectivityState.UNKNOWN
          */
         get ip6Connectivity(): ConnectivityState;
         /**
@@ -11201,17 +10847,20 @@ export namespace NM {
         /**
          * Whether the device is managed by NetworkManager.
          * @read-only
+         * @default false
          */
         get managed(): boolean;
         /**
          * Whether the device is metered.
          * @since 1.2
          * @read-only
+         * @default 0
          */
         get metered(): number;
         /**
          * The MTU of the device.
          * @read-only
+         * @default 0
          */
         get mtu(): number;
         /**
@@ -11219,6 +10868,7 @@ export namespace NM {
          * is not installed.
          * @since 1.2
          * @read-only
+         * @default false
          */
         get nm_plugin_missing(): boolean;
         /**
@@ -11226,6 +10876,7 @@ export namespace NM {
          * is not installed.
          * @since 1.2
          * @read-only
+         * @default false
          */
         get nmPluginMissing(): boolean;
         /**
@@ -11236,18 +10887,21 @@ export namespace NM {
          * however the result may not be valid UTF-8.
          * @since 1.26
          * @read-only
+         * @default null
          */
         get path(): string;
         /**
          * The physical port ID of the device. (See
          * `nm_device_get_physical_port_id()`.)
          * @read-only
+         * @default null
          */
         get physical_port_id(): string;
         /**
          * The physical port ID of the device. (See
          * `nm_device_get_physical_port_id()`.)
          * @read-only
+         * @default null
          */
         get physicalPortId(): string;
         /**
@@ -11260,6 +10914,7 @@ export namespace NM {
         /**
          * The product string of the device.
          * @read-only
+         * @default null
          */
         get product(): string;
         /**
@@ -11268,21 +10923,25 @@ export namespace NM {
          * {@link NM.Device.available_connections} was activated.
          * @since 1.2
          * @read-only
+         * @default false
          */
         get real(): boolean;
         /**
          * The state of the device.
          * @read-only
+         * @default NM.DeviceState.UNKNOWN
          */
         get state(): DeviceState;
         /**
          * The reason for the device state.
          * @read-only
+         * @default 0
          */
         get state_reason(): number;
         /**
          * The reason for the device state.
          * @read-only
+         * @default 0
          */
         get stateReason(): number;
         /**
@@ -11293,11 +10952,13 @@ export namespace NM {
          * such as Bluez or ModemManager, and clients can use this property to
          * request more information about the device from those services.
          * @read-only
+         * @default null
          */
         get udi(): string;
         /**
          * The vendor string of the device.
          * @read-only
+         * @default null
          */
         get vendor(): string;
 
@@ -11381,13 +11042,13 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success, `false` on error, in which case `error` will be set.
          */
-        ['delete'](cancellable?: Gio.Cancellable | null): boolean;
+        ['delete'](cancellable: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously begins deleting the software device. Hardware devices can't
          * be deleted.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        delete_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        delete_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously begins deleting the software device. Hardware devices can't
          * be deleted.
@@ -11402,7 +11063,7 @@ export namespace NM {
          * @param callback callback to be called when delete operation completes
          */
         delete_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -11418,7 +11079,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success, `false` on error, in which case `error` will be set.
          */
-        disconnect(cancellable?: Gio.Cancellable | null): boolean;
+        disconnect(cancellable: Gio.Cancellable | null): boolean;
         /**
          * @param args
          */
@@ -11430,7 +11091,7 @@ export namespace NM {
          * manual network connection request.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        disconnect_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        disconnect_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously begins disconnecting the device if currently connected, and
          * prevents the device from automatically connecting to networks until the next
@@ -11447,7 +11108,7 @@ export namespace NM {
          * @param callback callback to be called when the disconnect operation completes
          */
         disconnect_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -11480,7 +11141,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns a %NMConnection with the currently applied settings   or `null` on error. The connection is as received from D-Bus and might not validate according to `nm_connection_verify()`.
          */
-        get_applied_connection(flags: number, cancellable?: Gio.Cancellable | null): [Connection, number];
+        get_applied_connection(flags: number, cancellable: Gio.Cancellable | null): [Connection, number];
         /**
          * Asynchronously begins and gets the currently applied connection.
          * @param flags the flags argument. See {@link NM.DeviceReapplyFlags}.
@@ -11488,7 +11149,7 @@ export namespace NM {
          */
         get_applied_connection_async(
             flags: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<[Connection, bigint | number]>;
         /**
          * Asynchronously begins and gets the currently applied connection.
@@ -11509,7 +11170,7 @@ export namespace NM {
          */
         get_applied_connection_async(
             flags: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[Connection, bigint | number]> | void;
         /**
@@ -11728,7 +11389,7 @@ export namespace NM {
             connection: Connection | null,
             version_id: bigint | number,
             flags: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * Asynchronously begins an attempt to update device with changes to the
@@ -11742,7 +11403,7 @@ export namespace NM {
             connection: Connection | null,
             version_id: bigint | number,
             flags: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously begins an attempt to update device with changes to the
@@ -11773,7 +11434,7 @@ export namespace NM {
             connection: Connection | null,
             version_id: bigint | number,
             flags: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -11959,6 +11620,7 @@ export namespace NM {
         /**
          * Whether the device has carrier.
          * @read-only
+         * @default false
          */
         get carrier(): boolean;
 
@@ -12067,6 +11729,7 @@ export namespace NM {
         /**
          * Whether the device has carrier.
          * @read-only
+         * @default false
          */
         get carrier(): boolean;
         /**
@@ -12185,6 +11848,7 @@ export namespace NM {
         /**
          * Whether the device has carrier.
          * @read-only
+         * @default false
          */
         get carrier(): boolean;
         /**
@@ -12304,16 +11968,19 @@ export namespace NM {
         /**
          * The device's bluetooth capabilities, a combination of {@link NM.BluetoothCapabilities}.
          * @read-only
+         * @default NM.BluetoothCapabilities.NONE
          */
         get bt_capabilities(): BluetoothCapabilities;
         /**
          * The device's bluetooth capabilities, a combination of {@link NM.BluetoothCapabilities}.
          * @read-only
+         * @default NM.BluetoothCapabilities.NONE
          */
         get btCapabilities(): BluetoothCapabilities;
         /**
          * The name of the bluetooth device.
          * @read-only
+         * @default null
          */
         get name(): string;
 
@@ -12526,16 +12193,19 @@ export namespace NM {
         /**
          * Whether the device has carrier.
          * @read-only
+         * @default false
          */
         get carrier(): boolean;
         /**
          * The permanent hardware (MAC) address of the device.
          * @read-only
+         * @default null
          */
         get perm_hw_address(): string;
         /**
          * The permanent hardware (MAC) address of the device.
          * @read-only
+         * @default null
          */
         get permHwAddress(): string;
         /**
@@ -12555,6 +12225,7 @@ export namespace NM {
         /**
          * The speed of the device.
          * @read-only
+         * @default 0
          */
         get speed(): number;
 
@@ -12678,12 +12349,14 @@ export namespace NM {
          * A description of the specific type of device this is, or `null`
          * if not known.
          * @read-only
+         * @default null
          */
         get type_description(): string;
         /**
          * A description of the specific type of device this is, or `null`
          * if not known.
          * @read-only
+         * @default null
          */
         get typeDescription(): string;
 
@@ -12794,12 +12467,14 @@ export namespace NM {
          * The device last byte of the supervision address.
          * @since 1.46
          * @read-only
+         * @default 0
          */
         get multicast_spec(): number;
         /**
          * The device last byte of the supervision address.
          * @since 1.46
          * @read-only
+         * @default 0
          */
         get multicastSpec(): number;
         /**
@@ -12818,18 +12493,21 @@ export namespace NM {
          * Whether the PRP protocol is used or not.
          * @since 1.46
          * @read-only
+         * @default false
          */
         get prp(): boolean;
         /**
          * The device supervision MAC adddress.
          * @since 1.46
          * @read-only
+         * @default null
          */
         get supervision_address(): string;
         /**
          * The device supervision MAC adddress.
          * @since 1.46
          * @read-only
+         * @default null
          */
         get supervisionAddress(): string;
 
@@ -12984,6 +12662,7 @@ export namespace NM {
          * tunnels.
          * @since 1.2
          * @read-only
+         * @default 0
          */
         get encapsulation_limit(): number;
         /**
@@ -12992,12 +12671,14 @@ export namespace NM {
          * tunnels.
          * @since 1.2
          * @read-only
+         * @default 0
          */
         get encapsulationLimit(): number;
         /**
          * Tunnel flags.
          * @since 1.12
          * @read-only
+         * @default 0
          */
         get flags(): number;
         /**
@@ -13005,6 +12686,7 @@ export namespace NM {
          * applies only to IPv6 tunnels.
          * @since 1.2
          * @read-only
+         * @default 0
          */
         get flow_label(): number;
         /**
@@ -13012,6 +12694,7 @@ export namespace NM {
          * applies only to IPv6 tunnels.
          * @since 1.2
          * @read-only
+         * @default 0
          */
         get flowLabel(): number;
         /**
@@ -13019,42 +12702,49 @@ export namespace NM {
          * to VTI tunnels.
          * @since 1.46
          * @read-only
+         * @default 0
          */
         get fwmark(): number;
         /**
          * The key used for tunneled input packets, if applicable.
          * @since 1.2
          * @read-only
+         * @default null
          */
         get input_key(): string;
         /**
          * The key used for tunneled input packets, if applicable.
          * @since 1.2
          * @read-only
+         * @default null
          */
         get inputKey(): string;
         /**
          * The local endpoint of the tunnel.
          * @since 1.2
          * @read-only
+         * @default null
          */
         get local(): string;
         /**
          * The tunneling mode of the device.
          * @since 1.2
          * @read-only
+         * @default 0
          */
         get mode(): number;
         /**
          * The key used for tunneled output packets, if applicable.
          * @since 1.2
          * @read-only
+         * @default null
          */
         get output_key(): string;
         /**
          * The key used for tunneled output packets, if applicable.
          * @since 1.2
          * @read-only
+         * @default null
          */
         get outputKey(): string;
         /**
@@ -13067,18 +12757,21 @@ export namespace NM {
          * Whether path MTU discovery is enabled on this tunnel.
          * @since 1.2
          * @read-only
+         * @default false
          */
         get path_mtu_discovery(): boolean;
         /**
          * Whether path MTU discovery is enabled on this tunnel.
          * @since 1.2
          * @read-only
+         * @default false
          */
         get pathMtuDiscovery(): boolean;
         /**
          * The remote endpoint of the tunnel.
          * @since 1.2
          * @read-only
+         * @default null
          */
         get remote(): string;
         /**
@@ -13086,6 +12779,7 @@ export namespace NM {
          * tunneled packets.
          * @since 1.2
          * @read-only
+         * @default 0
          */
         get tos(): number;
         /**
@@ -13093,6 +12787,7 @@ export namespace NM {
          *  meaning that packets inherit the TTL value
          * @since 1.2
          * @read-only
+         * @default 0
          */
         get ttl(): number;
 
@@ -13246,6 +12941,7 @@ export namespace NM {
         /**
          * Whether the device has carrier.
          * @read-only
+         * @default false
          */
         get carrier(): boolean;
 
@@ -13360,6 +13056,7 @@ export namespace NM {
          * The IPVLAN mode.
          * @since 1.52
          * @read-only
+         * @default null
          */
         get mode(): string;
         /**
@@ -13372,12 +13069,14 @@ export namespace NM {
          * Whether the device has the private flag.
          * @since 1.52
          * @read-only
+         * @default false
          */
         get private(): boolean;
         /**
          * Whether the device has the VEPA flag.
          * @since 1.52
          * @read-only
+         * @default false
          */
         get vepa(): boolean;
 
@@ -13617,12 +13316,14 @@ export namespace NM {
          * The set of cryptographic algorithms in use.
          * @since 1.6
          * @read-only
+         * @default 0
          */
         get cipher_suite(): number;
         /**
          * The set of cryptographic algorithms in use.
          * @since 1.6
          * @read-only
+         * @default 0
          */
         get cipherSuite(): number;
         /**
@@ -13630,6 +13331,7 @@ export namespace NM {
          * Association in use.
          * @since 1.6
          * @read-only
+         * @default 0
          */
         get encoding_sa(): number;
         /**
@@ -13637,12 +13339,14 @@ export namespace NM {
          * Association in use.
          * @since 1.6
          * @read-only
+         * @default 0
          */
         get encodingSa(): number;
         /**
          * Whether encryption of transmitted frames is enabled.
          * @since 1.6
          * @read-only
+         * @default false
          */
         get encrypt(): boolean;
         /**
@@ -13650,18 +13354,21 @@ export namespace NM {
          * transmitted frames.
          * @since 1.6
          * @read-only
+         * @default false
          */
         get es(): boolean;
         /**
          * The length of ICV (Integrity Check Value).
          * @since 1.6
          * @read-only
+         * @default 0
          */
         get icv_length(): number;
         /**
          * The length of ICV (Integrity Check Value).
          * @since 1.6
          * @read-only
+         * @default 0
          */
         get icvLength(): number;
         /**
@@ -13669,6 +13376,7 @@ export namespace NM {
          * frames.
          * @since 1.6
          * @read-only
+         * @default false
          */
         get include_sci(): boolean;
         /**
@@ -13676,6 +13384,7 @@ export namespace NM {
          * frames.
          * @since 1.6
          * @read-only
+         * @default false
          */
         get includeSci(): boolean;
         /**
@@ -13688,18 +13397,21 @@ export namespace NM {
          * Whether protection of transmitted frames is enabled.
          * @since 1.6
          * @read-only
+         * @default false
          */
         get protect(): boolean;
         /**
          * Whether replay protection is enabled.
          * @since 1.6
          * @read-only
+         * @default false
          */
         get replay_protect(): boolean;
         /**
          * Whether replay protection is enabled.
          * @since 1.6
          * @read-only
+         * @default false
          */
         get replayProtect(): boolean;
         /**
@@ -13707,12 +13419,14 @@ export namespace NM {
          * SecTAG for transmitted frames.
          * @since 1.6
          * @read-only
+         * @default false
          */
         get scb(): boolean;
         /**
          * The Secure Channel Identifier in use.
          * @since 1.6
          * @read-only
+         * @default 0
          */
         get sci(): number;
         /**
@@ -13720,12 +13434,14 @@ export namespace NM {
          * disabled).
          * @since 1.6
          * @read-only
+         * @default null
          */
         get validation(): string;
         /**
          * The size of the replay window.
          * @since 1.6
          * @read-only
+         * @default 0
          */
         get window(): number;
 
@@ -13905,18 +13621,21 @@ export namespace NM {
          * The MACVLAN mode.
          * @since 1.2
          * @read-only
+         * @default null
          */
         get mode(): string;
         /**
          * Whether the device has the no-promiscuos flag.
          * @since 1.2
          * @read-only
+         * @default false
          */
         get no_promisc(): boolean;
         /**
          * Whether the device has the no-promiscuos flag.
          * @since 1.2
          * @read-only
+         * @default false
          */
         get noPromisc(): boolean;
         /**
@@ -13929,6 +13648,7 @@ export namespace NM {
          * Whether the device is a MACVTAP.
          * @since 1.2
          * @read-only
+         * @default false
          */
         get tap(): boolean;
 
@@ -14061,28 +13781,33 @@ export namespace NM {
         /**
          * @since 1.20
          * @read-only
+         * @default null
          */
         get apn(): string;
         /**
          * The generic family of access technologies the modem currently supports
          * without a firmware reload or reinitialization.
          * @read-only
+         * @default NM.DeviceModemCapabilities.NONE
          */
         get current_capabilities(): DeviceModemCapabilities;
         /**
          * The generic family of access technologies the modem currently supports
          * without a firmware reload or reinitialization.
          * @read-only
+         * @default NM.DeviceModemCapabilities.NONE
          */
         get currentCapabilities(): DeviceModemCapabilities;
         /**
          * @since 1.20
          * @read-only
+         * @default null
          */
         get device_id(): string;
         /**
          * @since 1.20
          * @read-only
+         * @default null
          */
         get deviceId(): string;
         /**
@@ -14091,6 +13816,7 @@ export namespace NM {
          * a firmware reload or other reinitialization to switch between eg
          * CDMA/EVDO and GSM/UMTS.
          * @read-only
+         * @default NM.DeviceModemCapabilities.NONE
          */
         get modem_capabilities(): DeviceModemCapabilities;
         /**
@@ -14099,16 +13825,19 @@ export namespace NM {
          * a firmware reload or other reinitialization to switch between eg
          * CDMA/EVDO and GSM/UMTS.
          * @read-only
+         * @default NM.DeviceModemCapabilities.NONE
          */
         get modemCapabilities(): DeviceModemCapabilities;
         /**
          * @since 1.20
          * @read-only
+         * @default null
          */
         get operator_code(): string;
         /**
          * @since 1.20
          * @read-only
+         * @default null
          */
         get operatorCode(): string;
 
@@ -14244,11 +13973,13 @@ export namespace NM {
         /**
          * The device's active channel.
          * @read-only
+         * @default 0
          */
         get active_channel(): number;
         /**
          * The device's active channel.
          * @read-only
+         * @default 0
          */
         get activeChannel(): number;
         /**
@@ -14761,12 +14492,14 @@ export namespace NM {
         /**
          * Whether the device has carrier.
          * @read-only
+         * @default false
          */
         get carrier(): boolean;
         /**
          * The current JSON configuration of the device.
          * @since 1.4
          * @read-only
+         * @default null
          */
         get config(): string;
         /**
@@ -14903,12 +14636,14 @@ export namespace NM {
          * The gid of the tunnel group, or -1 if it has no owner.
          * @since 1.2
          * @read-only
+         * @default -1
          */
         get group(): number;
         /**
          * The tunnel mode, either "tun" or "tap".
          * @since 1.2
          * @read-only
+         * @default null
          */
         get mode(): string;
         /**
@@ -14917,6 +14652,7 @@ export namespace NM {
          * queues.
          * @since 1.2
          * @read-only
+         * @default false
          */
         get multi_queue(): boolean;
         /**
@@ -14925,6 +14661,7 @@ export namespace NM {
          * queues.
          * @since 1.2
          * @read-only
+         * @default false
          */
         get multiQueue(): boolean;
         /**
@@ -14932,6 +14669,7 @@ export namespace NM {
          * prepended to the tunnel packets.
          * @since 1.2
          * @read-only
+         * @default false
          */
         get no_pi(): boolean;
         /**
@@ -14939,12 +14677,14 @@ export namespace NM {
          * prepended to the tunnel packets.
          * @since 1.2
          * @read-only
+         * @default false
          */
         get noPi(): boolean;
         /**
          * The uid of the tunnel owner, or -1 if it has no owner.
          * @since 1.2
          * @read-only
+         * @default -1
          */
         get owner(): number;
         /**
@@ -14952,6 +14692,7 @@ export namespace NM {
          * include a virtio network header.
          * @since 1.2
          * @read-only
+         * @default false
          */
         get vnet_hdr(): boolean;
         /**
@@ -14959,6 +14700,7 @@ export namespace NM {
          * include a virtio network header.
          * @since 1.2
          * @read-only
+         * @default false
          */
         get vnetHdr(): boolean;
 
@@ -15206,6 +14948,7 @@ export namespace NM {
         /**
          * Whether the device has carrier.
          * @read-only
+         * @default false
          */
         get carrier(): boolean;
         /**
@@ -15216,11 +14959,13 @@ export namespace NM {
         /**
          * The device's VLAN ID.
          * @read-only
+         * @default 0
          */
         get vlan_id(): number;
         /**
          * The device's VLAN ID.
          * @read-only
+         * @default 0
          */
         get vlanId(): number;
 
@@ -15337,6 +15082,7 @@ export namespace NM {
          * The device's VRF table.
          * @since 1.24
          * @read-only
+         * @default 0
          */
         get table(): number;
 
@@ -15479,6 +15225,7 @@ export namespace NM {
          * The lifetime in seconds of FDB entries learnt by the kernel.
          * @since 1.2
          * @read-only
+         * @default 0
          */
         get ageing(): number;
         /**
@@ -15487,6 +15234,7 @@ export namespace NM {
          * This property is not implemented yet, and the property is always FALSE.
          * @since 1.2
          * @read-only
+         * @default false
          */
         get carrier(): boolean;
         /**
@@ -15494,6 +15242,7 @@ export namespace NM {
          * endpoint.
          * @since 1.2
          * @read-only
+         * @default 0
          */
         get dst_port(): number;
         /**
@@ -15501,6 +15250,7 @@ export namespace NM {
          * endpoint.
          * @since 1.2
          * @read-only
+         * @default 0
          */
         get dstPort(): number;
         /**
@@ -15509,24 +15259,28 @@ export namespace NM {
          * forwarding database or the multicast IP address joined.
          * @since 1.2
          * @read-only
+         * @default null
          */
         get group(): string;
         /**
          * The device's VXLAN ID.
          * @since 1.2
          * @read-only
+         * @default 0
          */
         get id(): number;
         /**
          * Whether netlink LL ADDR miss notifications are generated.
          * @since 1.2
          * @read-only
+         * @default false
          */
         get l2miss(): boolean;
         /**
          * Whether netlink IP ADDR miss notifications are generated.
          * @since 1.2
          * @read-only
+         * @default false
          */
         get l3miss(): boolean;
         /**
@@ -15534,18 +15288,21 @@ export namespace NM {
          * into the VXLAN device forwarding database.
          * @since 1.2
          * @read-only
+         * @default true
          */
         get learning(): boolean;
         /**
          * The maximum number of entries that can be added to the forwarding table.
          * @since 1.2
          * @read-only
+         * @default 0
          */
         get limit(): number;
         /**
          * The source IP address to use in outgoing packets.
          * @since 1.2
          * @read-only
+         * @default null
          */
         get local(): string;
         /**
@@ -15558,12 +15315,14 @@ export namespace NM {
          * Whether ARP proxy is turned on.
          * @since 1.2
          * @read-only
+         * @default false
          */
         get proxy(): boolean;
         /**
          * Whether route short circuit is turned on.
          * @since 1.2
          * @read-only
+         * @default false
          */
         get rsc(): boolean;
         /**
@@ -15571,6 +15330,7 @@ export namespace NM {
          * tunnel endpoint.
          * @since 1.2
          * @read-only
+         * @default 0
          */
         get src_port_max(): number;
         /**
@@ -15578,6 +15338,7 @@ export namespace NM {
          * tunnel endpoint.
          * @since 1.2
          * @read-only
+         * @default 0
          */
         get srcPortMax(): number;
         /**
@@ -15585,6 +15346,7 @@ export namespace NM {
          * tunnel endpoint.
          * @since 1.2
          * @read-only
+         * @default 0
          */
         get src_port_min(): number;
         /**
@@ -15592,18 +15354,21 @@ export namespace NM {
          * tunnel endpoint.
          * @since 1.2
          * @read-only
+         * @default 0
          */
         get srcPortMin(): number;
         /**
          * The TOS value to use in outgoing packets.
          * @since 1.2
          * @read-only
+         * @default 0
          */
         get tos(): number;
         /**
          * The time-to-live value to use in outgoing packets.
          * @since 1.2
          * @read-only
+         * @default 0
          */
         get ttl(): number;
 
@@ -15823,6 +15588,7 @@ export namespace NM {
         /**
          * The bit rate of the device in kbit/s.
          * @read-only
+         * @default 0
          */
         get bitrate(): number;
         /**
@@ -15831,6 +15597,7 @@ export namespace NM {
          * access points.
          * @since 1.12
          * @read-only
+         * @default -1
          */
         get last_scan(): number;
         /**
@@ -15839,31 +15606,37 @@ export namespace NM {
          * access points.
          * @since 1.12
          * @read-only
+         * @default -1
          */
         get lastScan(): number;
         /**
          * The mode of the device.
          * @read-only
+         * @default NM.__80211Mode.UNKNOWN
          */
         get mode(): __80211Mode;
         /**
          * The hardware (MAC) address of the device.
          * @read-only
+         * @default null
          */
         get perm_hw_address(): string;
         /**
          * The hardware (MAC) address of the device.
          * @read-only
+         * @default null
          */
         get permHwAddress(): string;
         /**
          * The wireless capabilities of the device.
          * @read-only
+         * @default NM.DeviceWifiCapabilities.NONE
          */
         get wireless_capabilities(): DeviceWifiCapabilities;
         /**
          * The wireless capabilities of the device.
          * @read-only
+         * @default NM.DeviceWifiCapabilities.NONE
          */
         get wirelessCapabilities(): DeviceWifiCapabilities;
 
@@ -15962,14 +15735,14 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success, `false` on error, in which case `error` will be set.
          */
-        request_scan(cancellable?: Gio.Cancellable | null): boolean;
+        request_scan(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Request NM to scan for access points on `device`. Note that `callback` will be
          * called immediately after requesting the scan, and it may take some time after
          * that for the scan to complete.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        request_scan_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        request_scan_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Request NM to scan for access points on `device`. Note that `callback` will be
          * called immediately after requesting the scan, and it may take some time after
@@ -15986,7 +15759,7 @@ export namespace NM {
          * @param callback callback to be called when the scan has been requested
          */
         request_scan_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -16008,7 +15781,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success, `false` on error, in which case `error` will be set.
          */
-        request_scan_options(options: GLib.Variant, cancellable?: Gio.Cancellable | null): boolean;
+        request_scan_options(options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Request NM to scan for access points on `device`. Note that `callback` will be
          * called immediately after requesting the scan, and it may take some time after
@@ -16025,8 +15798,8 @@ export namespace NM {
          */
         request_scan_options_async(
             options: GLib.Variant,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
     }
 
@@ -16166,7 +15939,7 @@ export namespace NM {
          * @param options optional options passed to StartFind.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        start_find(options?: GLib.Variant | null, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        start_find(options: GLib.Variant | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Request NM to search for Wi-Fi P2P peers on `device`. Note that the call
          * returns immediately after requesting the find, and it may take some time
@@ -16195,8 +15968,8 @@ export namespace NM {
          * @param callback a {@link Gio.AsyncReadyCallback}, or `null`
          */
         start_find(
-            options?: GLib.Variant | null,
-            cancellable?: Gio.Cancellable | null,
+            options: GLib.Variant | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -16209,7 +15982,7 @@ export namespace NM {
          * Request NM to stop any ongoing find operation for Wi-Fi P2P peers on `device`.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        stop_find(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        stop_find(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Request NM to stop any ongoing find operation for Wi-Fi P2P peers on `device`.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
@@ -16222,7 +15995,7 @@ export namespace NM {
          * @param callback a {@link Gio.AsyncReadyCallback}, or `null`
          */
         stop_find(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -16337,6 +16110,7 @@ export namespace NM {
          * no meaning when the device is not connected.
          * @deprecated since 1.2: WiMAX is no longer supported.
          * @read-only
+         * @default null
          */
         get bsid(): string;
         /**
@@ -16345,6 +16119,7 @@ export namespace NM {
          * device is not connected.
          * @deprecated since 1.2: WiMAX is no longer supported.
          * @read-only
+         * @default 0
          */
         get center_frequency(): number;
         /**
@@ -16353,6 +16128,7 @@ export namespace NM {
          * device is not connected.
          * @deprecated since 1.2: WiMAX is no longer supported.
          * @read-only
+         * @default 0
          */
         get centerFrequency(): number;
         /**
@@ -16361,18 +16137,21 @@ export namespace NM {
          * meaning when the device is not connected.
          * @deprecated since 1.2: WiMAX is no longer supported.
          * @read-only
+         * @default 0
          */
         get cinr(): number;
         /**
          * The hardware (MAC) address of the device.
          * @deprecated since 1.2: WiMAX is no longer supported.
          * @read-only
+         * @default null
          */
         get hw_address(): string;
         /**
          * The hardware (MAC) address of the device.
          * @deprecated since 1.2: WiMAX is no longer supported.
          * @read-only
+         * @default null
          */
         get hwAddress(): string;
         /**
@@ -16387,6 +16166,7 @@ export namespace NM {
          * device is not connected.
          * @deprecated since 1.2: WiMAX is no longer supported.
          * @read-only
+         * @default 0
          */
         get rssi(): number;
         /**
@@ -16395,6 +16175,7 @@ export namespace NM {
          * -5.5 dBm.  Has no meaning when the device is not connected.
          * @deprecated since 1.2: WiMAX is no longer supported.
          * @read-only
+         * @default 0
          */
         get tx_power(): number;
         /**
@@ -16403,6 +16184,7 @@ export namespace NM {
          * -5.5 dBm.  Has no meaning when the device is not connected.
          * @deprecated since 1.2: WiMAX is no longer supported.
          * @read-only
+         * @default 0
          */
         get txPower(): number;
 
@@ -16569,6 +16351,7 @@ export namespace NM {
          * Set to 0 to disable the mark (default).
          * @since 1.14
          * @read-only
+         * @default 0
          */
         get fwmark(): number;
         /**
@@ -16576,6 +16359,7 @@ export namespace NM {
          * Set to 0 to allow a random port to be chosen (default).
          * @since 1.14
          * @read-only
+         * @default 0
          */
         get listen_port(): number;
         /**
@@ -16583,6 +16367,7 @@ export namespace NM {
          * Set to 0 to allow a random port to be chosen (default).
          * @since 1.14
          * @read-only
+         * @default 0
          */
         get listenPort(): number;
         /**
@@ -16772,6 +16557,7 @@ export namespace NM {
          * The IP address family of the configuration; either
          * <literal>AF_INET</literal> or <literal>AF_INET6</literal>.
          * @read-only
+         * @default 0
          */
         get family(): number;
         /**
@@ -16888,11 +16674,13 @@ export namespace NM {
          * The IP address family of the configuration; either
          * <literal>AF_INET</literal> or <literal>AF_INET6</literal>.
          * @read-only
+         * @default 0
          */
         get family(): number;
         /**
          * The IP gateway address of the configuration as string.
          * @read-only
+         * @default null
          */
         get gateway(): string;
         /**
@@ -17013,7 +16801,7 @@ export namespace NM {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            client: Client;
+            client: Client | null;
             path: string;
         }
     }
@@ -17036,7 +16824,7 @@ export namespace NM {
          * @since 1.34
          * @read-only
          */
-        get client(): Client;
+        get client(): Client | null;
         /**
          * The D-Bus object path.
          *
@@ -17044,6 +16832,7 @@ export namespace NM {
          * gets removed from the cache. To see whether the object is still in the
          * cache, check NMObject:client.
          * @read-only
+         * @default null
          */
         get path(): string;
 
@@ -17137,6 +16926,7 @@ export namespace NM {
          * file-backed.
          * @since 1.12
          * @read-only
+         * @default null
          */
         get filename(): string;
         /**
@@ -17144,12 +16934,14 @@ export namespace NM {
          * correspond to the {@link NM.SettingsConnectionFlags} enum.
          * @since 1.12
          * @read-only
+         * @default 0
          */
         get flags(): number;
         /**
          * `true` if the remote connection contains changes that have not been saved
          * to disk, `false` if the connection is the same as its on-disk representation.
          * @read-only
+         * @default false
          */
         get unsaved(): boolean;
         /**
@@ -17157,6 +16949,7 @@ export namespace NM {
          * This can be used to track concurrent modifications of the profile.
          * @since 1.44
          * @read-only
+         * @default 0
          */
         get version_id(): number;
         /**
@@ -17164,6 +16957,7 @@ export namespace NM {
          * This can be used to track concurrent modifications of the profile.
          * @since 1.44
          * @read-only
+         * @default 0
          */
         get versionId(): number;
         /**
@@ -17175,6 +16969,7 @@ export namespace NM {
          * to callers, but it is possible for a connection's visibility to change
          * after you already have a reference to it.)
          * @read-only
+         * @default false
          */
         get visible(): boolean;
 
@@ -17224,7 +17019,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success, `false` on error, in which case `error` will be set.
          */
-        commit_changes(save_to_disk: boolean, cancellable?: Gio.Cancellable | null): boolean;
+        commit_changes(save_to_disk: boolean, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously sends any local changes to the settings and properties of
          * `connection` to NetworkManager. If `save` is `true`, the updated connection will
@@ -17233,7 +17028,7 @@ export namespace NM {
          * @param save_to_disk whether to save the changes to persistent storage
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        commit_changes_async(save_to_disk: boolean, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        commit_changes_async(save_to_disk: boolean, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously sends any local changes to the settings and properties of
          * `connection` to NetworkManager. If `save` is `true`, the updated connection will
@@ -17259,7 +17054,7 @@ export namespace NM {
          */
         commit_changes_async(
             save_to_disk: boolean,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -17273,12 +17068,12 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success, `false` on error, in which case `error` will be set.
          */
-        ['delete'](cancellable?: Gio.Cancellable | null): boolean;
+        ['delete'](cancellable: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously deletes the connection.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        delete_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        delete_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously deletes the connection.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
@@ -17291,7 +17086,7 @@ export namespace NM {
          * @param callback callback to be called when the delete operation completes
          */
         delete_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -17315,13 +17110,13 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns a {@link GLib.Variant} of type `NM_VARIANT_TYPE_CONNECTION` containing `connection`'s secrets, or `null` on error. Warning: NMClient contains a cache of objects on D-Bus. This cache gets updated   with D-Bus signals when iterating the GMainContext. This function performs a   (pseudo) blocking D-Bus call. Aside blocking, the result will not be in sync   and not be ordered with the content of the NMClient cache.   This function used to be deprecated between 1.22 and 1.38 releases.
          */
-        get_secrets(setting_name: string, cancellable?: Gio.Cancellable | null): GLib.Variant;
+        get_secrets(setting_name: string, cancellable: Gio.Cancellable | null): GLib.Variant;
         /**
          * Asynchronously requests the connection's secrets.
          * @param setting_name the {@link NM.Setting} object name to get secrets for
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        get_secrets_async(setting_name: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<GLib.Variant>;
+        get_secrets_async(setting_name: string, cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.Variant>;
         /**
          * Asynchronously requests the connection's secrets.
          * @param setting_name the {@link NM.Setting} object name to get secrets for
@@ -17341,7 +17136,7 @@ export namespace NM {
          */
         get_secrets_async(
             setting_name: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GLib.Variant> | void;
         /**
@@ -17376,13 +17171,13 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success, `false` on error, in which case `error` will be set.
          */
-        save(cancellable?: Gio.Cancellable | null): boolean;
+        save(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Saves the connection to disk if the connection has changes that have not yet
          * been written to disk, or if the connection has never been saved.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        save_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        save_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Saves the connection to disk if the connection has changes that have not yet
          * been written to disk, or if the connection has never been saved.
@@ -17397,7 +17192,7 @@ export namespace NM {
          * @param callback callback to be called when the save operation completes
          */
         save_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -17416,8 +17211,8 @@ export namespace NM {
         update2(
             settings: GLib.Variant | null,
             flags: SettingsUpdate2Flags,
-            args?: GLib.Variant | null,
-            cancellable?: Gio.Cancellable | null,
+            args: GLib.Variant | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<GLib.Variant>;
         /**
          * Asynchronously calls the Update2() D-Bus method.
@@ -17445,8 +17240,8 @@ export namespace NM {
         update2(
             settings: GLib.Variant | null,
             flags: SettingsUpdate2Flags,
-            args?: GLib.Variant | null,
-            cancellable?: Gio.Cancellable | null,
+            args: GLib.Variant | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GLib.Variant> | void;
         /**
@@ -17472,7 +17267,7 @@ export namespace NM {
          * Clears and frees secrets determined by `func`.
          * @param func function to be called to determine whether a     specific secret should be cleared or not. If `null`, all secrets are cleared.
          */
-        clear_secrets_with_flags(func?: SettingClearSecretsWithFlagsFn | null): void;
+        clear_secrets_with_flags(func: SettingClearSecretsWithFlagsFn | null): void;
         /**
          * Deletes all of `connection`'s settings.
          */
@@ -17872,455 +17667,6 @@ export namespace NM {
          * @virtual
          */
         vfunc_secrets_updated(setting: string): void;
-        /**
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`.
-         *
-         * Whenever the `source_property` is changed the `target_property` is
-         * updated using the same value. For instance:
-         *
-         *
-         * ```c
-         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-         * ```
-         *
-         *
-         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
-         * updated with the same value of the "active" property of the action {@link GObject.Object}
-         * instance.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well.
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call `g_object_unref()` on the returned
-         * {@link GObject.Binding} instance.
-         *
-         * Removing the binding by calling `g_object_unref()` on it must only be done if
-         * the binding, `source` and `target` are only used from a single thread and it
-         * is clear that both `source` and `target` outlive the binding. Especially it
-         * is not safe to rely on this if the binding, `source` or `target` can be
-         * finalized from different threads. Keep another reference to the binding and
-         * use `g_binding_unbind()` instead to be on the safe side.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-        ): GObject.Binding;
-        /**
-         * Complete version of `g_object_bind_property()`.
-         *
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`, allowing you to set the transformation functions to be used by
-         * the binding.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property_full(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
-        ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
-        /**
-         * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all `GInitiallyUnowneds` are created with a floating reference
-         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
-         */
-        force_floating(): void;
-        /**
-         * Increases the freeze count on `object`. If the freeze count is
-         * non-zero, the emission of "notify" signals on `object` is
-         * stopped. The signals are queued until the freeze count is decreased
-         * to zero. Duplicate notifications are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
-         * object is frozen.
-         *
-         * This is necessary for accessors that modify multiple properties to prevent
-         * premature notification while the object is still being modified.
-         */
-        freeze_notify(): void;
-        /**
-         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
-         * @param key name of the key for that association
-         * @returns the data if found,          or `null` if no such data exists.
-         */
-        get_data(key: string): any | null;
-        /**
-         * Gets a property of an object.
-         *
-         * The value can be:
-         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
-         * - a GObject.Value initialized with the expected type of the property
-         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
-         *
-         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
-         *
-         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
-         * @param property_name The name of the property to get
-         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
-         */
-        get_property(property_name: string, value: GObject.Value | any): any;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        get_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Gets `n_properties` properties for an `object`.
-         * Obtained properties will be set to `values`. All properties must be valid.
-         * Warnings will be emitted and undefined behaviour may result if invalid
-         * properties are passed in.
-         * @param names the names of each property to get
-         * @param values the values of each property to get
-         */
-        getv(names: string[], values: (GObject.Value | any)[]): void;
-        /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns `true` if `object` has a floating reference
-         */
-        is_floating(): boolean;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param property_name the name of a property installed on the class of `object`.
-         */
-        notify(property_name: string): void;
-        /**
-         * Emits a "notify" signal for the property specified by `pspec` on `object`.
-         *
-         * This function omits the property name lookup, hence it is faster than
-         * `g_object_notify()`.
-         *
-         * One way to avoid using `g_object_notify()` from within the
-         * class that registered the properties, and using `g_object_notify_by_pspec()`
-         * instead, is to store the GParamSpec used with
-         * `g_object_class_install_property()` inside a static array, e.g.:
-         *
-         *
-         * ```c
-         *   typedef enum
-         *   {
-         *     PROP_FOO = 1,
-         *     PROP_LAST
-         *   } MyObjectProperty;
-         *
-         *   static GParamSpec *properties[PROP_LAST];
-         *
-         *   static void
-         *   my_object_class_init (MyObjectClass *klass)
-         *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
-         *                                              0, 100,
-         *                                              50,
-         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-         *     g_object_class_install_property (gobject_class,
-         *                                      PROP_FOO,
-         *                                      properties[PROP_FOO]);
-         *   }
-         * ```
-         *
-         *
-         * and then notify a change on the "foo" property with:
-         *
-         *
-         * ```c
-         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-         * ```
-         *
-         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
-         */
-        notify_by_pspec(pspec: GObject.ParamSpec): void;
-        /**
-         * Increases the reference count of `object`.
-         *
-         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC `typeof()`
-         * extension), so any casting the caller needs to do on the return type must be
-         * explicit.
-         * @returns the same `object`
-         */
-        ref(): GObject.Object;
-        /**
-         * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
-         *
-         * In other words, if the object is floating, then this call "assumes
-         * ownership" of the floating reference, converting it to a normal
-         * reference by clearing the floating flag while leaving the reference
-         * count unchanged.  If the object is not floating, then this call
-         * adds a new normal reference increasing the reference count by one.
-         *
-         * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for `g_object_ref()`.
-         * @returns `object`
-         */
-        ref_sink(): GObject.Object;
-        /**
-         * Releases all references to other objects. This can be used to break
-         * reference cycles.
-         *
-         * This function should only be called from object system implementations.
-         */
-        run_dispose(): void;
-        /**
-         * Each object carries around a table of associations from
-         * strings to pointers.  This function lets you set an association.
-         *
-         * If the object already had an association with that name,
-         * the old association will be destroyed.
-         *
-         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
-         * This means a copy of `key` is kept permanently (even after `object` has been
-         * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
-         * @param key name of the key
-         * @param data data to associate with that key
-         */
-        set_data(key: string, data?: any | null): void;
-        /**
-         * Sets a property on an object.
-         * @param property_name The name of the property to set
-         * @param value The value to set the property to
-         */
-        set_property(property_name: string, value: GObject.Value | any): void;
-        /**
-         * Remove a specified datum from the object's data associations,
-         * without invoking the association's destroy handler.
-         * @param key name of the key
-         * @returns the data if found, or `null`          if no such data exists.
-         */
-        steal_data(key: string): any | null;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()` and removes the `data` from object
-         * without invoking its `destroy()` function (if any was
-         * set).
-         * Usually, calling this function is only required to update
-         * user data pointers with a destroy notifier, for example:
-         *
-         * ```c
-         * void
-         * object_add_to_user_list (GObject     *object,
-         *                          const gchar *new_string)
-         * {
-         *   // the quark, naming the object data
-         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-         *   // retrieve the old string list
-         *   GList *list = g_object_steal_qdata (object, quark_string_list);
-         *
-         *   // prepend new string
-         *   list = g_list_prepend (list, g_strdup (new_string));
-         *   // this changed 'list', so we need to set it again
-         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-         * }
-         * static void
-         * free_string_list (gpointer data)
-         * {
-         *   GList *node, *list = data;
-         *
-         *   for (node = list; node; node = node->next)
-         *     g_free (node->data);
-         *   g_list_free (list);
-         * }
-         * ```
-         *
-         * Using `g_object_get_qdata()` in the above example, instead of
-         * `g_object_steal_qdata()` would have left the destroy function set,
-         * and thus the partial string list would have been freed upon
-         * `g_object_set_qdata_full()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        steal_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Reverts the effect of a previous call to
-         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
-         * and when it reaches zero, queued "notify" signals are emitted.
-         *
-         * Duplicate notifications for each property are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
-         * in which they have been queued.
-         *
-         * It is an error to call this function when the freeze count is zero.
-         */
-        thaw_notify(): void;
-        /**
-         * Decreases the reference count of `object`. When its reference count
-         * drops to 0, the object is finalized (i.e. its memory is freed).
-         *
-         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
-         * an instance variable of another object), it is recommended to clear the
-         * pointer to `null` rather than retain a dangling pointer to a potentially
-         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
-         */
-        unref(): void;
-        /**
-         * This function essentially limits the life time of the `closure` to
-         * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling `g_closure_invalidate()` on
-         * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
-         * added as marshal guards to the `closure`, to ensure that an extra
-         * reference count is held on `object` during invocation of the
-         * `closure`.  Usually, this function will be called on closures that
-         * use this `object` as closure data.
-         * @param closure {@link GObject.Closure} to watch
-         */
-        watch_closure(closure: GObject.Closure): void;
-        /**
-         * the `constructed` function is called by `g_object_new()` as the
-         *  final step of the object creation process.  At the point of the call, all
-         *  construction properties have been set on the object.  The purpose of this
-         *  call is to allow for object initialisation steps that can only be performed
-         *  after construction properties have been set.  `constructed` implementors
-         *  should chain up to the `constructed` call of their parent class to allow it
-         *  to complete its initialisation.
-         * @virtual
-         */
-        vfunc_constructed(): void;
-        /**
-         * emits property change notification for a bunch
-         *  of properties. Overriding `dispatch_properties_changed` should be rarely
-         *  needed.
-         * @param n_pspecs
-         * @param pspecs
-         * @virtual
-         */
-        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
-        /**
-         * the `dispose` function is supposed to drop all references to other
-         *  objects, but keep the instance otherwise intact, so that client method
-         *  invocations still work. It may be run multiple times (due to reference
-         *  loops). Before returning, `dispose` should chain up to the `dispose` method
-         *  of the parent class.
-         * @virtual
-         */
-        vfunc_dispose(): void;
-        /**
-         * instance finalization function, should finish the finalization of
-         *  the instance begun in `dispose` and chain up to the `finalize` method of the
-         *  parent class.
-         * @virtual
-         */
-        vfunc_finalize(): void;
-        /**
-         * the generic getter for all properties of this type. Should be
-         *  overridden for every type with properties.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param pspec
-         * @virtual
-         */
-        vfunc_notify(pspec: GObject.ParamSpec): void;
-        /**
-         * the generic setter for all properties of this type. Should be
-         *  overridden for every type with properties. If implementations of
-         *  `set_property` don't emit property change notification explicitly, this will
-         *  be done implicitly by the type system. However, if the notify signal is
-         *  emitted explicitly, the type system will not emit it a second time.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
-         * @param id Handler ID of the handler to be disconnected
-         */
-        disconnect(id: number): void;
-        /**
-         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
-         * @param properties Object containing the properties to set
-         */
-        set(properties: { [key: string]: any }): void;
-        /**
-         * Blocks a handler of an instance so it will not be called during any signal emissions
-         * @param id Handler ID of the handler to be blocked
-         */
-        block_signal_handler(id: number): void;
-        /**
-         * Unblocks a handler so it will be called again during any signal emissions
-         * @param id Handler ID of the handler to be unblocked
-         */
-        unblock_signal_handler(id: number): void;
-        /**
-         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
-         * @param detailedName Name of the signal to stop emission of
-         */
-        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace SecretAgentOld {
@@ -18373,6 +17719,7 @@ export namespace NM {
          *
          * Calling `nm_secret_agent_old_enable()` has the same effect as setting this
          * property.
+         * @default true
          */
         get auto_register(): boolean;
         set auto_register(val: boolean);
@@ -18394,6 +17741,7 @@ export namespace NM {
          *
          * Calling `nm_secret_agent_old_enable()` has the same effect as setting this
          * property.
+         * @default true
          */
         get autoRegister(): boolean;
         set autoRegister(val: boolean);
@@ -18402,6 +17750,7 @@ export namespace NM {
          *
          * Changing this property is possible at any time. In case the secret
          * agent is currently registered, this will cause a re-registration.
+         * @default NM.SecretAgentCapabilities.NONE
          */
         get capabilities(): SecretAgentCapabilities;
         set capabilities(val: SecretAgentCapabilities);
@@ -18430,11 +17779,13 @@ export namespace NM {
          * of 3 characters.  An example valid identifier is 'org.gnome.nm-applet'
          * (without quotes).
          * @construct-only
+         * @default null
          */
         get identifier(): string;
         /**
          * `true` if the agent is registered with NetworkManager, `false` if not.
          * @read-only
+         * @default false
          */
         get registered(): boolean;
 
@@ -18626,7 +17977,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` if registration was successful, `false` on error. Since 1.24, this can no longer fail unless the `cancellable` gets cancelled. Contrary to `nm_secret_agent_old_register_async()`, this also does not wait for the registration to succeed. You cannot synchronously (without iterating the caller's GMainContext) wait for registration. Since 1.24, registration is idempotent. It has the same effect as setting `NM_SECRET_AGENT_OLD_AUTO_REGISTER` to `true` or `nm_secret_agent_old_enable()`.
          */
-        register(cancellable?: Gio.Cancellable | null): boolean;
+        register(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously registers the {@link NM.SecretAgentOld} with the NetworkManager secret
          * manager, indicating to NetworkManager that the agent is able to provide and
@@ -18644,7 +17995,7 @@ export namespace NM {
          * you want to check and ensure that the agent is registered.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        register_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        register_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously registers the {@link NM.SecretAgentOld} with the NetworkManager secret
          * manager, indicating to NetworkManager that the agent is able to provide and
@@ -18683,7 +18034,7 @@ export namespace NM {
          * @param callback callback to call when the agent is registered
          */
         register_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -18706,7 +18057,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` if unregistration was successful, `false` on error Since 1.24, registration cannot fail and is idempotent. It has the same effect as setting `NM_SECRET_AGENT_OLD_AUTO_REGISTER` to `false` or `nm_secret_agent_old_enable()`.
          */
-        unregister(cancellable?: Gio.Cancellable | null): boolean;
+        unregister(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously unregisters the {@link NM.SecretAgentOld} with the NetworkManager secret
          * manager, indicating to NetworkManager that the agent will no longer provide
@@ -18717,7 +18068,7 @@ export namespace NM {
          * or `nm_secret_agent_old_enable()`.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        unregister_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        unregister_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously unregisters the {@link NM.SecretAgentOld} with the NetworkManager secret
          * manager, indicating to NetworkManager that the agent will no longer provide
@@ -18742,7 +18093,7 @@ export namespace NM {
          * @param callback callback to call when the agent is unregistered
          */
         unregister_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -18791,7 +18142,7 @@ export namespace NM {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -18881,7 +18232,7 @@ export namespace NM {
          */
         init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -18942,8 +18293,8 @@ export namespace NM {
          */
         vfunc_init_async(
             io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -18994,7 +18345,7 @@ export namespace NM {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -19037,456 +18388,7 @@ export namespace NM {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
-        /**
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`.
-         *
-         * Whenever the `source_property` is changed the `target_property` is
-         * updated using the same value. For instance:
-         *
-         *
-         * ```c
-         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-         * ```
-         *
-         *
-         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
-         * updated with the same value of the "active" property of the action {@link GObject.Object}
-         * instance.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well.
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call `g_object_unref()` on the returned
-         * {@link GObject.Binding} instance.
-         *
-         * Removing the binding by calling `g_object_unref()` on it must only be done if
-         * the binding, `source` and `target` are only used from a single thread and it
-         * is clear that both `source` and `target` outlive the binding. Especially it
-         * is not safe to rely on this if the binding, `source` or `target` can be
-         * finalized from different threads. Keep another reference to the binding and
-         * use `g_binding_unbind()` instead to be on the safe side.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-        ): GObject.Binding;
-        /**
-         * Complete version of `g_object_bind_property()`.
-         *
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`, allowing you to set the transformation functions to be used by
-         * the binding.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property_full(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
-        ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
-        /**
-         * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all `GInitiallyUnowneds` are created with a floating reference
-         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
-         */
-        force_floating(): void;
-        /**
-         * Increases the freeze count on `object`. If the freeze count is
-         * non-zero, the emission of "notify" signals on `object` is
-         * stopped. The signals are queued until the freeze count is decreased
-         * to zero. Duplicate notifications are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
-         * object is frozen.
-         *
-         * This is necessary for accessors that modify multiple properties to prevent
-         * premature notification while the object is still being modified.
-         */
-        freeze_notify(): void;
-        /**
-         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
-         * @param key name of the key for that association
-         * @returns the data if found,          or `null` if no such data exists.
-         */
-        get_data(key: string): any | null;
-        /**
-         * Gets a property of an object.
-         *
-         * The value can be:
-         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
-         * - a GObject.Value initialized with the expected type of the property
-         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
-         *
-         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
-         *
-         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
-         * @param property_name The name of the property to get
-         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
-         */
-        get_property(property_name: string, value: GObject.Value | any): any;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        get_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Gets `n_properties` properties for an `object`.
-         * Obtained properties will be set to `values`. All properties must be valid.
-         * Warnings will be emitted and undefined behaviour may result if invalid
-         * properties are passed in.
-         * @param names the names of each property to get
-         * @param values the values of each property to get
-         */
-        getv(names: string[], values: (GObject.Value | any)[]): void;
-        /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns `true` if `object` has a floating reference
-         */
-        is_floating(): boolean;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param property_name the name of a property installed on the class of `object`.
-         */
-        notify(property_name: string): void;
-        /**
-         * Emits a "notify" signal for the property specified by `pspec` on `object`.
-         *
-         * This function omits the property name lookup, hence it is faster than
-         * `g_object_notify()`.
-         *
-         * One way to avoid using `g_object_notify()` from within the
-         * class that registered the properties, and using `g_object_notify_by_pspec()`
-         * instead, is to store the GParamSpec used with
-         * `g_object_class_install_property()` inside a static array, e.g.:
-         *
-         *
-         * ```c
-         *   typedef enum
-         *   {
-         *     PROP_FOO = 1,
-         *     PROP_LAST
-         *   } MyObjectProperty;
-         *
-         *   static GParamSpec *properties[PROP_LAST];
-         *
-         *   static void
-         *   my_object_class_init (MyObjectClass *klass)
-         *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
-         *                                              0, 100,
-         *                                              50,
-         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-         *     g_object_class_install_property (gobject_class,
-         *                                      PROP_FOO,
-         *                                      properties[PROP_FOO]);
-         *   }
-         * ```
-         *
-         *
-         * and then notify a change on the "foo" property with:
-         *
-         *
-         * ```c
-         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-         * ```
-         *
-         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
-         */
-        notify_by_pspec(pspec: GObject.ParamSpec): void;
-        /**
-         * Increases the reference count of `object`.
-         *
-         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC `typeof()`
-         * extension), so any casting the caller needs to do on the return type must be
-         * explicit.
-         * @returns the same `object`
-         */
-        ref(): GObject.Object;
-        /**
-         * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
-         *
-         * In other words, if the object is floating, then this call "assumes
-         * ownership" of the floating reference, converting it to a normal
-         * reference by clearing the floating flag while leaving the reference
-         * count unchanged.  If the object is not floating, then this call
-         * adds a new normal reference increasing the reference count by one.
-         *
-         * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for `g_object_ref()`.
-         * @returns `object`
-         */
-        ref_sink(): GObject.Object;
-        /**
-         * Releases all references to other objects. This can be used to break
-         * reference cycles.
-         *
-         * This function should only be called from object system implementations.
-         */
-        run_dispose(): void;
-        /**
-         * Each object carries around a table of associations from
-         * strings to pointers.  This function lets you set an association.
-         *
-         * If the object already had an association with that name,
-         * the old association will be destroyed.
-         *
-         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
-         * This means a copy of `key` is kept permanently (even after `object` has been
-         * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
-         * @param key name of the key
-         * @param data data to associate with that key
-         */
-        set_data(key: string, data?: any | null): void;
-        /**
-         * Sets a property on an object.
-         * @param property_name The name of the property to set
-         * @param value The value to set the property to
-         */
-        set_property(property_name: string, value: GObject.Value | any): void;
-        /**
-         * Remove a specified datum from the object's data associations,
-         * without invoking the association's destroy handler.
-         * @param key name of the key
-         * @returns the data if found, or `null`          if no such data exists.
-         */
-        steal_data(key: string): any | null;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()` and removes the `data` from object
-         * without invoking its `destroy()` function (if any was
-         * set).
-         * Usually, calling this function is only required to update
-         * user data pointers with a destroy notifier, for example:
-         *
-         * ```c
-         * void
-         * object_add_to_user_list (GObject     *object,
-         *                          const gchar *new_string)
-         * {
-         *   // the quark, naming the object data
-         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-         *   // retrieve the old string list
-         *   GList *list = g_object_steal_qdata (object, quark_string_list);
-         *
-         *   // prepend new string
-         *   list = g_list_prepend (list, g_strdup (new_string));
-         *   // this changed 'list', so we need to set it again
-         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-         * }
-         * static void
-         * free_string_list (gpointer data)
-         * {
-         *   GList *node, *list = data;
-         *
-         *   for (node = list; node; node = node->next)
-         *     g_free (node->data);
-         *   g_list_free (list);
-         * }
-         * ```
-         *
-         * Using `g_object_get_qdata()` in the above example, instead of
-         * `g_object_steal_qdata()` would have left the destroy function set,
-         * and thus the partial string list would have been freed upon
-         * `g_object_set_qdata_full()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        steal_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Reverts the effect of a previous call to
-         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
-         * and when it reaches zero, queued "notify" signals are emitted.
-         *
-         * Duplicate notifications for each property are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
-         * in which they have been queued.
-         *
-         * It is an error to call this function when the freeze count is zero.
-         */
-        thaw_notify(): void;
-        /**
-         * Decreases the reference count of `object`. When its reference count
-         * drops to 0, the object is finalized (i.e. its memory is freed).
-         *
-         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
-         * an instance variable of another object), it is recommended to clear the
-         * pointer to `null` rather than retain a dangling pointer to a potentially
-         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
-         */
-        unref(): void;
-        /**
-         * This function essentially limits the life time of the `closure` to
-         * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling `g_closure_invalidate()` on
-         * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
-         * added as marshal guards to the `closure`, to ensure that an extra
-         * reference count is held on `object` during invocation of the
-         * `closure`.  Usually, this function will be called on closures that
-         * use this `object` as closure data.
-         * @param closure {@link GObject.Closure} to watch
-         */
-        watch_closure(closure: GObject.Closure): void;
-        /**
-         * the `constructed` function is called by `g_object_new()` as the
-         *  final step of the object creation process.  At the point of the call, all
-         *  construction properties have been set on the object.  The purpose of this
-         *  call is to allow for object initialisation steps that can only be performed
-         *  after construction properties have been set.  `constructed` implementors
-         *  should chain up to the `constructed` call of their parent class to allow it
-         *  to complete its initialisation.
-         * @virtual
-         */
-        vfunc_constructed(): void;
-        /**
-         * emits property change notification for a bunch
-         *  of properties. Overriding `dispatch_properties_changed` should be rarely
-         *  needed.
-         * @param n_pspecs
-         * @param pspecs
-         * @virtual
-         */
-        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
-        /**
-         * the `dispose` function is supposed to drop all references to other
-         *  objects, but keep the instance otherwise intact, so that client method
-         *  invocations still work. It may be run multiple times (due to reference
-         *  loops). Before returning, `dispose` should chain up to the `dispose` method
-         *  of the parent class.
-         * @virtual
-         */
-        vfunc_dispose(): void;
-        /**
-         * instance finalization function, should finish the finalization of
-         *  the instance begun in `dispose` and chain up to the `finalize` method of the
-         *  parent class.
-         * @virtual
-         */
-        vfunc_finalize(): void;
-        /**
-         * the generic getter for all properties of this type. Should be
-         *  overridden for every type with properties.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param pspec
-         * @virtual
-         */
-        vfunc_notify(pspec: GObject.ParamSpec): void;
-        /**
-         * the generic setter for all properties of this type. Should be
-         *  overridden for every type with properties. If implementations of
-         *  `set_property` don't emit property change notification explicitly, this will
-         *  be done implicitly by the type system. However, if the notify signal is
-         *  emitted explicitly, the type system will not emit it a second time.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
-         * @param id Handler ID of the handler to be disconnected
-         */
-        disconnect(id: number): void;
-        /**
-         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
-         * @param properties Object containing the properties to set
-         */
-        set(properties: { [key: string]: any }): void;
-        /**
-         * Blocks a handler of an instance so it will not be called during any signal emissions
-         * @param id Handler ID of the handler to be blocked
-         */
-        block_signal_handler(id: number): void;
-        /**
-         * Unblocks a handler so it will be called again during any signal emissions
-         * @param id Handler ID of the handler to be unblocked
-         */
-        unblock_signal_handler(id: number): void;
-        /**
-         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
-         * @param detailedName Name of the signal to stop emission of
-         */
-        stop_emission_by_name(detailedName: string): void;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
     namespace Setting {
@@ -19515,6 +18417,7 @@ export namespace NM {
          * connection.  Each setting type has a name unique to that type, for
          * example "ppp" or "802-11-wireless" or "802-3-ethernet".
          * @read-only
+         * @default null
          */
         get name(): string;
 
@@ -19638,7 +18541,7 @@ export namespace NM {
         /**
          * @param predicate the predicate for which names   should be clear.   If the predicate returns `true` for an option name, the option   gets removed. If `null`, all options will be removed.
          */
-        option_clear_by_name(predicate?: UtilsPredicateStr | null): void;
+        option_clear_by_name(predicate: UtilsPredicateStr | null): void;
         /**
          * @param opt_name the option name to request.
          * @returns the {@link GLib.Variant} or `null` if the option   is not set.
@@ -19670,7 +18573,7 @@ export namespace NM {
          * @param opt_name the option name to set
          * @param variant the variant to set.
          */
-        option_set(opt_name: string, variant?: GLib.Variant | null): void;
+        option_set(opt_name: string, variant: GLib.Variant | null): void;
         /**
          * Like `nm_setting_option_set()` to set a boolean GVariant.
          * @param opt_name
@@ -19707,7 +18610,7 @@ export namespace NM {
          * @param connection the {@link NM.Connection} that `setting` came from, or   `null` if `setting` is being verified in isolation.
          * @returns `true` if the setting is valid, `false` if it is not
          */
-        verify(connection?: Connection | null): boolean;
+        verify(connection: Connection | null): boolean;
         /**
          * Verifies the secrets in the setting.
          * The returned {@link GLib.Error} contains information about which secret of the setting
@@ -19717,7 +18620,7 @@ export namespace NM {
          * @param connection the {@link NM.Connection} that `setting` came from, or   `null` if `setting` is being verified in isolation.
          * @returns `true` if the setting secrets are valid, `false` if they are not
          */
-        verify_secrets(connection?: Connection | null): boolean;
+        verify_secrets(connection: Connection | null): boolean;
     }
 
     namespace Setting6Lowpan {
@@ -19748,6 +18651,7 @@ export namespace NM {
          * If given, specifies the parent interface name or parent connection UUID
          * from which this 6LowPAN interface should be created.
          * @since 1.14
+         * @default null
          */
         get parent(): string;
         set parent(val: string);
@@ -19976,6 +18880,7 @@ export namespace NM {
          * Anonymous identity string for EAP authentication methods.  Used as the
          * unencrypted identity with EAP types that support different tunneled
          * identity like EAP-TTLS.
+         * @default null
          */
         get anonymous_identity(): string;
         set anonymous_identity(val: string);
@@ -19983,6 +18888,7 @@ export namespace NM {
          * Anonymous identity string for EAP authentication methods.  Used as the
          * unencrypted identity with EAP types that support different tunneled
          * identity like EAP-TTLS.
+         * @default null
          */
         get anonymousIdentity(): string;
         set anonymousIdentity(val: string);
@@ -19990,6 +18896,7 @@ export namespace NM {
          * A timeout for the authentication. Zero means the global default; if the
          * global default is not set, the authentication timeout is 25 seconds.
          * @since 1.8
+         * @default 0
          */
         get auth_timeout(): number;
         set auth_timeout(val: number);
@@ -19997,6 +18904,7 @@ export namespace NM {
          * A timeout for the authentication. Zero means the global default; if the
          * global default is not set, the authentication timeout is 25 seconds.
          * @since 1.8
+         * @default 0
          */
         get authTimeout(): number;
         set authTimeout(val: number);
@@ -20047,6 +18955,7 @@ export namespace NM {
          * {@link NM.Setting8021x.ca_cert} property. Only makes sense if the certificate
          * is stored on a PKCS#<!-- -->11 token that requires a login.
          * @since 1.8
+         * @default null
          */
         get ca_cert_password(): string;
         set ca_cert_password(val: string);
@@ -20055,18 +18964,21 @@ export namespace NM {
          * {@link NM.Setting8021x.ca_cert} property. Only makes sense if the certificate
          * is stored on a PKCS#<!-- -->11 token that requires a login.
          * @since 1.8
+         * @default null
          */
         get caCertPassword(): string;
         set caCertPassword(val: string);
         /**
          * Flags indicating how to handle the {@link NM.Setting8021x.ca_cert_password} property.
          * @since 1.8
+         * @default NM.SettingSecretFlags.NONE
          */
         get ca_cert_password_flags(): SettingSecretFlags;
         set ca_cert_password_flags(val: SettingSecretFlags);
         /**
          * Flags indicating how to handle the {@link NM.Setting8021x.ca_cert_password} property.
          * @since 1.8
+         * @default NM.SettingSecretFlags.NONE
          */
         get caCertPasswordFlags(): SettingSecretFlags;
         set caCertPasswordFlags(val: SettingSecretFlags);
@@ -20077,6 +18989,7 @@ export namespace NM {
          *
          * If NMSetting8021x:system-ca-certs is enabled and the built-in CA
          * path is an existing directory, then this setting is ignored.
+         * @default null
          */
         get ca_path(): string;
         set ca_path(val: string);
@@ -20087,6 +19000,7 @@ export namespace NM {
          *
          * If NMSetting8021x:system-ca-certs is enabled and the built-in CA
          * path is an existing directory, then this setting is ignored.
+         * @default null
          */
         get caPath(): string;
         set caPath(val: string);
@@ -20127,6 +19041,7 @@ export namespace NM {
          * {@link NM.Setting8021x.client_cert} property. Only makes sense if the certificate
          * is stored on a PKCS#<!-- -->11 token that requires a login.
          * @since 1.8
+         * @default null
          */
         get client_cert_password(): string;
         set client_cert_password(val: string);
@@ -20135,18 +19050,21 @@ export namespace NM {
          * {@link NM.Setting8021x.client_cert} property. Only makes sense if the certificate
          * is stored on a PKCS#<!-- -->11 token that requires a login.
          * @since 1.8
+         * @default null
          */
         get clientCertPassword(): string;
         set clientCertPassword(val: string);
         /**
          * Flags indicating how to handle the {@link NM.Setting8021x.client_cert_password} property.
          * @since 1.8
+         * @default NM.SettingSecretFlags.NONE
          */
         get client_cert_password_flags(): SettingSecretFlags;
         set client_cert_password_flags(val: SettingSecretFlags);
         /**
          * Flags indicating how to handle the {@link NM.Setting8021x.client_cert_password} property.
          * @since 1.8
+         * @default NM.SettingSecretFlags.NONE
          */
         get clientCertPasswordFlags(): SettingSecretFlags;
         set clientCertPasswordFlags(val: SettingSecretFlags);
@@ -20158,6 +19076,7 @@ export namespace NM {
          * matched against SubjectName CN using the same comparison.
          * Multiple valid FQDNs can be passed as a ";" delimited list.
          * @since 1.24
+         * @default null
          */
         get domain_match(): string;
         set domain_match(val: string);
@@ -20169,6 +19088,7 @@ export namespace NM {
          * matched against SubjectName CN using the same comparison.
          * Multiple valid FQDNs can be passed as a ";" delimited list.
          * @since 1.24
+         * @default null
          */
         get domainMatch(): string;
         set domainMatch(val: string);
@@ -20181,6 +19101,7 @@ export namespace NM {
          * Since version 1.24, multiple valid FQDNs can be passed as a ";" delimited
          * list.
          * @since 1.2
+         * @default null
          */
         get domain_suffix_match(): string;
         set domain_suffix_match(val: string);
@@ -20193,6 +19114,7 @@ export namespace NM {
          * Since version 1.24, multiple valid FQDNs can be passed as a ";" delimited
          * list.
          * @since 1.2
+         * @default null
          */
         get domainSuffixMatch(): string;
         set domainSuffixMatch(val: string);
@@ -20208,6 +19130,7 @@ export namespace NM {
         /**
          * Identity string for EAP authentication methods.  Often the user's user or
          * login name.
+         * @default null
          */
         get identity(): string;
         set identity(val: string);
@@ -20217,6 +19140,7 @@ export namespace NM {
          * (as modified by some linux distributions) sometimes prevents
          * to connect to old servers that do not support new protocols.
          * @since 1.48
+         * @default null
          */
         get openssl_ciphers(): string;
         set openssl_ciphers(val: string);
@@ -20226,6 +19150,7 @@ export namespace NM {
          * (as modified by some linux distributions) sometimes prevents
          * to connect to old servers that do not support new protocols.
          * @since 1.48
+         * @default null
          */
         get opensslCiphers(): string;
         set opensslCiphers(val: string);
@@ -20236,16 +19161,19 @@ export namespace NM {
          * If set to `false`, the activation can continue only after a successful
          * authentication.
          * @since 1.22
+         * @default false
          */
         get optional(): boolean;
         set optional(val: boolean);
         /**
          * UTF-8 encoded file path containing PAC for EAP-FAST.
+         * @default null
          */
         get pac_file(): string;
         set pac_file(val: string);
         /**
          * UTF-8 encoded file path containing PAC for EAP-FAST.
+         * @default null
          */
         get pacFile(): string;
         set pacFile(val: string);
@@ -20253,16 +19181,19 @@ export namespace NM {
          * UTF-8 encoded password used for EAP authentication methods. If both the
          * {@link NM.Setting8021x.password} property and the {@link NM.Setting8021x.password_raw}
          * property are specified, {@link NM.Setting8021x.password} is preferred.
+         * @default null
          */
         get password(): string;
         set password(val: string);
         /**
          * Flags indicating how to handle the {@link NM.Setting8021x.password} property.
+         * @default NM.SettingSecretFlags.NONE
          */
         get password_flags(): SettingSecretFlags;
         set password_flags(val: SettingSecretFlags);
         /**
          * Flags indicating how to handle the {@link NM.Setting8021x.password} property.
+         * @default NM.SettingSecretFlags.NONE
          */
         get passwordFlags(): SettingSecretFlags;
         set passwordFlags(val: SettingSecretFlags);
@@ -20284,11 +19215,13 @@ export namespace NM {
         set passwordRaw(val: GLib.Bytes | Uint8Array);
         /**
          * Flags indicating how to handle the {@link NM.Setting8021x.password_raw} property.
+         * @default NM.SettingSecretFlags.NONE
          */
         get password_raw_flags(): SettingSecretFlags;
         set password_raw_flags(val: SettingSecretFlags);
         /**
          * Flags indicating how to handle the {@link NM.Setting8021x.password_raw} property.
+         * @default NM.SettingSecretFlags.NONE
          */
         get passwordRawFlags(): SettingSecretFlags;
         set passwordRawFlags(val: SettingSecretFlags);
@@ -20301,6 +19234,7 @@ export namespace NM {
          * map to tls_disable_tlsv1_x and tls_disable_time_checks settings.
          * See the wpa_supplicant documentation for more details.
          * @since 1.8
+         * @default 0
          */
         get phase1_auth_flags(): number;
         set phase1_auth_flags(val: number);
@@ -20313,6 +19247,7 @@ export namespace NM {
          * map to tls_disable_tlsv1_x and tls_disable_time_checks settings.
          * See the wpa_supplicant documentation for more details.
          * @since 1.8
+         * @default 0
          */
         get phase1AuthFlags(): number;
         set phase1AuthFlags(val: number);
@@ -20323,6 +19258,7 @@ export namespace NM {
          * provisioning), "2" (allow authenticated provisioning), and "3" (allow
          * both authenticated and unauthenticated provisioning).  See the
          * wpa_supplicant documentation for more details.
+         * @default null
          */
         get phase1_fast_provisioning(): string;
         set phase1_fast_provisioning(val: string);
@@ -20333,6 +19269,7 @@ export namespace NM {
          * provisioning), "2" (allow authenticated provisioning), and "3" (allow
          * both authenticated and unauthenticated provisioning).  See the
          * wpa_supplicant documentation for more details.
+         * @default null
          */
         get phase1FastProvisioning(): string;
         set phase1FastProvisioning(val: string);
@@ -20341,6 +19278,7 @@ export namespace NM {
          * servers may require forcing the new PEAP label to interoperate with
          * PEAPv1.  Set to "1" to force use of the new PEAP label.  See the
          * wpa_supplicant documentation for more details.
+         * @default null
          */
         get phase1_peaplabel(): string;
         set phase1_peaplabel(val: string);
@@ -20349,6 +19287,7 @@ export namespace NM {
          * servers may require forcing the new PEAP label to interoperate with
          * PEAPv1.  Set to "1" to force use of the new PEAP label.  See the
          * wpa_supplicant documentation for more details.
+         * @default null
          */
         get phase1Peaplabel(): string;
         set phase1Peaplabel(val: string);
@@ -20359,6 +19298,7 @@ export namespace NM {
          * is necessary to force the client to use a particular PEAP version.  To do
          * so, this property may be set to "0" or "1" to force that specific PEAP
          * version.
+         * @default null
          */
         get phase1_peapver(): string;
         set phase1_peapver(val: string);
@@ -20369,6 +19309,7 @@ export namespace NM {
          * is necessary to force the client to use a particular PEAP version.  To do
          * so, this property may be set to "0" or "1" to force that specific PEAP
          * version.
+         * @default null
          */
         get phase1Peapver(): string;
         set phase1Peapver(val: string);
@@ -20399,6 +19340,7 @@ export namespace NM {
          * authentication; see the wpa_supplicant documentation for more details.
          * Both {@link NM.Setting8021x.phase2_auth} and {@link NM.Setting8021x.phase2_autheap} cannot
          * be specified.
+         * @default null
          */
         get phase2_auth(): string;
         set phase2_auth(val: string);
@@ -20413,6 +19355,7 @@ export namespace NM {
          * authentication; see the wpa_supplicant documentation for more details.
          * Both {@link NM.Setting8021x.phase2_auth} and {@link NM.Setting8021x.phase2_autheap} cannot
          * be specified.
+         * @default null
          */
         get phase2Auth(): string;
         set phase2Auth(val: string);
@@ -20423,6 +19366,7 @@ export namespace NM {
          * "tls". Each "phase 2" inner method requires specific parameters for
          * successful authentication; see the wpa_supplicant documentation for
          * more details.
+         * @default null
          */
         get phase2_autheap(): string;
         set phase2_autheap(val: string);
@@ -20433,6 +19377,7 @@ export namespace NM {
          * "tls". Each "phase 2" inner method requires specific parameters for
          * successful authentication; see the wpa_supplicant documentation for
          * more details.
+         * @default null
          */
         get phase2Autheap(): string;
         set phase2Autheap(val: string);
@@ -20485,6 +19430,7 @@ export namespace NM {
          * {@link NM.Setting8021x.phase2_ca_cert} property. Only makes sense if the certificate
          * is stored on a PKCS#<!-- -->11 token that requires a login.
          * @since 1.8
+         * @default null
          */
         get phase2_ca_cert_password(): string;
         set phase2_ca_cert_password(val: string);
@@ -20493,18 +19439,21 @@ export namespace NM {
          * {@link NM.Setting8021x.phase2_ca_cert} property. Only makes sense if the certificate
          * is stored on a PKCS#<!-- -->11 token that requires a login.
          * @since 1.8
+         * @default null
          */
         get phase2CaCertPassword(): string;
         set phase2CaCertPassword(val: string);
         /**
          * Flags indicating how to handle the {@link NM.Setting8021x.phase2_ca_cert_password} property.
          * @since 1.8
+         * @default NM.SettingSecretFlags.NONE
          */
         get phase2_ca_cert_password_flags(): SettingSecretFlags;
         set phase2_ca_cert_password_flags(val: SettingSecretFlags);
         /**
          * Flags indicating how to handle the {@link NM.Setting8021x.phase2_ca_cert_password} property.
          * @since 1.8
+         * @default NM.SettingSecretFlags.NONE
          */
         get phase2CaCertPasswordFlags(): SettingSecretFlags;
         set phase2CaCertPasswordFlags(val: SettingSecretFlags);
@@ -20515,6 +19464,7 @@ export namespace NM {
          *
          * If NMSetting8021x:system-ca-certs is enabled and the built-in CA
          * path is an existing directory, then this setting is ignored.
+         * @default null
          */
         get phase2_ca_path(): string;
         set phase2_ca_path(val: string);
@@ -20525,6 +19475,7 @@ export namespace NM {
          *
          * If NMSetting8021x:system-ca-certs is enabled and the built-in CA
          * path is an existing directory, then this setting is ignored.
+         * @default null
          */
         get phase2CaPath(): string;
         set phase2CaPath(val: string);
@@ -20571,6 +19522,7 @@ export namespace NM {
          * {@link NM.Setting8021x.phase2_client_cert} property. Only makes sense if the certificate
          * is stored on a PKCS#<!-- -->11 token that requires a login.
          * @since 1.8
+         * @default null
          */
         get phase2_client_cert_password(): string;
         set phase2_client_cert_password(val: string);
@@ -20579,18 +19531,21 @@ export namespace NM {
          * {@link NM.Setting8021x.phase2_client_cert} property. Only makes sense if the certificate
          * is stored on a PKCS#<!-- -->11 token that requires a login.
          * @since 1.8
+         * @default null
          */
         get phase2ClientCertPassword(): string;
         set phase2ClientCertPassword(val: string);
         /**
          * Flags indicating how to handle the {@link NM.Setting8021x.phase2_client_cert_password} property.
          * @since 1.8
+         * @default NM.SettingSecretFlags.NONE
          */
         get phase2_client_cert_password_flags(): SettingSecretFlags;
         set phase2_client_cert_password_flags(val: SettingSecretFlags);
         /**
          * Flags indicating how to handle the {@link NM.Setting8021x.phase2_client_cert_password} property.
          * @since 1.8
+         * @default NM.SettingSecretFlags.NONE
          */
         get phase2ClientCertPasswordFlags(): SettingSecretFlags;
         set phase2ClientCertPasswordFlags(val: SettingSecretFlags);
@@ -20603,6 +19558,7 @@ export namespace NM {
          * using the same comparison.
          * Multiple valid FQDNs can be passed as a ";" delimited list.
          * @since 1.24
+         * @default null
          */
         get phase2_domain_match(): string;
         set phase2_domain_match(val: string);
@@ -20615,6 +19571,7 @@ export namespace NM {
          * using the same comparison.
          * Multiple valid FQDNs can be passed as a ";" delimited list.
          * @since 1.24
+         * @default null
          */
         get phase2DomainMatch(): string;
         set phase2DomainMatch(val: string);
@@ -20628,6 +19585,7 @@ export namespace NM {
          * Since version 1.24, multiple valid FQDNs can be passed as a ";" delimited
          * list.
          * @since 1.2
+         * @default null
          */
         get phase2_domain_suffix_match(): string;
         set phase2_domain_suffix_match(val: string);
@@ -20641,6 +19599,7 @@ export namespace NM {
          * Since version 1.24, multiple valid FQDNs can be passed as a ";" delimited
          * list.
          * @since 1.2
+         * @default null
          */
         get phase2DomainSuffixMatch(): string;
         set phase2DomainSuffixMatch(val: string);
@@ -20704,6 +19663,7 @@ export namespace NM {
          * secrets to NetworkManager; it is generally set automatically when setting
          * the private key by the `nm_setting_802_1x_set_phase2_private_key()`
          * function.
+         * @default null
          */
         get phase2_private_key_password(): string;
         set phase2_private_key_password(val: string);
@@ -20715,18 +19675,21 @@ export namespace NM {
          * secrets to NetworkManager; it is generally set automatically when setting
          * the private key by the `nm_setting_802_1x_set_phase2_private_key()`
          * function.
+         * @default null
          */
         get phase2PrivateKeyPassword(): string;
         set phase2PrivateKeyPassword(val: string);
         /**
          * Flags indicating how to handle the
          * {@link NM.Setting8021x.phase2_private_key_password} property.
+         * @default NM.SettingSecretFlags.NONE
          */
         get phase2_private_key_password_flags(): SettingSecretFlags;
         set phase2_private_key_password_flags(val: SettingSecretFlags);
         /**
          * Flags indicating how to handle the
          * {@link NM.Setting8021x.phase2_private_key_password} property.
+         * @default NM.SettingSecretFlags.NONE
          */
         get phase2PrivateKeyPasswordFlags(): SettingSecretFlags;
         set phase2PrivateKeyPasswordFlags(val: SettingSecretFlags);
@@ -20737,6 +19700,7 @@ export namespace NM {
          * certificate's subject is performed. This property provides little security,
          * if any, and should not be used.
          * @deprecated since 1.2: Use {@link NM.Setting8021x.phase2_domain_suffix_match} instead.
+         * @default null
          */
         get phase2_subject_match(): string;
         set phase2_subject_match(val: string);
@@ -20747,21 +19711,25 @@ export namespace NM {
          * certificate's subject is performed. This property provides little security,
          * if any, and should not be used.
          * @deprecated since 1.2: Use {@link NM.Setting8021x.phase2_domain_suffix_match} instead.
+         * @default null
          */
         get phase2SubjectMatch(): string;
         set phase2SubjectMatch(val: string);
         /**
          * PIN used for EAP authentication methods.
+         * @default null
          */
         get pin(): string;
         set pin(val: string);
         /**
          * Flags indicating how to handle the {@link NM.Setting8021x.pin} property.
+         * @default NM.SettingSecretFlags.NONE
          */
         get pin_flags(): SettingSecretFlags;
         set pin_flags(val: SettingSecretFlags);
         /**
          * Flags indicating how to handle the {@link NM.Setting8021x.pin} property.
+         * @default NM.SettingSecretFlags.NONE
          */
         get pinFlags(): SettingSecretFlags;
         set pinFlags(val: SettingSecretFlags);
@@ -20834,6 +19802,7 @@ export namespace NM {
          * property directly is not generally necessary except when returning
          * secrets to NetworkManager; it is generally set automatically when setting
          * the private key by the `nm_setting_802_1x_set_private_key()` function.
+         * @default null
          */
         get private_key_password(): string;
         set private_key_password(val: string);
@@ -20844,18 +19813,21 @@ export namespace NM {
          * property directly is not generally necessary except when returning
          * secrets to NetworkManager; it is generally set automatically when setting
          * the private key by the `nm_setting_802_1x_set_private_key()` function.
+         * @default null
          */
         get privateKeyPassword(): string;
         set privateKeyPassword(val: string);
         /**
          * Flags indicating how to handle the {@link NM.Setting8021x.private_key_password}
          * property.
+         * @default NM.SettingSecretFlags.NONE
          */
         get private_key_password_flags(): SettingSecretFlags;
         set private_key_password_flags(val: SettingSecretFlags);
         /**
          * Flags indicating how to handle the {@link NM.Setting8021x.private_key_password}
          * property.
+         * @default NM.SettingSecretFlags.NONE
          */
         get privateKeyPasswordFlags(): SettingSecretFlags;
         set privateKeyPasswordFlags(val: SettingSecretFlags);
@@ -20865,6 +19837,7 @@ export namespace NM {
          * authentication server certificate's subject is performed. This property
          * provides little security, if any, and should not be used.
          * @deprecated since 1.2: Use {@link NM.Setting8021x.phase2_domain_suffix_match} instead.
+         * @default null
          */
         get subject_match(): string;
         set subject_match(val: string);
@@ -20874,6 +19847,7 @@ export namespace NM {
          * authentication server certificate's subject is performed. This property
          * provides little security, if any, and should not be used.
          * @deprecated since 1.2: Use {@link NM.Setting8021x.phase2_domain_suffix_match} instead.
+         * @default null
          */
         get subjectMatch(): string;
         set subjectMatch(val: string);
@@ -20887,6 +19861,7 @@ export namespace NM {
          * --system-ca-path is rather a file name (bundle of trusted CA certificates),
          * it overrides {@link NM.Setting8021x.ca_cert} and {@link NM.Setting8021x.phase2_ca_cert}
          * properties instead (sets ca_cert/ca_cert2 options for wpa_supplicant).
+         * @default false
          */
         get system_ca_certs(): boolean;
         set system_ca_certs(val: boolean);
@@ -20900,6 +19875,7 @@ export namespace NM {
          * --system-ca-path is rather a file name (bundle of trusted CA certificates),
          * it overrides {@link NM.Setting8021x.ca_cert} and {@link NM.Setting8021x.phase2_ca_cert}
          * properties instead (sets ca_cert/ca_cert2 options for wpa_supplicant).
+         * @default false
          */
         get systemCaCerts(): boolean;
         set systemCaCerts(val: boolean);
@@ -21641,41 +20617,49 @@ export namespace NM {
 
         /**
          * Encapsulation of ADSL connection.  Can be "vcmux" or "llc".
+         * @default null
          */
         get encapsulation(): string;
         set encapsulation(val: string);
         /**
          * Password used to authenticate with the ADSL service.
+         * @default null
          */
         get password(): string;
         set password(val: string);
         /**
          * Flags indicating how to handle the {@link NM.SettingAdsl.password} property.
+         * @default NM.SettingSecretFlags.NONE
          */
         get password_flags(): SettingSecretFlags;
         set password_flags(val: SettingSecretFlags);
         /**
          * Flags indicating how to handle the {@link NM.SettingAdsl.password} property.
+         * @default NM.SettingSecretFlags.NONE
          */
         get passwordFlags(): SettingSecretFlags;
         set passwordFlags(val: SettingSecretFlags);
         /**
          * ADSL connection protocol.  Can be "pppoa", "pppoe" or "ipoatm".
+         * @default null
          */
         get protocol(): string;
         set protocol(val: string);
         /**
          * Username used to authenticate with the ADSL service.
+         * @default null
          */
         get username(): string;
         set username(val: string);
         /**
          * VCI of ADSL connection
+         * @default 0
          */
         get vci(): number;
         set vci(val: number);
         /**
          * VPI of ADSL connection
+         * @default 0
          */
         get vpi(): number;
         set vpi(val: number);
@@ -21777,12 +20761,14 @@ export namespace NM {
 
         /**
          * The Bluetooth address of the device.
+         * @default null
          */
         get bdaddr(): string;
         set bdaddr(val: string);
         /**
          * Either "dun" for Dial-Up Networking connections or "panu" for Personal
          * Area Networking connections to devices supporting the NAP profile.
+         * @default null
          */
         get type(): string;
         set type(val: string);
@@ -21918,7 +20904,7 @@ export namespace NM {
          * @param name the name of the option to validate
          * @param value the value of the option to validate.
          */
-        static validate_option(name: string, value?: string | null): boolean;
+        static validate_option(name: string, value: string | null): boolean;
 
         // Methods
 
@@ -22012,6 +20998,7 @@ export namespace NM {
          * the highest priority. This option is only compatible with active-backup,
          * balance-tlb and balance-alb modes.
          * @since 1.44
+         * @default 0
          */
         get prio(): number;
         set prio(val: number);
@@ -22019,6 +21006,7 @@ export namespace NM {
          * The queue ID of this bond port. The maximum value of queue ID is
          * the number of TX queues currently active in device.
          * @since 1.34
+         * @default 0
          */
         get queue_id(): number;
         set queue_id(val: number);
@@ -22026,6 +21014,7 @@ export namespace NM {
          * The queue ID of this bond port. The maximum value of queue ID is
          * the number of TX queues currently active in device.
          * @since 1.34
+         * @default 0
          */
         get queueId(): number;
         set queueId(val: number);
@@ -22181,21 +21170,25 @@ export namespace NM {
 
         /**
          * The Ethernet MAC address aging time, in seconds.
+         * @default 300
          */
         get ageing_time(): number;
         set ageing_time(val: number);
         /**
          * The Ethernet MAC address aging time, in seconds.
+         * @default 300
          */
         get ageingTime(): number;
         set ageingTime(val: number);
         /**
          * The Spanning Tree Protocol (STP) forwarding delay, in seconds.
+         * @default 15
          */
         get forward_delay(): number;
         set forward_delay(val: number);
         /**
          * The Spanning Tree Protocol (STP) forwarding delay, in seconds.
+         * @default 15
          */
         get forwardDelay(): number;
         set forwardDelay(val: number);
@@ -22206,6 +21199,7 @@ export namespace NM {
          * ie an address of the form 01:80:C2:00:00:0X, with X in [0, 4..F].
          * If not specified the default value is 01:80:C2:00:00:00.
          * @since 1.24
+         * @default null
          */
         get group_address(): string;
         set group_address(val: string);
@@ -22216,6 +21210,7 @@ export namespace NM {
          * ie an address of the form 01:80:C2:00:00:0X, with X in [0, 4..F].
          * If not specified the default value is 01:80:C2:00:00:00.
          * @since 1.24
+         * @default null
          */
         get groupAddress(): string;
         set groupAddress(val: string);
@@ -22227,6 +21222,7 @@ export namespace NM {
          * forwarded. The mask can't have bits 0, 1 or 2 set because they are
          * used for STP, MAC pause frames and LACP.
          * @since 1.10
+         * @default 0
          */
         get group_forward_mask(): number;
         set group_forward_mask(val: number);
@@ -22238,16 +21234,19 @@ export namespace NM {
          * forwarded. The mask can't have bits 0, 1 or 2 set because they are
          * used for STP, MAC pause frames and LACP.
          * @since 1.10
+         * @default 0
          */
         get groupForwardMask(): number;
         set groupForwardMask(val: number);
         /**
          * The Spanning Tree Protocol (STP) hello time, in seconds.
+         * @default 2
          */
         get hello_time(): number;
         set hello_time(val: number);
         /**
          * The Spanning Tree Protocol (STP) hello time, in seconds.
+         * @default 2
          */
         get helloTime(): number;
         set helloTime(val: number);
@@ -22260,6 +21259,7 @@ export namespace NM {
          * "ethernet.cloned-mac-address" anyway overwrites the MAC address of
          * the bridge later while activating the bridge.
          * @deprecated since 1.12: Use the {@link NM.SettingWired.cloned_mac_address} property instead.
+         * @default null
          */
         get mac_address(): string;
         set mac_address(val: string);
@@ -22272,26 +21272,31 @@ export namespace NM {
          * "ethernet.cloned-mac-address" anyway overwrites the MAC address of
          * the bridge later while activating the bridge.
          * @deprecated since 1.12: Use the {@link NM.SettingWired.cloned_mac_address} property instead.
+         * @default null
          */
         get macAddress(): string;
         set macAddress(val: string);
         /**
          * The Spanning Tree Protocol (STP) maximum message age, in seconds.
+         * @default 20
          */
         get max_age(): number;
         set max_age(val: number);
         /**
          * The Spanning Tree Protocol (STP) maximum message age, in seconds.
+         * @default 20
          */
         get maxAge(): number;
         set maxAge(val: number);
         /**
          * Set maximum size of multicast hash table (value must be a power of 2).
+         * @default 4096
          */
         get multicast_hash_max(): number;
         set multicast_hash_max(val: number);
         /**
          * Set maximum size of multicast hash table (value must be a power of 2).
+         * @default 4096
          */
         get multicastHashMax(): number;
         set multicastHashMax(val: number);
@@ -22299,6 +21304,7 @@ export namespace NM {
          * Set the number of queries the bridge will send before
          * stopping forwarding a multicast group after a "leave"
          * message has been received.
+         * @default 2
          */
         get multicast_last_member_count(): number;
         set multicast_last_member_count(val: number);
@@ -22306,18 +21312,21 @@ export namespace NM {
          * Set the number of queries the bridge will send before
          * stopping forwarding a multicast group after a "leave"
          * message has been received.
+         * @default 2
          */
         get multicastLastMemberCount(): number;
         set multicastLastMemberCount(val: number);
         /**
          * Set interval (in deciseconds) between queries to find remaining
          * members of a group, after a "leave" message is received.
+         * @default 100
          */
         get multicast_last_member_interval(): number;
         set multicast_last_member_interval(val: bigint | number);
         /**
          * Set interval (in deciseconds) between queries to find remaining
          * members of a group, after a "leave" message is received.
+         * @default 100
          */
         get multicastLastMemberInterval(): number;
         set multicastLastMemberInterval(val: bigint | number);
@@ -22325,6 +21334,7 @@ export namespace NM {
          * Set delay (in deciseconds) after which the bridge will
          * leave a group, if no membership reports for this
          * group are received.
+         * @default 26000
          */
         get multicast_membership_interval(): number;
         set multicast_membership_interval(val: bigint | number);
@@ -22332,54 +21342,63 @@ export namespace NM {
          * Set delay (in deciseconds) after which the bridge will
          * leave a group, if no membership reports for this
          * group are received.
+         * @default 26000
          */
         get multicastMembershipInterval(): number;
         set multicastMembershipInterval(val: bigint | number);
         /**
          * Enable or disable sending of multicast queries by the bridge.
          * If not specified the option is disabled.
+         * @default false
          */
         get multicast_querier(): boolean;
         set multicast_querier(val: boolean);
         /**
          * Enable or disable sending of multicast queries by the bridge.
          * If not specified the option is disabled.
+         * @default false
          */
         get multicastQuerier(): boolean;
         set multicastQuerier(val: boolean);
         /**
          * If no queries are seen after this delay (in deciseconds) has passed,
          * the bridge will start to send its own queries.
+         * @default 25500
          */
         get multicast_querier_interval(): number;
         set multicast_querier_interval(val: bigint | number);
         /**
          * If no queries are seen after this delay (in deciseconds) has passed,
          * the bridge will start to send its own queries.
+         * @default 25500
          */
         get multicastQuerierInterval(): number;
         set multicastQuerierInterval(val: bigint | number);
         /**
          * Interval (in deciseconds) between queries sent
          * by the bridge after the end of the startup phase.
+         * @default 12500
          */
         get multicast_query_interval(): number;
         set multicast_query_interval(val: bigint | number);
         /**
          * Interval (in deciseconds) between queries sent
          * by the bridge after the end of the startup phase.
+         * @default 12500
          */
         get multicastQueryInterval(): number;
         set multicastQueryInterval(val: bigint | number);
         /**
          * Set the Max Response Time/Max Response Delay
          * (in deciseconds) for IGMP/MLD queries sent by the bridge.
+         * @default 1000
          */
         get multicast_query_response_interval(): number;
         set multicast_query_response_interval(val: bigint | number);
         /**
          * Set the Max Response Time/Max Response Delay
          * (in deciseconds) for IGMP/MLD queries sent by the bridge.
+         * @default 1000
          */
         get multicastQueryResponseInterval(): number;
         set multicastQueryResponseInterval(val: bigint | number);
@@ -22387,6 +21406,7 @@ export namespace NM {
          * If enabled the bridge's own IP address is used as
          * the source address for IGMP queries otherwise
          * the default of 0.0.0.0 is used.
+         * @default false
          */
         get multicast_query_use_ifaddr(): boolean;
         set multicast_query_use_ifaddr(val: boolean);
@@ -22394,6 +21414,7 @@ export namespace NM {
          * If enabled the bridge's own IP address is used as
          * the source address for IGMP queries otherwise
          * the default of 0.0.0.0 is used.
+         * @default false
          */
         get multicastQueryUseIfaddr(): boolean;
         set multicastQueryUseIfaddr(val: boolean);
@@ -22404,6 +21425,7 @@ export namespace NM {
          * Supported values are: 'auto', 'disabled', 'enabled' to which kernel
          * assigns the numbers 1, 0, and 2, respectively.
          * If not specified the default value is 'auto' (1).
+         * @default null
          */
         get multicast_router(): string;
         set multicast_router(val: string);
@@ -22414,6 +21436,7 @@ export namespace NM {
          * Supported values are: 'auto', 'disabled', 'enabled' to which kernel
          * assigns the numbers 1, 0, and 2, respectively.
          * If not specified the default value is 'auto' (1).
+         * @default null
          */
         get multicastRouter(): string;
         set multicastRouter(val: string);
@@ -22423,6 +21446,7 @@ export namespace NM {
          * the system may refuse to enable the feature until the collisions are
          * resolved.
          * @since 1.2
+         * @default true
          */
         get multicast_snooping(): boolean;
         set multicast_snooping(val: boolean);
@@ -22432,28 +21456,33 @@ export namespace NM {
          * the system may refuse to enable the feature until the collisions are
          * resolved.
          * @since 1.2
+         * @default true
          */
         get multicastSnooping(): boolean;
         set multicastSnooping(val: boolean);
         /**
          * Set the number of IGMP queries to send during startup phase.
+         * @default 2
          */
         get multicast_startup_query_count(): number;
         set multicast_startup_query_count(val: number);
         /**
          * Set the number of IGMP queries to send during startup phase.
+         * @default 2
          */
         get multicastStartupQueryCount(): number;
         set multicastStartupQueryCount(val: number);
         /**
          * Sets the time (in deciseconds) between queries sent out
          * at startup to determine membership information.
+         * @default 3125
          */
         get multicast_startup_query_interval(): number;
         set multicast_startup_query_interval(val: bigint | number);
         /**
          * Sets the time (in deciseconds) between queries sent out
          * at startup to determine membership information.
+         * @default 3125
          */
         get multicastStartupQueryInterval(): number;
         set multicastStartupQueryInterval(val: bigint | number);
@@ -22461,11 +21490,13 @@ export namespace NM {
          * Sets the Spanning Tree Protocol (STP) priority for this bridge.  Lower
          * values are "better"; the lowest priority bridge will be elected the root
          * bridge.
+         * @default 32768
          */
         get priority(): number;
         set priority(val: number);
         /**
          * Controls whether Spanning Tree Protocol (STP) is enabled for this bridge.
+         * @default true
          */
         get stp(): boolean;
         set stp(val: boolean);
@@ -22473,6 +21504,7 @@ export namespace NM {
          * The default PVID for the ports of the bridge, that is the VLAN id
          * assigned to incoming untagged frames.
          * @since 1.18
+         * @default 1
          */
         get vlan_default_pvid(): number;
         set vlan_default_pvid(val: number);
@@ -22480,18 +21512,21 @@ export namespace NM {
          * The default PVID for the ports of the bridge, that is the VLAN id
          * assigned to incoming untagged frames.
          * @since 1.18
+         * @default 1
          */
         get vlanDefaultPvid(): number;
         set vlanDefaultPvid(val: number);
         /**
          * Control whether VLAN filtering is enabled on the bridge.
          * @since 1.18
+         * @default false
          */
         get vlan_filtering(): boolean;
         set vlan_filtering(val: boolean);
         /**
          * Control whether VLAN filtering is enabled on the bridge.
          * @since 1.18
+         * @default false
          */
         get vlanFiltering(): boolean;
         set vlanFiltering(val: boolean);
@@ -22501,6 +21536,7 @@ export namespace NM {
          * Supported values are: '802.1Q', '802.1ad'.
          * If not specified the default value is '802.1Q'.
          * @since 1.24
+         * @default null
          */
         get vlan_protocol(): string;
         set vlan_protocol(val: string);
@@ -22510,16 +21546,19 @@ export namespace NM {
          * Supported values are: '802.1Q', '802.1ad'.
          * If not specified the default value is '802.1Q'.
          * @since 1.24
+         * @default null
          */
         get vlanProtocol(): string;
         set vlanProtocol(val: string);
         /**
          * Controls whether per-VLAN stats accounting is enabled.
+         * @default false
          */
         get vlan_stats_enabled(): boolean;
         set vlan_stats_enabled(val: boolean);
         /**
          * Controls whether per-VLAN stats accounting is enabled.
+         * @default false
          */
         get vlanStatsEnabled(): boolean;
         set vlanStatsEnabled(val: boolean);
@@ -22753,29 +21792,34 @@ export namespace NM {
         /**
          * Enables or disables "hairpin mode" for the port, which allows frames to
          * be sent back out through the port the frame was received on.
+         * @default false
          */
         get hairpin_mode(): boolean;
         set hairpin_mode(val: boolean);
         /**
          * Enables or disables "hairpin mode" for the port, which allows frames to
          * be sent back out through the port the frame was received on.
+         * @default false
          */
         get hairpinMode(): boolean;
         set hairpinMode(val: boolean);
         /**
          * The Spanning Tree Protocol (STP) port cost for destinations via this
          * port.
+         * @default 100
          */
         get path_cost(): number;
         set path_cost(val: number);
         /**
          * The Spanning Tree Protocol (STP) port cost for destinations via this
          * port.
+         * @default 100
          */
         get pathCost(): number;
         set pathCost(val: number);
         /**
          * The Spanning Tree Protocol (STP) priority of this bridge port.
+         * @default 32
          */
         get priority(): number;
         set priority(val: number);
@@ -22920,6 +21964,7 @@ export namespace NM {
          * If non-zero, only transmit packets of the specified size or smaller,
          * breaking larger packets up into multiple frames.
          * @since 1.8
+         * @default 0
          */
         get mtu(): number;
         set mtu(val: number);
@@ -22927,6 +21972,7 @@ export namespace NM {
          * The number to dial to establish the connection to the CDMA-based mobile
          * broadband network, if any.  If not specified, the default number (#777)
          * is used when required.
+         * @default null
          */
         get number(): string;
         set number(val: string);
@@ -22934,16 +21980,19 @@ export namespace NM {
          * The password used to authenticate with the network, if required.  Many
          * providers do not require a password, or accept any password.  But if a
          * password is required, it is specified here.
+         * @default null
          */
         get password(): string;
         set password(val: string);
         /**
          * Flags indicating how to handle the {@link NM.SettingCdma.password} property.
+         * @default NM.SettingSecretFlags.NONE
          */
         get password_flags(): SettingSecretFlags;
         set password_flags(val: SettingSecretFlags);
         /**
          * Flags indicating how to handle the {@link NM.SettingCdma.password} property.
+         * @default NM.SettingSecretFlags.NONE
          */
         get passwordFlags(): SettingSecretFlags;
         set passwordFlags(val: SettingSecretFlags);
@@ -22951,6 +22000,7 @@ export namespace NM {
          * The username used to authenticate with the network, if required.  Many
          * providers do not require a username, or accept any username.  But if a
          * username is required, it is specified here.
+         * @default null
          */
         get username(): string;
         set username(val: string);
@@ -23138,6 +22188,7 @@ export namespace NM {
          *
          * Currently, this only applies to 802-1x authentication.
          * @since 1.10
+         * @default -1
          */
         get auth_retries(): number;
         set auth_retries(val: number);
@@ -23148,6 +22199,7 @@ export namespace NM {
          *
          * Currently, this only applies to 802-1x authentication.
          * @since 1.10
+         * @default -1
          */
         get authRetries(): number;
         set authRetries(val: number);
@@ -23173,6 +22225,7 @@ export namespace NM {
          *
          * Depending on "connection.multi-connect", a profile can (auto)connect only
          * once at a time or multiple times.
+         * @default true
          */
         get autoconnect(): boolean;
         set autoconnect(val: boolean);
@@ -23187,6 +22240,7 @@ export namespace NM {
          * If -1 (default) is set, global connection.autoconnect-ports is read to
          * determine the real value. If it is default as well, this fallbacks to 0.
          * @since 1.46
+         * @default -1
          */
         get autoconnect_ports(): number;
         set autoconnect_ports(val: number);
@@ -23201,6 +22255,7 @@ export namespace NM {
          * If -1 (default) is set, global connection.autoconnect-ports is read to
          * determine the real value. If it is default as well, this fallbacks to 0.
          * @since 1.46
+         * @default -1
          */
         get autoconnectPorts(): number;
         set autoconnectPorts(val: number);
@@ -23211,6 +22266,7 @@ export namespace NM {
          * Note that this property only matters if there are more than one candidate
          * profile to select for autoconnect. In case of equal priority, the profile
          * used most recently is chosen.
+         * @default 0
          */
         get autoconnect_priority(): number;
         set autoconnect_priority(val: number);
@@ -23221,6 +22277,7 @@ export namespace NM {
          * Note that this property only matters if there are more than one candidate
          * profile to select for autoconnect. In case of equal priority, the profile
          * used most recently is chosen.
+         * @default 0
          */
         get autoconnectPriority(): number;
         set autoconnectPriority(val: number);
@@ -23230,6 +22287,7 @@ export namespace NM {
          * overridden). Setting this to 1 means to try activation only once before
          * blocking autoconnect. Note that after a timeout, NetworkManager will try
          * to autoconnect again.
+         * @default -1
          */
         get autoconnect_retries(): number;
         set autoconnect_retries(val: number);
@@ -23239,6 +22297,7 @@ export namespace NM {
          * overridden). Setting this to 1 means to try activation only once before
          * blocking autoconnect. Note that after a timeout, NetworkManager will try
          * to autoconnect again.
+         * @default -1
          */
         get autoconnectRetries(): number;
         set autoconnectRetries(val: number);
@@ -23255,6 +22314,7 @@ export namespace NM {
          *
          * Deprecated 1.46. Use {@link NM.SettingConnection.autoconnect_ports} instead, this is just an alias.
          * @since 1.2
+         * @default NM.SettingConnectionAutoconnectSlaves.DEFAULT
          */
         get autoconnect_slaves(): SettingConnectionAutoconnectSlaves;
         set autoconnect_slaves(val: SettingConnectionAutoconnectSlaves);
@@ -23271,11 +22331,13 @@ export namespace NM {
          *
          * Deprecated 1.46. Use {@link NM.SettingConnection.autoconnect_ports} instead, this is just an alias.
          * @since 1.2
+         * @default NM.SettingConnectionAutoconnectSlaves.DEFAULT
          */
         get autoconnectSlaves(): SettingConnectionAutoconnectSlaves;
         set autoconnectSlaves(val: SettingConnectionAutoconnectSlaves);
         /**
          * Interface name of the controller device or UUID of the controller connection.
+         * @default null
          */
         get controller(): string;
         set controller(val: string);
@@ -23292,6 +22354,7 @@ export namespace NM {
          * This feature requires a plugin which supports DNSOverTls. Otherwise, the
          * setting has no effect. One such plugin is dns-systemd-resolved.
          * @since 1.34
+         * @default -1
          */
         get dns_over_tls(): number;
         set dns_over_tls(val: number);
@@ -23308,6 +22371,7 @@ export namespace NM {
          * This feature requires a plugin which supports DNSOverTls. Otherwise, the
          * setting has no effect. One such plugin is dns-systemd-resolved.
          * @since 1.34
+         * @default -1
          */
         get dnsOverTls(): number;
         set dnsOverTls(val: number);
@@ -23323,6 +22387,7 @@ export namespace NM {
          * This feature requires a plugin which supports DNSSEC. Otherwise, the
          * setting has no effect. One such plugin is systemd-resolved.
          * @since 1.56
+         * @default -1
          */
         get dnssec(): number;
         set dnssec(val: number);
@@ -23333,6 +22398,7 @@ export namespace NM {
          * NetworkManager configuration is looked up, if not set, it is considered
          * as {@link NM.SettingConnectionDownOnPoweroff.NO}.
          * @since 1.48
+         * @default -1
          */
         get down_on_poweroff(): number;
         set down_on_poweroff(val: number);
@@ -23343,24 +22409,28 @@ export namespace NM {
          * NetworkManager configuration is looked up, if not set, it is considered
          * as {@link NM.SettingConnectionDownOnPoweroff.NO}.
          * @since 1.48
+         * @default -1
          */
         get downOnPoweroff(): number;
         set downOnPoweroff(val: number);
         /**
          * If greater than zero, delay success of IP addressing until either the
          * timeout is reached, or an IP gateway replies to a ping.
+         * @default 0
          */
         get gateway_ping_timeout(): number;
         set gateway_ping_timeout(val: number);
         /**
          * If greater than zero, delay success of IP addressing until either the
          * timeout is reached, or an IP gateway replies to a ping.
+         * @default 0
          */
         get gatewayPingTimeout(): number;
         set gatewayPingTimeout(val: number);
         /**
          * A human readable unique identifier for the connection, like "Work Wi-Fi"
          * or "T-Mobile 3G".
+         * @default null
          */
         get id(): string;
         set id(val: string);
@@ -23376,6 +22446,7 @@ export namespace NM {
          * not be used. Setting this property restricts the interfaces a connection
          * can be used with, and if interface names change or are reordered the
          * connection may be applied to the wrong interface.
+         * @default null
          */
         get interface_name(): string;
         set interface_name(val: string);
@@ -23391,6 +22462,7 @@ export namespace NM {
          * not be used. Setting this property restricts the interfaces a connection
          * can be used with, and if interface names change or are reordered the
          * connection may be applied to the wrong interface.
+         * @default null
          */
         get interfaceName(): string;
         set interfaceName(val: string);
@@ -23423,6 +22495,7 @@ export namespace NM {
          * to succeed among {@link NM.SettingConnection.ip_ping_addresses}, or if all
          * ping checks must succeed for {@link NM.SettingConnection.ip_ping_addresses}.
          * @since 1.52
+         * @default -1
          */
         get ip_ping_addresses_require_all(): number;
         set ip_ping_addresses_require_all(val: number);
@@ -23431,6 +22504,7 @@ export namespace NM {
          * to succeed among {@link NM.SettingConnection.ip_ping_addresses}, or if all
          * ping checks must succeed for {@link NM.SettingConnection.ip_ping_addresses}.
          * @since 1.52
+         * @default -1
          */
         get ipPingAddressesRequireAll(): number;
         set ipPingAddressesRequireAll(val: number);
@@ -23441,6 +22515,7 @@ export namespace NM {
          * This property is incompatible with {@link NM.SettingConnection.gateway_ping_timeout},
          * you cannot set these two properties at the same time.
          * @since 1.52
+         * @default 0
          */
         get ip_ping_timeout(): number;
         set ip_ping_timeout(val: number);
@@ -23451,12 +22526,14 @@ export namespace NM {
          * This property is incompatible with {@link NM.SettingConnection.gateway_ping_timeout},
          * you cannot set these two properties at the same time.
          * @since 1.52
+         * @default 0
          */
         get ipPingTimeout(): number;
         set ipPingTimeout(val: number);
         /**
          * Whether LLDP is enabled for the connection.
          * @since 1.2
+         * @default -1
          */
         get lldp(): number;
         set lldp(val: number);
@@ -23475,6 +22552,7 @@ export namespace NM {
          * This feature requires a plugin which supports LLMNR. Otherwise, the
          * setting has no effect. One such plugin is dns-systemd-resolved.
          * @since 1.14
+         * @default -1
          */
         get llmnr(): number;
         set llmnr(val: number);
@@ -23482,6 +22560,7 @@ export namespace NM {
          * Interface name of the controller device or UUID of the controller connection.
          *
          * Deprecated 1.46. Use {@link NM.SettingConnection.controller} instead, this is just an alias.
+         * @default null
          */
         get master(): string;
         set master(val: string);
@@ -23499,6 +22578,7 @@ export namespace NM {
          * systemd-resolved. For systemd-resolved, the default is configurable via
          * MulticastDNS= setting in resolved.conf.
          * @since 1.12
+         * @default -1
          */
         get mdns(): number;
         set mdns(val: number);
@@ -23508,6 +22588,7 @@ export namespace NM {
          * When updating this property on a currently activated connection,
          * the change takes effect immediately.
          * @since 1.2
+         * @default NM.Metered.UNKNOWN
          */
         get metered(): Metered;
         set metered(val: Metered);
@@ -23559,6 +22640,7 @@ export namespace NM {
          * MPTCP handling for IPv4 addresses on the interface is enabled, NetworkManager would
          * loosen the strict reverse path filtering (1) to the loose setting (2).
          * @since 1.40
+         * @default 0
          */
         get mptcp_flags(): number;
         set mptcp_flags(val: number);
@@ -23610,6 +22692,7 @@ export namespace NM {
          * MPTCP handling for IPv4 addresses on the interface is enabled, NetworkManager would
          * loosen the strict reverse path filtering (1) to the loose setting (2).
          * @since 1.40
+         * @default 0
          */
         get mptcpFlags(): number;
         set mptcpFlags(val: number);
@@ -23623,6 +22706,7 @@ export namespace NM {
          * If the per-profile value is unspecified (the default), a global connection default gets
          * consulted. If still unspecified, the ultimate default is "none".
          * @since 1.26
+         * @default null
          */
         get mud_url(): string;
         set mud_url(val: string);
@@ -23636,6 +22720,7 @@ export namespace NM {
          * If the per-profile value is unspecified (the default), a global connection default gets
          * consulted. If still unspecified, the ultimate default is "none".
          * @since 1.26
+         * @default null
          */
         get mudUrl(): string;
         set mudUrl(val: string);
@@ -23643,6 +22728,7 @@ export namespace NM {
          * Specifies whether the profile can be active multiple times at a particular
          * moment. The value is of type {@link NM.ConnectionMultiConnect}.
          * @since 1.14
+         * @default 0
          */
         get multi_connect(): number;
         set multi_connect(val: number);
@@ -23650,6 +22736,7 @@ export namespace NM {
          * Specifies whether the profile can be active multiple times at a particular
          * moment. The value is of type {@link NM.ConnectionMultiConnect}.
          * @since 1.14
+         * @default 0
          */
         get multiConnect(): number;
         set multiConnect(val: number);
@@ -23674,6 +22761,7 @@ export namespace NM {
          * `NM_SETTING_BOND_SETTING_NAME`), or `null` if this connection is not a
          * port.
          * @since 1.46
+         * @default null
          */
         get port_type(): string;
         set port_type(val: string);
@@ -23682,18 +22770,21 @@ export namespace NM {
          * `NM_SETTING_BOND_SETTING_NAME`), or `null` if this connection is not a
          * port.
          * @since 1.46
+         * @default null
          */
         get portType(): string;
         set portType(val: string);
         /**
          * This property is deprecated and has no meaning.
          * @deprecated since 1.44: This property is deprecated and has no meaning.
+         * @default false
          */
         get read_only(): boolean;
         set read_only(val: boolean);
         /**
          * This property is deprecated and has no meaning.
          * @deprecated since 1.44: This property is deprecated and has no meaning.
+         * @default false
          */
         get readOnly(): boolean;
         set readOnly(val: boolean);
@@ -23710,6 +22801,7 @@ export namespace NM {
          * port.
          *
          * Deprecated 1.46. Use {@link NM.SettingConnection.port_type} instead, this is just an alias.
+         * @default null
          */
         get slave_type(): string;
         set slave_type(val: string);
@@ -23719,6 +22811,7 @@ export namespace NM {
          * port.
          *
          * Deprecated 1.46. Use {@link NM.SettingConnection.port_type} instead, this is just an alias.
+         * @default null
          */
         get slaveType(): string;
         set slaveType(val: string);
@@ -23762,6 +22855,7 @@ export namespace NM {
          * value is still unset, the default is "default${CONNECTION}" go generate
          * an ID unique per connection profile.
          * @since 1.4
+         * @default null
          */
         get stable_id(): string;
         set stable_id(val: string);
@@ -23805,6 +22899,7 @@ export namespace NM {
          * value is still unset, the default is "default${CONNECTION}" go generate
          * an ID unique per connection profile.
          * @since 1.4
+         * @default null
          */
         get stableId(): string;
         set stableId(val: string);
@@ -23816,6 +22911,7 @@ export namespace NM {
          * connection is active to ensure that an active connection has the latest
          * timestamp. The property is only meant for reading (changes to this
          * property will not be preserved).
+         * @default 0
          */
         get timestamp(): number;
         set timestamp(val: bigint | number);
@@ -23825,6 +22921,7 @@ export namespace NM {
          * "802-3-ethernet" or "802-11-wireless" or "bluetooth", etc), and for
          * non-hardware dependent connections like VPN or otherwise, should contain
          * the setting name of that setting type (ie, "vpn" or "bridge", etc).
+         * @default null
          */
         get type(): string;
         set type(val: string);
@@ -23841,6 +22938,7 @@ export namespace NM {
          * (ie, contains only hexadecimal characters and "-").  A suitable UUID may
          * be generated by `nm_utils_uuid_generate()` or
          * `nm_uuid_generate_from_string_str()`.
+         * @default null
          */
         get uuid(): string;
         set uuid(val: string);
@@ -23851,6 +22949,7 @@ export namespace NM {
          * The value 0 means no wait time. The default value is -1, which
          * currently has the same meaning as no wait time.
          * @since 1.40
+         * @default -1
          */
         get wait_activation_delay(): number;
         set wait_activation_delay(val: number);
@@ -23861,6 +22960,7 @@ export namespace NM {
          * The value 0 means no wait time. The default value is -1, which
          * currently has the same meaning as no wait time.
          * @since 1.40
+         * @default -1
          */
         get waitActivationDelay(): number;
         set waitActivationDelay(val: number);
@@ -23875,6 +22975,7 @@ export namespace NM {
          * The value 0 means no wait time. The default value is -1, which
          * currently has the same meaning as no wait time.
          * @since 1.20
+         * @default -1
          */
         get wait_device_timeout(): number;
         set wait_device_timeout(val: number);
@@ -23889,6 +22990,7 @@ export namespace NM {
          * The value 0 means no wait time. The default value is -1, which
          * currently has the same meaning as no wait time.
          * @since 1.20
+         * @default -1
          */
         get waitDeviceTimeout(): number;
         set waitDeviceTimeout(val: number);
@@ -23900,6 +23002,7 @@ export namespace NM {
          *
          * When updating this property on a currently activated connection,
          * the change takes effect immediately.
+         * @default null
          */
         get zone(): string;
         set zone(val: string);
@@ -23959,7 +23062,7 @@ export namespace NM {
          * @param detail unused at this time; must be `null`
          * @returns `true` if the permission was unique and was successfully added to the list, `false` if `ptype` or `pitem` was invalid. If the permission was already present in the list, it will not be added a second time but `true` will be returned. Note that before 1.28, in this case `false` would be returned.
          */
-        add_permission(ptype: string, pitem: string, detail?: string | null): boolean;
+        add_permission(ptype: string, pitem: string, detail: string | null): boolean;
         /**
          * Adds a new secondary connection UUID to the setting.
          * @param sec_uuid the secondary connection UUID to add
@@ -24192,7 +23295,7 @@ export namespace NM {
          * @param detail unused at this time; must be `null`
          * @returns `true` if the permission was found and removed; `false` if it was not.
          */
-        remove_permission_by_value(ptype: string, pitem: string, detail?: string | null): boolean;
+        remove_permission_by_value(ptype: string, pitem: string, detail: string | null): boolean;
         /**
          * Removes the secondary connection UUID at index `idx`.
          * @param idx index number of the secondary connection UUID
@@ -24276,6 +23379,7 @@ export namespace NM {
          * Specifies the {@link NM.SettingDcbFlags} for the DCB FCoE application.  Flags may
          * be any combination of {@link NM.SettingDcbFlags.ENABLE},
          * {@link NM.SettingDcbFlags.ADVERTISE}, and {@link NM.SettingDcbFlags.WILLING}.
+         * @default NM.SettingDcbFlags.NONE
          */
         get app_fcoe_flags(): SettingDcbFlags;
         set app_fcoe_flags(val: SettingDcbFlags);
@@ -24283,6 +23387,7 @@ export namespace NM {
          * Specifies the {@link NM.SettingDcbFlags} for the DCB FCoE application.  Flags may
          * be any combination of {@link NM.SettingDcbFlags.ENABLE},
          * {@link NM.SettingDcbFlags.ADVERTISE}, and {@link NM.SettingDcbFlags.WILLING}.
+         * @default NM.SettingDcbFlags.NONE
          */
         get appFcoeFlags(): SettingDcbFlags;
         set appFcoeFlags(val: SettingDcbFlags);
@@ -24292,6 +23397,7 @@ export namespace NM {
          *
          * Since 1.34, `null` is the default and means `NM_SETTING_DCB_FCOE_MODE_FABRIC`.
          * Before 1.34, `null` was rejected as invalid and the default was `NM_SETTING_DCB_FCOE_MODE_FABRIC`.
+         * @default null
          */
         get app_fcoe_mode(): string;
         set app_fcoe_mode(val: string);
@@ -24301,6 +23407,7 @@ export namespace NM {
          *
          * Since 1.34, `null` is the default and means `NM_SETTING_DCB_FCOE_MODE_FABRIC`.
          * Before 1.34, `null` was rejected as invalid and the default was `NM_SETTING_DCB_FCOE_MODE_FABRIC`.
+         * @default null
          */
         get appFcoeMode(): string;
         set appFcoeMode(val: string);
@@ -24308,6 +23415,7 @@ export namespace NM {
          * The highest User Priority (0 - 7) which FCoE frames should use, or -1 for
          * default priority.  Only used when the {@link NM.SettingDcb.app_fcoe_flags}
          * property includes the {@link NM.SettingDcbFlags.ENABLE} flag.
+         * @default -1
          */
         get app_fcoe_priority(): number;
         set app_fcoe_priority(val: number);
@@ -24315,6 +23423,7 @@ export namespace NM {
          * The highest User Priority (0 - 7) which FCoE frames should use, or -1 for
          * default priority.  Only used when the {@link NM.SettingDcb.app_fcoe_flags}
          * property includes the {@link NM.SettingDcbFlags.ENABLE} flag.
+         * @default -1
          */
         get appFcoePriority(): number;
         set appFcoePriority(val: number);
@@ -24322,6 +23431,7 @@ export namespace NM {
          * Specifies the {@link NM.SettingDcbFlags} for the DCB FIP application.  Flags may
          * be any combination of {@link NM.SettingDcbFlags.ENABLE},
          * {@link NM.SettingDcbFlags.ADVERTISE}, and {@link NM.SettingDcbFlags.WILLING}.
+         * @default NM.SettingDcbFlags.NONE
          */
         get app_fip_flags(): SettingDcbFlags;
         set app_fip_flags(val: SettingDcbFlags);
@@ -24329,6 +23439,7 @@ export namespace NM {
          * Specifies the {@link NM.SettingDcbFlags} for the DCB FIP application.  Flags may
          * be any combination of {@link NM.SettingDcbFlags.ENABLE},
          * {@link NM.SettingDcbFlags.ADVERTISE}, and {@link NM.SettingDcbFlags.WILLING}.
+         * @default NM.SettingDcbFlags.NONE
          */
         get appFipFlags(): SettingDcbFlags;
         set appFipFlags(val: SettingDcbFlags);
@@ -24336,6 +23447,7 @@ export namespace NM {
          * The highest User Priority (0 - 7) which FIP frames should use, or -1 for
          * default priority.  Only used when the {@link NM.SettingDcb.app_fip_flags}
          * property includes the {@link NM.SettingDcbFlags.ENABLE} flag.
+         * @default -1
          */
         get app_fip_priority(): number;
         set app_fip_priority(val: number);
@@ -24343,6 +23455,7 @@ export namespace NM {
          * The highest User Priority (0 - 7) which FIP frames should use, or -1 for
          * default priority.  Only used when the {@link NM.SettingDcb.app_fip_flags}
          * property includes the {@link NM.SettingDcbFlags.ENABLE} flag.
+         * @default -1
          */
         get appFipPriority(): number;
         set appFipPriority(val: number);
@@ -24350,6 +23463,7 @@ export namespace NM {
          * Specifies the {@link NM.SettingDcbFlags} for the DCB iSCSI application.  Flags
          * may be any combination of {@link NM.SettingDcbFlags.ENABLE},
          * {@link NM.SettingDcbFlags.ADVERTISE}, and {@link NM.SettingDcbFlags.WILLING}.
+         * @default NM.SettingDcbFlags.NONE
          */
         get app_iscsi_flags(): SettingDcbFlags;
         set app_iscsi_flags(val: SettingDcbFlags);
@@ -24357,6 +23471,7 @@ export namespace NM {
          * Specifies the {@link NM.SettingDcbFlags} for the DCB iSCSI application.  Flags
          * may be any combination of {@link NM.SettingDcbFlags.ENABLE},
          * {@link NM.SettingDcbFlags.ADVERTISE}, and {@link NM.SettingDcbFlags.WILLING}.
+         * @default NM.SettingDcbFlags.NONE
          */
         get appIscsiFlags(): SettingDcbFlags;
         set appIscsiFlags(val: SettingDcbFlags);
@@ -24364,6 +23479,7 @@ export namespace NM {
          * The highest User Priority (0 - 7) which iSCSI frames should use, or -1
          * for default priority. Only used when the {@link NM.SettingDcb.app_iscsi_flags}
          * property includes the {@link NM.SettingDcbFlags.ENABLE} flag.
+         * @default -1
          */
         get app_iscsi_priority(): number;
         set app_iscsi_priority(val: number);
@@ -24371,6 +23487,7 @@ export namespace NM {
          * The highest User Priority (0 - 7) which iSCSI frames should use, or -1
          * for default priority. Only used when the {@link NM.SettingDcb.app_iscsi_flags}
          * property includes the {@link NM.SettingDcbFlags.ENABLE} flag.
+         * @default -1
          */
         get appIscsiPriority(): number;
         set appIscsiPriority(val: number);
@@ -24410,6 +23527,7 @@ export namespace NM {
          * Specifies the {@link NM.SettingDcbFlags} for DCB Priority Flow Control (PFC).
          * Flags may be any combination of {@link NM.SettingDcbFlags.ENABLE},
          * {@link NM.SettingDcbFlags.ADVERTISE}, and {@link NM.SettingDcbFlags.WILLING}.
+         * @default NM.SettingDcbFlags.NONE
          */
         get priority_flow_control_flags(): SettingDcbFlags;
         set priority_flow_control_flags(val: SettingDcbFlags);
@@ -24417,6 +23535,7 @@ export namespace NM {
          * Specifies the {@link NM.SettingDcbFlags} for DCB Priority Flow Control (PFC).
          * Flags may be any combination of {@link NM.SettingDcbFlags.ENABLE},
          * {@link NM.SettingDcbFlags.ADVERTISE}, and {@link NM.SettingDcbFlags.WILLING}.
+         * @default NM.SettingDcbFlags.NONE
          */
         get priorityFlowControlFlags(): SettingDcbFlags;
         set priorityFlowControlFlags(val: SettingDcbFlags);
@@ -24440,6 +23559,7 @@ export namespace NM {
          * Specifies the {@link NM.SettingDcbFlags} for DCB Priority Groups.  Flags may be
          * any combination of {@link NM.SettingDcbFlags.ENABLE},
          * {@link NM.SettingDcbFlags.ADVERTISE}, and {@link NM.SettingDcbFlags.WILLING}.
+         * @default NM.SettingDcbFlags.NONE
          */
         get priority_group_flags(): SettingDcbFlags;
         set priority_group_flags(val: SettingDcbFlags);
@@ -24447,6 +23567,7 @@ export namespace NM {
          * Specifies the {@link NM.SettingDcbFlags} for DCB Priority Groups.  Flags may be
          * any combination of {@link NM.SettingDcbFlags.ENABLE},
          * {@link NM.SettingDcbFlags.ADVERTISE}, and {@link NM.SettingDcbFlags.WILLING}.
+         * @default NM.SettingDcbFlags.NONE
          */
         get priorityGroupFlags(): SettingDcbFlags;
         set priorityGroupFlags(val: SettingDcbFlags);
@@ -24826,6 +23947,7 @@ export namespace NM {
          * will be created at the time the connection is started by invoking the
          * device-handler.
          * @since 1.46
+         * @default null
          */
         get device_handler(): string;
         set device_handler(val: string);
@@ -24842,6 +23964,7 @@ export namespace NM {
          * will be created at the time the connection is started by invoking the
          * device-handler.
          * @since 1.46
+         * @default null
          */
         get deviceHandler(): string;
         set deviceHandler(val: string);
@@ -24998,6 +24121,7 @@ export namespace NM {
          * If the APN is unset (the default) then it may be detected based on
          * "auto-config" setting. The property can be explicitly set to the
          * empty string to prevent that and use no APN.
+         * @default null
          */
         get apn(): string;
         set apn(val: string);
@@ -25006,6 +24130,7 @@ export namespace NM {
          * default to values that match the network the modem will register
          * to in the Mobile Broadband Provider database.
          * @since 1.22
+         * @default false
          */
         get auto_config(): boolean;
         set auto_config(val: boolean);
@@ -25014,6 +24139,7 @@ export namespace NM {
          * default to values that match the network the modem will register
          * to in the Mobile Broadband Provider database.
          * @since 1.22
+         * @default false
          */
         get autoConfig(): boolean;
         set autoConfig(val: boolean);
@@ -25022,6 +24148,7 @@ export namespace NM {
          * which this connection applies to.  If given, the connection will only
          * apply to the specified device.
          * @since 1.2
+         * @default null
          */
         get device_id(): string;
         set device_id(val: string);
@@ -25030,6 +24157,7 @@ export namespace NM {
          * which this connection applies to.  If given, the connection will only
          * apply to the specified device.
          * @since 1.2
+         * @default null
          */
         get deviceId(): string;
         set deviceId(val: string);
@@ -25041,6 +24169,7 @@ export namespace NM {
          * "ID_MM_PHYSDEV_UID" documentation of ModemManager. If given, the
          * connection will only apply to the specified device.
          * @since 1.56
+         * @default null
          */
         get device_uid(): string;
         set device_uid(val: string);
@@ -25052,18 +24181,21 @@ export namespace NM {
          * "ID_MM_PHYSDEV_UID" documentation of ModemManager. If given, the
          * connection will only apply to the specified device.
          * @since 1.56
+         * @default null
          */
         get deviceUid(): string;
         set deviceUid(val: string);
         /**
          * When `true`, only connections to the home network will be allowed.
          * Connections to roaming networks will not be made.
+         * @default false
          */
         get home_only(): boolean;
         set home_only(val: boolean);
         /**
          * When `true`, only connections to the home network will be allowed.
          * Connections to roaming networks will not be made.
+         * @default false
          */
         get homeOnly(): boolean;
         set homeOnly(val: boolean);
@@ -25072,6 +24204,7 @@ export namespace NM {
          * up when attaching to the network.  Setting this parameter implies
          * initial-eps-bearer-configure to be TRUE.
          * @since 1.44
+         * @default null
          */
         get initial_eps_bearer_apn(): string;
         set initial_eps_bearer_apn(val: string);
@@ -25080,6 +24213,7 @@ export namespace NM {
          * up when attaching to the network.  Setting this parameter implies
          * initial-eps-bearer-configure to be TRUE.
          * @since 1.44
+         * @default null
          */
         get initialEpsBearerApn(): string;
         set initialEpsBearerApn(val: string);
@@ -25088,6 +24222,7 @@ export namespace NM {
          * shall be configured when bringing up the connection.  It is inferred TRUE
          * if initial-eps-bearer-apn is set.
          * @since 1.44
+         * @default false
          */
         get initial_eps_bearer_configure(): boolean;
         set initial_eps_bearer_configure(val: boolean);
@@ -25096,6 +24231,7 @@ export namespace NM {
          * shall be configured when bringing up the connection.  It is inferred TRUE
          * if initial-eps-bearer-apn is set.
          * @since 1.44
+         * @default false
          */
         get initialEpsBearerConfigure(): boolean;
         set initialEpsBearerConfigure(val: boolean);
@@ -25106,6 +24242,7 @@ export namespace NM {
          * If `false`, require authentication from the remote side.  In almost all cases,
          * this should be `true`.
          * @since 1.52
+         * @default true
          */
         get initial_eps_bearer_noauth(): boolean;
         set initial_eps_bearer_noauth(val: boolean);
@@ -25116,6 +24253,7 @@ export namespace NM {
          * If `false`, require authentication from the remote side.  In almost all cases,
          * this should be `true`.
          * @since 1.52
+         * @default true
          */
         get initialEpsBearerNoauth(): boolean;
         set initialEpsBearerNoauth(val: boolean);
@@ -25124,6 +24262,7 @@ export namespace NM {
          * up when attaching to the network.  Setting this parameter implies
          * initial-eps-bearer-configure to be TRUE.
          * @since 1.52
+         * @default null
          */
         get initial_eps_bearer_password(): string;
         set initial_eps_bearer_password(val: string);
@@ -25132,18 +24271,21 @@ export namespace NM {
          * up when attaching to the network.  Setting this parameter implies
          * initial-eps-bearer-configure to be TRUE.
          * @since 1.52
+         * @default null
          */
         get initialEpsBearerPassword(): string;
         set initialEpsBearerPassword(val: string);
         /**
          * Flags indicating how to handle the {@link NM.SettingGsm.initial_eps_bearer_password} property.
          * @since 1.52
+         * @default NM.SettingSecretFlags.NONE
          */
         get initial_eps_bearer_password_flags(): SettingSecretFlags;
         set initial_eps_bearer_password_flags(val: SettingSecretFlags);
         /**
          * Flags indicating how to handle the {@link NM.SettingGsm.initial_eps_bearer_password} property.
          * @since 1.52
+         * @default NM.SettingSecretFlags.NONE
          */
         get initialEpsBearerPasswordFlags(): SettingSecretFlags;
         set initialEpsBearerPasswordFlags(val: SettingSecretFlags);
@@ -25151,6 +24293,7 @@ export namespace NM {
          * For LTE modems, this disables CHAP authentication method for the initial EPS bearer that is set
          * up when attaching to the network.
          * @since 1.52
+         * @default false
          */
         get initial_eps_bearer_refuse_chap(): boolean;
         set initial_eps_bearer_refuse_chap(val: boolean);
@@ -25158,6 +24301,7 @@ export namespace NM {
          * For LTE modems, this disables CHAP authentication method for the initial EPS bearer that is set
          * up when attaching to the network.
          * @since 1.52
+         * @default false
          */
         get initialEpsBearerRefuseChap(): boolean;
         set initialEpsBearerRefuseChap(val: boolean);
@@ -25165,6 +24309,7 @@ export namespace NM {
          * For LTE modems, this disables EAP authentication method for the initial EPS bearer that is set
          * up when attaching to the network.
          * @since 1.52
+         * @default false
          */
         get initial_eps_bearer_refuse_eap(): boolean;
         set initial_eps_bearer_refuse_eap(val: boolean);
@@ -25172,6 +24317,7 @@ export namespace NM {
          * For LTE modems, this disables EAP authentication method for the initial EPS bearer that is set
          * up when attaching to the network.
          * @since 1.52
+         * @default false
          */
         get initialEpsBearerRefuseEap(): boolean;
         set initialEpsBearerRefuseEap(val: boolean);
@@ -25179,6 +24325,7 @@ export namespace NM {
          * For LTE modems, this disables MSCHAP authentication method for the initial EPS bearer that is set
          * up when attaching to the network.
          * @since 1.52
+         * @default false
          */
         get initial_eps_bearer_refuse_mschap(): boolean;
         set initial_eps_bearer_refuse_mschap(val: boolean);
@@ -25186,6 +24333,7 @@ export namespace NM {
          * For LTE modems, this disables MSCHAP authentication method for the initial EPS bearer that is set
          * up when attaching to the network.
          * @since 1.52
+         * @default false
          */
         get initialEpsBearerRefuseMschap(): boolean;
         set initialEpsBearerRefuseMschap(val: boolean);
@@ -25193,6 +24341,7 @@ export namespace NM {
          * For LTE modems, this disables MSCHAPV2 authentication method for the initial EPS bearer that is set
          * up when attaching to the network.
          * @since 1.52
+         * @default false
          */
         get initial_eps_bearer_refuse_mschapv2(): boolean;
         set initial_eps_bearer_refuse_mschapv2(val: boolean);
@@ -25200,6 +24349,7 @@ export namespace NM {
          * For LTE modems, this disables MSCHAPV2 authentication method for the initial EPS bearer that is set
          * up when attaching to the network.
          * @since 1.52
+         * @default false
          */
         get initialEpsBearerRefuseMschapv2(): boolean;
         set initialEpsBearerRefuseMschapv2(val: boolean);
@@ -25207,6 +24357,7 @@ export namespace NM {
          * For LTE modems, this disables PAP authentication method for the initial EPS bearer that is set
          * up when attaching to the network.
          * @since 1.52
+         * @default false
          */
         get initial_eps_bearer_refuse_pap(): boolean;
         set initial_eps_bearer_refuse_pap(val: boolean);
@@ -25214,6 +24365,7 @@ export namespace NM {
          * For LTE modems, this disables PAP authentication method for the initial EPS bearer that is set
          * up when attaching to the network.
          * @since 1.52
+         * @default false
          */
         get initialEpsBearerRefusePap(): boolean;
         set initialEpsBearerRefusePap(val: boolean);
@@ -25222,6 +24374,7 @@ export namespace NM {
          * up when attaching to the network.  Setting this parameter implies
          * initial-eps-bearer-configure to be TRUE.
          * @since 1.52
+         * @default null
          */
         get initial_eps_bearer_username(): string;
         set initial_eps_bearer_username(val: string);
@@ -25230,6 +24383,7 @@ export namespace NM {
          * up when attaching to the network.  Setting this parameter implies
          * initial-eps-bearer-configure to be TRUE.
          * @since 1.52
+         * @default null
          */
         get initialEpsBearerUsername(): string;
         set initialEpsBearerUsername(val: string);
@@ -25237,6 +24391,7 @@ export namespace NM {
          * If non-zero, only transmit packets of the specified size or smaller,
          * breaking larger packets up into multiple frames.
          * @since 1.8
+         * @default 0
          */
         get mtu(): number;
         set mtu(val: number);
@@ -25246,6 +24401,7 @@ export namespace NM {
          * attempt to force the device to register only on the specified network.
          * This can be used to ensure that the device does not roam when direct
          * roaming control of the device is not otherwise possible.
+         * @default null
          */
         get network_id(): string;
         set network_id(val: string);
@@ -25255,6 +24411,7 @@ export namespace NM {
          * attempt to force the device to register only on the specified network.
          * This can be used to ensure that the device does not roam when direct
          * roaming control of the device is not otherwise possible.
+         * @default null
          */
         get networkId(): string;
         set networkId(val: string);
@@ -25262,6 +24419,7 @@ export namespace NM {
          * Legacy setting that used to help establishing PPP data sessions for
          * GSM-based modems.
          * @deprecated since 1.16: User-provided values for this setting are no longer used.
+         * @default null
          */
         get number(): string;
         set number(val: string);
@@ -25269,16 +24427,19 @@ export namespace NM {
          * The password used to authenticate with the network, if required.  Many
          * providers do not require a password, or accept any password.  But if a
          * password is required, it is specified here.
+         * @default null
          */
         get password(): string;
         set password(val: string);
         /**
          * Flags indicating how to handle the {@link NM.SettingGsm.password} property.
+         * @default NM.SettingSecretFlags.NONE
          */
         get password_flags(): SettingSecretFlags;
         set password_flags(val: SettingSecretFlags);
         /**
          * Flags indicating how to handle the {@link NM.SettingGsm.password} property.
+         * @default NM.SettingSecretFlags.NONE
          */
         get passwordFlags(): SettingSecretFlags;
         set passwordFlags(val: SettingSecretFlags);
@@ -25286,16 +24447,19 @@ export namespace NM {
          * If the SIM is locked with a PIN it must be unlocked before any other
          * operations are requested.  Specify the PIN here to allow operation of the
          * device.
+         * @default null
          */
         get pin(): string;
         set pin(val: string);
         /**
          * Flags indicating how to handle the {@link NM.SettingGsm.pin} property.
+         * @default NM.SettingSecretFlags.NONE
          */
         get pin_flags(): SettingSecretFlags;
         set pin_flags(val: SettingSecretFlags);
         /**
          * Flags indicating how to handle the {@link NM.SettingGsm.pin} property.
+         * @default NM.SettingSecretFlags.NONE
          */
         get pinFlags(): SettingSecretFlags;
         set pinFlags(val: SettingSecretFlags);
@@ -25305,6 +24469,7 @@ export namespace NM {
          * to any device also allowed by {@link NM.SettingGsm.device_id} which contains a
          * SIM card matching the given identifier.
          * @since 1.2
+         * @default null
          */
         get sim_id(): string;
         set sim_id(val: string);
@@ -25314,6 +24479,7 @@ export namespace NM {
          * to any device also allowed by {@link NM.SettingGsm.device_id} which contains a
          * SIM card matching the given identifier.
          * @since 1.2
+         * @default null
          */
         get simId(): string;
         set simId(val: string);
@@ -25324,6 +24490,7 @@ export namespace NM {
          * {@link NM.SettingGsm.device_id} and {@link NM.SettingGsm.sim_id} which contains a SIM
          * card provisioned by the given operator.
          * @since 1.2
+         * @default null
          */
         get sim_operator_id(): string;
         set sim_operator_id(val: string);
@@ -25334,6 +24501,7 @@ export namespace NM {
          * {@link NM.SettingGsm.device_id} and {@link NM.SettingGsm.sim_id} which contains a SIM
          * card provisioned by the given operator.
          * @since 1.2
+         * @default null
          */
         get simOperatorId(): string;
         set simOperatorId(val: string);
@@ -25341,6 +24509,7 @@ export namespace NM {
          * The username used to authenticate with the network, if required.  Many
          * providers do not require a username, or accept any username.  But if a
          * username is required, it is specified here.
+         * @default null
          */
         get username(): string;
         set username(val: string);
@@ -25528,6 +24697,7 @@ export namespace NM {
          * is used. If the property doesn't have a value in the global
          * configuration, NetworkManager assumes the value to be {@link NM.Ternary.TRUE}.
          * @since 1.30
+         * @default NM.Ternary.DEFAULT
          */
         get from_dhcp(): Ternary;
         set from_dhcp(val: Ternary);
@@ -25539,6 +24709,7 @@ export namespace NM {
          * is used. If the property doesn't have a value in the global
          * configuration, NetworkManager assumes the value to be {@link NM.Ternary.TRUE}.
          * @since 1.30
+         * @default NM.Ternary.DEFAULT
          */
         get fromDhcp(): Ternary;
         set fromDhcp(val: Ternary);
@@ -25550,6 +24721,7 @@ export namespace NM {
          * is used. If the property doesn't have a value in the global
          * configuration, NetworkManager assumes the value to be {@link NM.Ternary.TRUE}.
          * @since 1.30
+         * @default NM.Ternary.DEFAULT
          */
         get from_dns_lookup(): Ternary;
         set from_dns_lookup(val: Ternary);
@@ -25561,6 +24733,7 @@ export namespace NM {
          * is used. If the property doesn't have a value in the global
          * configuration, NetworkManager assumes the value to be {@link NM.Ternary.TRUE}.
          * @since 1.30
+         * @default NM.Ternary.DEFAULT
          */
         get fromDnsLookup(): Ternary;
         set fromDnsLookup(val: Ternary);
@@ -25577,6 +24750,7 @@ export namespace NM {
          * is used. If the property doesn't have a value in the global
          * configuration, NetworkManager assumes the value to be {@link NM.Ternary.FALSE}.
          * @since 1.30
+         * @default NM.Ternary.DEFAULT
          */
         get only_from_default(): Ternary;
         set only_from_default(val: Ternary);
@@ -25593,6 +24767,7 @@ export namespace NM {
          * is used. If the property doesn't have a value in the global
          * configuration, NetworkManager assumes the value to be {@link NM.Ternary.FALSE}.
          * @since 1.30
+         * @default NM.Ternary.DEFAULT
          */
         get onlyFromDefault(): Ternary;
         set onlyFromDefault(val: Ternary);
@@ -25613,6 +24788,7 @@ export namespace NM {
          * with the lowest priority value will be used to determine the
          * hostname.
          * @since 1.30
+         * @default 0
          */
         get priority(): number;
         set priority(val: number);
@@ -25721,30 +24897,35 @@ export namespace NM {
         /**
          * The optional interlink port name of the HSR interface.
          * @since 1.56
+         * @default null
          */
         get interlink(): string;
         set interlink(val: string);
         /**
          * The last byte of supervision address.
          * @since 1.46
+         * @default 0
          */
         get multicast_spec(): number;
         set multicast_spec(val: number);
         /**
          * The last byte of supervision address.
          * @since 1.46
+         * @default 0
          */
         get multicastSpec(): number;
         set multicastSpec(val: number);
         /**
          * The port1 interface name of the HSR. This property is mandatory.
          * @since 1.46
+         * @default null
          */
         get port1(): string;
         set port1(val: string);
         /**
          * The port2 interface name of the HSR. This property is mandatory.
          * @since 1.46
+         * @default null
          */
         get port2(): string;
         set port2(val: string);
@@ -25754,6 +24935,7 @@ export namespace NM {
          * {@link NM.SettingHsrProtocolVersion.HSR_2010} sets the protocol version to HSRv0 (IEC 62439-3:2010).
          * {@link NM.SettingHsrProtocolVersion.HSR_2012} sets the protocol version to HSRv1 (IEC 62439-3:2012).
          * @since 1.56
+         * @default -1
          */
         get protocol_version(): number;
         set protocol_version(val: number);
@@ -25763,12 +24945,14 @@ export namespace NM {
          * {@link NM.SettingHsrProtocolVersion.HSR_2010} sets the protocol version to HSRv0 (IEC 62439-3:2010).
          * {@link NM.SettingHsrProtocolVersion.HSR_2012} sets the protocol version to HSRv1 (IEC 62439-3:2012).
          * @since 1.56
+         * @default -1
          */
         get protocolVersion(): number;
         set protocolVersion(val: number);
         /**
          * The protocol used by the interface, whether it is PRP or HSR.
          * @since 1.46
+         * @default false
          */
         get prp(): boolean;
         set prp(val: boolean);
@@ -25942,6 +25126,7 @@ export namespace NM {
          * internal dhcp client will default to "mac" and the dhclient plugin will
          * try to use one from its config file if present, or won't sent any
          * client-id otherwise.
+         * @default null
          */
         get dhcp_client_id(): string;
         set dhcp_client_id(val: string);
@@ -25981,6 +25166,7 @@ export namespace NM {
          * internal dhcp client will default to "mac" and the dhclient plugin will
          * try to use one from its config file if present, or won't sent any
          * client-id otherwise.
+         * @default null
          */
         get dhcpClientId(): string;
         set dhcpClientId(val: string);
@@ -25990,6 +25176,7 @@ export namespace NM {
          * property and {@link NM.SettingIPConfig.dhcp_hostname} are mutually exclusive and
          * cannot be set at the same time.
          * @since 1.2
+         * @default null
          */
         get dhcp_fqdn(): string;
         set dhcp_fqdn(val: string);
@@ -25999,6 +25186,7 @@ export namespace NM {
          * property and {@link NM.SettingIPConfig.dhcp_hostname} are mutually exclusive and
          * cannot be set at the same time.
          * @since 1.2
+         * @default null
          */
         get dhcpFqdn(): string;
         set dhcpFqdn(val: string);
@@ -26019,6 +25207,7 @@ export namespace NM {
          * If the connection has IPv6 method set to "disabled", this property does not
          * have effect and the "IPv6-Only Preferred" option is always disabled.
          * @since 1.52
+         * @default -1
          */
         get dhcp_ipv6_only_preferred(): number;
         set dhcp_ipv6_only_preferred(val: number);
@@ -26039,6 +25228,7 @@ export namespace NM {
          * If the connection has IPv6 method set to "disabled", this property does not
          * have effect and the "IPv6-Only Preferred" option is always disabled.
          * @since 1.52
+         * @default -1
          */
         get dhcpIpv6OnlyPreferred(): number;
         set dhcpIpv6OnlyPreferred(val: number);
@@ -26050,6 +25240,7 @@ export namespace NM {
          * a global connection default gets consulted.
          * If still unspecified, the DHCP option is not sent to the server.
          * @since 1.28
+         * @default null
          */
         get dhcp_vendor_class_identifier(): string;
         set dhcp_vendor_class_identifier(val: string);
@@ -26061,6 +25252,7 @@ export namespace NM {
          * a global connection default gets consulted.
          * If still unspecified, the DHCP option is not sent to the server.
          * @since 1.28
+         * @default null
          */
         get dhcpVendorClassIdentifier(): string;
         set dhcpVendorClassIdentifier(val: string);
@@ -26077,6 +25269,7 @@ export namespace NM {
          * Since 1.52, when set to "fallback", a link-local address is obtained
          * if no other IPv4 address is set.
          * @since 1.40
+         * @default 0
          */
         get link_local(): number;
         set link_local(val: number);
@@ -26093,6 +25286,7 @@ export namespace NM {
          * Since 1.52, when set to "fallback", a link-local address is obtained
          * if no other IPv4 address is set.
          * @since 1.40
+         * @default 0
          */
         get linkLocal(): number;
         set linkLocal(val: number);
@@ -26288,6 +25482,7 @@ export namespace NM {
          * configured by "ip6-privacy" property and it does not affect the
          * temporary addresses configured with this option.
          * @since 1.2
+         * @default 3
          */
         get addr_gen_mode(): number;
         set addr_gen_mode(val: number);
@@ -26333,6 +25528,7 @@ export namespace NM {
          * configured by "ip6-privacy" property and it does not affect the
          * temporary addresses configured with this option.
          * @since 1.2
+         * @default 3
          */
         get addrGenMode(): number;
         set addrGenMode(val: number);
@@ -26367,6 +25563,7 @@ export namespace NM {
          * When the property is unset, the global value provided for "ipv6.dhcp-duid" is
          * used. If no global value is provided, the default "lease" value is assumed.
          * @since 1.12
+         * @default null
          */
         get dhcp_duid(): string;
         set dhcp_duid(val: string);
@@ -26401,6 +25598,7 @@ export namespace NM {
          * When the property is unset, the global value provided for "ipv6.dhcp-duid" is
          * used. If no global value is provided, the default "lease" value is assumed.
          * @since 1.12
+         * @default null
          */
         get dhcpDuid(): string;
         set dhcpDuid(val: string);
@@ -26411,6 +25609,7 @@ export namespace NM {
          * To only hint a prefix length without prefix, set the address part to the
          * zero address (for example "::/60").
          * @since 1.44
+         * @default null
          */
         get dhcp_pd_hint(): string;
         set dhcp_pd_hint(val: string);
@@ -26421,6 +25620,7 @@ export namespace NM {
          * To only hint a prefix length without prefix, set the address part to the
          * zero address (for example "::/60").
          * @since 1.44
+         * @default null
          */
         get dhcpPdHint(): string;
         set dhcpPdHint(val: string);
@@ -26440,6 +25640,7 @@ export namespace NM {
          * Note that this setting is distinct from the Stable Privacy addresses
          * that can be enabled with the "addr-gen-mode" property's "stable-privacy"
          * setting as another way of avoiding host tracking with IPv6 addresses.
+         * @default NM.SettingIP6ConfigPrivacy.UNKNOWN
          */
         get ip6_privacy(): SettingIP6ConfigPrivacy;
         set ip6_privacy(val: SettingIP6ConfigPrivacy);
@@ -26459,6 +25660,7 @@ export namespace NM {
          * Note that this setting is distinct from the Stable Privacy addresses
          * that can be enabled with the "addr-gen-mode" property's "stable-privacy"
          * setting as another way of avoiding host tracking with IPv6 addresses.
+         * @default NM.SettingIP6ConfigPrivacy.UNKNOWN
          */
         get ip6Privacy(): SettingIP6ConfigPrivacy;
         set ip6Privacy(val: SettingIP6ConfigPrivacy);
@@ -26468,6 +25670,7 @@ export namespace NM {
          * link-layer MTU. If greater than the link-layer MTU, or greater than zero
          * but less than the minimum IPv6 MTU of 1280, this value has no effect.
          * @since 1.40
+         * @default 0
          */
         get mtu(): number;
         set mtu(val: number);
@@ -26478,6 +25681,7 @@ export namespace NM {
          *
          * Set to 2147483647 (MAXINT32) for infinity.
          * @since 1.24
+         * @default 0
          */
         get ra_timeout(): number;
         set ra_timeout(val: number);
@@ -26488,6 +25692,7 @@ export namespace NM {
          *
          * Set to 2147483647 (MAXINT32) for infinity.
          * @since 1.24
+         * @default 0
          */
         get raTimeout(): number;
         set raTimeout(val: number);
@@ -26499,6 +25704,7 @@ export namespace NM {
          * unspecified or set to "0", fallback to read
          * "/proc/sys/net/ipv6/conf/default/temp_prefered_lft".
          * @since 1.48
+         * @default 0
          */
         get temp_preferred_lifetime(): number;
         set temp_preferred_lifetime(val: number);
@@ -26510,6 +25716,7 @@ export namespace NM {
          * unspecified or set to "0", fallback to read
          * "/proc/sys/net/ipv6/conf/default/temp_prefered_lft".
          * @since 1.48
+         * @default 0
          */
         get tempPreferredLifetime(): number;
         set tempPreferredLifetime(val: number);
@@ -26521,6 +25728,7 @@ export namespace NM {
          * unspecified or set to "0", fallback to read
          * "/proc/sys/net/ipv6/conf/default/temp_valid_lft".
          * @since 1.48
+         * @default 0
          */
         get temp_valid_lifetime(): number;
         set temp_valid_lifetime(val: number);
@@ -26532,6 +25740,7 @@ export namespace NM {
          * unspecified or set to "0", fallback to read
          * "/proc/sys/net/ipv6/conf/default/temp_valid_lft".
          * @since 1.48
+         * @default 0
          */
         get tempValidLifetime(): number;
         set tempValidLifetime(val: number);
@@ -26543,6 +25752,7 @@ export namespace NM {
          * hardware address. This only applies to addresses from stateless
          * autoconfiguration, not to IPv6 link local addresses.
          * @since 1.4
+         * @default null
          */
         get token(): string;
         set token(val: string);
@@ -26758,6 +25968,7 @@ export namespace NM {
          * For other connection types, adding such an automatic route is currently
          * not supported and setting this to `true` has no effect.
          * @since 1.42
+         * @default NM.Ternary.DEFAULT
          */
         get auto_route_ext_gw(): Ternary;
         set auto_route_ext_gw(val: Ternary);
@@ -26768,6 +25979,7 @@ export namespace NM {
          * For other connection types, adding such an automatic route is currently
          * not supported and setting this to `true` has no effect.
          * @since 1.42
+         * @default NM.Ternary.DEFAULT
          */
         get autoRouteExtGw(): Ternary;
         set autoRouteExtGw(val: Ternary);
@@ -26783,6 +25995,7 @@ export namespace NM {
          * actual duration can be between half and the full time specified in this
          * property.
          * @since 1.2
+         * @default -1
          */
         get dad_timeout(): number;
         set dad_timeout(val: number);
@@ -26798,6 +26011,7 @@ export namespace NM {
          * actual duration can be between half and the full time specified in this
          * property.
          * @since 1.2
+         * @default -1
          */
         get dadTimeout(): number;
         set dadTimeout(val: number);
@@ -26809,6 +26023,7 @@ export namespace NM {
          * The property is currently valid only for IPv4, and it is supported only by the
          * "internal" DHCP plugin.
          * @since 1.46
+         * @default null
          */
         get dhcp_dscp(): string;
         set dhcp_dscp(val: string);
@@ -26820,6 +26035,7 @@ export namespace NM {
          * The property is currently valid only for IPv4, and it is supported only by the
          * "internal" DHCP plugin.
          * @since 1.46
+         * @default null
          */
         get dhcpDscp(): string;
         set dhcpDscp(val: string);
@@ -26828,6 +26044,7 @@ export namespace NM {
          * specified name will be sent to the DHCP server when acquiring a lease.
          * This property and {@link NM.SettingIP4Config.dhcp_fqdn} are mutually exclusive and
          * cannot be set at the same time.
+         * @default null
          */
         get dhcp_hostname(): string;
         set dhcp_hostname(val: string);
@@ -26836,6 +26053,7 @@ export namespace NM {
          * specified name will be sent to the DHCP server when acquiring a lease.
          * This property and {@link NM.SettingIP4Config.dhcp_fqdn} are mutually exclusive and
          * cannot be set at the same time.
+         * @default null
          */
         get dhcpHostname(): string;
         set dhcpHostname(val: string);
@@ -26860,6 +26078,7 @@ export namespace NM {
          * is unset or also {@link NM.DhcpHostnameFlags.NONE}, then the standard FQDN flags
          * described above are sent in the DHCP requests.
          * @since 1.22
+         * @default 0
          */
         get dhcp_hostname_flags(): number;
         set dhcp_hostname_flags(val: number);
@@ -26884,6 +26103,7 @@ export namespace NM {
          * is unset or also {@link NM.DhcpHostnameFlags.NONE}, then the standard FQDN flags
          * described above are sent in the DHCP requests.
          * @since 1.22
+         * @default 0
          */
         get dhcpHostnameFlags(): number;
         set dhcpHostnameFlags(val: number);
@@ -26911,6 +26131,7 @@ export namespace NM {
          * The actually used DHCPv6 IAID for a currently activated interface is
          * exposed in the lease information of the device.
          * @since 1.22
+         * @default null
          */
         get dhcp_iaid(): string;
         set dhcp_iaid(val: string);
@@ -26938,6 +26159,7 @@ export namespace NM {
          * The actually used DHCPv6 IAID for a currently activated interface is
          * exposed in the lease information of the device.
          * @since 1.22
+         * @default null
          */
         get dhcpIaid(): string;
         set dhcpIaid(val: string);
@@ -26971,6 +26193,7 @@ export namespace NM {
          * This is only done to avoid breaking existing configurations, the new
          * property should be used from now on.
          * @deprecated since 1.52: use the new version of dhcp-send-hostname instead.
+         * @default true
          */
         get dhcp_send_hostname(): boolean;
         set dhcp_send_hostname(val: boolean);
@@ -26980,6 +26203,7 @@ export namespace NM {
          * This is only done to avoid breaking existing configurations, the new
          * property should be used from now on.
          * @deprecated since 1.52: use the new version of dhcp-send-hostname instead.
+         * @default true
          */
         get dhcpSendHostname(): boolean;
         set dhcpSendHostname(val: boolean);
@@ -26996,6 +26220,7 @@ export namespace NM {
          * used for backwards compatibility. In the future this will change and, in
          * absence of a global default, it will always fallback to `true`.
          * @since 1.52
+         * @default -1
          */
         get dhcp_send_hostname_v2(): number;
         set dhcp_send_hostname_v2(val: number);
@@ -27012,6 +26237,7 @@ export namespace NM {
          * used for backwards compatibility. In the future this will change and, in
          * absence of a global default, it will always fallback to `true`.
          * @since 1.52
+         * @default -1
          */
         get dhcpSendHostnameV2(): number;
         set dhcpSendHostnameV2(val: number);
@@ -27021,6 +26247,7 @@ export namespace NM {
          * When the default value is specified, then the global value from NetworkManager
          * configuration is looked up, if not set, it is considered as `false`.
          * @since 1.48
+         * @default NM.Ternary.DEFAULT
          */
         get dhcp_send_release(): Ternary;
         set dhcp_send_release(val: Ternary);
@@ -27030,6 +26257,7 @@ export namespace NM {
          * When the default value is specified, then the global value from NetworkManager
          * configuration is looked up, if not set, it is considered as `false`.
          * @since 1.48
+         * @default NM.Ternary.DEFAULT
          */
         get dhcpSendRelease(): Ternary;
         set dhcpSendRelease(val: Ternary);
@@ -27039,6 +26267,7 @@ export namespace NM {
          * timeout is used (usually 45 seconds).
          *
          * Set to 2147483647 (MAXINT32) for infinity.
+         * @default 0
          */
         get dhcp_timeout(): number;
         set dhcp_timeout(val: number);
@@ -27048,6 +26277,7 @@ export namespace NM {
          * timeout is used (usually 45 seconds).
          *
          * Set to 2147483647 (MAXINT32) for infinity.
+         * @default 0
          */
         get dhcpTimeout(): number;
         set dhcpTimeout(val: number);
@@ -27176,6 +26406,7 @@ export namespace NM {
          * DNS priorities and the search domains, so that only name servers of the desired
          * interface are configured.
          * @since 1.4
+         * @default 0
          */
         get dns_priority(): number;
         set dns_priority(val: number);
@@ -27228,6 +26459,7 @@ export namespace NM {
          * DNS priorities and the search domains, so that only name servers of the desired
          * interface are configured.
          * @since 1.4
+         * @default 0
          */
         get dnsPriority(): number;
         set dnsPriority(val: number);
@@ -27283,6 +26515,7 @@ export namespace NM {
          *   {@link NM.SettingIPConfigForwarding.AUTO}: enable if any shared connection is active,
          *        use kernel default otherwise.
          * @since 1.54
+         * @default -1
          */
         get forwarding(): number;
         set forwarding(val: number);
@@ -27298,6 +26531,7 @@ export namespace NM {
          * Note that the gateway usually conflicts with routing that NetworkManager configures
          * for WireGuard interfaces, so usually it should not be set in that case. See
          * {@link NM.SettingWireGuard.ip4_auto_default_route}.
+         * @default null
          */
         get gateway(): string;
         set gateway(val: string);
@@ -27307,6 +26541,7 @@ export namespace NM {
          * ignored and only name servers and search domains specified in the
          * {@link NM.SettingIPConfig.dns} and {@link NM.SettingIPConfig.dns_search} properties, if
          * any, are used.
+         * @default false
          */
         get ignore_auto_dns(): boolean;
         set ignore_auto_dns(val: boolean);
@@ -27316,6 +26551,7 @@ export namespace NM {
          * ignored and only name servers and search domains specified in the
          * {@link NM.SettingIPConfig.dns} and {@link NM.SettingIPConfig.dns_search} properties, if
          * any, are used.
+         * @default false
          */
         get ignoreAutoDns(): boolean;
         set ignoreAutoDns(val: boolean);
@@ -27323,6 +26559,7 @@ export namespace NM {
          * When {@link NM.SettingIPConfig.method} is set to "auto" and this property to
          * `true`, automatically configured routes are ignored and only routes
          * specified in the {@link NM.SettingIPConfig.routes} property, if any, are used.
+         * @default false
          */
         get ignore_auto_routes(): boolean;
         set ignore_auto_routes(val: boolean);
@@ -27330,6 +26567,7 @@ export namespace NM {
          * When {@link NM.SettingIPConfig.method} is set to "auto" and this property to
          * `true`, automatically configured routes are ignored and only routes
          * specified in the {@link NM.SettingIPConfig.routes} property, if any, are used.
+         * @default false
          */
         get ignoreAutoRoutes(): boolean;
         set ignoreAutoRoutes(val: boolean);
@@ -27341,6 +26579,7 @@ export namespace NM {
          * `true` on the {@link NM.SettingIP4Config} allows the overall network configuration
          * to succeed if IPv4 configuration fails but IPv6 configuration completes
          * successfully.
+         * @default true
          */
         get may_fail(): boolean;
         set may_fail(val: boolean);
@@ -27352,6 +26591,7 @@ export namespace NM {
          * `true` on the {@link NM.SettingIP4Config} allows the overall network configuration
          * to succeed if IPv4 configuration fails but IPv6 configuration completes
          * successfully.
+         * @default true
          */
         get mayFail(): boolean;
         set mayFail(val: boolean);
@@ -27375,6 +26615,7 @@ export namespace NM {
          * manual IPv4 address or otherwise 10.42.x.0/24 is chosen. Note that the
          * shared method must be configured on the interface which shares the internet
          * to a subnet, not on the uplink which is shared.
+         * @default null
          */
         get method(): string;
         set method(val: string);
@@ -27382,6 +26623,7 @@ export namespace NM {
          * If `true`, this connection will never be the default connection for this
          * IP type, meaning it will never be assigned the default route by
          * NetworkManager.
+         * @default false
          */
         get never_default(): boolean;
         set never_default(val: boolean);
@@ -27389,6 +26631,7 @@ export namespace NM {
          * If `true`, this connection will never be the default connection for this
          * IP type, meaning it will never be assigned the default route by
          * NetworkManager.
+         * @default false
          */
         get neverDefault(): boolean;
         set neverDefault(val: boolean);
@@ -27396,6 +26639,7 @@ export namespace NM {
          * Connections will default to keep the autogenerated priority 0 local rule
          * unless this setting is set to `true`.
          * @since 1.44
+         * @default NM.Ternary.DEFAULT
          */
         get replace_local_rule(): Ternary;
         set replace_local_rule(val: Ternary);
@@ -27403,6 +26647,7 @@ export namespace NM {
          * Connections will default to keep the autogenerated priority 0 local rule
          * unless this setting is set to `true`.
          * @since 1.44
+         * @default NM.Ternary.DEFAULT
          */
         get replaceLocalRule(): Ternary;
         set replaceLocalRule(val: Ternary);
@@ -27425,6 +26670,7 @@ export namespace NM {
          * default value (either configuration ipvx.required-timeout override or
          * zero).
          * @since 1.34
+         * @default -1
          */
         get required_timeout(): number;
         set required_timeout(val: number);
@@ -27447,6 +26693,7 @@ export namespace NM {
          * default value (either configuration ipvx.required-timeout override or
          * zero).
          * @since 1.34
+         * @default -1
          */
         get requiredTimeout(): number;
         set requiredTimeout(val: number);
@@ -27461,6 +26708,7 @@ export namespace NM {
          * 1024 (user default). Hence, setting this property to zero effectively
          * mean setting it to 1024.
          * For IPv4, zero is a regular value for the metric.
+         * @default -1
          */
         get route_metric(): number;
         set route_metric(val: bigint | number);
@@ -27475,6 +26723,7 @@ export namespace NM {
          * 1024 (user default). Hence, setting this property to zero effectively
          * mean setting it to 1024.
          * For IPv4, zero is a regular value for the metric.
+         * @default -1
          */
         get routeMetric(): number;
         set routeMetric(val: bigint | number);
@@ -27495,6 +26744,7 @@ export namespace NM {
          * This is to preserve backward compatibility for users who manage routing tables outside
          * of NetworkManager.
          * @since 1.10
+         * @default 0
          */
         get route_table(): number;
         set route_table(val: number);
@@ -27515,6 +26765,7 @@ export namespace NM {
          * This is to preserve backward compatibility for users who manage routing tables outside
          * of NetworkManager.
          * @since 1.10
+         * @default 0
          */
         get routeTable(): number;
         set routeTable(val: number);
@@ -27526,6 +26777,7 @@ export namespace NM {
          * set to {@link NM.SettingIPConfigRoutedDns.DEFAULT}, the value from global
          * configuration is used; if no global default is defined, this feature is disabled.
          * @since 1.52
+         * @default -1
          */
         get routed_dns(): number;
         set routed_dns(val: number);
@@ -27537,6 +26789,7 @@ export namespace NM {
          * set to {@link NM.SettingIPConfigRoutedDns.DEFAULT}, the value from global
          * configuration is used; if no global default is defined, this feature is disabled.
          * @since 1.52
+         * @default -1
          */
         get routedDns(): number;
         set routedDns(val: number);
@@ -27552,6 +26805,7 @@ export namespace NM {
          *
          * Special values are 0 for default value of 1 hour and 2147483647 (MAXINT32) for infinite lease time.
          * @since 1.52
+         * @default 0
          */
         get shared_dhcp_lease_time(): number;
         set shared_dhcp_lease_time(val: number);
@@ -27562,6 +26816,7 @@ export namespace NM {
          *
          * Special values are 0 for default value of 1 hour and 2147483647 (MAXINT32) for infinite lease time.
          * @since 1.52
+         * @default 0
          */
         get sharedDhcpLeaseTime(): number;
         set sharedDhcpLeaseTime(val: number);
@@ -27576,6 +26831,7 @@ export namespace NM {
          * adjusted to fill the available address space, except for networks with a prefix
          * length greater than 24, which will be treated as if they have a prefix length of 24.
          * @since 1.52
+         * @default null
          */
         get shared_dhcp_range(): string;
         set shared_dhcp_range(val: string);
@@ -27590,6 +26846,7 @@ export namespace NM {
          * adjusted to fill the available address space, except for networks with a prefix
          * length greater than 24, which will be treated as if they have a prefix length of 24.
          * @since 1.52
+         * @default null
          */
         get sharedDhcpRange(): string;
         set sharedDhcpRange(val: string);
@@ -28041,6 +27298,7 @@ export namespace NM {
          * to packets. This property applies only to IPv6 tunnels. To disable this option,
          * add {@link NM.IPTunnelFlags.IP6_IGN_ENCAP_LIMIT} to ip-tunnel flags.
          * @since 1.2
+         * @default 0
          */
         get encapsulation_limit(): number;
         set encapsulation_limit(val: number);
@@ -28049,6 +27307,7 @@ export namespace NM {
          * to packets. This property applies only to IPv6 tunnels. To disable this option,
          * add {@link NM.IPTunnelFlags.IP6_IGN_ENCAP_LIMIT} to ip-tunnel flags.
          * @since 1.2
+         * @default 0
          */
         get encapsulationLimit(): number;
         set encapsulationLimit(val: number);
@@ -28059,6 +27318,7 @@ export namespace NM {
          * {@link NM.IPTunnelFlags.IP6_RCV_DSCP_COPY}, {@link NM.IPTunnelFlags.IP6_USE_ORIG_FWMARK}.
          * They are valid only for IPv6 tunnels.
          * @since 1.12
+         * @default 0
          */
         get flags(): number;
         set flags(val: number);
@@ -28066,6 +27326,7 @@ export namespace NM {
          * The flow label to assign to tunnel packets. This property applies only to
          * IPv6 tunnels.
          * @since 1.2
+         * @default 0
          */
         get flow_label(): number;
         set flow_label(val: number);
@@ -28073,6 +27334,7 @@ export namespace NM {
          * The flow label to assign to tunnel packets. This property applies only to
          * IPv6 tunnels.
          * @since 1.2
+         * @default 0
          */
         get flowLabel(): number;
         set flowLabel(val: number);
@@ -28080,6 +27342,7 @@ export namespace NM {
          * The fwmark value to assign to tunnel packets. This property can be set
          * to a non zero value only on VTI and VTI6 tunnels.
          * @since 1.42
+         * @default 0
          */
         get fwmark(): number;
         set fwmark(val: number);
@@ -28087,6 +27350,7 @@ export namespace NM {
          * The key used for tunnel input packets; the property is valid only for
          * certain tunnel modes (GRE, IP6GRE). If empty, no key is used.
          * @since 1.2
+         * @default null
          */
         get input_key(): string;
         set input_key(val: string);
@@ -28094,6 +27358,7 @@ export namespace NM {
          * The key used for tunnel input packets; the property is valid only for
          * certain tunnel modes (GRE, IP6GRE). If empty, no key is used.
          * @since 1.2
+         * @default null
          */
         get inputKey(): string;
         set inputKey(val: string);
@@ -28101,6 +27366,7 @@ export namespace NM {
          * The local endpoint of the tunnel; the value can be empty, otherwise it
          * must contain an IPv4 or IPv6 address.
          * @since 1.2
+         * @default null
          */
         get local(): string;
         set local(val: string);
@@ -28111,6 +27377,7 @@ export namespace NM {
          * {@link NM.IPTunnelMode.IP6GRE}, {@link NM.IPTunnelMode.VTI6}, {@link NM.IPTunnelMode.GRETAP}
          * and {@link NM.IPTunnelMode.IP6GRETAP}
          * @since 1.2
+         * @default 0
          */
         get mode(): number;
         set mode(val: number);
@@ -28118,6 +27385,7 @@ export namespace NM {
          * If non-zero, only transmit packets of the specified size or smaller,
          * breaking larger packets up into multiple fragments.
          * @since 1.2
+         * @default 0
          */
         get mtu(): number;
         set mtu(val: number);
@@ -28125,6 +27393,7 @@ export namespace NM {
          * The key used for tunnel output packets; the property is valid only for
          * certain tunnel modes (GRE, IP6GRE). If empty, no key is used.
          * @since 1.2
+         * @default null
          */
         get output_key(): string;
         set output_key(val: string);
@@ -28132,6 +27401,7 @@ export namespace NM {
          * The key used for tunnel output packets; the property is valid only for
          * certain tunnel modes (GRE, IP6GRE). If empty, no key is used.
          * @since 1.2
+         * @default null
          */
         get outputKey(): string;
         set outputKey(val: string);
@@ -28140,18 +27410,21 @@ export namespace NM {
          * the new device will be bound to so that tunneled packets will only be
          * routed via that interface.
          * @since 1.2
+         * @default null
          */
         get parent(): string;
         set parent(val: string);
         /**
          * Whether to enable Path MTU Discovery on this tunnel.
          * @since 1.2
+         * @default true
          */
         get path_mtu_discovery(): boolean;
         set path_mtu_discovery(val: boolean);
         /**
          * Whether to enable Path MTU Discovery on this tunnel.
          * @since 1.2
+         * @default true
          */
         get pathMtuDiscovery(): boolean;
         set pathMtuDiscovery(val: boolean);
@@ -28159,6 +27432,7 @@ export namespace NM {
          * The remote endpoint of the tunnel; the value must contain an IPv4 or IPv6
          * address.
          * @since 1.2
+         * @default null
          */
         get remote(): string;
         set remote(val: string);
@@ -28166,6 +27440,7 @@ export namespace NM {
          * The type of service (IPv4) or traffic class (IPv6) field to be set on
          * tunneled packets.
          * @since 1.2
+         * @default 0
          */
         get tos(): number;
         set tos(val: number);
@@ -28173,6 +27448,7 @@ export namespace NM {
          * The TTL to assign to tunneled packets. 0 is a special value meaning that
          * packets inherit the TTL value.
          * @since 1.2
+         * @default 0
          */
         get ttl(): number;
         set ttl(val: number);
@@ -28327,6 +27603,7 @@ export namespace NM {
          * If specified, this connection will only apply to the IPoIB device whose
          * permanent MAC address matches. This property does not change the MAC
          * address of the device (i.e. MAC spoofing).
+         * @default null
          */
         get mac_address(): string;
         set mac_address(val: string);
@@ -28334,12 +27611,14 @@ export namespace NM {
          * If specified, this connection will only apply to the IPoIB device whose
          * permanent MAC address matches. This property does not change the MAC
          * address of the device (i.e. MAC spoofing).
+         * @default null
          */
         get macAddress(): string;
         set macAddress(val: string);
         /**
          * If non-zero, only transmit packets of the specified size or smaller,
          * breaking larger packets up into multiple frames.
+         * @default 0
          */
         get mtu(): number;
         set mtu(val: number);
@@ -28355,6 +27634,7 @@ export namespace NM {
          * Note that kernel will internally always set the full membership bit,
          * although the interface name does not reflect that. Usually the user
          * would want to configure a full membership p-key with 0x8000 flag set.
+         * @default -1
          */
         get p_key(): number;
         set p_key(val: number);
@@ -28370,6 +27650,7 @@ export namespace NM {
          * Note that kernel will internally always set the full membership bit,
          * although the interface name does not reflect that. Usually the user
          * would want to configure a full membership p-key with 0x8000 flag set.
+         * @default -1
          */
         get pKey(): number;
         set pKey(val: number);
@@ -28378,18 +27659,21 @@ export namespace NM {
          * but if the {@link NM.SettingInfiniband.p_key} property is set, then you must
          * specify the base device by setting either this property or
          * {@link NM.SettingInfiniband.mac_address}.
+         * @default null
          */
         get parent(): string;
         set parent(val: string);
         /**
          * The IP-over-InfiniBand transport mode. Either "datagram" or
          * "connected".
+         * @default null
          */
         get transport_mode(): string;
         set transport_mode(val: string);
         /**
          * The IP-over-InfiniBand transport mode. Either "datagram" or
          * "connected".
+         * @default null
          */
         get transportMode(): string;
         set transportMode(val: string);
@@ -28502,6 +27786,7 @@ export namespace NM {
          * The IPVLAN mode. Valid values: {@link NM.SettingIpvlanMode.L2},
          * {@link NM.SettingIpvlanMode.L3} and {@link NM.SettingIpvlanMode.L3S}.
          * @since 1.52
+         * @default 0
          */
         get mode(): number;
         set mode(val: number);
@@ -28511,18 +27796,21 @@ export namespace NM {
          * not specified, the connection must contain an {@link NM.SettingWired} setting
          * with a {@link NM.SettingWired.mac_address} property.
          * @since 1.52
+         * @default null
          */
         get parent(): string;
         set parent(val: string);
         /**
          * Whether the interface should be put in private mode.
          * @since 1.52
+         * @default false
          */
         get private(): boolean;
         set private(val: boolean);
         /**
          * Whether the interface should be put in VEPA mode.
          * @since 1.52
+         * @default false
          */
         get vepa(): boolean;
         set vepa(val: boolean);
@@ -28624,6 +27912,7 @@ export namespace NM {
          * this device. The value must be between 0 and 4294967295. When set to -1, the
          * existing value is preserved.
          * @since 1.44
+         * @default -1
          */
         get gro_max_size(): number;
         set gro_max_size(val: bigint | number);
@@ -28632,6 +27921,7 @@ export namespace NM {
          * this device. The value must be between 0 and 4294967295. When set to -1, the
          * existing value is preserved.
          * @since 1.44
+         * @default -1
          */
         get groMaxSize(): number;
         set groMaxSize(val: bigint | number);
@@ -28640,6 +27930,7 @@ export namespace NM {
          * The value must be between 0 and 4294967295. When set to -1, the existing value
          * is preserved.
          * @since 1.44
+         * @default -1
          */
         get gso_max_segments(): number;
         set gso_max_segments(val: bigint | number);
@@ -28648,6 +27939,7 @@ export namespace NM {
          * The value must be between 0 and 4294967295. When set to -1, the existing value
          * is preserved.
          * @since 1.44
+         * @default -1
          */
         get gsoMaxSegments(): number;
         set gsoMaxSegments(val: bigint | number);
@@ -28656,6 +27948,7 @@ export namespace NM {
          * The value must be between 0 and 4294967295. When set to -1, the existing value
          * is preserved.
          * @since 1.44
+         * @default -1
          */
         get gso_max_size(): number;
         set gso_max_size(val: bigint | number);
@@ -28664,6 +27957,7 @@ export namespace NM {
          * The value must be between 0 and 4294967295. When set to -1, the existing value
          * is preserved.
          * @since 1.44
+         * @default -1
          */
         get gsoMaxSize(): number;
         set gsoMaxSize(val: bigint | number);
@@ -28671,6 +27965,7 @@ export namespace NM {
          * The size of the transmit queue for the device, in number of packets. The value
          * must be between 0 and 4294967295. When set to -1, the existing value is preserved.
          * @since 1.44
+         * @default -1
          */
         get tx_queue_length(): number;
         set tx_queue_length(val: bigint | number);
@@ -28678,6 +27973,7 @@ export namespace NM {
          * The size of the transmit queue for the device, in number of packets. The value
          * must be between 0 and 4294967295. When set to -1, the existing value is preserved.
          * @since 1.44
+         * @default -1
          */
         get txQueueLength(): number;
         set txQueueLength(val: bigint | number);
@@ -28776,6 +28072,7 @@ export namespace NM {
          * If non-zero, only transmit packets of the specified size or smaller,
          * breaking larger packets up into multiple Ethernet frames.
          * @since 1.42
+         * @default 0
          */
         get mtu(): number;
         set mtu(val: number);
@@ -28874,6 +28171,7 @@ export namespace NM {
         /**
          * Whether the transmitted traffic must be encrypted.
          * @since 1.6
+         * @default true
          */
         get encrypt(): boolean;
         set encrypt(val: boolean);
@@ -28881,6 +28179,7 @@ export namespace NM {
          * The pre-shared CAK (Connectivity Association Key) for MACsec
          * Key Agreement. Must be a string of 32 hexadecimal characters.
          * @since 1.6
+         * @default null
          */
         get mka_cak(): string;
         set mka_cak(val: string);
@@ -28888,6 +28187,7 @@ export namespace NM {
          * The pre-shared CAK (Connectivity Association Key) for MACsec
          * Key Agreement. Must be a string of 32 hexadecimal characters.
          * @since 1.6
+         * @default null
          */
         get mkaCak(): string;
         set mkaCak(val: string);
@@ -28895,6 +28195,7 @@ export namespace NM {
          * Flags indicating how to handle the {@link NM.SettingMacsec.mka_cak}
          * property.
          * @since 1.6
+         * @default NM.SettingSecretFlags.NONE
          */
         get mka_cak_flags(): SettingSecretFlags;
         set mka_cak_flags(val: SettingSecretFlags);
@@ -28902,6 +28203,7 @@ export namespace NM {
          * Flags indicating how to handle the {@link NM.SettingMacsec.mka_cak}
          * property.
          * @since 1.6
+         * @default NM.SettingSecretFlags.NONE
          */
         get mkaCakFlags(): SettingSecretFlags;
         set mkaCakFlags(val: SettingSecretFlags);
@@ -28910,6 +28212,7 @@ export namespace NM {
          * MACsec Key Agreement. Must be a string of hexadecimal characters
          * with a even length between 2 and 64.
          * @since 1.6
+         * @default null
          */
         get mka_ckn(): string;
         set mka_ckn(val: string);
@@ -28918,6 +28221,7 @@ export namespace NM {
          * MACsec Key Agreement. Must be a string of hexadecimal characters
          * with a even length between 2 and 64.
          * @since 1.6
+         * @default null
          */
         get mkaCkn(): string;
         set mkaCkn(val: string);
@@ -28925,6 +28229,7 @@ export namespace NM {
          * Specifies how the CAK (Connectivity Association Key) for MKA (MACsec Key
          * Agreement) is obtained.
          * @since 1.6
+         * @default 0
          */
         get mode(): number;
         set mode(val: number);
@@ -28941,6 +28246,7 @@ export namespace NM {
          * NetworkManager configuration; if no global default is defined, the built-in
          * default is {@link NM.SettingMacsecOffload.OFF}.
          * @since 1.46
+         * @default -1
          */
         get offload(): number;
         set offload(val: number);
@@ -28950,12 +28256,14 @@ export namespace NM {
          * not specified, the connection must contain an {@link NM.SettingWired} setting
          * with a {@link NM.SettingWired.mac_address} property.
          * @since 1.6
+         * @default null
          */
         get parent(): string;
         set parent(val: string);
         /**
          * The port component of the SCI (Secure Channel Identifier), between 1 and 65534.
          * @since 1.6
+         * @default 1
          */
         get port(): number;
         set port(val: number);
@@ -28963,6 +28271,7 @@ export namespace NM {
          * Specifies whether the SCI (Secure Channel Identifier) is included
          * in every packet.
          * @since 1.12
+         * @default true
          */
         get send_sci(): boolean;
         set send_sci(val: boolean);
@@ -28970,12 +28279,14 @@ export namespace NM {
          * Specifies whether the SCI (Secure Channel Identifier) is included
          * in every packet.
          * @since 1.12
+         * @default true
          */
         get sendSci(): boolean;
         set sendSci(val: boolean);
         /**
          * Specifies the validation mode for incoming frames.
          * @since 1.6
+         * @default 2
          */
         get validation(): number;
         set validation(val: number);
@@ -29095,6 +28406,7 @@ export namespace NM {
          * The macvlan mode, which specifies the communication mechanism between multiple
          * macvlans on the same lower device.
          * @since 1.2
+         * @default 0
          */
         get mode(): number;
         set mode(val: number);
@@ -29104,18 +28416,21 @@ export namespace NM {
          * not specified, the connection must contain an {@link NM.SettingWired} setting
          * with a {@link NM.SettingWired.mac_address} property.
          * @since 1.2
+         * @default null
          */
         get parent(): string;
         set parent(val: string);
         /**
          * Whether the parent interface should be put in promiscuous mode (true by default).
          * @since 1.2
+         * @default true
          */
         get promiscuous(): boolean;
         set promiscuous(val: boolean);
         /**
          * Whether the interface should be a MACVTAP.
          * @since 1.2
+         * @default false
          */
         get tap(): boolean;
         set tap(val: boolean);
@@ -29527,6 +28842,7 @@ export namespace NM {
 
         /**
          * Channel on which the mesh network to join is located.
+         * @default 0
          */
         get channel(): number;
         set channel(val: number);
@@ -29536,6 +28852,7 @@ export namespace NM {
          * answers the request.
          *
          * This is currently only implemented by dhclient DHCP plugin.
+         * @default null
          */
         get dhcp_anycast_address(): string;
         set dhcp_anycast_address(val: string);
@@ -29545,6 +28862,7 @@ export namespace NM {
          * answers the request.
          *
          * This is currently only implemented by dhclient DHCP plugin.
+         * @default null
          */
         get dhcpAnycastAddress(): string;
         set dhcpAnycastAddress(val: string);
@@ -29638,60 +28956,70 @@ export namespace NM {
         /**
          * The data path type. One of "system", "netdev" or empty.
          * @since 1.20
+         * @default null
          */
         get datapath_type(): string;
         set datapath_type(val: string);
         /**
          * The data path type. One of "system", "netdev" or empty.
          * @since 1.20
+         * @default null
          */
         get datapathType(): string;
         set datapathType(val: string);
         /**
          * The bridge failure mode. One of "secure", "standalone" or empty.
          * @since 1.10
+         * @default null
          */
         get fail_mode(): string;
         set fail_mode(val: string);
         /**
          * The bridge failure mode. One of "secure", "standalone" or empty.
          * @since 1.10
+         * @default null
          */
         get failMode(): string;
         set failMode(val: string);
         /**
          * Enable or disable multicast snooping.
          * @since 1.10
+         * @default false
          */
         get mcast_snooping_enable(): boolean;
         set mcast_snooping_enable(val: boolean);
         /**
          * Enable or disable multicast snooping.
          * @since 1.10
+         * @default false
          */
         get mcastSnoopingEnable(): boolean;
         set mcastSnoopingEnable(val: boolean);
         /**
          * Enable or disable RSTP.
          * @since 1.10
+         * @default false
          */
         get rstp_enable(): boolean;
         set rstp_enable(val: boolean);
         /**
          * Enable or disable RSTP.
          * @since 1.10
+         * @default false
          */
         get rstpEnable(): boolean;
         set rstpEnable(val: boolean);
         /**
          * Enable or disable STP.
          * @since 1.10
+         * @default false
          */
         get stp_enable(): boolean;
         set stp_enable(val: boolean);
         /**
          * Enable or disable STP.
          * @since 1.10
+         * @default false
          */
         get stpEnable(): boolean;
         set stpEnable(val: boolean);
@@ -29796,6 +29124,7 @@ export namespace NM {
         /**
          * Open vSwitch DPDK device arguments.
          * @since 1.20
+         * @default null
          */
         get devargs(): string;
         set devargs(val: string);
@@ -29807,6 +29136,7 @@ export namespace NM {
          * {@link NM.SettingOvsDpdkLscInterrupt.DISABLED} disables interrupts, thus setting the
          * interface in poll mode.
          * @since 1.54
+         * @default -1
          */
         get lsc_interrupt(): number;
         set lsc_interrupt(val: number);
@@ -29818,6 +29148,7 @@ export namespace NM {
          * {@link NM.SettingOvsDpdkLscInterrupt.DISABLED} disables interrupts, thus setting the
          * interface in poll mode.
          * @since 1.54
+         * @default -1
          */
         get lscInterrupt(): number;
         set lscInterrupt(val: number);
@@ -29826,6 +29157,7 @@ export namespace NM {
          * Defaults to zero which means to leave the parameter in OVS unspecified
          * and effectively configures one queue.
          * @since 1.36
+         * @default 0
          */
         get n_rxq(): number;
         set n_rxq(val: number);
@@ -29834,6 +29166,7 @@ export namespace NM {
          * Defaults to zero which means to leave the parameter in OVS unspecified
          * and effectively configures one queue.
          * @since 1.36
+         * @default 0
          */
         get nRxq(): number;
         set nRxq(val: number);
@@ -29844,6 +29177,7 @@ export namespace NM {
          * parameter in OVS unspecified and effectively configures 2048
          * descriptors.
          * @since 1.42
+         * @default 0
          */
         get n_rxq_desc(): number;
         set n_rxq_desc(val: number);
@@ -29854,6 +29188,7 @@ export namespace NM {
          * parameter in OVS unspecified and effectively configures 2048
          * descriptors.
          * @since 1.42
+         * @default 0
          */
         get nRxqDesc(): number;
         set nRxqDesc(val: number);
@@ -29864,6 +29199,7 @@ export namespace NM {
          * parameter in OVS unspecified and effectively configures 2048
          * descriptors.
          * @since 1.42
+         * @default 0
          */
         get n_txq_desc(): number;
         set n_txq_desc(val: number);
@@ -29874,6 +29210,7 @@ export namespace NM {
          * parameter in OVS unspecified and effectively configures 2048
          * descriptors.
          * @since 1.42
+         * @default 0
          */
         get nTxqDesc(): number;
         set nTxqDesc(val: number);
@@ -30019,13 +29356,13 @@ export namespace NM {
          * characters. They key must also not start with "NM.".
          * @param key the key to check
          */
-        static check_key(key?: string | null): boolean;
+        static check_key(key: string | null): boolean;
         /**
          * Checks whether `val` is a valid user data value. This means,
          * value is not `null`, not too large and valid UTF-8.
          * @param val the value to check
          */
-        static check_val(val?: string | null): boolean;
+        static check_val(val: string | null): boolean;
 
         // Methods
 
@@ -30047,7 +29384,7 @@ export namespace NM {
          * @param key the key to set
          * @param val the value to set or `null` to clear a key.
          */
-        set_data(key: string, val?: string | null): void;
+        set_data(key: string, val: string | null): void;
         /**
          * @param args
          */
@@ -30088,6 +29425,7 @@ export namespace NM {
          * for passing packets between OpenFlow processing and the rest of the network.
          * OpenFlow switches connect logically to each other via their OpenFlow ports.
          * @since 1.42
+         * @default 0
          */
         get ofport_request(): number;
         set ofport_request(val: number);
@@ -30098,12 +29436,14 @@ export namespace NM {
          * for passing packets between OpenFlow processing and the rest of the network.
          * OpenFlow switches connect logically to each other via their OpenFlow ports.
          * @since 1.42
+         * @default 0
          */
         get ofportRequest(): number;
         set ofportRequest(val: number);
         /**
          * The interface type. Either "internal", "system", "patch", "dpdk", or empty.
          * @since 1.10
+         * @default null
          */
         get type(): string;
         set type(val: string);
@@ -30253,7 +29593,7 @@ export namespace NM {
          * @param key the key to set
          * @param val the value to set or `null` to clear a key.
          */
-        set_data(key: string, val?: string | null): void;
+        set_data(key: string, val: string | null): void;
         /**
          * @param args
          */
@@ -30288,6 +29628,7 @@ export namespace NM {
          * Specifies the name of the interface for the other side of the patch.
          * The patch on the other side must also set this interface as peer.
          * @since 1.10
+         * @default null
          */
         get peer(): string;
         set peer(val: string);
@@ -30380,48 +29721,56 @@ export namespace NM {
         /**
          * The time port must be inactive in order to be considered down.
          * @since 1.10
+         * @default 0
          */
         get bond_downdelay(): number;
         set bond_downdelay(val: number);
         /**
          * The time port must be inactive in order to be considered down.
          * @since 1.10
+         * @default 0
          */
         get bondDowndelay(): number;
         set bondDowndelay(val: number);
         /**
          * Bonding mode. One of "active-backup", "balance-slb", or "balance-tcp".
          * @since 1.10
+         * @default null
          */
         get bond_mode(): string;
         set bond_mode(val: string);
         /**
          * Bonding mode. One of "active-backup", "balance-slb", or "balance-tcp".
          * @since 1.10
+         * @default null
          */
         get bondMode(): string;
         set bondMode(val: string);
         /**
          * The time port must be active before it starts forwarding traffic.
          * @since 1.10
+         * @default 0
          */
         get bond_updelay(): number;
         set bond_updelay(val: number);
         /**
          * The time port must be active before it starts forwarding traffic.
          * @since 1.10
+         * @default 0
          */
         get bondUpdelay(): number;
         set bondUpdelay(val: number);
         /**
          * LACP mode. One of "active", "off", or "passive".
          * @since 1.10
+         * @default null
          */
         get lacp(): string;
         set lacp(val: string);
         /**
          * The VLAN tag in the range 0-4095.
          * @since 1.10
+         * @default 0
          */
         get tag(): number;
         set tag(val: number);
@@ -30439,6 +29788,7 @@ export namespace NM {
          * The VLAN mode. One of "access", "native-tagged", "native-untagged",
          * "trunk", "dot1q-tunnel" or unset.
          * @since 1.10
+         * @default null
          */
         get vlan_mode(): string;
         set vlan_mode(val: string);
@@ -30446,6 +29796,7 @@ export namespace NM {
          * The VLAN mode. One of "access", "native-tagged", "native-untagged",
          * "trunk", "dot1q-tunnel" or unset.
          * @since 1.10
+         * @default null
          */
         get vlanMode(): string;
         set vlanMode(val: string);
@@ -30620,6 +29971,7 @@ export namespace NM {
          * If non-zero, instruct pppd to set the serial port to the specified
          * baudrate.  This value should normally be left as 0 to automatically
          * choose the speed.
+         * @default 0
          */
         get baud(): number;
         set baud(val: number);
@@ -30627,6 +29979,7 @@ export namespace NM {
          * If `true`, specify that pppd should set the serial port to use hardware
          * flow control with RTS and CTS signals.  This value should normally be set
          * to `false`.
+         * @default false
          */
         get crtscts(): boolean;
         set crtscts(val: boolean);
@@ -30635,6 +29988,7 @@ export namespace NM {
          * failed if the specified number of LCP echo-requests go unanswered by the
          * peer.  The "lcp-echo-interval" property must also be set to a non-zero
          * value if this property is used.
+         * @default 0
          */
         get lcp_echo_failure(): number;
         set lcp_echo_failure(val: number);
@@ -30643,6 +29997,7 @@ export namespace NM {
          * failed if the specified number of LCP echo-requests go unanswered by the
          * peer.  The "lcp-echo-interval" property must also be set to a non-zero
          * value if this property is used.
+         * @default 0
          */
         get lcpEchoFailure(): number;
         set lcpEchoFailure(val: number);
@@ -30651,6 +30006,7 @@ export namespace NM {
          * every n seconds (where n is the specified value).  Note that some PPP
          * peers will respond to echo requests and some will not, and it is not
          * possible to autodetect this.
+         * @default 0
          */
         get lcp_echo_interval(): number;
         set lcp_echo_interval(val: number);
@@ -30659,18 +30015,21 @@ export namespace NM {
          * every n seconds (where n is the specified value).  Note that some PPP
          * peers will respond to echo requests and some will not, and it is not
          * possible to autodetect this.
+         * @default 0
          */
         get lcpEchoInterval(): number;
         set lcpEchoInterval(val: number);
         /**
          * If `true`, stateful MPPE is used.  See pppd documentation for more
          * information on stateful MPPE.
+         * @default false
          */
         get mppe_stateful(): boolean;
         set mppe_stateful(val: boolean);
         /**
          * If `true`, stateful MPPE is used.  See pppd documentation for more
          * information on stateful MPPE.
+         * @default false
          */
         get mppeStateful(): boolean;
         set mppeStateful(val: boolean);
@@ -30678,22 +30037,26 @@ export namespace NM {
          * If non-zero, instruct pppd to request that the peer send packets no
          * larger than the specified size.  If non-zero, the MRU should be between
          * 128 and 16384.
+         * @default 0
          */
         get mru(): number;
         set mru(val: number);
         /**
          * If non-zero, instruct pppd to send packets no larger than the specified
          * size.
+         * @default 0
          */
         get mtu(): number;
         set mtu(val: number);
         /**
          * If `true`, Van Jacobsen TCP header compression will not be requested.
+         * @default false
          */
         get no_vj_comp(): boolean;
         set no_vj_comp(val: boolean);
         /**
          * If `true`, Van Jacobsen TCP header compression will not be requested.
+         * @default false
          */
         get noVjComp(): boolean;
         set noVjComp(val: boolean);
@@ -30701,66 +30064,79 @@ export namespace NM {
          * If `true`, do not require the other side (usually the PPP server) to
          * authenticate itself to the client.  If `false`, require authentication
          * from the remote side.  In almost all cases, this should be `true`.
+         * @default true
          */
         get noauth(): boolean;
         set noauth(val: boolean);
         /**
          * If `true`, BSD compression will not be requested.
+         * @default false
          */
         get nobsdcomp(): boolean;
         set nobsdcomp(val: boolean);
         /**
          * If `true`, "deflate" compression will not be requested.
+         * @default false
          */
         get nodeflate(): boolean;
         set nodeflate(val: boolean);
         /**
          * If `true`, the CHAP authentication method will not be used.
+         * @default false
          */
         get refuse_chap(): boolean;
         set refuse_chap(val: boolean);
         /**
          * If `true`, the CHAP authentication method will not be used.
+         * @default false
          */
         get refuseChap(): boolean;
         set refuseChap(val: boolean);
         /**
          * If `true`, the EAP authentication method will not be used.
+         * @default false
          */
         get refuse_eap(): boolean;
         set refuse_eap(val: boolean);
         /**
          * If `true`, the EAP authentication method will not be used.
+         * @default false
          */
         get refuseEap(): boolean;
         set refuseEap(val: boolean);
         /**
          * If `true`, the MSCHAP authentication method will not be used.
+         * @default false
          */
         get refuse_mschap(): boolean;
         set refuse_mschap(val: boolean);
         /**
          * If `true`, the MSCHAP authentication method will not be used.
+         * @default false
          */
         get refuseMschap(): boolean;
         set refuseMschap(val: boolean);
         /**
          * If `true`, the MSCHAPv2 authentication method will not be used.
+         * @default false
          */
         get refuse_mschapv2(): boolean;
         set refuse_mschapv2(val: boolean);
         /**
          * If `true`, the MSCHAPv2 authentication method will not be used.
+         * @default false
          */
         get refuseMschapv2(): boolean;
         set refuseMschapv2(val: boolean);
         /**
          * If `true`, the PAP authentication method will not be used.
+         * @default false
          */
         get refuse_pap(): boolean;
         set refuse_pap(val: boolean);
         /**
          * If `true`, the PAP authentication method will not be used.
+         * @default false
          */
         get refusePap(): boolean;
         set refusePap(val: boolean);
@@ -30769,6 +30145,7 @@ export namespace NM {
          * the PPP session.  If either 64-bit or 128-bit MPPE is not available the
          * session will fail.  Note that MPPE is not used on mobile broadband
          * connections.
+         * @default false
          */
         get require_mppe(): boolean;
         set require_mppe(val: boolean);
@@ -30777,6 +30154,7 @@ export namespace NM {
          * the PPP session.  If either 64-bit or 128-bit MPPE is not available the
          * session will fail.  Note that MPPE is not used on mobile broadband
          * connections.
+         * @default false
          */
         get requireMppe(): boolean;
         set requireMppe(val: boolean);
@@ -30784,6 +30162,7 @@ export namespace NM {
          * If `true`, 128-bit MPPE (Microsoft Point-to-Point Encryption) will be
          * required for the PPP session, and the "require-mppe" property must also
          * be set to `true`.  If 128-bit MPPE is not available the session will fail.
+         * @default false
          */
         get require_mppe_128(): boolean;
         set require_mppe_128(val: boolean);
@@ -30791,6 +30170,7 @@ export namespace NM {
          * If `true`, 128-bit MPPE (Microsoft Point-to-Point Encryption) will be
          * required for the PPP session, and the "require-mppe" property must also
          * be set to `true`.  If 128-bit MPPE is not available the session will fail.
+         * @default false
          */
         get requireMppe128(): boolean;
         set requireMppe128(val: boolean);
@@ -30947,21 +30327,25 @@ export namespace NM {
          * the connection is activated on the interface specified in
          * {@link NM.SettingConnection.interface_name} of {@link NM.SettingConnection}.
          * @since 1.10
+         * @default null
          */
         get parent(): string;
         set parent(val: string);
         /**
          * Password used to authenticate with the PPPoE service.
+         * @default null
          */
         get password(): string;
         set password(val: string);
         /**
          * Flags indicating how to handle the {@link NM.SettingPppoe.password} property.
+         * @default NM.SettingSecretFlags.NONE
          */
         get password_flags(): SettingSecretFlags;
         set password_flags(val: SettingSecretFlags);
         /**
          * Flags indicating how to handle the {@link NM.SettingPppoe.password} property.
+         * @default NM.SettingSecretFlags.NONE
          */
         get passwordFlags(): SettingSecretFlags;
         set passwordFlags(val: SettingSecretFlags);
@@ -30970,11 +30354,13 @@ export namespace NM {
          * concentrators that provide the specified service.  For most providers,
          * this should be left blank.  It is only required if there are multiple
          * access concentrators or a specific service is known to be required.
+         * @default null
          */
         get service(): string;
         set service(val: string);
         /**
          * Username used to authenticate with the PPPoE service.
+         * @default null
          */
         get username(): string;
         set username(val: string);
@@ -31072,6 +30458,7 @@ export namespace NM {
          * to indicate a specific subnet ID; or set to -1 to automatically choose
          * an available subnet ID.
          * @since 1.54
+         * @default -1
          */
         get subnet_id(): number;
         set subnet_id(val: bigint | number);
@@ -31081,6 +30468,7 @@ export namespace NM {
          * to indicate a specific subnet ID; or set to -1 to automatically choose
          * an available subnet ID.
          * @since 1.54
+         * @default -1
          */
         get subnetId(): number;
         set subnetId(val: bigint | number);
@@ -31168,18 +30556,21 @@ export namespace NM {
         /**
          * Whether the proxy configuration is for browser only.
          * @since 1.6
+         * @default false
          */
         get browser_only(): boolean;
         set browser_only(val: boolean);
         /**
          * Whether the proxy configuration is for browser only.
          * @since 1.6
+         * @default false
          */
         get browserOnly(): boolean;
         set browserOnly(val: boolean);
         /**
          * Method for proxy configuration, Default is {@link NM.SettingProxyMethod.NONE}
          * @since 1.6
+         * @default 0
          */
         get method(): number;
         set method(val: number);
@@ -31187,6 +30578,7 @@ export namespace NM {
          * PAC script for the connection. This is an UTF-8 encoded javascript code
          * that defines a FindProxyForURL() function.
          * @since 1.6
+         * @default null
          */
         get pac_script(): string;
         set pac_script(val: string);
@@ -31194,18 +30586,21 @@ export namespace NM {
          * PAC script for the connection. This is an UTF-8 encoded javascript code
          * that defines a FindProxyForURL() function.
          * @since 1.6
+         * @default null
          */
         get pacScript(): string;
         set pacScript(val: string);
         /**
          * PAC URL for obtaining PAC file.
          * @since 1.6
+         * @default null
          */
         get pac_url(): string;
         set pac_url(val: string);
         /**
          * PAC URL for obtaining PAC file.
          * @since 1.6
+         * @default null
          */
         get pacUrl(): string;
         set pacUrl(val: string);
@@ -31307,32 +30702,38 @@ export namespace NM {
          * Speed to use for communication over the serial port.  Note that this
          * value usually has no effect for mobile broadband modems as they generally
          * ignore speed settings and use the highest available speed.
+         * @default 57600
          */
         get baud(): number;
         set baud(val: number);
         /**
          * Byte-width of the serial communication. The 8 in "8n1" for example.
+         * @default 8
          */
         get bits(): number;
         set bits(val: number);
         /**
          * Parity setting of the serial port.
+         * @default NM.SettingSerialParity.NONE
          */
         get parity(): SettingSerialParity;
         set parity(val: SettingSerialParity);
         /**
          * Time to delay between each byte sent to the modem, in microseconds.
+         * @default 0
          */
         get send_delay(): number;
         set send_delay(val: bigint | number);
         /**
          * Time to delay between each byte sent to the modem, in microseconds.
+         * @default 0
          */
         get sendDelay(): number;
         set sendDelay(val: bigint | number);
         /**
          * Number of stop bits for communication on the serial port.  Either 1 or 2.
          * The 1 in "8n1" for example.
+         * @default 1
          */
         get stopbits(): number;
         set stopbits(val: number);
@@ -31455,6 +30856,7 @@ export namespace NM {
          * case the global default is unspecified it is assumed to be
          * {@link NM.Ternary.TRUE}.
          * @since 1.14
+         * @default NM.Ternary.DEFAULT
          */
         get autoprobe_drivers(): Ternary;
         set autoprobe_drivers(val: Ternary);
@@ -31472,6 +30874,7 @@ export namespace NM {
          * case the global default is unspecified it is assumed to be
          * {@link NM.Ternary.TRUE}.
          * @since 1.14
+         * @default NM.Ternary.DEFAULT
          */
         get autoprobeDrivers(): Ternary;
         set autoprobeDrivers(val: Ternary);
@@ -31484,6 +30887,7 @@ export namespace NM {
          * If set to {@link NM.SriovEswitchEncapMode.PRESERVE} (default) the eswitch encap-mode
          * won't be modified by NetworkManager.
          * @since 1.46
+         * @default -1
          */
         get eswitch_encap_mode(): number;
         set eswitch_encap_mode(val: number);
@@ -31496,6 +30900,7 @@ export namespace NM {
          * If set to {@link NM.SriovEswitchEncapMode.PRESERVE} (default) the eswitch encap-mode
          * won't be modified by NetworkManager.
          * @since 1.46
+         * @default -1
          */
         get eswitchEncapMode(): number;
         set eswitchEncapMode(val: number);
@@ -31510,6 +30915,7 @@ export namespace NM {
          * If set to {@link NM.SriovEswitchInlineMode.PRESERVE} (default) the eswitch inline-mode
          * won't be modified by NetworkManager.
          * @since 1.46
+         * @default -1
          */
         get eswitch_inline_mode(): number;
         set eswitch_inline_mode(val: number);
@@ -31524,6 +30930,7 @@ export namespace NM {
          * If set to {@link NM.SriovEswitchInlineMode.PRESERVE} (default) the eswitch inline-mode
          * won't be modified by NetworkManager.
          * @since 1.46
+         * @default -1
          */
         get eswitchInlineMode(): number;
         set eswitchInlineMode(val: number);
@@ -31535,6 +30942,7 @@ export namespace NM {
          * If set to {@link NM.SriovEswitchMode.PRESERVE} (default) the eswitch mode won't be
          * modified by NetworkManager.
          * @since 1.46
+         * @default -1
          */
         get eswitch_mode(): number;
         set eswitch_mode(val: number);
@@ -31546,6 +30954,7 @@ export namespace NM {
          * If set to {@link NM.SriovEswitchMode.PRESERVE} (default) the eswitch mode won't be
          * modified by NetworkManager.
          * @since 1.46
+         * @default -1
          */
         get eswitchMode(): number;
         set eswitchMode(val: number);
@@ -31563,6 +30972,7 @@ export namespace NM {
          * looks up a global default value in the configuration; in case no such value is
          * defined, it uses {@link NM.SriovPreserveOnDown.NO} as fallback.
          * @since 1.54
+         * @default -1
          */
         get preserve_on_down(): number;
         set preserve_on_down(val: number);
@@ -31580,6 +30990,7 @@ export namespace NM {
          * looks up a global default value in the configuration; in case no such value is
          * defined, it uses {@link NM.SriovPreserveOnDown.NO} as fallback.
          * @since 1.54
+         * @default -1
          */
         get preserveOnDown(): number;
         set preserveOnDown(val: number);
@@ -31592,6 +31003,7 @@ export namespace NM {
          * upon deactivation. To prevent any changes to SR-IOV
          * parameters don't add a sriov setting to the connection.
          * @since 1.14
+         * @default 0
          */
         get total_vfs(): number;
         set total_vfs(val: number);
@@ -31604,6 +31016,7 @@ export namespace NM {
          * upon deactivation. To prevent any changes to SR-IOV
          * parameters don't add a sriov setting to the connection.
          * @since 1.14
+         * @default 0
          */
         get totalVfs(): number;
         set totalVfs(val: number);
@@ -31971,6 +31384,7 @@ export namespace NM {
          * should contain raw JSON configuration data suitable for teamd, because
          * the value is passed directly to teamd. If not specified, the default
          * configuration is used.  See man teamd.conf for the format details.
+         * @default null
          */
         get config(): string;
         set config(val: string);
@@ -32003,48 +31417,56 @@ export namespace NM {
         /**
          * Corresponds to the teamd mcast_rejoin.count.
          * @since 1.12
+         * @default -1
          */
         get mcast_rejoin_count(): number;
         set mcast_rejoin_count(val: number);
         /**
          * Corresponds to the teamd mcast_rejoin.count.
          * @since 1.12
+         * @default -1
          */
         get mcastRejoinCount(): number;
         set mcastRejoinCount(val: number);
         /**
          * Corresponds to the teamd mcast_rejoin.interval.
          * @since 1.12
+         * @default -1
          */
         get mcast_rejoin_interval(): number;
         set mcast_rejoin_interval(val: number);
         /**
          * Corresponds to the teamd mcast_rejoin.interval.
          * @since 1.12
+         * @default -1
          */
         get mcastRejoinInterval(): number;
         set mcastRejoinInterval(val: number);
         /**
          * Corresponds to the teamd notify_peers.count.
          * @since 1.12
+         * @default -1
          */
         get notify_peers_count(): number;
         set notify_peers_count(val: number);
         /**
          * Corresponds to the teamd notify_peers.count.
          * @since 1.12
+         * @default -1
          */
         get notifyPeersCount(): number;
         set notifyPeersCount(val: number);
         /**
          * Corresponds to the teamd notify_peers.interval.
          * @since 1.12
+         * @default -1
          */
         get notify_peers_interval(): number;
         set notify_peers_interval(val: number);
         /**
          * Corresponds to the teamd notify_peers.interval.
          * @since 1.12
+         * @default -1
          */
         get notifyPeersInterval(): number;
         set notifyPeersInterval(val: number);
@@ -32053,102 +31475,119 @@ export namespace NM {
          * Permitted values are: "roundrobin", "broadcast", "activebackup",
          * "loadbalance", "lacp", "random".
          * @since 1.12
+         * @default null
          */
         get runner(): string;
         set runner(val: string);
         /**
          * Corresponds to the teamd runner.active.
          * @since 1.12
+         * @default true
          */
         get runner_active(): boolean;
         set runner_active(val: boolean);
         /**
          * Corresponds to the teamd runner.active.
          * @since 1.12
+         * @default true
          */
         get runnerActive(): boolean;
         set runnerActive(val: boolean);
         /**
          * Corresponds to the teamd runner.agg_select_policy.
          * @since 1.12
+         * @default null
          */
         get runner_agg_select_policy(): string;
         set runner_agg_select_policy(val: string);
         /**
          * Corresponds to the teamd runner.agg_select_policy.
          * @since 1.12
+         * @default null
          */
         get runnerAggSelectPolicy(): string;
         set runnerAggSelectPolicy(val: string);
         /**
          * Corresponds to the teamd runner.fast_rate.
          * @since 1.12
+         * @default false
          */
         get runner_fast_rate(): boolean;
         set runner_fast_rate(val: boolean);
         /**
          * Corresponds to the teamd runner.fast_rate.
          * @since 1.12
+         * @default false
          */
         get runnerFastRate(): boolean;
         set runnerFastRate(val: boolean);
         /**
          * Corresponds to the teamd runner.hwaddr_policy.
          * @since 1.12
+         * @default null
          */
         get runner_hwaddr_policy(): string;
         set runner_hwaddr_policy(val: string);
         /**
          * Corresponds to the teamd runner.hwaddr_policy.
          * @since 1.12
+         * @default null
          */
         get runnerHwaddrPolicy(): string;
         set runnerHwaddrPolicy(val: string);
         /**
          * Corresponds to the teamd runner.min_ports.
          * @since 1.12
+         * @default -1
          */
         get runner_min_ports(): number;
         set runner_min_ports(val: number);
         /**
          * Corresponds to the teamd runner.min_ports.
          * @since 1.12
+         * @default -1
          */
         get runnerMinPorts(): number;
         set runnerMinPorts(val: number);
         /**
          * Corresponds to the teamd runner.sys_prio.
          * @since 1.12
+         * @default -1
          */
         get runner_sys_prio(): number;
         set runner_sys_prio(val: number);
         /**
          * Corresponds to the teamd runner.sys_prio.
          * @since 1.12
+         * @default -1
          */
         get runnerSysPrio(): number;
         set runnerSysPrio(val: number);
         /**
          * Corresponds to the teamd runner.tx_balancer.name.
          * @since 1.12
+         * @default null
          */
         get runner_tx_balancer(): string;
         set runner_tx_balancer(val: string);
         /**
          * Corresponds to the teamd runner.tx_balancer.name.
          * @since 1.12
+         * @default null
          */
         get runnerTxBalancer(): string;
         set runnerTxBalancer(val: string);
         /**
          * Corresponds to the teamd runner.tx_balancer.interval.
          * @since 1.12
+         * @default -1
          */
         get runner_tx_balancer_interval(): number;
         set runner_tx_balancer_interval(val: number);
         /**
          * Corresponds to the teamd runner.tx_balancer.interval.
          * @since 1.12
+         * @default -1
          */
         get runnerTxBalancerInterval(): number;
         set runnerTxBalancerInterval(val: number);
@@ -32363,30 +31802,35 @@ export namespace NM {
          * JSON configuration data suitable for teamd, because the value is passed
          * directly to teamd. If not specified, the default configuration is
          * used. See man teamd.conf for the format details.
+         * @default null
          */
         get config(): string;
         set config(val: string);
         /**
          * Corresponds to the teamd ports.PORTIFNAME.lacp_key.
          * @since 1.12
+         * @default -1
          */
         get lacp_key(): number;
         set lacp_key(val: number);
         /**
          * Corresponds to the teamd ports.PORTIFNAME.lacp_key.
          * @since 1.12
+         * @default -1
          */
         get lacpKey(): number;
         set lacpKey(val: number);
         /**
          * Corresponds to the teamd ports.PORTIFNAME.lacp_prio.
          * @since 1.12
+         * @default -1
          */
         get lacp_prio(): number;
         set lacp_prio(val: number);
         /**
          * Corresponds to the teamd ports.PORTIFNAME.lacp_prio.
          * @since 1.12
+         * @default -1
          */
         get lacpPrio(): number;
         set lacpPrio(val: number);
@@ -32419,6 +31863,7 @@ export namespace NM {
         /**
          * Corresponds to the teamd ports.PORTIFNAME.prio.
          * @since 1.12
+         * @default 0
          */
         get prio(): number;
         set prio(val: number);
@@ -32426,6 +31871,7 @@ export namespace NM {
          * Corresponds to the teamd ports.PORTIFNAME.queue_id.
          * When set to -1 means the parameter is skipped from the json config.
          * @since 1.12
+         * @default -1
          */
         get queue_id(): number;
         set queue_id(val: number);
@@ -32433,12 +31879,14 @@ export namespace NM {
          * Corresponds to the teamd ports.PORTIFNAME.queue_id.
          * When set to -1 means the parameter is skipped from the json config.
          * @since 1.12
+         * @default -1
          */
         get queueId(): number;
         set queueId(val: number);
         /**
          * Corresponds to the teamd ports.PORTIFNAME.sticky.
          * @since 1.12
+         * @default false
          */
         get sticky(): boolean;
         set sticky(val: boolean);
@@ -32578,6 +32026,7 @@ export namespace NM {
          * The group ID which will own the device. If set to `null` everyone
          * will be able to use the device.
          * @since 1.2
+         * @default null
          */
         get group(): string;
         set group(val: string);
@@ -32587,6 +32036,7 @@ export namespace NM {
          * {@link NM.SettingTunMode.TAP} to create an Ethernet-like layer 2
          * one.
          * @since 1.2
+         * @default 1
          */
         get mode(): number;
         set mode(val: number);
@@ -32596,6 +32046,7 @@ export namespace NM {
          * sending or receiving. Otherwise, the interface will only
          * support a single queue.
          * @since 1.2
+         * @default false
          */
         get multi_queue(): boolean;
         set multi_queue(val: boolean);
@@ -32605,6 +32056,7 @@ export namespace NM {
          * sending or receiving. Otherwise, the interface will only
          * support a single queue.
          * @since 1.2
+         * @default false
          */
         get multiQueue(): boolean;
         set multiQueue(val: boolean);
@@ -32612,6 +32064,7 @@ export namespace NM {
          * The user ID which will own the device. If set to `null` everyone
          * will be able to use the device.
          * @since 1.2
+         * @default null
          */
         get owner(): string;
         set owner(val: string);
@@ -32619,6 +32072,7 @@ export namespace NM {
          * If `true` the interface will prepend a 4 byte header describing the
          * physical interface to the packets.
          * @since 1.2
+         * @default false
          */
         get pi(): boolean;
         set pi(val: boolean);
@@ -32626,6 +32080,7 @@ export namespace NM {
          * If `true` the IFF_VNET_HDR the tunnel packets will include a virtio
          * network header.
          * @since 1.2
+         * @default false
          */
         get vnet_hdr(): boolean;
         set vnet_hdr(val: boolean);
@@ -32633,6 +32088,7 @@ export namespace NM {
          * If `true` the IFF_VNET_HDR the tunnel packets will include a virtio
          * network header.
          * @since 1.2
+         * @default false
          */
         get vnetHdr(): boolean;
         set vnetHdr(val: boolean);
@@ -32813,7 +32269,7 @@ export namespace NM {
          * @param val the value to set or `null` to clear a key.
          * @returns `true` if the operation was successful. The operation   can fail if `key` or `val` are not valid strings according   to `nm_setting_user_check_key()` and `nm_setting_user_check_val()`.
          */
-        set_data(key: string, val?: string | null): boolean;
+        set_data(key: string, val: string | null): boolean;
         /**
          * @param args
          */
@@ -32848,6 +32304,7 @@ export namespace NM {
          * This property specifies the peer interface name of the veth. This
          * property is mandatory.
          * @since 1.30
+         * @default null
          */
         get peer(): string;
         set peer(val: string);
@@ -32959,12 +32416,14 @@ export namespace NM {
          * but it used to be 0. To preserve backward compatibility, the default-value
          * in the D-Bus API continues to be 0 and a missing property on D-Bus
          * is still considered as 0.
+         * @default NM.VlanFlags.REORDER_HEADERS
          */
         get flags(): VlanFlags;
         set flags(val: VlanFlags);
         /**
          * The VLAN identifier that the interface created by this connection should
          * be assigned. The valid range is from 0 to 4094, without the reserved id 4095.
+         * @default 0
          */
         get id(): number;
         set id(val: number);
@@ -32987,6 +32446,7 @@ export namespace NM {
          * from which this VLAN interface should be created.  If this property is
          * not specified, the connection must contain an {@link NM.SettingWired} setting
          * with a {@link NM.SettingWired.mac_address} property.
+         * @default null
          */
         get parent(): string;
         set parent(val: string);
@@ -32996,6 +32456,7 @@ export namespace NM {
          * Supported values are: '802.1Q', '802.1ad'. If not specified the default
          * value is '802.1Q'.
          * @since 1.42
+         * @default null
          */
         get protocol(): string;
         set protocol(val: string);
@@ -33178,6 +32639,7 @@ export namespace NM {
          * If the VPN service supports persistence, and this property is `true`,
          * the VPN will attempt to stay connected across link changes and outages,
          * until explicitly disconnected.
+         * @default false
          */
         get persistent(): boolean;
         set persistent(val: boolean);
@@ -33191,6 +32653,7 @@ export namespace NM {
          * D-Bus service name of the VPN plugin that this setting uses to connect to
          * its network.  i.e. org.freedesktop.NetworkManager.vpnc for the vpnc
          * plugin.
+         * @default null
          */
         get service_type(): string;
         set service_type(val: string);
@@ -33198,6 +32661,7 @@ export namespace NM {
          * D-Bus service name of the VPN plugin that this setting uses to connect to
          * its network.  i.e. org.freedesktop.NetworkManager.vpnc for the vpnc
          * plugin.
+         * @default null
          */
         get serviceType(): string;
         set serviceType(val: string);
@@ -33208,6 +32672,7 @@ export namespace NM {
          * by vpn.timeout in configuration file). Values greater than zero mean
          * timeout in seconds.
          * @since 1.2
+         * @default 0
          */
         get timeout(): number;
         set timeout(val: number);
@@ -33218,6 +32683,7 @@ export namespace NM {
          * leave this property empty.  If this property is empty, NetworkManager
          * will automatically supply the username of the user which requested the
          * VPN connection.
+         * @default null
          */
         get user_name(): string;
         set user_name(val: string);
@@ -33228,6 +32694,7 @@ export namespace NM {
          * leave this property empty.  If this property is empty, NetworkManager
          * will automatically supply the username of the user which requested the
          * VPN connection.
+         * @default null
          */
         get userName(): string;
         set userName(val: string);
@@ -33283,7 +32750,7 @@ export namespace NM {
          * @param key a name that uniquely identifies the given value `item`
          * @param item the value to be referenced by `key`
          */
-        add_data_item(key: string, item?: string | null): void;
+        add_data_item(key: string, item: string | null): void;
         /**
          * Establishes a relationship between `key` and `secret` internally in the
          * setting which may be retrieved later.
@@ -33294,7 +32761,7 @@ export namespace NM {
          * @param key a name that uniquely identifies the given secret `secret`
          * @param secret the secret to be referenced by `key`
          */
-        add_secret(key: string, secret?: string | null): void;
+        add_secret(key: string, secret: string | null): void;
         /**
          * Iterates all data items stored in this setting.  It is safe to add, remove,
          * and modify data items inside `func`, though any additions or removals made
@@ -33404,6 +32871,7 @@ export namespace NM {
         /**
          * The routing table for this VRF.
          * @since 1.24
+         * @default 0
          */
         get table(): number;
         set table(val: number);
@@ -33515,6 +32983,7 @@ export namespace NM {
         /**
          * Specifies the lifetime in seconds of FDB entries learnt by the kernel.
          * @since 1.2
+         * @default 300
          */
         get ageing(): number;
         set ageing(val: number);
@@ -33522,6 +32991,7 @@ export namespace NM {
          * Specifies the UDP destination port to communicate to the remote VXLAN
          * tunnel endpoint.
          * @since 1.2
+         * @default 8472
          */
         get destination_port(): number;
         set destination_port(val: number);
@@ -33529,6 +32999,7 @@ export namespace NM {
          * Specifies the UDP destination port to communicate to the remote VXLAN
          * tunnel endpoint.
          * @since 1.2
+         * @default 8472
          */
         get destinationPort(): number;
         set destinationPort(val: number);
@@ -33536,30 +33007,35 @@ export namespace NM {
          * Specifies the VXLAN Network Identifier (or VXLAN Segment Identifier) to
          * use.
          * @since 1.2
+         * @default 0
          */
         get id(): number;
         set id(val: number);
         /**
          * Specifies whether netlink LL ADDR miss notifications are generated.
          * @since 1.2
+         * @default false
          */
         get l2_miss(): boolean;
         set l2_miss(val: boolean);
         /**
          * Specifies whether netlink LL ADDR miss notifications are generated.
          * @since 1.2
+         * @default false
          */
         get l2Miss(): boolean;
         set l2Miss(val: boolean);
         /**
          * Specifies whether netlink IP ADDR miss notifications are generated.
          * @since 1.2
+         * @default false
          */
         get l3_miss(): boolean;
         set l3_miss(val: boolean);
         /**
          * Specifies whether netlink IP ADDR miss notifications are generated.
          * @since 1.2
+         * @default false
          */
         get l3Miss(): boolean;
         set l3Miss(val: boolean);
@@ -33567,6 +33043,7 @@ export namespace NM {
          * Specifies whether unknown source link layer addresses and IP addresses
          * are entered into the VXLAN device forwarding database.
          * @since 1.2
+         * @default true
          */
         get learning(): boolean;
         set learning(val: boolean);
@@ -33574,24 +33051,28 @@ export namespace NM {
          * Specifies the maximum number of FDB entries. A value of zero means that
          * the kernel will store unlimited entries.
          * @since 1.2
+         * @default 0
          */
         get limit(): number;
         set limit(val: number);
         /**
          * If given, specifies the source IP address to use in outgoing packets.
          * @since 1.2
+         * @default null
          */
         get local(): string;
         set local(val: string);
         /**
          * If given, specifies the parent interface name or parent connection UUID.
          * @since 1.2
+         * @default null
          */
         get parent(): string;
         set parent(val: string);
         /**
          * Specifies whether ARP proxy is turned on.
          * @since 1.2
+         * @default false
          */
         get proxy(): boolean;
         set proxy(val: boolean);
@@ -33600,12 +33081,14 @@ export namespace NM {
          * when the destination link layer address is not known in the VXLAN device
          * forwarding database, or the multicast IP address to join.
          * @since 1.2
+         * @default null
          */
         get remote(): string;
         set remote(val: string);
         /**
          * Specifies whether route short circuit is turned on.
          * @since 1.2
+         * @default false
          */
         get rsc(): boolean;
         set rsc(val: boolean);
@@ -33613,6 +33096,7 @@ export namespace NM {
          * Specifies the maximum UDP source port to communicate to the remote VXLAN
          * tunnel endpoint.
          * @since 1.2
+         * @default 0
          */
         get source_port_max(): number;
         set source_port_max(val: number);
@@ -33620,6 +33104,7 @@ export namespace NM {
          * Specifies the maximum UDP source port to communicate to the remote VXLAN
          * tunnel endpoint.
          * @since 1.2
+         * @default 0
          */
         get sourcePortMax(): number;
         set sourcePortMax(val: number);
@@ -33627,6 +33112,7 @@ export namespace NM {
          * Specifies the minimum UDP source port to communicate to the remote VXLAN
          * tunnel endpoint.
          * @since 1.2
+         * @default 0
          */
         get source_port_min(): number;
         set source_port_min(val: number);
@@ -33634,18 +33120,21 @@ export namespace NM {
          * Specifies the minimum UDP source port to communicate to the remote VXLAN
          * tunnel endpoint.
          * @since 1.2
+         * @default 0
          */
         get sourcePortMin(): number;
         set sourcePortMin(val: number);
         /**
          * Specifies the TOS value to use in outgoing packets.
          * @since 1.2
+         * @default 0
          */
         get tos(): number;
         set tos(val: number);
         /**
          * Specifies the time-to-live value to use in outgoing packets.
          * @since 1.2
+         * @default 0
          */
         get ttl(): number;
         set ttl(val: number);
@@ -33790,6 +33279,7 @@ export namespace NM {
          * The P2P device that should be connected to. Currently, this is the only
          * way to create or join a group.
          * @since 1.16
+         * @default null
          */
         get peer(): string;
         set peer(val: string);
@@ -33821,6 +33311,7 @@ export namespace NM {
          * There's little point in changing the default setting as NetworkManager will
          * automatically determine the best method to use.
          * @since 1.16
+         * @default 0
          */
         get wps_method(): number;
         set wps_method(val: number);
@@ -33830,6 +33321,7 @@ export namespace NM {
          * There's little point in changing the default setting as NetworkManager will
          * automatically determine the best method to use.
          * @since 1.16
+         * @default 0
          */
         get wpsMethod(): number;
         set wpsMethod(val: number);
@@ -33920,6 +33412,7 @@ export namespace NM {
          * MAC address matches. This property does not change the MAC address of the
          * device (known as MAC spoofing).
          * @deprecated since 1.2: WiMAX is no longer supported.
+         * @default null
          */
         get mac_address(): string;
         set mac_address(val: string);
@@ -33928,6 +33421,7 @@ export namespace NM {
          * MAC address matches. This property does not change the MAC address of the
          * device (known as MAC spoofing).
          * @deprecated since 1.2: WiMAX is no longer supported.
+         * @default null
          */
         get macAddress(): string;
         set macAddress(val: string);
@@ -33935,6 +33429,7 @@ export namespace NM {
          * Network Service Provider (NSP) name of the WiMAX network this connection
          * should use.
          * @deprecated since 1.2: WiMAX is no longer supported.
+         * @default null
          */
         get network_name(): string;
         set network_name(val: string);
@@ -33942,6 +33437,7 @@ export namespace NM {
          * Network Service Provider (NSP) name of the WiMAX network this connection
          * should use.
          * @deprecated since 1.2: WiMAX is no longer supported.
+         * @default null
          */
         get networkName(): string;
         set networkName(val: string);
@@ -34051,6 +33547,7 @@ export namespace NM {
          * Note that "ip4-auto-default-route" or "ip6-auto-default-route" enabled,
          * implies to automatically choose a fwmark.
          * @since 1.16
+         * @default 0
          */
         get fwmark(): number;
         set fwmark(val: number);
@@ -34073,6 +33570,7 @@ export namespace NM {
          * not necessary to enable this explicitly. However, you can disable
          * it if you want to configure your own routing and rules.
          * @since 1.20
+         * @default NM.Ternary.DEFAULT
          */
         get ip4_auto_default_route(): Ternary;
         set ip4_auto_default_route(val: Ternary);
@@ -34095,18 +33593,21 @@ export namespace NM {
          * not necessary to enable this explicitly. However, you can disable
          * it if you want to configure your own routing and rules.
          * @since 1.20
+         * @default NM.Ternary.DEFAULT
          */
         get ip4AutoDefaultRoute(): Ternary;
         set ip4AutoDefaultRoute(val: Ternary);
         /**
          * Like ip4-auto-default-route, but for the IPv6 default route.
          * @since 1.20
+         * @default NM.Ternary.DEFAULT
          */
         get ip6_auto_default_route(): Ternary;
         set ip6_auto_default_route(val: Ternary);
         /**
          * Like ip4-auto-default-route, but for the IPv6 default route.
          * @since 1.20
+         * @default NM.Ternary.DEFAULT
          */
         get ip6AutoDefaultRoute(): Ternary;
         set ip6AutoDefaultRoute(val: Ternary);
@@ -34114,6 +33615,7 @@ export namespace NM {
          * The listen-port. If listen-port is not specified, the port will be chosen
          * randomly when the interface comes up.
          * @since 1.16
+         * @default 0
          */
         get listen_port(): number;
         set listen_port(val: number);
@@ -34121,6 +33623,7 @@ export namespace NM {
          * The listen-port. If listen-port is not specified, the port will be chosen
          * randomly when the interface comes up.
          * @since 1.16
+         * @default 0
          */
         get listenPort(): number;
         set listenPort(val: number);
@@ -34132,6 +33635,7 @@ export namespace NM {
          * setting, this does not take into account the current routes at the
          * time of activation.
          * @since 1.16
+         * @default 0
          */
         get mtu(): number;
         set mtu(val: number);
@@ -34148,6 +33652,7 @@ export namespace NM {
          * ipv4.never-default or ipv6.never-default setting is enabled, the peer route for
          * this peer won't be added automatically.
          * @since 1.16
+         * @default true
          */
         get peer_routes(): boolean;
         set peer_routes(val: boolean);
@@ -34164,18 +33669,21 @@ export namespace NM {
          * ipv4.never-default or ipv6.never-default setting is enabled, the peer route for
          * this peer won't be added automatically.
          * @since 1.16
+         * @default true
          */
         get peerRoutes(): boolean;
         set peerRoutes(val: boolean);
         /**
          * The 256 bit private-key in base64 encoding.
          * @since 1.16
+         * @default null
          */
         get private_key(): string;
         set private_key(val: string);
         /**
          * The 256 bit private-key in base64 encoding.
          * @since 1.16
+         * @default null
          */
         get privateKey(): string;
         set privateKey(val: string);
@@ -34183,6 +33691,7 @@ export namespace NM {
          * Flags indicating how to handle the {@link NM.SettingWirelessSecurity.private_key}
          * property.
          * @since 1.16
+         * @default NM.SettingSecretFlags.NONE
          */
         get private_key_flags(): SettingSecretFlags;
         set private_key_flags(val: SettingSecretFlags);
@@ -34190,6 +33699,7 @@ export namespace NM {
          * Flags indicating how to handle the {@link NM.SettingWirelessSecurity.private_key}
          * property.
          * @since 1.16
+         * @default NM.SettingSecretFlags.NONE
          */
         get privateKeyFlags(): SettingSecretFlags;
         set privateKeyFlags(val: SettingSecretFlags);
@@ -34385,6 +33895,7 @@ export namespace NM {
          * When `false`, the interface will only accept the packets with the
          * interface destination mac address or broadcast.
          * @since 1.32
+         * @default NM.Ternary.DEFAULT
          */
         get accept_all_mac_addresses(): Ternary;
         set accept_all_mac_addresses(val: Ternary);
@@ -34394,6 +33905,7 @@ export namespace NM {
          * When `false`, the interface will only accept the packets with the
          * interface destination mac address or broadcast.
          * @since 1.32
+         * @default NM.Ternary.DEFAULT
          */
         get acceptAllMacAddresses(): Ternary;
         set acceptAllMacAddresses(val: Ternary);
@@ -34406,6 +33918,7 @@ export namespace NM {
          * negotiation is mandatory.
          * When `false`, "speed" and "duplex" properties should be both set or
          * link configuration will be skipped.
+         * @default false
          */
         get auto_negotiate(): boolean;
         set auto_negotiate(val: boolean);
@@ -34418,6 +33931,7 @@ export namespace NM {
          * negotiation is mandatory.
          * When `false`, "speed" and "duplex" properties should be both set or
          * link configuration will be skipped.
+         * @default false
          */
         get autoNegotiate(): boolean;
         set autoNegotiate(val: boolean);
@@ -34440,6 +33954,7 @@ export namespace NM {
          *
          * On D-Bus, this field is expressed as "assigned-mac-address" or the deprecated
          * "cloned-mac-address".
+         * @default null
          */
         get cloned_mac_address(): string;
         set cloned_mac_address(val: string);
@@ -34462,6 +33977,7 @@ export namespace NM {
          *
          * On D-Bus, this field is expressed as "assigned-mac-address" or the deprecated
          * "cloned-mac-address".
+         * @default null
          */
         get clonedMacAddress(): string;
         set clonedMacAddress(val: string);
@@ -34478,6 +33994,7 @@ export namespace NM {
          * will advertise all the supported duplex modes.
          * Must be set together with the "speed" property if specified.
          * Before specifying a duplex mode be sure your device supports it.
+         * @default null
          */
         get duplex(): string;
         set duplex(val: string);
@@ -34510,6 +34027,7 @@ export namespace NM {
          * them is chosen randomly. For example, "02:00:00:00:00:00 00:00:00:00:00:00 02:00:00:00:00:00"
          * will create a fully scrambled MAC address, randomly locally or globally
          * administered.
+         * @default null
          */
         get generate_mac_address_mask(): string;
         set generate_mac_address_mask(val: string);
@@ -34542,6 +34060,7 @@ export namespace NM {
          * them is chosen randomly. For example, "02:00:00:00:00:00 00:00:00:00:00:00 02:00:00:00:00:00"
          * will create a fully scrambled MAC address, randomly locally or globally
          * administered.
+         * @default null
          */
         get generateMacAddressMask(): string;
         set generateMacAddressMask(val: string);
@@ -34549,6 +34068,7 @@ export namespace NM {
          * If specified, this connection will only apply to the Ethernet device
          * whose permanent MAC address matches. This property does not change the
          * MAC address of the device (i.e. MAC spoofing).
+         * @default null
          */
         get mac_address(): string;
         set mac_address(val: string);
@@ -34556,6 +34076,7 @@ export namespace NM {
          * If specified, this connection will only apply to the Ethernet device
          * whose permanent MAC address matches. This property does not change the
          * MAC address of the device (i.e. MAC spoofing).
+         * @default null
          */
         get macAddress(): string;
         set macAddress(val: string);
@@ -34594,6 +34115,7 @@ export namespace NM {
         /**
          * If non-zero, only transmit packets of the specified size or smaller,
          * breaking larger packets up into multiple Ethernet frames.
+         * @default 0
          */
         get mtu(): number;
         set mtu(val: number);
@@ -34602,18 +34124,21 @@ export namespace NM {
          * attachment methods.  One of "tp" (Twisted Pair), "aui" (Attachment Unit
          * Interface), "bnc" (Thin Ethernet) or "mii" (Media Independent Interface).
          * If the device supports only one port type, this setting is ignored.
+         * @default null
          */
         get port(): string;
         set port(val: string);
         /**
          * s390 network device type; one of "qeth", "lcs", or "ctc", representing
          * the different types of virtual network devices available on s390 systems.
+         * @default null
          */
         get s390_nettype(): string;
         set s390_nettype(val: string);
         /**
          * s390 network device type; one of "qeth", "lcs", or "ctc", representing
          * the different types of virtual network devices available on s390 systems.
+         * @default null
          */
         get s390Nettype(): string;
         set s390Nettype(val: string);
@@ -34677,6 +34202,7 @@ export namespace NM {
          * In Mbit/s, ie 100 == 100Mbit/s.
          * Must be set together with the "duplex" property when non-zero.
          * Before specifying a speed value be sure your device supports it.
+         * @default 0
          */
         get speed(): number;
         set speed(val: number);
@@ -34690,6 +34216,7 @@ export namespace NM {
          * {@link NM.SettingWiredWakeOnLan.IGNORE} (to disable management of Wake-on-LAN in
          * NetworkManager).
          * @since 1.2
+         * @default 1
          */
         get wake_on_lan(): number;
         set wake_on_lan(val: number);
@@ -34703,6 +34230,7 @@ export namespace NM {
          * {@link NM.SettingWiredWakeOnLan.IGNORE} (to disable management of Wake-on-LAN in
          * NetworkManager).
          * @since 1.2
+         * @default 1
          */
         get wakeOnLan(): number;
         set wakeOnLan(val: number);
@@ -34711,6 +34239,7 @@ export namespace NM {
          * Wake-on-LAN, represented as an Ethernet MAC address.  If `null`,
          * no password will be required.
          * @since 1.2
+         * @default null
          */
         get wake_on_lan_password(): string;
         set wake_on_lan_password(val: string);
@@ -34719,6 +34248,7 @@ export namespace NM {
          * Wake-on-LAN, represented as an Ethernet MAC address.  If `null`,
          * no password will be required.
          * @since 1.2
+         * @default null
          */
         get wakeOnLanPassword(): string;
         set wakeOnLanPassword(val: string);
@@ -35033,6 +34563,7 @@ export namespace NM {
          * case the global default is unspecified it is assumed to be
          * {@link NM.Ternary.FALSE}.
          * @since 1.28
+         * @default NM.Ternary.DEFAULT
          */
         get ap_isolation(): Ternary;
         set ap_isolation(val: Ternary);
@@ -35054,6 +34585,7 @@ export namespace NM {
          * case the global default is unspecified it is assumed to be
          * {@link NM.Ternary.FALSE}.
          * @since 1.28
+         * @default NM.Ternary.DEFAULT
          */
         get apIsolation(): Ternary;
         set apIsolation(val: Ternary);
@@ -35064,6 +34596,7 @@ export namespace NM {
          * associate with the same network in the 2.4GHz band even if the network's
          * settings are compatible.  This setting depends on specific driver
          * capability and may not work with all drivers.
+         * @default null
          */
         get band(): string;
         set band(val: string);
@@ -35076,6 +34609,7 @@ export namespace NM {
          * Locking a client profile to a certain BSSID will prevent roaming and also
          * disable background scanning. That can be useful, if there is only one access
          * point for the SSID.
+         * @default null
          */
         get bssid(): string;
         set bssid(val: string);
@@ -35084,6 +34618,7 @@ export namespace NM {
          * join (or create for Ad-Hoc networks) a Wi-Fi network on the specified
          * channel.  Because channel numbers overlap between bands, this property
          * also requires the "band" property to be set.
+         * @default 0
          */
         get channel(): number;
         set channel(val: number);
@@ -35102,6 +34637,7 @@ export namespace NM {
          * {@link NM.SettingWirelessChannelWidth.AUTO} only when the interface is configured
          * in AP mode.
          * @since 1.50
+         * @default 0
          */
         get channel_width(): number;
         set channel_width(val: number);
@@ -35120,6 +34656,7 @@ export namespace NM {
          * {@link NM.SettingWirelessChannelWidth.AUTO} only when the interface is configured
          * in AP mode.
          * @since 1.50
+         * @default 0
          */
         get channelWidth(): number;
         set channelWidth(val: number);
@@ -35143,6 +34680,7 @@ export namespace NM {
          *
          * On D-Bus, this field is expressed as "assigned-mac-address" or the deprecated
          * "cloned-mac-address".
+         * @default null
          */
         get cloned_mac_address(): string;
         set cloned_mac_address(val: string);
@@ -35166,6 +34704,7 @@ export namespace NM {
          *
          * On D-Bus, this field is expressed as "assigned-mac-address" or the deprecated
          * "cloned-mac-address".
+         * @default null
          */
         get clonedMacAddress(): string;
         set clonedMacAddress(val: string);
@@ -35198,6 +34737,7 @@ export namespace NM {
          * them is chosen randomly. For example, "02:00:00:00:00:00 00:00:00:00:00:00 02:00:00:00:00:00"
          * will create a fully scrambled MAC address, randomly locally or globally
          * administered.
+         * @default null
          */
         get generate_mac_address_mask(): string;
         set generate_mac_address_mask(val: string);
@@ -35230,6 +34770,7 @@ export namespace NM {
          * them is chosen randomly. For example, "02:00:00:00:00:00 00:00:00:00:00:00 02:00:00:00:00:00"
          * will create a fully scrambled MAC address, randomly locally or globally
          * administered.
+         * @default null
          */
         get generateMacAddressMask(): string;
         set generateMacAddressMask(val: string);
@@ -35247,6 +34788,7 @@ export namespace NM {
          * Note that marking the network as hidden may be a privacy issue for you
          * (in infrastructure mode) or client stations (in AP mode), as the explicit
          * probe-scans are distinctly recognizable on the air.
+         * @default false
          */
         get hidden(): boolean;
         set hidden(val: boolean);
@@ -35254,6 +34796,7 @@ export namespace NM {
          * If specified, this connection will only apply to the Wi-Fi device whose
          * permanent MAC address matches. This property does not change the MAC
          * address of the device (i.e. MAC spoofing).
+         * @default null
          */
         get mac_address(): string;
         set mac_address(val: string);
@@ -35261,6 +34804,7 @@ export namespace NM {
          * If specified, this connection will only apply to the Wi-Fi device whose
          * permanent MAC address matches. This property does not change the MAC
          * address of the device (i.e. MAC spoofing).
+         * @default null
          */
         get macAddress(): string;
         set macAddress(val: string);
@@ -35300,6 +34844,7 @@ export namespace NM {
          * (always randomize the MAC address).
          * @since 1.2
          * @deprecated since 1.4: Use the {@link NM.SettingWireless.cloned_mac_address} property instead.
+         * @default 0
          */
         get mac_address_randomization(): number;
         set mac_address_randomization(val: number);
@@ -35311,18 +34856,21 @@ export namespace NM {
          * (always randomize the MAC address).
          * @since 1.2
          * @deprecated since 1.4: Use the {@link NM.SettingWireless.cloned_mac_address} property instead.
+         * @default 0
          */
         get macAddressRandomization(): number;
         set macAddressRandomization(val: number);
         /**
          * Wi-Fi network mode; one of "infrastructure", "mesh", "adhoc" or "ap".  If blank,
          * infrastructure is assumed.
+         * @default null
          */
         get mode(): string;
         set mode(val: string);
         /**
          * If non-zero, only transmit packets of the specified size or smaller,
          * breaking larger packets up into multiple Ethernet frames.
+         * @default 0
          */
         get mtu(): number;
         set mtu(val: number);
@@ -35333,12 +34881,14 @@ export namespace NM {
          * configure setting) or {@link NM.SettingWirelessPowersave.DEFAULT} (use the
          * globally configured value). All other values are reserved.
          * @since 1.2
+         * @default 0
          */
         get powersave(): number;
         set powersave(val: number);
         /**
          * This property is not implemented and has no effect.
          * @deprecated since 1.44: This property is not implemented and has no effect.
+         * @default 0
          */
         get rate(): number;
         set rate(val: number);
@@ -35378,12 +34928,14 @@ export namespace NM {
         /**
          * This property is not implemented and has no effect.
          * @deprecated since 1.44: This property is not implemented and has no effect.
+         * @default 0
          */
         get tx_power(): number;
         set tx_power(val: number);
         /**
          * This property is not implemented and has no effect.
          * @deprecated since 1.44: This property is not implemented and has no effect.
+         * @default 0
          */
         get txPower(): number;
         set txPower(val: number);
@@ -35401,6 +34953,7 @@ export namespace NM {
          * {@link NM.SettingWirelessWakeOnWLan.IGNORE} (to disable management of Wake-on-LAN in
          * NetworkManager).
          * @since 1.12
+         * @default 1
          */
         get wake_on_wlan(): number;
         set wake_on_wlan(val: number);
@@ -35418,6 +34971,7 @@ export namespace NM {
          * {@link NM.SettingWirelessWakeOnWLan.IGNORE} (to disable management of Wake-on-LAN in
          * NetworkManager).
          * @since 1.12
+         * @default 1
          */
         get wakeOnWlan(): number;
         set wakeOnWlan(val: number);
@@ -35723,6 +35277,7 @@ export namespace NM {
          * for Open System, "shared" for Shared Key, or "leap" for Cisco LEAP.  When
          * using Cisco LEAP (ie, key-mgmt = "ieee8021x" and auth-alg = "leap") the
          * "leap-username" and "leap-password" properties must be specified.
+         * @default null
          */
         get auth_alg(): string;
         set auth_alg(val: string);
@@ -35732,6 +35287,7 @@ export namespace NM {
          * for Open System, "shared" for Shared Key, or "leap" for Cisco LEAP.  When
          * using Cisco LEAP (ie, key-mgmt = "ieee8021x" and auth-alg = "leap") the
          * "leap-username" and "leap-password" properties must be specified.
+         * @default null
          */
         get authAlg(): string;
         set authAlg(val: string);
@@ -35745,6 +35301,7 @@ export namespace NM {
          * supported).  When set to {@link NM.SettingWirelessSecurityFils.DEFAULT} and
          * no global default is set, FILS will be optionally enabled.
          * @since 1.12
+         * @default 0
          */
         get fils(): number;
         set fils(val: number);
@@ -35764,6 +35321,7 @@ export namespace NM {
          * "wpa-eap-suite-b-192" (WPA3 enterprise only).
          *
          * This property must be set for any Wi-Fi connection that uses security.
+         * @default null
          */
         get key_mgmt(): string;
         set key_mgmt(val: string);
@@ -35775,42 +35333,49 @@ export namespace NM {
          * "wpa-eap-suite-b-192" (WPA3 enterprise only).
          *
          * This property must be set for any Wi-Fi connection that uses security.
+         * @default null
          */
         get keyMgmt(): string;
         set keyMgmt(val: string);
         /**
          * The login password for legacy LEAP connections (ie, key-mgmt =
          * "ieee8021x" and auth-alg = "leap").
+         * @default null
          */
         get leap_password(): string;
         set leap_password(val: string);
         /**
          * The login password for legacy LEAP connections (ie, key-mgmt =
          * "ieee8021x" and auth-alg = "leap").
+         * @default null
          */
         get leapPassword(): string;
         set leapPassword(val: string);
         /**
          * Flags indicating how to handle the
          * {@link NM.SettingWirelessSecurity.leap_password} property.
+         * @default NM.SettingSecretFlags.NONE
          */
         get leap_password_flags(): SettingSecretFlags;
         set leap_password_flags(val: SettingSecretFlags);
         /**
          * Flags indicating how to handle the
          * {@link NM.SettingWirelessSecurity.leap_password} property.
+         * @default NM.SettingSecretFlags.NONE
          */
         get leapPasswordFlags(): SettingSecretFlags;
         set leapPasswordFlags(val: SettingSecretFlags);
         /**
          * The login username for legacy LEAP connections (ie, key-mgmt =
          * "ieee8021x" and auth-alg = "leap").
+         * @default null
          */
         get leap_username(): string;
         set leap_username(val: string);
         /**
          * The login username for legacy LEAP connections (ie, key-mgmt =
          * "ieee8021x" and auth-alg = "leap").
+         * @default null
          */
         get leapUsername(): string;
         set leapUsername(val: string);
@@ -35832,6 +35397,7 @@ export namespace NM {
          * supported).  When set to {@link NM.SettingWirelessSecurityPmf.DEFAULT} and no
          * global default is set, PMF will be optionally enabled.
          * @since 1.10
+         * @default 0
          */
         get pmf(): number;
         set pmf(val: number);
@@ -35848,18 +35414,21 @@ export namespace NM {
          * standard) hashed to derive the actual key, or the key in form of 64
          * hexadecimal character. The WPA3-Personal networks use a passphrase
          * of any length for SAE authentication.
+         * @default null
          */
         get psk(): string;
         set psk(val: string);
         /**
          * Flags indicating how to handle the {@link NM.SettingWirelessSecurity.psk}
          * property.
+         * @default NM.SettingSecretFlags.NONE
          */
         get psk_flags(): SettingSecretFlags;
         set psk_flags(val: SettingSecretFlags);
         /**
          * Flags indicating how to handle the {@link NM.SettingWirelessSecurity.psk}
          * property.
+         * @default NM.SettingSecretFlags.NONE
          */
         get pskFlags(): SettingSecretFlags;
         set pskFlags(val: SettingSecretFlags);
@@ -35867,6 +35436,7 @@ export namespace NM {
          * Flags indicating how to handle the {@link NM.SettingWirelessSecurity.wep_key0},
          * {@link NM.SettingWirelessSecurity.wep_key1}, {@link NM.SettingWirelessSecurity.wep_key2},
          * and {@link NM.SettingWirelessSecurity.wep_key3} properties.
+         * @default NM.SettingSecretFlags.NONE
          */
         get wep_key_flags(): SettingSecretFlags;
         set wep_key_flags(val: SettingSecretFlags);
@@ -35874,6 +35444,7 @@ export namespace NM {
          * Flags indicating how to handle the {@link NM.SettingWirelessSecurity.wep_key0},
          * {@link NM.SettingWirelessSecurity.wep_key1}, {@link NM.SettingWirelessSecurity.wep_key2},
          * and {@link NM.SettingWirelessSecurity.wep_key3} properties.
+         * @default NM.SettingSecretFlags.NONE
          */
         get wepKeyFlags(): SettingSecretFlags;
         set wepKeyFlags(val: SettingSecretFlags);
@@ -35884,6 +35455,7 @@ export namespace NM {
          * or {@link NM.WepKeyType.PASSPHRASE}, in which case the passphrase is provided
          * as a string and will be hashed using the de-facto MD5 method to derive
          * the actual WEP key.
+         * @default NM.WepKeyType.UNKNOWN
          */
         get wep_key_type(): WepKeyType;
         set wep_key_type(val: WepKeyType);
@@ -35894,54 +35466,63 @@ export namespace NM {
          * or {@link NM.WepKeyType.PASSPHRASE}, in which case the passphrase is provided
          * as a string and will be hashed using the de-facto MD5 method to derive
          * the actual WEP key.
+         * @default NM.WepKeyType.UNKNOWN
          */
         get wepKeyType(): WepKeyType;
         set wepKeyType(val: WepKeyType);
         /**
          * Index 0 WEP key.  This is the WEP key used in most networks.  See the
          * "wep-key-type" property for a description of how this key is interpreted.
+         * @default null
          */
         get wep_key0(): string;
         set wep_key0(val: string);
         /**
          * Index 0 WEP key.  This is the WEP key used in most networks.  See the
          * "wep-key-type" property for a description of how this key is interpreted.
+         * @default null
          */
         get wepKey0(): string;
         set wepKey0(val: string);
         /**
          * Index 1 WEP key.  This WEP index is not used by most networks.  See the
          * "wep-key-type" property for a description of how this key is interpreted.
+         * @default null
          */
         get wep_key1(): string;
         set wep_key1(val: string);
         /**
          * Index 1 WEP key.  This WEP index is not used by most networks.  See the
          * "wep-key-type" property for a description of how this key is interpreted.
+         * @default null
          */
         get wepKey1(): string;
         set wepKey1(val: string);
         /**
          * Index 2 WEP key.  This WEP index is not used by most networks.  See the
          * "wep-key-type" property for a description of how this key is interpreted.
+         * @default null
          */
         get wep_key2(): string;
         set wep_key2(val: string);
         /**
          * Index 2 WEP key.  This WEP index is not used by most networks.  See the
          * "wep-key-type" property for a description of how this key is interpreted.
+         * @default null
          */
         get wepKey2(): string;
         set wepKey2(val: string);
         /**
          * Index 3 WEP key.  This WEP index is not used by most networks.  See the
          * "wep-key-type" property for a description of how this key is interpreted.
+         * @default null
          */
         get wep_key3(): string;
         set wep_key3(val: string);
         /**
          * Index 3 WEP key.  This WEP index is not used by most networks.  See the
          * "wep-key-type" property for a description of how this key is interpreted.
+         * @default null
          */
         get wepKey3(): string;
         set wepKey3(val: string);
@@ -35950,6 +35531,7 @@ export namespace NM {
          * index is used by the AP, put that WEP key index here.  Valid values are 0
          * (default key) through 3.  Note that some consumer access points (like the
          * Linksys WRT54G) number the keys 1 - 4.
+         * @default 0
          */
         get wep_tx_keyidx(): number;
         set wep_tx_keyidx(val: number);
@@ -35958,6 +35540,7 @@ export namespace NM {
          * index is used by the AP, put that WEP key index here.  Valid values are 0
          * (default key) through 3.  Note that some consumer access points (like the
          * Linksys WRT54G) number the keys 1 - 4.
+         * @default 0
          */
         get wepTxKeyidx(): number;
         set wepTxKeyidx(val: number);
@@ -35970,6 +35553,7 @@ export namespace NM {
          *
          * WPS can be disabled by setting this property to a value of 1.
          * @since 1.10
+         * @default 0
          */
         get wps_method(): number;
         set wps_method(val: number);
@@ -35982,6 +35566,7 @@ export namespace NM {
          *
          * WPS can be disabled by setting this property to a value of 1.
          * @since 1.10
+         * @default 0
          */
         get wpsMethod(): number;
         set wpsMethod(val: number);
@@ -36244,18 +35829,21 @@ export namespace NM {
          * IEEE 802.15.4 channel. A positive integer or -1, meaning "do not
          * set, use whatever the device is already set to".
          * @since 1.16
+         * @default -1
          */
         get channel(): number;
         set channel(val: number);
         /**
          * If specified, this connection will only apply to the IEEE 802.15.4 (WPAN)
          * MAC layer device whose permanent MAC address matches.
+         * @default null
          */
         get mac_address(): string;
         set mac_address(val: string);
         /**
          * If specified, this connection will only apply to the IEEE 802.15.4 (WPAN)
          * MAC layer device whose permanent MAC address matches.
+         * @default null
          */
         get macAddress(): string;
         set macAddress(val: string);
@@ -36263,26 +35851,31 @@ export namespace NM {
          * IEEE 802.15.4 channel page. A positive integer or -1, meaning "do not
          * set, use whatever the device is already set to".
          * @since 1.16
+         * @default -1
          */
         get page(): number;
         set page(val: number);
         /**
          * IEEE 802.15.4 Personal Area Network (PAN) identifier.
+         * @default 65535
          */
         get pan_id(): number;
         set pan_id(val: number);
         /**
          * IEEE 802.15.4 Personal Area Network (PAN) identifier.
+         * @default 65535
          */
         get panId(): number;
         set panId(val: number);
         /**
          * Short IEEE 802.15.4 address to be used within a restricted environment.
+         * @default 65535
          */
         get short_address(): number;
         set short_address(val: number);
         /**
          * Short IEEE 802.15.4 address to be used within a restricted environment.
+         * @default 65535
          */
         get shortAddress(): number;
         set shortAddress(val: number);
@@ -36435,7 +36028,7 @@ export namespace NM {
          * Clears and frees secrets determined by `func`.
          * @param func function to be called to determine whether a     specific secret should be cleared or not. If `null`, all secrets are cleared.
          */
-        clear_secrets_with_flags(func?: SettingClearSecretsWithFlagsFn | null): void;
+        clear_secrets_with_flags(func: SettingClearSecretsWithFlagsFn | null): void;
         /**
          * Deletes all of `connection`'s settings.
          */
@@ -36835,455 +36428,6 @@ export namespace NM {
          * @virtual
          */
         vfunc_secrets_updated(setting: string): void;
-        /**
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`.
-         *
-         * Whenever the `source_property` is changed the `target_property` is
-         * updated using the same value. For instance:
-         *
-         *
-         * ```c
-         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-         * ```
-         *
-         *
-         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
-         * updated with the same value of the "active" property of the action {@link GObject.Object}
-         * instance.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well.
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call `g_object_unref()` on the returned
-         * {@link GObject.Binding} instance.
-         *
-         * Removing the binding by calling `g_object_unref()` on it must only be done if
-         * the binding, `source` and `target` are only used from a single thread and it
-         * is clear that both `source` and `target` outlive the binding. Especially it
-         * is not safe to rely on this if the binding, `source` or `target` can be
-         * finalized from different threads. Keep another reference to the binding and
-         * use `g_binding_unbind()` instead to be on the safe side.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-        ): GObject.Binding;
-        /**
-         * Complete version of `g_object_bind_property()`.
-         *
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`, allowing you to set the transformation functions to be used by
-         * the binding.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property_full(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
-        ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
-        /**
-         * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all `GInitiallyUnowneds` are created with a floating reference
-         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
-         */
-        force_floating(): void;
-        /**
-         * Increases the freeze count on `object`. If the freeze count is
-         * non-zero, the emission of "notify" signals on `object` is
-         * stopped. The signals are queued until the freeze count is decreased
-         * to zero. Duplicate notifications are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
-         * object is frozen.
-         *
-         * This is necessary for accessors that modify multiple properties to prevent
-         * premature notification while the object is still being modified.
-         */
-        freeze_notify(): void;
-        /**
-         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
-         * @param key name of the key for that association
-         * @returns the data if found,          or `null` if no such data exists.
-         */
-        get_data(key: string): any | null;
-        /**
-         * Gets a property of an object.
-         *
-         * The value can be:
-         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
-         * - a GObject.Value initialized with the expected type of the property
-         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
-         *
-         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
-         *
-         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
-         * @param property_name The name of the property to get
-         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
-         */
-        get_property(property_name: string, value: GObject.Value | any): any;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        get_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Gets `n_properties` properties for an `object`.
-         * Obtained properties will be set to `values`. All properties must be valid.
-         * Warnings will be emitted and undefined behaviour may result if invalid
-         * properties are passed in.
-         * @param names the names of each property to get
-         * @param values the values of each property to get
-         */
-        getv(names: string[], values: (GObject.Value | any)[]): void;
-        /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns `true` if `object` has a floating reference
-         */
-        is_floating(): boolean;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param property_name the name of a property installed on the class of `object`.
-         */
-        notify(property_name: string): void;
-        /**
-         * Emits a "notify" signal for the property specified by `pspec` on `object`.
-         *
-         * This function omits the property name lookup, hence it is faster than
-         * `g_object_notify()`.
-         *
-         * One way to avoid using `g_object_notify()` from within the
-         * class that registered the properties, and using `g_object_notify_by_pspec()`
-         * instead, is to store the GParamSpec used with
-         * `g_object_class_install_property()` inside a static array, e.g.:
-         *
-         *
-         * ```c
-         *   typedef enum
-         *   {
-         *     PROP_FOO = 1,
-         *     PROP_LAST
-         *   } MyObjectProperty;
-         *
-         *   static GParamSpec *properties[PROP_LAST];
-         *
-         *   static void
-         *   my_object_class_init (MyObjectClass *klass)
-         *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
-         *                                              0, 100,
-         *                                              50,
-         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-         *     g_object_class_install_property (gobject_class,
-         *                                      PROP_FOO,
-         *                                      properties[PROP_FOO]);
-         *   }
-         * ```
-         *
-         *
-         * and then notify a change on the "foo" property with:
-         *
-         *
-         * ```c
-         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-         * ```
-         *
-         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
-         */
-        notify_by_pspec(pspec: GObject.ParamSpec): void;
-        /**
-         * Increases the reference count of `object`.
-         *
-         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC `typeof()`
-         * extension), so any casting the caller needs to do on the return type must be
-         * explicit.
-         * @returns the same `object`
-         */
-        ref(): GObject.Object;
-        /**
-         * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
-         *
-         * In other words, if the object is floating, then this call "assumes
-         * ownership" of the floating reference, converting it to a normal
-         * reference by clearing the floating flag while leaving the reference
-         * count unchanged.  If the object is not floating, then this call
-         * adds a new normal reference increasing the reference count by one.
-         *
-         * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for `g_object_ref()`.
-         * @returns `object`
-         */
-        ref_sink(): GObject.Object;
-        /**
-         * Releases all references to other objects. This can be used to break
-         * reference cycles.
-         *
-         * This function should only be called from object system implementations.
-         */
-        run_dispose(): void;
-        /**
-         * Each object carries around a table of associations from
-         * strings to pointers.  This function lets you set an association.
-         *
-         * If the object already had an association with that name,
-         * the old association will be destroyed.
-         *
-         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
-         * This means a copy of `key` is kept permanently (even after `object` has been
-         * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
-         * @param key name of the key
-         * @param data data to associate with that key
-         */
-        set_data(key: string, data?: any | null): void;
-        /**
-         * Sets a property on an object.
-         * @param property_name The name of the property to set
-         * @param value The value to set the property to
-         */
-        set_property(property_name: string, value: GObject.Value | any): void;
-        /**
-         * Remove a specified datum from the object's data associations,
-         * without invoking the association's destroy handler.
-         * @param key name of the key
-         * @returns the data if found, or `null`          if no such data exists.
-         */
-        steal_data(key: string): any | null;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()` and removes the `data` from object
-         * without invoking its `destroy()` function (if any was
-         * set).
-         * Usually, calling this function is only required to update
-         * user data pointers with a destroy notifier, for example:
-         *
-         * ```c
-         * void
-         * object_add_to_user_list (GObject     *object,
-         *                          const gchar *new_string)
-         * {
-         *   // the quark, naming the object data
-         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-         *   // retrieve the old string list
-         *   GList *list = g_object_steal_qdata (object, quark_string_list);
-         *
-         *   // prepend new string
-         *   list = g_list_prepend (list, g_strdup (new_string));
-         *   // this changed 'list', so we need to set it again
-         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-         * }
-         * static void
-         * free_string_list (gpointer data)
-         * {
-         *   GList *node, *list = data;
-         *
-         *   for (node = list; node; node = node->next)
-         *     g_free (node->data);
-         *   g_list_free (list);
-         * }
-         * ```
-         *
-         * Using `g_object_get_qdata()` in the above example, instead of
-         * `g_object_steal_qdata()` would have left the destroy function set,
-         * and thus the partial string list would have been freed upon
-         * `g_object_set_qdata_full()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        steal_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Reverts the effect of a previous call to
-         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
-         * and when it reaches zero, queued "notify" signals are emitted.
-         *
-         * Duplicate notifications for each property are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
-         * in which they have been queued.
-         *
-         * It is an error to call this function when the freeze count is zero.
-         */
-        thaw_notify(): void;
-        /**
-         * Decreases the reference count of `object`. When its reference count
-         * drops to 0, the object is finalized (i.e. its memory is freed).
-         *
-         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
-         * an instance variable of another object), it is recommended to clear the
-         * pointer to `null` rather than retain a dangling pointer to a potentially
-         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
-         */
-        unref(): void;
-        /**
-         * This function essentially limits the life time of the `closure` to
-         * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling `g_closure_invalidate()` on
-         * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
-         * added as marshal guards to the `closure`, to ensure that an extra
-         * reference count is held on `object` during invocation of the
-         * `closure`.  Usually, this function will be called on closures that
-         * use this `object` as closure data.
-         * @param closure {@link GObject.Closure} to watch
-         */
-        watch_closure(closure: GObject.Closure): void;
-        /**
-         * the `constructed` function is called by `g_object_new()` as the
-         *  final step of the object creation process.  At the point of the call, all
-         *  construction properties have been set on the object.  The purpose of this
-         *  call is to allow for object initialisation steps that can only be performed
-         *  after construction properties have been set.  `constructed` implementors
-         *  should chain up to the `constructed` call of their parent class to allow it
-         *  to complete its initialisation.
-         * @virtual
-         */
-        vfunc_constructed(): void;
-        /**
-         * emits property change notification for a bunch
-         *  of properties. Overriding `dispatch_properties_changed` should be rarely
-         *  needed.
-         * @param n_pspecs
-         * @param pspecs
-         * @virtual
-         */
-        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
-        /**
-         * the `dispose` function is supposed to drop all references to other
-         *  objects, but keep the instance otherwise intact, so that client method
-         *  invocations still work. It may be run multiple times (due to reference
-         *  loops). Before returning, `dispose` should chain up to the `dispose` method
-         *  of the parent class.
-         * @virtual
-         */
-        vfunc_dispose(): void;
-        /**
-         * instance finalization function, should finish the finalization of
-         *  the instance begun in `dispose` and chain up to the `finalize` method of the
-         *  parent class.
-         * @virtual
-         */
-        vfunc_finalize(): void;
-        /**
-         * the generic getter for all properties of this type. Should be
-         *  overridden for every type with properties.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param pspec
-         * @virtual
-         */
-        vfunc_notify(pspec: GObject.ParamSpec): void;
-        /**
-         * the generic setter for all properties of this type. Should be
-         *  overridden for every type with properties. If implementations of
-         *  `set_property` don't emit property change notification explicitly, this will
-         *  be done implicitly by the type system. However, if the notify signal is
-         *  emitted explicitly, the type system will not emit it a second time.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
-         * @param id Handler ID of the handler to be disconnected
-         */
-        disconnect(id: number): void;
-        /**
-         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
-         * @param properties Object containing the properties to set
-         */
-        set(properties: { [key: string]: any }): void;
-        /**
-         * Blocks a handler of an instance so it will not be called during any signal emissions
-         * @param id Handler ID of the handler to be blocked
-         */
-        block_signal_handler(id: number): void;
-        /**
-         * Unblocks a handler so it will be called again during any signal emissions
-         * @param id Handler ID of the handler to be unblocked
-         */
-        unblock_signal_handler(id: number): void;
-        /**
-         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
-         * @param detailedName Name of the signal to stop emission of
-         */
-        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace VpnConnection {
@@ -37337,16 +36481,19 @@ export namespace NM {
         /**
          * The VPN login banner of the active VPN connection.
          * @read-only
+         * @default null
          */
         get banner(): string;
         /**
          * The VPN state of the active VPN connection.
          * @read-only
+         * @default NM.VpnConnectionState.UNKNOWN
          */
         get vpn_state(): VpnConnectionState;
         /**
          * The VPN state of the active VPN connection.
          * @read-only
+         * @default NM.VpnConnectionState.UNKNOWN
          */
         get vpnState(): VpnConnectionState;
 
@@ -37432,6 +36579,7 @@ export namespace NM {
          * constructor).
          * @since 1.2
          * @construct-only
+         * @default null
          */
         get filename(): string;
         /**
@@ -37446,6 +36594,7 @@ export namespace NM {
          * The name of the VPN plugin.
          * @since 1.2
          * @read-only
+         * @default null
          */
         get name(): string;
 
@@ -37466,7 +36615,7 @@ export namespace NM {
 
         static new_from_file(filename: string): VpnPluginInfo;
 
-        static new_search_file(name?: string | null, service?: string | null): VpnPluginInfo;
+        static new_search_file(name: string | null, service: string | null): VpnPluginInfo;
 
         static new_with_data(filename: string, keyfile: GLib.KeyFile): VpnPluginInfo;
 
@@ -37602,7 +36751,7 @@ export namespace NM {
          * Set the internal plugin instance. If `null`, only clear the previous instance.
          * @param plugin plugin instance
          */
-        set_editor_plugin(plugin?: VpnEditorPlugin | null): void;
+        set_editor_plugin(plugin: VpnEditorPlugin | null): void;
         /**
          * @returns `true` if the supports hints for secret requests, otherwise `false`
          */
@@ -37657,7 +36806,7 @@ export namespace NM {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -37700,456 +36849,7 @@ export namespace NM {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
-        /**
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`.
-         *
-         * Whenever the `source_property` is changed the `target_property` is
-         * updated using the same value. For instance:
-         *
-         *
-         * ```c
-         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-         * ```
-         *
-         *
-         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
-         * updated with the same value of the "active" property of the action {@link GObject.Object}
-         * instance.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well.
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call `g_object_unref()` on the returned
-         * {@link GObject.Binding} instance.
-         *
-         * Removing the binding by calling `g_object_unref()` on it must only be done if
-         * the binding, `source` and `target` are only used from a single thread and it
-         * is clear that both `source` and `target` outlive the binding. Especially it
-         * is not safe to rely on this if the binding, `source` or `target` can be
-         * finalized from different threads. Keep another reference to the binding and
-         * use `g_binding_unbind()` instead to be on the safe side.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-        ): GObject.Binding;
-        /**
-         * Complete version of `g_object_bind_property()`.
-         *
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`, allowing you to set the transformation functions to be used by
-         * the binding.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property_full(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
-        ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
-        /**
-         * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all `GInitiallyUnowneds` are created with a floating reference
-         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
-         */
-        force_floating(): void;
-        /**
-         * Increases the freeze count on `object`. If the freeze count is
-         * non-zero, the emission of "notify" signals on `object` is
-         * stopped. The signals are queued until the freeze count is decreased
-         * to zero. Duplicate notifications are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
-         * object is frozen.
-         *
-         * This is necessary for accessors that modify multiple properties to prevent
-         * premature notification while the object is still being modified.
-         */
-        freeze_notify(): void;
-        /**
-         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
-         * @param key name of the key for that association
-         * @returns the data if found,          or `null` if no such data exists.
-         */
-        get_data(key: string): any | null;
-        /**
-         * Gets a property of an object.
-         *
-         * The value can be:
-         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
-         * - a GObject.Value initialized with the expected type of the property
-         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
-         *
-         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
-         *
-         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
-         * @param property_name The name of the property to get
-         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
-         */
-        get_property(property_name: string, value: GObject.Value | any): any;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        get_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Gets `n_properties` properties for an `object`.
-         * Obtained properties will be set to `values`. All properties must be valid.
-         * Warnings will be emitted and undefined behaviour may result if invalid
-         * properties are passed in.
-         * @param names the names of each property to get
-         * @param values the values of each property to get
-         */
-        getv(names: string[], values: (GObject.Value | any)[]): void;
-        /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns `true` if `object` has a floating reference
-         */
-        is_floating(): boolean;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param property_name the name of a property installed on the class of `object`.
-         */
-        notify(property_name: string): void;
-        /**
-         * Emits a "notify" signal for the property specified by `pspec` on `object`.
-         *
-         * This function omits the property name lookup, hence it is faster than
-         * `g_object_notify()`.
-         *
-         * One way to avoid using `g_object_notify()` from within the
-         * class that registered the properties, and using `g_object_notify_by_pspec()`
-         * instead, is to store the GParamSpec used with
-         * `g_object_class_install_property()` inside a static array, e.g.:
-         *
-         *
-         * ```c
-         *   typedef enum
-         *   {
-         *     PROP_FOO = 1,
-         *     PROP_LAST
-         *   } MyObjectProperty;
-         *
-         *   static GParamSpec *properties[PROP_LAST];
-         *
-         *   static void
-         *   my_object_class_init (MyObjectClass *klass)
-         *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
-         *                                              0, 100,
-         *                                              50,
-         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-         *     g_object_class_install_property (gobject_class,
-         *                                      PROP_FOO,
-         *                                      properties[PROP_FOO]);
-         *   }
-         * ```
-         *
-         *
-         * and then notify a change on the "foo" property with:
-         *
-         *
-         * ```c
-         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-         * ```
-         *
-         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
-         */
-        notify_by_pspec(pspec: GObject.ParamSpec): void;
-        /**
-         * Increases the reference count of `object`.
-         *
-         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC `typeof()`
-         * extension), so any casting the caller needs to do on the return type must be
-         * explicit.
-         * @returns the same `object`
-         */
-        ref(): GObject.Object;
-        /**
-         * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
-         *
-         * In other words, if the object is floating, then this call "assumes
-         * ownership" of the floating reference, converting it to a normal
-         * reference by clearing the floating flag while leaving the reference
-         * count unchanged.  If the object is not floating, then this call
-         * adds a new normal reference increasing the reference count by one.
-         *
-         * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for `g_object_ref()`.
-         * @returns `object`
-         */
-        ref_sink(): GObject.Object;
-        /**
-         * Releases all references to other objects. This can be used to break
-         * reference cycles.
-         *
-         * This function should only be called from object system implementations.
-         */
-        run_dispose(): void;
-        /**
-         * Each object carries around a table of associations from
-         * strings to pointers.  This function lets you set an association.
-         *
-         * If the object already had an association with that name,
-         * the old association will be destroyed.
-         *
-         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
-         * This means a copy of `key` is kept permanently (even after `object` has been
-         * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
-         * @param key name of the key
-         * @param data data to associate with that key
-         */
-        set_data(key: string, data?: any | null): void;
-        /**
-         * Sets a property on an object.
-         * @param property_name The name of the property to set
-         * @param value The value to set the property to
-         */
-        set_property(property_name: string, value: GObject.Value | any): void;
-        /**
-         * Remove a specified datum from the object's data associations,
-         * without invoking the association's destroy handler.
-         * @param key name of the key
-         * @returns the data if found, or `null`          if no such data exists.
-         */
-        steal_data(key: string): any | null;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()` and removes the `data` from object
-         * without invoking its `destroy()` function (if any was
-         * set).
-         * Usually, calling this function is only required to update
-         * user data pointers with a destroy notifier, for example:
-         *
-         * ```c
-         * void
-         * object_add_to_user_list (GObject     *object,
-         *                          const gchar *new_string)
-         * {
-         *   // the quark, naming the object data
-         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-         *   // retrieve the old string list
-         *   GList *list = g_object_steal_qdata (object, quark_string_list);
-         *
-         *   // prepend new string
-         *   list = g_list_prepend (list, g_strdup (new_string));
-         *   // this changed 'list', so we need to set it again
-         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-         * }
-         * static void
-         * free_string_list (gpointer data)
-         * {
-         *   GList *node, *list = data;
-         *
-         *   for (node = list; node; node = node->next)
-         *     g_free (node->data);
-         *   g_list_free (list);
-         * }
-         * ```
-         *
-         * Using `g_object_get_qdata()` in the above example, instead of
-         * `g_object_steal_qdata()` would have left the destroy function set,
-         * and thus the partial string list would have been freed upon
-         * `g_object_set_qdata_full()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        steal_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Reverts the effect of a previous call to
-         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
-         * and when it reaches zero, queued "notify" signals are emitted.
-         *
-         * Duplicate notifications for each property are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
-         * in which they have been queued.
-         *
-         * It is an error to call this function when the freeze count is zero.
-         */
-        thaw_notify(): void;
-        /**
-         * Decreases the reference count of `object`. When its reference count
-         * drops to 0, the object is finalized (i.e. its memory is freed).
-         *
-         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
-         * an instance variable of another object), it is recommended to clear the
-         * pointer to `null` rather than retain a dangling pointer to a potentially
-         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
-         */
-        unref(): void;
-        /**
-         * This function essentially limits the life time of the `closure` to
-         * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling `g_closure_invalidate()` on
-         * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
-         * added as marshal guards to the `closure`, to ensure that an extra
-         * reference count is held on `object` during invocation of the
-         * `closure`.  Usually, this function will be called on closures that
-         * use this `object` as closure data.
-         * @param closure {@link GObject.Closure} to watch
-         */
-        watch_closure(closure: GObject.Closure): void;
-        /**
-         * the `constructed` function is called by `g_object_new()` as the
-         *  final step of the object creation process.  At the point of the call, all
-         *  construction properties have been set on the object.  The purpose of this
-         *  call is to allow for object initialisation steps that can only be performed
-         *  after construction properties have been set.  `constructed` implementors
-         *  should chain up to the `constructed` call of their parent class to allow it
-         *  to complete its initialisation.
-         * @virtual
-         */
-        vfunc_constructed(): void;
-        /**
-         * emits property change notification for a bunch
-         *  of properties. Overriding `dispatch_properties_changed` should be rarely
-         *  needed.
-         * @param n_pspecs
-         * @param pspecs
-         * @virtual
-         */
-        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
-        /**
-         * the `dispose` function is supposed to drop all references to other
-         *  objects, but keep the instance otherwise intact, so that client method
-         *  invocations still work. It may be run multiple times (due to reference
-         *  loops). Before returning, `dispose` should chain up to the `dispose` method
-         *  of the parent class.
-         * @virtual
-         */
-        vfunc_dispose(): void;
-        /**
-         * instance finalization function, should finish the finalization of
-         *  the instance begun in `dispose` and chain up to the `finalize` method of the
-         *  parent class.
-         * @virtual
-         */
-        vfunc_finalize(): void;
-        /**
-         * the generic getter for all properties of this type. Should be
-         *  overridden for every type with properties.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param pspec
-         * @virtual
-         */
-        vfunc_notify(pspec: GObject.ParamSpec): void;
-        /**
-         * the generic setter for all properties of this type. Should be
-         *  overridden for every type with properties. If implementations of
-         *  `set_property` don't emit property change notification explicitly, this will
-         *  be done implicitly by the type system. However, if the notify signal is
-         *  emitted explicitly, the type system will not emit it a second time.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
-         * @param id Handler ID of the handler to be disconnected
-         */
-        disconnect(id: number): void;
-        /**
-         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
-         * @param properties Object containing the properties to set
-         */
-        set(properties: { [key: string]: any }): void;
-        /**
-         * Blocks a handler of an instance so it will not be called during any signal emissions
-         * @param id Handler ID of the handler to be blocked
-         */
-        block_signal_handler(id: number): void;
-        /**
-         * Unblocks a handler so it will be called again during any signal emissions
-         * @param id Handler ID of the handler to be unblocked
-         */
-        unblock_signal_handler(id: number): void;
-        /**
-         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
-         * @param detailedName Name of the signal to stop emission of
-         */
-        stop_emission_by_name(detailedName: string): void;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
     namespace VpnPluginOld {
@@ -38220,17 +36920,20 @@ export namespace NM {
          * The D-Bus service name of this plugin.
          * @deprecated since 1.2: Replaced by NMVpnServicePlugin.
          * @construct-only
+         * @default null
          */
         get service_name(): string;
         /**
          * The D-Bus service name of this plugin.
          * @deprecated since 1.2: Replaced by NMVpnServicePlugin.
          * @construct-only
+         * @default null
          */
         get serviceName(): string;
         /**
          * The state of the plugin.
          * @deprecated since 1.2: Replaced by NMVpnServicePlugin.
+         * @default NM.VpnServiceState.INIT
          */
         get state(): VpnServiceState;
         set state(val: VpnServiceState);
@@ -38432,7 +37135,7 @@ export namespace NM {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -38475,451 +37178,7 @@ export namespace NM {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
-        /**
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`.
-         *
-         * Whenever the `source_property` is changed the `target_property` is
-         * updated using the same value. For instance:
-         *
-         *
-         * ```c
-         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-         * ```
-         *
-         *
-         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
-         * updated with the same value of the "active" property of the action {@link GObject.Object}
-         * instance.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well.
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call `g_object_unref()` on the returned
-         * {@link GObject.Binding} instance.
-         *
-         * Removing the binding by calling `g_object_unref()` on it must only be done if
-         * the binding, `source` and `target` are only used from a single thread and it
-         * is clear that both `source` and `target` outlive the binding. Especially it
-         * is not safe to rely on this if the binding, `source` or `target` can be
-         * finalized from different threads. Keep another reference to the binding and
-         * use `g_binding_unbind()` instead to be on the safe side.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-        ): GObject.Binding;
-        /**
-         * Complete version of `g_object_bind_property()`.
-         *
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`, allowing you to set the transformation functions to be used by
-         * the binding.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property_full(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
-        ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
-        /**
-         * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all `GInitiallyUnowneds` are created with a floating reference
-         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
-         */
-        force_floating(): void;
-        /**
-         * Increases the freeze count on `object`. If the freeze count is
-         * non-zero, the emission of "notify" signals on `object` is
-         * stopped. The signals are queued until the freeze count is decreased
-         * to zero. Duplicate notifications are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
-         * object is frozen.
-         *
-         * This is necessary for accessors that modify multiple properties to prevent
-         * premature notification while the object is still being modified.
-         */
-        freeze_notify(): void;
-        /**
-         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
-         * @param key name of the key for that association
-         * @returns the data if found,          or `null` if no such data exists.
-         */
-        get_data(key: string): any | null;
-        /**
-         * Gets a property of an object.
-         *
-         * The value can be:
-         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
-         * - a GObject.Value initialized with the expected type of the property
-         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
-         *
-         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
-         *
-         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
-         * @param property_name The name of the property to get
-         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
-         */
-        get_property(property_name: string, value: GObject.Value | any): any;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        get_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Gets `n_properties` properties for an `object`.
-         * Obtained properties will be set to `values`. All properties must be valid.
-         * Warnings will be emitted and undefined behaviour may result if invalid
-         * properties are passed in.
-         * @param names the names of each property to get
-         * @param values the values of each property to get
-         */
-        getv(names: string[], values: (GObject.Value | any)[]): void;
-        /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns `true` if `object` has a floating reference
-         */
-        is_floating(): boolean;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param property_name the name of a property installed on the class of `object`.
-         */
-        notify(property_name: string): void;
-        /**
-         * Emits a "notify" signal for the property specified by `pspec` on `object`.
-         *
-         * This function omits the property name lookup, hence it is faster than
-         * `g_object_notify()`.
-         *
-         * One way to avoid using `g_object_notify()` from within the
-         * class that registered the properties, and using `g_object_notify_by_pspec()`
-         * instead, is to store the GParamSpec used with
-         * `g_object_class_install_property()` inside a static array, e.g.:
-         *
-         *
-         * ```c
-         *   typedef enum
-         *   {
-         *     PROP_FOO = 1,
-         *     PROP_LAST
-         *   } MyObjectProperty;
-         *
-         *   static GParamSpec *properties[PROP_LAST];
-         *
-         *   static void
-         *   my_object_class_init (MyObjectClass *klass)
-         *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
-         *                                              0, 100,
-         *                                              50,
-         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-         *     g_object_class_install_property (gobject_class,
-         *                                      PROP_FOO,
-         *                                      properties[PROP_FOO]);
-         *   }
-         * ```
-         *
-         *
-         * and then notify a change on the "foo" property with:
-         *
-         *
-         * ```c
-         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-         * ```
-         *
-         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
-         */
-        notify_by_pspec(pspec: GObject.ParamSpec): void;
-        /**
-         * Increases the reference count of `object`.
-         *
-         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC `typeof()`
-         * extension), so any casting the caller needs to do on the return type must be
-         * explicit.
-         * @returns the same `object`
-         */
-        ref(): GObject.Object;
-        /**
-         * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
-         *
-         * In other words, if the object is floating, then this call "assumes
-         * ownership" of the floating reference, converting it to a normal
-         * reference by clearing the floating flag while leaving the reference
-         * count unchanged.  If the object is not floating, then this call
-         * adds a new normal reference increasing the reference count by one.
-         *
-         * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for `g_object_ref()`.
-         * @returns `object`
-         */
-        ref_sink(): GObject.Object;
-        /**
-         * Releases all references to other objects. This can be used to break
-         * reference cycles.
-         *
-         * This function should only be called from object system implementations.
-         */
-        run_dispose(): void;
-        /**
-         * Each object carries around a table of associations from
-         * strings to pointers.  This function lets you set an association.
-         *
-         * If the object already had an association with that name,
-         * the old association will be destroyed.
-         *
-         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
-         * This means a copy of `key` is kept permanently (even after `object` has been
-         * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
-         * @param key name of the key
-         * @param data data to associate with that key
-         */
-        set_data(key: string, data?: any | null): void;
-        /**
-         * Sets a property on an object.
-         * @param property_name The name of the property to set
-         * @param value The value to set the property to
-         */
-        set_property(property_name: string, value: GObject.Value | any): void;
-        /**
-         * Remove a specified datum from the object's data associations,
-         * without invoking the association's destroy handler.
-         * @param key name of the key
-         * @returns the data if found, or `null`          if no such data exists.
-         */
-        steal_data(key: string): any | null;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()` and removes the `data` from object
-         * without invoking its `destroy()` function (if any was
-         * set).
-         * Usually, calling this function is only required to update
-         * user data pointers with a destroy notifier, for example:
-         *
-         * ```c
-         * void
-         * object_add_to_user_list (GObject     *object,
-         *                          const gchar *new_string)
-         * {
-         *   // the quark, naming the object data
-         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-         *   // retrieve the old string list
-         *   GList *list = g_object_steal_qdata (object, quark_string_list);
-         *
-         *   // prepend new string
-         *   list = g_list_prepend (list, g_strdup (new_string));
-         *   // this changed 'list', so we need to set it again
-         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-         * }
-         * static void
-         * free_string_list (gpointer data)
-         * {
-         *   GList *node, *list = data;
-         *
-         *   for (node = list; node; node = node->next)
-         *     g_free (node->data);
-         *   g_list_free (list);
-         * }
-         * ```
-         *
-         * Using `g_object_get_qdata()` in the above example, instead of
-         * `g_object_steal_qdata()` would have left the destroy function set,
-         * and thus the partial string list would have been freed upon
-         * `g_object_set_qdata_full()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        steal_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Reverts the effect of a previous call to
-         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
-         * and when it reaches zero, queued "notify" signals are emitted.
-         *
-         * Duplicate notifications for each property are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
-         * in which they have been queued.
-         *
-         * It is an error to call this function when the freeze count is zero.
-         */
-        thaw_notify(): void;
-        /**
-         * Decreases the reference count of `object`. When its reference count
-         * drops to 0, the object is finalized (i.e. its memory is freed).
-         *
-         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
-         * an instance variable of another object), it is recommended to clear the
-         * pointer to `null` rather than retain a dangling pointer to a potentially
-         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
-         */
-        unref(): void;
-        /**
-         * This function essentially limits the life time of the `closure` to
-         * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling `g_closure_invalidate()` on
-         * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
-         * added as marshal guards to the `closure`, to ensure that an extra
-         * reference count is held on `object` during invocation of the
-         * `closure`.  Usually, this function will be called on closures that
-         * use this `object` as closure data.
-         * @param closure {@link GObject.Closure} to watch
-         */
-        watch_closure(closure: GObject.Closure): void;
-        /**
-         * the `constructed` function is called by `g_object_new()` as the
-         *  final step of the object creation process.  At the point of the call, all
-         *  construction properties have been set on the object.  The purpose of this
-         *  call is to allow for object initialisation steps that can only be performed
-         *  after construction properties have been set.  `constructed` implementors
-         *  should chain up to the `constructed` call of their parent class to allow it
-         *  to complete its initialisation.
-         * @virtual
-         */
-        vfunc_constructed(): void;
-        /**
-         * emits property change notification for a bunch
-         *  of properties. Overriding `dispatch_properties_changed` should be rarely
-         *  needed.
-         * @param n_pspecs
-         * @param pspecs
-         * @virtual
-         */
-        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
-        /**
-         * the `dispose` function is supposed to drop all references to other
-         *  objects, but keep the instance otherwise intact, so that client method
-         *  invocations still work. It may be run multiple times (due to reference
-         *  loops). Before returning, `dispose` should chain up to the `dispose` method
-         *  of the parent class.
-         * @virtual
-         */
-        vfunc_dispose(): void;
-        /**
-         * instance finalization function, should finish the finalization of
-         *  the instance begun in `dispose` and chain up to the `finalize` method of the
-         *  parent class.
-         * @virtual
-         */
-        vfunc_finalize(): void;
-        /**
-         * the generic getter for all properties of this type. Should be
-         *  overridden for every type with properties.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param pspec
-         * @virtual
-         */
-        vfunc_notify(pspec: GObject.ParamSpec): void;
-        /**
-         * the generic setter for all properties of this type. Should be
-         *  overridden for every type with properties. If implementations of
-         *  `set_property` don't emit property change notification explicitly, this will
-         *  be done implicitly by the type system. However, if the notify signal is
-         *  emitted explicitly, the type system will not emit it a second time.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
-         * @param properties Object containing the properties to set
-         */
-        set(properties: { [key: string]: any }): void;
-        /**
-         * Blocks a handler of an instance so it will not be called during any signal emissions
-         * @param id Handler ID of the handler to be blocked
-         */
-        block_signal_handler(id: number): void;
-        /**
-         * Unblocks a handler so it will be called again during any signal emissions
-         * @param id Handler ID of the handler to be unblocked
-         */
-        unblock_signal_handler(id: number): void;
-        /**
-         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
-         * @param detailedName Name of the signal to stop emission of
-         */
-        stop_emission_by_name(detailedName: string): void;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
     namespace VpnServicePlugin {
@@ -38994,17 +37253,20 @@ export namespace NM {
          * The D-Bus service name of this plugin.
          * @since 1.2
          * @construct-only
+         * @default null
          */
         get service_name(): string;
         /**
          * The D-Bus service name of this plugin.
          * @since 1.2
          * @construct-only
+         * @default null
          */
         get serviceName(): string;
         /**
          * The state of the plugin.
          * @since 1.2
+         * @default NM.VpnServiceState.INIT
          */
         get state(): VpnServiceState;
         set state(val: VpnServiceState);
@@ -39012,12 +37274,14 @@ export namespace NM {
          * Whether to watch for D-Bus peer's changes.
          * @since 1.2
          * @construct-only
+         * @default false
          */
         get watch_peer(): boolean;
         /**
          * Whether to watch for D-Bus peer's changes.
          * @since 1.2
          * @construct-only
+         * @default false
          */
         get watchPeer(): boolean;
 
@@ -39230,7 +37494,7 @@ export namespace NM {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -39273,451 +37537,7 @@ export namespace NM {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
-        /**
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`.
-         *
-         * Whenever the `source_property` is changed the `target_property` is
-         * updated using the same value. For instance:
-         *
-         *
-         * ```c
-         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-         * ```
-         *
-         *
-         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
-         * updated with the same value of the "active" property of the action {@link GObject.Object}
-         * instance.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well.
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call `g_object_unref()` on the returned
-         * {@link GObject.Binding} instance.
-         *
-         * Removing the binding by calling `g_object_unref()` on it must only be done if
-         * the binding, `source` and `target` are only used from a single thread and it
-         * is clear that both `source` and `target` outlive the binding. Especially it
-         * is not safe to rely on this if the binding, `source` or `target` can be
-         * finalized from different threads. Keep another reference to the binding and
-         * use `g_binding_unbind()` instead to be on the safe side.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-        ): GObject.Binding;
-        /**
-         * Complete version of `g_object_bind_property()`.
-         *
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`, allowing you to set the transformation functions to be used by
-         * the binding.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property_full(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
-        ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
-        /**
-         * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all `GInitiallyUnowneds` are created with a floating reference
-         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
-         */
-        force_floating(): void;
-        /**
-         * Increases the freeze count on `object`. If the freeze count is
-         * non-zero, the emission of "notify" signals on `object` is
-         * stopped. The signals are queued until the freeze count is decreased
-         * to zero. Duplicate notifications are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
-         * object is frozen.
-         *
-         * This is necessary for accessors that modify multiple properties to prevent
-         * premature notification while the object is still being modified.
-         */
-        freeze_notify(): void;
-        /**
-         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
-         * @param key name of the key for that association
-         * @returns the data if found,          or `null` if no such data exists.
-         */
-        get_data(key: string): any | null;
-        /**
-         * Gets a property of an object.
-         *
-         * The value can be:
-         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
-         * - a GObject.Value initialized with the expected type of the property
-         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
-         *
-         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
-         *
-         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
-         * @param property_name The name of the property to get
-         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
-         */
-        get_property(property_name: string, value: GObject.Value | any): any;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        get_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Gets `n_properties` properties for an `object`.
-         * Obtained properties will be set to `values`. All properties must be valid.
-         * Warnings will be emitted and undefined behaviour may result if invalid
-         * properties are passed in.
-         * @param names the names of each property to get
-         * @param values the values of each property to get
-         */
-        getv(names: string[], values: (GObject.Value | any)[]): void;
-        /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns `true` if `object` has a floating reference
-         */
-        is_floating(): boolean;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param property_name the name of a property installed on the class of `object`.
-         */
-        notify(property_name: string): void;
-        /**
-         * Emits a "notify" signal for the property specified by `pspec` on `object`.
-         *
-         * This function omits the property name lookup, hence it is faster than
-         * `g_object_notify()`.
-         *
-         * One way to avoid using `g_object_notify()` from within the
-         * class that registered the properties, and using `g_object_notify_by_pspec()`
-         * instead, is to store the GParamSpec used with
-         * `g_object_class_install_property()` inside a static array, e.g.:
-         *
-         *
-         * ```c
-         *   typedef enum
-         *   {
-         *     PROP_FOO = 1,
-         *     PROP_LAST
-         *   } MyObjectProperty;
-         *
-         *   static GParamSpec *properties[PROP_LAST];
-         *
-         *   static void
-         *   my_object_class_init (MyObjectClass *klass)
-         *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
-         *                                              0, 100,
-         *                                              50,
-         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-         *     g_object_class_install_property (gobject_class,
-         *                                      PROP_FOO,
-         *                                      properties[PROP_FOO]);
-         *   }
-         * ```
-         *
-         *
-         * and then notify a change on the "foo" property with:
-         *
-         *
-         * ```c
-         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-         * ```
-         *
-         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
-         */
-        notify_by_pspec(pspec: GObject.ParamSpec): void;
-        /**
-         * Increases the reference count of `object`.
-         *
-         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC `typeof()`
-         * extension), so any casting the caller needs to do on the return type must be
-         * explicit.
-         * @returns the same `object`
-         */
-        ref(): GObject.Object;
-        /**
-         * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
-         *
-         * In other words, if the object is floating, then this call "assumes
-         * ownership" of the floating reference, converting it to a normal
-         * reference by clearing the floating flag while leaving the reference
-         * count unchanged.  If the object is not floating, then this call
-         * adds a new normal reference increasing the reference count by one.
-         *
-         * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for `g_object_ref()`.
-         * @returns `object`
-         */
-        ref_sink(): GObject.Object;
-        /**
-         * Releases all references to other objects. This can be used to break
-         * reference cycles.
-         *
-         * This function should only be called from object system implementations.
-         */
-        run_dispose(): void;
-        /**
-         * Each object carries around a table of associations from
-         * strings to pointers.  This function lets you set an association.
-         *
-         * If the object already had an association with that name,
-         * the old association will be destroyed.
-         *
-         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
-         * This means a copy of `key` is kept permanently (even after `object` has been
-         * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
-         * @param key name of the key
-         * @param data data to associate with that key
-         */
-        set_data(key: string, data?: any | null): void;
-        /**
-         * Sets a property on an object.
-         * @param property_name The name of the property to set
-         * @param value The value to set the property to
-         */
-        set_property(property_name: string, value: GObject.Value | any): void;
-        /**
-         * Remove a specified datum from the object's data associations,
-         * without invoking the association's destroy handler.
-         * @param key name of the key
-         * @returns the data if found, or `null`          if no such data exists.
-         */
-        steal_data(key: string): any | null;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()` and removes the `data` from object
-         * without invoking its `destroy()` function (if any was
-         * set).
-         * Usually, calling this function is only required to update
-         * user data pointers with a destroy notifier, for example:
-         *
-         * ```c
-         * void
-         * object_add_to_user_list (GObject     *object,
-         *                          const gchar *new_string)
-         * {
-         *   // the quark, naming the object data
-         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-         *   // retrieve the old string list
-         *   GList *list = g_object_steal_qdata (object, quark_string_list);
-         *
-         *   // prepend new string
-         *   list = g_list_prepend (list, g_strdup (new_string));
-         *   // this changed 'list', so we need to set it again
-         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-         * }
-         * static void
-         * free_string_list (gpointer data)
-         * {
-         *   GList *node, *list = data;
-         *
-         *   for (node = list; node; node = node->next)
-         *     g_free (node->data);
-         *   g_list_free (list);
-         * }
-         * ```
-         *
-         * Using `g_object_get_qdata()` in the above example, instead of
-         * `g_object_steal_qdata()` would have left the destroy function set,
-         * and thus the partial string list would have been freed upon
-         * `g_object_set_qdata_full()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        steal_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Reverts the effect of a previous call to
-         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
-         * and when it reaches zero, queued "notify" signals are emitted.
-         *
-         * Duplicate notifications for each property are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
-         * in which they have been queued.
-         *
-         * It is an error to call this function when the freeze count is zero.
-         */
-        thaw_notify(): void;
-        /**
-         * Decreases the reference count of `object`. When its reference count
-         * drops to 0, the object is finalized (i.e. its memory is freed).
-         *
-         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
-         * an instance variable of another object), it is recommended to clear the
-         * pointer to `null` rather than retain a dangling pointer to a potentially
-         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
-         */
-        unref(): void;
-        /**
-         * This function essentially limits the life time of the `closure` to
-         * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling `g_closure_invalidate()` on
-         * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
-         * added as marshal guards to the `closure`, to ensure that an extra
-         * reference count is held on `object` during invocation of the
-         * `closure`.  Usually, this function will be called on closures that
-         * use this `object` as closure data.
-         * @param closure {@link GObject.Closure} to watch
-         */
-        watch_closure(closure: GObject.Closure): void;
-        /**
-         * the `constructed` function is called by `g_object_new()` as the
-         *  final step of the object creation process.  At the point of the call, all
-         *  construction properties have been set on the object.  The purpose of this
-         *  call is to allow for object initialisation steps that can only be performed
-         *  after construction properties have been set.  `constructed` implementors
-         *  should chain up to the `constructed` call of their parent class to allow it
-         *  to complete its initialisation.
-         * @virtual
-         */
-        vfunc_constructed(): void;
-        /**
-         * emits property change notification for a bunch
-         *  of properties. Overriding `dispatch_properties_changed` should be rarely
-         *  needed.
-         * @param n_pspecs
-         * @param pspecs
-         * @virtual
-         */
-        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
-        /**
-         * the `dispose` function is supposed to drop all references to other
-         *  objects, but keep the instance otherwise intact, so that client method
-         *  invocations still work. It may be run multiple times (due to reference
-         *  loops). Before returning, `dispose` should chain up to the `dispose` method
-         *  of the parent class.
-         * @virtual
-         */
-        vfunc_dispose(): void;
-        /**
-         * instance finalization function, should finish the finalization of
-         *  the instance begun in `dispose` and chain up to the `finalize` method of the
-         *  parent class.
-         * @virtual
-         */
-        vfunc_finalize(): void;
-        /**
-         * the generic getter for all properties of this type. Should be
-         *  overridden for every type with properties.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param pspec
-         * @virtual
-         */
-        vfunc_notify(pspec: GObject.ParamSpec): void;
-        /**
-         * the generic setter for all properties of this type. Should be
-         *  overridden for every type with properties. If implementations of
-         *  `set_property` don't emit property change notification explicitly, this will
-         *  be done implicitly by the type system. However, if the notify signal is
-         *  emitted explicitly, the type system will not emit it a second time.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
-        /**
-         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
-         * @param properties Object containing the properties to set
-         */
-        set(properties: { [key: string]: any }): void;
-        /**
-         * Blocks a handler of an instance so it will not be called during any signal emissions
-         * @param id Handler ID of the handler to be blocked
-         */
-        block_signal_handler(id: number): void;
-        /**
-         * Unblocks a handler so it will be called again during any signal emissions
-         * @param id Handler ID of the handler to be unblocked
-         */
-        unblock_signal_handler(id: number): void;
-        /**
-         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
-         * @param detailedName Name of the signal to stop emission of
-         */
-        stop_emission_by_name(detailedName: string): void;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
     namespace WifiP2PPeer {
@@ -39770,18 +37590,21 @@ export namespace NM {
          * The flags of the P2P peer.
          * @since 1.16
          * @read-only
+         * @default NM.__80211ApFlags.NONE
          */
         get flags(): __80211ApFlags;
         /**
          * The hardware address of the P2P peer.
          * @since 1.16
          * @read-only
+         * @default null
          */
         get hw_address(): string;
         /**
          * The hardware address of the P2P peer.
          * @since 1.16
          * @read-only
+         * @default null
          */
         get hwAddress(): string;
         /**
@@ -39789,6 +37612,7 @@ export namespace NM {
          * P2P peer was found.  A value of -1 means the peer has never been seen.
          * @since 1.16
          * @read-only
+         * @default -1
          */
         get last_seen(): number;
         /**
@@ -39796,48 +37620,56 @@ export namespace NM {
          * P2P peer was found.  A value of -1 means the peer has never been seen.
          * @since 1.16
          * @read-only
+         * @default -1
          */
         get lastSeen(): number;
         /**
          * The manufacturer of the P2P peer.
          * @since 1.16
          * @read-only
+         * @default null
          */
         get manufacturer(): string;
         /**
          * The model of the P2P peer.
          * @since 1.16
          * @read-only
+         * @default null
          */
         get model(): string;
         /**
          * The hardware address of the P2P peer.
          * @since 1.16
          * @read-only
+         * @default null
          */
         get model_number(): string;
         /**
          * The hardware address of the P2P peer.
          * @since 1.16
          * @read-only
+         * @default null
          */
         get modelNumber(): string;
         /**
          * The name of the P2P peer.
          * @since 1.16
          * @read-only
+         * @default null
          */
         get name(): string;
         /**
          * The serial number of the P2P peer.
          * @since 1.16
          * @read-only
+         * @default null
          */
         get serial(): string;
         /**
          * The current signal strength of the P2P peer.
          * @since 1.16
          * @read-only
+         * @default 0
          */
         get strength(): number;
         /**
@@ -40000,30 +37832,35 @@ export namespace NM {
          * The name of the WiMAX NSP.
          * @deprecated since 1.22: WiMAX is no longer supported by NetworkManager since 1.2.0.
          * @read-only
+         * @default null
          */
         get name(): string;
         /**
          * The network type of the WiMAX NSP.
          * @deprecated since 1.22: WiMAX is no longer supported by NetworkManager since 1.2.0.
          * @read-only
+         * @default NM.WimaxNspNetworkType.UNKNOWN
          */
         get network_type(): WimaxNspNetworkType;
         /**
          * The network type of the WiMAX NSP.
          * @deprecated since 1.22: WiMAX is no longer supported by NetworkManager since 1.2.0.
          * @read-only
+         * @default NM.WimaxNspNetworkType.UNKNOWN
          */
         get networkType(): WimaxNspNetworkType;
         /**
          * The signal quality of the WiMAX NSP.
          * @deprecated since 1.22: WiMAX is no longer supported by NetworkManager since 1.2.0.
          * @read-only
+         * @default 0
          */
         get signal_quality(): number;
         /**
          * The signal quality of the WiMAX NSP.
          * @deprecated since 1.22: WiMAX is no longer supported by NetworkManager since 1.2.0.
          * @read-only
+         * @default 0
          */
         get signalQuality(): number;
 
@@ -40468,7 +38305,7 @@ export namespace NM {
          * @param name the name of an address attribute
          * @param value the value
          */
-        set_attribute(name: string, value?: GLib.Variant | null): void;
+        set_attribute(name: string, value: GLib.Variant | null): void;
         /**
          * Sets the IP address prefix property of this address object.
          * @param prefix the IP address prefix
@@ -40594,7 +38431,7 @@ export namespace NM {
          * @param name the name of a route attribute
          * @param value the value
          */
-        set_attribute(name: string, value?: GLib.Variant | null): void;
+        set_attribute(name: string, value: GLib.Variant | null): void;
         /**
          * Sets the destination property of this route object.
          *
@@ -40616,7 +38453,7 @@ export namespace NM {
          * it.
          * @param next_hop the route's next hop, as a string
          */
-        set_next_hop(next_hop?: string | null): void;
+        set_next_hop(next_hop: string | null): void;
         /**
          * Sets the prefix property of this route object.
          * @param prefix the route prefix
@@ -40651,7 +38488,7 @@ export namespace NM {
         static from_string(
             str: string,
             to_string_flags: IPRoutingRuleAsStringFlags,
-            extra_args?: GLib.HashTable<any, any> | null,
+            extra_args: GLib.HashTable<any, any> | null,
         ): IPRoutingRule;
 
         // Methods
@@ -40660,7 +38497,7 @@ export namespace NM {
          * @param other the other {@link NM.IPRoutingRule} instance to compare
          * @returns zero, a positive, or a negative integer to indicate   equality or how the arguments compare.
          */
-        cmp(other?: IPRoutingRule | null): number;
+        cmp(other: IPRoutingRule | null): number;
         /**
          * @returns the set action.
          */
@@ -40795,7 +38632,7 @@ export namespace NM {
          * representation you'd get double backslashes.
          * @param iifname the iifname to set or `null` to unset.
          */
-        set_iifname(iifname?: string | null): void;
+        set_iifname(iifname: string | null): void;
         /**
          * @param invert the new value to set
          */
@@ -40811,7 +38648,7 @@ export namespace NM {
          * representation you'd get double backslashes.
          * @param oifname the oifname to set or `null` to unset.
          */
-        set_oifname(oifname?: string | null): void;
+        set_oifname(oifname: string | null): void;
         /**
          * A valid priority ranges from 0 to `G_MAXUINT32`. "-1" is also allowed
          * to reset the priority. It is a bug calling this function with any
@@ -40858,7 +38695,7 @@ export namespace NM {
          * @param extra_args extra arguments for controlling the string   conversion. Currently, not extra arguments are supported.
          * @returns the string representation or `null` on error.
          */
-        to_string(to_string_flags: IPRoutingRuleAsStringFlags, extra_args?: GLib.HashTable<any, any> | null): string;
+        to_string(to_string_flags: IPRoutingRuleAsStringFlags, extra_args: GLib.HashTable<any, any> | null): string;
         /**
          * Decreases the reference count of the instance and destroys
          * the instance if the reference count reaches zero.
@@ -41417,7 +39254,7 @@ export namespace NM {
          * @param name the name of a route attribute
          * @param value the value
          */
-        set_attribute(name: string, value?: GLib.Variant | null): void;
+        set_attribute(name: string, value: GLib.Variant | null): void;
         /**
          * Sets the protocol for the given VLAN.
          * @param vlan_id the VLAN id
@@ -41484,7 +39321,7 @@ export namespace NM {
          * @param name the name of an action attribute
          * @param value the value
          */
-        set_attribute(name: string, value?: GLib.Variant | null): void;
+        set_attribute(name: string, value: GLib.Variant | null): void;
         /**
          * Decreases the reference count of the object.  If the reference count
          * reaches zero, the object will be destroyed.
@@ -41547,7 +39384,7 @@ export namespace NM {
          * @param name the name of an qdisc attribute
          * @param value the value
          */
-        set_attribute(name: string, value?: GLib.Variant | null): void;
+        set_attribute(name: string, value: GLib.Variant | null): void;
         /**
          * Sets the queueing discipline handle.
          * @param handle the queueing discipline handle
@@ -41831,7 +39668,7 @@ export namespace NM {
          * @param out_is_valid `true` if the returned value is a valid allowed-ip   setting.   This parameter is wrongly not marked as (out) argument, it is   thus not accessible via introspection. This cannot be fixed without   breaking API for introspection users.
          * @returns the allowed-ip setting at index `idx`.   If `idx` is out of range, `null` will be returned.
          */
-        get_allowed_ip(idx: number, out_is_valid?: boolean | null): string | null;
+        get_allowed_ip(idx: number, out_is_valid: boolean | null): string | null;
         /**
          * @returns the number of allowed-ips entries.
          */
@@ -42005,7 +39842,7 @@ export namespace NM {
          * Clears and frees secrets determined by `func`.
          * @param func function to be called to determine whether a     specific secret should be cleared or not. If `null`, all secrets are cleared.
          */
-        clear_secrets_with_flags(func?: SettingClearSecretsWithFlagsFn | null): void;
+        clear_secrets_with_flags(func: SettingClearSecretsWithFlagsFn | null): void;
         /**
          * Deletes all of `connection`'s settings.
          */
@@ -42563,16 +40400,19 @@ export namespace NM {
         /**
          * Longer description of the VPN plugin.
          * @read-only
+         * @default null
          */
         get description(): string;
         /**
          * Short display name of the VPN plugin.
          * @read-only
+         * @default null
          */
         get name(): string;
         /**
          * D-Bus service name of the plugin's VPN service.
          * @read-only
+         * @default null
          */
         get service(): string;
 
@@ -42618,7 +40458,7 @@ export namespace NM {
          * reference as the plugin-info might also reference the editor-plugin.
          * @param plugin_info a {@link NM.VpnPluginInfo} instance or `null`
          */
-        set_plugin_info(plugin_info?: VpnPluginInfo | null): void;
+        set_plugin_info(plugin_info: VpnPluginInfo | null): void;
     }
 
     export const VpnEditorPlugin: VpnEditorPluginNamespace & {

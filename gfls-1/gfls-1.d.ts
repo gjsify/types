@@ -103,7 +103,7 @@ export namespace Gfls {
         expected_size: bigint | number,
         max_size: bigint | number,
         io_priority: number,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): globalThis.Promise<GLib.Bytes>;
     /**
      * This function starts a read operation on `input_stream`. It is meant to be
@@ -158,8 +158,8 @@ export namespace Gfls {
         expected_size: bigint | number,
         max_size: bigint | number,
         io_priority: number,
-        cancellable?: Gio.Cancellable | null,
-        callback?: Gio.AsyncReadyCallback<Gio.InputStream> | null,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<Gio.InputStream> | null,
     ): globalThis.Promise<GLib.Bytes> | void;
     /**
      * Finishes an operation started with `gfls_input_stream_read_async()`.
@@ -203,7 +203,7 @@ export namespace Gfls {
         max_size: bigint | number,
         max_n_bytes_per_line: number,
         io_priority: number,
-        cancellable?: Gio.Cancellable | null,
+        cancellable: Gio.Cancellable | null,
     ): globalThis.Promise<GLib.Bytes>;
     /**
      * Starts a basic file loading operation.
@@ -250,8 +250,8 @@ export namespace Gfls {
         max_size: bigint | number,
         max_n_bytes_per_line: number,
         io_priority: number,
-        cancellable?: Gio.Cancellable | null,
-        callback?: Gio.AsyncReadyCallback<Gio.File> | null,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<Gio.File> | null,
     ): globalThis.Promise<GLib.Bytes> | void;
     /**
      * Finishes an operation started with `gfls_loader_basic_load_async()`.

@@ -547,20 +547,20 @@ export namespace Gsf {
      * @param p pointer to storage
      * @returns interpreted data
      */
-    function le_get_double(p?: any | null): number;
+    function le_get_double(p: any | null): number;
     /**
      * Interpret binary data as a float in little endian order.
      * @param p pointer to storage
      * @returns interpreted data
      */
-    function le_get_float(p?: any | null): number;
+    function le_get_float(p: any | null): number;
     /**
      * Interpret binary data as a guint64 (8 byte unsigned integer type) in little
      * endian order.
      * @param p pointer to storage
      * @returns interpreted data
      */
-    function le_get_guint64(p?: any | null): number;
+    function le_get_guint64(p: any | null): number;
     /**
      * Store a value of type double in memory in little endian order
      * @param p pointer to storage
@@ -603,7 +603,7 @@ export namespace Gsf {
      * @param lang Language id, i.e., locale name.
      * @returns the LID (Language Identifier) for the input language. 	If lang is `null`, return 0x0400 ("-none-"), and not 0x0000 ("no proofing")
      */
-    function msole_lid_for_language(lang?: string | null): number;
+    function msole_lid_for_language(lang: string | null): number;
     /**
      * @param lid numerical language id
      * @returns our best guess at the codepage for the given language id
@@ -753,7 +753,7 @@ export namespace Gsf {
      * @gir-type Callback
      */
     interface XMLInExtDtor {
-        (xin: XMLIn, old_state?: any | null): void;
+        (xin: XMLIn, old_state: any | null): void;
     }
     /**
      * @gir-type Callback
@@ -1567,11 +1567,13 @@ export namespace Gsf {
         /**
          * Controls the level of compression used for new members.
          * @read-only
+         * @default 0
          */
         get compression_level(): number;
         /**
          * Controls the level of compression used for new members.
          * @read-only
+         * @default 0
          */
         get compressionLevel(): number;
         /**
@@ -1588,6 +1590,7 @@ export namespace Gsf {
         get source(): Input;
         /**
          * @read-only
+         * @default false
          */
         get zip64(): boolean;
 
@@ -1672,6 +1675,7 @@ export namespace Gsf {
         /**
          * `true` if the end of the file has been reached.
          * @read-only
+         * @default false
          */
         get eof(): boolean;
         /**
@@ -1683,21 +1687,25 @@ export namespace Gsf {
         get modtime(): GLib.DateTime;
         /**
          * @read-only
+         * @default null
          */
         get name(): string;
         /**
          * The current position in the input.
          * @read-only
+         * @default 0
          */
         get position(): number;
         /**
          * The number of bytes remaining in the file.
          * @read-only
+         * @default 0
          */
         get remaining(): number;
         /**
          * The total number of bytes in the file.
          * @read-only
+         * @default 0
          */
         get size(): number;
 
@@ -1828,23 +1836,23 @@ export namespace Gsf {
          * @param container
          * @returns `true` if the assignment was ok.
          */
-        set_container(container?: Infile | null): boolean;
+        set_container(container: Infile | null): boolean;
         /**
          * protected.
          * @param modtime the new modification time.
          * @returns `true` if the assignment was ok.
          */
-        set_modtime(modtime?: GLib.DateTime | null): boolean;
+        set_modtime(modtime: GLib.DateTime | null): boolean;
         /**
          * @param st
          */
-        set_modtime_from_stat(st?: any | null): boolean;
+        set_modtime_from_stat(st: any | null): boolean;
         /**
          * protected.
          * @param name the new name of the stream
          * @returns `true` if the assignment was ok.
          */
-        set_name(name?: string | null): boolean;
+        set_name(name: string | null): boolean;
         /**
          * protected.
          * @param filename the (fs-sys encoded) filename
@@ -1914,6 +1922,7 @@ export namespace Gsf {
 
         /**
          * @construct-only
+         * @default false
          */
         get raw(): boolean;
         /**
@@ -1922,10 +1931,12 @@ export namespace Gsf {
         get source(): Input;
         /**
          * @construct-only
+         * @default -1
          */
         get uncompressed_size(): number;
         /**
          * @construct-only
+         * @default -1
          */
         get uncompressedSize(): number;
 
@@ -2067,14 +2078,17 @@ export namespace Gsf {
 
         /**
          * @construct-only
+         * @default null
          */
         get content_type(): string;
         /**
          * @construct-only
+         * @default null
          */
         get contentType(): string;
         /**
          * @construct-only
+         * @default null
          */
         get url(): string;
 
@@ -2429,10 +2443,12 @@ export namespace Gsf {
 
         /**
          * @construct-only
+         * @default 100
          */
         get odf_version(): number;
         /**
          * @construct-only
+         * @default 100
          */
         get odfVersion(): number;
 
@@ -2597,10 +2613,12 @@ export namespace Gsf {
 
         /**
          * @construct-only
+         * @default 512
          */
         get big_block_size(): number;
         /**
          * @construct-only
+         * @default 512
          */
         get bigBlockSize(): number;
         /**
@@ -2609,10 +2627,12 @@ export namespace Gsf {
         get sink(): Output;
         /**
          * @construct-only
+         * @default 64
          */
         get small_block_size(): number;
         /**
          * @construct-only
+         * @default 64
          */
         get smallBlockSize(): number;
 
@@ -2709,10 +2729,12 @@ export namespace Gsf {
         get contentType(): string;
         /**
          * @construct-only
+         * @default false
          */
         get is_dir(): boolean;
         /**
          * @construct-only
+         * @default false
          */
         get isDir(): boolean;
         /**
@@ -2886,26 +2908,32 @@ export namespace Gsf {
 
         /**
          * @construct-only
+         * @default 8
          */
         get compression_level(): number;
         /**
          * @construct-only
+         * @default 8
          */
         get compressionLevel(): number;
         /**
          * @construct-only
+         * @default -1
          */
         get deflate_level(): number;
         /**
          * @construct-only
+         * @default -1
          */
         get deflateLevel(): number;
         /**
          * @construct-only
+         * @default null
          */
         get entry_name(): string;
         /**
          * @construct-only
+         * @default null
          */
         get entryName(): string;
         /**
@@ -2914,6 +2942,7 @@ export namespace Gsf {
         get sink(): Output;
         /**
          * @construct-only
+         * @default -1
          */
         get zip64(): number;
 
@@ -2980,7 +3009,7 @@ export namespace Gsf {
             container: Outfile;
             is_closed: boolean;
             isClosed: boolean;
-            modtime: GLib.DateTime;
+            modtime: GLib.DateTime | null;
             name: string;
             position: bigint | number;
             size: bigint | number;
@@ -3004,11 +3033,13 @@ export namespace Gsf {
         /**
          * `true` if the output has been closed.
          * @read-only
+         * @default false
          */
         get is_closed(): boolean;
         /**
          * `true` if the output has been closed.
          * @read-only
+         * @default false
          */
         get isClosed(): boolean;
         /**
@@ -3018,17 +3049,22 @@ export namespace Gsf {
          * do anything with this property.
          * @construct-only
          */
-        get modtime(): GLib.DateTime;
+        get modtime(): GLib.DateTime | null;
+        /**
+         * @default null
+         */
         get name(): string;
         set name(val: string);
         /**
          * The current position in the output.
          * @read-only
+         * @default 0
          */
         get position(): number;
         /**
          * The current file size.
          * @read-only
+         * @default 0
          */
         get size(): number;
 
@@ -3157,26 +3193,26 @@ export namespace Gsf {
          * @param container {@link Gsf.Outfile}
          * @returns `true` if the assignment was ok.
          */
-        set_container(container?: Outfile | null): boolean;
+        set_container(container: Outfile | null): boolean;
         /**
          * @param modtime the new modification time.
          * @returns `true` if the assignment was ok.
          */
-        set_modtime(modtime?: GLib.DateTime | null): boolean;
+        set_modtime(modtime: GLib.DateTime | null): boolean;
         /**
          * <note>This is a utility routine that should only be used by derived
          * outputs.</note>
          * @param name the new name
          * @returns `true` if the assignment was ok.
          */
-        set_name(name?: string | null): boolean;
+        set_name(name: string | null): boolean;
         /**
          * <note>This is a utility routine that should only be used by derived
          * outputs.</note>
          * @param filename the (fs-sys encoded) filename
          * @returns `true` if the assignment was ok.
          */
-        set_name_from_filename(filename?: string | null): boolean;
+        set_name_from_filename(filename: string | null): boolean;
         /**
          * Tell the current position in `output`, similar to
          * <citerefentry><refentrytitle>ftell</refentrytitle>
@@ -3295,22 +3331,49 @@ export namespace Gsf {
 
         // Properties
 
+        /**
+         * @default \n
+         */
         get eol(): string;
         set eol(val: string);
+        /**
+         * @default \"
+         */
         get quote(): string;
         set quote(val: string);
+        /**
+         * @default Gsf.OutputCsvQuotingMode.NEVER
+         */
         get quoting_mode(): OutputCsvQuotingMode;
         set quoting_mode(val: OutputCsvQuotingMode);
+        /**
+         * @default Gsf.OutputCsvQuotingMode.NEVER
+         */
         get quotingMode(): OutputCsvQuotingMode;
         set quotingMode(val: OutputCsvQuotingMode);
+        /**
+         * @default true
+         */
         get quoting_on_whitespace(): boolean;
         set quoting_on_whitespace(val: boolean);
+        /**
+         * @default true
+         */
         get quotingOnWhitespace(): boolean;
         set quotingOnWhitespace(val: boolean);
+        /**
+         * @default null
+         */
         get quoting_triggers(): string;
         set quoting_triggers(val: string);
+        /**
+         * @default null
+         */
         get quotingTriggers(): string;
         set quotingTriggers(val: string);
+        /**
+         * @default ,
+         */
         get separator(): string;
         set separator(val: string);
         get sink(): Output;
@@ -3402,12 +3465,19 @@ export namespace Gsf {
 
         // Properties
 
+        /**
+         * @default -1
+         */
         get deflate_level(): number;
         set deflate_level(val: number);
+        /**
+         * @default -1
+         */
         get deflateLevel(): number;
         set deflateLevel(val: number);
         /**
          * @construct-only
+         * @default false
          */
         get raw(): boolean;
         /**
@@ -3619,23 +3689,28 @@ export namespace Gsf {
          * Either NULL or a UTF-8 string (representable in the target encoding)
          * to convert and output in place of characters that cannot be represented
          * in the target encoding.  NULL means use \u1234 or \U12345678 format.
+         * @default null
          */
         get fallback(): string;
         set fallback(val: string);
         /**
          * @construct-only
+         * @default UTF-8
          */
         get input_charset(): string;
         /**
          * @construct-only
+         * @default UTF-8
          */
         get inputCharset(): string;
         /**
          * @construct-only
+         * @default UTF-8
          */
         get output_charset(): string;
         /**
          * @construct-only
+         * @default UTF-8
          */
         get outputCharset(): string;
         /**
@@ -3982,8 +4057,14 @@ export namespace Gsf {
 
         // Properties
 
+        /**
+         * @default true
+         */
         get pretty_print(): boolean;
         set pretty_print(val: boolean);
+        /**
+         * @default true
+         */
         get prettyPrint(): boolean;
         set prettyPrint(val: boolean);
         /**
@@ -4065,7 +4146,7 @@ export namespace Gsf {
          * @param id tag id, or `null` for node content
          * @param val_utf8 a utf8 encoded string
          */
-        add_cstr(id?: string | null, val_utf8?: string | null): void;
+        add_cstr(id: string | null, val_utf8: string | null): void;
         /**
          * dump `val_utf8` to an attribute named `id` without checking to see if
          * the content needs escaping.  A useful performance enhancement when
@@ -4074,7 +4155,7 @@ export namespace Gsf {
          * @param id tag id, or `null` for node content
          * @param val_utf8 a utf8 encoded string to export
          */
-        add_cstr_unchecked(id?: string | null, val_utf8?: string | null): void;
+        add_cstr_unchecked(id: string | null, val_utf8: string | null): void;
         /**
          * Output the name of value `val` of enumeration type `etype`.
          * @param id tag id, or `null` for node content
@@ -4224,7 +4305,7 @@ export namespace Gsf {
          * Sets `prop`'s link to `link`
          * @param link a link.
          */
-        set_link(link?: string | null): void;
+        set_link(link: string | null): void;
         /**
          * Assigns `val` to `prop`, and unsets and frees the current value.
          * @param val {@link GObject.Value}
@@ -4469,7 +4550,7 @@ export namespace Gsf {
          * @param user_state arbitrary content stored in the parser
          * @returns `false` on error
          */
-        parse(input: Input, user_state?: any | null): boolean;
+        parse(input: Input, user_state: any | null): boolean;
         /**
          * Call the function `handler` when an unexpected child node is found
          * @param handler The function to call

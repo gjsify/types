@@ -325,11 +325,13 @@ export namespace Xfconf {
         /**
          * The string identifier used for this channel.
          * @construct-only
+         * @default null
          */
         get channel_name(): string;
         /**
          * The string identifier used for this channel.
          * @construct-only
+         * @default null
          */
         get channelName(): string;
         /**
@@ -337,6 +339,7 @@ export namespace Xfconf {
          * or not.  This is mainly used internally by {@link Xfconf.Channel}
          * but may be useful for API users.
          * @construct-only
+         * @default true
          */
         get is_singleton(): boolean;
         /**
@@ -344,18 +347,21 @@ export namespace Xfconf {
          * or not.  This is mainly used internally by {@link Xfconf.Channel}
          * but may be useful for API users.
          * @construct-only
+         * @default true
          */
         get isSingleton(): boolean;
         /**
          * The string identifier used for the property base inside a channel.
          * This can be used to restrict a channel to a subset of properties.
          * @construct-only
+         * @default null
          */
         get property_base(): string;
         /**
          * The string identifier used for the property base inside a channel.
          * This can be used to restrict a channel to a subset of properties.
          * @construct-only
+         * @default null
          */
         get propertyBase(): string;
 
@@ -442,7 +448,7 @@ export namespace Xfconf {
          * @param value_struct A pointer to a struct.
          * @returns `true` if the property was retrieved successfully,          `false` otherwise.
          */
-        get_named_struct(property: string, struct_name: string, value_struct?: any | null): boolean;
+        get_named_struct(property: string, struct_name: string, value_struct: any | null): boolean;
         /**
          * Retrieves multiple properties from `channel` and stores
          * them in a {@link GLib.HashTable} in which the keys correspond to
@@ -456,7 +462,7 @@ export namespace Xfconf {
          * @param property_base The base property name of properties to retrieve.
          * @returns A newly-allocated {@link GLib.HashTable}, which should be freed with          `g_hash_table_destroy()` when no longer needed.
          */
-        get_properties(property_base?: string | null): GLib.HashTable<string, GObject.Value>;
+        get_properties(property_base: string | null): GLib.HashTable<string, GObject.Value>;
         /**
          * Gets a property on `channel` and stores it in `value`.  The caller is
          * responsible for calling `g_value_unset()` when finished with `value`.
@@ -485,7 +491,7 @@ export namespace Xfconf {
          * @param default_value A fallback value.
          * @returns A newly-allocated string which should                                      be freed with `g_free()` when no longer                                      needed.  If `property` is not in                                      `channel` or if its type does not match,                                      a `g_strdup()`ed copy of                                      `default_value` is returned.
          */
-        get_string(property: string, default_value?: string | null): string | null;
+        get_string(property: string, default_value: string | null): string | null;
         /**
          * Retrieves the string list value associated with `property` on `channel`.
          * @param property A property name.
@@ -598,7 +604,7 @@ export namespace Xfconf {
          * @param value_struct A pointer to a struct.
          * @returns `true` if the property was set successfully,          `false` otherwise.
          */
-        set_named_struct(property: string, struct_name: string, value_struct?: any | null): boolean;
+        set_named_struct(property: string, struct_name: string, value_struct: any | null): boolean;
         /**
          * Sets the value stored in `value`  to a property on `channel`.
          *

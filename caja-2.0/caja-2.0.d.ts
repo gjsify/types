@@ -146,24 +146,39 @@ export namespace Caja {
 
         // Properties
 
+        /**
+         * @default null
+         */
         get attribute(): string;
         set attribute(val: string);
         /**
          * @read-only
+         * @default 0
          */
         get attribute_q(): number;
         /**
          * @read-only
+         * @default 0
          */
         get attributeQ(): number;
+        /**
+         * @default null
+         */
         get description(): string;
         set description(val: string);
+        /**
+         * @default null
+         */
         get label(): string;
         set label(val: string);
         /**
          * @construct-only
+         * @default null
          */
         get name(): string;
+        /**
+         * @default 0
+         */
         get xalign(): number;
         set xalign(val: number);
 
@@ -309,20 +324,36 @@ export namespace Caja {
 
         // Properties
 
+        /**
+         * @default null
+         */
         get icon(): string;
         set icon(val: string);
+        /**
+         * @default null
+         */
         get label(): string;
         set label(val: string);
         get menu(): Menu;
         set menu(val: Menu);
         /**
          * @construct-only
+         * @default null
          */
         get name(): string;
+        /**
+         * @default true
+         */
         get priority(): boolean;
         set priority(val: boolean);
+        /**
+         * @default true
+         */
         get sensitive(): boolean;
         set sensitive(val: boolean);
+        /**
+         * @default null
+         */
         get tip(): string;
         set tip(val: string);
 
@@ -421,6 +452,7 @@ export namespace Caja {
         set label(val: Gtk.Widget);
         /**
          * @construct-only
+         * @default null
          */
         get name(): string;
         get page(): Gtk.Widget;

@@ -476,26 +476,32 @@ export namespace Bamf {
 
         /**
          * @read-only
+         * @default null
          */
         get desktop_id(): string;
         /**
          * @read-only
+         * @default null
          */
         get desktopId(): string;
         /**
          * @read-only
+         * @default false
          */
         get is_foreground_tab(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get isForegroundTab(): boolean;
         /**
          * @read-only
+         * @default null
          */
         get location(): string;
         /**
          * @read-only
+         * @default 0
          */
         get xid(): number;
 
@@ -676,30 +682,37 @@ export namespace Bamf {
 
         /**
          * @read-only
+         * @default false
          */
         get active(): boolean;
         /**
          * @read-only
+         * @default null
          */
         get path(): string;
         /**
          * @read-only
+         * @default false
          */
         get running(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get starting(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get urgent(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get user_visible(): boolean;
         /**
          * @read-only
+         * @default false
          */
         get userVisible(): boolean;
 

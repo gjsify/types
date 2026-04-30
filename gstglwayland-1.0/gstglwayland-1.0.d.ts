@@ -66,12 +66,12 @@ export namespace GstGLWayland {
 
         _init(...args: any[]): void;
 
-        static ['new'](name?: string | null): GLDisplayWayland;
+        static ['new'](name: string | null): GLDisplayWayland;
         // Conflicted with GstGL.GLDisplay.new
 
         static ['new'](...args: never[]): any;
 
-        static new_with_display(display?: any | null): GLDisplayWayland;
+        static new_with_display(display: any | null): GLDisplayWayland;
 
         // Signals
 

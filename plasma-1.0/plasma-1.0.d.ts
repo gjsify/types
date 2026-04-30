@@ -63,7 +63,7 @@ export namespace Plasma {
 
         _init(...args: any[]): void;
 
-        static ['new'](store_socket_name: string, options?: ClientOptions | null): Client;
+        static ['new'](store_socket_name: string, options: ClientOptions | null): Client;
 
         // Signals
 
@@ -94,7 +94,7 @@ export namespace Plasma {
          * @param options The option for creating an object.
          * @returns A newly created {@link Plasma.CreatedObject}   on success, `null` on error.
          */
-        create(id: ObjectID, data_size: bigint | number, options?: ClientCreateOptions | null): CreatedObject | null;
+        create(id: ObjectID, data_size: bigint | number, options: ClientCreateOptions | null): CreatedObject | null;
         /**
          * @returns `true` on success, `false` if there was an error.
          */
@@ -188,7 +188,7 @@ export namespace Plasma {
         /**
          * @param metadata The metadata of a created object.
          */
-        set_metadata(metadata?: Uint8Array | null): void;
+        set_metadata(metadata: Uint8Array | null): void;
     }
 
     namespace ClientOptions {

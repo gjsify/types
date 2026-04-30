@@ -5286,7 +5286,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsAddDomain containing optional arguments
          * @returns the returned value, or -1 on error
          */
-        add_domain(dom: string, optargs?: AddDomain | null): number;
+        add_domain(dom: string, optargs: AddDomain | null): number;
         /**
          * add an image to examine or modify
          *
@@ -5519,7 +5519,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsAddDrive containing optional arguments
          * @returns true on success, false on error
          */
-        add_drive(filename: string, optargs?: AddDrive | null): boolean;
+        add_drive(filename: string, optargs: AddDrive | null): boolean;
         /**
          * add a drive in snapshot mode (read-only)
          *
@@ -5555,7 +5555,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsAddDriveScratch containing optional arguments
          * @returns true on success, false on error
          */
-        add_drive_scratch(size: bigint | number, optargs?: AddDriveScratch | null): boolean;
+        add_drive_scratch(size: bigint | number, optargs: AddDriveScratch | null): boolean;
         /**
          * add a drive specifying the QEMU block emulation to use
          *
@@ -5605,7 +5605,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsAddLibvirtDom containing optional arguments
          * @returns the returned value, or -1 on error
          */
-        add_libvirt_dom(dom?: any | null, optargs?: AddLibvirtDom | null): number;
+        add_libvirt_dom(dom: any | null, optargs: AddLibvirtDom | null): number;
         /**
          * clear Augeas path
          *
@@ -5653,7 +5653,7 @@ export namespace Guestfs {
          * @param expr
          * @returns the returned value, or -1 on error
          */
-        aug_defvar(name: string, expr?: string | null): number;
+        aug_defvar(name: string, expr: string | null): number;
         /**
          * look up the value of an Augeas path
          *
@@ -5835,7 +5835,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsAugTransform containing optional arguments
          * @returns true on success, false on error
          */
-        aug_transform(lens: string, file: string, optargs?: AugTransform | null): boolean;
+        aug_transform(lens: string, file: string, optargs: AugTransform | null): boolean;
         /**
          * test availability of some parts of the API
          *
@@ -5912,7 +5912,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
          */
-        base64_in(base64file: string, filename: string, cancellable?: Gio.Cancellable | null): boolean;
+        base64_in(base64file: string, filename: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * download file and encode as base64
          *
@@ -5923,7 +5923,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
          */
-        base64_out(filename: string, base64file: string, cancellable?: Gio.Cancellable | null): boolean;
+        base64_out(filename: string, base64file: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * discard all blocks on a device
          *
@@ -6208,7 +6208,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsBTRFSFilesystemDefragment containing optional arguments
          * @returns true on success, false on error
          */
-        btrfs_filesystem_defragment(path: string, optargs?: BTRFSFilesystemDefragment | null): boolean;
+        btrfs_filesystem_defragment(path: string, optargs: BTRFSFilesystemDefragment | null): boolean;
         /**
          * resize a btrfs filesystem
          *
@@ -6232,7 +6232,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsBTRFSFilesystemResize containing optional arguments
          * @returns true on success, false on error
          */
-        btrfs_filesystem_resize(mountpoint: string, optargs?: BTRFSFilesystemResize | null): boolean;
+        btrfs_filesystem_resize(mountpoint: string, optargs: BTRFSFilesystemResize | null): boolean;
         /**
          * list devices for btrfs filesystem
          *
@@ -6270,7 +6270,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsBtrfsFsck containing optional arguments
          * @returns true on success, false on error
          */
-        btrfs_fsck(device: string, optargs?: BtrfsFsck | null): boolean;
+        btrfs_fsck(device: string, optargs: BtrfsFsck | null): boolean;
         /**
          * create an image of a btrfs filesystem
          *
@@ -6284,7 +6284,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsBTRFSImage containing optional arguments
          * @returns true on success, false on error
          */
-        btrfs_image(source: string[], image: string, optargs?: BTRFSImage | null): boolean;
+        btrfs_image(source: string[], image: string, optargs: BTRFSImage | null): boolean;
         /**
          * add a qgroup to a parent qgroup
          *
@@ -6501,7 +6501,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsBTRFSSubvolumeCreate containing optional arguments
          * @returns true on success, false on error
          */
-        btrfs_subvolume_create(dest: string, optargs?: BTRFSSubvolumeCreate | null): boolean;
+        btrfs_subvolume_create(dest: string, optargs: BTRFSSubvolumeCreate | null): boolean;
         /**
          * delete a btrfs subvolume or snapshot
          *
@@ -6579,7 +6579,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsBTRFSSubvolumeSnapshot containing optional arguments
          * @returns true on success, false on error
          */
-        btrfs_subvolume_snapshot(source: string, dest: string, optargs?: BTRFSSubvolumeSnapshot | null): boolean;
+        btrfs_subvolume_snapshot(source: string, dest: string, optargs: BTRFSSubvolumeSnapshot | null): boolean;
         /**
          * enable extended inode refs
          *
@@ -6812,7 +6812,7 @@ export namespace Guestfs {
             csumtype: string,
             directory: string,
             sumsfile: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * change file mode
@@ -6924,8 +6924,8 @@ export namespace Guestfs {
             ctype: string,
             device: string,
             zdevice: string,
-            optargs?: CompressDeviceOut | null,
-            cancellable?: Gio.Cancellable | null,
+            optargs: CompressDeviceOut | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * output compressed file
@@ -6952,8 +6952,8 @@ export namespace Guestfs {
             ctype: string,
             file: string,
             zfile: string,
-            optargs?: CompressOut | null,
-            cancellable?: Gio.Cancellable | null,
+            optargs: CompressOut | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * add hypervisor parameters
@@ -6970,7 +6970,7 @@ export namespace Guestfs {
          * @param hvvalue
          * @returns true on success, false on error
          */
-        config(hvparam: string, hvvalue?: string | null): boolean;
+        config(hvparam: string, hvvalue: string | null): boolean;
         /**
          * copy the attributes of a path (file/directory) to another
          *
@@ -7002,7 +7002,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsCopyAttributes containing optional arguments
          * @returns true on success, false on error
          */
-        copy_attributes(src: string, dest: string, optargs?: CopyAttributes | null): boolean;
+        copy_attributes(src: string, dest: string, optargs: CopyAttributes | null): boolean;
         /**
          * copy from source device to destination device
          *
@@ -7038,7 +7038,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsCopyDeviceToDevice containing optional arguments
          * @returns true on success, false on error
          */
-        copy_device_to_device(src: string, dest: string, optargs?: CopyDeviceToDevice | null): boolean;
+        copy_device_to_device(src: string, dest: string, optargs: CopyDeviceToDevice | null): boolean;
         /**
          * copy from source device to destination file
          *
@@ -7049,7 +7049,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsCopyDeviceToFile containing optional arguments
          * @returns true on success, false on error
          */
-        copy_device_to_file(src: string, dest: string, optargs?: CopyDeviceToFile | null): boolean;
+        copy_device_to_file(src: string, dest: string, optargs: CopyDeviceToFile | null): boolean;
         /**
          * copy from source file to destination device
          *
@@ -7060,7 +7060,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsCopyFileToDevice containing optional arguments
          * @returns true on success, false on error
          */
-        copy_file_to_device(src: string, dest: string, optargs?: CopyFileToDevice | null): boolean;
+        copy_file_to_device(src: string, dest: string, optargs: CopyFileToDevice | null): boolean;
         /**
          * copy from source file to destination file
          *
@@ -7076,7 +7076,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsCopyFileToFile containing optional arguments
          * @returns true on success, false on error
          */
-        copy_file_to_file(src: string, dest: string, optargs?: CopyFileToFile | null): boolean;
+        copy_file_to_file(src: string, dest: string, optargs: CopyFileToFile | null): boolean;
         /**
          * copy local files or directories into an image
          *
@@ -7182,8 +7182,8 @@ export namespace Guestfs {
         cpio_out(
             directory: string,
             cpiofile: string,
-            optargs?: CpioOut | null,
-            cancellable?: Gio.Cancellable | null,
+            optargs: CpioOut | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * copy from source to destination using dd
@@ -7236,7 +7236,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
          */
-        debug_upload(filename: string, tmpname: string, mode: number, cancellable?: Gio.Cancellable | null): boolean;
+        debug_upload(filename: string, tmpname: string, mode: number, cancellable: Gio.Cancellable | null): boolean;
         /**
          * convert device to index
          *
@@ -7317,7 +7317,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsDiskCreate containing optional arguments
          * @returns true on success, false on error
          */
-        disk_create(filename: string, format: string, size: bigint | number, optargs?: DiskCreate | null): boolean;
+        disk_create(filename: string, format: string, size: bigint | number, optargs: DiskCreate | null): boolean;
         /**
          * detect the disk format of a disk image
          *
@@ -7382,7 +7382,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
          */
-        download(remotefilename: string, filename: string, cancellable?: Gio.Cancellable | null): boolean;
+        download(remotefilename: string, filename: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * download the given data units from the disk
          *
@@ -7417,8 +7417,8 @@ export namespace Guestfs {
             start: bigint | number,
             stop: bigint | number,
             filename: string,
-            optargs?: DownloadBlocks | null,
-            cancellable?: Gio.Cancellable | null,
+            optargs: DownloadBlocks | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * download a file to the local machine given its inode
@@ -7442,7 +7442,7 @@ export namespace Guestfs {
             device: string,
             inode: bigint | number,
             filename: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * download a file to the local machine with offset and size
@@ -7470,7 +7470,7 @@ export namespace Guestfs {
             filename: string,
             offset: bigint | number,
             size: bigint | number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * drop kernel page cache, dentries and inodes
@@ -7528,7 +7528,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsE2fsck containing optional arguments
          * @returns true on success, false on error
          */
-        e2fsck(device: string, optargs?: E2fsck | null): boolean;
+        e2fsck(device: string, optargs: E2fsck | null): boolean;
         /**
          * check an ext2/ext3 filesystem
          *
@@ -7944,7 +7944,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns an array of TSKDirent objects, or NULL on error
          */
-        filesystem_walk(device: string, cancellable?: Gio.Cancellable | null): TSKDirent[];
+        filesystem_walk(device: string, cancellable: Gio.Cancellable | null): TSKDirent[];
         /**
          * fill a file with octets
          *
@@ -8041,7 +8041,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
          */
-        find0(directory: string, files: string, cancellable?: Gio.Cancellable | null): boolean;
+        find0(directory: string, files: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * search the entries associated to the given inode
          *
@@ -8057,7 +8057,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns an array of TSKDirent objects, or NULL on error
          */
-        find_inode(device: string, inode: bigint | number, cancellable?: Gio.Cancellable | null): TSKDirent[];
+        find_inode(device: string, inode: bigint | number, cancellable: Gio.Cancellable | null): TSKDirent[];
         /**
          * find a filesystem by label
          *
@@ -8135,7 +8135,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsFstrim containing optional arguments
          * @returns true on success, false on error
          */
-        fstrim(mountpoint: string, optargs?: Fstrim | null): boolean;
+        fstrim(mountpoint: string, optargs: Fstrim | null): boolean;
         /**
          * get the additional kernel options
          *
@@ -8609,7 +8609,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsGlobExpand containing optional arguments
          * @returns an array of returned strings, or NULL on error
          */
-        glob_expand(pattern: string, optargs?: GlobExpand | null): string[];
+        glob_expand(pattern: string, optargs: GlobExpand | null): string[];
         /**
          * return lines matching a pattern
          *
@@ -8636,7 +8636,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsGrep containing optional arguments
          * @returns an array of returned strings, or NULL on error
          */
-        grep(regex: string, path: string, optargs?: Grep | null): string[];
+        grep(regex: string, path: string, optargs: Grep | null): string[];
         /**
          * return lines matching a pattern
          *
@@ -8743,7 +8743,7 @@ export namespace Guestfs {
          * @param filename
          * @returns true on success, false on error
          */
-        hivex_commit(filename?: string | null): boolean;
+        hivex_commit(filename: string | null): boolean;
         /**
          * add a child node
          *
@@ -8890,7 +8890,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsHivexOpen containing optional arguments
          * @returns true on success, false on error
          */
-        hivex_open(filename: string, optargs?: HivexOpen | null): boolean;
+        hivex_open(filename: string, optargs: HivexOpen | null): boolean;
         /**
          * return the root node of the hive
          *
@@ -9409,7 +9409,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsInspectGetIcon containing optional arguments
          * @returns an array of binary data, or NULL on error
          */
-        inspect_get_icon(root: string, optargs?: InspectGetIcon | null): Uint8Array;
+        inspect_get_icon(root: string, optargs: InspectGetIcon | null): Uint8Array;
         /**
          * get major version of inspected operating system
          *
@@ -9924,7 +9924,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
          */
-        internal_exit(cancellable?: Gio.Cancellable | null): boolean;
+        internal_exit(cancellable: Gio.Cancellable | null): boolean;
         /**
          * internal test function - do not use
          *
@@ -9959,8 +9959,8 @@ export namespace Guestfs {
             filein: string,
             fileout: string,
             bufferin: Uint8Array | string,
-            optargs?: InternalTest | null,
-            cancellable?: Gio.Cancellable | null,
+            optargs: InternalTest | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * internal test function - do not use
@@ -9978,7 +9978,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
          */
-        internal_test_63_optargs(optargs?: InternalTest63Optargs | null, cancellable?: Gio.Cancellable | null): boolean;
+        internal_test_63_optargs(optargs: InternalTest63Optargs | null, cancellable: Gio.Cancellable | null): boolean;
         /**
          * internal test function - do not use
          *
@@ -10009,8 +10009,8 @@ export namespace Guestfs {
          * @returns true on success, false on error
          */
         internal_test_only_optargs(
-            optargs?: InternalTestOnlyOptargs | null,
-            cancellable?: Gio.Cancellable | null,
+            optargs: InternalTestOnlyOptargs | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * internal test function - do not use
@@ -10342,7 +10342,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsIsBlockdev containing optional arguments
          * @returns the returned value, or -1 on error
          */
-        is_blockdev(path: string, optargs?: IsBlockdev | null): number;
+        is_blockdev(path: string, optargs: IsBlockdev | null): number;
         /**
          * is busy processing a command
          *
@@ -10368,7 +10368,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsIsChardev containing optional arguments
          * @returns the returned value, or -1 on error
          */
-        is_chardev(path: string, optargs?: IsChardev | null): number;
+        is_chardev(path: string, optargs: IsChardev | null): number;
         /**
          * is in configuration state
          *
@@ -10394,7 +10394,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsIsDir containing optional arguments
          * @returns the returned value, or -1 on error
          */
-        is_dir(path: string, optargs?: IsDir | null): number;
+        is_dir(path: string, optargs: IsDir | null): number;
         /**
          * test if FIFO (named pipe)
          *
@@ -10410,7 +10410,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsIsFifo containing optional arguments
          * @returns the returned value, or -1 on error
          */
-        is_fifo(path: string, optargs?: IsFifo | null): number;
+        is_fifo(path: string, optargs: IsFifo | null): number;
         /**
          * test if a regular file
          *
@@ -10427,7 +10427,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsIsFile containing optional arguments
          * @returns the returned value, or -1 on error
          */
-        is_file(path: string, optargs?: IsFile | null): number;
+        is_file(path: string, optargs: IsFile | null): number;
         /**
          * is launching subprocess
          *
@@ -10472,7 +10472,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsIsSocket containing optional arguments
          * @returns the returned value, or -1 on error
          */
-        is_socket(path: string, optargs?: IsSocket | null): number;
+        is_socket(path: string, optargs: IsSocket | null): number;
         /**
          * test if symbolic link
          *
@@ -11619,7 +11619,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsMDCreate containing optional arguments
          * @returns true on success, false on error
          */
-        md_create(name: string, devices: string[], optargs?: MDCreate | null): boolean;
+        md_create(name: string, devices: string[], optargs: MDCreate | null): boolean;
         /**
          * obtain metadata for an MD device
          *
@@ -11764,7 +11764,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsMke2fs containing optional arguments
          * @returns true on success, false on error
          */
-        mke2fs(device: string, optargs?: Mke2fs | null): boolean;
+        mke2fs(device: string, optargs: Mke2fs | null): boolean;
         /**
          * make ext2/3/4 filesystem with external journal
          *
@@ -11905,7 +11905,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsMkfs containing optional arguments
          * @returns true on success, false on error
          */
-        mkfs(fstype: string, device: string, optargs?: Mkfs | null): boolean;
+        mkfs(fstype: string, device: string, optargs: Mkfs | null): boolean;
         /**
          * make a filesystem with block size
          *
@@ -11939,7 +11939,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsMkfsBtrfs containing optional arguments
          * @returns true on success, false on error
          */
-        mkfs_btrfs(devices: string[], optargs?: MkfsBtrfs | null): boolean;
+        mkfs_btrfs(devices: string[], optargs: MkfsBtrfs | null): boolean;
         /**
          * make lost+found directory on an ext2/3/4 filesystem
          *
@@ -12105,8 +12105,8 @@ export namespace Guestfs {
         mksquashfs(
             path: string,
             filename: string,
-            optargs?: Mksquashfs | null,
-            cancellable?: Gio.Cancellable | null,
+            optargs: Mksquashfs | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * create a swap partition
@@ -12119,7 +12119,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsMkswap containing optional arguments
          * @returns true on success, false on error
          */
-        mkswap(device: string, optargs?: Mkswap | null): boolean;
+        mkswap(device: string, optargs: Mkswap | null): boolean;
         /**
          * create a swap partition with a label
          *
@@ -12180,7 +12180,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsMktemp containing optional arguments
          * @returns the returned string, or NULL on error
          */
-        mktemp(tmpl: string, optargs?: Mktemp | null): string;
+        mktemp(tmpl: string, optargs: Mktemp | null): string;
         /**
          * load a kernel module
          *
@@ -12234,7 +12234,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsMount9P containing optional arguments
          * @returns true on success, false on error
          */
-        mount_9p(mounttag: string, mountpoint: string, optargs?: Mount9P | null): boolean;
+        mount_9p(mounttag: string, mountpoint: string, optargs: Mount9P | null): boolean;
         /**
          * mount on the local filesystem
          *
@@ -12265,7 +12265,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsMountLocal containing optional arguments
          * @returns true on success, false on error
          */
-        mount_local(localmountpoint: string, optargs?: MountLocal | null): boolean;
+        mount_local(localmountpoint: string, optargs: MountLocal | null): boolean;
         /**
          * run main loop of mount on the local filesystem
          *
@@ -12287,7 +12287,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
          */
-        mount_local_run(cancellable?: Gio.Cancellable | null): boolean;
+        mount_local_run(cancellable: Gio.Cancellable | null): boolean;
         /**
          * mount a file using the loop device
          *
@@ -12451,7 +12451,7 @@ export namespace Guestfs {
             device: string,
             inode: bigint | number,
             filename: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * restore NTFS from backup file
@@ -12467,7 +12467,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
          */
-        ntfsclone_in(backupfile: string, device: string, cancellable?: Gio.Cancellable | null): boolean;
+        ntfsclone_in(backupfile: string, device: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * save NTFS to backup file
          *
@@ -12496,8 +12496,8 @@ export namespace Guestfs {
         ntfsclone_out(
             device: string,
             backupfile: string,
-            optargs?: NtfscloneOut | null,
-            cancellable?: Gio.Cancellable | null,
+            optargs: NtfscloneOut | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * fix common errors and force Windows to check NTFS
@@ -12518,7 +12518,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsNtfsfix containing optional arguments
          * @returns true on success, false on error
          */
-        ntfsfix(device: string, optargs?: Ntfsfix | null): boolean;
+        ntfsfix(device: string, optargs: Ntfsfix | null): boolean;
         /**
          * resize an NTFS filesystem
          *
@@ -12550,7 +12550,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsNTFSResizeOpts containing optional arguments
          * @returns true on success, false on error
          */
-        ntfsresize(device: string, optargs?: NTFSResizeOpts | null): boolean;
+        ntfsresize(device: string, optargs: NTFSResizeOpts | null): boolean;
         /**
          * resize an NTFS filesystem (with size)
          *
@@ -13331,7 +13331,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsRemount containing optional arguments
          * @returns true on success, false on error
          */
-        remount(mountpoint: string, optargs?: Remount | null): boolean;
+        remount(mountpoint: string, optargs: Remount | null): boolean;
         /**
          * remove a disk image
          *
@@ -13493,7 +13493,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsRsync containing optional arguments
          * @returns true on success, false on error
          */
-        rsync(src: string, dest: string, optargs?: Rsync | null): boolean;
+        rsync(src: string, dest: string, optargs: Rsync | null): boolean;
         /**
          * synchronize host or remote filesystem with filesystem
          *
@@ -13522,7 +13522,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsRsyncIn containing optional arguments
          * @returns true on success, false on error
          */
-        rsync_in(remote: string, dest: string, optargs?: RsyncIn | null): boolean;
+        rsync_in(remote: string, dest: string, optargs: RsyncIn | null): boolean;
         /**
          * synchronize filesystem with host or remote filesystem
          *
@@ -13558,7 +13558,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsRsyncOut containing optional arguments
          * @returns true on success, false on error
          */
-        rsync_out(src: string, remote: string, optargs?: RsyncOut | null): boolean;
+        rsync_out(src: string, remote: string, optargs: RsyncOut | null): boolean;
         /**
          * scrub (securely wipe) a device
          *
@@ -13633,7 +13633,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsSelinuxRelabel containing optional arguments
          * @returns true on success, false on error
          */
-        selinux_relabel(specfile: string, path: string, optargs?: SelinuxRelabel | null): boolean;
+        selinux_relabel(specfile: string, path: string, optargs: SelinuxRelabel | null): boolean;
         /**
          * add options to kernel command line
          *
@@ -13648,7 +13648,7 @@ export namespace Guestfs {
          * @param append
          * @returns true on success, false on error
          */
-        set_append(append?: string | null): boolean;
+        set_append(append: string | null): boolean;
         /**
          * set the backend
          *
@@ -13734,7 +13734,7 @@ export namespace Guestfs {
          * @param cachedir
          * @returns true on success, false on error
          */
-        set_cachedir(cachedir?: string | null): boolean;
+        set_cachedir(cachedir: string | null): boolean;
         /**
          * enable or disable direct appliance mode
          *
@@ -13778,7 +13778,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsSetE2attrs containing optional arguments
          * @returns true on success, false on error
          */
-        set_e2attrs(file: string, attrs: string, optargs?: SetE2attrs | null): boolean;
+        set_e2attrs(file: string, attrs: string, optargs: SetE2attrs | null): boolean;
         /**
          * set ext2 file generation of a file
          *
@@ -13992,7 +13992,7 @@ export namespace Guestfs {
          * @param searchpath
          * @returns true on success, false on error
          */
-        set_path(searchpath?: string | null): boolean;
+        set_path(searchpath: string | null): boolean;
         /**
          * set process group flag
          *
@@ -14045,7 +14045,7 @@ export namespace Guestfs {
          * @param hv
          * @returns true on success, false on error
          */
-        set_qemu(hv?: string | null): boolean;
+        set_qemu(hv: string | null): boolean;
         /**
          * enable or disable the recovery process
          *
@@ -14103,7 +14103,7 @@ export namespace Guestfs {
          * @param tmpdir
          * @returns true on success, false on error
          */
-        set_tmpdir(tmpdir?: string | null): boolean;
+        set_tmpdir(tmpdir: string | null): boolean;
         /**
          * enable or disable command traces
          *
@@ -14566,7 +14566,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsSyslinux containing optional arguments
          * @returns true on success, false on error
          */
-        syslinux(device: string, optargs?: Syslinux | null): boolean;
+        syslinux(device: string, optargs: Syslinux | null): boolean;
         /**
          * return last 10 lines of a file
          *
@@ -14618,12 +14618,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
          */
-        tar_in(
-            tarfile: string,
-            directory: string,
-            optargs?: TarIn | null,
-            cancellable?: Gio.Cancellable | null,
-        ): boolean;
+        tar_in(tarfile: string, directory: string, optargs: TarIn | null, cancellable: Gio.Cancellable | null): boolean;
         /**
          * pack directory into tarfile
          *
@@ -14663,8 +14658,8 @@ export namespace Guestfs {
         tar_out(
             directory: string,
             tarfile: string,
-            optargs?: TarOut | null,
-            cancellable?: Gio.Cancellable | null,
+            optargs: TarOut | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * unpack compressed tarball to directory
@@ -14676,7 +14671,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
          */
-        tgz_in(tarball: string, directory: string, cancellable?: Gio.Cancellable | null): boolean;
+        tgz_in(tarball: string, directory: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * pack directory into compressed tarball
          *
@@ -14687,7 +14682,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
          */
-        tgz_out(directory: string, tarball: string, cancellable?: Gio.Cancellable | null): boolean;
+        tgz_out(directory: string, tarball: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * update file timestamps or create a new file
          *
@@ -14788,7 +14783,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsTune2FS containing optional arguments
          * @returns true on success, false on error
          */
-        tune2fs(device: string, optargs?: Tune2FS | null): boolean;
+        tune2fs(device: string, optargs: Tune2FS | null): boolean;
         /**
          * get ext2/ext3/ext4 superblock details
          *
@@ -14816,7 +14811,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
          */
-        txz_in(tarball: string, directory: string, cancellable?: Gio.Cancellable | null): boolean;
+        txz_in(tarball: string, directory: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * pack directory into compressed tarball
          *
@@ -14830,7 +14825,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
          */
-        txz_out(directory: string, tarball: string, cancellable?: Gio.Cancellable | null): boolean;
+        txz_out(directory: string, tarball: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * set file mode creation mask (umask)
          *
@@ -14863,7 +14858,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsUmount containing optional arguments
          * @returns true on success, false on error
          */
-        umount(pathordevice: string, optargs?: Umount | null): boolean;
+        umount(pathordevice: string, optargs: Umount | null): boolean;
         /**
          * unmount all filesystems
          *
@@ -14883,7 +14878,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsUmountLocal containing optional arguments
          * @returns true on success, false on error
          */
-        umount_local(optargs?: UmountLocal | null): boolean;
+        umount_local(optargs: UmountLocal | null): boolean;
         /**
          * upload a file from the local machine
          *
@@ -14897,7 +14892,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
          */
-        upload(filename: string, remotefilename: string, cancellable?: Gio.Cancellable | null): boolean;
+        upload(filename: string, remotefilename: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * upload a file from the local machine with offset
          *
@@ -14924,7 +14919,7 @@ export namespace Guestfs {
             filename: string,
             remotefilename: string,
             offset: bigint | number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): boolean;
         /**
          * cancel the current upload or download operation
@@ -15381,7 +15376,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsXfsAdmin containing optional arguments
          * @returns true on success, false on error
          */
-        xfs_admin(device: string, optargs?: XfsAdmin | null): boolean;
+        xfs_admin(device: string, optargs: XfsAdmin | null): boolean;
         /**
          * expand an existing XFS filesystem
          *
@@ -15396,7 +15391,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsXfsGrowfs containing optional arguments
          * @returns true on success, false on error
          */
-        xfs_growfs(path: string, optargs?: XfsGrowfs | null): boolean;
+        xfs_growfs(path: string, optargs: XfsGrowfs | null): boolean;
         /**
          * get geometry of XFS filesystem
          *
@@ -15435,7 +15430,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsXfsRepair containing optional arguments
          * @returns the returned value, or -1 on error
          */
-        xfs_repair(device: string, optargs?: XfsRepair | null): number;
+        xfs_repair(device: string, optargs: XfsRepair | null): number;
         /**
          * destroy previously loaded yara rules
          *
@@ -15471,7 +15466,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
          */
-        yara_load(filename: string, cancellable?: Gio.Cancellable | null): boolean;
+        yara_load(filename: string, cancellable: Gio.Cancellable | null): boolean;
         /**
          * scan a file with the loaded yara rules
          *
@@ -15493,7 +15488,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns an array of YaraDetection objects, or NULL on error
          */
-        yara_scan(path: string, cancellable?: Gio.Cancellable | null): YaraDetection[];
+        yara_scan(path: string, cancellable: Gio.Cancellable | null): YaraDetection[];
         /**
          * return lines matching a pattern
          *

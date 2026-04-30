@@ -504,46 +504,55 @@ export namespace GUPnPAV {
 
         /**
          * The child count of this container.
+         * @default 0
          */
         get child_count(): number;
         set child_count(val: number);
         /**
          * The child count of this container.
+         * @default 0
          */
         get childCount(): number;
         set childCount(val: number);
         /**
          * Update ID of this container.
+         * @default 0
          */
         get container_update_id(): number;
         set container_update_id(val: number);
         /**
          * Update ID of this container.
+         * @default 0
          */
         get containerUpdateId(): number;
         set containerUpdateId(val: number);
         /**
          * Whether this container is searchable.
+         * @default false
          */
         get searchable(): boolean;
         set searchable(val: boolean);
         /**
          * The number of bytes used by all child items of this container.
+         * @default -1
          */
         get storage_used(): number;
         set storage_used(val: bigint | number);
         /**
          * The number of bytes used by all child items of this container.
+         * @default -1
          */
         get storageUsed(): number;
         set storageUsed(val: bigint | number);
         /**
          * Total deleted child count of this container.
+         * @default 0
          */
         get total_deleted_child_count(): number;
         set total_deleted_child_count(val: number);
         /**
          * Total deleted child count of this container.
+         * @default 0
          */
         get totalDeletedChildCount(): number;
         set totalDeletedChildCount(val: number);
@@ -723,11 +732,13 @@ export namespace GUPnPAV {
 
         /**
          * The name of this contributor.
+         * @default null
          */
         get name(): string;
         set name(val: string);
         /**
          * The role of this contributor.
+         * @default null
          */
         get role(): string;
         set role(val: string);
@@ -841,26 +852,31 @@ export namespace GUPnPAV {
 
         /**
          * The content of this create Class.
+         * @default null
          */
         get content(): string;
         set content(val: string);
         /**
          * The friendly name of this create Class.
+         * @default null
          */
         get friendly_name(): string;
         set friendly_name(val: string);
         /**
          * The friendly name of this create Class.
+         * @default null
          */
         get friendlyName(): string;
         set friendlyName(val: string);
         /**
          * Whether this create Class can be derived.
+         * @default false
          */
         get include_derived(): boolean;
         set include_derived(val: boolean);
         /**
          * Whether this create Class can be derived.
+         * @default false
          */
         get includeDerived(): boolean;
         set includeDerived(val: boolean);
@@ -986,31 +1002,37 @@ export namespace GUPnPAV {
 
         /**
          * The content of this descriptor.
+         * @default null
          */
         get content(): string;
         set content(val: string);
         /**
          * The ID of this descriptor.
+         * @default null
          */
         get id(): string;
         set id(val: string);
         /**
          * The type of this descriptor.
+         * @default null
          */
         get metadata_type(): string;
         set metadata_type(val: string);
         /**
          * The type of this descriptor.
+         * @default null
          */
         get metadataType(): string;
         set metadataType(val: string);
         /**
          * The name space associated with this descriptor.
+         * @default null
          */
         get name_space(): string;
         set name_space(val: string);
         /**
          * The name space associated with this descriptor.
+         * @default null
          */
         get nameSpace(): string;
         set nameSpace(val: string);
@@ -1160,16 +1182,19 @@ export namespace GUPnPAV {
 
         /**
          * The lifetime in seconds of this DIDLLite item in a media collection.
+         * @default -1
          */
         get lifetime(): number;
         set lifetime(val: bigint | number);
         /**
          * The ref ID of this item.
+         * @default null
          */
         get ref_id(): string;
         set ref_id(val: string);
         /**
          * The ref ID of this item.
+         * @default null
          */
         get refId(): string;
         set refId(val: string);
@@ -1309,38 +1334,45 @@ export namespace GUPnPAV {
 
         /**
          * The album of this object.
+         * @default null
          */
         get album(): string;
         set album(val: string);
         /**
          * The URI to album art of this object.
+         * @default null
          */
         get album_art(): string;
         set album_art(val: string);
         /**
          * The URI to album art of this object.
+         * @default null
          */
         get albumArt(): string;
         set albumArt(val: string);
         /**
          * The artist of this object.
          * @deprecated since 0.5.3: Use `gupnp_didl_lite_object_get_artists` and `gupnp_didl_lite_object_add_artist` instead since unlike this property, they are capable of dealing with multiple artist nodes.
+         * @default null
          */
         get artist(): string;
         set artist(val: string);
         /**
          * The author of this object.
          * @deprecated since 0.5.3: Use `gupnp_didl_lite_object_get_authors` and `gupnp_didl_lite_object_add_author` instead since unlike this property, they are capable of dealing with multiple author nodes.
+         * @default null
          */
         get author(): string;
         set author(val: string);
         /**
          * The creator of this object.
+         * @default null
          */
         get creator(): string;
         set creator(val: string);
         /**
          * The date of this object.
+         * @default null
          */
         get date(): string;
         set date(val: string);
@@ -1358,16 +1390,19 @@ export namespace GUPnPAV {
         get dcNamespace(): any;
         /**
          * The description of this object.
+         * @default null
          */
         get description(): string;
         set description(val: string);
         /**
          * The 'dlna:dlnaManaged' attribute.
+         * @default GUPnPAV.OCMFlags.NONE
          */
         get dlna_managed(): OCMFlags;
         set dlna_managed(val: OCMFlags);
         /**
          * The 'dlna:dlnaManaged' attribute.
+         * @default GUPnPAV.OCMFlags.NONE
          */
         get dlnaManaged(): OCMFlags;
         set dlnaManaged(val: OCMFlags);
@@ -1385,21 +1420,25 @@ export namespace GUPnPAV {
         get dlnaNamespace(): any;
         /**
          * The genre of this object.
+         * @default null
          */
         get genre(): string;
         set genre(val: string);
         /**
          * The ID of this object.
+         * @default null
          */
         get id(): string;
         set id(val: string);
         /**
          * The ID of the parent container of this object.
+         * @default null
          */
         get parent_id(): string;
         set parent_id(val: string);
         /**
          * The ID of the parent container of this object.
+         * @default null
          */
         get parentId(): string;
         set parentId(val: string);
@@ -1417,41 +1456,49 @@ export namespace GUPnPAV {
         get pvNamespace(): any;
         /**
          * Whether this object is restricted.
+         * @default false
          */
         get restricted(): boolean;
         set restricted(val: boolean);
         /**
          * The title of this object.
+         * @default null
          */
         get title(): string;
         set title(val: string);
         /**
          * The original track number of this object.
+         * @default -1
          */
         get track_number(): number;
         set track_number(val: number);
         /**
          * The original track number of this object.
+         * @default -1
          */
         get trackNumber(): number;
         set trackNumber(val: number);
         /**
          * Update ID of this object.
+         * @default 0
          */
         get update_id(): number;
         set update_id(val: number);
         /**
          * Update ID of this object.
+         * @default 0
          */
         get updateId(): number;
         set updateId(val: number);
         /**
          * The UPnP class of this object.
+         * @default null
          */
         get upnp_class(): string;
         set upnp_class(val: string);
         /**
          * The UPnP class of this object.
+         * @default null
          */
         get upnpClass(): string;
         set upnpClass(val: string);
@@ -1469,11 +1516,13 @@ export namespace GUPnPAV {
         get upnpNamespace(): any;
         /**
          * The write status of this object.
+         * @default null
          */
         get write_status(): string;
         set write_status(val: string);
         /**
          * The write status of this object.
+         * @default null
          */
         get writeStatus(): string;
         set writeStatus(val: string);
@@ -2020,8 +2069,8 @@ export namespace GUPnPAV {
             import_uri: string;
             importUri: string;
             protection: string;
-            protocol_info: ProtocolInfo;
-            protocolInfo: ProtocolInfo;
+            protocol_info: ProtocolInfo | null;
+            protocolInfo: ProtocolInfo | null;
             pv_namespace: any;
             pvNamespace: any;
             sample_freq: number;
@@ -2036,7 +2085,7 @@ export namespace GUPnPAV {
             trackTotal: number;
             update_count: number;
             updateCount: number;
-            uri: string;
+            uri: string | null;
             width: number;
             xml_node: any;
             xmlNode: any;
@@ -2053,40 +2102,53 @@ export namespace GUPnPAV {
 
         /**
          * The number of audio channels in this resource.
+         * @default -1
          */
         get audio_channels(): number;
         set audio_channels(val: number);
         /**
          * The number of audio channels in this resource.
+         * @default -1
          */
         get audioChannels(): number;
         set audioChannels(val: number);
         /**
          * The bitrate of this resource.
+         * @default -1
          */
         get bitrate(): number;
         set bitrate(val: number);
         /**
          * The sample size of this resource.
+         * @default -1
          */
         get bits_per_sample(): number;
         set bits_per_sample(val: number);
         /**
          * The sample size of this resource.
+         * @default -1
          */
         get bitsPerSample(): number;
         set bitsPerSample(val: number);
+        /**
+         * @default -1
+         */
         get cleartext_size(): number;
         set cleartext_size(val: bigint | number);
+        /**
+         * @default -1
+         */
         get cleartextSize(): number;
         set cleartextSize(val: bigint | number);
         /**
          * The color-depth of this image/video resource.
+         * @default -1
          */
         get color_depth(): number;
         set color_depth(val: number);
         /**
          * The color-depth of this image/video resource.
+         * @default -1
          */
         get colorDepth(): number;
         set colorDepth(val: number);
@@ -2104,39 +2166,44 @@ export namespace GUPnPAV {
         get dlnaNamespace(): any;
         /**
          * The duration (in seconds) of this resource.
+         * @default -1
          */
         get duration(): number;
         set duration(val: bigint | number);
         /**
          * The height of this image/video resource.
+         * @default -1
          */
         get height(): number;
         set height(val: number);
         /**
          * The Import URI associated with this resource.
+         * @default null
          */
         get import_uri(): string;
         set import_uri(val: string);
         /**
          * The Import URI associated with this resource.
+         * @default null
          */
         get importUri(): string;
         set importUri(val: string);
         /**
          * The protection system used for this resource.
+         * @default null
          */
         get protection(): string;
         set protection(val: string);
         /**
          * The protocol info associated with this resource.
          */
-        get protocol_info(): ProtocolInfo;
-        set protocol_info(val: ProtocolInfo);
+        get protocol_info(): ProtocolInfo | null;
+        set protocol_info(val: ProtocolInfo | null);
         /**
          * The protocol info associated with this resource.
          */
-        get protocolInfo(): ProtocolInfo;
-        set protocolInfo(val: ProtocolInfo);
+        get protocolInfo(): ProtocolInfo | null;
+        set protocolInfo(val: ProtocolInfo | null);
         /**
          * Pointer to the PV metadata namespace registered with the
          * resource object.
@@ -2151,65 +2218,83 @@ export namespace GUPnPAV {
         get pvNamespace(): any;
         /**
          * The sample frequency of this resource.
+         * @default -1
          */
         get sample_freq(): number;
         set sample_freq(val: number);
         /**
          * The sample frequency of this resource.
+         * @default -1
          */
         get sampleFreq(): number;
         set sampleFreq(val: number);
         /**
          * The size (in bytes) of this resource.
+         * @default -1
          */
         get size(): number;
         set size(val: bigint | number);
         /**
          * The size (in bytes) of this resource.
+         * @default -1
          */
         get size64(): number;
         set size64(val: bigint | number);
         /**
          * Type of external subtitle file. Usually SRT or SMI.
+         * @default null
          */
         get subtitle_file_type(): string;
         set subtitle_file_type(val: string);
         /**
          * Type of external subtitle file. Usually SRT or SMI.
+         * @default null
          */
         get subtitleFileType(): string;
         set subtitleFileType(val: string);
         /**
          * Uri to external subtitle file.
+         * @default null
          */
         get subtitle_file_uri(): string;
         set subtitle_file_uri(val: string);
         /**
          * Uri to external subtitle file.
+         * @default null
          */
         get subtitleFileUri(): string;
         set subtitleFileUri(val: string);
         /**
          * Number of tracks in a DIDL_S or DIDL_V resource.
+         * @default 0
          */
         get track_total(): number;
         set track_total(val: number);
         /**
          * Number of tracks in a DIDL_S or DIDL_V resource.
+         * @default 0
          */
         get trackTotal(): number;
         set trackTotal(val: number);
+        /**
+         * @default 0
+         */
         get update_count(): number;
         set update_count(val: number);
+        /**
+         * @default 0
+         */
         get updateCount(): number;
         set updateCount(val: number);
         /**
          * The URI associated with this resource.
+         * @default null
          */
-        get uri(): string;
-        set uri(val: string);
+        get uri(): string | null;
+        set uri(val: string | null);
         /**
          * The width of this image/video resource.
+         * @default -1
          */
         get width(): number;
         set width(val: number);
@@ -2455,13 +2540,13 @@ export namespace GUPnPAV {
          * When `type` is `null` the value is removed.
          * @param type An URI to an external subtitle file
          */
-        set_subtitle_file_type(type?: string | null): void;
+        set_subtitle_file_type(type: string | null): void;
         /**
          * Set the URI of an external subtitle file to be used with this resource.
          * When `uri` is `null` the value is removed.
          * @param uri An URI to an external subtitle file or `null` to remove.
          */
-        set_subtitle_file_uri(uri?: string | null): void;
+        set_subtitle_file_uri(uri: string | null): void;
         /**
          * Set the total number of tracks in this resource.
          * @param track_total The total number of tracks in this resource
@@ -2530,6 +2615,7 @@ export namespace GUPnPAV {
         /**
          * The language the DIDL-Lite fragment is in.
          * @construct-only
+         * @default null
          */
         get language(): string;
         /**
@@ -2558,7 +2644,7 @@ export namespace GUPnPAV {
 
         _init(...args: any[]): void;
 
-        static ['new'](language?: string | null): DIDLLiteWriter;
+        static ['new'](language: string | null): DIDLLiteWriter;
 
         // Signals
 
@@ -2653,21 +2739,25 @@ export namespace GUPnPAV {
         /**
          * The name of this feature.
          * @construct-only
+         * @default null
          */
         get name(): string;
         /**
          * The object IDs related to this feature.
          * @construct-only
+         * @default null
          */
         get object_ids(): string;
         /**
          * The object IDs related to this feature.
          * @construct-only
+         * @default null
          */
         get objectIds(): string;
         /**
          * The version of this feature.
          * @construct-only
+         * @default null
          */
         get version(): string;
 
@@ -2859,7 +2949,7 @@ export namespace GUPnPAV {
             author: string;
             data: string;
             mutable: boolean;
-            title: string;
+            title: string | null;
         }
     }
 
@@ -2873,6 +2963,7 @@ export namespace GUPnPAV {
 
         /**
          * The author of this media collection.
+         * @default null
          */
         get author(): string;
         set author(val: string);
@@ -2881,18 +2972,21 @@ export namespace GUPnPAV {
          * construction it will override the other properties and create a
          * unmutable collection parsed from data.
          * @construct-only
+         * @default null
          */
         set data(val: string);
         /**
          * Whether this media collation is modifyable or not.
          * @read-only
+         * @default false
          */
         get mutable(): boolean;
         /**
          * The title of this media collection.
+         * @default null
          */
-        get title(): string;
-        set title(val: string);
+        get title(): string | null;
+        set title(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -2994,14 +3088,14 @@ export namespace GUPnPAV {
             dlnaFlags: DLNAFlags;
             dlna_operation: DLNAOperation;
             dlnaOperation: DLNAOperation;
-            dlna_profile: string;
-            dlnaProfile: string;
-            mime_type: string;
-            mimeType: string;
-            network: string;
-            play_speeds: string[];
-            playSpeeds: string[];
-            protocol: string;
+            dlna_profile: string | null;
+            dlnaProfile: string | null;
+            mime_type: string | null;
+            mimeType: string | null;
+            network: string | null;
+            play_speeds: string[] | null;
+            playSpeeds: string[] | null;
+            protocol: string | null;
         }
     }
 
@@ -3015,76 +3109,88 @@ export namespace GUPnPAV {
 
         /**
          * The DLNA conversion flags.
+         * @default GUPnPAV.DLNAConversion.NONE
          */
         get dlna_conversion(): DLNAConversion;
         set dlna_conversion(val: DLNAConversion);
         /**
          * The DLNA conversion flags.
+         * @default GUPnPAV.DLNAConversion.NONE
          */
         get dlnaConversion(): DLNAConversion;
         set dlnaConversion(val: DLNAConversion);
         /**
          * Various generic DLNA flags.
+         * @default GUPnPAV.DLNAFlags.NONE
          */
         get dlna_flags(): DLNAFlags;
         set dlna_flags(val: DLNAFlags);
         /**
          * Various generic DLNA flags.
+         * @default GUPnPAV.DLNAFlags.NONE
          */
         get dlnaFlags(): DLNAFlags;
         set dlnaFlags(val: DLNAFlags);
         /**
          * The DLNA operation flags.
+         * @default GUPnPAV.DLNAOperation.NONE
          */
         get dlna_operation(): DLNAOperation;
         set dlna_operation(val: DLNAOperation);
         /**
          * The DLNA operation flags.
+         * @default GUPnPAV.DLNAOperation.NONE
          */
         get dlnaOperation(): DLNAOperation;
         set dlnaOperation(val: DLNAOperation);
         /**
          * The DLNA profile of this info.
+         * @default null
          */
-        get dlna_profile(): string;
-        set dlna_profile(val: string);
+        get dlna_profile(): string | null;
+        set dlna_profile(val: string | null);
         /**
          * The DLNA profile of this info.
+         * @default null
          */
-        get dlnaProfile(): string;
-        set dlnaProfile(val: string);
+        get dlnaProfile(): string | null;
+        set dlnaProfile(val: string | null);
         /**
          * The MIME-type of this info.
+         * @default null
          */
-        get mime_type(): string;
-        set mime_type(val: string);
+        get mime_type(): string | null;
+        set mime_type(val: string | null);
         /**
          * The MIME-type of this info.
+         * @default null
          */
-        get mimeType(): string;
-        set mimeType(val: string);
+        get mimeType(): string | null;
+        set mimeType(val: string | null);
         /**
          * The network this info is associated with.
+         * @default null
          */
-        get network(): string;
-        set network(val: string);
+        get network(): string | null;
+        set network(val: string | null);
         /**
          * The allowed play speeds on this info in the form of array of
          * strings.
          */
-        get play_speeds(): string[];
-        set play_speeds(val: string[]);
+        get play_speeds(): string[] | null;
+        set play_speeds(val: string[] | null);
         /**
          * The allowed play speeds on this info in the form of array of
          * strings.
          */
-        get playSpeeds(): string[];
-        set playSpeeds(val: string[]);
+        get playSpeeds(): string[] | null;
+        set playSpeeds(val: string[] | null);
         /**
          * The protocol of this info.
+         * @default null
          */
-        get protocol(): string;
-        set protocol(val: string);
+        get protocol(): string | null;
+        set protocol(val: string | null);
 
         /**
          * Compile-time signal type information.
