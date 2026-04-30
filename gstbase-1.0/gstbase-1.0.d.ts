@@ -4118,6 +4118,7 @@ export namespace GstBase {
         // Fields
 
         object: Gst.Object;
+        data: CollectData[];
 
         // Constructors
 

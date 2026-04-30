@@ -1170,6 +1170,10 @@ export namespace GstCodecs {
     class AV1Dpb {
         static $gtype: GObject.GType<AV1Dpb>;
 
+        // Fields
+
+        pic_list: AV1Picture[];
+
         // Methods
 
         /**
@@ -1741,6 +1745,10 @@ export namespace GstCodecs {
      */
     class Vp9Dpb {
         static $gtype: GObject.GType<Vp9Dpb>;
+
+        // Fields
+
+        pic_list: Vp9Picture[];
 
         // Methods
 

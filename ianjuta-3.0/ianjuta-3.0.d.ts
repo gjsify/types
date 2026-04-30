@@ -1417,6 +1417,7 @@ export namespace IAnjuta {
         // Fields
 
         size: number;
+        data: DebuggerInstructionALine[];
     }
 
     /**

@@ -5445,6 +5445,7 @@ export namespace BlockDev {
         lv_tags: string[];
         data_lvs: string[];
         metadata_lvs: string[];
+        segs: LVMSEGdata[];
 
         // Methods
 
@@ -5842,6 +5843,7 @@ export namespace BlockDev {
         features: number;
         format_progress_remaining: number;
         write_protected: boolean;
+        lba_formats: NVMELBAFormat[];
 
         // Methods
 
@@ -5896,6 +5898,7 @@ export namespace BlockDev {
 
         current_operation: NVMESelfTestAction;
         current_operation_completion: number;
+        entries: NVMESelfTestLogEntry[];
 
         // Methods
 
@@ -6071,6 +6074,7 @@ export namespace BlockDev {
         self_test_polling_extended: number;
         self_test_polling_conveyance: number;
         smart_capabilities: number;
+        attributes: SmartATAAttribute[];
         power_on_time: number;
         power_cycle_count: number;
         temperature: number;

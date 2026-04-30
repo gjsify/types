@@ -2800,6 +2800,7 @@ export namespace GstRtp {
         state: number;
         data: any[];
         size: number[];
+        map: Gst.MapInfo[];
 
         // Static methods
 

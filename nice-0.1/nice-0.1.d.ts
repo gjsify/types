@@ -2595,6 +2595,7 @@ export namespace Nice {
 
         // Fields
 
+        buffers: Gio.InputVector[];
         n_buffers: number;
         length: number;
     }
@@ -2621,6 +2622,7 @@ export namespace Nice {
 
         // Fields
 
+        buffers: Gio.OutputVector[];
         n_buffers: number;
     }
 

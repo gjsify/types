@@ -5842,6 +5842,7 @@ export namespace Poppler {
 
         type: ActionType;
         title: string;
+        state_list: ActionLayer[];
     }
 
     /**

@@ -1777,6 +1777,7 @@ export namespace GTop {
 
         flags: number;
         ncpu: number;
+        cpuinfo: glibtop_entry[];
     }
 
     /**

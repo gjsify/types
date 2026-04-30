@@ -1114,6 +1114,7 @@ export namespace GnomeKeyring {
         // Fields
 
         item_type: ItemType;
+        attributes: PasswordSchemaAttribute[];
     }
 
     /**
