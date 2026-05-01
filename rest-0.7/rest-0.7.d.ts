@@ -1518,7 +1518,7 @@ export namespace Rest {
 
         static new_string(name: string, use: MemoryUse, string: string): Param;
 
-        static new_with_owner(name: string, data: (Uint8Array | string), content_type: string, filename: (string | null), owner: (any | null), owner_dnotify: (GLib.DestroyNotify | null)): Param;
+        static new_with_owner(name: string, data: (Uint8Array | string), content_type: string, filename: (string | null), owner: (any | null)): Param;
 
         // Methods
         /**

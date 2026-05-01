@@ -26,11 +26,10 @@ export namespace Keybinder {
      * time the key combination is pressed.
      * @param keystring an accelerator description (gtk_accelerator_parse() format)
      * @param handler callback function
-     * @param notify called when `handler` is unregistered
      * @returns `true` if the accelerator could be grabbed
      * @since 0.3.0
      */
-    function bind(keystring: string, handler: Handler, notify: (GLib.DestroyNotify | null)): boolean;
+    function bind(keystring: string, handler: Handler): boolean;
 
     /**
      * @returns the current event timestamp

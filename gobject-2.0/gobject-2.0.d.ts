@@ -1413,10 +1413,9 @@ export function registerClass<
      * @param signal_id the signal identifier, as returned by `g_signal_lookup()`.
      * @param detail the detail on which to call the hook.
      * @param hook_func a {@link GObject.SignalEmissionHook} function.
-     * @param data_destroy a {@link GLib.DestroyNotify} for `hook_data`.
      * @returns the hook id, for later use with `g_signal_remove_emission_hook()`.
      */
-    function signal_add_emission_hook(signal_id: number, detail: GLib.Quark, hook_func: SignalEmissionHook, data_destroy: (GLib.DestroyNotify | null)): number;
+    function signal_add_emission_hook(signal_id: number, detail: GLib.Quark, hook_func: SignalEmissionHook): number;
 
     /**
      * Calls the original class closure of a signal. This function should only

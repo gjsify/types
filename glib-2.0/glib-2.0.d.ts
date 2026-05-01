@@ -5588,11 +5588,10 @@ export class VariantType<S extends string = any> {
      * Creates a new asynchronous queue and sets up a destroy notify
      * function that is used to free any remaining queue items when
      * the queue is destroyed after the final unref.
-     * @param item_free_func function to free queue elements
      * @returns a new {@link GLib.AsyncQueue}. Free with `g_async_queue_unref()`
      * @since 2.16
      */
-    function async_queue_new_full(item_free_func: (DestroyNotify | null)): AsyncQueue;
+    function async_queue_new_full(): AsyncQueue;
 
     /**
      * Specifies a function to be called at normal program termination.
@@ -6621,11 +6620,10 @@ export class VariantType<S extends string = any> {
      * @param priority the priority of the idle source; typically this will be in the   range between {@link GLib.PRIORITY_DEFAULT_IDLE} and   {@link GLib.PRIORITY_HIGH_IDLE}
      * @param pid process to watch — on POSIX systems, this is the positive PID of a   child process; on Windows it is a handle for a process (which doesn’t have   to be a child)
      * @param _function function to call
-     * @param notify function to call when the idle is removed
      * @returns the ID (greater than 0) of the event source
      * @since 2.4
      */
-    function child_watch_add(priority: number, pid: Pid, _function: ChildWatchFunc, notify: (DestroyNotify | null)): number;
+    function child_watch_add(priority: number, pid: Pid, _function: ChildWatchFunc): number;
 
     /**
      * Creates a new child watch source.
@@ -8878,10 +8876,9 @@ export class VariantType<S extends string = any> {
      * need greater control or to use a custom main context.
      * @param priority the priority of the idle source; typically this will be in the   range between {@link GLib.PRIORITY_DEFAULT_IDLE} and   {@link GLib.PRIORITY_HIGH_IDLE}
      * @param _function function to call
-     * @param notify function to call when the idle is removed
      * @returns the ID (greater than 0) of the event source
      */
-    function idle_add(priority: number, _function: SourceFunc, notify: (DestroyNotify | null)): number;
+    function idle_add(priority: number, _function: SourceFunc): number;
 
     /**
      * Removes the idle function with the given data.
@@ -13196,10 +13193,9 @@ export class VariantType<S extends string = any> {
      * @param priority the priority of the timeout source; typically this will be in   the range between {@link GLib.PRIORITY_DEFAULT} and   {@link GLib.PRIORITY_HIGH}
      * @param interval the time between calls to the function, in milliseconds
      * @param _function function to call
-     * @param notify function to call when the timeout is removed
      * @returns the ID (greater than 0) of the event source
      */
-    function timeout_add(priority: number, interval: number, _function: SourceFunc, notify: (DestroyNotify | null)): number;
+    function timeout_add(priority: number, interval: number, _function: SourceFunc): number;
 
     /**
      * Sets a function to be called at regular intervals, with `priority`.
@@ -13245,11 +13241,10 @@ export class VariantType<S extends string = any> {
      * @param priority the priority of the timeout source; typically this will be in   the range between {@link GLib.PRIORITY_DEFAULT} and   {@link GLib.PRIORITY_HIGH}
      * @param interval the time between calls to the function, in seconds
      * @param _function function to call
-     * @param notify function to call when the timeout is removed
      * @returns the ID (greater than 0) of the event source
      * @since 2.14
      */
-    function timeout_add_seconds(priority: number, interval: number, _function: SourceFunc, notify: (DestroyNotify | null)): number;
+    function timeout_add_seconds(priority: number, interval: number, _function: SourceFunc): number;
 
     /**
      * Creates a new timeout source.
@@ -16461,9 +16456,8 @@ export class VariantType<S extends string = any> {
          * Creates a new asynchronous queue and sets up a destroy notify
          * function that is used to free any remaining queue items when
          * the queue is destroyed after the final unref.
-         * @param item_free_func function to free queue elements
          */
-        static new_full(item_free_func: (DestroyNotify | null)): AsyncQueue;
+        static new_full(): AsyncQueue;
 
         // Methods
         /**
@@ -21459,9 +21453,8 @@ export class VariantType<S extends string = any> {
          * thread or with any particular context acquired.
          * @param priority the priority at which to run `function`
          * @param _function function to call
-         * @param notify a function to call when `data` is no longer in use
          */
-        invoke_full(priority: number, _function: SourceFunc, notify: (DestroyNotify | null)): void;
+        invoke_full(priority: number, _function: SourceFunc): void;
 
         /**
          * Determines whether this thread holds the (recursive)
@@ -23056,9 +23049,8 @@ export class VariantType<S extends string = any> {
          * If you are using `gettext()`, you only need to set the translation
          * domain, see `g_option_context_set_translation_domain()`.
          * @param func the {@link GLib.TranslateFunc}, or `null`
-         * @param destroy_notify a function which gets called to free `data`, or `null`
          */
-        set_translate_func(func: (TranslateFunc | null), destroy_notify: (DestroyNotify | null)): void;
+        set_translate_func(func: (TranslateFunc | null)): void;
 
         /**
          * A convenience function to use `gettext()` for translating
@@ -23122,9 +23114,9 @@ export class VariantType<S extends string = any> {
         static $gtype: GObject.GType<OptionGroup>;
 
         // Constructors
-        constructor(name: string, description: string, help_description: string, user_data: (any | null), destroy: (DestroyNotify | null));
+        constructor(name: string, description: string, help_description: string, user_data: (any | null));
 
-        static ["new"](name: string, description: string, help_description: string, user_data: (any | null), destroy: (DestroyNotify | null)): OptionGroup;
+        static ["new"](name: string, description: string, help_description: string, user_data: (any | null)): OptionGroup;
 
         // Methods
         /**
@@ -23153,9 +23145,8 @@ export class VariantType<S extends string = any> {
          * If you are using `gettext()`, you only need to set the translation
          * domain, see `g_option_group_set_translation_domain()`.
          * @param func the {@link GLib.TranslateFunc}, or `null`
-         * @param destroy_notify a function which gets called to free `data`, or `null`
          */
-        set_translate_func(func: (TranslateFunc | null), destroy_notify: (DestroyNotify | null)): void;
+        set_translate_func(func: (TranslateFunc | null)): void;
 
         /**
          * A convenience function to use `gettext()` for translating
@@ -23699,9 +23690,8 @@ export class VariantType<S extends string = any> {
         /**
          * Convenience method, which frees all the memory used by a {@link GLib.Queue},
          * and calls the provided `free_func` on each item in the {@link GLib.Queue}.
-         * @param free_func the function to be called to free memory allocated
          */
-        clear_full(free_func: (DestroyNotify | null)): void;
+        clear_full(): void;
 
         /**
          * Copies a `queue`. Note that is a shallow copy. If the elements in the
@@ -26176,9 +26166,8 @@ export class VariantType<S extends string = any> {
          * Note that {@link GLib.Source.destroy} for a currently attached source has the effect
          * of also unsetting the callback.
          * @param func a callback function
-         * @param notify a function to call when `data` is no longer in use
          */
-        set_callback(func: SourceFunc, notify: (DestroyNotify | null)): void;
+        set_callback(func: SourceFunc): void;
 
         /**
          * Sets the callback function storing the data as a reference counted callback

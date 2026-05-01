@@ -4040,10 +4040,9 @@ export namespace Cogl {
          * wasting resources, drawing more frames than your system compositor
          * can display.
          * @param callback A callback function            to call for frame events
-         * @param destroy An optional callback to destroy `user_data`           when the `callback` is removed or `onscreen` is freed.
          * @returns a {@link Cogl.FrameClosure} pointer that can be used to          remove the callback and associated `user_data` later.
          */
-        add_frame_callback(callback: FrameCallback, destroy: (GLib.DestroyNotify | null)): FrameClosure;
+        add_frame_callback(callback: FrameCallback): FrameClosure;
 
         /**
          * @param info A {@link Cogl.FrameInfo}

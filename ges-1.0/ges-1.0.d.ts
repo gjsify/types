@@ -3390,10 +3390,9 @@ export namespace GES {
          * {@link GES.TrackElement.has_internal_source} set to `true`.
          * @param source_to_sink_func The function to use for querying how a time is translated from the source coordinates to the sink coordinates of `effect`
          * @param sink_to_source_func The function to use for querying how a time is translated from the sink coordinates to the source coordinates of `effect`
-         * @param destroy Method to call to destroy `user_data`, or `null`
          * @returns `true` if the translation functions were set.
          */
-        set_time_translation_funcs(source_to_sink_func: (BaseEffectTimeTranslationFunc | null), sink_to_source_func: (BaseEffectTimeTranslationFunc | null), destroy: (GLib.DestroyNotify | null)): boolean;
+        set_time_translation_funcs(source_to_sink_func: (BaseEffectTimeTranslationFunc | null), sink_to_source_func: (BaseEffectTimeTranslationFunc | null)): boolean;
     }
 
 

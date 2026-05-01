@@ -1560,9 +1560,8 @@ export namespace Mirage {
          * Both `func` and `user_data` can be `null`; in that case the appropriate setting
          * will be reset.
          * @param func a password function pointer
-         * @param destroy destroy notify for `user_data`, or `null`
          */
-        set_password_function(func: (PasswordFunction | null), destroy: (GLib.DestroyNotify | null)): void;
+        set_password_function(func: (PasswordFunction | null)): void;
     }
 
 

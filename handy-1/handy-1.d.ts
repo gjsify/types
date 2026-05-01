@@ -1780,9 +1780,8 @@ export namespace Handy {
          * It will be called on {@link Avatar.size} or
          * {@link Gtk.Widget.scale_factor} changes.
          * @param load_image callback to set a custom image
-         * @param destroy destroy notifier for `user_data`
          */
-        set_image_load_func(load_image: (AvatarImageLoadFunc | null), destroy: (GLib.DestroyNotify | null)): void;
+        set_image_load_func(load_image: (AvatarImageLoadFunc | null)): void;
 
         /**
          * Sets the {@link Gio.LoadableIcon} to use as an avatar.

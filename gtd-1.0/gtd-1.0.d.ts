@@ -1317,9 +1317,8 @@ export namespace Gtd {
          * Using this function will not reset the menu widget attached to `menu_button`.
          * Instead, this can be done manually in `func`.
          * @param func function to call when a popuop is about to   be shown, but none has been provided via other means, or `null`   to reset to default behavior.
-         * @param destroy_notify destroy notify for `user_data`
          */
-        set_create_popup_func(func: (MenuButtonCreatePopupFunc | null), destroy_notify: (GLib.DestroyNotify | null)): void;
+        set_create_popup_func(func: (MenuButtonCreatePopupFunc | null)): void;
 
         /**
          * Sets the direction in which the popup will be popped up, as

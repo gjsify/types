@@ -2139,11 +2139,10 @@ export namespace EDataServer {
      * @param interval the time between calls to the function, in seconds
      * @param name debug name for the source
      * @param _function function to call
-     * @param notify function to call when the timeout is removed,          or `null`
      * @returns the ID (greater than 0) of the event source
      * @since 3.12
      */
-    function timeout_add_seconds_with_name(priority: number, interval: number, name: (string | null), _function: GLib.SourceFunc, notify: (GLib.DestroyNotify | null)): number;
+    function timeout_add_seconds_with_name(priority: number, interval: number, name: (string | null), _function: GLib.SourceFunc): number;
 
     /**
      * Similar to `g_timeout_add_full()`, but also names the {@link GLib.Source} as `name`.
@@ -2154,11 +2153,10 @@ export namespace EDataServer {
      * @param interval the time between calls to the function, in milliseconds            (1/1000ths of a second)
      * @param name debug name for the source
      * @param _function function to call
-     * @param notify function to call when the timeout is removed,          or `null`
      * @returns the ID (greather than 0) of the event source
      * @since 3.12
      */
-    function timeout_add_with_name(priority: number, interval: number, name: (string | null), _function: GLib.SourceFunc, notify: (GLib.DestroyNotify | null)): number;
+    function timeout_add_with_name(priority: number, interval: number, name: (string | null), _function: GLib.SourceFunc): number;
 
     /**
      * Calls `func` for all instantiable subtypes of `parent_type`.
@@ -6993,9 +6991,8 @@ export namespace EDataServer {
          * @param content_type optional Content-Type of the `data`, or `null`
          * @param data the request body data
          * @param length length of the `data`
-         * @param free_func a free function for the `data`, or `null`
          */
-        static util_set_message_request_body_from_data(message: Soup.Message, create_copy: boolean, content_type: (string | null), data: (any | null), length: (bigint | number), free_func: (GLib.DestroyNotify | null)): void;
+        static util_set_message_request_body_from_data(message: Soup.Message, create_copy: boolean, content_type: (string | null), data: (any | null), length: (bigint | number)): void;
 
         /**
          * Returns the `reason_phrase`, if it's non-`null` and non-empty, a static string
@@ -8592,10 +8589,9 @@ export namespace EDataServer {
          * cannot be passed to `g_source_remove()`.
          * @param context a {@link GLib.MainContext}, or `null` (if `null`, the default           context will be used)
          * @param callback function to call on each timeout
-         * @param notify function to call when the timeout is removed,          or `null`
          * @returns a refresh timeout ID
          */
-        refresh_add_timeout(context: (GLib.MainContext | null), callback: SourceRefreshFunc, notify: (GLib.DestroyNotify | null)): number;
+        refresh_add_timeout(context: (GLib.MainContext | null), callback: SourceRefreshFunc): number;
 
         /**
          * For all timeouts added with `e_source_refresh_add_timeout()`, invokes

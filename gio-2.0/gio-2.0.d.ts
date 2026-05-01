@@ -5124,12 +5124,11 @@ export const _LocalFilePrototype: typeof File.prototype;
      * by calling `g_cancellable_cancel()` or by calling
      * `g_io_scheduler_cancel_all_jobs()`.
      * @param job_func a {@link Gio.IOSchedulerJobFunc}.
-     * @param notify a {@link GLib.DestroyNotify} for `user_data`, or `null`
      * @param io_priority the [I/O priority](https://docs.gtk.org/gio/iface.AsyncResult.html#io-priority) of the request.
      * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
      * @deprecated since 2.36: use {@link GLib.ThreadPool} or `g_task_run_in_thread()`
      */
-    function io_scheduler_push_job(job_func: IOSchedulerJobFunc, notify: (GLib.DestroyNotify | null), io_priority: number, cancellable: (Cancellable | null)): void;
+    function io_scheduler_push_job(job_func: IOSchedulerJobFunc, io_priority: number, cancellable: (Cancellable | null)): void;
 
     /**
      * Creates a keyfile-backed {@link Gio.SettingsBackend}.
@@ -10904,10 +10903,9 @@ export const _LocalFilePrototype: typeof File.prototype;
          *  - {@link Gio.Cancellable.make_pollfd}
          *  - {@link Gio.Cancellable.release_fd}
          * @param callback The {@link GObject.Callback} to connect.
-         * @param data_destroy_func Free function for `data` or `null`.
          * @returns The id of the signal handler or 0 if `cancellable` has already          been cancelled.
          */
-        connect(callback: GObject.Callback, data_destroy_func: (GLib.DestroyNotify | null)): number;
+        connect(callback: GObject.Callback): number;
 
         /**
          * @param args 
@@ -14283,10 +14281,9 @@ export const _LocalFilePrototype: typeof File.prototype;
          * @param arg0 contents of first string argument to match on or `null`     to match on all kinds of arguments
          * @param flags {@link Gio.DBusSignalFlags} describing how arg0 is used in subscribing to the     signal
          * @param callback callback to invoke when there is a signal matching the requested data
-         * @param user_data_free_func function to free `user_data` with when     subscription is removed or `null`
          * @returns a subscription identifier that can be used with `g_dbus_connection_signal_unsubscribe()`
          */
-        signal_subscribe(sender: (string | null), interface_name: (string | null), member: (string | null), object_path: (string | null), arg0: (string | null), flags: DBusSignalFlags, callback: DBusSignalCallback, user_data_free_func: (GLib.DestroyNotify | null)): number;
+        signal_subscribe(sender: (string | null), interface_name: (string | null), member: (string | null), object_path: (string | null), arg0: (string | null), flags: DBusSignalFlags, callback: DBusSignalCallback): number;
 
         /**
          * Unsubscribes from signals.
@@ -15955,9 +15952,9 @@ export const _LocalFilePrototype: typeof File.prototype;
 
         static new_for_bus_finish(res: AsyncResult): DBusObjectManagerClient;
 
-        static new_for_bus_sync(bus_type: BusType, flags: DBusObjectManagerClientFlags, name: string, object_path: string, get_proxy_type_func: (DBusProxyTypeFunc | null), get_proxy_type_destroy_notify: (GLib.DestroyNotify | null), cancellable: (Cancellable | null)): DBusObjectManagerClient;
+        static new_for_bus_sync(bus_type: BusType, flags: DBusObjectManagerClientFlags, name: string, object_path: string, get_proxy_type_func: (DBusProxyTypeFunc | null), cancellable: (Cancellable | null)): DBusObjectManagerClient;
 
-        static new_sync(connection: DBusConnection, flags: DBusObjectManagerClientFlags, name: (string | null), object_path: string, get_proxy_type_func: (DBusProxyTypeFunc | null), get_proxy_type_destroy_notify: (GLib.DestroyNotify | null), cancellable: (Cancellable | null)): DBusObjectManagerClient;
+        static new_sync(connection: DBusConnection, flags: DBusObjectManagerClientFlags, name: (string | null), object_path: string, get_proxy_type_func: (DBusProxyTypeFunc | null), cancellable: (Cancellable | null)): DBusObjectManagerClient;
 
         // Signals
         /** @signal */
@@ -15987,11 +15984,10 @@ export const _LocalFilePrototype: typeof File.prototype;
          * @param name The owner of the control object (unique or well-known name).
          * @param object_path The object path of the control object.
          * @param get_proxy_type_func A {@link Gio.DBusProxyTypeFunc} function or `null` to always construct {@link Gio.DBusProxy} proxies.
-         * @param get_proxy_type_destroy_notify Free function for `get_proxy_type_user_data` or `null`.
          * @param cancellable A {@link Gio.Cancellable} or `null`
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
-        static ["new"](connection: DBusConnection, flags: DBusObjectManagerClientFlags, name: string, object_path: string, get_proxy_type_func: (DBusProxyTypeFunc | null), get_proxy_type_destroy_notify: (GLib.DestroyNotify | null), cancellable: (Cancellable | null), callback: (AsyncReadyCallback<DBusObjectManagerClient> | null)): void;
+        static ["new"](connection: DBusConnection, flags: DBusObjectManagerClientFlags, name: string, object_path: string, get_proxy_type_func: (DBusProxyTypeFunc | null), cancellable: (Cancellable | null), callback: (AsyncReadyCallback<DBusObjectManagerClient> | null)): void;
 
         /**
          * Like `g_dbus_object_manager_client_new()` but takes a {@link Gio.BusType} instead of a
@@ -16008,11 +16004,10 @@ export const _LocalFilePrototype: typeof File.prototype;
          * @param name The owner of the control object (unique or well-known name).
          * @param object_path The object path of the control object.
          * @param get_proxy_type_func A {@link Gio.DBusProxyTypeFunc} function or `null` to always construct {@link Gio.DBusProxy} proxies.
-         * @param get_proxy_type_destroy_notify Free function for `get_proxy_type_user_data` or `null`.
          * @param cancellable A {@link Gio.Cancellable} or `null`
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
-        static new_for_bus(bus_type: BusType, flags: DBusObjectManagerClientFlags, name: string, object_path: string, get_proxy_type_func: (DBusProxyTypeFunc | null), get_proxy_type_destroy_notify: (GLib.DestroyNotify | null), cancellable: (Cancellable | null), callback: (AsyncReadyCallback<DBusObjectManagerClient> | null)): void;
+        static new_for_bus(bus_type: BusType, flags: DBusObjectManagerClientFlags, name: string, object_path: string, get_proxy_type_func: (DBusProxyTypeFunc | null), cancellable: (Cancellable | null), callback: (AsyncReadyCallback<DBusObjectManagerClient> | null)): void;
 
         // Virtual methods
         /**
@@ -25542,7 +25537,7 @@ export const _LocalFilePrototype: typeof File.prototype;
 
         static new_from_bytes(bytes: (GLib.Bytes | Uint8Array)): MemoryInputStream;
 
-        static new_from_data(data: (Uint8Array | string), destroy: (GLib.DestroyNotify | null)): MemoryInputStream;
+        static new_from_data(data: (Uint8Array | string)): MemoryInputStream;
 
         // Signals
         /** @signal */
@@ -25567,9 +25562,8 @@ export const _LocalFilePrototype: typeof File.prototype;
         /**
          * Appends `data` to data that can be read from the input stream
          * @param data input data
-         * @param destroy function that is called to free `data`, or `null`
          */
-        add_data(data: (Uint8Array | string), destroy: (GLib.DestroyNotify | null)): void;
+        add_data(data: (Uint8Array | string)): void;
 
         /**
          * Checks if `stream` is actually pollable. Some classes may implement
@@ -40518,9 +40512,8 @@ export const _LocalFilePrototype: typeof File.prototype;
          * valid after calling this, unless you are still holding another
          * reference on it.
          * @param result the pointer result of a task     function
-         * @param result_destroy a {@link GLib.DestroyNotify} function.
          */
-        return_pointer(result: (any | null), result_destroy: (GLib.DestroyNotify | null)): void;
+        return_pointer(result: (any | null)): void;
 
         /**
          * Sets `task`'s result to `result` (by copying it) and completes the task.
@@ -40690,9 +40683,8 @@ export const _LocalFilePrototype: typeof File.prototype;
         /**
          * Sets `task`'s task data (freeing the existing task data, if any).
          * @param task_data task-specific data
-         * @param task_data_destroy {@link GLib.DestroyNotify} for `task_data`
          */
-        set_task_data(task_data: (any | null), task_data_destroy: (GLib.DestroyNotify | null)): void;
+        set_task_data(task_data: (any | null)): void;
 
         /**
          * Gets the user data from a {@link Gio.AsyncResult}.
@@ -44037,10 +44029,9 @@ export const _LocalFilePrototype: typeof File.prototype;
          * calculated automatically. (Note that the terminating nul is not
          * considered part of the password in this case.)
          * @param value the value for the password
-         * @param destroy a function to use to free the password.
          * @virtual
          */
-        vfunc_set_value(value: Uint8Array, destroy: (GLib.DestroyNotify | null)): void;
+        vfunc_set_value(value: Uint8Array): void;
 
         // Methods
         /**
@@ -44108,9 +44099,8 @@ export const _LocalFilePrototype: typeof File.prototype;
          * calculated automatically. (Note that the terminating nul is not
          * considered part of the password in this case.)
          * @param value the value for the password
-         * @param destroy a function to use to free the password.
          */
-        set_value_full(value: (Uint8Array | string), destroy: (GLib.DestroyNotify | null)): void;
+        set_value_full(value: (Uint8Array | string)): void;
 
         /**
          * Set a user readable translated warning. Usually this warning is a
@@ -45015,12 +45005,10 @@ export const _LocalFilePrototype: typeof File.prototype;
          * a custom URI scheme, use `g_vfs_unregister_uri_scheme()`.
          * @param scheme an URI scheme, e.g. "http"
          * @param uri_func a {@link Gio.VfsFileLookupFunc}
-         * @param uri_destroy function to be called when unregistering the     URI scheme, or when `vfs` is disposed, to free the resources used     by the URI lookup function
          * @param parse_name_func a {@link Gio.VfsFileLookupFunc}
-         * @param parse_name_destroy function to be called when unregistering the     URI scheme, or when `vfs` is disposed, to free the resources used     by the parse name lookup function
          * @returns `true` if `scheme` was successfully registered, or `false` if a handler     for `scheme` already exists.
          */
-        register_uri_scheme(scheme: string, uri_func: (VfsFileLookupFunc | null), uri_destroy: (GLib.DestroyNotify | null), parse_name_func: (VfsFileLookupFunc | null), parse_name_destroy: (GLib.DestroyNotify | null)): boolean;
+        register_uri_scheme(scheme: string, uri_func: (VfsFileLookupFunc | null), parse_name_func: (VfsFileLookupFunc | null)): boolean;
 
         /**
          * Unregisters the URI handler for `scheme` previously registered with
@@ -47288,10 +47276,9 @@ export const _LocalFilePrototype: typeof File.prototype;
          * that the job was started from, waiting for the result (and thus
          * blocking the I/O job).
          * @param func a {@link GLib.SourceFunc} callback that will be called in the original thread
-         * @param notify a {@link GLib.DestroyNotify} for `user_data`, or `null`
          * @returns The return value of `func`
          */
-        send_to_mainloop(func: GLib.SourceFunc, notify: (GLib.DestroyNotify | null)): boolean;
+        send_to_mainloop(func: GLib.SourceFunc): boolean;
 
         /**
          * Used from an I/O job to send a callback to be run asynchronously in
@@ -47304,9 +47291,8 @@ export const _LocalFilePrototype: typeof File.prototype;
          * `func` is called, either by passing `null` as `notify` to
          * `g_io_scheduler_push_job()` or by using refcounting for `user_data`.
          * @param func a {@link GLib.SourceFunc} callback that will be called in the original thread
-         * @param notify a {@link GLib.DestroyNotify} for `user_data`, or `null`
          */
-        send_to_mainloop_async(func: GLib.SourceFunc, notify: (GLib.DestroyNotify | null)): void;
+        send_to_mainloop_async(func: GLib.SourceFunc): void;
     }
 
 

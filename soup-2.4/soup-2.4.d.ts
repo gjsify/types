@@ -12539,7 +12539,7 @@ export namespace Soup {
 
         static ["new"](data: (Uint8Array | string)): Buffer;
 
-        static new_with_owner(data: (Uint8Array | string), owner: (any | null), owner_dnotify: (GLib.DestroyNotify | null)): Buffer;
+        static new_with_owner(data: (Uint8Array | string), owner: (any | null)): Buffer;
 
         // Methods
         /**

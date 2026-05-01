@@ -1450,11 +1450,10 @@ export namespace Camel {
      * @param cert_info a {@link Camel.CipherCertInfo}
      * @param name a property name
      * @param value a property value, or `null`
-     * @param value_free a free function for the `value`
      * @param value_clone a clone function for the `value`
      * @since 3.22
      */
-    function cipher_certinfo_set_property(cert_info: CipherCertInfo, name: string, value: (any | null), value_free: (GLib.DestroyNotify | null), value_clone: (CipherCloneFunc | null)): void;
+    function cipher_certinfo_set_property(cert_info: CipherCertInfo, name: string, value: (any | null), value_clone: (CipherCloneFunc | null)): void;
 
     /**
      * @param _in 
@@ -21194,11 +21193,10 @@ export namespace Camel {
          * @param name a name to add
          * @param email an e-mail address to add
          * @param cert_data a certificate data, or `null`
-         * @param cert_data_free a destroy function for `cert_data`; required, when `cert_data` is not `null`
          * @param cert_data_clone a copy function for `cert_data`, to copy the data; required, when `cert_data` is not `null`
          * @returns Index of the added certinfo; -1 on error
          */
-        add_certinfo_ex(mode: CipherValidityMode, name: string, email: string, cert_data: (any | null), cert_data_free: (GLib.DestroyNotify | null), cert_data_clone: (CipherCloneFunc | null)): number;
+        add_certinfo_ex(mode: CipherValidityMode, name: string, email: string, cert_data: (any | null), cert_data_clone: (CipherCloneFunc | null)): number;
 
         clear(): void;
 
@@ -21237,10 +21235,9 @@ export namespace Camel {
          * @param info_index a 0-based index of the requested {@link Camel.CipherCertInfo}
          * @param name a property name
          * @param value a property value, or `null`
-         * @param value_free a free function for the `value`
          * @param value_clone a clone function for the `value`
          */
-        set_certinfo_property(mode: CipherValidityMode, info_index: number, name: string, value: (any | null), value_free: (GLib.DestroyNotify | null), value_clone: (CipherCloneFunc | null)): void;
+        set_certinfo_property(mode: CipherValidityMode, info_index: number, name: string, value: (any | null), value_clone: (CipherCloneFunc | null)): void;
 
         /**
          * @param description 

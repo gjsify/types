@@ -128,11 +128,10 @@ export namespace Gm {
      * @param priority the priority of the timeout source. Typically this will be in   the range between `G_PRIORITY_DEFAULT` and `G_PRIORITY_HIGH`.
      * @param seconds the timeout in seconds
      * @param _function function to call
-     * @param notify function to call when the timeout is removed, or `null`
      * @returns the ID (greater than 0) of the event source or 0 in case of error.
      * @since 0.0.1
      */
-    function timeout_add_seconds_once(priority: number, seconds: (bigint | number), _function: GLib.SourceOnceFunc, notify: (GLib.DestroyNotify | null)): number;
+    function timeout_add_seconds_once(priority: number, seconds: (bigint | number), _function: GLib.SourceOnceFunc): number;
 
     /**
      * Sets a function to be called after a timeout with the default
@@ -153,11 +152,10 @@ export namespace Gm {
      * @param priority the priority of the timeout source. Typically this will be in   the range between `G_PRIORITY_DEFAULT` and `G_PRIORITY_HIGH`.
      * @param seconds the timeout in seconds
      * @param _function function to call
-     * @param notify function to call when the timeout is removed, or `null`
      * @returns the ID (greater than 0) of the event source or 0 in case of error.
      * @since 0.3.0
      */
-    function wakeup_timeout_add_seconds_once(priority: number, seconds: (bigint | number), _function: GLib.SourceOnceFunc, notify: (GLib.DestroyNotify | null)): number;
+    function wakeup_timeout_add_seconds_once(priority: number, seconds: (bigint | number), _function: GLib.SourceOnceFunc): number;
 
     namespace Cutout {
         // Signal signatures

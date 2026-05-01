@@ -11731,11 +11731,10 @@ export namespace Gdk {
          * 
          * It is possible to call this function multiple times to create multiple textures,
          * possibly with changing properties in between.
-         * @param destroy destroy function to be called when the texture is   released
          * @param data user data to pass to the destroy function
          * @returns a newly built {@link Gdk.Texture} or `NULL`   if the format is not supported
          */
-        build(destroy: (GLib.DestroyNotify | null), data: (any | null)): (Texture | null);
+        build(data: (any | null)): (Texture | null);
 
         /**
          * Gets the color state previously set via `gdk_dmabuf_texture_builder_set_color_state()`.
@@ -14116,11 +14115,10 @@ export namespace Gdk {
          * 
          * It is possible to call this function multiple times to create multiple textures,
          * possibly with changing properties in between.
-         * @param destroy destroy function to be called when the texture is   released
          * @param data user data to pass to the destroy function
          * @returns a newly built {@link Gdk.Texture}
          */
-        build(destroy: (GLib.DestroyNotify | null), data: (any | null)): Texture;
+        build(data: (any | null)): Texture;
 
         /**
          * Gets the color state previously set via `gdk_gl_texture_builder_set_color_state()`.

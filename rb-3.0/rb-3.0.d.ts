@@ -1785,9 +1785,8 @@ export namespace RB {
      * with no further changes.
      * @param settings {@link Gio.Settings} instance
      * @param sync_func function to call
-     * @param destroy function to use to free `data`
      */
-    function settings_delayed_sync(settings: Gio.Settings, sync_func: (DelayedSyncFunc | null), destroy: (GLib.DestroyNotify | null)): void;
+    function settings_delayed_sync(settings: Gio.Settings, sync_func: (DelayedSyncFunc | null)): void;
 
     /**
      * Returns the {@link GLib.Quark} used for {@link RB.Shell} errors

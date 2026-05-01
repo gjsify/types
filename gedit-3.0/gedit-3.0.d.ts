@@ -1437,10 +1437,9 @@ export namespace Gedit {
          * @param object_path the object path
          * @param method the method
          * @param callback function to be called when message `method` at `object_path` is sent
-         * @param destroy_data function to evoke with `user_data` as argument when `user_data`                needs to be freed
          * @returns the callback identifier
          */
-        connect(object_path: string, method: string, callback: MessageCallback, destroy_data: (GLib.DestroyNotify | null)): number;
+        connect(object_path: string, method: string, callback: MessageCallback): number;
 
         /**
          * @param args 

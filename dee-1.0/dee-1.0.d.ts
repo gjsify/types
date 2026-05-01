@@ -132,9 +132,8 @@ export namespace Dee {
      * the `out_filter` struct.
      * @param map_func The {@link Dee.FilterMapFunc} to use for the filter
      * @param map_notify The {@link Dee.FilterMapNotify} to use for the filter
-     * @param destroy The {@link GLib.DestroyNotify} to call on                         `userdata` when disposing of the filter
      */
-    function filter_new(map_func: FilterMapFunc, map_notify: FilterMapNotify, destroy: (GLib.DestroyNotify | null)): Filter;
+    function filter_new(map_func: FilterMapFunc, map_notify: FilterMapNotify): Filter;
 
     /**
      * Create a {@link Dee.Filter} that takes string values from a column in the model
@@ -187,9 +186,8 @@ export namespace Dee {
     /**
      * Create a new {@link Dee.Filter} sorting a model according to a {@link Dee.CompareRowFunc}.
      * @param cmp_row A {@link Dee.CompareRowFunc} to use for sorting
-     * @param cmp_destroy The {@link GLib.DestroyNotify} to call on                         `cmp_user_data` when disposing of the filter
      */
-    function filter_new_sort(cmp_row: CompareRowFunc, cmp_destroy: (GLib.DestroyNotify | null)): Filter;
+    function filter_new_sort(cmp_row: CompareRowFunc): Filter;
 
     function icu_error_quark(): GLib.Quark;
 
@@ -197,9 +195,8 @@ export namespace Dee {
      * Create a new {@link Dee.ModelReader} with the given parameters. This call will zero
      * the `out_reader` struct.
      * @param reader_func The {@link Dee.ModelReaderFunc} to use for the reader
-     * @param destroy The {@link GLib.DestroyNotify} to call on                                        `userdata` when disposing of the reader
      */
-    function model_reader_new(reader_func: ModelReaderFunc, destroy: (GLib.DestroyNotify | null)): ModelReader;
+    function model_reader_new(reader_func: ModelReaderFunc): ModelReader;
 
     /**
      * A {@link Dee.ModelReader} reading a %gint32 from a {@link Dee.Model} at a given column
@@ -413,10 +410,9 @@ export namespace Dee {
          * Term filters can be used to normalize, add, or remove terms from an input
          * data stream.
          * @param filter_func Function to call
-         * @param filter_destroy Called on `filter_data` when the {@link Dee.Analyzer}                                owning the filter is destroyed
          * @virtual
          */
-        vfunc_add_term_filter(filter_func: TermFilterFunc, filter_destroy: (GLib.DestroyNotify | null)): void;
+        vfunc_add_term_filter(filter_func: TermFilterFunc): void;
 
         /**
          * Extract terms and or collation keys from some input data (which is normally,
@@ -479,9 +475,8 @@ export namespace Dee {
          * Term filters can be used to normalize, add, or remove terms from an input
          * data stream.
          * @param filter_func Function to call
-         * @param filter_destroy Called on `filter_data` when the {@link Dee.Analyzer}                                owning the filter is destroyed
          */
-        add_term_filter(filter_func: TermFilterFunc, filter_destroy: (GLib.DestroyNotify | null)): void;
+        add_term_filter(filter_func: TermFilterFunc): void;
 
         /**
          * Extract terms and or collation keys from some input data (which is normally,
@@ -6033,9 +6028,8 @@ export namespace Dee {
          * the `out_filter` struct.
          * @param map_func The {@link Dee.FilterMapFunc} to use for the filter
          * @param map_notify The {@link Dee.FilterMapNotify} to use for the filter
-         * @param destroy The {@link GLib.DestroyNotify} to call on                         `userdata` when disposing of the filter
          */
-        static ["new"](map_func: FilterMapFunc, map_notify: FilterMapNotify, destroy: (GLib.DestroyNotify | null)): Filter;
+        static ["new"](map_func: FilterMapFunc, map_notify: FilterMapNotify): Filter;
 
         /**
          * Create a {@link Dee.Filter} that takes string values from a column in the model
@@ -6088,9 +6082,8 @@ export namespace Dee {
         /**
          * Create a new {@link Dee.Filter} sorting a model according to a {@link Dee.CompareRowFunc}.
          * @param cmp_row A {@link Dee.CompareRowFunc} to use for sorting
-         * @param cmp_destroy The {@link GLib.DestroyNotify} to call on                         `cmp_user_data` when disposing of the filter
          */
-        static new_sort(cmp_row: CompareRowFunc, cmp_destroy: (GLib.DestroyNotify | null)): Filter;
+        static new_sort(cmp_row: CompareRowFunc): Filter;
 
         // Methods
         /**
@@ -6223,9 +6216,8 @@ export namespace Dee {
          * Create a new {@link Dee.ModelReader} with the given parameters. This call will zero
          * the `out_reader` struct.
          * @param reader_func The {@link Dee.ModelReaderFunc} to use for the reader
-         * @param destroy The {@link GLib.DestroyNotify} to call on                                        `userdata` when disposing of the reader
          */
-        static ["new"](reader_func: ModelReaderFunc, destroy: (GLib.DestroyNotify | null)): ModelReader;
+        static ["new"](reader_func: ModelReaderFunc): ModelReader;
 
         /**
          * A {@link Dee.ModelReader} reading a %gint32 from a {@link Dee.Model} at a given column

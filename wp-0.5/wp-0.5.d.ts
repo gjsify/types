@@ -1505,9 +1505,8 @@ export namespace Wp {
          * 
          * This is essentially the same as `g_idle_add_full()`, but it adds the created GSource on the GMainContext used by this core instead of the default context.
          * @param _function the function to call
-         * @param destroy a function to destroy `data`
          */
-        idle_add(_function: GLib.SourceFunc, destroy: (GLib.DestroyNotify | null)): GLib.Source | null;
+        idle_add(_function: GLib.SourceFunc): GLib.Source | null;
 
         /**
          * Adds an idle callback to be called in the same GMainContext as the one used by this core.
@@ -1671,9 +1670,8 @@ export namespace Wp {
          * This is essentially the same as `g_timeout_add_full()`, but it adds the created GSource on the GMainContext used by this core instead of the default context.
          * @param timeout_ms the timeout in milliseconds
          * @param _function the function to call
-         * @param destroy a function to destroy `data`
          */
-        timeout_add(timeout_ms: number, _function: GLib.SourceFunc, destroy: (GLib.DestroyNotify | null)): GLib.Source | null;
+        timeout_add(timeout_ms: number, _function: GLib.SourceFunc): GLib.Source | null;
 
         /**
          * Adds a timeout callback to be called at regular intervals in the same GMainContext as the one used by this core.
@@ -6102,9 +6100,8 @@ export namespace Wp {
         /**
          * Sets `self` 's data (freeing the existing data, if any). This can be an arbitrary user structure that holds data associated with this transition.
          * @param data transition-specific user data
-         * @param data_destroy GDestroyNotify for `data`
          */
-        set_data(data: (any | null), data_destroy: (GLib.DestroyNotify | null)): void;
+        set_data(data: (any | null)): void;
 
         /**
          * @param args 

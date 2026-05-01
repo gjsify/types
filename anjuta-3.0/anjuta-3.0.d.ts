@@ -2643,10 +2643,7 @@ export namespace Anjuta {
          */
         set_case_sensitive(case_sensitive: boolean): void;
 
-        /**
-         * @param item_destroy_func the function to be called on the added items when the {@link Anjuta.Completion} object is destroyed.
-         */
-        set_item_destroy_func(item_destroy_func: (GLib.DestroyNotify | null)): void;
+        set_item_destroy_func(): void;
     }
 
 

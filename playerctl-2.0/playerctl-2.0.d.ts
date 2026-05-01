@@ -927,9 +927,8 @@ export namespace Playerctl {
          * Keeps the {@link Playerctl.PlayerManager.players} list of this manager in sorted order which is useful
          * for using this list as a priority queue.
          * @param sort_func The compare function to be used to sort the {@link Playerctl.PlayerManager.players}.
-         * @param notify A function to notify when the sort function will no longer be used.
          */
-        set_sort_func(sort_func: GLib.CompareDataFunc, notify: (GLib.DestroyNotify | null)): void;
+        set_sort_func(sort_func: GLib.CompareDataFunc): void;
     }
 
 

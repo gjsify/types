@@ -633,10 +633,9 @@ export namespace Grl {
      * Note that the `destroy_func` callback is not called if `user_data` is `null`.
      * @param operation_id the identifier of a running operation
      * @param user_data the data to attach
-     * @param destroy_func function to release `user_data` when the operation terminates
      * @since 0.2.7
      */
-    function operation_set_data_full(operation_id: number, user_data: (any | null), destroy_func: (GLib.DestroyNotify | null)): void;
+    function operation_set_data_full(operation_id: number, user_data: (any | null)): void;
 
     /**
      * Grilo browsing implements a paging mechanism through `skip` and `count` values.

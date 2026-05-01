@@ -2877,10 +2877,9 @@ export namespace GData {
          * @param service a {@link GData.Service}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when a rule is loaded, or `null`
-         * @param destroy_progress_user_data the function to call when `progress_callback` will not be called any more, or `null`. This function will be called with `progress_user_data` as a parameter and can be used to free any memory allocated for it.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the query is finished
          */
-        get_rules_async(service: Service, cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), destroy_progress_user_data: (GLib.DestroyNotify | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_rules_async(service: Service, cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
 
         /**
          * Retrieves a {@link GData.Feed} containing all the access rules which apply to the given {@link GData.AccessHandler}. Only the owner of a {@link GData.AccessHandler} may
@@ -3905,10 +3904,9 @@ export namespace GData {
          * @param query a {@link GData.Query} with the query parameters, or `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when an entry is loaded, or `null`
-         * @param destroy_progress_user_data the function to call when `progress_callback` will not be called any more, or `null`. This function will be called with `progress_user_data` as a parameter and can be used to free any memory allocated for it.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when authentication is finished
          */
-        query_all_calendars_async(query: (Query | null), cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), destroy_progress_user_data: (GLib.DestroyNotify | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        query_all_calendars_async(query: (Query | null), cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
 
         /**
          * Queries the service to return a list of events in the given `calendar`, which match `query`.
@@ -3934,10 +3932,9 @@ export namespace GData {
          * @param query a {@link GData.Query} with the query parameters, or `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when an entry is loaded, or `null`
-         * @param destroy_progress_user_data the function to call when `progress_callback` will not be called any more, or `null`. This function will be called with `progress_user_data` as a parameter and can be used to free any memory allocated for it.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the query is finished
          */
-        query_events_async(calendar: CalendarCalendar, query: (Query | null), cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), destroy_progress_user_data: (GLib.DestroyNotify | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        query_events_async(calendar: CalendarCalendar, query: (Query | null), cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
 
         /**
          * Queries the service to return a list of calendars from the authenticated account which match the given
@@ -3962,10 +3959,9 @@ export namespace GData {
          * @param query a {@link GData.Query} with the query parameters, or `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when an entry is loaded, or `null`
-         * @param destroy_progress_user_data the function to call when `progress_callback` will not be called any more, or `null`. This function will be called with `progress_user_data` as a parameter and can be used to free any memory allocated for it.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when authentication is finished
          */
-        query_own_calendars_async(query: (Query | null), cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), destroy_progress_user_data: (GLib.DestroyNotify | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        query_own_calendars_async(query: (Query | null), cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
 
         /**
          * Creates a new {@link GData.BatchOperation} for the given {@link GData.Batchable} service, and with the given `feed_uri`. `feed_uri` is normally the `GDATA_LINK_BATCH`
@@ -4447,10 +4443,9 @@ export namespace GData {
          * @param service a {@link GData.Service}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when a rule is loaded, or `null`
-         * @param destroy_progress_user_data the function to call when `progress_callback` will not be called any more, or `null`. This function will be called with `progress_user_data` as a parameter and can be used to free any memory allocated for it.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the query is finished
          */
-        get_rules_async(service: Service, cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), destroy_progress_user_data: (GLib.DestroyNotify | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_rules_async(service: Service, cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
 
         /**
          * Retrieves a {@link GData.Feed} containing all the access rules which apply to the given {@link GData.AccessHandler}. Only the owner of a {@link GData.AccessHandler} may
@@ -5048,10 +5043,9 @@ export namespace GData {
          * @param service a {@link GData.Service}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when a rule is loaded, or `null`
-         * @param destroy_progress_user_data the function to call when `progress_callback` will not be called any more, or `null`. This function will be called with `progress_user_data` as a parameter and can be used to free any memory allocated for it.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the query is finished
          */
-        get_rules_async(service: Service, cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), destroy_progress_user_data: (GLib.DestroyNotify | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_rules_async(service: Service, cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
 
         /**
          * Retrieves a {@link GData.Feed} containing all the access rules which apply to the given {@link GData.AccessHandler}. Only the owner of a {@link GData.AccessHandler} may
@@ -5233,10 +5227,9 @@ export namespace GData {
          * @param service a {@link GData.Service}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when a rule is loaded, or `null`
-         * @param destroy_progress_user_data the function to call when `progress_callback` will not be called any more, or `null`. This function will be called with `progress_user_data` as a parameter and can be used to free any memory allocated for it.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the query is finished
          */
-        get_rules_async(service: Service, cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), destroy_progress_user_data: (GLib.DestroyNotify | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_rules_async(service: Service, cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
 
         /**
          * Retrieves a {@link GData.Feed} containing all the access rules which apply to the given {@link GData.AccessHandler}. Only the owner of a {@link GData.AccessHandler} may
@@ -6178,10 +6171,9 @@ export namespace GData {
          * @param query a {@link GData.DocumentsQuery} with the query parameters, or `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when an entry is loaded, or `null`
-         * @param destroy_progress_user_data the function to call when `progress_callback` will not be called any more, or `null`. This function will be called with `progress_user_data` as a parameter and can be used to free any memory allocated for it.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when authentication is finished
          */
-        query_documents_async(query: (DocumentsQuery | null), cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), destroy_progress_user_data: (GLib.DestroyNotify | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        query_documents_async(query: (DocumentsQuery | null), cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
 
         /**
          * Queries the service to return a list of shared drives matching the given `query`.
@@ -6203,10 +6195,9 @@ export namespace GData {
          * @param query a {@link GData.DocumentsDriveQuery} with the query parameters, or `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when an entry is loaded, or `null`
-         * @param destroy_progress_user_data the function to call when `progress_callback` will not be called any more, or `null`. This function will be called with `progress_user_data` as a parameter and can be used to free any memory allocated for it.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when authentication is finished
          */
-        query_drives_async(query: (DocumentsDriveQuery | null), cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), destroy_progress_user_data: (GLib.DestroyNotify | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        query_drives_async(query: (DocumentsDriveQuery | null), cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
 
         /**
          * Remove the given `entry` from `folder`, and return an updated {@link GData.DocumentsEntry} for `entry`. `entry` will remain a member of any other folders it's
@@ -15091,9 +15082,8 @@ export namespace GData {
          * @param query a {@link GData.Query} with query parameters, or `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when a comment is loaded, or `null`
-         * @param destroy_progress_user_data a function to call when `progress_callback` will not be called any more, or `null`; this function will be called with `progress_user_data` as a parameter and can be used to free any memory allocated for it
          */
-        query_comments_async(service: Service, query: (Query | null), cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), destroy_progress_user_data: (GLib.DestroyNotify | null)): globalThis.Promise<(Feed | null)>;
+        query_comments_async(service: Service, query: (Query | null), cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null)): globalThis.Promise<(Feed | null)>;
 
         /**
          * Retrieves a {@link GData.Feed} containing the `GDataComments` representing the comments on the {@link GData.Commentable} which match the given `query`.
@@ -15107,10 +15097,9 @@ export namespace GData {
          * @param query a {@link GData.Query} with query parameters, or `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when a comment is loaded, or `null`
-         * @param destroy_progress_user_data a function to call when `progress_callback` will not be called any more, or `null`; this function will be called with `progress_user_data` as a parameter and can be used to free any memory allocated for it
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the query is finished
          */
-        query_comments_async(service: Service, query: (Query | null), cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), destroy_progress_user_data: (GLib.DestroyNotify | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        query_comments_async(service: Service, query: (Query | null), cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
 
         /**
          * Retrieves a {@link GData.Feed} containing the `GDataComments` representing the comments on the {@link GData.Commentable} which match the given `query`.
@@ -15124,10 +15113,9 @@ export namespace GData {
          * @param query a {@link GData.Query} with query parameters, or `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when a comment is loaded, or `null`
-         * @param destroy_progress_user_data a function to call when `progress_callback` will not be called any more, or `null`; this function will be called with `progress_user_data` as a parameter and can be used to free any memory allocated for it
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the query is finished
          */
-        query_comments_async(service: Service, query: (Query | null), cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), destroy_progress_user_data: (GLib.DestroyNotify | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Feed | null)> | void);
+        query_comments_async(service: Service, query: (Query | null), cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Feed | null)> | void);
 
         /**
          * Finishes an asynchronous comment query operation started with `gdata_commentable_query_comments_async()`.
@@ -15565,10 +15553,9 @@ export namespace GData {
          * @param username the username of the user whose albums you wish to retrieve, or `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when an entry is loaded, or `null`
-         * @param destroy_progress_user_data the function to call when `progress_callback` will not be called any more, or `null`. This function will be called with `progress_user_data` as a parameter and can be used to free any memory allocated for it.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when authentication is finished
          */
-        query_all_albums_async(query: (Query | null), username: (string | null), cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), destroy_progress_user_data: (GLib.DestroyNotify | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        query_all_albums_async(query: (Query | null), username: (string | null), cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
 
         /**
          * Queries the specified `album` for a list of the files which match the given `query`. If `album` is `null` and a user is
@@ -15594,10 +15581,9 @@ export namespace GData {
          * @param query a {@link GData.Query} with the query parameters, or `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when an entry is loaded, or `null`
-         * @param destroy_progress_user_data the function to call when `progress_callback` will not be called any more, or `null`. This function will be called with `progress_user_data` as a parameter and can be used to free any memory allocated for it.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the query is finished
          */
-        query_files_async(album: (PicasaWebAlbum | null), query: (Query | null), cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), destroy_progress_user_data: (GLib.DestroyNotify | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        query_files_async(album: (PicasaWebAlbum | null), query: (Query | null), cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
 
         /**
          * Uploads a file (photo or video) to the given PicasaWeb `album`, using the metadata from `file` and the file data written to the resulting
@@ -16667,9 +16653,8 @@ export namespace GData {
          * @param entry_type a {@link GObject.GType} for the `GDataEntrys` to build from the XML
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when an entry is loaded, or `null`
-         * @param destroy_progress_user_data the function to call when `progress_callback` will not be called any more, or `null`. This function will be called with `progress_user_data` as a parameter and can be used to free any memory allocated for it.
          */
-        query_async(domain: (AuthorizationDomain | null), feed_uri: string, query: (Query | null), entry_type: GObject.GType, cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), destroy_progress_user_data: (GLib.DestroyNotify | null)): globalThis.Promise<Feed>;
+        query_async(domain: (AuthorizationDomain | null), feed_uri: string, query: (Query | null), entry_type: GObject.GType, cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null)): globalThis.Promise<Feed>;
 
         /**
          * Queries the service's `feed_uri` feed to build a {@link GData.Feed}. `self`, `feed_uri` and
@@ -16685,10 +16670,9 @@ export namespace GData {
          * @param entry_type a {@link GObject.GType} for the `GDataEntrys` to build from the XML
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when an entry is loaded, or `null`
-         * @param destroy_progress_user_data the function to call when `progress_callback` will not be called any more, or `null`. This function will be called with `progress_user_data` as a parameter and can be used to free any memory allocated for it.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the query is finished
          */
-        query_async(domain: (AuthorizationDomain | null), feed_uri: string, query: (Query | null), entry_type: GObject.GType, cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), destroy_progress_user_data: (GLib.DestroyNotify | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        query_async(domain: (AuthorizationDomain | null), feed_uri: string, query: (Query | null), entry_type: GObject.GType, cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
 
         /**
          * Queries the service's `feed_uri` feed to build a {@link GData.Feed}. `self`, `feed_uri` and
@@ -16704,10 +16688,9 @@ export namespace GData {
          * @param entry_type a {@link GObject.GType} for the `GDataEntrys` to build from the XML
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when an entry is loaded, or `null`
-         * @param destroy_progress_user_data the function to call when `progress_callback` will not be called any more, or `null`. This function will be called with `progress_user_data` as a parameter and can be used to free any memory allocated for it.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the query is finished
          */
-        query_async(domain: (AuthorizationDomain | null), feed_uri: string, query: (Query | null), entry_type: GObject.GType, cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), destroy_progress_user_data: (GLib.DestroyNotify | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Feed> | void);
+        query_async(domain: (AuthorizationDomain | null), feed_uri: string, query: (Query | null), entry_type: GObject.GType, cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Feed> | void);
 
         /**
          * Finishes an asynchronous query operation started with `gdata_service_query_async()`.
@@ -17387,10 +17370,9 @@ export namespace GData {
          * @param query a {@link GData.Query} with the query parameters, or `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when an entry is loaded, or `null`
-         * @param destroy_progress_user_data the function to call when `progress_callback` will not be called any more, or `null`. This function will be called with `progress_user_data` as a parameter and can be used to free any memory allocated for it.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when authentication is finished
          */
-        query_all_tasklists_async(query: (Query | null), cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), destroy_progress_user_data: (GLib.DestroyNotify | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        query_all_tasklists_async(query: (Query | null), cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
 
         /**
          * Queries the service to return a list of tasks in the given `tasklist`, which match `query`.
@@ -17416,10 +17398,9 @@ export namespace GData {
          * @param query a {@link GData.Query} with the query parameters, or `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when an entry is loaded, or `null`
-         * @param destroy_progress_user_data the function to call when `progress_callback` will not be called any more, or `null`. This function will be called with `progress_user_data` as a parameter and can be used to free any memory allocated for it.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the query is finished
          */
-        query_tasks_async(tasklist: TasksTasklist, query: (Query | null), cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), destroy_progress_user_data: (GLib.DestroyNotify | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        query_tasks_async(tasklist: TasksTasklist, query: (Query | null), cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
 
         /**
          * Update `task` in online tasks service.
@@ -18845,10 +18826,9 @@ export namespace GData {
          * @param query a {@link GData.Query} with the query parameters, or `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when an entry is loaded, or `null`
-         * @param destroy_progress_user_data the function to call when `progress_callback` will not be called any more, or `null`. This function will be called with `progress_user_data` as a parameter and can be used to free any memory allocated for it.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when authentication is finished
          */
-        query_related_async(video: YouTubeVideo, query: (Query | null), cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), destroy_progress_user_data: (GLib.DestroyNotify | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        query_related_async(video: YouTubeVideo, query: (Query | null), cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
 
         /**
          * Queries the service's standard `feed_type` feed to build a {@link GData.Feed}.
@@ -18879,10 +18859,9 @@ export namespace GData {
          * @param query a {@link GData.Query} with the query parameters, or `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when an entry is loaded, or `null`
-         * @param destroy_progress_user_data the function to call when `progress_callback` will not be called any more, or `null`. This function will be called with `progress_user_data` as a parameter and can be used to free any memory allocated for it.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when authentication is finished
          */
-        query_standard_feed_async(feed_type: YouTubeStandardFeedType, query: (Query | null), cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), destroy_progress_user_data: (GLib.DestroyNotify | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        query_standard_feed_async(feed_type: YouTubeStandardFeedType, query: (Query | null), cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
 
         /**
          * Queries the service for videos matching the parameters set on the {@link GData.Query}. This searches site-wide, and imposes no other restrictions or
@@ -18907,10 +18886,9 @@ export namespace GData {
          * @param query a {@link GData.Query} with the query parameters, or `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when an entry is loaded, or `null`
-         * @param destroy_progress_user_data the function to call when `progress_callback` will not be called any more, or `null`. This function will be called with `progress_user_data` as a parameter and can be used to free any memory allocated for it.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when authentication is finished
          */
-        query_videos_async(query: (Query | null), cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), destroy_progress_user_data: (GLib.DestroyNotify | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        query_videos_async(query: (Query | null), cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
 
         /**
          * Uploads a video to YouTube, using the properties from `video` and the file data written to the resulting {@link GData.UploadStream}.
@@ -19844,9 +19822,8 @@ export namespace GData {
          * @param query a {@link GData.Query} with query parameters, or `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when a comment is loaded, or `null`
-         * @param destroy_progress_user_data a function to call when `progress_callback` will not be called any more, or `null`; this function will be called with `progress_user_data` as a parameter and can be used to free any memory allocated for it
          */
-        query_comments_async(service: Service, query: (Query | null), cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), destroy_progress_user_data: (GLib.DestroyNotify | null)): globalThis.Promise<(Feed | null)>;
+        query_comments_async(service: Service, query: (Query | null), cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null)): globalThis.Promise<(Feed | null)>;
 
         /**
          * Retrieves a {@link GData.Feed} containing the `GDataComments` representing the comments on the {@link GData.Commentable} which match the given `query`.
@@ -19860,10 +19837,9 @@ export namespace GData {
          * @param query a {@link GData.Query} with query parameters, or `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when a comment is loaded, or `null`
-         * @param destroy_progress_user_data a function to call when `progress_callback` will not be called any more, or `null`; this function will be called with `progress_user_data` as a parameter and can be used to free any memory allocated for it
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the query is finished
          */
-        query_comments_async(service: Service, query: (Query | null), cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), destroy_progress_user_data: (GLib.DestroyNotify | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        query_comments_async(service: Service, query: (Query | null), cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
 
         /**
          * Retrieves a {@link GData.Feed} containing the `GDataComments` representing the comments on the {@link GData.Commentable} which match the given `query`.
@@ -19877,10 +19853,9 @@ export namespace GData {
          * @param query a {@link GData.Query} with query parameters, or `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when a comment is loaded, or `null`
-         * @param destroy_progress_user_data a function to call when `progress_callback` will not be called any more, or `null`; this function will be called with `progress_user_data` as a parameter and can be used to free any memory allocated for it
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the query is finished
          */
-        query_comments_async(service: Service, query: (Query | null), cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), destroy_progress_user_data: (GLib.DestroyNotify | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Feed | null)> | void);
+        query_comments_async(service: Service, query: (Query | null), cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Feed | null)> | void);
 
         /**
          * Finishes an asynchronous comment query operation started with `gdata_commentable_query_comments_async()`.
@@ -21030,10 +21005,9 @@ export namespace GData {
          * @param service a {@link GData.Service}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when a rule is loaded, or `null`
-         * @param destroy_progress_user_data the function to call when `progress_callback` will not be called any more, or `null`. This function will be called with `progress_user_data` as a parameter and can be used to free any memory allocated for it.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the query is finished
          */
-        get_rules_async(service: Service, cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), destroy_progress_user_data: (GLib.DestroyNotify | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_rules_async(service: Service, cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
     }
 
 
@@ -21521,9 +21495,8 @@ export namespace GData {
          * @param query a {@link GData.Query} with query parameters, or `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when a comment is loaded, or `null`
-         * @param destroy_progress_user_data a function to call when `progress_callback` will not be called any more, or `null`; this function will be called with `progress_user_data` as a parameter and can be used to free any memory allocated for it
          */
-        query_comments_async(service: Service, query: (Query | null), cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), destroy_progress_user_data: (GLib.DestroyNotify | null)): globalThis.Promise<(Feed | null)>;
+        query_comments_async(service: Service, query: (Query | null), cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null)): globalThis.Promise<(Feed | null)>;
 
         /**
          * Retrieves a {@link GData.Feed} containing the `GDataComments` representing the comments on the {@link GData.Commentable} which match the given `query`.
@@ -21537,10 +21510,9 @@ export namespace GData {
          * @param query a {@link GData.Query} with query parameters, or `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when a comment is loaded, or `null`
-         * @param destroy_progress_user_data a function to call when `progress_callback` will not be called any more, or `null`; this function will be called with `progress_user_data` as a parameter and can be used to free any memory allocated for it
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the query is finished
          */
-        query_comments_async(service: Service, query: (Query | null), cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), destroy_progress_user_data: (GLib.DestroyNotify | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        query_comments_async(service: Service, query: (Query | null), cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
 
         /**
          * Retrieves a {@link GData.Feed} containing the `GDataComments` representing the comments on the {@link GData.Commentable} which match the given `query`.
@@ -21554,10 +21526,9 @@ export namespace GData {
          * @param query a {@link GData.Query} with query parameters, or `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when a comment is loaded, or `null`
-         * @param destroy_progress_user_data a function to call when `progress_callback` will not be called any more, or `null`; this function will be called with `progress_user_data` as a parameter and can be used to free any memory allocated for it
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the query is finished
          */
-        query_comments_async(service: Service, query: (Query | null), cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), destroy_progress_user_data: (GLib.DestroyNotify | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Feed | null)> | void);
+        query_comments_async(service: Service, query: (Query | null), cancellable: (Gio.Cancellable | null), progress_callback: (QueryProgressCallback | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Feed | null)> | void);
 
         /**
          * Finishes an asynchronous comment query operation started with `gdata_commentable_query_comments_async()`.

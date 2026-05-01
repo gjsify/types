@@ -7402,11 +7402,10 @@ export namespace ParamArray {
     /**
      * @param vtable a pointer to a `GimpProgressVtable`.
      * @param user_data a pointer that is passed as user_data to all vtable                     functions.
-     * @param user_data_destroy destroy function for `user_data`, or `null`.
      * @returns the name of the temporary procedure that's been installed
      * @since 2.4
      */
-    function progress_install_vtable(vtable: ProgressVtable, user_data: (any | null), user_data_destroy: (GLib.DestroyNotify | null)): string;
+    function progress_install_vtable(vtable: ProgressVtable, user_data: (any | null)): string;
 
     /**
      * Pulses the progress bar for the current plug-in.
@@ -8351,7 +8350,7 @@ export namespace ParamArray {
 
         _init(...args: any[]): void;
 
-        static ["new"](plug_in: PlugIn, name: string, interpreter_name: string, proc_type: PDBProcType, run_func: BatchFunc, run_data_destroy: (GLib.DestroyNotify | null)): BatchProcedure;
+        static ["new"](plug_in: PlugIn, name: string, interpreter_name: string, proc_type: PDBProcType, run_func: BatchFunc): BatchProcedure;
 
         // Conflicted with Gimp.Procedure.new
         static ["new"](...args: never[]): any;
@@ -11395,7 +11394,7 @@ export namespace ParamArray {
 
         _init(...args: any[]): void;
 
-        static ["new"](plug_in: PlugIn, name: string, proc_type: PDBProcType, export_metadata: boolean, run_func: RunExportFunc, run_data_destroy: (GLib.DestroyNotify | null)): ExportProcedure;
+        static ["new"](plug_in: PlugIn, name: string, proc_type: PDBProcType, export_metadata: boolean, run_func: RunExportFunc): ExportProcedure;
 
         // Conflicted with Gimp.Procedure.new
         static ["new"](...args: never[]): any;
@@ -11457,9 +11456,8 @@ export namespace ParamArray {
          * edit the export capabilities dynamically.
          * @param capabilities a {@link Gimp.ExportCapabilities} bitfield.
          * @param get_capabilities_func callback function to update export options
-         * @param get_capabilities_data_destroy free function for `get_capabilities_data`, or `null`
          */
-        set_capabilities(capabilities: ExportCapabilities, get_capabilities_func: (ExportGetCapabilitiesFunc | null), get_capabilities_data_destroy: (GLib.DestroyNotify | null)): void;
+        set_capabilities(capabilities: ExportCapabilities, get_capabilities_func: (ExportGetCapabilitiesFunc | null)): void;
 
         /**
          * Determine whether `procedure` supports exporting a comment. By default,
@@ -14380,7 +14378,7 @@ export namespace ParamArray {
 
         _init(...args: any[]): void;
 
-        static ["new"](plug_in: PlugIn, name: string, proc_type: PDBProcType, run_func: RunImageFunc, run_data_destroy: (GLib.DestroyNotify | null)): ImageProcedure;
+        static ["new"](plug_in: PlugIn, name: string, proc_type: PDBProcType, run_func: RunImageFunc): ImageProcedure;
 
         // Conflicted with Gimp.Procedure.new
         static ["new"](...args: never[]): any;
@@ -15899,7 +15897,7 @@ export namespace ParamArray {
 
         _init(...args: any[]): void;
 
-        static ["new"](plug_in: PlugIn, name: string, proc_type: PDBProcType, run_func: RunLoadFunc, run_data_destroy: (GLib.DestroyNotify | null)): LoadProcedure;
+        static ["new"](plug_in: PlugIn, name: string, proc_type: PDBProcType, run_func: RunLoadFunc): LoadProcedure;
 
         // Conflicted with Gimp.Procedure.new
         static ["new"](...args: never[]): any;
@@ -18483,7 +18481,7 @@ export namespace ParamArray {
 
         _init(...args: any[]): void;
 
-        static ["new"](plug_in: PlugIn, name: string, proc_type: PDBProcType, run_func: RunFunc, run_data_destroy: (GLib.DestroyNotify | null)): Procedure;
+        static ["new"](plug_in: PlugIn, name: string, proc_type: PDBProcType, run_func: RunFunc): Procedure;
 
         // Signals
         /** @signal */
@@ -21211,7 +21209,7 @@ export namespace ParamArray {
 
         _init(...args: any[]): void;
 
-        static ["new"](plug_in: PlugIn, name: string, proc_type: PDBProcType, run_func: RunThumbnailFunc, run_data_destroy: (GLib.DestroyNotify | null)): ThumbnailProcedure;
+        static ["new"](plug_in: PlugIn, name: string, proc_type: PDBProcType, run_func: RunThumbnailFunc): ThumbnailProcedure;
 
         // Conflicted with Gimp.Procedure.new
         static ["new"](...args: never[]): any;
@@ -21911,7 +21909,7 @@ export namespace ParamArray {
 
         _init(...args: any[]): void;
 
-        static ["new"](plug_in: PlugIn, name: string, proc_type: PDBProcType, extract_func: ExtractVectorFunc, run_func: RunVectorLoadFunc, run_data_destroy: (GLib.DestroyNotify | null)): VectorLoadProcedure;
+        static ["new"](plug_in: PlugIn, name: string, proc_type: PDBProcType, extract_func: ExtractVectorFunc, run_func: RunVectorLoadFunc): VectorLoadProcedure;
 
         // Conflicted with Gimp.LoadProcedure.new
         static ["new"](...args: never[]): any;

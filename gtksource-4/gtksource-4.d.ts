@@ -3197,9 +3197,8 @@ export namespace GtkSource {
          * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param progress_callback function to call back with   progress information, or `null` if progress information is not needed.
-         * @param progress_callback_notify function to call on   `progress_callback_data` when the `progress_callback` is no longer needed, or   `null`.
          */
-        load_async(io_priority: number, cancellable: (Gio.Cancellable | null), progress_callback: (Gio.FileProgressCallback | null), progress_callback_notify: (GLib.DestroyNotify | null)): globalThis.Promise<boolean>;
+        load_async(io_priority: number, cancellable: (Gio.Cancellable | null), progress_callback: (Gio.FileProgressCallback | null)): globalThis.Promise<boolean>;
 
         /**
          * Loads asynchronously the file or input stream contents into the
@@ -3208,10 +3207,9 @@ export namespace GtkSource {
          * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param progress_callback function to call back with   progress information, or `null` if progress information is not needed.
-         * @param progress_callback_notify function to call on   `progress_callback_data` when the `progress_callback` is no longer needed, or   `null`.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
-        load_async(io_priority: number, cancellable: (Gio.Cancellable | null), progress_callback: (Gio.FileProgressCallback | null), progress_callback_notify: (GLib.DestroyNotify | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        load_async(io_priority: number, cancellable: (Gio.Cancellable | null), progress_callback: (Gio.FileProgressCallback | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
 
         /**
          * Loads asynchronously the file or input stream contents into the
@@ -3220,10 +3218,9 @@ export namespace GtkSource {
          * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param progress_callback function to call back with   progress information, or `null` if progress information is not needed.
-         * @param progress_callback_notify function to call on   `progress_callback_data` when the `progress_callback` is no longer needed, or   `null`.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
-        load_async(io_priority: number, cancellable: (Gio.Cancellable | null), progress_callback: (Gio.FileProgressCallback | null), progress_callback_notify: (GLib.DestroyNotify | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        load_async(io_priority: number, cancellable: (Gio.Cancellable | null), progress_callback: (Gio.FileProgressCallback | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
 
         /**
          * Finishes a file loading started with `gtk_source_file_loader_load_async()`.
@@ -3434,9 +3431,8 @@ export namespace GtkSource {
          * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param progress_callback function to call back with   progress information, or `null` if progress information is not needed.
-         * @param progress_callback_notify function to call on   `progress_callback_data` when the `progress_callback` is no longer needed, or   `null`.
          */
-        save_async(io_priority: number, cancellable: (Gio.Cancellable | null), progress_callback: (Gio.FileProgressCallback | null), progress_callback_notify: (GLib.DestroyNotify | null)): globalThis.Promise<boolean>;
+        save_async(io_priority: number, cancellable: (Gio.Cancellable | null), progress_callback: (Gio.FileProgressCallback | null)): globalThis.Promise<boolean>;
 
         /**
          * Saves asynchronously the buffer into the file. See the {@link Gio.AsyncResult}
@@ -3444,10 +3440,9 @@ export namespace GtkSource {
          * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param progress_callback function to call back with   progress information, or `null` if progress information is not needed.
-         * @param progress_callback_notify function to call on   `progress_callback_data` when the `progress_callback` is no longer needed, or   `null`.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
-        save_async(io_priority: number, cancellable: (Gio.Cancellable | null), progress_callback: (Gio.FileProgressCallback | null), progress_callback_notify: (GLib.DestroyNotify | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        save_async(io_priority: number, cancellable: (Gio.Cancellable | null), progress_callback: (Gio.FileProgressCallback | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
 
         /**
          * Saves asynchronously the buffer into the file. See the {@link Gio.AsyncResult}
@@ -3455,10 +3450,9 @@ export namespace GtkSource {
          * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param progress_callback function to call back with   progress information, or `null` if progress information is not needed.
-         * @param progress_callback_notify function to call on   `progress_callback_data` when the `progress_callback` is no longer needed, or   `null`.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
-        save_async(io_priority: number, cancellable: (Gio.Cancellable | null), progress_callback: (Gio.FileProgressCallback | null), progress_callback_notify: (GLib.DestroyNotify | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        save_async(io_priority: number, cancellable: (Gio.Cancellable | null), progress_callback: (Gio.FileProgressCallback | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
 
         /**
          * Finishes a file saving started with `gtk_source_file_saver_save_async()`.

@@ -11177,12 +11177,11 @@ export namespace Ide {
          * the application is deployed.
          * @param pipeline an {@link Ide.Pipeline}
          * @param progress a {@link Gio.FileProgressCallback} or `null`
-         * @param progress_data_destroy destroy callback for `progress_data`
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute upon completion
          * @virtual
          */
-        vfunc_deploy_async(pipeline: Pipeline, progress: (Gio.FileProgressCallback | null), progress_data_destroy: (GLib.DestroyNotify | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_deploy_async(pipeline: Pipeline, progress: (Gio.FileProgressCallback | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
 
         /**
          * Completes an asynchronous request to deploy the application to the
@@ -11242,10 +11241,9 @@ export namespace Ide {
          * the application is deployed.
          * @param pipeline an {@link Ide.Pipeline}
          * @param progress a {@link Gio.FileProgressCallback} or `null`
-         * @param progress_data_destroy destroy callback for `progress_data`
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        deploy_async(pipeline: Pipeline, progress: (Gio.FileProgressCallback | null), progress_data_destroy: (GLib.DestroyNotify | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        deploy_async(pipeline: Pipeline, progress: (Gio.FileProgressCallback | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
 
         /**
          * Requests that the {@link Ide.DeployStrategy} deploy the application to the
@@ -11255,11 +11253,10 @@ export namespace Ide {
          * the application is deployed.
          * @param pipeline an {@link Ide.Pipeline}
          * @param progress a {@link Gio.FileProgressCallback} or `null`
-         * @param progress_data_destroy destroy callback for `progress_data`
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute upon completion
          */
-        deploy_async(pipeline: Pipeline, progress: (Gio.FileProgressCallback | null), progress_data_destroy: (GLib.DestroyNotify | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        deploy_async(pipeline: Pipeline, progress: (Gio.FileProgressCallback | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
 
         /**
          * Requests that the {@link Ide.DeployStrategy} deploy the application to the
@@ -11269,11 +11266,10 @@ export namespace Ide {
          * the application is deployed.
          * @param pipeline an {@link Ide.Pipeline}
          * @param progress a {@link Gio.FileProgressCallback} or `null`
-         * @param progress_data_destroy destroy callback for `progress_data`
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute upon completion
          */
-        deploy_async(pipeline: Pipeline, progress: (Gio.FileProgressCallback | null), progress_data_destroy: (GLib.DestroyNotify | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        deploy_async(pipeline: Pipeline, progress: (Gio.FileProgressCallback | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
 
         /**
          * Completes an asynchronous request to deploy the application to the

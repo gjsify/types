@@ -285,11 +285,10 @@ export namespace GstVulkan {
      * @param buffer a {@link Vulkan.Buffer}
      * @param usage usage flags of `buffer`
      * @param user_data user data to call `notify` with
-     * @param notify a {@link GLib.DestroyNotify} called when `buffer` is no longer in use
      * @returns a {@link Gst.Memory} object backed by a vulkan device memory
      * @since 1.18
      */
-    function vulkan_buffer_memory_wrapped(device: VulkanDevice, buffer: Vulkan.Buffer, usage: Vulkan.BufferUsageFlags, user_data: (any | null), notify: (GLib.DestroyNotify | null)): Gst.Memory;
+    function vulkan_buffer_memory_wrapped(device: VulkanDevice, buffer: Vulkan.Buffer, usage: Vulkan.BufferUsageFlags, user_data: (any | null)): Gst.Memory;
 
     /**
      * @param device 
@@ -2440,9 +2439,8 @@ export namespace GstVulkan {
          * @param buffer a {@link Vulkan.Buffer}
          * @param usage usage flags of `buffer`
          * @param user_data user data to call `notify` with
-         * @param notify a {@link GLib.DestroyNotify} called when `buffer` is no longer in use
          */
-        static wrapped(device: VulkanDevice, buffer: Vulkan.Buffer, usage: Vulkan.BufferUsageFlags, user_data: (any | null), notify: (GLib.DestroyNotify | null)): Gst.Memory;
+        static wrapped(device: VulkanDevice, buffer: Vulkan.Buffer, usage: Vulkan.BufferUsageFlags, user_data: (any | null)): Gst.Memory;
     }
 
 
